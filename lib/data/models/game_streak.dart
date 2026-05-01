@@ -6,7 +6,7 @@ part 'game_streak.g.dart';
 
 @freezed
 class GameStreak with _$GameStreak {
-  @HiveType(typeId: 1)
+  @HiveType(typeId: 1, adapterName: 'GameStreakAdapter')
   const factory GameStreak({
     @HiveField(0) required String gameId,
     @HiveField(1) required int currentStreak,

@@ -6,7 +6,7 @@ part 'user_data.g.dart';
 
 @freezed
 class UserData with _$UserData {
-  @HiveType(typeId: 0)
+  @HiveType(typeId: 0, adapterName: 'UserDataAdapter')
   const factory UserData({
     @HiveField(0) required int xp,
     @HiveField(1) required int level,

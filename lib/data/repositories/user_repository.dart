@@ -1,0 +1,38 @@
+import 'package:hive/hive.dart';
+import '../models/user_data.dart';
+import '../models/game_streak.dart';
+
+class UserRepository {
+  static const String userDataBoxName = 'user_data';
+  static const String gameStreakBoxName = 'game_streaks';
+
+  Future<void> init() async {
+    await Hive.openBox<UserData>(userDataBoxName);
+    await Hive.openBox<GameStreak>(gameStreakBoxName);
+  }
+
+  UserData getUserData() {
+    final box = Hive.box<UserData>(userDataBoxName);
+    return box.get('current', defaultValue: UserData.initial())!;
+  }
+
+  Future<void> saveUserData(UserData data) async {
+    final box = Hive.box<UserData>(userDataBoxName);
+    await box.put('current', data);
+  }
+
+  List<GameStreak> getAllGameStreaks() {
+    final box = Hive.box<GameStreak>(gameStreakBoxName);
+    return box.values.toList();
+  }
+
+  GameStreak getGameStreak(String gameId) {
+    final box = Hive.box<GameStreak>(gameStreakBoxName);
+    return box.get(gameId, defaultValue: GameStreak.initial(gameId))!;
+  }
+
+  Future<void> saveGameStreak(GameStreak streak) async {
+    final box = Hive.box<GameStreak>(gameStreakBoxName);
+    await box.put(streak.gameId, streak);
+  }
+}
