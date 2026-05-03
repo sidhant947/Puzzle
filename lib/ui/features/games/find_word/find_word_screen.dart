@@ -23,33 +23,34 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(findWordNotifierProvider);
     final notifier = ref.read(findWordNotifierProvider.notifier);
+    final theme = Theme.of(context);
 
     ref.listen(findWordNotifierProvider, (previous, next) {
       if (next.isGameOver && !(previous?.isGameOver ?? false)) {
-        _showGameOverDialog(context, ref, next);
+        _showGameOverDialog(context, ref, next, theme);
       }
     });
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Find Word'),
+        title: const Text('FIND WORD'),
       ),
       body: SafeArea(
         child: Column(
           children: [
-            const SizedBox(height: 20),
+            const SizedBox(height: 32),
             Expanded(
-              child: _buildGrid(state),
+              child: _buildGrid(state, theme),
             ),
-            _buildKeyboard(state, notifier),
-            const SizedBox(height: 20),
+            _buildKeyboard(state, notifier, theme),
+            const SizedBox(height: 32),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildGrid(FindWordState state) {
+  Widget _buildGrid(FindWordState state, ThemeData theme) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 40),
       child: Column(
@@ -75,7 +76,7 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
                 return Expanded(
                   child: Padding(
                     padding: const EdgeInsets.all(4.0),
-                    child: _buildTile(letter, status),
+                    child: _buildTile(letter, status, theme),
                   ),
                 );
               }),
@@ -86,30 +87,30 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
     );
   }
 
-  Widget _buildTile(String letter, LetterStatus status) {
-    Color color = Colors.white;
-    Color textColor = Colors.black;
-    Border border = Border.all(color: Colors.grey.shade300);
+  Widget _buildTile(String letter, LetterStatus status, ThemeData theme) {
+    Color color = Colors.transparent;
+    Color textColor = theme.colorScheme.onSurface;
+    Border border = Border.all(color: theme.colorScheme.onSurface.withValues(alpha: 0.2), width: 1);
 
     switch (status) {
       case LetterStatus.correctSpot:
-        color = Colors.green;
+        color = const Color(0xFF6AAA64); // Wordle Green
         textColor = Colors.white;
-        border = Border.all(color: Colors.green);
+        border = Border.all(color: color, width: 1);
         break;
       case LetterStatus.wrongSpot:
-        color = Colors.orange;
+        color = const Color(0xFFC9B458); // Wordle Yellow
         textColor = Colors.white;
-        border = Border.all(color: Colors.orange);
+        border = Border.all(color: color, width: 1);
         break;
       case LetterStatus.notInWord:
-        color = Colors.grey;
+        color = theme.brightness == Brightness.light ? Colors.grey.shade400 : Colors.grey.shade700;
         textColor = Colors.white;
-        border = Border.all(color: Colors.grey);
+        border = Border.all(color: color, width: 1);
         break;
       case LetterStatus.initial:
         if (letter.isNotEmpty) {
-          border = Border.all(color: Colors.black, width: 2);
+          border = Border.all(color: theme.colorScheme.onSurface, width: 2);
         }
         break;
     }
@@ -118,14 +119,14 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
       decoration: BoxDecoration(
         color: color,
         border: border,
-        borderRadius: BorderRadius.circular(4),
+        borderRadius: BorderRadius.zero,
       ),
       child: Center(
         child: Text(
           letter,
           style: TextStyle(
             fontSize: 24,
-            fontWeight: FontWeight.bold,
+            fontWeight: FontWeight.w900,
             color: textColor,
           ),
         ),
@@ -133,7 +134,7 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
     );
   }
 
-  Widget _buildKeyboard(FindWordState state, FindWordNotifier notifier) {
+  Widget _buildKeyboard(FindWordState state, FindWordNotifier notifier, ThemeData theme) {
     final rows = [
       ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
       ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
@@ -152,7 +153,7 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 if (rowIndex == 1) const Spacer(flex: 1),
-                ...row.map((key) => _buildKey(key, state, notifier)),
+                ...row.map((key) => _buildKey(key, state, notifier, theme)),
                 if (rowIndex == 1) const Spacer(flex: 1),
               ],
             ),
@@ -162,25 +163,26 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
     );
   }
 
-  Widget _buildKey(String label, FindWordState state, FindWordNotifier notifier) {
+  Widget _buildKey(String label, FindWordState state, FindWordNotifier notifier, ThemeData theme) {
     bool isSpecialKey = label == 'ENTER' || label == 'DEL';
     int flex = isSpecialKey ? 3 : 2;
 
     LetterStatus status = state.keyboardStatus[label] ?? LetterStatus.initial;
-    Color color = Colors.grey.shade300;
-    Color textColor = Colors.black;
+    Color color = theme.brightness == Brightness.light ? Colors.grey.shade300 : Colors.grey.shade800;
+    Color textColor = theme.colorScheme.onSurface;
+    Border border = Border.all(color: Colors.transparent);
 
     switch (status) {
       case LetterStatus.correctSpot:
-        color = Colors.green;
+        color = const Color(0xFF6AAA64);
         textColor = Colors.white;
         break;
       case LetterStatus.wrongSpot:
-        color = Colors.orange;
+        color = const Color(0xFFC9B458);
         textColor = Colors.white;
         break;
       case LetterStatus.notInWord:
-        color = Colors.grey.shade700;
+        color = theme.brightness == Brightness.light ? Colors.grey.shade700 : Colors.black;
         textColor = Colors.white;
         break;
       default:
@@ -191,30 +193,31 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
       flex: flex,
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 2),
-        child: Material(
-          color: color,
-          borderRadius: BorderRadius.circular(4),
-          child: InkWell(
-            onTap: () {
-              HapticFeedback.lightImpact();
-              if (label == 'ENTER') {
-                notifier.submitGuess();
-              } else if (label == 'DEL') {
-                notifier.removeLetter();
-              } else {
-                notifier.addLetter(label);
-              }
-            },
-            child: Container(
-              height: 48,
-              alignment: Alignment.center,
-              child: Text(
-                label,
-                style: TextStyle(
-                  fontSize: label.length > 1 ? 10 : 14,
-                  fontWeight: FontWeight.bold,
-                  color: textColor,
-                ),
+        child: GestureDetector(
+          onTap: () {
+            HapticFeedback.lightImpact();
+            if (label == 'ENTER') {
+              notifier.submitGuess();
+            } else if (label == 'DEL') {
+              notifier.removeLetter();
+            } else {
+              notifier.addLetter(label);
+            }
+          },
+          child: Container(
+            height: 56,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: color,
+              border: border,
+              borderRadius: BorderRadius.zero,
+            ),
+            child: Text(
+              label,
+              style: TextStyle(
+                fontSize: label.length > 1 ? 10 : 16,
+                fontWeight: FontWeight.w900,
+                color: textColor,
               ),
             ),
           ),
@@ -223,7 +226,7 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
     );
   }
 
-  void _showGameOverDialog(BuildContext context, WidgetRef ref, FindWordState state) async {
+  void _showGameOverDialog(BuildContext context, WidgetRef ref, FindWordState state, ThemeData theme) async {
     if (state.isGameWon) {
       await ref.read(gameStreakNotifierProvider.notifier).completeGame('find_word');
     }
@@ -234,13 +237,15 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        title: Text(state.isGameWon ? 'Well Done!' : 'Game Over'),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+        title: Text(state.isGameWon ? 'WELL DONE' : 'GAME OVER', style: const TextStyle(fontWeight: FontWeight.w900)),
         content: Column(
           mainAxisSize: MainAxisSize.min,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(state.isGameWon ? 'You found the word!' : 'Better luck next time!'),
-            const SizedBox(height: 12),
-            Text('The word was: ${state.targetWord}', style: const TextStyle(fontWeight: FontWeight.bold)),
+            Text(state.isGameWon ? 'Word found successfully.' : 'No more tries left.'),
+            const SizedBox(height: 16),
+            Text('WORD: ${state.targetWord}', style: const TextStyle(fontWeight: FontWeight.w900, letterSpacing: 2.0)),
           ],
         ),
         actions: [
@@ -249,7 +254,7 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
             },
-            child: const Text('Back to Home'),
+            child: const Text('EXIT'),
           ),
         ],
       ),

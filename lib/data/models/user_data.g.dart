@@ -19,17 +19,23 @@ class UserDataAdapter extends TypeAdapter<_$UserDataImpl> {
     return _$UserDataImpl(
       xp: fields[0] as int,
       level: fields[1] as int,
+      superStreak: fields[2] as int?,
+      lastSuperStreakDate: fields[3] as DateTime?,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$UserDataImpl obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(4)
       ..writeByte(0)
       ..write(obj.xp)
       ..writeByte(1)
-      ..write(obj.level);
+      ..write(obj.level)
+      ..writeByte(2)
+      ..write(obj.superStreak)
+      ..writeByte(3)
+      ..write(obj.lastSuperStreakDate);
   }
 
   @override
@@ -51,10 +57,16 @@ _$UserDataImpl _$$UserDataImplFromJson(Map<String, dynamic> json) =>
     _$UserDataImpl(
       xp: (json['xp'] as num).toInt(),
       level: (json['level'] as num).toInt(),
+      superStreak: (json['superStreak'] as num?)?.toInt(),
+      lastSuperStreakDate: json['lastSuperStreakDate'] == null
+          ? null
+          : DateTime.parse(json['lastSuperStreakDate'] as String),
     );
 
 Map<String, dynamic> _$$UserDataImplToJson(_$UserDataImpl instance) =>
     <String, dynamic>{
       'xp': instance.xp,
       'level': instance.level,
+      'superStreak': instance.superStreak,
+      'lastSuperStreakDate': instance.lastSuperStreakDate?.toIso8601String(),
     };

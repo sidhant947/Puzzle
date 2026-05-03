@@ -45,10 +45,11 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(crosswordNotifierProvider);
     final notifier = ref.read(crosswordNotifierProvider.notifier);
+    final theme = Theme.of(context);
 
     ref.listen(crosswordNotifierProvider, (previous, next) {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
-        _showVictoryDialog(context, ref);
+        _showVictoryDialog(context, ref, theme);
       }
     });
 
@@ -58,16 +59,10 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
       onKeyEvent: _handleKeyEvent,
       child: Scaffold(
         appBar: AppBar(
-          title: const Text('Crossword'),
-          actions: [
-            IconButton(
-              icon: const Icon(Icons.refresh),
-              onPressed: () => notifier.initGame(),
-            ),
-          ],
+          title: const Text('CROSSWORD'),
         ),
         body: state.board == null
-            ? const Center(child: CircularProgressIndicator())
+            ? Center(child: CircularProgressIndicator(color: theme.colorScheme.primary))
             : SafeArea(
                 child: Column(
                   children: [
@@ -77,15 +72,15 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
                         onTap: () => _focusNode.requestFocus(),
                         child: Padding(
                           padding: const EdgeInsets.all(12.0),
-                          child: _buildGrid(state, notifier),
+                          child: _buildGrid(state, notifier, theme),
                         ),
                       ),
                     ),
-                    _buildCurrentClue(state),
-                    const Divider(height: 1),
+                    _buildCurrentClue(state, theme),
+                    Divider(height: 1, color: theme.colorScheme.onSurface.withValues(alpha: 0.1)),
                     Expanded(
                       flex: 2,
-                      child: _buildClueList(state, notifier),
+                      child: _buildClueList(state, notifier, theme),
                     ),
                   ],
                 ),
@@ -94,7 +89,7 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
     );
   }
 
-  Widget _buildGrid(CrosswordState state, CrosswordNotifier notifier) {
+  Widget _buildGrid(CrosswordState state, CrosswordNotifier notifier, ThemeData theme) {
     final board = state.board!;
     return AspectRatio(
       aspectRatio: 1,
@@ -124,7 +119,7 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
           }
 
           if (char == ' ') {
-            return Container(color: Colors.black.withValues(alpha: 0.05));
+            return Container(color: theme.colorScheme.onSurface);
           }
 
           int? num;
@@ -143,25 +138,33 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
             child: Container(
               decoration: BoxDecoration(
                 color: isSelected 
-                    ? Colors.orange.withValues(alpha: 0.4) 
-                    : (isInCurrentWord ? Colors.blue.withValues(alpha: 0.1) : Colors.white),
-                border: Border.all(color: Colors.grey.shade400, width: 0.5),
+                    ? theme.colorScheme.primary.withValues(alpha: 0.2) 
+                    : (isInCurrentWord ? theme.colorScheme.primary.withValues(alpha: 0.05) : theme.colorScheme.surface),
+                border: Border.all(color: theme.colorScheme.onSurface, width: 0.5),
               ),
               child: Stack(
                 children: [
                   if (num != null)
                     Positioned(
-                      left: 1,
-                      top: 0,
+                      left: 2,
+                      top: 1,
                       child: Text(
                         num.toString(),
-                        style: const TextStyle(fontSize: 8, fontWeight: FontWeight.bold),
+                        style: TextStyle(
+                          fontSize: 10, 
+                          fontWeight: FontWeight.w400,
+                          color: theme.colorScheme.onSurface,
+                        ),
                       ),
                     ),
                   Center(
                     child: Text(
                       state.userGrid[y][x],
-                      style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                      style: TextStyle(
+                        fontSize: 20, 
+                        fontWeight: FontWeight.w400,
+                        color: theme.colorScheme.onSurface,
+                      ),
                     ),
                   ),
                 ],
@@ -173,8 +176,8 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
     );
   }
 
-  Widget _buildCurrentClue(CrosswordState state) {
-    String clue = "Tap a square to start";
+  Widget _buildCurrentClue(CrosswordState state, ThemeData theme) {
+    String clue = "SELECT A SQUARE";
     if (state.selectedX != null && state.selectedY != null) {
       for (var w in state.board!.words) {
         bool inWord = false;
@@ -193,36 +196,50 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
       width: double.infinity,
-      color: Colors.blue.shade50,
+      decoration: BoxDecoration(
+        border: Border(top: BorderSide(color: theme.colorScheme.onSurface, width: 1)),
+      ),
       child: Text(
-        clue,
-        style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold),
+        clue.toUpperCase(),
+        style: TextStyle(
+          fontSize: 13, 
+          fontWeight: FontWeight.w900,
+          color: theme.colorScheme.onSurface,
+          letterSpacing: 1.0,
+        ),
         textAlign: TextAlign.center,
       ),
     );
   }
 
-  Widget _buildClueList(CrosswordState state, CrosswordNotifier notifier) {
+  Widget _buildClueList(CrosswordState state, CrosswordNotifier notifier, ThemeData theme) {
     final across = state.board!.words.where((w) => w.isHorizontal).toList();
     final down = state.board!.words.where((w) => !w.isHorizontal).toList();
 
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Expanded(child: _buildClueColumn("ACROSS", across, state, notifier)),
-        const VerticalDivider(width: 1),
-        Expanded(child: _buildClueColumn("DOWN", down, state, notifier)),
+        Expanded(child: _buildClueColumn("ACROSS", across, state, notifier, theme)),
+        Container(width: 1, color: theme.colorScheme.onSurface),
+        Expanded(child: _buildClueColumn("DOWN", down, state, notifier, theme)),
       ],
     );
   }
 
-  Widget _buildClueColumn(String title, List<CrosswordWord> words, CrosswordState state, CrosswordNotifier notifier) {
+  Widget _buildClueColumn(String title, List<CrosswordWord> words, CrosswordState state, CrosswordNotifier notifier, ThemeData theme) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Padding(
+        Container(
+          width: double.infinity,
           padding: const EdgeInsets.all(8.0),
-          child: Text(title, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12, color: Colors.grey)),
+          decoration: BoxDecoration(
+            border: Border(bottom: BorderSide(color: theme.colorScheme.onSurface, width: 1)),
+          ),
+          child: Text(
+            title, 
+            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 12, letterSpacing: 2.0),
+          ),
         ),
         Expanded(
           child: ListView.builder(
@@ -240,9 +257,9 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
               return ListTile(
                 dense: true,
                 selected: active,
-                selectedTileColor: Colors.blue.shade50,
+                selectedTileColor: theme.colorScheme.primary.withValues(alpha: 0.1),
                 leading: Text("${w.number}.", style: const TextStyle(fontWeight: FontWeight.bold)),
-                title: Text(w.clue, style: const TextStyle(fontSize: 12)),
+                title: Text(w.clue, style: const TextStyle(fontSize: 13)),
                 onTap: () {
                   notifier.selectCell(w.x, w.y);
                   if (state.isAcross != w.isHorizontal) {
@@ -258,7 +275,7 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
     );
   }
 
-  void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
+  void _showVictoryDialog(BuildContext context, WidgetRef ref, ThemeData theme) async {
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('crossword');
 
     if (!context.mounted) return;
@@ -267,15 +284,16 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        title: const Text('Congratulations!'),
-        content: const Text('You completed the crossword!'),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+        title: const Text('WELL DONE', style: TextStyle(fontWeight: FontWeight.w900)),
+        content: const Text('Crossword completed successfully.'),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
             },
-            child: const Text('Back to Home'),
+            child: const Text('EXIT'),
           ),
         ],
       ),

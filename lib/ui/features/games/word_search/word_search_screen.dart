@@ -22,16 +22,17 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(wordSearchNotifierProvider);
     final notifier = ref.read(wordSearchNotifierProvider.notifier);
+    final theme = Theme.of(context);
 
     ref.listen(wordSearchNotifierProvider, (previous, next) {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
-        _showVictoryDialog(context, ref);
+        _showVictoryDialog(context, ref, theme);
       }
     });
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Word Search'),
+        title: const Text('WORD SEARCH'),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
@@ -40,22 +41,23 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
         ],
       ),
       body: state.board == null
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(child: CircularProgressIndicator(color: theme.colorScheme.primary))
           : SafeArea(
               child: Center(
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
-                  child: _buildGrid(state, notifier),
+                  child: _buildGrid(state, notifier, theme),
                 ),
               ),
             ),
     );
   }
 
-  Widget _buildGrid(WordSearchState state, WordSearchNotifier notifier) {
+  Widget _buildGrid(WordSearchState state, WordSearchNotifier notifier, ThemeData theme) {
     final board = state.board!;
     return LayoutBuilder(builder: (context, constraints) {
-      final double gridSize = min(constraints.maxWidth, constraints.maxHeight);
+      final double availableWidth = constraints.maxWidth - 32;
+      final double gridSize = availableWidth;
       final double cellSize = gridSize / board.size;
 
       return GestureDetector(
@@ -66,14 +68,14 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
           width: gridSize,
           height: gridSize,
           decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(color: Colors.grey.shade400),
-            borderRadius: BorderRadius.circular(8),
+            color: theme.colorScheme.surface,
+            border: Border.all(color: theme.colorScheme.onSurface, width: 2),
+            borderRadius: BorderRadius.zero,
           ),
           child: Stack(
             children: [
-              _buildFoundLines(state, cellSize),
-              _buildSelectionLine(state, cellSize),
+              _buildFoundLines(state, cellSize, theme),
+              _buildSelectionLine(state, cellSize, theme),
               GridView.builder(
                 physics: const NeverScrollableScrollPhysics(),
                 gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
@@ -86,9 +88,10 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
                   return Center(
                     child: Text(
                       board.grid[y][x],
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 18,
-                        fontWeight: FontWeight.bold,
+                        fontWeight: FontWeight.w900,
+                        color: theme.colorScheme.onSurface,
                       ),
                     ),
                   );
@@ -114,17 +117,17 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
     }
   }
 
-  Widget _buildFoundLines(WordSearchState state, double cellSize) {
+  Widget _buildFoundLines(WordSearchState state, double cellSize, ThemeData theme) {
     return Stack(
       children: state.board!.words.where((w) => w.isFound).map((w) {
-        return _buildLine(w.positions, cellSize, Colors.green.withValues(alpha: 0.3));
+        return _buildLine(w.positions, cellSize, theme.colorScheme.onSurface.withValues(alpha: 0.15));
       }).toList(),
     );
   }
 
-  Widget _buildSelectionLine(WordSearchState state, double cellSize) {
+  Widget _buildSelectionLine(WordSearchState state, double cellSize, ThemeData theme) {
     if (state.selection.isEmpty) return const SizedBox.shrink();
-    return _buildLine(state.selection, cellSize, Colors.blue.withValues(alpha: 0.4));
+    return _buildLine(state.selection, cellSize, theme.colorScheme.onSurface.withValues(alpha: 0.4));
   }
 
   Widget _buildLine(List<Point<int>> positions, double cellSize, Color color) {
@@ -143,7 +146,7 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
     );
   }
 
-  void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
+  void _showVictoryDialog(BuildContext context, WidgetRef ref, ThemeData theme) async {
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('word_search');
 
     if (!context.mounted) return;
@@ -152,15 +155,16 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        title: const Text('Congratulations!'),
-        content: const Text('You found all the words!'),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+        title: const Text('WELL DONE', style: TextStyle(fontWeight: FontWeight.w900)),
+        content: const Text('All words found successfully.'),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
             },
-            child: const Text('Back to Home'),
+            child: const Text('EXIT'),
           ),
         ],
       ),
@@ -180,7 +184,7 @@ class LinePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
       ..color = color
-      ..strokeCap = StrokeCap.round
+      ..strokeCap = StrokeCap.square // Sharp corners
       ..strokeWidth = strokeWidth;
     canvas.drawLine(start, end, paint);
   }

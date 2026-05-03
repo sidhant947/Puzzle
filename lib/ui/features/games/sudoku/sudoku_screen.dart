@@ -16,6 +16,7 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(sudokuNotifierProvider);
     final notifier = ref.read(sudokuNotifierProvider.notifier);
+    final theme = Theme.of(context);
 
     ref.listen(sudokuNotifierProvider, (previous, next) {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
@@ -25,15 +26,15 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sudoku'),
+        title: const Text('SUDOKU'),
       ),
       body: SafeArea(
         child: Column(
           children: [
-            const SizedBox(height: 16),
-            _buildGrid(state, notifier),
+            const SizedBox(height: 32),
+            _buildGrid(state, notifier, theme),
             const Spacer(),
-            _buildNumberPad(notifier),
+            _buildNumberPad(notifier, theme),
             const SizedBox(height: 32),
           ],
         ),
@@ -41,14 +42,13 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
     );
   }
 
-  Widget _buildGrid(SudokuState state, SudokuNotifier notifier) {
+  Widget _buildGrid(SudokuState state, SudokuNotifier notifier, ThemeData theme) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 20),
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(1),
       decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(8),
-        border: Border.all(color: Colors.grey.shade300),
+        color: theme.colorScheme.onSurface,
+        border: Border.all(color: theme.colorScheme.onSurface, width: 2),
       ),
       child: AspectRatio(
         aspectRatio: 1,
@@ -71,19 +71,19 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
                       },
                       child: Container(
                         decoration: BoxDecoration(
-                          color: isSelected ? Colors.blue.withValues(alpha: 0.1) : (isInitial ? Colors.grey.shade100 : Colors.white),
+                          color: isSelected ? theme.colorScheme.onSurface : theme.colorScheme.surface,
                           border: Border(
-                            right: BorderSide(color: c == 1 ? Colors.black : Colors.grey.shade300, width: c == 1 ? 2 : 1),
-                            bottom: BorderSide(color: r == 1 ? Colors.black : Colors.grey.shade300, width: r == 1 ? 2 : 1),
+                            right: BorderSide(color: theme.colorScheme.onSurface, width: c == 1 ? 2 : 1),
+                            bottom: BorderSide(color: theme.colorScheme.onSurface, width: r == 1 ? 2 : 1),
                           ),
                         ),
                         child: Center(
                           child: Text(
                             value == 0 ? '' : value.toString(),
                             style: TextStyle(
-                              fontSize: 24,
-                              fontWeight: isInitial ? FontWeight.bold : FontWeight.normal,
-                              color: isInitial ? Colors.black : Colors.blue,
+                              fontSize: 28,
+                              fontWeight: isInitial ? FontWeight.w900 : FontWeight.w400,
+                              color: isSelected ? theme.colorScheme.surface : theme.colorScheme.onSurface,
                             ),
                           ),
                         ),
@@ -99,19 +99,26 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
     );
   }
 
-  Widget _buildNumberPad(SudokuNotifier notifier) {
+  Widget _buildNumberPad(SudokuNotifier notifier, ThemeData theme) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 20),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: List.generate(4, (i) {
           final num = i + 1;
-          return OutlinedButton(
-            onPressed: () {
-              HapticFeedback.lightImpact();
-              notifier.setNumber(num);
-            },
-            child: Text(num.toString(), style: const TextStyle(fontSize: 20)),
+          return SizedBox(
+            width: 70,
+            height: 70,
+            child: OutlinedButton(
+              onPressed: () {
+                HapticFeedback.lightImpact();
+                notifier.setNumber(num);
+              },
+              style: OutlinedButton.styleFrom(
+                padding: EdgeInsets.zero,
+              ),
+              child: Text(num.toString(), style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w900)),
+            ),
           );
         }),
       ),
@@ -127,15 +134,16 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        title: const Text('Well Done!'),
-        content: const Text('You solved the puzzle!'),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+        title: const Text('WELL DONE', style: TextStyle(fontWeight: FontWeight.w900)),
+        content: const Text('Puzzle solved successfully.'),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
             },
-            child: const Text('Back to Home'),
+            child: const Text('EXIT'),
           ),
         ],
       ),

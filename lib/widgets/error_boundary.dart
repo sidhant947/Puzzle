@@ -51,8 +51,9 @@ class _ErrorBoundaryState extends State<ErrorBoundary> {
   }
 
   Widget _buildErrorWidget() {
+    final theme = Theme.of(context);
     return Container(
-      color: DesignSystem.background,
+      color: theme.scaffoldBackgroundColor,
       child: Center(
         child: Padding(
           padding: const EdgeInsets.all(DesignSystem.spaceXL),
@@ -62,25 +63,26 @@ class _ErrorBoundaryState extends State<ErrorBoundary> {
               Container(
                 padding: const EdgeInsets.all(DesignSystem.spaceLG),
                 decoration: BoxDecoration(
-                  color: DesignSystem.error.withValues(alpha: 0.1),
-                  shape: BoxShape.circle,
+                  color: theme.colorScheme.error.withValues(alpha: 0.1),
+                  shape: BoxShape.rectangle,
+                  border: Border.all(color: theme.colorScheme.error, width: 1),
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.error_outline_rounded,
-                  color: DesignSystem.error,
+                  color: theme.colorScheme.error,
                   size: 48,
                 ),
               ),
               const SizedBox(height: DesignSystem.spaceLG),
-              const Text(
+              Text(
                 'Something went wrong',
-                style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
+                style: theme.textTheme.headlineSmall,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: DesignSystem.spaceSM),
               Text(
                 _error ?? widget.errorMessage ?? 'An unexpected error occurred',
-                style: const TextStyle(fontSize: 16),
+                style: theme.textTheme.bodyMedium,
                 textAlign: TextAlign.center,
               ),
               if (widget.onRetry != null) ...[
@@ -114,6 +116,7 @@ class LoadingIndicator extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -121,8 +124,8 @@ class LoadingIndicator extends StatelessWidget {
           SizedBox(
             width: size,
             height: size,
-            child: const CircularProgressIndicator(
-              color: DesignSystem.primary,
+            child: CircularProgressIndicator(
+              color: theme.colorScheme.primary,
               strokeWidth: 3.0,
             ),
           ),
@@ -130,7 +133,7 @@ class LoadingIndicator extends StatelessWidget {
             const SizedBox(height: DesignSystem.spaceMD),
             Text(
               message!,
-              style: const TextStyle(fontSize: 14),
+              style: theme.textTheme.bodySmall,
             ),
           ],
         ],
@@ -154,21 +157,22 @@ class LoadingShimmer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Container(
       width: width,
       height: height,
       decoration: BoxDecoration(
-        color: DesignSystem.textSecondary.withValues(alpha: 0.1),
-        borderRadius:
-            borderRadius ?? BorderRadius.circular(DesignSystem.radiusMedium),
+        color: theme.colorScheme.onSurface.withValues(alpha: 0.1),
+        borderRadius: borderRadius ?? BorderRadius.zero,
+        border: Border.all(color: theme.colorScheme.onSurface.withValues(alpha: 0.1), width: 1),
       ),
-      child: const Center(
+      child: Center(
         child: SizedBox(
           width: 24,
           height: 24,
           child: CircularProgressIndicator(
             strokeWidth: 2,
-            color: DesignSystem.primary,
+            color: theme.colorScheme.primary,
           ),
         ),
       ),

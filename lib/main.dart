@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
@@ -7,7 +6,7 @@ import 'data/models/user_data.dart';
 import 'data/models/game_streak.dart';
 import 'data/repositories/user_repository.dart';
 import 'providers/user_providers.dart';
-import 'ui/features/home/home_screen.dart';
+import 'ui/features/main_shell/main_shell.dart';
 import 'utils/design_system.dart';
 import 'widgets/error_boundary.dart';
 
@@ -31,12 +30,6 @@ void main() async {
 
   final userRepository = UserRepository();
   await userRepository.init();
-
-  SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
-    statusBarColor: Colors.transparent,
-    statusBarIconBrightness: Brightness.dark,
-    statusBarBrightness: Brightness.light,
-  ));
 
   // Log app startup time
   stopwatch.stop();
@@ -62,12 +55,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Puzzle Games',
       debugShowCheckedModeBanner: false,
-      theme: _buildTheme(),
-      home: const HomeScreen(),
+      theme: DesignSystem.lightTheme,
+      darkTheme: DesignSystem.darkTheme,
+      themeMode: ThemeMode.system,
+      home: const MainShell(),
     );
-  }
-
-  ThemeData _buildTheme() {
-    return DesignSystem.lightTheme;
   }
 }

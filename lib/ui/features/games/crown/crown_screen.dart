@@ -13,15 +13,27 @@ class CrownScreen extends ConsumerStatefulWidget {
 
 class _CrownScreenState extends ConsumerState<CrownScreen> {
   final List<Color> _regionColors = [
-    Colors.red.shade100,
-    Colors.blue.shade100,
-    Colors.green.shade100,
-    Colors.orange.shade100,
-    Colors.purple.shade100,
-    Colors.teal.shade100,
-    Colors.pink.shade100,
-    Colors.amber.shade100,
-    Colors.indigo.shade100,
+    const Color(0xFFFFD1D1), // Light Red
+    const Color(0xFFD1E9FF), // Light Blue
+    const Color(0xFFD1FFD1), // Light Green
+    const Color(0xFFFFEDD1), // Light Orange
+    const Color(0xFFE9D1FF), // Light Purple
+    const Color(0xFFD1FFFF), // Light Teal
+    const Color(0xFFFFD1F5), // Light Pink
+    const Color(0xFFFFF6D1), // Light Amber
+    const Color(0xFFD1D1FF), // Light Indigo
+  ];
+
+  final List<Color> _regionColorsDark = [
+    const Color(0xFF4A1D1D),
+    const Color(0xFF1D3B4A),
+    const Color(0xFF1D4A1D),
+    const Color(0xFF4A3D1D),
+    const Color(0xFF3B1D4A),
+    const Color(0xFF1D4A4A),
+    const Color(0xFF4A1D42),
+    const Color(0xFF4A461D),
+    const Color(0xFF1D1D4A),
   ];
 
   @override
@@ -34,16 +46,17 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(crownNotifierProvider);
     final notifier = ref.read(crownNotifierProvider.notifier);
+    final theme = Theme.of(context);
 
     ref.listen(crownNotifierProvider, (previous, next) {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
-        _showVictoryDialog(context, ref);
+        _showVictoryDialog(context, ref, theme);
       }
     });
 
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Crown'),
+        title: const Text('CROWN'),
         actions: [
           IconButton(
             icon: const Icon(Icons.refresh),
@@ -52,20 +65,25 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
         ],
       ),
       body: state.board == null
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(child: CircularProgressIndicator(color: theme.colorScheme.primary))
           : SafeArea(
               child: Column(
                 children: [
-                  const Padding(
-                    padding: EdgeInsets.all(24.0),
+                  Padding(
+                    padding: const EdgeInsets.all(32.0),
                     child: Text(
-                      'Place one crown in each row, column, and color region. Crowns cannot touch each other.',
+                      'PLACE ONE CROWN IN EACH ROW, COLUMN, AND REGION.',
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 14, color: Colors.grey),
+                      style: TextStyle(
+                        fontSize: 10, 
+                        fontWeight: FontWeight.w900,
+                        color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
+                        letterSpacing: 2.0,
+                      ),
                     ),
                   ),
                   const Spacer(),
-                  _buildGrid(state, notifier),
+                  _buildGrid(state, notifier, theme),
                   const Spacer(flex: 2),
                 ],
               ),
@@ -73,7 +91,7 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
     );
   }
 
-  Widget _buildGrid(CrownState state, CrownNotifier notifier) {
+  Widget _buildGrid(CrownState state, CrownNotifier notifier, ThemeData theme) {
     final board = state.board!;
     return LayoutBuilder(builder: (context, constraints) {
       final double gridSize = min(constraints.maxWidth - 48, constraints.maxHeight);
@@ -83,7 +101,7 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
           width: gridSize,
           height: gridSize,
           decoration: BoxDecoration(
-            border: Border.all(color: Colors.black, width: 2),
+            border: Border.all(color: theme.colorScheme.onSurface, width: 2),
           ),
           child: GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
@@ -97,16 +115,31 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
               int regionId = board.regions[y][x];
               bool hasCrown = state.crowns.any((p) => p.x == x && p.y == y);
 
+              // Check neighbors to draw thick borders between regions
+              bool borderTop = y > 0 && board.regions[y-1][x] != regionId;
+              bool borderBottom = y < board.size - 1 && board.regions[y+1][x] != regionId;
+              bool borderLeft = x > 0 && board.regions[y][x-1] != regionId;
+              bool borderRight = x < board.size - 1 && board.regions[y][x+1] != regionId;
+
+              final Color regionColor = theme.brightness == Brightness.light
+                  ? _regionColors[regionId % _regionColors.length]
+                  : _regionColorsDark[regionId % _regionColorsDark.length];
+
               return GestureDetector(
                 onTap: () => notifier.toggleCrown(x, y),
                 child: Container(
                   decoration: BoxDecoration(
-                    color: _regionColors[regionId % _regionColors.length],
-                    border: Border.all(color: Colors.black.withValues(alpha: 0.1), width: 0.5),
+                    color: regionColor,
+                    border: Border(
+                      top: BorderSide(color: theme.colorScheme.onSurface, width: borderTop ? 3.0 : 0.5),
+                      bottom: BorderSide(color: theme.colorScheme.onSurface, width: borderBottom ? 3.0 : 0.5),
+                      left: BorderSide(color: theme.colorScheme.onSurface, width: borderLeft ? 3.0 : 0.5),
+                      right: BorderSide(color: theme.colorScheme.onSurface, width: borderRight ? 3.0 : 0.5),
+                    ),
                   ),
                   child: Center(
                     child: hasCrown
-                        ? const Icon(Icons.workspace_premium_rounded, color: Colors.orange, size: 32)
+                        ? Icon(Icons.workspace_premium_rounded, color: theme.colorScheme.onSurface, size: 28)
                         : null,
                   ),
                 ),
@@ -118,7 +151,7 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
     });
   }
 
-  void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
+  void _showVictoryDialog(BuildContext context, WidgetRef ref, ThemeData theme) async {
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('crown');
 
     if (!context.mounted) return;
@@ -127,15 +160,16 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        title: const Text('Great Logic!'),
-        content: const Text('You successfully placed all crowns!'),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+        title: const Text('WELL DONE', style: TextStyle(fontWeight: FontWeight.w900)),
+        content: const Text('All crowns placed successfully.'),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
             },
-            child: const Text('Back to Home'),
+            child: const Text('EXIT'),
           ),
         ],
       ),

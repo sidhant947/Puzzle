@@ -10,9 +10,16 @@ class UserData with _$UserData {
   const factory UserData({
     @HiveField(0) required int xp,
     @HiveField(1) required int level,
+    @HiveField(2) int? superStreak,
+    @HiveField(3) DateTime? lastSuperStreakDate,
   }) = _UserData;
 
-  factory UserData.initial() => const UserData(xp: 0, level: 1);
+  factory UserData.initial() => const UserData(
+        xp: 0,
+        level: 1,
+        superStreak: 0,
+        lastSuperStreakDate: null,
+      );
 
   factory UserData.fromJson(Map<String, dynamic> json) =>
       _$UserDataFromJson(json);

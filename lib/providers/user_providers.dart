@@ -43,6 +43,36 @@ class UserDataNotifier extends _$UserDataNotifier {
     state = newState;
     await ref.read(userRepositoryProvider).saveUserData(newState);
   }
+
+  Future<void> updateSuperStreak(Map<String, GameStreak> streaks) async {
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+
+    final lastSuperStreak = state.lastSuperStreakDate;
+    final lastSuperStreakNormalized = lastSuperStreak != null
+        ? DateTime(
+            lastSuperStreak.year, lastSuperStreak.month, lastSuperStreak.day)
+        : DateTime.fromMillisecondsSinceEpoch(0);
+
+    if (lastSuperStreakNormalized == today) return; // Already achieved today
+
+    // Check if all 6 games are solved today
+    final solvedTodayCount = streaks.values.where((s) => s.solvedToday).length;
+    if (solvedTodayCount >= 6) {
+      int newStreak = 1;
+      final currentSuperStreak = state.superStreak ?? 0;
+      if (today.difference(lastSuperStreakNormalized).inDays == 1) {
+        newStreak = currentSuperStreak + 1;
+      }
+      
+      final newState = state.copyWith(
+        superStreak: newStreak,
+        lastSuperStreakDate: now,
+      );
+      state = newState;
+      await ref.read(userRepositoryProvider).saveUserData(newState);
+    }
+  }
 }
 
 @riverpod
@@ -61,14 +91,15 @@ class GameStreakNotifier extends _$GameStreakNotifier {
     final currentStreak = getStreak(gameId);
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
-    
+
     // Normalize lastSolvedDate to compare dates without time
     final lastSolvedDate = currentStreak.lastSolvedDate;
-    final lastSolvedNormalized = DateTime(lastSolvedDate.year, lastSolvedDate.month, lastSolvedDate.day);
+    final lastSolvedNormalized =
+        DateTime(lastSolvedDate.year, lastSolvedDate.month, lastSolvedDate.day);
 
     // If already solved today, don't update streak or award XP
     if (currentStreak.solvedToday && lastSolvedNormalized == today) {
-      return false; 
+      return false;
     }
 
     int newStreakCount = currentStreak.currentStreak;
@@ -98,6 +129,10 @@ class GameStreakNotifier extends _$GameStreakNotifier {
 
     // Add XP only for the first daily win
     await ref.read(userDataNotifierProvider.notifier).addXp(xpAmount);
+
+    // Check for super streak
+    await ref.read(userDataNotifierProvider.notifier).updateSuperStreak(state);
+
     return true;
   }
 

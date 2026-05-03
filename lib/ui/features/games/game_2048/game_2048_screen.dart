@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'game_2048_provider.dart';
@@ -16,10 +17,11 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
   Widget build(BuildContext context) {
     final state = ref.watch(game2048NotifierProvider);
     final notifier = ref.read(game2048NotifierProvider.notifier);
+    final theme = Theme.of(context);
 
     ref.listen(game2048NotifierProvider, (previous, next) {
       if (next.isGameOver && !(previous?.isGameOver ?? false)) {
-        _showGameOverDialog(context, ref, next);
+        _showGameOverDialog(context, ref, next, theme);
       }
     });
 
@@ -41,19 +43,24 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  const Text('2048', style: TextStyle(fontSize: 48, fontWeight: FontWeight.bold, color: Color(0xff776e65))),
-                  _buildScoreBoard('SCORE', state.score),
+                  const Text('2048', style: TextStyle(fontSize: 48, fontWeight: FontWeight.w900, letterSpacing: -2)),
+                  _buildScoreBoard('SCORE', state.score, theme),
                 ],
               ),
             ),
             const Spacer(),
-            _buildGameBoard(state, notifier),
+            _buildGameBoard(state, notifier, theme),
             const Spacer(flex: 2),
-            const Padding(
-              padding: EdgeInsets.all(24.0),
+            Padding(
+              padding: const EdgeInsets.all(24.0),
               child: Text(
-                'Swipe to merge tiles and reach 2048!',
-                style: TextStyle(color: Colors.grey, fontSize: 16, fontWeight: FontWeight.w500),
+                'SWIPE TO MERGE TILES',
+                style: TextStyle(
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.5), 
+                  fontSize: 12, 
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: 2.0,
+                ),
                 textAlign: TextAlign.center,
               ),
             ),
@@ -63,7 +70,7 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
     );
   }
 
-  Widget _buildGameBoard(Game2048State state, Game2048Notifier notifier) {
+  Widget _buildGameBoard(Game2048State state, Game2048Notifier notifier, ThemeData theme) {
     return Center(
       child: GestureDetector(
         onVerticalDragEnd: (details) {
@@ -75,11 +82,12 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
           if (details.primaryVelocity! > 100) notifier.move(1, 0);
         },
         child: Container(
-          padding: const EdgeInsets.all(12),
+          padding: const EdgeInsets.all(8),
           margin: const EdgeInsets.symmetric(horizontal: 24),
           decoration: BoxDecoration(
-            color: const Color(0xffbbada0),
-            borderRadius: BorderRadius.circular(8),
+            color: theme.colorScheme.surface,
+            border: Border.all(color: theme.colorScheme.onSurface, width: 2),
+            borderRadius: BorderRadius.zero,
           ),
           child: AspectRatio(
             aspectRatio: 1,
@@ -98,17 +106,18 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
                       height: cellSize,
                       child: Container(
                         decoration: BoxDecoration(
-                          color: const Color(0xffcdc1b4),
-                          borderRadius: BorderRadius.circular(4),
+                          border: Border.all(color: theme.colorScheme.onSurface.withValues(alpha: 0.1), width: 1),
+                          borderRadius: BorderRadius.zero,
                         ),
                       ),
                     );
                   }),
                   // Active tiles
-                  ...state.tiles.map((tile) => AnimatedTile(
+                  ...state.tiles.where((t) => !t.merged).map((tile) => AnimatedTile(
                         key: ValueKey(tile.id),
                         tile: tile,
                         cellSize: cellSize,
+                        theme: theme,
                       )),
                 ],
               );
@@ -119,23 +128,23 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
     );
   }
 
-  Widget _buildScoreBoard(String label, int score) {
+  Widget _buildScoreBoard(String label, int score, ThemeData theme) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       decoration: BoxDecoration(
-        color: const Color(0xffbbada0),
-        borderRadius: BorderRadius.circular(8),
+        color: theme.colorScheme.onSurface,
+        borderRadius: BorderRadius.zero,
       ),
       child: Column(
         children: [
-          Text(label, style: const TextStyle(fontSize: 14, fontWeight: FontWeight.bold, color: Color(0xffeee4da))),
-          Text(score.toString(), style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white)),
+          Text(label, style: TextStyle(fontSize: 10, fontWeight: FontWeight.w900, color: theme.colorScheme.surface, letterSpacing: 1.5)),
+          Text(score.toString(), style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: theme.colorScheme.surface)),
         ],
       ),
     );
   }
 
-  void _showGameOverDialog(BuildContext context, WidgetRef ref, Game2048State state) async {
+  void _showGameOverDialog(BuildContext context, WidgetRef ref, Game2048State state, ThemeData theme) async {
     if (state.isGameWon) {
       await ref.read(gameStreakNotifierProvider.notifier).completeGame('game_2048');
     }
@@ -146,22 +155,23 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        title: Text(state.isGameWon ? '2048!' : 'Game Over'),
-        content: Text('Your final score: ${state.score}'),
+        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
+        title: Text(state.isGameWon ? '2048!' : 'GAME OVER', style: const TextStyle(fontWeight: FontWeight.w900)),
+        content: Text('FINAL SCORE: ${state.score}'),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
             },
-            child: const Text('Back to Home'),
+            child: const Text('EXIT'),
           ),
           TextButton(
             onPressed: () {
               ref.read(game2048NotifierProvider.notifier).reset();
               Navigator.of(context).pop();
             },
-            child: const Text('Try Again'),
+            child: const Text('RETRY'),
           ),
         ],
       ),
@@ -172,8 +182,9 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
 class AnimatedTile extends StatefulWidget {
   final Tile tile;
   final double cellSize;
+  final ThemeData theme;
 
-  const AnimatedTile({super.key, required this.tile, required this.cellSize});
+  const AnimatedTile({super.key, required this.tile, required this.cellSize, required this.theme});
 
   @override
   State<AnimatedTile> createState() => _AnimatedTileState();
@@ -182,10 +193,19 @@ class AnimatedTile extends StatefulWidget {
 class _AnimatedTileState extends State<AnimatedTile> with SingleTickerProviderStateMixin {
   late AnimationController _controller;
   late Animation<double> _scaleAnimation;
+  late double _left;
+  late double _top;
 
   @override
   void initState() {
     super.initState();
+    final tile = widget.tile;
+    final cellSize = widget.cellSize;
+
+    // Start at old position if available
+    _left = (tile.oldX ?? tile.x) * (cellSize + 8);
+    _top = (tile.oldY ?? tile.y) * (cellSize + 8);
+
     _controller = AnimationController(
       duration: const Duration(milliseconds: 200),
       vsync: this,
@@ -193,19 +213,34 @@ class _AnimatedTileState extends State<AnimatedTile> with SingleTickerProviderSt
 
     _scaleAnimation = CurvedAnimation(
       parent: _controller,
-      curve: Curves.easeOutBack,
+      curve: Curves.easeOut,
     );
 
     _controller.forward();
+
+    // Move to new position in next frame
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      if (mounted) {
+        setState(() {
+          _left = tile.x * (cellSize + 8);
+          _top = tile.y * (cellSize + 8);
+        });
+      }
+    });
   }
 
   @override
   void didUpdateWidget(AnimatedTile oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (oldWidget.tile.value != widget.tile.value) {
-      // It merged! Pulse it.
       _controller.reset();
       _controller.forward();
+    }
+    if (oldWidget.tile.x != widget.tile.x || oldWidget.tile.y != widget.tile.y) {
+      setState(() {
+        _left = widget.tile.x * (widget.cellSize + 8);
+        _top = widget.tile.y * (widget.cellSize + 8);
+      });
     }
   }
 
@@ -219,36 +254,30 @@ class _AnimatedTileState extends State<AnimatedTile> with SingleTickerProviderSt
   Widget build(BuildContext context) {
     final tile = widget.tile;
     final cellSize = widget.cellSize;
+    final theme = widget.theme;
 
     return AnimatedPositioned(
       duration: const Duration(milliseconds: 150),
       curve: Curves.easeInOut,
-      left: tile.x * (cellSize + 8),
-      top: tile.y * (cellSize + 8),
+      left: _left,
+      top: _top,
       width: cellSize,
       height: cellSize,
       child: ScaleTransition(
         scale: _scaleAnimation,
         child: Container(
           decoration: BoxDecoration(
-            color: _getTileColor(tile.value),
-            borderRadius: BorderRadius.circular(4),
-            boxShadow: [
-              if (tile.value >= 1024)
-                BoxShadow(
-                  color: _getTileColor(tile.value).withValues(alpha: 0.3),
-                  blurRadius: 10,
-                  spreadRadius: 2,
-                )
-            ],
+            color: _getTileColor(tile.value, theme),
+            border: Border.all(color: theme.colorScheme.onSurface, width: 2),
+            borderRadius: BorderRadius.zero,
           ),
           child: Center(
             child: Text(
               tile.value.toString(),
               style: TextStyle(
                 fontSize: _getFontSize(tile.value),
-                fontWeight: FontWeight.bold,
-                color: tile.value <= 4 ? const Color(0xff776e65) : Colors.white,
+                fontWeight: FontWeight.w900,
+                color: _getTextColor(tile.value, theme),
               ),
             ),
           ),
@@ -258,25 +287,26 @@ class _AnimatedTileState extends State<AnimatedTile> with SingleTickerProviderSt
   }
 
   double _getFontSize(int value) {
-    if (value < 100) return 32;
-    if (value < 1000) return 24;
-    return 18;
+    if (value < 100) return 28;
+    if (value < 1000) return 22;
+    return 16;
   }
 
-  Color _getTileColor(int value) {
-    switch (value) {
-      case 2: return const Color(0xffeee4da);
-      case 4: return const Color(0xffede0c8);
-      case 8: return const Color(0xfff2b179);
-      case 16: return const Color(0xfff59563);
-      case 32: return const Color(0xfff67c5f);
-      case 64: return const Color(0xfff65e3b);
-      case 128: return const Color(0xffedcf72);
-      case 256: return const Color(0xffedcc61);
-      case 512: return const Color(0xffedc850);
-      case 1024: return const Color(0xffedc53f);
-      case 2048: return const Color(0xffedc22e);
-      default: return const Color(0xff3c3a32);
+  Color _getTileColor(int value, ThemeData theme) {
+    final baseColor = theme.colorScheme.onSurface;
+    
+    // Logarithmic scale for opacity
+    double opacity = (log(value) / log(2048)).clamp(0.1, 1.0);
+    return baseColor.withValues(alpha: opacity);
+  }
+
+  Color _getTextColor(int value, ThemeData theme) {
+    double opacity = (log(value) / log(2048)).clamp(0.1, 1.0);
+    
+    if (opacity > 0.5) {
+      return theme.colorScheme.surface;
+    } else {
+      return theme.colorScheme.onSurface;
     }
   }
 }
