@@ -49,6 +49,9 @@ jobs:
       - name: Build Split APKs
         run: flutter build apk --release --split-per-abi
 
+      - name: Build App Bundle
+        run: flutter build appbundle --release
+
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
@@ -58,6 +61,7 @@ jobs:
             build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
             build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
             build/app/outputs/flutter-apk/app-x86_64-release.apk
+            build/app/outputs/bundle/release/app-release.aab
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

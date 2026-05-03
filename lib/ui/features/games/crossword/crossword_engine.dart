@@ -53,17 +53,30 @@ class CrosswordEngine {
   }
 
   CrosswordBoard generateBoard(List<Map<String, String>> allWords) {
+    // Filter words that actually fit on the board
+    final validWords = allWords.where((w) => w['word']!.length <= boardSize).toList();
+    
+    if (validWords.isEmpty) {
+      return CrosswordBoard(
+        size: boardSize, 
+        grid: List.generate(boardSize, (_) => List.filled(boardSize, ' ')), 
+        words: []
+      );
+    }
+
+    List<List<String>> bestGrid = List.generate(boardSize, (_) => List.filled(boardSize, ' '));
+    List<CrosswordWord> bestPlacedWords = [];
+
     // Attempt generation multiple times to get a good one
     for (int attempt = 0; attempt < 100; attempt++) {
-      allWords.shuffle();
+      validWords.shuffle();
       List<List<String>> grid = List.generate(boardSize, (_) => List.filled(boardSize, ' '));
       List<CrosswordWord> placedWords = [];
 
       // Start with a random 4 or 5 letter word
-      var seed = allWords.firstWhere(
-        (w) => w['word']!.length == boardSize || w['word']!.length == boardSize - 1, 
-        orElse: () => allWords[0]
-      );
+      var seedList = validWords.where((w) => w['word']!.length == boardSize || w['word']!.length == boardSize - 1).toList();
+      var seed = seedList.isNotEmpty ? seedList[0] : validWords[0];
+      
       var first = CrosswordWord(word: seed['word']!, clue: seed['clue']!);
       first.x = (boardSize - first.word.length) ~/ 2;
       first.y = boardSize ~/ 2;
@@ -73,23 +86,26 @@ class CrosswordEngine {
       placedWords.add(first);
 
       // Try to add more words through intersections
-      for (int i = 0; i < allWords.length && placedWords.length < 12; i++) {
-        if (placedWords.any((pw) => pw.word == allWords[i]['word'])) continue;
+      for (int i = 0; i < validWords.length && placedWords.length < 12; i++) {
+        if (placedWords.any((pw) => pw.word == validWords[i]['word'])) continue;
         
-        var candidate = CrosswordWord(word: allWords[i]['word']!, clue: allWords[i]['clue']!);
-        if (candidate.word.length > boardSize) continue;
+        var candidate = CrosswordWord(word: validWords[i]['word']!, clue: validWords[i]['clue']!);
         _tryPlaceCandidate(grid, candidate, placedWords);
+      }
+
+      if (placedWords.length > bestPlacedWords.length) {
+        bestPlacedWords = List.from(placedWords);
+        bestGrid = List.generate(boardSize, (y) => List<String>.from(grid[y]));
       }
 
       // NYT Mini usually has at least 8-10 words
       if (placedWords.length >= 8) {
-        _assignNumbers(placedWords);
-        return CrosswordBoard(size: boardSize, grid: grid, words: placedWords);
+        break;
       }
     }
 
-    // If we couldn't get a dense board, return whatever we got in the last attempt or a simple one
-    return CrosswordBoard(size: boardSize, grid: [], words: []);
+    _assignNumbers(bestPlacedWords);
+    return CrosswordBoard(size: boardSize, grid: bestGrid, words: bestPlacedWords);
   }
 
   void _tryPlaceCandidate(List<List<String>> grid, CrosswordWord candidate, List<CrosswordWord> placedWords) {
