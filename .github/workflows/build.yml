@@ -34,7 +34,7 @@ jobs:
         run: flutter pub get
 
       - name: Decode Keystore
-        run: mkdir -p android/app/app && echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/app/upload-keystore.jks
+        run:  echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/upload-keystore.jks
 
       - name: Create key.properties
         run: |
