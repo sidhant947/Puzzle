@@ -1,27 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'minesweeper_provider.dart';
+part of 'find_word_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$minesweeperNotifierHash() =>
-    r'f6e488472bfd41b153334a0cfdea8bf9b0c598c2';
+String _$findWordNotifierHash() => r'd794e81cd9ee608bceace8666cadb0d5f822c9e6';
 
-/// See also [MinesweeperNotifier].
-@ProviderFor(MinesweeperNotifier)
-final minesweeperNotifierProvider =
-    AutoDisposeNotifierProvider<MinesweeperNotifier, MinesweeperState>.internal(
-  MinesweeperNotifier.new,
-  name: r'minesweeperNotifierProvider',
+/// See also [FindWordNotifier].
+@ProviderFor(FindWordNotifier)
+final findWordNotifierProvider =
+    AutoDisposeNotifierProvider<FindWordNotifier, FindWordState>.internal(
+  FindWordNotifier.new,
+  name: r'findWordNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$minesweeperNotifierHash,
+      : _$findWordNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$MinesweeperNotifier = AutoDisposeNotifier<MinesweeperState>;
+typedef _$FindWordNotifier = AutoDisposeNotifier<FindWordState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

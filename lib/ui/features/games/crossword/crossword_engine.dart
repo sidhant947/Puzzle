@@ -1,0 +1,185 @@
+import 'dart:convert';
+import 'package:flutter/services.dart';
+
+class CrosswordWord {
+  final String word;
+  final String clue;
+  int x;
+  int y;
+  bool isHorizontal;
+  int number;
+
+  CrosswordWord({
+    required this.word,
+    required this.clue,
+    this.x = 0,
+    this.y = 0,
+    this.isHorizontal = true,
+    this.number = 0,
+  });
+}
+
+class CrosswordBoard {
+  final int size;
+  final List<List<String>> grid;
+  final List<CrosswordWord> words;
+
+  CrosswordBoard({
+    required this.size,
+    required this.grid,
+    required this.words,
+  });
+}
+
+class CrosswordEngine {
+  static const int boardSize = 10;
+
+  Future<List<Map<String, String>>> loadData() async {
+    try {
+      final String response = await rootBundle.loadString('assets/crossword_data.json');
+      final data = await json.decode(response) as List<dynamic>;
+      return data.map((item) => {
+        "word": item['word'].toString().toUpperCase(),
+        "clue": item['clue'].toString()
+      }).toList();
+    } catch (e) {
+      return [
+        {"word": "APPLE", "clue": "Common red fruit"},
+        {"word": "BRAIN", "clue": "Thinking organ"},
+        {"word": "CHAIR", "clue": "Sitting furniture"},
+        {"word": "DANCE", "clue": "Moving to music"}
+      ];
+    }
+  }
+
+  CrosswordBoard generateBoard(List<Map<String, String>> allWords) {
+    // Attempt generation multiple times to get a good one
+    for (int attempt = 0; attempt < 20; attempt++) {
+      allWords.shuffle();
+      List<List<String>> grid = List.generate(boardSize, (_) => List.filled(boardSize, ' '));
+      List<CrosswordWord> placedWords = [];
+
+      // Start with a random long-ish word
+      var seed = allWords.firstWhere((w) => w['word']!.length >= 5, orElse: () => allWords[0]);
+      var first = CrosswordWord(word: seed['word']!, clue: seed['clue']!);
+      first.x = (boardSize - first.word.length) ~/ 2;
+      first.y = boardSize ~/ 2;
+      first.isHorizontal = true;
+      
+      _place(grid, first);
+      placedWords.add(first);
+
+      // Try to add more words through intersections
+      for (int i = 1; i < allWords.length && placedWords.length < 6; i++) {
+        var candidate = CrosswordWord(word: allWords[i]['word']!, clue: allWords[i]['clue']!);
+        _tryPlaceCandidate(grid, candidate, placedWords);
+      }
+
+      if (placedWords.length >= 4) {
+        _assignNumbers(placedWords);
+        return CrosswordBoard(size: boardSize, grid: grid, words: placedWords);
+      }
+    }
+
+    // Fallback if somehow 20 attempts fail (unlikely with 200 words)
+    return CrosswordBoard(size: boardSize, grid: [], words: []);
+  }
+
+  void _tryPlaceCandidate(List<List<String>> grid, CrosswordWord candidate, List<CrosswordWord> placedWords) {
+    // Try random placed words to intersect with
+    var targets = List.from(placedWords)..shuffle();
+    
+    for (var target in targets) {
+      for (int tIdx = 0; tIdx < target.word.length; tIdx++) {
+        for (int cIdx = 0; cIdx < candidate.word.length; cIdx++) {
+          if (target.word[tIdx] == candidate.word[cIdx]) {
+            candidate.isHorizontal = !target.isHorizontal;
+            if (candidate.isHorizontal) {
+              candidate.x = (target.isHorizontal ? target.x + tIdx : target.x) - cIdx;
+              candidate.y = target.isHorizontal ? target.y : target.y + tIdx;
+            } else {
+              candidate.x = target.isHorizontal ? target.x + tIdx : target.x;
+              candidate.y = (target.isHorizontal ? target.y : target.y + tIdx) - cIdx;
+            }
+
+            if (_canPlaceSafely(grid, candidate)) {
+              _place(grid, candidate);
+              placedWords.add(candidate);
+              return;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  bool _canPlaceSafely(List<List<String>> grid, CrosswordWord w) {
+    if (w.x < 0 || w.y < 0) return false;
+    if (w.isHorizontal && w.x + w.word.length > boardSize) return false;
+    if (!w.isHorizontal && w.y + w.word.length > boardSize) return false;
+
+    for (int i = 0; i < w.word.length; i++) {
+      int cx = w.isHorizontal ? w.x + i : w.x;
+      int cy = w.isHorizontal ? w.y : w.y + i;
+
+      // Rule 1: Must match existing letter or be empty
+      if (grid[cy][cx] != ' ' && grid[cy][cx] != w.word[i]) return false;
+      
+      // Rule 2: No parallel touching or adjacency that creates new words
+      // Check neighbors perpendicular to the word's direction
+      if (w.isHorizontal) {
+        // Check top/bottom unless it's an intersection
+        if (grid[cy][cx] == ' ') {
+           if (cy > 0 && grid[cy-1][cx] != ' ') return false;
+           if (cy < boardSize - 1 && grid[cy+1][cx] != ' ') return false;
+        }
+      } else {
+        // Check left/right unless it's an intersection
+        if (grid[cy][cx] == ' ') {
+           if (cx > 0 && grid[cy][cx-1] != ' ') return false;
+           if (cx < boardSize - 1 && grid[cy][cx+1] != ' ') return false;
+        }
+      }
+    }
+
+    // Check caps (cells before and after the word)
+    if (w.isHorizontal) {
+      if (w.x > 0 && grid[w.y][w.x - 1] != ' ') return false;
+      if (w.x + w.word.length < boardSize && grid[w.y][w.x + w.word.length] != ' ') return false;
+    } else {
+      if (w.y > 0 && grid[w.y - 1][w.x] != ' ') return false;
+      if (w.y + w.word.length < boardSize && grid[w.y + w.word.length][w.x] != ' ') return false;
+    }
+
+    return true;
+  }
+
+  void _place(List<List<String>> grid, CrosswordWord w) {
+    for (int i = 0; i < w.word.length; i++) {
+      int cx = w.isHorizontal ? w.x + i : w.x;
+      int cy = w.isHorizontal ? w.y : w.y + i;
+      grid[cy][cx] = w.word[i];
+    }
+  }
+
+  void _assignNumbers(List<CrosswordWord> words) {
+    // Sort primarily by y (row), then by x (column)
+    words.sort((a, b) {
+      if (a.y != b.y) return a.y.compareTo(b.y);
+      return a.x.compareTo(b.x);
+    });
+
+    int currentNum = 1;
+    Map<String, int> posToNum = {};
+    for (var w in words) {
+      String key = "${w.x},${w.y}";
+      if (posToNum.containsKey(key)) {
+        w.number = posToNum[key]!;
+      } else {
+        w.number = currentNum;
+        posToNum[key] = currentNum;
+        currentNum++;
+      }
+    }
+  }
+}

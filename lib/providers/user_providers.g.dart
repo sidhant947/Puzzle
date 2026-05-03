@@ -38,7 +38,7 @@ final userDataNotifierProvider =
 
 typedef _$UserDataNotifier = AutoDisposeNotifier<UserData>;
 String _$gameStreakNotifierHash() =>
-    r'668910251226c2319e786d887ce577d5e935d3b4';
+    r'cf41a9e95702e57f2075658fd3d35d1083be63c4';
 
 /// See also [GameStreakNotifier].
 @ProviderFor(GameStreakNotifier)

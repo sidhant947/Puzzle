@@ -50,7 +50,8 @@ class SudokuEngine {
   }
 
   List<List<int>> createPuzzle(List<List<int>> solvedBoard, int clues) {
-    List<List<int>> puzzle = List.generate(size, (r) => List.from(solvedBoard[r]));
+    List<List<int>> puzzle =
+        List.generate(size, (r) => List.from(solvedBoard[r]));
     int toRemove = (size * size) - clues;
     Random random = Random();
     while (toRemove > 0) {
@@ -74,9 +75,16 @@ class SudokuEngine {
   }
 
   bool isCorrect(List<List<int>> board, List<List<int>> solvedBoard) {
+    // A board is correct if it is completely filled and no rules are violated.
+    if (!isComplete(board)) return false;
+
     for (int r = 0; r < size; r++) {
       for (int c = 0; c < size; c++) {
-        if (board[r][c] != solvedBoard[r][c]) return false;
+        int num = board[r][c];
+        board[r][c] = 0; // Temporarily remove to check validity
+        bool valid = _isValid(board, r, c, num);
+        board[r][c] = num; // Restore
+        if (!valid) return false;
       }
     }
     return true;

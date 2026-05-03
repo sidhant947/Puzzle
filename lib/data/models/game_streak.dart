@@ -21,5 +21,6 @@ class GameStreak with _$GameStreak {
         solvedToday: false,
       );
 
-  factory GameStreak.fromJson(Map<String, dynamic> json) => _$GameStreakFromJson(json);
+  factory GameStreak.fromJson(Map<String, dynamic> json) =>
+      _$GameStreakFromJson(json);
 }

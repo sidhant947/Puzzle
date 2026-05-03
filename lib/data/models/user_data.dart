@@ -14,5 +14,6 @@ class UserData with _$UserData {
 
   factory UserData.initial() => const UserData(xp: 0, level: 1);
 
-  factory UserData.fromJson(Map<String, dynamic> json) => _$UserDataFromJson(json);
+  factory UserData.fromJson(Map<String, dynamic> json) =>
+      _$UserDataFromJson(json);
 }

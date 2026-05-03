@@ -63,12 +63,19 @@ class SudokuNotifier extends _$SudokuNotifier {
 
     final r = state.selectedRow!;
     final c = state.selectedCol!;
-    
-    final newBoard = List.generate(4, (i) => List<int>.from(state.currentBoard[i]));
-    newBoard[r][c] = num;
 
-    bool solved = _engine.isComplete(newBoard) && _engine.isCorrect(newBoard, state.solvedBoard);
-    
+    final newBoard =
+        List.generate(4, (i) => List<int>.from(state.currentBoard[i]));
+
+    if (newBoard[r][c] == num) {
+      newBoard[r][c] = 0; // Erase if same number is tapped
+    } else {
+      newBoard[r][c] = num;
+    }
+
+    bool solved = _engine.isComplete(newBoard) &&
+        _engine.isCorrect(newBoard, state.solvedBoard);
+
     state = state.copyWith(currentBoard: newBoard, isSolved: solved);
   }
 }
