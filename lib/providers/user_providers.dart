@@ -88,6 +88,9 @@ class GameStreakNotifier extends _$GameStreakNotifier {
   }
 
   Future<bool> completeGame(String gameId, {int xpAmount = 20}) async {
+    // Always award XP for every solve
+    await ref.read(userDataNotifierProvider.notifier).addXp(xpAmount);
+
     final currentStreak = getStreak(gameId);
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
@@ -97,9 +100,9 @@ class GameStreakNotifier extends _$GameStreakNotifier {
     final lastSolvedNormalized =
         DateTime(lastSolvedDate.year, lastSolvedDate.month, lastSolvedDate.day);
 
-    // If already solved today, don't update streak or award XP
+    // If already solved today, just return true (XP already awarded above)
     if (currentStreak.solvedToday && lastSolvedNormalized == today) {
-      return false;
+      return true;
     }
 
     int newStreakCount = currentStreak.currentStreak;
@@ -114,8 +117,7 @@ class GameStreakNotifier extends _$GameStreakNotifier {
       newStreakCount = 1;
     } else if (lastSolvedNormalized == today) {
       // This handles cases where solvedToday might be false but lastSolved was today
-      // (e.g. if resetDailyStatus hasn't run yet or state was inconsistent)
-      return false;
+      return true;
     }
 
     final newStreak = currentStreak.copyWith(
@@ -126,9 +128,6 @@ class GameStreakNotifier extends _$GameStreakNotifier {
 
     state = {...state, gameId: newStreak};
     await ref.read(userRepositoryProvider).saveGameStreak(newStreak);
-
-    // Add XP only for the first daily win
-    await ref.read(userDataNotifierProvider.notifier).addXp(xpAmount);
 
     // Check for super streak
     await ref.read(userDataNotifierProvider.notifier).updateSuperStreak(state);

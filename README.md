@@ -1,17 +1,19 @@
-# puzzle
+# Puzzle Collection
 
-A new Flutter project.
+A professional suite of minimalist puzzle games built with Flutter. Challenge your mind with daily streaks, level up your profile, and master six unique puzzle experiences.
 
-## Getting Started
+## 🎮 Included Games
 
-This project is a starting point for a Flutter application.
+*   **Sudoku:** Classic number placement puzzle with three difficulty levels.
+*   **Find Word:** A Wordle-style challenge where you guess the hidden word.
+*   **Crossword:** A compact 5x5 "Mini" crossword experience with fresh daily puzzles.
+*   **Word Search:** Find hidden words in a grid, tracking your progress with a dynamic word list.
+*   **2048:** Merge tiles to reach the elusive 2048 tile.
+*   **Crown:** A logical placement puzzle where you must place crowns according to strict rules.
 
-A few resources to get you started if this is your first Flutter project:
+## ✨ Features
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+*   **Progression System:** Earn 20 XP for every puzzle solved. Level up and unlock achievements from "Novice" to "Legend".
+*   **Daily Streaks:** Track your consistency with individual game streaks.
+*   **Super Streak:** Solve all six games in a single day to maintain your ultimate Super Streak.
+*   **Minimalist Design:** A clean, typography-focused UI that puts the puzzles front and center.

@@ -13,32 +13,10 @@ class CrosswordScreen extends ConsumerStatefulWidget {
 }
 
 class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
-  final FocusNode _focusNode = FocusNode();
-
   @override
   void initState() {
     super.initState();
     Future.microtask(() => ref.read(crosswordNotifierProvider.notifier).initGame());
-  }
-
-  @override
-  void dispose() {
-    _focusNode.dispose();
-    super.dispose();
-  }
-
-  void _handleKeyEvent(KeyEvent event) {
-    if (event is KeyDownEvent) {
-      final notifier = ref.read(crosswordNotifierProvider.notifier);
-      if (event.logicalKey == LogicalKeyboardKey.backspace) {
-        notifier.removeLetter();
-      } else if (event.character != null && event.character!.length == 1) {
-        final char = event.character!.toUpperCase();
-        if (RegExp(r'[A-Z]').hasMatch(char)) {
-          notifier.setLetter(char);
-        }
-      }
-    }
   }
 
   @override
@@ -53,39 +31,30 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
       }
     });
 
-    return KeyboardListener(
-      focusNode: _focusNode,
-      autofocus: true,
-      onKeyEvent: _handleKeyEvent,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text('CROSSWORD'),
-        ),
-        body: state.board == null
-            ? Center(child: CircularProgressIndicator(color: theme.colorScheme.primary))
-            : SafeArea(
-                child: Column(
-                  children: [
-                    Expanded(
-                      flex: 3,
-                      child: GestureDetector(
-                        onTap: () => _focusNode.requestFocus(),
-                        child: Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: _buildGrid(state, notifier, theme),
-                        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('CROSSWORD'),
+      ),
+      body: state.board == null
+          ? Center(child: CircularProgressIndicator(color: theme.colorScheme.primary))
+          : SafeArea(
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(12.0),
+                        child: _buildGrid(state, notifier, theme),
                       ),
                     ),
-                    _buildCurrentClue(state, theme),
-                    Divider(height: 1, color: theme.colorScheme.onSurface.withValues(alpha: 0.1)),
-                    Expanded(
-                      flex: 2,
-                      child: _buildClueList(state, notifier, theme),
-                    ),
-                  ],
-                ),
+                  ),
+                  _buildCurrentClue(state, theme),
+                  const SizedBox(height: 8),
+                  _buildKeyboard(state, notifier, theme),
+                  const SizedBox(height: 16),
+                ],
               ),
-      ),
+            ),
     );
   }
 
@@ -133,7 +102,6 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
           return GestureDetector(
             onTap: () {
               notifier.selectCell(x, y);
-              _focusNode.requestFocus();
             },
             child: Container(
               decoration: BoxDecoration(
@@ -194,15 +162,16 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
     }
 
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
       width: double.infinity,
       decoration: BoxDecoration(
-        border: Border(top: BorderSide(color: theme.colorScheme.onSurface, width: 1)),
+        color: theme.colorScheme.surface,
+        border: Border.symmetric(horizontal: BorderSide(color: theme.colorScheme.onSurface.withValues(alpha: 0.1), width: 1)),
       ),
       child: Text(
         clue.toUpperCase(),
         style: TextStyle(
-          fontSize: 13, 
+          fontSize: 14, 
           fontWeight: FontWeight.w900,
           color: theme.colorScheme.onSurface,
           letterSpacing: 1.0,
@@ -212,66 +181,75 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
     );
   }
 
-  Widget _buildClueList(CrosswordState state, CrosswordNotifier notifier, ThemeData theme) {
-    final across = state.board!.words.where((w) => w.isHorizontal).toList();
-    final down = state.board!.words.where((w) => !w.isHorizontal).toList();
+  Widget _buildKeyboard(CrosswordState state, CrosswordNotifier notifier, ThemeData theme) {
+    final rows = [
+      ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
+      ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
+      ['Z', 'X', 'C', 'V', 'B', 'N', 'M', 'DEL'],
+    ];
 
-    return Row(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Expanded(child: _buildClueColumn("ACROSS", across, state, notifier, theme)),
-        Container(width: 1, color: theme.colorScheme.onSurface),
-        Expanded(child: _buildClueColumn("DOWN", down, state, notifier, theme)),
-      ],
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 4),
+      child: Column(
+        children: rows.asMap().entries.map((entry) {
+          int rowIndex = entry.key;
+          List<String> row = entry.value;
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (rowIndex == 1) const Spacer(flex: 1),
+                ...row.map((key) => _buildKey(key, state, notifier, theme)),
+                if (rowIndex == 1) const Spacer(flex: 1),
+                if (rowIndex == 2) const Spacer(flex: 1),
+              ],
+            ),
+          );
+        }).toList(),
+      ),
     );
   }
 
-  Widget _buildClueColumn(String title, List<CrosswordWord> words, CrosswordState state, CrosswordNotifier notifier, ThemeData theme) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Container(
-          width: double.infinity,
-          padding: const EdgeInsets.all(8.0),
-          decoration: BoxDecoration(
-            border: Border(bottom: BorderSide(color: theme.colorScheme.onSurface, width: 1)),
-          ),
-          child: Text(
-            title, 
-            style: TextStyle(fontWeight: FontWeight.w900, fontSize: 12, letterSpacing: 2.0),
-          ),
-        ),
-        Expanded(
-          child: ListView.builder(
-            padding: EdgeInsets.zero,
-            itemCount: words.length,
-            itemBuilder: (context, index) {
-              final w = words[index];
-              bool isSelected = state.selectedX != null && state.selectedY != null;
-              bool active = false;
-              if (isSelected) {
-                if (w.isHorizontal && state.isAcross && state.selectedY == w.y && state.selectedX! >= w.x && state.selectedX! < w.x + w.word.length) active = true;
-                if (!w.isHorizontal && !state.isAcross && state.selectedX == w.x && state.selectedY! >= w.y && state.selectedY! < w.y + w.word.length) active = true;
-              }
+  Widget _buildKey(String label, CrosswordState state, CrosswordNotifier notifier, ThemeData theme) {
+    bool isSpecialKey = label == 'DEL';
+    int flex = isSpecialKey ? 3 : 2;
 
-              return ListTile(
-                dense: true,
-                selected: active,
-                selectedTileColor: theme.colorScheme.primary.withValues(alpha: 0.1),
-                leading: Text("${w.number}.", style: const TextStyle(fontWeight: FontWeight.bold)),
-                title: Text(w.clue, style: const TextStyle(fontSize: 13)),
-                onTap: () {
-                  notifier.selectCell(w.x, w.y);
-                  if (state.isAcross != w.isHorizontal) {
-                    notifier.selectCell(w.x, w.y); // Toggle
-                  }
-                  _focusNode.requestFocus();
-                },
-              );
-            },
+    Color color = theme.brightness == Brightness.light ? Colors.grey.shade200 : Colors.grey.shade900;
+    Color textColor = theme.colorScheme.onSurface;
+
+    return Expanded(
+      flex: flex,
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 2),
+        child: GestureDetector(
+          onTap: () {
+            HapticFeedback.lightImpact();
+            if (label == 'DEL') {
+              notifier.removeLetter();
+            } else {
+              notifier.setLetter(label);
+            }
+          },
+          child: Container(
+            height: 52,
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: color,
+              borderRadius: BorderRadius.zero,
+              border: Border.all(color: theme.colorScheme.onSurface.withValues(alpha: 0.1)),
+            ),
+            child: Text(
+              label,
+              style: TextStyle(
+                fontSize: label.length > 1 ? 12 : 16,
+                fontWeight: FontWeight.w900,
+                color: textColor,
+              ),
+            ),
           ),
         ),
-      ],
+      ),
     );
   }
 

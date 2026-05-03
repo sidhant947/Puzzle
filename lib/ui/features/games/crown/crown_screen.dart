@@ -13,27 +13,15 @@ class CrownScreen extends ConsumerStatefulWidget {
 
 class _CrownScreenState extends ConsumerState<CrownScreen> {
   final List<Color> _regionColors = [
-    const Color(0xFFFFD1D1), // Light Red
-    const Color(0xFFD1E9FF), // Light Blue
-    const Color(0xFFD1FFD1), // Light Green
-    const Color(0xFFFFEDD1), // Light Orange
-    const Color(0xFFE9D1FF), // Light Purple
-    const Color(0xFFD1FFFF), // Light Teal
-    const Color(0xFFFFD1F5), // Light Pink
-    const Color(0xFFFFF6D1), // Light Amber
-    const Color(0xFFD1D1FF), // Light Indigo
-  ];
-
-  final List<Color> _regionColorsDark = [
-    const Color(0xFF4A1D1D),
-    const Color(0xFF1D3B4A),
-    const Color(0xFF1D4A1D),
-    const Color(0xFF4A3D1D),
-    const Color(0xFF3B1D4A),
-    const Color(0xFF1D4A4A),
-    const Color(0xFF4A1D42),
-    const Color(0xFF4A461D),
-    const Color(0xFF1D1D4A),
+    const Color(0xFFE57373), // Red
+    const Color(0xFF64B5F6), // Blue
+    const Color(0xFF81C784), // Green
+    const Color(0xFFFFB74D), // Orange
+    const Color(0xFFBA68C8), // Purple
+    const Color(0xFF4DB6AC), // Teal
+    const Color(0xFFF06292), // Pink
+    const Color(0xFFFFD54F), // Amber
+    const Color(0xFF7986CB), // Indigo
   ];
 
   @override
@@ -121,9 +109,7 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
               bool borderLeft = x > 0 && board.regions[y][x-1] != regionId;
               bool borderRight = x < board.size - 1 && board.regions[y][x+1] != regionId;
 
-              final Color regionColor = theme.brightness == Brightness.light
-                  ? _regionColors[regionId % _regionColors.length]
-                  : _regionColorsDark[regionId % _regionColorsDark.length];
+              final Color regionColor = _regionColors[regionId % _regionColors.length];
 
               return GestureDetector(
                 onTap: () => notifier.toggleCrown(x, y),

@@ -43,13 +43,65 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
       body: state.board == null
           ? Center(child: CircularProgressIndicator(color: theme.colorScheme.primary))
           : SafeArea(
-              child: Center(
-                child: Padding(
-                  padding: const EdgeInsets.all(16.0),
-                  child: _buildGrid(state, notifier, theme),
-                ),
+              child: Column(
+                children: [
+                  Expanded(
+                    child: Center(
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: _buildGrid(state, notifier, theme),
+                      ),
+                    ),
+                  ),
+                  _buildWordList(state, theme),
+                  const SizedBox(height: 16),
+                ],
               ),
             ),
+    );
+  }
+
+  Widget _buildWordList(WordSearchState state, ThemeData theme) {
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+      width: double.infinity,
+      decoration: BoxDecoration(
+        color: theme.colorScheme.surface,
+        border: Border(top: BorderSide(color: theme.colorScheme.onSurface.withValues(alpha: 0.1), width: 1)),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Text(
+            'WORDS TO FIND',
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w900,
+              letterSpacing: 2.0,
+            ),
+          ),
+          const SizedBox(height: 12),
+          Wrap(
+            spacing: 16,
+            runSpacing: 8,
+            children: state.board!.words.map((word) {
+              final isFound = word.isFound;
+              return Text(
+                word.word,
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: isFound ? FontWeight.w400 : FontWeight.w900,
+                  color: isFound 
+                      ? theme.colorScheme.onSurface.withValues(alpha: 0.3) 
+                      : theme.colorScheme.onSurface,
+                  decoration: isFound ? TextDecoration.lineThrough : null,
+                  letterSpacing: 1.0,
+                ),
+              );
+            }).toList(),
+          ),
+        ],
+      ),
     );
   }
 
