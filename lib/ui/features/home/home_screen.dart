@@ -8,6 +8,7 @@ import '../games/find_word/find_word_screen.dart';
 import '../games/crossword/crossword_screen.dart';
 import '../games/word_search/word_search_screen.dart';
 import '../games/game_2048/game_2048_screen.dart';
+import '../games/crown/crown_screen.dart';
 
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required Widget page})
@@ -58,6 +59,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'id': 'game_2048',
       'icon': Icons.grid_view_rounded,
       'screen': const Game2048Screen(),
+    },
+    {
+      'title': 'Crown',
+      'id': 'crown',
+      'icon': Icons.workspace_premium_rounded,
+      'screen': const CrownScreen(),
     },
   ];
 
