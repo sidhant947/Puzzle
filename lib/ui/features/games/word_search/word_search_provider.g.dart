@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'crossword_provider.dart';
+part of 'word_search_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$crosswordNotifierHash() => r'c278ce415b1ffb75a696e4827b827ef101c2df81';
+String _$wordSearchNotifierHash() =>
+    r'7645ec0f67373f9d17d865379fb70005432de9da';
 
-/// See also [CrosswordNotifier].
-@ProviderFor(CrosswordNotifier)
-final crosswordNotifierProvider =
-    AutoDisposeNotifierProvider<CrosswordNotifier, CrosswordState>.internal(
-  CrosswordNotifier.new,
-  name: r'crosswordNotifierProvider',
+/// See also [WordSearchNotifier].
+@ProviderFor(WordSearchNotifier)
+final wordSearchNotifierProvider =
+    AutoDisposeNotifierProvider<WordSearchNotifier, WordSearchState>.internal(
+  WordSearchNotifier.new,
+  name: r'wordSearchNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$crosswordNotifierHash,
+      : _$wordSearchNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$CrosswordNotifier = AutoDisposeNotifier<CrosswordState>;
+typedef _$WordSearchNotifier = AutoDisposeNotifier<WordSearchState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

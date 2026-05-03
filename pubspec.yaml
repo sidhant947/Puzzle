@@ -74,6 +74,7 @@ flutter:
   assets:
     - assets/find_word_words.txt
     - assets/crossword_data.json
+    - assets/word_search_words.txt
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

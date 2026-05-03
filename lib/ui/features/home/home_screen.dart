@@ -6,6 +6,8 @@ import '../../../../data/models/game_streak.dart';
 import '../games/sudoku/sudoku_screen.dart';
 import '../games/find_word/find_word_screen.dart';
 import '../games/crossword/crossword_screen.dart';
+import '../games/word_search/word_search_screen.dart';
+import '../games/game_2048/game_2048_screen.dart';
 
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required Widget page})
@@ -44,6 +46,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'id': 'crossword',
       'icon': Icons.grid_on_rounded,
       'screen': const CrosswordScreen(),
+    },
+    {
+      'title': 'Word Search',
+      'id': 'word_search',
+      'icon': Icons.search_rounded,
+      'screen': const WordSearchScreen(),
+    },
+    {
+      'title': '2048',
+      'id': 'game_2048',
+      'icon': Icons.grid_view_rounded,
+      'screen': const Game2048Screen(),
     },
   ];
 
