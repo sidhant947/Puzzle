@@ -1,4 +1,4 @@
-A professional suite of minimalist puzzle games built with Flutter. Challenge your mind with daily streaks, level up your profile, and master eight unique puzzle experiences.
+A professional suite of minimalist puzzle games built with Flutter. Challenge your mind with daily streaks, level up your profile, and master nine unique puzzle experiences.
 
 Included Games:
 
@@ -17,3 +17,5 @@ Crown: A logical placement puzzle where you must place crowns according to stric
 Minesweeper: Classic deduction game where you flag mines and reveal safe zones.
 
 Memory Matrix: A cognitive training game to improve working memory and pattern recognition.
+
+Nonogram: A logic puzzle where you reveal hidden pictures by filling cells based on numerical clues.
