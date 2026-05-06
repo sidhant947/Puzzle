@@ -59,7 +59,6 @@ class MemoryMatrixScreen extends ConsumerWidget {
   }
 
   Widget _buildHeader(BuildContext context, MemoryMatrixState state) {
-    final theme = Theme.of(context);
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Row(
