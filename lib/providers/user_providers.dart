@@ -73,14 +73,73 @@ class UserDataNotifier extends _$UserDataNotifier {
       await ref.read(userRepositoryProvider).saveUserData(newState);
     }
   }
+
+  void refreshSuperStreak() {
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+
+    final lastSuperStreak = state.lastSuperStreakDate;
+    if (lastSuperStreak == null) return;
+
+    final lastSuperStreakNormalized =
+        DateTime(lastSuperStreak.year, lastSuperStreak.month, lastSuperStreak.day);
+
+    final daysSinceLastSuper = today.difference(lastSuperStreakNormalized).inDays;
+
+    if (daysSinceLastSuper > 1 && (state.superStreak ?? 0) > 0) {
+      final newState = state.copyWith(superStreak: 0);
+      state = newState;
+      ref.read(userRepositoryProvider).saveUserData(newState);
+    }
+  }
 }
 
 @riverpod
 class GameStreakNotifier extends _$GameStreakNotifier {
   @override
   Map<String, GameStreak> build() {
+    // Refresh super streak status as well
+    ref.read(userDataNotifierProvider.notifier).refreshSuperStreak();
+
     final streaks = ref.read(userRepositoryProvider).getAllGameStreaks();
-    return {for (var s in streaks) s.gameId: s};
+    final streakMap = {for (var s in streaks) s.gameId: s};
+    return _applyDailyReset(streakMap);
+  }
+
+  Map<String, GameStreak> _applyDailyReset(Map<String, GameStreak> currentStreaks) {
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+    final Map<String, GameStreak> updatedStreaks = Map.from(currentStreaks);
+
+    updatedStreaks.forEach((gameId, streak) {
+      final lastSolvedDate = streak.lastSolvedDate;
+      final lastSolvedNormalized =
+          DateTime(lastSolvedDate.year, lastSolvedDate.month, lastSolvedDate.day);
+      
+      final daysSinceLastSolved = today.difference(lastSolvedNormalized).inDays;
+      
+      GameStreak updatedStreak = streak;
+      bool streakChanged = false;
+
+      // 1. Reset solvedToday if it's a new day
+      if (lastSolvedNormalized != today && streak.solvedToday) {
+        updatedStreak = updatedStreak.copyWith(solvedToday: false);
+        streakChanged = true;
+      }
+
+      // 2. Reset streak to 0 if a day was missed
+      if (daysSinceLastSolved > 1 && streak.currentStreak > 0) {
+        updatedStreak = updatedStreak.copyWith(currentStreak: 0);
+        streakChanged = true;
+      }
+
+      if (streakChanged) {
+        updatedStreaks[gameId] = updatedStreak;
+        ref.read(userRepositoryProvider).saveGameStreak(updatedStreak);
+      }
+    });
+
+    return updatedStreaks;
   }
 
   GameStreak getStreak(String gameId) {
@@ -113,11 +172,11 @@ class GameStreakNotifier extends _$GameStreakNotifier {
       // Continued streak
       newStreakCount++;
     } else if (today.difference(lastSolvedNormalized).inDays > 1) {
-      // Streak broken
+      // Streak was broken
       newStreakCount = 1;
     } else if (lastSolvedNormalized == today) {
-      // This handles cases where solvedToday might be false but lastSolved was today
-      return true;
+      // Already solved today but solvedToday was false
+      newStreakCount = currentStreak.currentStreak;
     }
 
     final newStreak = currentStreak.copyWith(
@@ -135,24 +194,8 @@ class GameStreakNotifier extends _$GameStreakNotifier {
     return true;
   }
 
-  void resetDailyStatus() {
-    final now = DateTime.now();
-    final today = DateTime(now.year, now.month, now.day);
-
-    bool changed = false;
-    final newState = Map<String, GameStreak>.from(state);
-
-    state.forEach((gameId, streak) {
-      final lastSolved = DateTime(streak.lastSolvedDate.year,
-          streak.lastSolvedDate.month, streak.lastSolvedDate.day);
-      if (lastSolved != today && streak.solvedToday) {
-        newState[gameId] = streak.copyWith(solvedToday: false);
-        changed = true;
-      }
-    });
-
-    if (changed) {
-      state = newState;
-    }
+  void refreshStatus() {
+    ref.read(userDataNotifierProvider.notifier).refreshSuperStreak();
+    state = _applyDailyReset(state);
   }
 }

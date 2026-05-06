@@ -147,9 +147,9 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
                         : (isInCurrentWord ? theme.colorScheme.primary.withValues(alpha: 0.05) : theme.colorScheme.surface),
                     border: Border.all(
                       color: isSelected 
-                        ? theme.colorScheme.primary.withValues(alpha: 0.5) 
-                        : theme.colorScheme.outline.withValues(alpha: 0.1), 
-                      width: 0.5
+                        ? theme.colorScheme.primary.withValues(alpha: 0.6) 
+                        : theme.colorScheme.onSurface.withValues(alpha: 0.15), 
+                      width: 1.0
                     ),
                   ),
                   child: Stack(

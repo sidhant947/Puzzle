@@ -17,7 +17,8 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() => ref.read(findWordNotifierProvider.notifier).initGame());
+    Future.microtask(
+        () => ref.read(findWordNotifierProvider.notifier).initGame());
   }
 
   @override
@@ -68,7 +69,8 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
           children: [
             const SizedBox(height: DesignSystem.spaceLG),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
               child: Column(
                 children: [
                   Text(
@@ -126,7 +128,8 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
                 if (colIndex < word.length) {
                   letter = word[colIndex];
                 }
-                LetterStatus status = results != null ? results[colIndex] : LetterStatus.initial;
+                LetterStatus status =
+                    results != null ? results[colIndex] : LetterStatus.initial;
                 return Expanded(
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 4),
@@ -141,33 +144,33 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
     );
   }
 
-  Widget _buildTile(String letter, LetterStatus status, ThemeData theme, bool isDark) {
+  Widget _buildTile(
+      String letter, LetterStatus status, ThemeData theme, bool isDark) {
     Color color = theme.colorScheme.surface;
     Color textColor = theme.colorScheme.onSurface;
     Border border = Border.all(
-      color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.3 : 0.2), 
-      width: 1.5
-    );
+        color: theme.colorScheme.onSurface.withValues(alpha: isDark ? 0.4 : 0.25),
+        width: 2.0);
 
     switch (status) {
       case LetterStatus.correctSpot:
         color = DesignSystem.gameGreen;
         textColor = Colors.white;
-        border = Border.all(color: Colors.transparent);
+        border = Border.all(color: Colors.black.withValues(alpha: 0.1), width: 1.0);
         break;
       case LetterStatus.wrongSpot:
         color = DesignSystem.gameOrange;
         textColor = Colors.white;
-        border = Border.all(color: Colors.transparent);
+        border = Border.all(color: Colors.black.withValues(alpha: 0.1), width: 1.0);
         break;
       case LetterStatus.notInWord:
         color = theme.colorScheme.onSurface.withValues(alpha: 0.1);
         textColor = theme.colorScheme.onSurface.withValues(alpha: 0.4);
-        border = Border.all(color: Colors.transparent);
+        border = Border.all(color: theme.colorScheme.onSurface.withValues(alpha: 0.1), width: 1.0);
         break;
       case LetterStatus.initial:
         if (letter.isNotEmpty) {
-          border = Border.all(color: theme.colorScheme.primary, width: 2);
+          border = Border.all(color: theme.colorScheme.primary, width: 2.5);
         }
         break;
     }
@@ -192,7 +195,8 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
     );
   }
 
-  Widget _buildKeyboard(FindWordState state, FindWordNotifier notifier, ThemeData theme, bool isDark) {
+  Widget _buildKeyboard(FindWordState state, FindWordNotifier notifier,
+      ThemeData theme, bool isDark) {
     final rows = [
       ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
       ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
@@ -211,7 +215,8 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 if (rowIndex == 1) const SizedBox(width: 16),
-                ...row.map((key) => _buildKey(key, state, notifier, theme, isDark)),
+                ...row.map(
+                    (key) => _buildKey(key, state, notifier, theme, isDark)),
                 if (rowIndex == 1) const SizedBox(width: 16),
               ],
             ),
@@ -221,7 +226,8 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
     );
   }
 
-  Widget _buildKey(String label, FindWordState state, FindWordNotifier notifier, ThemeData theme, bool isDark) {
+  Widget _buildKey(String label, FindWordState state, FindWordNotifier notifier,
+      ThemeData theme, bool isDark) {
     bool isSpecialKey = label == 'ENTER' || label == 'DEL';
     int flex = isSpecialKey ? 4 : 2;
 
@@ -229,9 +235,8 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
     Color color = theme.colorScheme.surface;
     Color textColor = theme.colorScheme.onSurface;
     Border border = Border.all(
-      color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.2 : 0.1), 
-      width: 1
-    );
+        color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.2 : 0.1),
+        width: 1);
 
     switch (status) {
       case LetterStatus.correctSpot:
@@ -293,9 +298,12 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
     );
   }
 
-  void _showGameOverDialog(BuildContext context, WidgetRef ref, FindWordState state, ThemeData theme) async {
+  void _showGameOverDialog(BuildContext context, WidgetRef ref,
+      FindWordState state, ThemeData theme) async {
     if (state.isGameWon) {
-      await ref.read(gameStreakNotifierProvider.notifier).completeGame('find_word');
+      await ref
+          .read(gameStreakNotifierProvider.notifier)
+          .completeGame('find_word');
     }
 
     if (!context.mounted) return;
@@ -308,7 +316,8 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
         surfaceTintColor: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(DesignSystem.radiusXL),
-          side: BorderSide(color: theme.colorScheme.outline.withValues(alpha: 0.2)),
+          side: BorderSide(
+              color: theme.colorScheme.outline.withValues(alpha: 0.2)),
         ),
         title: Center(
           child: Column(
@@ -316,12 +325,19 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
               Container(
                 padding: const EdgeInsets.all(DesignSystem.spaceMD),
                 decoration: BoxDecoration(
-                  color: (state.isGameWon ? DesignSystem.gameGreen : DesignSystem.gameOrange).withValues(alpha: 0.1),
+                  color: (state.isGameWon
+                          ? DesignSystem.gameGreen
+                          : DesignSystem.gameOrange)
+                      .withValues(alpha: 0.1),
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
-                  state.isGameWon ? Icons.emoji_events_rounded : Icons.sentiment_very_dissatisfied_rounded,
-                  color: state.isGameWon ? DesignSystem.gameGreen : DesignSystem.gameOrange,
+                  state.isGameWon
+                      ? Icons.emoji_events_rounded
+                      : Icons.sentiment_very_dissatisfied_rounded,
+                  color: state.isGameWon
+                      ? DesignSystem.gameGreen
+                      : DesignSystem.gameOrange,
                   size: 48,
                 ),
               ),
@@ -340,7 +356,9 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
           mainAxisSize: MainAxisSize.min,
           children: [
             Text(
-              state.isGameWon ? 'Word found successfully.' : 'No more tries left.',
+              state.isGameWon
+                  ? 'Word found successfully.'
+                  : 'No more tries left.',
               textAlign: TextAlign.center,
             ),
             const SizedBox(height: 16),
@@ -350,14 +368,12 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
                 color: theme.colorScheme.primary.withValues(alpha: 0.05),
                 borderRadius: BorderRadius.circular(12),
               ),
-              child: Text(
-                state.targetWord, 
-                style: theme.textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.w900, 
-                  letterSpacing: 8.0,
-                  color: theme.colorScheme.primary,
-                )
-              ),
+              child: Text(state.targetWord,
+                  style: theme.textTheme.headlineSmall?.copyWith(
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: 8.0,
+                    color: theme.colorScheme.primary,
+                  )),
             ),
           ],
         ),

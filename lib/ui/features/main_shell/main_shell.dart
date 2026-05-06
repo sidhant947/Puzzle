@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../providers/user_providers.dart';
 import '../home/home_screen.dart';
 import '../profile/profile_screen.dart';
 
@@ -11,13 +12,33 @@ class MainShell extends ConsumerStatefulWidget {
   ConsumerState<MainShell> createState() => _MainShellState();
 }
 
-class _MainShellState extends ConsumerState<MainShell> {
+class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserver {
   int _selectedIndex = 0;
 
   final List<Widget> _screens = [
     const HomeScreen(),
     const ProfileScreen(),
   ];
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.resumed) {
+      // Refresh streak status when app is resumed to handle midnight transitions
+      ref.read(gameStreakNotifierProvider.notifier).refreshStatus();
+    }
+  }
 
   @override
   Widget build(BuildContext context) {

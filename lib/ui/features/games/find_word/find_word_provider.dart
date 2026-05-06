@@ -10,6 +10,7 @@ class FindWordState {
   final String currentGuess;
   final bool isGameOver;
   final bool isGameWon;
+  final bool isInvalidGuess;
   final Map<String, LetterStatus> keyboardStatus;
 
   FindWordState({
@@ -19,6 +20,7 @@ class FindWordState {
     this.currentGuess = '',
     this.isGameOver = false,
     this.isGameWon = false,
+    this.isInvalidGuess = false,
     this.keyboardStatus = const {},
   });
 
@@ -29,6 +31,7 @@ class FindWordState {
     String? currentGuess,
     bool? isGameOver,
     bool? isGameWon,
+    bool? isInvalidGuess,
     Map<String, LetterStatus>? keyboardStatus,
   }) {
     return FindWordState(
@@ -38,6 +41,7 @@ class FindWordState {
       currentGuess: currentGuess ?? this.currentGuess,
       isGameOver: isGameOver ?? this.isGameOver,
       isGameWon: isGameWon ?? this.isGameWon,
+      isInvalidGuess: isInvalidGuess ?? this.isInvalidGuess,
       keyboardStatus: keyboardStatus ?? this.keyboardStatus,
     );
   }
@@ -70,7 +74,10 @@ class FindWordNotifier extends _$FindWordNotifier {
   void addLetter(String letter) {
     if (state.isGameOver) return;
     if (state.currentGuess.length < FindWordEngine.wordLength) {
-      state = state.copyWith(currentGuess: state.currentGuess + letter.toUpperCase());
+      state = state.copyWith(
+        currentGuess: state.currentGuess + letter.toUpperCase(),
+        isInvalidGuess: false,
+      );
     }
   }
 
@@ -78,13 +85,21 @@ class FindWordNotifier extends _$FindWordNotifier {
     if (state.isGameOver) return;
     if (state.currentGuess.isNotEmpty) {
       state = state.copyWith(
-          currentGuess: state.currentGuess.substring(0, state.currentGuess.length - 1));
+        currentGuess: state.currentGuess.substring(0, state.currentGuess.length - 1),
+        isInvalidGuess: false,
+      );
     }
   }
 
   void submitGuess() {
     if (state.isGameOver) return;
     if (state.currentGuess.length != FindWordEngine.wordLength) return;
+
+    // Check if word exists in our wordlist
+    if (!_wordList.contains(state.currentGuess)) {
+      state = state.copyWith(isInvalidGuess: true);
+      return;
+    }
 
     final result = _engine.checkGuess(state.currentGuess, state.targetWord);
     final newGuesses = List<String>.from(state.guesses)..add(state.currentGuess);
@@ -112,6 +127,7 @@ class FindWordNotifier extends _$FindWordNotifier {
       currentGuess: '',
       isGameOver: won || lost,
       isGameWon: won,
+      isInvalidGuess: false,
       keyboardStatus: newKeyboardStatus,
     );
   }
