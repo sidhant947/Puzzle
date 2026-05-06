@@ -21,7 +21,7 @@ final userRepositoryProvider = Provider<UserRepository>.internal(
 );
 
 typedef UserRepositoryRef = ProviderRef<UserRepository>;
-String _$userDataNotifierHash() => r'd9d09d5a75a6cf7d2b2f2b98c137b84b64779a38';
+String _$userDataNotifierHash() => r'725290b9f93539fc7b1b869f2793dfa2106e7ae3';
 
 /// See also [UserDataNotifier].
 @ProviderFor(UserDataNotifier)
@@ -38,7 +38,7 @@ final userDataNotifierProvider =
 
 typedef _$UserDataNotifier = AutoDisposeNotifier<UserData>;
 String _$gameStreakNotifierHash() =>
-    r'aa1a9ae48b95bd4d252539748ab4fedf43ae6ccb';
+    r'b898a719f9afa011acf680640d4579250f47a8f0';
 
 /// See also [GameStreakNotifier].
 @ProviderFor(GameStreakNotifier)

@@ -1,7 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'crown_provider.dart';
+import 'package:puzzle/ui/features/games/crown/crown_provider.dart';
 import '../../../../../providers/user_providers.dart';
 
 class CrownScreen extends ConsumerStatefulWidget {
@@ -81,6 +81,7 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
 
   Widget _buildGrid(CrownState state, CrownNotifier notifier, ThemeData theme) {
     final board = state.board!;
+    final marked = state.markedCells;
     return LayoutBuilder(builder: (context, constraints) {
       final double gridSize = min(constraints.maxWidth - 48, constraints.maxHeight);
 
@@ -102,6 +103,7 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
               int y = index ~/ board.size;
               int regionId = board.regions[y][x];
               bool hasCrown = state.crowns.any((p) => p.x == x && p.y == y);
+              bool isMarked = marked.contains(Point(x, y));
 
               // Check neighbors to draw thick borders between regions
               bool borderTop = y > 0 && board.regions[y-1][x] != regionId;
@@ -112,7 +114,7 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
               final Color regionColor = _regionColors[regionId % _regionColors.length];
 
               return GestureDetector(
-                onTap: () => notifier.toggleCrown(x, y),
+                onTap: () => notifier.tapCell(x, y),
                 child: Container(
                   decoration: BoxDecoration(
                     color: regionColor,
@@ -126,7 +128,9 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
                   child: Center(
                     child: hasCrown
                         ? Icon(Icons.workspace_premium_rounded, color: theme.colorScheme.onSurface, size: 28)
-                        : null,
+                        : isMarked
+                            ? Icon(Icons.close_rounded, color: theme.colorScheme.onSurface.withValues(alpha: 0.4), size: 24)
+                            : null,
                   ),
                 ),
               );

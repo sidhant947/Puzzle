@@ -6,6 +6,7 @@ import 'data/models/user_data.dart';
 import 'data/models/game_streak.dart';
 import 'data/repositories/user_repository.dart';
 import 'providers/user_providers.dart';
+import 'providers/theme_provider.dart';
 import 'ui/features/main_shell/main_shell.dart';
 import 'utils/design_system.dart';
 import 'widgets/error_boundary.dart';
@@ -47,17 +48,20 @@ void main() async {
   );
 }
 
-class MyApp extends StatelessWidget {
+class MyApp extends ConsumerWidget {
   const MyApp({super.key});
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final themeNotifier = ref.watch(themeNotifierProvider.notifier);
+    final themeMode = themeNotifier.themeMode;
+
     return MaterialApp(
       title: 'Puzzle Games',
       debugShowCheckedModeBanner: false,
       theme: DesignSystem.lightTheme,
       darkTheme: DesignSystem.darkTheme,
-      themeMode: ThemeMode.system,
+      themeMode: themeMode,
       home: const MainShell(),
     );
   }
