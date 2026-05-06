@@ -61,7 +61,6 @@ class CalculationSprintScreen extends ConsumerWidget {
   }
 
   Widget _buildHeader(BuildContext context, CalculationSprintState state) {
-    final theme = Theme.of(context);
     final isLowTime = state.timeRemaining <= 10 && state.timeRemaining > 0;
     final timeColor = isLowTime ? DesignSystem.lightError : DesignSystem.gameEmerald;
 

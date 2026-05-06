@@ -16,6 +16,9 @@ import '../games/nonogram/nonogram_screen.dart';
 import '../games/schulte_table/schulte_table_screen.dart';
 import '../games/number_match/number_match_screen.dart';
 import '../games/calculation_sprint/calculation_sprint_screen.dart';
+import '../games/pipes/pipes_screen.dart';
+import '../games/unblock_me/unblock_me_screen.dart';
+import '../games/tents_and_trees/tents_and_trees_screen.dart';
 
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required Widget page})
@@ -52,6 +55,27 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'icon': Icons.grid_4x4_rounded,
       'color': DesignSystem.gameBlue,
       'screen': const SudokuScreen(),
+    },
+    {
+      'title': 'Pipes',
+      'id': 'pipes',
+      'icon': Icons.hub_rounded,
+      'color': DesignSystem.gameTeal,
+      'screen': const PipesScreen(),
+    },
+    {
+      'title': 'Unblock Me',
+      'id': 'unblock_me',
+      'icon': Icons.view_column_rounded,
+      'color': DesignSystem.gameOrange,
+      'screen': const UnblockMeScreen(),
+    },
+    {
+      'title': 'Tents & Trees',
+      'id': 'tents_and_trees',
+      'icon': Icons.park_rounded,
+      'color': DesignSystem.gameGreen,
+      'screen': const TentsAndTreesScreen(),
     },
     {
       'title': 'Find Word',
