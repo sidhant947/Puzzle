@@ -14,6 +14,8 @@ import '../games/minesweeper/minesweeper_screen.dart';
 import '../games/memory_matrix/memory_matrix_screen.dart';
 import '../games/nonogram/nonogram_screen.dart';
 import '../games/schulte_table/schulte_table_screen.dart';
+import '../games/number_match/number_match_screen.dart';
+import '../games/calculation_sprint/calculation_sprint_screen.dart';
 
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required Widget page})
@@ -113,6 +115,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'icon': Icons.speed_rounded,
       'color': DesignSystem.gameViolet,
       'screen': const SchulteTableScreen(),
+    },
+    {
+      'title': 'Number Match',
+      'id': 'number_match',
+      'icon': Icons.join_inner_rounded,
+      'color': DesignSystem.gameCyan,
+      'screen': const NumberMatchScreen(),
+    },
+    {
+      'title': 'Calc Sprint',
+      'id': 'calculation_sprint',
+      'icon': Icons.calculate_rounded,
+      'color': DesignSystem.gameEmerald,
+      'screen': const CalculationSprintScreen(),
     },
   ];
 

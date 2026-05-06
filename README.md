@@ -1,6 +1,6 @@
 # Puzzle Collection
 
-A professional suite of minimalist puzzle games built with Flutter. Challenge your mind with daily streaks, level up your profile, and master ten unique puzzle experiences.
+A professional suite of minimalist puzzle games built with Flutter. Challenge your mind with daily streaks, level up your profile, and master twelve unique puzzle experiences.
 
 ## 🎮 Included Games
 
@@ -14,10 +14,12 @@ A professional suite of minimalist puzzle games built with Flutter. Challenge yo
 *   **Memory Matrix:** A cognitive training game to improve working memory and pattern recognition.
 *   **Nonogram:** A logic puzzle where you reveal hidden pictures by filling cells based on numerical clues.
 *   **Schulte Table:** A focus and speed-reading tool to improve peripheral vision and mental processing speed.
+*   **Number Match:** A logic and pattern recognition game where you find pairs of identical numbers or those summing to 10.
+*   **Calculation Sprint:** An arithmetic fluency game where you solve rapid-fire math equations under a time limit.
 
 ## ✨ Features
 
 *   **Progression System:** Earn XP for every puzzle solved. Level up and unlock achievements from "Novice" to "Legend".
 *   **Daily Streaks:** Track your consistency with individual game streaks.
-*   **Super Streak:** Solve all ten games in a single day to maintain your ultimate Super Streak.
+*   **Super Streak:** Solve all twelve games in a single day to maintain your ultimate Super Streak.
 *   **Minimalist Design:** A clean, typography-focused UI that puts the puzzles front and center.

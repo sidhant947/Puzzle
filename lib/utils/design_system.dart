@@ -70,6 +70,8 @@ class DesignSystem {
   static const Color gameAmber = Color(0xFFF59E0B);
   static const Color gameRose = Color(0xFFF43F5E);
   static const Color gameViolet = Color(0xFF8B5CF6);
+  static const Color gameCyan = Color(0xFF06B6D4);
+  static const Color gameEmerald = Color(0xFF10B981);
 
   static ThemeData get lightTheme => _buildTheme(Brightness.light);
   static ThemeData get darkTheme => _buildTheme(Brightness.dark);

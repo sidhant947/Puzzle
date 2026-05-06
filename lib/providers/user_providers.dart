@@ -56,9 +56,9 @@ class UserDataNotifier extends _$UserDataNotifier {
 
     if (lastSuperStreakNormalized == today) return; // Already achieved today
 
-    // Check if all 10 games are solved today
+    // Check if all 12 games are solved today
     final solvedTodayCount = streaks.values.where((s) => s.solvedToday).length;
-    if (solvedTodayCount >= 10) {
+    if (solvedTodayCount >= 12) {
       int newStreak = 1;
       final currentSuperStreak = state.superStreak ?? 0;
       if (today.difference(lastSuperStreakNormalized).inDays == 1) {
