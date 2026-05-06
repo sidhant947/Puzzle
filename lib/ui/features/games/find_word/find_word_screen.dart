@@ -13,12 +13,37 @@ class FindWordScreen extends ConsumerStatefulWidget {
   ConsumerState<FindWordScreen> createState() => _FindWordScreenState();
 }
 
-class _FindWordScreenState extends ConsumerState<FindWordScreen> {
+class _FindWordScreenState extends ConsumerState<FindWordScreen>
+    with SingleTickerProviderStateMixin {
+  late AnimationController _shakeController;
+  late Animation<double> _shakeAnimation;
+
   @override
   void initState() {
     super.initState();
     Future.microtask(
         () => ref.read(findWordNotifierProvider.notifier).initGame());
+
+    _shakeController = AnimationController(
+      duration: const Duration(milliseconds: 300),
+      vsync: this,
+    );
+    _shakeAnimation = TweenSequence<double>([
+      TweenSequenceItem(tween: Tween(begin: 0, end: -8), weight: 1),
+      TweenSequenceItem(tween: Tween(begin: -8, end: 8), weight: 2),
+      TweenSequenceItem(tween: Tween(begin: 8, end: -8), weight: 2),
+      TweenSequenceItem(tween: Tween(begin: -8, end: 8), weight: 2),
+      TweenSequenceItem(tween: Tween(begin: 8, end: 0), weight: 1),
+    ]).animate(CurvedAnimation(
+      parent: _shakeController,
+      curve: Curves.easeInOut,
+    ));
+  }
+
+  @override
+  void dispose() {
+    _shakeController.dispose();
+    super.dispose();
   }
 
   @override
@@ -29,6 +54,10 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
     final isDark = theme.brightness == Brightness.dark;
 
     ref.listen(findWordNotifierProvider, (previous, next) {
+      if (next.isInvalidGuess && !(previous?.isInvalidGuess ?? false)) {
+        HapticFeedbackUtil.heavyImpact();
+        _shakeController.forward(from: 0);
+      }
       if (next.isGameOver && !(previous?.isGameOver ?? false)) {
         if (next.isGameWon) {
           HapticFeedbackUtil.victory();
@@ -119,7 +148,9 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
             word = state.currentGuess;
           }
 
-          return Container(
+          bool isCurrentRow = rowIndex == state.guesses.length;
+
+          Widget row = Container(
             margin: const EdgeInsets.symmetric(vertical: 4),
             height: 60,
             child: Row(
@@ -139,6 +170,17 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
               }),
             ),
           );
+
+          if (isCurrentRow) {
+            return AnimatedBuilder(
+              animation: _shakeAnimation,
+              builder: (context, child) =>
+                  Transform.translate(offset: Offset(_shakeAnimation.value, 0), child: child),
+              child: row,
+            );
+          }
+
+          return row;
         }),
       ),
     );

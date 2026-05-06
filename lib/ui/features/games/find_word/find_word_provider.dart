@@ -11,6 +11,7 @@ class FindWordState {
   final bool isGameOver;
   final bool isGameWon;
   final bool isInvalidGuess;
+  final bool shouldShake;
   final Map<String, LetterStatus> keyboardStatus;
 
   FindWordState({
@@ -21,6 +22,7 @@ class FindWordState {
     this.isGameOver = false,
     this.isGameWon = false,
     this.isInvalidGuess = false,
+    this.shouldShake = false,
     this.keyboardStatus = const {},
   });
 
@@ -32,6 +34,7 @@ class FindWordState {
     bool? isGameOver,
     bool? isGameWon,
     bool? isInvalidGuess,
+    bool? shouldShake,
     Map<String, LetterStatus>? keyboardStatus,
   }) {
     return FindWordState(
@@ -42,6 +45,7 @@ class FindWordState {
       isGameOver: isGameOver ?? this.isGameOver,
       isGameWon: isGameWon ?? this.isGameWon,
       isInvalidGuess: isInvalidGuess ?? this.isInvalidGuess,
+      shouldShake: shouldShake ?? this.shouldShake,
       keyboardStatus: keyboardStatus ?? this.keyboardStatus,
     );
   }
@@ -97,7 +101,7 @@ class FindWordNotifier extends _$FindWordNotifier {
 
     // Check if word exists in our wordlist
     if (!_wordList.contains(state.currentGuess)) {
-      state = state.copyWith(isInvalidGuess: true);
+      state = state.copyWith(isInvalidGuess: true, shouldShake: true);
       return;
     }
 

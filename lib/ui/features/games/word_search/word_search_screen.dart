@@ -160,9 +160,9 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
   Widget _buildGrid(WordSearchState state, WordSearchNotifier notifier, ThemeData theme, bool isDark) {
     final board = state.board!;
     return LayoutBuilder(builder: (context, constraints) {
-      final double availableWidth = constraints.maxWidth;
-      final double gridSize = availableWidth;
-      final double cellSize = gridSize / board.size;
+      final double gridSize = min(constraints.maxWidth, constraints.maxHeight);
+      final double gridInternalSize = gridSize - (DesignSystem.spaceXS * 2);
+      final double cellSize = gridInternalSize / board.size;
 
       return GestureDetector(
         onPanStart: (details) {
@@ -195,6 +195,7 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
                   _buildFoundLines(state, cellSize, theme),
                   _buildSelectionLine(state, cellSize, theme),
                   GridView.builder(
+                    padding: EdgeInsets.zero,
                     physics: const NeverScrollableScrollPhysics(),
                     gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                       crossAxisCount: board.size,
@@ -224,8 +225,12 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
   }
 
   void _handlePanUpdate(Offset localPos, double cellSize, int size, WordSearchNotifier notifier, bool isStart) {
-    int x = (localPos.dx / cellSize).floor();
-    int y = (localPos.dy / cellSize).floor();
+    // Adjust for padding
+    double xPos = localPos.dx - DesignSystem.spaceXS;
+    double yPos = localPos.dy - DesignSystem.spaceXS;
+    
+    int x = (xPos / cellSize).floor();
+    int y = (yPos / cellSize).floor();
 
     if (x >= 0 && x < size && y >= 0 && y < size) {
       if (isStart) {
@@ -260,7 +265,7 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
         start: Offset((start.x + 0.5) * cellSize, (start.y + 0.5) * cellSize),
         end: Offset((end.x + 0.5) * cellSize, (end.y + 0.5) * cellSize),
         color: color,
-        strokeWidth: cellSize * 0.7,
+        strokeWidth: cellSize * 0.8,
       ),
     );
   }
@@ -345,11 +350,30 @@ class LinePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
+    // Outer soft glow
+    final glowPaint = Paint()
+      ..color = color.withValues(alpha: 0.2)
+      ..strokeCap = StrokeCap.round
+      ..strokeWidth = strokeWidth + 6
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 2);
+    canvas.drawLine(start, end, glowPaint);
+
+    // Main highlight line
     final paint = Paint()
       ..color = color
       ..strokeCap = StrokeCap.round
       ..strokeWidth = strokeWidth;
     canvas.drawLine(start, end, paint);
+    
+    // Subtle border for definition
+    final borderPaint = Paint()
+      ..color = color.withValues(alpha: 0.5)
+      ..strokeCap = StrokeCap.round
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2;
+    // We don't use drawLine for border because it's just a line, 
+    // but we can draw the same line with a slightly different width if we wanted an outline effect.
+    // Instead of a full outline, let's just stick to the glow and main line for now as it's cleaner.
   }
 
   @override
