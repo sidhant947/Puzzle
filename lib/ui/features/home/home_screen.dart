@@ -93,35 +93,40 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       body: CustomScrollView(
+        physics: const BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
             floating: true,
             snap: true,
+            expandedHeight: 120,
+            collapsedHeight: 70,
             backgroundColor: theme.scaffoldBackgroundColor,
             surfaceTintColor: Colors.transparent,
-            centerTitle: true,
-            title: Text(
-              'GAMES',
-              style: TextStyle(
-                fontSize: 13,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 1.5,
-                color: theme.colorScheme.onSurface,
+            flexibleSpace: FlexibleSpaceBar(
+              centerTitle: true,
+              expandedTitleScale: 1.2,
+              title: Text(
+                'PUZZLE HUB',
+                style: theme.textTheme.labelSmall?.copyWith(
+                  color: theme.colorScheme.primary,
+                  letterSpacing: 4.0,
+                  fontWeight: FontWeight.w900,
+                ),
               ),
             ),
             actions: const [
               SuperStreakAction(),
-              SizedBox(width: 8),
+              SizedBox(width: 16),
             ],
           ),
           SliverPadding(
-            padding: const EdgeInsets.fromLTRB(20, 8, 20, 100),
+            padding: const EdgeInsets.fromLTRB(20, 0, 20, 120),
             sliver: SliverList(
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
                   final game = _games[index];
                   return Padding(
-                    padding: const EdgeInsets.only(bottom: 12),
+                    padding: const EdgeInsets.only(bottom: 16),
                     child: _buildGameCard(
                       context,
                       game['title'],
@@ -162,74 +167,75 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
     return GestureDetector(
       onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        curve: Curves.easeOutExpo,
-        padding: const EdgeInsets.all(20),
+      child: Container(
+        padding: const EdgeInsets.all(12),
         decoration: BoxDecoration(
           color: theme.colorScheme.surface,
-          borderRadius: BorderRadius.circular(DesignSystem.radiusXL),
+          borderRadius: BorderRadius.circular(DesignSystem.radius2XL),
           border: Border.all(
-            color: isDark ? theme.colorScheme.outline.withValues(alpha: 0.3) : theme.colorScheme.outline,
+            color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.15 : 0.08),
             width: 1,
           ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
+              blurRadius: 12,
+              offset: const Offset(0, 4),
+            ),
+          ],
         ),
         child: Row(
           children: [
             Container(
-              width: 56,
-              height: 56,
+              width: 72,
+              height: 72,
               decoration: BoxDecoration(
-                color: accentColor.withValues(alpha: isDark ? 0.15 : 0.08),
-                borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
+                color: accentColor.withValues(alpha: isDark ? 0.12 : 0.06),
+                borderRadius: BorderRadius.circular(DesignSystem.radiusXL),
               ),
               child: Icon(
                 icon,
-                size: 28,
+                size: 32,
                 color: accentColor,
               ),
             ),
-            const SizedBox(width: 16),
+            const SizedBox(width: 20),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    title,
-                    style: TextStyle(
-                      fontSize: 17,
-                      fontWeight: FontWeight.w600,
-                      letterSpacing: -0.4,
-                      color: theme.colorScheme.onSurface,
+                    title.toUpperCase(),
+                    style: theme.textTheme.titleMedium?.copyWith(
+                      letterSpacing: 1.0,
+                      fontWeight: FontWeight.w800,
                     ),
                   ),
-                  const SizedBox(height: 4),
+                  const SizedBox(height: 6),
                   Row(
                     children: [
                       if (streakCount > 0) ...[
                         Icon(
                           Icons.local_fire_department_rounded,
-                          size: 14,
+                          size: 16,
                           color: DesignSystem.gameOrange,
                         ),
                         const SizedBox(width: 4),
                         Text(
                           '$streakCount',
-                          style: TextStyle(
-                            fontSize: 13,
-                            fontWeight: FontWeight.w600,
-                            color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
+                          style: theme.textTheme.labelMedium?.copyWith(
+                            color: theme.colorScheme.onSurface,
                           ),
                         ),
-                        const SizedBox(width: 4),
+                        const SizedBox(width: 6),
                       ],
                       Text(
-                        streakCount > 0 ? 'DAY STREAK' : 'PLAY NOW',
-                        style: TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w600,
-                          letterSpacing: 0.5,
-                          color: theme.colorScheme.onSurface.withValues(alpha: streakCount > 0 ? 0.6 : 0.4),
+                        isSolved ? 'COMPLETED' : 'DAILY PUZZLE',
+                        style: theme.textTheme.labelSmall?.copyWith(
+                          color: isSolved 
+                            ? DesignSystem.gameGreen 
+                            : theme.colorScheme.onSurface.withValues(alpha: 0.4),
+                          fontWeight: FontWeight.w700,
                         ),
                       ),
                     ],
@@ -238,20 +244,21 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               ),
             ),
             Container(
-              width: 32,
-              height: 32,
+              width: 40,
+              height: 40,
               decoration: BoxDecoration(
                 color: isSolved
-                    ? accentColor.withValues(alpha: isDark ? 0.2 : 0.1)
-                    : theme.colorScheme.onSurface.withValues(alpha: 0.05),
-                shape: BoxShape.circle,
+                    ? DesignSystem.gameGreen.withValues(alpha: 0.1)
+                    : theme.colorScheme.primary.withValues(alpha: 0.05),
+                borderRadius: BorderRadius.circular(14),
               ),
               child: Icon(
-                isSolved ? Icons.check_rounded : Icons.arrow_forward_rounded,
-                size: 18,
-                color: isSolved ? accentColor : theme.colorScheme.onSurface.withValues(alpha: 0.3),
+                isSolved ? Icons.check_rounded : Icons.play_arrow_rounded,
+                size: 20,
+                color: isSolved ? DesignSystem.gameGreen : theme.colorScheme.primary,
               ),
             ),
+            const SizedBox(width: 8),
           ],
         ),
       ),

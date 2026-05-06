@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'find_word_provider.dart';
 import 'find_word_engine.dart';
 import '../../../../../providers/user_providers.dart';
+import '../../../../../utils/design_system.dart';
+import '../../../../../utils/haptic_feedback.dart';
 
 class FindWordScreen extends ConsumerStatefulWidget {
   const FindWordScreen({super.key});
@@ -24,35 +25,86 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
     final state = ref.watch(findWordNotifierProvider);
     final notifier = ref.read(findWordNotifierProvider.notifier);
     final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
 
     ref.listen(findWordNotifierProvider, (previous, next) {
       if (next.isGameOver && !(previous?.isGameOver ?? false)) {
+        if (next.isGameWon) {
+          HapticFeedbackUtil.victory();
+        } else {
+          HapticFeedbackUtil.heavyImpact();
+        }
         _showGameOverDialog(context, ref, next, theme);
       }
     });
 
     return Scaffold(
+      backgroundColor: theme.colorScheme.surface,
       appBar: AppBar(
-        title: const Text('FIND WORD'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: Text(
+          'FIND WORD',
+          style: theme.textTheme.titleMedium?.copyWith(
+            letterSpacing: 4,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh_rounded),
+            onPressed: () {
+              HapticFeedbackUtil.mediumImpact();
+              notifier.initGame();
+            },
+          ),
+          const SizedBox(width: 8),
+        ],
       ),
       body: SafeArea(
         child: Column(
           children: [
-            const SizedBox(height: 32),
-            Expanded(
-              child: _buildGrid(state, theme),
+            const SizedBox(height: DesignSystem.spaceLG),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
+              child: Column(
+                children: [
+                  Text(
+                    'GUESS THE WORD',
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      color: theme.colorScheme.primary,
+                      letterSpacing: 2,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                  const SizedBox(height: DesignSystem.spaceSM),
+                  Text(
+                    'You have ${FindWordEngine.maxTries} tries to find the hidden ${FindWordEngine.wordLength}-letter word.',
+                    textAlign: TextAlign.center,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
+                      height: 1.5,
+                    ),
+                  ),
+                ],
+              ),
             ),
-            _buildKeyboard(state, notifier, theme),
-            const SizedBox(height: 32),
+            const Spacer(),
+            _buildGrid(state, theme, isDark),
+            const Spacer(),
+            _buildKeyboard(state, notifier, theme, isDark),
+            const SizedBox(height: DesignSystem.spaceLG),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildGrid(FindWordState state, ThemeData theme) {
+  Widget _buildGrid(FindWordState state, ThemeData theme, bool isDark) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 40),
+      padding: const EdgeInsets.symmetric(horizontal: 32),
       child: Column(
         children: List.generate(FindWordEngine.maxTries, (rowIndex) {
           String word = '';
@@ -65,7 +117,9 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
             word = state.currentGuess;
           }
 
-          return Expanded(
+          return Container(
+            margin: const EdgeInsets.symmetric(vertical: 4),
+            height: 60,
             child: Row(
               children: List.generate(FindWordEngine.wordLength, (colIndex) {
                 String letter = '';
@@ -75,8 +129,8 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
                 LetterStatus status = results != null ? results[colIndex] : LetterStatus.initial;
                 return Expanded(
                   child: Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: _buildTile(letter, status, theme),
+                    padding: const EdgeInsets.symmetric(horizontal: 4),
+                    child: _buildTile(letter, status, theme, isDark),
                   ),
                 );
               }),
@@ -87,45 +141,49 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
     );
   }
 
-  Widget _buildTile(String letter, LetterStatus status, ThemeData theme) {
-    Color color = Colors.transparent;
+  Widget _buildTile(String letter, LetterStatus status, ThemeData theme, bool isDark) {
+    Color color = theme.colorScheme.surface;
     Color textColor = theme.colorScheme.onSurface;
-    Border border = Border.all(color: theme.colorScheme.onSurface.withValues(alpha: 0.2), width: 1);
+    Border border = Border.all(
+      color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.3 : 0.2), 
+      width: 1.5
+    );
 
     switch (status) {
       case LetterStatus.correctSpot:
-        color = const Color(0xFF6AAA64); // Wordle Green
+        color = DesignSystem.gameGreen;
         textColor = Colors.white;
-        border = Border.all(color: color, width: 1);
+        border = Border.all(color: Colors.transparent);
         break;
       case LetterStatus.wrongSpot:
-        color = const Color(0xFFC9B458); // Wordle Yellow
+        color = DesignSystem.gameOrange;
         textColor = Colors.white;
-        border = Border.all(color: color, width: 1);
+        border = Border.all(color: Colors.transparent);
         break;
       case LetterStatus.notInWord:
-        color = theme.brightness == Brightness.light ? Colors.grey.shade400 : Colors.grey.shade700;
-        textColor = Colors.white;
-        border = Border.all(color: color, width: 1);
+        color = theme.colorScheme.onSurface.withValues(alpha: 0.1);
+        textColor = theme.colorScheme.onSurface.withValues(alpha: 0.4);
+        border = Border.all(color: Colors.transparent);
         break;
       case LetterStatus.initial:
         if (letter.isNotEmpty) {
-          border = Border.all(color: theme.colorScheme.onSurface, width: 2);
+          border = Border.all(color: theme.colorScheme.primary, width: 2);
         }
         break;
     }
 
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeInOut,
       decoration: BoxDecoration(
         color: color,
         border: border,
-        borderRadius: BorderRadius.zero,
+        borderRadius: BorderRadius.circular(8),
       ),
       child: Center(
         child: Text(
           letter,
-          style: TextStyle(
-            fontSize: 24,
+          style: theme.textTheme.headlineSmall?.copyWith(
             fontWeight: FontWeight.w900,
             color: textColor,
           ),
@@ -134,7 +192,7 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
     );
   }
 
-  Widget _buildKeyboard(FindWordState state, FindWordNotifier notifier, ThemeData theme) {
+  Widget _buildKeyboard(FindWordState state, FindWordNotifier notifier, ThemeData theme, bool isDark) {
     final rows = [
       ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
       ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
@@ -142,7 +200,7 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
     ];
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Column(
         children: rows.asMap().entries.map((entry) {
           int rowIndex = entry.key;
@@ -152,9 +210,9 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                if (rowIndex == 1) const Spacer(flex: 1),
-                ...row.map((key) => _buildKey(key, state, notifier, theme)),
-                if (rowIndex == 1) const Spacer(flex: 1),
+                if (rowIndex == 1) const SizedBox(width: 16),
+                ...row.map((key) => _buildKey(key, state, notifier, theme, isDark)),
+                if (rowIndex == 1) const SizedBox(width: 16),
               ],
             ),
           );
@@ -163,29 +221,36 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
     );
   }
 
-  Widget _buildKey(String label, FindWordState state, FindWordNotifier notifier, ThemeData theme) {
+  Widget _buildKey(String label, FindWordState state, FindWordNotifier notifier, ThemeData theme, bool isDark) {
     bool isSpecialKey = label == 'ENTER' || label == 'DEL';
-    int flex = isSpecialKey ? 3 : 2;
+    int flex = isSpecialKey ? 4 : 2;
 
     LetterStatus status = state.keyboardStatus[label] ?? LetterStatus.initial;
-    Color color = theme.brightness == Brightness.light ? Colors.grey.shade300 : Colors.grey.shade800;
+    Color color = theme.colorScheme.surface;
     Color textColor = theme.colorScheme.onSurface;
-    Border border = Border.all(color: Colors.transparent);
+    Border border = Border.all(
+      color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.2 : 0.1), 
+      width: 1
+    );
 
     switch (status) {
       case LetterStatus.correctSpot:
-        color = const Color(0xFF6AAA64);
+        color = DesignSystem.gameGreen;
         textColor = Colors.white;
+        border = Border.all(color: Colors.transparent);
         break;
       case LetterStatus.wrongSpot:
-        color = const Color(0xFFC9B458);
+        color = DesignSystem.gameOrange;
         textColor = Colors.white;
+        border = Border.all(color: Colors.transparent);
         break;
       case LetterStatus.notInWord:
-        color = theme.brightness == Brightness.light ? Colors.grey.shade700 : Colors.black;
-        textColor = Colors.white;
+        color = theme.colorScheme.onSurface.withValues(alpha: 0.05);
+        textColor = theme.colorScheme.onSurface.withValues(alpha: 0.2);
+        border = Border.all(color: Colors.transparent);
         break;
       default:
+        color = theme.colorScheme.onSurface.withValues(alpha: 0.05);
         break;
     }
 
@@ -195,7 +260,7 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
         padding: const EdgeInsets.symmetric(horizontal: 2),
         child: GestureDetector(
           onTap: () {
-            HapticFeedback.lightImpact();
+            HapticFeedbackUtil.selectionClick();
             if (label == 'ENTER') {
               notifier.submitGuess();
             } else if (label == 'DEL') {
@@ -205,21 +270,23 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
             }
           },
           child: Container(
-            height: 56,
+            height: 52,
             alignment: Alignment.center,
             decoration: BoxDecoration(
               color: color,
               border: border,
-              borderRadius: BorderRadius.zero,
+              borderRadius: BorderRadius.circular(6),
             ),
-            child: Text(
-              label,
-              style: TextStyle(
-                fontSize: label.length > 1 ? 10 : 16,
-                fontWeight: FontWeight.w900,
-                color: textColor,
-              ),
-            ),
+            child: label == 'DEL'
+                ? Icon(Icons.backspace_outlined, size: 18, color: textColor)
+                : Text(
+                    label,
+                    style: theme.textTheme.labelMedium?.copyWith(
+                      fontSize: label.length > 1 ? 10 : 14,
+                      fontWeight: FontWeight.w900,
+                      color: textColor,
+                    ),
+                  ),
           ),
         ),
       ),
@@ -237,24 +304,78 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-        title: Text(state.isGameWon ? 'WELL DONE' : 'GAME OVER', style: const TextStyle(fontWeight: FontWeight.w900)),
+        backgroundColor: theme.colorScheme.surface,
+        surfaceTintColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(DesignSystem.radiusXL),
+          side: BorderSide(color: theme.colorScheme.outline.withValues(alpha: 0.2)),
+        ),
+        title: Center(
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(DesignSystem.spaceMD),
+                decoration: BoxDecoration(
+                  color: (state.isGameWon ? DesignSystem.gameGreen : DesignSystem.gameOrange).withValues(alpha: 0.1),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  state.isGameWon ? Icons.emoji_events_rounded : Icons.sentiment_very_dissatisfied_rounded,
+                  color: state.isGameWon ? DesignSystem.gameGreen : DesignSystem.gameOrange,
+                  size: 48,
+                ),
+              ),
+              const SizedBox(height: DesignSystem.spaceMD),
+              Text(
+                state.isGameWon ? 'WELL DONE' : 'GAME OVER',
+                style: theme.textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: 2,
+                ),
+              ),
+            ],
+          ),
+        ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
-          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(state.isGameWon ? 'Word found successfully.' : 'No more tries left.'),
+            Text(
+              state.isGameWon ? 'Word found successfully.' : 'No more tries left.',
+              textAlign: TextAlign.center,
+            ),
             const SizedBox(height: 16),
-            Text('WORD: ${state.targetWord}', style: const TextStyle(fontWeight: FontWeight.w900, letterSpacing: 2.0)),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.primary.withValues(alpha: 0.05),
+                borderRadius: BorderRadius.circular(12),
+              ),
+              child: Text(
+                state.targetWord, 
+                style: theme.textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.w900, 
+                  letterSpacing: 8.0,
+                  color: theme.colorScheme.primary,
+                )
+              ),
+            ),
           ],
         ),
         actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-              Navigator.of(context).pop();
-            },
-            child: const Text('EXIT'),
+          Padding(
+            padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
+            child: Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
+                },
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(200, 50),
+                ),
+                child: const Text('CONTINUE'),
+              ),
+            ),
           ),
         ],
       ),

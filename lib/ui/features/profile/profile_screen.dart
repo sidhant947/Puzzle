@@ -72,12 +72,11 @@ class ProfileScreen extends ConsumerWidget {
         surfaceTintColor: Colors.transparent,
         centerTitle: true,
         title: Text(
-          'PROFILE',
-          style: TextStyle(
-            fontSize: 13,
-            fontWeight: FontWeight.w700,
-            letterSpacing: 1.5,
-            color: theme.colorScheme.onSurface,
+          'USER PROFILE',
+          style: theme.textTheme.labelSmall?.copyWith(
+            color: theme.colorScheme.primary,
+            letterSpacing: 4.0,
+            fontWeight: FontWeight.w900,
           ),
         ),
         actions: [
@@ -87,22 +86,22 @@ class ProfileScreen extends ConsumerWidget {
       ),
       body: SafeArea(
         child: SingleChildScrollView(
-          padding: const EdgeInsets.fromLTRB(20, 8, 20, 100),
+          physics: const BouncingScrollPhysics(),
+          padding: const EdgeInsets.fromLTRB(20, 8, 20, 120),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               _buildUserStats(context, userData, ref, theme, isDark),
-              const SizedBox(height: 12),
+              const SizedBox(height: 16),
               _buildDailyProgress(context, streaks, theme, isDark),
               Padding(
-                padding: const EdgeInsets.only(top: 32, bottom: 16),
+                padding: const EdgeInsets.only(top: 40, bottom: 20, left: 4),
                 child: Text(
                   'ACHIEVEMENTS',
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 1.5,
-                    color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    letterSpacing: 2.0,
+                    fontWeight: FontWeight.w900,
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
                   ),
                 ),
               ),
@@ -133,34 +132,22 @@ class ProfileScreen extends ConsumerWidget {
   ) {
     final theme = Theme.of(context);
     return GestureDetector(
-      onTap: () {
-        switch (currentMode) {
-          case AppThemeMode.light:
-            themeNotifier.setThemeMode(AppThemeMode.dark);
-            break;
-          case AppThemeMode.dark:
-            themeNotifier.setThemeMode(AppThemeMode.system);
-            break;
-          case AppThemeMode.system:
-            themeNotifier.setThemeMode(AppThemeMode.light);
-            break;
-        }
-      },
+      onTap: () => themeNotifier.toggleTheme(),
       child: Container(
-        width: 36,
-        height: 36,
+        width: 40,
+        height: 40,
         decoration: BoxDecoration(
-          color: theme.colorScheme.onSurface.withValues(alpha: 0.05),
-          borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
+          color: theme.colorScheme.surface,
+          borderRadius: BorderRadius.circular(12),
           border: Border.all(
             color: theme.colorScheme.outline.withValues(alpha: 0.2),
             width: 1,
           ),
         ),
         child: Icon(
-          isDark ? Icons.dark_mode_rounded : Icons.light_mode_rounded,
-          size: 18,
-          color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+          themeNotifier.themeIcon,
+          size: 20,
+          color: theme.colorScheme.primary,
         ),
       ),
     );
@@ -182,11 +169,18 @@ class ProfileScreen extends ConsumerWidget {
       padding: const EdgeInsets.all(24),
       decoration: BoxDecoration(
         color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(DesignSystem.radiusXL),
+        borderRadius: BorderRadius.circular(DesignSystem.radius2XL),
         border: Border.all(
-          color: isDark ? theme.colorScheme.outline.withValues(alpha: 0.3) : theme.colorScheme.outline,
+          color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.15 : 0.08),
           width: 1,
         ),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
+            blurRadius: 12,
+            offset: const Offset(0, 4),
+          ),
+        ],
       ),
       child: Column(
         children: [
@@ -198,69 +192,88 @@ class ProfileScreen extends ConsumerWidget {
                 children: [
                   Text(
                     'LEVEL ${userData.level}',
-                    style: TextStyle(
-                      fontSize: 28,
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: -0.5,
-                      color: theme.colorScheme.onSurface,
+                    style: theme.textTheme.displaySmall?.copyWith(
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: -1.0,
                     ),
                   ),
                   const SizedBox(height: 4),
                   Text(
-                    'TOTAL XP: ${userData.xp}',
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w600,
+                    'TOTAL XP GATHERED: ${userData.xp}',
+                    style: theme.textTheme.labelSmall?.copyWith(
                       letterSpacing: 0.5,
-                      color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
+                      fontWeight: FontWeight.w700,
                     ),
                   ),
                 ],
               ),
               Container(
-                width: 56,
-                height: 56,
+                width: 64,
+                height: 64,
                 decoration: BoxDecoration(
-                  gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: isDark
-                        ? [const Color(0xFF3B82F6), const Color(0xFF8B5CF6)]
-                        : [const Color(0xFF2563EB), const Color(0xFF7C3AED)],
+                  color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(DesignSystem.radiusXL),
+                  border: Border.all(
+                    color: theme.colorScheme.primary.withValues(alpha: 0.2),
+                    width: 1,
                   ),
-                  borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
                 ),
-                child: const Icon(
+                child: Icon(
                   Icons.shield_rounded,
-                  size: 28,
-                  color: Colors.white,
+                  size: 32,
+                  color: theme.colorScheme.primary,
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 24),
-          ClipRRect(
-            borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
-            child: LinearProgressIndicator(
-              value: progress.clamp(0.0, 1.0),
-              minHeight: 8,
-              backgroundColor: theme.colorScheme.onSurface.withValues(alpha: 0.08),
-              valueColor: AlwaysStoppedAnimation(
-                isDark ? const Color(0xFF3B82F6) : const Color(0xFF2563EB),
+          const SizedBox(height: 32),
+          Stack(
+            children: [
+              Container(
+                height: 12,
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.05),
+                  borderRadius: BorderRadius.circular(6),
+                ),
               ),
-            ),
+              FractionallySizedBox(
+                widthFactor: progress.clamp(0.0, 1.0),
+                child: Container(
+                  height: 12,
+                  decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      colors: [
+                        theme.colorScheme.primary,
+                        theme.colorScheme.primary.withValues(alpha: 0.7),
+                      ],
+                    ),
+                    borderRadius: BorderRadius.circular(6),
+                  ),
+                ),
+              ),
+            ],
           ),
-          const SizedBox(height: 8),
-          Align(
-            alignment: Alignment.centerRight,
-            child: Text(
-              '${nextLevelXp - userData.xp} XP TO LEVEL ${userData.level + 1}',
-              style: TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w600,
-                color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
+          const SizedBox(height: 12),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(
+                'PROGRESS',
+                style: theme.textTheme.labelSmall?.copyWith(
+                  fontWeight: FontWeight.w800,
+                  fontSize: 9,
+                ),
               ),
-            ),
+              Text(
+                '${nextLevelXp - userData.xp} XP UNTIL LEVEL ${userData.level + 1}',
+                style: theme.textTheme.labelSmall?.copyWith(
+                  fontWeight: FontWeight.w800,
+                  fontSize: 9,
+                  color: theme.colorScheme.primary,
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -274,7 +287,7 @@ class ProfileScreen extends ConsumerWidget {
     bool isDark,
   ) {
     final solvedCount = streaks.values.where((s) => s.solvedToday).length;
-    final totalGames = 6;
+    const totalGames = 6;
     final progress = totalGames > 0 ? solvedCount / totalGames : 0.0;
     final isComplete = solvedCount == totalGames;
 
@@ -282,75 +295,65 @@ class ProfileScreen extends ConsumerWidget {
       padding: const EdgeInsets.all(20),
       decoration: BoxDecoration(
         color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(DesignSystem.radiusXL),
+        borderRadius: BorderRadius.circular(DesignSystem.radius2XL),
         border: Border.all(
-          color: isDark ? theme.colorScheme.outline.withValues(alpha: 0.3) : theme.colorScheme.outline,
+          color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.15 : 0.08),
           width: 1,
         ),
       ),
       child: Row(
         children: [
           Container(
-            width: 48,
-            height: 48,
+            width: 52,
+            height: 52,
             decoration: BoxDecoration(
               color: isComplete
-                  ? DesignSystem.gameGreen.withValues(alpha: isDark ? 0.2 : 0.1)
-                  : theme.colorScheme.onSurface.withValues(alpha: 0.05),
-              borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
-              border: Border.all(
-                color: isComplete
-                    ? DesignSystem.gameGreen.withValues(alpha: 0.3)
-                    : theme.colorScheme.outline.withValues(alpha: 0.3),
-                width: 1,
-              ),
+                  ? DesignSystem.gameGreen.withValues(alpha: 0.1)
+                  : theme.colorScheme.primary.withValues(alpha: 0.05),
+              borderRadius: BorderRadius.circular(16),
             ),
             child: Icon(
-              isComplete ? Icons.check_rounded : Icons.timer_outlined,
-              size: 24,
-              color: isComplete
-                  ? DesignSystem.gameGreen
-                  : theme.colorScheme.onSurface.withValues(alpha: 0.4),
+              isComplete ? Icons.check_circle_rounded : Icons.radar_rounded,
+              size: 26,
+              color: isComplete ? DesignSystem.gameGreen : theme.colorScheme.primary,
             ),
           ),
-          const SizedBox(width: 16),
+          const SizedBox(width: 20),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'DAILY PROGRESS',
-                  style: TextStyle(
-                    fontSize: 15,
-                    fontWeight: FontWeight.w600,
-                    letterSpacing: -0.2,
-                    color: theme.colorScheme.onSurface,
+                  'DAILY STATUS',
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    fontWeight: FontWeight.w900,
+                    letterSpacing: 1.0,
                   ),
                 ),
                 const SizedBox(height: 12),
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
-                  child: LinearProgressIndicator(
-                    value: progress,
-                    minHeight: 6,
-                    backgroundColor: theme.colorScheme.onSurface.withValues(alpha: 0.08),
-                    valueColor: AlwaysStoppedAnimation(
-                      isComplete
-                          ? DesignSystem.gameGreen
-                          : isDark
-                              ? const Color(0xFF3B82F6)
-                              : const Color(0xFF2563EB),
+                Row(
+                  children: [
+                    Expanded(
+                      child: ClipRRect(
+                        borderRadius: BorderRadius.circular(4),
+                        child: LinearProgressIndicator(
+                          value: progress,
+                          minHeight: 6,
+                          backgroundColor: theme.colorScheme.onSurface.withValues(alpha: 0.05),
+                          valueColor: AlwaysStoppedAnimation(
+                            isComplete ? DesignSystem.gameGreen : theme.colorScheme.primary,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
-                ),
-                const SizedBox(height: 8),
-                Text(
-                  '$solvedCount OF $totalGames COMPLETED',
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w600,
-                    color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
-                  ),
+                    const SizedBox(width: 12),
+                    Text(
+                      '$solvedCount/$totalGames',
+                      style: theme.textTheme.labelMedium?.copyWith(
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),
@@ -372,90 +375,82 @@ class ProfileScreen extends ConsumerWidget {
     return Container(
       padding: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: isUnlocked
-            ? theme.colorScheme.surface
-            : theme.colorScheme.surface.withValues(alpha: isDark ? 0.5 : 0.7),
-        borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
+        color: theme.colorScheme.surface,
+        borderRadius: BorderRadius.circular(DesignSystem.radiusXL),
         border: Border.all(
           color: isUnlocked
-              ? isDark
-                  ? theme.colorScheme.outline.withValues(alpha: 0.4)
-                  : theme.colorScheme.outline
-              : theme.colorScheme.outline.withValues(alpha: 0.2),
-          width: isUnlocked ? 1 : 1,
+              ? theme.colorScheme.primary.withValues(alpha: 0.2)
+              : theme.colorScheme.outline.withValues(alpha: 0.1),
+          width: 1.5,
         ),
       ),
       child: Row(
         children: [
           Container(
-            width: 44,
-            height: 44,
+            width: 48,
+            height: 48,
             decoration: BoxDecoration(
               color: isUnlocked
-                  ? DesignSystem.gamePurple.withValues(alpha: isDark ? 0.2 : 0.1)
+                  ? theme.colorScheme.primary.withValues(alpha: 0.1)
                   : theme.colorScheme.onSurface.withValues(alpha: 0.03),
-              borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
+              borderRadius: BorderRadius.circular(14),
             ),
             child: Icon(
               achievement.icon,
-              size: 22,
+              size: 24,
               color: isUnlocked
-                  ? DesignSystem.gamePurple
-                  : theme.colorScheme.onSurface.withValues(alpha: 0.15),
+                  ? theme.colorScheme.primary
+                  : theme.colorScheme.onSurface.withValues(alpha: 0.2),
             ),
           ),
-          const SizedBox(width: 14),
+          const SizedBox(width: 16),
           Expanded(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
                   achievement.title,
-                  style: TextStyle(
-                    fontWeight: FontWeight.w700,
-                    fontSize: 14,
+                  style: theme.textTheme.titleSmall?.copyWith(
+                    fontWeight: FontWeight.w800,
                     letterSpacing: 0.5,
                     color: isUnlocked
                         ? theme.colorScheme.onSurface
-                        : theme.colorScheme.onSurface.withValues(alpha: 0.25),
+                        : theme.colorScheme.onSurface.withValues(alpha: 0.3),
                   ),
                 ),
                 const SizedBox(height: 2),
                 Text(
                   achievement.description,
-                  style: TextStyle(
-                    fontSize: 12,
+                  style: theme.textTheme.bodySmall?.copyWith(
                     fontWeight: FontWeight.w600,
                     color: isUnlocked
                         ? theme.colorScheme.onSurface.withValues(alpha: 0.5)
-                        : theme.colorScheme.onSurface.withValues(alpha: 0.15),
+                        : theme.colorScheme.onSurface.withValues(alpha: 0.2),
                   ),
                 ),
               ],
             ),
           ),
           if (isUnlocked)
-            Container(
-              width: 24,
-              height: 24,
-              decoration: BoxDecoration(
-                color: DesignSystem.gameGreen.withValues(alpha: isDark ? 0.2 : 0.1),
-                shape: BoxShape.circle,
-              ),
-              child: const Icon(
-                Icons.check_rounded,
-                size: 14,
-                color: DesignSystem.gameGreen,
-              ),
+            Icon(
+              Icons.stars_rounded,
+              size: 24,
+              color: DesignSystem.gameOrange.withValues(alpha: 0.8),
             )
           else
-            Text(
-              '${xpLeft} LEFT',
-              style: TextStyle(
-                fontSize: 10,
-                fontWeight: FontWeight.w700,
-                letterSpacing: 0.5,
-                color: theme.colorScheme.onSurface.withValues(alpha: 0.2),
+            Container(
+              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.05),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Text(
+                '$xpLeft XP',
+                style: theme.textTheme.labelSmall?.copyWith(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 9,
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.3),
+                ),
               ),
             ),
         ],

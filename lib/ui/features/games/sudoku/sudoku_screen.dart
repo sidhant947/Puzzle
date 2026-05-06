@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'sudoku_provider.dart';
 import '../../../../../providers/user_providers.dart';
+import '../../../../../utils/design_system.dart';
+import '../../../../../utils/haptic_feedback.dart';
 
 class SudokuScreen extends ConsumerStatefulWidget {
   const SudokuScreen({super.key});
@@ -17,107 +18,197 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
     final state = ref.watch(sudokuNotifierProvider);
     final notifier = ref.read(sudokuNotifierProvider.notifier);
     final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
 
     ref.listen(sudokuNotifierProvider, (previous, next) {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
-        _showVictoryDialog(context, ref);
+        HapticFeedbackUtil.victory();
+        _showVictoryDialog(context, ref, theme);
       }
     });
 
     return Scaffold(
+      backgroundColor: theme.colorScheme.surface,
       appBar: AppBar(
-        title: const Text('SUDOKU'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: Text(
+          'SUDOKU',
+          style: theme.textTheme.titleMedium?.copyWith(
+            letterSpacing: 4,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
+        actions: [
+          IconButton(
+            icon: const Icon(Icons.refresh_rounded),
+            onPressed: () {
+              HapticFeedbackUtil.mediumImpact();
+              notifier.initGame();
+            },
+          ),
+          const SizedBox(width: 8),
+        ],
       ),
       body: SafeArea(
         child: Column(
           children: [
-            const SizedBox(height: 32),
-            _buildGrid(state, notifier, theme),
+            const SizedBox(height: DesignSystem.spaceLG),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
+              child: Column(
+                children: [
+                  Text(
+                    'LOGIC GRID',
+                    style: theme.textTheme.labelSmall?.copyWith(
+                      color: theme.colorScheme.primary,
+                      letterSpacing: 2,
+                      fontWeight: FontWeight.w900,
+                    ),
+                  ),
+                  const SizedBox(height: DesignSystem.spaceSM),
+                  Text(
+                    'Complete the grid so that every row, column, and 2x2 box contains all digits from 1 to 4.',
+                    textAlign: TextAlign.center,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
+                      height: 1.5,
+                    ),
+                  ),
+                ],
+              ),
+            ),
             const Spacer(),
-            _buildNumberPad(notifier, theme),
-            const SizedBox(height: 32),
+            _buildGrid(state, notifier, theme, isDark),
+            const Spacer(),
+            _buildNumberPad(notifier, theme, isDark),
+            const SizedBox(height: DesignSystem.space2XL),
           ],
         ),
       ),
     );
   }
 
-  Widget _buildGrid(SudokuState state, SudokuNotifier notifier, ThemeData theme) {
+  Widget _buildGrid(SudokuState state, SudokuNotifier notifier, ThemeData theme, bool isDark) {
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 20),
-      padding: const EdgeInsets.all(1),
+      margin: const EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.all(DesignSystem.spaceXS),
       decoration: BoxDecoration(
-        color: theme.colorScheme.onSurface,
-        border: Border.all(color: theme.colorScheme.onSurface, width: 2),
+        color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.1 : 0.05),
+        borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
+        border: Border.all(
+          color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.2 : 0.1),
+          width: 1,
+        ),
       ),
-      child: AspectRatio(
-        aspectRatio: 1,
-        child: Column(
-          children: List.generate(4, (r) {
-            return Expanded(
-              child: Row(
-                children: List.generate(4, (c) {
-                  final isInitial = state.initialBoard[r][c] != 0;
-                  final isSelected = state.selectedRow == r && state.selectedCol == c;
-                  final value = state.currentBoard[r][c];
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(DesignSystem.radiusLG - 4),
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: Container(
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.05),
+            child: Column(
+              children: List.generate(4, (r) {
+                return Expanded(
+                  child: Row(
+                    children: List.generate(4, (c) {
+                      final isInitial = state.initialBoard[r][c] != 0;
+                      final isSelected = state.selectedRow == r && state.selectedCol == c;
+                      final value = state.currentBoard[r][c];
 
-                  return Expanded(
-                    child: GestureDetector(
-                      onTap: () {
-                        if (!isInitial) {
-                          HapticFeedback.selectionClick();
-                          notifier.selectCell(r, c);
-                        }
-                      },
-                      child: Container(
-                        decoration: BoxDecoration(
-                          color: isSelected ? theme.colorScheme.onSurface : theme.colorScheme.surface,
-                          border: Border(
-                            right: BorderSide(color: theme.colorScheme.onSurface, width: c == 1 ? 2 : 1),
-                            bottom: BorderSide(color: theme.colorScheme.onSurface, width: r == 1 ? 2 : 1),
-                          ),
-                        ),
-                        child: Center(
-                          child: Text(
-                            value == 0 ? '' : value.toString(),
-                            style: TextStyle(
-                              fontSize: 28,
-                              fontWeight: isInitial ? FontWeight.w900 : FontWeight.w400,
-                              color: isSelected ? theme.colorScheme.surface : theme.colorScheme.onSurface,
+                      // Thick borders for 2x2 boxes
+                      final bool borderRight = c == 1;
+                      final bool borderBottom = r == 1;
+
+                      return Expanded(
+                        child: GestureDetector(
+                          onTap: () {
+                            if (!isInitial) {
+                              HapticFeedbackUtil.selectionClick();
+                              notifier.selectCell(r, c);
+                            }
+                          },
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 200),
+                            decoration: BoxDecoration(
+                              color: isSelected 
+                                ? theme.colorScheme.primary.withValues(alpha: 0.1)
+                                : theme.colorScheme.surface,
+                              border: Border(
+                                right: BorderSide(
+                                  color: theme.colorScheme.onSurface.withValues(alpha: borderRight ? 0.4 : 0.1), 
+                                  width: borderRight ? 2.0 : 0.5
+                                ),
+                                bottom: BorderSide(
+                                  color: theme.colorScheme.onSurface.withValues(alpha: borderBottom ? 0.4 : 0.1), 
+                                  width: borderBottom ? 2.0 : 0.5
+                                ),
+                              ),
+                            ),
+                            child: Center(
+                              child: Text(
+                                value == 0 ? '' : value.toString(),
+                                style: theme.textTheme.displaySmall?.copyWith(
+                                  fontSize: 32,
+                                  fontWeight: isInitial ? FontWeight.w900 : FontWeight.w500,
+                                  color: isSelected 
+                                    ? theme.colorScheme.primary 
+                                    : isInitial 
+                                      ? theme.colorScheme.onSurface 
+                                      : theme.colorScheme.onSurface.withValues(alpha: 0.6),
+                                ),
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                    ),
-                  );
-                }),
-              ),
-            );
-          }),
+                      );
+                    }),
+                  ),
+                );
+              }),
+            ),
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildNumberPad(SudokuNotifier notifier, ThemeData theme) {
+  Widget _buildNumberPad(SudokuNotifier notifier, ThemeData theme, bool isDark) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: List.generate(4, (i) {
           final num = i + 1;
           return SizedBox(
-            width: 70,
-            height: 70,
-            child: OutlinedButton(
+            width: 64,
+            height: 64,
+            child: ElevatedButton(
               onPressed: () {
-                HapticFeedback.lightImpact();
+                HapticFeedbackUtil.lightImpact();
                 notifier.setNumber(num);
               },
-              style: OutlinedButton.styleFrom(
+              style: ElevatedButton.styleFrom(
                 padding: EdgeInsets.zero,
+                backgroundColor: theme.colorScheme.surface,
+                foregroundColor: theme.colorScheme.primary,
+                side: BorderSide(
+                  color: theme.colorScheme.primary.withValues(alpha: 0.2),
+                  width: 1.5,
+                ),
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(16),
+                ),
               ),
-              child: Text(num.toString(), style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w900)),
+              child: Text(
+                num.toString(), 
+                style: theme.textTheme.headlineMedium?.copyWith(
+                  fontWeight: FontWeight.w900,
+                  color: theme.colorScheme.primary,
+                ),
+              ),
             ),
           );
         }),
@@ -125,7 +216,7 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
     );
   }
 
-  void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
+  void _showVictoryDialog(BuildContext context, WidgetRef ref, ThemeData theme) async {
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('sudoku');
 
     if (!context.mounted) return;
@@ -134,16 +225,60 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-        title: const Text('WELL DONE', style: TextStyle(fontWeight: FontWeight.w900)),
-        content: const Text('Puzzle solved successfully.'),
+        backgroundColor: theme.colorScheme.surface,
+        surfaceTintColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(DesignSystem.radiusXL),
+          side: BorderSide(color: theme.colorScheme.outline.withValues(alpha: 0.2)),
+        ),
+        title: Center(
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(DesignSystem.spaceMD),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  Icons.auto_awesome_rounded,
+                  color: theme.colorScheme.primary,
+                  size: 48,
+                ),
+              ),
+              const SizedBox(height: DesignSystem.spaceMD),
+              Text(
+                'WELL DONE',
+                style: theme.textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: 2,
+                ),
+              ),
+            ],
+          ),
+        ),
+        content: Text(
+          'Puzzle solved successfully with perfect logic.',
+          textAlign: TextAlign.center,
+          style: theme.textTheme.bodyMedium?.copyWith(
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+          ),
+        ),
         actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-              Navigator.of(context).pop();
-            },
-            child: const Text('EXIT'),
+          Padding(
+            padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
+            child: Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
+                },
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(200, 50),
+                ),
+                child: const Text('CONTINUE'),
+              ),
+            ),
           ),
         ],
       ),

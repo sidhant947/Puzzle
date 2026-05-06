@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'word_search_provider.dart';
 import '../../../../../providers/user_providers.dart';
+import '../../../../../utils/design_system.dart';
+import '../../../../../utils/haptic_feedback.dart';
 
 class WordSearchScreen extends ConsumerStatefulWidget {
   const WordSearchScreen({super.key});
@@ -23,21 +25,38 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
     final state = ref.watch(wordSearchNotifierProvider);
     final notifier = ref.read(wordSearchNotifierProvider.notifier);
     final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
 
     ref.listen(wordSearchNotifierProvider, (previous, next) {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
+        HapticFeedbackUtil.victory();
         _showVictoryDialog(context, ref, theme);
       }
     });
 
     return Scaffold(
+      backgroundColor: theme.colorScheme.surface,
       appBar: AppBar(
-        title: const Text('WORD SEARCH'),
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
+          onPressed: () => Navigator.of(context).pop(),
+        ),
+        title: Text(
+          'WORD SEARCH',
+          style: theme.textTheme.titleMedium?.copyWith(
+            letterSpacing: 4,
+            fontWeight: FontWeight.w800,
+          ),
+        ),
         actions: [
           IconButton(
-            icon: const Icon(Icons.refresh),
-            onPressed: () => notifier.initGame(),
+            icon: const Icon(Icons.refresh_rounded),
+            onPressed: () {
+              HapticFeedbackUtil.mediumImpact();
+              notifier.initGame();
+            },
           ),
+          const SizedBox(width: 8),
         ],
       ),
       body: state.board == null
@@ -45,57 +64,90 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
           : SafeArea(
               child: Column(
                 children: [
+                  const SizedBox(height: DesignSystem.spaceLG),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
+                    child: Column(
+                      children: [
+                        Text(
+                          'GRID SCAN',
+                          style: theme.textTheme.labelSmall?.copyWith(
+                            color: theme.colorScheme.primary,
+                            letterSpacing: 2,
+                            fontWeight: FontWeight.w900,
+                          ),
+                        ),
+                        const SizedBox(height: DesignSystem.spaceSM),
+                        Text(
+                          'Scan the grid in any direction to find the hidden words listed below.',
+                          textAlign: TextAlign.center,
+                          style: theme.textTheme.bodySmall?.copyWith(
+                            color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
+                            height: 1.5,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
                   Expanded(
                     child: Center(
                       child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: _buildGrid(state, notifier, theme),
+                        padding: const EdgeInsets.all(24.0),
+                        child: _buildGrid(state, notifier, theme, isDark),
                       ),
                     ),
                   ),
-                  _buildWordList(state, theme),
-                  const SizedBox(height: 16),
+                  _buildWordList(state, theme, isDark),
+                  const SizedBox(height: 24),
                 ],
               ),
             ),
     );
   }
 
-  Widget _buildWordList(WordSearchState state, ThemeData theme) {
+  Widget _buildWordList(WordSearchState state, ThemeData theme, bool isDark) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
       width: double.infinity,
       decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        border: Border(top: BorderSide(color: theme.colorScheme.onSurface.withValues(alpha: 0.1), width: 1)),
+        color: theme.colorScheme.primary.withValues(alpha: 0.03),
+        border: Border.symmetric(horizontal: BorderSide(color: theme.colorScheme.outline.withValues(alpha: 0.1), width: 1)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'WORDS TO FIND',
-            style: TextStyle(
-              fontSize: 12,
+            style: theme.textTheme.labelSmall?.copyWith(
               fontWeight: FontWeight.w900,
               letterSpacing: 2.0,
+              color: theme.colorScheme.primary,
             ),
           ),
-          const SizedBox(height: 12),
+          const SizedBox(height: 16),
           Wrap(
-            spacing: 16,
-            runSpacing: 8,
+            spacing: 12,
+            runSpacing: 10,
             children: state.board!.words.map((word) {
               final isFound = word.isFound;
-              return Text(
-                word.word,
-                style: TextStyle(
-                  fontSize: 14,
-                  fontWeight: isFound ? FontWeight.w400 : FontWeight.w900,
+              return Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                decoration: BoxDecoration(
                   color: isFound 
-                      ? theme.colorScheme.onSurface.withValues(alpha: 0.3) 
-                      : theme.colorScheme.onSurface,
-                  decoration: isFound ? TextDecoration.lineThrough : null,
-                  letterSpacing: 1.0,
+                      ? DesignSystem.gameGreen.withValues(alpha: 0.1) 
+                      : theme.colorScheme.onSurface.withValues(alpha: 0.05),
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: Text(
+                  word.word,
+                  style: theme.textTheme.labelMedium?.copyWith(
+                    fontWeight: isFound ? FontWeight.w500 : FontWeight.w800,
+                    color: isFound 
+                        ? DesignSystem.gameGreen 
+                        : theme.colorScheme.onSurface,
+                    decoration: isFound ? TextDecoration.lineThrough : null,
+                    letterSpacing: 0.5,
+                  ),
                 ),
               );
             }).toList(),
@@ -105,51 +157,66 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
     );
   }
 
-  Widget _buildGrid(WordSearchState state, WordSearchNotifier notifier, ThemeData theme) {
+  Widget _buildGrid(WordSearchState state, WordSearchNotifier notifier, ThemeData theme, bool isDark) {
     final board = state.board!;
     return LayoutBuilder(builder: (context, constraints) {
-      final double availableWidth = constraints.maxWidth - 32;
+      final double availableWidth = constraints.maxWidth;
       final double gridSize = availableWidth;
       final double cellSize = gridSize / board.size;
 
       return GestureDetector(
-        onPanStart: (details) => _handlePanUpdate(details.localPosition, cellSize, board.size, notifier, true),
+        onPanStart: (details) {
+          HapticFeedbackUtil.gameInteraction();
+          _handlePanUpdate(details.localPosition, cellSize, board.size, notifier, true);
+        },
         onPanUpdate: (details) => _handlePanUpdate(details.localPosition, cellSize, board.size, notifier, false),
-        onPanEnd: (_) => notifier.endSelection(),
+        onPanEnd: (_) {
+          HapticFeedbackUtil.selectionClick();
+          notifier.endSelection();
+        },
         child: Container(
           width: gridSize,
           height: gridSize,
+          padding: const EdgeInsets.all(DesignSystem.spaceXS),
           decoration: BoxDecoration(
-            color: theme.colorScheme.surface,
-            border: Border.all(color: theme.colorScheme.onSurface, width: 2),
-            borderRadius: BorderRadius.zero,
+            color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.1 : 0.05),
+            borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
+            border: Border.all(
+              color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.2 : 0.1),
+              width: 1,
+            ),
           ),
-          child: Stack(
-            children: [
-              _buildFoundLines(state, cellSize, theme),
-              _buildSelectionLine(state, cellSize, theme),
-              GridView.builder(
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: board.size,
-                ),
-                itemCount: board.size * board.size,
-                itemBuilder: (context, index) {
-                  int x = index % board.size;
-                  int y = index ~/ board.size;
-                  return Center(
-                    child: Text(
-                      board.grid[y][x],
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w900,
-                        color: theme.colorScheme.onSurface,
-                      ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(DesignSystem.radiusLG - 4),
+            child: Container(
+              color: theme.colorScheme.surface,
+              child: Stack(
+                children: [
+                  _buildFoundLines(state, cellSize, theme),
+                  _buildSelectionLine(state, cellSize, theme),
+                  GridView.builder(
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: board.size,
                     ),
-                  );
-                },
+                    itemCount: board.size * board.size,
+                    itemBuilder: (context, index) {
+                      int x = index % board.size;
+                      int y = index ~/ board.size;
+                      return Center(
+                        child: Text(
+                          board.grid[y][x],
+                          style: theme.textTheme.titleMedium?.copyWith(
+                            fontWeight: FontWeight.w800,
+                            color: theme.colorScheme.onSurface,
+                          ),
+                        ),
+                      );
+                    },
+                  ),
+                ],
               ),
-            ],
+            ),
           ),
         ),
       );
@@ -172,14 +239,14 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
   Widget _buildFoundLines(WordSearchState state, double cellSize, ThemeData theme) {
     return Stack(
       children: state.board!.words.where((w) => w.isFound).map((w) {
-        return _buildLine(w.positions, cellSize, theme.colorScheme.onSurface.withValues(alpha: 0.15));
+        return _buildLine(w.positions, cellSize, DesignSystem.gameGreen.withValues(alpha: 0.2));
       }).toList(),
     );
   }
 
   Widget _buildSelectionLine(WordSearchState state, double cellSize, ThemeData theme) {
     if (state.selection.isEmpty) return const SizedBox.shrink();
-    return _buildLine(state.selection, cellSize, theme.colorScheme.onSurface.withValues(alpha: 0.4));
+    return _buildLine(state.selection, cellSize, theme.colorScheme.primary.withValues(alpha: 0.3));
   }
 
   Widget _buildLine(List<Point<int>> positions, double cellSize, Color color) {
@@ -193,7 +260,7 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
         start: Offset((start.x + 0.5) * cellSize, (start.y + 0.5) * cellSize),
         end: Offset((end.x + 0.5) * cellSize, (end.y + 0.5) * cellSize),
         color: color,
-        strokeWidth: cellSize * 0.8,
+        strokeWidth: cellSize * 0.7,
       ),
     );
   }
@@ -207,16 +274,60 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-        title: const Text('WELL DONE', style: TextStyle(fontWeight: FontWeight.w900)),
-        content: const Text('All words found successfully.'),
+        backgroundColor: theme.colorScheme.surface,
+        surfaceTintColor: Colors.transparent,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(DesignSystem.radiusXL),
+          side: BorderSide(color: theme.colorScheme.outline.withValues(alpha: 0.2)),
+        ),
+        title: Center(
+          child: Column(
+            children: [
+              Container(
+                padding: const EdgeInsets.all(DesignSystem.spaceMD),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  Icons.auto_awesome_rounded,
+                  color: theme.colorScheme.primary,
+                  size: 48,
+                ),
+              ),
+              const SizedBox(height: DesignSystem.spaceMD),
+              Text(
+                'WELL DONE',
+                style: theme.textTheme.headlineSmall?.copyWith(
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: 2,
+                ),
+              ),
+            ],
+          ),
+        ),
+        content: Text(
+          'All words found successfully with keen observation.',
+          textAlign: TextAlign.center,
+          style: theme.textTheme.bodyMedium?.copyWith(
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+          ),
+        ),
         actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-              Navigator.of(context).pop();
-            },
-            child: const Text('EXIT'),
+          Padding(
+            padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
+            child: Center(
+              child: ElevatedButton(
+                onPressed: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
+                },
+                style: ElevatedButton.styleFrom(
+                  minimumSize: const Size(200, 50),
+                ),
+                child: const Text('CONTINUE'),
+              ),
+            ),
           ),
         ],
       ),
@@ -236,7 +347,7 @@ class LinePainter extends CustomPainter {
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
       ..color = color
-      ..strokeCap = StrokeCap.square // Sharp corners
+      ..strokeCap = StrokeCap.round
       ..strokeWidth = strokeWidth;
     canvas.drawLine(start, end, paint);
   }

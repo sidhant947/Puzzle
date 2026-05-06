@@ -95,14 +95,19 @@ class DesignSystem {
         brightness: brightness,
         primary: primary,
         onPrimary: onPrimary,
+        primaryContainer: primary.withValues(alpha: isDark ? 0.2 : 0.1),
+        onPrimaryContainer: primary,
         secondary: secondary,
         onSecondary: onSecondary,
+        secondaryContainer: secondary.withValues(alpha: isDark ? 0.2 : 0.1),
+        onSecondaryContainer: secondary,
         error: error,
         onError: onError,
         surface: surface,
         onSurface: onSurface,
-        outline: outline,
         surfaceContainerHighest: surfaceElevated,
+        outline: outline,
+        outlineVariant: outlineVariant,
       ),
       appBarTheme: AppBarTheme(
         backgroundColor: background,
@@ -113,18 +118,22 @@ class DesignSystem {
         surfaceTintColor: Colors.transparent,
         titleTextStyle: TextStyle(
           color: onSurface,
-          fontSize: 17,
-          fontWeight: FontWeight.w600,
-          letterSpacing: -0.4,
+          fontSize: 18,
+          fontWeight: FontWeight.w700,
+          letterSpacing: -0.5,
         ),
       ),
       cardTheme: CardThemeData(
         color: surface,
         elevation: 0,
         margin: EdgeInsets.zero,
+        clipBehavior: Clip.antiAlias,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(radiusLG),
-          side: BorderSide(color: outline, width: 1),
+          borderRadius: BorderRadius.circular(radiusXL),
+          side: BorderSide(
+            color: outline.withValues(alpha: isDark ? 0.2 : 0.1),
+            width: 1,
+          ),
         ),
       ),
       elevatedButtonTheme: ElevatedButtonThemeData(
@@ -133,12 +142,12 @@ class DesignSystem {
           foregroundColor: onPrimary,
           elevation: 0,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(radiusMD),
+            borderRadius: BorderRadius.circular(radiusLG),
           ),
-          padding: const EdgeInsets.symmetric(horizontal: spaceLG, vertical: spaceMD),
+          padding: const EdgeInsets.symmetric(horizontal: spaceXL, vertical: spaceMD),
           textStyle: const TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.w600,
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
             letterSpacing: -0.2,
           ),
         ),
@@ -146,14 +155,14 @@ class DesignSystem {
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
           foregroundColor: onSurface,
-          side: BorderSide(color: outline, width: 1),
+          side: BorderSide(color: outline.withValues(alpha: isDark ? 0.3 : 0.2), width: 1.5),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(radiusMD),
+            borderRadius: BorderRadius.circular(radiusLG),
           ),
-          padding: const EdgeInsets.symmetric(horizontal: spaceLG, vertical: spaceMD),
+          padding: const EdgeInsets.symmetric(horizontal: spaceXL, vertical: spaceMD),
           textStyle: const TextStyle(
-            fontSize: 15,
-            fontWeight: FontWeight.w600,
+            fontSize: 16,
+            fontWeight: FontWeight.w700,
             letterSpacing: -0.2,
           ),
         ),
@@ -166,7 +175,7 @@ class DesignSystem {
           ),
           textStyle: const TextStyle(
             fontSize: 15,
-            fontWeight: FontWeight.w600,
+            fontWeight: FontWeight.w700,
             letterSpacing: -0.2,
           ),
         ),
@@ -175,104 +184,46 @@ class DesignSystem {
         filled: true,
         fillColor: surfaceElevated,
         border: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(radiusMD),
+          borderRadius: BorderRadius.circular(radiusLG),
           borderSide: BorderSide.none,
         ),
         enabledBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(radiusMD),
-          borderSide: BorderSide(color: outline, width: 1),
+          borderRadius: BorderRadius.circular(radiusLG),
+          borderSide: BorderSide(color: outline.withValues(alpha: isDark ? 0.3 : 0.2), width: 1),
         ),
         focusedBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(radiusMD),
-          borderSide: BorderSide(color: primary, width: 1.5),
+          borderRadius: BorderRadius.circular(radiusLG),
+          borderSide: BorderSide(color: primary, width: 2),
         ),
         errorBorder: OutlineInputBorder(
-          borderRadius: BorderRadius.circular(radiusMD),
+          borderRadius: BorderRadius.circular(radiusLG),
           borderSide: BorderSide(color: error, width: 1),
         ),
-        labelStyle: TextStyle(color: onSurfaceMuted),
+        labelStyle: TextStyle(color: onSurfaceMuted, fontWeight: FontWeight.w500),
         hintStyle: TextStyle(color: onSurfaceMuted),
-        contentPadding: const EdgeInsets.symmetric(horizontal: spaceMD, vertical: spaceMD),
-      ),
-      dividerTheme: DividerThemeData(
-        color: outline,
-        thickness: 1,
-        space: spaceMD,
+        contentPadding: const EdgeInsets.symmetric(horizontal: spaceLG, vertical: spaceLG),
       ),
       textTheme: TextTheme(
-        displayLarge: TextStyle(fontSize: 57, fontWeight: FontWeight.w600, letterSpacing: -0.25, color: onSurface),
-        displayMedium: TextStyle(fontSize: 45, fontWeight: FontWeight.w600, letterSpacing: -0.25, color: onSurface),
-        displaySmall: TextStyle(fontSize: 36, fontWeight: FontWeight.w600, letterSpacing: -0.25, color: onSurface),
-        headlineLarge: TextStyle(fontSize: 32, fontWeight: FontWeight.w600, letterSpacing: -0.5, color: onSurface),
-        headlineMedium: TextStyle(fontSize: 28, fontWeight: FontWeight.w600, letterSpacing: -0.5, color: onSurface),
-        headlineSmall: TextStyle(fontSize: 24, fontWeight: FontWeight.w600, letterSpacing: -0.5, color: onSurface),
-        titleLarge: TextStyle(fontSize: 22, fontWeight: FontWeight.w600, letterSpacing: -0.5, color: onSurface),
-        titleMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, letterSpacing: -0.15, color: onSurface),
+        displayLarge: TextStyle(fontSize: 48, fontWeight: FontWeight.w800, letterSpacing: -1.0, color: onSurface, height: 1.1),
+        displayMedium: TextStyle(fontSize: 40, fontWeight: FontWeight.w800, letterSpacing: -1.0, color: onSurface, height: 1.1),
+        displaySmall: TextStyle(fontSize: 32, fontWeight: FontWeight.w800, letterSpacing: -1.0, color: onSurface, height: 1.2),
+        headlineLarge: TextStyle(fontSize: 28, fontWeight: FontWeight.w700, letterSpacing: -0.5, color: onSurface),
+        headlineMedium: TextStyle(fontSize: 24, fontWeight: FontWeight.w700, letterSpacing: -0.5, color: onSurface),
+        headlineSmall: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, letterSpacing: -0.5, color: onSurface),
+        titleLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, letterSpacing: -0.4, color: onSurface),
+        titleMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, letterSpacing: -0.2, color: onSurface),
         titleSmall: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, letterSpacing: -0.1, color: onSurface),
-        bodyLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0, color: onSurface),
-        bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, letterSpacing: 0, color: onSurface),
-        bodySmall: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0, color: onSurfaceMuted),
-        labelLarge: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, letterSpacing: -0.1, color: onSurface),
-        labelMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.w600, letterSpacing: 0, color: onSurface),
-        labelSmall: TextStyle(fontSize: 11, fontWeight: FontWeight.w600, letterSpacing: 0.5, color: onSurfaceMuted),
-      ),
-      progressIndicatorTheme: ProgressIndicatorThemeData(
-        color: primary,
-        linearTrackColor: outlineVariant,
-      ),
-      listTileTheme: ListTileThemeData(
-        textColor: onSurface,
-        iconColor: onSurfaceMuted,
-        contentPadding: const EdgeInsets.symmetric(horizontal: spaceMD, vertical: spaceSM),
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(radiusMD),
-        ),
-      ),
-      bottomNavigationBarTheme: BottomNavigationBarThemeData(
-        backgroundColor: surface,
-        selectedItemColor: primary,
-        unselectedItemColor: onSurfaceMuted,
-        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.w600, fontSize: 11),
-        unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.w500, fontSize: 11),
-        type: BottomNavigationBarType.fixed,
-        elevation: 0,
-      ),
-      navigationBarTheme: NavigationBarThemeData(
-        backgroundColor: surface,
-        indicatorColor: primary.withValues(alpha: isDark ? 0.2 : 0.1),
-        surfaceTintColor: Colors.transparent,
-        elevation: 0,
-        height: 64,
-        labelTextStyle: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) {
-            return TextStyle(fontSize: 11, fontWeight: FontWeight.w600, color: onSurface);
-          }
-          return TextStyle(fontSize: 11, fontWeight: FontWeight.w500, color: onSurfaceMuted);
-        }),
-        iconTheme: WidgetStateProperty.resolveWith((states) {
-          if (states.contains(WidgetState.selected)) {
-            return IconThemeData(size: 24, color: primary);
-          }
-          return IconThemeData(size: 24, color: onSurfaceMuted);
-        }),
-      ),
-      floatingActionButtonTheme: FloatingActionButtonThemeData(
-        backgroundColor: primary,
-        foregroundColor: onPrimary,
-        elevation: 2,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(radiusLG),
-        ),
+        bodyLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0, color: onSurface, height: 1.5),
+        bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, letterSpacing: 0, color: onSurface, height: 1.5),
+        bodySmall: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0, color: onSurfaceMuted, height: 1.4),
+        labelLarge: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, letterSpacing: 0.1, color: onSurface),
+        labelMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, letterSpacing: 0.5, color: onSurface),
+        labelSmall: TextStyle(fontSize: 10, fontWeight: FontWeight.w800, letterSpacing: 1.0, color: onSurfaceMuted),
       ),
       iconTheme: IconThemeData(
         color: onSurface,
         size: 24,
       ),
-      primaryIconTheme: IconThemeData(
-        color: onSurface,
-        size: 24,
-      ),
-      canvasColor: surface,
     );
   }
 

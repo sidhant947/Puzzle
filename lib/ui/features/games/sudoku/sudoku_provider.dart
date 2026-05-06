@@ -52,6 +52,16 @@ class SudokuNotifier extends _$SudokuNotifier {
     );
   }
 
+  void initGame() {
+    final solved = _engine.generateBoard();
+    final puzzle = _engine.createPuzzle(solved, 8); // 8 clues for 4x4
+    state = SudokuState(
+      initialBoard: List.generate(4, (r) => List.from(puzzle[r])),
+      currentBoard: List.generate(4, (r) => List.from(puzzle[r])),
+      solvedBoard: solved,
+    );
+  }
+
   void selectCell(int r, int c) {
     if (state.initialBoard[r][c] != 0) return;
     state = state.copyWith(selectedRow: r, selectedCol: c);
