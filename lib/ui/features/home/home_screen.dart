@@ -10,6 +10,8 @@ import '../games/crossword/crossword_screen.dart';
 import '../games/word_search/word_search_screen.dart';
 import '../games/game_2048/game_2048_screen.dart';
 import '../games/crown/crown_screen.dart';
+import '../games/minesweeper/minesweeper_screen.dart';
+import '../games/memory_matrix/memory_matrix_screen.dart';
 
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required Widget page})
@@ -81,6 +83,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'icon': Icons.workspace_premium_rounded,
       'color': DesignSystem.gameTeal,
       'screen': const CrownScreen(),
+    },
+    {
+      'title': 'Minesweeper',
+      'id': 'minesweeper',
+      'icon': Icons.brightness_7_rounded,
+      'color': DesignSystem.gameIndigo,
+      'screen': const MinesweeperScreen(),
+    },
+    {
+      'title': 'Memory Matrix',
+      'id': 'memory_matrix',
+      'icon': Icons.memory_rounded,
+      'color': DesignSystem.gameAmber,
+      'screen': const MemoryMatrixScreen(),
     },
   ];
 
