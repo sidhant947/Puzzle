@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'sudoku_provider.dart';
+part of 'schulte_table_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sudokuNotifierHash() => r'89fe3ac4039689fb19d608003cee7cb5f1f5e12e';
+String _$schulteTableNotifierHash() =>
+    r'382f8919e263985d287f4bd2f39730bf0255901d';
 
-/// See also [SudokuNotifier].
-@ProviderFor(SudokuNotifier)
-final sudokuNotifierProvider =
-    AutoDisposeNotifierProvider<SudokuNotifier, SudokuState>.internal(
-  SudokuNotifier.new,
-  name: r'sudokuNotifierProvider',
+/// See also [SchulteTableNotifier].
+@ProviderFor(SchulteTableNotifier)
+final schulteTableNotifierProvider = AutoDisposeNotifierProvider<
+    SchulteTableNotifier, SchulteTableState>.internal(
+  SchulteTableNotifier.new,
+  name: r'schulteTableNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$sudokuNotifierHash,
+      : _$schulteTableNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$SudokuNotifier = AutoDisposeNotifier<SudokuState>;
+typedef _$SchulteTableNotifier = AutoDisposeNotifier<SchulteTableState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -13,6 +13,7 @@ import '../games/crown/crown_screen.dart';
 import '../games/minesweeper/minesweeper_screen.dart';
 import '../games/memory_matrix/memory_matrix_screen.dart';
 import '../games/nonogram/nonogram_screen.dart';
+import '../games/schulte_table/schulte_table_screen.dart';
 
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required Widget page})
@@ -105,6 +106,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'icon': Icons.grid_view_rounded,
       'color': DesignSystem.gameRose,
       'screen': const NonogramScreen(),
+    },
+    {
+      'title': 'Schulte Table',
+      'id': 'schulte_table',
+      'icon': Icons.speed_rounded,
+      'color': DesignSystem.gameViolet,
+      'screen': const SchulteTableScreen(),
     },
   ];
 
