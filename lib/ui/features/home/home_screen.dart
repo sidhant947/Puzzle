@@ -14,11 +14,11 @@ import '../games/minesweeper/minesweeper_screen.dart';
 import '../games/memory_matrix/memory_matrix_screen.dart';
 import '../games/nonogram/nonogram_screen.dart';
 import '../games/schulte_table/schulte_table_screen.dart';
-import '../games/number_match/number_match_screen.dart';
 import '../games/calculation_sprint/calculation_sprint_screen.dart';
 import '../games/pipes/pipes_screen.dart';
 import '../games/unblock_me/unblock_me_screen.dart';
 import '../games/tents_and_trees/tents_and_trees_screen.dart';
+import '../games/slide_puzzle/slide_puzzle_screen.dart';
 
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required Widget page})
@@ -55,6 +55,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'icon': Icons.grid_4x4_rounded,
       'color': DesignSystem.gameBlue,
       'screen': const SudokuScreen(),
+    },
+    {
+      'title': 'Slide Puzzle',
+      'id': 'slide_puzzle',
+      'icon': Icons.grid_view_rounded,
+      'color': DesignSystem.gameRose,
+      'screen': const SlidePuzzleScreen(),
     },
     {
       'title': 'Pipes',
@@ -139,13 +146,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'icon': Icons.speed_rounded,
       'color': DesignSystem.gameViolet,
       'screen': const SchulteTableScreen(),
-    },
-    {
-      'title': 'Number Match',
-      'id': 'number_match',
-      'icon': Icons.join_inner_rounded,
-      'color': DesignSystem.gameCyan,
-      'screen': const NumberMatchScreen(),
     },
     {
       'title': 'Calc Sprint',

@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'number_match_provider.dart';
+part of 'slide_puzzle_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$numberMatchNotifierHash() =>
-    r'2600a791d1c9bbaad3fcfee14671a4ae872fef83';
+String _$slidePuzzleNotifierHash() =>
+    r'2fda0b3625a357f439d3196ff27a0cf05f60ba22';
 
-/// See also [NumberMatchNotifier].
-@ProviderFor(NumberMatchNotifier)
-final numberMatchNotifierProvider =
-    AutoDisposeNotifierProvider<NumberMatchNotifier, NumberMatchState>.internal(
-  NumberMatchNotifier.new,
-  name: r'numberMatchNotifierProvider',
+/// See also [SlidePuzzleNotifier].
+@ProviderFor(SlidePuzzleNotifier)
+final slidePuzzleNotifierProvider =
+    AutoDisposeNotifierProvider<SlidePuzzleNotifier, SlidePuzzleState>.internal(
+  SlidePuzzleNotifier.new,
+  name: r'slidePuzzleNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$numberMatchNotifierHash,
+      : _$slidePuzzleNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$NumberMatchNotifier = AutoDisposeNotifier<NumberMatchState>;
+typedef _$SlidePuzzleNotifier = AutoDisposeNotifier<SlidePuzzleState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
