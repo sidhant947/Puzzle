@@ -26,6 +26,12 @@ import '../games/color_match/color_match_screen.dart';
 import '../games/path_finder/path_finder_screen.dart';
 import '../games/simon_sequence/simon_sequence_screen.dart';
 import '../games/symmetry/symmetry_screen.dart';
+import '../games/binary_puzzle/binary_puzzle_screen.dart';
+import '../games/bridges/bridges_screen.dart';
+import '../games/odd_one_out/odd_one_out_screen.dart';
+import '../games/spelling_sprint/spelling_sprint_screen.dart';
+import '../games/math_path/math_path_screen.dart';
+import '../games/hue_sort/hue_sort_screen.dart';
 
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required Widget page})
@@ -56,6 +62,48 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   final List<Map<String, dynamic>> _games = [
+    {
+      'title': 'Hue Sort',
+      'id': 'hue_sort',
+      'icon': Icons.gradient_rounded,
+      'color': DesignSystem.gamePurple,
+      'screen': const HueSortScreen(),
+    },
+    {
+      'title': 'Math Path',
+      'id': 'math_path',
+      'icon': Icons.route_rounded,
+      'color': DesignSystem.gameBlue,
+      'screen': const MathPathScreen(),
+    },
+    {
+      'title': 'Spelling Sprint',
+      'id': 'spelling_sprint',
+      'icon': Icons.speed_rounded,
+      'color': DesignSystem.gameAmber,
+      'screen': const SpellingSprintScreen(),
+    },
+    {
+      'title': 'Odd One Out',
+      'id': 'odd_one_out',
+      'icon': Icons.visibility_rounded,
+      'color': DesignSystem.gameRose,
+      'screen': const OddOneOutScreen(),
+    },
+    {
+      'title': 'Bridges',
+      'id': 'bridges',
+      'icon': Icons.horizontal_rule_rounded,
+      'color': DesignSystem.gameTeal,
+      'screen': const BridgesScreen(),
+    },
+    {
+      'title': 'Binary Puzzle',
+      'id': 'binary_puzzle',
+      'icon': Icons.exposure_zero_rounded,
+      'color': DesignSystem.gameBlue,
+      'screen': const BinaryPuzzleScreen(),
+    },
     {
       'title': 'Color Match',
       'id': 'color_match',

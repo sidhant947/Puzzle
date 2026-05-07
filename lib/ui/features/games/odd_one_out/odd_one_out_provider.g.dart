@@ -1,27 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'block_escape_provider.dart';
+part of 'odd_one_out_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$blockEscapeNotifierHash() =>
-    r'e625448fc61fb051a5ca29b24add6b281ada1924';
+String _$oddOneOutNotifierHash() => r'230b94e72676c25f028ebc77cb016834666b4ff9';
 
-/// See also [BlockEscapeNotifier].
-@ProviderFor(BlockEscapeNotifier)
-final blockEscapeNotifierProvider =
-    AutoDisposeNotifierProvider<BlockEscapeNotifier, BlockEscapeState>.internal(
-  BlockEscapeNotifier.new,
-  name: r'blockEscapeNotifierProvider',
+/// See also [OddOneOutNotifier].
+@ProviderFor(OddOneOutNotifier)
+final oddOneOutNotifierProvider =
+    AutoDisposeNotifierProvider<OddOneOutNotifier, OddOneOutState>.internal(
+  OddOneOutNotifier.new,
+  name: r'oddOneOutNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$blockEscapeNotifierHash,
+      : _$oddOneOutNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$BlockEscapeNotifier = AutoDisposeNotifier<BlockEscapeState>;
+typedef _$OddOneOutNotifier = AutoDisposeNotifier<OddOneOutState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

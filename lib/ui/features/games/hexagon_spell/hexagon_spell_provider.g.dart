@@ -7,12 +7,12 @@ part of 'hexagon_spell_provider.dart';
 // **************************************************************************
 
 String _$hexagonSpellNotifierHash() =>
-    r'1b0fbf4b50ff6373c526acd277de686fbaf1f838';
+    r'22b0f065159cb6675ca6f1710b76747c804d8f8c';
 
 /// See also [HexagonSpellNotifier].
 @ProviderFor(HexagonSpellNotifier)
-final hexagonSpellNotifierProvider =
-    AutoDisposeNotifierProvider<HexagonSpellNotifier, HexagonSpellState>.internal(
+final hexagonSpellNotifierProvider = AutoDisposeNotifierProvider<
+    HexagonSpellNotifier, HexagonSpellState>.internal(
   HexagonSpellNotifier.new,
   name: r'hexagonSpellNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
