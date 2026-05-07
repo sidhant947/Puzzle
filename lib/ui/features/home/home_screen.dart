@@ -19,6 +19,9 @@ import '../games/pipes/pipes_screen.dart';
 import '../games/unblock_me/unblock_me_screen.dart';
 import '../games/tents_and_trees/tents_and_trees_screen.dart';
 import '../games/slide_puzzle/slide_puzzle_screen.dart';
+import '../games/word_mastermind/word_mastermind_screen.dart';
+import '../games/word_ladder/word_ladder_screen.dart';
+import '../games/spelling_bee/spelling_bee_screen.dart';
 
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required Widget page})
@@ -55,6 +58,27 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'icon': Icons.grid_4x4_rounded,
       'color': DesignSystem.gameBlue,
       'screen': const SudokuScreen(),
+    },
+    {
+      'title': 'Word Mastermind',
+      'id': 'word_mastermind',
+      'icon': Icons.psychology_rounded,
+      'color': DesignSystem.gameIndigo,
+      'screen': const WordMastermindScreen(),
+    },
+    {
+      'title': 'Word Ladder',
+      'id': 'word_ladder',
+      'icon': Icons.format_list_numbered_rounded,
+      'color': DesignSystem.gameViolet,
+      'screen': const WordLadderScreen(),
+    },
+    {
+      'title': 'Spelling Bee',
+      'id': 'spelling_bee',
+      'icon': Icons.hive_rounded,
+      'color': DesignSystem.gameAmber,
+      'screen': const SpellingBeeScreen(),
     },
     {
       'title': 'Slide Puzzle',

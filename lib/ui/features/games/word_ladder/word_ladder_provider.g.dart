@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'crown_provider.dart';
+part of 'word_ladder_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$crownNotifierHash() => r'9178f0ecda6e4d7615bd2ad5a2d5aa1e7251e8d5';
+String _$wordLadderNotifierHash() =>
+    r'54c56e5c2f08c34502a559324c226987edd519f4';
 
-/// See also [CrownNotifier].
-@ProviderFor(CrownNotifier)
-final crownNotifierProvider =
-    AutoDisposeNotifierProvider<CrownNotifier, CrownState>.internal(
-  CrownNotifier.new,
-  name: r'crownNotifierProvider',
+/// See also [WordLadderNotifier].
+@ProviderFor(WordLadderNotifier)
+final wordLadderNotifierProvider =
+    AutoDisposeNotifierProvider<WordLadderNotifier, WordLadderState>.internal(
+  WordLadderNotifier.new,
+  name: r'wordLadderNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$crownNotifierHash,
+      : _$wordLadderNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$CrownNotifier = AutoDisposeNotifier<CrownState>;
+typedef _$WordLadderNotifier = AutoDisposeNotifier<WordLadderState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
