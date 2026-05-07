@@ -22,6 +22,10 @@ import '../games/slide_puzzle/slide_puzzle_screen.dart';
 import '../games/word_mastermind/word_mastermind_screen.dart';
 import '../games/word_ladder/word_ladder_screen.dart';
 import '../games/spelling_bee/spelling_bee_screen.dart';
+import '../games/color_match/color_match_screen.dart';
+import '../games/path_finder/path_finder_screen.dart';
+import '../games/simon_sequence/simon_sequence_screen.dart';
+import '../games/symmetry/symmetry_screen.dart';
 
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required Widget page})
@@ -52,6 +56,34 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   final List<Map<String, dynamic>> _games = [
+    {
+      'title': 'Color Match',
+      'id': 'color_match',
+      'icon': Icons.palette_rounded,
+      'color': DesignSystem.gameRose,
+      'screen': const ColorMatchScreen(),
+    },
+    {
+      'title': 'Path Finder',
+      'id': 'path_finder',
+      'icon': Icons.route_rounded,
+      'color': DesignSystem.gameTeal,
+      'screen': const PathFinderScreen(),
+    },
+    {
+      'title': 'Sequence',
+      'id': 'simon_sequence',
+      'icon': Icons.repeat_rounded,
+      'color': DesignSystem.gameCyan,
+      'screen': const SimonSequenceScreen(),
+    },
+    {
+      'title': 'Symmetry',
+      'id': 'symmetry',
+      'icon': Icons.flip_rounded,
+      'color': DesignSystem.gameViolet,
+      'screen': const SymmetryScreen(),
+    },
     {
       'title': 'Sudoku',
       'id': 'sudoku',
