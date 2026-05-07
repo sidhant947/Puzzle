@@ -1,10 +1,11 @@
 import java.util.Properties
+import com.android.build.gradle.internal.api.ApkVariantOutputImpl
 
 plugins {
-    id "com.android.application"
-    id "kotlin-android"
+    id("com.android.application")
+    id("kotlin-android")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
-    id "dev.flutter.flutter-gradle-plugin"
+    id("dev.flutter.flutter-gradle-plugin")
 }
 
 val keystorePropertiesFile = rootProject.file("key.properties")
@@ -24,7 +25,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_17.toString()
+        jvmTarget = "17"
     }
 
     dependenciesInfo {
@@ -51,13 +52,13 @@ android {
         versionName = flutter.versionName
     }
 
-    applicationVariants.all { variant ->
-        variant.outputs.each { output ->
-            def abiCodes = ["armeabi-v7a": 1, "arm64-v8a": 2, "x86_64": 3]
-            def abiName = output.getFilter(com.android.build.OutputFile.ABI)
-            def abiCode = abiCodes.get(abiName)
-            if (abiCode != null) {
-                output.versionCodeOverride = variant.versionCode * 10 + abiCode
+    val abiCodes = mapOf("armeabi-v7a" to 1, "arm64-v8a" to 2, "x86_64" to 3)
+    applicationVariants.configureEach {
+        val variant = this
+        variant.outputs.forEach { output ->
+            val abiVersionCode = abiCodes[output.filters.find { it.filterType == "ABI" }?.identifier]
+            if (abiVersionCode != null) {
+                (output as ApkVariantOutputImpl).versionCodeOverride = variant.versionCode * 10 + abiVersionCode
             }
         }
     }
