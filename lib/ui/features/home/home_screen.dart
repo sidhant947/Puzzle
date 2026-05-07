@@ -276,59 +276,78 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
-      body: CustomScrollView(
-        physics: const BouncingScrollPhysics(),
-        slivers: [
-          SliverAppBar(
-            floating: true,
-            snap: true,
-            expandedHeight: 120,
-            collapsedHeight: 70,
-            backgroundColor: theme.scaffoldBackgroundColor,
-            surfaceTintColor: Colors.transparent,
-            flexibleSpace: FlexibleSpaceBar(
-              centerTitle: true,
-              expandedTitleScale: 1.2,
-              title: Text(
-                'PUZZLE HUB',
-                style: theme.textTheme.labelSmall?.copyWith(
-                  color: theme.colorScheme.primary,
-                  letterSpacing: 4.0,
-                  fontWeight: FontWeight.w900,
-                ),
+      body: Stack(
+        children: [
+          // Background Pattern
+          Positioned.fill(
+            child: CustomPaint(
+              painter: _GridPatternPainter(
+                color: theme.colorScheme.primary.withValues(alpha: isDark ? 0.05 : 0.03),
               ),
             ),
-            actions: const [
-              SuperStreakAction(),
-              SizedBox(width: 16),
-            ],
           ),
-          SliverPadding(
-            padding: const EdgeInsets.fromLTRB(20, 0, 20, 120),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  final game = _games[index];
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: 16),
-                    child: _buildGameCard(
-                      context,
-                      game['title'],
-                      game['id'],
-                      game['icon'],
-                      game['color'],
-                      streaks[game['id']],
-                      isDark,
-                      () => Navigator.push(
-                        context,
-                        CustomPageRoute(page: game['screen']),
+          CustomScrollView(
+            physics: const BouncingScrollPhysics(),
+            slivers: [
+              SliverAppBar(
+                floating: true,
+                snap: true,
+                expandedHeight: 140,
+                collapsedHeight: 80,
+                backgroundColor: Colors.transparent,
+                surfaceTintColor: Colors.transparent,
+                flexibleSpace: FlexibleSpaceBar(
+                  centerTitle: true,
+                  expandedTitleScale: 1.4,
+                  title: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
+                    ),
+                    child: Text(
+                      'PUZZLE HUB',
+                      style: theme.textTheme.labelSmall?.copyWith(
+                        color: theme.colorScheme.primary,
+                        letterSpacing: 4.0,
+                        fontWeight: FontWeight.w900,
                       ),
                     ),
-                  );
-                },
-                childCount: _games.length,
+                  ),
+                ),
+                actions: const [
+                  SuperStreakAction(),
+                  SizedBox(width: 16),
+                ],
               ),
-            ),
+              SliverPadding(
+                padding: const EdgeInsets.fromLTRB(20, 10, 20, 140),
+                sliver: SliverList(
+                  delegate: SliverChildBuilderDelegate(
+                    (context, index) {
+                      final game = _games[index];
+                      return Padding(
+                        padding: const EdgeInsets.only(bottom: 20),
+                        child: _buildGameCard(
+                          context,
+                          game['title'],
+                          game['id'],
+                          game['icon'],
+                          game['color'],
+                          streaks[game['id']],
+                          isDark,
+                          () => Navigator.push(
+                            context,
+                            CustomPageRoute(page: game['screen']),
+                          ),
+                        ),
+                      );
+                    },
+                    childCount: _games.length,
+                  ),
+                ),
+              ),
+            ],
           ),
         ],
       ),
@@ -352,100 +371,196 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        padding: const EdgeInsets.all(12),
+        padding: const EdgeInsets.all(4), // Outer bezel padding
         decoration: BoxDecoration(
-          color: theme.colorScheme.surface,
+          color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: isDark ? 0.3 : 0.5),
           borderRadius: BorderRadius.circular(DesignSystem.radius2XL),
           border: Border.all(
-            color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.15 : 0.08),
+            color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.1 : 0.4),
             width: 1,
           ),
           boxShadow: [
             BoxShadow(
-              color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
-              blurRadius: 12,
-              offset: const Offset(0, 4),
+              color: isDark ? Colors.black.withValues(alpha: 0.3) : theme.colorScheme.primary.withValues(alpha: 0.04),
+              blurRadius: 24,
+              offset: const Offset(0, 8),
             ),
           ],
         ),
-        child: Row(
-          children: [
-            Container(
-              width: 72,
-              height: 72,
-              decoration: BoxDecoration(
-                color: accentColor.withValues(alpha: isDark ? 0.12 : 0.06),
-                borderRadius: BorderRadius.circular(DesignSystem.radiusXL),
-              ),
-              child: Icon(
-                icon,
-                size: 32,
-                color: accentColor,
-              ),
+        child: Container(
+          decoration: BoxDecoration(
+            color: theme.colorScheme.surface,
+            borderRadius: BorderRadius.circular(DesignSystem.radius2XL - 4),
+            border: Border.all(
+              color: isSolved 
+                  ? DesignSystem.gameGreen.withValues(alpha: 0.3)
+                  : theme.colorScheme.outline.withValues(alpha: isDark ? 0.2 : 0.1),
+              width: 1,
             ),
-            const SizedBox(width: 20),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    title.toUpperCase(),
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      letterSpacing: 1.0,
-                      fontWeight: FontWeight.w800,
+          ),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(DesignSystem.radius2XL - 5),
+            child: Stack(
+              children: [
+                // Very subtle gradient background
+                Positioned.fill(
+                  child: Container(
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [
+                          theme.colorScheme.surface,
+                          theme.colorScheme.surfaceContainerHighest.withValues(alpha: isDark ? 0.2 : 0.4),
+                        ],
+                      ),
                     ),
                   ),
-                  const SizedBox(height: 6),
-                  Row(
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Row(
                     children: [
-                      if (streakCount > 0) ...[
-                        Icon(
-                          Icons.local_fire_department_rounded,
-                          size: 16,
-                          color: DesignSystem.gameOrange,
-                        ),
-                        const SizedBox(width: 4),
-                        Text(
-                          '$streakCount',
-                          style: theme.textTheme.labelMedium?.copyWith(
-                            color: theme.colorScheme.onSurface,
+                      Container(
+                        width: 64,
+                        height: 64,
+                        decoration: BoxDecoration(
+                          color: accentColor.withValues(alpha: isDark ? 0.15 : 0.08),
+                          borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
+                          border: Border.all(
+                            color: accentColor.withValues(alpha: 0.2),
+                            width: 1,
                           ),
                         ),
-                        const SizedBox(width: 6),
-                      ],
-                      Text(
-                        isSolved ? 'COMPLETED' : 'DAILY PUZZLE',
-                        style: theme.textTheme.labelSmall?.copyWith(
-                          color: isSolved 
-                            ? DesignSystem.gameGreen 
-                            : theme.colorScheme.onSurface.withValues(alpha: 0.4),
-                          fontWeight: FontWeight.w700,
+                        child: Icon(
+                          icon,
+                          size: 28,
+                          color: accentColor,
                         ),
                       ),
+                      const SizedBox(width: 20),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              title.toUpperCase(),
+                              style: theme.textTheme.titleMedium?.copyWith(
+                                letterSpacing: 0.5,
+                                fontWeight: FontWeight.w800,
+                                color: isSolved ? DesignSystem.gameGreen : theme.colorScheme.onSurface,
+                              ),
+                            ),
+                            const SizedBox(height: 6),
+                            Row(
+                              children: [
+                                if (streakCount > 0) ...[
+                                  Icon(
+                                    Icons.local_fire_department_rounded,
+                                    size: 16,
+                                    color: DesignSystem.gameOrange,
+                                  ),
+                                  const SizedBox(width: 4),
+                                  Text(
+                                    '$streakCount',
+                                    style: theme.textTheme.labelMedium?.copyWith(
+                                      color: theme.colorScheme.onSurface,
+                                      fontWeight: FontWeight.w800,
+                                    ),
+                                  ),
+                                  const SizedBox(width: 12),
+                                ],
+                                Container(
+                                  padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 3),
+                                  decoration: BoxDecoration(
+                                    color: isSolved 
+                                        ? DesignSystem.gameGreen.withValues(alpha: 0.1)
+                                        : theme.colorScheme.onSurface.withValues(alpha: 0.04),
+                                    borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
+                                    border: Border.all(
+                                      color: isSolved 
+                                          ? DesignSystem.gameGreen.withValues(alpha: 0.2)
+                                          : theme.colorScheme.outline.withValues(alpha: 0.1),
+                                      width: 1,
+                                    ),
+                                  ),
+                                  child: Text(
+                                    isSolved ? 'COMPLETED' : 'DAILY PUZZLE',
+                                    style: theme.textTheme.labelSmall?.copyWith(
+                                      color: isSolved 
+                                        ? DesignSystem.gameGreen 
+                                        : theme.colorScheme.onSurface.withValues(alpha: 0.5),
+                                      fontWeight: FontWeight.w700,
+                                      fontSize: 9,
+                                      letterSpacing: 1.0,
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      ),
+                      _buildActionButton(context, isSolved, accentColor),
                     ],
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
-            Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                color: isSolved
-                    ? DesignSystem.gameGreen.withValues(alpha: 0.1)
-                    : theme.colorScheme.primary.withValues(alpha: 0.05),
-                borderRadius: BorderRadius.circular(14),
-              ),
-              child: Icon(
-                isSolved ? Icons.check_rounded : Icons.play_arrow_rounded,
-                size: 20,
-                color: isSolved ? DesignSystem.gameGreen : theme.colorScheme.primary,
-              ),
-            ),
-            const SizedBox(width: 8),
-          ],
+          ),
         ),
       ),
     );
   }
+
+  Widget _buildActionButton(BuildContext context, bool isSolved, Color accentColor) {
+    final theme = Theme.of(context);
+    final color = isSolved ? DesignSystem.gameGreen : theme.colorScheme.primary;
+
+    return Container(
+      width: 44,
+      height: 44,
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.05),
+        borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
+        border: Border.all(
+          color: color.withValues(alpha: 0.15),
+          width: 1,
+        ),
+      ),
+      child: Center(
+        child: Icon(
+          isSolved ? Icons.check_rounded : Icons.arrow_forward_rounded,
+          size: 20,
+          color: color,
+        ),
+      ),
+    );
+  }
+}
+
+class _GridPatternPainter extends CustomPainter {
+  final Color color;
+
+  _GridPatternPainter({required this.color});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..strokeWidth = 1.0;
+
+    const spacing = 40.0;
+
+    for (double i = 0; i < size.width; i += spacing) {
+      canvas.drawLine(Offset(i, 0), Offset(i, size.height), paint);
+    }
+
+    for (double i = 0; i < size.height; i += spacing) {
+      canvas.drawLine(Offset(0, i), Offset(size.width, i), paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

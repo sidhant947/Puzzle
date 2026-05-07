@@ -66,59 +66,82 @@ class ProfileScreen extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        backgroundColor: theme.scaffoldBackgroundColor,
-        surfaceTintColor: Colors.transparent,
-        centerTitle: true,
-        title: Text(
-          'USER PROFILE',
-          style: theme.textTheme.labelSmall?.copyWith(
-            color: theme.colorScheme.primary,
-            letterSpacing: 4.0,
-            fontWeight: FontWeight.w900,
+      body: Stack(
+        children: [
+          // Background Pattern
+          Positioned.fill(
+            child: CustomPaint(
+              painter: _GridPatternPainter(
+                color: theme.colorScheme.primary.withValues(alpha: isDark ? 0.05 : 0.03),
+              ),
+            ),
           ),
-        ),
-        actions: [
-          _buildThemeToggle(context, themeNotifier, currentThemeMode, isDark),
-          const SizedBox(width: 16),
+          SafeArea(
+            child: CustomScrollView(
+              physics: const BouncingScrollPhysics(),
+              slivers: [
+                SliverAppBar(
+                  floating: true,
+                  snap: true,
+                  backgroundColor: Colors.transparent,
+                  surfaceTintColor: Colors.transparent,
+                  centerTitle: true,
+                  title: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 4),
+                    decoration: BoxDecoration(
+                      color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
+                    ),
+                    child: Text(
+                      'USER PROFILE',
+                      style: theme.textTheme.labelSmall?.copyWith(
+                        color: theme.colorScheme.primary,
+                        letterSpacing: 4.0,
+                        fontWeight: FontWeight.w900,
+                      ),
+                    ),
+                  ),
+                  actions: [
+                    _buildThemeToggle(context, themeNotifier, currentThemeMode, isDark),
+                    const SizedBox(width: 16),
+                  ],
+                ),
+                SliverPadding(
+                  padding: const EdgeInsets.fromLTRB(20, 8, 20, 140),
+                  sliver: SliverList(
+                    delegate: SliverChildListDelegate([
+                      _buildUserStats(context, userData, ref, theme, isDark),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 40, bottom: 20, left: 4),
+                        child: Text(
+                          'ACHIEVEMENTS',
+                          style: theme.textTheme.labelSmall?.copyWith(
+                            letterSpacing: 2.0,
+                            fontWeight: FontWeight.w900,
+                            color: theme.colorScheme.primary,
+                          ),
+                        ),
+                      ),
+                      ...List.generate(
+                        achievements.length,
+                        (index) => Padding(
+                          padding: const EdgeInsets.only(bottom: 16),
+                          child: _buildAchievementCard(
+                            achievements[index],
+                            userData,
+                            theme,
+                            isDark,
+                          ),
+                        ),
+                      ),
+                      _buildLegalSection(context, theme, isDark),
+                    ]),
+                  ),
+                ),
+              ],
+            ),
+          ),
         ],
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
-          physics: const BouncingScrollPhysics(),
-          padding: const EdgeInsets.fromLTRB(20, 8, 20, 120),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              _buildUserStats(context, userData, ref, theme, isDark),
-              const SizedBox(height: 16),
-              _buildLegalSection(context, theme, isDark),
-              Padding(
-                padding: const EdgeInsets.only(top: 40, bottom: 20, left: 4),
-                child: Text(
-                  'ACHIEVEMENTS',
-                  style: theme.textTheme.labelSmall?.copyWith(
-                    letterSpacing: 2.0,
-                    fontWeight: FontWeight.w900,
-                    color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
-                  ),
-                ),
-              ),
-              ...List.generate(
-                achievements.length,
-                (index) => Padding(
-                  padding: const EdgeInsets.only(bottom: 12),
-                  child: _buildAchievementCard(
-                    achievements[index],
-                    userData,
-                    theme,
-                    isDark,
-                  ),
-                ),
-              ),
-            ],
-          ),
-        ),
       ),
     );
   }
@@ -133,15 +156,22 @@ class ProfileScreen extends ConsumerWidget {
     return GestureDetector(
       onTap: () => themeNotifier.toggleTheme(),
       child: Container(
-        width: 40,
-        height: 40,
+        width: 44,
+        height: 44,
         decoration: BoxDecoration(
           color: theme.colorScheme.surface,
-          borderRadius: BorderRadius.circular(12),
+          borderRadius: BorderRadius.circular(14),
           border: Border.all(
-            color: theme.colorScheme.outline.withValues(alpha: 0.2),
+            color: theme.colorScheme.outline.withValues(alpha: 0.5),
             width: 1,
           ),
+          boxShadow: [
+            BoxShadow(
+              color: isDark ? Colors.black.withValues(alpha: 0.2) : theme.colorScheme.primary.withValues(alpha: 0.04),
+              offset: const Offset(0, 4),
+              blurRadius: 12,
+            ),
+          ],
         ),
         child: Icon(
           themeNotifier.themeIcon,
@@ -165,116 +195,141 @@ class ProfileScreen extends ConsumerWidget {
     final progress = (userData.xp - currentLevelXp) / (nextLevelXp - currentLevelXp);
 
     return Container(
-      padding: const EdgeInsets.all(24),
+      padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
+        color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: isDark ? 0.2 : 0.4),
         borderRadius: BorderRadius.circular(DesignSystem.radius2XL),
         border: Border.all(
-          color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.15 : 0.08),
+          color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.1 : 0.3),
           width: 1,
         ),
         boxShadow: [
           BoxShadow(
-            color: Colors.black.withValues(alpha: isDark ? 0.2 : 0.02),
-            blurRadius: 12,
-            offset: const Offset(0, 4),
+            color: isDark ? Colors.black.withValues(alpha: 0.3) : theme.colorScheme.primary.withValues(alpha: 0.05),
+            blurRadius: 24,
+            offset: const Offset(0, 12),
           ),
         ],
       ),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    'LEVEL ${userData.level}',
-                    style: theme.textTheme.displaySmall?.copyWith(
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: -1.0,
-                    ),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    'TOTAL XP GATHERED: ${userData.xp}',
-                    style: theme.textTheme.labelSmall?.copyWith(
-                      letterSpacing: 0.5,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                ],
-              ),
-              Container(
-                width: 64,
-                height: 64,
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.primary.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(DesignSystem.radiusXL),
-                  border: Border.all(
-                    color: theme.colorScheme.primary.withValues(alpha: 0.2),
-                    width: 1,
-                  ),
-                ),
-                child: Icon(
-                  Icons.shield_rounded,
-                  size: 32,
-                  color: theme.colorScheme.primary,
-                ),
-              ),
-            ],
+      child: Container(
+        padding: const EdgeInsets.all(24),
+        decoration: BoxDecoration(
+          color: theme.colorScheme.surface,
+          borderRadius: BorderRadius.circular(DesignSystem.radius2XL - 4),
+          border: Border.all(
+            color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.2 : 0.1),
+            width: 1,
           ),
-          const SizedBox(height: 32),
-          Stack(
-            children: [
-              Container(
-                height: 12,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.onSurface.withValues(alpha: 0.05),
-                  borderRadius: BorderRadius.circular(6),
+        ),
+        child: Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      'LEVEL ${userData.level}',
+                      style: theme.textTheme.displaySmall?.copyWith(
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: -0.5,
+                        color: theme.colorScheme.primary,
+                      ),
+                    ),
+                    const SizedBox(height: 4),
+                    Text(
+                      'TOTAL XP: ${userData.xp}',
+                      style: theme.textTheme.labelSmall?.copyWith(
+                        letterSpacing: 0.5,
+                        fontWeight: FontWeight.w800,
+                      ),
+                    ),
+                  ],
                 ),
-              ),
-              FractionallySizedBox(
-                widthFactor: progress.clamp(0.0, 1.0),
-                child: Container(
-                  height: 12,
+                Container(
+                  width: 72,
+                  height: 72,
                   decoration: BoxDecoration(
-                    gradient: LinearGradient(
-                      colors: [
-                        theme.colorScheme.primary,
-                        theme.colorScheme.primary.withValues(alpha: 0.7),
+                    color: DesignSystem.gameAmber.withValues(alpha: 0.1),
+                    borderRadius: BorderRadius.circular(DesignSystem.radiusXL),
+                    border: Border.all(
+                      color: DesignSystem.gameAmber.withValues(alpha: 0.2),
+                      width: 1,
+                    ),
+                  ),
+                  child: Icon(
+                    Icons.workspace_premium_rounded,
+                    size: 36,
+                    color: DesignSystem.gameAmber,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 32),
+            Stack(
+              children: [
+                Container(
+                  height: 12,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.05),
+                    borderRadius: BorderRadius.circular(6),
+                    border: Border.all(
+                      color: theme.colorScheme.outline.withValues(alpha: 0.1),
+                      width: 1,
+                    ),
+                  ),
+                ),
+                FractionallySizedBox(
+                  widthFactor: progress.clamp(0.0, 1.0),
+                  child: Container(
+                    height: 12,
+                    decoration: BoxDecoration(
+                      gradient: LinearGradient(
+                        colors: [
+                          theme.colorScheme.primary,
+                          theme.colorScheme.primary.withValues(alpha: 0.8),
+                        ],
+                      ),
+                      borderRadius: BorderRadius.circular(6),
+                      boxShadow: [
+                        BoxShadow(
+                          color: theme.colorScheme.primary.withValues(alpha: 0.2),
+                          blurRadius: 8,
+                          offset: const Offset(0, 4),
+                        ),
                       ],
                     ),
-                    borderRadius: BorderRadius.circular(6),
                   ),
                 ),
-              ),
-            ],
-          ),
-          const SizedBox(height: 12),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'PROGRESS',
-                style: theme.textTheme.labelSmall?.copyWith(
-                  fontWeight: FontWeight.w800,
-                  fontSize: 9,
+              ],
+            ),
+            const SizedBox(height: 16),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  'XP PROGRESS',
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 9,
+                    letterSpacing: 1.0,
+                  ),
                 ),
-              ),
-              Text(
-                '${nextLevelXp - userData.xp} XP UNTIL LEVEL ${userData.level + 1}',
-                style: theme.textTheme.labelSmall?.copyWith(
-                  fontWeight: FontWeight.w800,
-                  fontSize: 9,
-                  color: theme.colorScheme.primary,
+                Text(
+                  '${nextLevelXp - userData.xp} XP TO NEXT LEVEL',
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 9,
+                    letterSpacing: 1.0,
+                    color: theme.colorScheme.primary,
+                  ),
                 ),
-              ),
-            ],
-          ),
-        ],
+              ],
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -286,90 +341,118 @@ class ProfileScreen extends ConsumerWidget {
     bool isDark,
   ) {
     final isUnlocked = userData.xp >= achievement.requiredXp;
-    final xpLeft = (achievement.requiredXp - userData.xp).clamp(0, achievement.requiredXp);
 
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.all(4),
       decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
+        color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: isDark ? 0.1 : 0.3),
         borderRadius: BorderRadius.circular(DesignSystem.radiusXL),
         border: Border.all(
-          color: isUnlocked
-              ? theme.colorScheme.primary.withValues(alpha: 0.2)
-              : theme.colorScheme.outline.withValues(alpha: 0.1),
-          width: 1.5,
+          color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.05 : 0.2),
+          width: 1,
         ),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 48,
-            height: 48,
-            decoration: BoxDecoration(
-              color: isUnlocked
-                  ? theme.colorScheme.primary.withValues(alpha: 0.1)
-                  : theme.colorScheme.onSurface.withValues(alpha: 0.03),
-              borderRadius: BorderRadius.circular(14),
-            ),
-            child: Icon(
-              achievement.icon,
-              size: 24,
-              color: isUnlocked
-                  ? theme.colorScheme.primary
-                  : theme.colorScheme.onSurface.withValues(alpha: 0.2),
-            ),
+        boxShadow: [
+          BoxShadow(
+            color: isDark ? Colors.black.withValues(alpha: 0.2) : theme.colorScheme.primary.withValues(alpha: 0.03),
+            blurRadius: 16,
+            offset: const Offset(0, 6),
           ),
-          const SizedBox(width: 16),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  achievement.title,
-                  style: theme.textTheme.titleSmall?.copyWith(
-                    fontWeight: FontWeight.w800,
-                    letterSpacing: 0.5,
-                    color: isUnlocked
-                        ? theme.colorScheme.onSurface
-                        : theme.colorScheme.onSurface.withValues(alpha: 0.3),
-                  ),
-                ),
-                const SizedBox(height: 2),
-                Text(
-                  achievement.description,
-                  style: theme.textTheme.bodySmall?.copyWith(
-                    fontWeight: FontWeight.w600,
-                    color: isUnlocked
-                        ? theme.colorScheme.onSurface.withValues(alpha: 0.5)
-                        : theme.colorScheme.onSurface.withValues(alpha: 0.2),
-                  ),
-                ),
-              ],
-            ),
-          ),
-          if (isUnlocked)
-            Icon(
-              Icons.stars_rounded,
-              size: 24,
-              color: DesignSystem.gameOrange.withValues(alpha: 0.8),
-            )
-          else
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-              decoration: BoxDecoration(
-                color: theme.colorScheme.onSurface.withValues(alpha: 0.05),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: Text(
-                '$xpLeft XP',
-                style: theme.textTheme.labelSmall?.copyWith(
-                  fontWeight: FontWeight.w900,
-                  fontSize: 9,
-                  color: theme.colorScheme.onSurface.withValues(alpha: 0.3),
-                ),
-              ),
-            ),
         ],
+      ),
+      child: Container(
+        padding: const EdgeInsets.all(16),
+        decoration: BoxDecoration(
+          color: theme.colorScheme.surface,
+          borderRadius: BorderRadius.circular(DesignSystem.radiusXL - 4),
+          border: Border.all(
+            color: isUnlocked
+                ? DesignSystem.gameAmber.withValues(alpha: 0.3)
+                : theme.colorScheme.outline.withValues(alpha: isDark ? 0.15 : 0.1),
+            width: 1,
+          ),
+        ),
+        child: Row(
+          children: [
+            Container(
+              width: 52,
+              height: 52,
+              decoration: BoxDecoration(
+                color: isUnlocked
+                    ? DesignSystem.gameAmber.withValues(alpha: 0.1)
+                    : theme.colorScheme.onSurface.withValues(alpha: 0.03),
+                borderRadius: BorderRadius.circular(14),
+                border: Border.all(
+                  color: isUnlocked
+                      ? DesignSystem.gameAmber.withValues(alpha: 0.2)
+                      : Colors.transparent,
+                  width: 1,
+                ),
+              ),
+              child: Icon(
+                achievement.icon,
+                size: 24,
+                color: isUnlocked
+                    ? DesignSystem.gameAmber
+                    : theme.colorScheme.onSurface.withValues(alpha: 0.2),
+              ),
+            ),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    achievement.title,
+                    style: theme.textTheme.titleSmall?.copyWith(
+                      fontWeight: FontWeight.w800,
+                      letterSpacing: 0.5,
+                      color: isUnlocked
+                          ? theme.colorScheme.onSurface
+                          : theme.colorScheme.onSurface.withValues(alpha: 0.4),
+                    ),
+                  ),
+                  const SizedBox(height: 4),
+                  Text(
+                    achievement.description,
+                    style: theme.textTheme.bodySmall?.copyWith(
+                      fontWeight: FontWeight.w600,
+                      color: isUnlocked
+                          ? theme.colorScheme.onSurface.withValues(alpha: 0.6)
+                          : theme.colorScheme.onSurface.withValues(alpha: 0.3),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            if (isUnlocked)
+              Icon(
+                Icons.check_circle_rounded,
+                size: 24,
+                color: DesignSystem.gameAmber,
+              )
+            else
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
+                decoration: BoxDecoration(
+                  color: theme.colorScheme.onSurface.withValues(alpha: 0.05),
+                  borderRadius: BorderRadius.circular(8),
+                  border: Border.all(
+                    color: theme.colorScheme.outline.withValues(alpha: 0.1),
+                    width: 1,
+                  ),
+                ),
+                child: Text(
+                  'LOCKED',
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    fontWeight: FontWeight.w800,
+                    fontSize: 9,
+                    letterSpacing: 1.0,
+                    color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
+                  ),
+                ),
+              ),
+          ],
+        ),
       ),
     );
   }
@@ -381,7 +464,7 @@ class ProfileScreen extends ConsumerWidget {
         Padding(
           padding: const EdgeInsets.only(top: 24, bottom: 12, left: 4),
           child: Text(
-            'LEGAL & PRIVACY',
+            'SYSTEM & LEGAL',
             style: theme.textTheme.labelSmall?.copyWith(
               color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
               letterSpacing: 2,
@@ -392,28 +475,28 @@ class ProfileScreen extends ConsumerWidget {
         _buildLegalItem(
           context,
           'Privacy Policy',
-          Icons.privacy_tip_outlined,
+          Icons.privacy_tip_rounded,
           theme,
           () => _launchUrl('https://sites.google.com/view/puzzlebysidhant/home'),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 12),
         _buildLegalItem(
           context,
           'Terms of Service',
-          Icons.description_outlined,
+          Icons.description_rounded,
           theme,
-          () => _launchUrl('https://sites.google.com/view/puzzlebysidhant/home'), // Reusing the same link as instructed
+          () => _launchUrl('https://sites.google.com/view/puzzlebysidhant/home'),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: 12),
         _buildLegalItem(
           context,
-          'Open Source Licenses',
+          'Licenses',
           Icons.code_rounded,
           theme,
           () => showLicensePage(
             context: context,
-            applicationName: 'Puzzle Suite',
-            applicationVersion: '1.0.1',
+            applicationName: 'PUZZLE HUB',
+            applicationVersion: '1.0.2',
           ),
         ),
       ],
@@ -427,27 +510,46 @@ class ProfileScreen extends ConsumerWidget {
     ThemeData theme,
     VoidCallback onTap,
   ) {
+    final isDark = theme.brightness == Brightness.dark;
+    
     return InkWell(
       onTap: onTap,
-      borderRadius: BorderRadius.circular(12),
+      borderRadius: BorderRadius.circular(16),
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
         decoration: BoxDecoration(
-          color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
-          borderRadius: BorderRadius.circular(12),
+          color: theme.colorScheme.surface,
+          borderRadius: BorderRadius.circular(16),
           border: Border.all(
-            color: theme.colorScheme.onSurface.withValues(alpha: 0.05),
+            color: theme.colorScheme.outline.withValues(alpha: 0.5),
+            width: 1,
           ),
+          boxShadow: [
+            BoxShadow(
+              color: isDark ? Colors.black.withValues(alpha: 0.1) : theme.colorScheme.primary.withValues(alpha: 0.02),
+              offset: const Offset(0, 4),
+              blurRadius: 12,
+            ),
+          ],
         ),
         child: Row(
           children: [
-            Icon(icon, size: 20, color: theme.colorScheme.primary),
+            Container(
+              padding: const EdgeInsets.all(8),
+              decoration: BoxDecoration(
+                color: theme.colorScheme.primary.withValues(alpha: 0.05),
+                borderRadius: BorderRadius.circular(10),
+              ),
+              child: Icon(icon, size: 20, color: theme.colorScheme.primary),
+            ),
             const SizedBox(width: 16),
             Expanded(
               child: Text(
-                title,
+                title.toUpperCase(),
                 style: theme.textTheme.titleSmall?.copyWith(
-                  fontWeight: FontWeight.w700,
+                  fontWeight: FontWeight.w800,
+                  fontSize: 13,
+                  letterSpacing: 0.5,
                 ),
               ),
             ),
@@ -468,4 +570,30 @@ class ProfileScreen extends ConsumerWidget {
       throw Exception('Could not launch $url');
     }
   }
+}
+
+class _GridPatternPainter extends CustomPainter {
+  final Color color;
+
+  _GridPatternPainter({required this.color});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..strokeWidth = 1.0;
+
+    const spacing = 40.0;
+
+    for (double i = 0; i < size.width; i += spacing) {
+      canvas.drawLine(Offset(i, 0), Offset(i, size.height), paint);
+    }
+
+    for (double i = 0; i < size.height; i += spacing) {
+      canvas.drawLine(Offset(0, i), Offset(size.width, i), paint);
+    }
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }

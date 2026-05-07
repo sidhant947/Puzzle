@@ -9,10 +9,10 @@ class DesignSystem {
   static const double space2XL = 48.0;
   static const double space3XL = 64.0;
 
-  static const double radiusXS = 4.0;
-  static const double radiusSM = 8.0;
-  static const double radiusMD = 12.0;
-  static const double radiusLG = 16.0;
+  static const double radiusXS = 6.0;
+  static const double radiusSM = 10.0;
+  static const double radiusMD = 14.0;
+  static const double radiusLG = 18.0;
   static const double radiusXL = 24.0;
   static const double radius2XL = 32.0;
   static const double radiusFull = 999.0;
@@ -21,57 +21,57 @@ class DesignSystem {
   static const double tabletBreakpoint = 900;
   static const double desktopBreakpoint = 1200;
 
-  // Premium Light Theme - Soft Structuralism
-  static const Color lightPrimary = Color(0xFF0A0A0A);
-  static const Color lightPrimaryVariant = Color(0xFF262626);
-  static const Color lightSecondary = Color(0xFF5B5B5B);
-  static const Color lightSecondaryVariant = Color(0xFF737373);
-  static const Color lightAccent = Color(0xFF2563EB);
-  static const Color lightBackground = Color(0xFFFEFEFE);
+  // Premium Light Theme - Editorial Luxury & Soft Structuralism
+  static const Color lightPrimary = Color(0xFF1C1917); // Deep Charcoal
+  static const Color lightPrimaryVariant = Color(0xFF292524);
+  static const Color lightSecondary = Color(0xFF78716C); // Warm Stone Gray
+  static const Color lightSecondaryVariant = Color(0xFFA8A29E);
+  static const Color lightAccent = Color(0xFFC67D63); // Terracotta
+  static const Color lightBackground = Color(0xFFF9F9F6); // Alabaster/Cream
   static const Color lightSurface = Color(0xFFFFFFFF);
-  static const Color lightSurfaceElevated = Color(0xFFFAFAFA);
-  static const Color lightError = Color(0xFFDC2626);
+  static const Color lightSurfaceElevated = Color(0xFFF5F5F0);
+  static const Color lightError = Color(0xFFB96D71); // Dusty Rose
   static const Color lightOnPrimary = Color(0xFFFFFFFF);
   static const Color lightOnSecondary = Color(0xFFFFFFFF);
-  static const Color lightOnBackground = Color(0xFF0A0A0A);
-  static const Color lightOnSurface = Color(0xFF171717);
-  static const Color lightOnSurfaceMuted = Color(0xFF737373);
+  static const Color lightOnBackground = Color(0xFF1C1917);
+  static const Color lightOnSurface = Color(0xFF292524);
+  static const Color lightOnSurfaceMuted = Color(0xFF78716C);
   static const Color lightOnError = Color(0xFFFFFFFF);
-  static const Color lightOutline = Color(0xFFE5E5E5);
-  static const Color lightOutlineVariant = Color(0xFFF0F0F0);
+  static const Color lightOutline = Color(0xFFE7E5E4); // Soft border
+  static const Color lightOutlineVariant = Color(0xFFF5F5F4);
 
   // Premium Dark Theme - Ethereal Glass
-  static const Color darkPrimary = Color(0xFFFAFAFA);
-  static const Color darkPrimaryVariant = Color(0xFFE5E5E5);
-  static const Color darkSecondary = Color(0xFFA3A3A3);
-  static const Color darkSecondaryVariant = Color(0xFF737373);
-  static const Color darkAccent = Color(0xFF3B82F6);
-  static const Color darkBackground = Color(0xFF050505);
-  static const Color darkSurface = Color(0xFF0C0C0C);
-  static const Color darkSurfaceElevated = Color(0xFF141414);
-  static const Color darkError = Color(0xFFEF4444);
-  static const Color darkOnPrimary = Color(0xFF000000);
-  static const Color darkOnSecondary = Color(0xFF000000);
-  static const Color darkOnBackground = Color(0xFFFAFAFA);
-  static const Color darkOnSurface = Color(0xFFF5F5F5);
-  static const Color darkOnSurfaceMuted = Color(0xFF737373);
-  static const Color darkOnError = Color(0xFF000000);
-  static const Color darkOutline = Color(0xFF1F1F1F);
-  static const Color darkOutlineVariant = Color(0xFF1A1A1A);
+  static const Color darkPrimary = Color(0xFFF5F5F0); // Off-white/Cream
+  static const Color darkPrimaryVariant = Color(0xFFE7E5E4);
+  static const Color darkSecondary = Color(0xFFA8A29E); // Muted Stone
+  static const Color darkSecondaryVariant = Color(0xFF78716C);
+  static const Color darkAccent = Color(0xFFD4A373); // Muted Camel
+  static const Color darkBackground = Color(0xFF0C0A09); // Deepest Warm Charcoal
+  static const Color darkSurface = Color(0xFF171412); // Slightly lighter
+  static const Color darkSurfaceElevated = Color(0xFF292524);
+  static const Color darkError = Color(0xFFCC8B86); // Soft Muted Red
+  static const Color darkOnPrimary = Color(0xFF0C0A09);
+  static const Color darkOnSecondary = Color(0xFF0C0A09);
+  static const Color darkOnBackground = Color(0xFFFAFAF9);
+  static const Color darkOnSurface = Color(0xFFF5F5F4);
+  static const Color darkOnSurfaceMuted = Color(0xFFA8A29E);
+  static const Color darkOnError = Color(0xFF0C0A09);
+  static const Color darkOutline = Color(0xFF292524);
+  static const Color darkOutlineVariant = Color(0xFF1C1917);
 
-  // Game accent colors
-  static const Color gameBlue = Color(0xFF3B82F6);
-  static const Color gameGreen = Color(0xFF22C55E);
-  static const Color gamePurple = Color(0xFF8B5CF6);
-  static const Color gameOrange = Color(0xFFF97316);
-  static const Color gamePink = Color(0xFFEC4899);
-  static const Color gameTeal = Color(0xFF14B8A6);
-  static const Color gameIndigo = Color(0xFF6366F1);
-  static const Color gameAmber = Color(0xFFF59E0B);
-  static const Color gameRose = Color(0xFFF43F5E);
-  static const Color gameViolet = Color(0xFF8B5CF6);
-  static const Color gameCyan = Color(0xFF06B6D4);
-  static const Color gameEmerald = Color(0xFF10B981);
+  // Premium Game Accent Colors (Sophisticated, muted, tactile tones)
+  static const Color gameBlue = Color(0xFF5B7C99); // Steel Blue
+  static const Color gameGreen = Color(0xFF799475); // Sage Green
+  static const Color gamePurple = Color(0xFF857885); // Dusty Mauve
+  static const Color gameOrange = Color(0xFFC67D63); // Terracotta
+  static const Color gamePink = Color(0xFFB87D8A); // Rose Quartz
+  static const Color gameTeal = Color(0xFF5C8984); // Deep Seafoam
+  static const Color gameIndigo = Color(0xFF4A5568); // Slate
+  static const Color gameAmber = Color(0xFFD4A373); // Camel/Mustard
+  static const Color gameRose = Color(0xFFB96D71); // Dusty Rose
+  static const Color gameViolet = Color(0xFF6D597A); // Plum
+  static const Color gameCyan = Color(0xFF6B9080); // Deep Mint
+  static const Color gameEmerald = Color(0xFF4A7C59); // Forest
 
   static ThemeData get lightTheme => _buildTheme(Brightness.light);
   static ThemeData get darkTheme => _buildTheme(Brightness.dark);
@@ -101,11 +101,11 @@ class DesignSystem {
         brightness: brightness,
         primary: primary,
         onPrimary: onPrimary,
-        primaryContainer: primary.withValues(alpha: isDark ? 0.2 : 0.1),
+        primaryContainer: primary.withValues(alpha: isDark ? 0.15 : 0.08),
         onPrimaryContainer: primary,
         secondary: secondary,
         onSecondary: onSecondary,
-        secondaryContainer: secondary.withValues(alpha: isDark ? 0.2 : 0.1),
+        secondaryContainer: secondary.withValues(alpha: isDark ? 0.15 : 0.08),
         onSecondaryContainer: secondary,
         error: error,
         onError: onError,
@@ -116,7 +116,7 @@ class DesignSystem {
         outlineVariant: outlineVariant,
       ),
       appBarTheme: AppBarTheme(
-        backgroundColor: background,
+        backgroundColor: Colors.transparent,
         foregroundColor: onSurface,
         elevation: 0,
         centerTitle: true,
@@ -125,8 +125,8 @@ class DesignSystem {
         titleTextStyle: TextStyle(
           color: onSurface,
           fontSize: 18,
-          fontWeight: FontWeight.w700,
-          letterSpacing: -0.5,
+          fontWeight: FontWeight.w800,
+          letterSpacing: 1.5,
         ),
       ),
       cardTheme: CardThemeData(
@@ -137,8 +137,8 @@ class DesignSystem {
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(radiusXL),
           side: BorderSide(
-            color: outline.withValues(alpha: isDark ? 0.2 : 0.1),
-            width: 1,
+            color: outline.withValues(alpha: isDark ? 0.3 : 0.5),
+            width: 1.5,
           ),
         ),
       ),
@@ -147,29 +147,30 @@ class DesignSystem {
           backgroundColor: primary,
           foregroundColor: onPrimary,
           elevation: 0,
+          shadowColor: Colors.transparent,
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(radiusLG),
+            borderRadius: BorderRadius.circular(radiusFull), // Pill shape for premium feel
           ),
           padding: const EdgeInsets.symmetric(horizontal: spaceXL, vertical: spaceMD),
           textStyle: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
-            letterSpacing: -0.2,
+            fontSize: 15,
+            fontWeight: FontWeight.w800,
+            letterSpacing: 0.5,
           ),
         ),
       ),
       outlinedButtonTheme: OutlinedButtonThemeData(
         style: OutlinedButton.styleFrom(
-          foregroundColor: onSurface,
-          side: BorderSide(color: outline.withValues(alpha: isDark ? 0.3 : 0.2), width: 1.5),
+          foregroundColor: primary,
+          side: BorderSide(color: outline, width: 1.5),
           shape: RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(radiusLG),
+            borderRadius: BorderRadius.circular(radiusFull),
           ),
           padding: const EdgeInsets.symmetric(horizontal: spaceXL, vertical: spaceMD),
           textStyle: const TextStyle(
-            fontSize: 16,
-            fontWeight: FontWeight.w700,
-            letterSpacing: -0.2,
+            fontSize: 15,
+            fontWeight: FontWeight.w800,
+            letterSpacing: 0.5,
           ),
         ),
       ),
@@ -180,9 +181,9 @@ class DesignSystem {
             borderRadius: BorderRadius.circular(radiusMD),
           ),
           textStyle: const TextStyle(
-            fontSize: 15,
+            fontSize: 14,
             fontWeight: FontWeight.w700,
-            letterSpacing: -0.2,
+            letterSpacing: 0.2,
           ),
         ),
       ),
@@ -191,11 +192,11 @@ class DesignSystem {
         fillColor: surfaceElevated,
         border: OutlineInputBorder(
           borderRadius: BorderRadius.circular(radiusLG),
-          borderSide: BorderSide.none,
+          borderSide: BorderSide(color: outline, width: 1.5),
         ),
         enabledBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(radiusLG),
-          borderSide: BorderSide(color: outline.withValues(alpha: isDark ? 0.3 : 0.2), width: 1),
+          borderSide: BorderSide(color: outline, width: 1.5),
         ),
         focusedBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(radiusLG),
@@ -203,28 +204,28 @@ class DesignSystem {
         ),
         errorBorder: OutlineInputBorder(
           borderRadius: BorderRadius.circular(radiusLG),
-          borderSide: BorderSide(color: error, width: 1),
+          borderSide: BorderSide(color: error, width: 1.5),
         ),
-        labelStyle: TextStyle(color: onSurfaceMuted, fontWeight: FontWeight.w500),
+        labelStyle: TextStyle(color: onSurfaceMuted, fontWeight: FontWeight.w600),
         hintStyle: TextStyle(color: onSurfaceMuted),
         contentPadding: const EdgeInsets.symmetric(horizontal: spaceLG, vertical: spaceLG),
       ),
       textTheme: TextTheme(
         displayLarge: TextStyle(fontSize: 48, fontWeight: FontWeight.w800, letterSpacing: -1.0, color: onSurface, height: 1.1),
         displayMedium: TextStyle(fontSize: 40, fontWeight: FontWeight.w800, letterSpacing: -1.0, color: onSurface, height: 1.1),
-        displaySmall: TextStyle(fontSize: 32, fontWeight: FontWeight.w800, letterSpacing: -1.0, color: onSurface, height: 1.2),
-        headlineLarge: TextStyle(fontSize: 28, fontWeight: FontWeight.w700, letterSpacing: -0.5, color: onSurface),
-        headlineMedium: TextStyle(fontSize: 24, fontWeight: FontWeight.w700, letterSpacing: -0.5, color: onSurface),
-        headlineSmall: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, letterSpacing: -0.5, color: onSurface),
-        titleLarge: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, letterSpacing: -0.4, color: onSurface),
-        titleMedium: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, letterSpacing: -0.2, color: onSurface),
-        titleSmall: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, letterSpacing: -0.1, color: onSurface),
-        bodyLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0, color: onSurface, height: 1.5),
-        bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, letterSpacing: 0, color: onSurface, height: 1.5),
-        bodySmall: TextStyle(fontSize: 12, fontWeight: FontWeight.w400, letterSpacing: 0, color: onSurfaceMuted, height: 1.4),
-        labelLarge: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, letterSpacing: 0.1, color: onSurface),
+        displaySmall: TextStyle(fontSize: 32, fontWeight: FontWeight.w800, letterSpacing: -0.5, color: onSurface, height: 1.2),
+        headlineLarge: TextStyle(fontSize: 28, fontWeight: FontWeight.w800, letterSpacing: -0.5, color: onSurface),
+        headlineMedium: TextStyle(fontSize: 24, fontWeight: FontWeight.w800, letterSpacing: -0.5, color: onSurface),
+        headlineSmall: TextStyle(fontSize: 20, fontWeight: FontWeight.w800, letterSpacing: -0.2, color: onSurface),
+        titleLarge: TextStyle(fontSize: 20, fontWeight: FontWeight.w700, letterSpacing: 0.0, color: onSurface),
+        titleMedium: TextStyle(fontSize: 18, fontWeight: FontWeight.w700, letterSpacing: 0.0, color: onSurface),
+        titleSmall: TextStyle(fontSize: 16, fontWeight: FontWeight.w600, letterSpacing: 0.0, color: onSurface),
+        bodyLarge: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, letterSpacing: 0.2, color: onSurface, height: 1.6),
+        bodyMedium: TextStyle(fontSize: 14, fontWeight: FontWeight.w400, letterSpacing: 0.2, color: onSurface, height: 1.6),
+        bodySmall: TextStyle(fontSize: 13, fontWeight: FontWeight.w400, letterSpacing: 0.2, color: onSurfaceMuted, height: 1.5),
+        labelLarge: TextStyle(fontSize: 14, fontWeight: FontWeight.w700, letterSpacing: 0.5, color: onSurface),
         labelMedium: TextStyle(fontSize: 12, fontWeight: FontWeight.w700, letterSpacing: 0.5, color: onSurface),
-        labelSmall: TextStyle(fontSize: 10, fontWeight: FontWeight.w800, letterSpacing: 1.0, color: onSurfaceMuted),
+        labelSmall: TextStyle(fontSize: 11, fontWeight: FontWeight.w800, letterSpacing: 1.0, color: onSurfaceMuted),
       ),
       iconTheme: IconThemeData(
         color: onSurface,

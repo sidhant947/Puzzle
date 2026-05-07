@@ -5,6 +5,7 @@ import 'sudoku_engine.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/design_system.dart';
 import '../../../../../utils/haptic_feedback.dart';
+import '../../../core/juice/game_scaffold.dart';
 
 class SudokuScreen extends ConsumerStatefulWidget {
   const SudokuScreen({super.key});
@@ -28,65 +29,58 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
       }
     });
 
-    return Scaffold(
-      backgroundColor: theme.colorScheme.surface,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
-          onPressed: () => Navigator.of(context).pop(),
+    return GameScaffold(
+      title: 'SUDOKU',
+      subtitle: 'Complete the grid so that every row, column, and 3x3 box contains all digits from 1 to 9.',
+      actions: [
+        _buildAppBarButton(
+          icon: Icons.refresh_rounded,
+          onPressed: () {
+            HapticFeedbackUtil.mediumImpact();
+            notifier.initGame();
+          },
         ),
-        title: Text(
-          'SUDOKU',
-          style: theme.textTheme.titleMedium?.copyWith(
-            letterSpacing: 4,
-            fontWeight: FontWeight.w800,
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh_rounded),
-            onPressed: () {
-              HapticFeedbackUtil.mediumImpact();
-              notifier.initGame();
-            },
-          ),
-          const SizedBox(width: 8),
+      ],
+      body: Column(
+        children: [
+          const Spacer(),
+          _buildGrid(state, notifier, theme, isDark),
+          const Spacer(),
+          _buildNumberPad(notifier, theme, isDark),
+          const SizedBox(height: DesignSystem.spaceXL),
         ],
       ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: DesignSystem.spaceLG),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
-              child: Column(
-                children: [
-                  Text(
-                    'LOGIC GRID',
-                    style: theme.textTheme.labelSmall?.copyWith(
-                      color: theme.colorScheme.primary,
-                      letterSpacing: 2,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                  const SizedBox(height: DesignSystem.spaceSM),
-                  Text(
-                    'Complete the grid so that every row, column, and 3x3 box contains all digits from 1 to 9.',
-                    textAlign: TextAlign.center,
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
-                      height: 1.5,
-                    ),
-                  ),
-                ],
-              ),
+    );
+  }
+
+  Widget _buildAppBarButton({required IconData icon, required VoidCallback onPressed}) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        width: 44,
+        height: 44,
+        decoration: BoxDecoration(
+          color: theme.colorScheme.surface,
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(
+            color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.2 : 0.5),
+            width: 1,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: isDark ? Colors.black.withValues(alpha: 0.2) : theme.colorScheme.primary.withValues(alpha: 0.04),
+              offset: const Offset(0, 4),
+              blurRadius: 12,
             ),
-            const Spacer(),
-            _buildGrid(state, notifier, theme, isDark),
-            const Spacer(),
-            _buildNumberPad(notifier, theme, isDark),
-            const SizedBox(height: DesignSystem.spaceXL),
           ],
+        ),
+        child: Icon(
+          icon,
+          size: 20,
+          color: theme.colorScheme.primary,
         ),
       ),
     );
@@ -100,98 +94,115 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
     
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 16),
-      padding: const EdgeInsets.all(2),
+      padding: const EdgeInsets.all(4), // Outer bezel
       decoration: BoxDecoration(
-        color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.2 : 0.1),
+        color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: isDark ? 0.2 : 0.4),
         borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
         border: Border.all(
-          color: theme.colorScheme.onSurface,
-          width: 2,
+          color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.1 : 0.3),
+          width: 1,
         ),
+        boxShadow: [
+          BoxShadow(
+            color: isDark ? Colors.black.withValues(alpha: 0.3) : theme.colorScheme.primary.withValues(alpha: 0.05),
+            offset: const Offset(0, 12),
+            blurRadius: 24,
+          ),
+        ],
       ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 2),
-        child: AspectRatio(
-          aspectRatio: 1,
-          child: Container(
-            color: theme.colorScheme.surface,
-            child: Column(
-              children: List.generate(size, (r) {
-                return Expanded(
-                  child: Row(
-                    children: List.generate(size, (c) {
-                      final isInitial = state.initialBoard[r][c] != 0;
-                      final isSelected = selR == r && selC == c;
-                      final value = state.currentBoard[r][c];
-                      
-                      // Highlights
-                      final bool isSameDigit = selectedValue != 0 && value == selectedValue;
-                      final bool isRelatedArea = selR == r || selC == c || 
-                                               (selR != null && selC != null && 
-                                                (r ~/ 3 == selR ~/ 3 && c ~/ 3 == selC ~/ 3));
-                      
-                      // Conflict detection
-                      bool hasConflict = false;
-                      if (value != 0 && !isInitial) {
-                        hasConflict = !SudokuEngine().isValid(state.currentBoard, r, c, value);
-                      }
+      child: Container(
+        decoration: BoxDecoration(
+          color: theme.colorScheme.surface,
+          borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
+          border: Border.all(
+            color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.3 : 0.2),
+            width: 1,
+          ),
+        ),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 5),
+          child: AspectRatio(
+            aspectRatio: 1,
+            child: Container(
+              color: theme.colorScheme.surface,
+              child: Column(
+                children: List.generate(size, (r) {
+                  return Expanded(
+                    child: Row(
+                      children: List.generate(size, (c) {
+                        final isInitial = state.initialBoard[r][c] != 0;
+                        final isSelected = selR == r && selC == c;
+                        final value = state.currentBoard[r][c];
+                        
+                        // Highlights
+                        final bool isSameDigit = selectedValue != 0 && value == selectedValue;
+                        final bool isRelatedArea = selR == r || selC == c || 
+                                                 (selR != null && selC != null && 
+                                                  (r ~/ 3 == selR ~/ 3 && c ~/ 3 == selC ~/ 3));
+                        
+                        // Conflict detection
+                        bool hasConflict = false;
+                        if (value != 0 && !isInitial) {
+                          hasConflict = !SudokuEngine().isValid(state.currentBoard, r, c, value);
+                        }
 
-                      // Thick borders for 3x3 boxes
-                      final bool borderRight = (c + 1) % 3 == 0 && c < size - 1;
-                      final bool borderBottom = (r + 1) % 3 == 0 && r < size - 1;
+                        // Thick borders for 3x3 boxes
+                        final bool borderRight = (c + 1) % 3 == 0 && c < size - 1;
+                        final bool borderBottom = (r + 1) % 3 == 0 && r < size - 1;
 
-                      return Expanded(
-                        child: GestureDetector(
-                          onTap: () {
-                            HapticFeedbackUtil.selectionClick();
-                            notifier.selectCell(r, c);
-                          },
-                          child: AnimatedContainer(
-                            duration: const Duration(milliseconds: 150),
-                            decoration: BoxDecoration(
-                              color: isSelected 
-                                ? theme.colorScheme.primary.withValues(alpha: 0.25)
-                                : isSameDigit
-                                  ? DesignSystem.gameAmber.withValues(alpha: 0.2)
-                                  : isRelatedArea
-                                    ? theme.colorScheme.primary.withValues(alpha: 0.05)
-                                    : theme.colorScheme.surface,
-                              border: Border(
-                                right: BorderSide(
-                                  color: theme.colorScheme.onSurface.withValues(alpha: borderRight ? 0.8 : 0.1), 
-                                  width: borderRight ? 2.0 : 0.5
-                                ),
-                                bottom: BorderSide(
-                                  color: theme.colorScheme.onSurface.withValues(alpha: borderBottom ? 0.8 : 0.1), 
-                                  width: borderBottom ? 2.0 : 0.5
+                        return Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              HapticFeedbackUtil.selectionClick();
+                              notifier.selectCell(r, c);
+                            },
+                            child: AnimatedContainer(
+                              duration: const Duration(milliseconds: 150),
+                              decoration: BoxDecoration(
+                                color: isSelected 
+                                  ? theme.colorScheme.primary.withValues(alpha: 0.15)
+                                  : isSameDigit
+                                    ? DesignSystem.gameAmber.withValues(alpha: 0.15)
+                                    : isRelatedArea
+                                      ? theme.colorScheme.primary.withValues(alpha: 0.03)
+                                      : theme.colorScheme.surface,
+                                border: Border(
+                                  right: BorderSide(
+                                    color: theme.colorScheme.outline.withValues(alpha: borderRight ? 1.0 : 0.5), 
+                                    width: borderRight ? 1.5 : 0.5
+                                  ),
+                                  bottom: BorderSide(
+                                    color: theme.colorScheme.outline.withValues(alpha: borderBottom ? 1.0 : 0.5), 
+                                    width: borderBottom ? 1.5 : 0.5
+                                  ),
                                 ),
                               ),
-                            ),
-                            child: Center(
-                              child: Text(
-                                value == 0 ? '' : value.toString(),
-                                style: theme.textTheme.displaySmall?.copyWith(
-                                  fontSize: 22,
-                                  fontWeight: isInitial ? FontWeight.w900 : FontWeight.w500,
-                                  color: hasConflict
-                                    ? DesignSystem.lightError
-                                    : isSelected 
-                                      ? theme.colorScheme.primary 
-                                      : isSameDigit
-                                        ? DesignSystem.gameAmber
-                                        : isInitial 
-                                          ? theme.colorScheme.onSurface 
-                                          : theme.colorScheme.onSurface.withValues(alpha: 0.6),
+                              child: Center(
+                                child: Text(
+                                  value == 0 ? '' : value.toString(),
+                                  style: theme.textTheme.displaySmall?.copyWith(
+                                    fontSize: 22,
+                                    fontWeight: isInitial ? FontWeight.w800 : FontWeight.w600,
+                                    color: hasConflict
+                                      ? DesignSystem.lightError
+                                      : isSelected 
+                                        ? theme.colorScheme.primary 
+                                        : isSameDigit
+                                          ? DesignSystem.gameAmber
+                                          : isInitial 
+                                            ? theme.colorScheme.onSurface 
+                                            : theme.colorScheme.onSurface.withValues(alpha: 0.7),
+                                  ),
                                 ),
                               ),
                             ),
                           ),
-                        ),
-                      );
-                    }),
-                  ),
-                );
-              }),
+                        );
+                      }),
+                    ),
+                  );
+                }),
+              ),
             ),
           ),
         ),
@@ -215,8 +226,8 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: Wrap(
-        spacing: 10,
-        runSpacing: 10,
+        spacing: 12,
+        runSpacing: 12,
         alignment: WrapAlignment.center,
         children: [
           ...List.generate(9, (i) {
@@ -226,35 +237,41 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
             return Stack(
               clipBehavior: Clip.none,
               children: [
-                SizedBox(
-                  width: 58,
-                  height: 58,
-                  child: ElevatedButton(
-                    onPressed: () {
-                      HapticFeedbackUtil.lightImpact();
-                      notifier.setNumber(num);
-                    },
-                    style: ElevatedButton.styleFrom(
-                      padding: EdgeInsets.zero,
-                      backgroundColor: isCompleted 
+                GestureDetector(
+                  onTap: () {
+                    HapticFeedbackUtil.lightImpact();
+                    notifier.setNumber(num);
+                  },
+                  child: Container(
+                    width: 56,
+                    height: 56,
+                    decoration: BoxDecoration(
+                      color: isCompleted 
                           ? DesignSystem.gameGreen.withValues(alpha: 0.1) 
                           : theme.colorScheme.surface,
-                      foregroundColor: isCompleted ? DesignSystem.gameGreen : theme.colorScheme.primary,
-                      side: BorderSide(
+                      borderRadius: BorderRadius.circular(16),
+                      border: Border.all(
                         color: isCompleted 
-                            ? DesignSystem.gameGreen.withValues(alpha: 0.4)
-                            : theme.colorScheme.primary.withValues(alpha: 0.3),
-                        width: 1.5,
+                            ? DesignSystem.gameGreen.withValues(alpha: 0.3)
+                            : theme.colorScheme.outline.withValues(alpha: isDark ? 0.2 : 0.5),
+                        width: 1,
                       ),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(14),
-                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: isDark ? Colors.black.withValues(alpha: 0.2) : theme.colorScheme.primary.withValues(alpha: 0.04),
+                          offset: const Offset(0, 6),
+                          blurRadius: 16,
+                        ),
+                      ],
                     ),
-                    child: Text(
-                      num.toString(), 
-                      style: theme.textTheme.titleLarge?.copyWith(
-                        fontWeight: FontWeight.w900,
-                        color: isCompleted ? DesignSystem.gameGreen : theme.colorScheme.primary,
+                    child: Center(
+                      child: Text(
+                        num.toString(), 
+                        style: theme.textTheme.titleLarge?.copyWith(
+                          fontWeight: FontWeight.w800,
+                          fontSize: 22,
+                          color: isCompleted ? DesignSystem.gameGreen : theme.colorScheme.primary,
+                        ),
                       ),
                     ),
                   ),
@@ -268,15 +285,16 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
                       decoration: BoxDecoration(
                         color: isCompleted ? DesignSystem.gameGreen : theme.colorScheme.primary,
                         shape: BoxShape.circle,
+                        border: Border.all(color: theme.colorScheme.surface, width: 1.5),
                       ),
-                      constraints: const BoxConstraints(minWidth: 18, minHeight: 18),
+                      constraints: const BoxConstraints(minWidth: 20, minHeight: 20),
                       child: Text(
                         (9 - counts[num]!).clamp(0, 9).toString(),
                         textAlign: TextAlign.center,
                         style: const TextStyle(
                           color: Colors.white,
                           fontSize: 10,
-                          fontWeight: FontWeight.w900,
+                          fontWeight: FontWeight.w800,
                         ),
                       ),
                     ),
@@ -285,31 +303,35 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
             );
           }),
           // Eraser Button
-          SizedBox(
-            width: 58,
-            height: 58,
-            child: OutlinedButton(
-              onPressed: () {
-                HapticFeedbackUtil.mediumImpact();
-                final selR = state.selectedRow;
-                final selC = state.selectedCol;
-                if (selR != null && selC != null) {
-                  // Re-use setNumber with the current number to toggle it off
-                  final currentVal = state.currentBoard[selR][selC];
-                  if (currentVal != 0) {
-                    notifier.setNumber(currentVal);
-                  }
+          GestureDetector(
+            onTap: () {
+              HapticFeedbackUtil.mediumImpact();
+              final selR = state.selectedRow;
+              final selC = state.selectedCol;
+              if (selR != null && selC != null) {
+                final currentVal = state.currentBoard[selR][selC];
+                if (currentVal != 0) {
+                  notifier.setNumber(currentVal);
                 }
-              },
-              style: OutlinedButton.styleFrom(
-                padding: EdgeInsets.zero,
-                side: BorderSide(
-                  color: theme.colorScheme.onSurface.withValues(alpha: 0.2),
-                  width: 1.5,
+              }
+            },
+            child: Container(
+              width: 56,
+              height: 56,
+              decoration: BoxDecoration(
+                color: theme.colorScheme.surface,
+                borderRadius: BorderRadius.circular(16),
+                border: Border.all(
+                  color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.2 : 0.5),
+                  width: 1,
                 ),
-                shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(14),
-                ),
+                boxShadow: [
+                  BoxShadow(
+                    color: isDark ? Colors.black.withValues(alpha: 0.2) : theme.colorScheme.primary.withValues(alpha: 0.04),
+                    offset: const Offset(0, 6),
+                    blurRadius: 16,
+                  ),
+                ],
               ),
               child: Icon(
                 Icons.backspace_rounded,
@@ -336,7 +358,10 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
         surfaceTintColor: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(DesignSystem.radiusXL),
-          side: BorderSide(color: theme.colorScheme.outline.withValues(alpha: 0.2)),
+          side: BorderSide(
+            color: theme.colorScheme.outline.withValues(alpha: 0.2),
+            width: 1,
+          ),
         ),
         title: Center(
           child: Column(
@@ -344,12 +369,13 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
               Container(
                 padding: const EdgeInsets.all(DesignSystem.spaceMD),
                 decoration: BoxDecoration(
-                  color: theme.colorScheme.primary.withValues(alpha: 0.1),
+                  color: DesignSystem.gameAmber.withValues(alpha: 0.1),
                   shape: BoxShape.circle,
+                  border: Border.all(color: DesignSystem.gameAmber.withValues(alpha: 0.3), width: 2),
                 ),
                 child: Icon(
                   Icons.auto_awesome_rounded,
-                  color: theme.colorScheme.primary,
+                  color: DesignSystem.gameAmber,
                   size: 48,
                 ),
               ),
@@ -359,6 +385,7 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
                 style: theme.textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.w900,
                   letterSpacing: 2,
+                  color: theme.colorScheme.primary,
                 ),
               ),
             ],
@@ -369,6 +396,7 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
           textAlign: TextAlign.center,
           style: theme.textTheme.bodyMedium?.copyWith(
             color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
+            fontWeight: FontWeight.w700,
           ),
         ),
         actions: [
@@ -381,7 +409,10 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
                   Navigator.of(context).pop();
                 },
                 style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(200, 50),
+                  minimumSize: const Size(200, 56),
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(16),
+                  ),
                 ),
                 child: const Text('CONTINUE'),
               ),

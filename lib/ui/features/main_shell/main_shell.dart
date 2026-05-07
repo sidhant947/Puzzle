@@ -46,54 +46,60 @@ class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserv
     final isDark = theme.brightness == Brightness.dark;
 
     return Scaffold(
+      extendBody: true,
       body: IndexedStack(
         index: _selectedIndex,
         children: _screens,
       ),
-      extendBody: true,
-      bottomNavigationBar: ClipRRect(
-        child: BackdropFilter(
-          filter: ImageFilter.blur(sigmaX: 12, sigmaY: 12),
-          child: Container(
-            decoration: BoxDecoration(
-              color: theme.colorScheme.surface.withValues(alpha: isDark ? 0.8 : 0.9),
-              border: Border(
-                top: BorderSide(
-                  color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.2 : 0.1),
-                  width: 1,
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          boxShadow: [
+            BoxShadow(
+              color: isDark ? Colors.black.withValues(alpha: 0.5) : theme.colorScheme.primary.withValues(alpha: 0.08),
+              blurRadius: 32,
+              offset: const Offset(0, -8),
+            ),
+          ],
+        ),
+        child: ClipRRect(
+          child: BackdropFilter(
+            filter: ImageFilter.blur(sigmaX: 24, sigmaY: 24),
+            child: Container(
+              decoration: BoxDecoration(
+                color: theme.colorScheme.surface.withValues(alpha: isDark ? 0.7 : 0.85),
+                border: Border(
+                  top: BorderSide(
+                    color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.2 : 0.4),
+                    width: 1,
+                  ),
                 ),
               ),
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.black.withValues(alpha: isDark ? 0.1 : 0.02),
-                  blurRadius: 10,
-                  offset: const Offset(0, -2),
-                ),
-              ],
-            ),
-            child: SafeArea(
-              top: false,
-              child: Padding(
-                padding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    _buildNavItem(
-                      context,
-                      index: 0,
-                      icon: Icons.grid_view_outlined,
-                      activeIcon: Icons.grid_view_rounded,
-                      label: 'GAMES',
-                      isSelected: _selectedIndex == 0,
-                    ),
-                    _buildNavItem(
-                      context, index: 1,
-                      icon: Icons.person_outline_rounded,
-                      activeIcon: Icons.person_rounded,
-                      label: 'PROFILE',
-                      isSelected: _selectedIndex == 1,
-                    ),
-                  ],
+              child: SafeArea(
+                top: false,
+                child: Container(
+                  height: 68,
+                  padding: const EdgeInsets.symmetric(horizontal: 24),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      _buildNavItem(
+                        context,
+                        index: 0,
+                        icon: Icons.grid_view_outlined,
+                        activeIcon: Icons.grid_view_rounded,
+                        label: 'GAMES',
+                        isSelected: _selectedIndex == 0,
+                      ),
+                      _buildNavItem(
+                        context, 
+                        index: 1,
+                        icon: Icons.person_outline_rounded,
+                        activeIcon: Icons.person_rounded,
+                        label: 'PROFILE',
+                        isSelected: _selectedIndex == 1,
+                      ),
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -116,41 +122,60 @@ class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserv
         ? theme.colorScheme.primary
         : theme.colorScheme.onSurface.withValues(alpha: 0.4);
 
-    return GestureDetector(
-      onTap: () {
-        if (_selectedIndex != index) {
-          setState(() => _selectedIndex = index);
-        }
-      },
-      behavior: HitTestBehavior.opaque,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeOutCubic,
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 10),
-        decoration: BoxDecoration(
-          color: isSelected
-              ? theme.colorScheme.primary.withValues(alpha: 0.1)
-              : Colors.transparent,
-          borderRadius: BorderRadius.circular(16),
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Icon(
-              isSelected ? activeIcon : icon,
-              size: 24,
-              color: color,
-            ),
-            const SizedBox(height: 4),
-            Text(
-              label,
-              style: theme.textTheme.labelSmall?.copyWith(
-                color: color,
-                fontWeight: isSelected ? FontWeight.w800 : FontWeight.w600,
-                letterSpacing: 0.5,
+    return Expanded(
+      child: GestureDetector(
+        onTap: () {
+          if (_selectedIndex != index) {
+            setState(() => _selectedIndex = index);
+          }
+        },
+        behavior: HitTestBehavior.opaque,
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 400),
+          curve: Curves.elasticOut,
+          margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
+          decoration: BoxDecoration(
+            color: isSelected
+                ? theme.colorScheme.primary.withValues(alpha: 0.1)
+                : Colors.transparent,
+            borderRadius: BorderRadius.circular(16),
+          ),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AnimatedScale(
+                scale: isSelected ? 1.1 : 1.0,
+                duration: const Duration(milliseconds: 400),
+                curve: Curves.elasticOut,
+                child: Icon(
+                  isSelected ? activeIcon : icon,
+                  size: 24,
+                  color: color,
+                ),
               ),
-            ),
-          ],
+              const SizedBox(height: 1),
+              Text(
+                label,
+                style: theme.textTheme.labelSmall?.copyWith(
+                  color: color,
+                  fontWeight: isSelected ? FontWeight.w900 : FontWeight.w700,
+                  letterSpacing: 1.0,
+                  fontSize: 8,
+                ),
+              ),
+              if (isSelected)
+                Container(
+                  margin: const EdgeInsets.only(top: 2),
+                  width: 4,
+                  height: 4,
+                  decoration: BoxDecoration(
+                    color: color,
+                    shape: BoxShape.circle,
+                  ),
+                ),
+            ],
+          ),
         ),
       ),
     );
