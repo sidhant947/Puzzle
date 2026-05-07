@@ -6,7 +6,7 @@ part of 'math_path_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$mathPathNotifierHash() => r'9f34e1cd2251b7528540a1e9b75ac2a15fba233f';
+String _$mathPathNotifierHash() => r'b75f1d2fb9eb3475295bae19fb0c82715d7a3ef1';
 
 /// See also [MathPathNotifier].
 @ProviderFor(MathPathNotifier)

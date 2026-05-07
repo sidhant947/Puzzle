@@ -4,7 +4,6 @@ import 'package:url_launcher/url_launcher.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../providers/theme_provider.dart';
 import '../../../../data/models/user_data.dart';
-import '../../../../data/models/game_streak.dart';
 import '../../../../utils/design_system.dart';
 
 class Achievement {
@@ -60,7 +59,6 @@ class ProfileScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userData = ref.watch(userDataNotifierProvider);
-    final streaks = ref.watch(gameStreakNotifierProvider);
     final theme = Theme.of(context);
     final themeNotifier = ref.watch(themeNotifierProvider.notifier);
     final currentThemeMode = ref.watch(themeNotifierProvider);
@@ -94,7 +92,6 @@ class ProfileScreen extends ConsumerWidget {
             children: [
               _buildUserStats(context, userData, ref, theme, isDark),
               const SizedBox(height: 16),
-              _buildDailyProgress(context, streaks, theme, isDark),
               _buildLegalSection(context, theme, isDark),
               Padding(
                 padding: const EdgeInsets.only(top: 40, bottom: 20, left: 4),
@@ -276,89 +273,6 @@ class ProfileScreen extends ConsumerWidget {
                 ),
               ),
             ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildDailyProgress(
-    BuildContext context,
-    Map<String, GameStreak> streaks,
-    ThemeData theme,
-    bool isDark,
-  ) {
-    final solvedCount = streaks.values.where((s) => s.solvedToday).length;
-    const totalGames = 6;
-    final progress = totalGames > 0 ? solvedCount / totalGames : 0.0;
-    final isComplete = solvedCount == totalGames;
-
-    return Container(
-      padding: const EdgeInsets.all(20),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        borderRadius: BorderRadius.circular(DesignSystem.radius2XL),
-        border: Border.all(
-          color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.15 : 0.08),
-          width: 1,
-        ),
-      ),
-      child: Row(
-        children: [
-          Container(
-            width: 52,
-            height: 52,
-            decoration: BoxDecoration(
-              color: isComplete
-                  ? DesignSystem.gameGreen.withValues(alpha: 0.1)
-                  : theme.colorScheme.primary.withValues(alpha: 0.05),
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Icon(
-              isComplete ? Icons.check_circle_rounded : Icons.radar_rounded,
-              size: 26,
-              color: isComplete ? DesignSystem.gameGreen : theme.colorScheme.primary,
-            ),
-          ),
-          const SizedBox(width: 20),
-          Expanded(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'DAILY STATUS',
-                  style: theme.textTheme.labelSmall?.copyWith(
-                    fontWeight: FontWeight.w900,
-                    letterSpacing: 1.0,
-                  ),
-                ),
-                const SizedBox(height: 12),
-                Row(
-                  children: [
-                    Expanded(
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(4),
-                        child: LinearProgressIndicator(
-                          value: progress,
-                          minHeight: 6,
-                          backgroundColor: theme.colorScheme.onSurface.withValues(alpha: 0.05),
-                          valueColor: AlwaysStoppedAnimation(
-                            isComplete ? DesignSystem.gameGreen : theme.colorScheme.primary,
-                          ),
-                        ),
-                      ),
-                    ),
-                    const SizedBox(width: 12),
-                    Text(
-                      '$solvedCount/$totalGames',
-                      style: theme.textTheme.labelMedium?.copyWith(
-                        fontWeight: FontWeight.w800,
-                      ),
-                    ),
-                  ],
-                ),
-              ],
-            ),
           ),
         ],
       ),

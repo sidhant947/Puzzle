@@ -6,7 +6,7 @@ part of 'odd_one_out_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$oddOneOutNotifierHash() => r'230b94e72676c25f028ebc77cb016834666b4ff9';
+String _$oddOneOutNotifierHash() => r'6c0bc825b1cf9a53c97c365f72c7759545188dfc';
 
 /// See also [OddOneOutNotifier].
 @ProviderFor(OddOneOutNotifier)
