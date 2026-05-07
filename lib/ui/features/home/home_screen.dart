@@ -21,7 +21,6 @@ import '../games/tents_and_trees/tents_and_trees_screen.dart';
 import '../games/slide_puzzle/slide_puzzle_screen.dart';
 import '../games/word_mastermind/word_mastermind_screen.dart';
 import '../games/word_ladder/word_ladder_screen.dart';
-import '../games/hexagon_spell/hexagon_spell_screen.dart';
 import '../games/color_match/color_match_screen.dart';
 import '../games/path_finder/path_finder_screen.dart';
 import '../games/simon_sequence/simon_sequence_screen.dart';
@@ -32,6 +31,8 @@ import '../games/odd_one_out/odd_one_out_screen.dart';
 import '../games/spelling_sprint/spelling_sprint_screen.dart';
 import '../games/math_path/math_path_screen.dart';
 import '../games/hue_sort/hue_sort_screen.dart';
+import '../games/water_sort/water_sort_screen.dart';
+import '../games/lights_out/lights_out_screen.dart';
 
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required Widget page})
@@ -62,6 +63,20 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   final List<Map<String, dynamic>> _games = [
+    {
+      'title': 'Water Sort',
+      'id': 'water_sort',
+      'icon': Icons.opacity_rounded,
+      'color': DesignSystem.gameBlue,
+      'screen': const WaterSortScreen(),
+    },
+    {
+      'title': 'Lights Out',
+      'id': 'lights_out',
+      'icon': Icons.lightbulb_rounded,
+      'color': DesignSystem.gameAmber,
+      'screen': const LightsOutScreen(),
+    },
     {
       'title': 'Hue Sort',
       'id': 'hue_sort',
@@ -152,13 +167,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'icon': Icons.format_list_numbered_rounded,
       'color': DesignSystem.gameViolet,
       'screen': const WordLadderScreen(),
-    },
-    {
-      'title': 'Hexagon Spell',
-      'id': 'hexagon_spell',
-      'icon': Icons.hive_rounded,
-      'color': DesignSystem.gameAmber,
-      'screen': const HexagonSpellScreen(),
     },
     {
       'title': 'Slide Puzzle',

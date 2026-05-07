@@ -1,27 +1,26 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'hexagon_spell_provider.dart';
+part of 'lights_out_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$hexagonSpellNotifierHash() =>
-    r'22b0f065159cb6675ca6f1710b76747c804d8f8c';
+String _$lightsOutNotifierHash() => r'26ba53b9d2a290dcaa6485bf35552fa321e076fb';
 
-/// See also [HexagonSpellNotifier].
-@ProviderFor(HexagonSpellNotifier)
-final hexagonSpellNotifierProvider = AutoDisposeNotifierProvider<
-    HexagonSpellNotifier, HexagonSpellState>.internal(
-  HexagonSpellNotifier.new,
-  name: r'hexagonSpellNotifierProvider',
+/// See also [LightsOutNotifier].
+@ProviderFor(LightsOutNotifier)
+final lightsOutNotifierProvider =
+    AutoDisposeNotifierProvider<LightsOutNotifier, List<List<bool>>>.internal(
+  LightsOutNotifier.new,
+  name: r'lightsOutNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$hexagonSpellNotifierHash,
+      : _$lightsOutNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$HexagonSpellNotifier = AutoDisposeNotifier<HexagonSpellState>;
+typedef _$LightsOutNotifier = AutoDisposeNotifier<List<List<bool>>>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

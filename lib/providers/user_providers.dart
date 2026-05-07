@@ -15,7 +15,27 @@ UserRepository userRepository(UserRepositoryRef ref) {
 class UserDataNotifier extends _$UserDataNotifier {
   @override
   UserData build() {
-    return ref.read(userRepositoryProvider).getUserData();
+    final data = ref.read(userRepositoryProvider).getUserData();
+
+    // Handle daily super streak reset autonomously within build
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+    final lastSuperStreak = data.lastSuperStreakDate;
+
+    if (lastSuperStreak != null) {
+      final lastSuperStreakNormalized =
+          DateTime(lastSuperStreak.year, lastSuperStreak.month, lastSuperStreak.day);
+      final daysSinceLastSuper = today.difference(lastSuperStreakNormalized).inDays;
+
+      if (daysSinceLastSuper > 1 && (data.superStreak ?? 0) > 0) {
+        final updatedData = data.copyWith(superStreak: 0);
+        // Save to repository (fire-and-forget since we're in build)
+        ref.read(userRepositoryProvider).saveUserData(updatedData);
+        return updatedData;
+      }
+    }
+
+    return data;
   }
 
   int calculateLevel(int xp) {
@@ -98,9 +118,6 @@ class UserDataNotifier extends _$UserDataNotifier {
 class GameStreakNotifier extends _$GameStreakNotifier {
   @override
   Map<String, GameStreak> build() {
-    // Refresh super streak status as well
-    ref.read(userDataNotifierProvider.notifier).refreshSuperStreak();
-
     final streaks = ref.read(userRepositoryProvider).getAllGameStreaks();
     final streakMap = {for (var s in streaks) s.gameId: s};
     return _applyDailyReset(streakMap);

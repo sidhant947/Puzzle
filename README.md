@@ -16,6 +16,8 @@ A professional suite of minimalist puzzle games built with Flutter. Challenge yo
 *   **Schulte Table:** A focus and speed-reading tool to improve peripheral vision and mental processing speed.
 *   **Number Match:** A logic and pattern recognition game where you find pairs of identical numbers or those summing to 10.
 *   **Calculation Sprint:** An arithmetic fluency game where you solve rapid-fire math equations under a time limit.
+*   **Water Sort:** A color-sorting challenge where you pour colored water between tubes until each tube contains only one color.
+*   **Lights Out:** A classic grid puzzle where toggling a cell flips its state and the state of its neighbors; the goal is to turn all lights off.
 
 ## ✨ Features
 
