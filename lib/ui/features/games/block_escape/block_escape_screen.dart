@@ -1,20 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'unblock_me_engine.dart';
-import 'unblock_me_provider.dart';
+import 'block_escape_engine.dart';
+import 'block_escape_provider.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 
-class UnblockMeScreen extends ConsumerWidget {
-  const UnblockMeScreen({super.key});
+class BlockEscapeScreen extends ConsumerWidget {
+  const BlockEscapeScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(unblockMeNotifierProvider);
+    final state = ref.watch(blockEscapeNotifierProvider);
     final theme = Theme.of(context);
 
-    ref.listen(unblockMeNotifierProvider, (previous, next) {
+    ref.listen(blockEscapeNotifierProvider, (previous, next) {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
         HapticFeedbackUtil.victory();
         _showVictoryDialog(context, ref);
@@ -29,7 +29,7 @@ class UnblockMeScreen extends ConsumerWidget {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
-          'UNBLOCK ME',
+          'BLOCK ESCAPE',
           style: theme.textTheme.titleMedium?.copyWith(
             letterSpacing: 4,
             fontWeight: FontWeight.w800,
@@ -40,7 +40,7 @@ class UnblockMeScreen extends ConsumerWidget {
             icon: const Icon(Icons.refresh_rounded),
             onPressed: () {
               HapticFeedbackUtil.mediumImpact();
-              ref.read(unblockMeNotifierProvider.notifier).newGame();
+              ref.read(blockEscapeNotifierProvider.notifier).newGame();
             },
           ),
           const SizedBox(width: 8),
@@ -90,11 +90,11 @@ class UnblockMeScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildBoard(BuildContext context, WidgetRef ref, UnblockMeState state) {
+  Widget _buildBoard(BuildContext context, WidgetRef ref, BlockEscapeState state) {
     return LayoutBuilder(
       builder: (context, constraints) {
         final boardSize = constraints.maxWidth * 0.9;
-        final cellSize = boardSize / UnblockMeEngine.size;
+        final cellSize = boardSize / BlockEscapeEngine.size;
 
         return Container(
           width: boardSize,
@@ -108,7 +108,7 @@ class UnblockMeScreen extends ConsumerWidget {
             children: [
               Positioned(
                 right: 0,
-                top: UnblockMeEngine.exitRow * cellSize,
+                top: BlockEscapeEngine.exitRow * cellSize,
                 child: Container(
                   width: 4,
                   height: cellSize,
@@ -134,10 +134,10 @@ class UnblockMeScreen extends ConsumerWidget {
         onHorizontalDragUpdate: block.orientation == BlockOrientation.horizontal
             ? (details) {
                 if (details.primaryDelta! > 5) {
-                  ref.read(unblockMeNotifierProvider.notifier).moveBlock(block.id, 1, 0);
+                  ref.read(blockEscapeNotifierProvider.notifier).moveBlock(block.id, 1, 0);
                   HapticFeedbackUtil.lightImpact();
                 } else if (details.primaryDelta! < -5) {
-                  ref.read(unblockMeNotifierProvider.notifier).moveBlock(block.id, -1, 0);
+                  ref.read(blockEscapeNotifierProvider.notifier).moveBlock(block.id, -1, 0);
                   HapticFeedbackUtil.lightImpact();
                 }
               }
@@ -145,10 +145,10 @@ class UnblockMeScreen extends ConsumerWidget {
         onVerticalDragUpdate: block.orientation == BlockOrientation.vertical
             ? (details) {
                 if (details.primaryDelta! > 5) {
-                  ref.read(unblockMeNotifierProvider.notifier).moveBlock(block.id, 0, 1);
+                  ref.read(blockEscapeNotifierProvider.notifier).moveBlock(block.id, 0, 1);
                   HapticFeedbackUtil.lightImpact();
                 } else if (details.primaryDelta! < -5) {
-                  ref.read(unblockMeNotifierProvider.notifier).moveBlock(block.id, 0, -1);
+                  ref.read(blockEscapeNotifierProvider.notifier).moveBlock(block.id, 0, -1);
                   HapticFeedbackUtil.lightImpact();
                 }
               }
@@ -188,7 +188,7 @@ class UnblockMeScreen extends ConsumerWidget {
   }
 
   void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
-    await ref.read(gameStreakNotifierProvider.notifier).completeGame('unblock_me');
+    await ref.read(gameStreakNotifierProvider.notifier).completeGame('block_escape');
     if (!context.mounted) return;
     showDialog(
       context: context,

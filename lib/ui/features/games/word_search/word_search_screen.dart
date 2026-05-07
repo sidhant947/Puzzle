@@ -364,16 +364,6 @@ class LinePainter extends CustomPainter {
       ..strokeCap = StrokeCap.round
       ..strokeWidth = strokeWidth;
     canvas.drawLine(start, end, paint);
-    
-    // Subtle border for definition
-    final borderPaint = Paint()
-      ..color = color.withValues(alpha: 0.5)
-      ..strokeCap = StrokeCap.round
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 2;
-    // We don't use drawLine for border because it's just a line, 
-    // but we can draw the same line with a slightly different width if we wanted an outline effect.
-    // Instead of a full outline, let's just stick to the glow and main line for now as it's cleaner.
   }
 
   @override

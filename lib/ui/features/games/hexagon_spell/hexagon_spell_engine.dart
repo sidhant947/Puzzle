@@ -1,4 +1,4 @@
-class SpellingBeeEngine {
+class HexagonSpellEngine {
   // Each puzzle has 7 letters, the first one is the required central letter.
   // And a list of all valid words for that set.
   final List<Map<String, dynamic>> _puzzles = [

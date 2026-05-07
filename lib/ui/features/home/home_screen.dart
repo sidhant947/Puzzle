@@ -16,12 +16,12 @@ import '../games/nonogram/nonogram_screen.dart';
 import '../games/schulte_table/schulte_table_screen.dart';
 import '../games/calculation_sprint/calculation_sprint_screen.dart';
 import '../games/pipes/pipes_screen.dart';
-import '../games/unblock_me/unblock_me_screen.dart';
+import '../games/block_escape/block_escape_screen.dart';
 import '../games/tents_and_trees/tents_and_trees_screen.dart';
 import '../games/slide_puzzle/slide_puzzle_screen.dart';
 import '../games/word_mastermind/word_mastermind_screen.dart';
 import '../games/word_ladder/word_ladder_screen.dart';
-import '../games/spelling_bee/spelling_bee_screen.dart';
+import '../games/hexagon_spell/hexagon_spell_screen.dart';
 import '../games/color_match/color_match_screen.dart';
 import '../games/path_finder/path_finder_screen.dart';
 import '../games/simon_sequence/simon_sequence_screen.dart';
@@ -106,11 +106,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'screen': const WordLadderScreen(),
     },
     {
-      'title': 'Spelling Bee',
-      'id': 'spelling_bee',
+      'title': 'Hexagon Spell',
+      'id': 'hexagon_spell',
       'icon': Icons.hive_rounded,
       'color': DesignSystem.gameAmber,
-      'screen': const SpellingBeeScreen(),
+      'screen': const HexagonSpellScreen(),
     },
     {
       'title': 'Slide Puzzle',
@@ -127,11 +127,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'screen': const PipesScreen(),
     },
     {
-      'title': 'Unblock Me',
-      'id': 'unblock_me',
+      'title': 'Block Escape',
+      'id': 'block_escape',
       'icon': Icons.view_column_rounded,
       'color': DesignSystem.gameOrange,
-      'screen': const UnblockMeScreen(),
+      'screen': const BlockEscapeScreen(),
     },
     {
       'title': 'Tents & Trees',

@@ -191,15 +191,19 @@ class WordMastermindScreen extends ConsumerWidget {
               child: InkWell(
                 onTap: () {
                   HapticFeedbackUtil.selectionClick();
-                  if (key == 'ENTER') notifier.submitGuess();
-                  else if (key == 'DEL') notifier.removeLetter();
-                  else notifier.addLetter(key);
+                  if (key == 'ENTER') {
+                    notifier.submitGuess();
+                  } else if (key == 'DEL') {
+                    notifier.removeLetter();
+                  } else {
+                    notifier.addLetter(key);
+                  }
                 },
                 child: Container(
                   height: 48,
                   alignment: Alignment.center,
                   decoration: BoxDecoration(
-                    color: theme.colorScheme.surfaceVariant,
+                    color: theme.colorScheme.surfaceContainerHighest,
                     borderRadius: BorderRadius.circular(4),
                   ),
                   child: key == 'DEL' ? const Icon(Icons.backspace_outlined, size: 18) : Text(key, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
@@ -216,6 +220,8 @@ class WordMastermindScreen extends ConsumerWidget {
     if (state.isGameWon) {
       await ref.read(gameStreakNotifierProvider.notifier).completeGame('word_mastermind', xpAmount: 40);
     }
+
+    if (!context.mounted) return;
 
     showDialog(
       context: context,

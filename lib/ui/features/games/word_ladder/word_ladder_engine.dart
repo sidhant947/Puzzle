@@ -8,8 +8,7 @@ class WordLadderEngine {
     'TIME', 'TIDE', 'RIDE', 'RICE', 'RACE',
     'WIND', 'WINE', 'LINE', 'LANE', 'LATE',
     'SHIP', 'SLIP', 'SLAP', 'SLAT', 'FLAT',
-    'MOON', 'SOON', 'SOON', 'SOON', 'SOON', // Placeholder chains
-    'FISH', 'DISH', 'DASH', 'BASH', 'BASK'
+    'MOON', 'SOON', 'FISH', 'DISH', 'DASH', 'BASH', 'BASK'
   };
 
   final List<Map<String, String>> _puzzles = [

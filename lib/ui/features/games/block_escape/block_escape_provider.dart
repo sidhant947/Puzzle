@@ -1,25 +1,25 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'unblock_me_engine.dart';
+import 'block_escape_engine.dart';
 
-part 'unblock_me_provider.g.dart';
+part 'block_escape_provider.g.dart';
 
-class UnblockMeState {
+class BlockEscapeState {
   final List<Block> blocks;
   final bool isSolved;
   final int moveCount;
 
-  UnblockMeState({
+  BlockEscapeState({
     required this.blocks,
     this.isSolved = false,
     this.moveCount = 0,
   });
 
-  UnblockMeState copyWith({
+  BlockEscapeState copyWith({
     List<Block>? blocks,
     bool? isSolved,
     int? moveCount,
   }) {
-    return UnblockMeState(
+    return BlockEscapeState(
       blocks: blocks ?? this.blocks,
       isSolved: isSolved ?? this.isSolved,
       moveCount: moveCount ?? this.moveCount,
@@ -28,20 +28,20 @@ class UnblockMeState {
 }
 
 @riverpod
-class UnblockMeNotifier extends _$UnblockMeNotifier {
-  final _engine = UnblockMeEngine();
+class BlockEscapeNotifier extends _$BlockEscapeNotifier {
+  final _engine = BlockEscapeEngine();
 
   @override
-  UnblockMeState build() {
+  BlockEscapeState build() {
     final puzzle = _engine.getRandomPuzzle();
-    return UnblockMeState(
+    return BlockEscapeState(
       blocks: puzzle.blocks.map((b) => b.copyWith()).toList(),
     );
   }
 
   void newGame() {
     final puzzle = _engine.getRandomPuzzle();
-    state = UnblockMeState(
+    state = BlockEscapeState(
       blocks: puzzle.blocks.map((b) => b.copyWith()).toList(),
       moveCount: 0,
       isSolved: false,

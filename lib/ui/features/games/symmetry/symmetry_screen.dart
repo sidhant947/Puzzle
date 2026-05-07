@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'symmetry_provider.dart';
 import '../../../../../providers/user_providers.dart';
-import '../../../../../utils/design_system.dart';
 import '../../../../../utils/haptic_feedback.dart';
 
 class SymmetryScreen extends ConsumerWidget {
@@ -53,9 +52,9 @@ class SymmetryScreen extends ConsumerWidget {
                           },
                           child: Container(
                             decoration: BoxDecoration(
-                              color: isActive ? theme.colorScheme.primary : theme.colorScheme.surfaceVariant,
+                              color: isActive ? theme.colorScheme.primary : theme.colorScheme.surfaceContainerHighest,
                               borderRadius: BorderRadius.circular(4),
-                              border: Border.all(color: Colors.black.withOpacity(0.05)),
+                              border: Border.all(color: Colors.black.withValues(alpha: 0.05)),
                             ),
                           ),
                         );

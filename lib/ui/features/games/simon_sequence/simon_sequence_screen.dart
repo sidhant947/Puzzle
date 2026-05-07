@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'simon_sequence_provider.dart';
 import '../../../../../providers/user_providers.dart';
-import '../../../../../utils/design_system.dart';
 import '../../../../../utils/haptic_feedback.dart';
 
 class SimonSequenceScreen extends ConsumerStatefulWidget {
@@ -67,11 +66,11 @@ class _SimonSequenceScreenState extends ConsumerState<SimonSequenceScreen> {
                       child: AnimatedContainer(
                         duration: const Duration(milliseconds: 150),
                         decoration: BoxDecoration(
-                          color: isHighlighted ? theme.colorScheme.primary : theme.colorScheme.primary.withOpacity(0.1),
+                          color: isHighlighted ? theme.colorScheme.primary : theme.colorScheme.primary.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(16),
-                          border: Border.all(color: theme.colorScheme.primary.withOpacity(0.3)),
+                          border: Border.all(color: theme.colorScheme.primary.withValues(alpha: 0.3)),
                           boxShadow: isHighlighted ? [
-                            BoxShadow(color: theme.colorScheme.primary.withOpacity(0.5), blurRadius: 10)
+                            BoxShadow(color: theme.colorScheme.primary.withValues(alpha: 0.5), blurRadius: 10)
                           ] : null,
                         ),
                       ),
@@ -106,8 +105,11 @@ class _SimonSequenceScreenState extends ConsumerState<SimonSequenceScreen> {
           TextButton(
             onPressed: () {
               Navigator.pop(context);
-              if (won) Navigator.pop(context);
-              else ref.read(simonSequenceNotifierProvider.notifier).reset();
+              if (won) {
+                Navigator.pop(context);
+              } else {
+                ref.read(simonSequenceNotifierProvider.notifier).reset();
+              }
             },
             child: const Text('CONTINUE'),
           )

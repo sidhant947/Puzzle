@@ -1,9 +1,10 @@
 import java.util.Properties
 
 plugins {
-    id("com.android.application")
-    id("kotlin-android")
-    id("dev.flutter.flutter-gradle-plugin")
+    id "com.android.application"
+    id "kotlin-android"
+    // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
+    id "dev.flutter.flutter-gradle-plugin"
 }
 
 val keystorePropertiesFile = rootProject.file("key.properties")
@@ -48,6 +49,17 @@ android {
         targetSdk = flutter.targetSdkVersion
         versionCode = flutter.versionCode
         versionName = flutter.versionName
+    }
+
+    applicationVariants.all { variant ->
+        variant.outputs.each { output ->
+            def abiCodes = ["armeabi-v7a": 1, "arm64-v8a": 2, "x86_64": 3]
+            def abiName = output.getFilter(com.android.build.OutputFile.ABI)
+            def abiCode = abiCodes.get(abiName)
+            if (abiCode != null) {
+                output.versionCodeOverride = variant.versionCode * 10 + abiCode
+            }
+        }
     }
 
     buildTypes {

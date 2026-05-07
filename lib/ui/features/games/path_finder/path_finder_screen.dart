@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'path_finder_provider.dart';
 import '../../../../../providers/user_providers.dart';
-import '../../../../../utils/design_system.dart';
 import '../../../../../utils/haptic_feedback.dart';
 
 class PathFinderScreen extends ConsumerWidget {
@@ -51,7 +50,7 @@ class PathFinderScreen extends ConsumerWidget {
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             decoration: BoxDecoration(
-              color: theme.colorScheme.primary.withOpacity(0.1),
+              color: theme.colorScheme.primary.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(20),
             ),
             child: Text(
@@ -143,28 +142,28 @@ class _PathGrid extends ConsumerWidget {
                 duration: const Duration(milliseconds: 200),
                 decoration: BoxDecoration(
                   color: isSelected 
-                      ? theme.colorScheme.primary.withOpacity(isLast ? 1.0 : 0.4) 
+                      ? theme.colorScheme.primary.withValues(alpha: isLast ? 1.0 : 0.4) 
                       : (isStart || isExit)
-                          ? theme.colorScheme.primary.withOpacity(0.1)
-                          : theme.colorScheme.surfaceVariant,
+                          ? theme.colorScheme.primary.withValues(alpha: 0.1)
+                          : theme.colorScheme.surfaceContainerHighest,
                   borderRadius: BorderRadius.circular(12),
                   border: Border.all(
                     color: isLast 
                         ? theme.colorScheme.primary 
                         : (isStart || isExit)
-                            ? theme.colorScheme.primary.withOpacity(0.5)
+                            ? theme.colorScheme.primary.withValues(alpha: 0.5)
                             : Colors.transparent,
                     width: (isLast || isStart || isExit) ? 2 : 1,
                   ),
                   boxShadow: isLast ? [
-                    BoxShadow(color: theme.colorScheme.primary.withOpacity(0.3), blurRadius: 8)
+                    BoxShadow(color: theme.colorScheme.primary.withValues(alpha: 0.3), blurRadius: 8)
                   ] : null,
                 ),
                 child: Center(
                   child: (isStart || isExit) && !isSelected
                       ? Text(isStart ? 'S' : 'E',
                           style: TextStyle(
-                            color: theme.colorScheme.primary.withOpacity(0.5),
+                            color: theme.colorScheme.primary.withValues(alpha: 0.5),
                             fontWeight: FontWeight.bold,
                           ))
                       : null,

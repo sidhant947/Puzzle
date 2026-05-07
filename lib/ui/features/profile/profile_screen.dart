@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../providers/theme_provider.dart';
 import '../../../../data/models/user_data.dart';
@@ -94,6 +95,7 @@ class ProfileScreen extends ConsumerWidget {
               _buildUserStats(context, userData, ref, theme, isDark),
               const SizedBox(height: 16),
               _buildDailyProgress(context, streaks, theme, isDark),
+              _buildLegalSection(context, theme, isDark),
               Padding(
                 padding: const EdgeInsets.only(top: 40, bottom: 20, left: 4),
                 child: Text(
@@ -456,5 +458,100 @@ class ProfileScreen extends ConsumerWidget {
         ],
       ),
     );
+  }
+
+  Widget _buildLegalSection(BuildContext context, ThemeData theme, bool isDark) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.only(top: 24, bottom: 12, left: 4),
+          child: Text(
+            'LEGAL & PRIVACY',
+            style: theme.textTheme.labelSmall?.copyWith(
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
+              letterSpacing: 2,
+              fontWeight: FontWeight.w900,
+            ),
+          ),
+        ),
+        _buildLegalItem(
+          context,
+          'Privacy Policy',
+          Icons.privacy_tip_outlined,
+          theme,
+          () => _launchUrl('https://sites.google.com/view/puzzlebysidhant/home'),
+        ),
+        const SizedBox(height: 8),
+        _buildLegalItem(
+          context,
+          'Terms of Service',
+          Icons.description_outlined,
+          theme,
+          () => _launchUrl('https://sites.google.com/view/puzzlebysidhant/home'), // Reusing the same link as instructed
+        ),
+        const SizedBox(height: 8),
+        _buildLegalItem(
+          context,
+          'Open Source Licenses',
+          Icons.code_rounded,
+          theme,
+          () => showLicensePage(
+            context: context,
+            applicationName: 'Puzzle Suite',
+            applicationVersion: '1.0.1',
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildLegalItem(
+    BuildContext context,
+    String title,
+    IconData icon,
+    ThemeData theme,
+    VoidCallback onTap,
+  ) {
+    return InkWell(
+      onTap: onTap,
+      borderRadius: BorderRadius.circular(12),
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        decoration: BoxDecoration(
+          color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
+          borderRadius: BorderRadius.circular(12),
+          border: Border.all(
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.05),
+          ),
+        ),
+        child: Row(
+          children: [
+            Icon(icon, size: 20, color: theme.colorScheme.primary),
+            const SizedBox(width: 16),
+            Expanded(
+              child: Text(
+                title,
+                style: theme.textTheme.titleSmall?.copyWith(
+                  fontWeight: FontWeight.w700,
+                ),
+              ),
+            ),
+            Icon(
+              Icons.chevron_right_rounded,
+              size: 20,
+              color: theme.colorScheme.onSurface.withValues(alpha: 0.3),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Future<void> _launchUrl(String url) async {
+    final uri = Uri.parse(url);
+    if (!await launchUrl(uri)) {
+      throw Exception('Could not launch $url');
+    }
   }
 }

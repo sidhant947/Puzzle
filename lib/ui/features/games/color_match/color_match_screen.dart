@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'color_match_provider.dart';
 import '../../../../../providers/user_providers.dart';
-import '../../../../../utils/design_system.dart';
 import '../../../../../utils/haptic_feedback.dart';
 
 class ColorMatchScreen extends ConsumerWidget {
@@ -36,9 +35,9 @@ class ColorMatchScreen extends ConsumerWidget {
             padding: const EdgeInsets.all(24.0),
             child: Column(
               children: [
-                _buildSlider('RED', state.currentColor.red.toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor(v, state.currentColor.green.toDouble(), state.currentColor.blue.toDouble()), Colors.red),
-                _buildSlider('GREEN', state.currentColor.green.toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor(state.currentColor.red.toDouble(), v, state.currentColor.blue.toDouble()), Colors.green),
-                _buildSlider('BLUE', state.currentColor.blue.toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor(state.currentColor.red.toDouble(), state.currentColor.green.toDouble(), v), Colors.blue),
+                _buildSlider('RED', (state.currentColor.r * 255.0).round().toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor(v, (state.currentColor.g * 255.0).round().toDouble(), (state.currentColor.b * 255.0).round().toDouble()), Colors.red),
+                _buildSlider('GREEN', (state.currentColor.g * 255.0).round().toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor((state.currentColor.r * 255.0).round().toDouble(), v, (state.currentColor.b * 255.0).round().toDouble()), Colors.green),
+                _buildSlider('BLUE', (state.currentColor.b * 255.0).round().toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor((state.currentColor.r * 255.0).round().toDouble(), (state.currentColor.g * 255.0).round().toDouble(), v), Colors.blue),
                 const SizedBox(height: 32),
                 ElevatedButton(
                   onPressed: () => ref.read(colorMatchNotifierProvider.notifier).submit(),
@@ -66,7 +65,7 @@ class ColorMatchScreen extends ConsumerWidget {
               decoration: BoxDecoration(
                 color: color,
                 borderRadius: BorderRadius.circular(16),
-                boxShadow: [BoxShadow(color: Colors.black.withOpacity(0.1), blurRadius: 10)],
+                boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.1), blurRadius: 10)],
               ),
             ),
           ),

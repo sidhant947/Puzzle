@@ -1,9 +1,9 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'spelling_bee_engine.dart';
+import 'hexagon_spell_engine.dart';
 
-part 'spelling_bee_provider.g.dart';
+part 'hexagon_spell_provider.g.dart';
 
-class SpellingBeeState {
+class HexagonSpellState {
   final String letters;
   final String centerLetter;
   final Set<String> validWords;
@@ -12,7 +12,7 @@ class SpellingBeeState {
   final String? errorMessage;
   final bool isGameOver;
 
-  SpellingBeeState({
+  HexagonSpellState({
     required this.letters,
     required this.centerLetter,
     required this.validWords,
@@ -22,7 +22,7 @@ class SpellingBeeState {
     this.isGameOver = false,
   });
 
-  SpellingBeeState copyWith({
+  HexagonSpellState copyWith({
     String? letters,
     String? centerLetter,
     Set<String>? validWords,
@@ -31,7 +31,7 @@ class SpellingBeeState {
     String? errorMessage,
     bool? isGameOver,
   }) {
-    return SpellingBeeState(
+    return HexagonSpellState(
       letters: letters ?? this.letters,
       centerLetter: centerLetter ?? this.centerLetter,
       validWords: validWords ?? this.validWords,
@@ -44,13 +44,13 @@ class SpellingBeeState {
 }
 
 @riverpod
-class SpellingBeeNotifier extends _$SpellingBeeNotifier {
-  final _engine = SpellingBeeEngine();
+class HexagonSpellNotifier extends _$HexagonSpellNotifier {
+  final _engine = HexagonSpellEngine();
 
   @override
-  SpellingBeeState build() {
+  HexagonSpellState build() {
     final puzzle = _engine.getRandomPuzzle();
-    return SpellingBeeState(
+    return HexagonSpellState(
       letters: puzzle['letters'] as String,
       centerLetter: puzzle['center'] as String,
       validWords: Set<String>.from(puzzle['words'] as List),
@@ -103,7 +103,7 @@ class SpellingBeeNotifier extends _$SpellingBeeNotifier {
 
   void reset() {
     final puzzle = _engine.getRandomPuzzle();
-    state = SpellingBeeState(
+    state = HexagonSpellState(
       letters: puzzle['letters'] as String,
       centerLetter: puzzle['center'] as String,
       validWords: Set<String>.from(puzzle['words'] as List),

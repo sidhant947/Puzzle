@@ -46,7 +46,7 @@ class UnblockLevel {
   const UnblockLevel({required this.blocks});
 }
 
-class UnblockMeEngine {
+class BlockEscapeEngine {
   static const int size = 6;
   static const int exitRow = 2;
 

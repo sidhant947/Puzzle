@@ -1,18 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'spelling_bee_provider.dart';
-import 'spelling_bee_engine.dart';
-import '../../../../../providers/user_providers.dart';
-import '../../../../../utils/design_system.dart';
+import 'hexagon_spell_provider.dart';
 import '../../../../../utils/haptic_feedback.dart';
 
-class SpellingBeeScreen extends ConsumerWidget {
-  const SpellingBeeScreen({super.key});
+class HexagonSpellScreen extends ConsumerWidget {
+  const HexagonSpellScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final state = ref.watch(spellingBeeNotifierProvider);
-    final notifier = ref.read(spellingBeeNotifierProvider.notifier);
+    final state = ref.watch(hexagonSpellNotifierProvider);
+    final notifier = ref.read(hexagonSpellNotifierProvider.notifier);
     final theme = Theme.of(context);
 
     return Scaffold(
@@ -23,7 +20,7 @@ class SpellingBeeScreen extends ConsumerWidget {
           onPressed: () => Navigator.of(context).pop(),
         ),
         title: Text(
-          'SPELLING BEE',
+          'HEXAGON SPELL',
           style: theme.textTheme.titleMedium?.copyWith(
             letterSpacing: 2,
             fontWeight: FontWeight.w800,
@@ -63,7 +60,7 @@ class SpellingBeeScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildScoreBoard(SpellingBeeState state, ThemeData theme) {
+  Widget _buildScoreBoard(HexagonSpellState state, ThemeData theme) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Row(
@@ -91,12 +88,12 @@ class SpellingBeeScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildFoundWords(SpellingBeeState state, ThemeData theme) {
+  Widget _buildFoundWords(HexagonSpellState state, ThemeData theme) {
     return Container(
       margin: const EdgeInsets.all(16),
       padding: const EdgeInsets.all(12),
       decoration: BoxDecoration(
-        color: theme.colorScheme.surfaceVariant.withValues(alpha: 0.3),
+        color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
         borderRadius: BorderRadius.circular(12),
       ),
       child: SingleChildScrollView(
@@ -117,7 +114,7 @@ class SpellingBeeScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildCurrentWord(SpellingBeeState state, ThemeData theme) {
+  Widget _buildCurrentWord(HexagonSpellState state, ThemeData theme) {
     return Text(
       state.currentWord.isEmpty ? 'Type or tap letters' : state.currentWord,
       style: theme.textTheme.headlineMedium?.copyWith(
@@ -128,7 +125,7 @@ class SpellingBeeScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildHoneycomb(SpellingBeeState state, SpellingBeeNotifier notifier, ThemeData theme) {
+  Widget _buildHoneycomb(HexagonSpellState state, HexagonSpellNotifier notifier, ThemeData theme) {
     final letters = state.letters.split('');
     final center = state.centerLetter;
     final outer = letters.where((l) => l != center).toList();
@@ -165,7 +162,7 @@ class SpellingBeeScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildHexButton(String letter, bool isCenter, SpellingBeeNotifier notifier, ThemeData theme) {
+  Widget _buildHexButton(String letter, bool isCenter, HexagonSpellNotifier notifier, ThemeData theme) {
     return GestureDetector(
       onTap: () {
         HapticFeedbackUtil.selectionClick();
@@ -175,7 +172,7 @@ class SpellingBeeScreen extends ConsumerWidget {
         width: 70,
         height: 80,
         decoration: BoxDecoration(
-          color: isCenter ? Colors.amber : theme.colorScheme.surfaceVariant,
+          color: isCenter ? Colors.amber : theme.colorScheme.surfaceContainerHighest,
           borderRadius: BorderRadius.circular(12), // Placeholder for real hex shape
           boxShadow: [
             BoxShadow(color: Colors.black.withValues(alpha: 0.1), blurRadius: 4, offset: const Offset(0, 2)),
@@ -194,7 +191,7 @@ class SpellingBeeScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildControls(SpellingBeeNotifier notifier, ThemeData theme) {
+  Widget _buildControls(HexagonSpellNotifier notifier, ThemeData theme) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [

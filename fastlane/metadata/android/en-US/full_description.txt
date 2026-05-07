@@ -4,7 +4,7 @@ Included Games:
 
 Sudoku: Classic number placement puzzle with three difficulty levels.
 
-Find Word: A Wordle-style challenge where you guess the hidden word.
+Find Word: A daily hidden word guessing challenge.
 
 Crossword: A compact 5x5 "Mini" crossword experience with fresh daily puzzles.
 
@@ -25,3 +25,7 @@ Schulte Table: A focus and speed-reading tool to improve peripheral vision and m
 Number Match: A logic and pattern recognition game where you find pairs of identical numbers or those summing to 10.
 
 Calculation Sprint: An arithmetic fluency game where you solve rapid-fire math equations under a time limit.
+
+Hexagon Spell: Create words from a honeycomb of letters.
+
+Block Escape: Slide blocks to clear a path for the red block.

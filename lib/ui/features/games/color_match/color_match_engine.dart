@@ -13,9 +13,9 @@ class ColorMatchEngine {
   }
 
   double calculateSimilarity(Color target, Color current) {
-    final dr = (target.red - current.red).abs();
-    final dg = (target.green - current.green).abs();
-    final db = (target.blue - current.blue).abs();
+    final dr = ((target.r * 255.0).round() - (current.r * 255.0).round()).abs();
+    final dg = ((target.g * 255.0).round() - (current.g * 255.0).round()).abs();
+    final db = ((target.b * 255.0).round() - (current.b * 255.0).round()).abs();
     
     // Max difference is 255 * 3 = 765
     final totalDiff = dr + dg + db;
