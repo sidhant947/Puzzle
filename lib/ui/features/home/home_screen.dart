@@ -290,8 +290,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             physics: const BouncingScrollPhysics(),
             slivers: [
               SliverAppBar(
-                floating: true,
-                snap: true,
+                floating: false,
+                snap: false,
                 expandedHeight: 140,
                 collapsedHeight: 80,
                 backgroundColor: Colors.transparent,

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../../providers/user_providers.dart';
-import '../../../../providers/theme_provider.dart';
 import '../../../../data/models/user_data.dart';
 import '../../../../utils/design_system.dart';
 
@@ -60,8 +59,6 @@ class ProfileScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final userData = ref.watch(userDataNotifierProvider);
     final theme = Theme.of(context);
-    final themeNotifier = ref.watch(themeNotifierProvider.notifier);
-    final currentThemeMode = ref.watch(themeNotifierProvider);
     final isDark = theme.brightness == Brightness.dark;
 
     return Scaffold(
@@ -81,8 +78,8 @@ class ProfileScreen extends ConsumerWidget {
               physics: const BouncingScrollPhysics(),
               slivers: [
                 SliverAppBar(
-                  floating: true,
-                  snap: true,
+                  floating: false,
+                  snap: false,
                   backgroundColor: Colors.transparent,
                   surfaceTintColor: Colors.transparent,
                   centerTitle: true,
@@ -101,10 +98,6 @@ class ProfileScreen extends ConsumerWidget {
                       ),
                     ),
                   ),
-                  actions: [
-                    _buildThemeToggle(context, themeNotifier, currentThemeMode, isDark),
-                    const SizedBox(width: 16),
-                  ],
                 ),
                 SliverPadding(
                   padding: const EdgeInsets.fromLTRB(20, 8, 20, 140),
@@ -142,42 +135,6 @@ class ProfileScreen extends ConsumerWidget {
             ),
           ),
         ],
-      ),
-    );
-  }
-
-  Widget _buildThemeToggle(
-    BuildContext context,
-    ThemeNotifier themeNotifier,
-    AppThemeMode currentMode,
-    bool isDark,
-  ) {
-    final theme = Theme.of(context);
-    return GestureDetector(
-      onTap: () => themeNotifier.toggleTheme(),
-      child: Container(
-        width: 44,
-        height: 44,
-        decoration: BoxDecoration(
-          color: theme.colorScheme.surface,
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(
-            color: theme.colorScheme.outline.withValues(alpha: 0.5),
-            width: 1,
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: isDark ? Colors.black.withValues(alpha: 0.2) : theme.colorScheme.primary.withValues(alpha: 0.04),
-              offset: const Offset(0, 4),
-              blurRadius: 12,
-            ),
-          ],
-        ),
-        child: Icon(
-          themeNotifier.themeIcon,
-          size: 20,
-          color: theme.colorScheme.primary,
-        ),
       ),
     );
   }
