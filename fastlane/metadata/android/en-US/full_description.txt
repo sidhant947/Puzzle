@@ -26,6 +26,4 @@ Number Match: A logic and pattern recognition game where you find pairs of ident
 
 Calculation Sprint: An arithmetic fluency game where you solve rapid-fire math equations under a time limit.
 
-Hexagon Spell: Create words from a honeycomb of letters.
-
-Block Escape: Slide blocks to clear a path for the red block.
+Block Escape: Slide blocks to clear a path for the red block. & Many More
