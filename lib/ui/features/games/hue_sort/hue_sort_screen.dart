@@ -4,6 +4,7 @@ import 'hue_sort_provider.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 
 class HueSortScreen extends ConsumerWidget {
   const HueSortScreen({super.key});
@@ -156,17 +157,17 @@ class HueSortScreen extends ConsumerWidget {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        title: const Text('EYE FOR COLOR!'),
-        content: const Text('You perfectly sorted the gradient.'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).popUntil((route) => route.isFirst);
-            },
-            child: const Text('HOME'),
-          ),
-        ],
+      builder: (context) => GameCompletionDialog(
+        title: 'CONGRATS',
+        message: 'You perfectly sorted the gradient!',
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          ref.read(hueSortNotifierProvider.notifier).newGame();
+          Navigator.of(context).pop();
+        },
       ),
     );
   }

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 import 'memory_matrix_provider.dart';
 
 class MemoryMatrixScreen extends ConsumerWidget {
@@ -16,11 +17,41 @@ class MemoryMatrixScreen extends ConsumerWidget {
       if (next.status == MemoryMatrixStatus.completed && 
           previous?.status != MemoryMatrixStatus.completed) {
         HapticFeedbackUtil.victory();
-        _showGameOverDialog(context, ref, true);
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => GameCompletionDialog(
+            title: 'GOAL REACHED!',
+            message: 'Impressive! Your working memory is sharp. Daily goal complete!',
+            onHome: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+            onPlayAgain: () {
+              ref.read(memoryMatrixNotifierProvider.notifier).reset();
+              Navigator.of(context).pop();
+            },
+          ),
+        );
       } else if (next.status == MemoryMatrixStatus.failure && 
                  previous?.status != MemoryMatrixStatus.failure) {
         HapticFeedbackUtil.error();
-        _showGameOverDialog(context, ref, false);
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => GameCompletionDialog(
+            title: 'GAME OVER',
+            message: 'Focus and try again to improve your memory score.',
+            onHome: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+            onPlayAgain: () {
+              ref.read(memoryMatrixNotifierProvider.notifier).reset();
+              Navigator.of(context).pop();
+            },
+          ),
+        );
       } else if (next.status == MemoryMatrixStatus.success &&
                  previous?.status != MemoryMatrixStatus.success) {
         HapticFeedbackUtil.success();
@@ -195,59 +226,6 @@ class MemoryMatrixScreen extends ConsumerWidget {
         color: color,
         letterSpacing: 2.0,
         fontWeight: FontWeight.w900,
-      ),
-    );
-  }
-
-  void _showGameOverDialog(BuildContext context, WidgetRef ref, bool isWon) {
-    final theme = Theme.of(context);
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        backgroundColor: theme.colorScheme.surface,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(DesignSystem.radiusXL)),
-        title: Text(
-          isWon ? 'GOAL REACHED!' : 'GAME OVER',
-          textAlign: TextAlign.center,
-          style: theme.textTheme.headlineSmall?.copyWith(
-            fontWeight: FontWeight.w900,
-            color: isWon ? DesignSystem.gameGreen : DesignSystem.lightError,
-          ),
-        ),
-        content: Text(
-          isWon 
-            ? 'Impressive! Your working memory is sharp. Daily goal complete!' 
-            : 'Focus and try again to improve your memory score.',
-          textAlign: TextAlign.center,
-          style: theme.textTheme.bodyMedium,
-        ),
-        actions: [
-          Center(
-            child: Column(
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    ref.read(memoryMatrixNotifierProvider.notifier).reset();
-                  },
-                  child: const Text('PLAY AGAIN'),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context); // Pop dialog
-                    Navigator.pop(context); // Pop screen
-                  },
-                  child: Text(
-                    'BACK TO HUB',
-                    style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.5)),
-                  ),
-                ),
-                const SizedBox(height: 12),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }

@@ -4,6 +4,7 @@ import 'binary_puzzle_provider.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 
 class BinaryPuzzleScreen extends ConsumerWidget {
   const BinaryPuzzleScreen({super.key});
@@ -159,17 +160,16 @@ class BinaryPuzzleScreen extends ConsumerWidget {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        title: const Text('EXCELLENT!'),
-        content: const Text('You solved the binary puzzle!'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).popUntil((route) => route.isFirst);
-            },
-            child: const Text('HOME'),
-          ),
-        ],
+      builder: (context) => GameCompletionDialog(
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          ref.read(binaryPuzzleNotifierProvider.notifier).newGame();
+          Navigator.of(context).pop();
+        },
+        message: 'You solved the binary puzzle!',
       ),
     );
   }

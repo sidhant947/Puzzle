@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 import 'minesweeper_engine.dart';
@@ -296,6 +297,26 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
   }
 
   void _showGameOverDialog(BuildContext context, bool isWon) {
+    if (isWon) {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => GameCompletionDialog(
+          onHome: () {
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+          },
+          onPlayAgain: () {
+            ref.read(minesweeperNotifierProvider.notifier).reset();
+            Navigator.of(context).pop();
+          },
+          title: 'VICTORY!',
+          message: 'You safely flagged all mines and revealed the safe zones!',
+        ),
+      );
+      return;
+    }
+
     final theme = Theme.of(context);
     showDialog(
       context: context,
@@ -304,19 +325,16 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
         backgroundColor: theme.colorScheme.surface,
         shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(DesignSystem.radiusXL)),
         title: Text(
-          isWon ? 'VICTORY!' : 'GAME OVER',
+          'GAME OVER',
           textAlign: TextAlign.center,
           style: theme.textTheme.headlineSmall?.copyWith(
             fontWeight: FontWeight.w900,
-            color: isWon ? DesignSystem.gameGreen : DesignSystem.lightError,
+            color: DesignSystem.lightError,
           ),
         ),
-        content: Text(
-          isWon 
-            ? 'You safely flagged all mines and revealed the safe zones!' 
-            : 'You stepped on a mine. Better luck next time!',
+        content: const Text(
+          'You stepped on a mine. Better luck next time!',
           textAlign: TextAlign.center,
-          style: theme.textTheme.bodyMedium,
         ),
         actions: [
           Center(

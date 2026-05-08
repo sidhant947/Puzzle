@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'color_match_provider.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 
 class ColorMatchScreen extends ConsumerWidget {
   const ColorMatchScreen({super.key});
@@ -95,10 +96,16 @@ class ColorMatchScreen extends ConsumerWidget {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        title: const Text('MATCH RESULT'),
-        content: Text('Your accuracy: ${state.score.toStringAsFixed(1)}%'),
-        actions: [TextButton(onPressed: () { Navigator.pop(context); Navigator.pop(context); }, child: const Text('CONTINUE'))],
+      builder: (context) => GameCompletionDialog(
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          ref.read(colorMatchNotifierProvider.notifier).reset();
+          Navigator.of(context).pop();
+        },
+        message: 'Your accuracy: ${state.score.toStringAsFixed(1)}%',
       ),
     );
   }

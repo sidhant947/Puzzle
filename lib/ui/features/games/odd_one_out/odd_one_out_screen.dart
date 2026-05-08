@@ -6,6 +6,7 @@ import 'odd_one_out_provider.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 
 class OddOneOutScreen extends ConsumerStatefulWidget {
   const OddOneOutScreen({super.key});
@@ -203,17 +204,18 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        title: const Text('SUPERB FOCUS!'),
-        content: Text('You found 50 odd ones! Final score: ${ref.read(oddOneOutNotifierProvider).score}'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).popUntil((route) => route.isFirst);
-            },
-            child: const Text('HOME'),
-          ),
-        ],
+      builder: (context) => GameCompletionDialog(
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          ref.read(oddOneOutNotifierProvider.notifier).startGame();
+          _startTimer();
+          Navigator.of(context).pop();
+        },
+        title: 'CONGRATS',
+        message: 'You found 50 odd ones! Final score: ${ref.read(oddOneOutNotifierProvider).score}',
       ),
     );
   }

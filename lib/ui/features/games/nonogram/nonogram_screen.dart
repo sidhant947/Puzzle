@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 import 'nonogram_provider.dart';
 
 class NonogramScreen extends ConsumerStatefulWidget {
@@ -22,7 +23,22 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
     ref.listen(nonogramNotifierProvider, (previous, next) {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
         HapticFeedbackUtil.victory();
-        _showVictoryDialog(context);
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => GameCompletionDialog(
+            title: 'IMAGE REVEALED!',
+            message: 'Excellent logical deduction. The hidden image has been successfully revealed!',
+            onHome: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+            onPlayAgain: () {
+              ref.read(nonogramNotifierProvider.notifier).reset();
+              Navigator.of(context).pop();
+            },
+          ),
+        );
       }
     });
 
@@ -277,56 +293,6 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
             ),
           ],
         ),
-      ),
-    );
-  }
-
-  void _showVictoryDialog(BuildContext context) {
-    final theme = Theme.of(context);
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        backgroundColor: theme.colorScheme.surface,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(DesignSystem.radiusXL)),
-        title: Text(
-          'IMAGE REVEALED!',
-          textAlign: TextAlign.center,
-          style: theme.textTheme.headlineSmall?.copyWith(
-            fontWeight: FontWeight.w900,
-            color: DesignSystem.gameGreen,
-          ),
-        ),
-        content: const Text(
-          'Excellent logical deduction. The hidden image has been successfully revealed!',
-          textAlign: TextAlign.center,
-        ),
-        actions: [
-          Center(
-            child: Column(
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    ref.read(nonogramNotifierProvider.notifier).reset();
-                  },
-                  child: const Text('NEW PUZZLE'),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context); // Pop dialog
-                    Navigator.pop(context); // Pop screen
-                  },
-                  child: Text(
-                    'BACK TO HUB',
-                    style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.5)),
-                  ),
-                ),
-                const SizedBox(height: 12),
-              ],
-            ),
-          ),
-        ],
       ),
     );
   }

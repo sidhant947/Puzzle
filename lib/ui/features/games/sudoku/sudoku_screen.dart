@@ -5,6 +5,7 @@ import 'sudoku_engine.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/design_system.dart';
 import '../../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
 
 class SudokuScreen extends ConsumerStatefulWidget {
@@ -25,7 +26,26 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
     ref.listen(sudokuNotifierProvider, (previous, next) {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
         HapticFeedbackUtil.victory();
-        _showVictoryDialog(context, ref, theme);
+        ref.read(gameStreakNotifierProvider.notifier).completeGame('sudoku').then((_) {
+          if (mounted) {
+            showDialog(
+              context: context,
+              barrierDismissible: false,
+              builder: (context) => GameCompletionDialog(
+                title: 'WELL DONE',
+                message: 'Puzzle solved successfully with perfect logic.',
+                onHome: () {
+                  Navigator.of(context).pop();
+                  Navigator.of(context).pop();
+                },
+                onPlayAgain: () {
+                  ref.read(sudokuNotifierProvider.notifier).initGame();
+                  Navigator.of(context).pop();
+                },
+              ),
+            );
+          }
+        });
       }
     });
 
@@ -337,84 +357,6 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
                 Icons.backspace_rounded,
                 size: 20,
                 color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  void _showVictoryDialog(BuildContext context, WidgetRef ref, ThemeData theme) async {
-    await ref.read(gameStreakNotifierProvider.notifier).completeGame('sudoku');
-
-    if (!context.mounted) return;
-
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        backgroundColor: theme.colorScheme.surface,
-        surfaceTintColor: Colors.transparent,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(DesignSystem.radiusXL),
-          side: BorderSide(
-            color: theme.colorScheme.outline.withValues(alpha: 0.2),
-            width: 1,
-          ),
-        ),
-        title: Center(
-          child: Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(DesignSystem.spaceMD),
-                decoration: BoxDecoration(
-                  color: DesignSystem.gameAmber.withValues(alpha: 0.1),
-                  shape: BoxShape.circle,
-                  border: Border.all(color: DesignSystem.gameAmber.withValues(alpha: 0.3), width: 2),
-                ),
-                child: Icon(
-                  Icons.auto_awesome_rounded,
-                  color: DesignSystem.gameAmber,
-                  size: 48,
-                ),
-              ),
-              const SizedBox(height: DesignSystem.spaceMD),
-              Text(
-                'WELL DONE',
-                style: theme.textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: 2,
-                  color: theme.colorScheme.primary,
-                ),
-              ),
-            ],
-          ),
-        ),
-        content: Text(
-          'Puzzle solved successfully with perfect logic.',
-          textAlign: TextAlign.center,
-          style: theme.textTheme.bodyMedium?.copyWith(
-            color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
-            fontWeight: FontWeight.w700,
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
-            child: Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  Navigator.of(context).pop();
-                },
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(200, 56),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(16),
-                  ),
-                ),
-                child: const Text('CONTINUE'),
               ),
             ),
           ),

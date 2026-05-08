@@ -5,6 +5,8 @@ import 'math_path_provider.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/game_completion_dialog.dart';
+import '../../../core/juice/game_scaffold.dart';
 
 class MathPathScreen extends ConsumerWidget {
   const MathPathScreen({super.key});
@@ -21,44 +23,67 @@ class MathPathScreen extends ConsumerWidget {
       }
     });
 
-    return Scaffold(
-      backgroundColor: theme.colorScheme.surface,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
-          onPressed: () => Navigator.of(context).pop(),
+    return GameScaffold(
+      title: 'MATH PATH',
+      subtitle: 'Find a path starting from the top-left tile that adds up exactly to the target sum.',
+      actions: [
+        _buildAppBarButton(
+          context,
+          icon: Icons.refresh_rounded,
+          onPressed: () {
+            HapticFeedbackUtil.mediumImpact();
+            ref.read(mathPathNotifierProvider.notifier).newGame();
+          },
         ),
-        title: Text(
-          'MATH PATH',
-          style: theme.textTheme.titleMedium?.copyWith(
-            letterSpacing: 4,
-            fontWeight: FontWeight.w800,
+      ],
+      body: Column(
+        children: [
+          const SizedBox(height: DesignSystem.spaceLG),
+          _buildTarget(theme, state),
+          const Spacer(),
+          Center(
+            child: _buildGrid(context, ref, state),
           ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh_rounded),
-            onPressed: () {
-              HapticFeedbackUtil.mediumImpact();
-              ref.read(mathPathNotifierProvider.notifier).newGame();
-            },
-          ),
-          const SizedBox(width: 8),
+          const Spacer(),
+          _buildControls(ref, theme),
+          const SizedBox(height: DesignSystem.spaceXL),
         ],
       ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: DesignSystem.spaceLG),
-            _buildTarget(theme, state),
-            const Spacer(),
-            Center(
-              child: _buildGrid(context, ref, state),
+    );
+  }
+
+  Widget _buildAppBarButton(
+    BuildContext context, {
+    required IconData icon,
+    required VoidCallback onPressed,
+  }) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+
+    return GestureDetector(
+      onTap: onPressed,
+      child: Container(
+        width: 44,
+        height: 44,
+        decoration: BoxDecoration(
+          color: theme.colorScheme.surface,
+          borderRadius: BorderRadius.circular(14),
+          border: Border.all(
+            color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.2 : 0.5),
+            width: 1,
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: isDark ? Colors.black.withValues(alpha: 0.2) : theme.colorScheme.primary.withValues(alpha: 0.04),
+              offset: const Offset(0, 4),
+              blurRadius: 12,
             ),
-            const Spacer(),
-            _buildControls(ref, theme),
-            const SizedBox(height: DesignSystem.spaceXL),
           ],
+        ),
+        child: Icon(
+          icon,
+          size: 20,
+          color: theme.colorScheme.primary,
         ),
       ),
     );
@@ -203,17 +228,17 @@ class MathPathScreen extends ConsumerWidget {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        title: const Text('PATH COMPLETE!'),
-        content: const Text('You found the path that adds up to the target!'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).popUntil((route) => route.isFirst);
-            },
-            child: const Text('HOME'),
-          ),
-        ],
+      builder: (context) => GameCompletionDialog(
+        title: 'CONGRATS',
+        message: 'You found the path that adds up to the target!',
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          ref.read(mathPathNotifierProvider.notifier).newGame();
+          Navigator.of(context).pop();
+        },
       ),
     );
   }

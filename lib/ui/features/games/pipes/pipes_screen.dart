@@ -5,6 +5,7 @@ import 'pipes_provider.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 
 class PipesScreen extends ConsumerWidget {
   const PipesScreen({super.key});
@@ -148,17 +149,17 @@ class PipesScreen extends ConsumerWidget {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        title: const Text('WELL DONE!'),
-        content: const Text('You connected all the pipes and filled the grid.'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).popUntil((route) => route.isFirst);
-            },
-            child: const Text('HOME'),
-          ),
-        ],
+      builder: (context) => GameCompletionDialog(
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          ref.read(pipesNotifierProvider.notifier).newGame();
+          Navigator.of(context).pop();
+        },
+        title: 'CONGRATS',
+        message: 'You connected all the pipes and filled the grid.',
       ),
     );
   }

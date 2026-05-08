@@ -2,6 +2,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/ui/features/games/crown/crown_provider.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../../providers/user_providers.dart';
 
 class CrownScreen extends ConsumerStatefulWidget {
@@ -149,19 +150,17 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        shape: const RoundedRectangleBorder(borderRadius: BorderRadius.zero),
-        title: const Text('WELL DONE', style: TextStyle(fontWeight: FontWeight.w900)),
-        content: const Text('All crowns placed successfully.'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-              Navigator.of(context).pop();
-            },
-            child: const Text('EXIT'),
-          ),
-        ],
+      builder: (context) => GameCompletionDialog(
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          ref.read(crownNotifierProvider.notifier).initGame();
+          Navigator.of(context).pop();
+        },
+        title: 'CONGRATS',
+        message: 'All crowns placed successfully.',
       ),
     );
   }

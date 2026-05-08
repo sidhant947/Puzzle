@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'simon_sequence_provider.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/haptic_feedback.dart';
+import '../../../../../widgets/game_completion_dialog.dart';
 
 class SimonSequenceScreen extends ConsumerStatefulWidget {
   const SimonSequenceScreen({super.key});
@@ -93,23 +94,36 @@ class _SimonSequenceScreenState extends ConsumerState<SimonSequenceScreen> {
   void _showGameOverDialog(BuildContext context, WidgetRef ref, SimonSequenceState state, ThemeData theme, bool won) {
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('simon_sequence', xpAmount: 50);
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => GameCompletionDialog(
+          onHome: () {
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+          },
+          onPlayAgain: () {
+            ref.read(simonSequenceNotifierProvider.notifier).reset();
+            Navigator.of(context).pop();
+          },
+          title: 'CONGRATS',
+          message: 'You memorized all 10 tiles!',
+        ),
+      );
+      return;
     }
 
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        title: Text(won ? 'PERFECT!' : 'WRONG SEQUENCE'),
-        content: Text(won ? 'You memorized all 10 tiles!' : 'Try again to master the sequence.'),
+        title: const Text('WRONG SEQUENCE'),
+        content: const Text('Try again to master the sequence.'),
         actions: [
           TextButton(
             onPressed: () {
               Navigator.pop(context);
-              if (won) {
-                Navigator.pop(context);
-              } else {
-                ref.read(simonSequenceNotifierProvider.notifier).reset();
-              }
+              ref.read(simonSequenceNotifierProvider.notifier).reset();
             },
             child: const Text('CONTINUE'),
           )

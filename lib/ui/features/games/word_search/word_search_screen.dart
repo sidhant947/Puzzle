@@ -5,6 +5,7 @@ import 'word_search_provider.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/design_system.dart';
 import '../../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 
 class WordSearchScreen extends ConsumerStatefulWidget {
   const WordSearchScreen({super.key});
@@ -278,63 +279,16 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        backgroundColor: theme.colorScheme.surface,
-        surfaceTintColor: Colors.transparent,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(DesignSystem.radiusXL),
-          side: BorderSide(color: theme.colorScheme.outline.withValues(alpha: 0.2)),
-        ),
-        title: Center(
-          child: Column(
-            children: [
-              Container(
-                padding: const EdgeInsets.all(DesignSystem.spaceMD),
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.primary.withValues(alpha: 0.1),
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  Icons.auto_awesome_rounded,
-                  color: theme.colorScheme.primary,
-                  size: 48,
-                ),
-              ),
-              const SizedBox(height: DesignSystem.spaceMD),
-              Text(
-                'WELL DONE',
-                style: theme.textTheme.headlineSmall?.copyWith(
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: 2,
-                ),
-              ),
-            ],
-          ),
-        ),
-        content: Text(
-          'All words found successfully with keen observation.',
-          textAlign: TextAlign.center,
-          style: theme.textTheme.bodyMedium?.copyWith(
-            color: theme.colorScheme.onSurface.withValues(alpha: 0.7),
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
-            child: Center(
-              child: ElevatedButton(
-                onPressed: () {
-                  Navigator.of(context).pop();
-                  Navigator.of(context).pop();
-                },
-                style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(200, 50),
-                ),
-                child: const Text('CONTINUE'),
-              ),
-            ),
-          ),
-        ],
+      builder: (context) => GameCompletionDialog(
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          ref.read(wordSearchNotifierProvider.notifier).initGame();
+          Navigator.of(context).pop();
+        },
+        message: 'All words found successfully with keen observation.',
       ),
     );
   }

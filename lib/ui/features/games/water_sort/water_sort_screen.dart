@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'water_sort_provider.dart';
 import 'water_sort_engine.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 
@@ -13,6 +14,28 @@ class WaterSortScreen extends ConsumerWidget {
     final state = ref.watch(waterSortNotifierProvider);
     final notifier = ref.read(waterSortNotifierProvider.notifier);
     final isDark = Theme.of(context).brightness == Brightness.dark;
+
+    ref.listen(waterSortNotifierProvider, (previous, next) {
+      if (next.isSolved && !(previous?.isSolved ?? false)) {
+        HapticFeedbackUtil.victory();
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => GameCompletionDialog(
+            onHome: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+            onPlayAgain: () {
+              notifier.reset();
+              Navigator.of(context).pop();
+            },
+            title: 'PUZZLE SOLVED!',
+            message: 'You sorted all the colors perfectly!',
+          ),
+        );
+      }
+    });
 
     return Scaffold(
       appBar: AppBar(
@@ -62,28 +85,6 @@ class WaterSortScreen extends ConsumerWidget {
               ),
             ),
           ),
-          if (state.isSolved) ...[
-            Padding(
-              padding: DesignSystem.paddingXL,
-              child: Column(
-                children: [
-                  Text(
-                    'PUZZLE SOLVED!',
-                    style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                          color: DesignSystem.gameGreen,
-                          fontWeight: FontWeight.w800,
-                          letterSpacing: 1.2,
-                        ),
-                  ),
-                  const SizedBox(height: DesignSystem.spaceLG),
-                  ElevatedButton(
-                    onPressed: () => notifier.reset(),
-                    child: const Text('NEW GAME'),
-                  ),
-                ],
-              ),
-            ),
-          ],
         ],
       ),
     );

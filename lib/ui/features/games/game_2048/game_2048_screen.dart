@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'game_2048_provider.dart';
 import 'game_2048_engine.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/design_system.dart';
 import '../../../../../utils/haptic_feedback.dart';
@@ -223,6 +224,26 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
   void _showGameOverDialog(BuildContext context, WidgetRef ref, Game2048State state, ThemeData theme) async {
     if (state.isGameWon) {
       await ref.read(gameStreakNotifierProvider.notifier).completeGame('game_2048');
+
+      if (!context.mounted) return;
+
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => GameCompletionDialog(
+          onHome: () {
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+          },
+          onPlayAgain: () {
+            ref.read(game2048NotifierProvider.notifier).reset();
+            Navigator.of(context).pop();
+          },
+          title: '2048!',
+          message: 'FINAL SCORE: ${state.score}\nYou reached the 2048 tile!',
+        ),
+      );
+      return;
     }
 
     if (!context.mounted) return;
@@ -247,14 +268,14 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
                   shape: BoxShape.circle,
                 ),
                 child: Icon(
-                  state.isGameWon ? Icons.emoji_events_rounded : Icons.sentiment_very_dissatisfied_rounded,
+                  Icons.sentiment_very_dissatisfied_rounded,
                   color: theme.colorScheme.primary,
                   size: 48,
                 ),
               ),
               const SizedBox(height: DesignSystem.spaceMD),
               Text(
-                state.isGameWon ? '2048!' : 'GAME OVER',
+                'GAME OVER',
                 style: theme.textTheme.headlineSmall?.copyWith(
                   fontWeight: FontWeight.w900,
                   letterSpacing: 2,

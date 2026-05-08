@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'path_finder_provider.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 
 class PathFinderScreen extends ConsumerWidget {
   const PathFinderScreen({super.key});
@@ -16,7 +17,23 @@ class PathFinderScreen extends ConsumerWidget {
     ref.listen(pathFinderNotifierProvider, (previous, next) {
       if (next.isGameOver && !(previous?.isGameOver ?? false)) {
         HapticFeedbackUtil.victory();
-        _showGameOverDialog(context, ref, theme);
+        ref.read(gameStreakNotifierProvider.notifier).completeGame('path_finder', xpAmount: 30);
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => GameCompletionDialog(
+            title: 'PATH MASTERED',
+            message: 'You successfully found the hidden path!',
+            onHome: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+            onPlayAgain: () {
+              ref.read(pathFinderNotifierProvider.notifier).reset();
+              Navigator.of(context).pop();
+            },
+          ),
+        );
       }
     });
 
@@ -76,27 +93,6 @@ class PathFinderScreen extends ConsumerWidget {
               style: theme.textTheme.bodySmall?.copyWith(color: Colors.grey, height: 1.5),
             ),
           ),
-        ],
-      ),
-    );
-  }
-
-  void _showGameOverDialog(BuildContext context, WidgetRef ref, ThemeData theme) {
-    ref.read(gameStreakNotifierProvider.notifier).completeGame('path_finder', xpAmount: 30);
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        title: const Text('PATH MASTERED'),
-        content: const Text('You successfully found the hidden path!'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              Navigator.pop(context);
-            },
-            child: const Text('CONTINUE'),
-          )
         ],
       ),
     );

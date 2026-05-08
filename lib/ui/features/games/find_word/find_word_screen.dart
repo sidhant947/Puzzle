@@ -5,6 +5,7 @@ import 'find_word_engine.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/design_system.dart';
 import '../../../../../utils/haptic_feedback.dart';
+import '../../../../../widgets/game_completion_dialog.dart';
 
 class FindWordScreen extends ConsumerStatefulWidget {
   const FindWordScreen({super.key});
@@ -174,8 +175,8 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
           if (isCurrentRow) {
             return AnimatedBuilder(
               animation: _shakeAnimation,
-              builder: (context, child) =>
-                  Transform.translate(offset: Offset(_shakeAnimation.value, 0), child: child),
+              builder: (context, child) => Transform.translate(
+                  offset: Offset(_shakeAnimation.value, 0), child: child),
               child: row,
             );
           }
@@ -191,24 +192,29 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
     Color color = theme.colorScheme.surface;
     Color textColor = theme.colorScheme.onSurface;
     Border border = Border.all(
-        color: theme.colorScheme.onSurface.withValues(alpha: isDark ? 0.4 : 0.25),
+        color:
+            theme.colorScheme.onSurface.withValues(alpha: isDark ? 0.4 : 0.25),
         width: 2.0);
 
     switch (status) {
       case LetterStatus.correctSpot:
         color = DesignSystem.gameGreen;
         textColor = Colors.white;
-        border = Border.all(color: Colors.black.withValues(alpha: 0.1), width: 1.0);
+        border =
+            Border.all(color: Colors.black.withValues(alpha: 0.1), width: 1.0);
         break;
       case LetterStatus.wrongSpot:
         color = DesignSystem.gameOrange;
         textColor = Colors.white;
-        border = Border.all(color: Colors.black.withValues(alpha: 0.1), width: 1.0);
+        border =
+            Border.all(color: Colors.black.withValues(alpha: 0.1), width: 1.0);
         break;
       case LetterStatus.notInWord:
         color = theme.colorScheme.onSurface.withValues(alpha: 0.1);
         textColor = theme.colorScheme.onSurface.withValues(alpha: 0.4);
-        border = Border.all(color: theme.colorScheme.onSurface.withValues(alpha: 0.1), width: 1.0);
+        border = Border.all(
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.1),
+            width: 1.0);
         break;
       case LetterStatus.initial:
         if (letter.isNotEmpty) {
@@ -346,6 +352,24 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
       await ref
           .read(gameStreakNotifierProvider.notifier)
           .completeGame('find_word');
+      if (!context.mounted) return;
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => GameCompletionDialog(
+          onHome: () {
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+          },
+          onPlayAgain: () {
+            ref.read(findWordNotifierProvider.notifier).initGame();
+            Navigator.of(context).pop();
+          },
+          title: 'CONGRATS',
+          message: 'Word found successfully: ${state.targetWord}',
+        ),
+      );
+      return;
     }
 
     if (!context.mounted) return;

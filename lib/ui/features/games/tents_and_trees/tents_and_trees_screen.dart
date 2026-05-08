@@ -5,6 +5,7 @@ import 'tents_and_trees_provider.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 
 class TentsAndTreesScreen extends ConsumerWidget {
   const TentsAndTreesScreen({super.key});
@@ -224,17 +225,17 @@ class TentsAndTreesScreen extends ConsumerWidget {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        title: const Text('WELL DONE!'),
-        content: const Text('You correctly placed all the tents.'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).popUntil((route) => route.isFirst);
-            },
-            child: const Text('HOME'),
-          ),
-        ],
+      builder: (context) => GameCompletionDialog(
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          ref.read(tentsAndTreesNotifierProvider.notifier).newGame();
+          Navigator.of(context).pop();
+        },
+        title: 'CONGRATS',
+        message: 'You correctly placed all the tents.',
       ),
     );
   }

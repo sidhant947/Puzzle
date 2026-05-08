@@ -4,6 +4,7 @@ import 'word_ladder_provider.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/design_system.dart';
 import '../../../../../utils/haptic_feedback.dart';
+import '../../../../../widgets/game_completion_dialog.dart';
 
 class WordLadderScreen extends ConsumerWidget {
   const WordLadderScreen({super.key});
@@ -230,27 +231,17 @@ class WordLadderScreen extends ConsumerWidget {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        title: const Center(child: Text('BRIDGE COMPLETE!')),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(Icons.emoji_events_rounded, size: 64, color: Colors.amber),
-            const SizedBox(height: 16),
-            Text('You successfully connected ${state.startWord} to ${state.endWord} in ${state.ladder.length} steps.'),
-          ],
-        ),
-        actions: [
-          Center(
-            child: ElevatedButton(
-              onPressed: () {
-                Navigator.pop(context);
-                Navigator.pop(context);
-              },
-              child: const Text('CONTINUE'),
-            ),
-          ),
-        ],
+      builder: (context) => GameCompletionDialog(
+        title: 'CONGRATS',
+        message: 'You successfully connected ${state.startWord} to ${state.endWord} in ${state.ladder.length} steps.',
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          ref.read(wordLadderNotifierProvider.notifier).reset();
+          Navigator.of(context).pop();
+        },
       ),
     );
   }

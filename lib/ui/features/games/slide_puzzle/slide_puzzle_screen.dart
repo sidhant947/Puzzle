@@ -5,6 +5,7 @@ import 'slide_puzzle_provider.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 
 class SlidePuzzleScreen extends ConsumerWidget {
   const SlidePuzzleScreen({super.key});
@@ -155,17 +156,17 @@ class SlidePuzzleScreen extends ConsumerWidget {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        title: const Text('EXCELLENT!'),
-        content: const Text('You have successfully ordered all the tiles.'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).popUntil((route) => route.isFirst);
-            },
-            child: const Text('HOME'),
-          ),
-        ],
+      builder: (context) => GameCompletionDialog(
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          ref.read(slidePuzzleNotifierProvider.notifier).newGame();
+          Navigator.of(context).pop();
+        },
+        title: 'CONGRATS',
+        message: 'You have successfully ordered all the tiles.',
       ),
     );
   }

@@ -70,13 +70,7 @@ class MathPathNotifier extends _$MathPathNotifier {
           newSum += state.level.grid[tile.y][tile.x];
         }
         
-        bool solved = false;
-        if (p.x == state.level.size - 1 && p.y == state.level.size - 1) {
-          if (newSum == state.level.targetSum) {
-            solved = true;
-          }
-        }
-        
+        bool solved = newSum == state.level.targetSum;
         state = state.copyWith(currentPath: newPath, currentSum: newSum, isSolved: solved);
       }
       return;
@@ -87,12 +81,7 @@ class MathPathNotifier extends _$MathPathNotifier {
     final newPath = [...state.currentPath, p];
     final newSum = state.currentSum + state.level.grid[y][x];
     
-    bool solved = false;
-    if (p.x == state.level.size - 1 && p.y == state.level.size - 1) {
-      if (newSum == state.level.targetSum) {
-        solved = true;
-      }
-    }
+    bool solved = newSum == state.level.targetSum;
 
     state = state.copyWith(
       currentPath: newPath,

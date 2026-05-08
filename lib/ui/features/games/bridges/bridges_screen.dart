@@ -6,6 +6,7 @@ import 'bridges_provider.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 
 class BridgesScreen extends ConsumerWidget {
   const BridgesScreen({super.key});
@@ -209,17 +210,17 @@ class BridgesScreen extends ConsumerWidget {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        title: const Text('WELL CONNECTED!'),
-        content: const Text('You built all the required bridges.'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).popUntil((route) => route.isFirst);
-            },
-            child: const Text('HOME'),
-          ),
-        ],
+      builder: (context) => GameCompletionDialog(
+        title: 'CONGRATS',
+        message: 'You built all the required bridges!',
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          ref.read(bridgesNotifierProvider.notifier).newGame();
+          Navigator.of(context).pop();
+        },
       ),
     );
   }

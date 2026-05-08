@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 import 'calculation_sprint_provider.dart';
 
 class CalculationSprintScreen extends ConsumerWidget {
@@ -16,13 +17,31 @@ class CalculationSprintScreen extends ConsumerWidget {
     ref.listen(calculationSprintNotifierProvider, (previous, next) {
       if (next.status == SprintStatus.gameOver && 
           previous?.status != SprintStatus.gameOver) {
-        if (next.score >= 15) {
+        final isGoalReached = next.score >= 15;
+        if (isGoalReached) {
           HapticFeedbackUtil.victory();
-          _showGameOverDialog(context, ref, next, true);
         } else {
           HapticFeedbackUtil.error();
-          _showGameOverDialog(context, ref, next, false);
         }
+
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => GameCompletionDialog(
+            title: isGoalReached ? 'GOAL REACHED!' : 'TIME IS UP',
+            message: isGoalReached 
+              ? 'Excellent calculation speed! You scored ${next.score} points and completed the daily goal.' 
+              : 'You scored ${next.score} points. You need at least 15 points to complete the daily goal.',
+            onHome: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+            onPlayAgain: () {
+              ref.read(calculationSprintNotifierProvider.notifier).reset();
+              Navigator.of(context).pop();
+            },
+          ),
+        );
       }
     });
 
@@ -241,59 +260,6 @@ class CalculationSprintScreen extends ConsumerWidget {
           ),
         ),
       ],
-    );
-  }
-
-  void _showGameOverDialog(BuildContext context, WidgetRef ref, CalculationSprintState state, bool isGoalReached) {
-    final theme = Theme.of(context);
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        backgroundColor: theme.colorScheme.surface,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(DesignSystem.radiusXL)),
-        title: Text(
-          isGoalReached ? 'GOAL REACHED!' : 'TIME IS UP',
-          textAlign: TextAlign.center,
-          style: theme.textTheme.headlineSmall?.copyWith(
-            fontWeight: FontWeight.w900,
-            color: isGoalReached ? DesignSystem.gameEmerald : DesignSystem.gameOrange,
-          ),
-        ),
-        content: Text(
-          isGoalReached 
-            ? 'Excellent calculation speed! You scored ${state.score} points and completed the daily goal.' 
-            : 'You scored ${state.score} points. You need at least 15 points to complete the daily goal.',
-          textAlign: TextAlign.center,
-          style: theme.textTheme.bodyMedium,
-        ),
-        actions: [
-          Center(
-            child: Column(
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    ref.read(calculationSprintNotifierProvider.notifier).reset();
-                  },
-                  child: const Text('PLAY AGAIN'),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context); // Pop dialog
-                    Navigator.pop(context); // Pop screen
-                  },
-                  child: Text(
-                    'BACK TO HUB',
-                    style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.5)),
-                  ),
-                ),
-                const SizedBox(height: 12),
-              ],
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

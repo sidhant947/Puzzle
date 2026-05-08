@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'lights_out_provider.dart';
 import 'lights_out_engine.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 
@@ -15,6 +16,28 @@ class LightsOutScreen extends ConsumerWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
     final engine = LightsOutEngine();
     final isSolved = engine.isSolved(grid);
+
+    ref.listen(lightsOutNotifierProvider, (previous, next) {
+      if (engine.isSolved(next)) {
+        HapticFeedbackUtil.victory();
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => GameCompletionDialog(
+            onHome: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+            onPlayAgain: () {
+              notifier.reset();
+              Navigator.of(context).pop();
+            },
+            title: 'PUZZLE SOLVED!',
+            message: 'You turned off all the lights!',
+          ),
+        );
+      }
+    });
 
     return Scaffold(
       appBar: AppBar(
@@ -107,22 +130,6 @@ class LightsOutScreen extends ConsumerWidget {
                   ),
                 ),
               ),
-              if (isSolved) ...[
-                const SizedBox(height: DesignSystem.space2XL),
-                Text(
-                  'PUZZLE SOLVED!',
-                  style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                        color: DesignSystem.gameGreen,
-                        fontWeight: FontWeight.w800,
-                        letterSpacing: 1.2,
-                      ),
-                ),
-                const SizedBox(height: DesignSystem.spaceLG),
-                ElevatedButton(
-                  onPressed: () => notifier.reset(),
-                  child: const Text('NEW GAME'),
-                ),
-              ],
             ],
           ),
         ),

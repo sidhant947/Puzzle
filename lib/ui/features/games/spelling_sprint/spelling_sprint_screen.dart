@@ -5,6 +5,7 @@ import 'spelling_sprint_provider.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 
 class SpellingSprintScreen extends ConsumerStatefulWidget {
   const SpellingSprintScreen({super.key});
@@ -225,17 +226,18 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        title: const Text('WORDSMITH!'),
-        content: const Text('You spelled all 10 words correctly!'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).popUntil((route) => route.isFirst);
-            },
-            child: const Text('HOME'),
-          ),
-        ],
+      builder: (context) => GameCompletionDialog(
+        title: 'CONGRATS',
+        message: 'You spelled all 10 words correctly!',
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          ref.read(spellingSprintNotifierProvider.notifier).startGame();
+          _startTimer();
+          Navigator.of(context).pop();
+        },
       ),
     );
   }

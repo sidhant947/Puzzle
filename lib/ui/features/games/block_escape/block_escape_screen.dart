@@ -5,6 +5,7 @@ import 'block_escape_provider.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 
 class BlockEscapeScreen extends ConsumerWidget {
   const BlockEscapeScreen({super.key});
@@ -193,17 +194,17 @@ class BlockEscapeScreen extends ConsumerWidget {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        title: const Text('PUZZLE SOLVED!'),
-        content: const Text('You successfully unblocked the red block.'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).popUntil((route) => route.isFirst);
-            },
-            child: const Text('HOME'),
-          ),
-        ],
+      builder: (context) => GameCompletionDialog(
+        title: 'CONGRATS',
+        message: 'You successfully unblocked the red block!',
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          ref.read(blockEscapeNotifierProvider.notifier).newGame();
+          Navigator.of(context).pop();
+        },
       ),
     );
   }

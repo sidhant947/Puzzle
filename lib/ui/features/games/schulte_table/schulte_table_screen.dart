@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 import 'schulte_table_provider.dart';
 
 class SchulteTableScreen extends ConsumerWidget {
@@ -22,7 +23,22 @@ class SchulteTableScreen extends ConsumerWidget {
       if (next.status == SchulteStatus.completed && 
           previous?.status != SchulteStatus.completed) {
         HapticFeedbackUtil.victory();
-        _showVictoryDialog(context, ref, next.elapsedTime);
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => GameCompletionDialog(
+            title: 'GREAT FOCUS!',
+            message: 'You completed the table in ${_formatDuration(next.elapsedTime)}.\nKeep practicing to expand your peripheral vision!',
+            onHome: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+            onPlayAgain: () {
+              ref.read(schulteTableNotifierProvider.notifier).reset();
+              Navigator.of(context).pop();
+            },
+          ),
+        );
       }
     });
 
@@ -195,56 +211,6 @@ class SchulteTableScreen extends ConsumerWidget {
           ),
         ),
       ],
-    );
-  }
-
-  void _showVictoryDialog(BuildContext context, WidgetRef ref, Duration time) {
-    final theme = Theme.of(context);
-    showDialog(
-      context: context,
-      barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        backgroundColor: theme.colorScheme.surface,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(DesignSystem.radiusXL)),
-        title: Text(
-          'GREAT FOCUS!',
-          textAlign: TextAlign.center,
-          style: theme.textTheme.headlineSmall?.copyWith(
-            fontWeight: FontWeight.w900,
-            color: DesignSystem.gameViolet,
-          ),
-        ),
-        content: Text(
-          'You completed the table in ${_formatDuration(time)}.\nKeep practicing to expand your peripheral vision!',
-          textAlign: TextAlign.center,
-        ),
-        actions: [
-          Center(
-            child: Column(
-              children: [
-                ElevatedButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    ref.read(schulteTableNotifierProvider.notifier).reset();
-                  },
-                  child: const Text('TRY AGAIN'),
-                ),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context); // Pop dialog
-                    Navigator.pop(context); // Pop screen
-                  },
-                  child: Text(
-                    'BACK TO HUB',
-                    style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.5)),
-                  ),
-                ),
-                const SizedBox(height: 12),
-              ],
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

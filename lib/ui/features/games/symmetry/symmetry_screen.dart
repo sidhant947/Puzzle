@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'symmetry_provider.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 
 class SymmetryScreen extends ConsumerWidget {
   const SymmetryScreen({super.key});
@@ -78,10 +79,16 @@ class SymmetryScreen extends ConsumerWidget {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        title: const Text('PERFECT SYMMETRY'),
-        content: const Text('You mirrored the pattern perfectly!'),
-        actions: [TextButton(onPressed: () { Navigator.pop(context); Navigator.pop(context); }, child: const Text('CONTINUE'))],
+      builder: (context) => GameCompletionDialog(
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          ref.read(symmetryNotifierProvider.notifier).reset();
+          Navigator.of(context).pop();
+        },
+        message: 'You mirrored the pattern perfectly!',
       ),
     );
   }

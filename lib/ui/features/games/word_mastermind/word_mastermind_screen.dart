@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'word_mastermind_provider.dart';
 import 'word_mastermind_engine.dart';
+import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/design_system.dart';
 import '../../../../../utils/haptic_feedback.dart';
@@ -219,6 +220,26 @@ class WordMastermindScreen extends ConsumerWidget {
   void _showGameOverDialog(BuildContext context, WidgetRef ref, WordMastermindState state, ThemeData theme) async {
     if (state.isGameWon) {
       await ref.read(gameStreakNotifierProvider.notifier).completeGame('word_mastermind', xpAmount: 40);
+
+      if (!context.mounted) return;
+
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => GameCompletionDialog(
+          onHome: () {
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+          },
+          onPlayAgain: () {
+            ref.read(wordMastermindNotifierProvider.notifier).reset();
+            Navigator.of(context).pop();
+          },
+          title: 'SOLVED!',
+          message: 'You mastered the code!\nThe word was: ${state.targetWord}',
+        ),
+      );
+      return;
     }
 
     if (!context.mounted) return;
@@ -227,11 +248,11 @@ class WordMastermindScreen extends ConsumerWidget {
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        title: Text(state.isGameWon ? 'SOLVED!' : 'OUT OF TRIES'),
+        title: const Text('OUT OF TRIES'),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Text(state.isGameWon ? 'You mastered the code!' : 'The hidden word was:'),
+            const Text('The hidden word was:'),
             const SizedBox(height: 8),
             Text(state.targetWord, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, letterSpacing: 4)),
           ],
@@ -243,6 +264,13 @@ class WordMastermindScreen extends ConsumerWidget {
               Navigator.pop(context);
             },
             child: const Text('CONTINUE'),
+          ),
+          ElevatedButton(
+            onPressed: () {
+              ref.read(wordMastermindNotifierProvider.notifier).reset();
+              Navigator.of(context).pop();
+            },
+            child: const Text('RETRY'),
           ),
         ],
       ),
