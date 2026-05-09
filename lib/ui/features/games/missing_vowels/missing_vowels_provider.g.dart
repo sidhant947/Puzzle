@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'math_path_provider.dart';
+part of 'missing_vowels_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$mathPathNotifierHash() => r'5a9163d6bb443bd052c1752007c292c6dd5937e8';
+String _$missingVowelsNotifierHash() =>
+    r'90a9319522d30874fe6d3b35018e645fce6c1a60';
 
-/// See also [MathPathNotifier].
-@ProviderFor(MathPathNotifier)
-final mathPathNotifierProvider =
-    AutoDisposeNotifierProvider<MathPathNotifier, MathPathState>.internal(
-  MathPathNotifier.new,
-  name: r'mathPathNotifierProvider',
+/// See also [MissingVowelsNotifier].
+@ProviderFor(MissingVowelsNotifier)
+final missingVowelsNotifierProvider = AutoDisposeNotifierProvider<
+    MissingVowelsNotifier, MissingVowelsState>.internal(
+  MissingVowelsNotifier.new,
+  name: r'missingVowelsNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$mathPathNotifierHash,
+      : _$missingVowelsNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$MathPathNotifier = AutoDisposeNotifier<MathPathState>;
+typedef _$MissingVowelsNotifier = AutoDisposeNotifier<MissingVowelsState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'math_path_provider.dart';
+part of 'symbol_logic_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$mathPathNotifierHash() => r'5a9163d6bb443bd052c1752007c292c6dd5937e8';
+String _$symbolLogicNotifierHash() =>
+    r'4cbb830e0051fcf92064b46c01170f58d526e2e0';
 
-/// See also [MathPathNotifier].
-@ProviderFor(MathPathNotifier)
-final mathPathNotifierProvider =
-    AutoDisposeNotifierProvider<MathPathNotifier, MathPathState>.internal(
-  MathPathNotifier.new,
-  name: r'mathPathNotifierProvider',
+/// See also [SymbolLogicNotifier].
+@ProviderFor(SymbolLogicNotifier)
+final symbolLogicNotifierProvider =
+    AutoDisposeNotifierProvider<SymbolLogicNotifier, SymbolLogicState>.internal(
+  SymbolLogicNotifier.new,
+  name: r'symbolLogicNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$mathPathNotifierHash,
+      : _$symbolLogicNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$MathPathNotifier = AutoDisposeNotifier<MathPathState>;
+typedef _$SymbolLogicNotifier = AutoDisposeNotifier<SymbolLogicState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

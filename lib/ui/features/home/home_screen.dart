@@ -33,6 +33,11 @@ import '../games/math_path/math_path_screen.dart';
 import '../games/hue_sort/hue_sort_screen.dart';
 import '../games/water_sort/water_sort_screen.dart';
 import '../games/lights_out/lights_out_screen.dart';
+import '../games/word_scramble/word_scramble_screen.dart';
+import '../games/missing_vowels/missing_vowels_screen.dart';
+import '../games/symbol_logic/symbol_logic_screen.dart';
+import '../games/pixel_mimic/pixel_mimic_screen.dart';
+import '../games/odd_rotation/odd_rotation_screen.dart';
 
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required Widget page})
@@ -63,6 +68,41 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   final List<Map<String, dynamic>> _games = [
+    {
+      'title': 'Symbol Logic',
+      'id': 'symbol_logic',
+      'icon': Icons.calculate_rounded,
+      'color': DesignSystem.gameAmber,
+      'screen': const SymbolLogicScreen(),
+    },
+    {
+      'title': 'Pixel Mimic',
+      'id': 'pixel_mimic',
+      'icon': Icons.memory_rounded,
+      'color': DesignSystem.gameIndigo,
+      'screen': const PixelMimicScreen(),
+    },
+    {
+      'title': 'Odd Rotation',
+      'id': 'odd_rotation',
+      'icon': Icons.flip_rounded,
+      'color': DesignSystem.gameRose,
+      'screen': const OddRotationScreen(),
+    },
+    {
+      'title': 'Word Scramble',
+      'id': 'word_scramble',
+      'icon': Icons.shuffle_rounded,
+      'color': DesignSystem.gameAmber,
+      'screen': const WordScrambleScreen(),
+    },
+    {
+      'title': 'Missing Vowels',
+      'id': 'missing_vowels',
+      'icon': Icons.spellcheck_rounded,
+      'color': DesignSystem.gameBlue,
+      'screen': const MissingVowelsScreen(),
+    },
     {
       'title': 'Water Sort',
       'id': 'water_sort',
