@@ -45,6 +45,13 @@ import '../games/skyscrapers/skyscrapers_screen.dart';
 import '../games/hitori/hitori_screen.dart';
 import '../games/star_battle/star_battle_screen.dart';
 
+import '../games/typing_speed/typing_speed_screen.dart';
+import '../games/quick_math/quick_math_screen.dart';
+import '../games/reflex_tap/reflex_tap_screen.dart';
+import '../games/stroop_test/stroop_test_screen.dart';
+import '../games/flanker_test/flanker_test_screen.dart';
+import '../games/switch_task/switch_task_screen.dart';
+
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required Widget page})
       : super(
@@ -74,6 +81,48 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   final List<Map<String, dynamic>> _games = [
+    {
+      'title': 'Typing Speed',
+      'id': 'typing_speed',
+      'icon': Icons.keyboard_rounded,
+      'color': DesignSystem.gameIndigo,
+      'screen': const TypingSpeedScreen(),
+    },
+    {
+      'title': 'Quick Math',
+      'id': 'quick_math',
+      'icon': Icons.bolt_rounded,
+      'color': DesignSystem.gameAmber,
+      'screen': const QuickMathScreen(),
+    },
+    {
+      'title': 'Reflex Tap',
+      'id': 'reflex_tap',
+      'icon': Icons.ads_click_rounded,
+      'color': DesignSystem.gameRose,
+      'screen': const ReflexTapScreen(),
+    },
+    {
+      'title': 'Stroop Test',
+      'id': 'stroop_test',
+      'icon': Icons.psychology_rounded,
+      'color': DesignSystem.gameGreen,
+      'screen': const StroopTestScreen(),
+    },
+    {
+      'title': 'Flanker Test',
+      'id': 'flanker_test',
+      'icon': Icons.compare_arrows_rounded,
+      'color': DesignSystem.gameBlue,
+      'screen': const FlankerTestScreen(),
+    },
+    {
+      'title': 'Switch Task',
+      'id': 'switch_task',
+      'icon': Icons.swap_horiz_rounded,
+      'color': DesignSystem.gameAmber,
+      'screen': const SwitchTaskScreen(),
+    },
     {
       'title': 'Cryptogram',
       'id': 'cryptogram',
