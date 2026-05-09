@@ -38,6 +38,12 @@ import '../games/missing_vowels/missing_vowels_screen.dart';
 import '../games/symbol_logic/symbol_logic_screen.dart';
 import '../games/pixel_mimic/pixel_mimic_screen.dart';
 import '../games/odd_rotation/odd_rotation_screen.dart';
+import '../games/balance_scale/balance_scale_screen.dart';
+
+import '../games/cryptogram/cryptogram_screen.dart';
+import '../games/skyscrapers/skyscrapers_screen.dart';
+import '../games/hitori/hitori_screen.dart';
+import '../games/star_battle/star_battle_screen.dart';
 
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required Widget page})
@@ -68,6 +74,41 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   final List<Map<String, dynamic>> _games = [
+    {
+      'title': 'Cryptogram',
+      'id': 'cryptogram',
+      'icon': Icons.password_rounded,
+      'color': DesignSystem.gameIndigo,
+      'screen': const CryptogramScreen(),
+    },
+    {
+      'title': 'Skyscrapers',
+      'id': 'skyscrapers',
+      'icon': Icons.apartment_rounded,
+      'color': DesignSystem.gameBlue,
+      'screen': const SkyscrapersScreen(),
+    },
+    {
+      'title': 'Hitori',
+      'id': 'hitori',
+      'icon': Icons.grid_goldenratio_rounded,
+      'color': DesignSystem.gameRose,
+      'screen': const HitoriScreen(),
+    },
+    {
+      'title': 'Star Battle',
+      'id': 'star_battle',
+      'icon': Icons.auto_awesome_rounded,
+      'color': DesignSystem.gameAmber,
+      'screen': const StarBattleScreen(),
+    },
+    {
+      'title': 'Balance Scale',
+      'id': 'balance_scale',
+      'icon': Icons.balance_rounded,
+      'color': DesignSystem.gameTeal,
+      'screen': const BalanceScaleScreen(),
+    },
     {
       'title': 'Symbol Logic',
       'id': 'symbol_logic',
