@@ -18,7 +18,8 @@ class _QuickMathScreenState extends ConsumerState<QuickMathScreen> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() => ref.read(quickMathNotifierProvider.notifier).initGame());
+    Future.microtask(
+        () => ref.read(quickMathNotifierProvider.notifier).initGame());
   }
 
   void _showGameOverDialog(int score) {
@@ -71,13 +72,16 @@ class _QuickMathScreenState extends ConsumerState<QuickMathScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      _buildStat('TIME', '${state.timeLeft}s', DesignSystem.accentBerry),
-                      _buildStat('SCORE', '${state.score}', DesignSystem.accentEmerald),
+                      _buildStat('TIME', '${state.timeLeft}s',
+                          DesignSystem.accentBerry),
+                      _buildStat('SCORE', '${state.score}',
+                          DesignSystem.accentEmerald),
                     ],
                   ),
                   const Spacer(),
                   ConstrainedBox(
-                    constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.3),
+                    constraints:
+                        BoxConstraints(maxHeight: constraints.maxHeight * 0.3),
                     child: TangibleContainer(
                       depth: 4.0,
                       color: DesignSystem.ink,
@@ -101,9 +105,12 @@ class _QuickMathScreenState extends ConsumerState<QuickMathScreen> {
                           TangibleContainer(
                             depth: 2.0,
                             color: DesignSystem.surface,
-                            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 24, vertical: 8),
                             child: Text(
-                              state.currentInput.isEmpty ? '?' : state.currentInput,
+                              state.currentInput.isEmpty
+                                  ? '?'
+                                  : state.currentInput,
                               style: const TextStyle(
                                 fontSize: 32,
                                 fontWeight: FontWeight.bold,
@@ -138,7 +145,7 @@ class _QuickMathScreenState extends ConsumerState<QuickMathScreen> {
             style: const TextStyle(
               fontSize: 10,
               fontWeight: FontWeight.bold,
-              color: DesignSystem.outline,
+              color: DesignSystem.ink,
               letterSpacing: 1.2,
             ),
           ),
@@ -155,22 +162,29 @@ class _QuickMathScreenState extends ConsumerState<QuickMathScreen> {
     );
   }
 
-  Widget _buildNumberPad(QuickMathNotifier notifier, BoxConstraints constraints) {
+  Widget _buildNumberPad(
+      QuickMathNotifier notifier, BoxConstraints constraints) {
     return Column(
       children: [
-        for (var row in [[1, 2, 3], [4, 5, 6], [7, 8, 9]])
+        for (var row in [
+          [1, 2, 3],
+          [4, 5, 6],
+          [7, 8, 9]
+        ])
           Padding(
             padding: const EdgeInsets.only(bottom: 8),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: row.map((n) => Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 4),
-                child: _PadKey(
-                  label: n.toString(),
-                  onTap: () => notifier.onNumberPressed(n.toString()),
-                  width: (constraints.maxWidth - 64) / 3,
-                ),
-              )).toList(),
+              children: row
+                  .map((n) => Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 4),
+                        child: _PadKey(
+                          label: n.toString(),
+                          onTap: () => notifier.onNumberPressed(n.toString()),
+                          width: (constraints.maxWidth - 64) / 3,
+                        ),
+                      ))
+                  .toList(),
             ),
           ),
         Row(
@@ -215,7 +229,11 @@ class _PadKey extends StatelessWidget {
   final Color? color;
   final double width;
 
-  const _PadKey({required this.label, required this.onTap, this.color, required this.width});
+  const _PadKey(
+      {required this.label,
+      required this.onTap,
+      this.color,
+      required this.width});
 
   @override
   Widget build(BuildContext context) {
@@ -225,7 +243,8 @@ class _PadKey extends StatelessWidget {
       child: TangibleButton(
         onTap: onTap,
         color: color ?? DesignSystem.surface,
-        shadowColor: color?.withValues(alpha: 0.2) ?? DesignSystem.outlineVariant,
+        shadowColor:
+            color?.withValues(alpha: 0.2) ?? DesignSystem.outlineVariant,
         padding: EdgeInsets.zero,
         child: Center(
           child: FittedBox(
@@ -234,7 +253,9 @@ class _PadKey extends StatelessWidget {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: color != null && color != DesignSystem.surface ? Colors.white : DesignSystem.ink,
+                color: color != null && color != DesignSystem.surface
+                    ? Colors.white
+                    : DesignSystem.ink,
               ),
             ),
           ),

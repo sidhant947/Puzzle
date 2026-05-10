@@ -142,33 +142,24 @@ class MemoryMatrixScreen extends ConsumerWidget {
   }
 
   Widget _buildBoard(WidgetRef ref, MemoryMatrixState state) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final boardSize = constraints.biggest.shortestSide;
-        return TangibleContainer(
-          depth: 4.0,
-          color: DesignSystem.ink,
-          shadowColor: DesignSystem.ink.withValues(alpha: 0.2),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+      child: AspectRatio(
+        aspectRatio: 1.0,
+        child: GridView.builder(
           padding: const EdgeInsets.all(DesignSystem.spaceXS),
-          child: SizedBox(
-            width: boardSize,
-            height: boardSize,
-            child: GridView.builder(
-              padding: EdgeInsets.zero,
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: state.boardSize,
-                crossAxisSpacing: 4,
-                mainAxisSpacing: 4,
-              ),
-              itemCount: state.boardSize * state.boardSize,
-              itemBuilder: (context, index) {
-                return _buildTile(ref, state, index);
-              },
-            ),
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: state.boardSize,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
           ),
-        );
-      },
+          itemCount: state.boardSize * state.boardSize,
+          itemBuilder: (context, index) {
+            return _buildTile(ref, state, index);
+          },
+        ),
+      ),
     );
   }
 

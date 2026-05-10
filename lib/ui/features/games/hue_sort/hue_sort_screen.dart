@@ -59,79 +59,59 @@ class HueSortScreen extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
       child: ConstrainedBox(
         constraints: BoxConstraints(maxHeight: maxHeight),
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            final double gridSize = min(constraints.maxWidth, constraints.maxHeight);
+        child: AspectRatio(
+          aspectRatio: 1.0,
+          child: GridView.builder(
+            padding: EdgeInsets.zero,
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: state.level.size,
+              crossAxisSpacing: 4.0,
+              mainAxisSpacing: 4.0,
+            ),
+            itemCount: state.level.size * state.level.size,
+            itemBuilder: (context, index) {
+              final isFixed = state.level.fixedIndices.contains(index);
+              final isSelected = state.selectedIndex == index;
 
-            return TangibleContainer(
-              color: DesignSystem.ink,
-              shadowColor: DesignSystem.inkSlate,
-              depth: 4.0,
-              radius: DesignSystem.radiusMD,
-              padding: const EdgeInsets.all(3.0),
-              child: Container(
-                width: gridSize,
-                height: gridSize,
-                padding: const EdgeInsets.all(2.0),
-                decoration: BoxDecoration(
-                  color: DesignSystem.surface,
-                  borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 6),
-                  child: GridView.builder(
-                    padding: EdgeInsets.zero,
-                    physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: state.level.size,
-                      crossAxisSpacing: 1.5,
-                      mainAxisSpacing: 1.5,
-                    ),
-                    itemCount: state.level.size * state.level.size,
-                    itemBuilder: (context, index) {
-                      final isFixed = state.level.fixedIndices.contains(index);
-                      final isSelected = state.selectedIndex == index;
-
-                      return GestureDetector(
-                        onTap: () {
-                          HapticFeedbackUtil.lightImpact();
-                          ref.read(hueSortNotifierProvider.notifier).selectTile(index);
-                        },
-                        child: AnimatedContainer(
-                          duration: const Duration(milliseconds: 200),
-                          decoration: BoxDecoration(
-                            color: state.currentColors[index],
-                            borderRadius: BorderRadius.circular(isSelected ? DesignSystem.radiusSM : 1),
-                            border: isSelected 
-                                ? Border.all(color: Colors.white, width: 3) 
-                                : null,
-                          ),
-                          child: isFixed
-                            ? Center(
-                                child: Padding(
-                                  padding: const EdgeInsets.all(8.0),
-                                  child: FittedBox(
-                                    child: Container(
-                                      width: 6,
-                                      height: 6,
-                                      decoration: BoxDecoration(
-                                        color: Colors.black.withValues(alpha: 0.2),
-                                        shape: BoxShape.circle,
-                                        border: Border.all(color: Colors.white.withValues(alpha: 0.5), width: 1),
-                                      ),
-                                    ),
-                                  ),
-                                ),
-                              )
-                            : null,
-                        ),
-                      );
-                    },
+              return GestureDetector(
+                onTap: () {
+                  HapticFeedbackUtil.lightImpact();
+                  ref.read(hueSortNotifierProvider.notifier).selectTile(index);
+                },
+                child: AnimatedContainer(
+                  duration: const Duration(milliseconds: 200),
+                  decoration: BoxDecoration(
+                    color: state.currentColors[index],
+                    borderRadius: BorderRadius.circular(isSelected ? DesignSystem.radiusMD : DesignSystem.radiusXS),
+                    border: isSelected 
+                        ? Border.all(color: Colors.white, width: 4) 
+                        : null,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.black.withValues(alpha: 0.1),
+                        blurRadius: 2,
+                        offset: const Offset(0, 2),
+                      ),
+                    ],
                   ),
+                  child: isFixed
+                    ? Center(
+                        child: Container(
+                          width: 8,
+                          height: 8,
+                          decoration: BoxDecoration(
+                            color: Colors.black.withValues(alpha: 0.3),
+                            shape: BoxShape.circle,
+                            border: Border.all(color: Colors.white.withValues(alpha: 0.6), width: 1.5),
+                          ),
+                        ),
+                      )
+                    : null,
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

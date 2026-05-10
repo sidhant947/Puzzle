@@ -100,37 +100,34 @@ class _SimonSequenceScreenState extends ConsumerState<SimonSequenceScreen> {
         constraints: BoxConstraints(maxHeight: maxHeight),
         child: AspectRatio(
           aspectRatio: 1,
-          child: TangibleContainer(
-            depth: 4.0, // Reduced from 6.0
-            color: DesignSystem.ink,
-            padding: const EdgeInsets.all(8), // Reduced from 16
-            child: GridView.builder(
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 3, 
-                crossAxisSpacing: 8, // Reduced from 12
-                mainAxisSpacing: 8,
-              ),
-              itemCount: 9,
-              itemBuilder: (context, index) {
-                final isHighlighted = state.highlightedTile == index;
-                return GestureDetector(
-                  onTap: () {
-                    if (!state.isShowingSequence) {
-                      HapticFeedbackUtil.selectionClick();
-                      ref.read(simonSequenceNotifierProvider.notifier).tapTile(index);
-                    }
-                  },
-                  child: TangibleContainer(
-                    depth: isHighlighted ? 0.0 : 3.0, // Reduced from 4.0
-                    color: isHighlighted ? DesignSystem.accentAmber : DesignSystem.surface,
-                    child: isHighlighted 
-                      ? const Center(child: Icon(Icons.flash_on_rounded, color: Colors.white, size: 20))
-                      : const SizedBox.shrink(),
-                  ),
-                );
-              },
+          child: GridView.builder(
+            padding: const EdgeInsets.all(DesignSystem.spaceXS),
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 3, 
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
             ),
+            itemCount: 9,
+            itemBuilder: (context, index) {
+              final isHighlighted = state.highlightedTile == index;
+              return GestureDetector(
+                onTap: () {
+                  if (!state.isShowingSequence) {
+                    HapticFeedbackUtil.selectionClick();
+                    ref.read(simonSequenceNotifierProvider.notifier).tapTile(index);
+                  }
+                },
+                child: TangibleContainer(
+                  depth: isHighlighted ? 0.0 : 3.0,
+                  radius: DesignSystem.radiusMD,
+                  color: isHighlighted ? DesignSystem.accentAmber : DesignSystem.surface,
+                  child: isHighlighted 
+                    ? const Center(child: Icon(Icons.flash_on_rounded, color: Colors.white, size: 24))
+                    : const SizedBox.shrink(),
+                ),
+              );
+            },
           ),
         ),
       ),

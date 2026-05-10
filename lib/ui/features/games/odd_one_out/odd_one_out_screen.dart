@@ -163,47 +163,37 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
   }
 
   Widget _buildGrid(WidgetRef ref, OddOneOutState state) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final boardSize = constraints.biggest.shortestSide;
-        final gridCount = state.level.colors.length;
-        final crossAxisCount = gridCount > 0 ? math.sqrt(gridCount).toInt() : 2;
+    final gridCount = state.level.colors.length;
+    final crossAxisCount = gridCount > 0 ? math.sqrt(gridCount).toInt() : 2;
 
-        return TangibleContainer(
-          depth: 4.0,
-          color: DesignSystem.ink,
-          shadowColor: DesignSystem.ink.withValues(alpha: 0.2),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+      child: AspectRatio(
+        aspectRatio: 1.0,
+        child: GridView.builder(
           padding: const EdgeInsets.all(DesignSystem.spaceXS),
-          child: SizedBox(
-            width: boardSize,
-            height: boardSize,
-            child: GridView.builder(
-              padding: EdgeInsets.zero,
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: crossAxisCount,
-                crossAxisSpacing: 4,
-                mainAxisSpacing: 4,
-              ),
-              itemCount: state.level.colors.length,
-              itemBuilder: (context, index) {
-                final color = state.level.colors[index];
-                return TangibleContainer(
-                  depth: 2,
-                  radius: DesignSystem.radiusXS,
-                  color: color,
-                  shadowColor: color.withValues(alpha: 0.8),
-                  onTap: () {
-                    HapticFeedbackUtil.lightImpact();
-                    ref.read(oddOneOutNotifierProvider.notifier).pickTile(index);
-                  },
-                  child: const SizedBox.expand(),
-                );
-              },
-            ),
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: crossAxisCount,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
           ),
-        );
-      },
+          itemCount: state.level.colors.length,
+          itemBuilder: (context, index) {
+            final color = state.level.colors[index];
+            return TangibleContainer(
+              depth: 1,
+              radius: DesignSystem.radiusXS,
+              color: color,
+              onTap: () {
+                HapticFeedbackUtil.lightImpact();
+                ref.read(oddOneOutNotifierProvider.notifier).pickTile(index);
+              },
+              child: const SizedBox.expand(),
+            );
+          },
+        ),
+      ),
     );
   }
 

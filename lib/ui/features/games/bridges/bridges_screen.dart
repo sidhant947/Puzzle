@@ -64,31 +64,16 @@ class BridgesScreen extends ConsumerWidget {
             final boardSize = min(constraints.maxWidth, constraints.maxHeight);
             final cellSize = boardSize / state.board.size;
 
-            return TangibleContainer(
-              color: DesignSystem.ink,
-              shadowColor: DesignSystem.inkSlate,
-              depth: 4.0, // Reduced from 6.0
-              radius: DesignSystem.radiusMD,
-              padding: const EdgeInsets.all(3.0),
-              child: Container(
-                width: boardSize,
-                height: boardSize,
-                decoration: BoxDecoration(
-                  color: DesignSystem.surface,
-                  borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
-                ),
-                child: AspectRatio(
-                  aspectRatio: 1,
-                  child: Stack(
-                    children: [
-                      // Draw bridges
-                      ...state.connections.map((conn) => _buildBridge(conn, state.board.islands, cellSize)),
-                      
-                      // Draw islands
-                      ...state.board.islands.map((island) => _buildIsland(island, cellSize, state, ref)),
-                    ],
-                  ),
-                ),
+            return AspectRatio(
+              aspectRatio: 1,
+              child: Stack(
+                children: [
+                  // Draw bridges
+                  ...state.connections.map((conn) => _buildBridge(conn, state.board.islands, cellSize)),
+                  
+                  // Draw islands
+                  ...state.board.islands.map((island) => _buildIsland(island, cellSize, state, ref)),
+                ],
               ),
             );
           },

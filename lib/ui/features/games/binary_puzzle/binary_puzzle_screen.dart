@@ -58,85 +58,53 @@ class BinaryPuzzleScreen extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
       child: ConstrainedBox(
         constraints: BoxConstraints(maxHeight: maxHeight),
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            final boardSize = min(constraints.maxWidth, constraints.maxHeight);
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: GridView.builder(
+            padding: const EdgeInsets.all(DesignSystem.spaceXS),
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: state.board.size,
+              crossAxisSpacing: 6,
+              mainAxisSpacing: 6,
+            ),
+            itemCount: state.board.size * state.board.size,
+            itemBuilder: (context, index) {
+              final r = index ~/ state.board.size;
+              final c = index % state.board.size;
+              final cell = state.currentGrid[r][c];
+              final isFixed = state.fixedCells[r][c];
 
-            return TangibleContainer(
-              color: DesignSystem.ink,
-              shadowColor: DesignSystem.inkSlate,
-              depth: 4.0, // Reduced from 6.0
-              radius: DesignSystem.radiusMD,
-              padding: const EdgeInsets.all(3.0),
-              child: Container(
-                width: boardSize,
-                height: boardSize,
-                decoration: BoxDecoration(
-                  color: DesignSystem.surface,
-                  borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
-                ),
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
-                  child: AspectRatio(
-                    aspectRatio: 1,
-                    child: GridView.builder(
-                      padding: EdgeInsets.zero,
-                      physics: const NeverScrollableScrollPhysics(),
-                      gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: state.board.size,
-                      ),
-                      itemCount: state.board.size * state.board.size,
-                      itemBuilder: (context, index) {
-                        final r = index ~/ state.board.size;
-                        final c = index % state.board.size;
-                        final cell = state.currentGrid[r][c];
-                        final isFixed = state.fixedCells[r][c];
-
-                        return GestureDetector(
-                          onTap: () {
-                            if (!isFixed) {
-                              HapticFeedbackUtil.lightImpact();
-                              ref.read(binaryPuzzleNotifierProvider.notifier).toggleCell(r, c);
-                            }
-                          },
-                          child: Container(
-                            decoration: BoxDecoration(
-                              border: Border.all(
-                                color: DesignSystem.outline.withValues(alpha: 0.3),
-                                width: 0.5,
+              return TangibleContainer(
+                depth: isFixed ? 0 : 2,
+                radius: DesignSystem.radiusXS,
+                color: isFixed ? DesignSystem.ink : DesignSystem.surface,
+                onTap: isFixed ? null : () {
+                  HapticFeedbackUtil.lightImpact();
+                  ref.read(binaryPuzzleNotifierProvider.notifier).toggleCell(r, c);
+                },
+                child: Center(
+                  child: cell == null
+                      ? const SizedBox.shrink()
+                      : Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: FittedBox(
+                            child: Text(
+                              '$cell',
+                              style: TextStyle(
+                                fontSize: 24,
+                                color: isFixed 
+                                  ? Colors.white 
+                                  : DesignSystem.primary,
+                                fontWeight: FontWeight.w900,
                               ),
-                              color: isFixed 
-                                ? DesignSystem.background 
-                                : DesignSystem.surface,
-                            ),
-                            child: Center(
-                              child: cell == null
-                                  ? const SizedBox.shrink()
-                                  : Padding(
-                                      padding: const EdgeInsets.all(4.0),
-                                      child: FittedBox(
-                                        child: Text(
-                                          '$cell',
-                                          style: TextStyle(
-                                            fontSize: 24, // Reduced from 32
-                                            color: isFixed 
-                                              ? DesignSystem.primary 
-                                              : DesignSystem.ink,
-                                            fontWeight: isFixed ? FontWeight.w900 : FontWeight.w700,
-                                          ),
-                                        ),
-                                      ),
-                                    ),
                             ),
                           ),
-                        );
-                      },
-                    ),
-                  ),
+                        ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

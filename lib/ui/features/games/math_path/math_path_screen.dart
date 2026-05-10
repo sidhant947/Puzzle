@@ -111,65 +111,52 @@ class MathPathScreen extends ConsumerWidget {
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
       child: ConstrainedBox(
         constraints: BoxConstraints(maxHeight: maxHeight),
-        child: LayoutBuilder(
-          builder: (context, constraints) {
-            final double gridSize = min(constraints.maxWidth, constraints.maxHeight);
+        child: AspectRatio(
+          aspectRatio: 1.0,
+          child: GridView.builder(
+            padding: const EdgeInsets.all(DesignSystem.spaceXS),
+            physics: const NeverScrollableScrollPhysics(),
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: state.level.size,
+              crossAxisSpacing: 10,
+              mainAxisSpacing: 10,
+            ),
+            itemCount: state.level.size * state.level.size,
+            itemBuilder: (context, index) {
+              final x = index % state.level.size;
+              final y = index ~/ state.level.size;
+              final p = Point(x, y);
+              final isInPath = state.currentPath.contains(p);
+              final isLast = state.currentPath.isNotEmpty && state.currentPath.last == p;
 
-            return TangibleContainer(
-              depth: 4.0,
-              color: DesignSystem.ink,
-              shadowColor: DesignSystem.ink.withValues(alpha: 0.2),
-              padding: const EdgeInsets.all(DesignSystem.spaceXS),
-              child: SizedBox(
-                width: gridSize,
-                height: gridSize,
-                child: GridView.builder(
-                  padding: EdgeInsets.zero,
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                    crossAxisCount: state.level.size,
-                    crossAxisSpacing: 6,
-                    mainAxisSpacing: 6,
-                  ),
-                  itemCount: state.level.size * state.level.size,
-                  itemBuilder: (context, index) {
-                    final x = index % state.level.size;
-                    final y = index ~/ state.level.size;
-                    final p = Point(x, y);
-                    final isInPath = state.currentPath.contains(p);
-                    final isLast = state.currentPath.isNotEmpty && state.currentPath.last == p;
-
-                    return TangibleContainer(
-                      depth: isInPath ? 0 : 2,
-                      radius: DesignSystem.radiusSM,
-                      color: isInPath 
-                          ? (isLast ? DesignSystem.primary : DesignSystem.primary.withValues(alpha: 0.3)) 
-                          : DesignSystem.surface,
-                      onTap: () {
-                        HapticFeedbackUtil.lightImpact();
-                        ref.read(mathPathNotifierProvider.notifier).toggleTile(x, y);
-                      },
-                      child: Center(
-                        child: Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: FittedBox(
-                            child: Text(
-                              '${state.level.grid[y][x]}',
-                              style: TextStyle(
-                                color: isInPath && isLast ? Colors.white : DesignSystem.ink,
-                                fontWeight: FontWeight.w900,
-                                fontSize: 18,
-                              ),
-                            ),
-                          ),
+              return TangibleContainer(
+                depth: isInPath ? 0 : 2,
+                radius: DesignSystem.radiusSM,
+                color: isInPath 
+                    ? (isLast ? DesignSystem.primary : DesignSystem.primary.withValues(alpha: 0.3)) 
+                    : DesignSystem.surface,
+                onTap: () {
+                  HapticFeedbackUtil.lightImpact();
+                  ref.read(mathPathNotifierProvider.notifier).toggleTile(x, y);
+                },
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(8.0),
+                    child: FittedBox(
+                      child: Text(
+                        '${state.level.grid[y][x]}',
+                        style: TextStyle(
+                          color: isInPath && isLast ? Colors.white : DesignSystem.ink,
+                          fontWeight: FontWeight.w900,
+                          fontSize: 18,
                         ),
                       ),
-                    );
-                  },
+                    ),
+                  ),
                 ),
-              ),
-            );
-          },
+              );
+            },
+          ),
         ),
       ),
     );

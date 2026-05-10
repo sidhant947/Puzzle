@@ -138,7 +138,7 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          'SPELL THIS WORD',
+          'SPELL THE WORD',
           style: TextStyle(
             color: DesignSystem.inkSlate,
             letterSpacing: 2,
@@ -186,19 +186,6 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
                   ),
                 );
               }),
-            ),
-          ),
-        ),
-        SizedBox(height: isSmall ? 12 : 24),
-        FittedBox(
-          fit: BoxFit.scaleDown,
-          child: Text(
-            state.targetWord,
-            style: TextStyle(
-              color: DesignSystem.ink.withValues(alpha: 0.1),
-              fontWeight: FontWeight.w900,
-              fontSize: isSmall ? 32 : 48,
-              letterSpacing: isSmall ? 4 : 8,
             ),
           ),
         ),

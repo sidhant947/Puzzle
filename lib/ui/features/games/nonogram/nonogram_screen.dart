@@ -72,43 +72,36 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
               Expanded(
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceMD),
-                  child: TangibleContainer(
-                    color: DesignSystem.ink,
-                    shadowColor: DesignSystem.inkSlate,
-                    depth: 4.0,
-                    radius: DesignSystem.radiusMD,
-                    padding: const EdgeInsets.all(DesignSystem.spaceSM),
-                    child: Column(
-                      children: [
-                        // Column Clues Area
-                        Row(
+                  child: Column(
+                    children: [
+                      // Column Clues Area
+                      Row(
+                        children: [
+                          const SizedBox(width: 40), // Row clues spacer
+                          for (int c = 0; c < state.size; c++)
+                            Expanded(child: _buildColClue(state.colClues[c])),
+                        ],
+                      ),
+                      const SizedBox(height: 8),
+                      // Grid + Row Clues Area
+                      Expanded(
+                        child: Column(
                           children: [
-                            const SizedBox(width: 40), // Row clues spacer
-                            for (int c = 0; c < state.size; c++)
-                              Expanded(child: _buildColClue(state.colClues[c])),
+                            for (int r = 0; r < state.size; r++)
+                              Expanded(
+                                child: Row(
+                                  children: [
+                                    _buildRowClue(state.rowClues[r]),
+                                    const SizedBox(width: 8),
+                                    for (int c = 0; c < state.size; c++)
+                                      Expanded(child: _buildCell(state, r, c)),
+                                  ],
+                                ),
+                              ),
                           ],
                         ),
-                        const SizedBox(height: 4),
-                        // Grid + Row Clues Area
-                        Expanded(
-                          child: Column(
-                            children: [
-                              for (int r = 0; r < state.size; r++)
-                                Expanded(
-                                  child: Row(
-                                    children: [
-                                      _buildRowClue(state.rowClues[r]),
-                                      const SizedBox(width: 4),
-                                      for (int c = 0; c < state.size; c++)
-                                        Expanded(child: _buildCell(state, r, c)),
-                                    ],
-                                  ),
-                                ),
-                            ],
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -162,7 +155,7 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
                   clue.toString(),
                   style: const TextStyle(
                     fontWeight: FontWeight.w900,
-                    color: Colors.white70,
+                    color: DesignSystem.inkSlate,
                     fontSize: 10,
                   ),
                 ),
@@ -189,7 +182,7 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
                   clue.toString(),
                   style: const TextStyle(
                     fontWeight: FontWeight.w900,
-                    color: Colors.white70,
+                    color: DesignSystem.inkSlate,
                     fontSize: 10,
                   ),
                 ),

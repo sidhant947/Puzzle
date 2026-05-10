@@ -127,70 +127,60 @@ class _PathGrid extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(pathFinderNotifierProvider);
 
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final boardSize = constraints.biggest.shortestSide;
-
-        return TangibleContainer(
-          depth: 4.0,
-          color: DesignSystem.ink,
-          shadowColor: DesignSystem.ink.withValues(alpha: 0.2),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+      child: AspectRatio(
+        aspectRatio: 1.0,
+        child: GridView.builder(
           padding: const EdgeInsets.all(DesignSystem.spaceXS),
-          child: SizedBox(
-            width: boardSize,
-            height: boardSize,
-            child: GridView.builder(
-              padding: EdgeInsets.zero,
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 5,
-                crossAxisSpacing: 4,
-                mainAxisSpacing: 4,
-              ),
-              itemCount: 25,
-              itemBuilder: (context, index) {
-                final x = index % 5;
-                final y = index ~/ 5;
-                final point = Point(x, y);
-                
-                final isSelected = state.currentPath.contains(point);
-                final isLast = state.currentPath.isNotEmpty && state.currentPath.last == point;
-                final isStart = state.requiredNodes.first == point;
-                final isExit = state.requiredNodes.last == point;
-                
-                Color color = DesignSystem.surface;
-                if (isSelected) {
-                  color = isLast ? DesignSystem.primary : DesignSystem.primary.withValues(alpha: 0.3);
-                } else if (isStart || isExit) {
-                  color = DesignSystem.primary.withValues(alpha: 0.1);
-                }
-
-                return TangibleContainer(
-                  depth: isSelected ? 0 : 2,
-                  radius: DesignSystem.radiusXS,
-                  color: color,
-                  onTap: () {
-                    HapticFeedbackUtil.selectionClick();
-                    ref.read(pathFinderNotifierProvider.notifier).addNode(point);
-                  },
-                  child: Center(
-                    child: (isStart || isExit) && !isSelected
-                        ? FittedBox(
-                            child: Text(isStart ? 'S' : 'E',
-                                style: const TextStyle(
-                                  color: DesignSystem.primary,
-                                  fontWeight: FontWeight.w900,
-                                  fontSize: 16,
-                                )),
-                          )
-                        : null,
-                  ),
-                );
-              },
-            ),
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 5,
+            crossAxisSpacing: 8,
+            mainAxisSpacing: 8,
           ),
-        );
-      },
+          itemCount: 25,
+          itemBuilder: (context, index) {
+            final x = index % 5;
+            final y = index ~/ 5;
+            final point = Point(x, y);
+            
+            final isSelected = state.currentPath.contains(point);
+            final isLast = state.currentPath.isNotEmpty && state.currentPath.last == point;
+            final isStart = state.requiredNodes.first == point;
+            final isExit = state.requiredNodes.last == point;
+            
+            Color color = DesignSystem.surface;
+            if (isSelected) {
+              color = isLast ? DesignSystem.primary : DesignSystem.primary.withValues(alpha: 0.3);
+            } else if (isStart || isExit) {
+              color = DesignSystem.primary.withValues(alpha: 0.1);
+            }
+
+            return TangibleContainer(
+              depth: isSelected ? 0 : 2,
+              radius: DesignSystem.radiusXS,
+              color: color,
+              onTap: () {
+                HapticFeedbackUtil.selectionClick();
+                ref.read(pathFinderNotifierProvider.notifier).addNode(point);
+              },
+              child: Center(
+                child: (isStart || isExit) && !isSelected
+                    ? FittedBox(
+                        child: Text(isStart ? 'S' : 'E',
+                            style: const TextStyle(
+                              color: DesignSystem.primary,
+                              fontWeight: FontWeight.w900,
+                              fontSize: 16,
+                            )),
+                      )
+                    : null,
+              ),
+            );
+          },
+        ),
+      ),
     );
   }
 }

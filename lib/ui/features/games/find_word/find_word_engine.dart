@@ -6,18 +6,27 @@ enum LetterStatus { initial, notInWord, wrongSpot, correctSpot }
 class FindWordEngine {
   static const int maxTries = 6;
   static const int wordLength = 5;
+  static List<String>? _cachedWords;
 
   Future<List<String>> loadWords() async {
+    if (_cachedWords != null) return _cachedWords!;
+    
     try {
       final data = await rootBundle.loadString('assets/find_word_words.txt');
-      return data
+      _cachedWords = data
           .split('\n')
           .map((w) => w.trim().toUpperCase())
           .where((w) => w.length == wordLength)
           .toList();
+      
+      if (_cachedWords!.isEmpty) {
+        _cachedWords = ['APPLE', 'BRAIN', 'CHAIR', 'DANCE', 'EARTH'];
+      }
+      return _cachedWords!;
     } catch (e) {
       // Fallback if asset loading fails
-      return ['APPLE', 'BRAIN', 'CHAIR', 'DANCE', 'EARTH'];
+      _cachedWords = ['APPLE', 'BRAIN', 'CHAIR', 'DANCE', 'EARTH'];
+      return _cachedWords!;
     }
   }
 
@@ -28,6 +37,12 @@ class FindWordEngine {
 
   List<LetterStatus> checkGuess(String guess, String target) {
     List<LetterStatus> results = List.filled(wordLength, LetterStatus.notInWord);
+    
+    // Safety check: ensure both words have the expected length
+    if (guess.length != wordLength || target.length != wordLength) {
+      return results;
+    }
+
     List<String> targetList = target.split('');
     List<String> guessList = guess.split('');
 

@@ -125,12 +125,14 @@ class _OddRotationScreenState extends ConsumerState<OddRotationScreen> {
                             child: FittedBox(
                               child: Transform(
                                 alignment: Alignment.center,
-                                transform: Matrix4.rotationZ(option.rotation)
-                                  ..scale(option.isMirrored ? -1.0 : 1.0, 1.0, 1.0),
-                                child: Icon(
-                                  state.shape, 
-                                  size: 48, 
-                                  color: isSelected ? Colors.white : DesignSystem.primary
+                                transform: Matrix4.rotationZ(option.rotation),
+                                child: Transform.scale(
+                                  scaleX: option.isMirrored ? -1.0 : 1.0,
+                                  child: Icon(
+                                    state.shape, 
+                                    size: 48, 
+                                    color: isSelected ? Colors.white : DesignSystem.primary
+                                  ),
                                 ),
                               ),
                             ),

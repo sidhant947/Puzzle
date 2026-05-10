@@ -162,8 +162,8 @@ class _MissingVowelsScreenState extends ConsumerState<MissingVowelsScreen> {
                         onTap: notifier.onBackspace,
                         color: DesignSystem.surface,
                         shadowColor: DesignSystem.outlineVariant,
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        child: const Icon(Icons.backspace_rounded, color: DesignSystem.ink, size: 20),
+                        padding: const EdgeInsets.symmetric(vertical: 18),
+                        child: const Icon(Icons.backspace_rounded, color: DesignSystem.ink, size: 24),
                       ),
                     ),
                     const SizedBox(width: DesignSystem.spaceMD),
@@ -172,10 +172,17 @@ class _MissingVowelsScreenState extends ConsumerState<MissingVowelsScreen> {
                       child: TangibleButton(
                         onTap: notifier.submitGuess,
                         color: DesignSystem.primary,
-                        padding: const EdgeInsets.symmetric(vertical: 12),
-                        child: const Text(
-                          'SUBMIT',
-                          style: TextStyle(fontWeight: FontWeight.w900, fontSize: 14),
+                        depth: 4,
+                        padding: const EdgeInsets.symmetric(vertical: 18),
+                        child: const Center(
+                          child: Text(
+                            'SUBMIT',
+                            style: TextStyle(
+                              fontWeight: FontWeight.w900, 
+                              fontSize: 16,
+                              letterSpacing: 1.2,
+                            ),
+                          ),
                         ),
                       ),
                     ),

@@ -66,10 +66,23 @@ class WordLadderScreen extends ConsumerWidget {
               ),
               if (state.errorMessage != null)
                 Padding(
-                  padding: const EdgeInsets.only(bottom: 8),
-                  child: Text(
-                    state.errorMessage!, 
-                    style: const TextStyle(color: DesignSystem.error, fontWeight: FontWeight.w900, fontSize: 12)
+                  padding: const EdgeInsets.only(bottom: 12),
+                  child: Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    decoration: BoxDecoration(
+                      color: DesignSystem.error.withValues(alpha: 0.1),
+                      borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
+                      border: Border.all(color: DesignSystem.error.withValues(alpha: 0.3), width: 1),
+                    ),
+                    child: Text(
+                      state.errorMessage!.toUpperCase(),
+                      style: const TextStyle(
+                        color: DesignSystem.error,
+                        fontWeight: FontWeight.w900,
+                        fontSize: 10,
+                        letterSpacing: 1,
+                      ),
+                    ),
                   ),
                 ),
               _buildCurrentInput(state, constraints),

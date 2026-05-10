@@ -100,49 +100,43 @@ class SlidePuzzleScreen extends ConsumerWidget {
     return AspectRatio(
       aspectRatio: 1,
       child: Padding(
-        padding: EdgeInsets.all(isSmall ? 8 : 16),
-        child: TangibleContainer(
-          depth: isSmall ? 3.0 : 6.0,
-          color: DesignSystem.ink,
-          padding: EdgeInsets.all(isSmall ? 4 : 8),
-          child: GridView.builder(
-            padding: EdgeInsets.zero,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: SlidePuzzleEngine.size,
-              crossAxisSpacing: isSmall ? 4 : 8,
-              mainAxisSpacing: isSmall ? 4 : 8,
-            ),
-            itemCount: SlidePuzzleEngine.size * SlidePuzzleEngine.size,
-            itemBuilder: (context, index) {
-              final value = state.board[index];
-              if (value == 0) return const SizedBox.shrink();
+        padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
+        child: GridView.builder(
+          padding: const EdgeInsets.all(DesignSystem.spaceXS),
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: SlidePuzzleEngine.size,
+            crossAxisSpacing: isSmall ? 8 : 10,
+            mainAxisSpacing: isSmall ? 8 : 10,
+          ),
+          itemCount: SlidePuzzleEngine.size * SlidePuzzleEngine.size,
+          itemBuilder: (context, index) {
+            final value = state.board[index];
+            if (value == 0) return const SizedBox.shrink();
 
-              return GestureDetector(
-                onTap: () {
-                  HapticFeedbackUtil.selectionClick();
-                  ref.read(slidePuzzleNotifierProvider.notifier).moveTile(index);
-                },
-                child: TangibleContainer(
-                  depth: isSmall ? 2.0 : 4.0,
-                  color: DesignSystem.surface,
-                  child: Center(
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Text(
-                        '$value',
-                        style: TextStyle(
-                          fontSize: isSmall ? 18 : 24,
-                          fontWeight: FontWeight.w900,
-                          color: DesignSystem.ink,
-                        ),
+            return GestureDetector(
+              onTap: () {
+                HapticFeedbackUtil.selectionClick();
+                ref.read(slidePuzzleNotifierProvider.notifier).moveTile(index);
+              },
+              child: TangibleContainer(
+                depth: isSmall ? 2.0 : 4.0,
+                color: DesignSystem.surface,
+                child: Center(
+                  child: FittedBox(
+                    child: Text(
+                      '$value',
+                      style: TextStyle(
+                        fontSize: isSmall ? 18 : 24,
+                        fontWeight: FontWeight.w900,
+                        color: DesignSystem.ink,
                       ),
                     ),
                   ),
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
       ),
     );

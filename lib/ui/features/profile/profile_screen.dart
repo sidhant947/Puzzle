@@ -145,7 +145,7 @@ class ProfileScreen extends ConsumerWidget {
                     style: TextStyle(
                       letterSpacing: 0.5,
                       fontWeight: FontWeight.w800,
-                      color: Colors.white.withOpacity(0.8),
+                      color: Colors.white.withValues(alpha: 0.8),
                     ),
                   ),
                 ],
@@ -154,7 +154,7 @@ class ProfileScreen extends ConsumerWidget {
                 width: 64,
                 height: 64,
                 decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.2),
+                  color: Colors.white.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
                 ),
                 child: const Icon(
@@ -172,7 +172,7 @@ class ProfileScreen extends ConsumerWidget {
                 height: 16,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: Colors.black.withOpacity(0.2),
+                  color: Colors.black.withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(8),
                 ),
               ),
@@ -198,7 +198,7 @@ class ProfileScreen extends ConsumerWidget {
                   fontWeight: FontWeight.w800,
                   fontSize: 10,
                   letterSpacing: 1.0,
-                  color: Colors.white.withOpacity(0.7),
+                  color: Colors.white.withValues(alpha: 0.7),
                 ),
               ),
               Text(
@@ -232,14 +232,14 @@ class ProfileScreen extends ConsumerWidget {
             height: 56,
             decoration: BoxDecoration(
               color: isUnlocked 
-                  ? DesignSystem.accentAmber.withOpacity(0.2) 
-                  : DesignSystem.outline.withOpacity(0.5),
+                  ? DesignSystem.accentAmber.withValues(alpha: 0.2) 
+                  : DesignSystem.outline.withValues(alpha: 0.5),
               borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
             ),
             child: Icon(
               achievement.icon,
               size: 28,
-              color: isUnlocked ? DesignSystem.accentAmber : DesignSystem.inkSlate.withOpacity(0.4),
+              color: isUnlocked ? DesignSystem.accentAmber : DesignSystem.inkSlate.withValues(alpha: 0.4),
             ),
           ),
           const SizedBox(width: DesignSystem.spaceMD),
@@ -253,7 +253,7 @@ class ProfileScreen extends ConsumerWidget {
                     fontWeight: FontWeight.w900,
                     letterSpacing: 0.5,
                     fontSize: 16,
-                    color: isUnlocked ? DesignSystem.ink : DesignSystem.inkSlate.withOpacity(0.5),
+                    color: isUnlocked ? DesignSystem.ink : DesignSystem.inkSlate.withValues(alpha: 0.5),
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -262,7 +262,7 @@ class ProfileScreen extends ConsumerWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 12,
-                    color: isUnlocked ? DesignSystem.inkSlate : DesignSystem.inkSlate.withOpacity(0.4),
+                    color: isUnlocked ? DesignSystem.inkSlate : DesignSystem.inkSlate.withValues(alpha: 0.4),
                   ),
                 ),
               ],
@@ -278,7 +278,7 @@ class ProfileScreen extends ConsumerWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
               decoration: BoxDecoration(
-                color: DesignSystem.outline.withOpacity(0.5),
+                color: DesignSystem.outline.withValues(alpha: 0.5),
                 borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
               ),
               child: const Text(

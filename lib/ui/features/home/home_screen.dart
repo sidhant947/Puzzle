@@ -42,9 +42,6 @@ import '../games/odd_rotation/odd_rotation_screen.dart';
 import '../games/balance_scale/balance_scale_screen.dart';
 
 import '../games/cryptogram/cryptogram_screen.dart';
-import '../games/skyscrapers/skyscrapers_screen.dart';
-import '../games/hitori/hitori_screen.dart';
-import '../games/star_battle/star_battle_screen.dart';
 
 import '../games/typing_speed/typing_speed_screen.dart';
 import '../games/quick_math/quick_math_screen.dart';
@@ -66,7 +63,8 @@ class CustomPageRoute<T> extends PageRouteBuilder<T> {
               reverseCurve: Curves.easeInExpo,
             );
             return FadeTransition(
-              opacity: Tween<double>(begin: 0.0, end: 1.0).animate(curvedAnimation),
+              opacity:
+                  Tween<double>(begin: 0.0, end: 1.0).animate(curvedAnimation),
               child: child,
             );
           },
@@ -130,27 +128,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'icon': Icons.password_rounded,
       'color': DesignSystem.gameIndigo,
       'screen': const CryptogramScreen(),
-    },
-    {
-      'title': 'Skyscrapers',
-      'id': 'skyscrapers',
-      'icon': Icons.apartment_rounded,
-      'color': DesignSystem.gameBlue,
-      'screen': const SkyscrapersScreen(),
-    },
-    {
-      'title': 'Hitori',
-      'id': 'hitori',
-      'icon': Icons.grid_goldenratio_rounded,
-      'color': DesignSystem.gameRose,
-      'screen': const HitoriScreen(),
-    },
-    {
-      'title': 'Star Battle',
-      'id': 'star_battle',
-      'icon': Icons.auto_awesome_rounded,
-      'color': DesignSystem.gameAmber,
-      'screen': const StarBattleScreen(),
     },
     {
       'title': 'Balance Scale',
@@ -433,7 +410,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 (context, index) {
                   final game = _games[index];
                   return Padding(
-                    padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
+                    padding:
+                        const EdgeInsets.only(bottom: DesignSystem.spaceMD),
                     child: _buildFullWidthTile(
                       context,
                       game['title'],
@@ -474,7 +452,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       children: [
         TangibleButton(
           color: isSolved ? DesignSystem.success : DesignSystem.surface,
-          shadowColor: isSolved ? const Color(0xFF047857) : DesignSystem.outlineVariant,
+          shadowColor:
+              isSolved ? const Color(0xFF047857) : DesignSystem.outlineVariant,
           onTap: onTap,
           padding: const EdgeInsets.only(
             right: DesignSystem.spaceMD,
@@ -489,8 +468,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 width: 72,
                 height: 72,
                 decoration: BoxDecoration(
-                  color: isSolved 
-                      ? Colors.white.withValues(alpha: 0.1) 
+                  color: isSolved
+                      ? Colors.white.withValues(alpha: 0.1)
                       : accentColor.withValues(alpha: 0.1),
                   borderRadius: const BorderRadius.only(
                     topLeft: Radius.circular(DesignSystem.radiusLG - 2),
@@ -522,7 +501,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 ),
               ),
               Icon(
-                isSolved ? Icons.check_circle_rounded : Icons.chevron_right_rounded,
+                isSolved
+                    ? Icons.check_circle_rounded
+                    : Icons.chevron_right_rounded,
                 color: isSolved ? Colors.white : DesignSystem.outlineVariant,
                 size: 28,
               ),

@@ -56,81 +56,58 @@ class SymmetryScreen extends ConsumerWidget {
                     ),
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
-                      child: TangibleContainer(
-                        color: DesignSystem.ink,
-                        shadowColor: DesignSystem.inkSlate,
-                        radius: DesignSystem.radiusSM,
-                        depth: isSmall ? 3.0 : 6.0,
-                        padding: const EdgeInsets.all(4.0),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: DesignSystem.surface,
-                            borderRadius: BorderRadius.circular(DesignSystem.radiusSM - 4),
-                          ),
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(DesignSystem.radiusSM - 4),
-                            child: AspectRatio(
-                              aspectRatio: 1,
-                              child: Stack(
-                                children: [
-                                  GridView.builder(
-                                    physics: const NeverScrollableScrollPhysics(),
-                                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                      crossAxisCount: 6,
-                                    ),
-                                    itemCount: 36,
-                                    itemBuilder: (context, index) {
-                                      final x = index % 6;
-                                      final y = index ~/ 6;
-                                      final isActive = state.grid[y][x];
-                                      final isEditable = x >= 3;
-                                      
-                                      return GestureDetector(
-                                        onTap: () {
-                                          if (isEditable) {
-                                            HapticFeedbackUtil.selectionClick();
-                                            ref.read(symmetryNotifierProvider.notifier).toggleCell(x, y);
-                                          }
-                                        },
-                                        child: AnimatedContainer(
-                                          duration: const Duration(milliseconds: 200),
-                                          margin: EdgeInsets.all(isSmall ? 1.0 : 2.0),
-                                          decoration: BoxDecoration(
-                                            color: isActive 
-                                              ? (isEditable ? DesignSystem.primary : DesignSystem.inkSlate)
-                                              : DesignSystem.surface,
-                                            borderRadius: BorderRadius.circular(isSmall ? 2 : 4),
-                                            border: Border.all(
-                                              color: DesignSystem.ink.withValues(alpha: 0.1),
-                                              width: 1,
-                                            ),
+                      child: AspectRatio(
+                        aspectRatio: 1,
+                        child: Stack(
+                          children: [
+                            GridView.builder(
+                              physics: const NeverScrollableScrollPhysics(),
+                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                crossAxisCount: 6,
+                                crossAxisSpacing: 4,
+                                mainAxisSpacing: 4,
+                              ),
+                              itemCount: 36,
+                              itemBuilder: (context, index) {
+                                final x = index % 6;
+                                final y = index ~/ 6;
+                                final isActive = state.grid[y][x];
+                                final isEditable = x >= 3;
+                                
+                                return TangibleContainer(
+                                  depth: isActive ? 0.0 : 1.0,
+                                  radius: DesignSystem.radiusXS,
+                                  color: isActive 
+                                    ? (isEditable ? DesignSystem.primary : DesignSystem.inkSlate)
+                                    : DesignSystem.surface,
+                                  onTap: () {
+                                    if (isEditable) {
+                                      HapticFeedbackUtil.selectionClick();
+                                      ref.read(symmetryNotifierProvider.notifier).toggleCell(x, y);
+                                    }
+                                  },
+                                  child: isActive && !isEditable 
+                                    ? Center(
+                                        child: FittedBox(
+                                          child: Icon(
+                                            Icons.circle, 
+                                            color: Colors.white, 
+                                            size: isSmall ? 6 : 8
                                           ),
-                                          child: isActive && !isEditable 
-                                            ? Center(
-                                                child: FittedBox(
-                                                  child: Icon(
-                                                    Icons.circle, 
-                                                    color: Colors.white, 
-                                                    size: isSmall ? 6 : 8
-                                                  ),
-                                                ),
-                                              )
-                                            : null,
                                         ),
-                                      );
-                                    },
-                                  ),
-                                  Center(
-                                    child: Container(
-                                      width: isSmall ? 2 : 3, 
-                                      color: DesignSystem.ink, 
-                                      height: double.infinity,
-                                    ),
-                                  ),
-                                ],
+                                      )
+                                    : const SizedBox.expand(),
+                                );
+                              },
+                            ),
+                            Center(
+                              child: Container(
+                                width: isSmall ? 2 : 4, 
+                                color: DesignSystem.ink.withValues(alpha: 0.3), 
+                                height: double.infinity,
                               ),
                             ),
-                          ),
+                          ],
                         ),
                       ),
                     ),

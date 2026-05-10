@@ -71,7 +71,8 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
 
     return GameScaffold(
       title: 'FIND WORD',
-      subtitle: 'You have ${FindWordEngine.maxTries} tries to find the hidden ${FindWordEngine.wordLength}-letter word.',
+      subtitle:
+          'You have ${FindWordEngine.maxTries} tries to find the hidden ${FindWordEngine.wordLength}-letter word.',
       actions: [
         TangibleButton(
           color: DesignSystem.surface,
@@ -81,16 +82,17 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
             notifier.initGame();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
+          child: const Icon(Icons.refresh_rounded,
+              size: 20, color: DesignSystem.ink),
         ),
       ],
       body: LayoutBuilder(
         builder: (context, constraints) {
           return Column(
             children: [
-              const Spacer(),
-              _buildGrid(state, constraints.maxHeight * 0.45),
-              const Spacer(),
+              const SizedBox(height: DesignSystem.spaceLG),
+              Expanded(child: _buildGrid(state)),
+              const SizedBox(height: DesignSystem.spaceLG),
               _buildKeyboard(state, notifier),
               const SizedBox(height: DesignSystem.spaceLG),
             ],
@@ -100,66 +102,62 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
     );
   }
 
-  Widget _buildGrid(FindWordState state, double maxHeight) {
+  Widget _buildGrid(FindWordState state) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
-      child: ConstrainedBox(
-        constraints: BoxConstraints(maxHeight: maxHeight),
-        child: TangibleContainer(
-          color: DesignSystem.ink,
-          shadowColor: DesignSystem.inkSlate,
-          depth: 4.0,
-          radius: DesignSystem.radiusMD,
-          padding: const EdgeInsets.all(DesignSystem.spaceSM),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: List.generate(FindWordEngine.maxTries, (rowIndex) {
-              String word = '';
-              List<LetterStatus>? results;
+      child: TangibleContainer(
+        color: DesignSystem.ink,
+        shadowColor: DesignSystem.inkSlate,
+        depth: 4.0,
+        radius: DesignSystem.radiusMD,
+        padding: const EdgeInsets.all(DesignSystem.spaceSM),
+        child: Column(
+          children: List.generate(FindWordEngine.maxTries, (rowIndex) {
+            String word = '';
+            List<LetterStatus>? results;
 
-              if (rowIndex < state.guesses.length) {
-                word = state.guesses[rowIndex];
-                results = state.results[rowIndex];
-              } else if (rowIndex == state.guesses.length) {
-                word = state.currentGuess;
-              }
+            if (rowIndex < state.guesses.length) {
+              word = state.guesses[rowIndex];
+              results = state.results[rowIndex];
+            } else if (rowIndex == state.guesses.length) {
+              word = state.currentGuess;
+            }
 
-              bool isCurrentRow = rowIndex == state.guesses.length;
+            bool isCurrentRow = rowIndex == state.guesses.length;
 
-              Widget row = Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(vertical: 2),
-                  child: Row(
-                    children: List.generate(FindWordEngine.wordLength, (colIndex) {
-                      String letter = '';
-                      if (colIndex < word.length) {
-                        letter = word[colIndex];
-                      }
-                      LetterStatus status =
-                          results != null ? results[colIndex] : LetterStatus.initial;
-                      return Expanded(
-                        child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 2),
-                          child: _buildTile(letter, status, isCurrentRow && colIndex < word.length),
-                        ),
-                      );
-                    }),
-                  ),
-                ),
+            Widget rowContent = Padding(
+              padding: const EdgeInsets.symmetric(vertical: 2),
+              child: Row(
+                children: List.generate(FindWordEngine.wordLength, (colIndex) {
+                  String letter = '';
+                  if (colIndex < word.length) {
+                    letter = word[colIndex];
+                  }
+                  LetterStatus status = results != null
+                      ? results[colIndex]
+                      : LetterStatus.initial;
+                  return Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 2),
+                      child: _buildTile(letter, status,
+                          isCurrentRow && colIndex < word.length),
+                    ),
+                  );
+                }),
+              ),
+            );
+
+            if (isCurrentRow) {
+              rowContent = AnimatedBuilder(
+                animation: _shakeAnimation,
+                builder: (context, child) => Transform.translate(
+                    offset: Offset(_shakeAnimation.value, 0), child: child),
+                child: rowContent,
               );
+            }
 
-              if (isCurrentRow) {
-                return AnimatedBuilder(
-                  animation: _shakeAnimation,
-                  builder: (context, child) => Transform.translate(
-                      offset: Offset(_shakeAnimation.value, 0), child: child),
-                  child: row,
-                );
-              }
-
-              return row;
-            }),
-          ),
+            return Expanded(child: rowContent);
+          }),
         ),
       ),
     );
@@ -231,7 +229,8 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
             padding: const EdgeInsets.symmetric(vertical: 1),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: row.map((key) => _buildKey(key, state, notifier)).toList(),
+              children:
+                  row.map((key) => _buildKey(key, state, notifier)).toList(),
             ),
           );
         }).toList(),
@@ -239,9 +238,10 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
     );
   }
 
-  Widget _buildKey(String label, FindWordState state, FindWordNotifier notifier) {
+  Widget _buildKey(
+      String label, FindWordState state, FindWordNotifier notifier) {
     bool isSpecialKey = label == 'ENTER' || label == 'DEL';
-    
+
     LetterStatus status = state.keyboardStatus[label] ?? LetterStatus.initial;
     Color color = DesignSystem.surface;
     Color shadowColor = DesignSystem.outlineVariant;
@@ -295,7 +295,8 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
             height: 40,
             alignment: Alignment.center,
             child: label == 'DEL'
-                ? const Icon(Icons.backspace_rounded, size: 16, color: Colors.white)
+                ? const Icon(Icons.backspace_rounded,
+                    size: 16, color: Colors.white)
                 : Text(
                     label,
                     style: TextStyle(
@@ -310,8 +311,8 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
     );
   }
 
-  void _showGameOverDialog(BuildContext context, WidgetRef ref,
-      FindWordState state) async {
+  void _showGameOverDialog(
+      BuildContext context, WidgetRef ref, FindWordState state) async {
     if (state.isGameWon) {
       await ref
           .read(gameStreakNotifierProvider.notifier)

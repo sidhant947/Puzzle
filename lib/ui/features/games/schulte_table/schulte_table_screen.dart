@@ -130,58 +130,53 @@ class SchulteTableScreen extends ConsumerWidget {
     return AspectRatio(
       aspectRatio: 1,
       child: Padding(
-        padding: EdgeInsets.all(isSmall ? 8 : 16),
-        child: TangibleContainer(
-          depth: isSmall ? 3.0 : 6.0,
-          color: DesignSystem.ink,
-          padding: EdgeInsets.all(isSmall ? 4 : 8),
-          child: GridView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 5,
-              crossAxisSpacing: isSmall ? 4 : 8,
-              mainAxisSpacing: isSmall ? 4 : 8,
-            ),
-            itemCount: 25,
-            itemBuilder: (context, index) {
-              final value = state.grid[index];
-              final isTapped = value < state.nextNumber;
+        padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
+        child: GridView.builder(
+          padding: const EdgeInsets.all(DesignSystem.spaceXS),
+          physics: const NeverScrollableScrollPhysics(),
+          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 5,
+            crossAxisSpacing: isSmall ? 6 : 10,
+            mainAxisSpacing: isSmall ? 6 : 10,
+          ),
+          itemCount: 25,
+          itemBuilder: (context, index) {
+            final value = state.grid[index];
+            final isTapped = value < state.nextNumber;
 
-              return GestureDetector(
-                onTap: () {
-                  if (state.status == SchulteStatus.playing) {
-                    if (value == state.nextNumber) {
-                      HapticFeedbackUtil.lightImpact();
-                    } else {
-                      HapticFeedbackUtil.error();
-                    }
-                    notifier.tapNumber(value);
+            return GestureDetector(
+              onTap: () {
+                if (state.status == SchulteStatus.playing) {
+                  if (value == state.nextNumber) {
+                    HapticFeedbackUtil.lightImpact();
+                  } else {
+                    HapticFeedbackUtil.error();
                   }
-                },
-                child: TangibleContainer(
-                  depth: isTapped ? 0.0 : (isSmall ? 2.0 : 4.0),
-                  color: isTapped 
-                      ? DesignSystem.ink
-                      : DesignSystem.surface,
-                  child: Center(
-                    child: FittedBox(
-                      fit: BoxFit.scaleDown,
-                      child: Text(
-                        value.toString(),
-                        style: TextStyle(
-                          fontSize: isSmall ? 16 : 20,
-                          color: isTapped 
-                              ? Colors.white.withValues(alpha: 0.2)
-                              : DesignSystem.ink,
-                          fontWeight: FontWeight.w800,
-                        ),
+                  notifier.tapNumber(value);
+                }
+              },
+              child: TangibleContainer(
+                depth: isTapped ? 0.0 : (isSmall ? 2.0 : 4.0),
+                color: isTapped 
+                    ? DesignSystem.ink.withValues(alpha: 0.1)
+                    : DesignSystem.surface,
+                child: Center(
+                  child: FittedBox(
+                    child: Text(
+                      value.toString(),
+                      style: TextStyle(
+                        fontSize: isSmall ? 16 : 20,
+                        color: isTapped 
+                            ? DesignSystem.ink.withValues(alpha: 0.2)
+                            : DesignSystem.ink,
+                        fontWeight: FontWeight.w800,
                       ),
                     ),
                   ),
                 ),
-              );
-            },
-          ),
+              ),
+            );
+          },
         ),
       ),
     );

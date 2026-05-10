@@ -139,47 +139,35 @@ class TentsAndTreesScreen extends ConsumerWidget {
               Positioned(
                 top: clueSize,
                 left: clueSize,
-                child: TangibleContainer(
-                  color: DesignSystem.surface,
-                  radius: DesignSystem.radiusSM,
-                  depth: 2,
-                  padding: EdgeInsets.zero,
-                  child: Container(
-                    width: gridDisplaySize,
-                    height: gridDisplaySize,
-                    decoration: BoxDecoration(
-                      border: Border.all(color: DesignSystem.outline, width: 1),
-                      borderRadius: BorderRadius.circular(DesignSystem.radiusSM - 1),
+                child: SizedBox(
+                  width: gridDisplaySize,
+                  height: gridDisplaySize,
+                  child: GridView.builder(
+                    padding: const EdgeInsets.all(4),
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: state.level.size,
+                      crossAxisSpacing: 4,
+                      mainAxisSpacing: 4,
                     ),
-                    child: ClipRRect(
-                      borderRadius: BorderRadius.circular(DesignSystem.radiusSM - 1),
-                      child: GridView.builder(
-                        padding: EdgeInsets.zero,
-                        physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: state.level.size,
-                        ),
-                        itemCount: state.level.size * state.level.size,
-                        itemBuilder: (context, index) {
-                          final r = index ~/ state.level.size;
-                          final c = index % state.level.size;
-                          final cell = state.grid[r][c];
-                          return GestureDetector(
-                            onTap: () {
-                              HapticFeedbackUtil.lightImpact();
-                              ref.read(tentsAndTreesNotifierProvider.notifier).toggleCell(r, c);
-                            },
-                            child: Container(
-                              decoration: BoxDecoration(
-                                border: Border.all(color: DesignSystem.outline.withOpacity(0.3), width: 0.5),
-                                color: cell == CellType.grass ? DesignSystem.success.withOpacity(0.05) : Colors.transparent,
-                              ),
-                              child: _buildCellContent(cell),
-                            ),
-                          );
+                    itemCount: state.level.size * state.level.size,
+                    itemBuilder: (context, index) {
+                      final r = index ~/ state.level.size;
+                      final c = index % state.level.size;
+                      final cell = state.grid[r][c];
+                      return TangibleContainer(
+                        depth: cell == CellType.empty ? 1 : 0,
+                        radius: DesignSystem.radiusXS,
+                        color: cell == CellType.grass 
+                            ? DesignSystem.success.withValues(alpha: 0.1) 
+                            : DesignSystem.surface,
+                        onTap: () {
+                          HapticFeedbackUtil.lightImpact();
+                          ref.read(tentsAndTreesNotifierProvider.notifier).toggleCell(r, c);
                         },
-                      ),
-                    ),
+                        child: _buildCellContent(cell),
+                      );
+                    },
                   ),
                 ),
               ),

@@ -18,7 +18,8 @@ class _ReflexTapScreenState extends ConsumerState<ReflexTapScreen> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() => ref.read(reflexTapNotifierProvider.notifier).initGame());
+    Future.microtask(
+        () => ref.read(reflexTapNotifierProvider.notifier).initGame());
   }
 
   void _showGameOverDialog(int score) {
@@ -67,12 +68,15 @@ class _ReflexTapScreenState extends ConsumerState<ReflexTapScreen> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      _buildStat('TIME', '${state.timeLeft}s', DesignSystem.accentBerry),
-                      _buildStat('TAPS', '${state.score}', DesignSystem.accentAmber),
+                      _buildStat('TIME', '${state.timeLeft}s',
+                          DesignSystem.accentBerry),
+                      _buildStat(
+                          'TAPS', '${state.score}', DesignSystem.accentAmber),
                     ],
                   ),
                 ),
@@ -80,12 +84,14 @@ class _ReflexTapScreenState extends ConsumerState<ReflexTapScreen> {
                   child: Padding(
                     padding: const EdgeInsets.all(16.0),
                     child: ConstrainedBox(
-                      constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.6),
+                      constraints: BoxConstraints(
+                          maxHeight: constraints.maxHeight * 0.6),
                       child: TangibleContainer(
                         depth: 4.0,
                         color: DesignSystem.ink,
                         child: ClipRRect(
-                          borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 1),
+                          borderRadius:
+                              BorderRadius.circular(DesignSystem.radiusMD - 1),
                           child: GestureDetector(
                             onTap: notifier.onMissed,
                             child: Container(
@@ -95,10 +101,23 @@ class _ReflexTapScreenState extends ConsumerState<ReflexTapScreen> {
                                   return Stack(
                                     children: [
                                       Positioned(
-                                        left: (state.targetPosition.x * boardConstraints.maxWidth - (state.targetSize / 2)).clamp(0, boardConstraints.maxWidth - state.targetSize),
-                                        top: (state.targetPosition.y * boardConstraints.maxHeight - (state.targetSize / 2)).clamp(0, boardConstraints.maxHeight - state.targetSize),
+                                        left: (state.targetPosition.x *
+                                                    boardConstraints.maxWidth -
+                                                (state.targetSize / 2))
+                                            .clamp(
+                                                0,
+                                                boardConstraints.maxWidth -
+                                                    state.targetSize),
+                                        top: (state.targetPosition.y *
+                                                    boardConstraints.maxHeight -
+                                                (state.targetSize / 2))
+                                            .clamp(
+                                                0,
+                                                boardConstraints.maxHeight -
+                                                    state.targetSize),
                                         child: _Target(
-                                          size: state.targetSize.clamp(0, boardConstraints.maxWidth * 0.3),
+                                          size: state.targetSize.clamp(0,
+                                              boardConstraints.maxWidth * 0.3),
                                           onTap: notifier.onTargetTapped,
                                         ),
                                       ),
@@ -114,7 +133,8 @@ class _ReflexTapScreenState extends ConsumerState<ReflexTapScreen> {
                   ),
                 ),
                 const Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
                   child: Text(
                     'Tap the targets as fast as you can!',
                     textAlign: TextAlign.center,
@@ -144,7 +164,7 @@ class _ReflexTapScreenState extends ConsumerState<ReflexTapScreen> {
             style: const TextStyle(
               fontSize: 10,
               fontWeight: FontWeight.bold,
-              color: DesignSystem.outline,
+              color: DesignSystem.ink,
               letterSpacing: 1.2,
             ),
           ),

@@ -22,29 +22,27 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
     final state = ref.watch(sudokuNotifierProvider);
     final notifier = ref.read(sudokuNotifierProvider.notifier);
 
-    ref.listen(sudokuNotifierProvider, (previous, next) {
+    ref.listen(sudokuNotifierProvider, (previous, next) async {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
         HapticFeedbackUtil.victory();
-        ref.read(gameStreakNotifierProvider.notifier).completeGame('sudoku').then((_) {
-          if (mounted) {
-            showDialog(
-              context: context,
-              barrierDismissible: false,
-              builder: (context) => GameCompletionDialog(
-                title: 'WELL DONE',
-                message: 'Puzzle solved successfully with perfect logic.',
-                onHome: () {
-                  Navigator.of(context).pop();
-                  Navigator.of(context).pop();
-                },
-                onPlayAgain: () {
-                  ref.read(sudokuNotifierProvider.notifier).initGame();
-                  Navigator.of(context).pop();
-                },
-              ),
-            );
-          }
-        });
+        await ref.read(gameStreakNotifierProvider.notifier).completeGame('sudoku');
+        if (!context.mounted) return;
+        showDialog(
+          context: context,
+          barrierDismissible: false,
+          builder: (context) => GameCompletionDialog(
+            title: 'WELL DONE',
+            message: 'Puzzle solved successfully with perfect logic.',
+            onHome: () {
+              Navigator.of(context).pop();
+              Navigator.of(context).pop();
+            },
+            onPlayAgain: () {
+              ref.read(sudokuNotifierProvider.notifier).initGame();
+              Navigator.of(context).pop();
+            },
+          ),
+        );
       }
     });
 
@@ -93,101 +91,94 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
       child: ConstrainedBox(
         constraints: BoxConstraints(maxHeight: maxHeight),
-        child: TangibleContainer(
-          color: DesignSystem.ink, // Thick outer border color
-          shadowColor: DesignSystem.inkSlate,
-          radius: DesignSystem.radiusSM,
-          depth: 4.0, // Reduced depth
-          padding: const EdgeInsets.all(3.0), // Bezel width
+        child: AspectRatio(
+          aspectRatio: 1,
           child: Container(
             decoration: BoxDecoration(
-              color: DesignSystem.surface,
-              borderRadius: BorderRadius.circular(DesignSystem.radiusSM - 4),
+              border: Border.all(color: DesignSystem.ink, width: 2.0),
+              borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
             ),
             child: ClipRRect(
-              borderRadius: BorderRadius.circular(DesignSystem.radiusSM - 4),
-              child: AspectRatio(
-                aspectRatio: 1,
-                child: Column(
-                  children: List.generate(size, (r) {
-                    return Expanded(
-                      child: Row(
-                        children: List.generate(size, (c) {
-                          final isInitial = state.initialBoard[r][c] != 0;
-                          final isSelected = selR == r && selC == c;
-                          final value = state.currentBoard[r][c];
-                          
-                          // Highlights
-                          final bool isSameDigit = selectedValue != 0 && value == selectedValue;
-                          final bool isRelatedArea = selR == r || selC == c || 
-                                                   (selR != null && selC != null && 
-                                                    (r ~/ 3 == selR ~/ 3 && c ~/ 3 == selC ~/ 3));
-                          
-                          // Conflict detection
-                          bool hasConflict = false;
-                          if (value != 0 && !isInitial) {
-                            hasConflict = !SudokuEngine().isValid(state.currentBoard, r, c, value);
-                          }
+              borderRadius: BorderRadius.circular(DesignSystem.radiusSM - 2),
+              child: Column(
+                children: List.generate(size, (r) {
+                  return Expanded(
+                    child: Row(
+                      children: List.generate(size, (c) {
+                        final isInitial = state.initialBoard[r][c] != 0;
+                        final isSelected = selR == r && selC == c;
+                        final value = state.currentBoard[r][c];
+                        
+                        // Highlights
+                        final bool isSameDigit = selectedValue != 0 && value == selectedValue;
+                        final bool isRelatedArea = selR == r || selC == c || 
+                                                 (selR != null && selC != null && 
+                                                  (r ~/ 3 == selR ~/ 3 && c ~/ 3 == selC ~/ 3));
+                        
+                        // Conflict detection
+                        bool hasConflict = false;
+                        if (value != 0 && !isInitial) {
+                          hasConflict = !SudokuEngine().isValid(state.currentBoard, r, c, value);
+                        }
 
-                          // Thick borders for 3x3 boxes
-                          final bool borderRight = (c + 1) % 3 == 0 && c < size - 1;
-                          final bool borderBottom = (r + 1) % 3 == 0 && r < size - 1;
+                        // Thick borders for 3x3 boxes
+                        final bool borderRight = (c + 1) % 3 == 0 && c < size - 1;
+                        final bool borderBottom = (r + 1) % 3 == 0 && r < size - 1;
 
-                          return Expanded(
-                            child: GestureDetector(
-                              onTap: () {
-                                HapticFeedbackUtil.selectionClick();
-                                notifier.selectCell(r, c);
-                              },
-                              child: AnimatedContainer(
-                                duration: const Duration(milliseconds: 150),
-                                decoration: BoxDecoration(
-                                  color: isSelected 
-                                    ? DesignSystem.primary.withValues(alpha: 0.2)
-                                    : isSameDigit
-                                      ? DesignSystem.accentAmber.withValues(alpha: 0.2)
-                                      : isRelatedArea
-                                        ? DesignSystem.outline.withValues(alpha: 0.3)
-                                        : DesignSystem.surface,
-                                  border: Border(
-                                    right: BorderSide(
-                                      color: DesignSystem.ink, 
-                                      width: borderRight ? 2.0 : 0.5
-                                    ),
-                                    bottom: BorderSide(
-                                      color: DesignSystem.ink, 
-                                      width: borderBottom ? 2.0 : 0.5
-                                    ),
+                        return Expanded(
+                          child: GestureDetector(
+                            onTap: () {
+                              HapticFeedbackUtil.selectionClick();
+                              notifier.selectCell(r, c);
+                            },
+                            child: AnimatedContainer(
+                              duration: const Duration(milliseconds: 150),
+                              decoration: BoxDecoration(
+                                color: isSelected 
+                                  ? DesignSystem.primary.withValues(alpha: 0.2)
+                                  : isSameDigit
+                                    ? DesignSystem.accentAmber.withValues(alpha: 0.2)
+                                    : isRelatedArea
+                                      ? DesignSystem.outline.withValues(alpha: 0.3)
+                                      : DesignSystem.surface,
+                                border: Border(
+                                  right: BorderSide(
+                                    color: DesignSystem.ink, 
+                                    width: borderRight ? 2.0 : 0.5
+                                  ),
+                                  bottom: BorderSide(
+                                    color: DesignSystem.ink, 
+                                    width: borderBottom ? 2.0 : 0.5
                                   ),
                                 ),
-                                child: Center(
-                                  child: FittedBox(
-                                    child: Text(
-                                      value == 0 ? '' : value.toString(),
-                                      style: TextStyle(
-                                        fontSize: 20, // Reduced from 24
-                                        fontWeight: isInitial ? FontWeight.w900 : FontWeight.w700,
-                                        color: hasConflict
-                                          ? DesignSystem.error
-                                          : isSelected 
-                                            ? DesignSystem.primary 
-                                            : isSameDigit
-                                              ? DesignSystem.accentAmber
-                                              : isInitial 
-                                                ? DesignSystem.ink 
-                                                : DesignSystem.inkSlate,
-                                      ),
+                              ),
+                              child: Center(
+                                child: FittedBox(
+                                  child: Text(
+                                    value == 0 ? '' : value.toString(),
+                                    style: TextStyle(
+                                      fontSize: 20, 
+                                      fontWeight: isInitial ? FontWeight.w900 : FontWeight.w700,
+                                      color: hasConflict
+                                        ? DesignSystem.error
+                                        : isSelected 
+                                          ? DesignSystem.primary 
+                                          : isSameDigit
+                                            ? DesignSystem.accentAmber
+                                            : isInitial 
+                                              ? DesignSystem.ink 
+                                              : DesignSystem.inkSlate,
                                     ),
                                   ),
                                 ),
                               ),
                             ),
-                          );
-                        }),
-                      ),
-                    );
-                  }),
-                ),
+                          ),
+                        );
+                      }),
+                    ),
+                  );
+                }),
               ),
             ),
           ),

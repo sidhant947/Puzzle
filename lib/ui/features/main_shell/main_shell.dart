@@ -94,7 +94,7 @@ class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserv
     required String label,
     required bool isSelected,
   }) {
-    final color = isSelected ? DesignSystem.primary : DesignSystem.inkSlate.withOpacity(0.5);
+    final color = isSelected ? DesignSystem.primary : DesignSystem.inkSlate.withValues(alpha: 0.5);
 
     return Expanded(
       child: GestureDetector(

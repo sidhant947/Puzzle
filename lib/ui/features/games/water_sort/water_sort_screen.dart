@@ -71,26 +71,34 @@ class WaterSortScreen extends ConsumerWidget {
             children: [
               const Spacer(),
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
-                child: Wrap(
-                  spacing: DesignSystem.spaceMD,
-                  runSpacing: DesignSystem.spaceXL,
-                  alignment: WrapAlignment.center,
-                  children: List.generate(state.tubes.length, (index) {
+                padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceMD),
+                child: GridView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: 4,
+                    crossAxisSpacing: DesignSystem.spaceSM,
+                    mainAxisSpacing: DesignSystem.spaceXL,
+                    childAspectRatio: 0.45, 
+                  ),
+                  itemCount: state.tubes.length,
+                  itemBuilder: (context, index) {
                     final isSelected = state.selectedTubeIndex == index;
-                    return GestureDetector(
-                      onTap: () {
-                        HapticFeedbackUtil.lightImpact();
-                        notifier.selectTube(index);
-                      },
-                      child: _TubeWidget(
-                        colors: state.tubes[index],
-                        isSelected: isSelected,
-                        width: tubeWidth.clamp(30.0, 50.0),
-                        height: tubeHeight.clamp(100.0, 160.0),
+                    return Center(
+                      child: GestureDetector(
+                        onTap: () {
+                          HapticFeedbackUtil.lightImpact();
+                          notifier.selectTube(index);
+                        },
+                        child: _TubeWidget(
+                          colors: state.tubes[index],
+                          isSelected: isSelected,
+                          width: tubeWidth.clamp(35.0, 50.0),
+                          height: tubeHeight.clamp(100.0, 150.0),
+                        ),
                       ),
                     );
-                  }),
+                  },
                 ),
               ),
               const Spacer(),
@@ -118,38 +126,118 @@ class _TubeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final tubeRadius = width / 2;
+    final outerRadius = BorderRadius.vertical(
+      bottom: Radius.circular(tubeRadius),
+      top: const Radius.circular(6),
+    );
+
+    final depth = isSelected ? 8.0 : 4.0;
+
     return AnimatedContainer(
       duration: const Duration(milliseconds: 200),
-      transform: isSelected ? Matrix4.translationValues(0.0, -12.0, 0.0) : Matrix4.identity(),
-      child: TangibleContainer(
-        color: DesignSystem.surface,
-        radius: DesignSystem.radiusMD,
-        depth: isSelected ? 4.0 : 2.0,
-        padding: const EdgeInsets.all(3),
-        child: Container(
-          width: width,
-          height: height,
-          decoration: BoxDecoration(
-            color: Colors.white.withOpacity(0.5),
-            borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
+      transform: isSelected ? Matrix4.translationValues(0.0, -20.0, 0.0) : Matrix4.identity(),
+      child: Stack(
+        clipBehavior: Clip.none,
+        alignment: Alignment.topCenter,
+        children: [
+          // Shadow / Depth Layer
+          Positioned(
+            top: depth,
+            child: Container(
+              width: width,
+              height: height,
+              decoration: BoxDecoration(
+                color: DesignSystem.outlineVariant,
+                borderRadius: outerRadius,
+              ),
+            ),
           ),
-          child: Column(
-            verticalDirection: VerticalDirection.up,
-            children: [
-              for (int i = 0; i < WaterSortEngine.tubeCapacity; i++)
-                Expanded(
-                  child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 300),
-                    margin: const EdgeInsets.symmetric(horizontal: 2, vertical: 1),
-                    decoration: BoxDecoration(
-                      color: i < colors.length ? colors[i] : Colors.transparent,
-                      borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
+          // Main Tube Body
+          Container(
+            width: width,
+            height: height,
+            decoration: BoxDecoration(
+              color: DesignSystem.surface,
+              borderRadius: outerRadius,
+              border: Border.all(
+                color: DesignSystem.outline,
+                width: 2.0,
+              ),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(tubeRadius - 2),
+                top: const Radius.circular(4),
+              ),
+              child: Stack(
+                children: [
+                  // Water segments
+                  Column(
+                    verticalDirection: VerticalDirection.up,
+                    children: [
+                      for (int i = 0; i < WaterSortEngine.tubeCapacity; i++)
+                        Expanded(
+                          child: AnimatedContainer(
+                            duration: const Duration(milliseconds: 300),
+                            decoration: BoxDecoration(
+                              color: i < colors.length ? colors[i] : Colors.transparent,
+                              border: i < colors.length 
+                                ? Border(
+                                    top: BorderSide(
+                                      color: Colors.white.withValues(alpha: 0.2),
+                                      width: 1.5,
+                                    ),
+                                    bottom: BorderSide(
+                                      color: Colors.black.withValues(alpha: 0.1),
+                                      width: 1.5,
+                                    ),
+                                  )
+                                : null,
+                            ),
+                          ),
+                        ),
+                    ],
+                  ),
+                  // Glass Gloss/Shine
+                  Positioned(
+                    left: width * 0.15,
+                    top: 10,
+                    bottom: 10,
+                    width: width * 0.12,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment.topCenter,
+                          end: Alignment.bottomCenter,
+                          colors: [
+                            Colors.white.withValues(alpha: 0.3),
+                            Colors.white.withValues(alpha: 0.05),
+                            Colors.white.withValues(alpha: 0.15),
+                          ],
+                        ),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
                     ),
                   ),
-                ),
-            ],
+                ],
+              ),
+            ),
           ),
-        ),
+          // Tube Rim (Top)
+          Positioned(
+            top: -2,
+            child: Container(
+              width: width + 8,
+              height: 8,
+              decoration: BoxDecoration(
+                color: DesignSystem.surface,
+                borderRadius: BorderRadius.circular(4),
+                border: Border.all(color: DesignSystem.outline, width: 2.0),
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

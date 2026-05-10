@@ -20,7 +20,8 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
   @override
   void initState() {
     super.initState();
-    Future.microtask(() => ref.read(switchTaskNotifierProvider.notifier).initGame());
+    Future.microtask(
+        () => ref.read(switchTaskNotifierProvider.notifier).initGame());
   }
 
   void _showGameOverDialog(int score) {
@@ -36,7 +37,8 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'MENTAL GYMNAST!' : 'WIRES CROSSED',
-        message: 'You scored $score correctly! Fast switching is key to mental flexibility.',
+        message:
+            'You scored $score correctly! Fast switching is key to mental flexibility.',
         onPlayAgain: () {
           ref.read(switchTaskNotifierProvider.notifier).initGame();
           Navigator.pop(context);
@@ -62,7 +64,8 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
 
     return GameScaffold(
       title: 'SWITCH TASK',
-      subtitle: 'Pay attention to the rule! It will switch between matching the shape and matching the color.',
+      subtitle:
+          'Pay attention to the rule! It will switch between matching the shape and matching the color.',
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(
@@ -75,29 +78,33 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
                       _buildStats(state, isSmall),
                       const Spacer(),
                       TangibleContainer(
-                        color: state.rule == SwitchRule.color 
-                          ? DesignSystem.accentIndigo.withValues(alpha: 0.1)
-                          : DesignSystem.accentOrange.withValues(alpha: 0.1),
-                        shadowColor: DesignSystem.outlineVariant,
+                        color: state.rule == SwitchRule.color
+                            ? DesignSystem.accentIndigo.withValues(alpha: 0.1)
+                            : DesignSystem.accentOrange.withValues(alpha: 0.1),
+                        shadowColor: DesignSystem.background,
                         depth: 2.0, // Reduced depth
                         padding: EdgeInsets.symmetric(
-                          horizontal: isSmall ? 12 : 20, 
-                          vertical: isSmall ? 6 : 10
-                        ),
+                            horizontal: isSmall ? 12 : 20,
+                            vertical: isSmall ? 6 : 10),
                         child: Text(
-                          state.rule == SwitchRule.color ? 'MATCH COLOR' : 'MATCH SHAPE',
+                          state.rule == SwitchRule.color
+                              ? 'MATCH COLOR'
+                              : 'MATCH SHAPE',
                           style: TextStyle(
                             fontWeight: FontWeight.w900,
                             letterSpacing: 2,
                             fontSize: isSmall ? 14 : 16, // Reduced font size
-                            color: state.rule == SwitchRule.color ? DesignSystem.accentIndigo : DesignSystem.accentOrange,
+                            color: state.rule == SwitchRule.color
+                                ? DesignSystem.accentIndigo
+                                : DesignSystem.accentOrange,
                           ),
                         ),
                       ),
                       SizedBox(height: isSmall ? 16 : 32),
                       ConstrainedBox(
                         constraints: BoxConstraints(
-                          maxHeight: constraints.maxHeight * (isSmall ? 0.3 : 0.25),
+                          maxHeight:
+                              constraints.maxHeight * (isSmall ? 0.3 : 0.25),
                         ),
                         child: TangibleContainer(
                           color: DesignSystem.surface,
@@ -115,32 +122,38 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
                       ),
                       const Spacer(),
                       Padding(
-                        padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
-                        child: Wrap(
-                          spacing: isSmall ? 6 : 10,
-                          runSpacing: isSmall ? 6 : 10,
-                          alignment: WrapAlignment.center,
+                        padding:
+                            EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
+                        child: Row(
                           children: state.options.map((option) {
-                            return TangibleButton(
-                              onTap: () {
-                                HapticFeedbackUtil.lightImpact();
-                                notifier.onOptionSelected(option);
-                              },
-                              color: DesignSystem.surface,
-                              shadowColor: DesignSystem.outlineVariant,
-                              depth: 3.0, // Added depth
-                              child: Container(
-                                width: isSmall ? 90 : 120, // Reduced width
-                                padding: EdgeInsets.symmetric(vertical: isSmall ? 8 : 14), // Reduced padding
-                                alignment: Alignment.center,
-                                child: FittedBox(
-                                  fit: BoxFit.scaleDown,
-                                  child: Text(
-                                    option,
-                                    style: TextStyle(
-                                      fontWeight: FontWeight.w900, 
-                                      fontSize: 14, // Reduced font size
-                                      color: DesignSystem.ink,
+                            return Expanded(
+                              child: Padding(
+                                padding: EdgeInsets.symmetric(
+                                    horizontal: isSmall ? 4 : 6),
+                                child: TangibleButton(
+                                  onTap: () {
+                                    HapticFeedbackUtil.lightImpact();
+                                    notifier.onOptionSelected(option);
+                                  },
+                                  color: DesignSystem.surface,
+                                  shadowColor: DesignSystem.outlineVariant,
+                                  depth: 3.0, // Added depth
+                                  child: Container(
+                                    padding: EdgeInsets.symmetric(
+                                        vertical: isSmall
+                                            ? 8
+                                            : 14), // Reduced padding
+                                    alignment: Alignment.center,
+                                    child: FittedBox(
+                                      fit: BoxFit.scaleDown,
+                                      child: Text(
+                                        option,
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w900,
+                                          fontSize: 14, // Reduced font size
+                                          color: DesignSystem.ink,
+                                        ),
+                                      ),
                                     ),
                                   ),
                                 ),
@@ -164,7 +177,11 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildStat('TIME', '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
+          _buildStat(
+              'TIME',
+              '${state.timeLeft}s',
+              state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary,
+              isSmall),
           _buildStat('SCORE', '${state.score}', DesignSystem.success, isSmall),
         ],
       ),
@@ -177,13 +194,11 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
       shadowColor: DesignSystem.outlineVariant,
       depth: isSmall ? 2.0 : 4.0,
       padding: EdgeInsets.symmetric(
-        horizontal: isSmall ? 16 : 24, 
-        vertical: isSmall ? 4 : 8
-      ),
+          horizontal: isSmall ? 16 : 24, vertical: isSmall ? 4 : 8),
       child: Column(
         children: [
           Text(
-            label, 
+            label,
             style: TextStyle(
               fontSize: isSmall ? 8 : 10,
               fontWeight: FontWeight.w900,
@@ -192,9 +207,9 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
             ),
           ),
           Text(
-            value, 
+            value,
             style: TextStyle(
-              fontWeight: FontWeight.w900, 
+              fontWeight: FontWeight.w900,
               fontSize: isSmall ? 18 : 24,
               color: color,
             ),

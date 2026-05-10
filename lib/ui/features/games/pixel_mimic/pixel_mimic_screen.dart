@@ -105,14 +105,18 @@ class _PixelMimicScreenState extends ConsumerState<PixelMimicScreen> {
                 _buildColorPicker(state, notifier),
                 const SizedBox(height: DesignSystem.spaceLG),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+                  padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
                   child: TangibleButton(
                     onTap: notifier.submitMimic,
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    child: const FittedBox(
+                    padding: const EdgeInsets.symmetric(vertical: 18),
+                    child: const Center(
                       child: Text(
                         'SUBMIT',
-                        style: TextStyle(fontWeight: FontWeight.w900),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: 1.2,
+                          fontSize: 16,
+                        ),
                       ),
                     ),
                   ),
@@ -127,47 +131,34 @@ class _PixelMimicScreenState extends ConsumerState<PixelMimicScreen> {
   }
 
   Widget _buildGrid(PixelMimicState state, PixelMimicNotifier notifier) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final boardSize = constraints.biggest.shortestSide;
-
-        return TangibleContainer(
-          depth: 4.0,
-          color: DesignSystem.ink,
-          shadowColor: DesignSystem.ink.withValues(alpha: 0.2),
-          padding: const EdgeInsets.all(DesignSystem.spaceXS),
-          child: SizedBox(
-            width: boardSize,
-            height: boardSize,
-            child: GridView.builder(
-              padding: EdgeInsets.zero,
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 4,
-                crossAxisSpacing: 4,
-                mainAxisSpacing: 4,
-              ),
-              itemCount: 16,
-              itemBuilder: (context, index) {
-                final r = index ~/ 4;
-                final c = index % 4;
-                final colorId = state.isShowingPattern ? state.targetGrid[r][c] : state.userGrid[r][c];
-                
-                return TangibleContainer(
-                  depth: colorId == 0 ? 1 : 0,
-                  radius: DesignSystem.radiusXS,
-                  color: colorId == 0 ? DesignSystem.surface : _colors[colorId],
-                  onTap: () {
-                    HapticFeedbackUtil.lightImpact();
-                    notifier.onTileTapped(r, c);
-                  },
-                  child: const SizedBox.expand(),
-                );
-              },
-            ),
-          ),
-        );
-      },
+    return AspectRatio(
+      aspectRatio: 1.0,
+      child: GridView.builder(
+        padding: const EdgeInsets.all(DesignSystem.spaceXS),
+        physics: const NeverScrollableScrollPhysics(),
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 4,
+          crossAxisSpacing: 8,
+          mainAxisSpacing: 8,
+        ),
+        itemCount: 16,
+        itemBuilder: (context, index) {
+          final r = index ~/ 4;
+          final c = index % 4;
+          final colorId = state.isShowingPattern ? state.targetGrid[r][c] : state.userGrid[r][c];
+          
+          return TangibleContainer(
+            depth: colorId == 0 ? 2.0 : 0.0,
+            radius: DesignSystem.radiusXS,
+            color: colorId == 0 ? DesignSystem.surface : _colors[colorId],
+            onTap: () {
+              HapticFeedbackUtil.lightImpact();
+              notifier.onTileTapped(r, c);
+            },
+            child: const SizedBox.expand(),
+          );
+        },
+      ),
     );
   }
 

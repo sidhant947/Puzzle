@@ -96,7 +96,7 @@ class FindWordNotifier extends _$FindWordNotifier {
   }
 
   void submitGuess() {
-    if (state.isGameOver) return;
+    if (state.isGameOver || state.targetWord.isEmpty) return;
     if (state.currentGuess.length != FindWordEngine.wordLength) return;
 
     // Check if word exists in our wordlist
