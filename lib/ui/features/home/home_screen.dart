@@ -40,6 +40,10 @@ import '../games/symbol_logic/symbol_logic_screen.dart';
 import '../games/pixel_mimic/pixel_mimic_screen.dart';
 import '../games/odd_rotation/odd_rotation_screen.dart';
 import '../games/balance_scale/balance_scale_screen.dart';
+import '../games/target_number/target_number_screen.dart';
+import '../games/arithmetic_chain/arithmetic_chain_screen.dart';
+import '../games/magic_squares/magic_squares_screen.dart';
+import '../games/kenken/kenken_screen.dart';
 
 import '../games/cryptogram/cryptogram_screen.dart';
 
@@ -80,6 +84,34 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   final List<Map<String, dynamic>> _games = [
+    {
+      'title': 'Target 24',
+      'id': 'target_number',
+      'icon': Icons.track_changes_rounded,
+      'color': DesignSystem.gameAmber,
+      'screen': const TargetNumberScreen(),
+    },
+    {
+      'title': 'Chain Calc',
+      'id': 'arithmetic_chain',
+      'icon': Icons.link_rounded,
+      'color': DesignSystem.gameBlue,
+      'screen': const ArithmeticChainScreen(),
+    },
+    {
+      'title': 'Magic Square',
+      'id': 'magic_squares',
+      'icon': Icons.grid_3x3_rounded,
+      'color': DesignSystem.gamePurple,
+      'screen': const MagicSquaresScreen(),
+    },
+    {
+      'title': 'KenKen',
+      'id': 'kenken',
+      'icon': Icons.calculate_outlined,
+      'color': DesignSystem.gameTeal,
+      'screen': const KenKenScreen(),
+    },
     {
       'title': 'Typing Speed',
       'id': 'typing_speed',

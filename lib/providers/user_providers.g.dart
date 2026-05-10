@@ -1,5 +1,3 @@
-// ignore_for_file: library_private_types_in_public_api, deprecated_member_use
-
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'user_providers.dart';
@@ -23,7 +21,7 @@ final userRepositoryProvider = Provider<UserRepository>.internal(
 );
 
 typedef UserRepositoryRef = ProviderRef<UserRepository>;
-String _$userDataNotifierHash() => r'28ad4eecaf3e958c8979609686586f5284cdc39a';
+String _$userDataNotifierHash() => r'125c10f44d7a8f6823f621c7b8518e366439212c';
 
 /// See also [UserDataNotifier].
 @ProviderFor(UserDataNotifier)
