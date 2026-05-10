@@ -1,10 +1,13 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'hue_sort_provider.dart';
-import '../../../../providers/user_providers.dart';
-import '../../../../utils/design_system.dart';
-import '../../../../utils/haptic_feedback.dart';
+import '../../../../../providers/user_providers.dart';
+import '../../../../../utils/design_system.dart';
+import '../../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../widgets/tangible.dart';
+import '../../../core/juice/game_scaffold.dart';
 
 class HueSortScreen extends ConsumerWidget {
   const HueSortScreen({super.key});
@@ -12,7 +15,6 @@ class HueSortScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(hueSortNotifierProvider);
-    final theme = Theme.of(context);
 
     ref.listen(hueSortNotifierProvider, (previous, next) {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
@@ -21,133 +23,117 @@ class HueSortScreen extends ConsumerWidget {
       }
     });
 
-    return Scaffold(
-      backgroundColor: theme.colorScheme.surface,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
-          onPressed: () => Navigator.of(context).pop(),
+    return GameScaffold(
+      title: 'HUE SORT',
+      subtitle: 'Swap tiles to create a smooth transition between corner colors. Dots indicate fixed tiles.',
+      actions: [
+        TangibleButton(
+          color: DesignSystem.surface,
+          shadowColor: DesignSystem.outlineVariant,
+          onTap: () {
+            HapticFeedbackUtil.mediumImpact();
+            ref.read(hueSortNotifierProvider.notifier).newGame();
+          },
+          padding: const EdgeInsets.all(12),
+          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
         ),
-        title: Text(
-          'HUE SORT',
-          style: theme.textTheme.titleMedium?.copyWith(
-            letterSpacing: 4,
-            fontWeight: FontWeight.w800,
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh_rounded),
-            onPressed: () {
-              HapticFeedbackUtil.mediumImpact();
-              ref.read(hueSortNotifierProvider.notifier).newGame();
-            },
-          ),
-          const SizedBox(width: 8),
-        ],
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: DesignSystem.spaceLG),
-            _buildInstructions(theme),
-            const Spacer(),
-            Center(
-              child: _buildGrid(context, ref, state),
-            ),
-            const Spacer(),
-            const SizedBox(height: DesignSystem.spaceXL),
-          ],
-        ),
+      ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Column(
+            children: [
+              const Spacer(),
+              Center(
+                child: _buildGrid(context, ref, state, constraints.maxHeight * 0.55),
+              ),
+              const Spacer(flex: 2),
+            ],
+          );
+        },
       ),
     );
   }
 
-  Widget _buildInstructions(ThemeData theme) {
+  Widget _buildGrid(BuildContext context, WidgetRef ref, HueSortState state, double maxHeight) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
-      child: Column(
-        children: [
-          Text(
-            'COLOR GRADIENT',
-            style: theme.textTheme.labelSmall?.copyWith(
-              color: theme.colorScheme.primary,
-              letterSpacing: 2,
-              fontWeight: FontWeight.w900,
-            ),
-          ),
-          const SizedBox(height: DesignSystem.spaceSM),
-          Text(
-            'Swap tiles to create a smooth transition between corner colors. Dots indicate fixed tiles.',
-            textAlign: TextAlign.center,
-            style: theme.textTheme.bodySmall?.copyWith(
-              color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
-              height: 1.5,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
+      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxHeight: maxHeight),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final double gridSize = min(constraints.maxWidth, constraints.maxHeight);
 
-  Widget _buildGrid(BuildContext context, WidgetRef ref, HueSortState state) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final boardSize = constraints.maxWidth * 0.95;
-
-        return Container(
-          width: boardSize,
-          height: boardSize,
-          padding: const EdgeInsets.all(DesignSystem.spaceXS),
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
-            borderRadius: BorderRadius.circular(DesignSystem.radiusXL),
-          ),
-          child: GridView.builder(
-            padding: EdgeInsets.zero,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: state.level.size,
-              crossAxisSpacing: 2,
-              mainAxisSpacing: 2,
-            ),
-            itemCount: state.level.size * state.level.size,
-            itemBuilder: (context, index) {
-              final isFixed = state.level.fixedIndices.contains(index);
-              final isSelected = state.selectedIndex == index;
-
-              return GestureDetector(
-                onTap: () {
-                  HapticFeedbackUtil.lightImpact();
-                  ref.read(hueSortNotifierProvider.notifier).selectTile(index);
-                },
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  decoration: BoxDecoration(
-                    color: state.currentColors[index],
-                    borderRadius: BorderRadius.circular(isSelected ? DesignSystem.radiusMD : 2),
-                    border: isSelected 
-                        ? Border.all(color: Colors.white, width: 3) 
-                        : null,
-                  ),
-                  child: isFixed
-                      ? Center(
-                          child: Container(
-                            width: 6,
-                            height: 6,
-                            decoration: const BoxDecoration(
-                              color: Colors.black26,
-                              shape: BoxShape.circle,
-                            ),
-                          ),
-                        )
-                      : null,
+            return TangibleContainer(
+              color: DesignSystem.ink,
+              shadowColor: DesignSystem.inkSlate,
+              depth: 4.0,
+              radius: DesignSystem.radiusMD,
+              padding: const EdgeInsets.all(3.0),
+              child: Container(
+                width: gridSize,
+                height: gridSize,
+                padding: const EdgeInsets.all(2.0),
+                decoration: BoxDecoration(
+                  color: DesignSystem.surface,
+                  borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
                 ),
-              );
-            },
-          ),
-        );
-      },
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 6),
+                  child: GridView.builder(
+                    padding: EdgeInsets.zero,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: state.level.size,
+                      crossAxisSpacing: 1.5,
+                      mainAxisSpacing: 1.5,
+                    ),
+                    itemCount: state.level.size * state.level.size,
+                    itemBuilder: (context, index) {
+                      final isFixed = state.level.fixedIndices.contains(index);
+                      final isSelected = state.selectedIndex == index;
+
+                      return GestureDetector(
+                        onTap: () {
+                          HapticFeedbackUtil.lightImpact();
+                          ref.read(hueSortNotifierProvider.notifier).selectTile(index);
+                        },
+                        child: AnimatedContainer(
+                          duration: const Duration(milliseconds: 200),
+                          decoration: BoxDecoration(
+                            color: state.currentColors[index],
+                            borderRadius: BorderRadius.circular(isSelected ? DesignSystem.radiusSM : 1),
+                            border: isSelected 
+                                ? Border.all(color: Colors.white, width: 3) 
+                                : null,
+                          ),
+                          child: isFixed
+                            ? Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(8.0),
+                                  child: FittedBox(
+                                    child: Container(
+                                      width: 6,
+                                      height: 6,
+                                      decoration: BoxDecoration(
+                                        color: Colors.black.withValues(alpha: 0.2),
+                                        shape: BoxShape.circle,
+                                        border: Border.all(color: Colors.white.withValues(alpha: 0.5), width: 1),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              )
+                            : null,
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
     );
   }
 
@@ -158,8 +144,8 @@ class HueSortScreen extends ConsumerWidget {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'CONGRATS',
-        message: 'You perfectly sorted the gradient!',
+        title: 'PERFECT GRADIENT!',
+        message: 'You perfectly sorted the color spectrum!',
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();

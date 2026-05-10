@@ -4,6 +4,8 @@ import '../../../core/juice/game_scaffold.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../providers/user_providers.dart';
+import '../../../../widgets/tangible.dart';
+import '../../../../utils/haptic_feedback.dart';
 import 'symbol_logic_provider.dart';
 import 'symbol_logic_engine.dart';
 
@@ -23,14 +25,17 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
 
   void _showGameOverDialog(bool won) {
     if (won) {
+      HapticFeedbackUtil.victory();
       ref.read(gameStreakNotifierProvider.notifier).completeGame('symbol_logic');
+    } else {
+      HapticFeedbackUtil.heavyImpact();
     }
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'LOGIC MASTER!' : 'WRONG ANSWER',
-        message: won ? 'You solved the visual equations!' : 'Try again.',
+        message: won ? 'You solved the visual equations! Your deductive reasoning is impressive.' : 'Try again to find the hidden values.',
         onPlayAgain: () {
           ref.read(symbolLogicNotifierProvider.notifier).initGame();
           Navigator.pop(context);
@@ -47,7 +52,6 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(symbolLogicNotifierProvider);
     final notifier = ref.read(symbolLogicNotifierProvider.notifier);
-    final theme = Theme.of(context);
 
     ref.listen(symbolLogicNotifierProvider, (previous, next) {
       if (previous != null && !previous.isGameOver && next.isGameOver) {
@@ -57,82 +61,123 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
 
     return GameScaffold(
       title: 'SYMBOL LOGIC',
+      subtitle: 'Solve the visual equations to find the value of each symbol. What is the result of the last equation?',
+      actions: [
+        TangibleButton(
+          color: DesignSystem.surface,
+          shadowColor: DesignSystem.outlineVariant,
+          onTap: () {
+            HapticFeedbackUtil.mediumImpact();
+            notifier.initGame();
+          },
+          padding: const EdgeInsets.all(8),
+          child: const Icon(
+            Icons.refresh_rounded,
+            color: DesignSystem.ink,
+            size: 18,
+          ),
+        ),
+      ],
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                child: Column(
-                  children: [
-                    Expanded(
-                      child: SingleChildScrollView(
-                        physics: const BouncingScrollPhysics(),
-                        child: Column(
-                          children: [
-                            const SizedBox(height: 16),
-                            const Text(
-                              'Solve for the final equation!',
-                              textAlign: TextAlign.center,
-                            ),
-                            const SizedBox(height: 24),
-                            ...state.equations.map((eq) => _buildEquationRow(eq, theme)),
-                            const SizedBox(height: 24),
-                            // Input Display
-                            Container(
-                              width: 120,
-                              height: 60,
-                              decoration: BoxDecoration(
-                                color: theme.colorScheme.surfaceContainerHighest,
-                                borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
-                                border: Border.all(
-                                  color: state.isInvalidGuess ? DesignSystem.gameRose : theme.colorScheme.primary,
-                                  width: 2,
+              child: LayoutBuilder(
+                builder: (context, constraints) {
+                  final isSmall = constraints.maxHeight < 600;
+                  return Column(
+                    children: [
+                      Expanded(
+                        child: SingleChildScrollView(
+                          physics: const BouncingScrollPhysics(),
+                          child: Padding(
+                            padding: EdgeInsets.all(isSmall ? 12 : 24),
+                            child: Column(
+                              children: [
+                                TangibleContainer(
+                                  color: DesignSystem.surface,
+                                  shadowColor: DesignSystem.outlineVariant,
+                                  depth: isSmall ? 2.0 : 4.0,
+                                  padding: EdgeInsets.all(isSmall ? 8 : 16),
+                                  child: Column(
+                                    children: state.equations.map((eq) => _buildEquationRow(eq, isSmall)).toList(),
+                                  ),
                                 ),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  state.currentInput,
-                                  style: theme.textTheme.headlineLarge?.copyWith(fontWeight: FontWeight.bold),
+                                SizedBox(height: isSmall ? 16 : 32),
+                                Text(
+                                  'YOUR ANSWER',
+                                  style: TextStyle(
+                                    color: DesignSystem.inkSlate,
+                                    fontSize: isSmall ? 10 : 12,
+                                    fontWeight: FontWeight.w900,
+                                    letterSpacing: 2,
+                                  ),
                                 ),
-                              ),
+                                SizedBox(height: isSmall ? 8 : 12),
+                                TangibleContainer(
+                                  color: DesignSystem.ink,
+                                  shadowColor: DesignSystem.inkSlate,
+                                  depth: isSmall ? 2.0 : 4.0,
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: isSmall ? 30 : 40, 
+                                    vertical: isSmall ? 10 : 20
+                                  ),
+                                  child: Text(
+                                    state.currentInput.isEmpty ? '?' : state.currentInput,
+                                    style: TextStyle(
+                                      fontSize: isSmall ? 32 : 40,
+                                      fontWeight: FontWeight.w900,
+                                      color: state.isInvalidGuess ? DesignSystem.error : DesignSystem.surface,
+                                    ),
+                                  ),
+                                ),
+                              ],
                             ),
-                            const SizedBox(height: 16),
-                          ],
+                          ),
                         ),
                       ),
-                    ),
-                    const SizedBox(height: 16),
-                    // Number Pad
-                    _buildNumberPad(notifier, theme),
-                    const SizedBox(height: 24),
-                  ],
-                ),
+                      _buildNumberPad(notifier, isSmall),
+                      SizedBox(height: isSmall ? 8 : 24),
+                    ],
+                  );
+                },
               ),
             ),
     );
   }
 
-  Widget _buildEquationRow(SymbolEquation eq, ThemeData theme) {
+  Widget _buildEquationRow(SymbolEquation eq, bool isSmall) {
+    final iconSize = isSmall ? 28.0 : 36.0;
+    final fontSize = isSmall ? 20.0 : 24.0;
+    final resultSize = isSmall ? 24.0 : 28.0;
+
     return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 12),
+      padding: EdgeInsets.symmetric(vertical: isSmall ? 4 : 8),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(eq.symbols[0], size: 40, color: DesignSystem.gameAmber),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8),
-            child: Text('+', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+          Icon(eq.symbols[0], size: iconSize, color: DesignSystem.accentAmber),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: isSmall ? 8 : 12),
+            child: Text('+', style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.w900, color: DesignSystem.inkSlate)),
           ),
-          Icon(eq.symbols[1], size: 40, color: DesignSystem.gameBlue),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 8),
-            child: Text('=', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)),
+          Icon(eq.symbols[1], size: iconSize, color: DesignSystem.accentIndigo),
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: isSmall ? 8 : 12),
+            child: Text('=', style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.w900, color: DesignSystem.inkSlate)),
           ),
-          Text(
-            eq.isQuestion ? '?' : eq.result.toString(),
-            style: theme.textTheme.headlineMedium?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: eq.isQuestion ? theme.colorScheme.primary : theme.colorScheme.onSurface,
+          SizedBox(
+            width: isSmall ? 50 : 60,
+            child: FittedBox(
+              fit: BoxFit.scaleDown,
+              child: Text(
+                eq.isQuestion ? '?' : eq.result.toString(),
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: resultSize,
+                  fontWeight: FontWeight.w900,
+                  color: eq.isQuestion ? DesignSystem.primary : DesignSystem.ink,
+                ),
+              ),
             ),
           ),
         ],
@@ -140,97 +185,102 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
     );
   }
 
-  Widget _buildNumberPad(SymbolLogicNotifier notifier, ThemeData theme) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final buttonWidth = (constraints.maxWidth - 24) / 3;
-        final buttonHeight = (buttonWidth * 0.8).clamp(48.0, 60.0);
+  Widget _buildNumberPad(SymbolLogicNotifier notifier, bool isSmall) {
+    final keyHeight = isSmall ? 40.0 : 50.0;
+    final fontSize = isSmall ? 20.0 : 24.0;
 
-        return Column(
-          children: [
-            for (var row in [[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: row.map((n) => _PadButton(
-                  label: n.toString(),
-                  onTap: () => notifier.onNumberPressed(n.toString()),
-                  width: buttonWidth,
-                  height: buttonHeight,
-                )).toList(),
-              ),
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
+      child: Column(
+        children: [
+          for (var row in [[1, 2, 3], [4, 5, 6], [7, 8, 9]])
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                _PadButton(
-                  label: '⌫',
-                  onTap: notifier.onBackspace,
-                  color: DesignSystem.gameRose,
-                  width: buttonWidth,
-                  height: buttonHeight,
+              children: row.map((n) => Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: TangibleButton(
+                    onTap: () {
+                      HapticFeedbackUtil.lightImpact();
+                      notifier.onNumberPressed(n.toString());
+                    },
+                    color: DesignSystem.surface,
+                    shadowColor: DesignSystem.outlineVariant,
+                    child: Container(
+                      height: keyHeight,
+                      alignment: Alignment.center,
+                      child: Text(
+                        n.toString(),
+                        style: TextStyle(fontWeight: FontWeight.w900, fontSize: fontSize, color: DesignSystem.ink),
+                      ),
+                    ),
+                  ),
                 ),
-                _PadButton(
-                  label: '0',
-                  onTap: () => notifier.onNumberPressed('0'),
-                  width: buttonWidth,
-                  height: buttonHeight,
-                ),
-                _PadButton(
-                  label: '✓',
-                  onTap: notifier.submitGuess,
-                  color: DesignSystem.gameGreen,
-                  width: buttonWidth,
-                  height: buttonHeight,
-                ),
-              ],
+              )).toList(),
             ),
-          ],
-        );
-      },
-    );
-  }
-}
-
-class _PadButton extends StatelessWidget {
-  final String label;
-  final VoidCallback onTap;
-  final Color? color;
-  final double width;
-  final double height;
-
-  const _PadButton({
-    required this.label,
-    required this.onTap,
-    this.color,
-    required this.width,
-    required this.height,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.all(4.0),
-      child: InkWell(
-        onTap: onTap,
-        borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
-        child: Container(
-          width: width.clamp(0.0, 80.0),
-          height: height,
-          decoration: BoxDecoration(
-            color: color?.withValues(alpha: 0.1) ?? theme.colorScheme.surface,
-            borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
-            border: Border.all(color: color ?? theme.colorScheme.outline.withValues(alpha: 0.3)),
-          ),
-          child: Center(
-            child: Text(
-              label,
-              style: theme.textTheme.titleLarge?.copyWith(
-                fontWeight: FontWeight.bold,
-                color: color ?? theme.colorScheme.onSurface,
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: TangibleButton(
+                    onTap: () {
+                      HapticFeedbackUtil.mediumImpact();
+                      notifier.onBackspace();
+                    },
+                    color: DesignSystem.surface,
+                    shadowColor: DesignSystem.outlineVariant,
+                    child: Container(
+                      height: keyHeight,
+                      alignment: Alignment.center,
+                      child: Icon(Icons.backspace_rounded, color: DesignSystem.error, size: isSmall ? 20 : 24),
+                    ),
+                  ),
+                ),
               ),
-            ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: TangibleButton(
+                    onTap: () {
+                      HapticFeedbackUtil.lightImpact();
+                      notifier.onNumberPressed('0');
+                    },
+                    color: DesignSystem.surface,
+                    shadowColor: DesignSystem.outlineVariant,
+                    child: Container(
+                      height: keyHeight,
+                      alignment: Alignment.center,
+                      child: Text(
+                        '0',
+                        style: TextStyle(fontWeight: FontWeight.w900, fontSize: fontSize, color: DesignSystem.ink),
+                      ),
+                    ),
+                  ),
+                ),
+              ),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: TangibleButton(
+                    onTap: () {
+                      HapticFeedbackUtil.heavyImpact();
+                      notifier.submitGuess();
+                    },
+                    color: DesignSystem.primary,
+                    shadowColor: const Color(0xFF1E3A8A),
+                    child: Container(
+                      height: keyHeight,
+                      alignment: Alignment.center,
+                      child: Icon(Icons.check_rounded, color: Colors.white, size: isSmall ? 20 : 24),
+                    ),
+                  ),
+                ),
+              ),
+            ],
           ),
-        ),
+        ],
       ),
     );
   }

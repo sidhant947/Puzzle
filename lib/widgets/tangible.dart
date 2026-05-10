@@ -69,6 +69,7 @@ class TangibleButton extends StatefulWidget {
   final Color color;
   final Color shadowColor;
   final EdgeInsetsGeometry? padding;
+  final double depth;
 
   const TangibleButton({
     super.key,
@@ -77,6 +78,7 @@ class TangibleButton extends StatefulWidget {
     this.color = DesignSystem.primary,
     this.shadowColor = DesignSystem.primaryShadow,
     this.padding,
+    this.depth = 6.0,
   });
 
   @override
@@ -98,9 +100,9 @@ class _TangibleButtonState extends State<TangibleButton> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 100),
         curve: Curves.easeOutCubic,
-        transform: Matrix4.translationValues(0, _isPressed ? 4.0 : 0.0, 0),
+        transform: Matrix4.translationValues(0, _isPressed ? (widget.depth * 0.6) : 0.0, 0),
         child: TangibleContainer(
-          depth: _isPressed ? 0.0 : 6.0,
+          depth: _isPressed ? 0.0 : widget.depth,
           color: widget.color,
           shadowColor: widget.shadowColor,
           padding: widget.padding ?? const EdgeInsets.symmetric(

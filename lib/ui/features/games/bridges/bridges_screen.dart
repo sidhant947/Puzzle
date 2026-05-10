@@ -7,6 +7,8 @@ import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../widgets/tangible.dart';
+import '../../../core/juice/game_scaffold.dart';
 
 class BridgesScreen extends ConsumerWidget {
   const BridgesScreen({super.key});
@@ -14,7 +16,6 @@ class BridgesScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(bridgesNotifierProvider);
-    final theme = Theme.of(context);
 
     ref.listen(bridgesNotifierProvider, (previous, next) {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
@@ -23,99 +24,81 @@ class BridgesScreen extends ConsumerWidget {
       }
     });
 
-    return Scaffold(
-      backgroundColor: theme.colorScheme.surface,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
-          onPressed: () => Navigator.of(context).pop(),
+    return GameScaffold(
+      title: 'BRIDGES',
+      subtitle: 'Connect islands with bridges. Each island needs a specific number of bridges. Bridges cannot cross.',
+      actions: [
+        TangibleButton(
+          color: DesignSystem.surface,
+          shadowColor: DesignSystem.outlineVariant,
+          onTap: () {
+            HapticFeedbackUtil.mediumImpact();
+            ref.read(bridgesNotifierProvider.notifier).newGame();
+          },
+          padding: const EdgeInsets.all(12),
+          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
         ),
-        title: Text(
-          'BRIDGES',
-          style: theme.textTheme.titleMedium?.copyWith(
-            letterSpacing: 4,
-            fontWeight: FontWeight.w800,
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh_rounded),
-            onPressed: () {
-              HapticFeedbackUtil.mediumImpact();
-              ref.read(bridgesNotifierProvider.notifier).newGame();
-            },
-          ),
-          const SizedBox(width: 8),
-        ],
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: DesignSystem.spaceLG),
-            _buildInstructions(theme),
-            const Spacer(),
-            Center(
-              child: _buildBoard(context, ref, state),
-            ),
-            const Spacer(),
-            const SizedBox(height: DesignSystem.spaceXL),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildInstructions(ThemeData theme) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
-      child: Column(
-        children: [
-          Text(
-            'ISLAND CONNECTIONS',
-            style: theme.textTheme.labelSmall?.copyWith(
-              color: theme.colorScheme.primary,
-              letterSpacing: 2,
-              fontWeight: FontWeight.w900,
-            ),
-          ),
-          const SizedBox(height: DesignSystem.spaceSM),
-          Text(
-            'Connect islands with bridges. Each island needs a specific number of bridges. Max 2 bridges between islands. Bridges cannot cross.',
-            textAlign: TextAlign.center,
-            style: theme.textTheme.bodySmall?.copyWith(
-              color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
-              height: 1.5,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildBoard(BuildContext context, WidgetRef ref, BridgesState state) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final boardSize = constraints.maxWidth * 0.95;
-        final cellSize = boardSize / state.board.size;
-
-        return SizedBox(
-          width: boardSize,
-          height: boardSize,
-          child: Stack(
+      ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Column(
             children: [
-              // Draw bridges
-              ...state.connections.map((conn) => _buildBridge(conn, state.board.islands, cellSize, Theme.of(context))),
-              
-              // Draw islands
-              ...state.board.islands.map((island) => _buildIsland(island, cellSize, state, ref, Theme.of(context))),
+              const Spacer(),
+              _buildBoard(context, ref, state, constraints.maxHeight * 0.6),
+              const Spacer(),
+              const SizedBox(height: DesignSystem.spaceLG),
             ],
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 
-  Widget _buildBridge(BridgesConnection conn, List<BridgesIsland> islands, double cellSize, ThemeData theme) {
+  Widget _buildBoard(BuildContext context, WidgetRef ref, BridgesState state, double maxHeight) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxHeight: maxHeight),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final boardSize = min(constraints.maxWidth, constraints.maxHeight);
+            final cellSize = boardSize / state.board.size;
+
+            return TangibleContainer(
+              color: DesignSystem.ink,
+              shadowColor: DesignSystem.inkSlate,
+              depth: 4.0, // Reduced from 6.0
+              radius: DesignSystem.radiusMD,
+              padding: const EdgeInsets.all(3.0),
+              child: Container(
+                width: boardSize,
+                height: boardSize,
+                decoration: BoxDecoration(
+                  color: DesignSystem.surface,
+                  borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
+                ),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: Stack(
+                    children: [
+                      // Draw bridges
+                      ...state.connections.map((conn) => _buildBridge(conn, state.board.islands, cellSize)),
+                      
+                      // Draw islands
+                      ...state.board.islands.map((island) => _buildIsland(island, cellSize, state, ref)),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
+  }
+
+
+  Widget _buildBridge(BridgesConnection conn, List<BridgesIsland> islands, double cellSize) {
     final i1 = islands.firstWhere((i) => i.id == conn.island1Id);
     final i2 = islands.firstWhere((i) => i.id == conn.island2Id);
 
@@ -130,31 +113,42 @@ class BridgesScreen extends ConsumerWidget {
     return Stack(
       children: [
         if (conn.count == 2) ...[
-          _buildLine(x1, y1, x2, y2, isHorizontal, offset, theme),
-          _buildLine(x1, y1, x2, y2, isHorizontal, -offset, theme),
+          _buildLine(x1, y1, x2, y2, isHorizontal, offset),
+          _buildLine(x1, y1, x2, y2, isHorizontal, -offset),
         ] else
-          _buildLine(x1, y1, x2, y2, isHorizontal, 0, theme),
+          _buildLine(x1, y1, x2, y2, isHorizontal, 0, color: DesignSystem.primary),
       ],
     );
   }
 
-  Widget _buildLine(double x1, double y1, double x2, double y2, bool isHorizontal, double offset, ThemeData theme) {
+  Widget _buildLine(double x1, double y1, double x2, double y2, bool isHorizontal, double offset, {Color color = DesignSystem.primary}) {
     return Positioned(
       left: min(x1, x2) + (isHorizontal ? 0 : offset),
       top: min(y1, y2) + (isHorizontal ? offset : 0),
       child: Container(
-        width: isHorizontal ? (x1 - x2).abs() : 2,
-        height: isHorizontal ? 2 : (y1 - y2).abs(),
-        color: theme.colorScheme.primary.withValues(alpha: 0.6),
+        width: isHorizontal ? (x1 - x2).abs() : 3,
+        height: isHorizontal ? 3 : (y1 - y2).abs(),
+        decoration: BoxDecoration(
+          color: color.withValues(alpha: 0.8),
+          borderRadius: BorderRadius.circular(2),
+        ),
       ),
     );
   }
 
-  Widget _buildIsland(BridgesIsland island, double cellSize, BridgesState state, WidgetRef ref, ThemeData theme) {
+  Widget _buildIsland(BridgesIsland island, double cellSize, BridgesState state, WidgetRef ref) {
     final isSelected = state.selectedIslandId == island.id;
     final currentBridges = _countBridges(island.id, state.connections);
     final isComplete = currentBridges == island.count;
     final isOver = currentBridges > island.count;
+
+    final color = isSelected 
+        ? DesignSystem.primary 
+        : (isOver ? DesignSystem.error : (isComplete ? DesignSystem.success : DesignSystem.surface));
+    
+    final shadowColor = isSelected 
+        ? DesignSystem.primaryShadow 
+        : (isOver ? const Color(0xFF991B1B) : (isComplete ? const Color(0xFF047857) : DesignSystem.outlineVariant));
 
     return Positioned(
       left: island.x * cellSize + cellSize * 0.1,
@@ -164,28 +158,27 @@ class BridgesScreen extends ConsumerWidget {
           HapticFeedbackUtil.lightImpact();
           ref.read(bridgesNotifierProvider.notifier).selectIsland(island.id);
         },
-        child: Container(
+        child: SizedBox(
           width: cellSize * 0.8,
           height: cellSize * 0.8,
-          decoration: BoxDecoration(
-            color: isSelected 
-                ? DesignSystem.gameBlue 
-                : (isComplete ? DesignSystem.gameGreen : theme.colorScheme.surface),
-            shape: BoxShape.circle,
-            border: Border.all(
-              color: isOver ? DesignSystem.gameRose : theme.colorScheme.primary,
-              width: 2,
-            ),
-            boxShadow: isSelected ? [
-              BoxShadow(color: DesignSystem.gameBlue.withValues(alpha: 0.4), blurRadius: 8, spreadRadius: 2)
-            ] : null,
-          ),
-          child: Center(
-            child: Text(
-              '${island.count}',
-              style: theme.textTheme.titleMedium?.copyWith(
-                color: isSelected || isComplete ? Colors.white : theme.colorScheme.primary,
-                fontWeight: FontWeight.w900,
+          child: TangibleContainer(
+            depth: isSelected ? 1.5 : 3.0, // Reduced depth
+            radius: DesignSystem.radiusFull,
+            color: color,
+            shadowColor: shadowColor,
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: FittedBox(
+                  child: Text(
+                    '${island.count}',
+                    style: TextStyle(
+                      color: isSelected || isComplete ? Colors.white : DesignSystem.ink,
+                      fontWeight: FontWeight.w900,
+                      fontSize: 16, // Reduced from 18
+                    ),
+                  ),
+                ),
               ),
             ),
           ),
@@ -193,6 +186,7 @@ class BridgesScreen extends ConsumerWidget {
       ),
     );
   }
+
 
   int _countBridges(int islandId, List<BridgesConnection> connections) {
     int count = 0;
@@ -211,8 +205,8 @@ class BridgesScreen extends ConsumerWidget {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'CONGRATS',
-        message: 'You built all the required bridges!',
+        title: 'CONNECTED!',
+        message: 'You successfully connected all the islands!',
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();
@@ -225,3 +219,4 @@ class BridgesScreen extends ConsumerWidget {
     );
   }
 }
+

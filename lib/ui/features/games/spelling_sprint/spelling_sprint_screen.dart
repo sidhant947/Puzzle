@@ -6,6 +6,8 @@ import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../widgets/tangible.dart';
+import '../../../core/juice/game_scaffold.dart';
 
 class SpellingSprintScreen extends ConsumerStatefulWidget {
   const SpellingSprintScreen({super.key});
@@ -41,7 +43,6 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(spellingSprintNotifierProvider);
-    final theme = Theme.of(context);
 
     ref.listen(spellingSprintNotifierProvider, (previous, next) {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
@@ -55,161 +56,184 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
       }
     });
 
-    return Scaffold(
-      backgroundColor: theme.colorScheme.surface,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: Text(
-          'SPELLING SPRINT',
-          style: theme.textTheme.titleMedium?.copyWith(
-            letterSpacing: 4,
-            fontWeight: FontWeight.w800,
-          ),
-        ),
-      ),
+    return GameScaffold(
+      title: 'SPELLING SPRINT',
+      subtitle: 'Race against the clock to spell as many words as you can.',
       body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: DesignSystem.spaceLG),
-            _buildStats(theme, state),
-            const Spacer(),
-            _buildWordDisplay(theme, state),
-            const SizedBox(height: DesignSystem.spaceXL),
-            _buildLetterGrid(context, ref, state),
-            const Spacer(),
-            const SizedBox(height: DesignSystem.spaceXL),
-          ],
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final isSmall = constraints.maxHeight < 600;
+            return Column(
+              children: [
+                SizedBox(height: isSmall ? 8 : 16),
+                _buildStats(state, isSmall),
+                const Spacer(),
+                ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxHeight: constraints.maxHeight * (isSmall ? 0.45 : 0.4),
+                  ),
+                  child: _buildWordDisplay(state, isSmall),
+                ),
+                SizedBox(height: isSmall ? 16 : 32),
+                _buildLetterGrid(context, ref, state, isSmall),
+                const Spacer(),
+                SizedBox(height: isSmall ? 8 : 16),
+              ],
+            );
+          },
         ),
       ),
     );
   }
 
-  Widget _buildStats(ThemeData theme, SpellingSprintState state) {
+  Widget _buildStats(SpellingSprintState state, bool isSmall) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
+      padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildStatItem(theme, 'SCORE', '${state.score}/10'),
-          _buildStatItem(theme, 'TIME', '${state.timeLeft}s', 
-            color: state.timeLeft < 10 ? DesignSystem.gameRose : null),
+          _buildStatItem('SCORE', '${state.score}/10', isSmall: isSmall),
+          _buildStatItem('TIME', '${state.timeLeft}s', 
+            color: state.timeLeft < 10 ? DesignSystem.error : null, isSmall: isSmall),
         ],
       ),
     );
   }
 
-  Widget _buildStatItem(ThemeData theme, String label, String value, {Color? color}) {
-    return Column(
-      crossAxisAlignment: label == 'TIME' ? CrossAxisAlignment.end : CrossAxisAlignment.start,
-      children: [
-        Text(
-          label,
-          style: theme.textTheme.labelSmall?.copyWith(
-            color: theme.colorScheme.primary.withValues(alpha: 0.6),
-            letterSpacing: 1.5,
-            fontWeight: FontWeight.w900,
+  Widget _buildStatItem(String label, String value, {Color? color, bool isSmall = false}) {
+    return TangibleContainer(
+      color: DesignSystem.surface,
+      shadowColor: DesignSystem.outlineVariant,
+      depth: isSmall ? 2.0 : 4.0,
+      padding: EdgeInsets.symmetric(
+        horizontal: isSmall ? 12 : 16, 
+        vertical: isSmall ? 4 : 8
+      ),
+      child: Column(
+        children: [
+          Text(
+            label,
+            style: TextStyle(
+              color: DesignSystem.inkSlate,
+              letterSpacing: 1.5,
+              fontSize: isSmall ? 8 : 10,
+              fontWeight: FontWeight.w900,
+            ),
           ),
-        ),
-        Text(
-          value,
-          style: theme.textTheme.headlineSmall?.copyWith(
-            fontWeight: FontWeight.w900,
-            color: color ?? theme.colorScheme.primary,
+          Text(
+            value,
+            style: TextStyle(
+              fontWeight: FontWeight.w900,
+              fontSize: isSmall ? 16 : 20,
+              color: color ?? DesignSystem.primary,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 
-  Widget _buildWordDisplay(ThemeData theme, SpellingSprintState state) {
+  Widget _buildWordDisplay(SpellingSprintState state, bool isSmall) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
         Text(
           'SPELL THIS WORD',
-          style: theme.textTheme.labelSmall?.copyWith(
-            color: theme.colorScheme.primary.withValues(alpha: 0.4),
+          style: TextStyle(
+            color: DesignSystem.inkSlate,
             letterSpacing: 2,
+            fontSize: isSmall ? 10 : 12,
             fontWeight: FontWeight.w800,
           ),
         ),
-        const SizedBox(height: DesignSystem.spaceMD),
-        Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: List.generate(state.targetWord.length, (i) {
-            final letter = i < state.currentSpelling.length ? state.currentSpelling[i] : '';
-            return Container(
-              width: 40,
-              height: 50,
-              margin: const EdgeInsets.symmetric(horizontal: 4),
-              decoration: BoxDecoration(
-                border: Border(
-                  bottom: BorderSide(
-                    color: letter.isNotEmpty ? DesignSystem.gameGreen : theme.colorScheme.primary.withValues(alpha: 0.2),
-                    width: 3,
+        SizedBox(height: isSmall ? 12 : 24),
+        TangibleContainer(
+          color: DesignSystem.ink,
+          shadowColor: DesignSystem.inkSlate,
+          depth: isSmall ? 2.0 : 4.0,
+          padding: EdgeInsets.all(isSmall ? 8 : 16),
+          child: SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisSize: MainAxisSize.min,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(state.targetWord.length, (i) {
+                final letter = i < state.currentSpelling.length ? state.currentSpelling[i] : '';
+                return Container(
+                  width: isSmall ? 30 : 40,
+                  height: isSmall ? 40 : 50,
+                  margin: const EdgeInsets.symmetric(horizontal: 4),
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(
+                        color: letter.isNotEmpty ? DesignSystem.success : DesignSystem.surface.withValues(alpha: 0.2),
+                        width: 3,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-              child: Center(
-                child: Text(
-                  letter,
-                  style: theme.textTheme.headlineMedium?.copyWith(
-                    fontWeight: FontWeight.w900,
-                    color: DesignSystem.gameGreen,
+                  child: Center(
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        letter,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          fontSize: isSmall ? 24 : 32,
+                          color: DesignSystem.success,
+                        ),
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            );
-          }),
+                );
+              }),
+            ),
+          ),
         ),
-        const SizedBox(height: DesignSystem.spaceLG),
-        Text(
-          state.targetWord,
-          style: theme.textTheme.displaySmall?.copyWith(
-            color: theme.colorScheme.primary.withValues(alpha: 0.1),
-            fontWeight: FontWeight.w900,
-            letterSpacing: 8,
+        SizedBox(height: isSmall ? 12 : 24),
+        FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            state.targetWord,
+            style: TextStyle(
+              color: DesignSystem.ink.withValues(alpha: 0.1),
+              fontWeight: FontWeight.w900,
+              fontSize: isSmall ? 32 : 48,
+              letterSpacing: isSmall ? 4 : 8,
+            ),
           ),
         ),
       ],
     );
   }
 
-  Widget _buildLetterGrid(BuildContext context, WidgetRef ref, SpellingSprintState state) {
+  Widget _buildLetterGrid(BuildContext context, WidgetRef ref, SpellingSprintState state, bool isSmall) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
+      padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
       child: Wrap(
-        spacing: DesignSystem.spaceSM,
-        runSpacing: DesignSystem.spaceSM,
+        spacing: isSmall ? 8 : 12,
+        runSpacing: isSmall ? 8 : 12,
         alignment: WrapAlignment.center,
         children: List.generate(state.availableLetters.length, (index) {
-          return GestureDetector(
+          return TangibleButton(
             onTap: () {
               HapticFeedbackUtil.lightImpact();
               ref.read(spellingSprintNotifierProvider.notifier).addLetter(index);
             },
-            child: Container(
-              width: 60,
-              height: 60,
-              decoration: BoxDecoration(
-                color: Theme.of(context).colorScheme.primary,
-                borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.2),
-                    blurRadius: 4,
-                    offset: const Offset(0, 2),
-                  ),
-                ],
-              ),
+            color: DesignSystem.surface,
+            shadowColor: DesignSystem.outlineVariant,
+            child: SizedBox(
+              width: isSmall ? 36 : 40,
+              height: isSmall ? 36 : 40,
               child: Center(
-                child: Text(
-                  state.availableLetters[index],
-                  style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                    color: Theme.of(context).colorScheme.onPrimary,
-                    fontWeight: FontWeight.w900,
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    state.availableLetters[index],
+                    style: TextStyle(
+                      color: DesignSystem.primary,
+                      fontSize: isSmall ? 20 : 24,
+                      fontWeight: FontWeight.w900,
+                    ),
                   ),
                 ),
               ),
@@ -246,25 +270,18 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        title: const Text('TIME UP!'),
-        content: Text('You spelled ${ref.read(spellingSprintNotifierProvider).score} words.'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-              ref.read(spellingSprintNotifierProvider.notifier).startGame();
-              _startTimer();
-            },
-            child: const Text('RETRY'),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).popUntil((route) => route.isFirst);
-            },
-            child: const Text('HOME'),
-          ),
-        ],
+      builder: (context) => GameCompletionDialog(
+        title: 'TIME UP!',
+        message: 'You spelled ${ref.read(spellingSprintNotifierProvider).score} words.',
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          ref.read(spellingSprintNotifierProvider.notifier).startGame();
+          _startTimer();
+          Navigator.of(context).pop();
+        },
       ),
     );
   }

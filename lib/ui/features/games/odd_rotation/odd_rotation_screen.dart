@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
 import '../../../../utils/design_system.dart';
+import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../widgets/tangible.dart';
 import '../../../../providers/user_providers.dart';
 import 'odd_rotation_provider.dart';
 
@@ -23,6 +25,9 @@ class _OddRotationScreenState extends ConsumerState<OddRotationScreen> {
   void _showGameOverDialog(bool won) {
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('odd_rotation');
+      HapticFeedbackUtil.victory();
+    } else {
+      HapticFeedbackUtil.error();
     }
     showDialog(
       context: context,
@@ -46,7 +51,6 @@ class _OddRotationScreenState extends ConsumerState<OddRotationScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(oddRotationNotifierProvider);
     final notifier = ref.read(oddRotationNotifierProvider.notifier);
-    final theme = Theme.of(context);
 
     ref.listen(oddRotationNotifierProvider, (previous, next) {
       if (previous != null && !previous.isGameOver && next.isGameOver) {
@@ -56,54 +60,92 @@ class _OddRotationScreenState extends ConsumerState<OddRotationScreen> {
 
     return GameScaffold(
       title: 'ODD ROTATION',
-      body: state.isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Column(
-                children: [
-                  const Text('One of these is mirrored. Can you find it?'),
-                  const SizedBox(height: 40),
-                  Expanded(
-                    child: GridView.builder(
-                      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        crossAxisSpacing: 20,
-                        mainAxisSpacing: 20,
-                      ),
-                      itemCount: 4,
-                      itemBuilder: (context, index) {
-                        final option = state.options[index];
-                        return GestureDetector(
-                          onTap: () => notifier.selectOption(index),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: theme.colorScheme.surfaceContainerHighest,
-                              borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
-                              border: Border.all(
-                                color: state.selectedIndex == index 
-                                  ? (state.isGameWon ? DesignSystem.gameGreen : DesignSystem.gameRose)
-                                  : theme.colorScheme.outline.withValues(alpha: 0.1),
-                                width: 3,
-                              ),
-                            ),
-                            child: Center(
+      subtitle: 'One of these is mirrored. Can you find it?',
+      actions: [
+        TangibleButton(
+          color: DesignSystem.surface,
+          shadowColor: DesignSystem.outlineVariant,
+          onTap: () {
+            HapticFeedbackUtil.mediumImpact();
+            ref.read(oddRotationNotifierProvider.notifier).initGame();
+          },
+          padding: const EdgeInsets.all(12),
+          child: const Icon(
+            Icons.refresh_rounded,
+            color: DesignSystem.ink,
+            size: 20,
+          ),
+        ),
+      ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          if (state.isLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          return Column(
+            children: [
+              const Spacer(),
+              Center(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxWidth: 400,
+                    maxHeight: constraints.maxHeight * 0.6,
+                  ),
+                  child: GridView.builder(
+                    shrinkWrap: true,
+                    padding: const EdgeInsets.all(DesignSystem.spaceMD),
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 16,
+                      mainAxisSpacing: 16,
+                    ),
+                    itemCount: 4,
+                    itemBuilder: (context, index) {
+                      final option = state.options[index];
+                      final isSelected = state.selectedIndex == index;
+                      
+                      Color color = DesignSystem.surface;
+                      if (isSelected) {
+                        color = state.isGameWon ? DesignSystem.accentEmerald : DesignSystem.accentBerry;
+                      }
+
+                      return TangibleContainer(
+                        depth: isSelected ? 0 : 2,
+                        radius: DesignSystem.radiusMD,
+                        color: color,
+                        onTap: () {
+                          HapticFeedbackUtil.lightImpact();
+                          notifier.selectOption(index);
+                        },
+                        child: Center(
+                          child: Padding(
+                            padding: const EdgeInsets.all(12),
+                            child: FittedBox(
                               child: Transform(
                                 alignment: Alignment.center,
                                 transform: Matrix4.rotationZ(option.rotation)
                                   ..scale(option.isMirrored ? -1.0 : 1.0, 1.0, 1.0),
-                                child: Icon(state.shape, size: 60, color: theme.colorScheme.primary),
+                                child: Icon(
+                                  state.shape, 
+                                  size: 48, 
+                                  color: isSelected ? Colors.white : DesignSystem.primary
+                                ),
                               ),
                             ),
                           ),
-                        );
-                      },
-                    ),
+                        ),
+                      );
+                    },
                   ),
-                  const SizedBox(height: 40),
-                ],
+                ),
               ),
-            ),
+              const Spacer(),
+            ],
+          );
+        },
+      ),
     );
   }
 }

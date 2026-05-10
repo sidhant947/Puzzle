@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/tangible.dart';
+import '../../../core/juice/game_scaffold.dart';
 import 'minesweeper_engine.dart';
 import 'minesweeper_provider.dart';
 
@@ -20,7 +22,6 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(minesweeperNotifierProvider);
     final notifier = ref.read(minesweeperNotifierProvider.notifier);
-    final theme = Theme.of(context);
 
     ref.listen(minesweeperNotifierProvider, (previous, next) {
       if (next.isWon && !(previous?.isWon ?? false)) {
@@ -32,109 +33,138 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
       }
     });
 
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        title: const Text('MINESWEEPER'),
-        actions: [
-          IconButton(
-            onPressed: () => notifier.reset(),
-            icon: const Icon(Icons.refresh_rounded),
-          ),
-          const SizedBox(width: 8),
-        ],
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: 20),
-            _buildHeader(state),
-            const SizedBox(height: 32),
-            Expanded(
-              child: Center(
-                child: _buildBoard(state, notifier),
-              ),
-            ),
-            _buildControls(theme),
-            const SizedBox(height: 40),
-          ],
+    return GameScaffold(
+      title: 'MINESWEEPER',
+      subtitle: 'Identify all the mines without triggering them.',
+      actions: [
+        TangibleButton(
+          color: DesignSystem.surface,
+          shadowColor: DesignSystem.outlineVariant,
+          onTap: () => notifier.reset(),
+          padding: const EdgeInsets.all(12),
+          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
         ),
+      ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Column(
+            children: [
+              const SizedBox(height: DesignSystem.spaceSM),
+              _buildHeader(state),
+              const Spacer(),
+              _buildBoard(state, notifier, constraints.maxHeight * 0.55),
+              const Spacer(),
+              _buildControls(),
+              const SizedBox(height: DesignSystem.spaceLG),
+            ],
+          );
+        },
       ),
     );
   }
 
   Widget _buildHeader(MinesweeperState state) {
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _buildStatCard(
-            'MINES',
-            state.minesRemaining.toString(),
-            DesignSystem.gameIndigo,
+          Expanded(
+            child: TangibleContainer(
+              padding: const EdgeInsets.all(DesignSystem.spaceSM),
+              radius: DesignSystem.radiusMD,
+              depth: 4.0,
+              child: Column(
+                children: [
+                  const Text(
+                    'MINES',
+                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w900, color: DesignSystem.inkSlate),
+                  ),
+                  Text(
+                    state.minesRemaining.toString(),
+                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: DesignSystem.primary),
+                  ),
+                ],
+              ),
+            ),
           ),
-          _buildStatCard(
-            'STATUS',
-            state.isWon ? 'WON' : (state.isGameOver ? 'BOOM' : 'PLAYING'),
-            state.isWon ? DesignSystem.gameGreen : (state.isGameOver ? DesignSystem.lightError : DesignSystem.gameIndigo),
+          const SizedBox(width: DesignSystem.spaceMD),
+          Expanded(
+            child: TangibleContainer(
+              padding: const EdgeInsets.all(DesignSystem.spaceSM),
+              radius: DesignSystem.radiusMD,
+              depth: 4.0,
+              color: state.isWon ? DesignSystem.success : (state.isGameOver ? DesignSystem.error : DesignSystem.surface),
+              shadowColor: state.isWon ? const Color(0xFF047857) : (state.isGameOver ? const Color(0xFF991B1B) : DesignSystem.outlineVariant),
+              child: Column(
+                children: [
+                  Text(
+                    'STATUS',
+                    style: TextStyle(
+                      fontSize: 10, 
+                      fontWeight: FontWeight.w900, 
+                      color: (state.isWon || state.isGameOver) ? Colors.white.withValues(alpha: 0.8) : DesignSystem.inkSlate,
+                    ),
+                  ),
+                  Text(
+                    state.isWon ? 'WON' : (state.isGameOver ? 'BOOM' : 'PLAYING'),
+                    style: TextStyle(
+                      fontSize: 14, 
+                      fontWeight: FontWeight.w900, 
+                      color: (state.isWon || state.isGameOver) ? Colors.white : DesignSystem.primary,
+                    ),
+                  ),
+                ],
+              ),
+            ),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildStatCard(String label, String value, Color color) {
-    final theme = Theme.of(context);
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-      decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
-        border: Border.all(color: color.withValues(alpha: 0.2), width: 1.5),
-      ),
-      child: Column(
-        children: [
-          Text(
-            label,
-            style: theme.textTheme.labelSmall?.copyWith(color: color, fontWeight: FontWeight.w900),
+  Widget _buildBoard(MinesweeperState state, MinesweeperNotifier notifier, double maxHeight) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxHeight: maxHeight),
+        child: TangibleContainer(
+          color: DesignSystem.ink,
+          shadowColor: DesignSystem.inkSlate,
+          radius: DesignSystem.radiusMD,
+          depth: 4.0,
+          padding: const EdgeInsets.all(3.0),
+          child: Container(
+            decoration: BoxDecoration(
+              color: DesignSystem.background,
+              borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
+            ),
+            child: AspectRatio(
+              aspectRatio: MinesweeperNotifier.cols / MinesweeperNotifier.rows,
+              child: GridView.builder(
+                padding: const EdgeInsets.all(6),
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: MinesweeperNotifier.cols,
+                  crossAxisSpacing: 3,
+                  mainAxisSpacing: 3,
+                ),
+                itemCount: MinesweeperNotifier.rows * MinesweeperNotifier.cols,
+                itemBuilder: (context, index) {
+                  final r = index ~/ MinesweeperNotifier.cols;
+                  final c = index % MinesweeperNotifier.cols;
+                  return _buildCell(state.board[r][c], notifier);
+                },
+              ),
+            ),
           ),
-          const SizedBox(height: 4),
-          Text(
-            value,
-            style: theme.textTheme.titleLarge?.copyWith(color: color, fontWeight: FontWeight.w800),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildBoard(MinesweeperState state, MinesweeperNotifier notifier) {
-    return AspectRatio(
-      aspectRatio: MinesweeperNotifier.cols / MinesweeperNotifier.rows,
-      child: Padding(
-        padding: const EdgeInsets.all(16),
-        child: GridView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: MinesweeperNotifier.cols,
-            crossAxisSpacing: 6,
-            mainAxisSpacing: 6,
-          ),
-          itemCount: MinesweeperNotifier.rows * MinesweeperNotifier.cols,
-          itemBuilder: (context, index) {
-            final r = index ~/ MinesweeperNotifier.cols;
-            final c = index % MinesweeperNotifier.cols;
-            return _buildCell(state.board[r][c], notifier);
-          },
         ),
       ),
     );
   }
 
   Widget _buildCell(MinesweeperCell cell, MinesweeperNotifier notifier) {
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
+    final bool isRevealed = cell.state == CellState.revealed;
+    final bool isFlagged = cell.state == CellState.flagged;
 
     return GestureDetector(
       onTap: () {
@@ -150,62 +180,38 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
         notifier.toggleFlag(cell.row, cell.col);
       },
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 150),
         decoration: BoxDecoration(
-          color: _getCellColor(cell, isDark),
-          borderRadius: BorderRadius.circular(8),
+          color: isRevealed 
+              ? (cell.isMine ? DesignSystem.error.withValues(alpha: 0.2) : DesignSystem.surface)
+              : (isFlagged ? DesignSystem.accentAmber.withValues(alpha: 0.1) : DesignSystem.outline.withValues(alpha: 0.5)),
+          borderRadius: BorderRadius.circular(6),
           border: Border.all(
-            color: _getCellBorderColor(cell, isDark),
-            width: 1,
+            color: isRevealed ? DesignSystem.outline : DesignSystem.ink.withValues(alpha: 0.1),
+            width: isRevealed ? 0.5 : 1.5,
           ),
-          boxShadow: cell.state == CellState.hidden
-              ? [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.05),
-                    blurRadius: 4,
-                    offset: const Offset(0, 2),
-                  )
-                ]
-              : null,
         ),
         child: Center(
-          child: _getCellContent(cell),
+          child: FittedBox(child: _getCellContent(cell)),
         ),
       ),
     );
   }
 
-  Color _getCellColor(MinesweeperCell cell, bool isDark) {
-    if (cell.state == CellState.revealed) {
-      if (cell.isMine) return DesignSystem.lightError.withValues(alpha: 0.2);
-      return isDark ? DesignSystem.darkSurfaceElevated : DesignSystem.lightOutlineVariant;
-    }
-    if (cell.state == CellState.flagged) return DesignSystem.gameIndigo.withValues(alpha: 0.1);
-    return isDark ? DesignSystem.darkSurface : Colors.white;
-  }
-
-  Color _getCellBorderColor(MinesweeperCell cell, bool isDark) {
-    if (cell.state == CellState.revealed) {
-      if (cell.isMine) return DesignSystem.lightError.withValues(alpha: 0.3);
-      return Colors.transparent;
-    }
-    return isDark ? DesignSystem.darkOutline : DesignSystem.lightOutline;
-  }
-
   Widget? _getCellContent(MinesweeperCell cell) {
     if (cell.state == CellState.flagged) {
-      return const Icon(Icons.flag_rounded, size: 16, color: DesignSystem.gameIndigo);
+      return const Icon(Icons.flag_rounded, size: 14, color: DesignSystem.accentAmber);
     }
     if (cell.state == CellState.revealed) {
       if (cell.isMine) {
-        return const Icon(Icons.brightness_7_rounded, size: 18, color: DesignSystem.lightError);
+        return const Icon(Icons.brightness_7_rounded, size: 16, color: DesignSystem.error);
       }
       if (cell.neighborMines > 0) {
         return Text(
           cell.neighborMines.toString(),
           style: TextStyle(
             fontWeight: FontWeight.w900,
-            fontSize: 16,
+            fontSize: 14,
             color: _getNumberColor(cell.neighborMines),
           ),
         );
@@ -216,19 +222,18 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
 
   Color _getNumberColor(int n) {
     switch (n) {
-      case 1: return DesignSystem.gameBlue;
-      case 2: return DesignSystem.gameGreen;
-      case 3: return DesignSystem.lightError;
-      case 4: return DesignSystem.gamePurple;
-      case 5: return DesignSystem.gameOrange;
-      case 6: return DesignSystem.gameTeal;
-      default: return DesignSystem.gameIndigo;
+      case 1: return DesignSystem.primary;
+      case 2: return DesignSystem.success;
+      case 3: return DesignSystem.error;
+      case 4: return DesignSystem.accentBerry;
+      case 5: return DesignSystem.accentAmber;
+      default: return DesignSystem.ink;
     }
   }
 
-  Widget _buildControls(ThemeData theme) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+  Widget _buildControls() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -241,7 +246,7 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
               setState(() => _isFlagMode = false);
             },
           ),
-          const SizedBox(width: 24),
+          const SizedBox(width: DesignSystem.spaceMD),
           _buildModeButton(
             icon: Icons.flag_rounded,
             label: 'FLAG',
@@ -262,36 +267,26 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
     required bool isActive,
     required VoidCallback onTap,
   }) {
-    final theme = Theme.of(context);
-    final color = isActive ? DesignSystem.gameIndigo : theme.colorScheme.onSurface.withValues(alpha: 0.4);
-
-    return GestureDetector(
+    return TangibleButton(
+      color: isActive ? DesignSystem.primary : DesignSystem.surface,
+      shadowColor: isActive ? DesignSystem.primaryShadow : DesignSystem.outlineVariant,
       onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-        decoration: BoxDecoration(
-          color: isActive ? DesignSystem.gameIndigo.withValues(alpha: 0.1) : Colors.transparent,
-          borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
-          border: Border.all(
-            color: isActive ? DesignSystem.gameIndigo.withValues(alpha: 0.5) : theme.colorScheme.outline.withValues(alpha: 0.1),
-            width: 1.5,
-          ),
-        ),
-        child: Row(
-          children: [
-            Icon(icon, size: 20, color: color),
-            const SizedBox(width: 8),
-            Text(
-              label,
-              style: theme.textTheme.labelMedium?.copyWith(
-                color: color,
-                fontWeight: FontWeight.w800,
-                letterSpacing: 1.0,
-              ),
+      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceMD, vertical: DesignSystem.spaceSM),
+      child: Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(icon, size: 18, color: isActive ? Colors.white : DesignSystem.ink),
+          const SizedBox(width: 6),
+          Text(
+            label,
+            style: TextStyle(
+              color: isActive ? Colors.white : DesignSystem.ink,
+              fontWeight: FontWeight.w900,
+              fontSize: 12,
+              letterSpacing: 0.5,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -317,44 +312,45 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
       return;
     }
 
-    final theme = Theme.of(context);
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        backgroundColor: theme.colorScheme.surface,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(DesignSystem.radiusXL)),
-        title: Text(
+        backgroundColor: DesignSystem.surface,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(DesignSystem.radiusLG)),
+        title: const Text(
           'GAME OVER',
           textAlign: TextAlign.center,
-          style: theme.textTheme.headlineSmall?.copyWith(
+          style: TextStyle(
             fontWeight: FontWeight.w900,
-            color: DesignSystem.lightError,
+            color: DesignSystem.error,
           ),
         ),
         content: const Text(
           'You stepped on a mine. Better luck next time!',
           textAlign: TextAlign.center,
+          style: TextStyle(fontWeight: FontWeight.w600, color: DesignSystem.ink),
         ),
         actions: [
           Center(
             child: Column(
               children: [
-                ElevatedButton(
-                  onPressed: () {
+                TangibleButton(
+                  onTap: () {
                     Navigator.pop(context);
                     ref.read(minesweeperNotifierProvider.notifier).reset();
                   },
                   child: const Text('PLAY AGAIN'),
                 ),
+                const SizedBox(height: DesignSystem.spaceMD),
                 TextButton(
                   onPressed: () {
-                    Navigator.pop(context); // Pop dialog
-                    Navigator.pop(context); // Pop screen
+                    Navigator.pop(context);
+                    Navigator.pop(context);
                   },
-                  child: Text(
+                  child: const Text(
                     'BACK TO HUB',
-                    style: TextStyle(color: theme.colorScheme.onSurface.withValues(alpha: 0.5)),
+                    style: TextStyle(color: DesignSystem.inkSlate, fontWeight: FontWeight.w800),
                   ),
                 ),
                 const SizedBox(height: 12),

@@ -6,15 +6,17 @@ import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../widgets/tangible.dart';
+import '../../../core/juice/game_scaffold.dart';
 
 class PipesScreen extends ConsumerWidget {
   const PipesScreen({super.key});
 
   static const List<Color> pipeColors = [
-    Colors.red,
-    Colors.blue,
-    Colors.green,
-    Colors.yellow,
+    DesignSystem.primary,
+    DesignSystem.accentBerry,
+    DesignSystem.accentEmerald,
+    DesignSystem.accentAmber,
     Colors.orange,
     Colors.purple,
     Colors.teal,
@@ -24,7 +26,6 @@ class PipesScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(pipesNotifierProvider);
-    final theme = Theme.of(context);
 
     ref.listen(pipesNotifierProvider, (previous, next) {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
@@ -33,101 +34,97 @@ class PipesScreen extends ConsumerWidget {
       }
     });
 
-    return Scaffold(
-      backgroundColor: theme.colorScheme.surface,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: Text(
-          'PIPES',
-          style: theme.textTheme.titleMedium?.copyWith(
-            letterSpacing: 4,
-            fontWeight: FontWeight.w800,
+    return GameScaffold(
+      title: 'PIPES',
+      subtitle: 'Connect matching colored dots with pipes.',
+      actions: [
+        TangibleButton(
+          color: DesignSystem.surface,
+          shadowColor: DesignSystem.outlineVariant,
+          onTap: () {
+            HapticFeedbackUtil.mediumImpact();
+            ref.read(pipesNotifierProvider.notifier).newGame();
+          },
+          padding: const EdgeInsets.all(12),
+          child: const Icon(
+            Icons.refresh_rounded,
+            color: DesignSystem.ink,
+            size: 20,
           ),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh_rounded),
-            onPressed: () {
-              HapticFeedbackUtil.mediumImpact();
-              ref.read(pipesNotifierProvider.notifier).newGame();
-            },
-          ),
-          const SizedBox(width: 8),
-        ],
+      ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Column(
+            children: [
+              const SizedBox(height: DesignSystem.spaceMD),
+              _buildInstructions(),
+              const Spacer(),
+              ConstrainedBox(
+                constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.6),
+                child: Center(
+                  child: _buildBoard(ref, state),
+                ),
+              ),
+              const Spacer(),
+              const SizedBox(height: DesignSystem.spaceLG),
+            ],
+          );
+        },
       ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: DesignSystem.spaceLG),
-            _buildInstructions(theme),
-            const Spacer(),
-            Center(
-              child: _buildBoard(context, ref, state),
-            ),
-            const Spacer(),
-            const SizedBox(height: DesignSystem.spaceXL),
-          ],
+    );
+  }
+
+  Widget _buildInstructions() {
+    return const TangibleContainer(
+      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+      color: DesignSystem.surface,
+      depth: 1,
+      radius: DesignSystem.radiusFull,
+      child: Text(
+        'FILL THE ENTIRE GRID',
+        style: TextStyle(
+          color: DesignSystem.primary,
+          letterSpacing: 1.5,
+          fontWeight: FontWeight.w900,
+          fontSize: 12,
         ),
       ),
     );
   }
 
-  Widget _buildInstructions(ThemeData theme) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
-      child: Column(
-        children: [
-          Text(
-            'FLOW CONNECT',
-            style: theme.textTheme.labelSmall?.copyWith(
-              color: theme.colorScheme.primary,
-              letterSpacing: 2,
-              fontWeight: FontWeight.w900,
-            ),
-          ),
-          const SizedBox(height: DesignSystem.spaceSM),
-          Text(
-            'Connect matching colored dots with pipes to create a flow. Fill the entire grid to solve the puzzle.',
-            textAlign: TextAlign.center,
-            style: theme.textTheme.bodySmall?.copyWith(
-              color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
-              height: 1.5,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildBoard(BuildContext context, WidgetRef ref, PipesState state) {
+  Widget _buildBoard(WidgetRef ref, PipesState state) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final boardSize = constraints.maxWidth * 0.9;
-        final cellSize = boardSize / state.level.size;
+        final boardSize = constraints.biggest.shortestSide;
+        final cellSize = (boardSize - DesignSystem.spaceSM * 2) / state.level.size;
 
-        return GestureDetector(
-          onPanStart: (details) {
-            final pos = _getPos(details.localPosition, cellSize);
-            ref.read(pipesNotifierProvider.notifier).startPath(pos.x, pos.y);
-          },
-          onPanUpdate: (details) {
-            final pos = _getPos(details.localPosition, cellSize);
-            ref.read(pipesNotifierProvider.notifier).updatePath(pos.x, pos.y);
-          },
-          onPanEnd: (_) {
-            ref.read(pipesNotifierProvider.notifier).endPath();
-          },
-          child: SizedBox(
-            width: boardSize,
-            height: boardSize,
-            child: CustomPaint(
-              painter: PipesPainter(
-                state: state,
-                cellSize: cellSize,
-                pipeColors: pipeColors,
+        return TangibleContainer(
+          depth: 4.0,
+          color: DesignSystem.ink,
+          shadowColor: DesignSystem.ink.withValues(alpha: 0.2),
+          padding: const EdgeInsets.all(DesignSystem.spaceSM),
+          child: GestureDetector(
+            onPanStart: (details) {
+              final pos = _getPos(details.localPosition, cellSize);
+              ref.read(pipesNotifierProvider.notifier).startPath(pos.x, pos.y);
+            },
+            onPanUpdate: (details) {
+              final pos = _getPos(details.localPosition, cellSize);
+              ref.read(pipesNotifierProvider.notifier).updatePath(pos.x, pos.y);
+            },
+            onPanEnd: (_) {
+              ref.read(pipesNotifierProvider.notifier).endPath();
+            },
+            child: SizedBox(
+              width: boardSize - DesignSystem.spaceSM * 2,
+              height: boardSize - DesignSystem.spaceSM * 2,
+              child: CustomPaint(
+                painter: PipesPainter(
+                  state: state,
+                  cellSize: cellSize,
+                  pipeColors: pipeColors,
+                ),
               ),
             ),
           ),
@@ -179,7 +176,7 @@ class PipesPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final gridPaint = Paint()
-      ..color = Colors.grey.withValues(alpha: 0.2)
+      ..color = Colors.white.withValues(alpha: 0.1)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1;
 

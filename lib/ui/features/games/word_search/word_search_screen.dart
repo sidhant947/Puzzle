@@ -6,6 +6,8 @@ import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/design_system.dart';
 import '../../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../widgets/tangible.dart';
+import '../../../core/juice/game_scaffold.dart';
 
 class WordSearchScreen extends ConsumerStatefulWidget {
   const WordSearchScreen({super.key});
@@ -25,127 +27,93 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(wordSearchNotifierProvider);
     final notifier = ref.read(wordSearchNotifierProvider.notifier);
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
 
     ref.listen(wordSearchNotifierProvider, (previous, next) {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
         HapticFeedbackUtil.victory();
-        _showVictoryDialog(context, ref, theme);
+        _showVictoryDialog(context, ref);
       }
     });
 
-    return Scaffold(
-      backgroundColor: theme.colorScheme.surface,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
-          onPressed: () => Navigator.of(context).pop(),
+    return GameScaffold(
+      title: 'WORD SEARCH',
+      subtitle: 'Find all the hidden words in the grid. Drag to select.',
+      actions: [
+        TangibleButton(
+          color: DesignSystem.surface,
+          shadowColor: DesignSystem.outlineVariant,
+          onTap: () {
+            HapticFeedbackUtil.mediumImpact();
+            notifier.initGame();
+          },
+          padding: const EdgeInsets.all(12),
+          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
         ),
-        title: Text(
-          'WORD SEARCH',
-          style: theme.textTheme.titleMedium?.copyWith(
-            letterSpacing: 4,
-            fontWeight: FontWeight.w800,
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh_rounded),
-            onPressed: () {
-              HapticFeedbackUtil.mediumImpact();
-              notifier.initGame();
-            },
-          ),
-          const SizedBox(width: 8),
-        ],
-      ),
+      ],
       body: state.board == null
-          ? Center(child: CircularProgressIndicator(color: theme.colorScheme.primary))
-          : SafeArea(
-              child: Column(
-                children: [
-                  const SizedBox(height: DesignSystem.spaceLG),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
-                    child: Column(
-                      children: [
-                        Text(
-                          'GRID SCAN',
-                          style: theme.textTheme.labelSmall?.copyWith(
-                            color: theme.colorScheme.primary,
-                            letterSpacing: 2,
-                            fontWeight: FontWeight.w900,
-                          ),
-                        ),
-                        const SizedBox(height: DesignSystem.spaceSM),
-                        Text(
-                          'Scan the grid in any direction to find the hidden words listed below.',
-                          textAlign: TextAlign.center,
-                          style: theme.textTheme.bodySmall?.copyWith(
-                            color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
-                            height: 1.5,
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(24.0),
-                        child: _buildGrid(state, notifier, theme, isDark),
-                      ),
-                    ),
-                  ),
-                  _buildWordList(state, theme, isDark),
-                  const SizedBox(height: 24),
-                ],
-              ),
+          ? const Center(child: CircularProgressIndicator(color: DesignSystem.primary))
+          : LayoutBuilder(
+              builder: (context, constraints) {
+                return Column(
+                  children: [
+                    const Spacer(),
+                    _buildGrid(state, notifier, constraints.maxHeight * 0.45),
+                    const Spacer(),
+                    _buildWordList(state),
+                    const SizedBox(height: DesignSystem.spaceLG),
+                  ],
+                );
+              },
             ),
     );
   }
 
-  Widget _buildWordList(WordSearchState state, ThemeData theme, bool isDark) {
+  Widget _buildWordList(WordSearchState state) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
       width: double.infinity,
       decoration: BoxDecoration(
-        color: theme.colorScheme.primary.withValues(alpha: 0.03),
-        border: Border.symmetric(horizontal: BorderSide(color: theme.colorScheme.outline.withValues(alpha: 0.1), width: 1)),
+        color: DesignSystem.surface,
+        border: const Border.symmetric(horizontal: BorderSide(color: DesignSystem.outline, width: 1.0)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
+          const Text(
             'WORDS TO FIND',
-            style: theme.textTheme.labelSmall?.copyWith(
+            style: TextStyle(
               fontWeight: FontWeight.w900,
-              letterSpacing: 2.0,
-              color: theme.colorScheme.primary,
+              letterSpacing: 1.5,
+              color: DesignSystem.inkSlate,
+              fontSize: 10,
             ),
           ),
-          const SizedBox(height: 16),
+          const SizedBox(height: 8),
           Wrap(
-            spacing: 12,
-            runSpacing: 10,
+            spacing: 6,
+            runSpacing: 6,
             children: state.board!.words.map((word) {
               final isFound = word.isFound;
               return Container(
-                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
                 decoration: BoxDecoration(
                   color: isFound 
-                      ? DesignSystem.gameGreen.withValues(alpha: 0.1) 
-                      : theme.colorScheme.onSurface.withValues(alpha: 0.05),
-                  borderRadius: BorderRadius.circular(20),
+                      ? DesignSystem.success.withValues(alpha: 0.1) 
+                      : DesignSystem.background,
+                  borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
+                  border: Border.all(
+                    color: isFound ? DesignSystem.success : DesignSystem.outline,
+                    width: 0.5,
+                  ),
                 ),
                 child: Text(
-                  word.word,
-                  style: theme.textTheme.labelMedium?.copyWith(
-                    fontWeight: isFound ? FontWeight.w500 : FontWeight.w800,
+                  word.word.toUpperCase(),
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: isFound ? FontWeight.w500 : FontWeight.w900,
                     color: isFound 
-                        ? DesignSystem.gameGreen 
-                        : theme.colorScheme.onSurface,
+                        ? DesignSystem.success 
+                        : DesignSystem.ink,
                     decoration: isFound ? TextDecoration.lineThrough : null,
                     letterSpacing: 0.5,
                   ),
@@ -158,80 +126,92 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
     );
   }
 
-  Widget _buildGrid(WordSearchState state, WordSearchNotifier notifier, ThemeData theme, bool isDark) {
+  Widget _buildGrid(WordSearchState state, WordSearchNotifier notifier, double maxHeight) {
     final board = state.board!;
-    return LayoutBuilder(builder: (context, constraints) {
-      final double gridSize = min(constraints.maxWidth, constraints.maxHeight);
-      final double gridInternalSize = gridSize - (DesignSystem.spaceXS * 2);
-      final double cellSize = gridInternalSize / board.size;
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxHeight: maxHeight),
+        child: LayoutBuilder(builder: (context, constraints) {
+          final double gridSize = min(constraints.maxWidth, constraints.maxHeight);
+          final double gridInternalSize = gridSize - (8.0); // Adjust for bezel
+          final double cellSize = gridInternalSize / board.size;
 
-      return GestureDetector(
-        onPanStart: (details) {
-          HapticFeedbackUtil.gameInteraction();
-          _handlePanUpdate(details.localPosition, cellSize, board.size, notifier, true);
-        },
-        onPanUpdate: (details) => _handlePanUpdate(details.localPosition, cellSize, board.size, notifier, false),
-        onPanEnd: (_) {
-          HapticFeedbackUtil.selectionClick();
-          notifier.endSelection();
-        },
-        child: Container(
-          width: gridSize,
-          height: gridSize,
-          padding: const EdgeInsets.all(DesignSystem.spaceXS),
-          decoration: BoxDecoration(
-            color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.1 : 0.05),
-            borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
-            border: Border.all(
-              color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.2 : 0.1),
-              width: 1,
-            ),
-          ),
-          child: ClipRRect(
-            borderRadius: BorderRadius.circular(DesignSystem.radiusLG - 4),
-            child: Container(
-              color: theme.colorScheme.surface,
-              child: Stack(
-                children: [
-                  _buildFoundLines(state, cellSize, theme),
-                  _buildSelectionLine(state, cellSize, theme),
-                  GridView.builder(
-                    padding: EdgeInsets.zero,
-                    physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: board.size,
-                    ),
-                    itemCount: board.size * board.size,
-                    itemBuilder: (context, index) {
-                      int x = index % board.size;
-                      int y = index ~/ board.size;
-                      return Center(
-                        child: Text(
-                          board.grid[y][x],
-                          style: theme.textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.w800,
-                            color: theme.colorScheme.onSurface,
+          return GestureDetector(
+            onPanStart: (details) {
+              HapticFeedbackUtil.gameInteraction();
+              _handlePanUpdate(details.localPosition, cellSize, board.size, notifier, true);
+            },
+            onPanUpdate: (details) => _handlePanUpdate(details.localPosition, cellSize, board.size, notifier, false),
+            onPanEnd: (_) {
+              HapticFeedbackUtil.selectionClick();
+              notifier.endSelection();
+            },
+            child: TangibleContainer(
+              color: DesignSystem.ink,
+              shadowColor: DesignSystem.inkSlate,
+              radius: DesignSystem.radiusMD,
+              depth: 4.0, // Reduced from 6.0
+              padding: const EdgeInsets.all(3.0),
+              child: Container(
+                decoration: BoxDecoration(
+                  color: DesignSystem.surface,
+                  borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: Container(
+                      color: DesignSystem.surface,
+                      child: Stack(
+                        children: [
+                          _buildFoundLines(state, cellSize),
+                          _buildSelectionLine(state, cellSize),
+                          GridView.builder(
+                            padding: EdgeInsets.zero,
+                            physics: const NeverScrollableScrollPhysics(),
+                            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: board.size,
+                            ),
+                            itemCount: board.size * board.size,
+                            itemBuilder: (context, index) {
+                              int x = index % board.size;
+                              int y = index ~/ board.size;
+                              return Center(
+                                child: Padding(
+                                  padding: const EdgeInsets.all(2.0),
+                                  child: FittedBox(
+                                    child: Text(
+                                      board.grid[y][x].toUpperCase(),
+                                      style: const TextStyle(
+                                        fontSize: 16, // Reduced from 18
+                                        fontWeight: FontWeight.w900,
+                                        color: DesignSystem.ink,
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
                           ),
-                        ),
-                      );
-                    },
+                        ],
+                      ),
+                    ),
                   ),
-                ],
+                ),
               ),
             ),
-          ),
-        ),
-      );
-    });
+          );
+        }),
+      ),
+    );
   }
 
+
   void _handlePanUpdate(Offset localPos, double cellSize, int size, WordSearchNotifier notifier, bool isStart) {
-    // Adjust for padding
-    double xPos = localPos.dx - DesignSystem.spaceXS;
-    double yPos = localPos.dy - DesignSystem.spaceXS;
-    
-    int x = (xPos / cellSize).floor();
-    int y = (yPos / cellSize).floor();
+    int x = (localPos.dx / cellSize).floor();
+    int y = (localPos.dy / cellSize).floor();
 
     if (x >= 0 && x < size && y >= 0 && y < size) {
       if (isStart) {
@@ -242,17 +222,17 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
     }
   }
 
-  Widget _buildFoundLines(WordSearchState state, double cellSize, ThemeData theme) {
+  Widget _buildFoundLines(WordSearchState state, double cellSize) {
     return Stack(
       children: state.board!.words.where((w) => w.isFound).map((w) {
-        return _buildLine(w.positions, cellSize, DesignSystem.gameGreen.withValues(alpha: 0.2));
+        return _buildLine(w.positions, cellSize, DesignSystem.success.withValues(alpha: 0.3));
       }).toList(),
     );
   }
 
-  Widget _buildSelectionLine(WordSearchState state, double cellSize, ThemeData theme) {
+  Widget _buildSelectionLine(WordSearchState state, double cellSize) {
     if (state.selection.isEmpty) return const SizedBox.shrink();
-    return _buildLine(state.selection, cellSize, theme.colorScheme.primary.withValues(alpha: 0.3));
+    return _buildLine(state.selection, cellSize, DesignSystem.primary.withValues(alpha: 0.3));
   }
 
   Widget _buildLine(List<Point<int>> positions, double cellSize, Color color) {
@@ -266,12 +246,12 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
         start: Offset((start.x + 0.5) * cellSize, (start.y + 0.5) * cellSize),
         end: Offset((end.x + 0.5) * cellSize, (end.y + 0.5) * cellSize),
         color: color,
-        strokeWidth: cellSize * 0.8,
+        strokeWidth: cellSize * 0.7,
       ),
     );
   }
 
-  void _showVictoryDialog(BuildContext context, WidgetRef ref, ThemeData theme) async {
+  void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('word_search');
 
     if (!context.mounted) return;
@@ -304,15 +284,6 @@ class LinePainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    // Outer soft glow
-    final glowPaint = Paint()
-      ..color = color.withValues(alpha: 0.2)
-      ..strokeCap = StrokeCap.round
-      ..strokeWidth = strokeWidth + 6
-      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 2);
-    canvas.drawLine(start, end, glowPaint);
-
-    // Main highlight line
     final paint = Paint()
       ..color = color
       ..strokeCap = StrokeCap.round

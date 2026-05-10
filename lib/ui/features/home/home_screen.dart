@@ -402,16 +402,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final streaks = ref.watch(gameStreakNotifierProvider);
-    final theme = Theme.of(context);
-
-    // Calculate completed games today
-    int completedToday = 0;
-    for (var streak in streaks.values) {
-      if (streak.solvedToday) {
-        completedToday++;
-      }
-    }
-
     return Scaffold(
       backgroundColor: DesignSystem.background,
       body: CustomScrollView(

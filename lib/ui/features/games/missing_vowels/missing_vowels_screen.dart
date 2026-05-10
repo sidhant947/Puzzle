@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
 import '../../../../utils/design_system.dart';
+import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../widgets/tangible.dart';
 import '../../../../providers/user_providers.dart';
 import 'missing_vowels_provider.dart';
 
@@ -44,20 +46,22 @@ class _MissingVowelsScreenState extends ConsumerState<MissingVowelsScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(missingVowelsNotifierProvider);
     final notifier = ref.read(missingVowelsNotifierProvider.notifier);
-    final theme = Theme.of(context);
 
     ref.listen(missingVowelsNotifierProvider, (previous, next) {
-      if (!previous!.isGameOver && next.isGameOver && next.isGameWon) {
+      if (previous != null && !previous.isGameOver && next.isGameOver && next.isGameWon) {
+        HapticFeedbackUtil.victory();
         _showCompletionDialog();
       }
     });
 
     return GameScaffold(
       title: 'MISSING VOWELS',
+      subtitle: 'Identify the word with its vowels hidden.',
       actions: [
-        IconButton(
-          icon: const Icon(Icons.help_outline_rounded),
-          onPressed: () {
+        TangibleButton(
+          color: DesignSystem.surface,
+          shadowColor: DesignSystem.outlineVariant,
+          onTap: () {
             showDialog(
               context: context,
               builder: (context) => AlertDialog(
@@ -69,60 +73,74 @@ class _MissingVowelsScreenState extends ConsumerState<MissingVowelsScreen> {
               ),
             );
           },
+          padding: const EdgeInsets.all(12),
+          child: const Icon(
+            Icons.help_outline_rounded,
+            color: DesignSystem.ink,
+            size: 20,
+          ),
         ),
       ],
-      body: state.isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : Column(
-              children: [
-                const SizedBox(height: 40),
-                // Hidden Word Display
-                Container(
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          if (state.isLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          return Column(
+            children: [
+              const SizedBox(height: DesignSystem.spaceMD),
+              // Hidden Word Display
+              ConstrainedBox(
+                constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.2),
+                child: TangibleContainer(
                   padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                  decoration: BoxDecoration(
-                    color: DesignSystem.gameBlue.withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
-                    border: Border.all(color: DesignSystem.gameBlue.withValues(alpha: 0.2)),
-                  ),
-                  child: Text(
-                    state.hiddenWord,
-                    style: theme.textTheme.displaySmall?.copyWith(
-                      color: DesignSystem.gameBlue,
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: 8,
+                  color: DesignSystem.ink,
+                  depth: 4,
+                  child: FittedBox(
+                    child: Text(
+                      state.hiddenWord,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontSize: 32,
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: 8,
+                      ),
                     ),
                   ),
                 ),
-                const SizedBox(height: 60),
-                // Guess Input Area
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+              ),
+              const Spacer(),
+              // Guess Input Area
+              ConstrainedBox(
+                constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.2),
+                child: Wrap(
+                  alignment: WrapAlignment.center,
+                  spacing: 4,
+                  runSpacing: 8,
                   children: List.generate(
                     state.targetWord.length,
                     (index) {
                       final letter = index < state.currentGuess.length ? state.currentGuess[index] : '';
-                      return Container(
-                        width: 40,
-                        height: 50,
-                        margin: const EdgeInsets.symmetric(horizontal: 3),
-                        decoration: BoxDecoration(
-                          color: state.isInvalidGuess 
-                              ? DesignSystem.gameRose.withValues(alpha: 0.1)
-                              : theme.colorScheme.surfaceContainerHighest,
-                          borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
-                          border: Border.all(
-                            color: state.isInvalidGuess 
-                                ? DesignSystem.gameRose 
-                                : (letter.isNotEmpty ? theme.colorScheme.primary : theme.colorScheme.outline),
-                            width: 2,
-                          ),
-                        ),
-                        child: Center(
-                          child: Text(
-                            letter,
-                            style: theme.textTheme.titleLarge?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: state.isInvalidGuess ? DesignSystem.gameRose : theme.colorScheme.onSurface,
+                      return TangibleContainer(
+                        depth: 1,
+                        radius: DesignSystem.radiusXS,
+                        color: state.isInvalidGuess 
+                            ? DesignSystem.accentBerry.withValues(alpha: 0.1)
+                            : DesignSystem.surface,
+                        child: SizedBox(
+                          width: 32,
+                          height: 40,
+                          child: Center(
+                            child: FittedBox(
+                              child: Text(
+                                letter,
+                                style: TextStyle(
+                                  fontSize: 18,
+                                  fontWeight: FontWeight.w900,
+                                  color: state.isInvalidGuess ? DesignSystem.accentBerry : DesignSystem.ink,
+                                ),
+                              ),
                             ),
                           ),
                         ),
@@ -130,34 +148,45 @@ class _MissingVowelsScreenState extends ConsumerState<MissingVowelsScreen> {
                     },
                   ),
                 ),
-                const Spacer(),
-                // Simple Alphabet Keyboard (A-Z)
-                _buildKeyboard(notifier),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
+              ),
+              const Spacer(),
+              // Simple Alphabet Keyboard (A-Z)
+              _buildKeyboard(notifier),
+              const SizedBox(height: DesignSystem.spaceSM),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+                child: Row(
                   children: [
-                    IconButton.filledTonal(
-                      onPressed: notifier.onBackspace,
-                      icon: const Icon(Icons.backspace_rounded),
-                      padding: const EdgeInsets.all(16),
+                    Expanded(
+                      child: TangibleButton(
+                        onTap: notifier.onBackspace,
+                        color: DesignSystem.surface,
+                        shadowColor: DesignSystem.outlineVariant,
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        child: const Icon(Icons.backspace_rounded, color: DesignSystem.ink, size: 20),
+                      ),
                     ),
-                    const SizedBox(width: 20),
-                    ElevatedButton.icon(
-                      onPressed: notifier.submitGuess,
-                      icon: const Icon(Icons.check_rounded),
-                      label: const Text('SUBMIT'),
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                        backgroundColor: theme.colorScheme.primary,
-                        foregroundColor: theme.colorScheme.onPrimary,
+                    const SizedBox(width: DesignSystem.spaceMD),
+                    Expanded(
+                      flex: 2,
+                      child: TangibleButton(
+                        onTap: notifier.submitGuess,
+                        color: DesignSystem.primary,
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        child: const Text(
+                          'SUBMIT',
+                          style: TextStyle(fontWeight: FontWeight.w900, fontSize: 14),
+                        ),
                       ),
                     ),
                   ],
                 ),
-                const SizedBox(height: 40),
-              ],
-            ),
+              ),
+              const SizedBox(height: DesignSystem.spaceLG),
+            ],
+          );
+        },
+      ),
     );
   }
 
@@ -171,27 +200,28 @@ class _MissingVowelsScreenState extends ConsumerState<MissingVowelsScreen> {
     return Column(
       children: rows.map((row) {
         return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4),
+          padding: const EdgeInsets.symmetric(vertical: 2),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: row.map((letter) {
               return Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 2),
-                child: InkWell(
-                  onTap: () => notifier.onLetterPressed(letter),
-                  borderRadius: BorderRadius.circular(4),
-                  child: Container(
-                    width: 32,
-                    height: 44,
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.surface,
-                      borderRadius: BorderRadius.circular(4),
-                      border: Border.all(color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.3)),
-                    ),
+                child: TangibleContainer(
+                  depth: 1,
+                  radius: 4,
+                  onTap: () {
+                    HapticFeedbackUtil.lightImpact();
+                    notifier.onLetterPressed(letter);
+                  },
+                  child: SizedBox(
+                    width: 28,
+                    height: 36,
                     child: Center(
-                      child: Text(
-                        letter,
-                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      child: FittedBox(
+                        child: Text(
+                          letter,
+                          style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 14),
+                        ),
                       ),
                     ),
                   ),

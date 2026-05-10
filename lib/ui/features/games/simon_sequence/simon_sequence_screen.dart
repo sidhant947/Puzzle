@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../core/juice/game_scaffold.dart';
+import '../../../../utils/design_system.dart';
+import '../../../../widgets/tangible.dart';
 import 'simon_sequence_provider.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/haptic_feedback.dart';
@@ -22,76 +25,120 @@ class _SimonSequenceScreenState extends ConsumerState<SimonSequenceScreen> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(simonSequenceNotifierProvider);
-    final theme = Theme.of(context);
 
     ref.listen(simonSequenceNotifierProvider, (previous, next) {
       if (next.isGameOver && !(previous?.isGameOver ?? false)) {
         HapticFeedbackUtil.heavyImpact();
-        _showGameOverDialog(context, ref, next, theme, false);
+        _showGameOverDialog(context, ref, next, false);
       }
       if (next.isGameWon && !(previous?.isGameWon ?? false)) {
         HapticFeedbackUtil.victory();
-        _showGameOverDialog(context, ref, next, theme, true);
+        _showGameOverDialog(context, ref, next, true);
       }
     });
 
-    return Scaffold(
-      appBar: AppBar(title: const Text('SEQUENCE')),
-      body: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(state.isShowingSequence ? 'WATCH...' : 'YOUR TURN!', 
-            style: theme.textTheme.headlineSmall?.copyWith(fontWeight: FontWeight.bold, letterSpacing: 2)),
-          const SizedBox(height: 16),
-          Text('${state.userSequence.length} / ${state.sequence.length}', 
-            style: theme.textTheme.titleMedium?.copyWith(color: theme.colorScheme.primary)),
-          const SizedBox(height: 32),
-          Center(
-            child: AspectRatio(
-              aspectRatio: 1,
-              child: Padding(
-                padding: const EdgeInsets.all(32.0),
-                child: GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 3, crossAxisSpacing: 12, mainAxisSpacing: 12),
-                  itemCount: 9,
-                  itemBuilder: (context, index) {
-                    final isHighlighted = state.highlightedTile == index;
-                    return GestureDetector(
-                      onTap: () {
-                        if (!state.isShowingSequence) {
-                          HapticFeedbackUtil.selectionClick();
-                          ref.read(simonSequenceNotifierProvider.notifier).tapTile(index);
-                        }
-                      },
-                      child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 150),
-                        decoration: BoxDecoration(
-                          color: isHighlighted ? theme.colorScheme.primary : theme.colorScheme.primary.withValues(alpha: 0.1),
-                          borderRadius: BorderRadius.circular(16),
-                          border: Border.all(color: theme.colorScheme.primary.withValues(alpha: 0.3)),
-                          boxShadow: isHighlighted ? [
-                            BoxShadow(color: theme.colorScheme.primary.withValues(alpha: 0.5), blurRadius: 10)
-                          ] : null,
+    return GameScaffold(
+      title: 'SEQUENCE',
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Column(
+            children: [
+              const Spacer(),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+                child: TangibleContainer(
+                  depth: 3.0, // Reduced from 4.0
+                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                  child: Column(
+                    children: [
+                      Text(
+                        state.isShowingSequence ? 'WATCH...' : 'YOUR TURN!', 
+                        style: const TextStyle(
+                          fontSize: 18, // Reduced from 24
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: 1.5,
+                          color: DesignSystem.primary,
                         ),
                       ),
-                    );
-                  },
+                      const SizedBox(height: 4),
+                      Text(
+                        '${state.userSequence.length} / ${state.sequence.length}', 
+                        style: const TextStyle(
+                          fontSize: 12, // Reduced from 16
+                          fontWeight: FontWeight.bold,
+                          color: DesignSystem.outline,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ),
-          const SizedBox(height: 48),
-          ElevatedButton(
-            onPressed: state.isShowingSequence ? null : () => ref.read(simonSequenceNotifierProvider.notifier).reset(),
-            child: const Text('RESTART'),
-          ),
-        ],
+              const Spacer(),
+              _buildGrid(state, constraints.maxHeight * 0.45),
+              const Spacer(),
+              TangibleButton(
+                onTap: state.isShowingSequence ? () {} : () => ref.read(simonSequenceNotifierProvider.notifier).reset(),
+                color: state.isShowingSequence ? DesignSystem.outline : DesignSystem.primary,
+                padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+                child: const Text(
+                  'RESTART',
+                  style: TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: Colors.white),
+                ),
+              ),
+              const SizedBox(height: DesignSystem.spaceLG),
+            ],
+          );
+        },
       ),
     );
   }
 
-  void _showGameOverDialog(BuildContext context, WidgetRef ref, SimonSequenceState state, ThemeData theme, bool won) {
+  Widget _buildGrid(SimonSequenceState state, double maxHeight) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxHeight: maxHeight),
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: TangibleContainer(
+            depth: 4.0, // Reduced from 6.0
+            color: DesignSystem.ink,
+            padding: const EdgeInsets.all(8), // Reduced from 16
+            child: GridView.builder(
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 3, 
+                crossAxisSpacing: 8, // Reduced from 12
+                mainAxisSpacing: 8,
+              ),
+              itemCount: 9,
+              itemBuilder: (context, index) {
+                final isHighlighted = state.highlightedTile == index;
+                return GestureDetector(
+                  onTap: () {
+                    if (!state.isShowingSequence) {
+                      HapticFeedbackUtil.selectionClick();
+                      ref.read(simonSequenceNotifierProvider.notifier).tapTile(index);
+                    }
+                  },
+                  child: TangibleContainer(
+                    depth: isHighlighted ? 0.0 : 3.0, // Reduced from 4.0
+                    color: isHighlighted ? DesignSystem.accentAmber : DesignSystem.surface,
+                    child: isHighlighted 
+                      ? const Center(child: Icon(Icons.flash_on_rounded, color: Colors.white, size: 20))
+                      : const SizedBox.shrink(),
+                  ),
+                );
+              },
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+
+  void _showGameOverDialog(BuildContext context, WidgetRef ref, SimonSequenceState state, bool won) {
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('simon_sequence', xpAmount: 50);
       showDialog(
@@ -116,18 +163,17 @@ class _SimonSequenceScreenState extends ConsumerState<SimonSequenceScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        title: const Text('WRONG SEQUENCE'),
-        content: const Text('Try again to master the sequence.'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              ref.read(simonSequenceNotifierProvider.notifier).reset();
-            },
-            child: const Text('CONTINUE'),
-          )
-        ],
+      builder: (context) => GameCompletionDialog(
+        title: 'WRONG SEQUENCE',
+        message: 'Try again to master the sequence.',
+        onPlayAgain: () {
+          Navigator.pop(context);
+          ref.read(simonSequenceNotifierProvider.notifier).reset();
+        },
+        onHome: () {
+          Navigator.pop(context);
+          Navigator.pop(context);
+        },
       ),
     );
   }

@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../widgets/tangible.dart';
+import '../../../core/juice/game_scaffold.dart';
 import 'nonogram_provider.dart';
 
 class NonogramScreen extends ConsumerStatefulWidget {
@@ -18,7 +20,6 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(nonogramNotifierProvider);
-    final theme = Theme.of(context);
 
     ref.listen(nonogramNotifierProvider, (previous, next) {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
@@ -42,121 +43,128 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
       }
     });
 
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        title: const Text('NONOGRAM'),
-        actions: [
-          IconButton(
-            onPressed: () => ref.read(nonogramNotifierProvider.notifier).reset(),
-            icon: const Icon(Icons.refresh_rounded),
+    return GameScaffold(
+      title: 'NONOGRAM',
+      subtitle: 'Reveal the hidden image using logic clues.',
+      actions: [
+        TangibleButton(
+          color: DesignSystem.surface,
+          shadowColor: DesignSystem.outlineVariant,
+          onTap: () {
+            HapticFeedbackUtil.mediumImpact();
+            ref.read(nonogramNotifierProvider.notifier).reset();
+          },
+          padding: const EdgeInsets.all(12),
+          child: const Icon(
+            Icons.refresh_rounded,
+            color: DesignSystem.ink,
+            size: 20,
           ),
-          const SizedBox(width: 8),
-        ],
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: 20),
-            _buildStatusHeader(state),
-            const SizedBox(height: 32),
-            Expanded(
-              child: Center(
-                child: _buildPuzzleArea(state),
-              ),
-            ),
-            _buildControls(theme),
-            const SizedBox(height: 40),
-          ],
         ),
+      ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Column(
+            children: [
+              const SizedBox(height: DesignSystem.spaceSM),
+              _buildStatusHeader(state),
+              const SizedBox(height: DesignSystem.spaceMD),
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceMD),
+                  child: TangibleContainer(
+                    color: DesignSystem.ink,
+                    shadowColor: DesignSystem.inkSlate,
+                    depth: 4.0,
+                    radius: DesignSystem.radiusMD,
+                    padding: const EdgeInsets.all(DesignSystem.spaceSM),
+                    child: Column(
+                      children: [
+                        // Column Clues Area
+                        Row(
+                          children: [
+                            const SizedBox(width: 40), // Row clues spacer
+                            for (int c = 0; c < state.size; c++)
+                              Expanded(child: _buildColClue(state.colClues[c])),
+                          ],
+                        ),
+                        const SizedBox(height: 4),
+                        // Grid + Row Clues Area
+                        Expanded(
+                          child: Column(
+                            children: [
+                              for (int r = 0; r < state.size; r++)
+                                Expanded(
+                                  child: Row(
+                                    children: [
+                                      _buildRowClue(state.rowClues[r]),
+                                      const SizedBox(width: 4),
+                                      for (int c = 0; c < state.size; c++)
+                                        Expanded(child: _buildCell(state, r, c)),
+                                    ],
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+              const SizedBox(height: DesignSystem.spaceMD),
+              _buildControls(),
+              const SizedBox(height: DesignSystem.spaceLG),
+            ],
+          );
+        },
       ),
     );
   }
 
   Widget _buildStatusHeader(NonogramState state) {
-    final theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
-      child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-        decoration: BoxDecoration(
-          color: DesignSystem.gameRose.withValues(alpha: 0.1),
-          borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
-          border: Border.all(color: DesignSystem.gameRose.withValues(alpha: 0.2), width: 1.5),
-        ),
-        child: Row(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Icon(Icons.grid_on_rounded, size: 18, color: DesignSystem.gameRose),
-            const SizedBox(width: 12),
-            Text(
-              'REVEAL THE HIDDEN IMAGE',
-              style: theme.textTheme.labelSmall?.copyWith(
-                color: DesignSystem.gameRose,
-                fontWeight: FontWeight.w900,
-                letterSpacing: 1.0,
-              ),
+    return TangibleContainer(
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
+      color: DesignSystem.accentBerry.withValues(alpha: 0.1),
+      radius: DesignSystem.radiusFull,
+      depth: 2,
+      child: const Row(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Icon(Icons.grid_on_rounded, size: 16, color: DesignSystem.accentBerry),
+          SizedBox(width: 8),
+          Text(
+            'LOGIC GRID',
+            style: TextStyle(
+              color: DesignSystem.accentBerry,
+              fontWeight: FontWeight.w900,
+              letterSpacing: 1.0,
+              fontSize: 10,
             ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildPuzzleArea(NonogramState state) {
-    return SingleChildScrollView(
-      scrollDirection: Axis.horizontal,
-      child: SingleChildScrollView(
-        child: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              // Column Clues
-              Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const SizedBox(width: 60), // Space for row clues
-                  for (int c = 0; c < state.size; c++)
-                    _buildColClue(state.colClues[c]),
-                ],
-              ),
-              const SizedBox(height: 4),
-              // Grid with Row Clues
-              for (int r = 0; r < state.size; r++)
-                Row(
-                  mainAxisSize: MainAxisSize.min,
-                  children: [
-                    _buildRowClue(state.rowClues[r]),
-                    const SizedBox(width: 4),
-                    for (int c = 0; c < state.size; c++)
-                      _buildCell(state, r, c),
-                  ],
-                ),
-            ],
           ),
-        ),
+        ],
       ),
     );
   }
 
   Widget _buildColClue(List<int> clues) {
-    final theme = Theme.of(context);
     return Container(
-      width: 50,
-      height: 70,
-      margin: const EdgeInsets.symmetric(horizontal: 2),
+      height: 40,
+      margin: const EdgeInsets.symmetric(horizontal: 1),
       child: Column(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           for (int clue in clues)
-            Padding(
-              padding: const EdgeInsets.only(bottom: 2),
-              child: Text(
-                clue.toString(),
-                style: theme.textTheme.labelMedium?.copyWith(
-                  fontWeight: FontWeight.w900,
-                  color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
+            Expanded(
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  clue.toString(),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w900,
+                    color: Colors.white70,
+                    fontSize: 10,
+                  ),
                 ),
               ),
             ),
@@ -166,22 +174,24 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
   }
 
   Widget _buildRowClue(List<int> clues) {
-    final theme = Theme.of(context);
     return Container(
-      width: 60,
-      height: 50,
-      margin: const EdgeInsets.symmetric(vertical: 2),
+      width: 40,
+      margin: const EdgeInsets.symmetric(vertical: 1),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
           for (int clue in clues)
             Padding(
-              padding: const EdgeInsets.only(right: 4),
-              child: Text(
-                clue.toString(),
-                style: theme.textTheme.labelMedium?.copyWith(
-                  fontWeight: FontWeight.w900,
-                  color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
+              padding: const EdgeInsets.only(right: 2),
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Text(
+                  clue.toString(),
+                  style: const TextStyle(
+                    fontWeight: FontWeight.w900,
+                    color: Colors.white70,
+                    fontSize: 10,
+                  ),
                 ),
               ),
             ),
@@ -191,35 +201,25 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
   }
 
   Widget _buildCell(NonogramState state, int r, int c) {
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
     final value = state.grid[r][c];
 
-    return GestureDetector(
-      onTap: () {
-        HapticFeedbackUtil.lightImpact();
-        ref.read(nonogramNotifierProvider.notifier).toggleCell(r, c, _isMarkMode);
-      },
-      child: Container(
-        width: 50,
-        height: 50,
-        margin: const EdgeInsets.all(2),
-        decoration: BoxDecoration(
-          color: value == 1
-              ? DesignSystem.gameRose
-              : (isDark ? DesignSystem.darkSurfaceElevated : Colors.white),
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(
-            color: isDark ? DesignSystem.darkOutline : DesignSystem.lightOutline,
-            width: 1,
-          ),
-        ),
+    return Padding(
+      padding: const EdgeInsets.all(1),
+      child: TangibleContainer(
+        depth: value == 1 ? 0 : 2.0,
+        radius: 4,
+        color: value == 1 ? DesignSystem.accentBerry : DesignSystem.surface,
+        onTap: () {
+          HapticFeedbackUtil.lightImpact();
+          ref.read(nonogramNotifierProvider.notifier).toggleCell(r, c, _isMarkMode);
+        },
         child: Center(
           child: value == 2
-              ? Icon(
-                  Icons.close_rounded,
-                  size: 24,
-                  color: theme.colorScheme.onSurface.withValues(alpha: 0.3),
+              ? const FittedBox(
+                  child: Icon(
+                    Icons.close_rounded,
+                    color: DesignSystem.inkSlate,
+                  ),
                 )
               : null,
         ),
@@ -227,72 +227,56 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
     );
   }
 
-  Widget _buildControls(ThemeData theme) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+
+  Widget _buildControls() {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          _buildModeButton(
-            icon: Icons.square_rounded,
-            label: 'FILL',
-            isActive: !_isMarkMode,
-            onTap: () {
-              HapticFeedbackUtil.selectionClick();
-              setState(() => _isMarkMode = false);
-            },
-          ),
-          const SizedBox(width: 24),
-          _buildModeButton(
-            icon: Icons.close_rounded,
-            label: 'MARK X',
-            isActive: _isMarkMode,
-            onTap: () {
-              HapticFeedbackUtil.selectionClick();
-              setState(() => _isMarkMode = true);
-            },
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildModeButton({
-    required IconData icon,
-    required String label,
-    required bool isActive,
-    required VoidCallback onTap,
-  }) {
-    final theme = Theme.of(context);
-    final color = isActive ? DesignSystem.gameRose : theme.colorScheme.onSurface.withValues(alpha: 0.4);
-
-    return GestureDetector(
-      onTap: onTap,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 200),
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-        decoration: BoxDecoration(
-          color: isActive ? DesignSystem.gameRose.withValues(alpha: 0.1) : Colors.transparent,
-          borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
-          border: Border.all(
-            color: isActive ? DesignSystem.gameRose.withValues(alpha: 0.5) : theme.colorScheme.outline.withValues(alpha: 0.1),
-            width: 1.5,
-          ),
-        ),
-        child: Row(
-          children: [
-            Icon(icon, size: 20, color: color),
-            const SizedBox(width: 8),
-            Text(
-              label,
-              style: theme.textTheme.labelMedium?.copyWith(
-                color: color,
-                fontWeight: FontWeight.w800,
-                letterSpacing: 1.0,
+          Expanded(
+            child: TangibleButton(
+              onTap: () {
+                HapticFeedbackUtil.selectionClick();
+                setState(() => _isMarkMode = false);
+              },
+              color: !_isMarkMode ? DesignSystem.accentBerry : DesignSystem.surface,
+              shadowColor: !_isMarkMode ? DesignSystem.accentBerry.withValues(alpha: 0.8) : DesignSystem.outlineVariant,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.square_rounded, color: !_isMarkMode ? Colors.white : DesignSystem.ink),
+                  const SizedBox(width: 8),
+                  Text(
+                    'FILL',
+                    style: TextStyle(color: !_isMarkMode ? Colors.white : DesignSystem.ink),
+                  ),
+                ],
               ),
             ),
-          ],
-        ),
+          ),
+          const SizedBox(width: DesignSystem.spaceMD),
+          Expanded(
+            child: TangibleButton(
+              onTap: () {
+                HapticFeedbackUtil.selectionClick();
+                setState(() => _isMarkMode = true);
+              },
+              color: _isMarkMode ? DesignSystem.accentBerry : DesignSystem.surface,
+              shadowColor: _isMarkMode ? DesignSystem.accentBerry.withValues(alpha: 0.8) : DesignSystem.outlineVariant,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(Icons.close_rounded, color: _isMarkMode ? Colors.white : DesignSystem.ink),
+                  const SizedBox(width: 8),
+                  Text(
+                    'MARK',
+                    style: TextStyle(color: _isMarkMode ? Colors.white : DesignSystem.ink),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        ],
       ),
     );
   }

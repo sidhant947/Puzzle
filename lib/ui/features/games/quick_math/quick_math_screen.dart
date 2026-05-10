@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../widgets/tangible.dart';
 import '../../../../providers/user_providers.dart';
 import 'quick_math_provider.dart';
 
@@ -47,7 +48,6 @@ class _QuickMathScreenState extends ConsumerState<QuickMathScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(quickMathNotifierProvider);
     final notifier = ref.read(quickMathNotifierProvider.notifier);
-    final theme = Theme.of(context);
 
     ref.listen(quickMathNotifierProvider, (previous, next) {
       if (previous != null && !previous.isGameOver && next.isGameOver) {
@@ -57,83 +57,151 @@ class _QuickMathScreenState extends ConsumerState<QuickMathScreen> {
 
     return GameScaffold(
       title: 'QUICK MATH',
-      body: state.isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : SafeArea(
-              child: Padding(
-                padding: const EdgeInsets.all(24.0),
-                child: Column(
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        _buildStat('TIME', '${state.timeLeft}s', DesignSystem.gameRose, theme),
-                        _buildStat('SCORE', '${state.score}', DesignSystem.gameGreen, theme),
-                      ],
-                    ),
-                    const Spacer(),
-                    Text(
-                      state.currentProblem.equation,
-                      style: theme.textTheme.displayLarge?.copyWith(
-                        fontWeight: FontWeight.w900,
-                        color: theme.colorScheme.onSurface,
-                      ),
-                    ),
-                    const SizedBox(height: 20),
-                    Container(
-                      height: 80,
-                      width: 200,
-                      decoration: BoxDecoration(
-                        color: theme.colorScheme.surfaceContainerHighest,
-                        borderRadius: BorderRadius.circular(16),
-                        border: Border.all(color: theme.colorScheme.primary, width: 2),
-                      ),
-                      child: Center(
-                        child: Text(
-                          state.currentInput,
-                          style: theme.textTheme.displayMedium?.copyWith(
-                            fontWeight: FontWeight.bold,
-                            color: theme.colorScheme.primary,
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          if (state.isLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          return SafeArea(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+              child: Column(
+                children: [
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _buildStat('TIME', '${state.timeLeft}s', DesignSystem.accentBerry),
+                      _buildStat('SCORE', '${state.score}', DesignSystem.accentEmerald),
+                    ],
+                  ),
+                  const Spacer(),
+                  ConstrainedBox(
+                    constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.3),
+                    child: TangibleContainer(
+                      depth: 4.0,
+                      color: DesignSystem.ink,
+                      padding: const EdgeInsets.all(20),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Flexible(
+                            child: FittedBox(
+                              child: Text(
+                                state.currentProblem.equation,
+                                style: const TextStyle(
+                                  fontSize: 48,
+                                  fontWeight: FontWeight.w900,
+                                  color: Colors.white,
+                                ),
+                              ),
+                            ),
                           ),
-                        ),
+                          const SizedBox(height: 16),
+                          TangibleContainer(
+                            depth: 2.0,
+                            color: DesignSystem.surface,
+                            padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
+                            child: Text(
+                              state.currentInput.isEmpty ? '?' : state.currentInput,
+                              style: const TextStyle(
+                                fontSize: 32,
+                                fontWeight: FontWeight.bold,
+                                color: DesignSystem.primary,
+                              ),
+                            ),
+                          ),
+                        ],
                       ),
                     ),
-                    const Spacer(),
-                    _buildNumberPad(notifier, theme),
-                    const SizedBox(height: 40),
-                  ],
-                ),
+                  ),
+                  const Spacer(),
+                  _buildNumberPad(notifier, constraints),
+                  const SizedBox(height: 20),
+                ],
               ),
             ),
+          );
+        },
+      ),
     );
   }
 
-  Widget _buildStat(String label, String value, Color color, ThemeData theme) {
-    return Column(
-      children: [
-        Text(label, style: theme.textTheme.labelSmall),
-        Text(value, style: theme.textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.w900, color: color)),
-      ],
+  Widget _buildStat(String label, String value, Color color) {
+    return TangibleContainer(
+      depth: 2.0,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Column(
+        children: [
+          Text(
+            label,
+            style: const TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.bold,
+              color: DesignSystem.outline,
+              letterSpacing: 1.2,
+            ),
+          ),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w900,
+              color: color,
+            ),
+          ),
+        ],
+      ),
     );
   }
 
-  Widget _buildNumberPad(QuickMathNotifier notifier, ThemeData theme) {
+  Widget _buildNumberPad(QuickMathNotifier notifier, BoxConstraints constraints) {
     return Column(
       children: [
         for (var row in [[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: row.map((n) => _PadKey(
-              label: n.toString(),
-              onTap: () => notifier.onNumberPressed(n.toString()),
-            )).toList(),
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: row.map((n) => Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 4),
+                child: _PadKey(
+                  label: n.toString(),
+                  onTap: () => notifier.onNumberPressed(n.toString()),
+                  width: (constraints.maxWidth - 64) / 3,
+                ),
+              )).toList(),
+            ),
           ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _PadKey(label: 'C', onTap: notifier.clearInput, color: DesignSystem.gameRose),
-            _PadKey(label: '0', onTap: () => notifier.onNumberPressed('0')),
-            _PadKey(label: '⌫', onTap: notifier.onBackspace, color: Colors.grey),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: _PadKey(
+                label: 'C',
+                onTap: notifier.clearInput,
+                color: DesignSystem.accentBerry,
+                width: (constraints.maxWidth - 64) / 3,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: _PadKey(
+                label: '0',
+                onTap: () => notifier.onNumberPressed('0'),
+                width: (constraints.maxWidth - 64) / 3,
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 4),
+              child: _PadKey(
+                label: '⌫',
+                onTap: notifier.onBackspace,
+                color: DesignSystem.outline,
+                width: (constraints.maxWidth - 64) / 3,
+              ),
+            ),
           ],
         ),
       ],
@@ -145,31 +213,28 @@ class _PadKey extends StatelessWidget {
   final String label;
   final VoidCallback onTap;
   final Color? color;
+  final double width;
 
-  const _PadKey({required this.label, required this.onTap, this.color});
+  const _PadKey({required this.label, required this.onTap, this.color, required this.width});
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Padding(
-      padding: const EdgeInsets.all(6.0),
-      child: InkWell(
+    return SizedBox(
+      width: width.clamp(0, 80),
+      height: 60,
+      child: TangibleButton(
         onTap: onTap,
-        borderRadius: BorderRadius.circular(12),
-        child: Container(
-          width: 70,
-          height: 60,
-          decoration: BoxDecoration(
-            color: color?.withValues(alpha: 0.1) ?? theme.colorScheme.surface,
-            border: Border.all(color: color ?? theme.colorScheme.outline.withValues(alpha: 0.2)),
-            borderRadius: BorderRadius.circular(12),
-          ),
-          child: Center(
+        color: color ?? DesignSystem.surface,
+        shadowColor: color?.withValues(alpha: 0.2) ?? DesignSystem.outlineVariant,
+        padding: EdgeInsets.zero,
+        child: Center(
+          child: FittedBox(
             child: Text(
               label,
-              style: theme.textTheme.headlineSmall?.copyWith(
+              style: TextStyle(
+                fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: color ?? theme.colorScheme.onSurface,
+                color: color != null && color != DesignSystem.surface ? Colors.white : DesignSystem.ink,
               ),
             ),
           ),

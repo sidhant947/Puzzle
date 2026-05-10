@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../widgets/tangible.dart';
+import '../../../core/juice/game_scaffold.dart';
 import 'memory_matrix_provider.dart';
 
 class MemoryMatrixScreen extends ConsumerWidget {
@@ -11,7 +13,6 @@ class MemoryMatrixScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(memoryMatrixNotifierProvider);
-    final theme = Theme.of(context);
 
     ref.listen(memoryMatrixNotifierProvider, (previous, next) {
       if (next.status == MemoryMatrixStatus.completed && 
@@ -58,100 +59,120 @@ class MemoryMatrixScreen extends ConsumerWidget {
       }
     });
 
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        title: const Text('MEMORY MATRIX'),
-        actions: [
-          IconButton(
-            onPressed: () => ref.read(memoryMatrixNotifierProvider.notifier).reset(),
-            icon: const Icon(Icons.refresh_rounded),
+    return GameScaffold(
+      title: 'MEMORY MATRIX',
+      subtitle: 'Memorize the pattern and tap the tiles.',
+      actions: [
+        TangibleButton(
+          color: DesignSystem.surface,
+          shadowColor: DesignSystem.outlineVariant,
+          onTap: () {
+            HapticFeedbackUtil.mediumImpact();
+            ref.read(memoryMatrixNotifierProvider.notifier).reset();
+          },
+          padding: const EdgeInsets.all(12),
+          child: const Icon(
+            Icons.refresh_rounded,
+            color: DesignSystem.ink,
+            size: 20,
           ),
-          const SizedBox(width: 8),
-        ],
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: 24),
-            _buildHeader(context, state),
-            const SizedBox(height: 48),
-            Expanded(
-              child: Center(
-                child: _buildBoard(context, ref, state),
-              ),
-            ),
-            _buildInstruction(context, state),
-            const SizedBox(height: 48),
-          ],
         ),
+      ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Column(
+            children: [
+              const SizedBox(height: DesignSystem.spaceMD),
+              _buildHeader(state),
+              const Spacer(),
+              ConstrainedBox(
+                constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.5),
+                child: Center(
+                  child: _buildBoard(ref, state),
+                ),
+              ),
+              const Spacer(),
+              _buildInstruction(state),
+              const SizedBox(height: DesignSystem.spaceLG),
+            ],
+          );
+        },
       ),
     );
   }
 
-  Widget _buildHeader(BuildContext context, MemoryMatrixState state) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: [
-          _buildStatCard(context, 'LEVEL', '${state.currentLevel}/5', DesignSystem.gameAmber),
-          _buildStatCard(context, 'TARGET', '${state.targetPattern.length} TILES', DesignSystem.gameAmber),
-        ],
-      ),
+  Widget _buildHeader(MemoryMatrixState state) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _buildStatCard('LEVEL', '${state.currentLevel}/5', DesignSystem.accentAmber),
+        _buildStatCard('TARGET', '${state.targetPattern.length} TILES', DesignSystem.primary),
+      ],
     );
   }
 
-  Widget _buildStatCard(BuildContext context, String label, String value, Color color) {
-    final theme = Theme.of(context);
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-      decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
-        border: Border.all(color: color.withValues(alpha: 0.2), width: 1.5),
-      ),
+  Widget _buildStatCard(String label, String value, Color color) {
+    return TangibleContainer(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      color: DesignSystem.surface,
+      depth: 2,
       child: Column(
         children: [
           Text(
             label,
-            style: theme.textTheme.labelSmall?.copyWith(color: color, fontWeight: FontWeight.w900),
+            style: TextStyle(
+              fontSize: 10,
+              color: color,
+              fontWeight: FontWeight.w900,
+              letterSpacing: 1.0,
+            ),
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: 2),
           Text(
             value,
-            style: theme.textTheme.titleLarge?.copyWith(color: color, fontWeight: FontWeight.w800),
+            style: const TextStyle(
+              fontSize: 16,
+              color: DesignSystem.ink,
+              fontWeight: FontWeight.w900,
+            ),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildBoard(BuildContext context, WidgetRef ref, MemoryMatrixState state) {
-    return AspectRatio(
-      aspectRatio: 1,
-      child: Padding(
-        padding: const EdgeInsets.all(24),
-        child: GridView.builder(
-          physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: state.boardSize,
-            crossAxisSpacing: 10,
-            mainAxisSpacing: 10,
+  Widget _buildBoard(WidgetRef ref, MemoryMatrixState state) {
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final boardSize = constraints.biggest.shortestSide;
+        return TangibleContainer(
+          depth: 4.0,
+          color: DesignSystem.ink,
+          shadowColor: DesignSystem.ink.withValues(alpha: 0.2),
+          padding: const EdgeInsets.all(DesignSystem.spaceXS),
+          child: SizedBox(
+            width: boardSize,
+            height: boardSize,
+            child: GridView.builder(
+              padding: EdgeInsets.zero,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: state.boardSize,
+                crossAxisSpacing: 4,
+                mainAxisSpacing: 4,
+              ),
+              itemCount: state.boardSize * state.boardSize,
+              itemBuilder: (context, index) {
+                return _buildTile(ref, state, index);
+              },
+            ),
           ),
-          itemCount: state.boardSize * state.boardSize,
-          itemBuilder: (context, index) {
-            return _buildTile(context, ref, state, index);
-          },
-        ),
-      ),
+        );
+      },
     );
   }
 
-  Widget _buildTile(BuildContext context, WidgetRef ref, MemoryMatrixState state, int index) {
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-
+  Widget _buildTile(WidgetRef ref, MemoryMatrixState state, int index) {
     final isTarget = state.targetPattern.contains(index);
     final isSelected = state.selectedPattern.contains(index);
     final isMemorizing = state.status == MemoryMatrixStatus.memorizing;
@@ -159,52 +180,44 @@ class MemoryMatrixScreen extends ConsumerWidget {
     final isFailure = state.status == MemoryMatrixStatus.failure;
 
     Color tileColor;
+    double depth = 2;
+    
     if (isMemorizing && isTarget) {
-      tileColor = DesignSystem.gameAmber;
+      tileColor = DesignSystem.accentAmber;
+      depth = 0;
     } else if (isSelected) {
-      tileColor = DesignSystem.gameAmber;
+      tileColor = DesignSystem.accentAmber;
+      depth = 0;
     } else if (isSuccess && isTarget) {
-      tileColor = DesignSystem.gameGreen;
+      tileColor = DesignSystem.accentEmerald;
+      depth = 0;
     } else if (isFailure && isTarget) {
-      tileColor = DesignSystem.gameAmber.withValues(alpha: 0.5);
+      tileColor = DesignSystem.accentAmber.withValues(alpha: 0.5);
+      depth = 1;
     } else {
-      tileColor = isDark ? DesignSystem.darkSurfaceElevated : DesignSystem.lightOutlineVariant;
+      tileColor = DesignSystem.surface;
     }
 
-    return GestureDetector(
+    return TangibleContainer(
+      depth: depth,
+      radius: DesignSystem.radiusXS,
+      color: tileColor,
       onTap: () {
         HapticFeedbackUtil.lightImpact();
         ref.read(memoryMatrixNotifierProvider.notifier).selectTile(index);
       },
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 300),
-        curve: Curves.easeOutCubic,
-        decoration: BoxDecoration(
-          color: tileColor,
-          borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
-          boxShadow: (isMemorizing && isTarget) || isSelected
-              ? [
-                  BoxShadow(
-                    color: DesignSystem.gameAmber.withValues(alpha: 0.3),
-                    blurRadius: 8,
-                    offset: const Offset(0, 4),
-                  )
-                ]
-              : null,
-        ),
-      ),
+      child: const SizedBox.expand(),
     );
   }
 
-  Widget _buildInstruction(BuildContext context, MemoryMatrixState state) {
-    final theme = Theme.of(context);
+  Widget _buildInstruction(MemoryMatrixState state) {
     String text;
-    Color color = theme.colorScheme.onSurface.withValues(alpha: 0.6);
+    Color color = DesignSystem.inkSlate;
 
     switch (state.status) {
       case MemoryMatrixStatus.memorizing:
         text = 'MEMORIZE THE PATTERN';
-        color = DesignSystem.gameAmber;
+        color = DesignSystem.accentAmber;
         break;
       case MemoryMatrixStatus.playing:
         text = 'SELECT THE TILES';
@@ -212,20 +225,27 @@ class MemoryMatrixScreen extends ConsumerWidget {
       case MemoryMatrixStatus.success:
       case MemoryMatrixStatus.completed:
         text = 'PERFECT!';
-        color = DesignSystem.gameGreen;
+        color = DesignSystem.accentEmerald;
         break;
       case MemoryMatrixStatus.failure:
         text = 'WRONG TILE';
-        color = DesignSystem.lightError;
+        color = DesignSystem.error;
         break;
     }
 
-    return Text(
-      text,
-      style: theme.textTheme.labelLarge?.copyWith(
-        color: color,
-        letterSpacing: 2.0,
-        fontWeight: FontWeight.w900,
+    return TangibleContainer(
+      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+      color: color.withValues(alpha: 0.1),
+      radius: DesignSystem.radiusFull,
+      depth: 1,
+      child: Text(
+        text,
+        style: TextStyle(
+          color: color,
+          fontSize: 12,
+          letterSpacing: 1.5,
+          fontWeight: FontWeight.w900,
+        ),
       ),
     );
   }

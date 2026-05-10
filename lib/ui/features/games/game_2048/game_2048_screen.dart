@@ -1,4 +1,3 @@
-import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'game_2048_provider.dart';
@@ -7,6 +6,8 @@ import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/design_system.dart';
 import '../../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/tangible.dart';
+import '../../../core/juice/game_scaffold.dart';
 
 class Game2048Screen extends ConsumerStatefulWidget {
   const Game2048Screen({super.key});
@@ -20,94 +21,68 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
   Widget build(BuildContext context) {
     final state = ref.watch(game2048NotifierProvider);
     final notifier = ref.read(game2048NotifierProvider.notifier);
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
 
     ref.listen(game2048NotifierProvider, (previous, next) {
       if (next.isGameOver && !(previous?.isGameOver ?? false)) {
         HapticFeedbackUtil.heavyImpact();
-        _showGameOverDialog(context, ref, next, theme);
+        _showGameOverDialog(context, ref, next);
       }
     });
 
-    return Scaffold(
-      backgroundColor: theme.colorScheme.surface,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
-          onPressed: () => Navigator.of(context).pop(),
+    return GameScaffold(
+      title: '2048',
+      subtitle: 'Swipe in any direction to merge tiles and reach the 2048 tile!',
+      actions: [
+        TangibleButton(
+          color: DesignSystem.surface,
+          shadowColor: DesignSystem.outlineVariant,
+          onTap: () {
+            HapticFeedbackUtil.mediumImpact();
+            notifier.reset();
+          },
+          padding: const EdgeInsets.all(12),
+          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
         ),
-        title: Text(
-          '2048',
-          style: theme.textTheme.titleMedium?.copyWith(
-            letterSpacing: 4,
-            fontWeight: FontWeight.w800,
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh_rounded),
-            onPressed: () {
-              HapticFeedbackUtil.mediumImpact();
-              notifier.reset();
-            },
-          ),
-          const SizedBox(width: 8),
-        ],
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: DesignSystem.spaceLG),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'MERGE TILES',
-                        style: theme.textTheme.labelSmall?.copyWith(
-                          color: theme.colorScheme.primary,
-                          letterSpacing: 2,
-                          fontWeight: FontWeight.w900,
-                        ),
-                      ),
-                      Text(
-                        'Reach the 2048 tile!',
-                        style: theme.textTheme.bodySmall,
-                      ),
-                    ],
-                  ),
-                  _buildScoreBoard('SCORE', state.score, theme, isDark),
-                ],
-              ),
-            ),
-            const Spacer(),
-            _buildGameBoard(state, notifier, theme, isDark),
-            const Spacer(flex: 2),
-            Padding(
-              padding: const EdgeInsets.all(24.0),
-              child: Text(
-                'SWIPE IN ANY DIRECTION TO MERGE',
-                style: theme.textTheme.labelSmall?.copyWith(
-                  color: theme.colorScheme.onSurface.withValues(alpha: 0.4), 
-                  letterSpacing: 1.5,
-                  fontWeight: FontWeight.w800,
+      ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Column(
+            children: [
+              const SizedBox(height: DesignSystem.spaceSM),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+                    _buildScoreBoard('SCORE', state.score),
+                  ],
                 ),
-                textAlign: TextAlign.center,
               ),
-            ),
-            const SizedBox(height: DesignSystem.spaceLG),
-          ],
-        ),
+              const Spacer(),
+              _buildGameBoard(state, notifier, constraints.maxHeight * 0.55),
+              const Spacer(flex: 2),
+              const Padding(
+                padding: EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG, vertical: DesignSystem.spaceSM),
+                child: Text(
+                  'SWIPE IN ANY DIRECTION TO MERGE',
+                  style: TextStyle(
+                    color: DesignSystem.inkSlate,
+                    letterSpacing: 1.2,
+                    fontWeight: FontWeight.w800,
+                    fontSize: 10,
+                  ),
+                  textAlign: TextAlign.center,
+                ),
+              ),
+              const SizedBox(height: DesignSystem.spaceLG),
+            ],
+          );
+        },
       ),
     );
   }
 
-  Widget _buildGameBoard(Game2048State state, Game2048Notifier notifier, ThemeData theme, bool isDark) {
+  Widget _buildGameBoard(Game2048State state, Game2048Notifier notifier, double maxHeight) {
     return Center(
       child: GestureDetector(
         onVerticalDragEnd: (details) {
@@ -130,55 +105,57 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
             notifier.move(1, 0);
           }
         },
-        child: Container(
-          padding: const EdgeInsets.all(DesignSystem.spaceXS),
-          margin: const EdgeInsets.symmetric(horizontal: 24),
-          decoration: BoxDecoration(
-            color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.1 : 0.05),
-            borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
-            border: Border.all(
-              color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.2 : 0.1),
-              width: 1,
-            ),
-          ),
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(DesignSystem.radiusLG - 4),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+          child: ConstrainedBox(
+            constraints: BoxConstraints(maxHeight: maxHeight),
+            child: TangibleContainer(
+              color: DesignSystem.ink,
+              shadowColor: DesignSystem.inkSlate,
+              radius: DesignSystem.radiusMD,
+              depth: 4.0, // Reduced depth
+              padding: const EdgeInsets.all(3.0), // Reduced padding
               child: Container(
-                color: theme.colorScheme.onSurface.withValues(alpha: 0.03),
-                child: LayoutBuilder(builder: (context, constraints) {
-                  final double cellSize = (constraints.maxWidth - (8 * 3)) / 4;
-                  return Stack(
-                    children: [
-                      // Empty background cells
-                      ...List.generate(16, (i) {
-                        int x = i % 4;
-                        int y = i ~/ 4;
-                        return Positioned(
-                          left: x * (cellSize + 8),
-                          top: y * (cellSize + 8),
-                          width: cellSize,
-                          height: cellSize,
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: theme.colorScheme.onSurface.withValues(alpha: 0.02),
-                              borderRadius: BorderRadius.circular(12),
-                            ),
-                          ),
-                        );
-                      }),
-                      // Active tiles
-                      ...state.tiles.where((t) => !t.merged).map((tile) => AnimatedTile(
-                            key: ValueKey(tile.id),
-                            tile: tile,
-                            cellSize: cellSize,
-                            theme: theme,
-                            isDark: isDark,
-                          )),
-                    ],
-                  );
-                }),
+                decoration: BoxDecoration(
+                  color: DesignSystem.background,
+                  borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
+                ),
+                child: AspectRatio(
+                  aspectRatio: 1,
+                  child: Padding(
+                    padding: const EdgeInsets.all(6.0),
+                    child: LayoutBuilder(builder: (context, constraints) {
+                      final double cellSize = (constraints.maxWidth - (6 * 3)) / 4;
+                      return Stack(
+                        children: [
+                          // Empty background cells
+                          ...List.generate(16, (i) {
+                            int x = i % 4;
+                            int y = i ~/ 4;
+                            return Positioned(
+                              left: x * (cellSize + 6),
+                              top: y * (cellSize + 6),
+                              width: cellSize,
+                              height: cellSize,
+                              child: Container(
+                                decoration: BoxDecoration(
+                                  color: DesignSystem.outline.withValues(alpha: 0.5),
+                                  borderRadius: BorderRadius.circular(8),
+                                ),
+                              ),
+                            );
+                          }),
+                          // Active tiles
+                          ...state.tiles.where((t) => !t.merged).map((tile) => AnimatedTile(
+                                key: ValueKey(tile.id),
+                                tile: tile,
+                                cellSize: cellSize,
+                              )),
+                        ],
+                      );
+                    }),
+                  ),
+                ),
               ),
             ),
           ),
@@ -187,33 +164,28 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
     );
   }
 
-  Widget _buildScoreBoard(String label, int score, ThemeData theme, bool isDark) {
-    return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.primary.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(20),
-        border: Border.all(
-          color: theme.colorScheme.primary.withValues(alpha: 0.2),
-          width: 1,
-        ),
-      ),
+  Widget _buildScoreBoard(String label, int score) {
+    return TangibleContainer(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      radius: DesignSystem.radiusMD,
+      depth: 3.0,
       child: Column(
         children: [
           Text(
             label, 
-            style: theme.textTheme.labelSmall?.copyWith(
-              fontSize: 10, 
+            style: const TextStyle(
+              fontSize: 9, 
               fontWeight: FontWeight.w900, 
-              color: theme.colorScheme.primary, 
+              color: DesignSystem.inkSlate, 
               letterSpacing: 1.0
             )
           ),
           Text(
             score.toString(), 
-            style: theme.textTheme.titleLarge?.copyWith(
+            style: const TextStyle(
+              fontSize: 16,
               fontWeight: FontWeight.w900, 
-              color: theme.colorScheme.primary
+              color: DesignSystem.primary
             )
           ),
         ],
@@ -221,7 +193,7 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
     );
   }
 
-  void _showGameOverDialog(BuildContext context, WidgetRef ref, Game2048State state, ThemeData theme) async {
+  void _showGameOverDialog(BuildContext context, WidgetRef ref, Game2048State state) async {
     if (state.isGameWon) {
       await ref.read(gameStreakNotifierProvider.notifier).completeGame('game_2048');
 
@@ -252,31 +224,22 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        backgroundColor: theme.colorScheme.surface,
-        surfaceTintColor: Colors.transparent,
+        backgroundColor: DesignSystem.surface,
         shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(DesignSystem.radiusXL),
-          side: BorderSide(color: theme.colorScheme.outline.withValues(alpha: 0.2)),
+          borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
         ),
         title: Center(
           child: Column(
             children: [
-              Container(
-                padding: const EdgeInsets.all(DesignSystem.spaceMD),
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.primary.withValues(alpha: 0.1),
-                  shape: BoxShape.circle,
-                ),
-                child: Icon(
-                  Icons.sentiment_very_dissatisfied_rounded,
-                  color: theme.colorScheme.primary,
-                  size: 48,
-                ),
+              const Icon(
+                Icons.sentiment_very_dissatisfied_rounded,
+                color: DesignSystem.error,
+                size: 48,
               ),
               const SizedBox(height: DesignSystem.spaceMD),
-              Text(
+              const Text(
                 'GAME OVER',
-                style: theme.textTheme.headlineSmall?.copyWith(
+                style: TextStyle(
                   fontWeight: FontWeight.w900,
                   letterSpacing: 2,
                 ),
@@ -287,32 +250,33 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
         content: Text(
           'FINAL SCORE: ${state.score}',
           textAlign: TextAlign.center,
-          style: theme.textTheme.bodyMedium?.copyWith(
-            fontWeight: FontWeight.w700,
-          ),
+          style: const TextStyle(fontWeight: FontWeight.w700),
         ),
         actions: [
-          Row(
-            children: [
-              Expanded(
-                child: TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('EXIT'),
-                ),
-              ),
-              Expanded(
-                child: ElevatedButton(
-                  onPressed: () {
+          Center(
+            child: Column(
+              children: [
+                TangibleButton(
+                  onTap: () {
                     ref.read(game2048NotifierProvider.notifier).reset();
                     Navigator.of(context).pop();
                   },
                   child: const Text('RETRY'),
                 ),
-              ),
-            ],
+                const SizedBox(height: DesignSystem.spaceMD),
+                TextButton(
+                  onPressed: () {
+                    Navigator.of(context).pop();
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text(
+                    'EXIT',
+                    style: TextStyle(color: DesignSystem.inkSlate, fontWeight: FontWeight.w800),
+                  ),
+                ),
+                const SizedBox(height: 12),
+              ],
+            ),
           ),
         ],
       ),
@@ -323,10 +287,8 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
 class AnimatedTile extends StatefulWidget {
   final Tile tile;
   final double cellSize;
-  final ThemeData theme;
-  final bool isDark;
 
-  const AnimatedTile({super.key, required this.tile, required this.cellSize, required this.theme, required this.isDark});
+  const AnimatedTile({super.key, required this.tile, required this.cellSize});
 
   @override
   State<AnimatedTile> createState() => _AnimatedTileState();
@@ -394,7 +356,6 @@ class _AnimatedTileState extends State<AnimatedTile> with SingleTickerProviderSt
   Widget build(BuildContext context) {
     final tile = widget.tile;
     final cellSize = widget.cellSize;
-    final theme = widget.theme;
 
     return AnimatedPositioned(
       duration: const Duration(milliseconds: 200),
@@ -405,26 +366,18 @@ class _AnimatedTileState extends State<AnimatedTile> with SingleTickerProviderSt
       height: cellSize,
       child: ScaleTransition(
         scale: _scaleAnimation,
-        child: Container(
-          decoration: BoxDecoration(
-            color: _getTileColor(tile.value, theme, widget.isDark),
-            borderRadius: BorderRadius.circular(12),
-            boxShadow: [
-              if (tile.value >= 128)
-                BoxShadow(
-                  color: theme.colorScheme.primary.withValues(alpha: 0.3),
-                  blurRadius: 10,
-                  spreadRadius: 2,
-                ),
-            ],
-          ),
+        child: TangibleContainer(
+          color: _getTileColor(tile.value),
+          shadowColor: _getShadowColor(tile.value),
+          radius: 12,
+          depth: 4.0,
           child: Center(
             child: Text(
               tile.value.toString(),
-              style: theme.textTheme.headlineSmall?.copyWith(
+              style: TextStyle(
                 fontSize: _getFontSize(tile.value),
                 fontWeight: FontWeight.w900,
-                color: _getTextColor(tile.value, theme, widget.isDark),
+                color: _getTextColor(tile.value),
               ),
             ),
           ),
@@ -439,20 +392,28 @@ class _AnimatedTileState extends State<AnimatedTile> with SingleTickerProviderSt
     return 14;
   }
 
-  Color _getTileColor(int value, ThemeData theme, bool isDark) {
-    final primary = theme.colorScheme.primary;
-    
-    // Gradient based on value
-    double progress = (log(value) / log(2048)).clamp(0.05, 1.0);
-    return primary.withValues(alpha: isDark ? progress * 0.8 + 0.1 : progress * 0.9 + 0.05);
+  Color _getTileColor(int value) {
+    // Logarithmic color mapping using DesignSystem accents
+    if (value <= 2) return DesignSystem.surface;
+    if (value <= 4) return DesignSystem.outline;
+    if (value <= 8) return DesignSystem.accentAmber.withValues(alpha: 0.3);
+    if (value <= 16) return DesignSystem.accentAmber.withValues(alpha: 0.6);
+    if (value <= 32) return DesignSystem.accentBerry.withValues(alpha: 0.3);
+    if (value <= 64) return DesignSystem.accentBerry.withValues(alpha: 0.6);
+    if (value <= 128) return DesignSystem.primary.withValues(alpha: 0.4);
+    if (value <= 256) return DesignSystem.primary.withValues(alpha: 0.7);
+    if (value <= 512) return DesignSystem.primary;
+    if (value <= 1024) return DesignSystem.accentEmerald;
+    return DesignSystem.accentAmber;
   }
 
-  Color _getTextColor(int value, ThemeData theme, bool isDark) {
-    double progress = (log(value) / log(2048)).clamp(0.0, 1.0);
-    if (progress > 0.4) {
-      return Colors.white;
-    } else {
-      return theme.colorScheme.onSurface;
-    }
+  Color _getShadowColor(int value) {
+    if (value <= 2) return DesignSystem.outlineVariant;
+    return Colors.black.withValues(alpha: 0.1);
+  }
+
+  Color _getTextColor(int value) {
+    if (value <= 4) return DesignSystem.ink;
+    return DesignSystem.ink;
   }
 }

@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'block_escape_engine.dart';
@@ -6,6 +7,8 @@ import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../widgets/tangible.dart';
+import '../../../core/juice/game_scaffold.dart';
 
 class BlockEscapeScreen extends ConsumerWidget {
   const BlockEscapeScreen({super.key});
@@ -13,7 +16,6 @@ class BlockEscapeScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(blockEscapeNotifierProvider);
-    final theme = Theme.of(context);
 
     ref.listen(blockEscapeNotifierProvider, (previous, next) {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
@@ -22,111 +24,124 @@ class BlockEscapeScreen extends ConsumerWidget {
       }
     });
 
-    return Scaffold(
-      backgroundColor: theme.colorScheme.surface,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
-          onPressed: () => Navigator.of(context).pop(),
+    return GameScaffold(
+      title: 'BLOCK ESCAPE',
+      subtitle: 'Slide the blocks to clear a path for the primary block to reach the exit.',
+      actions: [
+        TangibleButton(
+          color: DesignSystem.surface,
+          shadowColor: DesignSystem.outlineVariant,
+          onTap: () {
+            HapticFeedbackUtil.mediumImpact();
+            ref.read(blockEscapeNotifierProvider.notifier).newGame();
+          },
+          padding: const EdgeInsets.all(12),
+          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
         ),
-        title: Text(
-          'BLOCK ESCAPE',
-          style: theme.textTheme.titleMedium?.copyWith(
-            letterSpacing: 4,
-            fontWeight: FontWeight.w800,
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh_rounded),
-            onPressed: () {
-              HapticFeedbackUtil.mediumImpact();
-              ref.read(blockEscapeNotifierProvider.notifier).newGame();
-            },
-          ),
-          const SizedBox(width: 8),
-        ],
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: DesignSystem.spaceLG),
-            _buildInstructions(theme),
-            const Spacer(),
-            Center(
-              child: _buildBoard(context, ref, state),
-            ),
-            const Spacer(),
-            const SizedBox(height: DesignSystem.spaceXL),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildInstructions(ThemeData theme) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
-      child: Column(
-        children: [
-          Text(
-            'SLIDING PUZZLE',
-            style: theme.textTheme.labelSmall?.copyWith(
-              color: theme.colorScheme.primary,
-              letterSpacing: 2,
-              fontWeight: FontWeight.w900,
-            ),
-          ),
-          const SizedBox(height: DesignSystem.spaceSM),
-          Text(
-            'Slide the wooden blocks horizontally or vertically to clear a path for the red block to reach the exit.',
-            textAlign: TextAlign.center,
-            style: theme.textTheme.bodySmall?.copyWith(
-              color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
-              height: 1.5,
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildBoard(BuildContext context, WidgetRef ref, BlockEscapeState state) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final boardSize = constraints.maxWidth * 0.9;
-        final cellSize = boardSize / BlockEscapeEngine.size;
-
-        return Container(
-          width: boardSize,
-          height: boardSize,
-          decoration: BoxDecoration(
-            color: Colors.brown.shade800,
-            borderRadius: BorderRadius.circular(8),
-            border: Border.all(color: Colors.brown.shade900, width: 4),
-          ),
-          child: Stack(
+      ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Column(
             children: [
-              Positioned(
-                right: 0,
-                top: BlockEscapeEngine.exitRow * cellSize,
-                child: Container(
-                  width: 4,
-                  height: cellSize,
-                  color: Colors.red.withValues(alpha: 0.5),
+              const Spacer(),
+              _buildBoard(context, ref, state, constraints.maxHeight * 0.6),
+              const Spacer(),
+              const SizedBox(height: DesignSystem.spaceLG),
+            ],
+          );
+        },
+      ),
+    );
+  }
+
+  Widget _buildBoard(BuildContext context, WidgetRef ref, BlockEscapeState state, double maxHeight) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxHeight: maxHeight),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final boardSize = min(constraints.maxWidth, constraints.maxHeight);
+            final cellSize = boardSize / BlockEscapeEngine.size;
+
+            return TangibleContainer(
+              color: DesignSystem.ink,
+              shadowColor: DesignSystem.inkSlate,
+              depth: 4.0, // Reduced from 6.0
+              radius: DesignSystem.radiusMD,
+              padding: const EdgeInsets.all(3.0),
+              child: Container(
+                width: boardSize,
+                height: boardSize,
+                decoration: BoxDecoration(
+                  color: DesignSystem.background,
+                  borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
+                ),
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: Stack(
+                      children: [
+                        // Grid background
+                        for (var r = 0; r < BlockEscapeEngine.size; r++)
+                          for (var c = 0; c < BlockEscapeEngine.size; c++)
+                            Positioned(
+                              left: c * cellSize,
+                              top: r * cellSize,
+                              child: Container(
+                                width: cellSize,
+                                height: cellSize,
+                                decoration: BoxDecoration(
+                                  border: Border.all(
+                                    color: DesignSystem.outline.withValues(alpha: 0.5),
+                                    width: 0.5,
+                                  ),
+                                ),
+                              ),
+                            ),
+                        // Exit indicator
+                        Positioned(
+                          right: 0,
+                          top: BlockEscapeEngine.exitRow * cellSize,
+                          child: Container(
+                            width: 6, // Reduced from 8
+                            height: cellSize,
+                            decoration: BoxDecoration(
+                              color: DesignSystem.accentBerry,
+                              borderRadius: const BorderRadius.only(
+                                topLeft: Radius.circular(3),
+                                bottomLeft: Radius.circular(3),
+                              ),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: DesignSystem.accentBerry.withValues(alpha: 0.4),
+                                  blurRadius: 6,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        ...state.blocks.map((block) => _buildBlock(context, ref, block, cellSize)),
+                      ],
+                    ),
+                  ),
                 ),
               ),
-              ...state.blocks.map((block) => _buildBlock(context, ref, block, cellSize)),
-            ],
-          ),
-        );
-      },
+            );
+          },
+        ),
+      ),
     );
   }
+
 
   Widget _buildBlock(BuildContext context, WidgetRef ref, Block block, double cellSize) {
     final width = block.orientation == BlockOrientation.horizontal ? block.length * cellSize : cellSize;
     final height = block.orientation == BlockOrientation.vertical ? block.length * cellSize : cellSize;
+
+    final color = block.isTarget ? DesignSystem.accentBerry : DesignSystem.surface;
+    final shadowColor = block.isTarget ? const Color(0xFFBE185D) : DesignSystem.outlineVariant;
 
     return Positioned(
       left: block.x * cellSize,
@@ -134,52 +149,38 @@ class BlockEscapeScreen extends ConsumerWidget {
       child: GestureDetector(
         onHorizontalDragUpdate: block.orientation == BlockOrientation.horizontal
             ? (details) {
-                if (details.primaryDelta! > 5) {
-                  ref.read(blockEscapeNotifierProvider.notifier).moveBlock(block.id, 1, 0);
-                  HapticFeedbackUtil.lightImpact();
-                } else if (details.primaryDelta! < -5) {
-                  ref.read(blockEscapeNotifierProvider.notifier).moveBlock(block.id, -1, 0);
+                if (details.primaryDelta!.abs() > 10) {
+                  ref.read(blockEscapeNotifierProvider.notifier).moveBlock(block.id, details.primaryDelta! > 0 ? 1 : -1, 0);
                   HapticFeedbackUtil.lightImpact();
                 }
               }
             : null,
         onVerticalDragUpdate: block.orientation == BlockOrientation.vertical
             ? (details) {
-                if (details.primaryDelta! > 5) {
-                  ref.read(blockEscapeNotifierProvider.notifier).moveBlock(block.id, 0, 1);
-                  HapticFeedbackUtil.lightImpact();
-                } else if (details.primaryDelta! < -5) {
-                  ref.read(blockEscapeNotifierProvider.notifier).moveBlock(block.id, 0, -1);
+                if (details.primaryDelta!.abs() > 10) {
+                  ref.read(blockEscapeNotifierProvider.notifier).moveBlock(block.id, 0, details.primaryDelta! > 0 ? 1 : -1);
                   HapticFeedbackUtil.lightImpact();
                 }
               }
             : null,
-        child: Container(
-          width: width - 4,
-          height: height - 4,
-          margin: const EdgeInsets.all(2),
-          decoration: BoxDecoration(
-            color: block.isTarget ? Colors.red.shade400 : Colors.brown.shade400,
-            borderRadius: BorderRadius.circular(4),
-            boxShadow: [
-              BoxShadow(
-                color: Colors.black.withValues(alpha: 0.2),
-                blurRadius: 2,
-                offset: const Offset(2, 2),
-              ),
-            ],
-            border: Border.all(
-              color: block.isTarget ? Colors.red.shade700 : Colors.brown.shade600,
-              width: 2,
-            ),
-          ),
-          child: Center(
-            child: Container(
-              width: block.orientation == BlockOrientation.horizontal ? width * 0.6 : 4,
-              height: block.orientation == BlockOrientation.vertical ? height * 0.6 : 4,
-              decoration: BoxDecoration(
-                color: Colors.black.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(2),
+        child: AnimatedContainer(
+          duration: const Duration(milliseconds: 100),
+          width: width,
+          height: height,
+          padding: const EdgeInsets.all(4),
+          child: TangibleContainer(
+            depth: 4.0,
+            color: color,
+            shadowColor: shadowColor,
+            radius: DesignSystem.radiusXS,
+            child: Center(
+              child: Container(
+                width: block.orientation == BlockOrientation.horizontal ? width * 0.4 : 4,
+                height: block.orientation == BlockOrientation.vertical ? height * 0.4 : 4,
+                decoration: BoxDecoration(
+                  color: (block.isTarget ? Colors.white : DesignSystem.ink).withValues(alpha: 0.2),
+                  borderRadius: BorderRadius.circular(2),
+                ),
               ),
             ),
           ),
@@ -195,8 +196,8 @@ class BlockEscapeScreen extends ConsumerWidget {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'CONGRATS',
-        message: 'You successfully unblocked the red block!',
+        title: 'ESCAPE!',
+        message: 'You successfully cleared the path for the primary block!',
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();
@@ -209,3 +210,4 @@ class BlockEscapeScreen extends ConsumerWidget {
     );
   }
 }
+

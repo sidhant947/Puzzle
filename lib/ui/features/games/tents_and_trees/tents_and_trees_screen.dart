@@ -6,6 +6,8 @@ import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../widgets/tangible.dart';
+import '../../../core/juice/game_scaffold.dart';
 
 class TentsAndTreesScreen extends ConsumerWidget {
   const TentsAndTreesScreen({super.key});
@@ -13,7 +15,6 @@ class TentsAndTreesScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(tentsAndTreesNotifierProvider);
-    final theme = Theme.of(context);
 
     ref.listen(tentsAndTreesNotifierProvider, (previous, next) {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
@@ -22,71 +23,43 @@ class TentsAndTreesScreen extends ConsumerWidget {
       }
     });
 
-    return Scaffold(
-      backgroundColor: theme.colorScheme.surface,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: Text(
-          'TENTS & TREES',
-          style: theme.textTheme.titleMedium?.copyWith(
-            letterSpacing: 4,
-            fontWeight: FontWeight.w800,
+    return GameScaffold(
+      title: 'TENTS & TREES',
+      subtitle: 'Place tents next to trees. Numbers indicate how many tents are in each row/column. Tents cannot touch each other.',
+      actions: [
+        TangibleButton(
+          color: DesignSystem.surface,
+          shadowColor: DesignSystem.outlineVariant,
+          onTap: () {
+            HapticFeedbackUtil.mediumImpact();
+            ref.read(tentsAndTreesNotifierProvider.notifier).newGame();
+          },
+          padding: const EdgeInsets.all(12),
+          child: const Icon(
+            Icons.refresh_rounded,
+            color: DesignSystem.ink,
+            size: 20,
           ),
         ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh_rounded),
-            onPressed: () {
-              HapticFeedbackUtil.mediumImpact();
-              ref.read(tentsAndTreesNotifierProvider.notifier).newGame();
-            },
-          ),
-          const SizedBox(width: 8),
-        ],
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: DesignSystem.spaceLG),
-            _buildInstructions(theme),
-            const Spacer(),
-            Center(
-              child: _buildBoard(context, ref, state),
-            ),
-            const Spacer(),
-            const SizedBox(height: DesignSystem.spaceXL),
-          ],
-        ),
-      ),
-    );
-  }
-
-  Widget _buildInstructions(ThemeData theme) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
-      child: Column(
-        children: [
-          Text(
-            'CAMPING LOGIC',
-            style: theme.textTheme.labelSmall?.copyWith(
-              color: theme.colorScheme.primary,
-              letterSpacing: 2,
-              fontWeight: FontWeight.w900,
-            ),
-          ),
-          const SizedBox(height: DesignSystem.spaceSM),
-          Text(
-            'Place tents next to trees. Numbers indicate how many tents are in each row/column. Tents cannot touch each other.',
-            textAlign: TextAlign.center,
-            style: theme.textTheme.bodySmall?.copyWith(
-              color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
-              height: 1.5,
-            ),
-          ),
-        ],
+      ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Column(
+            children: [
+              const Spacer(),
+              ConstrainedBox(
+                constraints: BoxConstraints(
+                  maxHeight: constraints.maxHeight * 0.65,
+                ),
+                child: Center(
+                  child: _buildBoard(context, ref, state),
+                ),
+              ),
+              const Spacer(),
+              const SizedBox(height: DesignSystem.spaceMD),
+            ],
+          );
+        },
       ),
     );
   }
@@ -94,8 +67,8 @@ class TentsAndTreesScreen extends ConsumerWidget {
   Widget _buildBoard(BuildContext context, WidgetRef ref, TentsAndTreesState state) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final boardSize = constraints.maxWidth * 0.95;
-        final clueSize = boardSize * 0.15;
+        final boardSize = constraints.maxHeight < constraints.maxWidth ? constraints.maxHeight : constraints.maxWidth * 0.95;
+        final clueSize = boardSize * 0.12;
         final gridDisplaySize = boardSize - clueSize;
         final cellSize = gridDisplaySize / state.level.size;
 
@@ -104,20 +77,28 @@ class TentsAndTreesScreen extends ConsumerWidget {
           height: boardSize,
           child: Stack(
             children: [
+              // Column Clues
               Positioned(
                 top: 0,
                 left: clueSize,
                 child: Row(
                   children: List.generate(state.level.size, (i) {
+                    final isFull = _isColFull(state, i);
                     return SizedBox(
                       width: cellSize,
                       height: clueSize,
                       child: Center(
-                        child: Text(
-                          '${state.level.colClues[i]}',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: _isColFull(state, i) ? Colors.green : null,
+                        child: Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: FittedBox(
+                            child: Text(
+                              '${state.level.colClues[i]}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w900,
+                                fontSize: 16,
+                                color: isFull ? DesignSystem.success : DesignSystem.inkSlate,
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -125,20 +106,28 @@ class TentsAndTreesScreen extends ConsumerWidget {
                   }),
                 ),
               ),
+              // Row Clues
               Positioned(
                 top: clueSize,
                 left: 0,
                 child: Column(
                   children: List.generate(state.level.size, (i) {
+                    final isFull = _isRowFull(state, i);
                     return SizedBox(
                       width: clueSize,
                       height: cellSize,
                       child: Center(
-                        child: Text(
-                          '${state.level.rowClues[i]}',
-                          style: TextStyle(
-                            fontWeight: FontWeight.bold,
-                            color: _isRowFull(state, i) ? Colors.green : null,
+                        child: Padding(
+                          padding: const EdgeInsets.all(2.0),
+                          child: FittedBox(
+                            child: Text(
+                              '${state.level.rowClues[i]}',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w900,
+                                fontSize: 16,
+                                color: isFull ? DesignSystem.success : DesignSystem.inkSlate,
+                              ),
+                            ),
                           ),
                         ),
                       ),
@@ -146,40 +135,51 @@ class TentsAndTreesScreen extends ConsumerWidget {
                   }),
                 ),
               ),
+              // The Grid
               Positioned(
                 top: clueSize,
                 left: clueSize,
-                child: Container(
-                  width: gridDisplaySize,
-                  height: gridDisplaySize,
-                  decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey.shade400),
-                  ),
-                  child: GridView.builder(
-                    padding: EdgeInsets.zero,
-                    physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: state.level.size,
+                child: TangibleContainer(
+                  color: DesignSystem.surface,
+                  radius: DesignSystem.radiusSM,
+                  depth: 2,
+                  padding: EdgeInsets.zero,
+                  child: Container(
+                    width: gridDisplaySize,
+                    height: gridDisplaySize,
+                    decoration: BoxDecoration(
+                      border: Border.all(color: DesignSystem.outline, width: 1),
+                      borderRadius: BorderRadius.circular(DesignSystem.radiusSM - 1),
                     ),
-                    itemCount: state.level.size * state.level.size,
-                    itemBuilder: (context, index) {
-                      final r = index ~/ state.level.size;
-                      final c = index % state.level.size;
-                      final cell = state.grid[r][c];
-                      return GestureDetector(
-                        onTap: () {
-                          HapticFeedbackUtil.lightImpact();
-                          ref.read(tentsAndTreesNotifierProvider.notifier).toggleCell(r, c);
-                        },
-                        child: Container(
-                          decoration: BoxDecoration(
-                            border: Border.all(color: Colors.grey.shade300, width: 0.5),
-                            color: cell == CellType.grass ? Colors.green.withValues(alpha: 0.1) : Colors.transparent,
-                          ),
-                          child: _buildCellContent(cell),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(DesignSystem.radiusSM - 1),
+                      child: GridView.builder(
+                        padding: EdgeInsets.zero,
+                        physics: const NeverScrollableScrollPhysics(),
+                        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                          crossAxisCount: state.level.size,
                         ),
-                      );
-                    },
+                        itemCount: state.level.size * state.level.size,
+                        itemBuilder: (context, index) {
+                          final r = index ~/ state.level.size;
+                          final c = index % state.level.size;
+                          final cell = state.grid[r][c];
+                          return GestureDetector(
+                            onTap: () {
+                              HapticFeedbackUtil.lightImpact();
+                              ref.read(tentsAndTreesNotifierProvider.notifier).toggleCell(r, c);
+                            },
+                            child: Container(
+                              decoration: BoxDecoration(
+                                border: Border.all(color: DesignSystem.outline.withOpacity(0.3), width: 0.5),
+                                color: cell == CellType.grass ? DesignSystem.success.withOpacity(0.05) : Colors.transparent,
+                              ),
+                              child: _buildCellContent(cell),
+                            ),
+                          );
+                        },
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -193,11 +193,31 @@ class TentsAndTreesScreen extends ConsumerWidget {
   Widget _buildCellContent(CellType cell) {
     switch (cell) {
       case CellType.tree:
-        return const Center(child: Icon(Icons.park_rounded, color: Colors.green, size: 24));
+        return const Center(
+          child: Padding(
+            padding: EdgeInsets.all(2.0),
+            child: FittedBox(child: Icon(Icons.park_rounded, color: DesignSystem.success, size: 28)),
+          ),
+        );
       case CellType.tent:
-        return const Center(child: Icon(Icons.holiday_village_rounded, color: Colors.brown, size: 24));
+        return const Center(
+          child: Padding(
+            padding: EdgeInsets.all(2.0),
+            child: FittedBox(child: Icon(Icons.holiday_village_rounded, color: DesignSystem.accentOrange, size: 28)),
+          ),
+        );
       case CellType.grass:
-        return Center(child: Container(width: 4, height: 4, decoration: const BoxDecoration(color: Colors.green, shape: BoxShape.circle)));
+        return Center(
+          child: LayoutBuilder(
+            builder: (context, constraints) {
+              return Container(
+                width: constraints.maxWidth * 0.2,
+                height: constraints.maxWidth * 0.2,
+                decoration: const BoxDecoration(color: DesignSystem.success, shape: BoxShape.circle),
+              );
+            },
+          ),
+        );
       case CellType.empty:
         return const SizedBox.shrink();
     }
@@ -234,9 +254,10 @@ class TentsAndTreesScreen extends ConsumerWidget {
           ref.read(tentsAndTreesNotifierProvider.notifier).newGame();
           Navigator.of(context).pop();
         },
-        title: 'CONGRATS',
-        message: 'You correctly placed all the tents.',
+        title: 'WELL DONE',
+        message: 'You have successfully placed all the tents.',
       ),
     );
   }
 }
+

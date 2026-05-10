@@ -5,6 +5,8 @@ import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/design_system.dart';
 import '../../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../widgets/tangible.dart';
+import '../../../core/juice/game_scaffold.dart';
 
 class CrosswordScreen extends ConsumerStatefulWidget {
   const CrosswordScreen({super.key});
@@ -24,171 +26,170 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(crosswordNotifierProvider);
     final notifier = ref.read(crosswordNotifierProvider.notifier);
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
 
     ref.listen(crosswordNotifierProvider, (previous, next) {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
         HapticFeedbackUtil.victory();
-        _showVictoryDialog(context, ref, theme);
+        _showVictoryDialog(context, ref);
       }
     });
 
-    return Scaffold(
-      backgroundColor: theme.colorScheme.surface,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
-          onPressed: () => Navigator.of(context).pop(),
+    return GameScaffold(
+      title: 'CROSSWORD',
+      subtitle: 'Complete the grid with the correct words based on the clues provided.',
+      actions: [
+        TangibleButton(
+          color: DesignSystem.surface,
+          shadowColor: DesignSystem.outlineVariant,
+          onTap: () {
+            HapticFeedbackUtil.mediumImpact();
+            notifier.initGame();
+          },
+          padding: const EdgeInsets.all(12),
+          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
         ),
-        title: Text(
-          'CROSSWORD',
-          style: theme.textTheme.titleMedium?.copyWith(
-            letterSpacing: 4,
-            fontWeight: FontWeight.w800,
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh_rounded),
-            onPressed: () {
-              HapticFeedbackUtil.mediumImpact();
-              notifier.initGame();
-            },
-          ),
-          const SizedBox(width: 8),
-        ],
-      ),
+      ],
       body: state.board == null
-          ? Center(child: CircularProgressIndicator(color: theme.colorScheme.primary))
-          : SafeArea(
-              child: Column(
-                children: [
-                  Expanded(
-                    child: Center(
-                      child: Padding(
-                        padding: const EdgeInsets.all(24.0),
-                        child: _buildGrid(state, notifier, theme, isDark),
-                      ),
-                    ),
+          ? const Center(child: CircularProgressIndicator())
+          : LayoutBuilder(
+              builder: (context, constraints) {
+                return Column(
+                  children: [
+                    const Spacer(),
+                    _buildGrid(state, notifier, constraints.maxHeight * 0.45),
+                    const Spacer(),
+                    _buildCurrentClue(state),
+                    const SizedBox(height: DesignSystem.spaceSM),
+                    _buildKeyboard(state, notifier),
+                    const SizedBox(height: DesignSystem.spaceLG),
+                  ],
+                );
+              },
+            ),
+    );
+  }
+
+  Widget _buildGrid(CrosswordState state, CrosswordNotifier notifier, double maxHeight) {
+    final board = state.board!;
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxHeight: maxHeight),
+        child: TangibleContainer(
+          color: DesignSystem.ink,
+          shadowColor: DesignSystem.inkSlate,
+          depth: 4.0, // Reduced from 6.0
+          radius: DesignSystem.radiusMD,
+          padding: const EdgeInsets.all(3.0),
+          child: Container(
+            decoration: BoxDecoration(
+              color: DesignSystem.surface,
+              borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: GridView.builder(
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: board.size,
                   ),
-                  _buildCurrentClue(state, theme, isDark),
-                  const SizedBox(height: 12),
-                  _buildKeyboard(state, notifier, theme, isDark),
-                  const SizedBox(height: 24),
-                ],
+                  itemCount: board.size * board.size,
+                  itemBuilder: (context, index) {
+                    int x = index % board.size;
+                    int y = index ~/ board.size;
+                    String char = board.grid[y][x];
+                    bool isSelected = state.selectedX == x && state.selectedY == y;
+                    
+                    bool isInCurrentWord = false;
+                    if (state.selectedX != null && state.selectedY != null) {
+                      for (var w in board.words) {
+                        if (w.isHorizontal == state.isAcross) {
+                          if (state.isAcross && y == w.y && x >= w.x && x < w.x + w.word.length && state.selectedY == y && state.selectedX! >= w.x && state.selectedX! < w.x + w.word.length) {
+                            isInCurrentWord = true;
+                          } else if (!state.isAcross && x == w.x && y >= w.y && y < w.y + w.word.length && state.selectedX == x && state.selectedY! >= w.y && state.selectedY! < w.y + w.word.length) {
+                            isInCurrentWord = true;
+                          }
+                        }
+                      }
+                    }
+
+                    if (char == ' ') {
+                      return Container(color: DesignSystem.ink.withValues(alpha: 0.1));
+                    }
+
+                    int? num;
+                    for (var w in board.words) {
+                      if (w.x == x && w.y == y) {
+                        num = w.number;
+                        break;
+                      }
+                    }
+
+                    return GestureDetector(
+                      onTap: () {
+                        HapticFeedbackUtil.selectionClick();
+                        notifier.selectCell(x, y);
+                      },
+                      child: AnimatedContainer(
+                        duration: const Duration(milliseconds: 200),
+                        decoration: BoxDecoration(
+                          color: isSelected 
+                              ? DesignSystem.primary.withValues(alpha: 0.2) 
+                              : (isInCurrentWord ? DesignSystem.primary.withValues(alpha: 0.05) : DesignSystem.surface),
+                          border: Border.all(
+                            color: isSelected 
+                              ? DesignSystem.primary 
+                              : DesignSystem.outline.withValues(alpha: 0.5), 
+                            width: 0.5
+                          ),
+                        ),
+                        child: Stack(
+                          children: [
+                            if (num != null)
+                              Positioned(
+                                left: 2,
+                                top: 1,
+                                child: Text(
+                                  num.toString(),
+                                  style: const TextStyle(
+                                    fontSize: 8, // Reduced from 9
+                                    fontWeight: FontWeight.w900,
+                                    color: DesignSystem.inkSlate,
+                                  ),
+                                ),
+                              ),
+                            Center(
+                              child: Padding(
+                                padding: const EdgeInsets.all(2.0),
+                                child: FittedBox(
+                                  child: Text(
+                                    state.userGrid[y][x],
+                                    style: TextStyle(
+                                      fontSize: 16, // Reduced from 18
+                                      fontWeight: FontWeight.w900,
+                                      color: isSelected ? DesignSystem.primary : DesignSystem.ink,
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
             ),
-    );
-  }
-
-  Widget _buildGrid(CrosswordState state, CrosswordNotifier notifier, ThemeData theme, bool isDark) {
-    final board = state.board!;
-    return Container(
-      padding: const EdgeInsets.all(DesignSystem.spaceXS),
-      decoration: BoxDecoration(
-        color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.1 : 0.05),
-        borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
-        border: Border.all(
-          color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.2 : 0.1),
-          width: 1,
-        ),
-      ),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(DesignSystem.radiusLG - 4),
-        child: AspectRatio(
-          aspectRatio: 1,
-          child: GridView.builder(
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: board.size,
-            ),
-            itemCount: board.size * board.size,
-            itemBuilder: (context, index) {
-              int x = index % board.size;
-              int y = index ~/ board.size;
-              String char = board.grid[y][x];
-              bool isSelected = state.selectedX == x && state.selectedY == y;
-              
-              bool isInCurrentWord = false;
-              if (state.selectedX != null && state.selectedY != null) {
-                for (var w in board.words) {
-                  if (w.isHorizontal == state.isAcross) {
-                    if (state.isAcross && y == w.y && x >= w.x && x < w.x + w.word.length && state.selectedY == y && state.selectedX! >= w.x && state.selectedX! < w.x + w.word.length) {
-                      isInCurrentWord = true;
-                    } else if (!state.isAcross && x == w.x && y >= w.y && y < w.y + w.word.length && state.selectedX == x && state.selectedY! >= w.y && state.selectedY! < w.y + w.word.length) {
-                      isInCurrentWord = true;
-                    }
-                  }
-                }
-              }
-
-              if (char == ' ') {
-                return Container(color: theme.colorScheme.onSurface.withValues(alpha: isDark ? 0.2 : 0.1));
-              }
-
-              int? num;
-              for (var w in board.words) {
-                if (w.x == x && w.y == y) {
-                  num = w.number;
-                  break;
-                }
-              }
-
-              return GestureDetector(
-                onTap: () {
-                  HapticFeedbackUtil.selectionClick();
-                  notifier.selectCell(x, y);
-                },
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 200),
-                  decoration: BoxDecoration(
-                    color: isSelected 
-                        ? theme.colorScheme.primary.withValues(alpha: 0.2) 
-                        : (isInCurrentWord ? theme.colorScheme.primary.withValues(alpha: 0.05) : theme.colorScheme.surface),
-                    border: Border.all(
-                      color: isSelected 
-                        ? theme.colorScheme.primary.withValues(alpha: 0.6) 
-                        : theme.colorScheme.onSurface.withValues(alpha: 0.15), 
-                      width: 1.0
-                    ),
-                  ),
-                  child: Stack(
-                    children: [
-                      if (num != null)
-                        Positioned(
-                          left: 4,
-                          top: 2,
-                          child: Text(
-                            num.toString(),
-                            style: theme.textTheme.labelSmall?.copyWith(
-                              fontSize: 9, 
-                              fontWeight: FontWeight.w800,
-                              color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
-                            ),
-                          ),
-                        ),
-                      Center(
-                        child: Text(
-                          state.userGrid[y][x],
-                          style: theme.textTheme.titleLarge?.copyWith(
-                            fontWeight: FontWeight.w700,
-                            color: isSelected ? theme.colorScheme.primary : theme.colorScheme.onSurface,
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              );
-            },
           ),
         ),
       ),
     );
   }
 
-  Widget _buildCurrentClue(CrosswordState state, ThemeData theme, bool isDark) {
+  Widget _buildCurrentClue(CrosswordState state) {
     String clue = "SELECT A SQUARE";
     if (state.selectedX != null && state.selectedY != null) {
       for (var w in state.board!.words) {
@@ -205,29 +206,32 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
       }
     }
 
-    return Container(
-      margin: const EdgeInsets.symmetric(horizontal: 24),
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 20),
-      width: double.infinity,
-      decoration: BoxDecoration(
-        color: theme.colorScheme.primary.withValues(alpha: 0.05),
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: theme.colorScheme.primary.withValues(alpha: 0.1), width: 1),
-      ),
-      child: Text(
-        clue.toUpperCase(),
-        style: theme.textTheme.labelSmall?.copyWith(
-          fontWeight: FontWeight.w900,
-          color: theme.colorScheme.primary,
-          letterSpacing: 0.5,
-          height: 1.4,
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+      child: TangibleContainer(
+        color: DesignSystem.surface,
+        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+        child: SizedBox(
+          width: double.infinity,
+          child: Text(
+            clue.toUpperCase(),
+            maxLines: 2,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+              fontWeight: FontWeight.w900,
+              color: DesignSystem.primary,
+              fontSize: 10, // Reduced from 12
+              letterSpacing: 0.5,
+              height: 1.2,
+            ),
+            textAlign: TextAlign.center,
+          ),
         ),
-        textAlign: TextAlign.center,
       ),
     );
   }
 
-  Widget _buildKeyboard(CrosswordState state, CrosswordNotifier notifier, ThemeData theme, bool isDark) {
+  Widget _buildKeyboard(CrosswordState state, CrosswordNotifier notifier) {
     final rows = [
       ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
       ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
@@ -235,21 +239,14 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
     ];
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 8),
+      padding: const EdgeInsets.symmetric(horizontal: 6),
       child: Column(
-        children: rows.asMap().entries.map((entry) {
-          int rowIndex = entry.key;
-          List<String> row = entry.value;
+        children: rows.map((row) {
           return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4),
+            padding: const EdgeInsets.symmetric(vertical: 1.5),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                if (rowIndex == 1) const SizedBox(width: 16),
-                ...row.map((key) => _buildKey(key, state, notifier, theme, isDark)),
-                if (rowIndex == 1) const SizedBox(width: 16),
-                if (rowIndex == 2) const SizedBox(width: 24),
-              ],
+              children: row.map((key) => _buildKey(key, state, notifier)).toList(),
             ),
           );
         }).toList(),
@@ -257,18 +254,17 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
     );
   }
 
-  Widget _buildKey(String label, CrosswordState state, CrosswordNotifier notifier, ThemeData theme, bool isDark) {
+  Widget _buildKey(String label, CrosswordState state, CrosswordNotifier notifier) {
     bool isSpecialKey = label == 'DEL';
-    int flex = isSpecialKey ? 3 : 2;
-
-    Color color = theme.colorScheme.onSurface.withValues(alpha: 0.05);
-    Color textColor = theme.colorScheme.onSurface;
-
+    
     return Expanded(
-      flex: flex,
+      flex: isSpecialKey ? 3 : 2,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 2),
-        child: GestureDetector(
+        padding: const EdgeInsets.symmetric(horizontal: 1.5),
+        child: TangibleButton(
+          color: isSpecialKey ? DesignSystem.accentBerry : DesignSystem.surface,
+          shadowColor: isSpecialKey ? const Color(0xFFBE185D) : DesignSystem.outlineVariant,
+          padding: EdgeInsets.zero,
           onTap: () {
             HapticFeedbackUtil.selectionClick();
             if (label == 'DEL') {
@@ -278,21 +274,16 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
             }
           },
           child: Container(
-            height: 52,
+            height: 40, // Reduced from 48
             alignment: Alignment.center,
-            decoration: BoxDecoration(
-              color: color,
-              borderRadius: BorderRadius.circular(6),
-              border: Border.all(color: theme.colorScheme.outline.withValues(alpha: 0.1)),
-            ),
             child: label == 'DEL'
-                ? Icon(Icons.backspace_outlined, size: 18, color: textColor)
+                ? const Icon(Icons.backspace_rounded, size: 16, color: Colors.white)
                 : Text(
                     label,
-                    style: theme.textTheme.labelMedium?.copyWith(
-                      fontSize: 14,
+                    style: const TextStyle(
+                      fontSize: 14, // Reduced from 16
                       fontWeight: FontWeight.w900,
-                      color: textColor,
+                      color: DesignSystem.ink,
                     ),
                   ),
           ),
@@ -301,15 +292,16 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
     );
   }
 
-  void _showVictoryDialog(BuildContext context, WidgetRef ref, ThemeData theme) async {
+
+  void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('crossword');
-
     if (!context.mounted) return;
-
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
+        title: 'WELL DONE',
+        message: 'Crossword completed successfully with perfect knowledge.',
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();
@@ -318,7 +310,6 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
           ref.read(crosswordNotifierProvider.notifier).initGame();
           Navigator.of(context).pop();
         },
-        message: 'Crossword completed successfully with perfect knowledge.',
       ),
     );
   }

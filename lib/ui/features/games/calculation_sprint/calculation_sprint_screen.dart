@@ -3,6 +3,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../widgets/tangible.dart';
+import '../../../core/juice/game_scaffold.dart';
 import 'calculation_sprint_provider.dart';
 
 class CalculationSprintScreen extends ConsumerWidget {
@@ -12,10 +14,9 @@ class CalculationSprintScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(calculationSprintNotifierProvider);
     final notifier = ref.read(calculationSprintNotifierProvider.notifier);
-    final theme = Theme.of(context);
 
     ref.listen(calculationSprintNotifierProvider, (previous, next) {
-      if (next.status == SprintStatus.gameOver && 
+      if (next.status == SprintStatus.gameOver &&
           previous?.status != SprintStatus.gameOver) {
         final isGoalReached = next.score >= 15;
         if (isGoalReached) {
@@ -29,9 +30,9 @@ class CalculationSprintScreen extends ConsumerWidget {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: isGoalReached ? 'GOAL REACHED!' : 'TIME IS UP',
-            message: isGoalReached 
-              ? 'Excellent calculation speed! You scored ${next.score} points and completed the daily goal.' 
-              : 'You scored ${next.score} points. You need at least 15 points to complete the daily goal.',
+            message: isGoalReached
+                ? 'Excellent calculation speed! You scored ${next.score} points.'
+                : 'You scored ${next.score} points. Try to beat your best!',
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
@@ -45,77 +46,95 @@ class CalculationSprintScreen extends ConsumerWidget {
       }
     });
 
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      appBar: AppBar(
-        title: const Text('CALCULATION SPRINT'),
-        actions: [
-          IconButton(
-            onPressed: () {
-              HapticFeedbackUtil.lightImpact();
-              notifier.reset();
-            },
-            icon: const Icon(Icons.refresh_rounded),
-          ),
-          const SizedBox(width: 8),
-        ],
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: 16),
-            _buildHeader(context, state),
-            const Spacer(),
-            if (state.status == SprintStatus.ready)
-              _buildReadyState(context, notifier)
-            else if (state.status == SprintStatus.playing && state.currentProblem != null)
-              _buildPlayingState(context, state, notifier)
-            else if (state.status == SprintStatus.gameOver)
-                _buildGameOverState(context, state, notifier),
-            const Spacer(),
-          ],
+    return GameScaffold(
+      title: 'CALCULATION SPRINT',
+      subtitle: 'Solve as many equations as possible in 60 seconds.',
+      actions: [
+        TangibleButton(
+          color: DesignSystem.surface,
+          shadowColor: DesignSystem.outlineVariant,
+          onTap: () {
+            HapticFeedbackUtil.lightImpact();
+            notifier.reset();
+          },
+          padding: const EdgeInsets.all(12),
+          child: const Icon(Icons.refresh_rounded,
+              size: 20, color: DesignSystem.ink),
         ),
+      ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Column(
+            children: [
+              const SizedBox(height: DesignSystem.spaceSM),
+              _buildHeader(state),
+              const Spacer(),
+              if (state.status == SprintStatus.ready)
+                _buildReadyState(notifier)
+              else if (state.status == SprintStatus.playing &&
+                  state.currentProblem != null)
+                _buildPlayingState(state, notifier)
+              else if (state.status == SprintStatus.gameOver)
+                _buildGameOverState(),
+              const Spacer(),
+            ],
+          );
+        },
       ),
     );
   }
 
-  Widget _buildHeader(BuildContext context, CalculationSprintState state) {
+  Widget _buildHeader(CalculationSprintState state) {
     final isLowTime = state.timeRemaining <= 10 && state.timeRemaining > 0;
-    final timeColor = isLowTime ? DesignSystem.lightError : DesignSystem.gameEmerald;
+    final timeColor = isLowTime ? DesignSystem.error : DesignSystem.accentAmber;
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
+      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _buildStatCard(context, 'SCORE', state.score.toString(), DesignSystem.gameEmerald),
-          _buildStatCard(context, 'TIME', '${state.timeRemaining}s', timeColor, animate: isLowTime),
-          _buildStatCard(context, 'BEST', state.bestScore.toString(), DesignSystem.gameEmerald),
+          Expanded(
+              child: _buildStatCard(
+                  'SCORE', state.score.toString(), DesignSystem.accentEmerald)),
+          const SizedBox(width: DesignSystem.spaceMD),
+          Expanded(
+              child: _buildStatCard(
+                  'TIME', '${state.timeRemaining}s', timeColor,
+                  animate: isLowTime)),
+          const SizedBox(width: DesignSystem.spaceMD),
+          Expanded(
+              child: _buildStatCard(
+                  'BEST', state.bestScore.toString(), DesignSystem.primary)),
         ],
       ),
     );
   }
 
-  Widget _buildStatCard(BuildContext context, String label, String value, Color color, {bool animate = false}) {
-    final theme = Theme.of(context);
-    
-    Widget content = Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-      decoration: BoxDecoration(
-        color: color.withValues(alpha: 0.1),
-        borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
-        border: Border.all(color: color.withValues(alpha: 0.2), width: 1.5),
-      ),
+  Widget _buildStatCard(String label, String value, Color color,
+      {bool animate = false}) {
+    Widget content = TangibleContainer(
+      padding: const EdgeInsets.symmetric(vertical: DesignSystem.spaceSM),
+      color: DesignSystem.surface,
+      depth: 3.0,
       child: Column(
         children: [
           Text(
             label,
-            style: theme.textTheme.labelSmall?.copyWith(color: color, fontWeight: FontWeight.w900),
+            style: TextStyle(
+              color: DesignSystem.inkSlate.withValues(alpha: 0.6),
+              fontWeight: FontWeight.w900,
+              fontSize: 10,
+              letterSpacing: 1.0,
+            ),
           ),
-          const SizedBox(height: 4),
+          const SizedBox(height: 2),
           Text(
             value,
-            style: theme.textTheme.titleLarge?.copyWith(color: color, fontWeight: FontWeight.w900),
+            style: TextStyle(
+              color: color,
+              fontWeight: FontWeight.w900,
+              fontSize: 16,
+            ),
           ),
         ],
       ),
@@ -139,124 +158,137 @@ class CalculationSprintScreen extends ConsumerWidget {
     return content;
   }
 
-  Widget _buildReadyState(BuildContext context, CalculationSprintNotifier notifier) {
-    final theme = Theme.of(context);
+  Widget _buildReadyState(CalculationSprintNotifier notifier) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        Icon(Icons.timer_rounded, size: 64, color: DesignSystem.gameEmerald.withValues(alpha: 0.8)),
-        const SizedBox(height: 24),
-        Text(
+        const Icon(Icons.timer_rounded, size: 80, color: DesignSystem.primary),
+        const SizedBox(height: DesignSystem.spaceLG),
+        const Text(
           '60 SECONDS',
-          style: theme.textTheme.headlineMedium?.copyWith(
+          style: TextStyle(
+            fontSize: 32,
             fontWeight: FontWeight.w900,
             letterSpacing: 2.0,
-            color: DesignSystem.gameEmerald,
+            color: DesignSystem.ink,
           ),
         ),
-        const SizedBox(height: 8),
+        const SizedBox(height: DesignSystem.spaceSM),
         Text(
-          'Solve as many equations as possible.\nWrong answers deduct 3 seconds!',
+          'Solve equations quickly.\nWrong answers deduct 3 seconds!',
           textAlign: TextAlign.center,
-          style: theme.textTheme.bodyMedium?.copyWith(
-            color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
+          style: TextStyle(
+            color: DesignSystem.inkSlate.withValues(alpha: 0.7),
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
           ),
         ),
-        const SizedBox(height: 48),
-        ElevatedButton(
-          onPressed: () {
+        const SizedBox(height: DesignSystem.spaceXL),
+        TangibleButton(
+          onTap: () {
             HapticFeedbackUtil.selectionClick();
             notifier.startGame();
           },
-          style: ElevatedButton.styleFrom(
-            backgroundColor: DesignSystem.gameEmerald,
-            foregroundColor: Colors.white,
-            padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 16),
-          ),
+          padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 20),
           child: const Text('START SPRINT'),
         ),
       ],
     );
   }
 
-  Widget _buildPlayingState(BuildContext context, CalculationSprintState state, CalculationSprintNotifier notifier) {
-    final theme = Theme.of(context);
+  Widget _buildPlayingState(
+      CalculationSprintState state, CalculationSprintNotifier notifier) {
     final problem = state.currentProblem!;
 
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 24),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          Text(
-            problem.equation,
-            style: theme.textTheme.displayLarge?.copyWith(
-              fontSize: 64,
-              fontWeight: FontWeight.w900,
-              letterSpacing: 4.0,
-              color: theme.colorScheme.onSurface,
-            ),
-          ),
-          const SizedBox(height: 16),
-          Text(
-            '=',
-            style: theme.textTheme.headlineMedium?.copyWith(
-              color: theme.colorScheme.onSurface.withValues(alpha: 0.4),
-            ),
-          ),
-          const SizedBox(height: 48),
-          GridView.count(
-            crossAxisCount: 2,
-            shrinkWrap: true,
-            physics: const NeverScrollableScrollPhysics(),
-            mainAxisSpacing: 16,
-            crossAxisSpacing: 16,
-            childAspectRatio: 2.0,
-            children: problem.options.map((option) {
-              return ElevatedButton(
-                onPressed: () {
-                  if (option == problem.answer) {
-                    HapticFeedbackUtil.lightImpact();
-                  } else {
-                    HapticFeedbackUtil.error();
-                  }
-                  notifier.submitAnswer(option);
-                },
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: theme.colorScheme.surface,
-                  foregroundColor: theme.colorScheme.primary,
-                  elevation: 0,
-                  side: BorderSide(
-                    color: theme.colorScheme.outline.withValues(alpha: 0.2),
-                    width: 2,
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final isSmall = constraints.maxHeight < 500;
+        return Padding(
+          padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              TangibleContainer(
+                color: DesignSystem.ink,
+                shadowColor: DesignSystem.inkSlate,
+                depth: 6.0,
+                padding: EdgeInsets.all(isSmall
+                    ? DesignSystem.spaceXL
+                    : DesignSystem.spaceXL * 1.5),
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(
+                    maxHeight: constraints.maxHeight * 0.3,
+                    maxWidth: constraints.maxWidth,
                   ),
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
+                  child: FittedBox(
+                    fit: BoxFit.contain,
+                    child: Text(
+                      problem.equation,
+                      style: const TextStyle(
+                        fontWeight: FontWeight.w900,
+                        letterSpacing: 4.0,
+                        fontSize: 32,
+                        color: Colors.white,
+                      ),
+                    ),
                   ),
                 ),
-                child: Text(
-                  option.toString(),
-                  style: theme.textTheme.headlineSmall?.copyWith(
-                    fontWeight: FontWeight.w900,
-                  ),
-                ),
-              );
-            }).toList(),
+              ),
+              SizedBox(height: isSmall ? 32 : 64),
+              GridView.count(
+                crossAxisCount: 2,
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                mainAxisSpacing: isSmall ? 12 : DesignSystem.spaceLG,
+                crossAxisSpacing: isSmall ? 12 : DesignSystem.spaceLG,
+                childAspectRatio: 2.0,
+                children: problem.options.map((option) {
+                  return TangibleButton(
+                    color: DesignSystem.surface,
+                    shadowColor: DesignSystem.outlineVariant,
+                    onTap: () {
+                      if (option == problem.answer) {
+                        HapticFeedbackUtil.lightImpact();
+                      } else {
+                        HapticFeedbackUtil.error();
+                      }
+                      notifier.submitAnswer(option);
+                    },
+                    depth: 3.0,
+                    padding: EdgeInsets.zero,
+                    child: Center(
+                      child: FittedBox(
+                        child: Text(
+                          option.toString(),
+                          style: const TextStyle(
+                            color: DesignSystem.primary,
+                            fontWeight: FontWeight.w900,
+                            fontSize: 24,
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                }).toList(),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 
-  Widget _buildGameOverState(BuildContext context, CalculationSprintState state, CalculationSprintNotifier notifier) {
-    return Column(
+  Widget _buildGameOverState() {
+    return const Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
           'TIME IS UP!',
-          style: Theme.of(context).textTheme.headlineMedium?.copyWith(
+          style: TextStyle(
+            fontSize: 32,
             fontWeight: FontWeight.w900,
             letterSpacing: 2.0,
+            color: DesignSystem.error,
           ),
         ),
       ],

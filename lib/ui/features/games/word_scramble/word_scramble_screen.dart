@@ -4,6 +4,7 @@ import '../../../core/juice/game_scaffold.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../providers/user_providers.dart';
+import '../../../../widgets/tangible.dart';
 import 'word_scramble_provider.dart';
 
 class WordScrambleScreen extends ConsumerStatefulWidget {
@@ -44,179 +45,176 @@ class _WordScrambleScreenState extends ConsumerState<WordScrambleScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(wordScrambleNotifierProvider);
     final notifier = ref.read(wordScrambleNotifierProvider.notifier);
-    final theme = Theme.of(context);
 
     ref.listen(wordScrambleNotifierProvider, (previous, next) {
-      if (!previous!.isGameOver && next.isGameOver && next.isGameWon) {
+      if (previous != null && !previous.isGameOver && next.isGameOver && next.isGameWon) {
         _showCompletionDialog();
       }
     });
 
     return GameScaffold(
       title: 'WORD SCRAMBLE',
+      subtitle: 'Tap the letters to unscramble the hidden word!',
       actions: [
-        IconButton(
-          icon: const Icon(Icons.help_outline_rounded),
-          onPressed: () {
-            showDialog(
-              context: context,
-              builder: (context) => AlertDialog(
-                title: const Text('How to Play'),
-                content: const Text('Unscramble the letters to find the correct word. Tap letters to build your answer.'),
-                actions: [
-                  TextButton(onPressed: () => Navigator.pop(context), child: const Text('Got it')),
-                ],
-              ),
-            );
-          },
+        TangibleButton(
+          color: DesignSystem.surface,
+          shadowColor: DesignSystem.outlineVariant,
+          onTap: () => notifier.initGame(),
+          padding: const EdgeInsets.all(12),
+          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
         ),
       ],
       body: state.isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : Column(
-              children: [
-                const SizedBox(height: 40),
-                // Scrambled Word Display
-                Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                  decoration: BoxDecoration(
-                    color: DesignSystem.gameAmber.withValues(alpha: 0.1),
-                    borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
-                    border: Border.all(color: DesignSystem.gameAmber.withValues(alpha: 0.2)),
-                  ),
-                  child: Text(
-                    state.scrambledWord,
-                    style: theme.textTheme.displaySmall?.copyWith(
-                      color: DesignSystem.gameAmber,
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: 8,
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 60),
-                // Guess Input Area
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: List.generate(
-                    state.targetWord.length,
-                    (index) {
-                      final letter = index < state.currentGuess.length ? state.currentGuess[index] : '';
-                      return Container(
-                        width: 45,
-                        height: 55,
-                        margin: const EdgeInsets.symmetric(horizontal: 4),
-                        decoration: BoxDecoration(
-                          color: state.isInvalidGuess 
-                              ? DesignSystem.gameRose.withValues(alpha: 0.1)
-                              : theme.colorScheme.surfaceContainerHighest,
-                          borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
-                          border: Border.all(
-                            color: state.isInvalidGuess 
-                                ? DesignSystem.gameRose 
-                                : (letter.isNotEmpty ? theme.colorScheme.primary : theme.colorScheme.outline),
-                            width: 2,
-                          ),
-                        ),
+          ? const Center(child: CircularProgressIndicator(color: DesignSystem.primary))
+          : LayoutBuilder(
+              builder: (context, constraints) {
+                return Column(
+                  children: [
+                    SizedBox(height: constraints.maxHeight * 0.05),
+                    // Scrambled Word Display
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+                      child: TangibleContainer(
+                        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                        color: DesignSystem.accentAmber,
+                        shadowColor: const Color(0xFFD97706),
+                        depth: 2,
                         child: Center(
-                          child: Text(
-                            letter,
-                            style: theme.textTheme.headlineMedium?.copyWith(
-                              fontWeight: FontWeight.bold,
-                              color: state.isInvalidGuess ? DesignSystem.gameRose : theme.colorScheme.onSurface,
+                          child: FittedBox(
+                            child: Text(
+                              state.scrambledWord.toUpperCase(),
+                              style: const TextStyle(
+                                color: Colors.white,
+                                fontSize: 28,
+                                fontWeight: FontWeight.w900,
+                                letterSpacing: 6,
+                              ),
                             ),
                           ),
                         ),
-                      );
-                    },
-                  ),
-                ),
-                const Spacer(),
-                // Keyboard / Letter Selection
-                Wrap(
-                  spacing: 10,
-                  runSpacing: 10,
-                  alignment: WrapAlignment.center,
-                  children: state.scrambledWord.split('').map((letter) {
-                    // Logic to handle multiple same letters: count how many times it's used in guess
-                    // For simplicity in this mini-game, just let them type.
-                    // But usually, unscramble games have tiles you tap.
-                    return _LetterTile(
-                      letter: letter,
-                      onTap: () => notifier.onLetterPressed(letter),
-                    );
-                  }).toList(),
-                ),
-                const SizedBox(height: 20),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    IconButton.filledTonal(
-                      onPressed: notifier.onBackspace,
-                      icon: const Icon(Icons.backspace_rounded),
-                      padding: const EdgeInsets.all(16),
-                    ),
-                    const SizedBox(width: 20),
-                    ElevatedButton.icon(
-                      onPressed: notifier.submitGuess,
-                      icon: const Icon(Icons.check_rounded),
-                      label: const Text('SUBMIT'),
-                      style: ElevatedButton.styleFrom(
-                        padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
-                        backgroundColor: theme.colorScheme.primary,
-                        foregroundColor: theme.colorScheme.onPrimary,
                       ),
                     ),
-                    const SizedBox(width: 20),
-                    IconButton.filledTonal(
-                      onPressed: notifier.resetGuess,
-                      icon: const Icon(Icons.refresh_rounded),
-                      padding: const EdgeInsets.all(16),
+                    const Spacer(),
+                    // Guess Input Area
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: List.generate(
+                            state.targetWord.length,
+                            (index) {
+                              final letter = index < state.currentGuess.length ? state.currentGuess[index] : '';
+                              return Container(
+                                width: (constraints.maxWidth * 0.1).clamp(35.0, 45.0),
+                                height: (constraints.maxWidth * 0.12).clamp(45.0, 55.0),
+                                margin: const EdgeInsets.symmetric(horizontal: 3),
+                                decoration: BoxDecoration(
+                                  color: state.isInvalidGuess 
+                                      ? DesignSystem.error.withValues(alpha: 0.1)
+                                      : DesignSystem.surface,
+                                  borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
+                                  border: Border.all(
+                                    color: state.isInvalidGuess 
+                                        ? DesignSystem.error 
+                                        : (letter.isNotEmpty ? DesignSystem.primary : DesignSystem.outline),
+                                    width: 2,
+                                  ),
+                                ),
+                                child: Center(
+                                  child: FittedBox(
+                                    child: Padding(
+                                      padding: const EdgeInsets.all(4.0),
+                                      child: Text(
+                                        letter.toUpperCase(),
+                                        style: TextStyle(
+                                          fontSize: 22,
+                                          fontWeight: FontWeight.w900,
+                                          color: state.isInvalidGuess ? DesignSystem.error : DesignSystem.ink,
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              );
+                            },
+                          ),
+                        ),
+                      ),
                     ),
+                    const Spacer(),
+                    // Keyboard / Letter Selection
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.25),
+                        child: SingleChildScrollView(
+                          child: Wrap(
+                            spacing: 8,
+                            runSpacing: 8,
+                            alignment: WrapAlignment.center,
+                            children: state.scrambledWord.split('').map((letter) {
+                              return TangibleButton(
+                                onTap: () => notifier.onLetterPressed(letter),
+                                color: DesignSystem.surface,
+                                shadowColor: DesignSystem.outlineVariant,
+                                depth: 2,
+                                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
+                                child: Text(
+                                  letter.toUpperCase(),
+                                  style: const TextStyle(
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 18,
+                                    color: DesignSystem.primary,
+                                  ),
+                                ),
+                              );
+                            }).toList(),
+                          ),
+                        ),
+                      ),
+                    ),
+                    const Spacer(),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          TangibleButton(
+                            color: DesignSystem.surface,
+                            shadowColor: DesignSystem.outlineVariant,
+                            depth: 2,
+                            padding: const EdgeInsets.all(12),
+                            onTap: notifier.onBackspace,
+                            child: const Icon(Icons.backspace_rounded, color: DesignSystem.ink, size: 20),
+                          ),
+                          const SizedBox(width: DesignSystem.spaceMD),
+                          Expanded(
+                            child: TangibleButton(
+                              onTap: notifier.submitGuess,
+                              depth: 2,
+                              padding: const EdgeInsets.symmetric(vertical: 12),
+                              child: const Text('SUBMIT', style: TextStyle(fontWeight: FontWeight.w900, fontSize: 14)),
+                            ),
+                          ),
+                          const SizedBox(width: DesignSystem.spaceMD),
+                          TangibleButton(
+                            color: DesignSystem.surface,
+                            shadowColor: DesignSystem.outlineVariant,
+                            depth: 2,
+                            padding: const EdgeInsets.all(12),
+                            onTap: notifier.resetGuess,
+                            child: const Icon(Icons.refresh_rounded, color: DesignSystem.ink, size: 20),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(height: constraints.maxHeight * 0.05),
                   ],
-                ),
-                const SizedBox(height: 40),
-              ],
+                );
+              },
             ),
-    );
-  }
-}
-
-class _LetterTile extends StatelessWidget {
-  final String letter;
-  final VoidCallback onTap;
-
-  const _LetterTile({required this.letter, required this.onTap});
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        width: 50,
-        height: 50,
-        decoration: BoxDecoration(
-          color: theme.colorScheme.surface,
-          borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
-          border: Border.all(color: theme.colorScheme.primary.withValues(alpha: 0.3)),
-          boxShadow: [
-            BoxShadow(
-              color: theme.colorScheme.primary.withValues(alpha: 0.1),
-              blurRadius: 4,
-              offset: const Offset(0, 2),
-            ),
-          ],
-        ),
-        child: Center(
-          child: Text(
-            letter,
-            style: theme.textTheme.titleLarge?.copyWith(
-              fontWeight: FontWeight.bold,
-              color: theme.colorScheme.primary,
-            ),
-          ),
-        ),
-      ),
     );
   }
 }

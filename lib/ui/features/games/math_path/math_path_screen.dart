@@ -6,6 +6,7 @@ import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../widgets/tangible.dart';
 import '../../../core/juice/game_scaffold.dart';
 
 class MathPathScreen extends ConsumerWidget {
@@ -14,7 +15,6 @@ class MathPathScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(mathPathNotifierProvider);
-    final theme = Theme.of(context);
 
     ref.listen(mathPathNotifierProvider, (previous, next) {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
@@ -25,105 +25,80 @@ class MathPathScreen extends ConsumerWidget {
 
     return GameScaffold(
       title: 'MATH PATH',
-      subtitle: 'Find a path starting from the top-left tile that adds up exactly to the target sum.',
+      subtitle: 'Find a path that adds up exactly to the target sum.',
       actions: [
-        _buildAppBarButton(
-          context,
-          icon: Icons.refresh_rounded,
-          onPressed: () {
+        TangibleButton(
+          color: DesignSystem.surface,
+          shadowColor: DesignSystem.outlineVariant,
+          onTap: () {
             HapticFeedbackUtil.mediumImpact();
             ref.read(mathPathNotifierProvider.notifier).newGame();
           },
+          padding: const EdgeInsets.all(12),
+          child: const Icon(
+            Icons.refresh_rounded,
+            color: DesignSystem.ink,
+            size: 20,
+          ),
         ),
       ],
-      body: Column(
-        children: [
-          const SizedBox(height: DesignSystem.spaceLG),
-          _buildTarget(theme, state),
-          const Spacer(),
-          Center(
-            child: _buildGrid(context, ref, state),
-          ),
-          const Spacer(),
-          _buildControls(ref, theme),
-          const SizedBox(height: DesignSystem.spaceXL),
-        ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Column(
+            children: [
+              const SizedBox(height: DesignSystem.spaceMD),
+              _buildTarget(state),
+              const Spacer(),
+              Center(
+                child: _buildGrid(ref, state, constraints.maxHeight * 0.45),
+              ),
+              const Spacer(),
+              _buildControls(ref),
+              const SizedBox(height: DesignSystem.spaceLG),
+            ],
+          );
+        },
       ),
     );
   }
 
-  Widget _buildAppBarButton(
-    BuildContext context, {
-    required IconData icon,
-    required VoidCallback onPressed,
-  }) {
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        width: 44,
-        height: 44,
-        decoration: BoxDecoration(
-          color: theme.colorScheme.surface,
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(
-            color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.2 : 0.5),
-            width: 1,
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: isDark ? Colors.black.withValues(alpha: 0.2) : theme.colorScheme.primary.withValues(alpha: 0.04),
-              offset: const Offset(0, 4),
-              blurRadius: 12,
-            ),
-          ],
-        ),
-        child: Icon(
-          icon,
-          size: 20,
-          color: theme.colorScheme.primary,
-        ),
-      ),
-    );
-  }
-
-  Widget _buildTarget(ThemeData theme, MathPathState state) {
+  Widget _buildTarget(MathPathState state) {
     return Column(
       children: [
-        Text(
+        const Text(
           'TARGET SUM',
-          style: theme.textTheme.labelSmall?.copyWith(
-            color: theme.colorScheme.primary.withValues(alpha: 0.6),
+          style: TextStyle(
+            fontSize: 10,
+            color: DesignSystem.inkSlate,
             letterSpacing: 2,
             fontWeight: FontWeight.w900,
           ),
         ),
-        const SizedBox(height: DesignSystem.spaceSM),
+        const SizedBox(height: DesignSystem.spaceXS),
         Text(
           '${state.level.targetSum}',
-          style: theme.textTheme.displayMedium?.copyWith(
+          style: const TextStyle(
+            fontSize: 36,
             fontWeight: FontWeight.w900,
-            color: DesignSystem.gameBlue,
+            color: DesignSystem.primary,
           ),
         ),
-        const SizedBox(height: DesignSystem.spaceMD),
-        Container(
-          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
-          decoration: BoxDecoration(
-            color: state.currentSum > state.level.targetSum 
-                ? DesignSystem.gameRose.withValues(alpha: 0.1) 
-                : theme.colorScheme.primary.withValues(alpha: 0.05),
-            borderRadius: BorderRadius.circular(DesignSystem.radiusFull),
-          ),
+        const SizedBox(height: DesignSystem.spaceSM),
+        TangibleContainer(
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
+          color: state.currentSum > state.level.targetSum 
+              ? DesignSystem.accentBerry.withValues(alpha: 0.1) 
+              : DesignSystem.primary.withValues(alpha: 0.05),
+          radius: DesignSystem.radiusFull,
+          depth: 2,
           child: Text(
             'CURRENT: ${state.currentSum}',
-            style: theme.textTheme.labelLarge?.copyWith(
+            style: TextStyle(
               color: state.currentSum > state.level.targetSum 
-                  ? DesignSystem.gameRose 
-                  : theme.colorScheme.primary,
+                  ? DesignSystem.accentBerry 
+                  : DesignSystem.primary,
               fontWeight: FontWeight.w800,
+              fontSize: 14,
             ),
           ),
         ),
@@ -131,93 +106,97 @@ class MathPathScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildGrid(BuildContext context, WidgetRef ref, MathPathState state) {
-    return LayoutBuilder(
-      builder: (context, constraints) {
-        final boardSize = constraints.maxWidth * 0.9;
+  Widget _buildGrid(WidgetRef ref, MathPathState state, double maxHeight) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxHeight: maxHeight),
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final double gridSize = min(constraints.maxWidth, constraints.maxHeight);
 
-        return SizedBox(
-          width: boardSize,
-          height: boardSize,
-          child: Stack(
-            children: [
-              // Grid Background
-              Container(
-                decoration: BoxDecoration(
-                  color: Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
-                  borderRadius: BorderRadius.circular(DesignSystem.radiusXL),
-                ),
-              ),
-              // Grid Items
-              GridView.builder(
-                padding: const EdgeInsets.all(DesignSystem.spaceSM),
-                physics: const NeverScrollableScrollPhysics(),
-                gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: state.level.size,
-                  crossAxisSpacing: 8,
-                  mainAxisSpacing: 8,
-                ),
-                itemCount: state.level.size * state.level.size,
-                itemBuilder: (context, index) {
-                  final x = index % state.level.size;
-                  final y = index ~/ state.level.size;
-                  final p = Point(x, y);
-                  final isInPath = state.currentPath.contains(p);
-                  final isLast = state.currentPath.last == p;
+            return TangibleContainer(
+              depth: 4.0,
+              color: DesignSystem.ink,
+              shadowColor: DesignSystem.ink.withValues(alpha: 0.2),
+              padding: const EdgeInsets.all(DesignSystem.spaceXS),
+              child: SizedBox(
+                width: gridSize,
+                height: gridSize,
+                child: GridView.builder(
+                  padding: EdgeInsets.zero,
+                  physics: const NeverScrollableScrollPhysics(),
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                    crossAxisCount: state.level.size,
+                    crossAxisSpacing: 6,
+                    mainAxisSpacing: 6,
+                  ),
+                  itemCount: state.level.size * state.level.size,
+                  itemBuilder: (context, index) {
+                    final x = index % state.level.size;
+                    final y = index ~/ state.level.size;
+                    final p = Point(x, y);
+                    final isInPath = state.currentPath.contains(p);
+                    final isLast = state.currentPath.isNotEmpty && state.currentPath.last == p;
 
-                  return GestureDetector(
-                    onTap: () {
-                      HapticFeedbackUtil.lightImpact();
-                      ref.read(mathPathNotifierProvider.notifier).toggleTile(x, y);
-                    },
-                    child: AnimatedContainer(
-                      duration: const Duration(milliseconds: 200),
-                      decoration: BoxDecoration(
-                        color: isInPath 
-                            ? (isLast ? DesignSystem.gameBlue : DesignSystem.gameBlue.withValues(alpha: 0.3)) 
-                            : Theme.of(context).colorScheme.surface,
-                        borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
-                        border: Border.all(
-                          color: isInPath ? DesignSystem.gameBlue : Theme.of(context).colorScheme.outline.withValues(alpha: 0.2),
-                          width: 2,
-                        ),
-                      ),
+                    return TangibleContainer(
+                      depth: isInPath ? 0 : 2,
+                      radius: DesignSystem.radiusSM,
+                      color: isInPath 
+                          ? (isLast ? DesignSystem.primary : DesignSystem.primary.withValues(alpha: 0.3)) 
+                          : DesignSystem.surface,
+                      onTap: () {
+                        HapticFeedbackUtil.lightImpact();
+                        ref.read(mathPathNotifierProvider.notifier).toggleTile(x, y);
+                      },
                       child: Center(
-                        child: Text(
-                          '${state.level.grid[y][x]}',
-                          style: Theme.of(context).textTheme.titleLarge?.copyWith(
-                            color: isInPath && isLast ? Colors.white : Theme.of(context).colorScheme.primary,
-                            fontWeight: FontWeight.w900,
+                        child: Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: FittedBox(
+                            child: Text(
+                              '${state.level.grid[y][x]}',
+                              style: TextStyle(
+                                color: isInPath && isLast ? Colors.white : DesignSystem.ink,
+                                fontWeight: FontWeight.w900,
+                                fontSize: 18,
+                              ),
+                            ),
                           ),
                         ),
                       ),
-                    ),
-                  );
-                },
+                    );
+                  },
+                ),
               ),
-            ],
-          ),
-        );
-      },
+            );
+          },
+        ),
+      ),
     );
   }
 
-  Widget _buildControls(WidgetRef ref, ThemeData theme) {
+  Widget _buildControls(WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
-      child: Row(
-        children: [
-          Expanded(
-            child: OutlinedButton.icon(
-              onPressed: () {
-                HapticFeedbackUtil.mediumImpact();
-                ref.read(mathPathNotifierProvider.notifier).resetPath();
-              },
-              icon: const Icon(Icons.undo_rounded),
-              label: const Text('RESET PATH'),
+      child: TangibleButton(
+        padding: const EdgeInsets.symmetric(vertical: 12),
+        onTap: () {
+          HapticFeedbackUtil.mediumImpact();
+          ref.read(mathPathNotifierProvider.notifier).resetPath();
+        },
+        color: DesignSystem.surface,
+        shadowColor: DesignSystem.outlineVariant,
+        child: const Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Icon(Icons.undo_rounded, color: DesignSystem.ink, size: 18),
+            SizedBox(width: DesignSystem.spaceSM),
+            Text(
+              'RESET PATH',
+              style: TextStyle(color: DesignSystem.ink, fontWeight: FontWeight.w900, fontSize: 13),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

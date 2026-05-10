@@ -3,6 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../widgets/tangible.dart';
 import '../../../../providers/user_providers.dart';
 import 'reflex_tap_provider.dart';
 
@@ -47,7 +48,6 @@ class _ReflexTapScreenState extends ConsumerState<ReflexTapScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(reflexTapNotifierProvider);
     final notifier = ref.read(reflexTapNotifierProvider.notifier);
-    final theme = Theme.of(context);
 
     ref.listen(reflexTapNotifierProvider, (previous, next) {
       if (previous != null && !previous.isGameOver && next.isGameOver) {
@@ -57,66 +57,107 @@ class _ReflexTapScreenState extends ConsumerState<ReflexTapScreen> {
 
     return GameScaffold(
       title: 'REFLEX TAP',
-      body: state.isLoading
-          ? const Center(child: CircularProgressIndicator())
-          : SafeArea(
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        _buildStat('TIME', '${state.timeLeft}s', DesignSystem.gameRose, theme),
-                        _buildStat('TAPS', '${state.score}', DesignSystem.gameAmber, theme),
-                      ],
-                    ),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          if (state.isLoading) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
+          return SafeArea(
+            child: Column(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      _buildStat('TIME', '${state.timeLeft}s', DesignSystem.accentBerry),
+                      _buildStat('TAPS', '${state.score}', DesignSystem.accentAmber),
+                    ],
                   ),
-                  Expanded(
-                    child: GestureDetector(
-                      onTap: notifier.onMissed,
-                      child: Container(
-                        margin: const EdgeInsets.all(16),
-                        decoration: BoxDecoration(
-                          color: theme.colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
-                          borderRadius: BorderRadius.circular(24),
-                          border: Border.all(color: theme.colorScheme.outline.withValues(alpha: 0.1)),
-                        ),
-                        child: LayoutBuilder(
-                          builder: (context, constraints) {
-                            return Stack(
-                              children: [
-                                Positioned(
-                                  left: state.targetPosition.x * constraints.maxWidth - (state.targetSize / 2),
-                                  top: state.targetPosition.y * constraints.maxHeight - (state.targetSize / 2),
-                                  child: _Target(
-                                    size: state.targetSize,
-                                    onTap: notifier.onTargetTapped,
-                                  ),
-                                ),
-                              ],
-                            );
-                          },
+                ),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: ConstrainedBox(
+                      constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.6),
+                      child: TangibleContainer(
+                        depth: 4.0,
+                        color: DesignSystem.ink,
+                        child: ClipRRect(
+                          borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 1),
+                          child: GestureDetector(
+                            onTap: notifier.onMissed,
+                            child: Container(
+                              color: Colors.transparent,
+                              child: LayoutBuilder(
+                                builder: (context, boardConstraints) {
+                                  return Stack(
+                                    children: [
+                                      Positioned(
+                                        left: (state.targetPosition.x * boardConstraints.maxWidth - (state.targetSize / 2)).clamp(0, boardConstraints.maxWidth - state.targetSize),
+                                        top: (state.targetPosition.y * boardConstraints.maxHeight - (state.targetSize / 2)).clamp(0, boardConstraints.maxHeight - state.targetSize),
+                                        child: _Target(
+                                          size: state.targetSize.clamp(0, boardConstraints.maxWidth * 0.3),
+                                          onTap: notifier.onTargetTapped,
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
                   ),
-                  const Padding(
-                    padding: EdgeInsets.all(24.0),
-                    child: Text('Tap the targets as fast as you can!', style: TextStyle(color: Colors.grey)),
+                ),
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
+                  child: Text(
+                    'Tap the targets as fast as you can!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      color: DesignSystem.outline,
+                      fontWeight: FontWeight.w500,
+                      fontSize: 12,
+                    ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
+          );
+        },
+      ),
     );
   }
 
-  Widget _buildStat(String label, String value, Color color, ThemeData theme) {
-    return Column(
-      children: [
-        Text(label, style: theme.textTheme.labelSmall),
-        Text(value, style: theme.textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.w900, color: color)),
-      ],
+  Widget _buildStat(String label, String value, Color color) {
+    return TangibleContainer(
+      depth: 2.0,
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      child: Column(
+        children: [
+          Text(
+            label,
+            style: const TextStyle(
+              fontSize: 10,
+              fontWeight: FontWeight.bold,
+              color: DesignSystem.outline,
+              letterSpacing: 1.2,
+            ),
+          ),
+          Text(
+            value,
+            style: TextStyle(
+              fontSize: 20,
+              fontWeight: FontWeight.w900,
+              color: color,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
@@ -130,16 +171,20 @@ class _Target extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: onTap,
+      onTapDown: (_) => onTap(),
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 150),
         width: size,
         height: size,
         decoration: BoxDecoration(
-          color: DesignSystem.gameRose,
+          color: DesignSystem.accentBerry,
           shape: BoxShape.circle,
           boxShadow: [
-            BoxShadow(color: DesignSystem.gameRose.withValues(alpha: 0.4), blurRadius: 12, spreadRadius: 2),
+            BoxShadow(
+              color: DesignSystem.accentBerry.withValues(alpha: 0.4),
+              blurRadius: 12,
+              offset: const Offset(0, 4),
+            ),
           ],
           border: Border.all(color: Colors.white, width: 4),
         ),

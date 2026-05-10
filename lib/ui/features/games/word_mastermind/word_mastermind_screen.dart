@@ -6,6 +6,8 @@ import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/design_system.dart';
 import '../../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/tangible.dart';
+import '../../../core/juice/game_scaffold.dart';
 
 class WordMastermindScreen extends ConsumerWidget {
   const WordMastermindScreen({super.key});
@@ -14,7 +16,6 @@ class WordMastermindScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(wordMastermindNotifierProvider);
     final notifier = ref.read(wordMastermindNotifierProvider.notifier);
-    final theme = Theme.of(context);
 
     ref.listen(wordMastermindNotifierProvider, (previous, next) {
       if (next.isGameOver && !(previous?.isGameOver ?? false)) {
@@ -23,92 +24,66 @@ class WordMastermindScreen extends ConsumerWidget {
         } else {
           HapticFeedbackUtil.heavyImpact();
         }
-        _showGameOverDialog(context, ref, next, theme);
+        _showGameOverDialog(context, ref, next);
       }
     });
 
-    return Scaffold(
-      backgroundColor: theme.colorScheme.surface,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
-          onPressed: () => Navigator.of(context).pop(),
+    return GameScaffold(
+      title: 'WORD MASTERMIND',
+      subtitle: 'Crack the 4-letter code! Bulls (B) are perfect spots, Cows (C) are wrong spots.',
+      actions: [
+        TangibleButton(
+          color: DesignSystem.surface,
+          shadowColor: DesignSystem.outlineVariant,
+          onTap: () {
+            HapticFeedbackUtil.mediumImpact();
+            notifier.reset();
+          },
+          padding: const EdgeInsets.all(12),
+          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
         ),
-        title: Text(
-          'WORD MASTERMIND',
-          style: theme.textTheme.titleMedium?.copyWith(
-            letterSpacing: 2,
-            fontWeight: FontWeight.w800,
-          ),
-        ),
-        actions: [
-          IconButton(
-            icon: const Icon(Icons.refresh_rounded),
-            onPressed: () {
-              HapticFeedbackUtil.mediumImpact();
-              notifier.reset();
-            },
-          ),
-          const SizedBox(width: 8),
-        ],
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: DesignSystem.spaceLG),
-            Padding(
-              padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
-              child: Column(
-                children: [
-                  Text(
-                    'GUESS THE 4-LETTER WORD',
-                    style: theme.textTheme.labelSmall?.copyWith(
-                      color: theme.colorScheme.primary,
-                      letterSpacing: 2,
-                      fontWeight: FontWeight.w900,
-                    ),
-                  ),
-                  const SizedBox(height: DesignSystem.spaceSM),
-                  const Text(
-                    'Bulls = Correct letter, Correct spot\nCows = Correct letter, Wrong spot',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(fontSize: 12, height: 1.5, color: Colors.grey),
-                  ),
-                ],
+      ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Column(
+            children: [
+              SizedBox(height: constraints.maxHeight * 0.02),
+              Expanded(
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.4),
+                  child: _buildGuessList(state),
+                ),
               ),
-            ),
-            Expanded(
-              child: _buildGuessList(state, theme),
-            ),
-            _buildCurrentInput(state, theme),
-            _buildKeyboard(state, notifier, theme),
-            const SizedBox(height: DesignSystem.spaceLG),
-          ],
-        ),
+              _buildCurrentInput(state, constraints),
+              _buildKeyboard(state, notifier, constraints),
+              SizedBox(height: constraints.maxHeight * 0.02),
+            ],
+          );
+        },
       ),
     );
   }
 
-  Widget _buildGuessList(WordMastermindState state, ThemeData theme) {
+  Widget _buildGuessList(WordMastermindState state) {
     return ListView.builder(
-      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
       itemCount: state.guesses.length,
       itemBuilder: (context, index) {
         final guess = state.guesses[index];
         return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4),
+          padding: const EdgeInsets.symmetric(vertical: 3),
           child: Row(
             children: [
               Text(
                 '${index + 1}.',
-                style: theme.textTheme.labelMedium?.copyWith(color: Colors.grey),
+                style: const TextStyle(fontWeight: FontWeight.w900, color: DesignSystem.inkSlate, fontSize: 11),
               ),
-              const SizedBox(width: 16),
-              ...guess.guess.split('').map((l) => _buildLetterTile(l, theme)),
-              const Spacer(),
-              _buildStatIndicator(guess.bulls, Colors.green, 'B'),
               const SizedBox(width: 8),
-              _buildStatIndicator(guess.cows, Colors.orange, 'C'),
+              ...guess.guess.split('').map((l) => _buildLetterTile(l)),
+              const Spacer(),
+              _buildStatIndicator(guess.bulls, DesignSystem.success, 'B'),
+              const SizedBox(width: 8),
+              _buildStatIndicator(guess.cows, DesignSystem.accentAmber, 'C'),
             ],
           ),
         );
@@ -116,56 +91,78 @@ class WordMastermindScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildLetterTile(String letter, ThemeData theme) {
+  Widget _buildLetterTile(String letter) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 2),
-      width: 36,
-      height: 36,
+      width: 28,
+      height: 28,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: theme.colorScheme.surface,
-        border: Border.all(color: theme.colorScheme.outline.withValues(alpha: 0.2)),
-        borderRadius: BorderRadius.circular(4),
+        color: DesignSystem.surface,
+        border: Border.all(color: DesignSystem.outline),
+        borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
       ),
       child: Text(
-        letter,
-        style: theme.textTheme.titleMedium?.copyWith(fontWeight: FontWeight.w900),
+        letter.toUpperCase(),
+        style: const TextStyle(fontWeight: FontWeight.w900, color: DesignSystem.ink, fontSize: 12),
       ),
     );
   }
 
   Widget _buildStatIndicator(int count, Color color, String label) {
-    return Row(
-      children: [
-        Text('$count', style: TextStyle(fontWeight: FontWeight.bold, color: color)),
-        const SizedBox(width: 2),
-        Text(label, style: const TextStyle(fontSize: 10, color: Colors.grey)),
-      ],
+    return Container(
+      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+      decoration: BoxDecoration(
+        color: color.withValues(alpha: 0.1),
+        borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
+      ),
+      child: Row(
+        children: [
+          Text('$count', style: TextStyle(fontWeight: FontWeight.w900, color: color, fontSize: 12)),
+          const SizedBox(width: 2),
+          Text(label, style: const TextStyle(fontSize: 9, fontWeight: FontWeight.w900, color: DesignSystem.inkSlate)),
+        ],
+      ),
     );
   }
 
-  Widget _buildCurrentInput(WordMastermindState state, ThemeData theme) {
+  Widget _buildCurrentInput(WordMastermindState state, BoxConstraints constraints) {
+    final boxSize = (constraints.maxWidth * 0.12).clamp(35.0, 50.0);
     return Container(
-      padding: const EdgeInsets.symmetric(vertical: 16),
+      padding: const EdgeInsets.symmetric(vertical: 12),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: List.generate(WordMastermindEngine.wordLength, (i) {
           String letter = i < state.currentGuess.length ? state.currentGuess[i] : '';
           return Container(
             margin: const EdgeInsets.symmetric(horizontal: 4),
-            width: 50,
-            height: 60,
+            width: boxSize,
+            height: boxSize * 1.2,
             alignment: Alignment.center,
             decoration: BoxDecoration(
+              color: DesignSystem.surface,
               border: Border.all(
-                color: letter.isNotEmpty ? theme.colorScheme.primary : theme.colorScheme.outline.withValues(alpha: 0.2),
+                color: letter.isNotEmpty ? DesignSystem.primary : DesignSystem.outline,
                 width: letter.isNotEmpty ? 2 : 1,
               ),
-              borderRadius: BorderRadius.circular(8),
+              borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
+              boxShadow: [
+                if (letter.isNotEmpty)
+                  BoxShadow(
+                    color: DesignSystem.primary.withValues(alpha: 0.1),
+                    blurRadius: 4,
+                    offset: const Offset(0, 2),
+                  ),
+              ],
             ),
-            child: Text(
-              letter,
-              style: theme.textTheme.headlineMedium?.copyWith(fontWeight: FontWeight.w900),
+            child: FittedBox(
+              child: Padding(
+                padding: const EdgeInsets.all(4.0),
+                child: Text(
+                  letter.toUpperCase(),
+                  style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 22, color: DesignSystem.ink),
+                ),
+              ),
             ),
           );
         }),
@@ -173,12 +170,14 @@ class WordMastermindScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildKeyboard(WordMastermindState state, WordMastermindNotifier notifier, ThemeData theme) {
+  Widget _buildKeyboard(WordMastermindState state, WordMastermindNotifier notifier, BoxConstraints constraints) {
     final rows = [
       ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
       ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
       ['ENTER', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'DEL'],
     ];
+
+    final keyHeight = (constraints.maxHeight * 0.06).clamp(36.0, 48.0);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8),
@@ -188,8 +187,8 @@ class WordMastermindScreen extends ConsumerWidget {
           children: row.map((key) => Expanded(
             flex: (key == 'ENTER' || key == 'DEL') ? 3 : 2,
             child: Padding(
-              padding: const EdgeInsets.all(2),
-              child: InkWell(
+              padding: const EdgeInsets.all(1.5),
+              child: TangibleButton(
                 onTap: () {
                   HapticFeedbackUtil.selectionClick();
                   if (key == 'ENTER') {
@@ -200,14 +199,28 @@ class WordMastermindScreen extends ConsumerWidget {
                     notifier.addLetter(key);
                   }
                 },
+                color: (key == 'ENTER' || key == 'DEL') ? DesignSystem.inkSlate : DesignSystem.surface,
+                shadowColor: (key == 'ENTER' || key == 'DEL') ? DesignSystem.ink : DesignSystem.outlineVariant,
+                depth: 2,
+                padding: EdgeInsets.zero,
                 child: Container(
-                  height: 48,
+                  height: keyHeight,
                   alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                    color: theme.colorScheme.surfaceContainerHighest,
-                    borderRadius: BorderRadius.circular(4),
-                  ),
-                  child: key == 'DEL' ? const Icon(Icons.backspace_outlined, size: 18) : Text(key, style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 12)),
+                  child: key == 'DEL' 
+                    ? const Icon(Icons.backspace_rounded, size: 16, color: DesignSystem.ink) 
+                    : FittedBox(
+                        child: Padding(
+                          padding: const EdgeInsets.all(4.0),
+                          child: Text(
+                            key, 
+                            style: TextStyle(
+                              fontWeight: FontWeight.w900, 
+                              fontSize: (key == 'ENTER' || key == 'DEL') ? 9 : 11,
+                              color: (key == 'ENTER' || key == 'DEL') ? Colors.white : DesignSystem.ink,
+                            )
+                          ),
+                        ),
+                      ),
                 ),
               ),
             ),
@@ -217,7 +230,7 @@ class WordMastermindScreen extends ConsumerWidget {
     );
   }
 
-  void _showGameOverDialog(BuildContext context, WidgetRef ref, WordMastermindState state, ThemeData theme) async {
+  void _showGameOverDialog(BuildContext context, WidgetRef ref, WordMastermindState state) async {
     if (state.isGameWon) {
       await ref.read(gameStreakNotifierProvider.notifier).completeGame('word_mastermind', xpAmount: 40);
 
@@ -248,29 +261,49 @@ class WordMastermindScreen extends ConsumerWidget {
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        title: const Text('OUT OF TRIES'),
+        backgroundColor: DesignSystem.surface,
+        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(DesignSystem.radiusLG)),
+        title: const Text(
+          'OUT OF TRIES',
+          textAlign: TextAlign.center,
+          style: TextStyle(fontWeight: FontWeight.w900, color: DesignSystem.error),
+        ),
         content: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            const Text('The hidden word was:'),
-            const SizedBox(height: 8),
-            Text(state.targetWord, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, letterSpacing: 4)),
+            const Text('The hidden word was:', style: TextStyle(fontWeight: FontWeight.w600, color: DesignSystem.inkSlate)),
+            const SizedBox(height: 12),
+            Text(
+              state.targetWord.toUpperCase(), 
+              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w900, letterSpacing: 8, color: DesignSystem.primary)
+            ),
           ],
         ),
         actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.pop(context);
-              Navigator.pop(context);
-            },
-            child: const Text('CONTINUE'),
-          ),
-          ElevatedButton(
-            onPressed: () {
-              ref.read(wordMastermindNotifierProvider.notifier).reset();
-              Navigator.of(context).pop();
-            },
-            child: const Text('RETRY'),
+          Center(
+            child: Column(
+              children: [
+                TangibleButton(
+                  onTap: () {
+                    ref.read(wordMastermindNotifierProvider.notifier).reset();
+                    Navigator.of(context).pop();
+                  },
+                  child: const Text('RETRY'),
+                ),
+                const SizedBox(height: DesignSystem.spaceMD),
+                TextButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                    Navigator.pop(context);
+                  },
+                  child: const Text(
+                    'EXIT',
+                    style: TextStyle(color: DesignSystem.inkSlate, fontWeight: FontWeight.w800),
+                  ),
+                ),
+                const SizedBox(height: 12),
+              ],
+            ),
           ),
         ],
       ),

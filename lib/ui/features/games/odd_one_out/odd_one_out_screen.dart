@@ -7,6 +7,8 @@ import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../widgets/tangible.dart';
+import '../../../core/juice/game_scaffold.dart';
 
 class OddOneOutScreen extends ConsumerStatefulWidget {
   const OddOneOutScreen({super.key});
@@ -42,7 +44,6 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(oddOneOutNotifierProvider);
-    final theme = Theme.of(context);
 
     ref.listen(oddOneOutNotifierProvider, (previous, next) {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
@@ -56,142 +57,150 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
       }
     });
 
-    return Scaffold(
-      backgroundColor: theme.colorScheme.surface,
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios_new_rounded, size: 20),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        title: Text(
-          'ODD ONE OUT',
-          style: theme.textTheme.titleMedium?.copyWith(
-            letterSpacing: 4,
-            fontWeight: FontWeight.w800,
+    return GameScaffold(
+      title: 'ODD ONE OUT',
+      subtitle: 'Find the tile with a different color.',
+      actions: [
+        TangibleButton(
+          color: DesignSystem.surface,
+          shadowColor: DesignSystem.outlineVariant,
+          onTap: () {
+            HapticFeedbackUtil.mediumImpact();
+            ref.read(oddOneOutNotifierProvider.notifier).startGame();
+            _startTimer();
+          },
+          padding: const EdgeInsets.all(12),
+          child: const Icon(
+            Icons.refresh_rounded,
+            color: DesignSystem.ink,
+            size: 20,
           ),
         ),
-      ),
-      body: SafeArea(
-        child: Column(
-          children: [
-            const SizedBox(height: DesignSystem.spaceLG),
-            _buildHeader(theme, state),
-            const Spacer(),
-            Center(
-              child: _buildGrid(context, ref, state),
-            ),
-            const Spacer(),
-            _buildFooter(theme, state),
-            const SizedBox(height: DesignSystem.spaceXL),
-          ],
-        ),
+      ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Column(
+            children: [
+              const SizedBox(height: DesignSystem.spaceMD),
+              _buildHeader(state),
+              const Spacer(),
+              ConstrainedBox(
+                constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.5),
+                child: Center(
+                  child: _buildGrid(ref, state),
+                ),
+              ),
+              const Spacer(),
+              _buildFooter(state),
+              const SizedBox(height: DesignSystem.spaceLG),
+            ],
+          );
+        },
       ),
     );
   }
 
-  Widget _buildHeader(ThemeData theme, OddOneOutState state) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+  Widget _buildHeader(OddOneOutState state) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: [
+        _buildStatCard('SCORE', '${state.score}', DesignSystem.primary),
+        _buildStatCard(
+          'TIME', 
+          '${state.timeLeft}s', 
+          state.timeLeft < 10 ? DesignSystem.accentBerry : DesignSystem.primary
+        ),
+      ],
+    );
+  }
+
+  Widget _buildStatCard(String label, String value, Color color) {
+    return TangibleContainer(
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+      color: DesignSystem.surface,
+      depth: 2,
+      child: Column(
         children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'SCORE',
-                style: theme.textTheme.labelSmall?.copyWith(
-                  color: theme.colorScheme.primary.withValues(alpha: 0.6),
-                  letterSpacing: 1.5,
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
-              Text(
-                '${state.score}',
-                style: theme.textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.w900,
-                  color: theme.colorScheme.primary,
-                ),
-              ),
-            ],
+          Text(
+            label,
+            style: TextStyle(
+              fontSize: 10,
+              color: color,
+              fontWeight: FontWeight.w900,
+              letterSpacing: 1.0,
+            ),
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.end,
-            children: [
-              Text(
-                'TIME',
-                style: theme.textTheme.labelSmall?.copyWith(
-                  color: theme.colorScheme.primary.withValues(alpha: 0.6),
-                  letterSpacing: 1.5,
-                  fontWeight: FontWeight.w900,
-                ),
-              ),
-              Text(
-                '${state.timeLeft}s',
-                style: theme.textTheme.headlineMedium?.copyWith(
-                  fontWeight: FontWeight.w900,
-                  color: state.timeLeft < 10 ? DesignSystem.gameRose : theme.colorScheme.primary,
-                ),
-              ),
-            ],
+          const SizedBox(height: 2),
+          Text(
+            value,
+            style: const TextStyle(
+              fontSize: 16,
+              color: DesignSystem.ink,
+              fontWeight: FontWeight.w900,
+            ),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildFooter(ThemeData theme, OddOneOutState state) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
+  Widget _buildFooter(OddOneOutState state) {
+    return const TangibleContainer(
+      padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
+      color: DesignSystem.surface,
+      depth: 1,
+      radius: DesignSystem.radiusFull,
       child: Text(
-        'FIND THE TILE WITH A DIFFERENT COLOR',
-        style: theme.textTheme.labelSmall?.copyWith(
-          color: theme.colorScheme.primary.withValues(alpha: 0.4),
+        'SPOT THE ANOMALY',
+        style: TextStyle(
+          color: DesignSystem.inkSlate,
           letterSpacing: 1,
-          fontWeight: FontWeight.w700,
+          fontWeight: FontWeight.w900,
+          fontSize: 12,
         ),
       ),
     );
   }
 
-  Widget _buildGrid(BuildContext context, WidgetRef ref, OddOneOutState state) {
+  Widget _buildGrid(WidgetRef ref, OddOneOutState state) {
     return LayoutBuilder(
       builder: (context, constraints) {
-        final boardSize = constraints.maxWidth * 0.9;
+        final boardSize = constraints.biggest.shortestSide;
         final gridCount = state.level.colors.length;
         final crossAxisCount = gridCount > 0 ? math.sqrt(gridCount).toInt() : 2;
 
-        return Container(
-          width: boardSize,
-          height: boardSize,
-          padding: const EdgeInsets.all(DesignSystem.spaceMD),
-          decoration: BoxDecoration(
-            color: Theme.of(context).colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
-            borderRadius: BorderRadius.circular(DesignSystem.radiusXL),
-          ),
-          child: GridView.builder(
-            padding: EdgeInsets.zero,
-            physics: const NeverScrollableScrollPhysics(),
-            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: crossAxisCount,
-              crossAxisSpacing: DesignSystem.spaceSM,
-              mainAxisSpacing: DesignSystem.spaceSM,
+        return TangibleContainer(
+          depth: 4.0,
+          color: DesignSystem.ink,
+          shadowColor: DesignSystem.ink.withValues(alpha: 0.2),
+          padding: const EdgeInsets.all(DesignSystem.spaceXS),
+          child: SizedBox(
+            width: boardSize,
+            height: boardSize,
+            child: GridView.builder(
+              padding: EdgeInsets.zero,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: crossAxisCount,
+                crossAxisSpacing: 4,
+                mainAxisSpacing: 4,
+              ),
+              itemCount: state.level.colors.length,
+              itemBuilder: (context, index) {
+                final color = state.level.colors[index];
+                return TangibleContainer(
+                  depth: 2,
+                  radius: DesignSystem.radiusXS,
+                  color: color,
+                  shadowColor: color.withValues(alpha: 0.8),
+                  onTap: () {
+                    HapticFeedbackUtil.lightImpact();
+                    ref.read(oddOneOutNotifierProvider.notifier).pickTile(index);
+                  },
+                  child: const SizedBox.expand(),
+                );
+              },
             ),
-            itemCount: state.level.colors.length,
-            itemBuilder: (context, index) {
-              return GestureDetector(
-                onTap: () {
-                  HapticFeedbackUtil.lightImpact();
-                  ref.read(oddOneOutNotifierProvider.notifier).pickTile(index);
-                },
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: state.level.colors[index],
-                    borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
-                  ),
-                ),
-              );
-            },
           ),
         );
       },
@@ -224,25 +233,18 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        title: const Text('TIME IS UP!'),
-        content: Text('Your score: ${ref.read(oddOneOutNotifierProvider).score}'),
-        actions: [
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).pop();
-              ref.read(oddOneOutNotifierProvider.notifier).startGame();
-              _startTimer();
-            },
-            child: const Text('TRY AGAIN'),
-          ),
-          TextButton(
-            onPressed: () {
-              Navigator.of(context).popUntil((route) => route.isFirst);
-            },
-            child: const Text('HOME'),
-          ),
-        ],
+      builder: (context) => GameCompletionDialog(
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          ref.read(oddOneOutNotifierProvider.notifier).startGame();
+          _startTimer();
+          Navigator.of(context).pop();
+        },
+        title: 'TIME IS UP!',
+        message: 'Your score: ${ref.read(oddOneOutNotifierProvider).score}',
       ),
     );
   }

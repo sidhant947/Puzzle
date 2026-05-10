@@ -2,8 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'color_match_provider.dart';
 import '../../../../../providers/user_providers.dart';
+import '../../../../../utils/design_system.dart';
 import '../../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../widgets/tangible.dart';
+import '../../../core/juice/game_scaffold.dart';
 
 class ColorMatchScreen extends ConsumerWidget {
   const ColorMatchScreen({super.key});
@@ -11,63 +14,102 @@ class ColorMatchScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(colorMatchNotifierProvider);
-    final theme = Theme.of(context);
 
     ref.listen(colorMatchNotifierProvider, (previous, next) {
       if (next.isGameOver && !(previous?.isGameOver ?? false)) {
         HapticFeedbackUtil.victory();
-        _showGameOverDialog(context, ref, next, theme);
+        _showGameOverDialog(context, ref, next);
       }
     });
 
-    return Scaffold(
-      appBar: AppBar(title: const Text('COLOR MATCH')),
-      body: Column(
-        children: [
-          Expanded(
-            child: Row(
-              children: [
-                _buildColorBox('TARGET', state.targetColor, theme),
-                _buildColorBox('YOURS', state.currentColor, theme),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.all(24.0),
-            child: Column(
-              children: [
-                _buildSlider('RED', (state.currentColor.r * 255.0).round().toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor(v, (state.currentColor.g * 255.0).round().toDouble(), (state.currentColor.b * 255.0).round().toDouble()), Colors.red),
-                _buildSlider('GREEN', (state.currentColor.g * 255.0).round().toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor((state.currentColor.r * 255.0).round().toDouble(), v, (state.currentColor.b * 255.0).round().toDouble()), Colors.green),
-                _buildSlider('BLUE', (state.currentColor.b * 255.0).round().toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor((state.currentColor.r * 255.0).round().toDouble(), (state.currentColor.g * 255.0).round().toDouble(), v), Colors.blue),
-                const SizedBox(height: 32),
-                ElevatedButton(
-                  onPressed: () => ref.read(colorMatchNotifierProvider.notifier).submit(),
-                  style: ElevatedButton.styleFrom(minimumSize: const Size(double.infinity, 54)),
-                  child: const Text('CHECK MATCH'),
+    return GameScaffold(
+      title: 'COLOR MATCH',
+      subtitle: 'Adjust the sliders to match the target color as closely as possible.',
+      actions: [
+        TangibleButton(
+          color: DesignSystem.surface,
+          shadowColor: DesignSystem.outlineVariant,
+          onTap: () {
+            HapticFeedbackUtil.mediumImpact();
+            ref.read(colorMatchNotifierProvider.notifier).reset();
+          },
+          padding: const EdgeInsets.all(12),
+          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
+        ),
+      ],
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return Column(
+            children: [
+              Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.fromLTRB(DesignSystem.spaceLG, DesignSystem.spaceSM, DesignSystem.spaceLG, DesignSystem.spaceSM),
+                  child: ConstrainedBox(
+                    constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.4),
+                    child: Row(
+                      children: [
+                        _buildColorBox('TARGET', state.targetColor),
+                        const SizedBox(width: DesignSystem.spaceMD),
+                        _buildColorBox('YOURS', state.currentColor),
+                      ],
+                    ),
+                  ),
                 ),
-              ],
-            ),
-          ),
-        ],
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG, vertical: DesignSystem.spaceMD),
+                child: TangibleContainer(
+                  padding: const EdgeInsets.all(DesignSystem.spaceMD),
+                  color: DesignSystem.surface,
+                  depth: 4.0,
+                  child: Column(
+                    children: [
+                      _buildSlider('RED', (state.currentColor.r * 255.0).round().toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor(v, (state.currentColor.g * 255.0).round().toDouble(), (state.currentColor.b * 255.0).round().toDouble()), DesignSystem.error),
+                      const SizedBox(height: DesignSystem.spaceSM),
+                      _buildSlider('GREEN', (state.currentColor.g * 255.0).round().toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor((state.currentColor.r * 255.0).round().toDouble(), v, (state.currentColor.b * 255.0).round().toDouble()), DesignSystem.accentEmerald),
+                      const SizedBox(height: DesignSystem.spaceSM),
+                      _buildSlider('BLUE', (state.currentColor.b * 255.0).round().toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor((state.currentColor.r * 255.0).round().toDouble(), (state.currentColor.g * 255.0).round().toDouble(), v), DesignSystem.primary),
+                      const SizedBox(height: DesignSystem.spaceLG),
+                      TangibleButton(
+                        onTap: () {
+                          HapticFeedbackUtil.selectionClick();
+                          ref.read(colorMatchNotifierProvider.notifier).submit();
+                        },
+                        padding: const EdgeInsets.symmetric(vertical: 12),
+                        child: const Center(child: Text('CHECK MATCH', style: TextStyle(fontWeight: FontWeight.w900, fontSize: 13))),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              const SizedBox(height: DesignSystem.spaceMD),
+            ],
+          );
+        },
       ),
     );
   }
 
-  Widget _buildColorBox(String label, Color color, ThemeData theme) {
+  Widget _buildColorBox(String label, Color color) {
     return Expanded(
       child: Column(
         children: [
-          const SizedBox(height: 24),
-          Text(label, style: const TextStyle(fontWeight: FontWeight.bold, letterSpacing: 2)),
-          const SizedBox(height: 12),
+          Text(
+            label, 
+            style: const TextStyle(
+              fontWeight: FontWeight.w900, 
+              letterSpacing: 2,
+              fontSize: 10,
+              color: DesignSystem.inkSlate,
+            ),
+          ),
+          const SizedBox(height: DesignSystem.spaceXS),
           Expanded(
-            child: Container(
-              margin: const EdgeInsets.all(16),
-              decoration: BoxDecoration(
-                color: color,
-                borderRadius: BorderRadius.circular(16),
-                boxShadow: [BoxShadow(color: Colors.black.withValues(alpha: 0.1), blurRadius: 10)],
-              ),
+            child: TangibleContainer(
+              color: color,
+              shadowColor: DesignSystem.ink.withValues(alpha: 0.1),
+              depth: 4.0,
+              child: const SizedBox.expand(),
             ),
           ),
         ],
@@ -79,24 +121,42 @@ class ColorMatchScreen extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: color)),
-        Slider(
-          value: value,
-          min: 0,
-          max: 255,
-          activeColor: color,
-          onChanged: onChanged,
+        Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(label, style: TextStyle(fontSize: 10, fontWeight: FontWeight.w900, color: color, letterSpacing: 1.0)),
+            Text(value.toInt().toString(), style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: DesignSystem.inkSlate)),
+          ],
+        ),
+        SliderTheme(
+          data: SliderThemeData(
+            activeTrackColor: color,
+            inactiveTrackColor: color.withValues(alpha: 0.1),
+            thumbColor: DesignSystem.surface,
+            overlayColor: color.withValues(alpha: 0.2),
+            trackHeight: 6,
+            thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 8, elevation: 2),
+            padding: EdgeInsets.zero,
+          ),
+          child: Slider(
+            value: value,
+            min: 0,
+            max: 255,
+            onChanged: onChanged,
+          ),
         ),
       ],
     );
   }
 
-  void _showGameOverDialog(BuildContext context, WidgetRef ref, ColorMatchState state, ThemeData theme) {
+  void _showGameOverDialog(BuildContext context, WidgetRef ref, ColorMatchState state) {
     ref.read(gameStreakNotifierProvider.notifier).completeGame('color_match', xpAmount: state.score.toInt());
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
+        title: 'MATCH RESULT',
+        message: 'Your accuracy: ${state.score.toStringAsFixed(1)}%',
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();
@@ -105,7 +165,6 @@ class ColorMatchScreen extends ConsumerWidget {
           ref.read(colorMatchNotifierProvider.notifier).reset();
           Navigator.of(context).pop();
         },
-        message: 'Your accuracy: ${state.score.toStringAsFixed(1)}%',
       ),
     );
   }

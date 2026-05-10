@@ -4,9 +4,9 @@ class DesignSystem {
   // --- Symmetrical Design Scale ---
   static const double spaceXS = 4.0;
   static const double spaceSM = 8.0;
-  static const double spaceMD = 16.0;
-  static const double spaceLG = 24.0;
-  static const double spaceXL = 32.0;
+  static const double spaceMD = 12.0; // Reduced from 16
+  static const double spaceLG = 20.0; // Reduced from 24
+  static const double spaceXL = 28.0; // Reduced from 32
 
   static const double radiusXS = 8.0;
   static const double radiusSM = 16.0;
@@ -63,58 +63,58 @@ class DesignSystem {
         scrolledUnderElevation: 0,
         titleTextStyle: TextStyle(
           color: ink,
-          fontSize: 24,
+          fontSize: 20, // Reduced from 24
           fontWeight: FontWeight.w900,
           letterSpacing: 1.0,
         ),
       ),
       textTheme: const TextTheme(
         displayLarge: TextStyle(
-          fontSize: 48,
+          fontSize: 40, // Reduced from 48
           fontWeight: FontWeight.w900,
           letterSpacing: -1.0,
           color: ink,
           height: 1.1,
         ),
         headlineLarge: TextStyle(
-          fontSize: 32,
+          fontSize: 28, // Reduced from 32
           fontWeight: FontWeight.w900,
           letterSpacing: 1.2,
           color: ink,
           height: 1.2,
         ),
         headlineMedium: TextStyle(
-          fontSize: 24,
+          fontSize: 22, // Reduced from 24
           fontWeight: FontWeight.w800,
           letterSpacing: 0.5,
           color: ink,
         ),
         titleLarge: TextStyle(
-          fontSize: 20,
+          fontSize: 18, // Reduced from 20
           fontWeight: FontWeight.w800,
           color: ink,
         ),
         bodyLarge: TextStyle(
-          fontSize: 18,
+          fontSize: 16, // Reduced from 18
           fontWeight: FontWeight.w600,
           color: inkSlate,
-          height: 1.5,
+          height: 1.4, // Reduced from 1.5
         ),
         bodyMedium: TextStyle(
-          fontSize: 16,
+          fontSize: 14, // Reduced from 16
           fontWeight: FontWeight.w500,
           color: inkSlate,
         ),
         labelLarge: TextStyle(
-          fontSize: 14,
+          fontSize: 12, // Reduced from 14
           fontWeight: FontWeight.w700,
-          letterSpacing: 1.5,
+          letterSpacing: 1.2,
           color: ink,
         ),
       ),
       iconTheme: const IconThemeData(
         color: ink,
-        size: 28,
+        size: 24, // Reduced from 28
       ),
     );
   }
@@ -164,4 +164,7 @@ class DesignSystem {
   static const Color lightOutline = outline;
   static const Color lightOutlineVariant = outlineVariant;
   static const Color lightOnSurfaceMuted = inkSlate;
+  
+  static const Color accentIndigo = primary;
+  static const Color accentOrange = accentAmber;
 }
