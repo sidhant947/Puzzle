@@ -48,6 +48,12 @@ import '../games/orbit_tap/orbit_tap_screen.dart';
 import '../games/rhythm_master/rhythm_master_screen.dart';
 import '../games/trace_path/trace_path_screen.dart';
 
+import '../games/visual_search/visual_search_screen.dart';
+import '../games/go_no_go/go_no_go_screen.dart';
+import '../games/divided_attention/divided_attention_screen.dart';
+import '../games/prime_hunter/prime_hunter_screen.dart';
+import '../games/fraction_match/fraction_match_screen.dart';
+
 import '../games/path_recall/path_recall_screen.dart';
 import '../games/object_shuffle/object_shuffle_screen.dart';
 import '../games/grocery_list/grocery_list_screen.dart';
@@ -91,6 +97,41 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   final List<Map<String, dynamic>> _games = [
+    {
+      'title': 'Visual Search',
+      'id': 'visual_search',
+      'icon': Icons.center_focus_strong_rounded,
+      'color': DesignSystem.gameIndigo,
+      'screen': const VisualSearchScreen(),
+    },
+    {
+      'title': 'Go / No-Go',
+      'id': 'go_no_go',
+      'icon': Icons.pan_tool_alt_rounded,
+      'color': DesignSystem.gameRose,
+      'screen': const GoNoGoScreen(),
+    },
+    {
+      'title': 'Divided Focus',
+      'id': 'divided_attention',
+      'icon': Icons.vertical_split_rounded,
+      'color': DesignSystem.gameTeal,
+      'screen': const DividedAttentionScreen(),
+    },
+    {
+      'title': 'Prime Hunter',
+      'id': 'prime_hunter',
+      'icon': Icons.gps_fixed_rounded,
+      'color': DesignSystem.gameBlue,
+      'screen': const PrimeHunterScreen(),
+    },
+    {
+      'title': 'Fraction Match',
+      'id': 'fraction_match',
+      'icon': Icons.pie_chart_rounded,
+      'color': DesignSystem.gamePurple,
+      'screen': const FractionMatchScreen(),
+    },
     {
       'title': 'Path Recall',
       'id': 'path_recall',
