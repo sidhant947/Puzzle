@@ -1,29 +1,5 @@
-A professional suite of minimalist puzzle games built with Flutter. Challenge your mind with daily streaks, level up your profile, and master twelve unique puzzle experiences.
+A professional suite of minimalist puzzle games built with Flutter. Challenge your mind with daily streaks, level up your profile, and master unique puzzle experiences.
 
 Included Games:
+Arithmetic Chain, Balance Scale, Binary Puzzle, Block Escape, Bridges, Calculation Sprint, Color Match, Crossword, Crown, Cryptogram, Divided Attention, Find Word, Flanker Test, Fraction Match, 2048, Go No Go, Grocery List, Hue Sort, KenKen, Lights Out, Magic Squares, Math Path, Memory Matrix, Minesweeper, Missing Vowels, Nonogram, Object Shuffle, Odd One Out, Odd Rotation, Orbit Tap, Path Finder, Path Recall, Pipes, Pixel Mimic, Prime Hunter, Quick Math, Reflex Tap, Rhythm Master, Schulte Table, Simon Sequence, Slide Puzzle, Spelling Sprint, Stroop Test, Sudoku, Switch Task, Symbol Logic, Symmetry, Target Number, Tents and Trees, Trace Path, Typing Speed, Visual Search, Water Sort, Word Ladder, Word Mastermind, Word Scramble, Word Search & many more.
 
-Sudoku: Classic number placement puzzle with three difficulty levels.
-
-Find Word: A daily hidden word guessing challenge.
-
-Crossword: A compact 5x5 "Mini" crossword experience with fresh daily puzzles.
-
-Word Search: Find hidden words in a grid, tracking your progress with a dynamic word list.
-
-2048: Merge tiles to reach the elusive 2048 tile.
-
-Crown: A logical placement puzzle where you must place crowns according to strict rules.
-
-Minesweeper: Classic deduction game where you flag mines and reveal safe zones.
-
-Memory Matrix: A cognitive training game to improve working memory and pattern recognition.
-
-Nonogram: A logic puzzle where you reveal hidden pictures by filling cells based on numerical clues.
-
-Schulte Table: A focus and speed-reading tool to improve peripheral vision and mental processing speed.
-
-Number Match: A logic and pattern recognition game where you find pairs of identical numbers or those summing to 10.
-
-Calculation Sprint: An arithmetic fluency game where you solve rapid-fire math equations under a time limit.
-
-Block Escape: Slide blocks to clear a path for the red block. & Many More

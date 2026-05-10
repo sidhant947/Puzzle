@@ -1,51 +1,12 @@
 # PUZZLE 
 
-A professional collection of minimalist, high-impact puzzle games built with Flutter. Designed with a Universal aesthetic, PUZZLE combines physical tactile feedback with digital precision.
+A professional suite of minimalist puzzle games built with Flutter. Challenge your mind with daily streaks, level up your profile, and master unique puzzle experiences.
+
+[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid"  height="80">](https://f-droid.org/packages/com.sidhant.puzzle)
 
 ## 🎮 Included Games
 
-*   Typing Speed
-*   Quick Math
-*   Reflex Tap
-*   Stroop Test
-*   Flanker Test
-*   Switch Task
-*   Cryptogram
-*   Balance Scale
-*   Symbol Logic
-*   Pixel Mimic
-*   Odd Rotation
-*   Word Scramble
-*   Missing Vowels
-*   Water Sort
-*   Lights Out
-*   Hue Sort
-*   Math Path
-*   Spelling Sprint
-*   Odd One Out
-*   Bridges
-*   Binary Puzzle
-*   Color Match
-*   Path Finder
-*   Simon Sequence
-*   Symmetry
-*   Sudoku
-*   Word Mastermind
-*   Word Ladder
-*   Slide Puzzle
-*   Pipes
-*   Block Escape
-*   Tents & Trees
-*   Find Word
-*   Crossword
-*   Word Search
-*   2048
-*   Crown
-*   Minesweeper
-*   Memory Matrix
-*   Nonogram
-*   Schulte Table
-*   Calculation Sprint
+Arithmetic Chain, Balance Scale, Binary Puzzle, Block Escape, Bridges, Calculation Sprint, Color Match, Crossword, Crown, Cryptogram, Divided Attention, Find Word, Flanker Test, Fraction Match, 2048, Go No Go, Grocery List, Hue Sort, KenKen, Lights Out, Magic Squares, Math Path, Memory Matrix, Minesweeper, Missing Vowels, Nonogram, Object Shuffle, Odd One Out, Odd Rotation, Orbit Tap, Path Finder, Path Recall, Pipes, Pixel Mimic, Prime Hunter, Quick Math, Reflex Tap, Rhythm Master, Schulte Table, Simon Sequence, Slide Puzzle, Spelling Sprint, Stroop Test, Sudoku, Switch Task, Symbol Logic, Symmetry, Target Number, Tents and Trees, Trace Path, Typing Speed, Visual Search, Water Sort, Word Ladder, Word Mastermind, Word Scramble, Word Search
 
 *...and many more to be added.*
 
