@@ -20,9 +20,16 @@ class ArithmeticChainEngine {
           op = "+";
           break;
         case 1: // -
-          operand = _random.nextInt(current > 5 ? current - 2 : 5) + 1;
-          current -= operand;
-          op = "-";
+          if (current <= 2) {
+            // Fallback to addition if too small to subtract meaningfully
+            operand = _random.nextInt(15) + 1;
+            current += operand;
+            op = "+";
+          } else {
+            operand = _random.nextInt(current - 1) + 1;
+            current -= operand;
+            op = "-";
+          }
           break;
         case 2: // *
           operand = _random.nextInt(4) + 2;

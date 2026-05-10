@@ -44,6 +44,9 @@ import '../games/target_number/target_number_screen.dart';
 import '../games/arithmetic_chain/arithmetic_chain_screen.dart';
 import '../games/magic_squares/magic_squares_screen.dart';
 import '../games/kenken/kenken_screen.dart';
+import '../games/orbit_tap/orbit_tap_screen.dart';
+import '../games/rhythm_master/rhythm_master_screen.dart';
+import '../games/trace_path/trace_path_screen.dart';
 
 import '../games/cryptogram/cryptogram_screen.dart';
 
@@ -84,6 +87,27 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   final List<Map<String, dynamic>> _games = [
+    {
+      'title': 'Orbit Tap',
+      'id': 'orbit_tap',
+      'icon': Icons.vibration_rounded,
+      'color': DesignSystem.gameIndigo,
+      'screen': const OrbitTapScreen(),
+    },
+    {
+      'title': 'Rhythm Master',
+      'id': 'rhythm_master',
+      'icon': Icons.favorite_rounded,
+      'color': DesignSystem.gamePink,
+      'screen': const RhythmMasterScreen(),
+    },
+    {
+      'title': 'Trace Path',
+      'id': 'trace_path',
+      'icon': Icons.gesture_rounded,
+      'color': DesignSystem.gameGreen,
+      'screen': const TracePathScreen(),
+    },
     {
       'title': 'Target 24',
       'id': 'target_number',
