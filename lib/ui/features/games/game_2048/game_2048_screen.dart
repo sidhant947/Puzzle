@@ -223,62 +223,18 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        backgroundColor: DesignSystem.surface,
-        shape: RoundedRectangleBorder(
-          borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
-        ),
-        title: Center(
-          child: Column(
-            children: [
-              const Icon(
-                Icons.sentiment_very_dissatisfied_rounded,
-                color: DesignSystem.error,
-                size: 48,
-              ),
-              const SizedBox(height: DesignSystem.spaceMD),
-              const Text(
-                'GAME OVER',
-                style: TextStyle(
-                  fontWeight: FontWeight.w900,
-                  letterSpacing: 2,
-                ),
-              ),
-            ],
-          ),
-        ),
-        content: Text(
-          'FINAL SCORE: ${state.score}',
-          textAlign: TextAlign.center,
-          style: const TextStyle(fontWeight: FontWeight.w700),
-        ),
-        actions: [
-          Center(
-            child: Column(
-              children: [
-                TangibleButton(
-                  onTap: () {
-                    ref.read(game2048NotifierProvider.notifier).reset();
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('RETRY'),
-                ),
-                const SizedBox(height: DesignSystem.spaceMD),
-                TextButton(
-                  onPressed: () {
-                    Navigator.of(context).pop();
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text(
-                    'EXIT',
-                    style: TextStyle(color: DesignSystem.inkSlate, fontWeight: FontWeight.w800),
-                  ),
-                ),
-                const SizedBox(height: 12),
-              ],
-            ),
-          ),
-        ],
+      builder: (context) => GameCompletionDialog(
+        isVictory: false,
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          ref.read(game2048NotifierProvider.notifier).reset();
+          Navigator.of(context).pop();
+        },
+        title: 'GAME OVER',
+        message: 'FINAL SCORE: ${state.score}',
       ),
     );
   }

@@ -25,34 +25,64 @@ class ProfileScreen extends ConsumerWidget {
 
   static final List<Achievement> achievements = [
     Achievement(
-      title: 'NOVICE',
+      title: 'SEEKER',
       description: 'EARN 100 XP',
       requiredXp: 100,
-      icon: Icons.star_rounded,
+      icon: Icons.search_rounded,
     ),
     Achievement(
-      title: 'PUZZLER',
-      description: 'EARN 500 XP',
-      requiredXp: 500,
-      icon: Icons.extension_rounded,
+      title: 'APPRENTICE',
+      description: 'EARN 1,000 XP',
+      requiredXp: 1000,
+      icon: Icons.school_rounded,
     ),
     Achievement(
       title: 'STRATEGIST',
-      description: 'EARN 1000 XP',
-      requiredXp: 1000,
+      description: 'EARN 5,000 XP',
+      requiredXp: 5000,
       icon: Icons.psychology_rounded,
     ),
     Achievement(
+      title: 'ELITE',
+      description: 'EARN 10,000 XP',
+      requiredXp: 10000,
+      icon: Icons.military_tech_rounded,
+    ),
+    Achievement(
+      title: 'VETERAN',
+      description: 'EARN 25,000 XP',
+      requiredXp: 25000,
+      icon: Icons.shield_rounded,
+    ),
+    Achievement(
       title: 'MASTER',
-      description: 'EARN 2500 XP',
-      requiredXp: 2500,
+      description: 'EARN 50,000 XP',
+      requiredXp: 50000,
       icon: Icons.workspace_premium_rounded,
     ),
     Achievement(
+      title: 'GRANDMASTER',
+      description: 'EARN 100,000 XP',
+      requiredXp: 100000,
+      icon: Icons.diamond_rounded,
+    ),
+    Achievement(
       title: 'LEGEND',
-      description: 'EARN 5000 XP',
-      requiredXp: 5000,
+      description: 'EARN 250,000 XP',
+      requiredXp: 250000,
       icon: Icons.auto_awesome_rounded,
+    ),
+    Achievement(
+      title: 'MYTHIC',
+      description: 'EARN 500,000 XP',
+      requiredXp: 500000,
+      icon: Icons.vignette_rounded,
+    ),
+    Achievement(
+      title: 'ETERNAL',
+      description: 'EARN 1,000,000 XP',
+      requiredXp: 1000000,
+      icon: Icons.all_inclusive_rounded,
     ),
   ];
 
@@ -116,7 +146,10 @@ class ProfileScreen extends ConsumerWidget {
     final notifier = ref.read(userDataNotifierProvider.notifier);
     final currentLevelXp = notifier.xpForLevel(userData.level);
     final nextLevelXp = notifier.xpForLevel(userData.level + 1);
-    final progress = (userData.xp - currentLevelXp) / (nextLevelXp - currentLevelXp);
+    
+    // Guard against division by zero if current and next level XP are somehow the same
+    final diff = nextLevelXp - currentLevelXp;
+    final progress = diff > 0 ? (userData.xp - currentLevelXp) / diff : 1.0;
 
     return TangibleContainer(
       color: DesignSystem.primary,
@@ -202,7 +235,7 @@ class ProfileScreen extends ConsumerWidget {
                 ),
               ),
               Text(
-                '${nextLevelXp - userData.xp} XP TO NEXT LEVEL',
+                '${(nextLevelXp - userData.xp).clamp(0, 1000000)} XP TO NEXT LEVEL',
                 style: const TextStyle(
                   fontWeight: FontWeight.w800,
                   fontSize: 10,

@@ -34,6 +34,7 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
+        isVictory: won,
         title: won ? 'BALANCED!' : 'UNBALANCED',
         message: won ? 'You correctly deduced the weight!' : 'Try again to find the correct balance.',
         onPlayAgain: () {

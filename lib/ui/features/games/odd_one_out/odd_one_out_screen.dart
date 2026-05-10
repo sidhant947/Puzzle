@@ -224,6 +224,7 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
+        isVictory: false,
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();

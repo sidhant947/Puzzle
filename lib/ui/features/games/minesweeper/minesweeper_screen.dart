@@ -315,49 +315,18 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        backgroundColor: DesignSystem.surface,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(DesignSystem.radiusLG)),
-        title: const Text(
-          'GAME OVER',
-          textAlign: TextAlign.center,
-          style: TextStyle(
-            fontWeight: FontWeight.w900,
-            color: DesignSystem.error,
-          ),
-        ),
-        content: const Text(
-          'You stepped on a mine. Better luck next time!',
-          textAlign: TextAlign.center,
-          style: TextStyle(fontWeight: FontWeight.w600, color: DesignSystem.ink),
-        ),
-        actions: [
-          Center(
-            child: Column(
-              children: [
-                TangibleButton(
-                  onTap: () {
-                    Navigator.pop(context);
-                    ref.read(minesweeperNotifierProvider.notifier).reset();
-                  },
-                  child: const Text('PLAY AGAIN'),
-                ),
-                const SizedBox(height: DesignSystem.spaceMD),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    Navigator.pop(context);
-                  },
-                  child: const Text(
-                    'BACK TO HUB',
-                    style: TextStyle(color: DesignSystem.inkSlate, fontWeight: FontWeight.w800),
-                  ),
-                ),
-                const SizedBox(height: 12),
-              ],
-            ),
-          ),
-        ],
+      builder: (context) => GameCompletionDialog(
+        isVictory: false,
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          ref.read(minesweeperNotifierProvider.notifier).reset();
+          Navigator.of(context).pop();
+        },
+        title: 'GAME OVER',
+        message: 'You stepped on a mine. Better luck next time!',
       ),
     );
   }

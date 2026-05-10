@@ -1,22 +1,58 @@
-# Puzzle Collection
+# PUZZLE 
 
-A professional suite of minimalist puzzle games built with Flutter. Challenge your mind with daily streaks, level up your profile, and master twelve unique puzzle experiences.
+A professional collection of minimalist, high-impact puzzle games built with Flutter. Designed with a Universal aesthetic, PUZZLE combines physical tactile feedback with digital precision.
 
 ## 🎮 Included Games
 
-*   **Sudoku:** Classic number placement puzzle with three difficulty levels.
-*   **Crossword:** A compact 5x5 "Mini" crossword experience with fresh daily puzzles.
-*   **Word Search:** Find hidden words in a grid, tracking your progress with a dynamic word list.
-*   **2048:** Merge tiles to reach the elusive 2048 tile.
-*   **Crown:** A logical placement puzzle where you must place crowns according to strict rules.
-*   **Minesweeper:** Classic deduction game where you flag mines and reveal safe zones.
-*   **Memory Matrix:** A cognitive training game to improve working memory and pattern recognition.
-*   **Nonogram:** A logic puzzle where you reveal hidden pictures by filling cells based on numerical clues. 
-....
+*   Typing Speed
+*   Quick Math
+*   Reflex Tap
+*   Stroop Test
+*   Flanker Test
+*   Switch Task
+*   Cryptogram
+*   Balance Scale
+*   Symbol Logic
+*   Pixel Mimic
+*   Odd Rotation
+*   Word Scramble
+*   Missing Vowels
+*   Water Sort
+*   Lights Out
+*   Hue Sort
+*   Math Path
+*   Spelling Sprint
+*   Odd One Out
+*   Bridges
+*   Binary Puzzle
+*   Color Match
+*   Path Finder
+*   Simon Sequence
+*   Symmetry
+*   Sudoku
+*   Word Mastermind
+*   Word Ladder
+*   Slide Puzzle
+*   Pipes
+*   Block Escape
+*   Tents & Trees
+*   Find Word
+*   Crossword
+*   Word Search
+*   2048
+*   Crown
+*   Minesweeper
+*   Memory Matrix
+*   Nonogram
+*   Schulte Table
+*   Calculation Sprint
 
-## ✨ Features
+*...and many more to be added.*
 
-*   **Progression System:** Earn XP for every puzzle solved. Level up and unlock achievements from "Novice" to "Legend".
-*   **Daily Streaks:** Track your consistency with individual game streaks.
-*   **Super Streak:** Solve all twelve games in a single day to maintain your ultimate Super Streak.
-*   **Minimalist Design:** A clean, typography-focused UI that puts the puzzles front and center.
+## ✨ Key Features
+
+*   **Deep Progression System:** A curved leveling system scaling from Level 1 to 100, requiring up to 1,000,000 total XP for the ultimate "Eternal" status.
+*   **Tactile Achievements:** 10 prestigious achievement tiers (Seeker to Eternal) with high-fidelity visual badges.
+*   **Daily Streaks:** Maintain individual game streaks and an overall **Super Streak** by solving puzzles every day.
+*   **Universal Tangible Design:** A "Phygital" UI system featuring "Bottom-Sinking" geometry, elastic animations, and haptic feedback that makes every interaction feel physical.
+*   **Minimalist Aesthetic:** Clean, typography-focused layouts that eliminate distractions and prioritize cognitive flow.

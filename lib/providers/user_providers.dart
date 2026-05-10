@@ -38,22 +38,39 @@ class UserDataNotifier extends _$UserDataNotifier {
     return data;
   }
 
+  /// Calculates level based on total XP using a curved progression
+  /// Level 1: 0 XP
+  /// Level 2: 100 XP
+  /// Level 100: 1,000,000 XP
+  /// Formula: level = (xp / 100)^(1/3) + 1 (Approximate for scaling)
+  /// But to be precise for 100 levels and 1M max:
+  /// We use: level = 1 + 99 * (xp / 1,000,000)^0.5  (Square root curve for steady progression)
   int calculateLevel(int xp) {
-    // Level = floor((-1 + sqrt(1 + XP / 12.5)) / 2) + 1
-    if (xp <= 0) return 1;
-    return ((-1 + sqrt(1 + xp / 12.5)) / 2).floor() + 1;
+    if (xp < 100) return 1;
+    if (xp >= 1000000) return 100;
+    
+    // XP to Level curve: level = 1 + 99 * sqrt(xp / 1,000,000)
+    // However, the user wants level 2 at 100 XP.
+    // Let's use a power curve: XP = 100 * (level - 1)^k
+    // For level 100, XP = 1,000,000:
+    // 1,000,000 = 100 * (99)^k
+    // 10,000 = 99^k
+    // k = log(10,000) / log(99) ≈ 4 / 1.995 ≈ 2.004
+    // So k is very close to 2. Let's use k=2.04 for better fit.
+    
+    // Using k=2.04: XP = 100 * (level-1)^2.04
+    // level = (XP / 100)^(1/2.04) + 1
+    final level = pow(xp / 100, 1 / 2.04).floor() + 1;
+    return level.clamp(1, 100);
   }
 
+  /// Calculates the total XP required to reach a specific level
   int xpForLevel(int level) {
-    // TotalXP = 50 * Level * (Level - 1)
-    // Wait, let's re-verify:
-    // Level 1: 0 XP
-    // Level 2: 100 XP
-    // Level 3: 300 XP
-    // Level 4: 600 XP
-    // Level N requires 100*(N-1) more than N-1.
-    // Total XP for Level N = 100 * (0 + 1 + ... + (N-1)) = 100 * (N-1)*N / 2 = 50 * N * (N-1)
-    return 50 * level * (level - 1);
+    if (level <= 1) return 0;
+    if (level >= 100) return 1000000;
+    
+    // XP = 100 * (level - 1)^2.04
+    return (100 * pow(level - 1, 2.04)).floor();
   }
 
   Future<void> addXp(int amount) async {

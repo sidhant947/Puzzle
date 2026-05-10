@@ -258,6 +258,7 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
+        isVictory: false,
         title: 'TIME UP!',
         message: 'You spelled ${ref.read(spellingSprintNotifierProvider).score} words.',
         onHome: () {

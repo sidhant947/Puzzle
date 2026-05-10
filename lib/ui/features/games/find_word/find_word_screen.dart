@@ -343,6 +343,7 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
+        isVictory: false,
         title: 'GAME OVER',
         message: 'The word was: ${state.targetWord}',
         onHome: () {

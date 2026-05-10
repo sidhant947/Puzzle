@@ -260,52 +260,18 @@ class WordMastermindScreen extends ConsumerWidget {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => AlertDialog(
-        backgroundColor: DesignSystem.surface,
-        shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(DesignSystem.radiusLG)),
-        title: const Text(
-          'OUT OF TRIES',
-          textAlign: TextAlign.center,
-          style: TextStyle(fontWeight: FontWeight.w900, color: DesignSystem.error),
-        ),
-        content: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text('The hidden word was:', style: TextStyle(fontWeight: FontWeight.w600, color: DesignSystem.inkSlate)),
-            const SizedBox(height: 12),
-            Text(
-              state.targetWord.toUpperCase(), 
-              style: const TextStyle(fontSize: 24, fontWeight: FontWeight.w900, letterSpacing: 8, color: DesignSystem.primary)
-            ),
-          ],
-        ),
-        actions: [
-          Center(
-            child: Column(
-              children: [
-                TangibleButton(
-                  onTap: () {
-                    ref.read(wordMastermindNotifierProvider.notifier).reset();
-                    Navigator.of(context).pop();
-                  },
-                  child: const Text('RETRY'),
-                ),
-                const SizedBox(height: DesignSystem.spaceMD),
-                TextButton(
-                  onPressed: () {
-                    Navigator.pop(context);
-                    Navigator.pop(context);
-                  },
-                  child: const Text(
-                    'EXIT',
-                    style: TextStyle(color: DesignSystem.inkSlate, fontWeight: FontWeight.w800),
-                  ),
-                ),
-                const SizedBox(height: 12),
-              ],
-            ),
-          ),
-        ],
+      builder: (context) => GameCompletionDialog(
+        isVictory: false,
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          ref.read(wordMastermindNotifierProvider.notifier).reset();
+          Navigator.of(context).pop();
+        },
+        title: 'OUT OF TRIES',
+        message: 'The hidden word was: ${state.targetWord.toUpperCase()}',
       ),
     );
   }
