@@ -1,7 +1,8 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../providers/user_providers.dart';
+import '../../../utils/design_system.dart';
+import '../../../widgets/tangible.dart';
 import '../home/home_screen.dart';
 import '../profile/profile_screen.dart';
 
@@ -35,73 +36,51 @@ class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserv
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     if (state == AppLifecycleState.resumed) {
-      // Refresh streak status when app is resumed to handle midnight transitions
       ref.read(gameStreakNotifierProvider.notifier).refreshStatus();
     }
   }
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-
     return Scaffold(
       extendBody: true,
+      backgroundColor: DesignSystem.background,
       body: IndexedStack(
         index: _selectedIndex,
         children: _screens,
       ),
-      bottomNavigationBar: Container(
-        decoration: BoxDecoration(
-          boxShadow: [
-            BoxShadow(
-              color: isDark ? Colors.black.withValues(alpha: 0.5) : theme.colorScheme.primary.withValues(alpha: 0.08),
-              blurRadius: 32,
-              offset: const Offset(0, -8),
+      bottomNavigationBar: SafeArea(
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(
+            DesignSystem.spaceLG,
+            0,
+            DesignSystem.spaceLG,
+            DesignSystem.spaceMD,
+          ),
+          child: TangibleContainer(
+            radius: DesignSystem.radiusLG,
+            padding: const EdgeInsets.symmetric(
+              horizontal: DesignSystem.spaceMD,
+              vertical: DesignSystem.spaceSM,
             ),
-          ],
-        ),
-        child: ClipRRect(
-          child: BackdropFilter(
-            filter: ImageFilter.blur(sigmaX: 24, sigmaY: 24),
-            child: Container(
-              decoration: BoxDecoration(
-                color: theme.colorScheme.surface.withValues(alpha: isDark ? 0.7 : 0.85),
-                border: Border(
-                  top: BorderSide(
-                    color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.2 : 0.4),
-                    width: 1,
-                  ),
+            color: DesignSystem.surface,
+            depth: 4.0, // Less depth for the navigation bar
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                _buildNavItem(
+                  index: 0,
+                  icon: Icons.grid_view_rounded,
+                  label: 'GAMES',
+                  isSelected: _selectedIndex == 0,
                 ),
-              ),
-              child: SafeArea(
-                top: false,
-                child: Container(
-                  height: 68,
-                  padding: const EdgeInsets.symmetric(horizontal: 24),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      _buildNavItem(
-                        context,
-                        index: 0,
-                        icon: Icons.grid_view_outlined,
-                        activeIcon: Icons.grid_view_rounded,
-                        label: 'GAMES',
-                        isSelected: _selectedIndex == 0,
-                      ),
-                      _buildNavItem(
-                        context, 
-                        index: 1,
-                        icon: Icons.person_outline_rounded,
-                        activeIcon: Icons.person_rounded,
-                        label: 'PROFILE',
-                        isSelected: _selectedIndex == 1,
-                      ),
-                    ],
-                  ),
+                _buildNavItem(
+                  index: 1,
+                  icon: Icons.person_rounded,
+                  label: 'PROFILE',
+                  isSelected: _selectedIndex == 1,
                 ),
-              ),
+              ],
             ),
           ),
         ),
@@ -109,18 +88,13 @@ class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserv
     );
   }
 
-  Widget _buildNavItem(
-    BuildContext context, {
+  Widget _buildNavItem({
     required int index,
     required IconData icon,
-    required IconData activeIcon,
     required String label,
     required bool isSelected,
   }) {
-    final theme = Theme.of(context);
-    final color = isSelected
-        ? theme.colorScheme.primary
-        : theme.colorScheme.onSurface.withValues(alpha: 0.4);
+    final color = isSelected ? DesignSystem.primary : DesignSystem.inkSlate.withOpacity(0.5);
 
     return Expanded(
       child: GestureDetector(
@@ -130,47 +104,38 @@ class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserv
           }
         },
         behavior: HitTestBehavior.opaque,
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 400),
-          curve: Curves.elasticOut,
-          margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 4),
-          decoration: BoxDecoration(
-            color: isSelected
-                ? theme.colorScheme.primary.withValues(alpha: 0.1)
-                : Colors.transparent,
-            borderRadius: BorderRadius.circular(16),
-          ),
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: DesignSystem.spaceSM),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
             mainAxisSize: MainAxisSize.min,
             children: [
               AnimatedScale(
                 scale: isSelected ? 1.1 : 1.0,
-                duration: const Duration(milliseconds: 400),
-                curve: Curves.elasticOut,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeOutBack,
                 child: Icon(
-                  isSelected ? activeIcon : icon,
-                  size: 24,
+                  icon,
+                  size: 28,
                   color: color,
                 ),
               ),
-              const SizedBox(height: 1),
+              const SizedBox(height: DesignSystem.spaceXS),
               Text(
                 label,
-                style: theme.textTheme.labelSmall?.copyWith(
+                style: TextStyle(
                   color: color,
                   fontWeight: isSelected ? FontWeight.w900 : FontWeight.w700,
                   letterSpacing: 1.0,
-                  fontSize: 8,
+                  fontSize: 10,
                 ),
               ),
               if (isSelected)
                 Container(
-                  margin: const EdgeInsets.only(top: 2),
-                  width: 4,
-                  height: 4,
-                  decoration: BoxDecoration(
-                    color: color,
+                  margin: const EdgeInsets.only(top: 4),
+                  width: 6,
+                  height: 6,
+                  decoration: const BoxDecoration(
+                    color: DesignSystem.primary,
                     shape: BoxShape.circle,
                   ),
                 ),

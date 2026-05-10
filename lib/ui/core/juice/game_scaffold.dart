@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../../../utils/design_system.dart';
+import '../../../widgets/tangible.dart';
 
 class GameScaffold extends StatelessWidget {
   final String title;
@@ -21,149 +22,83 @@ class GameScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-
     return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      body: Stack(
-        children: [
-          // Background Pattern
-          Positioned.fill(
-            child: CustomPaint(
-              painter: _GridPatternPainter(
-                color: theme.colorScheme.primary.withValues(alpha: isDark ? 0.05 : 0.03),
-              ),
-            ),
-          ),
-          SafeArea(
-            child: Column(
-              children: [
-                _buildAppBar(context, theme, isDark),
-                if (subtitle != null)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
-                    child: Text(
-                      subtitle!,
-                      textAlign: TextAlign.center,
-                      style: theme.textTheme.bodySmall?.copyWith(
-                        color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
-                        fontWeight: FontWeight.w700,
-                      ),
-                    ),
+      backgroundColor: DesignSystem.background,
+      body: SafeArea(
+        child: Column(
+          children: [
+            _buildAppBar(context),
+            if (subtitle != null)
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG, vertical: DesignSystem.spaceSM),
+                child: Text(
+                  subtitle!,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(
+                    color: DesignSystem.inkSlate,
+                    fontWeight: FontWeight.w700,
+                    fontSize: 14,
+                    letterSpacing: 0.5,
                   ),
-                Expanded(child: body),
-              ],
-            ),
-          ),
-        ],
+                ),
+              ),
+            Expanded(child: body),
+          ],
+        ),
       ),
       bottomNavigationBar: bottomNavigationBar,
       floatingActionButton: floatingActionButton,
     );
   }
 
-  Widget _buildAppBar(BuildContext context, ThemeData theme, bool isDark) {
+  Widget _buildAppBar(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+      padding: const EdgeInsets.fromLTRB(
+        DesignSystem.spaceMD,
+        DesignSystem.spaceMD,
+        DesignSystem.spaceMD,
+        DesignSystem.spaceSM,
+      ),
       child: Row(
         children: [
-          _buildAppBarButton(
-            context,
-            icon: Icons.arrow_back_ios_new_rounded,
-            onPressed: () => Navigator.of(context).pop(),
+          TangibleButton(
+            color: DesignSystem.surface,
+            shadowColor: DesignSystem.outlineVariant,
+            onTap: () => Navigator.of(context).pop(),
+            child: const Icon(
+              Icons.arrow_back_ios_new_rounded,
+              color: DesignSystem.ink,
+              size: 20,
+            ),
           ),
+          const SizedBox(width: DesignSystem.spaceMD),
           Expanded(
-            child: Center(
-              child: Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 6),
-                decoration: BoxDecoration(
-                  color: theme.colorScheme.primary.withValues(alpha: 0.1),
-                  borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
-                ),
+            child: TangibleContainer(
+              color: DesignSystem.surface,
+              padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
+              radius: DesignSystem.radiusSM,
+              depth: 4.0,
+              child: Center(
                 child: Text(
                   title.toUpperCase(),
-                  style: theme.textTheme.titleMedium?.copyWith(
+                  style: const TextStyle(
+                    fontSize: 16,
                     letterSpacing: 2,
                     fontWeight: FontWeight.w900,
-                    color: theme.colorScheme.primary,
+                    color: DesignSystem.ink,
                   ),
                 ),
               ),
             ),
           ),
           if (actions != null) ...[
-            ...actions!.map((action) => Padding(
-                  padding: const EdgeInsets.only(right: 8),
-                  child: action,
-                )),
+            const SizedBox(width: DesignSystem.spaceMD),
+            ...actions!.map((action) => action),
           ] else
-            const SizedBox(width: 48), // Spacer to balance back button
+            // Spacer to balance back button width if no actions
+            const SizedBox(width: 52 + DesignSystem.spaceMD), 
         ],
       ),
     );
   }
-
-  Widget _buildAppBarButton(
-    BuildContext context, {
-    required IconData icon,
-    required VoidCallback onPressed,
-  }) {
-    final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-    
-    return GestureDetector(
-      onTap: onPressed,
-      child: Container(
-        width: 44,
-        height: 44,
-        decoration: BoxDecoration(
-          color: theme.colorScheme.surface,
-          borderRadius: BorderRadius.circular(14),
-          border: Border.all(
-            color: theme.colorScheme.outline.withValues(alpha: isDark ? 0.2 : 0.5),
-            width: 1,
-          ),
-          boxShadow: [
-            BoxShadow(
-              color: isDark ? Colors.black.withValues(alpha: 0.2) : theme.colorScheme.primary.withValues(alpha: 0.04),
-              offset: const Offset(0, 4),
-              blurRadius: 12,
-            ),
-          ],
-        ),
-        child: Icon(
-          icon,
-          size: 20,
-          color: theme.colorScheme.primary,
-        ),
-      ),
-    );
-  }
-}
-
-class _GridPatternPainter extends CustomPainter {
-  final Color color;
-
-  _GridPatternPainter({required this.color});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = color
-      ..strokeWidth = 1.0;
-
-    const spacing = 40.0;
-
-    for (double i = 0; i < size.width; i += spacing) {
-      canvas.drawLine(Offset(i, 0), Offset(i, size.height), paint);
-    }
-
-    for (double i = 0; i < size.height; i += spacing) {
-      canvas.drawLine(Offset(0, i), Offset(size.width, i), paint);
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
