@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'trace_path_provider.dart';
+part of 'path_recall_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$tracePathNotifierHash() => r'277e919bb2f032ae28f38c444c5bd51d60852283';
+String _$pathRecallNotifierHash() =>
+    r'eced720d1e604c83c7f4ba2e0de6c6317991b046';
 
-/// See also [TracePathNotifier].
-@ProviderFor(TracePathNotifier)
-final tracePathNotifierProvider =
-    AutoDisposeNotifierProvider<TracePathNotifier, TracePathState>.internal(
-  TracePathNotifier.new,
-  name: r'tracePathNotifierProvider',
+/// See also [PathRecallNotifier].
+@ProviderFor(PathRecallNotifier)
+final pathRecallNotifierProvider =
+    AutoDisposeNotifierProvider<PathRecallNotifier, PathRecallState>.internal(
+  PathRecallNotifier.new,
+  name: r'pathRecallNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$tracePathNotifierHash,
+      : _$pathRecallNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$TracePathNotifier = AutoDisposeNotifier<TracePathState>;
+typedef _$PathRecallNotifier = AutoDisposeNotifier<PathRecallState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -4,7 +4,6 @@ import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/design_system.dart';
 import '../../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
-import '../../../../widgets/tangible.dart';
 import '../../../core/juice/game_scaffold.dart';
 import 'trace_path_provider.dart';
 

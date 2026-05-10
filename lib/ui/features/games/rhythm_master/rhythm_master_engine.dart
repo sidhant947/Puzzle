@@ -1,5 +1,3 @@
-import 'dart:math';
-
 class RhythmMasterEngine {
   /// Calculates the accuracy score based on the time difference from the beat
   /// diff: difference in milliseconds

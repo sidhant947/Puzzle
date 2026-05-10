@@ -48,6 +48,10 @@ import '../games/orbit_tap/orbit_tap_screen.dart';
 import '../games/rhythm_master/rhythm_master_screen.dart';
 import '../games/trace_path/trace_path_screen.dart';
 
+import '../games/path_recall/path_recall_screen.dart';
+import '../games/object_shuffle/object_shuffle_screen.dart';
+import '../games/grocery_list/grocery_list_screen.dart';
+
 import '../games/cryptogram/cryptogram_screen.dart';
 
 import '../games/typing_speed/typing_speed_screen.dart';
@@ -87,6 +91,27 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   final List<Map<String, dynamic>> _games = [
+    {
+      'title': 'Path Recall',
+      'id': 'path_recall',
+      'icon': Icons.polyline_rounded,
+      'color': DesignSystem.gameBlue,
+      'screen': const PathRecallScreen(),
+    },
+    {
+      'title': 'Object Shuffle',
+      'id': 'object_shuffle',
+      'icon': Icons.visibility_rounded,
+      'color': DesignSystem.gameAmber,
+      'screen': const ObjectShuffleScreen(),
+    },
+    {
+      'title': 'Grocery List',
+      'id': 'grocery_list',
+      'icon': Icons.shopping_basket_rounded,
+      'color': DesignSystem.gameGreen,
+      'screen': const GroceryListScreen(),
+    },
     {
       'title': 'Orbit Tap',
       'id': 'orbit_tap',

@@ -70,7 +70,6 @@ class TracePathNotifier extends _$TracePathNotifier {
     if (state.isGameOver || state.userPath.isEmpty) return;
 
     final acc = _engine.calculateAccuracy(state.userPath, state.targetPath);
-    final solved = acc > 0.7; // 70% accuracy required
 
     state = state.copyWith(
       accuracy: acc,

@@ -1,26 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'trace_path_provider.dart';
+part of 'object_shuffle_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$tracePathNotifierHash() => r'277e919bb2f032ae28f38c444c5bd51d60852283';
+String _$objectShuffleNotifierHash() =>
+    r'59484e3dc75caf591c47be87e031dd41beea8eea';
 
-/// See also [TracePathNotifier].
-@ProviderFor(TracePathNotifier)
-final tracePathNotifierProvider =
-    AutoDisposeNotifierProvider<TracePathNotifier, TracePathState>.internal(
-  TracePathNotifier.new,
-  name: r'tracePathNotifierProvider',
+/// See also [ObjectShuffleNotifier].
+@ProviderFor(ObjectShuffleNotifier)
+final objectShuffleNotifierProvider = AutoDisposeNotifierProvider<
+    ObjectShuffleNotifier, ObjectShuffleState>.internal(
+  ObjectShuffleNotifier.new,
+  name: r'objectShuffleNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$tracePathNotifierHash,
+      : _$objectShuffleNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$TracePathNotifier = AutoDisposeNotifier<TracePathState>;
+typedef _$ObjectShuffleNotifier = AutoDisposeNotifier<ObjectShuffleState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member
