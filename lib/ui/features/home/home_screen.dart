@@ -72,6 +72,27 @@ import '../games/sdmt/sdmt_screen.dart';
 import '../games/trail_making/trail_making_screen.dart';
 import '../games/stop_signal/stop_signal_screen.dart';
 
+import '../games/operation_span/operation_span_screen.dart';
+import '../games/double_n_back/double_n_back_screen.dart';
+import '../games/sternberg_task/sternberg_task_screen.dart';
+import '../games/visual_statistical_learning/visual_statistical_learning_screen.dart';
+import '../games/change_blindness/change_blindness_screen.dart';
+import '../games/attentional_blink/attentional_blink_screen.dart';
+import '../games/wisconsin_card_sorting/wisconsin_card_sorting_screen.dart';
+
+import '../games/tower_of_london/tower_of_london_screen.dart';
+import '../games/symbolic_flanker/symbolic_flanker_screen.dart';
+import '../games/rule_switcher/rule_switcher_screen.dart';
+import '../games/box_completion/box_completion_screen.dart';
+import '../games/letter_cancellation/letter_cancellation_screen.dart';
+import '../games/choice_reaction_time/choice_reaction_time_screen.dart';
+
+import '../games/mental_rotation/mental_rotation_screen.dart';
+import '../games/semantic_link/semantic_link_screen.dart';
+import '../games/logical_syllogisms/logical_syllogisms_screen.dart';
+import '../games/matrix_reasoning/matrix_reasoning_screen.dart';
+import '../games/numerical_estimation/numerical_estimation_screen.dart';
+
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required Widget page})
       : super(
@@ -102,6 +123,132 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   final List<Map<String, dynamic>> _games = [
+    {
+      'title': 'Mental Rotation',
+      'id': 'mental_rotation',
+      'icon': Icons.threed_rotation_rounded,
+      'color': DesignSystem.gameIndigo,
+      'screen': const MentalRotationScreen(),
+    },
+    {
+      'title': 'Semantic Link',
+      'id': 'semantic_link',
+      'icon': Icons.link_rounded,
+      'color': DesignSystem.gameBlue,
+      'screen': const SemanticLinkScreen(),
+    },
+    {
+      'title': 'Logical Syllogisms',
+      'id': 'logical_syllogisms',
+      'icon': Icons.account_tree_rounded,
+      'color': DesignSystem.gameTeal,
+      'screen': const LogicalSyllogismsScreen(),
+    },
+    {
+      'title': 'Matrix Reasoning',
+      'id': 'matrix_reasoning',
+      'icon': Icons.grid_view_rounded,
+      'color': DesignSystem.gameAmber,
+      'screen': const MatrixReasoningScreen(),
+    },
+    {
+      'title': 'Numerical Estimation',
+      'id': 'numerical_estimation',
+      'icon': Icons.scatter_plot_rounded,
+      'color': DesignSystem.gameRose,
+      'screen': const NumericalEstimationScreen(),
+    },
+    {
+      'title': 'Tower of London',
+      'id': 'tower_of_london',
+      'icon': Icons.account_balance_rounded,
+      'color': DesignSystem.gameIndigo,
+      'screen': const TowerOfLondonScreen(),
+    },
+    {
+      'title': 'Symbolic Flanker',
+      'id': 'symbolic_flanker',
+      'icon': Icons.font_download_rounded,
+      'color': DesignSystem.gamePurple,
+      'screen': const SymbolicFlankerScreen(),
+    },
+    {
+      'title': 'Rule Switcher',
+      'id': 'rule_switcher',
+      'icon': Icons.swap_calls_rounded,
+      'color': DesignSystem.gameTeal,
+      'screen': const RuleSwitcherScreen(),
+    },
+    {
+      'title': 'Box Completion',
+      'id': 'box_completion',
+      'icon': Icons.crop_square_rounded,
+      'color': DesignSystem.gameAmber,
+      'screen': const BoxCompletionScreen(),
+    },
+    {
+      'title': 'Letter Cancel',
+      'id': 'letter_cancellation',
+      'icon': Icons.spellcheck_rounded,
+      'color': DesignSystem.gameRose,
+      'screen': const LetterCancellationScreen(),
+    },
+    {
+      'title': 'Choice Reaction',
+      'id': 'choice_reaction_time',
+      'icon': Icons.touch_app_rounded,
+      'color': DesignSystem.gameBlue,
+      'screen': const ChoiceReactionTimeScreen(),
+    },
+    {
+      'title': 'Wisconsin Card Sort',
+      'id': 'wisconsin_card_sorting',
+      'icon': Icons.style_rounded,
+      'color': DesignSystem.gameRose,
+      'screen': const WisconsinCardSortingScreen(),
+    },
+    {
+      'title': 'Attentional Blink',
+      'id': 'attentional_blink',
+      'icon': Icons.visibility_off_rounded,
+      'color': DesignSystem.gamePurple,
+      'screen': const AttentionalBlinkScreen(),
+    },
+    {
+      'title': 'Change Blindness',
+      'id': 'change_blindness',
+      'icon': Icons.flip_camera_android_rounded,
+      'color': DesignSystem.gameAmber,
+      'screen': const ChangeBlindnessScreen(),
+    },
+    {
+      'title': 'Visual Learning',
+      'id': 'visual_statistical_learning',
+      'icon': Icons.pattern_rounded,
+      'color': DesignSystem.gameTeal,
+      'screen': const VisualStatisticalLearningScreen(),
+    },
+    {
+      'title': 'Sternberg Task',
+      'id': 'sternberg_task',
+      'icon': Icons.memory_rounded,
+      'color': DesignSystem.gameBlue,
+      'screen': const SternbergTaskScreen(),
+    },
+    {
+      'title': 'Double N-Back',
+      'id': 'double_n_back',
+      'icon': Icons.layers_rounded,
+      'color': DesignSystem.gameIndigo,
+      'screen': const DoubleNBackScreen(),
+    },
+    {
+      'title': 'Operation Span',
+      'id': 'operation_span',
+      'icon': Icons.calculate_rounded,
+      'color': DesignSystem.gameGreen,
+      'screen': const OperationSpanScreen(),
+    },
     {
       'title': 'N-Back Test',
       'id': 'n_back',

@@ -1,0 +1,204 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../utils/design_system.dart';
+import '../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/tangible.dart';
+import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../providers/user_providers.dart';
+import '../../../core/juice/game_scaffold.dart';
+import 'tower_of_london_provider.dart';
+
+class TowerOfLondonScreen extends ConsumerStatefulWidget {
+  const TowerOfLondonScreen({super.key});
+
+  @override
+  ConsumerState<TowerOfLondonScreen> createState() => _TowerOfLondonScreenState();
+}
+
+class _TowerOfLondonScreenState extends ConsumerState<TowerOfLondonScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(towerOfLondonNotifierProvider.notifier).initGame();
+    });
+  }
+
+  void _showCompletionDialog(bool isVictory, bool isOutOfMoves) {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => GameCompletionDialog(
+        title: isVictory ? 'PLANNING MASTER!' : (isOutOfMoves ? 'OUT OF MOVES' : 'TIME\'S UP'),
+        message: isVictory 
+            ? 'You solved it in ${ref.read(towerOfLondonNotifierProvider).moves} moves!' 
+            : (isOutOfMoves ? 'You exceeded the move limit. Try more efficient planning.' : 'Try to be faster next time.'),
+        isVictory: isVictory,
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          Navigator.of(context).pop();
+          ref.read(towerOfLondonNotifierProvider.notifier).initGame();
+        },
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final state = ref.watch(towerOfLondonNotifierProvider);
+    final notifier = ref.read(towerOfLondonNotifierProvider.notifier);
+
+    ref.listen(towerOfLondonNotifierProvider, (previous, next) async {
+      if (next.isGameOver && !(previous?.isGameOver ?? false)) {
+        if (next.isVictory) {
+          HapticFeedbackUtil.victory();
+          await ref.read(gameStreakNotifierProvider.notifier).completeGame('tower_of_london');
+        } else {
+          HapticFeedbackUtil.vibrate();
+        }
+        if (!context.mounted) return;
+        final isOutOfMoves = next.moves >= next.maxMoves;
+        _showCompletionDialog(next.isVictory, isOutOfMoves);
+      }
+    });
+
+    if (state.isLoading) {
+      return const GameScaffold(
+        title: 'Tower of London',
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
+    return GameScaffold(
+      title: 'Tower of London',
+      subtitle: 'Match the target configuration',
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(DesignSystem.spaceMD),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _buildStat('MOVES', '${state.moves}/${state.maxMoves}', color: state.moves >= state.maxMoves - 2 ? DesignSystem.error : null),
+                _buildStat('TIME', '${state.timeLeft}s', color: state.timeLeft < 10 ? DesignSystem.error : null),
+              ],
+            ),
+          ),
+          const Text(
+            'TARGET',
+            style: TextStyle(
+              fontSize: 12,
+              fontWeight: FontWeight.w900,
+              letterSpacing: 2.0,
+              color: DesignSystem.inkSlate,
+            ),
+          ),
+          const SizedBox(height: DesignSystem.spaceSM),
+          SizedBox(
+            height: 120,
+            child: _buildPegs(state.targetConfig, isTarget: true),
+          ),
+          const Divider(height: DesignSystem.spaceXL),
+          Expanded(
+            child: Center(
+              child: _buildPegs(state.currentConfig, onPegTap: notifier.selectPeg, selectedPeg: state.selectedPeg),
+            ),
+          ),
+          const SizedBox(height: DesignSystem.spaceXL),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildStat(String label, String value, {Color? color}) {
+    return Column(
+      children: [
+        Text(label, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: DesignSystem.inkSlate)),
+        Text(value, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: color ?? DesignSystem.ink)),
+      ],
+    );
+  }
+
+  Widget _buildPegs(List<List<int>> config, {Function(int)? onPegTap, int? selectedPeg, bool isTarget = false}) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      crossAxisAlignment: CrossAxisAlignment.end,
+      children: List.generate(3, (i) {
+        return GestureDetector(
+          onTap: onPegTap != null ? () => onPegTap(i) : null,
+          child: _buildPeg(i, config[i], isSelected: selectedPeg == i, isTarget: isTarget),
+        );
+      }),
+    );
+  }
+
+  Widget _buildPeg(int index, List<int> beads, {bool isSelected = false, bool isTarget = false}) {
+    double pegHeight = index == 0 ? 100 : (index == 1 ? 75 : 50);
+    if (isTarget) pegHeight *= 0.8;
+    
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.end,
+      children: [
+        Stack(
+          alignment: Alignment.bottomCenter,
+          children: [
+            Container(
+              width: isTarget ? 6 : 10,
+              height: pegHeight,
+              decoration: BoxDecoration(
+                color: isSelected ? DesignSystem.primary : DesignSystem.inkSlate.withValues(alpha: 0.2),
+                borderRadius: BorderRadius.circular(5),
+              ),
+            ),
+            Padding(
+              padding: EdgeInsets.only(bottom: isTarget ? 2 : 4),
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: beads.map((b) => _buildBead(b, isTarget)).toList().reversed.toList(),
+              ),
+            ),
+          ],
+        ),
+        const SizedBox(height: 4),
+        Container(
+          width: isTarget ? 30 : 50,
+          height: isTarget ? 4 : 8,
+          decoration: BoxDecoration(
+            color: DesignSystem.inkSlate.withValues(alpha: 0.3),
+            borderRadius: BorderRadius.circular(4),
+          ),
+        ),
+      ],
+    );
+  }
+
+  Widget _buildBead(int type, bool isTarget) {
+    Color color;
+    switch (type) {
+      case 1: color = DesignSystem.error; break;
+      case 2: color = DesignSystem.success; break;
+      case 3: color = DesignSystem.primary; break;
+      default: color = Colors.grey;
+    }
+
+    return Container(
+      width: isTarget ? 20 : 36,
+      height: isTarget ? 20 : 36,
+      margin: const EdgeInsets.symmetric(vertical: 1),
+      decoration: BoxDecoration(
+        color: color,
+        shape: BoxShape.circle,
+        boxShadow: isTarget ? null : [
+          BoxShadow(
+            color: color.withValues(alpha: 0.4),
+            blurRadius: 4,
+            offset: const Offset(0, 2),
+          ),
+        ],
+      ),
+    );
+  }
+}

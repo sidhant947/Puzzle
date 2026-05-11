@@ -1,0 +1,223 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../utils/design_system.dart';
+import '../../../../utils/haptic_feedback.dart';
+import '../../../../widgets/tangible.dart';
+import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../providers/user_providers.dart';
+import '../../../core/juice/game_scaffold.dart';
+import 'box_completion_provider.dart';
+
+class BoxCompletionScreen extends ConsumerStatefulWidget {
+  const BoxCompletionScreen({super.key});
+
+  @override
+  ConsumerState<BoxCompletionScreen> createState() => _BoxCompletionScreenState();
+}
+
+class _BoxCompletionScreenState extends ConsumerState<BoxCompletionScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(boxCompletionNotifierProvider.notifier).initGame();
+    });
+  }
+
+  void _showCompletionDialog() {
+    final state = ref.read(boxCompletionNotifierProvider);
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => GameCompletionDialog(
+        title: 'TIME\'S UP!',
+        message: 'You scored ${state.score} correct out of ${state.totalTrials}!',
+        isVictory: state.score > 5,
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          Navigator.of(context).pop();
+          ref.read(boxCompletionNotifierProvider.notifier).initGame();
+        },
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final state = ref.watch(boxCompletionNotifierProvider);
+    final notifier = ref.read(boxCompletionNotifierProvider.notifier);
+
+    ref.listen(boxCompletionNotifierProvider, (previous, next) async {
+      if (next.isGameOver && !(previous?.isGameOver ?? false)) {
+        HapticFeedbackUtil.vibrate();
+        await ref.read(gameStreakNotifierProvider.notifier).completeGame('box_completion');
+        if (!context.mounted) return;
+        _showCompletionDialog();
+      }
+    });
+
+    if (state.isLoading || state.currentPuzzle == null) {
+      return const GameScaffold(
+        title: 'Box Completion',
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
+    return GameScaffold(
+      title: 'Box Completion',
+      subtitle: 'Which cube can be formed?',
+      body: Column(
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(DesignSystem.spaceMD),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                _buildStat('SCORE', state.score.toString()),
+                _buildStat('TIME', '${state.timeLeft}s', color: state.timeLeft < 10 ? DesignSystem.error : null),
+              ],
+            ),
+          ),
+          const SizedBox(height: DesignSystem.spaceMD),
+          _buildNet(state.currentPuzzle!.net),
+          const Spacer(),
+          const Text('OPTIONS', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w900, letterSpacing: 1.5)),
+          const SizedBox(height: DesignSystem.spaceMD),
+          _buildOptions(state.currentPuzzle!.options, notifier),
+          const SizedBox(height: DesignSystem.space2XL),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildNet(List<int?> net) {
+    return Container(
+      padding: const EdgeInsets.all(DesignSystem.spaceMD),
+      decoration: BoxDecoration(
+        color: DesignSystem.surface,
+        borderRadius: BorderRadius.circular(12),
+        border: Border.all(color: DesignSystem.outlineVariant),
+      ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: List.generate(3, (r) {
+          return Row(
+            mainAxisSize: MainAxisSize.min,
+            children: List.generate(4, (c) {
+              final val = net[r * 4 + c];
+              return Container(
+                width: 40,
+                height: 40,
+                margin: const EdgeInsets.all(2),
+                decoration: BoxDecoration(
+                  color: val != null ? Colors.white : Colors.transparent,
+                  border: val != null ? Border.all(color: DesignSystem.inkSlate.withValues(alpha: 0.3)) : null,
+                  borderRadius: BorderRadius.circular(4),
+                ),
+                child: val != null 
+                    ? Center(child: Text(val.toString(), style: const TextStyle(fontWeight: FontWeight.bold))) 
+                    : null,
+              );
+            }),
+          );
+        }),
+      ),
+    );
+  }
+
+  Widget _buildOptions(List<List<int>> options, BoxCompletionNotifier notifier) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+      children: options.asMap().entries.map((entry) {
+        return TangibleButton(
+          onTap: () {
+            HapticFeedbackUtil.lightImpact();
+            notifier.onOptionPressed(entry.key);
+          },
+          color: DesignSystem.surface,
+          child: _buildCubeView(entry.value),
+        );
+      }).toList(),
+    );
+  }
+
+  Widget _buildCubeView(List<int> faces) {
+    // faces: [Top, Front, Right]
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        Container(
+          width: 30,
+          height: 30,
+          decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(color: DesignSystem.inkSlate.withValues(alpha: 0.2)),
+          ),
+          child: Center(
+            child: Text(
+              faces[0].toString(),
+              style: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.bold,
+                color: DesignSystem.ink,
+              ),
+            ),
+          ),
+        ),
+        Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 30,
+              height: 30,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: DesignSystem.inkSlate.withValues(alpha: 0.2)),
+              ),
+              child: Center(
+                child: Text(
+                  faces[1].toString(),
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: DesignSystem.ink,
+                  ),
+                ),
+              ),
+            ),
+            Container(
+              width: 30,
+              height: 30,
+              decoration: BoxDecoration(
+                color: Colors.white,
+                border: Border.all(color: DesignSystem.inkSlate.withValues(alpha: 0.2)),
+              ),
+              child: Center(
+                child: Text(
+                  faces[2].toString(),
+                  style: const TextStyle(
+                    fontSize: 12,
+                    fontWeight: FontWeight.bold,
+                    color: DesignSystem.ink,
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildStat(String label, String value, {Color? color}) {
+    return Column(
+      children: [
+        Text(label, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: DesignSystem.inkSlate)),
+        Text(value, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: color ?? DesignSystem.ink)),
+      ],
+    );
+  }
+}
