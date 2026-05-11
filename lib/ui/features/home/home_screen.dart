@@ -66,6 +66,11 @@ import '../games/reflex_tap/reflex_tap_screen.dart';
 import '../games/stroop_test/stroop_test_screen.dart';
 import '../games/flanker_test/flanker_test_screen.dart';
 import '../games/switch_task/switch_task_screen.dart';
+import '../games/n_back/n_back_screen.dart';
+import '../games/corsi_blocks/corsi_blocks_screen.dart';
+import '../games/sdmt/sdmt_screen.dart';
+import '../games/trail_making/trail_making_screen.dart';
+import '../games/stop_signal/stop_signal_screen.dart';
 
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required Widget page})
@@ -97,6 +102,41 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   final List<Map<String, dynamic>> _games = [
+    {
+      'title': 'N-Back Test',
+      'id': 'n_back',
+      'icon': Icons.psychology_rounded,
+      'color': DesignSystem.gameBlue,
+      'screen': const NBackScreen(),
+    },
+    {
+      'title': 'Corsi Blocks',
+      'id': 'corsi_blocks',
+      'icon': Icons.grid_view_rounded,
+      'color': DesignSystem.gameIndigo,
+      'screen': const CorsiBlocksScreen(),
+    },
+    {
+      'title': 'SDMT Test',
+      'id': 'sdmt',
+      'icon': Icons.fact_check_rounded,
+      'color': DesignSystem.gameTeal,
+      'screen': const SDMTScreen(),
+    },
+    {
+      'title': 'Trail Making',
+      'id': 'trail_making',
+      'icon': Icons.timeline_rounded,
+      'color': DesignSystem.gameGreen,
+      'screen': const TrailMakingScreen(),
+    },
+    {
+      'title': 'Stop Signal',
+      'id': 'stop_signal',
+      'icon': Icons.block_flipped,
+      'color': DesignSystem.gameRose,
+      'screen': const StopSignalScreen(),
+    },
     {
       'title': 'Visual Search',
       'id': 'visual_search',

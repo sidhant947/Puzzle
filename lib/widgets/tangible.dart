@@ -70,6 +70,7 @@ class TangibleButton extends StatefulWidget {
   final Color shadowColor;
   final EdgeInsetsGeometry? padding;
   final double depth;
+  final double radius;
 
   const TangibleButton({
     super.key,
@@ -79,6 +80,7 @@ class TangibleButton extends StatefulWidget {
     this.shadowColor = DesignSystem.primaryShadow,
     this.padding,
     this.depth = 6.0,
+    this.radius = DesignSystem.radiusLG,
   });
 
   @override
@@ -105,6 +107,7 @@ class _TangibleButtonState extends State<TangibleButton> {
           depth: _isPressed ? 0.0 : widget.depth,
           color: widget.color,
           shadowColor: widget.shadowColor,
+          radius: widget.radius,
           padding: widget.padding ?? const EdgeInsets.symmetric(
             horizontal: DesignSystem.spaceLG,
             vertical: DesignSystem.spaceMD,
