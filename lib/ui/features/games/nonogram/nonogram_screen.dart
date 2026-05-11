@@ -127,7 +127,7 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
           Icon(Icons.grid_on_rounded, size: 16, color: DesignSystem.accentBerry),
           SizedBox(width: 8),
           Text(
-            'LOGIC GRID',
+            'NONOGRAM',
             style: TextStyle(
               color: DesignSystem.accentBerry,
               fontWeight: FontWeight.w900,

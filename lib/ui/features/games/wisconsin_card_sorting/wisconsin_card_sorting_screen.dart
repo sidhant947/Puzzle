@@ -5,7 +5,6 @@ import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../../widgets/game_completion_dialog.dart';
-import '../../../../providers/user_providers.dart';
 import 'wisconsin_card_sorting_provider.dart';
 import 'wisconsin_card_sorting_engine.dart';
 

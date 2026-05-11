@@ -47,6 +47,14 @@ import '../games/kenken/kenken_screen.dart';
 import '../games/orbit_tap/orbit_tap_screen.dart';
 import '../games/rhythm_master/rhythm_master_screen.dart';
 import '../games/trace_path/trace_path_screen.dart';
+import '../games/akari/akari_screen.dart';
+import '../games/perspective_taking/perspective_taking_screen.dart';
+import '../games/paper_folding/paper_folding_screen.dart';
+import '../games/mirror_tracing/mirror_tracing_screen.dart';
+import '../games/silhouette_match/silhouette_match_screen.dart';
+
+import '../games/multiple_object_tracking/multiple_object_tracking_screen.dart';
+import '../games/vigilance_task/vigilance_task_screen.dart';
 
 import '../games/visual_search/visual_search_screen.dart';
 import '../games/go_no_go/go_no_go_screen.dart';
@@ -93,6 +101,15 @@ import '../games/logical_syllogisms/logical_syllogisms_screen.dart';
 import '../games/matrix_reasoning/matrix_reasoning_screen.dart';
 import '../games/numerical_estimation/numerical_estimation_screen.dart';
 
+import '../games/digit_span_reverse/digit_span_reverse_screen.dart';
+import '../games/face_name_association/face_name_association_screen.dart';
+import '../games/staircase_memory/staircase_memory_screen.dart';
+import '../games/verbal_analogies/verbal_analogies_screen.dart';
+import '../games/category_fluency/category_fluency_screen.dart';
+import '../games/word_surge/word_surge_screen.dart';
+import '../games/mental_abacus/mental_abacus_screen.dart';
+import '../games/missing_operator/missing_operator_screen.dart';
+
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required Widget page})
       : super(
@@ -123,6 +140,20 @@ class HomeScreen extends ConsumerStatefulWidget {
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   final List<Map<String, dynamic>> _games = [
+    {
+      'title': 'Object Tracking',
+      'id': 'multiple_object_tracking',
+      'icon': Icons.track_changes_rounded,
+      'color': DesignSystem.gameIndigo,
+      'screen': const MultipleObjectTrackingScreen(),
+    },
+    {
+      'title': 'Vigilance Task',
+      'id': 'vigilance_task',
+      'icon': Icons.watch_later_rounded,
+      'color': DesignSystem.gameRose,
+      'screen': const VigilanceTaskScreen(),
+    },
     {
       'title': 'Mental Rotation',
       'id': 'mental_rotation',
@@ -157,6 +188,97 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'icon': Icons.scatter_plot_rounded,
       'color': DesignSystem.gameRose,
       'screen': const NumericalEstimationScreen(),
+    },
+    {
+      'title': 'Reverse Span',
+      'id': 'digit_span_reverse',
+      'icon': Icons.settings_backup_restore_rounded,
+      'color': DesignSystem.gameIndigo,
+      'screen': const DigitSpanReverseScreen(),
+    },
+    {
+      'title': 'Face-Name',
+      'id': 'face_name_association',
+      'icon': Icons.assignment_ind_rounded,
+      'color': DesignSystem.gameTeal,
+      'screen': const FaceNameAssociationScreen(),
+    },
+    {
+      'title': 'Staircase Memory',
+      'id': 'staircase_memory',
+      'icon': Icons.stairs_rounded,
+      'color': DesignSystem.gameAmber,
+      'screen': const StaircaseMemoryScreen(),
+    },
+    {
+      'title': 'Akari',
+      'id': 'akari',
+      'icon': Icons.lightbulb_rounded,
+      'color': DesignSystem.gameAmber,
+      'screen': const AkariScreen(),
+    },
+    {
+      'title': 'Perspective',
+      'id': 'perspective_taking',
+      'icon': Icons.view_in_ar_rounded,
+      'color': DesignSystem.gamePurple,
+      'screen': const PerspectiveTakingScreen(),
+    },
+    {
+      'title': 'Paper Folding',
+      'id': 'paper_folding',
+      'icon': Icons.note_rounded,
+      'color': DesignSystem.gameRose,
+      'screen': const PaperFoldingScreen(),
+    },
+    {
+      'title': 'Mirror Tracing',
+      'id': 'mirror_tracing',
+      'icon': Icons.gesture_rounded,
+      'color': DesignSystem.gameCyan,
+      'screen': const MirrorTracingScreen(),
+    },
+    {
+      'title': 'Silhouette Match',
+      'id': 'silhouette_match',
+      'icon': Icons.auto_fix_normal_rounded,
+      'color': DesignSystem.gameAmber,
+      'screen': const SilhouetteMatchScreen(),
+    },
+    {
+      'title': 'Verbal Analogies',
+      'id': 'verbal_analogies',
+      'icon': Icons.compare_arrows_rounded,
+      'color': DesignSystem.gameBlue,
+      'screen': const VerbalAnalogiesScreen(),
+    },
+    {
+      'title': 'Category Fluency',
+      'id': 'category_fluency',
+      'icon': Icons.category_rounded,
+      'color': DesignSystem.gameGreen,
+      'screen': const CategoryFluencyScreen(),
+    },
+    {
+      'title': 'Word Surge',
+      'id': 'word_surge',
+      'icon': Icons.bolt_rounded,
+      'color': DesignSystem.gameRose,
+      'screen': const WordSurgeScreen(),
+    },
+    {
+      'title': 'Mental Abacus',
+      'id': 'mental_abacus',
+      'icon': Icons.grid_4x4_rounded,
+      'color': DesignSystem.gameAmber,
+      'screen': const MentalAbacusScreen(),
+    },
+    {
+      'title': 'Operator Mix',
+      'id': 'missing_operator',
+      'icon': Icons.calculate_rounded,
+      'color': DesignSystem.gameBlue,
+      'screen': const MissingOperatorScreen(),
     },
     {
       'title': 'Tower of London',

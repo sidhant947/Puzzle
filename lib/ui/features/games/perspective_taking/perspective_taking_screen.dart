@@ -1,0 +1,233 @@
+import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import '../../../../../providers/user_providers.dart';
+import '../../../../../utils/haptic_feedback.dart';
+import '../../../core/juice/game_scaffold.dart';
+import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../utils/design_system.dart';
+import 'perspective_taking_provider.dart';
+
+class PerspectiveTakingScreen extends ConsumerStatefulWidget {
+  const PerspectiveTakingScreen({super.key});
+
+  @override
+  ConsumerState<PerspectiveTakingScreen> createState() => _PerspectiveTakingScreenState();
+}
+
+class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScreen> {
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(perspectiveTakingNotifierProvider.notifier).initGame();
+    });
+  }
+
+  void _showCompletionDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) => GameCompletionDialog(
+        title: 'GREAT PERSPECTIVE!',
+        message: 'You have a sharp eye for spatial relationships.',
+        isVictory: true,
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          Navigator.of(context).pop();
+          ref.read(perspectiveTakingNotifierProvider.notifier).initGame();
+        },
+      ),
+    );
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final state = ref.watch(perspectiveTakingNotifierProvider);
+    final notifier = ref.read(perspectiveTakingNotifierProvider.notifier);
+
+    ref.listen(perspectiveTakingNotifierProvider, (previous, next) {
+      if (next.isVictory && !(previous?.isVictory ?? false)) {
+        HapticFeedbackUtil.victory();
+        ref.read(gameStreakNotifierProvider.notifier).completeGame('perspective_taking');
+        _showCompletionDialog();
+      }
+    });
+
+    if (state.isLoading) {
+      return const GameScaffold(
+        title: 'Perspective',
+        body: Center(child: CircularProgressIndicator()),
+      );
+    }
+
+    final targetDirName = state.targetDirection.name.toUpperCase();
+
+    return GameScaffold(
+      title: 'Perspective',
+      subtitle: 'Which view is from the $targetDirName?',
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+        child: Column(
+          children: [
+            const SizedBox(height: DesignSystem.spaceMD),
+            const Text(
+              'TOP-DOWN VIEW',
+              style: TextStyle(
+                fontWeight: FontWeight.w900,
+                fontSize: 12,
+                letterSpacing: 1.2,
+                color: DesignSystem.inkSlate,
+              ),
+            ),
+            const SizedBox(height: DesignSystem.spaceMD),
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: _buildTopDownView(state.topView),
+            ),
+            const Spacer(),
+            const Text(
+              'CHOOSE THE PERSPECTIVE',
+              style: TextStyle(
+                fontWeight: FontWeight.w900,
+                fontSize: 12,
+                letterSpacing: 1.2,
+                color: DesignSystem.inkSlate,
+              ),
+            ),
+            const SizedBox(height: DesignSystem.spaceMD),
+            GridView.builder(
+              shrinkWrap: true,
+              physics: const NeverScrollableScrollPhysics(),
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: DesignSystem.spaceMD,
+                mainAxisSpacing: DesignSystem.spaceMD,
+                childAspectRatio: 1.1,
+              ),
+              itemCount: state.options.length,
+              itemBuilder: (context, index) {
+                return _buildOption(state, notifier, index);
+              },
+            ),
+            const SizedBox(height: DesignSystem.space2XL),
+          ],
+        ),
+      ),
+    );
+  }
+
+  Widget _buildTopDownView(List<List<Color?>> view) {
+    return Container(
+      padding: const EdgeInsets.all(DesignSystem.spaceSM),
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
+        boxShadow: [
+          BoxShadow(
+            color: DesignSystem.ink.withValues(alpha: 0.05),
+            blurRadius: 12,
+            offset: const Offset(0, 6),
+          ),
+        ],
+      ),
+      child: Stack(
+        alignment: Alignment.center,
+        children: [
+          Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: _buildGridView(view, 44),
+          ),
+          const Positioned(top: 4, child: Text('NORTH', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: DesignSystem.inkSlate))),
+          const Positioned(bottom: 4, child: Text('SOUTH', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: DesignSystem.inkSlate))),
+          const Positioned(left: 4, child: RotatedBox(quarterTurns: 3, child: Text('WEST', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: DesignSystem.inkSlate)))),
+          const Positioned(right: 4, child: RotatedBox(quarterTurns: 1, child: Text('EAST', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: DesignSystem.inkSlate)))),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildGridView(List<List<Color?>> view, double cellSize) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: List.generate(view.length, (r) {
+        return Row(
+          mainAxisSize: MainAxisSize.min,
+          children: List.generate(view[r].length, (c) {
+            final color = view[r][c];
+            return Container(
+              width: cellSize,
+              height: cellSize,
+              margin: const EdgeInsets.all(1.5),
+              decoration: BoxDecoration(
+                color: color ?? Colors.grey.withValues(alpha: 0.1),
+                borderRadius: BorderRadius.circular(8),
+                border: Border.all(
+                  color: color != null ? DesignSystem.ink.withValues(alpha: 0.1) : Colors.transparent,
+                  width: 1,
+                ),
+              ),
+            );
+          }),
+        );
+      }),
+    );
+  }
+
+  Widget _buildOption(PerspectiveTakingState state, PerspectiveTakingNotifier notifier, int index) {
+    final isSelected = state.selectedOptionIndex == index;
+    final isCorrect = state.correctOptionIndex == index;
+    final showResult = state.selectedOptionIndex != null;
+
+    Color borderColor = DesignSystem.outline;
+    if (showResult) {
+      if (isCorrect) {
+        borderColor = DesignSystem.success;
+      } else if (isSelected) {
+        borderColor = DesignSystem.error;
+      }
+    } else if (isSelected) {
+      borderColor = DesignSystem.primary;
+    }
+
+    return GestureDetector(
+      onTap: () => notifier.selectOption(index),
+      child: Container(
+        padding: const EdgeInsets.all(DesignSystem.spaceXS),
+        decoration: BoxDecoration(
+          color: Colors.white,
+          borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
+          border: Border.all(color: borderColor, width: 3),
+          boxShadow: [
+            BoxShadow(
+              color: DesignSystem.ink.withValues(alpha: 0.05),
+              blurRadius: 8,
+              offset: const Offset(0, 4),
+            ),
+          ],
+        ),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            FittedBox(
+              fit: BoxFit.scaleDown,
+              child: _buildGridView(state.options[index], 28),
+            ),
+            if (showResult && isCorrect)
+              const Positioned(
+                top: 4, right: 4,
+                child: Icon(Icons.check_circle, color: DesignSystem.success, size: 20),
+              ),
+            if (showResult && isSelected && !isCorrect)
+              const Positioned(
+                top: 4, right: 4,
+                child: Icon(Icons.cancel, color: DesignSystem.error, size: 20),
+              ),
+          ],
+        ),
+      ),
+    );
+  }
+}

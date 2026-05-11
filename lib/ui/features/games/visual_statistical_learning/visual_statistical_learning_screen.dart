@@ -5,7 +5,6 @@ import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../../widgets/game_completion_dialog.dart';
-import '../../../../providers/user_providers.dart';
 import 'visual_statistical_learning_provider.dart';
 
 class VisualStatisticalLearningScreen extends ConsumerStatefulWidget {
