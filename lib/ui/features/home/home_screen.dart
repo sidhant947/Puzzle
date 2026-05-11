@@ -110,6 +110,9 @@ import '../games/word_surge/word_surge_screen.dart';
 import '../games/mental_abacus/mental_abacus_screen.dart';
 import '../games/missing_operator/missing_operator_screen.dart';
 
+import '../games/color_flood/color_flood_screen.dart';
+import '../games/tangle_fix/tangle_fix_screen.dart';
+
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required Widget page})
       : super(
@@ -804,6 +807,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'icon': Icons.calculate_rounded,
       'color': DesignSystem.gameEmerald,
       'screen': const CalculationSprintScreen(),
+    },
+    {
+      'title': 'Color Flood',
+      'id': 'color_flood',
+      'icon': Icons.waves_rounded,
+      'color': DesignSystem.primary,
+      'screen': const ColorFloodScreen(),
+    },
+    {
+      'title': 'Tangle Fix',
+      'id': 'tangle_fix',
+      'icon': Icons.hub_rounded,
+      'color': DesignSystem.accentAmber,
+      'screen': const TangleFixScreen(),
     },
   ];
 

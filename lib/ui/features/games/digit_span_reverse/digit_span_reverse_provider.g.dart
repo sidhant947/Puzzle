@@ -7,7 +7,7 @@ part of 'digit_span_reverse_provider.dart';
 // **************************************************************************
 
 String _$digitSpanReverseNotifierHash() =>
-    r'08b68b8b5d97f1f4b5a124b929b7829ac5595aea';
+    r'74b66c29f6b5f32e7c85c7465280c6eb2f16c041';
 
 /// See also [DigitSpanReverseNotifier].
 @ProviderFor(DigitSpanReverseNotifier)

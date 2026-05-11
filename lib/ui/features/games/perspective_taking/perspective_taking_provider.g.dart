@@ -7,7 +7,7 @@ part of 'perspective_taking_provider.dart';
 // **************************************************************************
 
 String _$perspectiveTakingNotifierHash() =>
-    r'39bf489fe9384bc12117d857fd9b43610617b904';
+    r'a385a8dfc09eb46225a6e7718495c98202c905e8';
 
 /// See also [PerspectiveTakingNotifier].
 @ProviderFor(PerspectiveTakingNotifier)
