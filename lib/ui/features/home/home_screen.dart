@@ -142,10 +142,15 @@ class HomeScreen extends ConsumerStatefulWidget {
 }
 
 class _HomeScreenState extends ConsumerState<HomeScreen> {
+  String _searchQuery = "";
+  String _selectedCategory = "ALL";
+  late final TextEditingController _searchController;
+
   final List<Map<String, dynamic>> _games = [
     {
       'title': 'Object Tracking',
       'id': 'multiple_object_tracking',
+      'category': 'ATTENTION',
       'icon': Icons.track_changes_rounded,
       'color': DesignSystem.gameIndigo,
       'screen': const MultipleObjectTrackingScreen(),
@@ -153,6 +158,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Vigilance Task',
       'id': 'vigilance_task',
+      'category': 'ATTENTION',
       'icon': Icons.watch_later_rounded,
       'color': DesignSystem.gameRose,
       'screen': const VigilanceTaskScreen(),
@@ -160,6 +166,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Mental Rotation',
       'id': 'mental_rotation',
+      'category': 'SPATIAL',
       'icon': Icons.threed_rotation_rounded,
       'color': DesignSystem.gameIndigo,
       'screen': const MentalRotationScreen(),
@@ -167,6 +174,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Semantic Link',
       'id': 'semantic_link',
+      'category': 'WORD',
       'icon': Icons.link_rounded,
       'color': DesignSystem.gameBlue,
       'screen': const SemanticLinkScreen(),
@@ -174,6 +182,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Logical Syllogisms',
       'id': 'logical_syllogisms',
+      'category': 'LOGIC',
       'icon': Icons.account_tree_rounded,
       'color': DesignSystem.gameTeal,
       'screen': const LogicalSyllogismsScreen(),
@@ -181,6 +190,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Matrix Reasoning',
       'id': 'matrix_reasoning',
+      'category': 'LOGIC',
       'icon': Icons.grid_view_rounded,
       'color': DesignSystem.gameAmber,
       'screen': const MatrixReasoningScreen(),
@@ -188,6 +198,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Numerical Estimation',
       'id': 'numerical_estimation',
+      'category': 'MATH',
       'icon': Icons.scatter_plot_rounded,
       'color': DesignSystem.gameRose,
       'screen': const NumericalEstimationScreen(),
@@ -195,6 +206,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Reverse Span',
       'id': 'digit_span_reverse',
+      'category': 'MEMORY',
       'icon': Icons.settings_backup_restore_rounded,
       'color': DesignSystem.gameIndigo,
       'screen': const DigitSpanReverseScreen(),
@@ -202,6 +214,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Face-Name',
       'id': 'face_name_association',
+      'category': 'MEMORY',
       'icon': Icons.assignment_ind_rounded,
       'color': DesignSystem.gameTeal,
       'screen': const FaceNameAssociationScreen(),
@@ -209,6 +222,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Staircase Memory',
       'id': 'staircase_memory',
+      'category': 'MEMORY',
       'icon': Icons.stairs_rounded,
       'color': DesignSystem.gameAmber,
       'screen': const StaircaseMemoryScreen(),
@@ -216,6 +230,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Akari',
       'id': 'akari',
+      'category': 'LOGIC',
       'icon': Icons.lightbulb_rounded,
       'color': DesignSystem.gameAmber,
       'screen': const AkariScreen(),
@@ -223,6 +238,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Perspective',
       'id': 'perspective_taking',
+      'category': 'SPATIAL',
       'icon': Icons.view_in_ar_rounded,
       'color': DesignSystem.gamePurple,
       'screen': const PerspectiveTakingScreen(),
@@ -230,6 +246,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Paper Folding',
       'id': 'paper_folding',
+      'category': 'SPATIAL',
       'icon': Icons.note_rounded,
       'color': DesignSystem.gameRose,
       'screen': const PaperFoldingScreen(),
@@ -237,6 +254,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Mirror Tracing',
       'id': 'mirror_tracing',
+      'category': 'SPATIAL',
       'icon': Icons.gesture_rounded,
       'color': DesignSystem.gameCyan,
       'screen': const MirrorTracingScreen(),
@@ -244,6 +262,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Silhouette Match',
       'id': 'silhouette_match',
+      'category': 'SPATIAL',
       'icon': Icons.auto_fix_normal_rounded,
       'color': DesignSystem.gameAmber,
       'screen': const SilhouetteMatchScreen(),
@@ -251,6 +270,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Verbal Analogies',
       'id': 'verbal_analogies',
+      'category': 'WORD',
       'icon': Icons.compare_arrows_rounded,
       'color': DesignSystem.gameBlue,
       'screen': const VerbalAnalogiesScreen(),
@@ -258,6 +278,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Category Fluency',
       'id': 'category_fluency',
+      'category': 'WORD',
       'icon': Icons.category_rounded,
       'color': DesignSystem.gameGreen,
       'screen': const CategoryFluencyScreen(),
@@ -265,6 +286,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Word Surge',
       'id': 'word_surge',
+      'category': 'WORD',
       'icon': Icons.bolt_rounded,
       'color': DesignSystem.gameRose,
       'screen': const WordSurgeScreen(),
@@ -272,6 +294,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Mental Abacus',
       'id': 'mental_abacus',
+      'category': 'MATH',
       'icon': Icons.grid_4x4_rounded,
       'color': DesignSystem.gameAmber,
       'screen': const MentalAbacusScreen(),
@@ -279,6 +302,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Operator Mix',
       'id': 'missing_operator',
+      'category': 'MATH',
       'icon': Icons.calculate_rounded,
       'color': DesignSystem.gameBlue,
       'screen': const MissingOperatorScreen(),
@@ -286,6 +310,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Tower of London',
       'id': 'tower_of_london',
+      'category': 'LOGIC',
       'icon': Icons.account_balance_rounded,
       'color': DesignSystem.gameIndigo,
       'screen': const TowerOfLondonScreen(),
@@ -293,6 +318,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Symbolic Flanker',
       'id': 'symbolic_flanker',
+      'category': 'ATTENTION',
       'icon': Icons.font_download_rounded,
       'color': DesignSystem.gamePurple,
       'screen': const SymbolicFlankerScreen(),
@@ -300,6 +326,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Rule Switcher',
       'id': 'rule_switcher',
+      'category': 'ATTENTION',
       'icon': Icons.swap_calls_rounded,
       'color': DesignSystem.gameTeal,
       'screen': const RuleSwitcherScreen(),
@@ -307,6 +334,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Box Completion',
       'id': 'box_completion',
+      'category': 'SPATIAL',
       'icon': Icons.crop_square_rounded,
       'color': DesignSystem.gameAmber,
       'screen': const BoxCompletionScreen(),
@@ -314,6 +342,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Letter Cancel',
       'id': 'letter_cancellation',
+      'category': 'ATTENTION',
       'icon': Icons.spellcheck_rounded,
       'color': DesignSystem.gameRose,
       'screen': const LetterCancellationScreen(),
@@ -321,6 +350,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Choice Reaction',
       'id': 'choice_reaction_time',
+      'category': 'ATTENTION',
       'icon': Icons.touch_app_rounded,
       'color': DesignSystem.gameBlue,
       'screen': const ChoiceReactionTimeScreen(),
@@ -328,6 +358,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Wisconsin Card Sort',
       'id': 'wisconsin_card_sorting',
+      'category': 'LOGIC',
       'icon': Icons.style_rounded,
       'color': DesignSystem.gameRose,
       'screen': const WisconsinCardSortingScreen(),
@@ -335,6 +366,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Attentional Blink',
       'id': 'attentional_blink',
+      'category': 'ATTENTION',
       'icon': Icons.visibility_off_rounded,
       'color': DesignSystem.gamePurple,
       'screen': const AttentionalBlinkScreen(),
@@ -342,6 +374,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Change Blindness',
       'id': 'change_blindness',
+      'category': 'ATTENTION',
       'icon': Icons.flip_camera_android_rounded,
       'color': DesignSystem.gameAmber,
       'screen': const ChangeBlindnessScreen(),
@@ -349,6 +382,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Visual Learning',
       'id': 'visual_statistical_learning',
+      'category': 'MEMORY',
       'icon': Icons.pattern_rounded,
       'color': DesignSystem.gameTeal,
       'screen': const VisualStatisticalLearningScreen(),
@@ -356,6 +390,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Sternberg Task',
       'id': 'sternberg_task',
+      'category': 'MEMORY',
       'icon': Icons.memory_rounded,
       'color': DesignSystem.gameBlue,
       'screen': const SternbergTaskScreen(),
@@ -363,6 +398,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Double N-Back',
       'id': 'double_n_back',
+      'category': 'MEMORY',
       'icon': Icons.layers_rounded,
       'color': DesignSystem.gameIndigo,
       'screen': const DoubleNBackScreen(),
@@ -370,6 +406,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Operation Span',
       'id': 'operation_span',
+      'category': 'MEMORY',
       'icon': Icons.calculate_rounded,
       'color': DesignSystem.gameGreen,
       'screen': const OperationSpanScreen(),
@@ -377,6 +414,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'N-Back Test',
       'id': 'n_back',
+      'category': 'MEMORY',
       'icon': Icons.psychology_rounded,
       'color': DesignSystem.gameBlue,
       'screen': const NBackScreen(),
@@ -384,6 +422,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Corsi Blocks',
       'id': 'corsi_blocks',
+      'category': 'MEMORY',
       'icon': Icons.grid_view_rounded,
       'color': DesignSystem.gameIndigo,
       'screen': const CorsiBlocksScreen(),
@@ -391,6 +430,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'SDMT Test',
       'id': 'sdmt',
+      'category': 'ATTENTION',
       'icon': Icons.fact_check_rounded,
       'color': DesignSystem.gameTeal,
       'screen': const SDMTScreen(),
@@ -398,6 +438,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Trail Making',
       'id': 'trail_making',
+      'category': 'ATTENTION',
       'icon': Icons.timeline_rounded,
       'color': DesignSystem.gameGreen,
       'screen': const TrailMakingScreen(),
@@ -405,6 +446,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Stop Signal',
       'id': 'stop_signal',
+      'category': 'ATTENTION',
       'icon': Icons.block_flipped,
       'color': DesignSystem.gameRose,
       'screen': const StopSignalScreen(),
@@ -412,6 +454,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Visual Search',
       'id': 'visual_search',
+      'category': 'ATTENTION',
       'icon': Icons.center_focus_strong_rounded,
       'color': DesignSystem.gameIndigo,
       'screen': const VisualSearchScreen(),
@@ -419,6 +462,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Go / No-Go',
       'id': 'go_no_go',
+      'category': 'ATTENTION',
       'icon': Icons.pan_tool_alt_rounded,
       'color': DesignSystem.gameRose,
       'screen': const GoNoGoScreen(),
@@ -426,6 +470,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Divided Focus',
       'id': 'divided_attention',
+      'category': 'ATTENTION',
       'icon': Icons.vertical_split_rounded,
       'color': DesignSystem.gameTeal,
       'screen': const DividedAttentionScreen(),
@@ -433,6 +478,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Prime Hunter',
       'id': 'prime_hunter',
+      'category': 'MATH',
       'icon': Icons.gps_fixed_rounded,
       'color': DesignSystem.gameBlue,
       'screen': const PrimeHunterScreen(),
@@ -440,6 +486,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Fraction Match',
       'id': 'fraction_match',
+      'category': 'MATH',
       'icon': Icons.pie_chart_rounded,
       'color': DesignSystem.gamePurple,
       'screen': const FractionMatchScreen(),
@@ -447,6 +494,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Path Recall',
       'id': 'path_recall',
+      'category': 'MEMORY',
       'icon': Icons.polyline_rounded,
       'color': DesignSystem.gameBlue,
       'screen': const PathRecallScreen(),
@@ -454,6 +502,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Object Shuffle',
       'id': 'object_shuffle',
+      'category': 'MEMORY',
       'icon': Icons.visibility_rounded,
       'color': DesignSystem.gameAmber,
       'screen': const ObjectShuffleScreen(),
@@ -461,6 +510,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Grocery List',
       'id': 'grocery_list',
+      'category': 'MEMORY',
       'icon': Icons.shopping_basket_rounded,
       'color': DesignSystem.gameGreen,
       'screen': const GroceryListScreen(),
@@ -468,6 +518,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Orbit Tap',
       'id': 'orbit_tap',
+      'category': 'ATTENTION',
       'icon': Icons.vibration_rounded,
       'color': DesignSystem.gameIndigo,
       'screen': const OrbitTapScreen(),
@@ -475,6 +526,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Rhythm Master',
       'id': 'rhythm_master',
+      'category': 'ATTENTION',
       'icon': Icons.favorite_rounded,
       'color': DesignSystem.gamePink,
       'screen': const RhythmMasterScreen(),
@@ -482,6 +534,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Trace Path',
       'id': 'trace_path',
+      'category': 'SPATIAL',
       'icon': Icons.gesture_rounded,
       'color': DesignSystem.gameGreen,
       'screen': const TracePathScreen(),
@@ -489,6 +542,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Target 24',
       'id': 'target_number',
+      'category': 'MATH',
       'icon': Icons.track_changes_rounded,
       'color': DesignSystem.gameAmber,
       'screen': const TargetNumberScreen(),
@@ -496,6 +550,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Chain Calc',
       'id': 'arithmetic_chain',
+      'category': 'MATH',
       'icon': Icons.link_rounded,
       'color': DesignSystem.gameBlue,
       'screen': const ArithmeticChainScreen(),
@@ -503,6 +558,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Magic Square',
       'id': 'magic_squares',
+      'category': 'MATH',
       'icon': Icons.grid_3x3_rounded,
       'color': DesignSystem.gamePurple,
       'screen': const MagicSquaresScreen(),
@@ -510,6 +566,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'KenKen',
       'id': 'kenken',
+      'category': 'MATH',
       'icon': Icons.calculate_outlined,
       'color': DesignSystem.gameTeal,
       'screen': const KenKenScreen(),
@@ -517,6 +574,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Typing Speed',
       'id': 'typing_speed',
+      'category': 'WORD',
       'icon': Icons.keyboard_rounded,
       'color': DesignSystem.gameIndigo,
       'screen': const TypingSpeedScreen(),
@@ -524,6 +582,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Quick Math',
       'id': 'quick_math',
+      'category': 'MATH',
       'icon': Icons.bolt_rounded,
       'color': DesignSystem.gameAmber,
       'screen': const QuickMathScreen(),
@@ -531,6 +590,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Reflex Tap',
       'id': 'reflex_tap',
+      'category': 'ATTENTION',
       'icon': Icons.ads_click_rounded,
       'color': DesignSystem.gameRose,
       'screen': const ReflexTapScreen(),
@@ -538,6 +598,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Stroop Test',
       'id': 'stroop_test',
+      'category': 'ATTENTION',
       'icon': Icons.psychology_rounded,
       'color': DesignSystem.gameGreen,
       'screen': const StroopTestScreen(),
@@ -545,6 +606,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Flanker Test',
       'id': 'flanker_test',
+      'category': 'ATTENTION',
       'icon': Icons.compare_arrows_rounded,
       'color': DesignSystem.gameBlue,
       'screen': const FlankerTestScreen(),
@@ -552,6 +614,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Switch Task',
       'id': 'switch_task',
+      'category': 'ATTENTION',
       'icon': Icons.swap_horiz_rounded,
       'color': DesignSystem.gameAmber,
       'screen': const SwitchTaskScreen(),
@@ -559,6 +622,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Cryptogram',
       'id': 'cryptogram',
+      'category': 'WORD',
       'icon': Icons.password_rounded,
       'color': DesignSystem.gameIndigo,
       'screen': const CryptogramScreen(),
@@ -566,6 +630,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Balance Scale',
       'id': 'balance_scale',
+      'category': 'MATH',
       'icon': Icons.balance_rounded,
       'color': DesignSystem.gameTeal,
       'screen': const BalanceScaleScreen(),
@@ -573,6 +638,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Symbol Logic',
       'id': 'symbol_logic',
+      'category': 'LOGIC',
       'icon': Icons.calculate_rounded,
       'color': DesignSystem.gameAmber,
       'screen': const SymbolLogicScreen(),
@@ -580,6 +646,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Pixel Mimic',
       'id': 'pixel_mimic',
+      'category': 'MEMORY',
       'icon': Icons.memory_rounded,
       'color': DesignSystem.gameIndigo,
       'screen': const PixelMimicScreen(),
@@ -587,6 +654,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Odd Rotation',
       'id': 'odd_rotation',
+      'category': 'SPATIAL',
       'icon': Icons.flip_rounded,
       'color': DesignSystem.gameRose,
       'screen': const OddRotationScreen(),
@@ -594,6 +662,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Word Scramble',
       'id': 'word_scramble',
+      'category': 'WORD',
       'icon': Icons.shuffle_rounded,
       'color': DesignSystem.gameAmber,
       'screen': const WordScrambleScreen(),
@@ -601,6 +670,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Missing Vowels',
       'id': 'missing_vowels',
+      'category': 'WORD',
       'icon': Icons.spellcheck_rounded,
       'color': DesignSystem.gameBlue,
       'screen': const MissingVowelsScreen(),
@@ -608,6 +678,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Water Sort',
       'id': 'water_sort',
+      'category': 'LOGIC',
       'icon': Icons.opacity_rounded,
       'color': DesignSystem.gameBlue,
       'screen': const WaterSortScreen(),
@@ -615,6 +686,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Lights Out',
       'id': 'lights_out',
+      'category': 'LOGIC',
       'icon': Icons.lightbulb_rounded,
       'color': DesignSystem.gameAmber,
       'screen': const LightsOutScreen(),
@@ -622,6 +694,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Hue Sort',
       'id': 'hue_sort',
+      'category': 'SPATIAL',
       'icon': Icons.gradient_rounded,
       'color': DesignSystem.gamePurple,
       'screen': const HueSortScreen(),
@@ -629,6 +702,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Math Path',
       'id': 'math_path',
+      'category': 'MATH',
       'icon': Icons.route_rounded,
       'color': DesignSystem.gameBlue,
       'screen': const MathPathScreen(),
@@ -636,6 +710,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Spelling Sprint',
       'id': 'spelling_sprint',
+      'category': 'WORD',
       'icon': Icons.speed_rounded,
       'color': DesignSystem.gameAmber,
       'screen': const SpellingSprintScreen(),
@@ -643,6 +718,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Odd One Out',
       'id': 'odd_one_out',
+      'category': 'ATTENTION',
       'icon': Icons.visibility_rounded,
       'color': DesignSystem.gameRose,
       'screen': const OddOneOutScreen(),
@@ -650,6 +726,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Bridges',
       'id': 'bridges',
+      'category': 'LOGIC',
       'icon': Icons.horizontal_rule_rounded,
       'color': DesignSystem.gameTeal,
       'screen': const BridgesScreen(),
@@ -657,6 +734,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Binary Puzzle',
       'id': 'binary_puzzle',
+      'category': 'LOGIC',
       'icon': Icons.exposure_zero_rounded,
       'color': DesignSystem.gameBlue,
       'screen': const BinaryPuzzleScreen(),
@@ -664,6 +742,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Color Match',
       'id': 'color_match',
+      'category': 'ATTENTION',
       'icon': Icons.palette_rounded,
       'color': DesignSystem.gameRose,
       'screen': const ColorMatchScreen(),
@@ -671,6 +750,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Path Finder',
       'id': 'path_finder',
+      'category': 'LOGIC',
       'icon': Icons.route_rounded,
       'color': DesignSystem.gameTeal,
       'screen': const PathFinderScreen(),
@@ -678,6 +758,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Sequence',
       'id': 'simon_sequence',
+      'category': 'MEMORY',
       'icon': Icons.repeat_rounded,
       'color': DesignSystem.gameCyan,
       'screen': const SimonSequenceScreen(),
@@ -685,6 +766,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Symmetry',
       'id': 'symmetry',
+      'category': 'SPATIAL',
       'icon': Icons.flip_rounded,
       'color': DesignSystem.gameViolet,
       'screen': const SymmetryScreen(),
@@ -692,6 +774,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Sudoku',
       'id': 'sudoku',
+      'category': 'LOGIC',
       'icon': Icons.grid_4x4_rounded,
       'color': DesignSystem.gameBlue,
       'screen': const SudokuScreen(),
@@ -699,6 +782,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Word Mastermind',
       'id': 'word_mastermind',
+      'category': 'WORD',
       'icon': Icons.psychology_rounded,
       'color': DesignSystem.gameIndigo,
       'screen': const WordMastermindScreen(),
@@ -706,6 +790,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Word Ladder',
       'id': 'word_ladder',
+      'category': 'WORD',
       'icon': Icons.format_list_numbered_rounded,
       'color': DesignSystem.gameViolet,
       'screen': const WordLadderScreen(),
@@ -713,6 +798,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Slide Puzzle',
       'id': 'slide_puzzle',
+      'category': 'SPATIAL',
       'icon': Icons.grid_view_rounded,
       'color': DesignSystem.gameRose,
       'screen': const SlidePuzzleScreen(),
@@ -720,6 +806,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Pipes',
       'id': 'pipes',
+      'category': 'LOGIC',
       'icon': Icons.hub_rounded,
       'color': DesignSystem.gameTeal,
       'screen': const PipesScreen(),
@@ -727,6 +814,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Block Escape',
       'id': 'block_escape',
+      'category': 'LOGIC',
       'icon': Icons.view_column_rounded,
       'color': DesignSystem.gameOrange,
       'screen': const BlockEscapeScreen(),
@@ -734,6 +822,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Tents & Trees',
       'id': 'tents_and_trees',
+      'category': 'LOGIC',
       'icon': Icons.park_rounded,
       'color': DesignSystem.gameGreen,
       'screen': const TentsAndTreesScreen(),
@@ -741,6 +830,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Find Word',
       'id': 'find_word',
+      'category': 'WORD',
       'icon': Icons.abc_rounded,
       'color': DesignSystem.gameGreen,
       'screen': const FindWordScreen(),
@@ -748,6 +838,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Crossword',
       'id': 'crossword',
+      'category': 'WORD',
       'icon': Icons.grid_on_rounded,
       'color': DesignSystem.gamePurple,
       'screen': const CrosswordScreen(),
@@ -755,6 +846,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Word Search',
       'id': 'word_search',
+      'category': 'WORD',
       'icon': Icons.search_rounded,
       'color': DesignSystem.gameOrange,
       'screen': const WordSearchScreen(),
@@ -762,6 +854,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': '2048',
       'id': 'game_2048',
+      'category': 'MATH',
       'icon': Icons.grid_view_rounded,
       'color': DesignSystem.gamePink,
       'screen': const Game2048Screen(),
@@ -769,6 +862,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Crown',
       'id': 'crown',
+      'category': 'LOGIC',
       'icon': Icons.workspace_premium_rounded,
       'color': DesignSystem.gameTeal,
       'screen': const CrownScreen(),
@@ -776,6 +870,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Minesweeper',
       'id': 'minesweeper',
+      'category': 'LOGIC',
       'icon': Icons.brightness_7_rounded,
       'color': DesignSystem.gameIndigo,
       'screen': const MinesweeperScreen(),
@@ -783,6 +878,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Memory Matrix',
       'id': 'memory_matrix',
+      'category': 'MEMORY',
       'icon': Icons.memory_rounded,
       'color': DesignSystem.gameAmber,
       'screen': const MemoryMatrixScreen(),
@@ -790,6 +886,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Nonogram',
       'id': 'nonogram',
+      'category': 'LOGIC',
       'icon': Icons.grid_view_rounded,
       'color': DesignSystem.gameRose,
       'screen': const NonogramScreen(),
@@ -797,6 +894,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Schulte Table',
       'id': 'schulte_table',
+      'category': 'ATTENTION',
       'icon': Icons.speed_rounded,
       'color': DesignSystem.gameViolet,
       'screen': const SchulteTableScreen(),
@@ -804,6 +902,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Calc Sprint',
       'id': 'calculation_sprint',
+      'category': 'MATH',
       'icon': Icons.calculate_rounded,
       'color': DesignSystem.gameEmerald,
       'screen': const CalculationSprintScreen(),
@@ -811,6 +910,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Color Flood',
       'id': 'color_flood',
+      'category': 'LOGIC',
       'icon': Icons.waves_rounded,
       'color': DesignSystem.primary,
       'screen': const ColorFloodScreen(),
@@ -818,6 +918,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     {
       'title': 'Tangle Fix',
       'id': 'tangle_fix',
+      'category': 'LOGIC',
       'icon': Icons.hub_rounded,
       'color': DesignSystem.accentAmber,
       'screen': const TangleFixScreen(),
@@ -825,10 +926,28 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   ];
 
   @override
+  void initState() {
+    super.initState();
+    _searchController = TextEditingController();
+  }
+
+  @override
+  void dispose() {
+    _searchController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     final streaks = ref.watch(gameStreakNotifierProvider);
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
+
+    final filteredGames = _games.where((game) {
+      final matchesSearch = game['title'].toLowerCase().contains(_searchQuery.toLowerCase());
+      final matchesCategory = _selectedCategory == 'ALL' || game['category'] == _selectedCategory;
+      return matchesSearch && matchesCategory;
+    }).toList();
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -939,43 +1058,154 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
           ),
 
-          // Full-Width Game Tiles
-          SliverPadding(
-            padding: const EdgeInsets.fromLTRB(
-              DesignSystem.spaceLG,
-              DesignSystem.spaceMD,
-              DesignSystem.spaceLG,
-              140, // Space for bottom nav
-            ),
-            sliver: SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  final game = _games[index];
-                  return Padding(
-                    padding:
-                        const EdgeInsets.only(bottom: DesignSystem.spaceMD),
-                    child: _buildFullWidthTile(
-                      context,
-                      game['title'],
-                      game['id'],
-                      game['icon'],
-                      game['color'],
-                      streaks[game['id']],
-                      () => Navigator.push(
-                        context,
-                        CustomPageRoute(page: game['screen']),
+          // Search and Categories
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+              child: Column(
+                children: [
+                  TangibleContainer(
+                    color: colorScheme.surface,
+                    padding: EdgeInsets.zero,
+                    child: TextField(
+                      controller: _searchController,
+                      onChanged: (value) => setState(() => _searchQuery = value),
+                      decoration: InputDecoration(
+                        hintText: 'SEARCH GAMES...',
+                        hintStyle: TextStyle(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w900,
+                          color: colorScheme.onSurface.withValues(alpha: 0.3),
+                        ),
+                        prefixIcon: Icon(
+                          Icons.search_rounded,
+                          color: colorScheme.onSurface.withValues(alpha: 0.5),
+                        ),
+                        suffixIcon: _searchQuery.isNotEmpty
+                            ? IconButton(
+                                icon: Icon(
+                                  Icons.close_rounded,
+                                  color: colorScheme.onSurface.withValues(alpha: 0.5),
+                                  size: 20,
+                                ),
+                                onPressed: () {
+                                  _searchController.clear();
+                                  setState(() => _searchQuery = "");
+                                },
+                              )
+                            : null,
+                        border: InputBorder.none,
+                        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                      ),
+                      style: TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w900,
+                        color: colorScheme.onSurface,
                       ),
                     ),
-                  );
-                },
-                childCount: _games.length,
+                  ),
+                  const SizedBox(height: DesignSystem.spaceMD),
+                  SingleChildScrollView(
+                    scrollDirection: Axis.horizontal,
+                    physics: const BouncingScrollPhysics(),
+                    child: Row(
+                      children: [
+                        'ALL',
+                        'ATTENTION',
+                        'LOGIC',
+                        'MATH',
+                        'WORD',
+                        'MEMORY',
+                        'SPATIAL'
+                      ].map((cat) {
+                        final isSelected = _selectedCategory == cat;
+                        return Padding(
+                          padding: const EdgeInsets.only(right: DesignSystem.spaceMD),
+                          child: TangibleButton(
+                            onTap: () => setState(() => _selectedCategory = cat),
+                            color: isSelected ? DesignSystem.primary : colorScheme.surface,
+                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                            child: Text(
+                              cat,
+                              style: TextStyle(
+                                fontSize: 12,
+                                fontWeight: FontWeight.w900,
+                                color: isSelected ? Colors.white : colorScheme.onSurface,
+                                letterSpacing: 0.5,
+                              ),
+                            ),
+                          ),
+                        );
+                      }).toList(),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
-        ],
-      ),
-    );
-  }
+
+          // Full-Width Game Tiles
+          filteredGames.isEmpty
+              ? SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: Center(
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.search_off_rounded,
+                          size: 64,
+                          color: colorScheme.onSurface.withValues(alpha: 0.1),
+                        ),
+                        const SizedBox(height: DesignSystem.spaceMD),
+                        Text(
+                          'NO GAMES MATCH YOUR SEARCH',
+                          style: TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w900,
+                            letterSpacing: 1.0,
+                            color: colorScheme.onSurface.withValues(alpha: 0.3),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                )
+              : SliverPadding(
+                  padding: const EdgeInsets.fromLTRB(
+                    DesignSystem.spaceLG,
+                    DesignSystem.spaceMD,
+                    DesignSystem.spaceLG,
+                    140, // Space for bottom nav
+                  ),
+                  sliver: SliverList(
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) {
+                        final game = filteredGames[index];
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
+                          child: _buildFullWidthTile(
+                            context,
+                            game['title'],
+                            game['id'],
+                            game['icon'],
+                            game['color'],
+                            streaks[game['id']],
+                            () => Navigator.push(
+                              context,
+                              CustomPageRoute(page: game['screen']),
+                            ),
+                          ),
+                        );
+                      },
+                      childCount: filteredGames.length,
+                    ),
+                  ),
+                ),
+          ],
+          ),
+          );
+          }
 
   Widget _buildFullWidthTile(
     BuildContext context,

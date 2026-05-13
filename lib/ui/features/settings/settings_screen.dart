@@ -56,6 +56,7 @@ class SettingsScreen extends ConsumerWidget {
                     'Star on GitHub',
                     Icons.star_rounded,
                     () => _launchUrl('https://github.com/sidhant947/Puzzle'),
+                    iconColor: Colors.amber,
                   ),
                   const SizedBox(height: DesignSystem.spaceSM),
                   _buildSettingsItem(
@@ -63,6 +64,7 @@ class SettingsScreen extends ConsumerWidget {
                     'Sponsor on GitHub',
                     Icons.favorite_rounded,
                     () => _launchUrl('https://github.com/sponsors/sidhant947'),
+                    iconColor: Colors.pink,
                   ),
                   const SizedBox(height: DesignSystem.spaceXL),
                   _buildSectionTitle(context, 'SYSTEM & LEGAL'),
@@ -159,7 +161,13 @@ class SettingsScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildSettingsItem(BuildContext context, String title, IconData icon, VoidCallback onTap) {
+  Widget _buildSettingsItem(
+    BuildContext context,
+    String title,
+    IconData icon,
+    VoidCallback onTap, {
+    Color? iconColor,
+  }) {
     final colorScheme = Theme.of(context).colorScheme;
     return TangibleButton(
       color: colorScheme.surface,
@@ -167,7 +175,11 @@ class SettingsScreen extends ConsumerWidget {
       onTap: onTap,
       child: Row(
         children: [
-          Icon(icon, size: 24, color: colorScheme.onSurface.withValues(alpha: 0.7)),
+          Icon(
+            icon,
+            size: 24,
+            color: iconColor ?? colorScheme.onSurface.withValues(alpha: 0.7),
+          ),
           const SizedBox(width: DesignSystem.spaceMD),
           Expanded(
             child: Text(
