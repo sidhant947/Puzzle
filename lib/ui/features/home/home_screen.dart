@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../data/models/game_streak.dart';
 import '../../../../widgets/super_streak_action.dart';
@@ -843,6 +844,86 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               SuperStreakAction(),
               SizedBox(width: 16),
             ],
+          ),
+
+          // Daily Stats & Encouragement
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(
+                DesignSystem.spaceLG,
+                DesignSystem.spaceSM,
+                DesignSystem.spaceLG,
+                DesignSystem.spaceLG,
+              ),
+              child: Builder(
+                builder: (context) {
+                  final solvedToday = streaks.values.where((s) => s.solvedToday).length;
+                  String encouragement;
+                  if (solvedToday == 0) {
+                    encouragement = "READY TO START YOUR BRAIN WORKOUT?";
+                  } else if (solvedToday < 3) {
+                    encouragement = "GREAT START! KEEP THAT MOMENTUM.";
+                  } else if (solvedToday < 7) {
+                    encouragement = "ON FIRE! YOUR BRAIN IS LOVING THIS.";
+                  } else {
+                    encouragement = "INCREDIBLE! YOU'RE A PUZZLE MASTER.";
+                  }
+
+                  return TangibleContainer(
+                    padding: const EdgeInsets.all(DesignSystem.spaceMD),
+                    child: Row(
+                      children: [
+                        Container(
+                          width: 60,
+                          height: 60,
+                          decoration: BoxDecoration(
+                            color: DesignSystem.primary.withValues(alpha: 0.1),
+                            borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
+                          ),
+                          child: Center(
+                            child: Text(
+                              '$solvedToday',
+                              style: const TextStyle(
+                                fontSize: 32,
+                                fontWeight: FontWeight.w900,
+                                color: DesignSystem.primary,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(width: DesignSystem.spaceMD),
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                'SOLVED TODAY',
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  fontWeight: FontWeight.w900,
+                                  letterSpacing: 1.5,
+                                  color: DesignSystem.ink.withValues(alpha: 0.5),
+                                ),
+                              ),
+                              const SizedBox(height: 2),
+                              Text(
+                                encouragement,
+                                style: const TextStyle(
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w900,
+                                  color: DesignSystem.ink,
+                                  letterSpacing: 0.2,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  );
+                },
+              ),
+            ),
           ),
 
           // Full-Width Game Tiles
