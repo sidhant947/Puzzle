@@ -842,6 +842,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             collapsedHeight: 80,
             backgroundColor: theme.scaffoldBackgroundColor,
             surfaceTintColor: Colors.transparent,
+            centerTitle: true,
+            title: Text(
+              'GAMES',
+              style: TextStyle(
+                fontSize: 14,
+                letterSpacing: 1.5,
+                fontWeight: FontWeight.w900,
+                color: theme.colorScheme.onSurface,
+              ),
+            ),
             actions: const [
               SuperStreakAction(),
               SizedBox(width: 16),

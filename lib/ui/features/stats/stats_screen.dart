@@ -19,8 +19,8 @@ class Achievement {
   });
 }
 
-class ProfileScreen extends ConsumerWidget {
-  const ProfileScreen({super.key});
+class StatsScreen extends ConsumerWidget {
+  const StatsScreen({super.key});
 
   static final List<Achievement> achievements = [
     Achievement(
@@ -103,6 +103,15 @@ class ProfileScreen extends ConsumerWidget {
               backgroundColor: theme.scaffoldBackgroundColor,
               surfaceTintColor: Colors.transparent,
               centerTitle: true,
+              title: Text(
+                'STATS',
+                style: TextStyle(
+                  fontSize: 14,
+                  letterSpacing: 1.5,
+                  fontWeight: FontWeight.w900,
+                  color: colorScheme.onSurface,
+                ),
+              ),
             ),
             SliverPadding(
               padding: const EdgeInsets.fromLTRB(

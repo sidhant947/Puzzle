@@ -49,7 +49,7 @@ class SettingsScreen extends ConsumerWidget {
                   const SizedBox(height: DesignSystem.spaceMD),
                   _buildThemeSelector(context, ref, themeMode),
                   const SizedBox(height: DesignSystem.spaceXL),
-                  _buildSectionTitle(context, 'COMMUNITY'),
+                  _buildSectionTitle(context, 'SUPPORT US'),
                   const SizedBox(height: DesignSystem.spaceMD),
                   _buildSettingsItem(
                     context,
