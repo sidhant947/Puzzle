@@ -50,6 +50,7 @@ class _FlankerTestScreenState extends ConsumerState<FlankerTestScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(flankerTestNotifierProvider);
     final notifier = ref.read(flankerTestNotifierProvider.notifier);
 
@@ -64,14 +65,14 @@ class _FlankerTestScreenState extends ConsumerState<FlankerTestScreen> {
       subtitle: 'Indicate the direction of the center arrow, ignoring the flanking arrows.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: colorScheme.surface,
+          shadowColor: colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             notifier.initGame();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
+          child: Icon(Icons.refresh_rounded, size: 20, color: colorScheme.onSurface),
         ),
       ],
       body: state.isLoading
@@ -90,25 +91,25 @@ class _FlankerTestScreenState extends ConsumerState<FlankerTestScreen> {
                         ],
                       ),
                     ),
-                    const Spacer(),
+                    Spacer(),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
                       child: ConstrainedBox(
                         constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.35),
                         child: TangibleContainer(
-                          color: DesignSystem.ink,
-                          shadowColor: DesignSystem.inkSlate,
+                          color: colorScheme.onSurface,
+                          shadowColor: colorScheme.onSurface.withValues(alpha: 0.7),
                           depth: 4.0,
                           padding: const EdgeInsets.all(DesignSystem.spaceLG),
                           child: Center(
                             child: FittedBox(
                               child: Text(
                                 state.currentDisplay,
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 48,
                                   fontWeight: FontWeight.w900,
                                   letterSpacing: 12,
-                                  color: Colors.white,
+                                  color: colorScheme.surface,
                                 ),
                               ),
                             ),
@@ -123,13 +124,13 @@ class _FlankerTestScreenState extends ConsumerState<FlankerTestScreen> {
                         children: [
                           Expanded(
                             child: TangibleButton(
-                              color: DesignSystem.surface,
-                              shadowColor: DesignSystem.outlineVariant,
+                              color: colorScheme.surface,
+                              shadowColor: colorScheme.outline,
                               onTap: () {
                                 HapticFeedbackUtil.lightImpact();
                                 notifier.onDirectionSelected(0);
                               },
-                              child: const Column(
+                              child: Column(
                                 children: [
                                   Icon(Icons.arrow_back_rounded, size: 32, color: DesignSystem.primary),
                                   SizedBox(height: 4),
@@ -141,8 +142,8 @@ class _FlankerTestScreenState extends ConsumerState<FlankerTestScreen> {
                           const SizedBox(width: DesignSystem.spaceLG),
                           Expanded(
                             child: TangibleButton(
-                              color: DesignSystem.surface,
-                              shadowColor: DesignSystem.outlineVariant,
+                              color: colorScheme.surface,
+                              shadowColor: colorScheme.outline,
                               onTap: () {
                                 HapticFeedbackUtil.lightImpact();
                                 notifier.onDirectionSelected(1);
@@ -170,7 +171,7 @@ class _FlankerTestScreenState extends ConsumerState<FlankerTestScreen> {
   Widget _buildStat(String label, String value, Color color) {
     return TangibleContainer(
       padding: const EdgeInsets.symmetric(vertical: DesignSystem.spaceXS),
-      color: DesignSystem.surface,
+      color: Theme.of(context).colorScheme.surface,
       depth: 3.0,
       child: Column(
         children: [
@@ -179,7 +180,7 @@ class _FlankerTestScreenState extends ConsumerState<FlankerTestScreen> {
             style: TextStyle(
               fontSize: 10,
               fontWeight: FontWeight.w900,
-              color: DesignSystem.inkSlate.withValues(alpha: 0.6),
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7).withValues(alpha: 0.6),
               letterSpacing: 1.0,
             ),
           ),

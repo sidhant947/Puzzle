@@ -47,6 +47,7 @@ class _PaperFoldingScreenState extends ConsumerState<PaperFoldingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(paperFoldingNotifierProvider);
     final notifier = ref.read(paperFoldingNotifierProvider.notifier);
 
@@ -72,16 +73,16 @@ class _PaperFoldingScreenState extends ConsumerState<PaperFoldingScreen> {
         padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
         child: Column(
           children: [
-            const SizedBox(height: DesignSystem.spaceMD),
+            SizedBox(height: DesignSystem.spaceMD),
             _buildFoldingSequence(state),
             const Spacer(),
-            const Text(
+            Text(
               'CHOOSE THE RESULT',
               style: TextStyle(
                 fontWeight: FontWeight.w900,
                 fontSize: 12,
                 letterSpacing: 1.2,
-                color: DesignSystem.inkSlate,
+                color: colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
             const SizedBox(height: DesignSystem.spaceMD),
@@ -107,15 +108,16 @@ class _PaperFoldingScreenState extends ConsumerState<PaperFoldingScreen> {
   }
 
   Widget _buildFoldingSequence(PaperFoldingState state) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Column(
       children: [
-        const Text(
+        Text(
           'FOLDING SEQUENCE',
           style: TextStyle(
             fontWeight: FontWeight.w900,
             fontSize: 12,
             letterSpacing: 1.2,
-            color: DesignSystem.inkSlate,
+            color: colorScheme.onSurface.withValues(alpha: 0.7),
           ),
         ),
         const SizedBox(height: DesignSystem.spaceMD),
@@ -128,9 +130,9 @@ class _PaperFoldingScreenState extends ConsumerState<PaperFoldingScreen> {
                 return Row(
                   children: [
                     _buildFoldStep(state, i),
-                    const Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 4.0),
-                      child: Icon(Icons.chevron_right_rounded, color: DesignSystem.outlineVariant, size: 24),
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                      child: Icon(Icons.chevron_right_rounded, color: colorScheme.outline, size: 24),
                     ),
                   ],
                 );
@@ -148,12 +150,12 @@ class _PaperFoldingScreenState extends ConsumerState<PaperFoldingScreen> {
       width: 64,
       height: 64,
       decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: DesignSystem.outline),
+        color: Theme.of(context).colorScheme.surface,
+        border: Border.all(color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5)),
         borderRadius: BorderRadius.circular(12),
       ),
       child: CustomPaint(
-        painter: FoldStepPainter(state.folds, stepIndex),
+        painter: FoldStepPainter(state.folds, stepIndex, Theme.of(context).colorScheme),
       ),
     );
   }
@@ -163,12 +165,12 @@ class _PaperFoldingScreenState extends ConsumerState<PaperFoldingScreen> {
       width: 64,
       height: 64,
       decoration: BoxDecoration(
-        color: Colors.white,
-        border: Border.all(color: DesignSystem.outline),
+        color: Theme.of(context).colorScheme.surface,
+        border: Border.all(color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5)),
         borderRadius: BorderRadius.circular(12),
       ),
       child: CustomPaint(
-        painter: PunchStepPainter(state.folds, state.punch),
+        painter: PunchStepPainter(state.folds, state.punch, Theme.of(context).colorScheme),
       ),
     );
   }
@@ -178,7 +180,7 @@ class _PaperFoldingScreenState extends ConsumerState<PaperFoldingScreen> {
     final isCorrect = state.correctIndex == index;
     final showResult = state.selectedIndex != null;
 
-    Color borderColor = DesignSystem.outline;
+    Color borderColor = Theme.of(context).colorScheme.outline.withValues(alpha: 0.5);
     if (showResult) {
       if (isCorrect) {
         borderColor = DesignSystem.success;
@@ -194,12 +196,12 @@ class _PaperFoldingScreenState extends ConsumerState<PaperFoldingScreen> {
       child: Container(
         padding: const EdgeInsets.all(DesignSystem.spaceXS),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
           border: Border.all(color: borderColor, width: 3),
           boxShadow: [
             BoxShadow(
-              color: DesignSystem.ink.withValues(alpha: 0.05),
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.05),
               blurRadius: 8,
               offset: const Offset(0, 4),
             ),
@@ -241,7 +243,7 @@ class _PaperFoldingScreenState extends ConsumerState<PaperFoldingScreen> {
               height: cellSize,
               margin: const EdgeInsets.all(1),
               decoration: BoxDecoration(
-                color: hasHole ? DesignSystem.ink : DesignSystem.outline.withValues(alpha: 0.3),
+                color: hasHole ? Theme.of(context).colorScheme.onSurface : Theme.of(context).colorScheme.outline.withValues(alpha: 0.5).withValues(alpha: 0.3),
                 shape: BoxShape.circle,
               ),
             );
@@ -255,13 +257,14 @@ class _PaperFoldingScreenState extends ConsumerState<PaperFoldingScreen> {
 class FoldStepPainter extends CustomPainter {
   final List<FoldType> folds;
   final int stepIndex;
+  final ColorScheme colorScheme;
 
-  FoldStepPainter(this.folds, this.stepIndex);
+  FoldStepPainter(this.folds, this.stepIndex, this.colorScheme);
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = DesignSystem.inkSlate
+      ..color = colorScheme.onSurface.withValues(alpha: 0.7)
       ..strokeWidth = 2
       ..style = PaintingStyle.stroke;
 
@@ -330,13 +333,14 @@ class FoldStepPainter extends CustomPainter {
 class PunchStepPainter extends CustomPainter {
   final List<FoldType> folds;
   final Point<int> punch;
+  final ColorScheme colorScheme;
 
-  PunchStepPainter(this.folds, this.punch);
+  PunchStepPainter(this.folds, this.punch, this.colorScheme);
 
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = DesignSystem.inkSlate
+      ..color = colorScheme.onSurface.withValues(alpha: 0.7)
       ..strokeWidth = 2
       ..style = PaintingStyle.stroke;
 

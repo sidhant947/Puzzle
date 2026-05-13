@@ -50,6 +50,7 @@ class _StroopTestScreenState extends ConsumerState<StroopTestScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(stroopTestNotifierProvider);
     final notifier = ref.read(stroopTestNotifierProvider.notifier);
 
@@ -72,20 +73,20 @@ class _StroopTestScreenState extends ConsumerState<StroopTestScreen> {
                     children: [
                       SizedBox(height: isSmall ? 8 : 16),
                       _buildStats(state, isSmall),
-                      const Spacer(),
+                      Spacer(),
                       Text(
                         'IDENTIFY THE COLOR',
                         style: TextStyle(
                           letterSpacing: 2, 
                           fontWeight: FontWeight.w800, 
-                          color: DesignSystem.inkSlate,
+                          color: colorScheme.onSurface.withValues(alpha: 0.7),
                           fontSize: isSmall ? 10 : 12,
                         ),
                       ),
                       SizedBox(height: isSmall ? 12 : 24),
                       TangibleContainer(
-                        color: DesignSystem.surface,
-                        shadowColor: DesignSystem.outlineVariant,
+                        color: colorScheme.surface,
+                        shadowColor: colorScheme.outline,
                         depth: 2.0, // Reduced depth
                         padding: EdgeInsets.symmetric(
                           horizontal: isSmall ? 16 : 32, 
@@ -111,31 +112,32 @@ class _StroopTestScreenState extends ConsumerState<StroopTestScreen> {
                       const Spacer(),
                       Padding(
                         padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
-                        child: Wrap(
-                          spacing: isSmall ? 6 : 8, // Reduced spacing
-                          runSpacing: isSmall ? 6 : 8,
-                          alignment: WrapAlignment.center,
+                        child: GridView.count(
+                          crossAxisCount: 2,
+                          shrinkWrap: true,
+                          physics: const NeverScrollableScrollPhysics(),
+                          mainAxisSpacing: isSmall ? 8 : 12,
+                          crossAxisSpacing: isSmall ? 8 : 12,
+                          childAspectRatio: 2.2,
                           children: state.allColorNames.map((name) {
                             return TangibleButton(
                               onTap: () {
                                 HapticFeedbackUtil.lightImpact();
                                 notifier.onColorSelected(name);
                               },
-                              color: DesignSystem.surface,
-                              shadowColor: DesignSystem.outlineVariant,
-                              depth: 3.0, // Added depth
-                              child: Container(
-                                width: isSmall ? 85 : 110, // Reduced width
-                                padding: EdgeInsets.symmetric(vertical: isSmall ? 8 : 12), // Reduced padding
-                                alignment: Alignment.center,
+                              color: colorScheme.surface,
+                              shadowColor: colorScheme.outline,
+                              depth: 3.0,
+                              padding: EdgeInsets.zero,
+                              child: Center(
                                 child: FittedBox(
                                   fit: BoxFit.scaleDown,
                                   child: Text(
                                     name,
                                     style: TextStyle(
                                       fontWeight: FontWeight.w900, 
-                                      fontSize: 14, // Reduced font size
-                                      color: DesignSystem.ink,
+                                      fontSize: isSmall ? 14 : 16,
+                                      color: colorScheme.onSurface,
                                     ),
                                   ),
                                 ),
@@ -168,8 +170,8 @@ class _StroopTestScreenState extends ConsumerState<StroopTestScreen> {
 
   Widget _buildStat(String label, String value, Color color, bool isSmall) {
     return TangibleContainer(
-      color: DesignSystem.surface,
-      shadowColor: DesignSystem.outlineVariant,
+      color: Theme.of(context).colorScheme.surface,
+      shadowColor: Theme.of(context).colorScheme.outline,
       depth: isSmall ? 2.0 : 4.0,
       padding: EdgeInsets.symmetric(
         horizontal: isSmall ? 16 : 24, 
@@ -182,7 +184,7 @@ class _StroopTestScreenState extends ConsumerState<StroopTestScreen> {
             style: TextStyle(
               fontSize: isSmall ? 8 : 10,
               fontWeight: FontWeight.w900,
-              color: DesignSystem.inkSlate,
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
               letterSpacing: 1.5,
             ),
           ),

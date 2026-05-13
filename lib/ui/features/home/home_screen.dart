@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../data/models/game_streak.dart';
 import '../../../../widgets/super_streak_action.dart';
@@ -828,8 +827,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final streaks = ref.watch(gameStreakNotifierProvider);
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return Scaffold(
-      backgroundColor: DesignSystem.background,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: CustomScrollView(
         physics: const BouncingScrollPhysics(),
         slivers: [
@@ -838,7 +840,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             snap: false,
             expandedHeight: 80,
             collapsedHeight: 80,
-            backgroundColor: DesignSystem.background,
+            backgroundColor: theme.scaffoldBackgroundColor,
             surfaceTintColor: Colors.transparent,
             actions: const [
               SuperStreakAction(),
@@ -871,6 +873,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
                   return TangibleContainer(
                     padding: const EdgeInsets.all(DesignSystem.spaceMD),
+                    color: colorScheme.surface,
                     child: Row(
                       children: [
                         Container(
@@ -902,16 +905,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                   fontSize: 10,
                                   fontWeight: FontWeight.w900,
                                   letterSpacing: 1.5,
-                                  color: DesignSystem.ink.withValues(alpha: 0.5),
+                                  color: colorScheme.onSurface.withValues(alpha: 0.5),
                                 ),
                               ),
                               const SizedBox(height: 2),
                               Text(
                                 encouragement,
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 13,
                                   fontWeight: FontWeight.w900,
-                                  color: DesignSystem.ink,
+                                  color: colorScheme.onSurface,
                                   letterSpacing: 0.2,
                                 ),
                               ),
@@ -975,14 +978,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   ) {
     final streakCount = streak?.currentStreak ?? 0;
     final isSolved = streak?.solvedToday ?? false;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
 
     return Stack(
       clipBehavior: Clip.none,
       children: [
         TangibleButton(
-          color: isSolved ? DesignSystem.success : DesignSystem.surface,
+          color: isSolved ? DesignSystem.success : colorScheme.surface,
           shadowColor:
-              isSolved ? const Color(0xFF047857) : DesignSystem.outlineVariant,
+              isSolved ? const Color(0xFF047857) : colorScheme.outline.withValues(alpha: 0.5),
           onTap: onTap,
           padding: const EdgeInsets.only(
             right: DesignSystem.spaceMD,
@@ -1024,7 +1029,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       fontSize: 13,
                       fontWeight: FontWeight.w900,
                       letterSpacing: 0.5,
-                      color: isSolved ? Colors.white : DesignSystem.ink,
+                      color: isSolved ? Colors.white : colorScheme.onSurface,
                     ),
                   ),
                 ),
@@ -1033,7 +1038,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 isSolved
                     ? Icons.check_circle_rounded
                     : Icons.chevron_right_rounded,
-                color: isSolved ? Colors.white : DesignSystem.outlineVariant,
+                color: isSolved ? Colors.white : colorScheme.onSurface.withValues(alpha: 0.3),
                 size: 28,
               ),
             ],

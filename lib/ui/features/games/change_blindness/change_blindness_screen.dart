@@ -44,6 +44,7 @@ class _ChangeBlindnessScreenState extends ConsumerState<ChangeBlindnessScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(changeBlindnessNotifierProvider);
 
     ref.listen(changeBlindnessNotifierProvider, (previous, next) {
@@ -57,7 +58,7 @@ class _ChangeBlindnessScreenState extends ConsumerState<ChangeBlindnessScreen> {
       subtitle: 'SPOT THE CHANGING ITEM',
       actions: [
         TangibleContainer(
-          color: DesignSystem.surface,
+          color: colorScheme.surface,
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           radius: DesignSystem.radiusSM,
           depth: 2,
@@ -82,10 +83,10 @@ class _ChangeBlindnessScreenState extends ConsumerState<ChangeBlindnessScreen> {
                     children: [
                       Text(
                         'SCORE: ${state.score}',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w900,
-                          color: DesignSystem.ink,
+                          color: colorScheme.onSurface,
                         ),
                       ),
                     ],
@@ -123,8 +124,8 @@ class _ChangeBlindnessScreenState extends ConsumerState<ChangeBlindnessScreen> {
                                             .notifier)
                                         .tap(index);
                                   },
-                                  color: DesignSystem.surface,
-                                  shadowColor: DesignSystem.outlineVariant,
+                                  color: colorScheme.surface,
+                                  shadowColor: colorScheme.outline,
                                   padding: EdgeInsets.zero,
                                   child: Icon(
                                     item['icon'],
@@ -134,16 +135,6 @@ class _ChangeBlindnessScreenState extends ConsumerState<ChangeBlindnessScreen> {
                                 );
                               },
                             ),
-                            if (state.isFlickerActive)
-                              Positioned.fill(
-                                child: Container(
-                                  decoration: BoxDecoration(
-                                    color: Colors.grey[200],
-                                    borderRadius: BorderRadius.circular(
-                                        DesignSystem.radiusMD),
-                                  ),
-                                ),
-                              ),
                           ],
                         ),
                       ),

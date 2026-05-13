@@ -50,6 +50,7 @@ class _NBackScreenState extends ConsumerState<NBackScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(nBackNotifierProvider);
     final notifier = ref.read(nBackNotifierProvider.notifier);
 
@@ -72,13 +73,13 @@ class _NBackScreenState extends ConsumerState<NBackScreen> {
                     children: [
                       SizedBox(height: isSmall ? 8 : 16),
                       _buildStats(state, isSmall),
-                      const Spacer(),
+                      Spacer(),
                       Text(
                         'REMEMBER 2 STEPS BACK',
                         style: TextStyle(
                           letterSpacing: 2, 
                           fontWeight: FontWeight.w800, 
-                          color: DesignSystem.inkSlate,
+                          color: colorScheme.onSurface.withValues(alpha: 0.7),
                           fontSize: isSmall ? 10 : 12,
                         ),
                       ),
@@ -129,16 +130,16 @@ class _NBackScreenState extends ConsumerState<NBackScreen> {
       },
       child: TangibleContainer(
         key: ValueKey(state.currentSymbol),
-        color: DesignSystem.surface,
-        shadowColor: DesignSystem.outlineVariant,
+        color: Theme.of(context).colorScheme.surface,
+        shadowColor: Theme.of(context).colorScheme.outline,
         depth: 4.0,
         padding: const EdgeInsets.all(40),
         child: Text(
           state.currentSymbol,
-          style: const TextStyle(
+          style: TextStyle(
             fontSize: 80,
             fontWeight: FontWeight.w900,
-            color: DesignSystem.ink,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
         ),
       ),
@@ -160,8 +161,8 @@ class _NBackScreenState extends ConsumerState<NBackScreen> {
 
   Widget _buildStat(String label, String value, Color color, bool isSmall) {
     return TangibleContainer(
-      color: DesignSystem.surface,
-      shadowColor: DesignSystem.outlineVariant,
+      color: Theme.of(context).colorScheme.surface,
+      shadowColor: Theme.of(context).colorScheme.outline,
       depth: isSmall ? 2.0 : 4.0,
       padding: EdgeInsets.symmetric(
         horizontal: isSmall ? 16 : 24, 
@@ -174,7 +175,7 @@ class _NBackScreenState extends ConsumerState<NBackScreen> {
             style: TextStyle(
               fontSize: isSmall ? 8 : 10,
               fontWeight: FontWeight.w900,
-              color: DesignSystem.inkSlate,
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
               letterSpacing: 1.5,
             ),
           ),

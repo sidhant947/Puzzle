@@ -51,6 +51,7 @@ class _PathRecallScreenState extends ConsumerState<PathRecallScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(pathRecallNotifierProvider);
     final notifier = ref.read(pathRecallNotifierProvider.notifier);
 
@@ -94,9 +95,9 @@ class _PathRecallScreenState extends ConsumerState<PathRecallScreen> {
                   margin: const EdgeInsets.all(DesignSystem.spaceXL),
                   padding: const EdgeInsets.all(DesignSystem.spaceMD),
                   decoration: BoxDecoration(
-                    color: DesignSystem.surface,
+                    color: colorScheme.surface,
                     borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
-                    border: Border.all(color: DesignSystem.outline.withValues(alpha: 0.2), width: 2),
+                    border: Border.all(color: colorScheme.outline.withValues(alpha: 0.5).withValues(alpha: 0.2), width: 2),
                   ),
                   child: GridView.builder(
                     physics: const NeverScrollableScrollPhysics(),
@@ -115,7 +116,7 @@ class _PathRecallScreenState extends ConsumerState<PathRecallScreen> {
                       final isUserActive = state.userPath.contains(index);
                       final isCurrentInput = state.userPath.isNotEmpty && state.userPath.last == index;
 
-                      Color cellColor = DesignSystem.outlineVariant.withValues(alpha: 0.1);
+                      Color cellColor = colorScheme.outline.withValues(alpha: 0.1);
                       if (isCurrentPlayback) {
                         cellColor = DesignSystem.primary;
                       } else if (isPlaybackActive) {

@@ -29,14 +29,14 @@ class BlockEscapeScreen extends ConsumerWidget {
       subtitle: 'Slide the blocks to clear a path for the primary block to reach the exit.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: Theme.of(context).colorScheme.surface,
+          shadowColor: Theme.of(context).colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             ref.read(blockEscapeNotifierProvider.notifier).newGame();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
+          child: Icon(Icons.refresh_rounded, size: 20, color: Theme.of(context).colorScheme.onSurface),
         ),
       ],
       body: LayoutBuilder(
@@ -65,8 +65,8 @@ class BlockEscapeScreen extends ConsumerWidget {
             final cellSize = boardSize / BlockEscapeEngine.size;
 
             return TangibleContainer(
-              color: DesignSystem.ink,
-              shadowColor: DesignSystem.inkSlate,
+              color: Theme.of(context).colorScheme.onSurface,
+              shadowColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
               depth: 4.0, // Reduced from 6.0
               radius: DesignSystem.radiusMD,
               padding: const EdgeInsets.all(3.0),
@@ -74,7 +74,7 @@ class BlockEscapeScreen extends ConsumerWidget {
                 width: boardSize,
                 height: boardSize,
                 decoration: BoxDecoration(
-                  color: DesignSystem.background,
+                  color: Theme.of(context).scaffoldBackgroundColor,
                   borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
                 ),
                 child: ClipRRect(
@@ -94,7 +94,7 @@ class BlockEscapeScreen extends ConsumerWidget {
                                 height: cellSize,
                                 decoration: BoxDecoration(
                                   border: Border.all(
-                                    color: DesignSystem.outline.withValues(alpha: 0.5),
+                                    color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5).withValues(alpha: 0.5),
                                     width: 0.5,
                                   ),
                                 ),
@@ -140,8 +140,8 @@ class BlockEscapeScreen extends ConsumerWidget {
     final width = block.orientation == BlockOrientation.horizontal ? block.length * cellSize : cellSize;
     final height = block.orientation == BlockOrientation.vertical ? block.length * cellSize : cellSize;
 
-    final color = block.isTarget ? DesignSystem.accentBerry : DesignSystem.surface;
-    final shadowColor = block.isTarget ? const Color(0xFFBE185D) : DesignSystem.outlineVariant;
+    final color = block.isTarget ? DesignSystem.accentBerry : Theme.of(context).colorScheme.surface;
+    final shadowColor = block.isTarget ? Color(0xFFBE185D) : Theme.of(context).colorScheme.outline;
 
     return Positioned(
       left: block.x * cellSize,
@@ -164,7 +164,7 @@ class BlockEscapeScreen extends ConsumerWidget {
               }
             : null,
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 100),
+          duration: Duration(milliseconds: 100),
           width: width,
           height: height,
           padding: const EdgeInsets.all(4),
@@ -178,7 +178,7 @@ class BlockEscapeScreen extends ConsumerWidget {
                 width: block.orientation == BlockOrientation.horizontal ? width * 0.4 : 4,
                 height: block.orientation == BlockOrientation.vertical ? height * 0.4 : 4,
                 decoration: BoxDecoration(
-                  color: (block.isTarget ? Colors.white : DesignSystem.ink).withValues(alpha: 0.2),
+                  color: (block.isTarget ? Colors.white : Theme.of(context).colorScheme.onSurface).withValues(alpha: 0.2),
                   borderRadius: BorderRadius.circular(2),
                 ),
               ),

@@ -108,7 +108,7 @@ class _OperationSpanScreenState extends ConsumerState<OperationSpanScreen> {
 
   Widget _buildTimer(int timeLeft) {
     return TangibleContainer(
-      color: timeLeft < 10 ? DesignSystem.error.withValues(alpha: 0.1) : DesignSystem.surface,
+      color: timeLeft < 10 ? DesignSystem.error.withValues(alpha: 0.1) : Theme.of(context).colorScheme.surface,
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       radius: DesignSystem.radiusSM,
       child: Row(
@@ -117,15 +117,15 @@ class _OperationSpanScreenState extends ConsumerState<OperationSpanScreen> {
           Icon(
             Icons.timer_outlined,
             size: 16,
-            color: timeLeft < 10 ? DesignSystem.error : DesignSystem.ink,
+            color: timeLeft < 10 ? DesignSystem.error : Theme.of(context).colorScheme.onSurface,
           ),
-          const SizedBox(width: 4),
+          SizedBox(width: 4),
           Text(
             timeLeft.toString(),
             style: TextStyle(
               fontSize: 14,
               fontWeight: FontWeight.w900,
-              color: timeLeft < 10 ? DesignSystem.error : DesignSystem.ink,
+              color: timeLeft < 10 ? DesignSystem.error : Theme.of(context).colorScheme.onSurface,
             ),
           ),
         ],
@@ -219,7 +219,7 @@ class _OperationSpanScreenState extends ConsumerState<OperationSpanScreen> {
         ),
         TangibleButton(
           onTap: notifier.clearRecall,
-          color: DesignSystem.surface,
+          color: Theme.of(context).colorScheme.surface,
           child: const Text('Clear'),
         ),
       ],

@@ -47,6 +47,7 @@ class _NumericalEstimationScreenState extends ConsumerState<NumericalEstimationS
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(numericalEstimationNotifierProvider);
     final notifier = ref.read(numericalEstimationNotifierProvider.notifier);
 
@@ -68,12 +69,12 @@ class _NumericalEstimationScreenState extends ConsumerState<NumericalEstimationS
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildStatCard('SCORE', state.score.toString()),
-                _buildStatCard('TIME', '${state.timeLeft}s', color: state.timeLeft < 10 ? DesignSystem.error : null),
+                _buildStatCard(context, 'SCORE', state.score.toString()),
+                _buildStatCard(context, 'TIME', '${state.timeLeft}s', color: state.timeLeft < 10 ? DesignSystem.error : null),
               ],
             ),
           ),
-          const SizedBox(height: DesignSystem.spaceXL),
+          SizedBox(height: DesignSystem.spaceXL),
           
           Expanded(
             child: Center(
@@ -84,10 +85,10 @@ class _NumericalEstimationScreenState extends ConsumerState<NumericalEstimationS
                       children: [
                         Text(
                           state.currentPuzzle!.question,
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 64,
                             fontWeight: FontWeight.w900,
-                            color: DesignSystem.ink,
+                            color: colorScheme.onSurface,
                           ),
                         ),
                         const SizedBox(height: DesignSystem.space2XL),
@@ -102,7 +103,7 @@ class _NumericalEstimationScreenState extends ConsumerState<NumericalEstimationS
                               final isCorrect = isSelected && (state.isLastCorrect ?? false);
                               final isWrong = isSelected && !(state.isLastCorrect ?? true);
 
-                              Color buttonColor = DesignSystem.surface;
+                              Color buttonColor = colorScheme.surface;
                               if (isCorrect) buttonColor = DesignSystem.success.withValues(alpha: 0.2);
                               if (isWrong) buttonColor = DesignSystem.error.withValues(alpha: 0.2);
 
@@ -116,10 +117,10 @@ class _NumericalEstimationScreenState extends ConsumerState<NumericalEstimationS
                                   color: buttonColor,
                                   child: Text(
                                     option.toString(),
-                                    style: const TextStyle(
+                                    style: TextStyle(
                                       fontSize: 32,
                                       fontWeight: FontWeight.w900,
-                                      color: DesignSystem.ink,
+                                      color: colorScheme.onSurface,
                                     ),
                                   ),
                                 ),
@@ -137,7 +138,7 @@ class _NumericalEstimationScreenState extends ConsumerState<NumericalEstimationS
     );
   }
 
-  Widget _buildStatCard(String label, String value, {Color? color}) {
+  Widget _buildStatCard(BuildContext context, String label, String value, {Color? color}) {
     return Column(
       children: [
         Text(
@@ -146,7 +147,7 @@ class _NumericalEstimationScreenState extends ConsumerState<NumericalEstimationS
             fontSize: 12,
             fontWeight: FontWeight.w900,
             letterSpacing: 1.2,
-            color: DesignSystem.inkSlate.withValues(alpha: 0.6),
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7).withValues(alpha: 0.6),
           ),
         ),
         Text(
@@ -154,7 +155,7 @@ class _NumericalEstimationScreenState extends ConsumerState<NumericalEstimationS
           style: TextStyle(
             fontSize: 24,
             fontWeight: FontWeight.w900,
-            color: color ?? DesignSystem.ink,
+            color: color ?? Theme.of(context).colorScheme.onSurface,
           ),
         ),
       ],

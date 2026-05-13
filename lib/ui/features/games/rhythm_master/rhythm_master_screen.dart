@@ -76,6 +76,7 @@ class _RhythmMasterScreenState extends ConsumerState<RhythmMasterScreen> with Si
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(rhythmMasterNotifierProvider);
     
     ref.listen(rhythmMasterNotifierProvider, (previous, next) {
@@ -126,7 +127,7 @@ class _RhythmMasterScreenState extends ConsumerState<RhythmMasterScreen> with Si
                       Positioned(
                         top: 20,
                         child: AnimatedSwitcher(
-                          duration: const Duration(milliseconds: 200),
+                          duration: Duration(milliseconds: 200),
                           child: Text(
                             state.lastAccuracyLabel,
                             key: ValueKey(state.totalBeats),
@@ -145,7 +146,7 @@ class _RhythmMasterScreenState extends ConsumerState<RhythmMasterScreen> with Si
                         height: 280,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          border: Border.all(color: DesignSystem.outline.withValues(alpha: 0.2), width: 4),
+                          border: Border.all(color: colorScheme.outline.withValues(alpha: 0.5).withValues(alpha: 0.2), width: 4),
                         ),
                       ),
                       // Pulsing Circle
@@ -163,19 +164,19 @@ class _RhythmMasterScreenState extends ConsumerState<RhythmMasterScreen> with Si
                         depth: 4.0,
                         radius: 100,
                         padding: const EdgeInsets.all(40),
-                        color: DesignSystem.surface,
+                        color: colorScheme.surface,
                         child: Icon(Icons.favorite_rounded, color: DesignSystem.error, size: 40),
                       ),
                     ],
                   ),
                 ),
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.all(DesignSystem.spaceXL),
                 child: Text(
                   'TAP THE CENTER ON THE BEAT',
                   style: TextStyle(
-                    color: DesignSystem.inkSlate,
+                    color: colorScheme.onSurface.withValues(alpha: 0.7),
                     fontWeight: FontWeight.w900,
                     letterSpacing: 2.0,
                     fontSize: 12,

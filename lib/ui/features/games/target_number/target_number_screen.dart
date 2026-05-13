@@ -172,9 +172,9 @@ class _TargetNumberScreenState extends ConsumerState<TargetNumberScreen> {
       margin: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
       padding: const EdgeInsets.all(DesignSystem.spaceLG),
       decoration: BoxDecoration(
-        color: DesignSystem.surface,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
-        border: Border.all(color: DesignSystem.outline, width: 2),
+        border: Border.all(color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5), width: 2),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -189,8 +189,8 @@ class _TargetNumberScreenState extends ConsumerState<TargetNumberScreen> {
                 fontSize: 32,
                 fontWeight: FontWeight.w900,
                 color: state.currentExpression.isEmpty 
-                    ? DesignSystem.outlineVariant 
-                    : DesignSystem.ink,
+                    ? Theme.of(context).colorScheme.outline 
+                    : Theme.of(context).colorScheme.onSurface,
                 letterSpacing: 2.0,
               ),
             ),
@@ -226,13 +226,13 @@ class _TargetNumberScreenState extends ConsumerState<TargetNumberScreen> {
       opacity: isUsed ? 0.4 : 1.0,
       child: TangibleButton(
         onTap: isUsed ? () {} : onTap,
-        color: DesignSystem.surface,
-        shadowColor: DesignSystem.outlineVariant,
+        color: Theme.of(context).colorScheme.surface,
+        shadowColor: Theme.of(context).colorScheme.outline,
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
         child: Text(
           label,
-          style: const TextStyle(
-            color: DesignSystem.ink,
+          style: TextStyle(
+            color: Theme.of(context).colorScheme.onSurface,
             fontSize: 24,
             fontWeight: FontWeight.w900,
           ),
@@ -288,7 +288,7 @@ class _TargetNumberScreenState extends ConsumerState<TargetNumberScreen> {
               _buildControlButton(Icons.refresh_rounded, () {
                 HapticFeedbackUtil.heavyImpact();
                 notifier.onClear();
-              }, DesignSystem.inkSlate),
+              }, Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7)),
             ],
           ),
         ],
@@ -316,8 +316,8 @@ class _TargetNumberScreenState extends ConsumerState<TargetNumberScreen> {
   Widget _buildControlButton(IconData icon, VoidCallback onTap, Color color) {
     return TangibleButton(
       onTap: onTap,
-      color: DesignSystem.surface,
-      shadowColor: DesignSystem.outlineVariant,
+      color: Theme.of(context).colorScheme.surface,
+      shadowColor: Theme.of(context).colorScheme.outline,
       padding: const EdgeInsets.all(16),
       child: Icon(icon, color: color, size: 24),
     );

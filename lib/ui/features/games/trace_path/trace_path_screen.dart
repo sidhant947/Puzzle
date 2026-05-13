@@ -51,6 +51,7 @@ class _TracePathScreenState extends ConsumerState<TracePathScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(tracePathNotifierProvider);
     final notifier = ref.read(tracePathNotifierProvider.notifier);
 
@@ -74,14 +75,14 @@ class _TracePathScreenState extends ConsumerState<TracePathScreen> {
       subtitle: 'Follow the target path as closely as you can',
       body: Column(
         children: [
-          const SizedBox(height: DesignSystem.spaceLG),
+          SizedBox(height: DesignSystem.spaceLG),
           Expanded(
             child: Container(
               margin: const EdgeInsets.all(DesignSystem.spaceMD),
               decoration: BoxDecoration(
-                color: DesignSystem.surface,
+                color: colorScheme.surface,
                 borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
-                border: Border.all(color: DesignSystem.outline.withValues(alpha: 0.2), width: 2),
+                border: Border.all(color: colorScheme.outline.withValues(alpha: 0.5).withValues(alpha: 0.2), width: 2),
               ),
               child: Listener(
                 onPointerDown: (event) => notifier.onPointerDown(event.localPosition),
@@ -94,12 +95,12 @@ class _TracePathScreenState extends ConsumerState<TracePathScreen> {
               ),
             ),
           ),
-          const Padding(
+          Padding(
             padding: EdgeInsets.all(DesignSystem.spaceXL),
             child: Text(
               'TRACE FROM LEFT TO RIGHT',
               style: TextStyle(
-                color: DesignSystem.inkSlate,
+                color: colorScheme.onSurface.withValues(alpha: 0.7),
                 fontWeight: FontWeight.w900,
                 letterSpacing: 2.0,
                 fontSize: 12,

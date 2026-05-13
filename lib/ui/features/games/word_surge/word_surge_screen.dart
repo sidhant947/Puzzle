@@ -48,6 +48,7 @@ class _WordSurgeScreenState extends ConsumerState<WordSurgeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(wordSurgeNotifierProvider);
     final notifier = ref.read(wordSurgeNotifierProvider.notifier);
 
@@ -88,40 +89,40 @@ class _WordSurgeScreenState extends ConsumerState<WordSurgeScreen> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
-                    color: state.timeLeft <= 5 ? DesignSystem.error.withValues(alpha: 0.1) : DesignSystem.surface,
+                    color: state.timeLeft <= 5 ? DesignSystem.error.withValues(alpha: 0.1) : colorScheme.surface,
                     borderRadius: BorderRadius.circular(20),
                     border: Border.all(
-                      color: state.timeLeft <= 5 ? DesignSystem.error : DesignSystem.outline,
+                      color: state.timeLeft <= 5 ? DesignSystem.error : colorScheme.outline.withValues(alpha: 0.5),
                     ),
                   ),
                   child: Text(
                     '${state.timeLeft}s',
                     style: Theme.of(context).textTheme.bodyMedium?.copyWith(
-                      color: state.timeLeft <= 5 ? DesignSystem.error : DesignSystem.ink,
+                      color: state.timeLeft <= 5 ? DesignSystem.error : colorScheme.onSurface,
                       fontWeight: FontWeight.bold,
                     ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: DesignSystem.spaceMD),
+            SizedBox(height: DesignSystem.spaceMD),
             LinearProgressIndicator(
               value: state.score / state.targetScore,
-              backgroundColor: DesignSystem.outline,
+              backgroundColor: colorScheme.outline.withValues(alpha: 0.5),
               valueColor: const AlwaysStoppedAnimation<Color>(DesignSystem.success),
             ),
-            const Spacer(),
+            Spacer(),
             Text(
               state.currentChallenge?.type == WordSurgeType.synonym 
                   ? 'SYNONYM of' 
                   : 'ANTONYM of',
               style: Theme.of(context).textTheme.bodySmall?.copyWith(
-                color: DesignSystem.inkSlate,
+                color: colorScheme.onSurface.withValues(alpha: 0.7),
                 letterSpacing: 2,
                 fontWeight: FontWeight.bold,
               ),
             ),
-            const SizedBox(height: DesignSystem.spaceSM),
+            SizedBox(height: DesignSystem.spaceSM),
             Text(
               state.currentChallenge?.target.toUpperCase() ?? '',
               style: Theme.of(context).textTheme.displayLarge?.copyWith(fontSize: 42),
@@ -137,7 +138,7 @@ class _WordSurgeScreenState extends ConsumerState<WordSurgeScreen> {
                 final isSelected = state.selectedOption == option;
                 final isCorrect = state.currentChallenge?.answer == option;
 
-                Color buttonColor = Colors.white;
+                Color buttonColor = colorScheme.surface;
                 if (isSelected) {
                   buttonColor = isCorrect ? DesignSystem.success : DesignSystem.error;
                 } else if (state.selectedOption != null && isCorrect) {
@@ -150,9 +151,9 @@ class _WordSurgeScreenState extends ConsumerState<WordSurgeScreen> {
                     backgroundColor: buttonColor,
                     foregroundColor: isSelected || (state.selectedOption != null && isCorrect)
                         ? Colors.white
-                        : DesignSystem.ink,
+                        : colorScheme.onSurface,
                     side: BorderSide(
-                      color: isSelected ? Colors.transparent : DesignSystem.outline,
+                      color: isSelected ? Colors.transparent : colorScheme.outline.withValues(alpha: 0.5),
                       width: 2,
                     ),
                     shape: RoundedRectangleBorder(

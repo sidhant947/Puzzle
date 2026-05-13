@@ -47,6 +47,7 @@ class _QuickMathScreenState extends ConsumerState<QuickMathScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(quickMathNotifierProvider);
     final notifier = ref.read(quickMathNotifierProvider.notifier);
 
@@ -78,13 +79,13 @@ class _QuickMathScreenState extends ConsumerState<QuickMathScreen> {
                           DesignSystem.accentEmerald),
                     ],
                   ),
-                  const Spacer(),
+                  Spacer(),
                   ConstrainedBox(
                     constraints:
                         BoxConstraints(maxHeight: constraints.maxHeight * 0.3),
                     child: TangibleContainer(
                       depth: 4.0,
-                      color: DesignSystem.ink,
+                      color: colorScheme.onSurface,
                       padding: const EdgeInsets.all(20),
                       child: Column(
                         mainAxisSize: MainAxisSize.min,
@@ -93,10 +94,10 @@ class _QuickMathScreenState extends ConsumerState<QuickMathScreen> {
                             child: FittedBox(
                               child: Text(
                                 state.currentProblem.equation,
-                                style: const TextStyle(
+                                style: TextStyle(
                                   fontSize: 48,
                                   fontWeight: FontWeight.w900,
-                                  color: Colors.white,
+                                  color: colorScheme.surface,
                                 ),
                               ),
                             ),
@@ -104,7 +105,7 @@ class _QuickMathScreenState extends ConsumerState<QuickMathScreen> {
                           const SizedBox(height: 16),
                           TangibleContainer(
                             depth: 2.0,
-                            color: DesignSystem.surface,
+                            color: colorScheme.surface,
                             padding: const EdgeInsets.symmetric(
                                 horizontal: 24, vertical: 8),
                             child: Text(
@@ -142,10 +143,10 @@ class _QuickMathScreenState extends ConsumerState<QuickMathScreen> {
         children: [
           Text(
             label,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 10,
               fontWeight: FontWeight.bold,
-              color: DesignSystem.ink,
+              color: Theme.of(context).colorScheme.onSurface,
               letterSpacing: 1.2,
             ),
           ),
@@ -212,7 +213,7 @@ class _QuickMathScreenState extends ConsumerState<QuickMathScreen> {
               child: _PadKey(
                 label: '⌫',
                 onTap: notifier.onBackspace,
-                color: DesignSystem.outline,
+                color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5),
                 width: (constraints.maxWidth - 64) / 3,
               ),
             ),
@@ -242,9 +243,9 @@ class _PadKey extends StatelessWidget {
       height: 60,
       child: TangibleButton(
         onTap: onTap,
-        color: color ?? DesignSystem.surface,
+        color: color ?? Theme.of(context).colorScheme.surface,
         shadowColor:
-            color?.withValues(alpha: 0.2) ?? DesignSystem.outlineVariant,
+            color?.withValues(alpha: 0.2) ?? Theme.of(context).colorScheme.outline,
         padding: EdgeInsets.zero,
         child: Center(
           child: FittedBox(
@@ -253,9 +254,9 @@ class _PadKey extends StatelessWidget {
               style: TextStyle(
                 fontSize: 20,
                 fontWeight: FontWeight.bold,
-                color: color != null && color != DesignSystem.surface
+                color: color != null && color != Theme.of(context).colorScheme.surface
                     ? Colors.white
-                    : DesignSystem.ink,
+                    : Theme.of(context).colorScheme.onSurface,
               ),
             ),
           ),

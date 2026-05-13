@@ -22,8 +22,11 @@ class GameScaffold extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return Scaffold(
-      backgroundColor: DesignSystem.background,
+      backgroundColor: colorScheme.surface,
       body: SafeArea(
         child: Column(
           children: [
@@ -34,8 +37,8 @@ class GameScaffold extends StatelessWidget {
                 child: Text(
                   subtitle!,
                   textAlign: TextAlign.center,
-                  style: const TextStyle(
-                    color: DesignSystem.inkSlate,
+                  style: TextStyle(
+                    color: colorScheme.onSurface.withValues(alpha: 0.7),
                     fontWeight: FontWeight.w700,
                     fontSize: 11, // Reduced from 14
                     letterSpacing: 0.5,
@@ -52,6 +55,9 @@ class GameScaffold extends StatelessWidget {
   }
 
   Widget _buildAppBar(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return Container(
       padding: const EdgeInsets.fromLTRB(
         DesignSystem.spaceMD,
@@ -62,20 +68,20 @@ class GameScaffold extends StatelessWidget {
       child: Row(
         children: [
           TangibleButton(
-            color: DesignSystem.surface,
-            shadowColor: DesignSystem.outlineVariant,
+            color: colorScheme.surface,
+            shadowColor: colorScheme.outline,
             onTap: () => Navigator.of(context).pop(),
             padding: const EdgeInsets.all(12), // Compact padding for app bar
-            child: const Icon(
+            child: Icon(
               Icons.arrow_back_ios_new_rounded,
-              color: DesignSystem.ink,
+              color: colorScheme.onSurface,
               size: 18, // Slightly smaller icon
             ),
           ),
           const SizedBox(width: DesignSystem.spaceSM),
           Expanded(
             child: TangibleContainer(
-              color: DesignSystem.surface,
+              color: colorScheme.surface,
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
               radius: DesignSystem.radiusSM,
               depth: 3.0, // Reduced depth for header
@@ -84,11 +90,11 @@ class GameScaffold extends StatelessWidget {
                   fit: BoxFit.scaleDown,
                   child: Text(
                     title.toUpperCase(),
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 14,
                       letterSpacing: 1.5,
                       fontWeight: FontWeight.w900,
-                      color: DesignSystem.ink,
+                      color: colorScheme.onSurface,
                     ),
                   ),
                 ),
@@ -99,9 +105,6 @@ class GameScaffold extends StatelessWidget {
             const SizedBox(width: DesignSystem.spaceSM),
             ...actions!.map((action) {
               if (action is TangibleButton) {
-                // If it's a TangibleButton, we might want to override its padding here 
-                // but since it's passed as a widget we'd need a way to customize it.
-                // For now, let's assume the games are passing compact ones or we'll update them.
                 return Padding(
                   padding: const EdgeInsets.only(left: 8),
                   child: action,

@@ -28,16 +28,16 @@ class TentsAndTreesScreen extends ConsumerWidget {
       subtitle: 'Place tents next to trees. Numbers indicate how many tents are in each row/column. Tents cannot touch each other.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: Theme.of(context).colorScheme.surface,
+          shadowColor: Theme.of(context).colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             ref.read(tentsAndTreesNotifierProvider.notifier).newGame();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(
+          child: Icon(
             Icons.refresh_rounded,
-            color: DesignSystem.ink,
+            color: Theme.of(context).colorScheme.onSurface,
             size: 20,
           ),
         ),
@@ -96,7 +96,7 @@ class TentsAndTreesScreen extends ConsumerWidget {
                               style: TextStyle(
                                 fontWeight: FontWeight.w900,
                                 fontSize: 16,
-                                color: isFull ? DesignSystem.success : DesignSystem.inkSlate,
+                                color: isFull ? DesignSystem.success : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                               ),
                             ),
                           ),
@@ -125,7 +125,7 @@ class TentsAndTreesScreen extends ConsumerWidget {
                               style: TextStyle(
                                 fontWeight: FontWeight.w900,
                                 fontSize: 16,
-                                color: isFull ? DesignSystem.success : DesignSystem.inkSlate,
+                                color: isFull ? DesignSystem.success : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                               ),
                             ),
                           ),
@@ -160,7 +160,7 @@ class TentsAndTreesScreen extends ConsumerWidget {
                         radius: DesignSystem.radiusXS,
                         color: cell == CellType.grass 
                             ? DesignSystem.success.withValues(alpha: 0.1) 
-                            : DesignSystem.surface,
+                            : Theme.of(context).colorScheme.surface,
                         onTap: () {
                           HapticFeedbackUtil.lightImpact();
                           ref.read(tentsAndTreesNotifierProvider.notifier).toggleCell(r, c);

@@ -53,6 +53,8 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     final state = ref.watch(switchTaskNotifierProvider);
     final notifier = ref.read(switchTaskNotifierProvider.notifier);
 
@@ -76,12 +78,12 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
                     children: [
                       SizedBox(height: isSmall ? 8 : 16),
                       _buildStats(state, isSmall),
-                      const Spacer(),
+                      Spacer(),
                       TangibleContainer(
                         color: state.rule == SwitchRule.color
                             ? DesignSystem.accentIndigo.withValues(alpha: 0.1)
                             : DesignSystem.accentOrange.withValues(alpha: 0.1),
-                        shadowColor: DesignSystem.background,
+                        shadowColor: theme.scaffoldBackgroundColor,
                         depth: 2.0, // Reduced depth
                         padding: EdgeInsets.symmetric(
                             horizontal: isSmall ? 12 : 20,
@@ -107,8 +109,8 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
                               constraints.maxHeight * (isSmall ? 0.3 : 0.25),
                         ),
                         child: TangibleContainer(
-                          color: DesignSystem.surface,
-                          shadowColor: DesignSystem.outlineVariant,
+                          color: colorScheme.surface,
+                          shadowColor: colorScheme.outline,
                           depth: 3.0, // Reduced depth
                           padding: EdgeInsets.all(isSmall ? 12 : 24),
                           child: FittedBox(
@@ -135,8 +137,8 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
                                     HapticFeedbackUtil.lightImpact();
                                     notifier.onOptionSelected(option);
                                   },
-                                  color: DesignSystem.surface,
-                                  shadowColor: DesignSystem.outlineVariant,
+                                  color: colorScheme.surface,
+                                  shadowColor: colorScheme.outline,
                                   depth: 3.0, // Added depth
                                   child: Container(
                                     padding: EdgeInsets.symmetric(
@@ -151,7 +153,7 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
                                         style: TextStyle(
                                           fontWeight: FontWeight.w900,
                                           fontSize: 14, // Reduced font size
-                                          color: DesignSystem.ink,
+                                          color: colorScheme.onSurface,
                                         ),
                                       ),
                                     ),
@@ -190,8 +192,8 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
 
   Widget _buildStat(String label, String value, Color color, bool isSmall) {
     return TangibleContainer(
-      color: DesignSystem.surface,
-      shadowColor: DesignSystem.outlineVariant,
+      color: Theme.of(context).colorScheme.surface,
+      shadowColor: Theme.of(context).colorScheme.outline,
       depth: isSmall ? 2.0 : 4.0,
       padding: EdgeInsets.symmetric(
           horizontal: isSmall ? 16 : 24, vertical: isSmall ? 4 : 8),
@@ -202,7 +204,7 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
             style: TextStyle(
               fontSize: isSmall ? 8 : 10,
               fontWeight: FontWeight.w900,
-              color: DesignSystem.inkSlate,
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
               letterSpacing: 1.5,
             ),
           ),

@@ -50,6 +50,7 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(symbolLogicNotifierProvider);
     final notifier = ref.read(symbolLogicNotifierProvider.notifier);
 
@@ -64,16 +65,16 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
       subtitle: 'Solve the visual equations to find the value of each symbol. What is the result of the last equation?',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: colorScheme.surface,
+          shadowColor: colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             notifier.initGame();
           },
           padding: const EdgeInsets.all(8),
-          child: const Icon(
+          child: Icon(
             Icons.refresh_rounded,
-            color: DesignSystem.ink,
+            color: colorScheme.onSurface,
             size: 18,
           ),
         ),
@@ -88,14 +89,14 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
                     children: [
                       Expanded(
                         child: SingleChildScrollView(
-                          physics: const BouncingScrollPhysics(),
+                          physics: BouncingScrollPhysics(),
                           child: Padding(
                             padding: EdgeInsets.all(isSmall ? 12 : 24),
                             child: Column(
                               children: [
                                 TangibleContainer(
-                                  color: DesignSystem.surface,
-                                  shadowColor: DesignSystem.outlineVariant,
+                                  color: colorScheme.surface,
+                                  shadowColor: colorScheme.outline,
                                   depth: isSmall ? 2.0 : 4.0,
                                   padding: EdgeInsets.all(isSmall ? 8 : 16),
                                   child: Column(
@@ -106,7 +107,7 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
                                 Text(
                                   'YOUR ANSWER',
                                   style: TextStyle(
-                                    color: DesignSystem.inkSlate,
+                                    color: colorScheme.onSurface.withValues(alpha: 0.7),
                                     fontSize: isSmall ? 10 : 12,
                                     fontWeight: FontWeight.w900,
                                     letterSpacing: 2,
@@ -114,8 +115,8 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
                                 ),
                                 SizedBox(height: isSmall ? 8 : 12),
                                 TangibleContainer(
-                                  color: DesignSystem.ink,
-                                  shadowColor: DesignSystem.inkSlate,
+                                  color: colorScheme.onSurface,
+                                  shadowColor: colorScheme.onSurface.withValues(alpha: 0.7),
                                   depth: isSmall ? 2.0 : 4.0,
                                   padding: EdgeInsets.symmetric(
                                     horizontal: isSmall ? 30 : 40, 
@@ -126,7 +127,7 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
                                     style: TextStyle(
                                       fontSize: isSmall ? 32 : 40,
                                       fontWeight: FontWeight.w900,
-                                      color: state.isInvalidGuess ? DesignSystem.error : DesignSystem.surface,
+                                      color: state.isInvalidGuess ? DesignSystem.error : colorScheme.surface,
                                     ),
                                   ),
                                 ),
@@ -158,12 +159,12 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
           Icon(eq.symbols[0], size: iconSize, color: DesignSystem.accentAmber),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: isSmall ? 8 : 12),
-            child: Text('+', style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.w900, color: DesignSystem.inkSlate)),
+            child: Text('+', style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))),
           ),
           Icon(eq.symbols[1], size: iconSize, color: DesignSystem.accentIndigo),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: isSmall ? 8 : 12),
-            child: Text('=', style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.w900, color: DesignSystem.inkSlate)),
+            child: Text('=', style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))),
           ),
           SizedBox(
             width: isSmall ? 50 : 60,
@@ -175,7 +176,7 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
                 style: TextStyle(
                   fontSize: resultSize,
                   fontWeight: FontWeight.w900,
-                  color: eq.isQuestion ? DesignSystem.primary : DesignSystem.ink,
+                  color: eq.isQuestion ? DesignSystem.primary : Theme.of(context).colorScheme.onSurface,
                 ),
               ),
             ),
@@ -204,14 +205,14 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
                       HapticFeedbackUtil.lightImpact();
                       notifier.onNumberPressed(n.toString());
                     },
-                    color: DesignSystem.surface,
-                    shadowColor: DesignSystem.outlineVariant,
+                    color: Theme.of(context).colorScheme.surface,
+                    shadowColor: Theme.of(context).colorScheme.outline,
                     child: Container(
                       height: keyHeight,
                       alignment: Alignment.center,
                       child: Text(
                         n.toString(),
-                        style: TextStyle(fontWeight: FontWeight.w900, fontSize: fontSize, color: DesignSystem.ink),
+                        style: TextStyle(fontWeight: FontWeight.w900, fontSize: fontSize, color: Theme.of(context).colorScheme.onSurface),
                       ),
                     ),
                   ),
@@ -229,8 +230,8 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
                       HapticFeedbackUtil.mediumImpact();
                       notifier.onBackspace();
                     },
-                    color: DesignSystem.surface,
-                    shadowColor: DesignSystem.outlineVariant,
+                    color: Theme.of(context).colorScheme.surface,
+                    shadowColor: Theme.of(context).colorScheme.outline,
                     child: Container(
                       height: keyHeight,
                       alignment: Alignment.center,
@@ -247,14 +248,14 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
                       HapticFeedbackUtil.lightImpact();
                       notifier.onNumberPressed('0');
                     },
-                    color: DesignSystem.surface,
-                    shadowColor: DesignSystem.outlineVariant,
+                    color: Theme.of(context).colorScheme.surface,
+                    shadowColor: Theme.of(context).colorScheme.outline,
                     child: Container(
                       height: keyHeight,
                       alignment: Alignment.center,
                       child: Text(
                         '0',
-                        style: TextStyle(fontWeight: FontWeight.w900, fontSize: fontSize, color: DesignSystem.ink),
+                        style: TextStyle(fontWeight: FontWeight.w900, fontSize: fontSize, color: Theme.of(context).colorScheme.onSurface),
                       ),
                     ),
                   ),

@@ -48,6 +48,7 @@ class _MatrixReasoningScreenState extends ConsumerState<MatrixReasoningScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(matrixReasoningNotifierProvider);
     final notifier = ref.read(matrixReasoningNotifierProvider.notifier);
 
@@ -89,27 +90,27 @@ class _MatrixReasoningScreenState extends ConsumerState<MatrixReasoningScreen> {
                     'Time: ${state.timeLeft}s',
                     style: TextStyle(
                       fontWeight: FontWeight.w900,
-                      color: state.timeLeft < 10 ? DesignSystem.error : DesignSystem.ink,
+                      color: state.timeLeft < 10 ? DesignSystem.error : colorScheme.onSurface,
                     ),
                   ),
                 ),
               ],
             ),
           ),
-          const Spacer(),
+          Spacer(),
           if (state.puzzle != null) ...[
             Container(
               padding: const EdgeInsets.all(DesignSystem.spaceMD),
               decoration: BoxDecoration(
-                color: DesignSystem.surface,
+                color: colorScheme.surface,
                 borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: DesignSystem.outlineVariant, width: 2),
+                border: Border.all(color: colorScheme.outline, width: 2),
               ),
               child: SizedBox(
                 width: 280,
                 height: 280,
                 child: GridView.builder(
-                  physics: const NeverScrollableScrollPhysics(),
+                  physics: NeverScrollableScrollPhysics(),
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 3,
                     crossAxisSpacing: 8,
@@ -120,7 +121,7 @@ class _MatrixReasoningScreenState extends ConsumerState<MatrixReasoningScreen> {
                     if (index == state.puzzle!.missingIndex) {
                       return Container(
                         decoration: BoxDecoration(
-                          color: DesignSystem.outlineVariant.withValues(alpha: 0.2),
+                          color: colorScheme.outline.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(12),
                           border: Border.all(color: DesignSystem.primary, width: 2, style: BorderStyle.solid),
                         ),
@@ -143,7 +144,7 @@ class _MatrixReasoningScreenState extends ConsumerState<MatrixReasoningScreen> {
               ),
             ),
           ],
-          const Spacer(),
+          Spacer(),
           if (state.puzzle != null)
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
@@ -154,7 +155,7 @@ class _MatrixReasoningScreenState extends ConsumerState<MatrixReasoningScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 4),
                     child: TangibleButton(
                       onTap: () => notifier.submitAnswer(option),
-                      color: DesignSystem.surface,
+                      color: colorScheme.surface,
                       padding: const EdgeInsets.all(8),
                       child: AspectRatio(
                         aspectRatio: 1,

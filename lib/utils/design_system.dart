@@ -4,9 +4,9 @@ class DesignSystem {
   // --- Symmetrical Design Scale ---
   static const double spaceXS = 4.0;
   static const double spaceSM = 8.0;
-  static const double spaceMD = 12.0; // Reduced from 16
-  static const double spaceLG = 20.0; // Reduced from 24
-  static const double spaceXL = 28.0; // Reduced from 32
+  static const double spaceMD = 12.0;
+  static const double spaceLG = 20.0;
+  static const double spaceXL = 28.0;
 
   static const double radiusXS = 8.0;
   static const double radiusSM = 16.0;
@@ -15,120 +15,144 @@ class DesignSystem {
   static const double radiusXL = 40.0;
   static const double radiusFull = 999.0;
 
-  // --- Universal Tangible Colors ---
+  // --- Universal Tangible Colors (Shared) ---
+  static const Color primary = Color(0xFF6366F1); // Indigo
+  static const Color primaryShadow = Color(0xFF4F46E5);
+  static const Color accentBerry = Color(0xFFEC4899); 
+  static const Color accentEmerald = Color(0xFF10B981);
+  static const Color accentAmber = Color(0xFFF59E0B);
+  static const Color success = Color(0xFF10B981);
+  static const Color error = Color(0xFFEF4444);
+
+  // --- Light Theme Colors ---
   static const Color background = Color(0xFFF3F6F8);
   static const Color surface = Colors.white;
   static const Color ink = Color(0xFF0F172A);
   static const Color inkSlate = Color(0xFF1E293B);
-  
-  // Optimistic Accents
-  static const Color primary = Color(0xFF6366F1); // Indigo
-  static const Color primaryShadow = Color(0xFF4F46E5);
-  
-  static const Color accentBerry = Color(0xFFEC4899); // Berry Red
-  static const Color accentEmerald = Color(0xFF10B981); // Emerald
-  static const Color accentAmber = Color(0xFFF59E0B); // Amber
-  
-  static const Color success = Color(0xFF10B981); // Sage Green
-  static const Color error = Color(0xFFEF4444);
-  
   static const Color outline = Color(0xFFE2E8F0);
   static const Color outlineVariant = Color(0xFFCBD5E1);
 
-  // --- Theme Building ---
-  static ThemeData get theme => _buildTheme();
+  // --- Dark Theme Colors ---
+  static const Color darkBackground = Color(0xFF0F172A); // Deep Slate
+  static const Color darkSurface = Color(0xFF1E293B);    // Slate 800
+  static const Color darkInk = Color(0xFFF8FAFC);       // Slate 50
+  static const Color darkInkSlate = Color(0xFFCBD5E1);  // Slate 300
+  static const Color darkOutline = Color(0xFF334155);   // Slate 700
+  static const Color darkOutlineVariant = Color(0xFF475569); // Slate 600
 
-  static ThemeData _buildTheme() {
+  // --- Theme Building ---
+  static ThemeData get lightTheme => _buildTheme(Brightness.light);
+  static ThemeData get darkTheme => _buildTheme(Brightness.dark);
+
+  static ThemeData _buildTheme(Brightness brightness) {
+    final bool isDark = brightness == Brightness.dark;
+    final Color bgColor = isDark ? darkBackground : background;
+    final Color surfColor = isDark ? darkSurface : surface;
+    final Color mainInk = isDark ? darkInk : ink;
+    final Color subInk = isDark ? darkInkSlate : inkSlate;
+    final Color outColor = isDark ? darkOutline : outline;
+    final Color outVarColor = isDark ? darkOutlineVariant : outlineVariant;
+
     return ThemeData(
       useMaterial3: true,
-      brightness: Brightness.light,
-      scaffoldBackgroundColor: background,
-      colorScheme: const ColorScheme.light(
-        primary: primary,
-        onPrimary: Colors.white,
-        secondary: accentBerry,
-        onSecondary: Colors.white,
-        surface: surface,
-        onSurface: ink,
-        error: error,
-        onError: Colors.white,
-        outline: outline,
-        outlineVariant: outlineVariant,
-      ),
-      appBarTheme: const AppBarTheme(
+      brightness: brightness,
+      scaffoldBackgroundColor: bgColor,
+      colorScheme: isDark 
+        ? ColorScheme.dark(
+            primary: primary,
+            onPrimary: Colors.white,
+            secondary: accentBerry,
+            onSecondary: Colors.white,
+            surface: surfColor,
+            onSurface: mainInk,
+            error: error,
+            onError: Colors.white,
+            outline: outColor,
+            outlineVariant: outVarColor,
+          )
+        : ColorScheme.light(
+            primary: primary,
+            onPrimary: Colors.white,
+            secondary: accentBerry,
+            onSecondary: Colors.white,
+            surface: surfColor,
+            onSurface: mainInk,
+            error: error,
+            onError: Colors.white,
+            outline: outColor,
+            outlineVariant: outVarColor,
+          ),
+      appBarTheme: AppBarTheme(
         backgroundColor: Colors.transparent,
-        foregroundColor: ink,
+        foregroundColor: mainInk,
         elevation: 0,
         centerTitle: true,
         scrolledUnderElevation: 0,
         titleTextStyle: TextStyle(
-          color: ink,
-          fontSize: 20, // Reduced from 24
+          color: mainInk,
+          fontSize: 20,
           fontWeight: FontWeight.w900,
           letterSpacing: 1.0,
         ),
       ),
-      textTheme: const TextTheme(
+      textTheme: TextTheme(
         displayLarge: TextStyle(
-          fontSize: 40, // Reduced from 48
+          fontSize: 40,
           fontWeight: FontWeight.w900,
           letterSpacing: -1.0,
-          color: ink,
+          color: mainInk,
           height: 1.1,
         ),
         headlineLarge: TextStyle(
-          fontSize: 28, // Reduced from 32
+          fontSize: 28,
           fontWeight: FontWeight.w900,
           letterSpacing: 1.2,
-          color: ink,
+          color: mainInk,
           height: 1.2,
         ),
         headlineMedium: TextStyle(
-          fontSize: 22, // Reduced from 24
+          fontSize: 22,
           fontWeight: FontWeight.w800,
           letterSpacing: 0.5,
-          color: ink,
+          color: mainInk,
         ),
         titleLarge: TextStyle(
-          fontSize: 18, // Reduced from 20
+          fontSize: 18,
           fontWeight: FontWeight.w800,
-          color: ink,
+          color: mainInk,
         ),
         bodyLarge: TextStyle(
-          fontSize: 16, // Reduced from 18
+          fontSize: 16,
           fontWeight: FontWeight.w600,
-          color: inkSlate,
-          height: 1.4, // Reduced from 1.5
+          color: subInk,
+          height: 1.4,
         ),
         bodyMedium: TextStyle(
-          fontSize: 14, // Reduced from 16
+          fontSize: 14,
           fontWeight: FontWeight.w500,
-          color: inkSlate,
+          color: subInk,
         ),
         labelLarge: TextStyle(
-          fontSize: 12, // Reduced from 14
+          fontSize: 12,
           fontWeight: FontWeight.w700,
           letterSpacing: 1.2,
-          color: ink,
+          color: mainInk,
         ),
       ),
-      iconTheme: const IconThemeData(
-        color: ink,
-        size: 24, // Reduced from 28
+      iconTheme: IconThemeData(
+        color: mainInk,
+        size: 24,
       ),
     );
   }
 
-  // --- Compatibility Aliases for old references ---
-  static ThemeData get lightTheme => theme;
-  static ThemeData get darkTheme => theme; // Design is age-agnostic and unified
+  // --- Theme Building (Compatibility) ---
+  static ThemeData get theme => lightTheme;
 
   // --- Helper Methods ---
   static bool isMobile(BuildContext context) => MediaQuery.of(context).size.width < 600;
-  
   static EdgeInsets get screenPadding => const EdgeInsets.all(spaceLG);
 
-  // Symmetrical Padding Helpers (Added for compatibility)
   static const EdgeInsets paddingXS = EdgeInsets.all(spaceXS);
   static const EdgeInsets paddingSM = EdgeInsets.all(spaceSM);
   static const EdgeInsets paddingMD = EdgeInsets.all(spaceMD);
@@ -140,7 +164,7 @@ class DesignSystem {
   static const double space3XL = 64.0;
   static const double radius2XL = 48.0;
 
-  // --- Game Accents (Compatibility Aliases) ---
+  // --- Game Accents ---
   static const Color gameBlue = Color(0xFF8ECAE6); 
   static const Color gameGreen = Color(0xFFA3B18A);
   static const Color gamePurple = Color(0xFFB7B7A4);
@@ -154,13 +178,11 @@ class DesignSystem {
   static const Color gameCyan = Color(0xFFBDE0FE);
   static const Color gameEmerald = Color(0xFF7D8570);
 
-  // --- Theme Compatibility Aliases ---
+  // --- Compatibility Aliases ---
   static const Color lightError = error;
-  static const Color darkSurface = surface;
   static const Color lightSurface = surface;
-  static const Color darkSurfaceElevated = surface;
+  static const Color darkSurfaceElevated = darkSurface;
   static const Color lightSurfaceElevated = surface;
-  static const Color darkOutline = outline;
   static const Color lightOutline = outline;
   static const Color lightOutlineVariant = outlineVariant;
   static const Color lightOnSurfaceMuted = inkSlate;

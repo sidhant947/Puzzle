@@ -44,16 +44,16 @@ class PathFinderScreen extends ConsumerWidget {
       subtitle: 'Find the hidden path from S to E.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: Theme.of(context).colorScheme.surface,
+          shadowColor: Theme.of(context).colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             ref.read(pathFinderNotifierProvider.notifier).reset();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(
+          child: Icon(
             Icons.refresh_rounded,
-            color: DesignSystem.ink,
+            color: Theme.of(context).colorScheme.onSurface,
             size: 20,
           ),
         ),
@@ -72,7 +72,7 @@ class PathFinderScreen extends ConsumerWidget {
                 ),
               ),
               const Spacer(),
-              _buildInstruction(),
+              _buildInstruction(context),
               const SizedBox(height: DesignSystem.spaceLG),
             ],
           );
@@ -99,18 +99,18 @@ class PathFinderScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildInstruction() {
-    return const Padding(
+  Widget _buildInstruction(BuildContext context) {
+    return Padding(
       padding: EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
       child: TangibleContainer(
         padding: EdgeInsets.all(DesignSystem.spaceSM),
-        color: DesignSystem.surface,
+        color: Theme.of(context).colorScheme.surface,
         depth: 1,
         child: Text(
           'Trace a continuous path. If you reach the Exit but the game doesn\'t end, you haven\'t found the correct hidden path.',
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: DesignSystem.inkSlate,
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
             fontSize: 10,
             height: 1.4,
           ),
@@ -150,7 +150,7 @@ class _PathGrid extends ConsumerWidget {
             final isStart = state.requiredNodes.first == point;
             final isExit = state.requiredNodes.last == point;
             
-            Color color = DesignSystem.surface;
+            Color color = Theme.of(context).colorScheme.surface;
             if (isSelected) {
               color = isLast ? DesignSystem.primary : DesignSystem.primary.withValues(alpha: 0.3);
             } else if (isStart || isExit) {

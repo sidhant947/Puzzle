@@ -45,6 +45,7 @@ class _WisconsinCardSortingScreenState extends ConsumerState<WisconsinCardSortin
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(wisconsinCardSortingNotifierProvider);
 
     ref.listen(wisconsinCardSortingNotifierProvider, (previous, next) {
@@ -58,7 +59,7 @@ class _WisconsinCardSortingScreenState extends ConsumerState<WisconsinCardSortin
       subtitle: 'MATCH THE CARD TO ONE OF THE FOUR ABOVE',
       actions: [
         TangibleContainer(
-          color: DesignSystem.surface,
+          color: colorScheme.surface,
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           radius: DesignSystem.radiusSM,
           depth: 2,
@@ -83,10 +84,10 @@ class _WisconsinCardSortingScreenState extends ConsumerState<WisconsinCardSortin
                     children: [
                       Text(
                         'SCORE: ${state.score}',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w900,
-                          color: DesignSystem.ink,
+                          color: colorScheme.onSurface,
                         ),
                       ),
                       if (state.lastFeedback.isNotEmpty)
@@ -114,8 +115,8 @@ class _WisconsinCardSortingScreenState extends ConsumerState<WisconsinCardSortin
                               HapticFeedbackUtil.selectionClick();
                               ref.read(wisconsinCardSortingNotifierProvider.notifier).sort(index);
                             },
-                            color: DesignSystem.surface,
-                            shadowColor: DesignSystem.outlineVariant,
+                            color: colorScheme.surface,
+                            shadowColor: colorScheme.outline,
                             padding: const EdgeInsets.all(DesignSystem.spaceXS),
                             child: _CardWidget(card: state.stimulusCards[index]),
                           ),

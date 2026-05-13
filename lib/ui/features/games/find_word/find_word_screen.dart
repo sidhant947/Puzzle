@@ -51,6 +51,7 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(findWordNotifierProvider);
     final notifier = ref.read(findWordNotifierProvider.notifier);
 
@@ -75,15 +76,15 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
           'You have ${FindWordEngine.maxTries} tries to find the hidden ${FindWordEngine.wordLength}-letter word.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: colorScheme.surface,
+          shadowColor: colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             notifier.initGame();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(Icons.refresh_rounded,
-              size: 20, color: DesignSystem.ink),
+          child: Icon(Icons.refresh_rounded,
+              size: 20, color: colorScheme.onSurface),
         ),
       ],
       body: LayoutBuilder(
@@ -106,8 +107,8 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
       child: TangibleContainer(
-        color: DesignSystem.ink,
-        shadowColor: DesignSystem.inkSlate,
+        color: Theme.of(context).colorScheme.onSurface,
+        shadowColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
         depth: 4.0,
         radius: DesignSystem.radiusMD,
         padding: const EdgeInsets.all(DesignSystem.spaceSM),
@@ -164,9 +165,9 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
   }
 
   Widget _buildTile(String letter, LetterStatus status, bool isTyping) {
-    Color color = DesignSystem.surface;
-    Color shadowColor = DesignSystem.outlineVariant;
-    Color textColor = DesignSystem.ink;
+    Color color = Theme.of(context).colorScheme.surface;
+    Color shadowColor = Theme.of(context).colorScheme.outline;
+    Color textColor = Theme.of(context).colorScheme.onSurface;
 
     switch (status) {
       case LetterStatus.correctSpot:
@@ -180,9 +181,9 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
         textColor = Colors.white;
         break;
       case LetterStatus.notInWord:
-        color = DesignSystem.background;
-        shadowColor = DesignSystem.outline;
-        textColor = DesignSystem.ink.withValues(alpha: 0.3);
+        color = Theme.of(context).scaffoldBackgroundColor;
+        shadowColor = Theme.of(context).colorScheme.outline.withValues(alpha: 0.5);
+        textColor = Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.3);
         break;
       case LetterStatus.initial:
         if (isTyping) {
@@ -243,9 +244,9 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
     bool isSpecialKey = label == 'ENTER' || label == 'DEL';
 
     LetterStatus status = state.keyboardStatus[label] ?? LetterStatus.initial;
-    Color color = DesignSystem.surface;
-    Color shadowColor = DesignSystem.outlineVariant;
-    Color textColor = DesignSystem.ink;
+    Color color = Theme.of(context).colorScheme.surface;
+    Color shadowColor = Theme.of(context).colorScheme.outline;
+    Color textColor = Theme.of(context).colorScheme.onSurface;
 
     switch (status) {
       case LetterStatus.correctSpot:
@@ -259,9 +260,9 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
         textColor = Colors.white;
         break;
       case LetterStatus.notInWord:
-        color = DesignSystem.background;
-        shadowColor = DesignSystem.outline;
-        textColor = DesignSystem.ink.withValues(alpha: 0.2);
+        color = Theme.of(context).scaffoldBackgroundColor;
+        shadowColor = Theme.of(context).colorScheme.outline.withValues(alpha: 0.5);
+        textColor = Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2);
         break;
       default:
         break;

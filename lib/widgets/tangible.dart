@@ -5,8 +5,8 @@ import '../utils/design_system.dart';
 /// It uses "Bottom-Sinking" geometry to look like a physical tile.
 class TangibleContainer extends StatelessWidget {
   final Widget child;
-  final Color color;
-  final Color shadowColor;
+  final Color? color;
+  final Color? shadowColor;
   final double depth;
   final double radius;
   final EdgeInsetsGeometry? padding;
@@ -15,8 +15,8 @@ class TangibleContainer extends StatelessWidget {
   const TangibleContainer({
     super.key,
     required this.child,
-    this.color = DesignSystem.surface,
-    this.shadowColor = DesignSystem.outlineVariant,
+    this.color,
+    this.shadowColor,
     this.depth = 6.0,
     this.radius = DesignSystem.radiusLG,
     this.padding,
@@ -25,12 +25,18 @@ class TangibleContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    
+    final resolvedColor = color ?? colorScheme.surface;
+    final resolvedShadowColor = shadowColor ?? colorScheme.outline;
+
     Widget content = Container(
       decoration: BoxDecoration(
-        color: color,
+        color: resolvedColor,
         borderRadius: BorderRadius.circular(radius),
         border: Border.all(
-          color: DesignSystem.outline,
+          color: colorScheme.outline.withValues(alpha: 0.5),
           width: 1.5,
         ),
       ),
@@ -40,8 +46,8 @@ class TangibleContainer extends StatelessWidget {
 
     Widget tangible = Container(
       decoration: BoxDecoration(
-        color: shadowColor,
-        borderRadius: BorderRadius.circular(radius + 1), // Slightly larger to match border
+        color: resolvedShadowColor,
+        borderRadius: BorderRadius.circular(radius + 1),
       ),
       child: Padding(
         padding: EdgeInsets.only(bottom: depth),
@@ -52,8 +58,6 @@ class TangibleContainer extends StatelessWidget {
     if (onTap != null) {
       return GestureDetector(
         onTap: onTap,
-        // In a full implementation, we'd add tap down/up animation here
-        // to reduce the depth and move the content down, simulating a physical press.
         child: tangible,
       );
     }
@@ -66,8 +70,8 @@ class TangibleContainer extends StatelessWidget {
 class TangibleButton extends StatefulWidget {
   final Widget child;
   final VoidCallback onTap;
-  final Color color;
-  final Color shadowColor;
+  final Color? color;
+  final Color? shadowColor;
   final EdgeInsetsGeometry? padding;
   final double depth;
   final double radius;
@@ -76,8 +80,8 @@ class TangibleButton extends StatefulWidget {
     super.key,
     required this.child,
     required this.onTap,
-    this.color = DesignSystem.primary,
-    this.shadowColor = DesignSystem.primaryShadow,
+    this.color,
+    this.shadowColor,
     this.padding,
     this.depth = 6.0,
     this.radius = DesignSystem.radiusLG,
@@ -92,6 +96,10 @@ class _TangibleButtonState extends State<TangibleButton> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final resolvedColor = widget.color ?? colorScheme.primary;
+    final resolvedShadowColor = widget.shadowColor ?? (widget.color == null ? colorScheme.primary.withValues(alpha: 0.8) : resolvedColor.withValues(alpha: 0.8));
+
     return GestureDetector(
       onTapDown: (_) => setState(() => _isPressed = true),
       onTapUp: (_) {
@@ -105,16 +113,16 @@ class _TangibleButtonState extends State<TangibleButton> {
         transform: Matrix4.translationValues(0, _isPressed ? (widget.depth * 0.6) : 0.0, 0),
         child: TangibleContainer(
           depth: _isPressed ? 0.0 : widget.depth,
-          color: widget.color,
-          shadowColor: widget.shadowColor,
+          color: resolvedColor,
+          shadowColor: resolvedShadowColor,
           radius: widget.radius,
           padding: widget.padding ?? const EdgeInsets.symmetric(
             horizontal: DesignSystem.spaceLG,
             vertical: DesignSystem.spaceMD,
           ),
           child: DefaultTextStyle(
-            style: const TextStyle(
-              color: Colors.white,
+            style: TextStyle(
+              color: resolvedColor == colorScheme.surface ? colorScheme.onSurface : Colors.white,
               fontSize: 18,
               fontWeight: FontWeight.w800,
               letterSpacing: 1.0,

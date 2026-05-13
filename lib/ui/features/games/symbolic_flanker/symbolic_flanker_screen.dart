@@ -47,6 +47,7 @@ class _SymbolicFlankerScreenState extends ConsumerState<SymbolicFlankerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(symbolicFlankerNotifierProvider);
     final notifier = ref.read(symbolicFlankerNotifierProvider.notifier);
 
@@ -104,11 +105,11 @@ class _SymbolicFlankerScreenState extends ConsumerState<SymbolicFlankerScreen> {
                       HapticFeedbackUtil.lightImpact();
                       notifier.onSymbolPressed('★');
                     },
-                    color: DesignSystem.surface,
-                    child: const Center(
+                    color: colorScheme.surface,
+                    child: Center(
                       child: Text(
                         '★',
-                        style: TextStyle(fontSize: 32, color: DesignSystem.ink),
+                        style: TextStyle(fontSize: 32, color: colorScheme.onSurface),
                       ),
                     ),
                   ),
@@ -120,11 +121,11 @@ class _SymbolicFlankerScreenState extends ConsumerState<SymbolicFlankerScreen> {
                       HapticFeedbackUtil.lightImpact();
                       notifier.onSymbolPressed('◆');
                     },
-                    color: DesignSystem.surface,
-                    child: const Center(
+                    color: colorScheme.surface,
+                    child: Center(
                       child: Text(
                         '◆',
-                        style: TextStyle(fontSize: 32, color: DesignSystem.ink),
+                        style: TextStyle(fontSize: 32, color: colorScheme.onSurface),
                       ),
                     ),
                   ),
@@ -141,8 +142,8 @@ class _SymbolicFlankerScreenState extends ConsumerState<SymbolicFlankerScreen> {
   Widget _buildStat(String label, String value, {Color? color}) {
     return Column(
       children: [
-        Text(label, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: DesignSystem.inkSlate)),
-        Text(value, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: color ?? DesignSystem.ink)),
+        Text(label, style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))),
+        Text(value, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: color ?? Theme.of(context).colorScheme.onSurface)),
       ],
     );
   }

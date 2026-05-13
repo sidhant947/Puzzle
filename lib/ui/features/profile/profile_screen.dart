@@ -89,9 +89,11 @@ class ProfileScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final userData = ref.watch(userDataNotifierProvider);
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      backgroundColor: DesignSystem.background,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: SafeArea(
         child: CustomScrollView(
           physics: const BouncingScrollPhysics(),
@@ -99,7 +101,7 @@ class ProfileScreen extends ConsumerWidget {
             SliverAppBar(
               floating: false,
               snap: false,
-              backgroundColor: DesignSystem.background,
+              backgroundColor: theme.scaffoldBackgroundColor,
               surfaceTintColor: Colors.transparent,
               centerTitle: true,
             ),
@@ -114,12 +116,12 @@ class ProfileScreen extends ConsumerWidget {
                 delegate: SliverChildListDelegate([
                   _buildUserStats(context, userData, ref),
                   const SizedBox(height: DesignSystem.spaceXL),
-                  const Text(
+                  Text(
                     'ACHIEVEMENTS',
                     style: TextStyle(
                       letterSpacing: 2.0,
                       fontWeight: FontWeight.w900,
-                      color: DesignSystem.inkSlate,
+                      color: colorScheme.onSurface,
                       fontSize: 16,
                     ),
                   ),
@@ -128,7 +130,7 @@ class ProfileScreen extends ConsumerWidget {
                     achievements.length,
                     (index) => Padding(
                       padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
-                      child: _buildAchievementCard(achievements[index], userData),
+                      child: _buildAchievementCard(context, achievements[index], userData),
                     ),
                   ),
                   const SizedBox(height: DesignSystem.spaceXL),
@@ -234,9 +236,9 @@ class ProfileScreen extends ConsumerWidget {
                   color: Colors.white.withValues(alpha: 0.7),
                 ),
               ),
-              Text(
-                '${(nextLevelXp - userData.xp).clamp(0, 1000000)} XP TO NEXT LEVEL',
-                style: const TextStyle(
+              const Text(
+                'XP TO NEXT LEVEL',
+                style: TextStyle(
                   fontWeight: FontWeight.w800,
                   fontSize: 10,
                   letterSpacing: 1.0,
@@ -250,12 +252,14 @@ class ProfileScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildAchievementCard(Achievement achievement, UserData userData) {
+  Widget _buildAchievementCard(BuildContext context, Achievement achievement, UserData userData) {
     final isUnlocked = userData.xp >= achievement.requiredXp;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
 
     return TangibleContainer(
-      color: isUnlocked ? DesignSystem.surface : DesignSystem.background,
-      shadowColor: DesignSystem.outlineVariant,
+      color: isUnlocked ? colorScheme.surface : theme.scaffoldBackgroundColor,
+      shadowColor: colorScheme.outline.withValues(alpha: 0.5),
       depth: isUnlocked ? 6.0 : 2.0, // Less depth for locked
       padding: const EdgeInsets.all(DesignSystem.spaceMD),
       child: Row(
@@ -266,13 +270,13 @@ class ProfileScreen extends ConsumerWidget {
             decoration: BoxDecoration(
               color: isUnlocked 
                   ? DesignSystem.accentAmber.withValues(alpha: 0.2) 
-                  : DesignSystem.outline.withValues(alpha: 0.5),
+                  : colorScheme.outline.withValues(alpha: 0.2),
               borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
             ),
             child: Icon(
               achievement.icon,
               size: 28,
-              color: isUnlocked ? DesignSystem.accentAmber : DesignSystem.inkSlate.withValues(alpha: 0.4),
+              color: isUnlocked ? DesignSystem.accentAmber : colorScheme.onSurface.withValues(alpha: 0.2),
             ),
           ),
           const SizedBox(width: DesignSystem.spaceMD),
@@ -286,7 +290,7 @@ class ProfileScreen extends ConsumerWidget {
                     fontWeight: FontWeight.w900,
                     letterSpacing: 0.5,
                     fontSize: 16,
-                    color: isUnlocked ? DesignSystem.ink : DesignSystem.inkSlate.withValues(alpha: 0.5),
+                    color: isUnlocked ? colorScheme.onSurface : colorScheme.onSurface.withValues(alpha: 0.4),
                   ),
                 ),
                 const SizedBox(height: 4),
@@ -295,7 +299,7 @@ class ProfileScreen extends ConsumerWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.w600,
                     fontSize: 12,
-                    color: isUnlocked ? DesignSystem.inkSlate : DesignSystem.inkSlate.withValues(alpha: 0.4),
+                    color: isUnlocked ? colorScheme.onSurface.withValues(alpha: 0.7) : colorScheme.onSurface.withValues(alpha: 0.3),
                   ),
                 ),
               ],
@@ -311,16 +315,16 @@ class ProfileScreen extends ConsumerWidget {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
               decoration: BoxDecoration(
-                color: DesignSystem.outline.withValues(alpha: 0.5),
+                color: colorScheme.outline.withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
               ),
-              child: const Text(
+              child: Text(
                 'LOCKED',
                 style: TextStyle(
                   fontWeight: FontWeight.w800,
                   fontSize: 10,
                   letterSpacing: 1.0,
-                  color: DesignSystem.inkSlate,
+                  color: colorScheme.onSurface.withValues(alpha: 0.3),
                 ),
               ),
             ),
@@ -330,13 +334,14 @@ class ProfileScreen extends ConsumerWidget {
   }
 
   Widget _buildLegalSection(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text(
+        Text(
           'SYSTEM & LEGAL',
           style: TextStyle(
-            color: DesignSystem.inkSlate,
+            color: colorScheme.onSurface,
             letterSpacing: 2,
             fontWeight: FontWeight.w900,
             fontSize: 16,
@@ -372,29 +377,30 @@ class ProfileScreen extends ConsumerWidget {
   }
 
   Widget _buildLegalItem(BuildContext context, String title, IconData icon, VoidCallback onTap) {
+    final colorScheme = Theme.of(context).colorScheme;
     return TangibleButton(
-      color: DesignSystem.surface,
-      shadowColor: DesignSystem.outlineVariant,
+      color: colorScheme.surface,
+      shadowColor: colorScheme.outline.withValues(alpha: 0.5),
       onTap: onTap,
       child: Row(
         children: [
-          Icon(icon, size: 24, color: DesignSystem.inkSlate),
+          Icon(icon, size: 24, color: colorScheme.onSurface.withValues(alpha: 0.7)),
           const SizedBox(width: DesignSystem.spaceMD),
           Expanded(
             child: Text(
               title.toUpperCase(),
-              style: const TextStyle(
+              style: TextStyle(
                 fontWeight: FontWeight.w800,
                 fontSize: 14,
                 letterSpacing: 0.5,
-                color: DesignSystem.ink,
+                color: colorScheme.onSurface,
               ),
             ),
           ),
-          const Icon(
+          Icon(
             Icons.chevron_right_rounded,
             size: 24,
-            color: DesignSystem.inkSlate,
+            color: colorScheme.onSurface.withValues(alpha: 0.5),
           ),
         ],
       ),

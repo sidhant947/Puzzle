@@ -79,6 +79,7 @@ class _VigilanceTaskScreenState extends ConsumerState<VigilanceTaskScreen> {
                 child: CustomPaint(
                   painter: ClockPainter(
                     currentPosition: state.currentPosition,
+                    outlineColor: Theme.of(context).colorScheme.outline,
                   ),
                 ),
               ),
@@ -121,8 +122,12 @@ class _VigilanceTaskScreenState extends ConsumerState<VigilanceTaskScreen> {
 
 class ClockPainter extends CustomPainter {
   final int currentPosition;
+  final Color outlineColor;
 
-  ClockPainter({required this.currentPosition});
+  ClockPainter({
+    required this.currentPosition,
+    required this.outlineColor,
+  });
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -130,7 +135,7 @@ class ClockPainter extends CustomPainter {
     final radius = size.width / 2;
     
     final paint = Paint()
-      ..color = DesignSystem.outlineVariant
+      ..color = outlineColor
       ..style = PaintingStyle.stroke
       ..strokeWidth = 4;
 

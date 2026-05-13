@@ -124,10 +124,10 @@ class _FaceNameAssociationScreenState extends ConsumerState<FaceNameAssociationS
       children: [
         LinearProgressIndicator(
           value: (state.currentTestIndex) / state.studyFaces.length,
-          backgroundColor: DesignSystem.outline,
+          backgroundColor: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5),
           valueColor: const AlwaysStoppedAnimation<Color>(DesignSystem.primary),
         ),
-        const SizedBox(height: DesignSystem.spaceXL),
+        SizedBox(height: DesignSystem.spaceXL),
         Expanded(
           flex: 2,
           child: Center(
@@ -143,11 +143,11 @@ class _FaceNameAssociationScreenState extends ConsumerState<FaceNameAssociationS
                 padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
                 child: TangibleButton(
                   onTap: () => notifier.onOptionSelected(option),
-                  color: DesignSystem.surface,
-                  shadowColor: DesignSystem.outlineVariant,
+                  color: Theme.of(context).colorScheme.surface,
+                  shadowColor: Theme.of(context).colorScheme.outline,
                   child: Text(
                     option,
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: DesignSystem.ink),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onSurface),
                   ),
                 ),
               );
@@ -161,9 +161,9 @@ class _FaceNameAssociationScreenState extends ConsumerState<FaceNameAssociationS
   Widget _buildFaceCard(FaceData face, {bool showName = true, bool large = false}) {
     return Container(
       decoration: BoxDecoration(
-        color: DesignSystem.surface,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
-        border: Border.all(color: DesignSystem.outlineVariant, width: 2),
+        border: Border.all(color: Theme.of(context).colorScheme.outline, width: 2),
       ),
       padding: const EdgeInsets.all(DesignSystem.spaceMD),
       child: Column(
@@ -175,16 +175,16 @@ class _FaceNameAssociationScreenState extends ConsumerState<FaceNameAssociationS
               color: face.color,
               shape: BoxShape.circle,
             ),
-            child: Icon(face.icon, size: large ? 80 : 48, color: DesignSystem.ink.withValues(alpha: 0.7)),
+            child: Icon(face.icon, size: large ? 80 : 48, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7)),
           ),
           if (showName) ...[
-            const SizedBox(height: DesignSystem.spaceMD),
+            SizedBox(height: DesignSystem.spaceMD),
             Text(
               face.name,
               style: TextStyle(
                 fontSize: large ? 24 : 18,
                 fontWeight: FontWeight.w900,
-                color: DesignSystem.ink,
+                color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
           ],

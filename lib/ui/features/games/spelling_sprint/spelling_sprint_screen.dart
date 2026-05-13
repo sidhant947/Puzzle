@@ -102,8 +102,8 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
 
   Widget _buildStatItem(String label, String value, {Color? color, bool isSmall = false}) {
     return TangibleContainer(
-      color: DesignSystem.surface,
-      shadowColor: DesignSystem.outlineVariant,
+      color: Theme.of(context).colorScheme.surface,
+      shadowColor: Theme.of(context).colorScheme.outline,
       depth: isSmall ? 2.0 : 4.0,
       padding: EdgeInsets.symmetric(
         horizontal: isSmall ? 12 : 16, 
@@ -114,7 +114,7 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
           Text(
             label,
             style: TextStyle(
-              color: DesignSystem.inkSlate,
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
               letterSpacing: 1.5,
               fontSize: isSmall ? 8 : 10,
               fontWeight: FontWeight.w900,
@@ -140,7 +140,7 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
         Text(
           'SPELL THE WORD',
           style: TextStyle(
-            color: DesignSystem.inkSlate,
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
             letterSpacing: 2,
             fontSize: isSmall ? 10 : 12,
             fontWeight: FontWeight.w800,
@@ -148,8 +148,8 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
         ),
         SizedBox(height: isSmall ? 12 : 24),
         TangibleContainer(
-          color: DesignSystem.ink,
-          shadowColor: DesignSystem.inkSlate,
+          color: Theme.of(context).colorScheme.onSurface,
+          shadowColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
           depth: isSmall ? 2.0 : 4.0,
           padding: EdgeInsets.all(isSmall ? 8 : 16),
           child: SingleChildScrollView(
@@ -166,7 +166,7 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
                   decoration: BoxDecoration(
                     border: Border(
                       bottom: BorderSide(
-                        color: letter.isNotEmpty ? DesignSystem.success : DesignSystem.surface.withValues(alpha: 0.2),
+                        color: letter.isNotEmpty ? DesignSystem.success : Theme.of(context).colorScheme.surface.withValues(alpha: 0.2),
                         width: 3,
                       ),
                     ),
@@ -206,8 +206,8 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
               HapticFeedbackUtil.lightImpact();
               ref.read(spellingSprintNotifierProvider.notifier).addLetter(index);
             },
-            color: DesignSystem.surface,
-            shadowColor: DesignSystem.outlineVariant,
+            color: Theme.of(context).colorScheme.surface,
+            shadowColor: Theme.of(context).colorScheme.outline,
             child: SizedBox(
               width: isSmall ? 36 : 40,
               height: isSmall ? 36 : 40,

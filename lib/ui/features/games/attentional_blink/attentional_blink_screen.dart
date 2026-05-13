@@ -44,6 +44,7 @@ class _AttentionalBlinkScreenState extends ConsumerState<AttentionalBlinkScreen>
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(attentionalBlinkNotifierProvider);
 
     ref.listen(attentionalBlinkNotifierProvider, (previous, next) {
@@ -59,7 +60,7 @@ class _AttentionalBlinkScreenState extends ConsumerState<AttentionalBlinkScreen>
           : 'ENTER THE TWO NUMBERS YOU SAW',
       actions: [
         TangibleContainer(
-          color: DesignSystem.surface,
+          color: colorScheme.surface,
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           radius: DesignSystem.radiusSM,
           depth: 2,
@@ -84,10 +85,10 @@ class _AttentionalBlinkScreenState extends ConsumerState<AttentionalBlinkScreen>
                     children: [
                       Text(
                         'SCORE: ${state.score}',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w900,
-                          color: DesignSystem.ink,
+                          color: colorScheme.onSurface,
                         ),
                       ),
                     ],
@@ -132,8 +133,8 @@ class _AttentionalBlinkScreenState extends ConsumerState<AttentionalBlinkScreen>
   }
 
   Widget _buildInputSlot(String value, String? correctValue) {
-    Color color = DesignSystem.surface;
-    Color textColor = DesignSystem.ink;
+    Color color = Theme.of(context).colorScheme.surface;
+    Color textColor = Theme.of(context).colorScheme.onSurface;
 
     if (correctValue != null) {
       bool isCorrect = value == correctValue;
@@ -150,7 +151,7 @@ class _AttentionalBlinkScreenState extends ConsumerState<AttentionalBlinkScreen>
         style: TextStyle(
           fontSize: 48,
           fontWeight: FontWeight.w900,
-          color: value.isEmpty ? DesignSystem.inkSlate.withValues(alpha: 0.3) : textColor,
+          color: value.isEmpty ? Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7).withValues(alpha: 0.3) : textColor,
         ),
       ),
     );
@@ -171,12 +172,12 @@ class _AttentionalBlinkScreenState extends ConsumerState<AttentionalBlinkScreen>
                 ref.read(attentionalBlinkNotifierProvider.notifier).submitInput(char);
               }
             },
-            color: DesignSystem.surface,
-            shadowColor: DesignSystem.outlineVariant,
+            color: Theme.of(context).colorScheme.surface,
+            shadowColor: Theme.of(context).colorScheme.outline,
             padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
             child: Text(
               char,
-              style: const TextStyle(color: DesignSystem.ink, fontWeight: FontWeight.w900),
+              style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w900),
             ),
           );
         }).toList(),

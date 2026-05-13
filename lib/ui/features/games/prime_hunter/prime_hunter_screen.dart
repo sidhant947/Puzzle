@@ -48,6 +48,7 @@ class _PrimeHunterScreenState extends ConsumerState<PrimeHunterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(primeHunterNotifierProvider);
     final notifier = ref.read(primeHunterNotifierProvider.notifier);
 
@@ -86,7 +87,7 @@ class _PrimeHunterScreenState extends ConsumerState<PrimeHunterScreen> {
                 TangibleContainer(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   radius: DesignSystem.radiusMD,
-                  color: DesignSystem.surface,
+                  color: colorScheme.surface,
                   child: Text(
                     'SCORE: ${state.score}',
                     style: const TextStyle(
@@ -117,10 +118,10 @@ class _PrimeHunterScreenState extends ConsumerState<PrimeHunterScreen> {
                         padding: const EdgeInsets.all(DesignSystem.space3XL),
                         child: Text(
                           state.currentNumber.toString(),
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 80,
                             fontWeight: FontWeight.w900,
-                            color: DesignSystem.ink,
+                            color: colorScheme.onSurface,
                           ),
                         ),
                       ),

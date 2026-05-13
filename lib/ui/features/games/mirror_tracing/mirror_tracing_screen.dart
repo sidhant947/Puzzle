@@ -77,7 +77,7 @@ class _MirrorTracingScreenState extends ConsumerState<MirrorTracingScreen> {
               setState(() => _lastTouch = null);
             },
             child: Container(
-              color: Colors.white,
+              color: Theme.of(context).colorScheme.surface,
               child: CustomPaint(
                 size: Size.infinite,
                 painter: MirrorTracingPainter(
@@ -85,6 +85,7 @@ class _MirrorTracingScreenState extends ConsumerState<MirrorTracingScreen> {
                   userTrace: state.userTrace,
                   currentTouch: _lastTouch,
                   canvasSize: state.canvasSize,
+                  context: context,
                 ),
               ),
             ),
@@ -100,19 +101,21 @@ class MirrorTracingPainter extends CustomPainter {
   final List<Offset> userTrace;
   final Offset? currentTouch;
   final Size canvasSize;
+  final BuildContext context;
 
   MirrorTracingPainter({
     required this.targetPath,
     required this.userTrace,
     required this.currentTouch,
     required this.canvasSize,
+    required this.context,
   });
 
   @override
   void paint(Canvas canvas, Size size) {
     // Draw target path
     final pathPaint = Paint()
-      ..color = DesignSystem.outlineVariant
+      ..color = Theme.of(context).colorScheme.outline
       ..strokeWidth = 30
       ..strokeCap = StrokeCap.round
       ..strokeJoin = StrokeJoin.round
@@ -152,7 +155,7 @@ class MirrorTracingPainter extends CustomPainter {
     // Draw touch markers
     if (currentTouch != null) {
       // Actual touch (faint)
-      canvas.drawCircle(currentTouch!, 10, Paint()..color = DesignSystem.ink.withValues(alpha: 0.1));
+      canvas.drawCircle(currentTouch!, 10, Paint()..color = Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1));
       
       // Mirrored cursor (bright)
       final mirroredX = canvasSize.width - currentTouch!.dx;

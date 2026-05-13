@@ -24,6 +24,7 @@ class _SimonSequenceScreenState extends ConsumerState<SimonSequenceScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(simonSequenceNotifierProvider);
 
     ref.listen(simonSequenceNotifierProvider, (previous, next) {
@@ -63,10 +64,10 @@ class _SimonSequenceScreenState extends ConsumerState<SimonSequenceScreen> {
                       const SizedBox(height: 4),
                       Text(
                         '${state.userSequence.length} / ${state.sequence.length}', 
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 12, // Reduced from 16
                           fontWeight: FontWeight.bold,
-                          color: DesignSystem.outline,
+                          color: colorScheme.outline.withValues(alpha: 0.5),
                         ),
                       ),
                     ],
@@ -78,7 +79,7 @@ class _SimonSequenceScreenState extends ConsumerState<SimonSequenceScreen> {
               const Spacer(),
               TangibleButton(
                 onTap: state.isShowingSequence ? () {} : () => ref.read(simonSequenceNotifierProvider.notifier).reset(),
-                color: state.isShowingSequence ? DesignSystem.outline : DesignSystem.primary,
+                color: state.isShowingSequence ? colorScheme.outline.withValues(alpha: 0.5) : DesignSystem.primary,
                 padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
                 child: const Text(
                   'RESTART',
@@ -121,7 +122,7 @@ class _SimonSequenceScreenState extends ConsumerState<SimonSequenceScreen> {
                 child: TangibleContainer(
                   depth: isHighlighted ? 0.0 : 3.0,
                   radius: DesignSystem.radiusMD,
-                  color: isHighlighted ? DesignSystem.accentAmber : DesignSystem.surface,
+                  color: isHighlighted ? DesignSystem.accentAmber : Theme.of(context).colorScheme.surface,
                   child: isHighlighted 
                     ? const Center(child: Icon(Icons.flash_on_rounded, color: Colors.white, size: 24))
                     : const SizedBox.shrink(),

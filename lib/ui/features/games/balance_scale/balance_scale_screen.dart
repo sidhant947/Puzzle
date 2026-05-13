@@ -51,6 +51,7 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(balanceScaleNotifierProvider);
     final notifier = ref.read(balanceScaleNotifierProvider.notifier);
 
@@ -65,18 +66,18 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
       subtitle: 'Deduce the weight of the last item based on the scales.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: colorScheme.surface,
+          shadowColor: colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             notifier.initGame();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
+          child: Icon(Icons.refresh_rounded, size: 20, color: colorScheme.onSurface),
         ),
       ],
       body: state.isLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(child: CircularProgressIndicator())
           : LayoutBuilder(
               builder: (context, constraints) {
                 return Column(
@@ -87,19 +88,19 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
                     // Input Area
                     TangibleContainer(
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-                      color: DesignSystem.surface,
+                      color: colorScheme.surface,
                       depth: 3.0,
                       child: Row(
                         mainAxisSize: MainAxisSize.min,
                         children: [
-                          const Icon(Icons.help_outline_rounded, color: DesignSystem.inkSlate, size: 20),
-                          const SizedBox(width: 6),
-                          const Text(
+                          Icon(Icons.help_outline_rounded, color: colorScheme.onSurface.withValues(alpha: 0.7), size: 20),
+                          SizedBox(width: 6),
+                          Text(
                             '=', 
                             style: TextStyle(
                               fontSize: 18, 
                               fontWeight: FontWeight.w900,
-                              color: DesignSystem.ink,
+                              color: colorScheme.onSurface,
                             ),
                           ),
                           const SizedBox(width: 6),
@@ -132,13 +133,13 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
       child: ConstrainedBox(
         constraints: BoxConstraints(maxHeight: maxHeight),
         child: TangibleContainer(
-          color: DesignSystem.ink,
-          shadowColor: DesignSystem.inkSlate,
+          color: Theme.of(context).colorScheme.onSurface,
+          shadowColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
           depth: 4.0, // Reduced from 6.0
           padding: const EdgeInsets.all(3.0),
           child: Container(
             decoration: BoxDecoration(
-              color: DesignSystem.surface,
+              color: Theme.of(context).colorScheme.surface,
               borderRadius: BorderRadius.circular(DesignSystem.radiusLG - 4),
             ),
             child: ClipRRect(
@@ -160,9 +161,9 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
       margin: const EdgeInsets.symmetric(vertical: DesignSystem.spaceXS),
       padding: const EdgeInsets.all(DesignSystem.spaceSM),
       decoration: BoxDecoration(
-        color: DesignSystem.background,
+        color: Theme.of(context).scaffoldBackgroundColor,
         borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
-        border: Border.all(color: DesignSystem.outline, width: 0.5),
+        border: Border.all(color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5), width: 0.5),
       ),
       child: Column(
         children: [
@@ -170,9 +171,9 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: [
               Expanded(child: _buildWeightGroup(eq.left)),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(horizontal: 4.0),
-                child: Icon(Icons.balance_rounded, color: DesignSystem.inkSlate, size: 20),
+                child: Icon(Icons.balance_rounded, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7), size: 20),
               ),
               Expanded(
                 child: eq.isQuestion 
@@ -181,12 +182,12 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
               ),
             ],
           ),
-          const SizedBox(height: 4),
+          SizedBox(height: 4),
           Container(
             height: 2, 
             width: double.infinity, 
             decoration: BoxDecoration(
-              color: DesignSystem.inkSlate,
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
               borderRadius: BorderRadius.circular(1),
             ),
           ), // Scale beam
@@ -217,12 +218,12 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Text(
+        Text(
           '?', 
           style: TextStyle(
             fontSize: 16, 
             fontWeight: FontWeight.w900,
-            color: DesignSystem.ink,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
         ),
         const SizedBox(width: 2),
@@ -240,8 +241,8 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
             children: row.map((n) => Padding(
               padding: const EdgeInsets.all(DesignSystem.spaceXS),
               child: TangibleButton(
-                color: DesignSystem.surface,
-                shadowColor: DesignSystem.outlineVariant,
+                color: Theme.of(context).colorScheme.surface,
+                shadowColor: Theme.of(context).colorScheme.outline,
                 padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                 onTap: () {
                   HapticFeedbackUtil.lightImpact();
@@ -249,8 +250,8 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
                 },
                 child: Text(
                   n.toString(),
-                  style: const TextStyle(
-                    color: DesignSystem.ink,
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onSurface,
                     fontWeight: FontWeight.w900,
                     fontSize: 14, // Reduced from 20
                   ),

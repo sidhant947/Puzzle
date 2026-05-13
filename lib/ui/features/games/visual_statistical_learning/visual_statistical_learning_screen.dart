@@ -44,6 +44,7 @@ class _VisualStatisticalLearningScreenState extends ConsumerState<VisualStatisti
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(visualStatisticalLearningNotifierProvider);
 
     ref.listen(visualStatisticalLearningNotifierProvider, (previous, next) {
@@ -59,7 +60,7 @@ class _VisualStatisticalLearningScreenState extends ConsumerState<VisualStatisti
           : 'WHICH PATTERN DID YOU SEE?',
       actions: [
         TangibleContainer(
-          color: DesignSystem.surface,
+          color: colorScheme.surface,
           padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
           radius: DesignSystem.radiusSM,
           depth: 2,
@@ -84,10 +85,10 @@ class _VisualStatisticalLearningScreenState extends ConsumerState<VisualStatisti
                     children: [
                       Text(
                         'SCORE: ${state.score}',
-                        style: const TextStyle(
+                        style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w900,
-                          color: DesignSystem.ink,
+                          color: colorScheme.onSurface,
                         ),
                       ),
                     ],
@@ -150,15 +151,15 @@ class _VisualStatisticalLearningScreenState extends ConsumerState<VisualStatisti
   Widget _buildTestOption({required List<IconData> icons, required VoidCallback onTap}) {
     return TangibleButton(
       onTap: onTap,
-      color: DesignSystem.surface,
-      shadowColor: DesignSystem.outlineVariant,
+      color: Theme.of(context).colorScheme.surface,
+      shadowColor: Theme.of(context).colorScheme.outline,
       padding: const EdgeInsets.all(DesignSystem.spaceMD),
       child: Column(
         mainAxisSize: MainAxisSize.min,
         children: icons
             .map((icon) => Padding(
                   padding: const EdgeInsets.symmetric(vertical: 4.0),
-                  child: Icon(icon, size: 48, color: DesignSystem.ink),
+                  child: Icon(icon, size: 48, color: Theme.of(context).colorScheme.onSurface),
                 ))
             .toList(),
       ),

@@ -64,16 +64,16 @@ class MemoryMatrixScreen extends ConsumerWidget {
       subtitle: 'Memorize the pattern and tap the tiles.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: Theme.of(context).colorScheme.surface,
+          shadowColor: Theme.of(context).colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             ref.read(memoryMatrixNotifierProvider.notifier).reset();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(
+          child: Icon(
             Icons.refresh_rounded,
-            color: DesignSystem.ink,
+            color: Theme.of(context).colorScheme.onSurface,
             size: 20,
           ),
         ),
@@ -83,16 +83,16 @@ class MemoryMatrixScreen extends ConsumerWidget {
           return Column(
             children: [
               const SizedBox(height: DesignSystem.spaceMD),
-              _buildHeader(state),
+              _buildHeader(state, context),
               const Spacer(),
               ConstrainedBox(
                 constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.5),
                 child: Center(
-                  child: _buildBoard(ref, state),
+                  child: _buildBoard(ref, state, context),
                 ),
               ),
               const Spacer(),
-              _buildInstruction(state),
+              _buildInstruction(state, context),
               const SizedBox(height: DesignSystem.spaceLG),
             ],
           );
@@ -101,20 +101,20 @@ class MemoryMatrixScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildHeader(MemoryMatrixState state) {
+  Widget _buildHeader(MemoryMatrixState state, BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        _buildStatCard('LEVEL', '${state.currentLevel}/5', DesignSystem.accentAmber),
-        _buildStatCard('TARGET', '${state.targetPattern.length} TILES', DesignSystem.primary),
+        _buildStatCard('LEVEL', '${state.currentLevel}/5', DesignSystem.accentAmber, context),
+        _buildStatCard('TARGET', '${state.targetPattern.length} TILES', DesignSystem.primary, context),
       ],
     );
   }
 
-  Widget _buildStatCard(String label, String value, Color color) {
+  Widget _buildStatCard(String label, String value, Color color, BuildContext context) {
     return TangibleContainer(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      color: DesignSystem.surface,
+      color: Theme.of(context).colorScheme.surface,
       depth: 2,
       child: Column(
         children: [
@@ -130,9 +130,9 @@ class MemoryMatrixScreen extends ConsumerWidget {
           const SizedBox(height: 2),
           Text(
             value,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 16,
-              color: DesignSystem.ink,
+              color: Theme.of(context).colorScheme.onSurface,
               fontWeight: FontWeight.w900,
             ),
           ),
@@ -141,7 +141,7 @@ class MemoryMatrixScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildBoard(WidgetRef ref, MemoryMatrixState state) {
+  Widget _buildBoard(WidgetRef ref, MemoryMatrixState state, BuildContext context) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
       child: AspectRatio(
@@ -156,14 +156,14 @@ class MemoryMatrixScreen extends ConsumerWidget {
           ),
           itemCount: state.boardSize * state.boardSize,
           itemBuilder: (context, index) {
-            return _buildTile(ref, state, index);
+            return _buildTile(ref, state, index, context);
           },
         ),
       ),
     );
   }
 
-  Widget _buildTile(WidgetRef ref, MemoryMatrixState state, int index) {
+  Widget _buildTile(WidgetRef ref, MemoryMatrixState state, int index, BuildContext context) {
     final isTarget = state.targetPattern.contains(index);
     final isSelected = state.selectedPattern.contains(index);
     final isMemorizing = state.status == MemoryMatrixStatus.memorizing;
@@ -186,7 +186,7 @@ class MemoryMatrixScreen extends ConsumerWidget {
       tileColor = DesignSystem.accentAmber.withValues(alpha: 0.5);
       depth = 1;
     } else {
-      tileColor = DesignSystem.surface;
+      tileColor = Theme.of(context).colorScheme.surface;
     }
 
     return TangibleContainer(
@@ -201,9 +201,9 @@ class MemoryMatrixScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildInstruction(MemoryMatrixState state) {
+  Widget _buildInstruction(MemoryMatrixState state, BuildContext context) {
     String text;
-    Color color = DesignSystem.inkSlate;
+    Color color = Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7);
 
     switch (state.status) {
       case MemoryMatrixStatus.memorizing:

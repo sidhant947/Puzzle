@@ -121,7 +121,7 @@ class _SternbergTaskScreenState extends ConsumerState<SternbergTaskScreen> {
         alignment: WrapAlignment.center,
         children: state.memorySet.map((letter) => Text(
           letter,
-          style: const TextStyle(fontSize: 48, fontWeight: FontWeight.w900, color: DesignSystem.ink),
+          style: TextStyle(fontSize: 48, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onSurface),
         )).toList(),
       );
     } else if (state.phase == SternbergPhase.probe) {
@@ -136,17 +136,17 @@ class _SternbergTaskScreenState extends ConsumerState<SternbergTaskScreen> {
 
   Widget _buildTimer(int timeLeft) {
     return TangibleContainer(
-      color: timeLeft < 10 ? DesignSystem.error.withValues(alpha: 0.1) : DesignSystem.surface,
+      color: timeLeft < 10 ? DesignSystem.error.withValues(alpha: 0.1) : Theme.of(context).colorScheme.surface,
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       radius: DesignSystem.radiusSM,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.timer_outlined, size: 16, color: timeLeft < 10 ? DesignSystem.error : DesignSystem.ink),
-          const SizedBox(width: 4),
+          Icon(Icons.timer_outlined, size: 16, color: timeLeft < 10 ? DesignSystem.error : Theme.of(context).colorScheme.onSurface),
+          SizedBox(width: 4),
           Text(
             timeLeft.toString(),
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: timeLeft < 10 ? DesignSystem.error : DesignSystem.ink),
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: timeLeft < 10 ? DesignSystem.error : Theme.of(context).colorScheme.onSurface),
           ),
         ],
       ),

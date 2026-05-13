@@ -47,6 +47,7 @@ class _MentalRotationScreenState extends ConsumerState<MentalRotationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(mentalRotationNotifierProvider);
     final notifier = ref.read(mentalRotationNotifierProvider.notifier);
 
@@ -88,14 +89,14 @@ class _MentalRotationScreenState extends ConsumerState<MentalRotationScreen> {
                     'Time: ${state.timeLeft}s',
                     style: TextStyle(
                       fontWeight: FontWeight.w900,
-                      color: state.timeLeft < 10 ? DesignSystem.error : DesignSystem.ink,
+                      color: state.timeLeft < 10 ? DesignSystem.error : colorScheme.onSurface,
                     ),
                   ),
                 ),
               ],
             ),
           ),
-          const Spacer(),
+          Spacer(),
           if (state.puzzle != null) ...[
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -113,8 +114,8 @@ class _MentalRotationScreenState extends ConsumerState<MentalRotationScreen> {
                 Expanded(
                   child: TangibleButton(
                     onTap: () => notifier.submitAnswer(false),
-                    color: DesignSystem.surface,
-                    child: const Text(
+                    color: colorScheme.surface,
+                    child: Text(
                       'DIFFERENT',
                       style: TextStyle(
                         fontWeight: FontWeight.w900,
@@ -127,7 +128,7 @@ class _MentalRotationScreenState extends ConsumerState<MentalRotationScreen> {
                 Expanded(
                   child: TangibleButton(
                     onTap: () => notifier.submitAnswer(true),
-                    color: DesignSystem.surface,
+                    color: colorScheme.surface,
                     child: const Text(
                       'SAME',
                       style: TextStyle(
@@ -154,19 +155,19 @@ class _MentalRotationScreenState extends ConsumerState<MentalRotationScreen> {
           style: TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.w900,
-            color: DesignSystem.inkSlate.withValues(alpha: 0.5),
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7).withValues(alpha: 0.5),
             letterSpacing: 1.2,
           ),
         ),
-        const SizedBox(height: DesignSystem.spaceMD),
+        SizedBox(height: DesignSystem.spaceMD),
         Container(
           width: 140,
           height: 140,
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: DesignSystem.surface,
+            color: Theme.of(context).colorScheme.surface,
             borderRadius: BorderRadius.circular(12),
-            border: Border.all(color: DesignSystem.outlineVariant, width: 2),
+            border: Border.all(color: Theme.of(context).colorScheme.outline, width: 2),
           ),
           child: GridView.builder(
             physics: const NeverScrollableScrollPhysics(),
@@ -180,7 +181,7 @@ class _MentalRotationScreenState extends ConsumerState<MentalRotationScreen> {
               final isSelected = pattern.contains(index);
               return Container(
                 decoration: BoxDecoration(
-                  color: isSelected ? DesignSystem.primary : DesignSystem.outlineVariant.withValues(alpha: 0.3),
+                  color: isSelected ? DesignSystem.primary : Theme.of(context).colorScheme.outline.withValues(alpha: 0.3),
                   borderRadius: BorderRadius.circular(4),
                 ),
               );

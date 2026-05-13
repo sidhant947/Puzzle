@@ -19,6 +19,7 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(nonogramNotifierProvider);
 
     ref.listen(nonogramNotifierProvider, (previous, next) {
@@ -48,16 +49,16 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
       subtitle: 'Reveal the hidden image using logic clues.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: colorScheme.surface,
+          shadowColor: colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             ref.read(nonogramNotifierProvider.notifier).reset();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(
+          child: Icon(
             Icons.refresh_rounded,
-            color: DesignSystem.ink,
+            color: colorScheme.onSurface,
             size: 20,
           ),
         ),
@@ -153,9 +154,9 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
                 fit: BoxFit.scaleDown,
                 child: Text(
                   clue.toString(),
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.w900,
-                    color: DesignSystem.inkSlate,
+                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                     fontSize: 10,
                   ),
                 ),
@@ -180,9 +181,9 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
                 fit: BoxFit.scaleDown,
                 child: Text(
                   clue.toString(),
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.w900,
-                    color: DesignSystem.inkSlate,
+                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                     fontSize: 10,
                   ),
                 ),
@@ -201,17 +202,17 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
       child: TangibleContainer(
         depth: value == 1 ? 0 : 2.0,
         radius: 4,
-        color: value == 1 ? DesignSystem.accentBerry : DesignSystem.surface,
+        color: value == 1 ? DesignSystem.accentBerry : Theme.of(context).colorScheme.surface,
         onTap: () {
           HapticFeedbackUtil.lightImpact();
           ref.read(nonogramNotifierProvider.notifier).toggleCell(r, c, _isMarkMode);
         },
         child: Center(
           child: value == 2
-              ? const FittedBox(
+              ? FittedBox(
                   child: Icon(
                     Icons.close_rounded,
-                    color: DesignSystem.inkSlate,
+                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                   ),
                 )
               : null,
@@ -232,16 +233,16 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
                 HapticFeedbackUtil.selectionClick();
                 setState(() => _isMarkMode = false);
               },
-              color: !_isMarkMode ? DesignSystem.accentBerry : DesignSystem.surface,
-              shadowColor: !_isMarkMode ? DesignSystem.accentBerry.withValues(alpha: 0.8) : DesignSystem.outlineVariant,
+              color: !_isMarkMode ? DesignSystem.accentBerry : Theme.of(context).colorScheme.surface,
+              shadowColor: !_isMarkMode ? DesignSystem.accentBerry.withValues(alpha: 0.8) : Theme.of(context).colorScheme.outline,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.square_rounded, color: !_isMarkMode ? Colors.white : DesignSystem.ink),
-                  const SizedBox(width: 8),
+                  Icon(Icons.square_rounded, color: !_isMarkMode ? Colors.white : Theme.of(context).colorScheme.onSurface),
+                  SizedBox(width: 8),
                   Text(
                     'FILL',
-                    style: TextStyle(color: !_isMarkMode ? Colors.white : DesignSystem.ink),
+                    style: TextStyle(color: !_isMarkMode ? Colors.white : Theme.of(context).colorScheme.onSurface),
                   ),
                 ],
               ),
@@ -254,16 +255,16 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
                 HapticFeedbackUtil.selectionClick();
                 setState(() => _isMarkMode = true);
               },
-              color: _isMarkMode ? DesignSystem.accentBerry : DesignSystem.surface,
-              shadowColor: _isMarkMode ? DesignSystem.accentBerry.withValues(alpha: 0.8) : DesignSystem.outlineVariant,
+              color: _isMarkMode ? DesignSystem.accentBerry : Theme.of(context).colorScheme.surface,
+              shadowColor: _isMarkMode ? DesignSystem.accentBerry.withValues(alpha: 0.8) : Theme.of(context).colorScheme.outline,
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Icon(Icons.close_rounded, color: _isMarkMode ? Colors.white : DesignSystem.ink),
-                  const SizedBox(width: 8),
+                  Icon(Icons.close_rounded, color: _isMarkMode ? Colors.white : Theme.of(context).colorScheme.onSurface),
+                  SizedBox(width: 8),
                   Text(
                     'MARK',
-                    style: TextStyle(color: _isMarkMode ? Colors.white : DesignSystem.ink),
+                    style: TextStyle(color: _isMarkMode ? Colors.white : Theme.of(context).colorScheme.onSurface),
                   ),
                 ],
               ),

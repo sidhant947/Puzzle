@@ -45,6 +45,7 @@ class _VerbalAnalogiesScreenState extends ConsumerState<VerbalAnalogiesScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(verbalAnalogiesNotifierProvider);
     final notifier = ref.read(verbalAnalogiesNotifierProvider.notifier);
 
@@ -73,10 +74,10 @@ class _VerbalAnalogiesScreenState extends ConsumerState<VerbalAnalogiesScreen> {
           children: [
             LinearProgressIndicator(
               value: state.score / state.targetScore,
-              backgroundColor: DesignSystem.outline,
+              backgroundColor: colorScheme.outline.withValues(alpha: 0.5),
               valueColor: const AlwaysStoppedAnimation<Color>(DesignSystem.success),
             ),
-            const SizedBox(height: DesignSystem.spaceXL),
+            SizedBox(height: DesignSystem.spaceXL),
             Text(
               state.currentAnalogy?.question ?? '',
               style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 28),
@@ -87,7 +88,7 @@ class _VerbalAnalogiesScreenState extends ConsumerState<VerbalAnalogiesScreen> {
               final isSelected = state.selectedOption == option;
               final isCorrect = state.currentAnalogy?.answer == option;
               
-              Color buttonColor = Colors.white;
+              Color buttonColor = colorScheme.surface;
               if (isSelected) {
                 buttonColor = isCorrect ? DesignSystem.success : DesignSystem.error;
               } else if (state.selectedOption != null && isCorrect) {
@@ -105,9 +106,9 @@ class _VerbalAnalogiesScreenState extends ConsumerState<VerbalAnalogiesScreen> {
                       backgroundColor: buttonColor,
                       foregroundColor: isSelected || (state.selectedOption != null && isCorrect) 
                           ? Colors.white 
-                          : DesignSystem.ink,
+                          : colorScheme.onSurface,
                       side: BorderSide(
-                        color: isSelected ? Colors.transparent : DesignSystem.outline,
+                        color: isSelected ? Colors.transparent : colorScheme.outline.withValues(alpha: 0.5),
                         width: 2,
                       ),
                       shape: RoundedRectangleBorder(

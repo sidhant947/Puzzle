@@ -69,6 +69,7 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     final color = widget.isVictory ? DesignSystem.success : DesignSystem.error;
     final icon = widget.isVictory ? Icons.auto_awesome_rounded : Icons.sentiment_very_dissatisfied_rounded;
     
@@ -167,7 +168,7 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
                   widget.title.toUpperCase(),
                   textAlign: TextAlign.center,
                   style: theme.textTheme.headlineLarge?.copyWith(
-                    color: DesignSystem.ink,
+                    color: colorScheme.onSurface,
                     fontSize: 28,
                     fontWeight: FontWeight.w900,
                     letterSpacing: 2.0,
@@ -180,7 +181,7 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
                   widget.message,
                   textAlign: TextAlign.center,
                   style: theme.textTheme.bodyLarge?.copyWith(
-                    color: DesignSystem.inkSlate.withValues(alpha: 0.7),
+                    color: colorScheme.onSurface.withValues(alpha: 0.7),
                     fontWeight: FontWeight.w700,
                   ),
                 ),
@@ -205,13 +206,13 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
                 const SizedBox(height: DesignSystem.spaceMD),
                 TangibleButton(
                   onTap: widget.onHome,
-                  color: DesignSystem.surface,
-                  shadowColor: DesignSystem.outlineVariant,
+                  color: colorScheme.surface,
+                  shadowColor: colorScheme.outline,
                   child: Center(
                     child: Text(
                       'HOME',
                       style: TextStyle(
-                        color: DesignSystem.inkSlate.withValues(alpha: 0.5),
+                        color: colorScheme.onSurface.withValues(alpha: 0.5),
                         fontWeight: FontWeight.w900,
                         letterSpacing: 1.0,
                       ),

@@ -47,6 +47,7 @@ class _DoubleNBackScreenState extends ConsumerState<DoubleNBackScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(doubleNBackNotifierProvider);
     final notifier = ref.read(doubleNBackNotifierProvider.notifier);
 
@@ -79,7 +80,7 @@ class _DoubleNBackScreenState extends ConsumerState<DoubleNBackScreen> {
           children: [
             Text(
               'Score: ${state.score}',
-              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: DesignSystem.primary),
+              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: DesignSystem.primary),
             ),
             const SizedBox(height: DesignSystem.spaceLG),
             Expanded(
@@ -104,7 +105,7 @@ class _DoubleNBackScreenState extends ConsumerState<DoubleNBackScreen> {
                     onTap: notifier.pressPositionMatch,
                     color: state.positionMatchPressed
                         ? DesignSystem.success
-                        : DesignSystem.surface,
+                        : colorScheme.surface,
                     child: Center(
                       child: Text(
                         'POSITION MATCH',
@@ -114,19 +115,19 @@ class _DoubleNBackScreenState extends ConsumerState<DoubleNBackScreen> {
                           fontSize: 12,
                           color: state.positionMatchPressed
                               ? Colors.white
-                              : DesignSystem.ink,
+                              : colorScheme.onSurface,
                         ),
                       ),
                     ),
                   ),
                 ),
-                const SizedBox(width: DesignSystem.spaceMD),
+                SizedBox(width: DesignSystem.spaceMD),
                 Expanded(
                   child: TangibleButton(
                     onTap: notifier.pressLetterMatch,
                     color: state.letterMatchPressed
                         ? DesignSystem.success
-                        : DesignSystem.surface,
+                        : colorScheme.surface,
                     child: Center(
                       child: Text(
                         'LETTER MATCH',
@@ -136,7 +137,7 @@ class _DoubleNBackScreenState extends ConsumerState<DoubleNBackScreen> {
                           fontSize: 12,
                           color: state.letterMatchPressed
                               ? Colors.white
-                              : DesignSystem.ink,
+                              : colorScheme.onSurface,
                         ),
                       ),
                     ),
@@ -156,9 +157,9 @@ class _DoubleNBackScreenState extends ConsumerState<DoubleNBackScreen> {
       child: Container(
         padding: const EdgeInsets.all(DesignSystem.spaceSM),
         decoration: BoxDecoration(
-          color: DesignSystem.surface,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
-          border: Border.all(color: DesignSystem.outlineVariant, width: 2),
+          border: Border.all(color: Theme.of(context).colorScheme.outline, width: 2),
         ),
         child: GridView.builder(
           shrinkWrap: true,
@@ -172,12 +173,12 @@ class _DoubleNBackScreenState extends ConsumerState<DoubleNBackScreen> {
           itemBuilder: (context, index) {
             final isActive = index == activePosition;
             return AnimatedContainer(
-              duration: const Duration(milliseconds: 200),
+              duration: Duration(milliseconds: 200),
               decoration: BoxDecoration(
-                color: isActive ? DesignSystem.primary : DesignSystem.surface,
+                color: isActive ? DesignSystem.primary : Theme.of(context).colorScheme.surface,
                 borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                 border: Border.all(
-                  color: isActive ? DesignSystem.primary : DesignSystem.outlineVariant.withValues(alpha: 0.3),
+                  color: isActive ? DesignSystem.primary : Theme.of(context).colorScheme.outline.withValues(alpha: 0.3),
                   width: 2,
                 ),
               ),
@@ -190,17 +191,17 @@ class _DoubleNBackScreenState extends ConsumerState<DoubleNBackScreen> {
 
   Widget _buildTimer(int timeLeft) {
     return TangibleContainer(
-      color: timeLeft < 10 ? DesignSystem.error.withValues(alpha: 0.1) : DesignSystem.surface,
+      color: timeLeft < 10 ? DesignSystem.error.withValues(alpha: 0.1) : Theme.of(context).colorScheme.surface,
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       radius: DesignSystem.radiusSM,
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(Icons.timer_outlined, size: 16, color: timeLeft < 10 ? DesignSystem.error : DesignSystem.ink),
-          const SizedBox(width: 4),
+          Icon(Icons.timer_outlined, size: 16, color: timeLeft < 10 ? DesignSystem.error : Theme.of(context).colorScheme.onSurface),
+          SizedBox(width: 4),
           Text(
             timeLeft.toString(),
-            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: timeLeft < 10 ? DesignSystem.error : DesignSystem.ink),
+            style: TextStyle(fontSize: 14, fontWeight: FontWeight.w900, color: timeLeft < 10 ? DesignSystem.error : Theme.of(context).colorScheme.onSurface),
           ),
         ],
       ),

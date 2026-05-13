@@ -43,6 +43,7 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(oddOneOutNotifierProvider);
 
     ref.listen(oddOneOutNotifierProvider, (previous, next) {
@@ -62,17 +63,17 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
       subtitle: 'Find the tile with a different color.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: colorScheme.surface,
+          shadowColor: colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             ref.read(oddOneOutNotifierProvider.notifier).startGame();
             _startTimer();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(
+          child: Icon(
             Icons.refresh_rounded,
-            color: DesignSystem.ink,
+            color: colorScheme.onSurface,
             size: 20,
           ),
         ),
@@ -82,7 +83,7 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
           return Column(
             children: [
               const SizedBox(height: DesignSystem.spaceMD),
-              _buildHeader(state),
+              _buildHeader(context, state),
               const Spacer(),
               ConstrainedBox(
                 constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.5),
@@ -91,7 +92,7 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
                 ),
               ),
               const Spacer(),
-              _buildFooter(state),
+              _buildFooter(context, state),
               const SizedBox(height: DesignSystem.spaceLG),
             ],
           );
@@ -100,12 +101,13 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
     );
   }
 
-  Widget _buildHeader(OddOneOutState state) {
+  Widget _buildHeader(BuildContext context, OddOneOutState state) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
-        _buildStatCard('SCORE', '${state.score}', DesignSystem.primary),
+        _buildStatCard(context, 'SCORE', '${state.score}', DesignSystem.primary),
         _buildStatCard(
+          context,
           'TIME', 
           '${state.timeLeft}s', 
           state.timeLeft < 10 ? DesignSystem.accentBerry : DesignSystem.primary
@@ -114,10 +116,10 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
     );
   }
 
-  Widget _buildStatCard(String label, String value, Color color) {
+  Widget _buildStatCard(BuildContext context, String label, String value, Color color) {
     return TangibleContainer(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-      color: DesignSystem.surface,
+      color: Theme.of(context).colorScheme.surface,
       depth: 2,
       child: Column(
         children: [
@@ -130,12 +132,12 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
               letterSpacing: 1.0,
             ),
           ),
-          const SizedBox(height: 2),
+          SizedBox(height: 2),
           Text(
             value,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 16,
-              color: DesignSystem.ink,
+              color: Theme.of(context).colorScheme.onSurface,
               fontWeight: FontWeight.w900,
             ),
           ),
@@ -144,16 +146,16 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
     );
   }
 
-  Widget _buildFooter(OddOneOutState state) {
-    return const TangibleContainer(
+  Widget _buildFooter(BuildContext context, OddOneOutState state) {
+    return TangibleContainer(
       padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-      color: DesignSystem.surface,
+      color: Theme.of(context).colorScheme.surface,
       depth: 1,
       radius: DesignSystem.radiusFull,
       child: Text(
         'SPOT THE ANOMALY',
         style: TextStyle(
-          color: DesignSystem.inkSlate,
+          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
           letterSpacing: 1,
           fontWeight: FontWeight.w900,
           fontSize: 12,

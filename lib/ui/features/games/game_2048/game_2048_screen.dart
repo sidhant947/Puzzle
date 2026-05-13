@@ -19,6 +19,7 @@ class Game2048Screen extends ConsumerStatefulWidget {
 class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(game2048NotifierProvider);
     final notifier = ref.read(game2048NotifierProvider.notifier);
 
@@ -34,39 +35,39 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
       subtitle: 'Swipe in any direction to merge tiles and reach the 2048 tile!',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: colorScheme.surface,
+          shadowColor: colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             notifier.reset();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
+          child: Icon(Icons.refresh_rounded, size: 20, color: colorScheme.onSurface),
         ),
       ],
       body: LayoutBuilder(
         builder: (context, constraints) {
           return Column(
             children: [
-              const SizedBox(height: DesignSystem.spaceSM),
+              SizedBox(height: DesignSystem.spaceSM),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    _buildScoreBoard('SCORE', state.score),
+                    _buildScoreBoard(context, 'SCORE', state.score),
                   ],
                 ),
               ),
               const Spacer(),
-              _buildGameBoard(state, notifier, constraints.maxHeight * 0.55),
+              _buildGameBoard(context, state, notifier, constraints.maxHeight * 0.55),
               const Spacer(flex: 2),
-              const Padding(
-                padding: EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG, vertical: DesignSystem.spaceSM),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG, vertical: DesignSystem.spaceSM),
                 child: Text(
                   'SWIPE IN ANY DIRECTION TO MERGE',
                   style: TextStyle(
-                    color: DesignSystem.inkSlate,
+                    color: colorScheme.onSurface.withValues(alpha: 0.7),
                     letterSpacing: 1.2,
                     fontWeight: FontWeight.w800,
                     fontSize: 10,
@@ -82,7 +83,7 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
     );
   }
 
-  Widget _buildGameBoard(Game2048State state, Game2048Notifier notifier, double maxHeight) {
+  Widget _buildGameBoard(BuildContext context, Game2048State state, Game2048Notifier notifier, double maxHeight) {
     return Center(
       child: GestureDetector(
         onVerticalDragEnd: (details) {
@@ -110,14 +111,14 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
           child: ConstrainedBox(
             constraints: BoxConstraints(maxHeight: maxHeight),
             child: TangibleContainer(
-              color: DesignSystem.ink,
-              shadowColor: DesignSystem.inkSlate,
+              color: Theme.of(context).colorScheme.onSurface,
+              shadowColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
               radius: DesignSystem.radiusMD,
               depth: 4.0, // Reduced depth
               padding: const EdgeInsets.all(3.0), // Reduced padding
               child: Container(
                 decoration: BoxDecoration(
-                  color: DesignSystem.background,
+                  color: Theme.of(context).scaffoldBackgroundColor,
                   borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
                 ),
                 child: AspectRatio(
@@ -139,7 +140,7 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
                               height: cellSize,
                               child: Container(
                                 decoration: BoxDecoration(
-                                  color: DesignSystem.outline.withValues(alpha: 0.5),
+                                  color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5).withValues(alpha: 0.5),
                                   borderRadius: BorderRadius.circular(8),
                                 ),
                               ),
@@ -164,7 +165,7 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
     );
   }
 
-  Widget _buildScoreBoard(String label, int score) {
+  Widget _buildScoreBoard(BuildContext context, String label, int score) {
     return TangibleContainer(
       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
       radius: DesignSystem.radiusMD,
@@ -173,10 +174,10 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
         children: [
           Text(
             label, 
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 9, 
               fontWeight: FontWeight.w900, 
-              color: DesignSystem.inkSlate, 
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7), 
               letterSpacing: 1.0
             )
           ),
@@ -323,8 +324,8 @@ class _AnimatedTileState extends State<AnimatedTile> with SingleTickerProviderSt
       child: ScaleTransition(
         scale: _scaleAnimation,
         child: TangibleContainer(
-          color: _getTileColor(tile.value),
-          shadowColor: _getShadowColor(tile.value),
+          color: _getTileColor(context, tile.value),
+          shadowColor: _getShadowColor(context, tile.value),
           radius: 12,
           depth: 4.0,
           child: Center(
@@ -333,7 +334,7 @@ class _AnimatedTileState extends State<AnimatedTile> with SingleTickerProviderSt
               style: TextStyle(
                 fontSize: _getFontSize(tile.value),
                 fontWeight: FontWeight.w900,
-                color: _getTextColor(tile.value),
+                color: _getTextColor(context, tile.value),
               ),
             ),
           ),
@@ -348,10 +349,10 @@ class _AnimatedTileState extends State<AnimatedTile> with SingleTickerProviderSt
     return 14;
   }
 
-  Color _getTileColor(int value) {
+  Color _getTileColor(BuildContext context, int value) {
     // Logarithmic color mapping using DesignSystem accents
-    if (value <= 2) return DesignSystem.surface;
-    if (value <= 4) return DesignSystem.outline;
+    if (value <= 2) return Theme.of(context).colorScheme.surface;
+    if (value <= 4) return Theme.of(context).colorScheme.outline.withValues(alpha: 0.5);
     if (value <= 8) return DesignSystem.accentAmber.withValues(alpha: 0.3);
     if (value <= 16) return DesignSystem.accentAmber.withValues(alpha: 0.6);
     if (value <= 32) return DesignSystem.accentBerry.withValues(alpha: 0.3);
@@ -363,13 +364,13 @@ class _AnimatedTileState extends State<AnimatedTile> with SingleTickerProviderSt
     return DesignSystem.accentAmber;
   }
 
-  Color _getShadowColor(int value) {
-    if (value <= 2) return DesignSystem.outlineVariant;
+  Color _getShadowColor(BuildContext context, int value) {
+    if (value <= 2) return Theme.of(context).colorScheme.outline;
     return Colors.black.withValues(alpha: 0.1);
   }
 
-  Color _getTextColor(int value) {
-    if (value <= 4) return DesignSystem.ink;
-    return DesignSystem.ink;
+  Color _getTextColor(BuildContext context, int value) {
+    if (value <= 4) return Theme.of(context).colorScheme.onSurface;
+    return Theme.of(context).colorScheme.onSurface;
   }
 }

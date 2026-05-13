@@ -27,16 +27,16 @@ class SymmetryScreen extends ConsumerWidget {
       subtitle: 'Mirror the pattern on the left onto the empty grid on the right.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: Theme.of(context).colorScheme.surface,
+          shadowColor: Theme.of(context).colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             ref.read(symmetryNotifierProvider.notifier).reset();
           },
           padding: const EdgeInsets.all(8),
-          child: const Icon(
+          child: Icon(
             Icons.refresh_rounded,
-            color: DesignSystem.ink,
+            color: Theme.of(context).colorScheme.onSurface,
             size: 18,
           ),
         ),
@@ -78,8 +78,8 @@ class SymmetryScreen extends ConsumerWidget {
                                   depth: isActive ? 0.0 : 1.0,
                                   radius: DesignSystem.radiusXS,
                                   color: isActive 
-                                    ? (isEditable ? DesignSystem.primary : DesignSystem.inkSlate)
-                                    : DesignSystem.surface,
+                                    ? (isEditable ? DesignSystem.primary : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))
+                                    : Theme.of(context).colorScheme.surface,
                                   onTap: () {
                                     if (isEditable) {
                                       HapticFeedbackUtil.selectionClick();
@@ -103,7 +103,7 @@ class SymmetryScreen extends ConsumerWidget {
                             Center(
                               child: Container(
                                 width: isSmall ? 2 : 4, 
-                                color: DesignSystem.ink.withValues(alpha: 0.3), 
+                                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.3), 
                                 height: double.infinity,
                               ),
                             ),

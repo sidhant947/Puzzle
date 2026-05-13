@@ -19,6 +19,7 @@ class SudokuScreen extends ConsumerStatefulWidget {
 class _SudokuScreenState extends ConsumerState<SudokuScreen> {
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(sudokuNotifierProvider);
     final notifier = ref.read(sudokuNotifierProvider.notifier);
 
@@ -51,16 +52,16 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
       subtitle: 'Complete the grid so that every row, column, and 3x3 box contains all digits 1 to 9.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: colorScheme.surface,
+          shadowColor: colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             notifier.initGame();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(
+          child: Icon(
             Icons.refresh_rounded,
-            color: DesignSystem.ink,
+            color: colorScheme.onSurface,
             size: 20,
           ),
         ),
@@ -95,7 +96,7 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
           aspectRatio: 1,
           child: Container(
             decoration: BoxDecoration(
-              border: Border.all(color: DesignSystem.ink, width: 2.0),
+              border: Border.all(color: Theme.of(context).colorScheme.onSurface, width: 2.0),
               borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
             ),
             child: ClipRRect(
@@ -132,22 +133,22 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
                               notifier.selectCell(r, c);
                             },
                             child: AnimatedContainer(
-                              duration: const Duration(milliseconds: 150),
+                              duration: Duration(milliseconds: 150),
                               decoration: BoxDecoration(
                                 color: isSelected 
                                   ? DesignSystem.primary.withValues(alpha: 0.2)
                                   : isSameDigit
                                     ? DesignSystem.accentAmber.withValues(alpha: 0.2)
                                     : isRelatedArea
-                                      ? DesignSystem.outline.withValues(alpha: 0.3)
-                                      : DesignSystem.surface,
+                                      ? Theme.of(context).colorScheme.outline.withValues(alpha: 0.5).withValues(alpha: 0.3)
+                                      : Theme.of(context).colorScheme.surface,
                                 border: Border(
                                   right: BorderSide(
-                                    color: DesignSystem.ink, 
+                                    color: Theme.of(context).colorScheme.onSurface, 
                                     width: borderRight ? 2.0 : 0.5
                                   ),
                                   bottom: BorderSide(
-                                    color: DesignSystem.ink, 
+                                    color: Theme.of(context).colorScheme.onSurface, 
                                     width: borderBottom ? 2.0 : 0.5
                                   ),
                                 ),
@@ -166,8 +167,8 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
                                           : isSameDigit
                                             ? DesignSystem.accentAmber
                                             : isInitial 
-                                              ? DesignSystem.ink 
-                                              : DesignSystem.inkSlate,
+                                              ? Theme.of(context).colorScheme.onSurface 
+                                              : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                                     ),
                                   ),
                                 ),
@@ -214,8 +215,8 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
               clipBehavior: Clip.none,
               children: [
                 TangibleButton(
-                  color: isCompleted ? DesignSystem.success : DesignSystem.surface,
-                  shadowColor: isCompleted ? const Color(0xFF047857) : DesignSystem.outlineVariant,
+                  color: isCompleted ? DesignSystem.success : Theme.of(context).colorScheme.surface,
+                  shadowColor: isCompleted ? Color(0xFF047857) : Theme.of(context).colorScheme.outline,
                   onTap: () {
                     HapticFeedbackUtil.lightImpact();
                     notifier.setNumber(num);
@@ -246,7 +247,7 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
                       decoration: BoxDecoration(
                         color: isCompleted ? DesignSystem.success : DesignSystem.primary,
                         shape: BoxShape.circle,
-                        border: Border.all(color: DesignSystem.surface, width: 1.5),
+                        border: Border.all(color: Theme.of(context).colorScheme.surface, width: 1.5),
                       ),
                       constraints: const BoxConstraints(minWidth: 16, minHeight: 16),
                       child: Text(
@@ -265,8 +266,8 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
           }),
           // Eraser Button
           TangibleButton(
-            color: DesignSystem.surface,
-            shadowColor: DesignSystem.outlineVariant,
+            color: Theme.of(context).colorScheme.surface,
+            shadowColor: Theme.of(context).colorScheme.outline,
             onTap: () {
               HapticFeedbackUtil.mediumImpact();
               final selR = state.selectedRow;
@@ -286,7 +287,7 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
               child: Icon(
                 Icons.backspace_rounded,
                 size: 16, // Reduced from 20
-                color: DesignSystem.inkSlate,
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
           ),

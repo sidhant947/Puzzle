@@ -50,6 +50,7 @@ class _TrailMakingScreenState extends ConsumerState<TrailMakingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(trailMakingNotifierProvider);
     final notifier = ref.read(trailMakingNotifierProvider.notifier);
 
@@ -92,7 +93,7 @@ class _TrailMakingScreenState extends ConsumerState<TrailMakingScreen> {
                                   radius: 25,
                                   color: isCompleted 
                                       ? DesignSystem.success 
-                                      : (isNext ? DesignSystem.primary : DesignSystem.surface),
+                                      : (isNext ? DesignSystem.primary : colorScheme.surface),
                                   padding: EdgeInsets.zero,
                                   child: Container(
                                     width: 50,
@@ -100,7 +101,7 @@ class _TrailMakingScreenState extends ConsumerState<TrailMakingScreen> {
                                     decoration: BoxDecoration(
                                       shape: BoxShape.circle,
                                       border: Border.all(
-                                        color: isNext ? Colors.white : DesignSystem.outline,
+                                        color: isNext ? Colors.white : colorScheme.outline.withValues(alpha: 0.5),
                                         width: 2,
                                       ),
                                     ),
@@ -109,7 +110,7 @@ class _TrailMakingScreenState extends ConsumerState<TrailMakingScreen> {
                                         point.label,
                                         style: TextStyle(
                                           fontWeight: FontWeight.w900,
-                                          color: isCompleted || isNext ? Colors.white : DesignSystem.ink,
+                                          color: isCompleted || isNext ? Colors.white : colorScheme.onSurface,
                                         ),
                                       ),
                                     ),
@@ -143,8 +144,8 @@ class _TrailMakingScreenState extends ConsumerState<TrailMakingScreen> {
 
   Widget _buildStat(String label, String value, Color color, bool isSmall) {
     return TangibleContainer(
-      color: DesignSystem.surface,
-      shadowColor: DesignSystem.outlineVariant,
+      color: Theme.of(context).colorScheme.surface,
+      shadowColor: Theme.of(context).colorScheme.outline,
       depth: isSmall ? 2.0 : 4.0,
       padding: EdgeInsets.symmetric(
         horizontal: isSmall ? 12 : 16, 
@@ -157,7 +158,7 @@ class _TrailMakingScreenState extends ConsumerState<TrailMakingScreen> {
             style: TextStyle(
               fontSize: isSmall ? 8 : 10,
               fontWeight: FontWeight.w900,
-              color: DesignSystem.inkSlate,
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
               letterSpacing: 1.5,
             ),
           ),

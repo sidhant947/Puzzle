@@ -47,6 +47,7 @@ class _LogicalSyllogismsScreenState extends ConsumerState<LogicalSyllogismsScree
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(logicalSyllogismsNotifierProvider);
     final notifier = ref.read(logicalSyllogismsNotifierProvider.notifier);
 
@@ -88,14 +89,14 @@ class _LogicalSyllogismsScreenState extends ConsumerState<LogicalSyllogismsScree
                     'Time: ${state.timeLeft}s',
                     style: TextStyle(
                       fontWeight: FontWeight.w900,
-                      color: state.timeLeft < 10 ? DesignSystem.error : DesignSystem.ink,
+                      color: state.timeLeft < 10 ? DesignSystem.error : colorScheme.onSurface,
                     ),
                   ),
                 ),
               ],
             ),
           ),
-          const Spacer(),
+          Spacer(),
           if (state.puzzle != null) ...[
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
@@ -121,8 +122,8 @@ class _LogicalSyllogismsScreenState extends ConsumerState<LogicalSyllogismsScree
                 Expanded(
                   child: TangibleButton(
                     onTap: () => notifier.submitAnswer(false),
-                    color: DesignSystem.surface,
-                    child: const Text(
+                    color: colorScheme.surface,
+                    child: Text(
                       'INVALID',
                       style: TextStyle(
                         fontWeight: FontWeight.w900,
@@ -135,7 +136,7 @@ class _LogicalSyllogismsScreenState extends ConsumerState<LogicalSyllogismsScree
                 Expanded(
                   child: TangibleButton(
                     onTap: () => notifier.submitAnswer(true),
-                    color: DesignSystem.surface,
+                    color: colorScheme.surface,
                     child: const Text(
                       'VALID',
                       style: TextStyle(
@@ -161,7 +162,7 @@ class _LogicalSyllogismsScreenState extends ConsumerState<LogicalSyllogismsScree
       style: TextStyle(
         fontSize: isConclusion ? 22 : 18,
         fontWeight: isConclusion ? FontWeight.w900 : FontWeight.w500,
-        color: isConclusion ? DesignSystem.primary : DesignSystem.ink,
+        color: isConclusion ? DesignSystem.primary : Theme.of(context).colorScheme.onSurface,
       ),
     );
   }

@@ -28,16 +28,16 @@ class MathPathScreen extends ConsumerWidget {
       subtitle: 'Find a path that adds up exactly to the target sum.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: Theme.of(context).colorScheme.surface,
+          shadowColor: Theme.of(context).colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             ref.read(mathPathNotifierProvider.notifier).newGame();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(
+          child: Icon(
             Icons.refresh_rounded,
-            color: DesignSystem.ink,
+            color: Theme.of(context).colorScheme.onSurface,
             size: 20,
           ),
         ),
@@ -47,13 +47,13 @@ class MathPathScreen extends ConsumerWidget {
           return Column(
             children: [
               const SizedBox(height: DesignSystem.spaceMD),
-              _buildTarget(state),
+              _buildTarget(context, state),
               const Spacer(),
               Center(
-                child: _buildGrid(ref, state, constraints.maxHeight * 0.45),
+                child: _buildGrid(context, ref, state, constraints.maxHeight * 0.45),
               ),
               const Spacer(),
-              _buildControls(ref),
+              _buildControls(context, ref),
               const SizedBox(height: DesignSystem.spaceLG),
             ],
           );
@@ -62,14 +62,14 @@ class MathPathScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildTarget(MathPathState state) {
+  Widget _buildTarget(BuildContext context, MathPathState state) {
     return Column(
       children: [
-        const Text(
+        Text(
           'TARGET SUM',
           style: TextStyle(
             fontSize: 10,
-            color: DesignSystem.inkSlate,
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
             letterSpacing: 2,
             fontWeight: FontWeight.w900,
           ),
@@ -106,11 +106,11 @@ class MathPathScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildGrid(WidgetRef ref, MathPathState state, double maxHeight) {
+  Widget _buildGrid(BuildContext context, WidgetRef ref, MathPathState state, double maxSize) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
       child: ConstrainedBox(
-        constraints: BoxConstraints(maxHeight: maxHeight),
+        constraints: BoxConstraints(maxHeight: maxSize),
         child: AspectRatio(
           aspectRatio: 1.0,
           child: GridView.builder(
@@ -134,7 +134,7 @@ class MathPathScreen extends ConsumerWidget {
                 radius: DesignSystem.radiusSM,
                 color: isInPath 
                     ? (isLast ? DesignSystem.primary : DesignSystem.primary.withValues(alpha: 0.3)) 
-                    : DesignSystem.surface,
+                    : Theme.of(context).colorScheme.surface,
                 onTap: () {
                   HapticFeedbackUtil.lightImpact();
                   ref.read(mathPathNotifierProvider.notifier).toggleTile(x, y);
@@ -146,7 +146,7 @@ class MathPathScreen extends ConsumerWidget {
                       child: Text(
                         '${state.level.grid[y][x]}',
                         style: TextStyle(
-                          color: isInPath && isLast ? Colors.white : DesignSystem.ink,
+                          color: isInPath && isLast ? Colors.white : Theme.of(context).colorScheme.onSurface,
                           fontWeight: FontWeight.w900,
                           fontSize: 18,
                         ),
@@ -162,7 +162,7 @@ class MathPathScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildControls(WidgetRef ref) {
+  Widget _buildControls(BuildContext context, WidgetRef ref) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
       child: TangibleButton(
@@ -171,16 +171,16 @@ class MathPathScreen extends ConsumerWidget {
           HapticFeedbackUtil.mediumImpact();
           ref.read(mathPathNotifierProvider.notifier).resetPath();
         },
-        color: DesignSystem.surface,
-        shadowColor: DesignSystem.outlineVariant,
-        child: const Row(
+        color: Theme.of(context).colorScheme.surface,
+        shadowColor: Theme.of(context).colorScheme.outline,
+        child: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Icon(Icons.undo_rounded, color: DesignSystem.ink, size: 18),
+            Icon(Icons.undo_rounded, color: Theme.of(context).colorScheme.onSurface, size: 18),
             SizedBox(width: DesignSystem.spaceSM),
             Text(
               'RESET PATH',
-              style: TextStyle(color: DesignSystem.ink, fontWeight: FontWeight.w900, fontSize: 13),
+              style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontWeight: FontWeight.w900, fontSize: 13),
             ),
           ],
         ),

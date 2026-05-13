@@ -48,16 +48,16 @@ class WaterSortScreen extends ConsumerWidget {
       subtitle: 'Sort the colors so each tube contains only one color.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: Theme.of(context).colorScheme.surface,
+          shadowColor: Theme.of(context).colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             notifier.reset();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(
+          child: Icon(
             Icons.refresh_rounded,
-            color: DesignSystem.ink,
+            color: Theme.of(context).colorScheme.onSurface,
             size: 20,
           ),
         ),
@@ -126,6 +126,7 @@ class _TubeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final tubeRadius = width / 2;
     final outerRadius = BorderRadius.vertical(
       bottom: Radius.circular(tubeRadius),
@@ -135,7 +136,7 @@ class _TubeWidget extends StatelessWidget {
     final depth = isSelected ? 8.0 : 4.0;
 
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 200),
+      duration: Duration(milliseconds: 200),
       transform: isSelected ? Matrix4.translationValues(0.0, -20.0, 0.0) : Matrix4.identity(),
       child: Stack(
         clipBehavior: Clip.none,
@@ -148,7 +149,7 @@ class _TubeWidget extends StatelessWidget {
               width: width,
               height: height,
               decoration: BoxDecoration(
-                color: DesignSystem.outlineVariant,
+                color: colorScheme.outline,
                 borderRadius: outerRadius,
               ),
             ),
@@ -158,10 +159,10 @@ class _TubeWidget extends StatelessWidget {
             width: width,
             height: height,
             decoration: BoxDecoration(
-              color: DesignSystem.surface,
+              color: colorScheme.surface,
               borderRadius: outerRadius,
               border: Border.all(
-                color: DesignSystem.outline,
+                color: colorScheme.outline.withValues(alpha: 0.5),
                 width: 2.0,
               ),
             ),
@@ -179,7 +180,7 @@ class _TubeWidget extends StatelessWidget {
                       for (int i = 0; i < WaterSortEngine.tubeCapacity; i++)
                         Expanded(
                           child: AnimatedContainer(
-                            duration: const Duration(milliseconds: 300),
+                            duration: Duration(milliseconds: 300),
                             decoration: BoxDecoration(
                               color: i < colors.length ? colors[i] : Colors.transparent,
                               border: i < colors.length 
@@ -231,9 +232,9 @@ class _TubeWidget extends StatelessWidget {
               width: width + 8,
               height: 8,
               decoration: BoxDecoration(
-                color: DesignSystem.surface,
+                color: colorScheme.surface,
                 borderRadius: BorderRadius.circular(4),
-                border: Border.all(color: DesignSystem.outline, width: 2.0),
+                border: Border.all(color: colorScheme.outline.withValues(alpha: 0.5), width: 2.0),
               ),
             ),
           ),

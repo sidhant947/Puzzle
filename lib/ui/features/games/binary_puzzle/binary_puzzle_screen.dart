@@ -27,14 +27,14 @@ class BinaryPuzzleScreen extends ConsumerWidget {
       subtitle: 'Fill with 0 and 1. Max two of the same digit adjacent. Equal 0s and 1s in each row and column.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: Theme.of(context).colorScheme.surface,
+          shadowColor: Theme.of(context).colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             ref.read(binaryPuzzleNotifierProvider.notifier).newGame();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
+          child: Icon(Icons.refresh_rounded, size: 20, color: Theme.of(context).colorScheme.onSurface),
         ),
       ],
       body: LayoutBuilder(
@@ -77,7 +77,9 @@ class BinaryPuzzleScreen extends ConsumerWidget {
               return TangibleContainer(
                 depth: isFixed ? 0 : 2,
                 radius: DesignSystem.radiusXS,
-                color: isFixed ? DesignSystem.ink : DesignSystem.surface,
+                color: isFixed 
+                    ? Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1) 
+                    : Theme.of(context).colorScheme.surface,
                 onTap: isFixed ? null : () {
                   HapticFeedbackUtil.lightImpact();
                   ref.read(binaryPuzzleNotifierProvider.notifier).toggleCell(r, c);
@@ -93,7 +95,7 @@ class BinaryPuzzleScreen extends ConsumerWidget {
                               style: TextStyle(
                                 fontSize: 24,
                                 color: isFixed 
-                                  ? Colors.white 
+                                  ? Theme.of(context).colorScheme.onSurface
                                   : DesignSystem.primary,
                                 fontWeight: FontWeight.w900,
                               ),

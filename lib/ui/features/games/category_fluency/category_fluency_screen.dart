@@ -56,6 +56,7 @@ class _CategoryFluencyScreenState extends ConsumerState<CategoryFluencyScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(categoryFluencyNotifierProvider);
     final notifier = ref.read(categoryFluencyNotifierProvider.notifier);
 
@@ -94,7 +95,7 @@ class _CategoryFluencyScreenState extends ConsumerState<CategoryFluencyScreen> {
                   children: [
                     Text(
                       'Category:',
-                      style: Theme.of(context).textTheme.bodySmall?.copyWith(color: DesignSystem.inkSlate),
+                      style: Theme.of(context).textTheme.bodySmall?.copyWith(color: colorScheme.onSurface.withValues(alpha: 0.7)),
                     ),
                     Text(
                       state.currentCategory?.name ?? '',
@@ -105,31 +106,32 @@ class _CategoryFluencyScreenState extends ConsumerState<CategoryFluencyScreen> {
                 Container(
                   padding: const EdgeInsets.all(DesignSystem.spaceMD),
                   decoration: BoxDecoration(
-                    color: state.timeLeft <= 10 ? DesignSystem.error.withValues(alpha: 0.1) : DesignSystem.surface,
+                    color: state.timeLeft <= 10 ? DesignSystem.error.withValues(alpha: 0.1) : colorScheme.surface,
                     borderRadius: BorderRadius.circular(12),
                     border: Border.all(
-                      color: state.timeLeft <= 10 ? DesignSystem.error : DesignSystem.outline,
+                      color: state.timeLeft <= 10 ? DesignSystem.error : colorScheme.outline.withValues(alpha: 0.5),
                     ),
                   ),
                   child: Text(
                     '${state.timeLeft}s',
                     style: Theme.of(context).textTheme.headlineSmall?.copyWith(
-                      color: state.timeLeft <= 10 ? DesignSystem.error : DesignSystem.ink,
+                      color: state.timeLeft <= 10 ? DesignSystem.error : colorScheme.onSurface,
                     ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: DesignSystem.spaceXL),
+            SizedBox(height: DesignSystem.spaceXL),
             TextField(
               controller: _controller,
+              style: TextStyle(color: colorScheme.onSurface),
               decoration: InputDecoration(
                 hintText: 'Enter an item...',
                 filled: true,
-                fillColor: Colors.white,
+                fillColor: colorScheme.surface,
                 border: OutlineInputBorder(
                   borderRadius: BorderRadius.circular(12),
-                  borderSide: const BorderSide(color: DesignSystem.outline),
+                  borderSide: BorderSide(color: colorScheme.outline.withValues(alpha: 0.5)),
                 ),
                 suffixIcon: IconButton(
                   icon: const Icon(Icons.send, color: DesignSystem.success),

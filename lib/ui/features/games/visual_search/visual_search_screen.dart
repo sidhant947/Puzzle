@@ -48,6 +48,7 @@ class _VisualSearchScreenState extends ConsumerState<VisualSearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(visualSearchNotifierProvider);
     final notifier = ref.read(visualSearchNotifierProvider.notifier);
 
@@ -86,10 +87,10 @@ class _VisualSearchScreenState extends ConsumerState<VisualSearchScreen> {
                 TangibleContainer(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   radius: DesignSystem.radiusMD,
-                  color: DesignSystem.surface,
+                  color: colorScheme.surface,
                   child: Text(
                     'SCORE: ${state.score}',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.w900,
                       color: DesignSystem.primary,
                     ),
@@ -115,14 +116,14 @@ class _VisualSearchScreenState extends ConsumerState<VisualSearchScreen> {
                     itemBuilder: (context, index) {
                       return TangibleButton(
                         onTap: () => notifier.onTileTap(index),
-                        color: DesignSystem.surface,
-                        shadowColor: DesignSystem.outlineVariant,
+                        color: colorScheme.surface,
+                        shadowColor: colorScheme.outline,
                         padding: EdgeInsets.zero,
                         child: Center(
                           child: Text(
                             state.symbols[index],
                             style: TextStyle(
-                              color: DesignSystem.ink,
+                              color: colorScheme.onSurface,
                               fontSize: _getFontSize(state.gridSize),
                               fontWeight: FontWeight.w900,
                             ),

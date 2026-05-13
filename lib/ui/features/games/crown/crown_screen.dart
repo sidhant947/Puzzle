@@ -37,6 +37,7 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(crownNotifierProvider);
     final notifier = ref.read(crownNotifierProvider.notifier);
 
@@ -52,14 +53,14 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
       subtitle: 'Place one crown in each row, column, and color region. Crowns cannot be adjacent, even diagonally.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: colorScheme.surface,
+          shadowColor: colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             notifier.initGame();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
+          child: Icon(Icons.refresh_rounded, size: 20, color: colorScheme.onSurface),
         ),
       ],
       body: state.board == null
@@ -91,7 +92,7 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
             aspectRatio: 1,
             child: Container(
               decoration: BoxDecoration(
-                border: Border.all(color: DesignSystem.ink, width: 2.0),
+                border: Border.all(color: Theme.of(context).colorScheme.onSurface, width: 2.0),
                 borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
               ),
               child: ClipRRect(
@@ -127,10 +128,10 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
                         decoration: BoxDecoration(
                           color: regionColor,
                           border: Border(
-                            top: BorderSide(color: DesignSystem.ink, width: borderTop ? 2.5 : 0.5),
-                            bottom: BorderSide(color: DesignSystem.ink, width: borderBottom ? 2.5 : 0.5),
-                            left: BorderSide(color: DesignSystem.ink, width: borderLeft ? 2.5 : 0.5),
-                            right: BorderSide(color: DesignSystem.ink, width: borderRight ? 2.5 : 0.5),
+                            top: BorderSide(color: Theme.of(context).colorScheme.onSurface, width: borderTop ? 2.5 : 0.5),
+                            bottom: BorderSide(color: Theme.of(context).colorScheme.onSurface, width: borderBottom ? 2.5 : 0.5),
+                            left: BorderSide(color: Theme.of(context).colorScheme.onSurface, width: borderLeft ? 2.5 : 0.5),
+                            right: BorderSide(color: Theme.of(context).colorScheme.onSurface, width: borderRight ? 2.5 : 0.5),
                           ),
                         ),
                         child: Center(
@@ -138,9 +139,9 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
                             padding: const EdgeInsets.all(4.0),
                             child: FittedBox(
                               child: hasCrown
-                                  ? const Icon(Icons.workspace_premium_rounded, color: DesignSystem.accentAmber, size: 28)
+                                  ? Icon(Icons.workspace_premium_rounded, color: DesignSystem.accentAmber, size: 28)
                                   : isMarked
-                                      ? Icon(Icons.close_rounded, color: DesignSystem.ink.withValues(alpha: 0.2), size: 24)
+                                      ? Icon(Icons.close_rounded, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2), size: 24)
                                       : null,
                             ),
                           ),

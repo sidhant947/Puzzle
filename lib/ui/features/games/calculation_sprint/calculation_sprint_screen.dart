@@ -51,15 +51,15 @@ class CalculationSprintScreen extends ConsumerWidget {
       subtitle: 'Solve as many equations as possible in 60 seconds.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: Theme.of(context).colorScheme.surface,
+          shadowColor: Theme.of(context).colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.lightImpact();
             notifier.reset();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(Icons.refresh_rounded,
-              size: 20, color: DesignSystem.ink),
+          child: Icon(Icons.refresh_rounded,
+              size: 20, color: Theme.of(context).colorScheme.onSurface),
         ),
       ],
       body: LayoutBuilder(
@@ -67,10 +67,10 @@ class CalculationSprintScreen extends ConsumerWidget {
           return Column(
             children: [
               const SizedBox(height: DesignSystem.spaceSM),
-              _buildHeader(state),
+              _buildHeader(context, state),
               const Spacer(),
               if (state.status == SprintStatus.ready)
-                _buildReadyState(notifier)
+                _buildReadyState(context, notifier)
               else if (state.status == SprintStatus.playing &&
                   state.currentProblem != null)
                 _buildPlayingState(state, notifier)
@@ -84,7 +84,7 @@ class CalculationSprintScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildHeader(CalculationSprintState state) {
+  Widget _buildHeader(BuildContext context, CalculationSprintState state) {
     final isLowTime = state.timeRemaining <= 10 && state.timeRemaining > 0;
     final timeColor = isLowTime ? DesignSystem.error : DesignSystem.accentAmber;
 
@@ -95,33 +95,33 @@ class CalculationSprintScreen extends ConsumerWidget {
         children: [
           Expanded(
               child: _buildStatCard(
-                  'SCORE', state.score.toString(), DesignSystem.accentEmerald)),
+                  context, 'SCORE', state.score.toString(), DesignSystem.accentEmerald)),
           const SizedBox(width: DesignSystem.spaceMD),
           Expanded(
               child: _buildStatCard(
-                  'TIME', '${state.timeRemaining}s', timeColor,
+                  context, 'TIME', '${state.timeRemaining}s', timeColor,
                   animate: isLowTime)),
           const SizedBox(width: DesignSystem.spaceMD),
           Expanded(
               child: _buildStatCard(
-                  'BEST', state.bestScore.toString(), DesignSystem.primary)),
+                  context, 'BEST', state.bestScore.toString(), DesignSystem.primary)),
         ],
       ),
     );
   }
 
-  Widget _buildStatCard(String label, String value, Color color,
+  Widget _buildStatCard(BuildContext context, String label, String value, Color color,
       {bool animate = false}) {
     Widget content = TangibleContainer(
       padding: const EdgeInsets.symmetric(vertical: DesignSystem.spaceSM),
-      color: DesignSystem.surface,
+      color: Theme.of(context).colorScheme.surface,
       depth: 3.0,
       child: Column(
         children: [
           Text(
             label,
             style: TextStyle(
-              color: DesignSystem.inkSlate.withValues(alpha: 0.6),
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7).withValues(alpha: 0.6),
               fontWeight: FontWeight.w900,
               fontSize: 10,
               letterSpacing: 1.0,
@@ -158,27 +158,27 @@ class CalculationSprintScreen extends ConsumerWidget {
     return content;
   }
 
-  Widget _buildReadyState(CalculationSprintNotifier notifier) {
+  Widget _buildReadyState(BuildContext context, CalculationSprintNotifier notifier) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
-        const Icon(Icons.timer_rounded, size: 80, color: DesignSystem.primary),
+        Icon(Icons.timer_rounded, size: 80, color: DesignSystem.primary),
         const SizedBox(height: DesignSystem.spaceLG),
-        const Text(
+        Text(
           '60 SECONDS',
           style: TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.w900,
             letterSpacing: 2.0,
-            color: DesignSystem.ink,
+            color: Theme.of(context).colorScheme.onSurface,
           ),
         ),
-        const SizedBox(height: DesignSystem.spaceSM),
+        SizedBox(height: DesignSystem.spaceSM),
         Text(
           'Solve equations quickly.\nWrong answers deduct 3 seconds!',
           textAlign: TextAlign.center,
           style: TextStyle(
-            color: DesignSystem.inkSlate.withValues(alpha: 0.7),
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7).withValues(alpha: 0.7),
             fontSize: 16,
             fontWeight: FontWeight.w500,
           ),
@@ -209,8 +209,8 @@ class CalculationSprintScreen extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TangibleContainer(
-                color: DesignSystem.ink,
-                shadowColor: DesignSystem.inkSlate,
+                color: Theme.of(context).colorScheme.onSurface,
+                shadowColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                 depth: 6.0,
                 padding: EdgeInsets.all(isSmall
                     ? DesignSystem.spaceXL
@@ -224,11 +224,11 @@ class CalculationSprintScreen extends ConsumerWidget {
                     fit: BoxFit.contain,
                     child: Text(
                       problem.equation,
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.w900,
                         letterSpacing: 4.0,
                         fontSize: 32,
-                        color: Colors.white,
+                        color: Theme.of(context).colorScheme.surface,
                       ),
                     ),
                   ),
@@ -244,8 +244,8 @@ class CalculationSprintScreen extends ConsumerWidget {
                 childAspectRatio: 2.0,
                 children: problem.options.map((option) {
                   return TangibleButton(
-                    color: DesignSystem.surface,
-                    shadowColor: DesignSystem.outlineVariant,
+                    color: Theme.of(context).colorScheme.surface,
+                    shadowColor: Theme.of(context).colorScheme.outline,
                     onTap: () {
                       if (option == problem.answer) {
                         HapticFeedbackUtil.lightImpact();

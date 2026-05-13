@@ -50,6 +50,7 @@ class _StopSignalScreenState extends ConsumerState<StopSignalScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(stopSignalNotifierProvider);
     final notifier = ref.read(stopSignalNotifierProvider.notifier);
 
@@ -85,9 +86,9 @@ class _StopSignalScreenState extends ConsumerState<StopSignalScreen> {
                                   HapticFeedbackUtil.lightImpact();
                                   notifier.onDirectionTap(0);
                                 },
-                                color: DesignSystem.surface,
+                                color: colorScheme.surface,
                                 padding: const EdgeInsets.symmetric(vertical: 32),
-                                child: const Icon(Icons.arrow_back_rounded, size: 48, color: DesignSystem.ink),
+                                child: Icon(Icons.arrow_back_rounded, size: 48, color: colorScheme.onSurface),
                               ),
                             ),
                             const SizedBox(width: 24),
@@ -97,9 +98,9 @@ class _StopSignalScreenState extends ConsumerState<StopSignalScreen> {
                                   HapticFeedbackUtil.lightImpact();
                                   notifier.onDirectionTap(1);
                                 },
-                                color: DesignSystem.surface,
+                                color: colorScheme.surface,
                                 padding: const EdgeInsets.symmetric(vertical: 32),
-                                child: const Icon(Icons.arrow_forward_rounded, size: 48, color: DesignSystem.ink),
+                                child: Icon(Icons.arrow_forward_rounded, size: 48, color: colorScheme.onSurface),
                               ),
                             ),
                           ],
@@ -121,7 +122,7 @@ class _StopSignalScreenState extends ConsumerState<StopSignalScreen> {
     final icon = state.currentTrial!.direction == 0 ? Icons.arrow_back_rounded : Icons.arrow_forward_rounded;
 
     return TangibleContainer(
-      color: DesignSystem.surface,
+      color: Theme.of(context).colorScheme.surface,
       padding: const EdgeInsets.all(40),
       child: Icon(icon, size: 120, color: color),
     );
@@ -142,8 +143,8 @@ class _StopSignalScreenState extends ConsumerState<StopSignalScreen> {
 
   Widget _buildStat(String label, String value, Color color, bool isSmall) {
     return TangibleContainer(
-      color: DesignSystem.surface,
-      shadowColor: DesignSystem.outlineVariant,
+      color: Theme.of(context).colorScheme.surface,
+      shadowColor: Theme.of(context).colorScheme.outline,
       depth: isSmall ? 2.0 : 4.0,
       padding: EdgeInsets.symmetric(
         horizontal: isSmall ? 12 : 16, 
@@ -156,7 +157,7 @@ class _StopSignalScreenState extends ConsumerState<StopSignalScreen> {
             style: TextStyle(
               fontSize: isSmall ? 8 : 10,
               fontWeight: FontWeight.w900,
-              color: DesignSystem.inkSlate,
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
               letterSpacing: 1.5,
             ),
           ),

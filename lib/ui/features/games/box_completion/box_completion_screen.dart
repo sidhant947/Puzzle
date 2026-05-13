@@ -97,9 +97,9 @@ class _BoxCompletionScreenState extends ConsumerState<BoxCompletionScreen> {
     return Container(
       padding: const EdgeInsets.all(DesignSystem.spaceMD),
       decoration: BoxDecoration(
-        color: DesignSystem.surface,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(12),
-        border: Border.all(color: DesignSystem.outlineVariant),
+        border: Border.all(color: Theme.of(context).colorScheme.outline),
       ),
       child: Column(
         mainAxisSize: MainAxisSize.min,
@@ -113,12 +113,12 @@ class _BoxCompletionScreenState extends ConsumerState<BoxCompletionScreen> {
                 height: 40,
                 margin: const EdgeInsets.all(2),
                 decoration: BoxDecoration(
-                  color: val != null ? Colors.white : Colors.transparent,
-                  border: val != null ? Border.all(color: DesignSystem.inkSlate.withValues(alpha: 0.3)) : null,
+                  color: val != null ? Theme.of(context).colorScheme.surface : Colors.transparent,
+                  border: val != null ? Border.all(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7).withValues(alpha: 0.3)) : null,
                   borderRadius: BorderRadius.circular(4),
                 ),
                 child: val != null 
-                    ? Center(child: Text(val.toString(), style: const TextStyle(fontWeight: FontWeight.bold))) 
+                    ? Center(child: Text(val.toString(), style: TextStyle(fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onSurface))) 
                     : null,
               );
             }),
@@ -137,7 +137,7 @@ class _BoxCompletionScreenState extends ConsumerState<BoxCompletionScreen> {
             HapticFeedbackUtil.lightImpact();
             notifier.onOptionPressed(entry.key);
           },
-          color: DesignSystem.surface,
+          color: Theme.of(context).colorScheme.surface,
           child: _buildCubeView(entry.value),
         );
       }).toList(),
@@ -146,6 +146,10 @@ class _BoxCompletionScreenState extends ConsumerState<BoxCompletionScreen> {
 
   Widget _buildCubeView(List<int> faces) {
     // faces: [Top, Front, Right]
+    final surfaceColor = Theme.of(context).colorScheme.surface;
+    final onSurfaceColor = Theme.of(context).colorScheme.onSurface;
+    final borderColor = onSurfaceColor.withValues(alpha: 0.7).withValues(alpha: 0.2);
+
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
@@ -153,16 +157,16 @@ class _BoxCompletionScreenState extends ConsumerState<BoxCompletionScreen> {
           width: 30,
           height: 30,
           decoration: BoxDecoration(
-            color: Colors.white,
-            border: Border.all(color: DesignSystem.inkSlate.withValues(alpha: 0.2)),
+            color: surfaceColor,
+            border: Border.all(color: borderColor),
           ),
           child: Center(
             child: Text(
               faces[0].toString(),
-              style: const TextStyle(
+              style: TextStyle(
                 fontSize: 12,
                 fontWeight: FontWeight.bold,
-                color: DesignSystem.ink,
+                color: onSurfaceColor,
               ),
             ),
           ),
@@ -174,16 +178,16 @@ class _BoxCompletionScreenState extends ConsumerState<BoxCompletionScreen> {
               width: 30,
               height: 30,
               decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(color: DesignSystem.inkSlate.withValues(alpha: 0.2)),
+                color: surfaceColor,
+                border: Border.all(color: borderColor),
               ),
               child: Center(
                 child: Text(
                   faces[1].toString(),
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
-                    color: DesignSystem.ink,
+                    color: onSurfaceColor,
                   ),
                 ),
               ),
@@ -192,16 +196,16 @@ class _BoxCompletionScreenState extends ConsumerState<BoxCompletionScreen> {
               width: 30,
               height: 30,
               decoration: BoxDecoration(
-                color: Colors.white,
-                border: Border.all(color: DesignSystem.inkSlate.withValues(alpha: 0.2)),
+                color: surfaceColor,
+                border: Border.all(color: borderColor),
               ),
               child: Center(
                 child: Text(
                   faces[2].toString(),
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 12,
                     fontWeight: FontWeight.bold,
-                    color: DesignSystem.ink,
+                    color: onSurfaceColor,
                   ),
                 ),
               ),
@@ -215,8 +219,8 @@ class _BoxCompletionScreenState extends ConsumerState<BoxCompletionScreen> {
   Widget _buildStat(String label, String value, {Color? color}) {
     return Column(
       children: [
-        Text(label, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: DesignSystem.inkSlate)),
-        Text(value, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: color ?? DesignSystem.ink)),
+        Text(label, style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))),
+        Text(value, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: color ?? Theme.of(context).colorScheme.onSurface)),
       ],
     );
   }

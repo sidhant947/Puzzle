@@ -47,6 +47,7 @@ class _TowerOfLondonScreenState extends ConsumerState<TowerOfLondonScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(towerOfLondonNotifierProvider);
     final notifier = ref.read(towerOfLondonNotifierProvider.notifier);
 
@@ -86,13 +87,13 @@ class _TowerOfLondonScreenState extends ConsumerState<TowerOfLondonScreen> {
               ],
             ),
           ),
-          const Text(
+          Text(
             'TARGET',
             style: TextStyle(
               fontSize: 12,
               fontWeight: FontWeight.w900,
               letterSpacing: 2.0,
-              color: DesignSystem.inkSlate,
+              color: colorScheme.onSurface.withValues(alpha: 0.7),
             ),
           ),
           const SizedBox(height: DesignSystem.spaceSM),
@@ -115,8 +116,8 @@ class _TowerOfLondonScreenState extends ConsumerState<TowerOfLondonScreen> {
   Widget _buildStat(String label, String value, {Color? color}) {
     return Column(
       children: [
-        Text(label, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: DesignSystem.inkSlate)),
-        Text(value, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: color ?? DesignSystem.ink)),
+        Text(label, style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))),
+        Text(value, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: color ?? Theme.of(context).colorScheme.onSurface)),
       ],
     );
   }
@@ -148,7 +149,7 @@ class _TowerOfLondonScreenState extends ConsumerState<TowerOfLondonScreen> {
               width: isTarget ? 6 : 10,
               height: pegHeight,
               decoration: BoxDecoration(
-                color: isSelected ? DesignSystem.primary : DesignSystem.inkSlate.withValues(alpha: 0.2),
+                color: isSelected ? DesignSystem.primary : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7).withValues(alpha: 0.2),
                 borderRadius: BorderRadius.circular(5),
               ),
             ),
@@ -161,12 +162,12 @@ class _TowerOfLondonScreenState extends ConsumerState<TowerOfLondonScreen> {
             ),
           ],
         ),
-        const SizedBox(height: 4),
+        SizedBox(height: 4),
         Container(
           width: isTarget ? 30 : 50,
           height: isTarget ? 4 : 8,
           decoration: BoxDecoration(
-            color: DesignSystem.inkSlate.withValues(alpha: 0.3),
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7).withValues(alpha: 0.3),
             borderRadius: BorderRadius.circular(4),
           ),
         ),

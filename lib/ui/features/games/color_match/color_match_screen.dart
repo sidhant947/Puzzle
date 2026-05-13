@@ -27,14 +27,14 @@ class ColorMatchScreen extends ConsumerWidget {
       subtitle: 'Adjust the sliders to match the target color as closely as possible.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: Theme.of(context).colorScheme.surface,
+          shadowColor: Theme.of(context).colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             ref.read(colorMatchNotifierProvider.notifier).reset();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
+          child: Icon(Icons.refresh_rounded, size: 20, color: Theme.of(context).colorScheme.onSurface),
         ),
       ],
       body: LayoutBuilder(
@@ -48,9 +48,9 @@ class ColorMatchScreen extends ConsumerWidget {
                     constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.4),
                     child: Row(
                       children: [
-                        _buildColorBox('TARGET', state.targetColor),
-                        const SizedBox(width: DesignSystem.spaceMD),
-                        _buildColorBox('YOURS', state.currentColor),
+                        _buildColorBox(context, 'TARGET', state.targetColor),
+                        SizedBox(width: DesignSystem.spaceMD),
+                        _buildColorBox(context, 'YOURS', state.currentColor),
                       ],
                     ),
                   ),
@@ -60,15 +60,15 @@ class ColorMatchScreen extends ConsumerWidget {
                 padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG, vertical: DesignSystem.spaceMD),
                 child: TangibleContainer(
                   padding: const EdgeInsets.all(DesignSystem.spaceMD),
-                  color: DesignSystem.surface,
+                  color: Theme.of(context).colorScheme.surface,
                   depth: 4.0,
                   child: Column(
                     children: [
-                      _buildSlider('RED', (state.currentColor.r * 255.0).round().toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor(v, (state.currentColor.g * 255.0).round().toDouble(), (state.currentColor.b * 255.0).round().toDouble()), DesignSystem.error),
+                      _buildSlider(context, 'RED', (state.currentColor.r * 255.0).round().toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor(v, (state.currentColor.g * 255.0).round().toDouble(), (state.currentColor.b * 255.0).round().toDouble()), DesignSystem.error),
                       const SizedBox(height: DesignSystem.spaceSM),
-                      _buildSlider('GREEN', (state.currentColor.g * 255.0).round().toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor((state.currentColor.r * 255.0).round().toDouble(), v, (state.currentColor.b * 255.0).round().toDouble()), DesignSystem.accentEmerald),
+                      _buildSlider(context, 'GREEN', (state.currentColor.g * 255.0).round().toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor((state.currentColor.r * 255.0).round().toDouble(), v, (state.currentColor.b * 255.0).round().toDouble()), DesignSystem.accentEmerald),
                       const SizedBox(height: DesignSystem.spaceSM),
-                      _buildSlider('BLUE', (state.currentColor.b * 255.0).round().toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor((state.currentColor.r * 255.0).round().toDouble(), (state.currentColor.g * 255.0).round().toDouble(), v), DesignSystem.primary),
+                      _buildSlider(context, 'BLUE', (state.currentColor.b * 255.0).round().toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor((state.currentColor.r * 255.0).round().toDouble(), (state.currentColor.g * 255.0).round().toDouble(), v), DesignSystem.primary),
                       const SizedBox(height: DesignSystem.spaceLG),
                       TangibleButton(
                         onTap: () {
@@ -90,24 +90,24 @@ class ColorMatchScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildColorBox(String label, Color color) {
+  Widget _buildColorBox(BuildContext context, String label, Color color) {
     return Expanded(
       child: Column(
         children: [
           Text(
             label, 
-            style: const TextStyle(
+            style: TextStyle(
               fontWeight: FontWeight.w900, 
               letterSpacing: 2,
               fontSize: 10,
-              color: DesignSystem.inkSlate,
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
             ),
           ),
-          const SizedBox(height: DesignSystem.spaceXS),
+          SizedBox(height: DesignSystem.spaceXS),
           Expanded(
             child: TangibleContainer(
               color: color,
-              shadowColor: DesignSystem.ink.withValues(alpha: 0.1),
+              shadowColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1),
               depth: 4.0,
               child: const SizedBox.expand(),
             ),
@@ -117,7 +117,7 @@ class ColorMatchScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildSlider(String label, double value, ValueChanged<double> onChanged, Color color) {
+  Widget _buildSlider(BuildContext context, String label, double value, ValueChanged<double> onChanged, Color color) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -125,14 +125,14 @@ class ColorMatchScreen extends ConsumerWidget {
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Text(label, style: TextStyle(fontSize: 10, fontWeight: FontWeight.w900, color: color, letterSpacing: 1.0)),
-            Text(value.toInt().toString(), style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: DesignSystem.inkSlate)),
+            Text(value.toInt().toString(), style: TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))),
           ],
         ),
         SliderTheme(
           data: SliderThemeData(
             activeTrackColor: color,
             inactiveTrackColor: color.withValues(alpha: 0.1),
-            thumbColor: DesignSystem.surface,
+            thumbColor: Theme.of(context).colorScheme.surface,
             overlayColor: color.withValues(alpha: 0.2),
             trackHeight: 6,
             thumbShape: const RoundSliderThumbShape(enabledThumbRadius: 8, elevation: 2),

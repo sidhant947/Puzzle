@@ -27,14 +27,14 @@ class HueSortScreen extends ConsumerWidget {
       subtitle: 'Swap tiles to create a smooth transition between corner colors. Dots indicate fixed tiles.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: Theme.of(context).colorScheme.surface,
+          shadowColor: Theme.of(context).colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             ref.read(hueSortNotifierProvider.notifier).newGame();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
+          child: Icon(Icons.refresh_rounded, size: 20, color: Theme.of(context).colorScheme.onSurface),
         ),
       ],
       body: LayoutBuilder(

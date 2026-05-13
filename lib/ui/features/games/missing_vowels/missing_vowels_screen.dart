@@ -44,6 +44,7 @@ class _MissingVowelsScreenState extends ConsumerState<MissingVowelsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(missingVowelsNotifierProvider);
     final notifier = ref.read(missingVowelsNotifierProvider.notifier);
 
@@ -59,8 +60,8 @@ class _MissingVowelsScreenState extends ConsumerState<MissingVowelsScreen> {
       subtitle: 'Identify the word with its vowels hidden.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: colorScheme.surface,
+          shadowColor: colorScheme.outline,
           onTap: () {
             showDialog(
               context: context,
@@ -74,9 +75,9 @@ class _MissingVowelsScreenState extends ConsumerState<MissingVowelsScreen> {
             );
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(
+          child: Icon(
             Icons.help_outline_rounded,
-            color: DesignSystem.ink,
+            color: colorScheme.onSurface,
             size: 20,
           ),
         ),
@@ -89,19 +90,19 @@ class _MissingVowelsScreenState extends ConsumerState<MissingVowelsScreen> {
 
           return Column(
             children: [
-              const SizedBox(height: DesignSystem.spaceMD),
+              SizedBox(height: DesignSystem.spaceMD),
               // Hidden Word Display
               ConstrainedBox(
                 constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.2),
                 child: TangibleContainer(
                   padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-                  color: DesignSystem.ink,
+                  color: colorScheme.onSurface,
                   depth: 4,
                   child: FittedBox(
                     child: Text(
                       state.hiddenWord,
-                      style: const TextStyle(
-                        color: Colors.white,
+                      style: TextStyle(
+                        color: colorScheme.surface,
                         fontSize: 32,
                         fontWeight: FontWeight.w900,
                         letterSpacing: 8,
@@ -127,7 +128,7 @@ class _MissingVowelsScreenState extends ConsumerState<MissingVowelsScreen> {
                         radius: DesignSystem.radiusXS,
                         color: state.isInvalidGuess 
                             ? DesignSystem.accentBerry.withValues(alpha: 0.1)
-                            : DesignSystem.surface,
+                            : colorScheme.surface,
                         child: SizedBox(
                           width: 32,
                           height: 40,
@@ -138,7 +139,7 @@ class _MissingVowelsScreenState extends ConsumerState<MissingVowelsScreen> {
                                 style: TextStyle(
                                   fontSize: 18,
                                   fontWeight: FontWeight.w900,
-                                  color: state.isInvalidGuess ? DesignSystem.accentBerry : DesignSystem.ink,
+                                  color: state.isInvalidGuess ? DesignSystem.accentBerry : colorScheme.onSurface,
                                 ),
                               ),
                             ),
@@ -149,7 +150,7 @@ class _MissingVowelsScreenState extends ConsumerState<MissingVowelsScreen> {
                   ),
                 ),
               ),
-              const Spacer(),
+              Spacer(),
               // Simple Alphabet Keyboard (A-Z)
               _buildKeyboard(notifier),
               const SizedBox(height: DesignSystem.spaceSM),
@@ -160,10 +161,10 @@ class _MissingVowelsScreenState extends ConsumerState<MissingVowelsScreen> {
                     Expanded(
                       child: TangibleButton(
                         onTap: notifier.onBackspace,
-                        color: DesignSystem.surface,
-                        shadowColor: DesignSystem.outlineVariant,
+                        color: colorScheme.surface,
+                        shadowColor: colorScheme.outline,
                         padding: const EdgeInsets.symmetric(vertical: 18),
-                        child: const Icon(Icons.backspace_rounded, color: DesignSystem.ink, size: 24),
+                        child: Icon(Icons.backspace_rounded, color: colorScheme.onSurface, size: 24),
                       ),
                     ),
                     const SizedBox(width: DesignSystem.spaceMD),

@@ -29,14 +29,14 @@ class BridgesScreen extends ConsumerWidget {
       subtitle: 'Connect islands with bridges. Each island needs a specific number of bridges. Bridges cannot cross.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: Theme.of(context).colorScheme.surface,
+          shadowColor: Theme.of(context).colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             ref.read(bridgesNotifierProvider.notifier).newGame();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
+          child: Icon(Icons.refresh_rounded, size: 20, color: Theme.of(context).colorScheme.onSurface),
         ),
       ],
       body: LayoutBuilder(
@@ -72,7 +72,7 @@ class BridgesScreen extends ConsumerWidget {
                   ...state.connections.map((conn) => _buildBridge(conn, state.board.islands, cellSize)),
                   
                   // Draw islands
-                  ...state.board.islands.map((island) => _buildIsland(island, cellSize, state, ref)),
+                  ...state.board.islands.map((island) => _buildIsland(context, island, cellSize, state, ref)),
                 ],
               ),
             );
@@ -121,7 +121,7 @@ class BridgesScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildIsland(BridgesIsland island, double cellSize, BridgesState state, WidgetRef ref) {
+  Widget _buildIsland(BuildContext context, BridgesIsland island, double cellSize, BridgesState state, WidgetRef ref) {
     final isSelected = state.selectedIslandId == island.id;
     final currentBridges = _countBridges(island.id, state.connections);
     final isComplete = currentBridges == island.count;
@@ -129,11 +129,11 @@ class BridgesScreen extends ConsumerWidget {
 
     final color = isSelected 
         ? DesignSystem.primary 
-        : (isOver ? DesignSystem.error : (isComplete ? DesignSystem.success : DesignSystem.surface));
+        : (isOver ? DesignSystem.error : (isComplete ? DesignSystem.success : Theme.of(context).colorScheme.surface));
     
     final shadowColor = isSelected 
         ? DesignSystem.primaryShadow 
-        : (isOver ? const Color(0xFF991B1B) : (isComplete ? const Color(0xFF047857) : DesignSystem.outlineVariant));
+        : (isOver ? Color(0xFF991B1B) : (isComplete ? Color(0xFF047857) : Theme.of(context).colorScheme.outline));
 
     return Positioned(
       left: island.x * cellSize + cellSize * 0.1,
@@ -158,7 +158,7 @@ class BridgesScreen extends ConsumerWidget {
                   child: Text(
                     '${island.count}',
                     style: TextStyle(
-                      color: isSelected || isComplete ? Colors.white : DesignSystem.ink,
+                      color: isSelected || isComplete ? Colors.white : Theme.of(context).colorScheme.onSurface,
                       fontWeight: FontWeight.w900,
                       fontSize: 16, // Reduced from 18
                     ),

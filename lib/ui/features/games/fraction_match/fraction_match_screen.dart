@@ -47,6 +47,7 @@ class _FractionMatchScreenState extends ConsumerState<FractionMatchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(fractionMatchNotifierProvider);
     final notifier = ref.read(fractionMatchNotifierProvider.notifier);
 
@@ -82,7 +83,7 @@ class _FractionMatchScreenState extends ConsumerState<FractionMatchScreen> {
                 TangibleContainer(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   radius: DesignSystem.radiusMD,
-                  color: DesignSystem.surface,
+                  color: colorScheme.surface,
                   child: Text(
                     'SCORE: ${state.score}',
                     style: const TextStyle(
@@ -97,7 +98,7 @@ class _FractionMatchScreenState extends ConsumerState<FractionMatchScreen> {
           Expanded(
             flex: 2,
             child: Center(
-              child: _buildVisualFraction(state.numerator, state.denominator),
+              child: _buildVisualFraction(context, state.numerator, state.denominator),
             ),
           ),
           Expanded(
@@ -108,17 +109,17 @@ class _FractionMatchScreenState extends ConsumerState<FractionMatchScreen> {
                 children: [
                   Row(
                     children: [
-                      _buildOption(state.options[0], notifier),
+                      _buildOption(context, state.options[0], notifier),
                       const SizedBox(width: DesignSystem.spaceMD),
-                      _buildOption(state.options[1], notifier),
+                      _buildOption(context, state.options[1], notifier),
                     ],
                   ),
                   const SizedBox(height: DesignSystem.spaceMD),
                   Row(
                     children: [
-                      _buildOption(state.options[2], notifier),
+                      _buildOption(context, state.options[2], notifier),
                       const SizedBox(width: DesignSystem.spaceMD),
-                      _buildOption(state.options[3], notifier),
+                      _buildOption(context, state.options[3], notifier),
                     ],
                   ),
                 ],
@@ -130,39 +131,39 @@ class _FractionMatchScreenState extends ConsumerState<FractionMatchScreen> {
     );
   }
 
-  Widget _buildVisualFraction(int n, int d) {
+  Widget _buildVisualFraction(BuildContext context, int n, int d) {
     return Container(
       width: 200,
       height: 200,
-      decoration: const BoxDecoration(
-        color: DesignSystem.surface,
+      decoration: BoxDecoration(
+        color: Theme.of(context).colorScheme.surface,
         shape: BoxShape.circle,
         boxShadow: [
           BoxShadow(
-            color: DesignSystem.outlineVariant,
+            color: Theme.of(context).colorScheme.outline,
             offset: Offset(0, 4),
             blurRadius: 10,
           ),
         ],
       ),
       child: CustomPaint(
-        painter: FractionPainter(n, d),
+        painter: FractionPainter(context, n, d),
       ),
     );
   }
 
-  Widget _buildOption(String text, FractionMatchNotifier notifier) {
+  Widget _buildOption(BuildContext context, String text, FractionMatchNotifier notifier) {
     return Expanded(
       child: TangibleButton(
         onTap: () => notifier.onOptionTap(text),
-        color: DesignSystem.surface,
-        shadowColor: DesignSystem.outlineVariant,
+        color: Theme.of(context).colorScheme.surface,
+        shadowColor: Theme.of(context).colorScheme.outline,
         padding: const EdgeInsets.symmetric(vertical: 32),
         child: Center(
           child: Text(
             text,
-            style: const TextStyle(
-              color: DesignSystem.ink,
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onSurface,
               fontSize: 32,
               fontWeight: FontWeight.w900,
             ),
@@ -174,10 +175,11 @@ class _FractionMatchScreenState extends ConsumerState<FractionMatchScreen> {
 }
 
 class FractionPainter extends CustomPainter {
+  final BuildContext context;
   final int numerator;
   final int denominator;
 
-  FractionPainter(this.numerator, this.denominator);
+  FractionPainter(this.context, this.numerator, this.denominator);
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -186,7 +188,7 @@ class FractionPainter extends CustomPainter {
     final rect = Rect.fromCircle(center: center, radius: radius);
     
     final paintBase = Paint()
-      ..color = DesignSystem.outline.withValues(alpha: 0.5)
+      ..color = Theme.of(context).colorScheme.outline.withValues(alpha: 0.5)
       ..style = PaintingStyle.fill;
     
     final paintFill = Paint()
@@ -194,7 +196,7 @@ class FractionPainter extends CustomPainter {
       ..style = PaintingStyle.fill;
     
     final paintBorder = Paint()
-      ..color = DesignSystem.ink
+      ..color = Theme.of(context).colorScheme.onSurface
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2;
 

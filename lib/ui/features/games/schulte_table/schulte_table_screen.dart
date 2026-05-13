@@ -52,7 +52,7 @@ class SchulteTableScreen extends ConsumerWidget {
             return Column(
               children: [
                 SizedBox(height: isSmall ? 8 : 16),
-                _buildHeader(state, isSmall),
+                _buildHeader(context, state, isSmall),
                 SizedBox(height: isSmall ? 16 : 32),
                 Expanded(
                   child: Center(
@@ -66,7 +66,7 @@ class SchulteTableScreen extends ConsumerWidget {
                   ),
                 ),
                 SizedBox(height: isSmall ? 16 : 32),
-                _buildFooter(state, notifier, isSmall),
+                _buildFooter(context, state, notifier, isSmall),
                 SizedBox(height: isSmall ? 16 : 32),
               ],
             );
@@ -76,14 +76,15 @@ class SchulteTableScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildHeader(SchulteTableState state, bool isSmall) {
+  Widget _buildHeader(BuildContext context, SchulteTableState state, bool isSmall) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
-          _buildStatCard('TIME', _formatDuration(state.elapsedTime), DesignSystem.accentBerry, isSmall),
+          _buildStatCard(context, 'TIME', _formatDuration(state.elapsedTime), DesignSystem.accentBerry, isSmall),
           _buildStatCard(
+            context,
             'BEST', 
             state.bestTime != null ? _formatDuration(state.bestTime!) : '--', 
             DesignSystem.accentEmerald,
@@ -94,7 +95,7 @@ class SchulteTableScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildStatCard(String label, String value, Color color, bool isSmall) {
+  Widget _buildStatCard(BuildContext context, String label, String value, Color color, bool isSmall) {
     return TangibleContainer(
       depth: isSmall ? 2.0 : 4.0,
       padding: EdgeInsets.symmetric(
@@ -108,7 +109,7 @@ class SchulteTableScreen extends ConsumerWidget {
             style: TextStyle(
               fontSize: isSmall ? 10 : 12,
               fontWeight: FontWeight.w900,
-              color: DesignSystem.outline,
+              color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5),
               letterSpacing: 1.2,
             ),
           ),
@@ -158,8 +159,8 @@ class SchulteTableScreen extends ConsumerWidget {
               child: TangibleContainer(
                 depth: isTapped ? 0.0 : (isSmall ? 2.0 : 4.0),
                 color: isTapped 
-                    ? DesignSystem.ink.withValues(alpha: 0.1)
-                    : DesignSystem.surface,
+                    ? Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1)
+                    : Theme.of(context).colorScheme.surface,
                 child: Center(
                   child: FittedBox(
                     child: Text(
@@ -167,8 +168,8 @@ class SchulteTableScreen extends ConsumerWidget {
                       style: TextStyle(
                         fontSize: isSmall ? 16 : 20,
                         color: isTapped 
-                            ? DesignSystem.ink.withValues(alpha: 0.2)
-                            : DesignSystem.ink,
+                            ? Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2)
+                            : Theme.of(context).colorScheme.onSurface,
                         fontWeight: FontWeight.w800,
                       ),
                     ),
@@ -182,7 +183,7 @@ class SchulteTableScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildFooter(SchulteTableState state, SchulteTableNotifier notifier, bool isSmall) {
+  Widget _buildFooter(BuildContext context, SchulteTableState state, SchulteTableNotifier notifier, bool isSmall) {
     if (state.status == SchulteStatus.ready) {
       return TangibleButton(
         onTap: () {
@@ -208,7 +209,7 @@ class SchulteTableScreen extends ConsumerWidget {
         Text(
           'FOCUS ON THE CENTER',
           style: TextStyle(
-            color: DesignSystem.outline,
+            color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5),
             fontSize: isSmall ? 10 : 12,
             fontWeight: FontWeight.w500,
           ),

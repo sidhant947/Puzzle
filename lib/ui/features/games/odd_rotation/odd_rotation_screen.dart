@@ -49,6 +49,7 @@ class _OddRotationScreenState extends ConsumerState<OddRotationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(oddRotationNotifierProvider);
     final notifier = ref.read(oddRotationNotifierProvider.notifier);
 
@@ -63,16 +64,16 @@ class _OddRotationScreenState extends ConsumerState<OddRotationScreen> {
       subtitle: 'One of these is mirrored. Can you find it?',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: colorScheme.surface,
+          shadowColor: colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             ref.read(oddRotationNotifierProvider.notifier).initGame();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(
+          child: Icon(
             Icons.refresh_rounded,
-            color: DesignSystem.ink,
+            color: colorScheme.onSurface,
             size: 20,
           ),
         ),
@@ -106,7 +107,7 @@ class _OddRotationScreenState extends ConsumerState<OddRotationScreen> {
                       final option = state.options[index];
                       final isSelected = state.selectedIndex == index;
                       
-                      Color color = DesignSystem.surface;
+                      Color color = colorScheme.surface;
                       if (isSelected) {
                         color = state.isGameWon ? DesignSystem.accentEmerald : DesignSystem.accentBerry;
                       }

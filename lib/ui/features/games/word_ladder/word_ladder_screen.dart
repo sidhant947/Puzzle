@@ -28,14 +28,14 @@ class WordLadderScreen extends ConsumerWidget {
       subtitle: 'Connect the words by changing one letter at a time.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: Theme.of(context).colorScheme.surface,
+          shadowColor: Theme.of(context).colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             notifier.reset();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
+          child: Icon(Icons.refresh_rounded, size: 20, color: Theme.of(context).colorScheme.onSurface),
         ),
       ],
       body: LayoutBuilder(
@@ -49,9 +49,9 @@ class WordLadderScreen extends ConsumerWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     _buildWordBadge(state.startWord, true),
-                    const Padding(
+                    Padding(
                       padding: EdgeInsets.symmetric(horizontal: 12),
-                      child: Icon(Icons.arrow_forward_rounded, color: DesignSystem.inkSlate, size: 18),
+                      child: Icon(Icons.arrow_forward_rounded, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7), size: 18),
                     ),
                     _buildWordBadge(state.endWord, false),
                   ],
@@ -85,8 +85,8 @@ class WordLadderScreen extends ConsumerWidget {
                     ),
                   ),
                 ),
-              _buildCurrentInput(state, constraints),
-              _buildKeyboard(state, notifier, constraints),
+              _buildCurrentInput(context, state, constraints),
+              _buildKeyboard(context, state, notifier, constraints),
               SizedBox(height: constraints.maxHeight * 0.02),
             ],
           );
@@ -126,7 +126,7 @@ class WordLadderScreen extends ConsumerWidget {
             TangibleContainer(
               padding: const EdgeInsets.symmetric(vertical: 8),
               radius: DesignSystem.radiusSM,
-              color: isLast ? DesignSystem.surface : DesignSystem.background,
+              color: isLast ? Theme.of(context).colorScheme.surface : Theme.of(context).scaffoldBackgroundColor,
               depth: isLast ? 2.0 : 1.0,
               child: Center(
                 child: Text(
@@ -134,16 +134,16 @@ class WordLadderScreen extends ConsumerWidget {
                   style: TextStyle(
                     fontWeight: FontWeight.w900,
                     letterSpacing: 4,
-                    color: isLast ? DesignSystem.primary : DesignSystem.inkSlate.withValues(alpha: 0.5),
+                    color: isLast ? DesignSystem.primary : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7).withValues(alpha: 0.5),
                     fontSize: 18,
                   ),
                 ),
               ),
             ),
             if (index < state.ladder.length - 1)
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(vertical: 2),
-                child: Icon(Icons.link_rounded, color: DesignSystem.outlineVariant, size: 16),
+                child: Icon(Icons.link_rounded, color: Theme.of(context).colorScheme.outline, size: 16),
               ),
           ],
         );
@@ -151,7 +151,7 @@ class WordLadderScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildCurrentInput(WordLadderState state, BoxConstraints constraints) {
+  Widget _buildCurrentInput(BuildContext context, WordLadderState state, BoxConstraints constraints) {
     final boxSize = (constraints.maxWidth * 0.12).clamp(35.0, 50.0);
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 12),
@@ -165,9 +165,9 @@ class WordLadderScreen extends ConsumerWidget {
             height: boxSize * 1.2,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: DesignSystem.surface,
+              color: Theme.of(context).colorScheme.surface,
               border: Border.all(
-                color: letter.isNotEmpty ? DesignSystem.primary : DesignSystem.outline,
+                color: letter.isNotEmpty ? DesignSystem.primary : Theme.of(context).colorScheme.outline.withValues(alpha: 0.5),
                 width: letter.isNotEmpty ? 2 : 1,
               ),
               borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
@@ -176,7 +176,7 @@ class WordLadderScreen extends ConsumerWidget {
                   BoxShadow(
                     color: DesignSystem.primary.withValues(alpha: 0.1),
                     blurRadius: 4,
-                    offset: const Offset(0, 2),
+                    offset: Offset(0, 2),
                   ),
               ],
             ),
@@ -185,10 +185,10 @@ class WordLadderScreen extends ConsumerWidget {
                 padding: const EdgeInsets.all(4.0),
                 child: Text(
                   letter.toUpperCase(),
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.w900,
                     fontSize: 22,
-                    color: DesignSystem.ink,
+                    color: Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
               ),
@@ -199,7 +199,7 @@ class WordLadderScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildKeyboard(WordLadderState state, WordLadderNotifier notifier, BoxConstraints constraints) {
+  Widget _buildKeyboard(BuildContext context, WordLadderState state, WordLadderNotifier notifier, BoxConstraints constraints) {
     final rows = [
       ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
       ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
@@ -228,15 +228,15 @@ class WordLadderScreen extends ConsumerWidget {
                     notifier.addLetter(key);
                   }
                 },
-                color: (key == 'ENTER' || key == 'DEL') ? DesignSystem.inkSlate : DesignSystem.surface,
-                shadowColor: (key == 'ENTER' || key == 'DEL') ? DesignSystem.ink : DesignSystem.outlineVariant,
+                color: (key == 'ENTER' || key == 'DEL') ? DesignSystem.primary : Theme.of(context).colorScheme.surface,
+                shadowColor: (key == 'ENTER' || key == 'DEL') ? DesignSystem.primaryShadow : Theme.of(context).colorScheme.outline,
                 depth: 2,
                 padding: EdgeInsets.zero,
                 child: Container(
                   height: keyHeight,
                   alignment: Alignment.center,
                   child: key == 'DEL' 
-                    ? const Icon(Icons.backspace_rounded, size: 14, color: DesignSystem.ink) 
+                    ? const Icon(Icons.backspace_rounded, size: 14, color: Colors.white) 
                     : FittedBox(
                         child: Padding(
                           padding: const EdgeInsets.all(4.0),
@@ -245,7 +245,7 @@ class WordLadderScreen extends ConsumerWidget {
                             style: TextStyle(
                               fontWeight: FontWeight.w900, 
                               fontSize: (key == 'ENTER' || key == 'DEL') ? 9 : 13,
-                              color: (key == 'ENTER' || key == 'DEL') ? Colors.white : DesignSystem.ink,
+                              color: (key == 'ENTER' || key == 'DEL') ? Colors.white : Theme.of(context).colorScheme.onSurface,
                             )
                           ),
                         ),

@@ -43,6 +43,7 @@ class _WordScrambleScreenState extends ConsumerState<WordScrambleScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(wordScrambleNotifierProvider);
     final notifier = ref.read(wordScrambleNotifierProvider.notifier);
 
@@ -57,11 +58,11 @@ class _WordScrambleScreenState extends ConsumerState<WordScrambleScreen> {
       subtitle: 'Tap the letters to unscramble the hidden word!',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: colorScheme.surface,
+          shadowColor: colorScheme.outline,
           onTap: () => notifier.initGame(),
           padding: const EdgeInsets.all(12),
-          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
+          child: Icon(Icons.refresh_rounded, size: 20, color: colorScheme.onSurface),
         ),
       ],
       body: state.isLoading
@@ -113,12 +114,12 @@ class _WordScrambleScreenState extends ConsumerState<WordScrambleScreen> {
                                 decoration: BoxDecoration(
                                   color: state.isInvalidGuess 
                                       ? DesignSystem.error.withValues(alpha: 0.1)
-                                      : DesignSystem.surface,
+                                      : colorScheme.surface,
                                   borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                                   border: Border.all(
                                     color: state.isInvalidGuess 
                                         ? DesignSystem.error 
-                                        : (letter.isNotEmpty ? DesignSystem.primary : DesignSystem.outline),
+                                        : (letter.isNotEmpty ? DesignSystem.primary : colorScheme.outline.withValues(alpha: 0.5)),
                                     width: 2,
                                   ),
                                 ),
@@ -131,7 +132,7 @@ class _WordScrambleScreenState extends ConsumerState<WordScrambleScreen> {
                                         style: TextStyle(
                                           fontSize: 22,
                                           fontWeight: FontWeight.w900,
-                                          color: state.isInvalidGuess ? DesignSystem.error : DesignSystem.ink,
+                                          color: state.isInvalidGuess ? DesignSystem.error : colorScheme.onSurface,
                                         ),
                                       ),
                                     ),
@@ -143,7 +144,7 @@ class _WordScrambleScreenState extends ConsumerState<WordScrambleScreen> {
                         ),
                       ),
                     ),
-                    const Spacer(),
+                    Spacer(),
                     // Keyboard / Letter Selection
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
@@ -157,8 +158,8 @@ class _WordScrambleScreenState extends ConsumerState<WordScrambleScreen> {
                             children: state.scrambledWord.split('').map((letter) {
                               return TangibleButton(
                                 onTap: () => notifier.onLetterPressed(letter),
-                                color: DesignSystem.surface,
-                                shadowColor: DesignSystem.outlineVariant,
+                                color: colorScheme.surface,
+                                shadowColor: colorScheme.outline,
                                 depth: 2,
                                 padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
                                 child: Text(
@@ -175,21 +176,21 @@ class _WordScrambleScreenState extends ConsumerState<WordScrambleScreen> {
                         ),
                       ),
                     ),
-                    const Spacer(),
+                    Spacer(),
                     Padding(
                       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           TangibleButton(
-                            color: DesignSystem.surface,
-                            shadowColor: DesignSystem.outlineVariant,
+                            color: colorScheme.surface,
+                            shadowColor: colorScheme.outline,
                             depth: 2,
                             padding: const EdgeInsets.all(18),
                             onTap: notifier.onBackspace,
-                            child: const Icon(Icons.backspace_rounded, color: DesignSystem.ink, size: 24),
+                            child: Icon(Icons.backspace_rounded, color: colorScheme.onSurface, size: 24),
                           ),
-                          const SizedBox(width: DesignSystem.spaceMD),
+                          SizedBox(width: DesignSystem.spaceMD),
                           Expanded(
                             child: TangibleButton(
                               onTap: notifier.submitGuess,
@@ -209,12 +210,12 @@ class _WordScrambleScreenState extends ConsumerState<WordScrambleScreen> {
                           ),
                           const SizedBox(width: DesignSystem.spaceMD),
                           TangibleButton(
-                            color: DesignSystem.surface,
-                            shadowColor: DesignSystem.outlineVariant,
+                            color: colorScheme.surface,
+                            shadowColor: colorScheme.outline,
                             depth: 2,
                             padding: const EdgeInsets.all(18),
                             onTap: notifier.resetGuess,
-                            child: const Icon(Icons.refresh_rounded, color: DesignSystem.ink, size: 24),
+                            child: Icon(Icons.refresh_rounded, color: colorScheme.onSurface, size: 24),
                           ),
                         ],
                       ),

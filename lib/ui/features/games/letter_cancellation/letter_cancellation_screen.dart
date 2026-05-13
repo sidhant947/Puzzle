@@ -46,6 +46,7 @@ class _LetterCancellationScreenState extends ConsumerState<LetterCancellationScr
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(letterCancellationNotifierProvider);
     final notifier = ref.read(letterCancellationNotifierProvider.notifier);
 
@@ -102,12 +103,12 @@ class _LetterCancellationScreenState extends ConsumerState<LetterCancellationScr
                     notifier.onLetterPressed(index);
                   },
                   child: AnimatedContainer(
-                    duration: const Duration(milliseconds: 200),
+                    duration: Duration(milliseconds: 200),
                     decoration: BoxDecoration(
-                      color: isFound ? DesignSystem.success : DesignSystem.surface,
+                      color: isFound ? DesignSystem.success : colorScheme.surface,
                       borderRadius: BorderRadius.circular(8),
                       border: Border.all(
-                        color: isFound ? Colors.transparent : DesignSystem.outlineVariant,
+                        color: isFound ? Colors.transparent : colorScheme.outline,
                       ),
                     ),
                     child: Center(
@@ -116,7 +117,7 @@ class _LetterCancellationScreenState extends ConsumerState<LetterCancellationScr
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w900,
-                          color: isFound ? Colors.white : DesignSystem.ink,
+                          color: isFound ? Colors.white : colorScheme.onSurface,
                         ),
                       ),
                     ),
@@ -134,8 +135,8 @@ class _LetterCancellationScreenState extends ConsumerState<LetterCancellationScr
   Widget _buildStat(String label, String value, {Color? color}) {
     return Column(
       children: [
-        Text(label, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: DesignSystem.inkSlate)),
-        Text(value, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: color ?? DesignSystem.ink)),
+        Text(label, style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))),
+        Text(value, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: color ?? Theme.of(context).colorScheme.onSurface)),
       ],
     );
   }

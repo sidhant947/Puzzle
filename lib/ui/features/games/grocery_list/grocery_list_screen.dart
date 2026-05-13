@@ -84,8 +84,8 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
           Expanded(
             child: Center(
               child: state.phase == GroceryListPhase.memorizing 
-                  ? _buildMemorizationList(state, notifier)
-                  : _buildTestingZone(state, notifier),
+                  ? _buildMemorizationList(context, state, notifier)
+                  : _buildTestingZone(context, state, notifier),
             ),
           ),
           const SizedBox(height: DesignSystem.space2XL),
@@ -94,7 +94,7 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
     );
   }
 
-  Widget _buildMemorizationList(GroceryListState state, GroceryListNotifier notifier) {
+  Widget _buildMemorizationList(BuildContext context, GroceryListState state, GroceryListNotifier notifier) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -102,9 +102,9 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
           margin: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
           padding: const EdgeInsets.all(DesignSystem.spaceXL),
           decoration: BoxDecoration(
-            color: DesignSystem.surface,
+            color: Theme.of(context).colorScheme.surface,
             borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
-            border: Border.all(color: DesignSystem.outline.withValues(alpha: 0.2), width: 2),
+            border: Border.all(color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5).withValues(alpha: 0.2), width: 2),
           ),
           child: Column(
             children: state.list.map((item) => Padding(
@@ -112,8 +112,8 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(item['item']!, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w900)),
-                  Text(item['category']!, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: DesignSystem.inkSlate)),
+                  Text(item['item']!, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900)),
+                  Text(item['category']!, style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))),
                 ],
               ),
             )).toList(),
@@ -134,24 +134,24 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
     );
   }
 
-  Widget _buildTestingZone(GroceryListState state, GroceryListNotifier notifier) {
+  Widget _buildTestingZone(BuildContext context, GroceryListState state, GroceryListNotifier notifier) {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
       child: LayoutBuilder(
         builder: (context, constraints) {
           return Column(
             children: [
-              const SizedBox(height: DesignSystem.spaceMD),
-              const Text(
+              SizedBox(height: DesignSystem.spaceMD),
+              Text(
                 'WHERE DOES THIS BELONG?',
                 style: TextStyle(
                   fontWeight: FontWeight.w900,
-                  color: DesignSystem.inkSlate,
+                  color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                   letterSpacing: 1.0,
                   fontSize: 14,
                 ),
               ),
-              const SizedBox(height: DesignSystem.spaceLG),
+              SizedBox(height: DesignSystem.spaceLG),
               // Test Item Card - Constrained to prevent overflow
               ConstrainedBox(
                 constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.25),
@@ -160,7 +160,7 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
                   radius: DesignSystem.radiusLG,
                   padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 24),
                   color: Colors.white,
-                  shadowColor: DesignSystem.outlineVariant,
+                  shadowColor: Theme.of(context).colorScheme.outline,
                   child: Center(
                     child: FittedBox(
                       fit: BoxFit.scaleDown,

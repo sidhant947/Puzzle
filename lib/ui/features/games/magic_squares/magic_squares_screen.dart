@@ -116,10 +116,10 @@ class _MagicSquaresScreenState extends ConsumerState<MagicSquaresScreen> {
                           },
                           color: isSelected 
                               ? DesignSystem.primary.withValues(alpha: 0.1) 
-                              : (isFixed ? DesignSystem.outlineVariant.withValues(alpha: 0.1) : DesignSystem.surface),
+                              : (isFixed ? Theme.of(context).colorScheme.outline.withValues(alpha: 0.1) : Theme.of(context).colorScheme.surface),
                           shadowColor: isSelected 
                               ? DesignSystem.primaryShadow 
-                              : DesignSystem.outlineVariant,
+                              : Theme.of(context).colorScheme.outline,
                           depth: isSelected ? 2.0 : 4.0,
                           child: Center(
                             child: FittedBox(
@@ -128,7 +128,7 @@ class _MagicSquaresScreenState extends ConsumerState<MagicSquaresScreen> {
                                 style: TextStyle(
                                   fontSize: 28,
                                   fontWeight: FontWeight.w900,
-                                  color: isFixed ? DesignSystem.inkSlate : DesignSystem.primary,
+                                  color: isFixed ? Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7) : DesignSystem.primary,
                                 ),
                               ),
                             ),
@@ -198,11 +198,11 @@ class _MagicSquaresScreenState extends ConsumerState<MagicSquaresScreen> {
     return Expanded(
       child: TangibleButton(
         onTap: () => notifier.onNumberPressed(val),
-        color: DesignSystem.surface,
-        shadowColor: DesignSystem.outlineVariant,
+        color: Theme.of(context).colorScheme.surface,
+        shadowColor: Theme.of(context).colorScheme.outline,
         child: Text(
           '$val',
-          style: const TextStyle(color: DesignSystem.ink, fontSize: 24, fontWeight: FontWeight.w900),
+          style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 24, fontWeight: FontWeight.w900),
         ),
       ),
     );

@@ -49,6 +49,7 @@ class _CryptogramScreenState extends ConsumerState<CryptogramScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(cryptogramNotifierProvider);
     final notifier = ref.read(cryptogramNotifierProvider.notifier);
 
@@ -63,18 +64,18 @@ class _CryptogramScreenState extends ConsumerState<CryptogramScreen> {
       subtitle: 'Assign letters to decode the secret message! Each encoded letter represents a real letter.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: colorScheme.surface,
+          shadowColor: colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             notifier.initGame();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
+          child: Icon(Icons.refresh_rounded, size: 20, color: colorScheme.onSurface),
         ),
       ],
       body: state.isLoading
-          ? const Center(child: CircularProgressIndicator())
+          ? Center(child: CircularProgressIndicator())
           : LayoutBuilder(
               builder: (context, constraints) {
                 return Column(
@@ -85,14 +86,14 @@ class _CryptogramScreenState extends ConsumerState<CryptogramScreen> {
                         child: ConstrainedBox(
                           constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.5),
                           child: TangibleContainer(
-                            color: DesignSystem.ink,
-                            shadowColor: DesignSystem.inkSlate,
+                            color: colorScheme.onSurface,
+                            shadowColor: colorScheme.onSurface.withValues(alpha: 0.7),
                             depth: 4.0,
                             padding: const EdgeInsets.all(3.0),
                             child: Container(
                               width: double.infinity,
                               decoration: BoxDecoration(
-                                color: DesignSystem.surface,
+                                color: colorScheme.surface,
                                 borderRadius: BorderRadius.circular(DesignSystem.radiusLG - 4),
                               ),
                               child: ClipRRect(
@@ -150,24 +151,24 @@ class _CryptogramScreenState extends ConsumerState<CryptogramScreen> {
                           assigned ?? '_',
                           style: TextStyle(
                             fontWeight: FontWeight.w900,
-                            color: assigned != null ? DesignSystem.primary : DesignSystem.ink.withValues(alpha: 0.1),
+                            color: assigned != null ? DesignSystem.primary : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1),
                           ),
                         ),
                       ),
                     ),
-                    const SizedBox(height: 2),
+                    SizedBox(height: 2),
                     TangibleContainer(
                       depth: isSelected ? 1.0 : 3.0,
                       radius: DesignSystem.radiusXS,
-                      color: isSelected ? DesignSystem.primary.withValues(alpha: 0.1) : DesignSystem.background,
-                      shadowColor: isSelected ? DesignSystem.primary : DesignSystem.outlineVariant,
+                      color: isSelected ? DesignSystem.primary.withValues(alpha: 0.1) : Theme.of(context).scaffoldBackgroundColor,
+                      shadowColor: isSelected ? DesignSystem.primary : Theme.of(context).colorScheme.outline,
                       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
                       child: Text(
                         char,
                         style: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w900,
-                          color: isSelected ? DesignSystem.primary : DesignSystem.ink,
+                          color: isSelected ? DesignSystem.primary : Theme.of(context).colorScheme.onSurface,
                         ),
                       ),
                     ),
@@ -179,10 +180,10 @@ class _CryptogramScreenState extends ConsumerState<CryptogramScreen> {
                 padding: const EdgeInsets.only(top: 20),
                 child: Text(
                   char, 
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontSize: 18,
                     fontWeight: FontWeight.w900,
-                    color: DesignSystem.ink,
+                    color: Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
               );
@@ -240,8 +241,8 @@ class _CryptogramScreenState extends ConsumerState<CryptogramScreen> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 1),
                     child: TangibleButton(
-                      color: isUsed ? DesignSystem.background : DesignSystem.surface,
-                      shadowColor: DesignSystem.outlineVariant,
+                      color: isUsed ? Theme.of(context).scaffoldBackgroundColor : Theme.of(context).colorScheme.surface,
+                      shadowColor: Theme.of(context).colorScheme.outline,
                       padding: EdgeInsets.zero,
                       onTap: () {
                         HapticFeedbackUtil.selectionClick();
@@ -255,7 +256,7 @@ class _CryptogramScreenState extends ConsumerState<CryptogramScreen> {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.w900,
-                            color: isUsed ? DesignSystem.ink.withValues(alpha: 0.3) : DesignSystem.ink,
+                            color: isUsed ? Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.3) : Theme.of(context).colorScheme.onSurface,
                           ),
                         ),
                       ),

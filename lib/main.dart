@@ -53,8 +53,20 @@ class MyApp extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final themeNotifier = ref.watch(themeNotifierProvider.notifier);
-    final themeMode = themeNotifier.themeMode;
+    final appThemeMode = ref.watch(themeNotifierProvider);
+
+    ThemeMode themeMode;
+    switch (appThemeMode) {
+      case AppThemeMode.light:
+        themeMode = ThemeMode.light;
+        break;
+      case AppThemeMode.dark:
+        themeMode = ThemeMode.dark;
+        break;
+      case AppThemeMode.system:
+        themeMode = ThemeMode.system;
+        break;
+    }
 
     return MaterialApp(
       title: 'Puzzle Games',

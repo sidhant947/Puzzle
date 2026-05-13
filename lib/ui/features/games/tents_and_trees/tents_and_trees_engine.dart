@@ -60,14 +60,12 @@ class TentsAndTreesEngine {
 
         // Try to place a tree adjacent to this tent
         final adj = [Point(r - 1, c), Point(r + 1, c), Point(r, c - 1), Point(r, c + 1)]..shuffle(rand);
-        bool placedTree = false;
         for (var p in adj) {
           if (p.x >= 0 && p.x < size && p.y >= 0 && p.y < size && grid[p.x][p.y] == CellType.empty) {
             grid[r][c] = CellType.tent;
             grid[p.x][p.y] = CellType.tree;
             tentPositions.add(Point(r, c));
             treePositions.add(p);
-            placedTree = true;
             break;
           }
         }

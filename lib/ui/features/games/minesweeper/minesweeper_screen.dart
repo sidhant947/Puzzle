@@ -20,6 +20,7 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(minesweeperNotifierProvider);
     final notifier = ref.read(minesweeperNotifierProvider.notifier);
 
@@ -38,11 +39,11 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
       subtitle: 'Identify all the mines without triggering them.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: colorScheme.surface,
+          shadowColor: colorScheme.outline,
           onTap: () => notifier.reset(),
           padding: const EdgeInsets.all(12),
-          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
+          child: Icon(Icons.refresh_rounded, size: 20, color: colorScheme.onSurface),
         ),
       ],
       body: LayoutBuilder(
@@ -75,13 +76,13 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
               depth: 4.0,
               child: Column(
                 children: [
-                  const Text(
+                  Text(
                     'MINES',
-                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w900, color: DesignSystem.inkSlate),
+                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7)),
                   ),
                   Text(
                     state.minesRemaining.toString(),
-                    style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: DesignSystem.primary),
+                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: DesignSystem.primary),
                   ),
                 ],
               ),
@@ -93,8 +94,8 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
               padding: const EdgeInsets.all(DesignSystem.spaceSM),
               radius: DesignSystem.radiusMD,
               depth: 4.0,
-              color: state.isWon ? DesignSystem.success : (state.isGameOver ? DesignSystem.error : DesignSystem.surface),
-              shadowColor: state.isWon ? const Color(0xFF047857) : (state.isGameOver ? const Color(0xFF991B1B) : DesignSystem.outlineVariant),
+              color: state.isWon ? DesignSystem.success : (state.isGameOver ? DesignSystem.error : Theme.of(context).colorScheme.surface),
+              shadowColor: state.isWon ? Color(0xFF047857) : (state.isGameOver ? Color(0xFF991B1B) : Theme.of(context).colorScheme.outline),
               child: Column(
                 children: [
                   Text(
@@ -102,7 +103,7 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
                     style: TextStyle(
                       fontSize: 10, 
                       fontWeight: FontWeight.w900, 
-                      color: (state.isWon || state.isGameOver) ? Colors.white.withValues(alpha: 0.8) : DesignSystem.inkSlate,
+                      color: (state.isWon || state.isGameOver) ? Colors.white.withValues(alpha: 0.8) : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                     ),
                   ),
                   Text(
@@ -128,14 +129,14 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
       child: ConstrainedBox(
         constraints: BoxConstraints(maxHeight: maxHeight),
         child: TangibleContainer(
-          color: DesignSystem.ink,
-          shadowColor: DesignSystem.inkSlate,
+          color: Theme.of(context).colorScheme.onSurface,
+          shadowColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
           radius: DesignSystem.radiusMD,
           depth: 4.0,
           padding: const EdgeInsets.all(3.0),
           child: Container(
             decoration: BoxDecoration(
-              color: DesignSystem.background,
+              color: Theme.of(context).scaffoldBackgroundColor,
               borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
             ),
             child: AspectRatio(
@@ -180,14 +181,14 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
         notifier.toggleFlag(cell.row, cell.col);
       },
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 150),
+        duration: Duration(milliseconds: 150),
         decoration: BoxDecoration(
           color: isRevealed 
-              ? (cell.isMine ? DesignSystem.error.withValues(alpha: 0.2) : DesignSystem.surface)
-              : (isFlagged ? DesignSystem.accentAmber.withValues(alpha: 0.1) : DesignSystem.outline.withValues(alpha: 0.5)),
+              ? (cell.isMine ? DesignSystem.error.withValues(alpha: 0.2) : Theme.of(context).colorScheme.surface)
+              : (isFlagged ? DesignSystem.accentAmber.withValues(alpha: 0.1) : Theme.of(context).colorScheme.outline.withValues(alpha: 0.5).withValues(alpha: 0.5)),
           borderRadius: BorderRadius.circular(6),
           border: Border.all(
-            color: isRevealed ? DesignSystem.outline : DesignSystem.ink.withValues(alpha: 0.1),
+            color: isRevealed ? Theme.of(context).colorScheme.outline.withValues(alpha: 0.5) : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1),
             width: isRevealed ? 0.5 : 1.5,
           ),
         ),
@@ -227,7 +228,7 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
       case 3: return DesignSystem.error;
       case 4: return DesignSystem.accentBerry;
       case 5: return DesignSystem.accentAmber;
-      default: return DesignSystem.ink;
+      default: return Theme.of(context).colorScheme.onSurface;
     }
   }
 
@@ -268,19 +269,19 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
     required VoidCallback onTap,
   }) {
     return TangibleButton(
-      color: isActive ? DesignSystem.primary : DesignSystem.surface,
-      shadowColor: isActive ? DesignSystem.primaryShadow : DesignSystem.outlineVariant,
+      color: isActive ? DesignSystem.primary : Theme.of(context).colorScheme.surface,
+      shadowColor: isActive ? DesignSystem.primaryShadow : Theme.of(context).colorScheme.outline,
       onTap: onTap,
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceMD, vertical: DesignSystem.spaceSM),
       child: Row(
         mainAxisSize: MainAxisSize.min,
         children: [
-          Icon(icon, size: 18, color: isActive ? Colors.white : DesignSystem.ink),
-          const SizedBox(width: 6),
+          Icon(icon, size: 18, color: isActive ? Colors.white : Theme.of(context).colorScheme.onSurface),
+          SizedBox(width: 6),
           Text(
             label,
             style: TextStyle(
-              color: isActive ? Colors.white : DesignSystem.ink,
+              color: isActive ? Colors.white : Theme.of(context).colorScheme.onSurface,
               fontWeight: FontWeight.w900,
               fontSize: 12,
               letterSpacing: 0.5,

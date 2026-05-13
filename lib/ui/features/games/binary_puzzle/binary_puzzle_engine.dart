@@ -27,12 +27,17 @@ class BinaryPuzzleEngine {
   }
 
   List<List<int>> _generateFullGrid(int size) {
-    while (true) {
+    for (int attempt = 0; attempt < 1000; attempt++) {
       List<List<int>> grid = List.generate(size, (_) => List.filled(size, -1));
       if (_fillGrid(grid, 0, 0, size)) {
-        return grid;
+        if (_isFinalValid(grid, size)) {
+          return grid;
+        }
       }
     }
+    // Fallback or throw if it fails too many times, 
+    // but for 6x6 it should find one very quickly.
+    return List.generate(size, (r) => List.generate(size, (c) => (r + c) % 2));
   }
 
   bool _fillGrid(List<List<int>> grid, int row, int col, int size) {

@@ -47,6 +47,7 @@ class _ReflexTapScreenState extends ConsumerState<ReflexTapScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(reflexTapNotifierProvider);
     final notifier = ref.read(reflexTapNotifierProvider.notifier);
 
@@ -88,7 +89,7 @@ class _ReflexTapScreenState extends ConsumerState<ReflexTapScreen> {
                           maxHeight: constraints.maxHeight * 0.6),
                       child: TangibleContainer(
                         depth: 4.0,
-                        color: DesignSystem.ink,
+                        color: colorScheme.onSurface,
                         child: ClipRRect(
                           borderRadius:
                               BorderRadius.circular(DesignSystem.radiusMD - 1),
@@ -132,14 +133,14 @@ class _ReflexTapScreenState extends ConsumerState<ReflexTapScreen> {
                     ),
                   ),
                 ),
-                const Padding(
+                Padding(
                   padding:
                       EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
                   child: Text(
                     'Tap the targets as fast as you can!',
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      color: DesignSystem.outline,
+                      color: colorScheme.outline.withValues(alpha: 0.5),
                       fontWeight: FontWeight.w500,
                       fontSize: 12,
                     ),
@@ -161,10 +162,10 @@ class _ReflexTapScreenState extends ConsumerState<ReflexTapScreen> {
         children: [
           Text(
             label,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 10,
               fontWeight: FontWeight.bold,
-              color: DesignSystem.ink,
+              color: Theme.of(context).colorScheme.onSurface,
               letterSpacing: 1.2,
             ),
           ),

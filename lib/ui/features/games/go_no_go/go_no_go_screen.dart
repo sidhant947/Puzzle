@@ -47,6 +47,7 @@ class _GoNoGoScreenState extends ConsumerState<GoNoGoScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(goNoGoNotifierProvider);
     final notifier = ref.read(goNoGoNotifierProvider.notifier);
 
@@ -85,10 +86,10 @@ class _GoNoGoScreenState extends ConsumerState<GoNoGoScreen> {
                   TangibleContainer(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     radius: DesignSystem.radiusMD,
-                    color: DesignSystem.surface,
+                    color: colorScheme.surface,
                     child: Text(
                       'SCORE: ${state.score}',
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontWeight: FontWeight.w900,
                         color: DesignSystem.primary,
                       ),
@@ -102,12 +103,12 @@ class _GoNoGoScreenState extends ConsumerState<GoNoGoScreen> {
                 child: _buildSymbol(state.currentSymbol),
               ),
             ),
-            const Padding(
-              padding: EdgeInsets.all(DesignSystem.space2XL),
+            Padding(
+              padding: const EdgeInsets.all(DesignSystem.space2XL),
               child: Text(
                 'TAP ANYWHERE TO GO',
                 style: TextStyle(
-                  color: DesignSystem.inkSlate,
+                  color: colorScheme.onSurface.withValues(alpha: 0.7),
                   fontWeight: FontWeight.w900,
                   letterSpacing: 2.0,
                   fontSize: 12,

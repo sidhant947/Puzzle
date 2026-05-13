@@ -120,8 +120,8 @@ class _KenKenScreenState extends ConsumerState<KenKenScreen> {
                           onTap: () => notifier.selectCell(r, c),
                           child: Container(
                             decoration: BoxDecoration(
-                              color: isSelected ? DesignSystem.primary.withValues(alpha: 0.1) : Colors.white,
-                              border: _getBorder(state, r, c),
+                              color: isSelected ? DesignSystem.primary.withValues(alpha: 0.1) : Theme.of(context).colorScheme.surface,
+                              border: _getBorder(context, state, r, c),
                             ),
                             child: Stack(
                               children: [
@@ -131,10 +131,10 @@ class _KenKenScreenState extends ConsumerState<KenKenScreen> {
                                     left: 4,
                                     child: Text(
                                       '${cage['target']}${cage['op']}',
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                         fontSize: 10,
                                         fontWeight: FontWeight.w900,
-                                        color: DesignSystem.inkSlate,
+                                        color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                                       ),
                                     ),
                                   ),
@@ -144,7 +144,7 @@ class _KenKenScreenState extends ConsumerState<KenKenScreen> {
                                     style: TextStyle(
                                       fontSize: 24,
                                       fontWeight: FontWeight.w900,
-                                      color: isSelected ? DesignSystem.primary : DesignSystem.ink,
+                                      color: isSelected ? DesignSystem.primary : Theme.of(context).colorScheme.onSurface,
                                     ),
                                   ),
                                 ),
@@ -164,9 +164,9 @@ class _KenKenScreenState extends ConsumerState<KenKenScreen> {
     );
   }
 
-  Border _getBorder(KenKenState state, int r, int c) {
-    const defaultSide = BorderSide(color: DesignSystem.outline, width: 0.5);
-    const cageSide = BorderSide(color: DesignSystem.ink, width: 2.0);
+  Border _getBorder(BuildContext context, KenKenState state, int r, int c) {
+    final defaultSide = BorderSide(color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5), width: 0.5);
+    final cageSide = BorderSide(color: Theme.of(context).colorScheme.onSurface, width: 2.0);
 
     final cageId = state.cages[r][c];
 
@@ -194,12 +194,12 @@ class _KenKenScreenState extends ConsumerState<KenKenScreen> {
   Widget _buildNumButton(int val, KenKenNotifier notifier) {
     return TangibleButton(
       onTap: () => notifier.onNumberPressed(val),
-      color: DesignSystem.surface,
-      shadowColor: DesignSystem.outlineVariant,
+      color: Theme.of(context).colorScheme.surface,
+      shadowColor: Theme.of(context).colorScheme.outline,
       padding: const EdgeInsets.all(20),
       child: Text(
         '$val',
-        style: const TextStyle(color: DesignSystem.ink, fontSize: 20, fontWeight: FontWeight.w900),
+        style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 20, fontWeight: FontWeight.w900),
       ),
     );
   }
@@ -207,8 +207,8 @@ class _KenKenScreenState extends ConsumerState<KenKenScreen> {
   Widget _buildControlButton(IconData icon, VoidCallback onTap, Color color) {
     return TangibleButton(
       onTap: onTap,
-      color: DesignSystem.surface,
-      shadowColor: DesignSystem.outlineVariant,
+      color: Theme.of(context).colorScheme.surface,
+      shadowColor: Theme.of(context).colorScheme.outline,
       padding: const EdgeInsets.all(20),
       child: Icon(icon, color: color, size: 24),
     );

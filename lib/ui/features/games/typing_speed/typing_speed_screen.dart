@@ -60,6 +60,7 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(typingSpeedNotifierProvider);
     final notifier = ref.read(typingSpeedNotifierProvider.notifier);
 
@@ -74,17 +75,17 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
       subtitle: 'Type the phrase exactly as shown as fast as you can!',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: colorScheme.surface,
+          shadowColor: colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             _controller.clear();
             notifier.initGame();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(
+          child: Icon(
             Icons.refresh_rounded,
-            color: DesignSystem.ink,
+            color: colorScheme.onSurface,
             size: 20,
           ),
         ),
@@ -103,7 +104,7 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
                           Expanded(
                             child: _buildStatCard('TIME LEFT', '${state.timeLeft}s', DesignSystem.accentBerry),
                           ),
-                          const SizedBox(width: DesignSystem.spaceMD),
+                          SizedBox(width: DesignSystem.spaceMD),
                           Expanded(
                             child: _buildStatCard('WPM', state.wpm.toStringAsFixed(0), DesignSystem.accentEmerald),
                           ),
@@ -115,7 +116,7 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
                           maxHeight: constraints.maxHeight * 0.3,
                         ),
                         child: TangibleContainer(
-                          color: DesignSystem.surface,
+                          color: colorScheme.surface,
                           radius: DesignSystem.radiusMD,
                           depth: 2,
                           padding: const EdgeInsets.all(DesignSystem.spaceMD),
@@ -131,9 +132,9 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
                           ),
                         ),
                       ),
-                      const SizedBox(height: DesignSystem.spaceLG),
+                      SizedBox(height: DesignSystem.spaceLG),
                       TangibleContainer(
-                        color: DesignSystem.surface,
+                        color: colorScheme.surface,
                         radius: DesignSystem.radiusSM,
                         depth: 2,
                         padding: EdgeInsets.zero,
@@ -147,7 +148,7 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
                           decoration: InputDecoration(
                             hintText: 'START TYPING...',
                             hintStyle: TextStyle(
-                              color: DesignSystem.outlineVariant,
+                              color: colorScheme.outline,
                               fontWeight: FontWeight.w900,
                               letterSpacing: 2,
                               fontSize: 14,
@@ -158,7 +159,7 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
                               vertical: DesignSystem.spaceSM,
                             ),
                           ),
-                          style: const TextStyle(
+                          style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w900,
                             color: DesignSystem.primary,
@@ -169,10 +170,10 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
                         ),
                       ),
                       const Spacer(),
-                      const Text(
+                      Text(
                         'PRECISION IS KEY',
                         style: TextStyle(
-                          color: DesignSystem.inkSlate,
+                          color: colorScheme.onSurface.withValues(alpha: 0.7),
                           fontWeight: FontWeight.w900,
                           letterSpacing: 2,
                           fontSize: 10,
@@ -190,7 +191,7 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
   List<TextSpan> _buildTextSpans(String target, String input) {
     List<TextSpan> spans = [];
     for (int i = 0; i < target.length; i++) {
-      Color color = DesignSystem.outlineVariant;
+      Color color = Theme.of(context).colorScheme.outline;
       if (i < input.length) {
         color = input[i].toUpperCase() == target[i].toUpperCase() 
             ? DesignSystem.success 
@@ -211,7 +212,7 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
 
   Widget _buildStatCard(String label, String value, Color color) {
     return TangibleContainer(
-      color: DesignSystem.surface,
+      color: Theme.of(context).colorScheme.surface,
       radius: DesignSystem.radiusSM,
       depth: 2,
       padding: const EdgeInsets.symmetric(vertical: DesignSystem.spaceSM),
@@ -219,11 +220,11 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
         children: [
           Text(
             label,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 10,
               fontWeight: FontWeight.w900,
               letterSpacing: 1.2,
-              color: DesignSystem.inkSlate,
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
             ),
           ),
           const SizedBox(height: DesignSystem.spaceXS),

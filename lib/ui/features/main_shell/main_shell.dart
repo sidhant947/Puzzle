@@ -42,9 +42,12 @@ class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserv
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return Scaffold(
       extendBody: true,
-      backgroundColor: DesignSystem.background,
+      backgroundColor: colorScheme.surface,
       body: IndexedStack(
         index: _selectedIndex,
         children: _screens,
@@ -63,18 +66,20 @@ class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserv
               horizontal: DesignSystem.spaceMD,
               vertical: DesignSystem.spaceSM,
             ),
-            color: DesignSystem.surface,
+            color: colorScheme.surface,
             depth: 4.0, // Less depth for the navigation bar
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 _buildNavItem(
+                  context: context,
                   index: 0,
                   icon: Icons.grid_view_rounded,
                   label: 'GAMES',
                   isSelected: _selectedIndex == 0,
                 ),
                 _buildNavItem(
+                  context: context,
                   index: 1,
                   icon: Icons.person_rounded,
                   label: 'PROFILE',
@@ -89,12 +94,15 @@ class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserv
   }
 
   Widget _buildNavItem({
+    required BuildContext context,
     required int index,
     required IconData icon,
     required String label,
     required bool isSelected,
   }) {
-    final color = isSelected ? DesignSystem.primary : DesignSystem.inkSlate.withValues(alpha: 0.5);
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final color = isSelected ? colorScheme.primary : colorScheme.onSurface.withValues(alpha: 0.5);
 
     return Expanded(
       child: GestureDetector(
@@ -134,8 +142,8 @@ class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserv
                   margin: const EdgeInsets.only(top: 4),
                   width: 6,
                   height: 6,
-                  decoration: const BoxDecoration(
-                    color: DesignSystem.primary,
+                  decoration: BoxDecoration(
+                    color: colorScheme.primary,
                     shape: BoxShape.circle,
                   ),
                 ),

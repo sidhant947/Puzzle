@@ -117,19 +117,19 @@ class _StaircaseMemoryScreenState extends ConsumerState<StaircaseMemoryScreen> {
             fontSize: 12,
             fontWeight: FontWeight.w900,
             letterSpacing: 2.0,
-            color: DesignSystem.inkSlate.withValues(alpha: 0.5),
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7).withValues(alpha: 0.5),
           ),
         ),
-        const SizedBox(height: DesignSystem.spaceMD),
+        SizedBox(height: DesignSystem.spaceMD),
         AnimatedSwitcher(
           duration: const Duration(milliseconds: 300),
           child: Container(
             key: ValueKey(state.currentIndex),
             padding: const EdgeInsets.all(DesignSystem.spaceXL),
             decoration: BoxDecoration(
-              color: DesignSystem.surface,
+              color: Theme.of(context).colorScheme.surface,
               shape: BoxShape.circle,
-              border: Border.all(color: DesignSystem.outlineVariant, width: 4),
+              border: Border.all(color: Theme.of(context).colorScheme.outline, width: 4),
             ),
             child: Icon(icon, size: 80, color: DesignSystem.primary),
           ),
@@ -155,10 +155,10 @@ class _StaircaseMemoryScreenState extends ConsumerState<StaircaseMemoryScreen> {
           final icon = allIcons[index];
           return TangibleButton(
             onTap: () => notifier.onOptionSelected(icon),
-            color: DesignSystem.surface,
-            shadowColor: DesignSystem.outlineVariant,
+            color: Theme.of(context).colorScheme.surface,
+            shadowColor: Theme.of(context).colorScheme.outline,
             padding: EdgeInsets.zero,
-            child: Icon(icon, color: DesignSystem.ink),
+            child: Icon(icon, color: Theme.of(context).colorScheme.onSurface),
           );
         },
       ),

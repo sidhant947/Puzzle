@@ -135,14 +135,14 @@ class _RuleSwitcherScreenState extends ConsumerState<RuleSwitcherScreen> {
                 HapticFeedbackUtil.lightImpact();
                 notifier.onOptionPressed(true);
               },
-              color: DesignSystem.surface,
+              color: Theme.of(context).colorScheme.surface,
               child: Center(
                 child: Text(
                   isNumberRule ? 'EVEN' : 'RED',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.w900,
                     fontSize: 18,
-                    color: DesignSystem.ink,
+                    color: Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
               ),
@@ -155,14 +155,14 @@ class _RuleSwitcherScreenState extends ConsumerState<RuleSwitcherScreen> {
                 HapticFeedbackUtil.lightImpact();
                 notifier.onOptionPressed(false);
               },
-              color: DesignSystem.surface,
+              color: Theme.of(context).colorScheme.surface,
               child: Center(
                 child: Text(
                   isNumberRule ? 'ODD' : 'GREEN',
-                  style: const TextStyle(
+                  style: TextStyle(
                     fontWeight: FontWeight.w900,
                     fontSize: 18,
-                    color: DesignSystem.ink,
+                    color: Theme.of(context).colorScheme.onSurface,
                   ),
                 ),
               ),
@@ -176,8 +176,8 @@ class _RuleSwitcherScreenState extends ConsumerState<RuleSwitcherScreen> {
   Widget _buildStat(String label, String value, {Color? color}) {
     return Column(
       children: [
-        Text(label, style: const TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: DesignSystem.inkSlate)),
-        Text(value, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: color ?? DesignSystem.ink)),
+        Text(label, style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))),
+        Text(value, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: color ?? Theme.of(context).colorScheme.onSurface)),
       ],
     );
   }

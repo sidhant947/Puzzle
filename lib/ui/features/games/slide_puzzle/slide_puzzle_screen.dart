@@ -32,7 +32,7 @@ class SlidePuzzleScreen extends ConsumerWidget {
             return Column(
               children: [
                 SizedBox(height: isSmall ? 8 : 16),
-                _buildInstructions(isSmall),
+                _buildInstructions(context, isSmall),
                 const Spacer(),
                 Center(
                   child: ConstrainedBox(
@@ -62,10 +62,11 @@ class SlidePuzzleScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildInstructions(bool isSmall) {
+  Widget _buildInstructions(BuildContext context, bool isSmall) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
       child: TangibleContainer(
+        radius: DesignSystem.radiusMD,
         depth: isSmall ? 2.0 : 4.0,
         padding: EdgeInsets.all(isSmall ? 8 : 16),
         child: Column(
@@ -84,7 +85,7 @@ class SlidePuzzleScreen extends ConsumerWidget {
               'Rearrange the tiles into numerical order by sliding them into the empty space.',
               textAlign: TextAlign.center,
               style: TextStyle(
-                color: DesignSystem.outline,
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                 fontSize: isSmall ? 10 : 12,
                 fontWeight: FontWeight.w500,
                 height: 1.5,
@@ -99,20 +100,26 @@ class SlidePuzzleScreen extends ConsumerWidget {
   Widget _buildBoard(BuildContext context, WidgetRef ref, SlidePuzzleState state, bool isSmall) {
     return AspectRatio(
       aspectRatio: 1,
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
+      child: Container(
+        padding: const EdgeInsets.all(DesignSystem.spaceSM),
+        decoration: BoxDecoration(
+          color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.2),
+          borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
+        ),
         child: GridView.builder(
-          padding: const EdgeInsets.all(DesignSystem.spaceXS),
+          padding: EdgeInsets.zero,
           physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: SlidePuzzleEngine.size,
-            crossAxisSpacing: isSmall ? 8 : 10,
-            mainAxisSpacing: isSmall ? 8 : 10,
+            crossAxisSpacing: 4,
+            mainAxisSpacing: 4,
           ),
           itemCount: SlidePuzzleEngine.size * SlidePuzzleEngine.size,
           itemBuilder: (context, index) {
             final value = state.board[index];
             if (value == 0) return const SizedBox.shrink();
+
+            final isCorrect = value == index + 1;
 
             return GestureDetector(
               onTap: () {
@@ -120,17 +127,18 @@ class SlidePuzzleScreen extends ConsumerWidget {
                 ref.read(slidePuzzleNotifierProvider.notifier).moveTile(index);
               },
               child: TangibleContainer(
-                depth: isSmall ? 2.0 : 4.0,
-                color: DesignSystem.surface,
+                radius: DesignSystem.radiusXS,
+                depth: isSmall ? 2.0 : 3.0,
+                color: isCorrect 
+                    ? DesignSystem.primary.withValues(alpha: 0.1) 
+                    : Theme.of(context).colorScheme.surface,
                 child: Center(
-                  child: FittedBox(
-                    child: Text(
-                      '$value',
-                      style: TextStyle(
-                        fontSize: isSmall ? 18 : 24,
-                        fontWeight: FontWeight.w900,
-                        color: DesignSystem.ink,
-                      ),
+                  child: Text(
+                    '$value',
+                    style: TextStyle(
+                      fontSize: isSmall ? 20 : 28,
+                      fontWeight: FontWeight.w900,
+                      color: DesignSystem.primary,
                     ),
                   ),
                 ),

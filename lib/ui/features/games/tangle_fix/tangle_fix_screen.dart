@@ -82,6 +82,7 @@ class _TangleFixScreenState extends ConsumerState<TangleFixScreen> {
                   edges: state.edges,
                   draggingNodeId: state.draggingNodeId,
                   isSolved: state.isSolved,
+                  onSurfaceColor: Theme.of(context).colorScheme.onSurface,
                 ),
                 size: Size.infinite,
               ),
@@ -98,12 +99,14 @@ class TanglePainter extends CustomPainter {
   final List<TangleEdge> edges;
   final String? draggingNodeId;
   final bool isSolved;
+  final Color onSurfaceColor;
 
   TanglePainter({
     required this.nodes,
     required this.edges,
     this.draggingNodeId,
     required this.isSolved,
+    required this.onSurfaceColor,
   });
 
   @override
@@ -132,7 +135,7 @@ class TanglePainter extends CustomPainter {
       
       nodePaint.color = isDragging 
           ? DesignSystem.accentAmber 
-          : (isSolved ? DesignSystem.success : DesignSystem.inkSlate);
+          : (isSolved ? DesignSystem.success : onSurfaceColor.withValues(alpha: 0.7));
       
       // Draw Shadow
       canvas.drawCircle(

@@ -24,6 +24,7 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(crosswordNotifierProvider);
     final notifier = ref.read(crosswordNotifierProvider.notifier);
 
@@ -39,14 +40,14 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
       subtitle: 'Complete the grid with the correct words based on the clues provided.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: colorScheme.surface,
+          shadowColor: colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             notifier.initGame();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
+          child: Icon(Icons.refresh_rounded, size: 20, color: colorScheme.onSurface),
         ),
       ],
       body: state.board == null
@@ -76,14 +77,14 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
       child: ConstrainedBox(
         constraints: BoxConstraints(maxHeight: maxHeight),
         child: TangibleContainer(
-          color: DesignSystem.ink,
-          shadowColor: DesignSystem.inkSlate,
+          color: Theme.of(context).colorScheme.onSurface,
+          shadowColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
           depth: 4.0, // Reduced from 6.0
           radius: DesignSystem.radiusMD,
           padding: const EdgeInsets.all(3.0),
           child: Container(
             decoration: BoxDecoration(
-              color: DesignSystem.surface,
+              color: Theme.of(context).colorScheme.surface,
               borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
             ),
             child: ClipRRect(
@@ -116,7 +117,7 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
                     }
 
                     if (char == ' ') {
-                      return Container(color: DesignSystem.ink.withValues(alpha: 0.1));
+                      return Container(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1));
                     }
 
                     int? num;
@@ -133,15 +134,15 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
                         notifier.selectCell(x, y);
                       },
                       child: AnimatedContainer(
-                        duration: const Duration(milliseconds: 200),
+                        duration: Duration(milliseconds: 200),
                         decoration: BoxDecoration(
                           color: isSelected 
                               ? DesignSystem.primary.withValues(alpha: 0.2) 
-                              : (isInCurrentWord ? DesignSystem.primary.withValues(alpha: 0.05) : DesignSystem.surface),
+                              : (isInCurrentWord ? DesignSystem.primary.withValues(alpha: 0.05) : Theme.of(context).colorScheme.surface),
                           border: Border.all(
                             color: isSelected 
                               ? DesignSystem.primary 
-                              : DesignSystem.outline.withValues(alpha: 0.5), 
+                              : Theme.of(context).colorScheme.outline.withValues(alpha: 0.5).withValues(alpha: 0.5), 
                             width: 0.5
                           ),
                         ),
@@ -153,10 +154,10 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
                                 top: 1,
                                 child: Text(
                                   num.toString(),
-                                  style: const TextStyle(
+                                  style: TextStyle(
                                     fontSize: 8, // Reduced from 9
                                     fontWeight: FontWeight.w900,
-                                    color: DesignSystem.inkSlate,
+                                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                                   ),
                                 ),
                               ),
@@ -169,7 +170,7 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
                                     style: TextStyle(
                                       fontSize: 16, // Reduced from 18
                                       fontWeight: FontWeight.w900,
-                                      color: isSelected ? DesignSystem.primary : DesignSystem.ink,
+                                      color: isSelected ? DesignSystem.primary : Theme.of(context).colorScheme.onSurface,
                                     ),
                                   ),
                                 ),
@@ -209,7 +210,7 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
       child: TangibleContainer(
-        color: DesignSystem.surface,
+        color: Theme.of(context).colorScheme.surface,
         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
         child: SizedBox(
           width: double.infinity,
@@ -262,8 +263,8 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 1.5),
         child: TangibleButton(
-          color: isSpecialKey ? DesignSystem.accentBerry : DesignSystem.surface,
-          shadowColor: isSpecialKey ? const Color(0xFFBE185D) : DesignSystem.outlineVariant,
+          color: isSpecialKey ? DesignSystem.accentBerry : Theme.of(context).colorScheme.surface,
+          shadowColor: isSpecialKey ? Color(0xFFBE185D) : Theme.of(context).colorScheme.outline,
           padding: EdgeInsets.zero,
           onTap: () {
             HapticFeedbackUtil.selectionClick();
@@ -277,13 +278,13 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
             height: 40, // Reduced from 48
             alignment: Alignment.center,
             child: label == 'DEL'
-                ? const Icon(Icons.backspace_rounded, size: 16, color: Colors.white)
+                ? Icon(Icons.backspace_rounded, size: 16, color: Colors.white)
                 : Text(
                     label,
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontSize: 14, // Reduced from 16
                       fontWeight: FontWeight.w900,
-                      color: DesignSystem.ink,
+                      color: Theme.of(context).colorScheme.onSurface,
                     ),
                   ),
           ),

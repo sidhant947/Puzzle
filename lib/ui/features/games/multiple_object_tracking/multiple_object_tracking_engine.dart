@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 
 class Ball {
   final int id;
-  Offset position;
-  Offset velocity;
+  final Offset position;
+  final Offset velocity;
   final bool isTarget;
-  bool isSelected;
+  final bool isSelected;
 
   Ball({
     required this.id,
@@ -15,13 +15,27 @@ class Ball {
     required this.isTarget,
     this.isSelected = false,
   });
+
+  Ball copyWith({
+    Offset? position,
+    Offset? velocity,
+    bool? isSelected,
+  }) {
+    return Ball(
+      id: id,
+      position: position ?? this.position,
+      velocity: velocity ?? this.velocity,
+      isTarget: isTarget,
+      isSelected: isSelected ?? this.isSelected,
+    );
+  }
 }
 
 class MultipleObjectTrackingEngine {
   final Random _random = Random();
   final double ballRadius = 20.0;
 
-  List<Ball> generateBalls(Size bounds, int totalCount, int targetCount) {
+  List<Ball> generateBalls(Size bounds, int totalCount, int targetCount, {double speedMultiplier = 1.0}) {
     List<Ball> balls = [];
     Set<int> targetIndices = {};
     while (targetIndices.length < targetCount) {
@@ -35,46 +49,49 @@ class MultipleObjectTrackingEngine {
           _random.nextDouble() * (bounds.width - 2 * ballRadius) + ballRadius,
           _random.nextDouble() * (bounds.height - 2 * ballRadius) + ballRadius,
         ),
-        velocity: _generateRandomVelocity(),
+        velocity: _generateRandomVelocity(speedMultiplier: speedMultiplier),
         isTarget: targetIndices.contains(i),
       ));
     }
     return balls;
   }
 
-  Offset _generateRandomVelocity() {
-    double speed = 2.0 + _random.nextDouble() * 2.0;
+  Offset _generateRandomVelocity({double speedMultiplier = 1.0}) {
+    double speed = (2.0 + _random.nextDouble() * 2.0) * speedMultiplier;
     double angle = _random.nextDouble() * 2 * pi;
     return Offset(cos(angle) * speed, sin(angle) * speed);
   }
 
-  void updatePositions(List<Ball> balls, Size bounds) {
-    for (var ball in balls) {
-      ball.position += ball.velocity;
+  List<Ball> updatePositions(List<Ball> balls, Size bounds) {
+    return balls.map((ball) {
+      Offset newPos = ball.position + ball.velocity;
+      Offset newVel = ball.velocity;
 
       // Bounce off walls
-      if (ball.position.dx - ballRadius < 0 || ball.position.dx + ballRadius > bounds.width) {
-        ball.velocity = Offset(-ball.velocity.dx, ball.velocity.dy);
-        ball.position = Offset(
-          ball.position.dx.clamp(ballRadius, bounds.width - ballRadius),
-          ball.position.dy,
+      if (newPos.dx - ballRadius < 0 || newPos.dx + ballRadius > bounds.width) {
+        newVel = Offset(-newVel.dx, newVel.dy);
+        newPos = Offset(
+          newPos.dx.clamp(ballRadius, bounds.width - ballRadius),
+          newPos.dy,
         );
       }
-      if (ball.position.dy - ballRadius < 0 || ball.position.dy + ballRadius > bounds.height) {
-        ball.velocity = Offset(ball.velocity.dx, -ball.velocity.dy);
-        ball.position = Offset(
-          ball.position.dx,
-          ball.position.dy.clamp(ballRadius, bounds.height - ballRadius),
+      if (newPos.dy - ballRadius < 0 || newPos.dy + ballRadius > bounds.height) {
+        newVel = Offset(newVel.dx, -newVel.dy);
+        newPos = Offset(
+          newPos.dx,
+          newPos.dy.clamp(ballRadius, bounds.height - ballRadius),
         );
       }
       
       // Occasionally change direction slightly to make it more unpredictable
       if (_random.nextDouble() < 0.02) {
-        double speed = ball.velocity.distance;
-        double currentAngle = atan2(ball.velocity.dy, ball.velocity.dx);
+        double speed = newVel.distance;
+        double currentAngle = atan2(newVel.dy, newVel.dx);
         double newAngle = currentAngle + (_random.nextDouble() - 0.5) * 0.5;
-        ball.velocity = Offset(cos(newAngle) * speed, sin(newAngle) * speed);
+        newVel = Offset(cos(newAngle) * speed, sin(newAngle) * speed);
       }
-    }
+
+      return ball.copyWith(position: newPos, velocity: newVel);
+    }).toList();
   }
 }

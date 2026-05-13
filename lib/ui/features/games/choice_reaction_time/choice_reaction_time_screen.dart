@@ -50,6 +50,7 @@ class _ChoiceReactionTimeScreenState extends ConsumerState<ChoiceReactionTimeScr
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(choiceReactionTimeNotifierProvider);
     final notifier = ref.read(choiceReactionTimeNotifierProvider.notifier);
 
@@ -81,10 +82,10 @@ class _ChoiceReactionTimeScreenState extends ConsumerState<ChoiceReactionTimeScr
           const SizedBox(height: DesignSystem.spaceXL),
           Text(
             'Time Remaining: ${state.timeLeft}s',
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
-              color: DesignSystem.ink,
+              color: colorScheme.onSurface,
             ),
           ),
           const SizedBox(height: DesignSystem.spaceXL),
@@ -106,10 +107,10 @@ class _ChoiceReactionTimeScreenState extends ConsumerState<ChoiceReactionTimeScr
                       final isActive = state.targetIndex == index;
                       return TangibleButton(
                         onTap: () => notifier.onSquarePressed(index),
-                        color: isActive ? DesignSystem.primary : DesignSystem.surface,
+                        color: isActive ? DesignSystem.primary : colorScheme.surface,
                         shadowColor: isActive 
                             ? DesignSystem.primary.withValues(alpha: 0.5) 
-                            : DesignSystem.outlineVariant,
+                            : colorScheme.outline,
                         child: isActive 
                             ? const Icon(Icons.flash_on, color: Colors.white, size: 48)
                             : const SizedBox.shrink(),

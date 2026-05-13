@@ -46,6 +46,7 @@ class _SilhouetteMatchScreenState extends ConsumerState<SilhouetteMatchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(silhouetteMatchNotifierProvider);
     final notifier = ref.read(silhouetteMatchNotifierProvider.notifier);
 
@@ -71,23 +72,23 @@ class _SilhouetteMatchScreenState extends ConsumerState<SilhouetteMatchScreen> {
         padding: const EdgeInsets.all(DesignSystem.spaceLG),
         child: Column(
           children: [
-            const Text(
+            Text(
               'TARGET OBJECT',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 letterSpacing: 1.2,
-                color: DesignSystem.inkSlate,
+                color: colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
-            const SizedBox(height: DesignSystem.spaceMD),
-            _buildTarget(state.target),
+            SizedBox(height: DesignSystem.spaceMD),
+            _buildTarget(state.target, colorScheme.onSurface),
             const SizedBox(height: DesignSystem.spaceXL),
-            const Text(
+            Text(
               'OPTIONS',
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 letterSpacing: 1.2,
-                color: DesignSystem.inkSlate,
+                color: colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
             const SizedBox(height: DesignSystem.spaceMD),
@@ -96,7 +97,7 @@ class _SilhouetteMatchScreenState extends ConsumerState<SilhouetteMatchScreen> {
               runSpacing: DesignSystem.spaceMD,
               alignment: WrapAlignment.center,
               children: List.generate(state.options.length, (index) {
-                return _buildOption(state, notifier, index);
+                return _buildOption(state, notifier, index, colorScheme.onSurface);
               }),
             ),
           ],
@@ -105,33 +106,33 @@ class _SilhouetteMatchScreenState extends ConsumerState<SilhouetteMatchScreen> {
     );
   }
 
-  Widget _buildTarget(List<ProjectedCube> cubes) {
+  Widget _buildTarget(List<ProjectedCube> cubes, Color onSurfaceColor) {
     return Container(
       width: 200,
       height: 200,
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
         boxShadow: [
           BoxShadow(
-            color: DesignSystem.ink.withValues(alpha: 0.05),
+            color: onSurfaceColor.withValues(alpha: 0.05),
             blurRadius: 10,
             offset: const Offset(0, 4),
           ),
         ],
       ),
       child: CustomPaint(
-        painter: SilhouettePainter(cubes, isWireframe: true),
+        painter: SilhouettePainter(cubes, onSurfaceColor: onSurfaceColor, isWireframe: true),
       ),
     );
   }
 
-  Widget _buildOption(SilhouetteMatchState state, SilhouetteMatchNotifier notifier, int index) {
+  Widget _buildOption(SilhouetteMatchState state, SilhouetteMatchNotifier notifier, int index, Color onSurfaceColor) {
     final isSelected = state.selectedIndex == index;
     final isCorrect = state.correctIndex == index;
     final showResult = state.selectedIndex != null;
 
-    Color borderColor = DesignSystem.outline;
+    Color borderColor = Theme.of(context).colorScheme.outline.withValues(alpha: 0.5);
     if (showResult) {
       if (isCorrect) {
         borderColor = DesignSystem.success;
@@ -148,12 +149,12 @@ class _SilhouetteMatchScreenState extends ConsumerState<SilhouetteMatchScreen> {
         width: 140,
         height: 140,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
           border: Border.all(color: borderColor, width: 3),
           boxShadow: [
             BoxShadow(
-              color: DesignSystem.ink.withValues(alpha: 0.05),
+              color: onSurfaceColor.withValues(alpha: 0.05),
               blurRadius: 5,
               offset: const Offset(0, 2),
             ),
@@ -164,7 +165,7 @@ class _SilhouetteMatchScreenState extends ConsumerState<SilhouetteMatchScreen> {
           children: [
             CustomPaint(
               size: const Size(120, 120),
-              painter: SilhouettePainter(state.options[index], isWireframe: false),
+              painter: SilhouettePainter(state.options[index], onSurfaceColor: onSurfaceColor, isWireframe: false),
             ),
             if (showResult && isCorrect)
               const Positioned(top: 4, right: 4, child: Icon(Icons.check_circle, color: DesignSystem.success, size: 20)),
@@ -180,8 +181,9 @@ class _SilhouetteMatchScreenState extends ConsumerState<SilhouetteMatchScreen> {
 class SilhouettePainter extends CustomPainter {
   final List<ProjectedCube> cubes;
   final bool isWireframe;
+  final Color onSurfaceColor;
 
-  SilhouettePainter(this.cubes, {required this.isWireframe});
+  SilhouettePainter(this.cubes, {required this.onSurfaceColor, required this.isWireframe});
 
   @override
   void paint(Canvas canvas, Size size) {
@@ -189,7 +191,7 @@ class SilhouettePainter extends CustomPainter {
 
     if (isWireframe) {
       final paint = Paint()
-        ..color = DesignSystem.ink
+        ..color = DesignSystem.primary
         ..strokeWidth = 2
         ..style = PaintingStyle.stroke;
 
@@ -199,20 +201,26 @@ class SilhouettePainter extends CustomPainter {
         }
       }
     } else {
-      final paint = Paint()
-        ..color = DesignSystem.inkSlate
+      final fillPaint = Paint()
+        ..color = DesignSystem.primary.withValues(alpha: 0.4)
         ..style = PaintingStyle.fill;
 
+      final strokePaint = Paint()
+        ..color = DesignSystem.primary
+        ..strokeWidth = 1.5
+        ..style = PaintingStyle.stroke;
+
       for (var cube in cubes) {
+        final path = Path();
         for (var face in cube.faces) {
-          final path = Path();
           path.moveTo(cube.vertices[face[0]].dx, cube.vertices[face[0]].dy);
           for (int i = 1; i < face.length; i++) {
             path.lineTo(cube.vertices[face[i]].dx, cube.vertices[face[i]].dy);
           }
           path.close();
-          canvas.drawPath(path, paint);
         }
+        canvas.drawPath(path, fillPaint);
+        canvas.drawPath(path, strokePaint);
       }
     }
   }

@@ -91,7 +91,7 @@ class _SDMTScreenState extends ConsumerState<SDMTScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16),
       child: TangibleContainer(
-        color: DesignSystem.surface,
+        color: Theme.of(context).colorScheme.surface,
         padding: const EdgeInsets.all(12),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -99,18 +99,23 @@ class _SDMTScreenState extends ConsumerState<SDMTScreen> {
             return Column(
               children: [
                 Icon(entry.key, size: 24, color: DesignSystem.primary),
-                const SizedBox(height: 4),
+                SizedBox(height: 4),
                 Container(
-                  width: 24,
-                  height: 24,
+                  width: 30,
+                  height: 30,
                   decoration: BoxDecoration(
-                    border: Border.all(color: DesignSystem.outline),
-                    borderRadius: BorderRadius.circular(4),
+                    border: Border.all(color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5)),
+                    borderRadius: BorderRadius.circular(6),
                   ),
                   child: Center(
-                    child: Text(
-                      entry.value.toString(),
-                      style: const TextStyle(fontWeight: FontWeight.bold),
+                    child: FittedBox(
+                      child: Padding(
+                        padding: const EdgeInsets.all(2.0),
+                        child: Text(
+                          entry.value.toString(),
+                          style: const TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      ),
                     ),
                   ),
                 ),
@@ -124,12 +129,12 @@ class _SDMTScreenState extends ConsumerState<SDMTScreen> {
 
   Widget _buildTargetSymbol(SdmtState state) {
     return AnimatedSwitcher(
-      duration: const Duration(milliseconds: 150),
+      duration: Duration(milliseconds: 150),
       child: TangibleContainer(
         key: ValueKey(state.currentSymbol),
-        color: DesignSystem.surface,
+        color: Theme.of(context).colorScheme.surface,
         padding: const EdgeInsets.all(40),
-        child: Icon(state.currentSymbol, size: 80, color: DesignSystem.ink),
+        child: Icon(state.currentSymbol, size: 80, color: Theme.of(context).colorScheme.onSurface),
       ),
     );
   }
@@ -154,14 +159,15 @@ class _SDMTScreenState extends ConsumerState<SDMTScreen> {
               HapticFeedbackUtil.lightImpact();
               notifier.onDigitTap(digit);
             },
-            color: DesignSystem.surface,
+            color: Theme.of(context).colorScheme.surface,
+            padding: EdgeInsets.zero,
             child: Center(
               child: Text(
                 digit.toString(),
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.w900,
-                  color: DesignSystem.ink,
+                  color: Theme.of(context).colorScheme.onSurface,
                 ),
               ),
             ),
@@ -186,8 +192,8 @@ class _SDMTScreenState extends ConsumerState<SDMTScreen> {
 
   Widget _buildStat(String label, String value, Color color, bool isSmall) {
     return TangibleContainer(
-      color: DesignSystem.surface,
-      shadowColor: DesignSystem.outlineVariant,
+      color: Theme.of(context).colorScheme.surface,
+      shadowColor: Theme.of(context).colorScheme.outline,
       depth: isSmall ? 2.0 : 4.0,
       padding: EdgeInsets.symmetric(
         horizontal: isSmall ? 12 : 16, 
@@ -200,7 +206,7 @@ class _SDMTScreenState extends ConsumerState<SDMTScreen> {
             style: TextStyle(
               fontSize: isSmall ? 8 : 10,
               fontWeight: FontWeight.w900,
-              color: DesignSystem.inkSlate,
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
               letterSpacing: 1.5,
             ),
           ),

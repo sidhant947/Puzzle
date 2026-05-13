@@ -51,6 +51,7 @@ class _ObjectShuffleScreenState extends ConsumerState<ObjectShuffleScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(objectShuffleNotifierProvider);
     final notifier = ref.read(objectShuffleNotifierProvider.notifier);
 
@@ -133,13 +134,13 @@ class _ObjectShuffleScreenState extends ConsumerState<ObjectShuffleScreen> {
               ),
             ),
           ),
-          const Spacer(),
-          const Padding(
-            padding: EdgeInsets.all(DesignSystem.spaceXL),
+          Spacer(),
+          Padding(
+            padding: const EdgeInsets.all(DesignSystem.spaceXL),
             child: Text(
               'TRACK THE STAR AS IT SHUFFLES',
               style: TextStyle(
-                color: DesignSystem.inkSlate,
+                color: colorScheme.onSurface.withValues(alpha: 0.7),
                 fontWeight: FontWeight.w900,
                 letterSpacing: 2.0,
                 fontSize: 12,
@@ -181,27 +182,27 @@ class _Shell extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return AnimatedScale(
-      duration: const Duration(milliseconds: 200),
+      duration: Duration(milliseconds: 200),
       scale: isSwapping ? 1.15 : 1.0,
       child: TangibleContainer(
         depth: isSwapping ? 8.0 : 4.0,
         radius: 30,
-        color: isWrong ? DesignSystem.error.withValues(alpha: 0.1) : DesignSystem.surface,
-        shadowColor: isWrong ? DesignSystem.error.withValues(alpha: 0.2) : DesignSystem.outlineVariant,
+        color: isWrong ? DesignSystem.error.withValues(alpha: 0.1) : Theme.of(context).colorScheme.surface,
+        shadowColor: isWrong ? DesignSystem.error.withValues(alpha: 0.2) : Theme.of(context).colorScheme.outline,
         padding: const EdgeInsets.all(12),
         child: Container(
           width: 36,
           height: 60,
           decoration: BoxDecoration(
             color: isRevealed 
-              ? (isTarget ? DesignSystem.primary : DesignSystem.outlineVariant.withValues(alpha: 0.3))
-              : (isSwapping ? DesignSystem.primary.withValues(alpha: 0.05) : DesignSystem.inkSlate.withValues(alpha: 0.1)),
+              ? (isTarget ? DesignSystem.primary : Theme.of(context).colorScheme.outline.withValues(alpha: 0.3))
+              : (isSwapping ? DesignSystem.primary.withValues(alpha: 0.05) : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7).withValues(alpha: 0.1)),
             borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
             border: isSwapping ? Border.all(color: DesignSystem.primary.withValues(alpha: 0.3), width: 2) : null,
           ),
           child: isRevealed && isTarget 
-            ? const Icon(Icons.star_rounded, color: Colors.white, size: 24)
-            : (isRevealed ? null : const Icon(Icons.help_outline_rounded, color: DesignSystem.inkSlate, size: 18)),
+            ? Icon(Icons.star_rounded, color: Colors.white, size: 24)
+            : (isRevealed ? null : Icon(Icons.help_outline_rounded, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7), size: 18)),
         ),
       ),
     );

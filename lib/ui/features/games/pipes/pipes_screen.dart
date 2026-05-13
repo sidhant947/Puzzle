@@ -39,16 +39,16 @@ class PipesScreen extends ConsumerWidget {
       subtitle: 'Connect matching colored dots with pipes.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: Theme.of(context).colorScheme.surface,
+          shadowColor: Theme.of(context).colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             ref.read(pipesNotifierProvider.notifier).newGame();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(
+          child: Icon(
             Icons.refresh_rounded,
-            color: DesignSystem.ink,
+            color: Theme.of(context).colorScheme.onSurface,
             size: 20,
           ),
         ),
@@ -58,7 +58,7 @@ class PipesScreen extends ConsumerWidget {
           return Column(
             children: [
               const SizedBox(height: DesignSystem.spaceMD),
-              _buildInstructions(),
+              _buildInstructions(context),
               const Spacer(),
               ConstrainedBox(
                 constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.6),
@@ -75,10 +75,10 @@ class PipesScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildInstructions() {
-    return const TangibleContainer(
+  Widget _buildInstructions(BuildContext context) {
+    return TangibleContainer(
       padding: EdgeInsets.symmetric(horizontal: 24, vertical: 12),
-      color: DesignSystem.surface,
+      color: Theme.of(context).colorScheme.surface,
       depth: 1,
       radius: DesignSystem.radiusFull,
       child: Text(
@@ -101,8 +101,8 @@ class PipesScreen extends ConsumerWidget {
 
         return TangibleContainer(
           depth: 4.0,
-          color: DesignSystem.ink,
-          shadowColor: DesignSystem.ink.withValues(alpha: 0.2),
+          color: Theme.of(context).colorScheme.onSurface,
+          shadowColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2),
           padding: const EdgeInsets.all(DesignSystem.spaceSM),
           child: GestureDetector(
             onPanStart: (details) {

@@ -4,6 +4,7 @@ import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/haptic_feedback.dart';
 import '../../../core/juice/game_scaffold.dart';
 import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../widgets/tangible.dart';
 import '../../../../utils/design_system.dart';
 import 'mental_abacus_provider.dart';
 
@@ -45,6 +46,7 @@ class _MentalAbacusScreenState extends ConsumerState<MentalAbacusScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(mentalAbacusNotifierProvider);
     final notifier = ref.read(mentalAbacusNotifierProvider.notifier);
 
@@ -66,51 +68,57 @@ class _MentalAbacusScreenState extends ConsumerState<MentalAbacusScreen> {
     return GameScaffold(
       title: 'Mental Abacus',
       subtitle: 'Solve using the Soroban',
-      body: Padding(
-        padding: const EdgeInsets.all(DesignSystem.spaceLG),
-        child: Column(
-          children: [
-            LinearProgressIndicator(
-              value: state.score / state.targetScore,
-              backgroundColor: DesignSystem.outline,
-              valueColor: const AlwaysStoppedAnimation<Color>(DesignSystem.success),
-            ),
-            const SizedBox(height: DesignSystem.spaceXL),
-            Container(
-              padding: const EdgeInsets.all(DesignSystem.spaceLG),
-              decoration: BoxDecoration(
-                color: DesignSystem.surface,
-                borderRadius: BorderRadius.circular(16),
-                border: Border.all(color: DesignSystem.outline),
-              ),
-              child: Text(
-                '${state.currentProblem?.value1} ${state.currentProblem?.operator} ${state.currentProblem?.value2} = ?',
-                style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 32),
-              ),
-            ),
-            const Spacer(),
-            _buildAbacus(state, notifier),
-            const Spacer(),
-            Text(
-              'Current Value: ${state.currentAbacusValue}',
-              style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold, color: DesignSystem.inkSlate),
-            ),
-            const SizedBox(height: DesignSystem.spaceLG),
-            SizedBox(
-              width: double.infinity,
-              height: 60,
-              child: ElevatedButton(
-                onPressed: notifier.submit,
-                style: ElevatedButton.styleFrom(
-                  backgroundColor: DesignSystem.ink,
-                  foregroundColor: Colors.white,
-                  shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
+      body: LayoutBuilder(
+        builder: (context, constraints) {
+          return SingleChildScrollView(
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: constraints.maxHeight),
+              child: Padding(
+                padding: const EdgeInsets.all(DesignSystem.spaceLG),
+                child: Column(
+                  children: [
+                    LinearProgressIndicator(
+                      value: state.score / state.targetScore,
+                      backgroundColor: colorScheme.outline.withValues(alpha: 0.5),
+                      valueColor: const AlwaysStoppedAnimation<Color>(DesignSystem.success),
+                    ),
+                    SizedBox(height: DesignSystem.spaceXL),
+                    Container(
+                      padding: const EdgeInsets.all(DesignSystem.spaceLG),
+                      decoration: BoxDecoration(
+                        color: colorScheme.surface,
+                        borderRadius: BorderRadius.circular(16),
+                        border: Border.all(color: colorScheme.outline.withValues(alpha: 0.5)),
+                      ),
+                      child: Text(
+                        '${state.currentProblem?.value1} ${state.currentProblem?.operator} ${state.currentProblem?.value2} = ?',
+                        style: Theme.of(context).textTheme.headlineMedium?.copyWith(fontSize: 32),
+                      ),
+                    ),
+                    const SizedBox(height: DesignSystem.spaceXL),
+                    _buildAbacus(state, notifier),
+                    const SizedBox(height: DesignSystem.spaceXL),
+                    Text(
+                      'Current Value: ${state.currentAbacusValue}',
+                      style: Theme.of(context).textTheme.bodyLarge?.copyWith(fontWeight: FontWeight.bold, color: colorScheme.onSurface.withValues(alpha: 0.7)),
+                    ),
+                    SizedBox(height: DesignSystem.spaceLG),
+                    TangibleButton(
+                      onTap: notifier.submit,
+                      color: DesignSystem.primary,
+                      child: const Center(
+                        child: Text(
+                          'SUBMIT ANSWER',
+                          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
+                        ),
+                      ),
+                    ),
+                  ],
                 ),
-                child: const Text('SUBMIT', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               ),
             ),
-          ],
-        ),
+          );
+        },
       ),
     );
   }

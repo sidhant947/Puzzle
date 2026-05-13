@@ -33,14 +33,14 @@ class WordMastermindScreen extends ConsumerWidget {
       subtitle: 'Crack the 4-letter code! Bulls (B) are perfect spots, Cows (C) are wrong spots.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: Theme.of(context).colorScheme.surface,
+          shadowColor: Theme.of(context).colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             notifier.reset();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
+          child: Icon(Icons.refresh_rounded, size: 20, color: Theme.of(context).colorScheme.onSurface),
         ),
       ],
       body: LayoutBuilder(
@@ -54,8 +54,8 @@ class WordMastermindScreen extends ConsumerWidget {
                   child: _buildGuessList(state),
                 ),
               ),
-              _buildCurrentInput(state, constraints),
-              _buildKeyboard(state, notifier, constraints),
+              _buildCurrentInput(context, state, constraints),
+              _buildKeyboard(context, state, notifier, constraints),
               SizedBox(height: constraints.maxHeight * 0.02),
             ],
           );
@@ -76,14 +76,14 @@ class WordMastermindScreen extends ConsumerWidget {
             children: [
               Text(
                 '${index + 1}.',
-                style: const TextStyle(fontWeight: FontWeight.w900, color: DesignSystem.inkSlate, fontSize: 11),
+                style: TextStyle(fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7), fontSize: 11),
               ),
               const SizedBox(width: 8),
-              ...guess.guess.split('').map((l) => _buildLetterTile(l)),
+              ...guess.guess.split('').map((l) => _buildLetterTile(context, l)),
               const Spacer(),
-              _buildStatIndicator(guess.bulls, DesignSystem.success, 'B'),
+              _buildStatIndicator(context, guess.bulls, DesignSystem.success, 'B'),
               const SizedBox(width: 8),
-              _buildStatIndicator(guess.cows, DesignSystem.accentAmber, 'C'),
+              _buildStatIndicator(context, guess.cows, DesignSystem.accentAmber, 'C'),
             ],
           ),
         );
@@ -91,25 +91,25 @@ class WordMastermindScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildLetterTile(String letter) {
+  Widget _buildLetterTile(BuildContext context, String letter) {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 2),
       width: 28,
       height: 28,
       alignment: Alignment.center,
       decoration: BoxDecoration(
-        color: DesignSystem.surface,
-        border: Border.all(color: DesignSystem.outline),
+        color: Theme.of(context).colorScheme.surface,
+        border: Border.all(color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5)),
         borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
       ),
       child: Text(
         letter.toUpperCase(),
-        style: const TextStyle(fontWeight: FontWeight.w900, color: DesignSystem.ink, fontSize: 12),
+        style: TextStyle(fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onSurface, fontSize: 12),
       ),
     );
   }
 
-  Widget _buildStatIndicator(int count, Color color, String label) {
+  Widget _buildStatIndicator(BuildContext context, int count, Color color, String label) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
       decoration: BoxDecoration(
@@ -119,14 +119,14 @@ class WordMastermindScreen extends ConsumerWidget {
       child: Row(
         children: [
           Text('$count', style: TextStyle(fontWeight: FontWeight.w900, color: color, fontSize: 12)),
-          const SizedBox(width: 2),
-          Text(label, style: const TextStyle(fontSize: 9, fontWeight: FontWeight.w900, color: DesignSystem.inkSlate)),
+          SizedBox(width: 2),
+          Text(label, style: TextStyle(fontSize: 9, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))),
         ],
       ),
     );
   }
 
-  Widget _buildCurrentInput(WordMastermindState state, BoxConstraints constraints) {
+  Widget _buildCurrentInput(BuildContext context, WordMastermindState state, BoxConstraints constraints) {
     final boxSize = (constraints.maxWidth * 0.12).clamp(35.0, 50.0);
     return Container(
       padding: const EdgeInsets.symmetric(vertical: 12),
@@ -140,9 +140,9 @@ class WordMastermindScreen extends ConsumerWidget {
             height: boxSize * 1.2,
             alignment: Alignment.center,
             decoration: BoxDecoration(
-              color: DesignSystem.surface,
+              color: Theme.of(context).colorScheme.surface,
               border: Border.all(
-                color: letter.isNotEmpty ? DesignSystem.primary : DesignSystem.outline,
+                color: letter.isNotEmpty ? DesignSystem.primary : Theme.of(context).colorScheme.outline.withValues(alpha: 0.5),
                 width: letter.isNotEmpty ? 2 : 1,
               ),
               borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
@@ -151,7 +151,7 @@ class WordMastermindScreen extends ConsumerWidget {
                   BoxShadow(
                     color: DesignSystem.primary.withValues(alpha: 0.1),
                     blurRadius: 4,
-                    offset: const Offset(0, 2),
+                    offset: Offset(0, 2),
                   ),
               ],
             ),
@@ -160,7 +160,7 @@ class WordMastermindScreen extends ConsumerWidget {
                 padding: const EdgeInsets.all(4.0),
                 child: Text(
                   letter.toUpperCase(),
-                  style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 22, color: DesignSystem.ink),
+                  style: TextStyle(fontWeight: FontWeight.w900, fontSize: 22, color: Theme.of(context).colorScheme.onSurface),
                 ),
               ),
             ),
@@ -170,7 +170,7 @@ class WordMastermindScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildKeyboard(WordMastermindState state, WordMastermindNotifier notifier, BoxConstraints constraints) {
+  Widget _buildKeyboard(BuildContext context, WordMastermindState state, WordMastermindNotifier notifier, BoxConstraints constraints) {
     final rows = [
       ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
       ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
@@ -199,15 +199,15 @@ class WordMastermindScreen extends ConsumerWidget {
                     notifier.addLetter(key);
                   }
                 },
-                color: (key == 'ENTER' || key == 'DEL') ? DesignSystem.inkSlate : DesignSystem.surface,
-                shadowColor: (key == 'ENTER' || key == 'DEL') ? DesignSystem.ink : DesignSystem.outlineVariant,
+                color: (key == 'ENTER' || key == 'DEL') ? DesignSystem.primary : Theme.of(context).colorScheme.surface,
+                shadowColor: (key == 'ENTER' || key == 'DEL') ? DesignSystem.primaryShadow : Theme.of(context).colorScheme.outline,
                 depth: 2,
                 padding: EdgeInsets.zero,
                 child: Container(
                   height: keyHeight,
                   alignment: Alignment.center,
                   child: key == 'DEL' 
-                    ? const Icon(Icons.backspace_rounded, size: 16, color: DesignSystem.ink) 
+                    ? const Icon(Icons.backspace_rounded, size: 16, color: Colors.white) 
                     : FittedBox(
                         child: Padding(
                           padding: const EdgeInsets.all(4.0),
@@ -216,7 +216,7 @@ class WordMastermindScreen extends ConsumerWidget {
                             style: TextStyle(
                               fontWeight: FontWeight.w900, 
                               fontSize: (key == 'ENTER' || key == 'DEL') ? 9 : 11,
-                              color: (key == 'ENTER' || key == 'DEL') ? Colors.white : DesignSystem.ink,
+                              color: (key == 'ENTER' || key == 'DEL') ? Colors.white : Theme.of(context).colorScheme.onSurface,
                             )
                           ),
                         ),

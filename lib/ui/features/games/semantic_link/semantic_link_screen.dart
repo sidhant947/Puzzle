@@ -47,6 +47,7 @@ class _SemanticLinkScreenState extends ConsumerState<SemanticLinkScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(semanticLinkNotifierProvider);
     final notifier = ref.read(semanticLinkNotifierProvider.notifier);
 
@@ -88,14 +89,14 @@ class _SemanticLinkScreenState extends ConsumerState<SemanticLinkScreen> {
                     'Time: ${state.timeLeft}s',
                     style: TextStyle(
                       fontWeight: FontWeight.w900,
-                      color: state.timeLeft < 10 ? DesignSystem.error : DesignSystem.ink,
+                      color: state.timeLeft < 10 ? DesignSystem.error : colorScheme.onSurface,
                     ),
                   ),
                 ),
               ],
             ),
           ),
-          const Spacer(),
+          Spacer(),
           if (state.puzzle != null) ...[
             Wrap(
               spacing: DesignSystem.spaceMD,
@@ -125,14 +126,14 @@ class _SemanticLinkScreenState extends ConsumerState<SemanticLinkScreen> {
                 mainAxisSpacing: DesignSystem.spaceMD,
                 children: state.puzzle!.options.map((option) => TangibleButton(
                   onTap: () => notifier.submitAnswer(option),
-                  color: DesignSystem.surface,
+                  color: colorScheme.surface,
                   child: Center(
                     child: Text(
                       option.toUpperCase(),
-                      style: const TextStyle(
+                      style: TextStyle(
                         fontSize: 18,
                         fontWeight: FontWeight.w900,
-                        color: DesignSystem.ink,
+                        color: colorScheme.onSurface,
                       ),
                     ),
                   ),

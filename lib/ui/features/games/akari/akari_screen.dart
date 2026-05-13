@@ -45,6 +45,7 @@ class _AkariScreenState extends ConsumerState<AkariScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(akariNotifierProvider);
     final notifier = ref.read(akariNotifierProvider.notifier);
 
@@ -73,7 +74,7 @@ class _AkariScreenState extends ConsumerState<AkariScreen> {
             aspectRatio: 1,
             child: Container(
               decoration: BoxDecoration(
-                border: Border.all(color: DesignSystem.ink, width: 2),
+                border: Border.all(color: colorScheme.onSurface, width: 2),
                 borderRadius: BorderRadius.circular(8),
               ),
               child: LayoutBuilder(builder: (context, constraints) {
@@ -106,8 +107,8 @@ class _AkariScreenState extends ConsumerState<AkariScreen> {
         width: size,
         height: size,
         decoration: BoxDecoration(
-          color: DesignSystem.ink,
-          border: Border.all(color: DesignSystem.inkSlate, width: 0.5),
+          color: Theme.of(context).colorScheme.onSurface,
+          border: Border.all(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7), width: 0.5),
         ),
         child: val >= 0
             ? Center(
@@ -130,8 +131,8 @@ class _AkariScreenState extends ConsumerState<AkariScreen> {
           width: size,
           height: size,
           decoration: BoxDecoration(
-            color: isLit ? DesignSystem.accentAmber.withValues(alpha: 0.3) : Colors.white,
-            border: Border.all(color: DesignSystem.outline, width: 0.5),
+            color: isLit ? DesignSystem.accentAmber.withValues(alpha: 0.3) : Theme.of(context).colorScheme.surface,
+            border: Border.all(color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5), width: 0.5),
           ),
           child: Center(
             child: isBulb

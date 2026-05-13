@@ -104,7 +104,7 @@ class _ArithmeticChainScreenState extends ConsumerState<ArithmeticChainScreen> {
 
   Widget _buildMainDisplay(ArithmeticChainState state) {
     String text = '';
-    Color color = DesignSystem.ink;
+    Color color = Theme.of(context).colorScheme.onSurface;
 
     if (state.phase == GamePhase.sequence) {
       if (state.currentOpIndex == -1) {
@@ -137,7 +137,7 @@ class _ArithmeticChainScreenState extends ConsumerState<ArithmeticChainScreen> {
                   fontSize: 12,
                   fontWeight: FontWeight.w900,
                   letterSpacing: 2.0,
-                  color: DesignSystem.inkSlate.withValues(alpha: 0.5),
+                  color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7).withValues(alpha: 0.5),
                 ),
               ),
             Text(
@@ -160,7 +160,7 @@ class _ArithmeticChainScreenState extends ConsumerState<ArithmeticChainScreen> {
       case '-': return DesignSystem.error;
       case '×': return DesignSystem.primary;
       case '÷': return DesignSystem.accentBerry;
-      default: return DesignSystem.ink;
+      default: return Theme.of(context).colorScheme.onSurface;
     }
   }
 
@@ -217,11 +217,11 @@ class _ArithmeticChainScreenState extends ConsumerState<ArithmeticChainScreen> {
     return Expanded(
       child: TangibleButton(
         onTap: onTap,
-        color: DesignSystem.surface,
-        shadowColor: DesignSystem.outlineVariant,
+        color: Theme.of(context).colorScheme.surface,
+        shadowColor: Theme.of(context).colorScheme.outline,
         child: Text(
           label,
-          style: const TextStyle(color: DesignSystem.ink, fontSize: 24, fontWeight: FontWeight.w900),
+          style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 24, fontWeight: FontWeight.w900),
         ),
       ),
     );
@@ -231,8 +231,8 @@ class _ArithmeticChainScreenState extends ConsumerState<ArithmeticChainScreen> {
     return Expanded(
       child: TangibleButton(
         onTap: onTap,
-        color: DesignSystem.surface,
-        shadowColor: DesignSystem.outlineVariant,
+        color: Theme.of(context).colorScheme.surface,
+        shadowColor: Theme.of(context).colorScheme.outline,
         child: Icon(icon, color: color, size: 28),
       ),
     );

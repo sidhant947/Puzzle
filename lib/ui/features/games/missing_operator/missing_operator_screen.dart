@@ -115,7 +115,7 @@ class _MissingOperatorScreenState extends ConsumerState<MissingOperatorScreen> {
     }
 
     children.add(const SizedBox(width: DesignSystem.spaceSM));
-    children.add(const Text('=', style: TextStyle(fontSize: 32, fontWeight: FontWeight.w900, color: DesignSystem.ink)));
+    children.add(Text('=', style: TextStyle(fontSize: 32, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onSurface)));
     children.add(const SizedBox(width: DesignSystem.spaceSM));
     children.add(_buildNumber(problem.result, color: DesignSystem.primary));
 
@@ -131,17 +131,18 @@ class _MissingOperatorScreenState extends ConsumerState<MissingOperatorScreen> {
     );
   }
 
-  Widget _buildNumber(int val, {Color color = DesignSystem.ink}) {
+  Widget _buildNumber(int val, {Color? color}) {
+    final textColor = color ?? Theme.of(context).colorScheme.onSurface;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
       decoration: BoxDecoration(
-        color: DesignSystem.surface,
+        color: Theme.of(context).colorScheme.surface,
         borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
-        border: Border.all(color: DesignSystem.outline, width: 2),
+        border: Border.all(color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5), width: 2),
       ),
       child: Text(
         '$val',
-        style: TextStyle(fontSize: 28, fontWeight: FontWeight.w900, color: color),
+        style: TextStyle(fontSize: 28, fontWeight: FontWeight.w900, color: textColor),
       ),
     );
   }
@@ -156,10 +157,10 @@ class _MissingOperatorScreenState extends ConsumerState<MissingOperatorScreen> {
         width: 44,
         height: 44,
         decoration: BoxDecoration(
-          color: isSelected ? DesignSystem.primary.withValues(alpha: 0.1) : DesignSystem.background,
+          color: isSelected ? DesignSystem.primary.withValues(alpha: 0.1) : Theme.of(context).scaffoldBackgroundColor,
           borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
           border: Border.all(
-            color: isSelected ? DesignSystem.primary : DesignSystem.outlineVariant,
+            color: isSelected ? DesignSystem.primary : Theme.of(context).colorScheme.outline,
             width: 2,
           ),
         ),
@@ -169,7 +170,7 @@ class _MissingOperatorScreenState extends ConsumerState<MissingOperatorScreen> {
             style: TextStyle(
               fontSize: 24,
               fontWeight: FontWeight.w900,
-              color: op == null ? DesignSystem.outlineVariant : DesignSystem.accentAmber,
+              color: op == null ? Theme.of(context).colorScheme.outline : DesignSystem.accentAmber,
             ),
           ),
         ),
@@ -196,16 +197,16 @@ class _MissingOperatorScreenState extends ConsumerState<MissingOperatorScreen> {
             onTap: selectedSlot != null ? () {
               notifier.setOperator(selectedSlot!, internalOps[index]);
             } : () {},
-            color: DesignSystem.surface,
-            shadowColor: DesignSystem.outlineVariant,
+            color: Theme.of(context).colorScheme.surface,
+            shadowColor: Theme.of(context).colorScheme.outline,
             child: Center(
               child: Text(
                 operators[index],
                 textAlign: TextAlign.center,
-                style: const TextStyle(
+                style: TextStyle(
                   fontSize: 32, 
                   fontWeight: FontWeight.w900, 
-                  color: DesignSystem.ink,
+                  color: Theme.of(context).colorScheme.onSurface,
                   height: 1.0,
                 ),
               ),

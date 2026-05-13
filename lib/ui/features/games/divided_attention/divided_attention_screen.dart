@@ -47,6 +47,7 @@ class _DividedAttentionScreenState extends ConsumerState<DividedAttentionScreen>
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(dividedAttentionNotifierProvider);
     final notifier = ref.read(dividedAttentionNotifierProvider.notifier);
 
@@ -82,10 +83,10 @@ class _DividedAttentionScreenState extends ConsumerState<DividedAttentionScreen>
                 TangibleContainer(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   radius: DesignSystem.radiusMD,
-                  color: DesignSystem.surface,
+                  color: colorScheme.surface,
                   child: Text(
                     'SCORE: ${state.score}',
-                    style: const TextStyle(
+                    style: TextStyle(
                       fontWeight: FontWeight.w900,
                       color: DesignSystem.primary,
                     ),
@@ -108,7 +109,7 @@ class _DividedAttentionScreenState extends ConsumerState<DividedAttentionScreen>
                 // Divider
                 Container(
                   width: 2,
-                  color: DesignSystem.outline,
+                  color: colorScheme.outline.withValues(alpha: 0.5),
                   margin: const EdgeInsets.symmetric(vertical: DesignSystem.spaceXL),
                 ),
                 // Right Task
@@ -161,7 +162,7 @@ class _DividedAttentionScreenState extends ConsumerState<DividedAttentionScreen>
         icon,
         key: ValueKey(item.id),
         size: 80,
-        color: DesignSystem.ink,
+        color: Theme.of(context).colorScheme.onSurface,
       );
     } else {
       Color color;
@@ -170,7 +171,7 @@ class _DividedAttentionScreenState extends ConsumerState<DividedAttentionScreen>
         case 'blue': color = DesignSystem.primary; break;
         case 'green': color = DesignSystem.success; break;
         case 'yellow': color = DesignSystem.accentAmber; break;
-        default: color = DesignSystem.ink;
+        default: color = Theme.of(context).colorScheme.onSurface;
       }
       return Container(
         key: ValueKey(item.id),

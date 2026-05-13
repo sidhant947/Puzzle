@@ -91,7 +91,7 @@ class _CorsiBlocksScreenState extends ConsumerState<CorsiBlocksScreen> {
 
   Widget _buildPhaseIndicator(CorsiBlocksState state) {
     String text = '';
-    Color color = DesignSystem.inkSlate;
+    Color color = Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7);
     if (state.phase == CorsiPhase.showing) {
       text = 'WATCH THE PATTERN';
       color = DesignSystem.primary;
@@ -142,8 +142,8 @@ class _CorsiBlocksScreenState extends ConsumerState<CorsiBlocksScreen> {
                 },
                 color: isHighlighted 
                     ? DesignSystem.accentAmber 
-                    : (isTapped ? DesignSystem.primary.withValues(alpha: 0.3) : DesignSystem.surface),
-                shadowColor: isHighlighted ? DesignSystem.accentAmber.withValues(alpha: 0.5) : DesignSystem.outlineVariant,
+                    : (isTapped ? DesignSystem.primary.withValues(alpha: 0.3) : Theme.of(context).colorScheme.surface),
+                shadowColor: isHighlighted ? DesignSystem.accentAmber.withValues(alpha: 0.5) : Theme.of(context).colorScheme.outline,
                 depth: isHighlighted ? 1.0 : 3.0,
                 child: Center(
                   child: isHighlighted 
@@ -182,8 +182,8 @@ class _CorsiBlocksScreenState extends ConsumerState<CorsiBlocksScreen> {
 
   Widget _buildStat(String label, String value, Color color, bool isSmall) {
     return TangibleContainer(
-      color: DesignSystem.surface,
-      shadowColor: DesignSystem.outlineVariant,
+      color: Theme.of(context).colorScheme.surface,
+      shadowColor: Theme.of(context).colorScheme.outline,
       depth: isSmall ? 2.0 : 4.0,
       padding: EdgeInsets.symmetric(
         horizontal: isSmall ? 12 : 16, 
@@ -196,7 +196,7 @@ class _CorsiBlocksScreenState extends ConsumerState<CorsiBlocksScreen> {
             style: TextStyle(
               fontSize: isSmall ? 8 : 10,
               fontWeight: FontWeight.w900,
-              color: DesignSystem.inkSlate,
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
               letterSpacing: 1.5,
             ),
           ),

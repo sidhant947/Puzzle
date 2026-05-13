@@ -45,6 +45,7 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(perspectiveTakingNotifierProvider);
     final notifier = ref.read(perspectiveTakingNotifierProvider.notifier);
 
@@ -72,29 +73,29 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
         padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
         child: Column(
           children: [
-            const SizedBox(height: DesignSystem.spaceMD),
-            const Text(
+            SizedBox(height: DesignSystem.spaceMD),
+            Text(
               'TOP-DOWN VIEW',
               style: TextStyle(
                 fontWeight: FontWeight.w900,
                 fontSize: 12,
                 letterSpacing: 1.2,
-                color: DesignSystem.inkSlate,
+                color: colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
-            const SizedBox(height: DesignSystem.spaceMD),
+            SizedBox(height: DesignSystem.spaceMD),
             FittedBox(
               fit: BoxFit.scaleDown,
               child: _buildTopDownView(state.topView),
             ),
             const Spacer(),
-            const Text(
+            Text(
               'CHOOSE THE PERSPECTIVE',
               style: TextStyle(
                 fontWeight: FontWeight.w900,
                 fontSize: 12,
                 letterSpacing: 1.2,
-                color: DesignSystem.inkSlate,
+                color: colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
             const SizedBox(height: DesignSystem.spaceMD),
@@ -127,9 +128,9 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
         borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
         boxShadow: [
           BoxShadow(
-            color: DesignSystem.ink.withValues(alpha: 0.05),
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.05),
             blurRadius: 12,
-            offset: const Offset(0, 6),
+            offset: Offset(0, 6),
           ),
         ],
       ),
@@ -140,10 +141,10 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
             padding: const EdgeInsets.all(20.0),
             child: _buildGridView(view, 44),
           ),
-          const Positioned(top: 4, child: Text('NORTH', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: DesignSystem.inkSlate))),
-          const Positioned(bottom: 4, child: Text('SOUTH', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: DesignSystem.inkSlate))),
-          const Positioned(left: 4, child: RotatedBox(quarterTurns: 3, child: Text('WEST', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: DesignSystem.inkSlate)))),
-          const Positioned(right: 4, child: RotatedBox(quarterTurns: 1, child: Text('EAST', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: DesignSystem.inkSlate)))),
+          Positioned(top: 4, child: Text('NORTH', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7)))),
+          Positioned(bottom: 4, child: Text('SOUTH', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7)))),
+          Positioned(left: 4, child: RotatedBox(quarterTurns: 3, child: Text('WEST', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))))),
+          Positioned(right: 4, child: RotatedBox(quarterTurns: 1, child: Text('EAST', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))))),
         ],
       ),
     );
@@ -165,7 +166,7 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
                 color: color ?? Colors.grey.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(
-                  color: color != null ? DesignSystem.ink.withValues(alpha: 0.1) : Colors.transparent,
+                  color: color != null ? Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1) : Colors.transparent,
                   width: 1,
                 ),
               ),
@@ -181,7 +182,7 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
     final isCorrect = state.correctOptionIndex == index;
     final showResult = state.selectedOptionIndex != null;
 
-    Color borderColor = DesignSystem.outline;
+    Color borderColor = Theme.of(context).colorScheme.outline.withValues(alpha: 0.5);
     if (showResult) {
       if (isCorrect) {
         borderColor = DesignSystem.success;
@@ -202,7 +203,7 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
           border: Border.all(color: borderColor, width: 3),
           boxShadow: [
             BoxShadow(
-              color: DesignSystem.ink.withValues(alpha: 0.05),
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.05),
               blurRadius: 8,
               offset: const Offset(0, 4),
             ),

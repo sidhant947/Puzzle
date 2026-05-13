@@ -57,6 +57,7 @@ class _PixelMimicScreenState extends ConsumerState<PixelMimicScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(pixelMimicNotifierProvider);
     final notifier = ref.read(pixelMimicNotifierProvider.notifier);
 
@@ -71,16 +72,16 @@ class _PixelMimicScreenState extends ConsumerState<PixelMimicScreen> {
       subtitle: state.isShowingPattern ? 'Memorize this pattern!' : 'Recreate the pattern!',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: colorScheme.surface,
+          shadowColor: colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             ref.read(pixelMimicNotifierProvider.notifier).initGame();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(
+          child: Icon(
             Icons.refresh_rounded,
-            color: DesignSystem.ink,
+            color: colorScheme.onSurface,
             size: 20,
           ),
         ),
@@ -150,7 +151,7 @@ class _PixelMimicScreenState extends ConsumerState<PixelMimicScreen> {
           return TangibleContainer(
             depth: colorId == 0 ? 2.0 : 0.0,
             radius: DesignSystem.radiusXS,
-            color: colorId == 0 ? DesignSystem.surface : _colors[colorId],
+            color: colorId == 0 ? Theme.of(context).colorScheme.surface : _colors[colorId],
             onTap: () {
               HapticFeedbackUtil.lightImpact();
               notifier.onTileTapped(r, c);

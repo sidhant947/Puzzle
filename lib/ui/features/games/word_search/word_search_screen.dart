@@ -25,6 +25,7 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(wordSearchNotifierProvider);
     final notifier = ref.read(wordSearchNotifierProvider.notifier);
 
@@ -40,14 +41,14 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
       subtitle: 'Find all the hidden words in the grid. Drag to select.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: colorScheme.surface,
+          shadowColor: colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             notifier.initGame();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
+          child: Icon(Icons.refresh_rounded, size: 20, color: colorScheme.onSurface),
         ),
       ],
       body: state.board == null
@@ -73,18 +74,18 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
       width: double.infinity,
       decoration: BoxDecoration(
-        color: DesignSystem.surface,
-        border: const Border.symmetric(horizontal: BorderSide(color: DesignSystem.outline, width: 1.0)),
+        color: Theme.of(context).colorScheme.surface,
+        border: Border.symmetric(horizontal: BorderSide(color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5), width: 1.0)),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          const Text(
+          Text(
             'WORDS TO FIND',
             style: TextStyle(
               fontWeight: FontWeight.w900,
               letterSpacing: 1.5,
-              color: DesignSystem.inkSlate,
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
               fontSize: 10,
             ),
           ),
@@ -99,10 +100,10 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
                 decoration: BoxDecoration(
                   color: isFound 
                       ? DesignSystem.success.withValues(alpha: 0.1) 
-                      : DesignSystem.background,
+                      : Theme.of(context).scaffoldBackgroundColor,
                   borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
                   border: Border.all(
-                    color: isFound ? DesignSystem.success : DesignSystem.outline,
+                    color: isFound ? DesignSystem.success : Theme.of(context).colorScheme.outline.withValues(alpha: 0.5),
                     width: 0.5,
                   ),
                 ),
@@ -113,7 +114,7 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
                     fontWeight: isFound ? FontWeight.w500 : FontWeight.w900,
                     color: isFound 
                         ? DesignSystem.success 
-                        : DesignSystem.ink,
+                        : Theme.of(context).colorScheme.onSurface,
                     decoration: isFound ? TextDecoration.lineThrough : null,
                     letterSpacing: 0.5,
                   ),
@@ -148,14 +149,14 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
               notifier.endSelection();
             },
             child: TangibleContainer(
-              color: DesignSystem.ink,
-              shadowColor: DesignSystem.inkSlate,
+              color: Theme.of(context).colorScheme.onSurface,
+              shadowColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
               radius: DesignSystem.radiusMD,
               depth: 4.0, // Reduced from 6.0
               padding: const EdgeInsets.all(3.0),
               child: Container(
                 decoration: BoxDecoration(
-                  color: DesignSystem.surface,
+                  color: Theme.of(context).colorScheme.surface,
                   borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
                 ),
                 child: ClipRRect(
@@ -163,7 +164,7 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
                   child: AspectRatio(
                     aspectRatio: 1,
                     child: Container(
-                      color: DesignSystem.surface,
+                      color: Theme.of(context).colorScheme.surface,
                       child: Stack(
                         children: [
                           _buildFoundLines(state, cellSize),
@@ -184,10 +185,10 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
                                   child: FittedBox(
                                     child: Text(
                                       board.grid[y][x].toUpperCase(),
-                                      style: const TextStyle(
+                                      style: TextStyle(
                                         fontSize: 16, // Reduced from 18
                                         fontWeight: FontWeight.w900,
-                                        color: DesignSystem.ink,
+                                        color: Theme.of(context).colorScheme.onSurface,
                                       ),
                                     ),
                                   ),

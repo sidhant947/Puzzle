@@ -68,6 +68,7 @@ class _OrbitTapScreenState extends ConsumerState<OrbitTapScreen> with SingleTick
 
   @override
   Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(orbitTapNotifierProvider);
     
     ref.listen(orbitTapNotifierProvider, (previous, next) {
@@ -125,7 +126,7 @@ class _OrbitTapScreenState extends ConsumerState<OrbitTapScreen> with SingleTick
                                 decoration: BoxDecoration(
                                   shape: BoxShape.circle,
                                   border: Border.all(
-                                    color: DesignSystem.outline.withValues(alpha: 0.2),
+                                    color: colorScheme.outline.withValues(alpha: 0.5).withValues(alpha: 0.2),
                                     width: 2,
                                   ),
                                 ),
@@ -142,12 +143,12 @@ class _OrbitTapScreenState extends ConsumerState<OrbitTapScreen> with SingleTick
                   ),
                 ),
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.all(DesignSystem.spaceXL),
                 child: Text(
                   'TAP ANYWHERE TO SYNC',
                   style: TextStyle(
-                    color: DesignSystem.inkSlate,
+                    color: colorScheme.onSurface.withValues(alpha: 0.7),
                     fontWeight: FontWeight.w900,
                     letterSpacing: 2.0,
                     fontSize: 12,

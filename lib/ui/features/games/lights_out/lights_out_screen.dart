@@ -45,28 +45,28 @@ class LightsOutScreen extends ConsumerWidget {
       subtitle: 'Tapping a tile toggles it and its adjacent neighbors. Turn off all lights to solve.',
       actions: [
         TangibleButton(
-          color: DesignSystem.surface,
-          shadowColor: DesignSystem.outlineVariant,
+          color: Theme.of(context).colorScheme.surface,
+          shadowColor: Theme.of(context).colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             notifier.reset();
           },
           padding: const EdgeInsets.all(12),
-          child: const Icon(Icons.refresh_rounded, size: 20, color: DesignSystem.ink),
+          child: Icon(Icons.refresh_rounded, size: 20, color: Theme.of(context).colorScheme.onSurface),
         ),
       ],
       body: LayoutBuilder(
         builder: (context, constraints) {
           return Column(
             children: [
-              const Spacer(),
+              Spacer(),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
                 child: ConstrainedBox(
                   constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.5),
                   child: TangibleContainer(
-                    color: DesignSystem.ink,
-                    shadowColor: DesignSystem.inkSlate,
+                    color: Theme.of(context).colorScheme.onSurface,
+                    shadowColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                     depth: 4.0,
                     radius: DesignSystem.radiusMD,
                     padding: const EdgeInsets.all(DesignSystem.spaceSM),
@@ -94,8 +94,8 @@ class LightsOutScreen extends ConsumerWidget {
                                   },
                             child: TangibleContainer(
                               depth: isOn ? 0.0 : 2.0,
-                              color: isOn ? DesignSystem.accentAmber : DesignSystem.surface,
-                              shadowColor: isOn ? const Color(0xFFB45309) : DesignSystem.outlineVariant,
+                              color: isOn ? DesignSystem.accentAmber : Theme.of(context).colorScheme.surface,
+                              shadowColor: isOn ? Color(0xFFB45309) : Theme.of(context).colorScheme.outline,
                               radius: DesignSystem.radiusSM,
                               child: isOn 
                                 ? const Center(

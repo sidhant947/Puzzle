@@ -133,7 +133,7 @@ class _DigitSpanReverseScreenState extends ConsumerState<DigitSpanReverseScreen>
             style: TextStyle(
               fontSize: 40,
               fontWeight: FontWeight.w900,
-              color: index < state.userInput.length ? DesignSystem.accentAmber : DesignSystem.inkSlate.withValues(alpha: 0.3),
+              color: index < state.userInput.length ? DesignSystem.accentAmber : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7).withValues(alpha: 0.3),
             ),
           );
         }),
@@ -149,7 +149,7 @@ class _DigitSpanReverseScreenState extends ConsumerState<DigitSpanReverseScreen>
           Row(
             children: [
               _buildNumButton(1, () => notifier.onDigitPressed(1)),
-              const SizedBox(width: DesignSystem.spaceMD),
+              SizedBox(width: DesignSystem.spaceMD),
               _buildNumButton(2, () => notifier.onDigitPressed(2)),
               const SizedBox(width: DesignSystem.spaceMD),
               _buildNumButton(3, () => notifier.onDigitPressed(3)),
@@ -185,8 +185,8 @@ class _DigitSpanReverseScreenState extends ConsumerState<DigitSpanReverseScreen>
               Expanded(
                 child: TangibleButton(
                   onTap: notifier.onBackspace,
-                  color: DesignSystem.surface,
-                  shadowColor: DesignSystem.outlineVariant,
+                  color: Theme.of(context).colorScheme.surface,
+                  shadowColor: Theme.of(context).colorScheme.outline,
                   child: const Icon(Icons.backspace_rounded, color: DesignSystem.error, size: 28),
                 ),
               ),
@@ -201,11 +201,11 @@ class _DigitSpanReverseScreenState extends ConsumerState<DigitSpanReverseScreen>
     return Expanded(
       child: TangibleButton(
         onTap: onTap,
-        color: DesignSystem.surface,
-        shadowColor: DesignSystem.outlineVariant,
+        color: Theme.of(context).colorScheme.surface,
+        shadowColor: Theme.of(context).colorScheme.outline,
         child: Text(
           digit.toString(),
-          style: const TextStyle(color: DesignSystem.ink, fontSize: 24, fontWeight: FontWeight.w900),
+          style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 24, fontWeight: FontWeight.w900),
         ),
       ),
     );
