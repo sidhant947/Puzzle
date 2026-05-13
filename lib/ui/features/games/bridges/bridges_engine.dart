@@ -29,87 +29,161 @@ class BridgesEngine {
   final Random _random = Random();
 
   BridgesBoard generateBoard({int size = 7}) {
-    while (true) {
-      List<BridgesConnection> solution = [];
+    int attempts = 0;
+    while (attempts < 100) {
+      attempts++;
+      final board = _tryGenerate(size);
+      if (board != null) {
+        // Optional: Check for unique solution here if desired, 
+        // but growth algorithm usually produces good puzzles.
+        return board;
+      }
+    }
+    // Final fallback to a very simple known level
+    return _fallbackLevel();
+  }
+
+  BridgesBoard? _tryGenerate(int size) {
+    List<BridgesIsland> islands = [];
+    List<BridgesConnection> solution = [];
+    List<List<int>> grid = List.generate(size, (_) => List.filled(size, -1));
+    List<List<int>> bridgeGrid = List.generate(size, (_) => List.filled(size, 0));
+
+    // 1. Start with a single island
+    int startX = _random.nextInt(size);
+    int startY = _random.nextInt(size);
+    int islandId = 0;
+    
+    BridgesIsland first = BridgesIsland(x: startX, y: startY, count: 0, id: islandId++);
+    islands.add(first);
+    grid[startY][startX] = first.id;
+
+    // 2. Growth phase
+    int targetIslands = 6 + _random.nextInt(4);
+    int growthAttempts = 0;
+    
+    while (islands.length < targetIslands && growthAttempts < 200) {
+      growthAttempts++;
+      BridgesIsland source = islands[_random.nextInt(islands.length)];
+      var directions = [Point(0, 1), Point(0, -1), Point(1, 0), Point(-1, 0)]..shuffle(_random);
       
-      // 1. Place random islands
-      List<List<int>> grid = List.generate(size, (_) => List.filled(size, -1));
-      int islandId = 0;
-      for (int i = 0; i < 8 + _random.nextInt(4); i++) {
-        int r = _random.nextInt(size);
-        int c = _random.nextInt(size);
-        if (grid[r][c] == -1 && !_isAdjacentToIsland(c, r, grid, size)) {
-          grid[r][c] = islandId++;
-        }
-      }
+      for (var d in directions) {
+        // Distance 2 means one empty cell between islands
+        int dist = 2 + _random.nextInt(max(1, size - 3));
+        int nx = source.x + d.x * dist;
+        int ny = source.y + d.y * dist;
 
-      // 2. Try to connect them
-      List<int> islandBridges = List.filled(islandId, 0);
-      List<Point<int>> pos = [];
-      for (int r = 0; r < size; r++) {
-        for (int c = 0; c < size; c++) {
-          if (grid[r][c] != -1) pos.add(Point(c, r));
-        }
-      }
-
-      // Connect islands greedily
-      for (int i = 0; i < pos.length; i++) {
-        for (int j = i + 1; j < pos.length; j++) {
-          if (pos[i].x == pos[j].x || pos[i].y == pos[j].y) {
-            if (_canConnect(pos[i], pos[j], grid, solution)) {
-              if (_random.nextDouble() < 0.3) {
-                int count = _random.nextBool() ? 1 : 2;
-                int id1 = grid[pos[i].y][pos[i].x];
-                int id2 = grid[pos[j].y][pos[j].x];
-                solution.add(BridgesConnection(island1Id: id1, island2Id: id2, count: count));
-                islandBridges[id1] += count;
-                islandBridges[id2] += count;
-              }
-            }
+        if (nx >= 0 && nx < size && ny >= 0 && ny < size) {
+          if (_canPlaceBridge(source.x, source.y, nx, ny, grid, bridgeGrid, size)) {
+            int newId = islandId++;
+            BridgesIsland newIsland = BridgesIsland(x: nx, y: ny, count: 0, id: newId);
+            
+            grid[ny][nx] = newId;
+            islands.add(newIsland);
+            
+            int bridgeCount = _random.nextBool() ? 1 : 2;
+            solution.add(BridgesConnection(island1Id: source.id, island2Id: newId, count: bridgeCount));
+            _markBridge(source.x, source.y, nx, ny, bridgeGrid);
+            break; 
           }
         }
       }
+    }
 
-      // 3. Finalize islands
-      List<BridgesIsland> finalIslands = [];
-      for (int i = 0; i < pos.length; i++) {
-        int id = grid[pos[i].y][pos[i].x];
-        if (islandBridges[id] > 0) {
-          finalIslands.add(BridgesIsland(x: pos[i].x, y: pos[i].y, count: islandBridges[id], id: id));
+    if (islands.length < 6) return null;
+
+    // 3. Extra connections
+    int extraConnAttempts = 0;
+    while (extraConnAttempts < 20) {
+      extraConnAttempts++;
+      int idx1 = _random.nextInt(islands.length);
+      int idx2 = _random.nextInt(islands.length);
+      if (idx1 == idx2) continue;
+      BridgesIsland i1 = islands[idx1];
+      BridgesIsland i2 = islands[idx2];
+      
+      if ((i1.x == i2.x || i1.y == i2.y) && _canPlaceBridge(i1.x, i1.y, i2.x, i2.y, grid, bridgeGrid, size, ignoreEndpoints: true)) {
+        bool exists = solution.any((c) => (c.island1Id == i1.id && c.island2Id == i2.id) || (c.island1Id == i2.id && c.island2Id == i1.id));
+        if (!exists) {
+          int bridgeCount = _random.nextBool() ? 1 : 2;
+          solution.add(BridgesConnection(island1Id: i1.id, island2Id: i2.id, count: bridgeCount));
+          _markBridge(i1.x, i1.y, i2.x, i2.y, bridgeGrid);
         }
       }
-
-      // 4. Check connectivity
-      if (finalIslands.length >= 6 && _isConnected(finalIslands, solution)) {
-        return BridgesBoard(size: size, islands: finalIslands, solution: solution);
-      }
     }
+
+    // 4. Finalize
+    List<int> bridgeCounts = List.filled(islandId, 0);
+    for (var conn in solution) {
+      bridgeCounts[conn.island1Id] += conn.count;
+      bridgeCounts[conn.island2Id] += conn.count;
+    }
+
+    return BridgesBoard(
+      size: size,
+      islands: islands.map((island) => BridgesIsland(x: island.x, y: island.y, count: bridgeCounts[island.id], id: island.id)).toList(),
+      solution: solution,
+    );
   }
 
-  bool _isAdjacentToIsland(int x, int y, List<List<int>> grid, int size) {
-    for (var d in [Point(0, 1), Point(0, -1), Point(1, 0), Point(-1, 0)]) {
-      int nx = x + d.x;
-      int ny = y + d.y;
-      if (nx >= 0 && nx < size && ny >= 0 && ny < size && grid[ny][nx] != -1) return true;
-    }
-    return false;
-  }
+  bool _canPlaceBridge(int x1, int y1, int x2, int y2, List<List<int>> grid, List<List<int>> bridgeGrid, int size, {bool ignoreEndpoints = false}) {
+    if (x1 != x2 && y1 != y2) return false;
 
-  bool _canConnect(Point<int> p1, Point<int> p2, List<List<int>> grid, List<BridgesConnection> current) {
-    // Check if path is clear of other islands
-    int x1 = min(p1.x, p2.x), x2 = max(p1.x, p2.x);
-    int y1 = min(p1.y, p2.y), y2 = max(p1.y, p2.y);
+    int minX = min(x1, x2), maxX = max(x1, x2);
+    int minY = min(y1, y2), maxY = max(y1, y2);
 
-    if (p1.y == p2.y) {
-      for (int c = x1 + 1; c < x2; c++) {
-        if (grid[p1.y][c] != -1) return false;
-      }
-    } else {
-      for (int r = y1 + 1; r < y2; r++) {
-        if (grid[r][p1.x] != -1) return false;
+    for (int r = minY; r <= maxY; r++) {
+      for (int c = minX; c <= maxX; c++) {
+        bool isEndpoint = (c == x1 && r == y1) || (c == x2 && r == y2);
+        
+        if (isEndpoint) {
+          if (!ignoreEndpoints && (c == x2 && r == y2)) {
+            if (grid[r][c] != -1) return false;
+            // Ensure not immediately adjacent to any island
+            for (var d in [Point(0, 1), Point(0, -1), Point(1, 0), Point(-1, 0)]) {
+              int nr = r + d.y, nc = c + d.x;
+              if (nr >= 0 && nr < size && nc >= 0 && nc < size && grid[nr][nc] != -1) return false;
+            }
+          }
+          continue;
+        }
+
+        if (grid[r][c] != -1) return false;
+        if (bridgeGrid[r][c] != 0) return false;
       }
     }
     return true;
+  }
+
+  void _markBridge(int x1, int y1, int x2, int y2, List<List<int>> bridgeGrid) {
+    int minX = min(x1, x2), maxX = max(x1, x2);
+    int minY = min(y1, y2), maxY = max(y1, y2);
+    int type = (x1 == x2) ? 2 : 1; // 1 for horizontal, 2 for vertical
+
+    for (int r = minY; r <= maxY; r++) {
+      for (int c = minX; c <= maxX; c++) {
+        if ((c == x1 && r == y1) || (c == x2 && r == y2)) continue;
+        bridgeGrid[r][c] = type;
+      }
+    }
+  }
+
+  BridgesBoard _fallbackLevel() {
+    return BridgesBoard(
+      size: 5,
+      islands: [
+        BridgesIsland(x: 0, y: 0, count: 2, id: 0),
+        BridgesIsland(x: 4, y: 0, count: 2, id: 1),
+        BridgesIsland(x: 0, y: 4, count: 2, id: 2),
+        BridgesIsland(x: 4, y: 4, count: 2, id: 3),
+      ],
+      solution: [
+        BridgesConnection(island1Id: 0, island2Id: 1, count: 1),
+        BridgesConnection(island1Id: 1, island2Id: 3, count: 1),
+        BridgesConnection(island1Id: 3, island2Id: 2, count: 1),
+        BridgesConnection(island1Id: 2, island2Id: 0, count: 1),
+      ],
+    );
   }
 
   bool _isConnected(List<BridgesIsland> islands, List<BridgesConnection> solution) {

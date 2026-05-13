@@ -17,42 +17,105 @@ class CrownEngine {
   final Random _random = Random();
 
   CrownBoard generateBoard() {
-    // 1. Generate a valid N-queens solution (1 per row, 1 per col)
-    // For 5x5, we can just pick a random permutation
-    List<int> cols = List.generate(boardSize, (i) => i)..shuffle();
-    List<Point<int>> solution = [];
-    for (int r = 0; r < boardSize; r++) {
-      solution.add(Point(cols[r], r));
+    while (true) {
+      // 1. Generate a valid crown placement solution (1 per row, 1 per col, no adjacency)
+      List<Point<int>>? solution = _findValidCrownPlacement();
+      if (solution == null) continue;
+
+      // 2. Generate regions around each solution point
+      List<List<int>> regions = List.generate(boardSize, (_) => List.filled(boardSize, -1));
+      for (int i = 0; i < boardSize; i++) {
+        regions[solution[i].y][solution[i].x] = i;
+      }
+
+      // Expand regions randomly
+      List<Point<int>> frontier = [];
+      for (int i = 0; i < boardSize; i++) {
+        _addNeighbors(solution[i].x, solution[i].y, frontier);
+      }
+
+      while (frontier.isNotEmpty) {
+        frontier.shuffle(_random);
+        Point<int> cell = frontier.removeLast();
+        if (regions[cell.y][cell.x] != -1) continue;
+
+        List<int> neighbors = _getAdjacentRegionIds(cell.x, cell.y, regions);
+        if (neighbors.isNotEmpty) {
+          regions[cell.y][cell.x] = neighbors[_random.nextInt(neighbors.length)];
+          _addNeighbors(cell.x, cell.y, frontier);
+        }
+      }
+
+      final board = CrownBoard(size: boardSize, regions: regions, solution: solution);
+
+      // 3. Verify unique solution
+      if (_hasUniqueSolution(board)) {
+        return board;
+      }
     }
+  }
 
-    // 2. Generate regions around each solution point
-    List<List<int>> regions = List.generate(boardSize, (_) => List.filled(boardSize, -1));
-    
-    // Initial seeds
-    for (int i = 0; i < boardSize; i++) {
-      regions[solution[i].y][solution[i].x] = i;
+  List<Point<int>>? _findValidCrownPlacement() {
+    List<Point<int>> current = [];
+    if (_solveCrownPlacement(current, 0)) {
+      return current;
     }
+    return null;
+  }
 
-    // Expand regions randomly
-    List<Point<int>> frontier = [];
-    for (int i = 0; i < boardSize; i++) {
-      _addNeighbors(solution[i].x, solution[i].y, frontier);
+  bool _solveCrownPlacement(List<Point<int>> current, int row) {
+    if (row == boardSize) return true;
+
+    List<int> cols = List.generate(boardSize, (i) => i)..shuffle(_random);
+    for (int col in cols) {
+      Point<int> p = Point(col, row);
+      if (_canPlaceCrown(current, p)) {
+        current.add(p);
+        if (_solveCrownPlacement(current, row + 1)) return true;
+        current.removeLast();
+      }
     }
+    return false;
+  }
 
-    while (frontier.isNotEmpty) {
-      frontier.shuffle();
-      Point<int> cell = frontier.removeLast();
-      if (regions[cell.y][cell.x] != -1) continue;
+  bool _canPlaceCrown(List<Point<int>> current, Point<int> p) {
+    for (var other in current) {
+      // Row/Col check (row is already handled by recursion)
+      if (other.x == p.x) return false;
+      // Adjacency check
+      if ((other.x - p.x).abs() <= 1 && (other.y - p.y).abs() <= 1) return false;
+    }
+    return true;
+  }
 
-      // Find adjacent region IDs
-      List<int> neighbors = _getAdjacentRegionIds(cell.x, cell.y, regions);
-      if (neighbors.isNotEmpty) {
-        regions[cell.y][cell.x] = neighbors[_random.nextInt(neighbors.length)];
-        _addNeighbors(cell.x, cell.y, frontier);
+  bool _hasUniqueSolution(CrownBoard board) {
+    int solutions = 0;
+
+    void solve(List<Point<int>> current, int row) {
+      if (solutions > 1) return;
+      if (row == boardSize) {
+        solutions++;
+        return;
+      }
+
+      for (int col = 0; col < boardSize; col++) {
+        Point<int> p = Point(col, row);
+        // Check row/col/adjacency
+        if (_canPlaceCrown(current, p)) {
+          // Check region
+          int rid = board.regions[p.y][p.x];
+          bool regionUsed = current.any((cp) => board.regions[cp.y][cp.x] == rid);
+          if (!regionUsed) {
+            current.add(p);
+            solve(current, row + 1);
+            current.removeLast();
+          }
+        }
       }
     }
 
-    return CrownBoard(size: boardSize, regions: regions, solution: solution);
+    solve([], 0);
+    return solutions == 1;
   }
 
   void _addNeighbors(int x, int y, List<Point<int>> frontier) {
