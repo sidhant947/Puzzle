@@ -81,6 +81,12 @@ class UserDataNotifier extends _$UserDataNotifier {
     await ref.read(userRepositoryProvider).saveUserData(newState);
   }
 
+  Future<void> incrementTotalSolved() async {
+    final newState = state.copyWith(totalSolved: (state.totalSolved ?? 0) + 1);
+    state = newState;
+    await ref.read(userRepositoryProvider).saveUserData(newState);
+  }
+
   Future<void> updateSuperStreak(Map<String, GameStreak> streaks) async {
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
@@ -183,6 +189,8 @@ class GameStreakNotifier extends _$GameStreakNotifier {
   Future<bool> completeGame(String gameId, {int xpAmount = 20}) async {
     // Always award XP for every solve
     await ref.read(userDataNotifierProvider.notifier).addXp(xpAmount);
+    // Increment total solved puzzles
+    await ref.read(userDataNotifierProvider.notifier).incrementTotalSolved();
 
     final currentStreak = getStreak(gameId);
     final now = DateTime.now();

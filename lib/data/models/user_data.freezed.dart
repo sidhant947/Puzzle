@@ -28,6 +28,8 @@ mixin _$UserData {
   int? get superStreak => throw _privateConstructorUsedError;
   @HiveField(3)
   DateTime? get lastSuperStreakDate => throw _privateConstructorUsedError;
+  @HiveField(4)
+  int? get totalSolved => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -44,7 +46,8 @@ abstract class $UserDataCopyWith<$Res> {
       {@HiveField(0) int xp,
       @HiveField(1) int level,
       @HiveField(2) int? superStreak,
-      @HiveField(3) DateTime? lastSuperStreakDate});
+      @HiveField(3) DateTime? lastSuperStreakDate,
+      @HiveField(4) int? totalSolved});
 }
 
 /// @nodoc
@@ -64,6 +67,7 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
     Object? level = null,
     Object? superStreak = freezed,
     Object? lastSuperStreakDate = freezed,
+    Object? totalSolved = freezed,
   }) {
     return _then(_value.copyWith(
       xp: null == xp
@@ -82,6 +86,10 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
           ? _value.lastSuperStreakDate
           : lastSuperStreakDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      totalSolved: freezed == totalSolved
+          ? _value.totalSolved
+          : totalSolved // ignore: cast_nullable_to_non_nullable
+              as int?,
     ) as $Val);
   }
 }
@@ -98,7 +106,8 @@ abstract class _$$UserDataImplCopyWith<$Res>
       {@HiveField(0) int xp,
       @HiveField(1) int level,
       @HiveField(2) int? superStreak,
-      @HiveField(3) DateTime? lastSuperStreakDate});
+      @HiveField(3) DateTime? lastSuperStreakDate,
+      @HiveField(4) int? totalSolved});
 }
 
 /// @nodoc
@@ -116,6 +125,7 @@ class __$$UserDataImplCopyWithImpl<$Res>
     Object? level = null,
     Object? superStreak = freezed,
     Object? lastSuperStreakDate = freezed,
+    Object? totalSolved = freezed,
   }) {
     return _then(_$UserDataImpl(
       xp: null == xp
@@ -134,6 +144,10 @@ class __$$UserDataImplCopyWithImpl<$Res>
           ? _value.lastSuperStreakDate
           : lastSuperStreakDate // ignore: cast_nullable_to_non_nullable
               as DateTime?,
+      totalSolved: freezed == totalSolved
+          ? _value.totalSolved
+          : totalSolved // ignore: cast_nullable_to_non_nullable
+              as int?,
     ));
   }
 }
@@ -146,7 +160,8 @@ class _$UserDataImpl implements _UserData {
       {@HiveField(0) required this.xp,
       @HiveField(1) required this.level,
       @HiveField(2) this.superStreak,
-      @HiveField(3) this.lastSuperStreakDate});
+      @HiveField(3) this.lastSuperStreakDate,
+      @HiveField(4) this.totalSolved});
 
   factory _$UserDataImpl.fromJson(Map<String, dynamic> json) =>
       _$$UserDataImplFromJson(json);
@@ -163,10 +178,13 @@ class _$UserDataImpl implements _UserData {
   @override
   @HiveField(3)
   final DateTime? lastSuperStreakDate;
+  @override
+  @HiveField(4)
+  final int? totalSolved;
 
   @override
   String toString() {
-    return 'UserData(xp: $xp, level: $level, superStreak: $superStreak, lastSuperStreakDate: $lastSuperStreakDate)';
+    return 'UserData(xp: $xp, level: $level, superStreak: $superStreak, lastSuperStreakDate: $lastSuperStreakDate, totalSolved: $totalSolved)';
   }
 
   @override
@@ -179,13 +197,15 @@ class _$UserDataImpl implements _UserData {
             (identical(other.superStreak, superStreak) ||
                 other.superStreak == superStreak) &&
             (identical(other.lastSuperStreakDate, lastSuperStreakDate) ||
-                other.lastSuperStreakDate == lastSuperStreakDate));
+                other.lastSuperStreakDate == lastSuperStreakDate) &&
+            (identical(other.totalSolved, totalSolved) ||
+                other.totalSolved == totalSolved));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, xp, level, superStreak, lastSuperStreakDate);
+  int get hashCode => Object.hash(
+      runtimeType, xp, level, superStreak, lastSuperStreakDate, totalSolved);
 
   @JsonKey(ignore: true)
   @override
@@ -206,7 +226,8 @@ abstract class _UserData implements UserData {
       {@HiveField(0) required final int xp,
       @HiveField(1) required final int level,
       @HiveField(2) final int? superStreak,
-      @HiveField(3) final DateTime? lastSuperStreakDate}) = _$UserDataImpl;
+      @HiveField(3) final DateTime? lastSuperStreakDate,
+      @HiveField(4) final int? totalSolved}) = _$UserDataImpl;
 
   factory _UserData.fromJson(Map<String, dynamic> json) =
       _$UserDataImpl.fromJson;
@@ -223,6 +244,9 @@ abstract class _UserData implements UserData {
   @override
   @HiveField(3)
   DateTime? get lastSuperStreakDate;
+  @override
+  @HiveField(4)
+  int? get totalSolved;
   @override
   @JsonKey(ignore: true)
   _$$UserDataImplCopyWith<_$UserDataImpl> get copyWith =>

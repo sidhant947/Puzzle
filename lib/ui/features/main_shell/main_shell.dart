@@ -5,6 +5,7 @@ import '../../../utils/design_system.dart';
 import '../../../widgets/tangible.dart';
 import '../home/home_screen.dart';
 import '../profile/profile_screen.dart';
+import '../settings/settings_screen.dart';
 
 class MainShell extends ConsumerStatefulWidget {
   const MainShell({super.key});
@@ -14,11 +15,12 @@ class MainShell extends ConsumerStatefulWidget {
 }
 
 class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserver {
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   final List<Widget> _screens = [
-    const HomeScreen(),
     const ProfileScreen(),
+    const HomeScreen(),
+    const SettingsScreen(),
   ];
 
   @override
@@ -74,16 +76,23 @@ class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserv
                 _buildNavItem(
                   context: context,
                   index: 0,
-                  icon: Icons.grid_view_rounded,
-                  label: 'GAMES',
+                  icon: Icons.person_rounded,
+                  label: 'PROFILE',
                   isSelected: _selectedIndex == 0,
                 ),
                 _buildNavItem(
                   context: context,
                   index: 1,
-                  icon: Icons.person_rounded,
-                  label: 'PROFILE',
+                  icon: Icons.grid_view_rounded,
+                  label: 'GAMES',
                   isSelected: _selectedIndex == 1,
+                ),
+                _buildNavItem(
+                  context: context,
+                  index: 2,
+                  icon: Icons.settings_rounded,
+                  label: 'SETTINGS',
+                  isSelected: _selectedIndex == 2,
                 ),
               ],
             ),

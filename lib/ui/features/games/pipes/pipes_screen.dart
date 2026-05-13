@@ -101,8 +101,8 @@ class PipesScreen extends ConsumerWidget {
 
         return TangibleContainer(
           depth: 4.0,
-          color: Theme.of(context).colorScheme.onSurface,
-          shadowColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2),
+          color: Theme.of(context).colorScheme.surface,
+          shadowColor: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5),
           padding: const EdgeInsets.all(DesignSystem.spaceSM),
           child: GestureDetector(
             onPanStart: (details) {
@@ -124,6 +124,7 @@ class PipesScreen extends ConsumerWidget {
                   state: state,
                   cellSize: cellSize,
                   pipeColors: pipeColors,
+                  gridColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1),
                 ),
               ),
             ),
@@ -166,17 +167,19 @@ class PipesPainter extends CustomPainter {
   final PipesState state;
   final double cellSize;
   final List<Color> pipeColors;
+  final Color gridColor;
 
   PipesPainter({
     required this.state,
     required this.cellSize,
     required this.pipeColors,
+    required this.gridColor,
   });
 
   @override
   void paint(Canvas canvas, Size size) {
     final gridPaint = Paint()
-      ..color = Colors.white.withValues(alpha: 0.1)
+      ..color = gridColor
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1;
 

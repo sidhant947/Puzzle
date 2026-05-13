@@ -12,6 +12,7 @@ class UserData with _$UserData {
     @HiveField(1) required int level,
     @HiveField(2) int? superStreak,
     @HiveField(3) DateTime? lastSuperStreakDate,
+    @HiveField(4) int? totalSolved,
   }) = _UserData;
 
   factory UserData.initial() => const UserData(
@@ -19,6 +20,7 @@ class UserData with _$UserData {
         level: 1,
         superStreak: 0,
         lastSuperStreakDate: null,
+        totalSolved: 0,
       );
 
   factory UserData.fromJson(Map<String, dynamic> json) =>

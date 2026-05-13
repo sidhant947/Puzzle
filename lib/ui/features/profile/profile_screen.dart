@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:url_launcher/url_launcher.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../data/models/user_data.dart';
 import '../../../../utils/design_system.dart';
@@ -133,8 +132,6 @@ class ProfileScreen extends ConsumerWidget {
                       child: _buildAchievementCard(context, achievements[index], userData),
                     ),
                   ),
-                  const SizedBox(height: DesignSystem.spaceXL),
-                  _buildLegalSection(context),
                 ]),
               ),
             ),
@@ -149,103 +146,179 @@ class ProfileScreen extends ConsumerWidget {
     final currentLevelXp = notifier.xpForLevel(userData.level);
     final nextLevelXp = notifier.xpForLevel(userData.level + 1);
     
-    // Guard against division by zero if current and next level XP are somehow the same
     final diff = nextLevelXp - currentLevelXp;
     final progress = diff > 0 ? (userData.xp - currentLevelXp) / diff : 1.0;
+    final theme = Theme.of(context);
 
-    return TangibleContainer(
-      color: DesignSystem.primary,
-      shadowColor: DesignSystem.primaryShadow,
-      padding: const EdgeInsets.all(DesignSystem.spaceLG),
-      child: Column(
-        children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return Column(
+      children: [
+        TangibleContainer(
+          color: DesignSystem.primary,
+          shadowColor: DesignSystem.primaryShadow,
+          padding: const EdgeInsets.all(DesignSystem.spaceLG),
+          child: Column(
             children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'LEVEL ${userData.level}',
-                    style: const TextStyle(
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: -0.5,
-                      color: Colors.white,
-                      fontSize: 32,
-                    ),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        'LEVEL ${userData.level}',
+                        style: const TextStyle(
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: -0.5,
+                          color: Colors.white,
+                          fontSize: 32,
+                        ),
+                      ),
+                      const SizedBox(height: 4),
+                      Text(
+                        'MAINTAIN YOUR STREAK!',
+                        style: TextStyle(
+                          letterSpacing: 0.5,
+                          fontWeight: FontWeight.w800,
+                          fontSize: 12,
+                          color: Colors.white.withValues(alpha: 0.8),
+                        ),
+                      ),
+                    ],
                   ),
-                  const SizedBox(height: 4),
-                  Text(
-                    'TOTAL XP: ${userData.xp}',
-                    style: TextStyle(
-                      letterSpacing: 0.5,
-                      fontWeight: FontWeight.w800,
-                      color: Colors.white.withValues(alpha: 0.8),
+                  Container(
+                    width: 64,
+                    height: 64,
+                    decoration: BoxDecoration(
+                      color: Colors.white.withValues(alpha: 0.2),
+                      borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
+                    ),
+                    child: const Icon(
+                      Icons.workspace_premium_rounded,
+                      size: 32,
+                      color: Colors.white,
                     ),
                   ),
                 ],
               ),
-              Container(
-                width: 64,
-                height: 64,
-                decoration: BoxDecoration(
-                  color: Colors.white.withValues(alpha: 0.2),
-                  borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
-                ),
-                child: const Icon(
-                  Icons.workspace_premium_rounded,
-                  size: 32,
-                  color: Colors.white,
-                ),
-              ),
-            ],
-          ),
-          const SizedBox(height: DesignSystem.spaceXL),
-          Stack(
-            children: [
-              Container(
-                height: 16,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: Colors.black.withValues(alpha: 0.2),
-                  borderRadius: BorderRadius.circular(8),
-                ),
-              ),
-              FractionallySizedBox(
-                widthFactor: progress.clamp(0.0, 1.0),
-                child: Container(
-                  height: 16,
-                  decoration: BoxDecoration(
-                    color: DesignSystem.accentAmber,
-                    borderRadius: BorderRadius.circular(8),
+              const SizedBox(height: DesignSystem.spaceXL),
+              Stack(
+                children: [
+                  Container(
+                    height: 16,
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      color: Colors.black.withValues(alpha: 0.2),
+                      borderRadius: BorderRadius.circular(8),
+                    ),
                   ),
+                  FractionallySizedBox(
+                    widthFactor: progress.clamp(0.0, 1.0),
+                    child: Container(
+                      height: 16,
+                      decoration: BoxDecoration(
+                        color: DesignSystem.accentAmber,
+                        borderRadius: BorderRadius.circular(8),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: 12),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(
+                    'XP PROGRESS',
+                    style: TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 10,
+                      letterSpacing: 1.0,
+                      color: Colors.white.withValues(alpha: 0.7),
+                    ),
+                  ),
+                  Text(
+                    '${(progress * 100).toInt()}% TO LEVEL ${userData.level + 1}',
+                    style: const TextStyle(
+                      fontWeight: FontWeight.w800,
+                      fontSize: 10,
+                      letterSpacing: 1.0,
+                      color: Colors.white,
+                    ),
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: DesignSystem.spaceMD),
+        Row(
+          children: [
+            Expanded(
+              child: _buildSmallStatCard(
+                context,
+                'TOTAL XP',
+                '${userData.xp}',
+                Icons.bolt_rounded,
+                DesignSystem.accentAmber,
+              ),
+            ),
+            const SizedBox(width: DesignSystem.spaceMD),
+            Expanded(
+              child: _buildSmallStatCard(
+                context,
+                'SOLVED',
+                '${userData.totalSolved ?? 0}',
+                Icons.extension_rounded,
+                DesignSystem.success,
+              ),
+            ),
+          ],
+        ),
+      ],
+    );
+  }
+
+  Widget _buildSmallStatCard(
+    BuildContext context,
+    String label,
+    String value,
+    IconData icon,
+    Color color,
+  ) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
+    return TangibleContainer(
+      color: colorScheme.surface,
+      shadowColor: colorScheme.outline.withValues(alpha: 0.5),
+      padding: const EdgeInsets.all(DesignSystem.spaceMD),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Icon(icon, size: 16, color: color),
+              const SizedBox(width: 8),
+              Text(
+                label,
+                style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 10,
+                  letterSpacing: 1.0,
+                  color: colorScheme.onSurface.withValues(alpha: 0.5),
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 12),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                'XP PROGRESS',
-                style: TextStyle(
-                  fontWeight: FontWeight.w800,
-                  fontSize: 10,
-                  letterSpacing: 1.0,
-                  color: Colors.white.withValues(alpha: 0.7),
-                ),
-              ),
-              const Text(
-                'XP TO NEXT LEVEL',
-                style: TextStyle(
-                  fontWeight: FontWeight.w800,
-                  fontSize: 10,
-                  letterSpacing: 1.0,
-                  color: Colors.white,
-                ),
-              ),
-            ],
+          const SizedBox(height: 8),
+          Text(
+            value,
+            style: TextStyle(
+              fontWeight: FontWeight.w900,
+              fontSize: 20,
+              color: colorScheme.onSurface,
+            ),
           ),
         ],
       ),
@@ -331,86 +404,5 @@ class ProfileScreen extends ConsumerWidget {
         ],
       ),
     );
-  }
-
-  Widget _buildLegalSection(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text(
-          'SYSTEM & LEGAL',
-          style: TextStyle(
-            color: colorScheme.onSurface,
-            letterSpacing: 2,
-            fontWeight: FontWeight.w900,
-            fontSize: 16,
-          ),
-        ),
-        const SizedBox(height: DesignSystem.spaceMD),
-        _buildLegalItem(
-          context,
-          'Privacy Policy',
-          Icons.privacy_tip_rounded,
-          () => _launchUrl('https://sites.google.com/view/puzzlebysidhant/home'),
-        ),
-        const SizedBox(height: DesignSystem.spaceSM),
-        _buildLegalItem(
-          context,
-          'Terms of Service',
-          Icons.description_rounded,
-          () => _launchUrl('https://sites.google.com/view/puzzlebysidhant/home'),
-        ),
-        const SizedBox(height: DesignSystem.spaceSM),
-        _buildLegalItem(
-          context,
-          'Licenses',
-          Icons.code_rounded,
-          () => showLicensePage(
-            context: context,
-            applicationName: 'PUZZLE HUB',
-            applicationVersion: '1.0.3+4',
-          ),
-        ),
-      ],
-    );
-  }
-
-  Widget _buildLegalItem(BuildContext context, String title, IconData icon, VoidCallback onTap) {
-    final colorScheme = Theme.of(context).colorScheme;
-    return TangibleButton(
-      color: colorScheme.surface,
-      shadowColor: colorScheme.outline.withValues(alpha: 0.5),
-      onTap: onTap,
-      child: Row(
-        children: [
-          Icon(icon, size: 24, color: colorScheme.onSurface.withValues(alpha: 0.7)),
-          const SizedBox(width: DesignSystem.spaceMD),
-          Expanded(
-            child: Text(
-              title.toUpperCase(),
-              style: TextStyle(
-                fontWeight: FontWeight.w800,
-                fontSize: 14,
-                letterSpacing: 0.5,
-                color: colorScheme.onSurface,
-              ),
-            ),
-          ),
-          Icon(
-            Icons.chevron_right_rounded,
-            size: 24,
-            color: colorScheme.onSurface.withValues(alpha: 0.5),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Future<void> _launchUrl(String url) async {
-    final uri = Uri.parse(url);
-    if (!await launchUrl(uri)) {
-      throw Exception('Could not launch $url');
-    }
   }
 }

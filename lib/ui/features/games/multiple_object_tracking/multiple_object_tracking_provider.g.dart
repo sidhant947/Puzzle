@@ -6,7 +6,7 @@ part of 'multiple_object_tracking_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$mOTNotifierHash() => r'2ee3f65649a78bc5fd80dd38b6d23046ff7755c6';
+String _$mOTNotifierHash() => r'd9b4b2381f3d62fb93ba0eb825ad8b4424531914';
 
 /// See also [MOTNotifier].
 @ProviderFor(MOTNotifier)
