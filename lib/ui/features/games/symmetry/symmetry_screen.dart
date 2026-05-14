@@ -8,11 +8,32 @@ import '../../../../utils/design_system.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../core/juice/game_scaffold.dart';
 
-class SymmetryScreen extends ConsumerWidget {
+class SymmetryScreen extends ConsumerStatefulWidget {
   const SymmetryScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
+  ConsumerState<SymmetryScreen> createState() => _SymmetryScreenState();
+}
+
+class _SymmetryScreenState extends ConsumerState<SymmetryScreen> {
+  final Set<int> _toggledThisDrag = {};
+
+  void _handleDragUpdate(Offset localPosition, double cellSize, SymmetryState state) {
+    final x = (localPosition.dx / cellSize).floor();
+    final y = (localPosition.dy / cellSize).floor();
+
+    if (x >= 3 && x < 6 && y >= 0 && y < 6) {
+      final index = y * 6 + x;
+      if (!_toggledThisDrag.contains(index)) {
+        HapticFeedbackUtil.selectionClick();
+        ref.read(symmetryNotifierProvider.notifier).toggleCell(x, y);
+        _toggledThisDrag.add(index);
+      }
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
     final state = ref.watch(symmetryNotifierProvider);
 
     ref.listen(symmetryNotifierProvider, (previous, next) {
@@ -45,70 +66,81 @@ class SymmetryScreen extends ConsumerWidget {
         child: LayoutBuilder(
           builder: (context, constraints) {
             final isSmall = constraints.maxHeight < 600;
+            final gridPadding = isSmall ? 16.0 : 24.0;
+            final availableWidth = constraints.maxWidth - (gridPadding * 2);
+            final cellSize = availableWidth / 6;
+
             return Column(
               children: [
                 const Spacer(),
                 Center(
-                  child: ConstrainedBox(
-                    constraints: BoxConstraints(
-                      maxHeight: constraints.maxHeight * (isSmall ? 0.6 : 0.55),
-                      maxWidth: constraints.maxWidth * 0.95,
-                    ),
-                    child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
-                      child: AspectRatio(
-                        aspectRatio: 1,
-                        child: Stack(
-                          children: [
-                            GridView.builder(
-                              physics: const NeverScrollableScrollPhysics(),
-                              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                                crossAxisCount: 6,
-                                crossAxisSpacing: 4,
-                                mainAxisSpacing: 4,
-                              ),
-                              itemCount: 36,
-                              itemBuilder: (context, index) {
-                                final x = index % 6;
-                                final y = index ~/ 6;
-                                final isActive = state.grid[y][x];
-                                final isEditable = x >= 3;
-                                
-                                return TangibleContainer(
-                                  depth: isActive ? 0.0 : 1.0,
-                                  radius: DesignSystem.radiusXS,
-                                  color: isActive 
-                                    ? (isEditable ? DesignSystem.primary : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))
-                                    : Theme.of(context).colorScheme.surface,
-                                  onTap: () {
-                                    if (isEditable) {
-                                      HapticFeedbackUtil.selectionClick();
-                                      ref.read(symmetryNotifierProvider.notifier).toggleCell(x, y);
-                                    }
-                                  },
-                                  child: isActive && !isEditable 
-                                    ? Center(
-                                        child: FittedBox(
-                                          child: Icon(
-                                            Icons.circle, 
-                                            color: Colors.white, 
-                                            size: isSmall ? 6 : 8
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: gridPadding),
+                    child: AspectRatio(
+                      aspectRatio: 1,
+                      child: Stack(
+                        children: [
+                          GestureDetector(
+                            onPanStart: (details) {
+                              _toggledThisDrag.clear();
+                              _handleDragUpdate(details.localPosition, cellSize, state);
+                            },
+                            onPanUpdate: (details) {
+                              _handleDragUpdate(details.localPosition, cellSize, state);
+                            },
+                            child: Column(
+                              children: List.generate(6, (y) {
+                                return Expanded(
+                                  child: Row(
+                                    children: List.generate(6, (x) {
+                                      final isActive = state.grid[y][x];
+                                      final isEditable = x >= 3;
+                                      
+                                      return Expanded(
+                                        child: Padding(
+                                          padding: const EdgeInsets.all(2.0),
+                                          child: TangibleContainer(
+                                            depth: isActive ? 0.0 : 1.0,
+                                            radius: DesignSystem.radiusXS,
+                                            color: isActive 
+                                              ? (isEditable ? DesignSystem.primary : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))
+                                              : Theme.of(context).colorScheme.surface,
+                                            onTap: () {
+                                              if (isEditable) {
+                                                HapticFeedbackUtil.selectionClick();
+                                                ref.read(symmetryNotifierProvider.notifier).toggleCell(x, y);
+                                              }
+                                            },
+                                            child: isActive && !isEditable 
+                                              ? Center(
+                                                  child: FittedBox(
+                                                    child: Icon(
+                                                      Icons.circle, 
+                                                      color: Colors.white, 
+                                                      size: isSmall ? 6 : 8
+                                                    ),
+                                                  ),
+                                                )
+                                              : const SizedBox.expand(),
                                           ),
                                         ),
-                                      )
-                                    : const SizedBox.expand(),
+                                      );
+                                    }),
+                                  ),
                                 );
-                              },
+                              }),
                             ),
-                            Center(
+                          ),
+                          Center(
+                            child: IgnorePointer(
                               child: Container(
                                 width: isSmall ? 2 : 4, 
                                 color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.3), 
                                 height: double.infinity,
                               ),
                             ),
-                          ],
-                        ),
+                          ),
+                        ],
                       ),
                     ),
                   ),

@@ -85,9 +85,9 @@ class _RuleSwitcherScreenState extends ConsumerState<RuleSwitcherScreen> {
           const Spacer(),
           Column(
             children: [
-              _buildCue(state.rule),
-              const SizedBox(height: DesignSystem.spaceMD),
               _buildStimulus(state),
+              const SizedBox(height: DesignSystem.spaceMD),
+              _buildCue(state.rule),
             ],
           ),
           const Spacer(),

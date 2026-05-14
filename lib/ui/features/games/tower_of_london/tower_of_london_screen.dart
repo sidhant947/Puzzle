@@ -28,10 +28,10 @@ class _TowerOfLondonScreenState extends ConsumerState<TowerOfLondonScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: isVictory ? 'PLANNING MASTER!' : (isOutOfMoves ? 'OUT OF MOVES' : 'TIME\'S UP'),
+        title: isVictory ? 'PLANNING MASTER!' : 'OUT OF MOVES',
         message: isVictory 
             ? 'You solved it in ${ref.read(towerOfLondonNotifierProvider).moves} moves!' 
-            : (isOutOfMoves ? 'You exceeded the move limit. Try more efficient planning.' : 'Try to be faster next time.'),
+            : 'You exceeded the move limit. Try more efficient planning.',
         isVictory: isVictory,
         onHome: () {
           Navigator.of(context).pop();
@@ -79,12 +79,8 @@ class _TowerOfLondonScreenState extends ConsumerState<TowerOfLondonScreen> {
         children: [
           Padding(
             padding: const EdgeInsets.all(DesignSystem.spaceMD),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                _buildStat('MOVES', '${state.moves}/${state.maxMoves}', color: state.moves >= state.maxMoves - 2 ? DesignSystem.error : null),
-                _buildStat('TIME', '${state.timeLeft}s', color: state.timeLeft < 10 ? DesignSystem.error : null),
-              ],
+            child: Center(
+              child: _buildStat('MOVES', '${state.moves}/${state.maxMoves}', color: state.moves >= state.maxMoves - 2 ? DesignSystem.error : null),
             ),
           ),
           Text(
@@ -128,8 +124,12 @@ class _TowerOfLondonScreenState extends ConsumerState<TowerOfLondonScreen> {
       crossAxisAlignment: CrossAxisAlignment.end,
       children: List.generate(3, (i) {
         return GestureDetector(
+          behavior: HitTestBehavior.opaque,
           onTap: onPegTap != null ? () => onPegTap(i) : null,
-          child: _buildPeg(i, config[i], isSelected: selectedPeg == i, isTarget: isTarget),
+          child: SizedBox(
+            width: isTarget ? 60 : 100, // Large hit area
+            child: _buildPeg(i, config[i], isSelected: selectedPeg == i, isTarget: isTarget),
+          ),
         );
       }),
     );
@@ -157,7 +157,12 @@ class _TowerOfLondonScreenState extends ConsumerState<TowerOfLondonScreen> {
               padding: EdgeInsets.only(bottom: isTarget ? 2 : 4),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.end,
-                children: beads.map((b) => _buildBead(b, isTarget)).toList().reversed.toList(),
+                children: beads.asMap().entries.map((entry) {
+                  final i = entry.key;
+                  final b = entry.value;
+                  final isHighlighted = isSelected && i == beads.length - 1;
+                  return _buildBead(b, isTarget, isHighlighted: isHighlighted);
+                }).toList().reversed.toList(),
               ),
             ),
           ],
@@ -175,7 +180,7 @@ class _TowerOfLondonScreenState extends ConsumerState<TowerOfLondonScreen> {
     );
   }
 
-  Widget _buildBead(int type, bool isTarget) {
+  Widget _buildBead(int type, bool isTarget, {bool isHighlighted = false}) {
     Color color;
     switch (type) {
       case 1: color = DesignSystem.error; break;
@@ -184,21 +189,38 @@ class _TowerOfLondonScreenState extends ConsumerState<TowerOfLondonScreen> {
       default: color = Colors.grey;
     }
 
-    return Container(
+    return AnimatedContainer(
+      duration: const Duration(milliseconds: 200),
       width: isTarget ? 20 : 36,
       height: isTarget ? 20 : 36,
       margin: const EdgeInsets.symmetric(vertical: 1),
       decoration: BoxDecoration(
         color: color,
         shape: BoxShape.circle,
+        border: isHighlighted 
+            ? Border.all(color: Colors.white, width: 3)
+            : null,
         boxShadow: isTarget ? null : [
           BoxShadow(
-            color: color.withValues(alpha: 0.4),
-            blurRadius: 4,
-            offset: const Offset(0, 2),
+            color: isHighlighted ? Colors.white.withValues(alpha: 0.6) : color.withValues(alpha: 0.4),
+            blurRadius: isHighlighted ? 12 : 4,
+            spreadRadius: isHighlighted ? 2 : 0,
+            offset: isHighlighted ? Offset.zero : const Offset(0, 2),
           ),
         ],
       ),
+      child: isHighlighted 
+          ? Center(
+              child: Container(
+                width: 8,
+                height: 8,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  shape: BoxShape.circle,
+                ),
+              ),
+            )
+          : null,
     );
   }
 }

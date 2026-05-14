@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'tower_of_london_engine.dart';
 
@@ -9,7 +8,6 @@ class TowerOfLondonState {
   final List<List<int>> targetConfig;
   final int moves;
   final int maxMoves;
-  final int timeLeft;
   final bool isGameOver;
   final bool isVictory;
   final int? selectedPeg;
@@ -20,7 +18,6 @@ class TowerOfLondonState {
     required this.targetConfig,
     this.moves = 0,
     this.maxMoves = 0,
-    this.timeLeft = 60,
     this.isGameOver = false,
     this.isVictory = false,
     this.selectedPeg,
@@ -32,7 +29,6 @@ class TowerOfLondonState {
     List<List<int>>? targetConfig,
     int? moves,
     int? maxMoves,
-    int? timeLeft,
     bool? isGameOver,
     bool? isVictory,
     int? selectedPeg,
@@ -43,7 +39,6 @@ class TowerOfLondonState {
       targetConfig: targetConfig ?? this.targetConfig,
       moves: moves ?? this.moves,
       maxMoves: maxMoves ?? this.maxMoves,
-      timeLeft: timeLeft ?? this.timeLeft,
       isGameOver: isGameOver ?? this.isGameOver,
       isVictory: isVictory ?? this.isVictory,
       selectedPeg: selectedPeg != null ? (selectedPeg == -1 ? null : selectedPeg) : this.selectedPeg,
@@ -55,13 +50,9 @@ class TowerOfLondonState {
 @riverpod
 class TowerOfLondonNotifier extends _$TowerOfLondonNotifier {
   final _engine = TowerOfLondonEngine();
-  Timer? _timer;
 
   @override
   TowerOfLondonState build() {
-    ref.onDispose(() {
-      _timer?.cancel();
-    });
     return TowerOfLondonState(
       currentConfig: [[], [], []],
       targetConfig: [[], [], []],
@@ -69,8 +60,6 @@ class TowerOfLondonNotifier extends _$TowerOfLondonNotifier {
   }
 
   void initGame() {
-    _timer?.cancel();
-    
     // Generate a puzzle with at least 5 moves solution
     final puzzle = _engine.generatePuzzle(minMoves: 5);
     final start = puzzle['start']!;
@@ -83,18 +72,6 @@ class TowerOfLondonNotifier extends _$TowerOfLondonNotifier {
       maxMoves: (optimalMoves * 1.5).ceil().clamp(optimalMoves + 2, 20),
       isLoading: false,
     );
-    _startTimer();
-  }
-
-  void _startTimer() {
-    _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
-      if (state.timeLeft > 0) {
-        state = state.copyWith(timeLeft: state.timeLeft - 1);
-      } else {
-        timer.cancel();
-        state = state.copyWith(isGameOver: true, isVictory: false);
-      }
-    });
   }
 
   void selectPeg(int index) {
@@ -122,10 +99,6 @@ class TowerOfLondonNotifier extends _$TowerOfLondonNotifier {
           isGameOver: isSolved || isOutOfMoves,
           isVictory: isSolved,
         );
-
-        if (isSolved || isOutOfMoves) {
-          _timer?.cancel();
-        }
       } else {
         state = state.copyWith(selectedPeg: -1);
       }
