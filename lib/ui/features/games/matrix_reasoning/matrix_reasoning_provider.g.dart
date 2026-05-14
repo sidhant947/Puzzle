@@ -7,7 +7,7 @@ part of 'matrix_reasoning_provider.dart';
 // **************************************************************************
 
 String _$matrixReasoningNotifierHash() =>
-    r'231d6e16651b8d87ead861a6c9e00ff198b47d16';
+    r'65e2bd5e9d5cd8eaba0351dd2313cf8dd7c433bf';
 
 /// See also [MatrixReasoningNotifier].
 @ProviderFor(MatrixReasoningNotifier)

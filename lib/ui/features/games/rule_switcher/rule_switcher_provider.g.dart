@@ -7,7 +7,7 @@ part of 'rule_switcher_provider.dart';
 // **************************************************************************
 
 String _$ruleSwitcherNotifierHash() =>
-    r'23ae7f39d712a725b0a2c0a7b326ed604bf6945b';
+    r'ef9a8d4197ab3188904025dceb11b3947c33fe01';
 
 /// See also [RuleSwitcherNotifier].
 @ProviderFor(RuleSwitcherNotifier)

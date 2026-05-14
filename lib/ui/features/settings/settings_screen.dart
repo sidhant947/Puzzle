@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../../../providers/theme_provider.dart';
+import '../../../providers/user_providers.dart';
 import '../../../utils/design_system.dart';
 import '../../../widgets/tangible.dart';
 
@@ -13,6 +14,7 @@ class SettingsScreen extends ConsumerWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final themeMode = ref.watch(themeNotifierProvider);
+    final userData = ref.watch(userDataNotifierProvider);
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -48,6 +50,10 @@ class SettingsScreen extends ConsumerWidget {
                   _buildSectionTitle(context, 'APPEARANCE'),
                   const SizedBox(height: DesignSystem.spaceMD),
                   _buildThemeSelector(context, ref, themeMode),
+                  const SizedBox(height: DesignSystem.spaceXL),
+                  _buildSectionTitle(context, 'GAMEPLAY'),
+                  const SizedBox(height: DesignSystem.spaceMD),
+                  _buildTrialModeToggle(context, ref, userData.isTrialModeEnabled ?? false),
                   const SizedBox(height: DesignSystem.spaceXL),
                   _buildSectionTitle(context, 'SUPPORT US'),
                   const SizedBox(height: DesignSystem.spaceMD),
@@ -110,6 +116,53 @@ class SettingsScreen extends ConsumerWidget {
         letterSpacing: 2,
         fontWeight: FontWeight.w900,
         fontSize: 16,
+      ),
+    );
+  }
+
+  Widget _buildTrialModeToggle(BuildContext context, WidgetRef ref, bool isEnabled) {
+    final colorScheme = Theme.of(context).colorScheme;
+    return TangibleContainer(
+      color: colorScheme.surface,
+      shadowColor: colorScheme.outline.withValues(alpha: 0.5),
+      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceMD, vertical: DesignSystem.spaceSM),
+      child: Row(
+        children: [
+          Icon(
+            Icons.timer_off_rounded,
+            color: isEnabled ? DesignSystem.primary : colorScheme.onSurface.withValues(alpha: 0.7),
+          ),
+          const SizedBox(width: DesignSystem.spaceMD),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'TRIAL MODE',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w900,
+                    fontSize: 14,
+                    letterSpacing: 0.5,
+                    color: colorScheme.onSurface,
+                  ),
+                ),
+                Text(
+                  'SOLVE 20 TO FINISH INSTEAD OF 60S TIMER',
+                  style: TextStyle(
+                    fontSize: 10,
+                    fontWeight: FontWeight.w700,
+                    color: colorScheme.onSurface.withValues(alpha: 0.5),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Switch(
+            value: isEnabled,
+            onChanged: (value) => ref.read(userDataNotifierProvider.notifier).setTrialMode(value),
+            activeColor: DesignSystem.primary,
+          ),
+        ],
       ),
     );
   }

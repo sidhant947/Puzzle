@@ -31,9 +31,9 @@ class _RuleSwitcherScreenState extends ConsumerState<RuleSwitcherScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'TIME\'S UP!',
+        title: state.isTrialMode ? 'COMPLETED!' : 'TIME\'S UP!',
         message: 'You scored ${state.score} correct out of ${state.totalTrials}!',
-        isVictory: state.score > 15,
+        isVictory: state.isTrialMode ? state.score >= 8 : state.score > 15,
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();
@@ -78,7 +78,10 @@ class _RuleSwitcherScreenState extends ConsumerState<RuleSwitcherScreen> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _buildStat('SCORE', state.score.toString()),
-                _buildStat('TIME', '${state.timeLeft}s', color: state.timeLeft < 10 ? DesignSystem.error : null),
+                if (state.isTrialMode)
+                  _buildStat('TRIALS', '${state.totalTrials}/${state.targetTrials}')
+                else
+                  _buildStat('TIME', '${state.timeLeft}s', color: state.timeLeft < 10 ? DesignSystem.error : null),
               ],
             ),
           ),

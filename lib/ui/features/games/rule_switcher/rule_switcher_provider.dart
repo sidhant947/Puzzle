@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import '../../../../providers/user_providers.dart';
 import 'rule_switcher_engine.dart';
 
 part 'rule_switcher_provider.g.dart';
@@ -13,6 +14,8 @@ class RuleSwitcherState {
   final int timeLeft;
   final bool isGameOver;
   final bool isLoading;
+  final bool isTrialMode;
+  final int targetTrials;
 
   RuleSwitcherState({
     this.rule = SwitchRule.number,
@@ -23,6 +26,8 @@ class RuleSwitcherState {
     this.timeLeft = 60,
     this.isGameOver = false,
     this.isLoading = true,
+    this.isTrialMode = false,
+    this.targetTrials = 20,
   });
 
   RuleSwitcherState copyWith({
@@ -34,6 +39,8 @@ class RuleSwitcherState {
     int? timeLeft,
     bool? isGameOver,
     bool? isLoading,
+    bool? isTrialMode,
+    int? targetTrials,
   }) {
     return RuleSwitcherState(
       rule: rule ?? this.rule,
@@ -44,6 +51,8 @@ class RuleSwitcherState {
       timeLeft: timeLeft ?? this.timeLeft,
       isGameOver: isGameOver ?? this.isGameOver,
       isLoading: isLoading ?? this.isLoading,
+      isTrialMode: isTrialMode ?? this.isTrialMode,
+      targetTrials: targetTrials ?? this.targetTrials,
     );
   }
 }
@@ -63,9 +72,19 @@ class RuleSwitcherNotifier extends _$RuleSwitcherNotifier {
 
   void initGame() {
     _timer?.cancel();
+    final isTrialMode = ref.read(userDataNotifierProvider).isTrialModeEnabled ?? false;
+    
     _nextTrial(resetScore: true);
-    state = state.copyWith(timeLeft: 60, isGameOver: false, isLoading: false);
-    _startTimer();
+    state = state.copyWith(
+      timeLeft: 60, 
+      isGameOver: false, 
+      isLoading: false,
+      isTrialMode: isTrialMode,
+    );
+    
+    if (!isTrialMode) {
+      _startTimer();
+    }
   }
 
   void _startTimer() {
@@ -102,10 +121,18 @@ class RuleSwitcherNotifier extends _$RuleSwitcherNotifier {
       correct = (state.colorName == 'Red') == choice;
     }
 
+    final newScore = correct ? state.score + 1 : state.score;
+    final newTotalTrials = state.totalTrials + 1;
+
     state = state.copyWith(
-      score: correct ? state.score + 1 : state.score,
-      totalTrials: state.totalTrials + 1,
+      score: newScore,
+      totalTrials: newTotalTrials,
     );
-    _nextTrial();
+
+    if (state.isTrialMode && newTotalTrials >= state.targetTrials) {
+      state = state.copyWith(isGameOver: true);
+    } else {
+      _nextTrial();
+    }
   }
 }

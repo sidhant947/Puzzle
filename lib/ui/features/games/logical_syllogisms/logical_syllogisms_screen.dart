@@ -25,14 +25,14 @@ class _LogicalSyllogismsScreenState extends ConsumerState<LogicalSyllogismsScree
   }
 
   void _showCompletionDialog() {
-    final score = ref.read(logicalSyllogismsNotifierProvider).score;
+    final state = ref.read(logicalSyllogismsNotifierProvider);
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'TIME\'S UP!',
-        message: 'You solved $score syllogisms correctly!',
-        isVictory: score > 5,
+        title: state.isTrialMode ? 'COMPLETED!' : 'TIME\'S UP!',
+        message: 'You solved ${state.score} syllogisms correctly!',
+        isVictory: state.isTrialMode ? state.score >= 8 : state.score > 5,
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();
@@ -86,10 +86,10 @@ class _LogicalSyllogismsScreenState extends ConsumerState<LogicalSyllogismsScree
                 TangibleContainer(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Text(
-                    'Time: ${state.timeLeft}s',
+                    state.isTrialMode ? 'Trials: ${state.totalTrials}/${state.targetTrials}' : 'Time: ${state.timeLeft}s',
                     style: TextStyle(
                       fontWeight: FontWeight.w900,
-                      color: state.timeLeft < 10 ? DesignSystem.error : colorScheme.onSurface,
+                      color: (!state.isTrialMode && state.timeLeft < 10) ? DesignSystem.error : colorScheme.onSurface,
                     ),
                   ),
                 ),

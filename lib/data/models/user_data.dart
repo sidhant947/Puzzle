@@ -14,6 +14,7 @@ class UserData with _$UserData {
     @HiveField(3) DateTime? lastSuperStreakDate,
     @HiveField(4) int? totalSolved,
     @HiveField(5) List<String>? favoriteGameIds,
+    @HiveField(6) bool? isTrialModeEnabled,
   }) = _UserData;
 
   factory UserData.initial() => const UserData(
@@ -23,6 +24,7 @@ class UserData with _$UserData {
         lastSuperStreakDate: null,
         totalSolved: 0,
         favoriteGameIds: [],
+        isTrialModeEnabled: false,
       );
 
   factory UserData.fromJson(Map<String, dynamic> json) =>

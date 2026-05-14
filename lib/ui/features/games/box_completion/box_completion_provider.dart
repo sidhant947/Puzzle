@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import '../../../../providers/user_providers.dart';
 import 'box_completion_engine.dart';
 
 part 'box_completion_provider.g.dart';
@@ -11,6 +12,8 @@ class BoxCompletionState {
   final int timeLeft;
   final bool isGameOver;
   final bool isLoading;
+  final bool isTrialMode;
+  final int targetTrials;
 
   BoxCompletionState({
     this.currentPuzzle,
@@ -19,6 +22,8 @@ class BoxCompletionState {
     this.timeLeft = 60,
     this.isGameOver = false,
     this.isLoading = true,
+    this.isTrialMode = false,
+    this.targetTrials = 20,
   });
 
   BoxCompletionState copyWith({
@@ -28,6 +33,8 @@ class BoxCompletionState {
     int? timeLeft,
     bool? isGameOver,
     bool? isLoading,
+    bool? isTrialMode,
+    int? targetTrials,
   }) {
     return BoxCompletionState(
       currentPuzzle: currentPuzzle ?? this.currentPuzzle,
@@ -36,6 +43,8 @@ class BoxCompletionState {
       timeLeft: timeLeft ?? this.timeLeft,
       isGameOver: isGameOver ?? this.isGameOver,
       isLoading: isLoading ?? this.isLoading,
+      isTrialMode: isTrialMode ?? this.isTrialMode,
+      targetTrials: targetTrials ?? this.targetTrials,
     );
   }
 }
@@ -55,9 +64,19 @@ class BoxCompletionNotifier extends _$BoxCompletionNotifier {
 
   void initGame() {
     _timer?.cancel();
+    final isTrialMode = ref.read(userDataNotifierProvider).isTrialModeEnabled ?? false;
+
     _nextTrial(resetScore: true);
-    state = state.copyWith(timeLeft: 60, isGameOver: false, isLoading: false);
-    _startTimer();
+    state = state.copyWith(
+      timeLeft: 60, 
+      isGameOver: false, 
+      isLoading: false,
+      isTrialMode: isTrialMode,
+    );
+
+    if (!isTrialMode) {
+      _startTimer();
+    }
   }
 
   void _startTimer() {
@@ -84,10 +103,18 @@ class BoxCompletionNotifier extends _$BoxCompletionNotifier {
     if (state.isGameOver || state.currentPuzzle == null) return;
 
     bool correct = index == state.currentPuzzle!.correctOptionIndex;
+    final newScore = correct ? state.score + 1 : state.score;
+    final newTotalTrials = state.totalTrials + 1;
+
     state = state.copyWith(
-      score: correct ? state.score + 1 : state.score,
-      totalTrials: state.totalTrials + 1,
+      score: newScore,
+      totalTrials: newTotalTrials,
     );
-    _nextTrial();
+
+    if (state.isTrialMode && newTotalTrials >= state.targetTrials) {
+      state = state.copyWith(isGameOver: true);
+    } else {
+      _nextTrial();
+    }
   }
 }

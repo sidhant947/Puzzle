@@ -7,7 +7,7 @@ part of 'logical_syllogisms_provider.dart';
 // **************************************************************************
 
 String _$logicalSyllogismsNotifierHash() =>
-    r'8aeeda95c4bf1f9f90174ec3f52e0ad5c75a8e15';
+    r'944b26500758cdae64a43af6cbc77fe9ffa4a01e';
 
 /// See also [LogicalSyllogismsNotifier].
 @ProviderFor(LogicalSyllogismsNotifier)

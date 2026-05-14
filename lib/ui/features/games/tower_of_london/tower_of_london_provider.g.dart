@@ -7,7 +7,7 @@ part of 'tower_of_london_provider.dart';
 // **************************************************************************
 
 String _$towerOfLondonNotifierHash() =>
-    r'b387af0fedfbcf8c6c8bfff98f6f733e84150c19';
+    r'8a8da60f5446f1daca8f0bce3103a37aa32b1382';
 
 /// See also [TowerOfLondonNotifier].
 @ProviderFor(TowerOfLondonNotifier)

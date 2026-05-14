@@ -25,14 +25,14 @@ class _MentalRotationScreenState extends ConsumerState<MentalRotationScreen> {
   }
 
   void _showCompletionDialog() {
-    final score = ref.read(mentalRotationNotifierProvider).score;
+    final state = ref.read(mentalRotationNotifierProvider);
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'TIME\'S UP!',
-        message: 'You rotated $score shapes correctly!',
-        isVictory: score > 5,
+        title: state.isTrialMode ? 'COMPLETED!' : 'TIME\'S UP!',
+        message: 'You rotated ${state.score} shapes correctly!',
+        isVictory: state.isTrialMode ? state.score >= 8 : state.score > 5,
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();
@@ -86,10 +86,10 @@ class _MentalRotationScreenState extends ConsumerState<MentalRotationScreen> {
                 TangibleContainer(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Text(
-                    'Time: ${state.timeLeft}s',
+                    state.isTrialMode ? 'Trials: ${state.totalTrials}/${state.targetTrials}' : 'Time: ${state.timeLeft}s',
                     style: TextStyle(
                       fontWeight: FontWeight.w900,
-                      color: state.timeLeft < 10 ? DesignSystem.error : colorScheme.onSurface,
+                      color: (!state.isTrialMode && state.timeLeft < 10) ? DesignSystem.error : colorScheme.onSurface,
                     ),
                   ),
                 ),

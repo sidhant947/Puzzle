@@ -148,6 +148,12 @@ class UserDataNotifier extends _$UserDataNotifier {
     state = newState;
     await ref.read(userRepositoryProvider).saveUserData(newState);
   }
+
+  Future<void> setTrialMode(bool enabled) async {
+    final newState = state.copyWith(isTrialModeEnabled: enabled);
+    state = newState;
+    await ref.read(userRepositoryProvider).saveUserData(newState);
+  }
 }
 
 @riverpod
