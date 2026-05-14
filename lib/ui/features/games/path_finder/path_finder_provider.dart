@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import '../../../../utils/haptic_feedback.dart';
 import 'path_finder_engine.dart';
 
 part 'path_finder_provider.g.dart';
@@ -47,9 +48,12 @@ class PathFinderNotifier extends _$PathFinderNotifier {
     // If tapping a node already in the path, backtrack to it
     if (state.currentPath.contains(node)) {
       final index = state.currentPath.indexOf(node);
-      state = state.copyWith(
-        currentPath: state.currentPath.sublist(0, index + 1),
-      );
+      if (index != state.currentPath.length - 1) {
+        HapticFeedbackUtil.selectionClick();
+        state = state.copyWith(
+          currentPath: state.currentPath.sublist(0, index + 1),
+        );
+      }
       return;
     }
 
@@ -58,6 +62,7 @@ class PathFinderNotifier extends _$PathFinderNotifier {
     
     // Allow ANY adjacent move, regardless of whether it's the correct hidden path
     if (dist == 1) {
+      HapticFeedbackUtil.selectionClick();
       final newPath = List<Point<int>>.from(state.currentPath)..add(node);
       state = state.copyWith(
         currentPath: newPath,

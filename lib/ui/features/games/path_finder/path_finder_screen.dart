@@ -127,58 +127,73 @@ class _PathGrid extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(pathFinderNotifierProvider);
 
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
       child: AspectRatio(
         aspectRatio: 1.0,
-        child: GridView.builder(
-          padding: const EdgeInsets.all(DesignSystem.spaceXS),
-          physics: const NeverScrollableScrollPhysics(),
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 5,
-            crossAxisSpacing: 8,
-            mainAxisSpacing: 8,
-          ),
-          itemCount: 25,
-          itemBuilder: (context, index) {
-            final x = index % 5;
-            final y = index ~/ 5;
-            final point = Point(x, y);
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            final cellSize = (constraints.maxWidth - (8 * 4) - (DesignSystem.spaceXS * 2)) / 5;
             
-            final isSelected = state.currentPath.contains(point);
-            final isLast = state.currentPath.isNotEmpty && state.currentPath.last == point;
-            final isStart = state.requiredNodes.first == point;
-            final isExit = state.requiredNodes.last == point;
-            
-            Color color = Theme.of(context).colorScheme.surface;
-            if (isSelected) {
-              color = isLast ? DesignSystem.primary : DesignSystem.primary.withValues(alpha: 0.3);
-            } else if (isStart || isExit) {
-              color = DesignSystem.primary.withValues(alpha: 0.1);
+            void handlePointerEvent(Offset localPosition) {
+              final x = (localPosition.dx - DesignSystem.spaceXS) / (cellSize + 8);
+              final y = (localPosition.dy - DesignSystem.spaceXS) / (cellSize + 8);
+              
+              if (x >= 0 && x < 5 && y >= 0 && y < 5) {
+                final point = Point(x.floor(), y.floor());
+                ref.read(pathFinderNotifierProvider.notifier).addNode(point);
+              }
             }
 
-            return TangibleContainer(
-              depth: isSelected ? 0 : 2,
-              radius: DesignSystem.radiusXS,
-              color: color,
-              onTap: () {
-                HapticFeedbackUtil.selectionClick();
-                ref.read(pathFinderNotifierProvider.notifier).addNode(point);
-              },
-              child: Center(
-                child: (isStart || isExit) && !isSelected
-                    ? FittedBox(
-                        child: Text(isStart ? 'S' : 'E',
-                            style: const TextStyle(
-                              color: DesignSystem.primary,
-                              fontWeight: FontWeight.w900,
-                              fontSize: 16,
-                            )),
-                      )
-                    : null,
+            return GestureDetector(
+              onPanUpdate: (details) => handlePointerEvent(details.localPosition),
+              onPanDown: (details) => handlePointerEvent(details.localPosition),
+              child: GridView.builder(
+                padding: const EdgeInsets.all(DesignSystem.spaceXS),
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 5,
+                  crossAxisSpacing: 8,
+                  mainAxisSpacing: 8,
+                ),
+                itemCount: 25,
+                itemBuilder: (context, index) {
+                  final x = index % 5;
+                  final y = index ~/ 5;
+                  final point = Point(x, y);
+                  
+                  final isSelected = state.currentPath.contains(point);
+                  final isLast = state.currentPath.isNotEmpty && state.currentPath.last == point;
+                  final isStart = state.requiredNodes.first == point;
+                  final isExit = state.requiredNodes.last == point;
+                  
+                  Color color = Theme.of(context).colorScheme.surface;
+                  if (isSelected) {
+                    color = isLast ? DesignSystem.primary : DesignSystem.primary.withValues(alpha: 0.3);
+                  } else if (isStart || isExit) {
+                    color = DesignSystem.primary.withValues(alpha: 0.1);
+                  }
+
+                  return TangibleContainer(
+                    depth: isSelected ? 0 : 2,
+                    radius: DesignSystem.radiusXS,
+                    color: color,
+                    child: Center(
+                      child: (isStart || isExit) && !isSelected
+                          ? FittedBox(
+                              child: Text(isStart ? 'S' : 'E',
+                                  style: const TextStyle(
+                                    color: DesignSystem.primary,
+                                    fontWeight: FontWeight.w900,
+                                    fontSize: 16,
+                                  )),
+                            )
+                          : null,
+                    ),
+                  );
+                },
               ),
             );
           },
