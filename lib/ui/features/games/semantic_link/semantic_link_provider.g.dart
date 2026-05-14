@@ -7,7 +7,7 @@ part of 'semantic_link_provider.dart';
 // **************************************************************************
 
 String _$semanticLinkNotifierHash() =>
-    r'a549e242f1bc3310d5c81474baa7fb4741da5309';
+    r'f791ba58e1639bce7147f805c39992a80e668d63';
 
 /// See also [SemanticLinkNotifier].
 @ProviderFor(SemanticLinkNotifier)

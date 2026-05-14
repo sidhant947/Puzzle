@@ -9,14 +9,14 @@ class SemanticLinkState {
   final int score;
   final int timeLeft;
   final bool isGameOver;
-  final bool? lastResult;
+  final Set<String> wrongAttempts;
 
   SemanticLinkState({
     this.puzzle,
     this.score = 0,
     this.timeLeft = 60,
     this.isGameOver = false,
-    this.lastResult,
+    this.wrongAttempts = const {},
   });
 
   SemanticLinkState copyWith({
@@ -24,14 +24,14 @@ class SemanticLinkState {
     int? score,
     int? timeLeft,
     bool? isGameOver,
-    bool? lastResult,
+    Set<String>? wrongAttempts,
   }) {
     return SemanticLinkState(
       puzzle: puzzle ?? this.puzzle,
       score: score ?? this.score,
       timeLeft: timeLeft ?? this.timeLeft,
       isGameOver: isGameOver ?? this.isGameOver,
-      lastResult: lastResult,
+      wrongAttempts: wrongAttempts ?? this.wrongAttempts,
     );
   }
 }
@@ -56,6 +56,7 @@ class SemanticLinkNotifier extends _$SemanticLinkNotifier {
       score: 0,
       timeLeft: 60,
       isGameOver: false,
+      wrongAttempts: {},
     );
     _startTimer();
   }
@@ -73,19 +74,23 @@ class SemanticLinkNotifier extends _$SemanticLinkNotifier {
 
   void submitAnswer(String answer) {
     if (state.isGameOver || state.puzzle == null) return;
+    if (state.wrongAttempts.contains(answer)) return;
 
     final isCorrect = answer == state.puzzle!.answer;
     if (isCorrect) {
+      // Correct answer: +1 point, clear wrong attempts, get next puzzle
       state = state.copyWith(
         score: state.score + 1,
         puzzle: _engine.generatePuzzle(),
-        lastResult: true,
+        wrongAttempts: {},
       );
     } else {
+      // Incorrect answer: -1 point, add to wrong attempts, keep same puzzle
       state = state.copyWith(
-        puzzle: _engine.generatePuzzle(),
-        lastResult: false,
+        score: state.score - 1,
+        wrongAttempts: {...state.wrongAttempts, answer},
       );
     }
   }
 }
+

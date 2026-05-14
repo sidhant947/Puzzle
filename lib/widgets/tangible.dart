@@ -69,7 +69,7 @@ class TangibleContainer extends StatelessWidget {
 /// A tactile button widget.
 class TangibleButton extends StatefulWidget {
   final Widget child;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   final Color? color;
   final Color? shadowColor;
   final EdgeInsetsGeometry? padding;
@@ -79,7 +79,7 @@ class TangibleButton extends StatefulWidget {
   const TangibleButton({
     super.key,
     required this.child,
-    required this.onTap,
+    this.onTap,
     this.color,
     this.shadowColor,
     this.padding,
@@ -100,13 +100,15 @@ class _TangibleButtonState extends State<TangibleButton> {
     final resolvedColor = widget.color ?? colorScheme.primary;
     final resolvedShadowColor = widget.shadowColor ?? (widget.color == null ? colorScheme.primary.withValues(alpha: 0.8) : resolvedColor.withValues(alpha: 0.8));
 
+    final isEnabled = widget.onTap != null;
+
     return GestureDetector(
-      onTapDown: (_) => setState(() => _isPressed = true),
-      onTapUp: (_) {
+      onTapDown: isEnabled ? (_) => setState(() => _isPressed = true) : null,
+      onTapUp: isEnabled ? (_) {
         setState(() => _isPressed = false);
-        widget.onTap();
-      },
-      onTapCancel: () => setState(() => _isPressed = false),
+        widget.onTap?.call();
+      } : null,
+      onTapCancel: isEnabled ? () => setState(() => _isPressed = false) : null,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 100),
         curve: Curves.easeOutCubic,
@@ -134,3 +136,4 @@ class _TangibleButtonState extends State<TangibleButton> {
     );
   }
 }
+

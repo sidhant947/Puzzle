@@ -20,7 +20,7 @@ final userRepositoryProvider = Provider<UserRepository>.internal(
   allTransitiveDependencies: null,
 );
 
-typedef UserRepositoryRef = Ref<UserRepository>;
+typedef UserRepositoryRef = ProviderRef<UserRepository>;
 String _$userDataNotifierHash() => r'f79981c72e7d86a4695127f9c799cb6c1a45d848';
 
 /// See also [UserDataNotifier].

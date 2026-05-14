@@ -31,7 +31,7 @@ class _SemanticLinkScreenState extends ConsumerState<SemanticLinkScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: 'TIME\'S UP!',
-        message: 'You linked $score word sets correctly!',
+        message: 'You scored $score points!',
         isVictory: score > 5,
         onHome: () {
           Navigator.of(context).pop();
@@ -57,10 +57,10 @@ class _SemanticLinkScreenState extends ConsumerState<SemanticLinkScreen> {
         ref.read(gameStreakNotifierProvider.notifier).completeGame('semantic_link');
         _showCompletionDialog();
       }
-      if (next.lastResult != null && next.lastResult != previous?.lastResult) {
-        if (next.lastResult!) {
+      if (previous != null) {
+        if (next.score > previous.score) {
           HapticFeedbackUtil.lightImpact();
-        } else {
+        } else if (next.score < previous.score) {
           HapticFeedbackUtil.vibrate();
         }
       }
@@ -80,7 +80,10 @@ class _SemanticLinkScreenState extends ConsumerState<SemanticLinkScreen> {
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Text(
                     'Score: ${state.score}',
-                    style: const TextStyle(fontWeight: FontWeight.w900),
+                    style: TextStyle(
+                      fontWeight: FontWeight.w900,
+                      color: state.score < 0 ? DesignSystem.error : colorScheme.onSurface,
+                    ),
                   ),
                 ),
                 TangibleContainer(
@@ -124,20 +127,25 @@ class _SemanticLinkScreenState extends ConsumerState<SemanticLinkScreen> {
                 childAspectRatio: 2.5,
                 crossAxisSpacing: DesignSystem.spaceMD,
                 mainAxisSpacing: DesignSystem.spaceMD,
-                children: state.puzzle!.options.map((option) => TangibleButton(
-                  onTap: () => notifier.submitAnswer(option),
-                  color: colorScheme.surface,
-                  child: Center(
-                    child: Text(
-                      option.toUpperCase(),
-                      style: TextStyle(
-                        fontSize: 18,
-                        fontWeight: FontWeight.w900,
-                        color: colorScheme.onSurface,
+                children: state.puzzle!.options.map((option) {
+                  final isWrong = state.wrongAttempts.contains(option);
+                  return TangibleButton(
+                    onTap: isWrong ? null : () => notifier.submitAnswer(option),
+                    color: isWrong ? DesignSystem.error.withValues(alpha: 0.2) : colorScheme.surface,
+                    shadowColor: isWrong ? DesignSystem.error.withValues(alpha: 0.3) : colorScheme.outline,
+                    child: Center(
+                      child: Text(
+                        option.toUpperCase(),
+                        style: TextStyle(
+                          fontSize: 18,
+                          fontWeight: FontWeight.w900,
+                          color: isWrong ? DesignSystem.error : colorScheme.onSurface,
+                          decoration: isWrong ? TextDecoration.lineThrough : null,
+                        ),
                       ),
                     ),
-                  ),
-                )).toList(),
+                  );
+                }).toList(),
               ),
             ),
           ],
@@ -147,3 +155,4 @@ class _SemanticLinkScreenState extends ConsumerState<SemanticLinkScreen> {
     );
   }
 }
+
