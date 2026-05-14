@@ -144,6 +144,9 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
                         child: TextField(
                           controller: _controller,
                           autofocus: true,
+                          minLines: 3,
+                          maxLines: null,
+                          keyboardType: TextInputType.multiline,
                           onChanged: (val) {
                             HapticFeedbackUtil.selectionClick();
                             notifier.onInputChange(val);
@@ -159,7 +162,7 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
                             border: InputBorder.none,
                             contentPadding: const EdgeInsets.symmetric(
                               horizontal: DesignSystem.spaceLG,
-                              vertical: DesignSystem.spaceSM,
+                              vertical: DesignSystem.spaceMD,
                             ),
                           ),
                           style: TextStyle(
