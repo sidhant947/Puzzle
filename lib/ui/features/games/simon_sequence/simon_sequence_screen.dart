@@ -114,6 +114,12 @@ class _SimonSequenceScreenState extends ConsumerState<SimonSequenceScreen> {
             itemCount: 9,
             itemBuilder: (context, index) {
               final isHighlighted = state.highlightedTile == index;
+              final isFailed = state.failedTile == index;
+              
+              Color tileColor = Theme.of(context).colorScheme.surface;
+              if (isHighlighted) tileColor = DesignSystem.accentAmber;
+              if (isFailed) tileColor = DesignSystem.error;
+
               return GestureDetector(
                 onTap: () {
                   if (!state.isShowingSequence) {
@@ -122,11 +128,17 @@ class _SimonSequenceScreenState extends ConsumerState<SimonSequenceScreen> {
                   }
                 },
                 child: TangibleContainer(
-                  depth: isHighlighted ? 0.0 : 3.0,
+                  depth: (isHighlighted || isFailed) ? 0.0 : 3.0,
                   radius: DesignSystem.radiusMD,
-                  color: isHighlighted ? DesignSystem.accentAmber : Theme.of(context).colorScheme.surface,
-                  child: isHighlighted 
-                    ? const Center(child: Icon(Icons.flash_on_rounded, color: Colors.white, size: 24))
+                  color: tileColor,
+                  child: (isHighlighted || isFailed) 
+                    ? Center(
+                        child: Icon(
+                          isFailed ? Icons.close_rounded : Icons.flash_on_rounded, 
+                          color: Colors.white, 
+                          size: 24
+                        )
+                      )
                     : const SizedBox.shrink(),
                 ),
               );
@@ -139,7 +151,6 @@ class _SimonSequenceScreenState extends ConsumerState<SimonSequenceScreen> {
 
 
   void _showGameOverDialog(BuildContext context, WidgetRef ref, SimonSequenceState state, bool won) {
-    final l10n = AppLocalizations.of(context)!;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('simon_sequence', xpAmount: 50);
       showDialog(

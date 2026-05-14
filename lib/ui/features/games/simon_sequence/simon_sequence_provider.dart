@@ -10,6 +10,7 @@ class SimonSequenceState {
   final bool isGameOver;
   final bool isGameWon;
   final int highlightedTile; // -1 if none
+  final int failedTile; // -1 if none
 
   SimonSequenceState({
     required this.sequence,
@@ -18,6 +19,7 @@ class SimonSequenceState {
     this.isGameOver = false,
     this.isGameWon = false,
     this.highlightedTile = -1,
+    this.failedTile = -1,
   });
 
   SimonSequenceState copyWith({
@@ -27,6 +29,7 @@ class SimonSequenceState {
     bool? isGameOver,
     bool? isGameWon,
     int? highlightedTile,
+    int? failedTile,
   }) {
     return SimonSequenceState(
       sequence: sequence ?? this.sequence,
@@ -35,6 +38,7 @@ class SimonSequenceState {
       isGameOver: isGameOver ?? this.isGameOver,
       isGameWon: isGameWon ?? this.isGameWon,
       highlightedTile: highlightedTile ?? this.highlightedTile,
+      failedTile: failedTile ?? this.failedTile,
     );
   }
 }
@@ -50,7 +54,7 @@ class SimonSequenceNotifier extends _$SimonSequenceNotifier {
   }
 
   Future<void> startSequence() async {
-    state = state.copyWith(isShowingSequence: true, userSequence: [], highlightedTile: -1);
+    state = state.copyWith(isShowingSequence: true, userSequence: [], highlightedTile: -1, failedTile: -1);
     await Future.delayed(const Duration(milliseconds: 1000));
     
     for (final tile in state.sequence) {
@@ -63,19 +67,28 @@ class SimonSequenceNotifier extends _$SimonSequenceNotifier {
     state = state.copyWith(isShowingSequence: false);
   }
 
-  void tapTile(int index) {
-    if (state.isShowingSequence || state.isGameOver || state.isGameWon) return;
+  Future<void> tapTile(int index) async {
+    if (state.isShowingSequence || state.isGameOver || state.isGameWon || state.highlightedTile != -1) return;
 
-    final newUserSequence = List<int>.from(state.userSequence)..add(index);
-    if (state.sequence[state.userSequence.length] != index) {
-      state = state.copyWith(isGameOver: true);
+    final correctTile = state.sequence[state.userSequence.length];
+    
+    if (index != correctTile) {
+      state = state.copyWith(failedTile: index, highlightedTile: correctTile);
+      await Future.delayed(const Duration(milliseconds: 1500));
+      state = state.copyWith(isGameOver: true, highlightedTile: -1, failedTile: -1);
       return;
     }
 
+    // Correct tile
+    state = state.copyWith(highlightedTile: index);
+    final newUserSequence = List<int>.from(state.userSequence)..add(index);
+    
+    await Future.delayed(const Duration(milliseconds: 300));
+    
     if (newUserSequence.length == state.sequence.length) {
-      state = state.copyWith(userSequence: newUserSequence, isGameWon: true);
+      state = state.copyWith(userSequence: newUserSequence, isGameWon: true, highlightedTile: -1);
     } else {
-      state = state.copyWith(userSequence: newUserSequence);
+      state = state.copyWith(userSequence: newUserSequence, highlightedTile: -1);
     }
   }
 

@@ -165,18 +165,18 @@ class DesignSystem {
   static const double radius2XL = 48.0;
 
   // --- Game Accents ---
-  static const Color gameBlue = Color(0xFF8ECAE6); 
-  static const Color gameGreen = Color(0xFFA3B18A);
-  static const Color gamePurple = Color(0xFFB7B7A4);
-  static const Color gameOrange = Color(0xFFFFB703);
-  static const Color gamePink = Color(0xFFFFC8DD);
-  static const Color gameTeal = Color(0xFF81B29A);
-  static const Color gameIndigo = Color(0xFF94A3B8);
-  static const Color gameAmber = Color(0xFFF2CC8F);
-  static const Color gameRose = Color(0xFFF28482);
-  static const Color gameViolet = Color(0xFFCDB4DB);
-  static const Color gameCyan = Color(0xFFBDE0FE);
-  static const Color gameEmerald = Color(0xFF7D8570);
+  static const Color gameBlue = Color(0xFF3B82F6); 
+  static const Color gameGreen = Color(0xFF22C55E);
+  static const Color gamePurple = Color(0xFFA855F7);
+  static const Color gameOrange = Color(0xFFF97316);
+  static const Color gamePink = Color(0xFFEC4899);
+  static const Color gameTeal = Color(0xFF14B8A6);
+  static const Color gameIndigo = Color(0xFF6366F1);
+  static const Color gameAmber = Color(0xFFEAB308);
+  static const Color gameRose = Color(0xFFF43F5E);
+  static const Color gameViolet = Color(0xFF8B5CF6);
+  static const Color gameCyan = Color(0xFF06B6D4);
+  static const Color gameEmerald = Color(0xFF10B981);
 
   // --- Compatibility Aliases ---
   static const Color lightError = error;

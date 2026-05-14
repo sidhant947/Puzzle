@@ -205,7 +205,7 @@ class WordLadderScreen extends ConsumerWidget {
     final rows = [
       ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
       ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
-      ['ENTER', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'DEL'],
+      ['DEL', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'ENTER'],
     ];
 
     final keyHeight = (constraints.maxHeight * 0.06).clamp(36.0, 48.0);
@@ -262,7 +262,6 @@ class WordLadderScreen extends ConsumerWidget {
   }
 
   void _showGameOverDialog(BuildContext context, WidgetRef ref, WordLadderState state) async {
-    final l10n = AppLocalizations.of(context)!;
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('word_ladder', xpAmount: 35);
 
     if (!context.mounted) return;
