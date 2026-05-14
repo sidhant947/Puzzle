@@ -112,6 +112,7 @@ import '../games/missing_operator/missing_operator_screen.dart';
 
 import '../games/color_flood/color_flood_screen.dart';
 import '../games/tangle_fix/tangle_fix_screen.dart';
+import '../games/lock_pattern/lock_pattern_screen.dart';
 
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required Widget page})
@@ -147,6 +148,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   late final TextEditingController _searchController;
 
   final List<Map<String, dynamic>> _games = [
+    {
+      'title': 'Lock Pattern',
+      'id': 'lock_pattern',
+      'category': 'LOGIC',
+      'icon': Icons.lock_open_rounded,
+      'color': DesignSystem.gameIndigo,
+      'screen': const LockPatternScreen(),
+    },
     {
       'title': 'Object Tracking',
       'id': 'multiple_object_tracking',

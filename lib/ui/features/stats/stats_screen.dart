@@ -157,7 +157,6 @@ class StatsScreen extends ConsumerWidget {
     
     final diff = nextLevelXp - currentLevelXp;
     final progress = diff > 0 ? (userData.xp - currentLevelXp) / diff : 1.0;
-    final theme = Theme.of(context);
 
     return Column(
       children: [
