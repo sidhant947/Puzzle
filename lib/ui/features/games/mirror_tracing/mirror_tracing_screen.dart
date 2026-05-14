@@ -19,12 +19,11 @@ class _MirrorTracingScreenState extends ConsumerState<MirrorTracingScreen> {
   Offset? _lastTouch;
 
   void _showCompletionDialog() {
-    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: l10n.mirrorTracingTitle.toUpperCase(),
+        title: 'Mirror Tracing'.toUpperCase(),
         message: 'Your brain successfully rewired its coordination.',
         isVictory: true,
         onHome: () {
@@ -88,6 +87,8 @@ class _MirrorTracingScreenState extends ConsumerState<MirrorTracingScreen> {
                   userTrace: state.userTrace,
                   currentTouch: _lastTouch,
                   canvasSize: state.canvasSize,
+                  segmentsVisited: state.segmentsVisited,
+                  activeSegmentIndex: state.activeSegmentIndex,
                   context: context,
                 ),
               ),
@@ -104,6 +105,8 @@ class MirrorTracingPainter extends CustomPainter {
   final List<Offset> userTrace;
   final Offset? currentTouch;
   final Size canvasSize;
+  final List<bool> segmentsVisited;
+  final int activeSegmentIndex;
   final BuildContext context;
 
   MirrorTracingPainter({
@@ -111,32 +114,35 @@ class MirrorTracingPainter extends CustomPainter {
     required this.userTrace,
     required this.currentTouch,
     required this.canvasSize,
+    required this.segmentsVisited,
+    required this.activeSegmentIndex,
     required this.context,
   });
 
   @override
   void paint(Canvas canvas, Size size) {
-    // Draw target path
-    final pathPaint = Paint()
-      ..color = Theme.of(context).colorScheme.outline
-      ..strokeWidth = 30
-      ..strokeCap = StrokeCap.round
-      ..strokeJoin = StrokeJoin.round
-      ..style = PaintingStyle.stroke;
-
-    final path = Path();
-    if (targetPath.isNotEmpty) {
-      path.moveTo(targetPath.first.dx, targetPath.first.dy);
-      for (int i = 1; i < targetPath.length; i++) {
-        path.lineTo(targetPath[i].dx, targetPath[i].dy);
+    // Draw target path segments with state colors
+    for (int i = 0; i < targetPath.length - 1; i++) {
+      Color segmentColor = Theme.of(context).colorScheme.outline;
+      if (segmentsVisited[i]) {
+        segmentColor = DesignSystem.accentEmerald;
+      } else if (i == activeSegmentIndex) {
+        segmentColor = DesignSystem.accentAmber;
       }
+
+      final segmentPaint = Paint()
+        ..color = segmentColor
+        ..strokeWidth = 35
+        ..strokeCap = StrokeCap.round
+        ..style = PaintingStyle.stroke;
+
+      canvas.drawLine(targetPath[i], targetPath[i + 1], segmentPaint);
     }
-    canvas.drawPath(path, pathPaint);
 
     // Draw user trace
     final tracePaint = Paint()
       ..color = DesignSystem.primary
-      ..strokeWidth = 8
+      ..strokeWidth = 6
       ..strokeCap = StrokeCap.round
       ..strokeJoin = StrokeJoin.round
       ..style = PaintingStyle.stroke;
@@ -155,16 +161,37 @@ class MirrorTracingPainter extends CustomPainter {
     }
     canvas.drawPath(tracePath, tracePaint);
 
+    // Draw START / END markers
+    if (targetPath.isNotEmpty) {
+      _drawMarker(canvas, targetPath.first, 'START', DesignSystem.success);
+      _drawMarker(canvas, targetPath.last, 'END', DesignSystem.error);
+    }
+
     // Draw touch markers
     if (currentTouch != null) {
-      // Actual touch (faint)
-      canvas.drawCircle(currentTouch!, 10, Paint()..color = Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1));
+      // Actual touch (very faint)
+      canvas.drawCircle(currentTouch!, 10, Paint()..color = Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.05));
       
       // Mirrored cursor (bright)
       final mirroredX = canvasSize.width - currentTouch!.dx;
-      final mirroredY = canvasSize.height - currentTouch!.dy;
+      final mirroredY = currentTouch!.dy; // Only X mirrored
       canvas.drawCircle(Offset(mirroredX, mirroredY), 15, Paint()..color = DesignSystem.accentBerry);
     }
+  }
+
+  void _drawMarker(Canvas canvas, Offset position, String text, Color color) {
+    final paint = Paint()..color = color;
+    canvas.drawCircle(position, 12, paint);
+    
+    final textPainter = TextPainter(
+      text: TextSpan(
+        text: text,
+        style: const TextStyle(color: Colors.white, fontSize: 8, fontWeight: FontWeight.bold),
+      ),
+      textDirection: TextDirection.ltr,
+    );
+    textPainter.layout();
+    textPainter.paint(canvas, position - Offset(textPainter.width / 2, textPainter.height / 2));
   }
 
   @override
