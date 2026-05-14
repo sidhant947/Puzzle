@@ -13,10 +13,12 @@ class DigitSpanReverseScreen extends ConsumerStatefulWidget {
   const DigitSpanReverseScreen({super.key});
 
   @override
-  ConsumerState<DigitSpanReverseScreen> createState() => _DigitSpanReverseScreenState();
+  ConsumerState<DigitSpanReverseScreen> createState() =>
+      _DigitSpanReverseScreenState();
 }
 
-class _DigitSpanReverseScreenState extends ConsumerState<DigitSpanReverseScreen> {
+class _DigitSpanReverseScreenState
+    extends ConsumerState<DigitSpanReverseScreen> {
   @override
   void initState() {
     super.initState();
@@ -31,10 +33,16 @@ class _DigitSpanReverseScreenState extends ConsumerState<DigitSpanReverseScreen>
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: isVictory ? l10n.digitSpanReverseWinTitle : l10n.digitSpanReverseLoseTitle,
-        message: isVictory 
+        title: isVictory
+            ? l10n.digitSpanReverseWinTitle
+            : l10n.digitSpanReverseLoseTitle,
+        message: isVictory
             ? l10n.digitSpanReverseWinMessage
-            : l10n.digitSpanReverseLoseMessage(ref.read(digitSpanReverseNotifierProvider).sequence.reversed.join(', ')),
+            : l10n.digitSpanReverseLoseMessage(ref
+                .read(digitSpanReverseNotifierProvider)
+                .sequence
+                .reversed
+                .join(', ')),
         isVictory: isVictory,
         onHome: () {
           Navigator.of(context).pop();
@@ -55,11 +63,14 @@ class _DigitSpanReverseScreenState extends ConsumerState<DigitSpanReverseScreen>
     final l10n = AppLocalizations.of(context)!;
 
     ref.listen(digitSpanReverseNotifierProvider, (previous, next) async {
-      if (next.phase == DigitSpanPhase.result && previous?.phase != DigitSpanPhase.result) {
+      if (next.phase == DigitSpanPhase.result &&
+          previous?.phase != DigitSpanPhase.result) {
         final isVictory = next.score > (previous?.score ?? 0);
         if (isVictory) {
           HapticFeedbackUtil.victory();
-          await ref.read(gameStreakNotifierProvider.notifier).completeGame('digit_span_reverse');
+          await ref
+              .read(gameStreakNotifierProvider.notifier)
+              .completeGame('digit_span_reverse');
         } else {
           HapticFeedbackUtil.vibrate();
         }
@@ -77,13 +88,13 @@ class _DigitSpanReverseScreenState extends ConsumerState<DigitSpanReverseScreen>
 
     return GameScaffold(
       title: l10n.digitSpanReverseTitle,
-      subtitle: state.phase == DigitSpanPhase.sequence 
-          ? l10n.digitSpanReverseSubtitleMemorize 
+      subtitle: state.phase == DigitSpanPhase.sequence
+          ? l10n.digitSpanReverseSubtitleMemorize
           : l10n.digitSpanReverseSubtitleEnter,
       body: Column(
         children: [
           const SizedBox(height: DesignSystem.spaceXL),
-          
+
           // Display Area
           Expanded(
             flex: 2,
@@ -91,7 +102,7 @@ class _DigitSpanReverseScreenState extends ConsumerState<DigitSpanReverseScreen>
               child: _buildMainDisplay(state),
             ),
           ),
-          
+
           // Input Area
           if (state.phase == DigitSpanPhase.input)
             Expanded(
@@ -100,7 +111,7 @@ class _DigitSpanReverseScreenState extends ConsumerState<DigitSpanReverseScreen>
             )
           else
             const Spacer(flex: 4),
-            
+
           const SizedBox(height: DesignSystem.space2XL),
         ],
       ),
@@ -109,15 +120,34 @@ class _DigitSpanReverseScreenState extends ConsumerState<DigitSpanReverseScreen>
 
   Widget _buildMainDisplay(DigitSpanState state) {
     if (state.phase == DigitSpanPhase.sequence) {
-      final text = state.currentDigitIndex == -1 ? '' : state.sequence[state.currentDigitIndex].toString();
+      final text = state.currentDigitIndex == -1
+          ? ''
+          : state.sequence[state.currentDigitIndex].toString();
       return AnimatedSwitcher(
-        duration: const Duration(milliseconds: 200),
+        duration: const Duration(milliseconds: 300),
+        reverseDuration: const Duration(milliseconds: 150),
+        switchInCurve: Curves.easeInOut,
+        switchOutCurve: Curves.easeIn,
         transitionBuilder: (Widget child, Animation<double> animation) {
-          return ScaleTransition(scale: animation, child: FadeTransition(opacity: animation, child: child));
+          final offsetAnimation = Tween<Offset>(
+            begin: const Offset(0.0, 0.2),
+            end: Offset.zero,
+          ).animate(animation);
+
+          return FadeTransition(
+            opacity: animation,
+            child: SlideTransition(
+              position: offsetAnimation,
+              child: ScaleTransition(
+                scale: animation,
+                child: child,
+              ),
+            ),
+          );
         },
         child: Text(
           text,
-          key: ValueKey(text),
+          key: ValueKey(state.currentDigitIndex),
           style: const TextStyle(
             fontSize: 100,
             fontWeight: FontWeight.w900,
@@ -130,13 +160,20 @@ class _DigitSpanReverseScreenState extends ConsumerState<DigitSpanReverseScreen>
       return Wrap(
         spacing: DesignSystem.spaceMD,
         children: List.generate(state.sequence.length, (index) {
-          final digit = index < state.userInput.length ? state.userInput[index].toString() : '_';
+          final digit = index < state.userInput.length
+              ? state.userInput[index].toString()
+              : '_';
           return Text(
             digit,
             style: TextStyle(
               fontSize: 40,
               fontWeight: FontWeight.w900,
-              color: index < state.userInput.length ? DesignSystem.accentAmber : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7).withValues(alpha: 0.3),
+              color: index < state.userInput.length
+                  ? DesignSystem.accentAmber
+                  : Theme.of(context)
+                      .colorScheme
+                      .onSurface
+                      .withValues(alpha: 0.2),
             ),
           );
         }),
@@ -190,7 +227,8 @@ class _DigitSpanReverseScreenState extends ConsumerState<DigitSpanReverseScreen>
                   onTap: notifier.onBackspace,
                   color: Theme.of(context).colorScheme.surface,
                   shadowColor: Theme.of(context).colorScheme.outline,
-                  child: const Icon(Icons.backspace_rounded, color: DesignSystem.error, size: 28),
+                  child: const Icon(Icons.backspace_rounded,
+                      color: DesignSystem.error, size: 28),
                 ),
               ),
             ],
@@ -206,9 +244,15 @@ class _DigitSpanReverseScreenState extends ConsumerState<DigitSpanReverseScreen>
         onTap: onTap,
         color: Theme.of(context).colorScheme.surface,
         shadowColor: Theme.of(context).colorScheme.outline,
-        child: Text(
-          digit.toString(),
-          style: TextStyle(color: Theme.of(context).colorScheme.onSurface, fontSize: 24, fontWeight: FontWeight.w900),
+        child: Center(
+          child: Text(
+            digit.toString(),
+            style: TextStyle(
+              color: Theme.of(context).colorScheme.onSurface,
+              fontSize: 24,
+              fontWeight: FontWeight.w900,
+            ),
+          ),
         ),
       ),
     );

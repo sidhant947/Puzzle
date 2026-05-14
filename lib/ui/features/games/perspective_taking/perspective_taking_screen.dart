@@ -71,7 +71,7 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
 
     return GameScaffold(
       title: 'Perspective',
-      subtitle: l10n.perspectiveTakingSubtitle,
+      subtitle: l10n.perspectiveTakingSubtitle(targetDirName),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
         child: Column(
@@ -89,7 +89,7 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
             SizedBox(height: DesignSystem.spaceMD),
             FittedBox(
               fit: BoxFit.scaleDown,
-              child: _buildTopDownView(state.topView),
+              child: _buildTopDownView(state.topView, colorScheme),
             ),
             const Spacer(),
             Text(
@@ -113,7 +113,7 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
               ),
               itemCount: state.options.length,
               itemBuilder: (context, index) {
-                return _buildOption(state, notifier, index);
+                return _buildOption(state, notifier, index, colorScheme);
               },
             ),
             const SizedBox(height: DesignSystem.space2XL),
@@ -123,15 +123,15 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
     );
   }
 
-  Widget _buildTopDownView(List<List<Color?>> view) {
+  Widget _buildTopDownView(List<List<Color?>> view, ColorScheme colorScheme) {
     return Container(
       padding: const EdgeInsets.all(DesignSystem.spaceSM),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: colorScheme.surface,
         borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
         boxShadow: [
           BoxShadow(
-            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.05),
+            color: colorScheme.onSurface.withValues(alpha: 0.05),
             blurRadius: 12,
             offset: Offset(0, 6),
           ),
@@ -142,18 +142,18 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
         children: [
           Padding(
             padding: const EdgeInsets.all(20.0),
-            child: _buildGridView(view, 44),
+            child: _buildGridView(view, 44, colorScheme),
           ),
-          Positioned(top: 4, child: Text('NORTH', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7)))),
-          Positioned(bottom: 4, child: Text('SOUTH', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7)))),
-          Positioned(left: 4, child: RotatedBox(quarterTurns: 3, child: Text('WEST', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))))),
-          Positioned(right: 4, child: RotatedBox(quarterTurns: 1, child: Text('EAST', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))))),
+          Positioned(top: 4, child: Text('NORTH', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: colorScheme.onSurface.withValues(alpha: 0.7)))),
+          Positioned(bottom: 4, child: Text('SOUTH', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: colorScheme.onSurface.withValues(alpha: 0.7)))),
+          Positioned(left: 4, child: RotatedBox(quarterTurns: 3, child: Text('WEST', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: colorScheme.onSurface.withValues(alpha: 0.7))))),
+          Positioned(right: 4, child: RotatedBox(quarterTurns: 1, child: Text('EAST', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: colorScheme.onSurface.withValues(alpha: 0.7))))),
         ],
       ),
     );
   }
 
-  Widget _buildGridView(List<List<Color?>> view, double cellSize) {
+  Widget _buildGridView(List<List<Color?>> view, double cellSize, ColorScheme colorScheme) {
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: List.generate(view.length, (r) {
@@ -166,10 +166,10 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
               height: cellSize,
               margin: const EdgeInsets.all(1.5),
               decoration: BoxDecoration(
-                color: color ?? Colors.grey.withValues(alpha: 0.1),
+                color: color ?? colorScheme.onSurface.withValues(alpha: 0.05),
                 borderRadius: BorderRadius.circular(8),
                 border: Border.all(
-                  color: color != null ? Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1) : Colors.transparent,
+                  color: color != null ? colorScheme.onSurface.withValues(alpha: 0.1) : Colors.transparent,
                   width: 1,
                 ),
               ),
@@ -180,12 +180,12 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
     );
   }
 
-  Widget _buildOption(PerspectiveTakingState state, PerspectiveTakingNotifier notifier, int index) {
+  Widget _buildOption(PerspectiveTakingState state, PerspectiveTakingNotifier notifier, int index, ColorScheme colorScheme) {
     final isSelected = state.selectedOptionIndex == index;
     final isCorrect = state.correctOptionIndex == index;
     final showResult = state.selectedOptionIndex != null;
 
-    Color borderColor = Theme.of(context).colorScheme.outline.withValues(alpha: 0.5);
+    Color borderColor = colorScheme.outline.withValues(alpha: 0.5);
     if (showResult) {
       if (isCorrect) {
         borderColor = DesignSystem.success;
@@ -201,12 +201,12 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
       child: Container(
         padding: const EdgeInsets.all(DesignSystem.spaceXS),
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: colorScheme.surface,
           borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
           border: Border.all(color: borderColor, width: 3),
           boxShadow: [
             BoxShadow(
-              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.05),
+              color: colorScheme.onSurface.withValues(alpha: 0.05),
               blurRadius: 8,
               offset: const Offset(0, 4),
             ),
@@ -217,7 +217,7 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
           children: [
             FittedBox(
               fit: BoxFit.scaleDown,
-              child: _buildGridView(state.options[index], 28),
+              child: _buildGridView(state.options[index], 28, colorScheme),
             ),
             if (showResult && isCorrect)
               const Positioned(

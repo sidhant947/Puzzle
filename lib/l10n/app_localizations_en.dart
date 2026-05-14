@@ -281,6 +281,10 @@ class AppLocalizationsEn extends AppLocalizations {
   String get akariSubtitle => 'Illuminate all white cells';
 
   @override
+  String get akariHowToPlay =>
+      'Place lightbulbs in white cells to illuminate the entire grid. Bulbs light up their row and column until they hit a wall. No two bulbs can shine on each other. Numbered walls show exactly how many bulbs must be placed in adjacent cells (up, down, left, right).';
+
+  @override
   String get akariWinTitle => 'LIGHTS UP!';
 
   @override
@@ -1061,8 +1065,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get perspectiveTakingTitle => 'Great Perspective!';
 
   @override
-  String get perspectiveTakingSubtitle =>
-      'Which view is from the \$targetDirName?';
+  String perspectiveTakingSubtitle(String targetDirName) {
+    return 'Which view is from the $targetDirName?';
+  }
 
   @override
   String get paperFoldingTitle => 'Unfolded Perfection!';

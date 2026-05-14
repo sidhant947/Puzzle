@@ -57,5 +57,12 @@
   "findWordSubtitle": "Tienes {maxTries} intentos para encontrar la palabra oculta de {wordLength} letras.",
   "wordFoundMessage": "Palabra encontrada con éxito: {word}",
   "gameOverMessage": "La palabra era: {word}",
-  "gameOver": "Fin del Juego"
+  "gameOver": "Fin del Juego",
+  "perspectiveTakingTitle": "¡Gran Perspectiva!",
+  "perspectiveTakingSubtitle": "¿Qué vista es desde el {targetDirName}?",
+  "akariTitle": "Akari",
+  "akariSubtitle": "Ilumina todas las celdas blancas",
+  "akariHowToPlay": "Coloca bombillas en las celdas blancas para iluminar toda la cuadrícula. Las bombillas iluminan su fila y columna hasta chocar con una pared. Dos bombillas no pueden iluminarse entre sí. Las paredes numeradas indican cuántas bombillas deben colocarse en las celdas adyacentes (arriba, abajo, izquierda, derecha).",
+  "akariWinTitle": "¡LUCES ENCENDIDAS!",
+  "akariWinMessage": "Todo está perfectamente iluminado."
 }

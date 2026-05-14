@@ -113,6 +113,7 @@
   "gotIt": "Got it",
   "akariTitle": "Akari",
   "akariSubtitle": "Illuminate all white cells",
+  "akariHowToPlay": "Place lightbulbs in white cells to illuminate the entire grid. Bulbs light up their row and column until they hit a wall. No two bulbs can shine on each other. Numbered walls show exactly how many bulbs must be placed in adjacent cells (up, down, left, right).",
   "akariWinTitle": "LIGHTS UP!",
   "akariWinMessage": "Everything is perfectly illuminated.",
   "arithmeticChainTitle": "Chain Calc",
@@ -552,7 +553,14 @@
   "wordSurgeTitle": "Word Surge",
   "wordSurgeSubtitle": "Synonyms & Antonyms",
   "perspectiveTakingTitle": "Great Perspective!",
-  "perspectiveTakingSubtitle": "Which view is from the $targetDirName?",
+  "perspectiveTakingSubtitle": "Which view is from the {targetDirName}?",
+  "@perspectiveTakingSubtitle": {
+    "placeholders": {
+      "targetDirName": {
+        "type": "String"
+      }
+    }
+  },
   "paperFoldingTitle": "Unfolded Perfection!",
   "paperFoldingSubtitle": "What will it look like when unfolded?",
   "waterSortTitle": "Well Done!",

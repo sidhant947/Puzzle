@@ -38,21 +38,19 @@ class PerspectiveTakingEngine {
       int x = random.nextInt(gridSize);
       int z = random.nextInt(gridSize);
       
-      // Find the first available y for this (x, z)
-      int y = 0;
-      while (occupied.contains('$x,$y,$z') && y < gridSize) {
-        y++;
+      // Ensure each (x, z) only has ONE cube so all colors are visible from top
+      if (occupied.any((pos) => pos.startsWith('$x,') && pos.endsWith(',$z'))) {
+        continue;
       }
 
-      if (y < gridSize) {
-        cubes.add(Cube(
-          x: x,
-          y: y,
-          z: z,
-          color: availableColors[cubes.length % availableColors.length],
-        ));
-        occupied.add('$x,$y,$z');
-      }
+      int y = random.nextInt(gridSize);
+      cubes.add(Cube(
+        x: x,
+        y: y,
+        z: z,
+        color: availableColors[cubes.length % availableColors.length],
+      ));
+      occupied.add('$x,$y,$z');
     }
 
     return cubes;

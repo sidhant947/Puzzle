@@ -614,6 +614,12 @@ abstract class AppLocalizations {
   /// **'Illuminate all white cells'**
   String get akariSubtitle;
 
+  /// No description provided for @akariHowToPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Place lightbulbs in white cells to illuminate the entire grid. Bulbs light up their row and column until they hit a wall. No two bulbs can shine on each other. Numbered walls show exactly how many bulbs must be placed in adjacent cells (up, down, left, right).'**
+  String get akariHowToPlay;
+
   /// No description provided for @akariWinTitle.
   ///
   /// In en, this message translates to:
@@ -1985,8 +1991,8 @@ abstract class AppLocalizations {
   /// No description provided for @perspectiveTakingSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Which view is from the \$targetDirName?'**
-  String get perspectiveTakingSubtitle;
+  /// **'Which view is from the {targetDirName}?'**
+  String perspectiveTakingSubtitle(String targetDirName);
 
   /// No description provided for @paperFoldingTitle.
   ///

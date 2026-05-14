@@ -5,6 +5,7 @@ import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/haptic_feedback.dart';
 import '../../../core/juice/game_scaffold.dart';
 import '../../../../widgets/game_completion_dialog.dart';
+import '../../../../widgets/tangible.dart';
 import '../../../../utils/design_system.dart';
 import 'akari_provider.dart';
 
@@ -70,6 +71,29 @@ class _AkariScreenState extends ConsumerState<AkariScreen> {
     return GameScaffold(
       title: l10n.akariTitle,
       subtitle: l10n.akariSubtitle,
+      actions: [
+        TangibleButton(
+          color: colorScheme.surface,
+          shadowColor: colorScheme.outline,
+          padding: const EdgeInsets.all(8),
+          onTap: () {
+            showDialog(
+              context: context,
+              builder: (context) => AlertDialog(
+                title: Text(l10n.howToPlay),
+                content: Text(l10n.akariHowToPlay),
+                actions: [
+                  TextButton(
+                    onPressed: () => Navigator.pop(context),
+                    child: Text(l10n.gotIt),
+                  ),
+                ],
+              ),
+            );
+          },
+          child: Icon(Icons.help_outline, color: colorScheme.onSurface),
+        ),
+      ],
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(DesignSystem.spaceLG),
@@ -100,6 +124,7 @@ class _AkariScreenState extends ConsumerState<AkariScreen> {
   }
 
   Widget _buildCell(AkariState state, AkariNotifier notifier, int r, int c, double size) {
+    final colorScheme = Theme.of(context).colorScheme;
     final val = state.grid[r][c];
     final isBulb = state.bulbs[r][c];
     final isLit = state.lit[r][c];
@@ -110,15 +135,18 @@ class _AkariScreenState extends ConsumerState<AkariScreen> {
         width: size,
         height: size,
         decoration: BoxDecoration(
-          color: Theme.of(context).colorScheme.onSurface,
-          border: Border.all(color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7), width: 0.5),
+          color: colorScheme.onSurface,
+          border: Border.all(
+            color: colorScheme.onSurface.withValues(alpha: 0.1), 
+            width: 0.5,
+          ),
         ),
         child: val >= 0
             ? Center(
                 child: Text(
                   val.toString(),
-                  style: const TextStyle(
-                    color: Colors.white,
+                  style: TextStyle(
+                    color: colorScheme.surface,
                     fontWeight: FontWeight.bold,
                     fontSize: 20,
                   ),
@@ -134,8 +162,13 @@ class _AkariScreenState extends ConsumerState<AkariScreen> {
           width: size,
           height: size,
           decoration: BoxDecoration(
-            color: isLit ? DesignSystem.accentAmber.withValues(alpha: 0.3) : Theme.of(context).colorScheme.surface,
-            border: Border.all(color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5), width: 0.5),
+            color: isLit 
+                ? DesignSystem.accentAmber.withValues(alpha: 0.3) 
+                : colorScheme.surface,
+            border: Border.all(
+              color: colorScheme.outline.withValues(alpha: 0.3), 
+              width: 0.5,
+            ),
           ),
           child: Center(
             child: isBulb

@@ -279,13 +279,17 @@ class AppLocalizationsEs extends AppLocalizations {
   String get akariTitle => 'Akari';
 
   @override
-  String get akariSubtitle => 'Illuminate all white cells';
+  String get akariSubtitle => 'Ilumina todas las celdas blancas';
 
   @override
-  String get akariWinTitle => 'LIGHTS UP!';
+  String get akariHowToPlay =>
+      'Coloca bombillas en las celdas blancas para iluminar toda la cuadrícula. Las bombillas iluminan su fila y columna hasta chocar con una pared. Dos bombillas no pueden iluminarse entre sí. Las paredes numeradas indican cuántas bombillas deben colocarse en las celdas adyacentes (arriba, abajo, izquierda, derecha).';
 
   @override
-  String get akariWinMessage => 'Everything is perfectly illuminated.';
+  String get akariWinTitle => '¡LUCES ENCENDIDAS!';
+
+  @override
+  String get akariWinMessage => 'Todo está perfectamente iluminado.';
 
   @override
   String get arithmeticChainTitle => 'Chain Calc';
@@ -1059,11 +1063,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get wordSurgeSubtitle => 'Synonyms & Antonyms';
 
   @override
-  String get perspectiveTakingTitle => 'Great Perspective!';
+  String get perspectiveTakingTitle => '¡Gran Perspectiva!';
 
   @override
-  String get perspectiveTakingSubtitle =>
-      'Which view is from the \$targetDirName?';
+  String perspectiveTakingSubtitle(String targetDirName) {
+    return '¿Qué vista es desde el $targetDirName?';
+  }
 
   @override
   String get paperFoldingTitle => 'Unfolded Perfection!';
