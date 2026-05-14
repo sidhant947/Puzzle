@@ -13,6 +13,7 @@ class UserData with _$UserData {
     @HiveField(2) int? superStreak,
     @HiveField(3) DateTime? lastSuperStreakDate,
     @HiveField(4) int? totalSolved,
+    @HiveField(5) List<String>? favoriteGameIds,
   }) = _UserData;
 
   factory UserData.initial() => const UserData(
@@ -21,6 +22,7 @@ class UserData with _$UserData {
         superStreak: 0,
         lastSuperStreakDate: null,
         totalSolved: 0,
+        favoriteGameIds: [],
       );
 
   factory UserData.fromJson(Map<String, dynamic> json) =>

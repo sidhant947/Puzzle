@@ -22,13 +22,14 @@ class UserDataAdapter extends TypeAdapter<_$UserDataImpl> {
       superStreak: fields[2] as int?,
       lastSuperStreakDate: fields[3] as DateTime?,
       totalSolved: fields[4] as int?,
+      favoriteGameIds: (fields[5] as List?)?.cast<String>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, _$UserDataImpl obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.xp)
       ..writeByte(1)
@@ -38,7 +39,9 @@ class UserDataAdapter extends TypeAdapter<_$UserDataImpl> {
       ..writeByte(3)
       ..write(obj.lastSuperStreakDate)
       ..writeByte(4)
-      ..write(obj.totalSolved);
+      ..write(obj.totalSolved)
+      ..writeByte(5)
+      ..write(obj.favoriteGameIds);
   }
 
   @override
@@ -65,6 +68,9 @@ _$UserDataImpl _$$UserDataImplFromJson(Map<String, dynamic> json) =>
           ? null
           : DateTime.parse(json['lastSuperStreakDate'] as String),
       totalSolved: (json['totalSolved'] as num?)?.toInt(),
+      favoriteGameIds: (json['favoriteGameIds'] as List<dynamic>?)
+          ?.map((e) => e as String)
+          .toList(),
     );
 
 Map<String, dynamic> _$$UserDataImplToJson(_$UserDataImpl instance) =>
@@ -74,4 +80,5 @@ Map<String, dynamic> _$$UserDataImplToJson(_$UserDataImpl instance) =>
       'superStreak': instance.superStreak,
       'lastSuperStreakDate': instance.lastSuperStreakDate?.toIso8601String(),
       'totalSolved': instance.totalSolved,
+      'favoriteGameIds': instance.favoriteGameIds,
     };

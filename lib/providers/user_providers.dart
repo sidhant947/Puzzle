@@ -136,6 +136,18 @@ class UserDataNotifier extends _$UserDataNotifier {
       ref.read(userRepositoryProvider).saveUserData(newState);
     }
   }
+
+  Future<void> toggleFavorite(String gameId) async {
+    final favorites = List<String>.from(state.favoriteGameIds ?? []);
+    if (favorites.contains(gameId)) {
+      favorites.remove(gameId);
+    } else {
+      favorites.add(gameId);
+    }
+    final newState = state.copyWith(favoriteGameIds: favorites);
+    state = newState;
+    await ref.read(userRepositoryProvider).saveUserData(newState);
+  }
 }
 
 @riverpod

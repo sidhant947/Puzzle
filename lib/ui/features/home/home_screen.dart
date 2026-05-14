@@ -5,6 +5,7 @@ import '../../../../data/models/game_streak.dart';
 import '../../../../widgets/super_streak_action.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../../utils/design_system.dart';
+import '../../../../utils/haptic_feedback.dart';
 import '../games/sudoku/sudoku_screen.dart';
 import '../games/find_word/find_word_screen.dart';
 import '../games/crossword/crossword_screen.dart';
@@ -949,6 +950,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     final streaks = ref.watch(gameStreakNotifierProvider);
+    final favoriteIds = ref.watch(userDataNotifierProvider.select((d) => d.favoriteGameIds ?? []));
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
@@ -957,6 +959,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       final matchesCategory = _selectedCategory == 'ALL' || game['category'] == _selectedCategory;
       return matchesSearch && matchesCategory;
     }).toList();
+
+    // Sort: Favorites first, then by title (or original order)
+    filteredGames.sort((a, b) {
+      final aFav = favoriteIds.contains(a['id']);
+      final bFav = favoriteIds.contains(b['id']);
+      if (aFav && !bFav) return -1;
+      if (!aFav && bFav) return 1;
+      return 0;
+    });
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -1191,19 +1202,25 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
                         final game = filteredGames[index];
+                        final gameId = game['id'] as String;
                         return Padding(
                           padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
                           child: _buildFullWidthTile(
                             context,
                             game['title'],
-                            game['id'],
+                            gameId,
                             game['icon'],
                             game['color'],
-                            streaks[game['id']],
+                            streaks[gameId],
+                            favoriteIds.contains(gameId),
                             () => Navigator.push(
                               context,
                               CustomPageRoute(page: game['screen']),
                             ),
+                            () {
+                              HapticFeedbackUtil.mediumImpact();
+                              ref.read(userDataNotifierProvider.notifier).toggleFavorite(gameId);
+                            },
                           ),
                         );
                       },
@@ -1223,7 +1240,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     IconData icon,
     Color accentColor,
     GameStreak? streak,
+    bool isFavorite,
     VoidCallback onTap,
+    VoidCallback onLongPress,
   ) {
     final streakCount = streak?.currentStreak ?? 0;
     final isSolved = streak?.solvedToday ?? false;
@@ -1238,6 +1257,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           shadowColor:
               isSolved ? const Color(0xFF047857) : colorScheme.outline.withValues(alpha: 0.5),
           onTap: onTap,
+          onLongPress: onLongPress,
           padding: const EdgeInsets.only(
             right: DesignSystem.spaceMD,
             top: 0,
@@ -1268,19 +1288,34 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               const SizedBox(width: DesignSystem.spaceLG),
               // Title Zone
               Expanded(
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  alignment: Alignment.centerLeft,
-                  child: Text(
-                    title.toUpperCase(),
-                    maxLines: 1,
-                    style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: 0.5,
-                      color: isSolved ? Colors.white : colorScheme.onSurface,
+                child: Row(
+                  children: [
+                    Expanded(
+                      child: FittedBox(
+                        fit: BoxFit.scaleDown,
+                        alignment: Alignment.centerLeft,
+                        child: Text(
+                          title.toUpperCase(),
+                          maxLines: 1,
+                          style: TextStyle(
+                            fontSize: 13,
+                            fontWeight: FontWeight.w900,
+                            letterSpacing: 0.5,
+                            color: isSolved ? Colors.white : colorScheme.onSurface,
+                          ),
+                        ),
+                      ),
                     ),
-                  ),
+                    if (isFavorite)
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                        child: Icon(
+                          Icons.favorite_rounded,
+                          color: isSolved ? Colors.white : DesignSystem.gameRose,
+                          size: 20,
+                        ),
+                      ),
+                  ],
                 ),
               ),
               Icon(
