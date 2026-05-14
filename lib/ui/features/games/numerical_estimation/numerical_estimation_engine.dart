@@ -10,56 +10,56 @@ class NumericalEstimationEngine {
 
     switch (type) {
       case 0:
-        n1 = _random.nextInt(90) + 10;
-        n2 = _random.nextInt(90) + 10;
+        // Multiplication: Harder ranges
+        n1 = _random.nextInt(150) + 11; // 11-160
+        n2 = _random.nextInt(80) + 11;  // 11-90
         actual = n1 * n2;
         op = '×';
         break;
       case 1:
-        n1 = _random.nextInt(900) + 100;
-        n2 = _random.nextInt(900) + 100;
+        // Addition: Larger numbers
+        n1 = _random.nextInt(9000) + 1000;
+        n2 = _random.nextInt(9000) + 1000;
         actual = n1 + n2;
         op = '+';
         break;
       default:
-        n1 = _random.nextInt(900) + 100;
-        n2 = _random.nextInt(n1 - 50) + 50;
+        // Subtraction: Larger numbers
+        n1 = _random.nextInt(9000) + 1000;
+        n2 = _random.nextInt(n1 - 500) + 500;
         actual = n1 - n2;
         op = '-';
         break;
     }
 
-    final List<int> options = [actual];
+    final Set<int> options = {actual};
     
-    // Generate wrong options that are "plausible" (nearby round numbers or common errors)
-    while (options.length < 4) {
-      int variation = (actual * 0.2).round();
-      if (variation < 10) variation = 10;
-      int wrong = actual + _random.nextInt(variation * 2) - variation;
-      
-      // Round to nearest 10 or 50 to make it look like an "estimate"
-      if (actual > 500) {
-        wrong = (wrong ~/ 50) * 50;
-      } else {
-        wrong = (wrong ~/ 10) * 10;
-      }
+    // User requested specific hard offsets: ±2, ±3, ±10 etc.
+    final List<int> hardOffsets = [2, -2, 3, -3, 10, -10, 1, -1, 5, -5, 12, -12];
+    hardOffsets.shuffle(_random);
 
-      if (wrong != actual && !options.contains(wrong) && wrong > 0) {
+    for (final offset in hardOffsets) {
+      if (options.length >= 4) break;
+      final wrong = actual + offset;
+      if (wrong > 0 && wrong != actual) {
         options.add(wrong);
       }
     }
 
-    // Sort options so the actual answer might be replaced by a rounded version for "estimation"
-    // Actually, let's just use the actual answer as one of the choices for now to be precise,
-    // but the task is "estimation" so maybe I should round the actual answer too?
-    // Let's keep one "correct" and others "distractors".
+    // Fallback if somehow we don't have enough options (unlikely with 12 offsets)
+    while (options.length < 4) {
+      final wrong = actual + _random.nextInt(40) - 20;
+      if (wrong > 0 && wrong != actual) {
+        options.add(wrong);
+      }
+    }
 
-    options.shuffle(_random);
+    final shuffledOptions = options.toList()..shuffle(_random);
 
     return NumericalEstimationPuzzle(
       question: '$n1 $op $n2',
       answer: actual,
-      options: options,
+      options: shuffledOptions,
     );
   }
 }

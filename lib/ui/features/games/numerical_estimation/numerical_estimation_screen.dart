@@ -115,12 +115,14 @@ class _NumericalEstimationScreenState extends ConsumerState<NumericalEstimationS
                                     notifier.selectOption(option);
                                   },
                                   color: buttonColor,
-                                  child: Text(
-                                    option.toString(),
-                                    style: TextStyle(
-                                      fontSize: 32,
-                                      fontWeight: FontWeight.w900,
-                                      color: colorScheme.onSurface,
+                                  child: Center(
+                                    child: Text(
+                                      option.toString(),
+                                      style: TextStyle(
+                                        fontSize: 32,
+                                        fontWeight: FontWeight.w900,
+                                        color: colorScheme.onSurface,
+                                      ),
                                     ),
                                   ),
                                 ),

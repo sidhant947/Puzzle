@@ -123,11 +123,13 @@ class _LogicalSyllogismsScreenState extends ConsumerState<LogicalSyllogismsScree
                   child: TangibleButton(
                     onTap: () => notifier.submitAnswer(false),
                     color: colorScheme.surface,
-                    child: Text(
-                      'INVALID',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w900,
-                        color: DesignSystem.error,
+                    child: Center(
+                      child: Text(
+                        'INVALID',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          color: DesignSystem.error,
+                        ),
                       ),
                     ),
                   ),
@@ -137,11 +139,13 @@ class _LogicalSyllogismsScreenState extends ConsumerState<LogicalSyllogismsScree
                   child: TangibleButton(
                     onTap: () => notifier.submitAnswer(true),
                     color: colorScheme.surface,
-                    child: const Text(
-                      'VALID',
-                      style: TextStyle(
-                        fontWeight: FontWeight.w900,
-                        color: DesignSystem.success,
+                    child: const Center(
+                      child: Text(
+                        'VALID',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          color: DesignSystem.success,
+                        ),
                       ),
                     ),
                   ),
