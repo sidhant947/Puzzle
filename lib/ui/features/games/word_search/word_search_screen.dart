@@ -1,3 +1,4 @@
+import "package:puzzle/l10n/app_localizations.dart";
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,6 +26,7 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(wordSearchNotifierProvider);
     final notifier = ref.read(wordSearchNotifierProvider.notifier);
@@ -37,8 +39,8 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
     });
 
     return GameScaffold(
-      title: 'WORD SEARCH',
-      subtitle: 'Find all the hidden words in the grid. Drag to select.',
+      title: l10n.wordSearchTitle.toUpperCase(),
+      subtitle: l10n.wordSearchSubtitle,
       actions: [
         TangibleButton(
           color: colorScheme.surface,
@@ -253,6 +255,7 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
   }
 
   void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
+    final l10n = AppLocalizations.of(context)!;
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('word_search');
 
     if (!context.mounted) return;

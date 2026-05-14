@@ -6,28 +6,31 @@ enum LetterStatus { initial, notInWord, wrongSpot, correctSpot }
 class FindWordEngine {
   static const int maxTries = 6;
   static const int wordLength = 5;
-  static List<String>? _cachedWords;
+  static final Map<String, List<String>> _cachedWords = {};
 
-  Future<List<String>> loadWords() async {
-    if (_cachedWords != null) return _cachedWords!;
+  Future<List<String>> loadWords([String languageCode = 'en']) async {
+    if (_cachedWords.containsKey(languageCode)) return _cachedWords[languageCode]!;
     
     try {
       final data = await rootBundle.loadString('assets/find_word_words.txt');
-      _cachedWords = data
+      final words = data
           .split('\n')
           .map((w) => w.trim().toUpperCase())
           .where((w) => w.length == wordLength)
           .toList();
       
-      if (_cachedWords!.isEmpty) {
-        _cachedWords = ['APPLE', 'BRAIN', 'CHAIR', 'DANCE', 'EARTH'];
+      if (words.isEmpty) {
+        return _getFallbackWords();
       }
-      return _cachedWords!;
+      _cachedWords[languageCode] = words;
+      return words;
     } catch (e) {
-      // Fallback if asset loading fails
-      _cachedWords = ['APPLE', 'BRAIN', 'CHAIR', 'DANCE', 'EARTH'];
-      return _cachedWords!;
+      return _getFallbackWords();
     }
+  }
+
+  List<String> _getFallbackWords() {
+    return ['APPLE', 'BRAIN', 'CHAIR', 'DANCE', 'EARTH'];
   }
 
   String getRandomWord(List<String> words) {

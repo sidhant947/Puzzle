@@ -7,24 +7,26 @@ import '../../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../core/juice/game_scaffold.dart';
+import '../../../../l10n/app_localizations.dart';
 
 class HueSortScreen extends ConsumerWidget {
   const HueSortScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(hueSortNotifierProvider);
 
     ref.listen(hueSortNotifierProvider, (previous, next) {
       if (next.isSolved && !(previous?.isSolved ?? false)) {
         HapticFeedbackUtil.victory();
-        _showVictoryDialog(context, ref);
+        _showVictoryDialog(context, ref, l10n);
       }
     });
 
     return GameScaffold(
-      title: 'HUE SORT',
-      subtitle: 'Swap tiles to create a smooth transition between corner colors. Dots indicate fixed tiles.',
+      title: l10n.hueSortTitle,
+      subtitle: l10n.hueSortSubtitle,
       actions: [
         TangibleButton(
           color: Theme.of(context).colorScheme.surface,
@@ -116,15 +118,16 @@ class HueSortScreen extends ConsumerWidget {
     );
   }
 
-  void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
+  void _showVictoryDialog(BuildContext context, WidgetRef ref, AppLocalizations l10n) async {
+    final l10n = AppLocalizations.of(context)!;
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('hue_sort');
     if (!context.mounted) return;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'PERFECT GRADIENT!',
-        message: 'You perfectly sorted the color spectrum!',
+        title: l10n.hueSortWinTitle,
+        message: l10n.hueSortWinMessage,
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();

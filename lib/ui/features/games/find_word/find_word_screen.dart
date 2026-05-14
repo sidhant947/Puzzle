@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'find_word_provider.dart';
 import 'find_word_engine.dart';
 import '../../../../../providers/user_providers.dart';
@@ -54,6 +55,7 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(findWordNotifierProvider);
     final notifier = ref.read(findWordNotifierProvider.notifier);
+    final l10n = AppLocalizations.of(context)!;
 
     ref.listen(findWordNotifierProvider, (previous, next) {
       if (next.isInvalidGuess && !(previous?.isInvalidGuess ?? false)) {
@@ -71,9 +73,8 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
     });
 
     return GameScaffold(
-      title: 'FIND WORD',
-      subtitle:
-          'You have ${FindWordEngine.maxTries} tries to find the hidden ${FindWordEngine.wordLength}-letter word.',
+      title: l10n.categoryWord.toUpperCase(),
+      subtitle: l10n.findWordSubtitle(FindWordEngine.maxTries, FindWordEngine.wordLength),
       actions: [
         TangibleButton(
           color: colorScheme.surface,
@@ -314,6 +315,7 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
 
   void _showGameOverDialog(
       BuildContext context, WidgetRef ref, FindWordState state) async {
+    final l10n = AppLocalizations.of(context)!;
     if (state.isGameWon) {
       await ref
           .read(gameStreakNotifierProvider.notifier)
@@ -331,8 +333,8 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
             ref.read(findWordNotifierProvider.notifier).initGame();
             Navigator.of(context).pop();
           },
-          title: 'CONGRATS',
-          message: 'Word found successfully: ${state.targetWord}',
+          title: l10n.congrats,
+          message: l10n.wordFoundMessage(state.targetWord),
         ),
       );
       return;
@@ -345,8 +347,8 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         isVictory: false,
-        title: 'GAME OVER',
-        message: 'The word was: ${state.targetWord}',
+        title: l10n.gameOver.toUpperCase(),
+        message: l10n.gameOverMessage(state.targetWord),
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();

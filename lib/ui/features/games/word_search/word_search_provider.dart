@@ -44,10 +44,10 @@ class WordSearchNotifier extends _$WordSearchNotifier {
 
   Future<void> initGame() async {
     List<String> selectedWords = [];
+    
     try {
       // Load the dedicated asset
-      final String response =
-          await rootBundle.loadString('assets/word_search_words.txt');
+      final String response = await rootBundle.loadString('assets/word_search_words.txt');
 
       // Process and filter the list
       final List<String> allWords = response

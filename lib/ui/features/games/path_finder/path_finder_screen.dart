@@ -1,3 +1,4 @@
+import "package:puzzle/l10n/app_localizations.dart";
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,6 +15,7 @@ class PathFinderScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(pathFinderNotifierProvider);
 
     ref.listen(pathFinderNotifierProvider, (previous, next) {
@@ -24,8 +26,8 @@ class PathFinderScreen extends ConsumerWidget {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'PATH MASTERED',
-            message: 'You successfully found the hidden path!',
+            title: l10n.pathFinderWin.toUpperCase(),
+            message: l10n.completed,
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
@@ -40,8 +42,8 @@ class PathFinderScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'PATH FINDER',
-      subtitle: 'Find the hidden path from S to E.',
+      title: l10n.pathFinderTitle.toUpperCase(),
+      subtitle: l10n.pathFinderSubtitle,
       actions: [
         TangibleButton(
           color: Theme.of(context).colorScheme.surface,
@@ -125,6 +127,7 @@ class _PathGrid extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(pathFinderNotifierProvider);
 
     return Padding(

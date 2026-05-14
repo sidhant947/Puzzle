@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -25,12 +26,13 @@ class _SternbergTaskScreenState extends ConsumerState<SternbergTaskScreen> {
   }
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     final score = ref.read(sternbergTaskNotifierProvider).score;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'GAME OVER',
+        title: l10n.sternbergTaskTitle.toUpperCase(),
         message: 'You scored $score points in Sternberg Task!',
         isVictory: score > 15,
         onHome: () {
@@ -47,6 +49,7 @@ class _SternbergTaskScreenState extends ConsumerState<SternbergTaskScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(sternbergTaskNotifierProvider);
     final notifier = ref.read(sternbergTaskNotifierProvider.notifier);
 
@@ -59,7 +62,7 @@ class _SternbergTaskScreenState extends ConsumerState<SternbergTaskScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
+      return GameScaffold(
         title: 'Sternberg Task',
         body: Center(child: CircularProgressIndicator()),
       );

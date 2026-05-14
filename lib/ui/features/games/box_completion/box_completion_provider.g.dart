@@ -7,7 +7,7 @@ part of 'box_completion_provider.dart';
 // **************************************************************************
 
 String _$boxCompletionNotifierHash() =>
-    r'6a5e14fd26b08b67da97979295961568310e90ad';
+    r'd6f8dc968abff8deeeb6fd29e356c62a7ee2c02b';
 
 /// See also [BoxCompletionNotifier].
 @ProviderFor(BoxCompletionNotifier)

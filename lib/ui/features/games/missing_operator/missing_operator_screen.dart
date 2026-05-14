@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -27,6 +28,7 @@ class _MissingOperatorScreenState extends ConsumerState<MissingOperatorScreen> {
   }
 
   void _showCompletionDialog(bool isVictory) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -51,6 +53,7 @@ class _MissingOperatorScreenState extends ConsumerState<MissingOperatorScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(missingOperatorNotifierProvider);
     final notifier = ref.read(missingOperatorNotifierProvider.notifier);
 
@@ -68,15 +71,15 @@ class _MissingOperatorScreenState extends ConsumerState<MissingOperatorScreen> {
     });
 
     if (state.problem == null) {
-      return const GameScaffold(
-        title: 'Operator Mix',
+      return GameScaffold(
+        title: l10n.missingOperatorTitle.toUpperCase(),
         body: Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
       title: 'Operator Mix',
-      subtitle: 'Fill the blanks to complete the equation',
+      subtitle: l10n.missingOperatorSubtitle,
       body: Column(
         children: [
           const SizedBox(height: DesignSystem.space2XL),

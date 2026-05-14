@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/haptic_feedback.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -26,14 +27,16 @@ class _FaceNameAssociationScreenState extends ConsumerState<FaceNameAssociationS
   }
 
   void _showCompletionDialog(bool isVictory) {
+    final l10n = AppLocalizations.of(context)!;
+    final state = ref.read(faceNameAssociationNotifierProvider);
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: isVictory ? 'PERFECT!' : 'GAME OVER',
+        title: isVictory ? l10n.faceNameAssociationPerfect : l10n.faceNameAssociationGameOver,
         message: isVictory 
-            ? 'You have a great memory for faces and names!' 
-            : 'You got ${ref.read(faceNameAssociationNotifierProvider).correctCount} out of ${ref.read(faceNameAssociationNotifierProvider).studyFaces.length} correct.',
+            ? l10n.faceNameAssociationWinMessage
+            : l10n.faceNameAssociationLoseMessage(state.correctCount, state.studyFaces.length),
         isVictory: isVictory,
         onHome: () {
           Navigator.of(context).pop();
@@ -51,6 +54,7 @@ class _FaceNameAssociationScreenState extends ConsumerState<FaceNameAssociationS
   Widget build(BuildContext context) {
     final state = ref.watch(faceNameAssociationNotifierProvider);
     final notifier = ref.read(faceNameAssociationNotifierProvider.notifier);
+    final l10n = AppLocalizations.of(context)!;
 
     ref.listen(faceNameAssociationNotifierProvider, (previous, next) async {
       if (next.phase == FaceNamePhase.result && previous?.phase != FaceNamePhase.result) {
@@ -67,27 +71,27 @@ class _FaceNameAssociationScreenState extends ConsumerState<FaceNameAssociationS
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
-        title: 'Face-Name',
-        body: Center(child: CircularProgressIndicator()),
+      return GameScaffold(
+        title: l10n.faceNameAssociationTitle,
+        body: const Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
-      title: 'Face-Name',
+      title: l10n.faceNameAssociationTitle,
       subtitle: state.phase == FaceNamePhase.study 
-          ? 'Memorize the name for each face' 
-          : 'Who is this?',
+          ? l10n.faceNameAssociationSubtitleStudy 
+          : l10n.faceNameAssociationSubtitleTest,
       body: Padding(
         padding: const EdgeInsets.all(DesignSystem.spaceLG),
         child: state.phase == FaceNamePhase.study 
-            ? _buildStudyPhase(state, notifier)
+            ? _buildStudyPhase(state, notifier, l10n)
             : _buildTestingPhase(state, notifier),
       ),
     );
   }
 
-  Widget _buildStudyPhase(FaceNameState state, FaceNameAssociationNotifier notifier) {
+  Widget _buildStudyPhase(FaceNameState state, FaceNameAssociationNotifier notifier, AppLocalizations l10n) {
     return Column(
       children: [
         Expanded(
@@ -109,9 +113,9 @@ class _FaceNameAssociationScreenState extends ConsumerState<FaceNameAssociationS
         TangibleButton(
           onTap: notifier.startTesting,
           color: DesignSystem.primary,
-          child: const Text(
-            'START TEST',
-            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+          child: Text(
+            l10n.faceNameAssociationStartTest,
+            style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
           ),
         ),
       ],

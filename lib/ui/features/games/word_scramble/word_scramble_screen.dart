@@ -1,3 +1,4 @@
+import "package:puzzle/l10n/app_localizations.dart";
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -22,13 +23,14 @@ class _WordScrambleScreenState extends ConsumerState<WordScrambleScreen> {
   }
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     ref.read(gameStreakNotifierProvider.notifier).completeGame('word_scramble');
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'WORD UNRAVELED!',
-        message: 'You unscrambled the word perfectly.',
+        title: l10n.wordScrambleWin.toUpperCase(),
+        message: l10n.wordFoundMessage(ref.read(wordScrambleNotifierProvider).targetWord),
         onPlayAgain: () {
           ref.read(wordScrambleNotifierProvider.notifier).initGame();
           Navigator.pop(context);
@@ -43,6 +45,7 @@ class _WordScrambleScreenState extends ConsumerState<WordScrambleScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(wordScrambleNotifierProvider);
     final notifier = ref.read(wordScrambleNotifierProvider.notifier);
@@ -54,8 +57,8 @@ class _WordScrambleScreenState extends ConsumerState<WordScrambleScreen> {
     });
 
     return GameScaffold(
-      title: 'WORD SCRAMBLE',
-      subtitle: 'Tap the letters to unscramble the hidden word!',
+      title: l10n.wordScrambleTitle.toUpperCase(),
+      subtitle: l10n.wordScrambleSubtitle,
       actions: [
         TangibleButton(
           color: colorScheme.surface,

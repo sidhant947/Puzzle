@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'word_ladder_provider.dart';
@@ -13,6 +14,7 @@ class WordLadderScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(wordLadderNotifierProvider);
     final notifier = ref.read(wordLadderNotifierProvider.notifier);
 
@@ -24,8 +26,8 @@ class WordLadderScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'WORD LADDER',
-      subtitle: 'Connect the words by changing one letter at a time.',
+      title: l10n.wordLadderTitle.toUpperCase(),
+      subtitle: l10n.wordLadderSubtitle,
       actions: [
         TangibleButton(
           color: Theme.of(context).colorScheme.surface,
@@ -260,6 +262,7 @@ class WordLadderScreen extends ConsumerWidget {
   }
 
   void _showGameOverDialog(BuildContext context, WidgetRef ref, WordLadderState state) async {
+    final l10n = AppLocalizations.of(context)!;
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('word_ladder', xpAmount: 35);
 
     if (!context.mounted) return;

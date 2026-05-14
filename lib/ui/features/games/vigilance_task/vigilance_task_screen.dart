@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -26,6 +27,7 @@ class _VigilanceTaskScreenState extends ConsumerState<VigilanceTaskScreen> {
   }
 
   void _showCompletionDialog(bool isVictory, int hits, int misses, int falseAlarms) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -47,6 +49,7 @@ class _VigilanceTaskScreenState extends ConsumerState<VigilanceTaskScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(vigilanceNotifierProvider);
     
     ref.listen(vigilanceNotifierProvider, (previous, next) async {
@@ -64,8 +67,8 @@ class _VigilanceTaskScreenState extends ConsumerState<VigilanceTaskScreen> {
     });
 
     return GameScaffold(
-      title: 'Vigilance Task',
-      subtitle: 'Tap the button when the hand skips a position',
+      title: l10n.vigilanceTaskTitle.toUpperCase(),
+      subtitle: l10n.vigilanceTaskSubtitle,
       body: Column(
         children: [
           const SizedBox(height: DesignSystem.spaceXL),

@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -25,11 +26,12 @@ class _WisconsinCardSortingScreenState extends ConsumerState<WisconsinCardSortin
   }
 
   void _showCompletionDialog(WCSState state) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'GAME OVER',
+        title: l10n.wisconsinCardSortingTitle.toUpperCase(),
         message: 'You correctly sorted ${state.score} cards!',
         onHome: () {
           Navigator.of(context).pop();
@@ -45,6 +47,7 @@ class _WisconsinCardSortingScreenState extends ConsumerState<WisconsinCardSortin
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(wisconsinCardSortingNotifierProvider);
 
@@ -56,7 +59,7 @@ class _WisconsinCardSortingScreenState extends ConsumerState<WisconsinCardSortin
 
     return GameScaffold(
       title: 'Card Sorting',
-      subtitle: 'MATCH THE CARD TO ONE OF THE FOUR ABOVE',
+      subtitle: l10n.wisconsinCardSortingSubtitle,
       actions: [
         TangibleContainer(
           color: colorScheme.surface,
@@ -148,6 +151,7 @@ class _CardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     Color color;
     switch (card.color) {
       case 'red': color = Colors.red; break;

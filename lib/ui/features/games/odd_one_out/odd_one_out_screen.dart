@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'dart:async';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
@@ -43,6 +44,7 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(oddOneOutNotifierProvider);
 
@@ -59,8 +61,8 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
     });
 
     return GameScaffold(
-      title: 'ODD ONE OUT',
-      subtitle: 'Find the tile with a different color.',
+      title: l10n.oddOneOutTitle.toUpperCase(),
+      subtitle: l10n.oddOneOutSubtitle,
       actions: [
         TangibleButton(
           color: colorScheme.surface,
@@ -200,6 +202,7 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
   }
 
   void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
+    final l10n = AppLocalizations.of(context)!;
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('odd_one_out');
     if (!context.mounted) return;
     showDialog(
@@ -222,6 +225,7 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
   }
 
   void _showGameOverDialog(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,

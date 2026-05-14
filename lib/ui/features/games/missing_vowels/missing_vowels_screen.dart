@@ -1,3 +1,4 @@
+import "package:puzzle/l10n/app_localizations.dart";
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -23,13 +24,14 @@ class _MissingVowelsScreenState extends ConsumerState<MissingVowelsScreen> {
   }
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     ref.read(gameStreakNotifierProvider.notifier).completeGame('missing_vowels');
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'VOWELS RESTORED!',
-        message: 'You successfully identified the full word.',
+        title: l10n.missingVowelsWin.toUpperCase(),
+        message: l10n.wordFoundMessage(ref.read(missingVowelsNotifierProvider).targetWord),
         onPlayAgain: () {
           ref.read(missingVowelsNotifierProvider.notifier).initGame();
           Navigator.pop(context);
@@ -44,6 +46,7 @@ class _MissingVowelsScreenState extends ConsumerState<MissingVowelsScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(missingVowelsNotifierProvider);
     final notifier = ref.read(missingVowelsNotifierProvider.notifier);
@@ -56,8 +59,8 @@ class _MissingVowelsScreenState extends ConsumerState<MissingVowelsScreen> {
     });
 
     return GameScaffold(
-      title: 'MISSING VOWELS',
-      subtitle: 'Identify the word with its vowels hidden.',
+      title: l10n.missingVowelsTitle.toUpperCase(),
+      subtitle: l10n.missingVowelsSubtitle,
       actions: [
         TangibleButton(
           color: colorScheme.surface,
@@ -66,10 +69,10 @@ class _MissingVowelsScreenState extends ConsumerState<MissingVowelsScreen> {
             showDialog(
               context: context,
               builder: (context) => AlertDialog(
-                title: const Text('How to Play'),
-                content: const Text('A word is shown with its vowels (A, E, I, O, U) hidden. Guess the full word!'),
+                title: Text(l10n.howToPlay),
+                content: Text(l10n.missingVowelsHowToPlay),
                 actions: [
-                  TextButton(onPressed: () => Navigator.pop(context), child: const Text('Got it')),
+                  TextButton(onPressed: () => Navigator.pop(context), child: Text(l10n.gotIt)),
                 ],
               ),
             );

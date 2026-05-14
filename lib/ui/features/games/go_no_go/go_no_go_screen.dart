@@ -6,6 +6,7 @@ import '../../../core/juice/game_scaffold.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../../utils/design_system.dart';
+import '../../../../l10n/app_localizations.dart';
 import 'go_no_go_provider.dart';
 import 'go_no_go_engine.dart';
 
@@ -26,12 +27,13 @@ class _GoNoGoScreenState extends ConsumerState<GoNoGoScreen> {
   }
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'REACTION STOPPED',
-        message: 'Your inhibitory control is being tested!',
+        title: l10n.goNoGoLoseTitle,
+        message: l10n.goNoGoLoseMessage,
         isVictory: false,
         onHome: () {
           Navigator.of(context).pop();
@@ -47,6 +49,7 @@ class _GoNoGoScreenState extends ConsumerState<GoNoGoScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(goNoGoNotifierProvider);
     final notifier = ref.read(goNoGoNotifierProvider.notifier);
@@ -64,15 +67,15 @@ class _GoNoGoScreenState extends ConsumerState<GoNoGoScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
-        title: 'Go / No-Go',
-        body: Center(child: CircularProgressIndicator()),
+      return GameScaffold(
+        title: l10n.goNoGoTitle,
+        body: const Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
-      title: 'Go / No-Go',
-      subtitle: 'Tap for Green, IGNORE Red!',
+      title: l10n.goNoGoTitle,
+      subtitle: l10n.goNoGoSubtitle,
       body: GestureDetector(
         onTap: notifier.onTap,
         behavior: HitTestBehavior.opaque,
@@ -88,8 +91,8 @@ class _GoNoGoScreenState extends ConsumerState<GoNoGoScreen> {
                     radius: DesignSystem.radiusMD,
                     color: colorScheme.surface,
                     child: Text(
-                      'SCORE: ${state.score}',
-                      style: TextStyle(
+                      '${l10n.score.toUpperCase()}: ${state.score}',
+                      style: const TextStyle(
                         fontWeight: FontWeight.w900,
                         color: DesignSystem.primary,
                       ),
@@ -106,7 +109,7 @@ class _GoNoGoScreenState extends ConsumerState<GoNoGoScreen> {
             Padding(
               padding: const EdgeInsets.all(DesignSystem.space2XL),
               child: Text(
-                'TAP ANYWHERE TO GO',
+                l10n.goNoGoTapAnywhere,
                 style: TextStyle(
                   color: colorScheme.onSurface.withValues(alpha: 0.7),
                   fontWeight: FontWeight.w900,

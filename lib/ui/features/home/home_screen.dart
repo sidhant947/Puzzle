@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../data/models/game_streak.dart';
 import '../../../../widgets/super_streak_action.dart';
@@ -953,6 +954,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final favoriteIds = ref.watch(userDataNotifierProvider.select((d) => d.favoriteGameIds ?? []));
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
+    final l10n = AppLocalizations.of(context)!;
 
     final filteredGames = _games.where((game) {
       final matchesSearch = game['title'].toLowerCase().contains(_searchQuery.toLowerCase());
@@ -983,7 +985,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             surfaceTintColor: Colors.transparent,
             centerTitle: true,
             title: Text(
-              'GAMES',
+              l10n.games.toUpperCase(),
               style: TextStyle(
                 fontSize: 14,
                 letterSpacing: 1.5,
@@ -1011,13 +1013,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   final solvedToday = streaks.values.where((s) => s.solvedToday).length;
                   String encouragement;
                   if (solvedToday == 0) {
-                    encouragement = "READY TO START YOUR BRAIN WORKOUT?";
+                    encouragement = l10n.readyToStart;
                   } else if (solvedToday < 3) {
-                    encouragement = "GREAT START! KEEP THAT MOMENTUM.";
+                    encouragement = l10n.greatStart;
                   } else if (solvedToday < 7) {
-                    encouragement = "ON FIRE! YOUR BRAIN IS LOVING THIS.";
+                    encouragement = l10n.onFire;
                   } else {
-                    encouragement = "INCREDIBLE! YOU'RE A PUZZLE MASTER.";
+                    encouragement = l10n.incredible;
                   }
 
                   return TangibleContainer(
@@ -1049,7 +1051,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                'SOLVED TODAY',
+                                l10n.solvedToday.toUpperCase(),
                                 style: TextStyle(
                                   fontSize: 10,
                                   fontWeight: FontWeight.w900,
@@ -1091,7 +1093,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       controller: _searchController,
                       onChanged: (value) => setState(() => _searchQuery = value),
                       decoration: InputDecoration(
-                        hintText: 'SEARCH GAMES...',
+                        hintText: l10n.searchGames.toUpperCase(),
                         hintStyle: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w900,
@@ -1130,33 +1132,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     physics: const BouncingScrollPhysics(),
                     child: Row(
                       children: [
-                        'ALL',
-                        'ATTENTION',
-                        'LOGIC',
-                        'MATH',
-                        'WORD',
-                        'MEMORY',
-                        'SPATIAL'
-                      ].map((cat) {
-                        final isSelected = _selectedCategory == cat;
-                        return Padding(
-                          padding: const EdgeInsets.only(right: DesignSystem.spaceMD),
-                          child: TangibleButton(
-                            onTap: () => setState(() => _selectedCategory = cat),
-                            color: isSelected ? DesignSystem.primary : colorScheme.surface,
-                            padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-                            child: Text(
-                              cat,
-                              style: TextStyle(
-                                fontSize: 12,
-                                fontWeight: FontWeight.w900,
-                                color: isSelected ? Colors.white : colorScheme.onSurface,
-                                letterSpacing: 0.5,
-                              ),
-                            ),
-                          ),
-                        );
-                      }).toList(),
+                        _buildCategoryButton(l10n.categoryAll, 'ALL'),
+                        _buildCategoryButton(l10n.categoryAttention, 'ATTENTION'),
+                        _buildCategoryButton(l10n.categoryLogic, 'LOGIC'),
+                        _buildCategoryButton(l10n.categoryMath, 'MATH'),
+                        _buildCategoryButton(l10n.categoryWord, 'WORD'),
+                        _buildCategoryButton(l10n.categoryMemory, 'MEMORY'),
+                        _buildCategoryButton(l10n.categorySpatial, 'SPATIAL'),
+                      ],
                     ),
                   ),
                 ],
@@ -1179,7 +1162,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         ),
                         const SizedBox(height: DesignSystem.spaceMD),
                         Text(
-                          'NO GAMES MATCH YOUR SEARCH',
+                          l10n.noGamesMatch.toUpperCase(),
                           style: TextStyle(
                             fontSize: 12,
                             fontWeight: FontWeight.w900,
@@ -1232,6 +1215,28 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           ),
           );
           }
+
+  Widget _buildCategoryButton(String label, String value) {
+    final isSelected = _selectedCategory == value;
+    final colorScheme = Theme.of(context).colorScheme;
+    return Padding(
+      padding: const EdgeInsets.only(right: DesignSystem.spaceMD),
+      child: TangibleButton(
+        onTap: () => setState(() => _selectedCategory = value),
+        color: isSelected ? DesignSystem.primary : colorScheme.surface,
+        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+        child: Text(
+          label.toUpperCase(),
+          style: TextStyle(
+            fontSize: 12,
+            fontWeight: FontWeight.w900,
+            color: isSelected ? Colors.white : colorScheme.onSurface,
+            letterSpacing: 0.5,
+          ),
+        ),
+      ),
+    );
+  }
 
   Widget _buildFullWidthTile(
     BuildContext context,

@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -23,6 +24,7 @@ class _StroopTestScreenState extends ConsumerState<StroopTestScreen> {
   }
 
   void _showGameOverDialog(int score) {
+    final l10n = AppLocalizations.of(context)!;
     bool won = score >= 10;
     if (won) {
       HapticFeedbackUtil.victory();
@@ -50,6 +52,7 @@ class _StroopTestScreenState extends ConsumerState<StroopTestScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(stroopTestNotifierProvider);
     final notifier = ref.read(stroopTestNotifierProvider.notifier);
@@ -61,8 +64,8 @@ class _StroopTestScreenState extends ConsumerState<StroopTestScreen> {
     });
 
     return GameScaffold(
-      title: 'STROOP TEST',
-      subtitle: 'Identify the ink color of the word shown. Ignore what the word actually says!',
+      title: l10n.stroopTestTitle.toUpperCase(),
+      subtitle: l10n.stroopTestSubtitle,
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(

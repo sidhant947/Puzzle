@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
@@ -25,6 +26,7 @@ class _MentalRotationScreenState extends ConsumerState<MentalRotationScreen> {
   }
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.read(mentalRotationNotifierProvider);
     showDialog(
       context: context,
@@ -47,6 +49,7 @@ class _MentalRotationScreenState extends ConsumerState<MentalRotationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(mentalRotationNotifierProvider);
     final notifier = ref.read(mentalRotationNotifierProvider.notifier);
@@ -67,8 +70,8 @@ class _MentalRotationScreenState extends ConsumerState<MentalRotationScreen> {
     });
 
     return GameScaffold(
-      title: 'Mental Rotation',
-      subtitle: 'Are these shapes the same, just rotated?',
+      title: l10n.mentalRotationTitle.toUpperCase(),
+      subtitle: l10n.mentalRotationSubtitle,
       body: Column(
         children: [
           Padding(

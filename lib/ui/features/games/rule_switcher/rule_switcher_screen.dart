@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -26,6 +27,7 @@ class _RuleSwitcherScreenState extends ConsumerState<RuleSwitcherScreen> {
   }
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.read(ruleSwitcherNotifierProvider);
     showDialog(
       context: context,
@@ -48,6 +50,7 @@ class _RuleSwitcherScreenState extends ConsumerState<RuleSwitcherScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(ruleSwitcherNotifierProvider);
     final notifier = ref.read(ruleSwitcherNotifierProvider.notifier);
 
@@ -61,15 +64,15 @@ class _RuleSwitcherScreenState extends ConsumerState<RuleSwitcherScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
-        title: 'Rule Switcher',
+      return GameScaffold(
+        title: l10n.ruleSwitcherTitle.toUpperCase(),
         body: Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
       title: 'Rule Switcher',
-      subtitle: 'Apply the current rule',
+      subtitle: l10n.ruleSwitcherSubtitle,
       body: Column(
         children: [
           Padding(

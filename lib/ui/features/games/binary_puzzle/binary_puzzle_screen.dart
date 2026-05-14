@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'binary_puzzle_provider.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/design_system.dart';
@@ -13,6 +14,7 @@ class BinaryPuzzleScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(binaryPuzzleNotifierProvider);
 
     ref.listen(binaryPuzzleNotifierProvider, (previous, next) {
@@ -23,8 +25,8 @@ class BinaryPuzzleScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'BINARY PUZZLE',
-      subtitle: 'Fill with 0 and 1. Max two of the same digit adjacent. Equal 0s and 1s in each row and column.',
+      title: l10n.binaryPuzzleTitle,
+      subtitle: l10n.binaryPuzzleSubtitle,
       actions: [
         TangibleButton(
           color: Theme.of(context).colorScheme.surface,
@@ -113,14 +115,15 @@ class BinaryPuzzleScreen extends ConsumerWidget {
 
 
   void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
+    final l10n = AppLocalizations.of(context)!;
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('binary_puzzle');
     if (!context.mounted) return;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'WELL DONE',
-        message: 'You solved the binary puzzle with perfect logic!',
+        title: l10n.binaryPuzzleWinTitle,
+        message: l10n.binaryPuzzleWinMessage,
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();

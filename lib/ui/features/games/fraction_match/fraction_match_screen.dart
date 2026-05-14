@@ -7,6 +7,7 @@ import '../../../core/juice/game_scaffold.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../../utils/design_system.dart';
+import '../../../../l10n/app_localizations.dart';
 import 'fraction_match_provider.dart';
 
 class FractionMatchScreen extends ConsumerStatefulWidget {
@@ -26,12 +27,13 @@ class _FractionMatchScreenState extends ConsumerState<FractionMatchScreen> {
   }
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'FRACTION MISMATCH',
-        message: 'The correct answer was ${ref.read(fractionMatchNotifierProvider).correctAnswer}.',
+        title: l10n.fractionMatchLoseTitle,
+        message: l10n.fractionMatchLoseMessage(ref.read(fractionMatchNotifierProvider).correctAnswer),
         isVictory: false,
         onHome: () {
           Navigator.of(context).pop();
@@ -47,6 +49,7 @@ class _FractionMatchScreenState extends ConsumerState<FractionMatchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(fractionMatchNotifierProvider);
     final notifier = ref.read(fractionMatchNotifierProvider.notifier);
@@ -64,15 +67,15 @@ class _FractionMatchScreenState extends ConsumerState<FractionMatchScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
-        title: 'Fraction Match',
-        body: Center(child: CircularProgressIndicator()),
+      return GameScaffold(
+        title: l10n.fractionMatchTitle,
+        body: const Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
-      title: 'Fraction Match',
-      subtitle: 'Match the visual to its fraction',
+      title: l10n.fractionMatchTitle,
+      subtitle: l10n.fractionMatchSubtitle,
       body: Column(
         children: [
           Padding(
@@ -85,7 +88,7 @@ class _FractionMatchScreenState extends ConsumerState<FractionMatchScreen> {
                   radius: DesignSystem.radiusMD,
                   color: colorScheme.surface,
                   child: Text(
-                    'SCORE: ${state.score}',
+                    '${l10n.score.toUpperCase()}: ${state.score}',
                     style: const TextStyle(
                       fontWeight: FontWeight.w900,
                       color: DesignSystem.primary,

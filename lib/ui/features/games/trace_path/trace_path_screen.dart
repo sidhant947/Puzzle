@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -25,6 +26,7 @@ class _TracePathScreenState extends ConsumerState<TracePathScreen> {
   }
 
   void _showGameOverDialog(int score, double accuracy) {
+    final l10n = AppLocalizations.of(context)!;
     bool won = accuracy >= 0.7;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('trace_path');
@@ -51,6 +53,7 @@ class _TracePathScreenState extends ConsumerState<TracePathScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(tracePathNotifierProvider);
     final notifier = ref.read(tracePathNotifierProvider.notifier);
@@ -67,12 +70,12 @@ class _TracePathScreenState extends ConsumerState<TracePathScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(title: 'TRACE PATH', body: Center(child: CircularProgressIndicator()));
+      return GameScaffold(title: l10n.tracePathTitle.toUpperCase(), body: Center(child: CircularProgressIndicator()));
     }
 
     return GameScaffold(
       title: 'TRACE PATH',
-      subtitle: 'Follow the target path as closely as you can',
+      subtitle: l10n.tracePathSubtitle,
       body: Column(
         children: [
           SizedBox(height: DesignSystem.spaceLG),

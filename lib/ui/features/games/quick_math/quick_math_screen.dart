@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -23,6 +24,7 @@ class _QuickMathScreenState extends ConsumerState<QuickMathScreen> {
   }
 
   void _showGameOverDialog(int score) {
+    final l10n = AppLocalizations.of(context)!;
     bool won = score >= 5;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('quick_math');
@@ -47,6 +49,7 @@ class _QuickMathScreenState extends ConsumerState<QuickMathScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(quickMathNotifierProvider);
     final notifier = ref.read(quickMathNotifierProvider.notifier);
@@ -58,7 +61,7 @@ class _QuickMathScreenState extends ConsumerState<QuickMathScreen> {
     });
 
     return GameScaffold(
-      title: 'QUICK MATH',
+      title: l10n.quickMathTitle.toUpperCase(),
       body: LayoutBuilder(
         builder: (context, constraints) {
           if (state.isLoading) {
@@ -238,6 +241,7 @@ class _PadKey extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return SizedBox(
       width: width.clamp(0, 80),
       height: 60,

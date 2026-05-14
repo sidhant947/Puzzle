@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
@@ -25,12 +26,13 @@ class _SemanticLinkScreenState extends ConsumerState<SemanticLinkScreen> {
   }
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     final score = ref.read(semanticLinkNotifierProvider).score;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'TIME\'S UP!',
+        title: l10n.timeUp.toUpperCase(),
         message: 'You scored $score points!',
         isVictory: score > 5,
         onHome: () {
@@ -47,6 +49,7 @@ class _SemanticLinkScreenState extends ConsumerState<SemanticLinkScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(semanticLinkNotifierProvider);
     final notifier = ref.read(semanticLinkNotifierProvider.notifier);
@@ -68,7 +71,7 @@ class _SemanticLinkScreenState extends ConsumerState<SemanticLinkScreen> {
 
     return GameScaffold(
       title: 'Semantic Link',
-      subtitle: 'Find the word that connects all three',
+      subtitle: l10n.semanticLinkSubtitle,
       body: Column(
         children: [
           Padding(

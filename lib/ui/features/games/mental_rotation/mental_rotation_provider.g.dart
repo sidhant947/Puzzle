@@ -7,7 +7,7 @@ part of 'mental_rotation_provider.dart';
 // **************************************************************************
 
 String _$mentalRotationNotifierHash() =>
-    r'1806e781774d2960ebc283efcc460b7161593197';
+    r'd639db24b58082967fe9f8f27d516c482f72129b';
 
 /// See also [MentalRotationNotifier].
 @ProviderFor(MentalRotationNotifier)

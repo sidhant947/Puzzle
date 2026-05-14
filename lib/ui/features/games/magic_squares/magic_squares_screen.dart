@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -25,6 +26,7 @@ class _MagicSquaresScreenState extends ConsumerState<MagicSquaresScreen> {
   }
 
   void _showCompletionDialog(bool isVictory) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -48,6 +50,7 @@ class _MagicSquaresScreenState extends ConsumerState<MagicSquaresScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(magicSquaresNotifierProvider);
     final notifier = ref.read(magicSquaresNotifierProvider.notifier);
 
@@ -65,15 +68,15 @@ class _MagicSquaresScreenState extends ConsumerState<MagicSquaresScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
-        title: 'Magic Square',
+      return GameScaffold(
+        title: l10n.magicSquaresTitle.toUpperCase(),
         body: Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
       title: 'Magic Square',
-      subtitle: 'Every row, column and diagonal must sum to ${state.targetSum}',
+      subtitle: l10n.magicSquaresSubtitle(state.targetSum),
       body: LayoutBuilder(
         builder: (context, constraints) {
           return Column(

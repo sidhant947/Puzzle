@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/haptic_feedback.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -25,14 +26,15 @@ class _ArithmeticChainScreenState extends ConsumerState<ArithmeticChainScreen> {
   }
 
   void _showCompletionDialog(bool isVictory) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: isVictory ? 'LEVEL UP!' : 'TRY AGAIN',
+        title: isVictory ? l10n.arithmeticChainWinTitle : l10n.arithmeticChainLoseTitle,
         message: isVictory 
-            ? 'Your mental calculation is sharp!' 
-            : 'The correct answer was ${ref.read(arithmeticChainNotifierProvider).answer}.',
+            ? l10n.arithmeticChainWinMessage 
+            : l10n.arithmeticChainLoseMessage(ref.read(arithmeticChainNotifierProvider).answer.toString()),
         isVictory: isVictory,
         onHome: () {
           Navigator.of(context).pop();
@@ -48,6 +50,7 @@ class _ArithmeticChainScreenState extends ConsumerState<ArithmeticChainScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(arithmeticChainNotifierProvider);
     final notifier = ref.read(arithmeticChainNotifierProvider.notifier);
 
@@ -66,15 +69,15 @@ class _ArithmeticChainScreenState extends ConsumerState<ArithmeticChainScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
-        title: 'Chain Calc',
-        body: Center(child: CircularProgressIndicator()),
+      return GameScaffold(
+        title: l10n.arithmeticChainTitle,
+        body: const Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
-      title: 'Chain Calc',
-      subtitle: 'Calculate the running total in your head',
+      title: l10n.arithmeticChainTitle,
+      subtitle: l10n.arithmeticChainSubtitle,
       body: Column(
         children: [
           const SizedBox(height: DesignSystem.spaceXL),
@@ -83,7 +86,7 @@ class _ArithmeticChainScreenState extends ConsumerState<ArithmeticChainScreen> {
           Expanded(
             flex: 2,
             child: Center(
-              child: _buildMainDisplay(state),
+              child: _buildMainDisplay(state, l10n),
             ),
           ),
           
@@ -102,7 +105,7 @@ class _ArithmeticChainScreenState extends ConsumerState<ArithmeticChainScreen> {
     );
   }
 
-  Widget _buildMainDisplay(ArithmeticChainState state) {
+  Widget _buildMainDisplay(ArithmeticChainState state, AppLocalizations l10n) {
     String text = '';
     Color color = Theme.of(context).colorScheme.onSurface;
 
@@ -132,7 +135,7 @@ class _ArithmeticChainScreenState extends ConsumerState<ArithmeticChainScreen> {
           children: [
             if (state.phase == GamePhase.sequence)
                Text(
-                state.currentOpIndex == -1 ? 'START' : 'NEXT',
+                state.currentOpIndex == -1 ? l10n.arithmeticChainStart : l10n.arithmeticChainNext,
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w900,

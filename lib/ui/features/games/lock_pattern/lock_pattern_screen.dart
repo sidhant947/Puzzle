@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'lock_pattern_provider.dart';
@@ -48,6 +49,7 @@ class _LockPatternScreenState extends ConsumerState<LockPatternScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(lockPatternNotifierProvider);
     final notifier = ref.read(lockPatternNotifierProvider.notifier);
@@ -83,9 +85,8 @@ class _LockPatternScreenState extends ConsumerState<LockPatternScreen> {
     });
 
     return GameScaffold(
-      title: 'LOCK PATTERN',
-      subtitle:
-          'Find the secret pattern. Every guess gives feedback on position and dots.',
+      title: l10n.lockPatternTitle.toUpperCase(),
+      subtitle: l10n.lockPatternSubtitle,
       actions: [
         TangibleButton(
           color: colorScheme.surface,

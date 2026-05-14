@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import '../providers/user_providers.dart';
 import '../utils/design_system.dart';
 import '../utils/haptic_feedback.dart';
@@ -76,6 +77,7 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
     
     final userData = ref.watch(userDataNotifierProvider);
     final superStreak = userData.superStreak ?? 0;
+    final l10n = AppLocalizations.of(context)!;
 
     return Dialog(
       backgroundColor: Colors.transparent,
@@ -211,10 +213,10 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
                             onTap: widget.onPlayAgain,
                             color: DesignSystem.primary,
                             shadowColor: DesignSystem.primaryShadow,
-                            child: const Center(
+                            child: Center(
                               child: Text(
-                                'PLAY AGAIN',
-                                style: TextStyle(
+                                l10n.playAgain.toUpperCase(),
+                                style: const TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w900,
                                   letterSpacing: 1.0,
@@ -229,7 +231,7 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
                             shadowColor: colorScheme.outline,
                             child: Center(
                               child: Text(
-                                'HOME',
+                                l10n.home.toUpperCase(),
                                 style: TextStyle(
                                   color: colorScheme.onSurface.withValues(alpha: 0.5),
                                   fontWeight: FontWeight.w900,
@@ -245,7 +247,7 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
                             shadowColor: colorScheme.outline,
                             child: Center(
                               child: Text(
-                                'SEE COMPLETED',
+                                l10n.seeCompleted.toUpperCase(),
                                 style: TextStyle(
                                   color: colorScheme.onSurface.withValues(alpha: 0.5),
                                   fontWeight: FontWeight.w900,
@@ -272,10 +274,10 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
                 color: DesignSystem.success,
                 shadowColor: const Color(0xFF047857),
                 padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 32),
-                child: const Center(
+                child: Center(
                   child: Text(
-                    'FINISH',
-                    style: TextStyle(
+                    l10n.finish.toUpperCase(),
+                    style: const TextStyle(
                       color: Colors.white,
                       fontWeight: FontWeight.w900,
                       letterSpacing: 2.0,

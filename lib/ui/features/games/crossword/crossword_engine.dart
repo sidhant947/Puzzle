@@ -34,7 +34,7 @@ class CrosswordBoard {
 class CrosswordEngine {
   static const int boardSize = 5;
 
-  Future<List<Map<String, String>>> loadData() async {
+  Future<List<Map<String, String>>> loadData([String languageCode = 'en']) async {
     try {
       final String response = await rootBundle.loadString('assets/crossword_data.json');
       final data = await json.decode(response) as List<dynamic>;

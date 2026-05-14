@@ -1,3 +1,4 @@
+import "package:puzzle/l10n/app_localizations.dart";
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'game_2048_provider.dart';
@@ -19,6 +20,7 @@ class Game2048Screen extends ConsumerStatefulWidget {
 class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(game2048NotifierProvider);
     final notifier = ref.read(game2048NotifierProvider.notifier);
@@ -31,8 +33,8 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
     });
 
     return GameScaffold(
-      title: '2048',
-      subtitle: 'Swipe in any direction to merge tiles and reach the 2048 tile!',
+      title: l10n.game2048Title.toUpperCase(),
+      subtitle: l10n.game2048Subtitle,
       actions: [
         TangibleButton(
           color: colorScheme.surface,
@@ -195,6 +197,7 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
   }
 
   void _showGameOverDialog(BuildContext context, WidgetRef ref, Game2048State state) async {
+    final l10n = AppLocalizations.of(context)!;
     if (state.isGameWon) {
       await ref.read(gameStreakNotifierProvider.notifier).completeGame('game_2048');
 
@@ -212,8 +215,8 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
             ref.read(game2048NotifierProvider.notifier).reset();
             Navigator.of(context).pop();
           },
-          title: '2048!',
-          message: 'FINAL SCORE: ${state.score}\nYou reached the 2048 tile!',
+          title: l10n.congrats.toUpperCase(),
+          message: '${l10n.score}: ${state.score}\n${l10n.completed}',
         ),
       );
       return;
@@ -234,8 +237,8 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
           ref.read(game2048NotifierProvider.notifier).reset();
           Navigator.of(context).pop();
         },
-        title: 'GAME OVER',
-        message: 'FINAL SCORE: ${state.score}',
+        title: l10n.gameOver.toUpperCase(),
+        message: '${l10n.score}: ${state.score}',
       ),
     );
   }
@@ -311,6 +314,7 @@ class _AnimatedTileState extends State<AnimatedTile> with SingleTickerProviderSt
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final tile = widget.tile;
     final cellSize = widget.cellSize;
 

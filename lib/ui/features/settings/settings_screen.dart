@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import '../../../providers/theme_provider.dart';
+
 import '../../../providers/user_providers.dart';
 import '../../../utils/design_system.dart';
 import '../../../widgets/tangible.dart';
@@ -15,6 +17,7 @@ class SettingsScreen extends ConsumerWidget {
     final colorScheme = theme.colorScheme;
     final themeMode = ref.watch(themeNotifierProvider);
     final userData = ref.watch(userDataNotifierProvider);
+    final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -29,7 +32,7 @@ class SettingsScreen extends ConsumerWidget {
               surfaceTintColor: Colors.transparent,
               centerTitle: true,
               title: Text(
-                'SETTINGS',
+                l10n.settings.toUpperCase(),
                 style: TextStyle(
                   letterSpacing: 2.0,
                   fontWeight: FontWeight.w900,
@@ -47,19 +50,19 @@ class SettingsScreen extends ConsumerWidget {
               ),
               sliver: SliverList(
                 delegate: SliverChildListDelegate([
-                  _buildSectionTitle(context, 'APPEARANCE'),
+                  _buildSectionTitle(context, l10n.appearance.toUpperCase()),
                   const SizedBox(height: DesignSystem.spaceMD),
-                  _buildThemeSelector(context, ref, themeMode),
+                  _buildThemeSelector(context, ref, themeMode, l10n),
                   const SizedBox(height: DesignSystem.spaceXL),
-                  _buildSectionTitle(context, 'GAMEPLAY'),
+                  _buildSectionTitle(context, l10n.gameplay.toUpperCase()),
                   const SizedBox(height: DesignSystem.spaceMD),
-                  _buildTrialModeToggle(context, ref, userData.isTrialModeEnabled ?? false),
+                  _buildTrialModeToggle(context, ref, userData.isTrialModeEnabled ?? false, l10n),
                   const SizedBox(height: DesignSystem.spaceXL),
-                  _buildSectionTitle(context, 'SUPPORT US'),
+                  _buildSectionTitle(context, l10n.supportUs.toUpperCase()),
                   const SizedBox(height: DesignSystem.spaceMD),
                   _buildSettingsItem(
                     context,
-                    'Star on GitHub',
+                    l10n.starOnGithub,
                     Icons.star_rounded,
                     () => _launchUrl('https://github.com/sidhant947/Puzzle'),
                     iconColor: Colors.amber,
@@ -67,35 +70,35 @@ class SettingsScreen extends ConsumerWidget {
                   const SizedBox(height: DesignSystem.spaceSM),
                   _buildSettingsItem(
                     context,
-                    'Sponsor on GitHub',
+                    l10n.sponsorOnGithub,
                     Icons.favorite_rounded,
                     () => _launchUrl('https://github.com/sponsors/sidhant947'),
                     iconColor: Colors.pink,
                   ),
                   const SizedBox(height: DesignSystem.spaceXL),
-                  _buildSectionTitle(context, 'SYSTEM & LEGAL'),
+                  _buildSectionTitle(context, l10n.systemLegal.toUpperCase()),
                   const SizedBox(height: DesignSystem.spaceMD),
                   _buildSettingsItem(
                     context,
-                    'Privacy Policy',
+                    l10n.privacyPolicy,
                     Icons.privacy_tip_rounded,
                     () => _launchUrl('https://sites.google.com/view/puzzlebysidhant/home'),
                   ),
                   const SizedBox(height: DesignSystem.spaceSM),
                   _buildSettingsItem(
                     context,
-                    'Terms of Service',
+                    l10n.termsOfService,
                     Icons.description_rounded,
                     () => _launchUrl('https://sites.google.com/view/puzzlebysidhant/home'),
                   ),
                   const SizedBox(height: DesignSystem.spaceSM),
                   _buildSettingsItem(
                     context,
-                    'Licenses',
+                    l10n.licenses,
                     Icons.code_rounded,
                     () => showLicensePage(
                       context: context,
-                      applicationName: 'PUZZLE HUB',
+                      applicationName: l10n.appTitle.toUpperCase(),
                       applicationVersion: '1.0.3+4',
                     ),
                   ),
@@ -120,7 +123,7 @@ class SettingsScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildTrialModeToggle(BuildContext context, WidgetRef ref, bool isEnabled) {
+  Widget _buildTrialModeToggle(BuildContext context, WidgetRef ref, bool isEnabled, AppLocalizations l10n) {
     final colorScheme = Theme.of(context).colorScheme;
     return TangibleContainer(
       color: colorScheme.surface,
@@ -138,7 +141,7 @@ class SettingsScreen extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  'TRIAL MODE',
+                  l10n.trialMode.toUpperCase(),
                   style: TextStyle(
                     fontWeight: FontWeight.w900,
                     fontSize: 14,
@@ -147,7 +150,7 @@ class SettingsScreen extends ConsumerWidget {
                   ),
                 ),
                 Text(
-                  'SOLVE 20 TO FINISH INSTEAD OF 60S TIMER',
+                  l10n.trialModeDescription.toUpperCase(),
                   style: TextStyle(
                     fontSize: 10,
                     fontWeight: FontWeight.w700,
@@ -160,25 +163,25 @@ class SettingsScreen extends ConsumerWidget {
           Switch(
             value: isEnabled,
             onChanged: (value) => ref.read(userDataNotifierProvider.notifier).setTrialMode(value),
-            activeColor: DesignSystem.primary,
+            activeThumbColor: DesignSystem.primary,
           ),
         ],
       ),
     );
   }
 
-  Widget _buildThemeSelector(BuildContext context, WidgetRef ref, AppThemeMode currentMode) {
+  Widget _buildThemeSelector(BuildContext context, WidgetRef ref, AppThemeMode currentMode, AppLocalizations l10n) {
     return TangibleContainer(
       color: Theme.of(context).colorScheme.surface,
       shadowColor: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5),
       padding: const EdgeInsets.all(DesignSystem.spaceSM),
       child: Row(
         children: [
-          _buildThemeOption(context, ref, AppThemeMode.light, 'LIGHT', Icons.light_mode_rounded, currentMode == AppThemeMode.light),
+          _buildThemeOption(context, ref, AppThemeMode.light, l10n.themeLight, Icons.light_mode_rounded, currentMode == AppThemeMode.light),
           const SizedBox(width: DesignSystem.spaceSM),
-          _buildThemeOption(context, ref, AppThemeMode.dark, 'DARK', Icons.dark_mode_rounded, currentMode == AppThemeMode.dark),
+          _buildThemeOption(context, ref, AppThemeMode.dark, l10n.themeDark, Icons.dark_mode_rounded, currentMode == AppThemeMode.dark),
           const SizedBox(width: DesignSystem.spaceSM),
-          _buildThemeOption(context, ref, AppThemeMode.system, 'SYSTEM', Icons.brightness_auto_rounded, currentMode == AppThemeMode.system),
+          _buildThemeOption(context, ref, AppThemeMode.system, l10n.themeSystem, Icons.brightness_auto_rounded, currentMode == AppThemeMode.system),
         ],
       ),
     );

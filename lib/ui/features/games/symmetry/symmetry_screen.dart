@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'symmetry_provider.dart';
@@ -34,6 +35,7 @@ class _SymmetryScreenState extends ConsumerState<SymmetryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(symmetryNotifierProvider);
 
     ref.listen(symmetryNotifierProvider, (previous, next) {
@@ -44,8 +46,8 @@ class _SymmetryScreenState extends ConsumerState<SymmetryScreen> {
     });
 
     return GameScaffold(
-      title: 'SYMMETRY',
-      subtitle: 'Mirror the pattern on the left onto the empty grid on the right.',
+      title: l10n.symmetryTitle.toUpperCase(),
+      subtitle: l10n.symmetrySubtitle,
       actions: [
         TangibleButton(
           color: Theme.of(context).colorScheme.surface,
@@ -156,6 +158,7 @@ class _SymmetryScreenState extends ConsumerState<SymmetryScreen> {
   }
 
   void _showGameOverDialog(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     ref.read(gameStreakNotifierProvider.notifier).completeGame('symmetry', xpAmount: 25);
     showDialog(
       context: context,

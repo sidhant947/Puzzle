@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -25,6 +26,7 @@ class _VisualSearchScreenState extends ConsumerState<VisualSearchScreen> {
   }
 
   void _showCompletionDialog(bool isVictory) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -48,6 +50,7 @@ class _VisualSearchScreenState extends ConsumerState<VisualSearchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(visualSearchNotifierProvider);
     final notifier = ref.read(visualSearchNotifierProvider.notifier);
@@ -68,15 +71,15 @@ class _VisualSearchScreenState extends ConsumerState<VisualSearchScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
-        title: 'Visual Search',
+      return GameScaffold(
+        title: l10n.visualSearchTitle.toUpperCase(),
         body: Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
       title: 'Visual Search',
-      subtitle: 'Find the unique symbol in the grid',
+      subtitle: l10n.visualSearchSubtitle,
       body: Column(
         children: [
           Padding(

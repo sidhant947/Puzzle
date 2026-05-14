@@ -1,3 +1,4 @@
+import "package:puzzle/l10n/app_localizations.dart";
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../widgets/game_completion_dialog.dart';
@@ -20,6 +21,7 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(minesweeperNotifierProvider);
     final notifier = ref.read(minesweeperNotifierProvider.notifier);
@@ -35,8 +37,8 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
     });
 
     return GameScaffold(
-      title: 'MINESWEEPER',
-      subtitle: 'Identify all the mines without triggering them.',
+      title: l10n.minesweeperTitle.toUpperCase(),
+      subtitle: l10n.minesweeperSubtitle,
       actions: [
         TangibleButton(
           color: colorScheme.surface,
@@ -293,6 +295,7 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
   }
 
   void _showGameOverDialog(BuildContext context, bool isWon) {
+    final l10n = AppLocalizations.of(context)!;
     if (isWon) {
       showDialog(
         context: context,
@@ -306,8 +309,8 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
             ref.read(minesweeperNotifierProvider.notifier).reset();
             Navigator.of(context).pop();
           },
-          title: 'VICTORY!',
-          message: 'You safely flagged all mines and revealed the safe zones!',
+          title: l10n.minesweeperWin.toUpperCase(),
+          message: l10n.completed,
         ),
       );
       return;
@@ -326,8 +329,8 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
           ref.read(minesweeperNotifierProvider.notifier).reset();
           Navigator.of(context).pop();
         },
-        title: 'GAME OVER',
-        message: 'You stepped on a mine. Better luck next time!',
+        title: l10n.gameOver.toUpperCase(),
+        message: l10n.timeUp,
       ),
     );
   }

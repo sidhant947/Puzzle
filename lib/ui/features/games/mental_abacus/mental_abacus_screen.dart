@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -25,11 +26,12 @@ class _MentalAbacusScreenState extends ConsumerState<MentalAbacusScreen> {
   }
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'ABACUS MASTER!',
+        title: l10n.mentalAbacusTitle.toUpperCase(),
         message: 'Your mental arithmetic is top-tier.',
         isVictory: true,
         onHome: () {
@@ -46,6 +48,7 @@ class _MentalAbacusScreenState extends ConsumerState<MentalAbacusScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(mentalAbacusNotifierProvider);
     final notifier = ref.read(mentalAbacusNotifierProvider.notifier);
@@ -59,7 +62,7 @@ class _MentalAbacusScreenState extends ConsumerState<MentalAbacusScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
+      return GameScaffold(
         title: 'Mental Abacus',
         body: Center(child: CircularProgressIndicator()),
       );
@@ -67,7 +70,7 @@ class _MentalAbacusScreenState extends ConsumerState<MentalAbacusScreen> {
 
     return GameScaffold(
       title: 'Mental Abacus',
-      subtitle: 'Solve using the Soroban',
+      subtitle: l10n.mentalAbacusSubtitle,
       body: LayoutBuilder(
         builder: (context, constraints) {
           return SingleChildScrollView(

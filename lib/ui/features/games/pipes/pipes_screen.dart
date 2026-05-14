@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'pipes_engine.dart';
@@ -25,6 +26,7 @@ class PipesScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(pipesNotifierProvider);
 
     ref.listen(pipesNotifierProvider, (previous, next) {
@@ -35,8 +37,8 @@ class PipesScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'PIPES',
-      subtitle: 'Connect matching colored dots with pipes.',
+      title: l10n.pipesTitle.toUpperCase(),
+      subtitle: l10n.pipesSubtitle,
       actions: [
         TangibleButton(
           color: Theme.of(context).colorScheme.surface,
@@ -142,6 +144,7 @@ class PipesScreen extends ConsumerWidget {
   }
 
   void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
+    final l10n = AppLocalizations.of(context)!;
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('pipes');
     if (!context.mounted) return;
     showDialog(

@@ -6,6 +6,7 @@ import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../../providers/user_providers.dart';
+import '../../../../l10n/app_localizations.dart';
 import 'flanker_test_provider.dart';
 
 class FlankerTestScreen extends ConsumerStatefulWidget {
@@ -23,6 +24,7 @@ class _FlankerTestScreenState extends ConsumerState<FlankerTestScreen> {
   }
 
   void _showGameOverDialog(int score) {
+    final l10n = AppLocalizations.of(context)!;
     bool won = score >= 15;
     if (won) {
       HapticFeedbackUtil.victory();
@@ -34,8 +36,8 @@ class _FlankerTestScreenState extends ConsumerState<FlankerTestScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: won ? 'LASER FOCUS!' : 'DISTRACTED',
-        message: 'You scored $score correctly!',
+        title: won ? l10n.flankerTestWinTitle : l10n.flankerTestLoseTitle,
+        message: l10n.flankerTestScoreMessage(score),
         onPlayAgain: () {
           ref.read(flankerTestNotifierProvider.notifier).initGame();
           Navigator.pop(context);
@@ -50,6 +52,7 @@ class _FlankerTestScreenState extends ConsumerState<FlankerTestScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(flankerTestNotifierProvider);
     final notifier = ref.read(flankerTestNotifierProvider.notifier);
@@ -61,8 +64,8 @@ class _FlankerTestScreenState extends ConsumerState<FlankerTestScreen> {
     });
 
     return GameScaffold(
-      title: 'FLANKER TEST',
-      subtitle: 'Indicate the direction of the center arrow, ignoring the flanking arrows.',
+      title: l10n.flankerTestTitle,
+      subtitle: l10n.flankerTestSubtitle,
       actions: [
         TangibleButton(
           color: colorScheme.surface,
@@ -85,9 +88,9 @@ class _FlankerTestScreenState extends ConsumerState<FlankerTestScreen> {
                       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
                       child: Row(
                         children: [
-                          Expanded(child: _buildStat('TIME', '${state.timeLeft}s', DesignSystem.accentBerry)),
+                          Expanded(child: _buildStat(l10n.timeLeft.toUpperCase(), '${state.timeLeft}s', DesignSystem.accentBerry)),
                           const SizedBox(width: DesignSystem.spaceMD),
-                          Expanded(child: _buildStat('SCORE', '${state.score}', DesignSystem.accentEmerald)),
+                          Expanded(child: _buildStat(l10n.score.toUpperCase(), '${state.score}', DesignSystem.accentEmerald)),
                         ],
                       ),
                     ),
@@ -134,7 +137,7 @@ class _FlankerTestScreenState extends ConsumerState<FlankerTestScreen> {
                                 children: [
                                   Icon(Icons.arrow_back_rounded, size: 32, color: DesignSystem.primary),
                                   SizedBox(height: 4),
-                                  Text('LEFT', style: TextStyle(color: DesignSystem.primary, fontSize: 12, fontWeight: FontWeight.w900)),
+                                  Text(l10n.flankerTestLeft, style: TextStyle(color: DesignSystem.primary, fontSize: 12, fontWeight: FontWeight.w900)),
                                 ],
                               ),
                             ),
@@ -148,11 +151,11 @@ class _FlankerTestScreenState extends ConsumerState<FlankerTestScreen> {
                                 HapticFeedbackUtil.lightImpact();
                                 notifier.onDirectionSelected(1);
                               },
-                              child: const Column(
+                              child: Column(
                                 children: [
                                   Icon(Icons.arrow_forward_rounded, size: 32, color: DesignSystem.primary),
                                   SizedBox(height: 4),
-                                  Text('RIGHT', style: TextStyle(color: DesignSystem.primary, fontSize: 12, fontWeight: FontWeight.w900)),
+                                  Text(l10n.flankerTestRight, style: TextStyle(color: DesignSystem.primary, fontSize: 12, fontWeight: FontWeight.w900)),
                                 ],
                               ),
                             ),

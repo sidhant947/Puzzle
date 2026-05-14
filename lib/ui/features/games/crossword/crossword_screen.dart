@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'crossword_provider.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/design_system.dart';
@@ -24,6 +25,7 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(crosswordNotifierProvider);
     final notifier = ref.read(crosswordNotifierProvider.notifier);
@@ -36,8 +38,8 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
     });
 
     return GameScaffold(
-      title: 'CROSSWORD',
-      subtitle: 'Complete the grid with the correct words based on the clues provided.',
+      title: l10n.crosswordTitle.toUpperCase(),
+      subtitle: l10n.crosswordSubtitle,
       actions: [
         TangibleButton(
           color: colorScheme.surface,
@@ -295,14 +297,15 @@ class _CrosswordScreenState extends ConsumerState<CrosswordScreen> {
 
 
   void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
+    final l10n = AppLocalizations.of(context)!;
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('crossword');
     if (!context.mounted) return;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'WELL DONE',
-        message: 'Crossword completed successfully with perfect knowledge.',
+        title: l10n.wellDone.toUpperCase(),
+        message: l10n.completed,
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();

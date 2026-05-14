@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
@@ -25,6 +26,7 @@ class _LogicalSyllogismsScreenState extends ConsumerState<LogicalSyllogismsScree
   }
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.read(logicalSyllogismsNotifierProvider);
     showDialog(
       context: context,
@@ -47,6 +49,7 @@ class _LogicalSyllogismsScreenState extends ConsumerState<LogicalSyllogismsScree
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(logicalSyllogismsNotifierProvider);
     final notifier = ref.read(logicalSyllogismsNotifierProvider.notifier);
@@ -67,8 +70,8 @@ class _LogicalSyllogismsScreenState extends ConsumerState<LogicalSyllogismsScree
     });
 
     return GameScaffold(
-      title: 'Logical Syllogisms',
-      subtitle: 'Is the conclusion logically valid?',
+      title: l10n.logicalSyllogismsTitle.toUpperCase(),
+      subtitle: l10n.logicalSyllogismsSubtitle,
       body: Column(
         children: [
           Padding(

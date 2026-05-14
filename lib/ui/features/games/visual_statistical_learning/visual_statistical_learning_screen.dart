@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -24,11 +25,12 @@ class _VisualStatisticalLearningScreenState extends ConsumerState<VisualStatisti
   }
 
   void _showCompletionDialog(VSLState state) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'GAME OVER',
+        title: l10n.visualStatisticalLearningTitle.toUpperCase(),
         message: 'You scored ${state.score} correct patterns!',
         onHome: () {
           Navigator.of(context).pop();
@@ -44,6 +46,7 @@ class _VisualStatisticalLearningScreenState extends ConsumerState<VisualStatisti
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(visualStatisticalLearningNotifierProvider);
 

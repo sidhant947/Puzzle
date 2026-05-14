@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -25,6 +26,7 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
   }
 
   void _showGameOverDialog(int score) {
+    final l10n = AppLocalizations.of(context)!;
     bool won = score >= 50;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('grocery_list');
@@ -50,6 +52,7 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(groceryListNotifierProvider);
     final notifier = ref.read(groceryListNotifierProvider.notifier);
 
@@ -61,7 +64,7 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(title: 'GROCERY LIST', body: Center(child: CircularProgressIndicator()));
+      return GameScaffold(title: l10n.groceryListTitle.toUpperCase(), body: Center(child: CircularProgressIndicator()));
     }
 
     return GameScaffold(

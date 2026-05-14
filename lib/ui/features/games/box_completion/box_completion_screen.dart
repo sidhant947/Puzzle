@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/tangible.dart';
@@ -25,13 +26,14 @@ class _BoxCompletionScreenState extends ConsumerState<BoxCompletionScreen> {
   }
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.read(boxCompletionNotifierProvider);
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: state.isTrialMode ? 'COMPLETED!' : 'TIME\'S UP!',
-        message: 'You scored ${state.score} correct out of ${state.totalTrials}!',
+        title: state.isTrialMode ? l10n.completed : l10n.timeUp,
+        message: l10n.boxCompletionScoreMessage(state.score, state.totalTrials),
         isVictory: state.isTrialMode ? state.score >= 16 : state.score > 5,
         onHome: () {
           Navigator.of(context).pop();
@@ -47,6 +49,7 @@ class _BoxCompletionScreenState extends ConsumerState<BoxCompletionScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(boxCompletionNotifierProvider);
     final notifier = ref.read(boxCompletionNotifierProvider.notifier);
 
@@ -60,15 +63,15 @@ class _BoxCompletionScreenState extends ConsumerState<BoxCompletionScreen> {
     });
 
     if (state.isLoading || state.currentPuzzle == null) {
-      return const GameScaffold(
-        title: 'Box Completion',
-        body: Center(child: CircularProgressIndicator()),
+      return GameScaffold(
+        title: l10n.boxCompletionTitle,
+        body: const Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
-      title: 'Box Completion',
-      subtitle: 'Which cube can be formed?',
+      title: l10n.boxCompletionTitle,
+      subtitle: l10n.boxCompletionSubtitle,
       body: Column(
         children: [
           Padding(
@@ -76,18 +79,18 @@ class _BoxCompletionScreenState extends ConsumerState<BoxCompletionScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildStat('SCORE', state.score.toString()),
+                _buildStat(l10n.score.toUpperCase(), state.score.toString()),
                 if (state.isTrialMode)
-                  _buildStat('TRIALS', '${state.totalTrials}/${state.targetTrials}')
+                  _buildStat(l10n.trials.toUpperCase(), '${state.totalTrials}/${state.targetTrials}')
                 else
-                  _buildStat('TIME', '${state.timeLeft}s', color: state.timeLeft < 10 ? DesignSystem.error : null),
+                  _buildStat(l10n.timeLeft.toUpperCase(), '${state.timeLeft}s', color: state.timeLeft < 10 ? DesignSystem.error : null),
               ],
             ),
           ),
           const SizedBox(height: DesignSystem.spaceMD),
           _buildNet(state.currentPuzzle!.net),
           const Spacer(),
-          const Text('OPTIONS', style: TextStyle(fontSize: 12, fontWeight: FontWeight.w900, letterSpacing: 1.5)),
+          Text(l10n.boxCompletionOptions, style: const TextStyle(fontSize: 12, fontWeight: FontWeight.w900, letterSpacing: 1.5)),
           const SizedBox(height: DesignSystem.spaceMD),
           _buildOptions(state.currentPuzzle!.options, notifier),
           const SizedBox(height: DesignSystem.space2XL),

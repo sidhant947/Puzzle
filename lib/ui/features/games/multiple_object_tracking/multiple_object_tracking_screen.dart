@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -13,6 +14,7 @@ class MultipleObjectTrackingScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(mOTNotifierProvider);
 
     ref.listen(mOTNotifierProvider, (previous, next) {
@@ -23,8 +25,8 @@ class MultipleObjectTrackingScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'OBJECT TRACKER',
-      subtitle: 'Watch the highlighted objects. Track them as they move, then select them.',
+      title: l10n.multipleObjectTrackingTitle.toUpperCase(),
+      subtitle: l10n.multipleObjectTrackingSubtitle,
       actions: [
         TangibleButton(
           color: Theme.of(context).colorScheme.surface,
@@ -149,6 +151,7 @@ class MultipleObjectTrackingScreen extends ConsumerWidget {
   }
 
   void _showResultDialog(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.read(mOTNotifierProvider);
     final targetCount = state.balls.where((b) => b.isTarget).length;
     final correctCount = state.balls.where((b) => b.isSelected && b.isTarget).length;

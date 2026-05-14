@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/haptic_feedback.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -25,14 +26,15 @@ class _DoubleNBackScreenState extends ConsumerState<DoubleNBackScreen> {
   }
 
   void _showCompletionDialog() {
-    final score = ref.read(doubleNBackNotifierProvider).score;
+    final l10n = AppLocalizations.of(context)!;
+    final state = ref.read(doubleNBackNotifierProvider);
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'GAME OVER',
-        message: 'You scored $score points in Double N-Back!',
-        isVictory: score > 10,
+        title: l10n.doubleNBackGameOverTitle,
+        message: l10n.doubleNBackGameOverMessage(state.score),
+        isVictory: state.score > 10,
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();
@@ -50,6 +52,7 @@ class _DoubleNBackScreenState extends ConsumerState<DoubleNBackScreen> {
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(doubleNBackNotifierProvider);
     final notifier = ref.read(doubleNBackNotifierProvider.notifier);
+    final l10n = AppLocalizations.of(context)!;
 
     ref.listen(doubleNBackNotifierProvider, (previous, next) {
       if (next.isGameOver && !(previous?.isGameOver ?? false)) {
@@ -60,17 +63,17 @@ class _DoubleNBackScreenState extends ConsumerState<DoubleNBackScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
-        title: 'Double N-Back',
-        body: Center(child: CircularProgressIndicator()),
+      return GameScaffold(
+        title: l10n.doubleNBackTitle,
+        body: const Center(child: CircularProgressIndicator()),
       );
     }
 
     final currentStim = state.sequence.isNotEmpty ? state.sequence.last : null;
 
     return GameScaffold(
-      title: 'Double N-Back',
-      subtitle: 'Match stimuli ${state.n} steps back',
+      title: l10n.doubleNBackTitle,
+      subtitle: l10n.doubleNBackSubtitle(state.n),
       actions: [
         _buildTimer(state.timeLeft),
       ],
@@ -79,8 +82,8 @@ class _DoubleNBackScreenState extends ConsumerState<DoubleNBackScreen> {
         child: Column(
           children: [
             Text(
-              'Score: ${state.score}',
-              style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: DesignSystem.primary),
+              l10n.doubleNBackScore(state.score),
+              style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: DesignSystem.primary),
             ),
             const SizedBox(height: DesignSystem.spaceLG),
             Expanded(
@@ -108,7 +111,7 @@ class _DoubleNBackScreenState extends ConsumerState<DoubleNBackScreen> {
                         : colorScheme.surface,
                     child: Center(
                       child: Text(
-                        'POSITION MATCH',
+                        l10n.doubleNBackPositionMatch,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.w900,
@@ -121,7 +124,7 @@ class _DoubleNBackScreenState extends ConsumerState<DoubleNBackScreen> {
                     ),
                   ),
                 ),
-                SizedBox(width: DesignSystem.spaceMD),
+                const SizedBox(width: DesignSystem.spaceMD),
                 Expanded(
                   child: TangibleButton(
                     onTap: notifier.pressLetterMatch,
@@ -130,7 +133,7 @@ class _DoubleNBackScreenState extends ConsumerState<DoubleNBackScreen> {
                         : colorScheme.surface,
                     child: Center(
                       child: Text(
-                        'LETTER MATCH',
+                        l10n.doubleNBackLetterMatch,
                         textAlign: TextAlign.center,
                         style: TextStyle(
                           fontWeight: FontWeight.w900,

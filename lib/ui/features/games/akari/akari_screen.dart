@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/haptic_feedback.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -24,12 +25,13 @@ class _AkariScreenState extends ConsumerState<AkariScreen> {
   }
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'LIGHTS UP!',
-        message: 'Everything is perfectly illuminated.',
+        title: l10n.akariWinTitle,
+        message: l10n.akariWinMessage,
         isVictory: true,
         onHome: () {
           Navigator.of(context).pop();
@@ -45,6 +47,7 @@ class _AkariScreenState extends ConsumerState<AkariScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(akariNotifierProvider);
     final notifier = ref.read(akariNotifierProvider.notifier);
@@ -58,15 +61,15 @@ class _AkariScreenState extends ConsumerState<AkariScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
-        title: 'Akari',
-        body: Center(child: CircularProgressIndicator()),
+      return GameScaffold(
+        title: l10n.akariTitle,
+        body: const Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
-      title: 'Akari',
-      subtitle: 'Illuminate all white cells',
+      title: l10n.akariTitle,
+      subtitle: l10n.akariSubtitle,
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(DesignSystem.spaceLG),

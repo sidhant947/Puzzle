@@ -1,3 +1,4 @@
+import "package:puzzle/l10n/app_localizations.dart";
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -23,6 +24,7 @@ class _CorsiBlocksScreenState extends ConsumerState<CorsiBlocksScreen> {
   }
 
   void _showGameOverDialog(int score) {
+    final l10n = AppLocalizations.of(context)!;
     bool won = score >= 5;
     if (won) {
       HapticFeedbackUtil.victory();
@@ -50,6 +52,7 @@ class _CorsiBlocksScreenState extends ConsumerState<CorsiBlocksScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(corsiBlocksNotifierProvider);
 
     ref.listen(corsiBlocksNotifierProvider, (previous, next) {
@@ -59,8 +62,8 @@ class _CorsiBlocksScreenState extends ConsumerState<CorsiBlocksScreen> {
     });
 
     return GameScaffold(
-      title: 'CORSI BLOCKS',
-      subtitle: 'Watch the blocks light up and tap them in the same order.',
+      title: l10n.corsiBlocksTitle.toUpperCase(),
+      subtitle: l10n.corsiBlocksSubtitle,
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(

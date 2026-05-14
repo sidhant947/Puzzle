@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'bridges_engine.dart';
 import 'bridges_provider.dart';
 import '../../../../providers/user_providers.dart';
@@ -15,6 +16,7 @@ class BridgesScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(bridgesNotifierProvider);
 
     ref.listen(bridgesNotifierProvider, (previous, next) {
@@ -25,8 +27,8 @@ class BridgesScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'BRIDGES',
-      subtitle: 'Connect islands with bridges. Each island needs a specific number of bridges. Bridges cannot cross.',
+      title: l10n.bridgesTitle,
+      subtitle: l10n.bridgesSubtitle,
       actions: [
         TangibleButton(
           color: Theme.of(context).colorScheme.surface,
@@ -184,6 +186,7 @@ class BridgesScreen extends ConsumerWidget {
   }
 
   void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
+    final l10n = AppLocalizations.of(context)!;
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('bridges');
     if (!context.mounted) return;
     showDialog(

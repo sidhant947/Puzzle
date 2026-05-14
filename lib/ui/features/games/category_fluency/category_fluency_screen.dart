@@ -1,3 +1,4 @@
+import "package:puzzle/l10n/app_localizations.dart";
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -32,6 +33,7 @@ class _CategoryFluencyScreenState extends ConsumerState<CategoryFluencyScreen> {
   }
 
   void _showCompletionDialog(bool isVictory) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -56,6 +58,7 @@ class _CategoryFluencyScreenState extends ConsumerState<CategoryFluencyScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(categoryFluencyNotifierProvider);
     final notifier = ref.read(categoryFluencyNotifierProvider.notifier);
@@ -74,15 +77,15 @@ class _CategoryFluencyScreenState extends ConsumerState<CategoryFluencyScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
-        title: 'Category Fluency',
-        body: Center(child: CircularProgressIndicator()),
+      return GameScaffold(
+        title: l10n.categoryFluencyTitle,
+        body: const Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
-      title: 'Category Fluency',
-      subtitle: 'Enter items belonging to the category',
+      title: l10n.categoryFluencyTitle,
+      subtitle: l10n.categoryFluencySubtitle,
       body: Padding(
         padding: const EdgeInsets.all(DesignSystem.spaceLG),
         child: Column(
@@ -94,7 +97,7 @@ class _CategoryFluencyScreenState extends ConsumerState<CategoryFluencyScreen> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Text(
-                      'Category:',
+                      l10n.categoryFluencyCategoryLabel,
                       style: Theme.of(context).textTheme.bodySmall?.copyWith(color: colorScheme.onSurface.withValues(alpha: 0.7)),
                     ),
                     Text(
@@ -126,7 +129,7 @@ class _CategoryFluencyScreenState extends ConsumerState<CategoryFluencyScreen> {
               controller: _controller,
               style: TextStyle(color: colorScheme.onSurface),
               decoration: InputDecoration(
-                hintText: 'Enter an item...',
+                hintText: l10n.categoryFluencyEnterItem,
                 filled: true,
                 fillColor: colorScheme.surface,
                 border: OutlineInputBorder(

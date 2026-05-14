@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -25,6 +26,7 @@ class _ObjectShuffleScreenState extends ConsumerState<ObjectShuffleScreen> {
   }
 
   void _showGameOverDialog(bool won) {
+    final l10n = AppLocalizations.of(context)!;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('object_shuffle');
     }
@@ -51,6 +53,7 @@ class _ObjectShuffleScreenState extends ConsumerState<ObjectShuffleScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(objectShuffleNotifierProvider);
     final notifier = ref.read(objectShuffleNotifierProvider.notifier);
@@ -71,7 +74,7 @@ class _ObjectShuffleScreenState extends ConsumerState<ObjectShuffleScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(title: 'OBJECT SHUFFLE', body: Center(child: CircularProgressIndicator()));
+      return GameScaffold(title: l10n.objectShuffleTitle.toUpperCase(), body: Center(child: CircularProgressIndicator()));
     }
 
     return GameScaffold(
@@ -181,6 +184,7 @@ class _Shell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return AnimatedScale(
       duration: Duration(milliseconds: 200),
       scale: isSwapping ? 1.15 : 1.0,

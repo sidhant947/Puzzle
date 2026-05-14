@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -25,12 +26,13 @@ class _NumericalEstimationScreenState extends ConsumerState<NumericalEstimationS
   }
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.read(numericalEstimationNotifierProvider);
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'TIME\'S UP!',
+        title: l10n.timeUp.toUpperCase(),
         message: 'You made ${state.score} correct estimations.',
         isVictory: state.score >= 10,
         onHome: () {
@@ -47,6 +49,7 @@ class _NumericalEstimationScreenState extends ConsumerState<NumericalEstimationS
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(numericalEstimationNotifierProvider);
     final notifier = ref.read(numericalEstimationNotifierProvider.notifier);
@@ -61,7 +64,7 @@ class _NumericalEstimationScreenState extends ConsumerState<NumericalEstimationS
 
     return GameScaffold(
       title: 'Quick Estimate',
-      subtitle: 'Pick the closest answer fast!',
+      subtitle: l10n.numericalEstimationSubtitle,
       body: Column(
         children: [
           Padding(

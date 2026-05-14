@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -23,6 +24,7 @@ class _StopSignalScreenState extends ConsumerState<StopSignalScreen> {
   }
 
   void _showGameOverDialog(int score) {
+    final l10n = AppLocalizations.of(context)!;
     bool won = score >= 20;
     if (won) {
       HapticFeedbackUtil.victory();
@@ -50,6 +52,7 @@ class _StopSignalScreenState extends ConsumerState<StopSignalScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(stopSignalNotifierProvider);
     final notifier = ref.read(stopSignalNotifierProvider.notifier);
@@ -61,8 +64,8 @@ class _StopSignalScreenState extends ConsumerState<StopSignalScreen> {
     });
 
     return GameScaffold(
-      title: 'STOP SIGNAL',
-      subtitle: 'Tap the arrow direction, but STOP immediately if the arrow turns RED.',
+      title: l10n.stopSignalTitle.toUpperCase(),
+      subtitle: l10n.stopSignalSubtitle,
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(

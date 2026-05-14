@@ -1,0 +1,603 @@
+{
+  "@@locale": "en",
+  "appTitle": "Puzzle Hub",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "home": "Home",
+  "settings": "Settings",
+  "playAgain": "Play Again",
+  "seeCompleted": "See Completed",
+  "finish": "Finish",
+  "congrats": "Congrats",
+  "perfectGradient": "Perfect Gradient!",
+  "wellDone": "Well Done",
+  "timeUp": "Time's Up!",
+  "completed": "Completed!",
+  "score": "Score",
+  "timeLeft": "Time",
+  "trials": "Trials",
+  "numberRule": "Number Rule",
+  "colorRule": "Color Rule",
+  "valid": "Valid",
+  "invalid": "Invalid",
+  "even": "Even",
+  "odd": "Odd",
+  "red": "Red",
+  "green": "Green",
+  "target": "Target",
+  "moves": "Moves",
+  "trialMode": "Trial Mode",
+  "trialModeDescription": "Solve 20 to finish instead of 60s timer",
+  "appearance": "Appearance",
+  "language": "Language",
+  "gameplay": "Gameplay",
+  "supportUs": "Support Us",
+  "systemLegal": "System & Legal",
+  "games": "Games",
+  "solvedToday": "Solved Today",
+  "searchGames": "Search Games...",
+  "readyToStart": "READY TO START YOUR BRAIN WORKOUT?",
+  "greatStart": "GREAT START! KEEP THAT MOMENTUM.",
+  "onFire": "ON FIRE! YOUR BRAIN IS LOVING THIS.",
+  "incredible": "INCREDIBLE! YOU'RE A PUZZLE MASTER.",
+  "noGamesMatch": "NO GAMES MATCH YOUR SEARCH",
+  "categoryAll": "ALL",
+  "categoryAttention": "ATTENTION",
+  "categoryLogic": "LOGIC",
+  "categoryMath": "MATH",
+  "categoryWord": "WORD",
+  "categoryMemory": "MEMORY",
+  "categorySpatial": "SPATIAL",
+  "themeLight": "LIGHT",
+  "themeDark": "DARK",
+  "themeSystem": "SYSTEM",
+  "starOnGithub": "Star on GitHub",
+  "sponsorOnGithub": "Sponsor on GitHub",
+  "privacyPolicy": "Privacy Policy",
+  "termsOfService": "Terms of Service",
+  "licenses": "Licenses",
+  "findWordSubtitle": "You have {maxTries} tries to find the hidden {wordLength}-letter word.",
+  "@findWordSubtitle": {
+    "placeholders": {
+      "maxTries": {
+        "type": "int"
+      },
+      "wordLength": {
+        "type": "int"
+      }
+    }
+  },
+  "wordFoundMessage": "Word found successfully: {word}",
+  "@wordFoundMessage": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
+  "gameOverMessage": "The word was: {word}",
+  "@gameOverMessage": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
+  "gameOver": "Game Over",
+  "crosswordTitle": "Crossword",
+  "crosswordSubtitle": "Complete the grid with the correct words based on the clues provided.",
+  "wordSearchTitle": "Word Search",
+  "wordSearchSubtitle": "Find all the hidden words in the grid. Drag to select.",
+  "missingVowelsTitle": "Missing Vowels",
+  "missingVowelsSubtitle": "Identify the word with its vowels hidden.",
+  "missingVowelsWin": "Vowels Restored!",
+  "missingVowelsHowToPlay": "A word is shown with its vowels (A, E, I, O, U) hidden. Guess the full word!",
+  "wordScrambleTitle": "Word Scramble",
+  "wordScrambleSubtitle": "Tap the letters to unscramble the hidden word!",
+  "wordScrambleWin": "Word Unraveled!",
+  "sudokuTitle": "Sudoku",
+  "sudokuSubtitle": "Complete the grid so that every row, column, and 3x3 box contains all digits 1 to 9.",
+  "minesweeperTitle": "Minesweeper",
+  "minesweeperSubtitle": "Identify all the mines without triggering them.",
+  "minesweeperWin": "Victory!",
+  "game2048Title": "2048",
+  "game2048Subtitle": "Swipe in any direction to merge tiles and reach the 2048 tile!",
+  "nonogramTitle": "Nonogram",
+  "nonogramSubtitle": "Reveal the hidden image using logic clues.",
+  "nonogramWin": "Image Revealed!",
+  "pathFinderTitle": "Path Finder",
+  "pathFinderSubtitle": "Find the hidden path from S to E.",
+  "pathFinderWin": "Path Mastered!",
+  "howToPlay": "How to Play",
+  "gotIt": "Got it",
+  "akariTitle": "Akari",
+  "akariSubtitle": "Illuminate all white cells",
+  "akariWinTitle": "LIGHTS UP!",
+  "akariWinMessage": "Everything is perfectly illuminated.",
+  "arithmeticChainTitle": "Chain Calc",
+  "arithmeticChainSubtitle": "Calculate the running total in your head",
+  "arithmeticChainWinTitle": "LEVEL UP!",
+  "arithmeticChainWinMessage": "Your mental calculation is sharp!",
+  "arithmeticChainLoseTitle": "TRY AGAIN",
+  "arithmeticChainLoseMessage": "The correct answer was {answer}.",
+  "@arithmeticChainLoseMessage": {
+    "placeholders": {
+      "answer": {
+        "type": "String"
+      }
+    }
+  },
+  "arithmeticChainStart": "START",
+  "arithmeticChainNext": "NEXT",
+  "attentionalBlinkTitle": "Attentional Blink",
+  "attentionalBlinkSubtitleWatch": "WATCH FOR THE NUMBERS",
+  "attentionalBlinkSubtitleInput": "ENTER THE TWO NUMBERS YOU SAW",
+  "attentionalBlinkScoreMessage": "You scored {score} targets!",
+  "@attentionalBlinkScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "balanceScaleTitle": "BALANCE SCALE",
+  "balanceScaleSubtitle": "Deduce the weight of the last item based on the scales.",
+  "balanceScaleWinTitle": "BALANCED!",
+  "balanceScaleWinMessage": "You correctly deduced the weight!",
+  "balanceScaleLoseTitle": "UNBALANCED",
+  "balanceScaleLoseMessage": "Try again to find the correct balance.",
+  "balanceScaleBack": "BACK",
+  "balanceScaleSubmit": "SUBMIT",
+  "binaryPuzzleTitle": "BINARY PUZZLE",
+  "binaryPuzzleSubtitle": "Fill with 0 and 1. Max two of the same digit adjacent. Equal 0s and 1s in each row and column.",
+  "binaryPuzzleWinTitle": "WELL DONE",
+  "binaryPuzzleWinMessage": "You solved the binary puzzle with perfect logic!",
+  "blockEscapeTitle": "BLOCK ESCAPE",
+  "blockEscapeSubtitle": "Slide the blocks to clear a path for the primary block to reach the exit.",
+  "blockEscapeWinTitle": "ESCAPE!",
+  "blockEscapeWinMessage": "You successfully cleared the path for the primary block!",
+  "boxCompletionTitle": "Box Completion",
+  "boxCompletionSubtitle": "Which cube can be formed?",
+  "boxCompletionScoreMessage": "You scored {score} correct out of {totalTrials}!",
+  "@boxCompletionScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "totalTrials": {
+        "type": "int"
+      }
+    }
+  },
+  "boxCompletionOptions": "OPTIONS",
+  "bridgesTitle": "BRIDGES",
+  "bridgesSubtitle": "Connect islands with bridges. Each island needs a specific number of bridges. Bridges cannot cross.",
+  "bridgesWinTitle": "CONNECTED!",
+  "bridgesWinMessage": "You successfully connected all the islands!",
+  "calculationSprintTitle": "CALCULATION SPRINT",
+  "calculationSprintSubtitle": "Solve as many equations as possible in 60 seconds.",
+  "calculationSprintGoalReached": "GOAL REACHED!",
+  "calculationSprintTimeUp": "TIME IS UP",
+  "calculationSprintScoreMessage": "Excellent calculation speed! You scored {score} points.",
+  "@calculationSprintScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "calculationSprintTryAgainMessage": "You scored {score} points. Try to beat your best!",
+  "@calculationSprintTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "calculationSprintBest": "BEST",
+  "calculationSprintSeconds": "60 SECONDS",
+  "calculationSprintDescription": "Solve equations quickly.\nWrong answers deduct 3 seconds!",
+  "calculationSprintStart": "START SPRINT",
+  "categoryFluencyTitle": "Category Fluency",
+  "categoryFluencySubtitle": "Enter items belonging to the category",
+  "categoryFluencyExpert": "FLUENCY EXPERT!",
+  "categoryFluencyTimeUp": "TIME UP!",
+  "categoryFluencyWinMessage": "You have a vast vocabulary!",
+  "categoryFluencyFoundMessage": "You found {count} words.",
+  "@categoryFluencyFoundMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "categoryFluencyCategoryLabel": "Category:",
+  "categoryFluencyEnterItem": "Enter an item...",
+  "categoryFluencyWordCount": "{entered} / {target} words",
+  "@categoryFluencyWordCount": {
+    "placeholders": {
+      "entered": {
+        "type": "int"
+      },
+      "target": {
+        "type": "int"
+      }
+    }
+  },
+  "changeBlindnessTitle": "Change Blindness",
+  "changeBlindnessSubtitle": "SPOT THE CHANGING ITEM",
+  "changeBlindnessScore": "SCORE: {score}",
+  "@changeBlindnessScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "changeBlindnessFoundMessage": "You found {score} changes!",
+  "@changeBlindnessFoundMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "choiceRtTitle": "Choice RT",
+  "choiceRtSubtitle": "Tap the active square as fast as you can",
+  "choiceRtAvgMessage": "Your average reaction time: {avg}ms",
+  "@choiceRtAvgMessage": {
+    "placeholders": {
+      "avg": {
+        "type": "String"
+      }
+    }
+  },
+  "choiceRtTimeRemaining": "Time Remaining: {time}s",
+  "@choiceRtTimeRemaining": {
+    "placeholders": {
+      "time": {
+        "type": "int"
+      }
+    }
+  },
+  "choiceRtTaps": "Taps: {count}",
+  "@choiceRtTaps": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "colorFloodTitle": "Color Flood",
+  "colorFloodSubtitle": "Moves: {moves} / {maxMoves}",
+  "@colorFloodSubtitle": {
+    "placeholders": {
+      "moves": {
+        "type": "int"
+      },
+      "maxMoves": {
+        "type": "int"
+      }
+    }
+  },
+  "colorFloodSuccess": "FLOOD SUCCESS!",
+  "colorFloodDryLand": "DRY LAND...",
+  "colorFloodWinMessage": "You saturated the entire grid with color!",
+  "colorFloodLoseMessage": "You ran out of moves. Try again!",
+  "colorMatchTitle": "COLOR MATCH",
+  "colorMatchSubtitle": "Adjust the sliders to match the target color as closely as possible.",
+  "colorMatchTarget": "TARGET",
+  "colorMatchYours": "YOURS",
+  "colorMatchCheck": "CHECK MATCH",
+  "colorMatchResult": "MATCH RESULT",
+  "colorMatchAccuracy": "Your accuracy: {accuracy}%",
+  "@colorMatchAccuracy": {
+    "placeholders": {
+      "accuracy": {
+        "type": "String"
+      }
+    }
+  },
+  "corsiBlocksTitle": "CORSI BLOCKS",
+  "corsiBlocksSubtitle": "Watch the blocks light up and tap them in the same order.",
+  "corsiBlocksWinTitle": "SPATIAL MASTER!",
+  "corsiBlocksLoseTitle": "LOST IN SPACE",
+  "corsiBlocksMessage": "You recalled {score} sequences! Your spatial memory span reached {span}.",
+  "@corsiBlocksMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "span": {
+        "type": "int"
+      }
+    }
+  },
+  "corsiBlocksWatch": "WATCH THE PATTERN",
+  "corsiBlocksRepeat": "REPEAT THE PATTERN",
+  "corsiBlocksExcellent": "EXCELLENT!",
+  "corsiBlocksSpan": "SPAN",
+  "crownTitle": "CROWN",
+  "crownSubtitle": "Place one crown in each row, column, and color region. Crowns cannot be adjacent, even diagonally.",
+  "crownCrowned": "CROWNED!",
+  "crownSuccess": "All crowns placed successfully with perfect logic.",
+  "cryptogramTitle": "CRYPTOGRAM",
+  "cryptogramSubtitle": "Assign letters to decode the secret message! Each encoded letter represents a real letter.",
+  "cryptogramBroken": "CODE BROKEN!",
+  "cryptogramEncrypted": "ENCRYPTED",
+  "cryptogramSuccess": "You decoded the message perfectly.",
+  "cryptogramTryAgain": "Try again to break the encryption.",
+  "digitSpanReverseTitle": "Reverse Span",
+  "digitSpanReverseSubtitleMemorize": "Memorize the digits",
+  "digitSpanReverseSubtitleEnter": "Enter digits in REVERSE order",
+  "digitSpanReverseWinTitle": "LEVEL UP!",
+  "digitSpanReverseWinMessage": "Your working memory is impressive!",
+  "digitSpanReverseLoseTitle": "TRY AGAIN",
+  "digitSpanReverseLoseMessage": "The correct reverse sequence was {sequence}.",
+  "@digitSpanReverseLoseMessage": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "dividedAttentionTitle": "Divided Attention",
+  "dividedAttentionSubtitle": "Tap LEFT for STAR ⭐ | Tap RIGHT for RED 🔴",
+  "dividedAttentionGameOverTitle": "FOCUS BROKEN",
+  "dividedAttentionGameOverMessage": "Multitasking is hard! Your score was {score}.",
+  "@dividedAttentionGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "dividedAttentionScore": "SCORE: {score}",
+  "@dividedAttentionScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "doubleNBackTitle": "Double N-Back",
+  "doubleNBackSubtitle": "Match stimuli {n} steps back",
+  "@doubleNBackSubtitle": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "doubleNBackGameOverTitle": "GAME OVER",
+  "doubleNBackGameOverMessage": "You scored {score} points in Double N-Back!",
+  "@doubleNBackGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "doubleNBackScore": "Score: {score}",
+  "@doubleNBackScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "doubleNBackPositionMatch": "POSITION MATCH",
+  "doubleNBackLetterMatch": "LETTER MATCH",
+  "faceNameAssociationTitle": "Face-Name",
+  "faceNameAssociationSubtitleStudy": "Memorize the name for each face",
+  "faceNameAssociationSubtitleTest": "Who is this?",
+  "faceNameAssociationPerfect": "PERFECT!",
+  "faceNameAssociationGameOver": "GAME OVER",
+  "faceNameAssociationWinMessage": "You have a great memory for faces and names!",
+  "faceNameAssociationLoseMessage": "You got {correct} out of {total} correct.",
+  "@faceNameAssociationLoseMessage": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "faceNameAssociationStartTest": "START TEST",
+  "flankerTestWinTitle": "LASER FOCUS!",
+  "flankerTestLoseTitle": "DISTRACTED",
+  "flankerTestScoreMessage": "You scored {score} correctly!",
+  "@flankerTestScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "flankerTestTitle": "FLANKER TEST",
+  "flankerTestSubtitle": "Indicate the direction of the center arrow, ignoring the flanking arrows.",
+  "flankerTestLeft": "LEFT",
+  "flankerTestRight": "RIGHT",
+  "fractionMatchTitle": "Fraction Match",
+  "fractionMatchSubtitle": "Match the visual to its fraction",
+  "fractionMatchLoseTitle": "FRACTION MISMATCH",
+  "fractionMatchLoseMessage": "The correct answer was {correctAnswer}.",
+  "@fractionMatchLoseMessage": {
+    "placeholders": {
+      "correctAnswer": {
+        "type": "String"
+      }
+    }
+  },
+  "goNoGoTitle": "Go / No-Go",
+  "goNoGoSubtitle": "Tap for Green, IGNORE Red!",
+  "goNoGoLoseTitle": "REACTION STOPPED",
+  "goNoGoLoseMessage": "Your inhibitory control is being tested!",
+  "goNoGoTapAnywhere": "TAP ANYWHERE TO GO",
+  "groceryListTitle": "Grocery List",
+  "groceryListSubtitleMemorize": "Memorize the items and their categories",
+  "groceryListSubtitleTest": "Which category did this item belong to?",
+  "groceryListWinTitle": "GROCERY GURU!",
+  "groceryListLoseTitle": "FORGOT SOMETHING?",
+  "groceryListScoreMessage": "You scored {score} points in Grocery List!",
+  "@groceryListScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "groceryListReady": "I'M READY",
+  "groceryListWhereBelong": "WHERE DOES THIS BELONG?",
+  "hueSortTitle": "HUE SORT",
+  "hueSortSubtitle": "Swap tiles to create a smooth transition between corner colors. Dots indicate fixed tiles.",
+  "hueSortWinTitle": "PERFECT GRADIENT!",
+  "hueSortWinMessage": "You perfectly sorted the color spectrum!",
+  "kenkenTitle": "KenKen",
+  "kenkenWinTitle": "GENIUS!",
+  "kenkenLoseTitle": "GAME OVER",
+  "kenkenWinMessage": "You solved the KenKen puzzle!",
+  "kenkenLoseMessage": "Check the row/column and cage rules.",
+  "kenkenSubtitle": "Fill 1-{size} without repeating in rows/cols",
+  "@kenkenSubtitle": {
+    "placeholders": {
+      "size": {
+        "type": "int"
+      }
+    }
+  },
+  "letterCancellationTitle": "Letter Cancel",
+  "letterCancellationTitleFull": "Letter Cancellation",
+  "letterCancellationScoreMessage": "You found {score} letters!",
+  "@letterCancellationScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "letterCancellationSubtitle": "Find all \"{target}\" letters",
+  "@letterCancellationSubtitle": {
+    "placeholders": {
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "letterCancellationFound": "FOUND",
+  "letterCancellationTime": "TIME",
+  "lightsOutTitle": "LIGHTS OUT",
+  "lightsOutSubtitle": "Tapping a tile toggles it and its adjacent neighbors. Turn off all lights to solve.",
+  "lightsOutWinTitle": "PUZZLE SOLVED!",
+  "lightsOutWinMessage": "You successfully turned off all the lights!",
+  "symmetryTitle": "Symmetry",
+  "symmetrySubtitle": "Mirror the pattern on the left onto the empty grid on the right.",
+  "semanticLinkTitle": "Time\\",
+  "semanticLinkSubtitle": "Find the word that connects all three",
+  "reflexTapTitle": "Reflex Tap",
+  "visualStatisticalLearningTitle": "Game Over",
+  "orbitTapTitle": "Orbit Tap",
+  "orbitTapSubtitle": "Tap when balls align with the gate",
+  "schulteTableTitle": "Great Focus!",
+  "multipleObjectTrackingTitle": "Object Tracker",
+  "multipleObjectTrackingSubtitle": "Watch the highlighted objects. Track them as they move, then select them.",
+  "sdmtTitle": "Sdmt Test",
+  "sdmtSubtitle": "Use the key above to find the digit for the symbol shown.",
+  "memoryMatrixTitle": "Goal Reached!",
+  "memoryMatrixSubtitle": "Memorize the pattern and tap the tiles.",
+  "mentalAbacusTitle": "Abacus Master!",
+  "mentalAbacusSubtitle": "Solve using the Soroban",
+  "spellingSprintTitle": "Spelling Sprint",
+  "spellingSprintSubtitle": "Race against the clock to spell as many words as you can.",
+  "stopSignalTitle": "Stop Signal",
+  "stopSignalSubtitle": "Tap the arrow direction, but STOP immediately if the arrow turns RED.",
+  "staircaseMemoryTitle": "Staircase Memory",
+  "vigilanceTaskTitle": "Vigilance Task",
+  "vigilanceTaskSubtitle": "Tap the button when the hand skips a position",
+  "logicalSyllogismsTitle": "Logical Syllogisms",
+  "logicalSyllogismsSubtitle": "Is the conclusion logically valid?",
+  "mathPathTitle": "Math Path",
+  "mathPathSubtitle": "Find a path that adds up exactly to the target sum.",
+  "sternbergTaskTitle": "Game Over",
+  "verbalAnalogiesTitle": "Analogy Master!",
+  "verbalAnalogiesSubtitle": "Complete the relationship",
+  "typingSpeedTitle": "Typing Speed",
+  "typingSpeedSubtitle": "Type the phrase exactly as shown as fast as you can!",
+  "wordLadderTitle": "Word Ladder",
+  "wordLadderSubtitle": "Connect the words by changing one letter at a time.",
+  "tangleFixTitle": "Untangled!",
+  "tangleFixSubtitle": "Untangle the lines so none intersect",
+  "oddRotationTitle": "Odd Rotation",
+  "oddRotationSubtitle": "One of these is mirrored. Can you find it?",
+  "towerOfLondonTitle": "Tower of London",
+  "towerOfLondonSubtitle": "Match the target configuration",
+  "symbolicFlankerTitle": "Time\\",
+  "symbolicFlankerSubtitle": "Focus on the center symbol",
+  "stroopTestTitle": "Stroop Test",
+  "stroopTestSubtitle": "Identify the ink color of the word shown. Ignore what the word actually says!",
+  "wisconsinCardSortingTitle": "Game Over",
+  "wisconsinCardSortingSubtitle": "MATCH THE CARD TO ONE OF THE FOUR ABOVE",
+  "nBackTitle": "N-Back Test",
+  "nBackSubtitle": "Tap MATCH if the current letter matches the one shown 2 steps ago.",
+  "rhythmMasterTitle": "Rhythm Master",
+  "rhythmMasterSubtitle": "Tap in sync with the pulse",
+  "pixelMimicTitle": "Pixel Mimic",
+  "targetNumberTitle": "Target 24",
+  "targetNumberSubtitle": "Use all 4 numbers to reach {target}",
+  "mirrorTracingTitle": "Traced To Perfection!",
+  "mirrorTracingSubtitle": "Trace the star! Controls are MIRRORED.",
+  "wordSurgeTitle": "Word Surge",
+  "wordSurgeSubtitle": "Synonyms & Antonyms",
+  "perspectiveTakingTitle": "Great Perspective!",
+  "perspectiveTakingSubtitle": "Which view is from the $targetDirName?",
+  "paperFoldingTitle": "Unfolded Perfection!",
+  "paperFoldingSubtitle": "What will it look like when unfolded?",
+  "waterSortTitle": "Well Done!",
+  "waterSortSubtitle": "Sort the colors so each tube contains only one color.",
+  "numericalEstimationTitle": "Time\\",
+  "numericalEstimationSubtitle": "Pick the closest answer fast!",
+  "lockPatternTitle": "Lock Pattern",
+  "lockPatternSubtitle": "Find the secret pattern. Every guess gives feedback on position and dots.",
+  "primeHunterTitle": "Prime Hunter",
+  "primeHunterSubtitle": "Swipe LEFT for PRIME | Swipe RIGHT for COMPOSITE",
+  "tracePathTitle": "Trace Path",
+  "tracePathSubtitle": "Follow the target path as closely as you can",
+  "ruleSwitcherTitle": "Rule Switcher",
+  "ruleSwitcherSubtitle": "Apply the current rule",
+  "choiceReactionTimeTitle": "Time\\",
+  "pathRecallTitle": "Path Recall",
+  "switchTaskTitle": "Switch Task",
+  "switchTaskSubtitle": "Pay attention to the rule! It will switch between matching the shape and matching the color.",
+  "mentalRotationTitle": "Mental Rotation",
+  "mentalRotationSubtitle": "Are these shapes the same, just rotated?",
+  "missingOperatorTitle": "Operator Mix",
+  "missingOperatorSubtitle": "Fill the blanks to complete the equation",
+  "wordMastermindTitle": "Word Mastermind",
+  "wordMastermindSubtitle": "Crack the 4-letter code! Bulls (B) are perfect spots, Cows (C) are wrong spots.",
+  "simonSequenceTitle": "Sequence",
+  "symbolLogicTitle": "Symbol Logic",
+  "symbolLogicSubtitle": "Solve the visual equations to find the value of each symbol. What is the result of the last equation?",
+  "silhouetteMatchTitle": "Matched!",
+  "silhouetteMatchSubtitle": "Which silhouette matches this object?",
+  "operationSpanTitle": "Game Over",
+  "slidePuzzleTitle": "Slide Puzzle",
+  "visualSearchTitle": "Visual Search",
+  "visualSearchSubtitle": "Find the unique symbol in the grid",
+  "trailMakingTitle": "Trail Making",
+  "trailMakingSubtitle": "Connect the numbers in order (1 -> 2 -> 3...) as fast as you can.",
+  "matrixReasoningTitle": "Matrix Reasoning",
+  "matrixReasoningSubtitle": "Complete the pattern in the 3x3 grid",
+  "tentsAndTreesTitle": "Tents & Trees",
+  "tentsAndTreesSubtitle": "Place tents next to trees. Numbers indicate how many tents are in each row/column. Tents cannot touch each other.",
+  "quickMathTitle": "Quick Math",
+  "magicSquaresTitle": "Magic Square",
+  "magicSquaresSubtitle": "Every row, column and diagonal must sum to {targetSum}",
+  "objectShuffleTitle": "Object Shuffle",
+  "pipesTitle": "Pipes",
+  "pipesSubtitle": "Connect matching colored dots with pipes.",
+  "oddOneOutTitle": "Odd One Out",
+  "oddOneOutSubtitle": "Find the tile with a different color."
+}

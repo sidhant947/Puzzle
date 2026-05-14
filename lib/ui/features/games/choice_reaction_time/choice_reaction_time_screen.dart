@@ -1,3 +1,4 @@
+import "package:puzzle/l10n/app_localizations.dart";
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -25,17 +26,17 @@ class _ChoiceReactionTimeScreenState extends ConsumerState<ChoiceReactionTimeScr
   }
 
   void _showCompletionDialog(List<int> reactionTimes) {
-    final avgRt = reactionTimes.isEmpty 
-        ? 0 
+    final l10n = AppLocalizations.of(context)!;
+    final avgRt = reactionTimes.isEmpty
+        ? 0
         : reactionTimes.reduce((a, b) => a + b) / reactionTimes.length;
-    
+
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'TIME\'S UP!',
-        message: 'Your average reaction time: ${avgRt.toStringAsFixed(0)}ms',
-        isVictory: reactionTimes.isNotEmpty,
+        title: l10n.timeUp.toUpperCase(),
+        message: l10n.choiceRtAvgMessage(avgRt.toStringAsFixed(0)),        isVictory: reactionTimes.isNotEmpty,
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();
@@ -50,6 +51,7 @@ class _ChoiceReactionTimeScreenState extends ConsumerState<ChoiceReactionTimeScr
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(choiceReactionTimeNotifierProvider);
     final notifier = ref.read(choiceReactionTimeNotifierProvider.notifier);
@@ -68,15 +70,15 @@ class _ChoiceReactionTimeScreenState extends ConsumerState<ChoiceReactionTimeScr
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
-        title: 'Choice RT',
-        body: Center(child: CircularProgressIndicator()),
+      return GameScaffold(
+        title: l10n.choiceRtTitle,
+        body: const Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
-      title: 'Choice RT',
-      subtitle: 'Tap the active square as fast as you can',
+      title: l10n.choiceRtTitle,
+      subtitle: l10n.choiceRtSubtitle,
       body: Column(
         children: [
           const SizedBox(height: DesignSystem.spaceXL),

@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'tents_and_trees_engine.dart';
@@ -14,6 +15,7 @@ class TentsAndTreesScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(tentsAndTreesNotifierProvider);
 
     ref.listen(tentsAndTreesNotifierProvider, (previous, next) {
@@ -24,8 +26,8 @@ class TentsAndTreesScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'TENTS & TREES',
-      subtitle: 'Place tents next to trees. Numbers indicate how many tents are in each row/column. Tents cannot touch each other.',
+      title: l10n.tentsAndTreesTitle.toUpperCase(),
+      subtitle: l10n.tentsAndTreesSubtitle,
       actions: [
         TangibleButton(
           color: Theme.of(context).colorScheme.surface,
@@ -228,6 +230,7 @@ class TentsAndTreesScreen extends ConsumerWidget {
   }
 
   void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
+    final l10n = AppLocalizations.of(context)!;
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('tents_and_trees');
     if (!context.mounted) return;
     showDialog(

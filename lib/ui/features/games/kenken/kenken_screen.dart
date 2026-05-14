@@ -7,6 +7,7 @@ import '../../../core/juice/game_scaffold.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../../utils/design_system.dart';
+import '../../../../l10n/app_localizations.dart';
 import 'kenken_provider.dart';
 
 class KenKenScreen extends ConsumerStatefulWidget {
@@ -25,15 +26,16 @@ class _KenKenScreenState extends ConsumerState<KenKenScreen> {
     });
   }
 
-  void _showCompletionDialog(bool isVictory) {
+  void _showCompletionDialog(bool isVictory, AppLocalizations l10n) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: isVictory ? 'GENIUS!' : 'GAME OVER',
+        title: isVictory ? l10n.kenkenWinTitle : l10n.kenkenLoseTitle,
         message: isVictory 
-            ? 'You solved the KenKen puzzle!' 
-            : 'Check the row/column and cage rules.',
+            ? l10n.kenkenWinMessage 
+            : l10n.kenkenLoseMessage,
         isVictory: isVictory,
         onHome: () {
           Navigator.of(context).pop();
@@ -49,6 +51,7 @@ class _KenKenScreenState extends ConsumerState<KenKenScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(kenKenNotifierProvider);
     final notifier = ref.read(kenKenNotifierProvider.notifier);
 
@@ -61,20 +64,20 @@ class _KenKenScreenState extends ConsumerState<KenKenScreen> {
           HapticFeedbackUtil.vibrate();
         }
         if (!context.mounted) return;
-        _showCompletionDialog(next.isGameWon);
+        _showCompletionDialog(next.isGameWon, l10n);
       }
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
-        title: 'KenKen',
-        body: Center(child: CircularProgressIndicator()),
+      return GameScaffold(
+        title: l10n.kenkenTitle,
+        body: const Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
-      title: 'KenKen',
-      subtitle: 'Fill 1-${state.size} without repeating in rows/cols',
+      title: l10n.kenkenTitle,
+      subtitle: l10n.kenkenSubtitle(state.size),
       body: Column(
         children: [
           const SizedBox(height: DesignSystem.spaceLG),

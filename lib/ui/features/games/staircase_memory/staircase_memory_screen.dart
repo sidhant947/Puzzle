@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -26,6 +27,7 @@ class _StaircaseMemoryScreenState extends ConsumerState<StaircaseMemoryScreen> {
   }
 
   void _showCompletionDialog(bool isVictory) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -49,6 +51,7 @@ class _StaircaseMemoryScreenState extends ConsumerState<StaircaseMemoryScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(staircaseMemoryNotifierProvider);
     final notifier = ref.read(staircaseMemoryNotifierProvider.notifier);
     final engine = StaircaseMemoryEngine();
@@ -68,8 +71,8 @@ class _StaircaseMemoryScreenState extends ConsumerState<StaircaseMemoryScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
-        title: 'Staircase Memory',
+      return GameScaffold(
+        title: l10n.staircaseMemoryTitle.toUpperCase(),
         body: Center(child: CircularProgressIndicator()),
       );
     }

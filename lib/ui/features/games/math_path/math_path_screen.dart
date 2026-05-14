@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,6 +15,7 @@ class MathPathScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(mathPathNotifierProvider);
 
     ref.listen(mathPathNotifierProvider, (previous, next) {
@@ -24,8 +26,8 @@ class MathPathScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'MATH PATH',
-      subtitle: 'Find a path that adds up exactly to the target sum.',
+      title: l10n.mathPathTitle.toUpperCase(),
+      subtitle: l10n.mathPathSubtitle,
       actions: [
         TangibleButton(
           color: Theme.of(context).colorScheme.surface,
@@ -189,6 +191,7 @@ class MathPathScreen extends ConsumerWidget {
   }
 
   void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
+    final l10n = AppLocalizations.of(context)!;
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('math_path');
     if (!context.mounted) return;
     showDialog(

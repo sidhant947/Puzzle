@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/haptic_feedback.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -26,12 +27,13 @@ class _DividedAttentionScreenState extends ConsumerState<DividedAttentionScreen>
   }
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'FOCUS BROKEN',
-        message: 'Multitasking is hard! Your score was ${ref.read(dividedAttentionNotifierProvider).score}.',
+        title: l10n.dividedAttentionGameOverTitle,
+        message: l10n.dividedAttentionGameOverMessage(ref.read(dividedAttentionNotifierProvider).score),
         isVictory: false,
         onHome: () {
           Navigator.of(context).pop();
@@ -50,6 +52,7 @@ class _DividedAttentionScreenState extends ConsumerState<DividedAttentionScreen>
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(dividedAttentionNotifierProvider);
     final notifier = ref.read(dividedAttentionNotifierProvider.notifier);
+    final l10n = AppLocalizations.of(context)!;
 
     ref.listen(dividedAttentionNotifierProvider, (previous, next) async {
       if (next.isGameOver && !(previous?.isGameOver ?? false)) {
@@ -64,15 +67,15 @@ class _DividedAttentionScreenState extends ConsumerState<DividedAttentionScreen>
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
-        title: 'Divided Attention',
-        body: Center(child: CircularProgressIndicator()),
+      return GameScaffold(
+        title: l10n.dividedAttentionTitle,
+        body: const Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
-      title: 'Divided Attention',
-      subtitle: 'Tap LEFT for STAR ⭐ | Tap RIGHT for RED 🔴',
+      title: l10n.dividedAttentionTitle,
+      subtitle: l10n.dividedAttentionSubtitle,
       body: Column(
         children: [
           Padding(
@@ -85,8 +88,8 @@ class _DividedAttentionScreenState extends ConsumerState<DividedAttentionScreen>
                   radius: DesignSystem.radiusMD,
                   color: colorScheme.surface,
                   child: Text(
-                    'SCORE: ${state.score}',
-                    style: TextStyle(
+                    l10n.dividedAttentionScore(state.score),
+                    style: const TextStyle(
                       fontWeight: FontWeight.w900,
                       color: DesignSystem.primary,
                     ),

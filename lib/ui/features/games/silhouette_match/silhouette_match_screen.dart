@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -25,11 +26,12 @@ class _SilhouetteMatchScreenState extends ConsumerState<SilhouetteMatchScreen> {
   }
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'MATCHED!',
+        title: l10n.silhouetteMatchTitle.toUpperCase(),
         message: 'Your brain is excellent at 3D to 2D translation.',
         isVictory: true,
         onHome: () {
@@ -46,6 +48,7 @@ class _SilhouetteMatchScreenState extends ConsumerState<SilhouetteMatchScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(silhouetteMatchNotifierProvider);
     final notifier = ref.read(silhouetteMatchNotifierProvider.notifier);
@@ -59,7 +62,7 @@ class _SilhouetteMatchScreenState extends ConsumerState<SilhouetteMatchScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
+      return GameScaffold(
         title: 'Silhouette Match',
         body: Center(child: CircularProgressIndicator()),
       );
@@ -67,7 +70,7 @@ class _SilhouetteMatchScreenState extends ConsumerState<SilhouetteMatchScreen> {
 
     return GameScaffold(
       title: 'Silhouette Match',
-      subtitle: 'Which silhouette matches this object?',
+      subtitle: l10n.silhouetteMatchSubtitle,
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(DesignSystem.spaceLG),
         child: Column(

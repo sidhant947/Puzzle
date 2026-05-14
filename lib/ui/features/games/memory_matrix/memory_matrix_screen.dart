@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -12,6 +13,7 @@ class MemoryMatrixScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(memoryMatrixNotifierProvider);
 
     ref.listen(memoryMatrixNotifierProvider, (previous, next) {
@@ -22,7 +24,7 @@ class MemoryMatrixScreen extends ConsumerWidget {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'GOAL REACHED!',
+            title: l10n.memoryMatrixTitle.toUpperCase(),
             message: 'Impressive! Your working memory is sharp. Daily goal complete!',
             onHome: () {
               Navigator.of(context).pop();
@@ -61,7 +63,7 @@ class MemoryMatrixScreen extends ConsumerWidget {
 
     return GameScaffold(
       title: 'MEMORY MATRIX',
-      subtitle: 'Memorize the pattern and tap the tiles.',
+      subtitle: l10n.memoryMatrixSubtitle,
       actions: [
         TangibleButton(
           color: Theme.of(context).colorScheme.surface,

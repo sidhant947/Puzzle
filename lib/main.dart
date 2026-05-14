@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'data/models/user_data.dart';
 import 'data/models/game_streak.dart';
 import 'data/repositories/user_repository.dart';
@@ -69,11 +71,18 @@ class MyApp extends ConsumerWidget {
     }
 
     return MaterialApp(
-      title: 'Puzzle Games',
+      title: 'Puzzle Hub',
       debugShowCheckedModeBanner: false,
       theme: DesignSystem.lightTheme,
       darkTheme: DesignSystem.darkTheme,
       themeMode: themeMode,
+      localizationsDelegates: [
+        AppLocalizations.delegate,
+        GlobalMaterialLocalizations.delegate,
+        GlobalWidgetsLocalizations.delegate,
+        GlobalCupertinoLocalizations.delegate,
+      ],
+      supportedLocales: AppLocalizations.supportedLocales,
       home: const MainShell(),
     );
   }

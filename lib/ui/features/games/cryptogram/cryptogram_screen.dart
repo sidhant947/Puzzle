@@ -1,3 +1,4 @@
+import "package:puzzle/l10n/app_localizations.dart";
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -23,6 +24,7 @@ class _CryptogramScreenState extends ConsumerState<CryptogramScreen> {
   }
 
   void _showGameOverDialog(bool won) {
+    final l10n = AppLocalizations.of(context)!;
     if (won) {
       HapticFeedbackUtil.victory();
       ref.read(gameStreakNotifierProvider.notifier).completeGame('cryptogram');
@@ -49,6 +51,7 @@ class _CryptogramScreenState extends ConsumerState<CryptogramScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(cryptogramNotifierProvider);
     final notifier = ref.read(cryptogramNotifierProvider.notifier);
@@ -60,8 +63,8 @@ class _CryptogramScreenState extends ConsumerState<CryptogramScreen> {
     });
 
     return GameScaffold(
-      title: 'CRYPTOGRAM',
-      subtitle: 'Assign letters to decode the secret message! Each encoded letter represents a real letter.',
+      title: l10n.cryptogramTitle.toUpperCase(),
+      subtitle: l10n.cryptogramSubtitle,
       actions: [
         TangibleButton(
           color: colorScheme.surface,

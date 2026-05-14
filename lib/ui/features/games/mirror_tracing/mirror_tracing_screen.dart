@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -18,11 +19,12 @@ class _MirrorTracingScreenState extends ConsumerState<MirrorTracingScreen> {
   Offset? _lastTouch;
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'TRACED TO PERFECTION!',
+        title: l10n.mirrorTracingTitle.toUpperCase(),
         message: 'Your brain successfully rewired its coordination.',
         isVictory: true,
         onHome: () {
@@ -41,6 +43,7 @@ class _MirrorTracingScreenState extends ConsumerState<MirrorTracingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(mirrorTracingNotifierProvider);
     final notifier = ref.read(mirrorTracingNotifierProvider.notifier);
 
@@ -54,7 +57,7 @@ class _MirrorTracingScreenState extends ConsumerState<MirrorTracingScreen> {
 
     return GameScaffold(
       title: 'Mirror Tracing',
-      subtitle: 'Trace the star! Controls are MIRRORED.',
+      subtitle: l10n.mirrorTracingSubtitle,
       body: LayoutBuilder(
         builder: (context, constraints) {
           if (state.canvasSize == Size.zero) {

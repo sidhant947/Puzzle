@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -24,11 +25,12 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
   }
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'GREAT PERSPECTIVE!',
+        title: l10n.perspectiveTakingTitle.toUpperCase(),
         message: 'You have a sharp eye for spatial relationships.',
         isVictory: true,
         onHome: () {
@@ -45,6 +47,7 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(perspectiveTakingNotifierProvider);
     final notifier = ref.read(perspectiveTakingNotifierProvider.notifier);
@@ -58,7 +61,7 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
+      return GameScaffold(
         title: 'Perspective',
         body: Center(child: CircularProgressIndicator()),
       );
@@ -68,7 +71,7 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
 
     return GameScaffold(
       title: 'Perspective',
-      subtitle: 'Which view is from the $targetDirName?',
+      subtitle: l10n.perspectiveTakingSubtitle,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
         child: Column(

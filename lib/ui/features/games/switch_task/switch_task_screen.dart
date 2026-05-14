@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -25,6 +26,7 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
   }
 
   void _showGameOverDialog(int score) {
+    final l10n = AppLocalizations.of(context)!;
     bool won = score >= 15;
     if (won) {
       HapticFeedbackUtil.victory();
@@ -53,6 +55,7 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final state = ref.watch(switchTaskNotifierProvider);
@@ -65,9 +68,8 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
     });
 
     return GameScaffold(
-      title: 'SWITCH TASK',
-      subtitle:
-          'Pay attention to the rule! It will switch between matching the shape and matching the color.',
+      title: l10n.switchTaskTitle.toUpperCase(),
+      subtitle: l10n.switchTaskSubtitle,
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(

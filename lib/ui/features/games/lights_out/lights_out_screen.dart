@@ -7,12 +7,14 @@ import '../../../../widgets/tangible.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 import '../../../core/juice/game_scaffold.dart';
+import '../../../../l10n/app_localizations.dart';
 
 class LightsOutScreen extends ConsumerWidget {
   const LightsOutScreen({super.key});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final grid = ref.watch(lightsOutNotifierProvider);
     final notifier = ref.read(lightsOutNotifierProvider.notifier);
     final engine = LightsOutEngine();
@@ -25,8 +27,8 @@ class LightsOutScreen extends ConsumerWidget {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'PUZZLE SOLVED!',
-            message: 'You successfully turned off all the lights!',
+            title: l10n.lightsOutWinTitle,
+            message: l10n.lightsOutWinMessage,
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
@@ -41,8 +43,8 @@ class LightsOutScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'LIGHTS OUT',
-      subtitle: 'Tapping a tile toggles it and its adjacent neighbors. Turn off all lights to solve.',
+      title: l10n.lightsOutTitle,
+      subtitle: l10n.lightsOutSubtitle,
       actions: [
         TangibleButton(
           color: Theme.of(context).colorScheme.surface,

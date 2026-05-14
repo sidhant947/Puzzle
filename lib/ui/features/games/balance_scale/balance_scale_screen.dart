@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import '../../../core/juice/game_scaffold.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
@@ -24,6 +25,7 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
   }
 
   void _showGameOverDialog(bool won) {
+    final l10n = AppLocalizations.of(context)!;
     if (won) {
       HapticFeedbackUtil.victory();
       ref.read(gameStreakNotifierProvider.notifier).completeGame('balance_scale');
@@ -35,8 +37,8 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         isVictory: won,
-        title: won ? 'BALANCED!' : 'UNBALANCED',
-        message: won ? 'You correctly deduced the weight!' : 'Try again to find the correct balance.',
+        title: won ? l10n.balanceScaleWinTitle : l10n.balanceScaleLoseTitle,
+        message: won ? l10n.balanceScaleWinMessage : l10n.balanceScaleLoseMessage,
         onPlayAgain: () {
           ref.read(balanceScaleNotifierProvider.notifier).initGame();
           Navigator.pop(context);
@@ -51,6 +53,7 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(balanceScaleNotifierProvider);
     final notifier = ref.read(balanceScaleNotifierProvider.notifier);
@@ -62,8 +65,8 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
     });
 
     return GameScaffold(
-      title: 'BALANCE SCALE',
-      subtitle: 'Deduce the weight of the last item based on the scales.',
+      title: l10n.balanceScaleTitle,
+      subtitle: l10n.balanceScaleSubtitle,
       actions: [
         TangibleButton(
           color: colorScheme.surface,
@@ -77,7 +80,7 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
         ),
       ],
       body: state.isLoading
-          ? Center(child: CircularProgressIndicator())
+          ? const Center(child: CircularProgressIndicator())
           : LayoutBuilder(
               builder: (context, constraints) {
                 return Column(
@@ -94,7 +97,7 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Icon(Icons.help_outline_rounded, color: colorScheme.onSurface.withValues(alpha: 0.7), size: 20),
-                          SizedBox(width: 6),
+                          const SizedBox(width: 6),
                           Text(
                             '=', 
                             style: TextStyle(
@@ -118,7 +121,7 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
                       ),
                     ),
                     const Spacer(),
-                    _buildNumberPad(notifier),
+                    _buildNumberPad(notifier, l10n),
                     const SizedBox(height: DesignSystem.spaceLG),
                   ],
                 );
@@ -172,7 +175,7 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
             children: [
               Expanded(child: _buildWeightGroup(eq.left)),
               Padding(
-                padding: EdgeInsets.symmetric(horizontal: 4.0),
+                padding: const EdgeInsets.symmetric(horizontal: 4.0),
                 child: Icon(Icons.balance_rounded, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7), size: 20),
               ),
               Expanded(
@@ -182,7 +185,7 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
               ),
             ],
           ),
-          SizedBox(height: 4),
+          const SizedBox(height: 4),
           Container(
             height: 2, 
             width: double.infinity, 
@@ -232,7 +235,7 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
     );
   }
 
-  Widget _buildNumberPad(BalanceScaleNotifier notifier) {
+  Widget _buildNumberPad(BalanceScaleNotifier notifier, AppLocalizations l10n) {
     return Column(
       children: [
         for (var row in [[1, 2, 3, 4, 5], [6, 7, 8, 9, 0]])
@@ -273,12 +276,12 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
                     HapticFeedbackUtil.mediumImpact();
                     notifier.onBackspace();
                   },
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.backspace_rounded, color: Colors.white, size: 16),
-                      SizedBox(width: 6),
-                      Text('BACK', style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w900)),
+                      const Icon(Icons.backspace_rounded, color: Colors.white, size: 16),
+                      const SizedBox(width: 6),
+                      Text(l10n.balanceScaleBack, style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w900)),
                     ],
                   ),
                 ),
@@ -293,12 +296,12 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
                     HapticFeedbackUtil.selectionClick();
                     notifier.submitGuess();
                   },
-                  child: const Row(
+                  child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Icon(Icons.check_rounded, color: Colors.white, size: 16),
-                      SizedBox(width: 6),
-                      Text('SUBMIT', style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w900)),
+                      const Icon(Icons.check_rounded, color: Colors.white, size: 16),
+                      const SizedBox(width: 6),
+                      Text(l10n.balanceScaleSubmit, style: const TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w900)),
                     ],
                   ),
                 ),

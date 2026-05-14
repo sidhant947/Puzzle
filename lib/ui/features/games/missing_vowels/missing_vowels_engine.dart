@@ -5,7 +5,7 @@ class MissingVowelsEngine {
   static const int minWordLength = 5;
   static const int maxWordLength = 8;
 
-  Future<List<String>> loadWords() async {
+  Future<List<String>> loadWords([String languageCode = 'en']) async {
     try {
       final data = await rootBundle.loadString('assets/find_word_words.txt');
       return data

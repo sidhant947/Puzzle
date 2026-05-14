@@ -1,3 +1,4 @@
+import "package:puzzle/l10n/app_localizations.dart";
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'color_match_provider.dart';
@@ -13,6 +14,7 @@ class ColorMatchScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(colorMatchNotifierProvider);
 
     ref.listen(colorMatchNotifierProvider, (previous, next) {
@@ -23,8 +25,8 @@ class ColorMatchScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'COLOR MATCH',
-      subtitle: 'Adjust the sliders to match the target color as closely as possible.',
+      title: l10n.colorMatchTitle.toUpperCase(),
+      subtitle: l10n.colorMatchSubtitle,
       actions: [
         TangibleButton(
           color: Theme.of(context).colorScheme.surface,
@@ -150,6 +152,7 @@ class ColorMatchScreen extends ConsumerWidget {
   }
 
   void _showGameOverDialog(BuildContext context, WidgetRef ref, ColorMatchState state) {
+    final l10n = AppLocalizations.of(context)!;
     ref.read(gameStreakNotifierProvider.notifier).completeGame('color_match', xpAmount: state.score.toInt());
     showDialog(
       context: context,

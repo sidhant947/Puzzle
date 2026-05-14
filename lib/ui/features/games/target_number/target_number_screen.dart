@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -25,6 +26,7 @@ class _TargetNumberScreenState extends ConsumerState<TargetNumberScreen> {
   }
 
   void _showCompletionDialog(bool isVictory) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -48,6 +50,7 @@ class _TargetNumberScreenState extends ConsumerState<TargetNumberScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(targetNumberNotifierProvider);
     final notifier = ref.read(targetNumberNotifierProvider.notifier);
 
@@ -65,15 +68,15 @@ class _TargetNumberScreenState extends ConsumerState<TargetNumberScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
-        title: 'Target 24',
+      return GameScaffold(
+        title: l10n.targetNumberTitle.toUpperCase(),
         body: Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
       title: 'Target 24',
-      subtitle: 'Use all 4 numbers to reach ${state.target}',
+      subtitle: l10n.targetNumberSubtitle(state.target),
       body: LayoutBuilder(
         builder: (context, constraints) {
           final double cardHeight = constraints.maxHeight * 0.2;

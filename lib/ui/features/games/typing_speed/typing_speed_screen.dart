@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -31,6 +32,7 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
   }
 
   void _showGameOverDialog(bool won, double wpm) {
+    final l10n = AppLocalizations.of(context)!;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('typing_speed');
       HapticFeedbackUtil.victory();
@@ -60,6 +62,7 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(typingSpeedNotifierProvider);
     final notifier = ref.read(typingSpeedNotifierProvider.notifier);
@@ -71,8 +74,8 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
     });
 
     return GameScaffold(
-      title: 'TYPING SPEED',
-      subtitle: 'Type the phrase exactly as shown as fast as you can!',
+      title: l10n.typingSpeedTitle.toUpperCase(),
+      subtitle: l10n.typingSpeedSubtitle,
       actions: [
         TangibleButton(
           color: colorScheme.surface,

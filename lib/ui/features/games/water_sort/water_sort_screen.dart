@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'water_sort_provider.dart';
@@ -14,6 +15,7 @@ class WaterSortScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(waterSortNotifierProvider);
     final notifier = ref.read(waterSortNotifierProvider.notifier);
 
@@ -34,7 +36,7 @@ class WaterSortScreen extends ConsumerWidget {
                   notifier.reset();
                   Navigator.of(context).pop();
                 },
-                title: 'WELL DONE!',
+                title: l10n.waterSortTitle.toUpperCase(),
                 message: 'You sorted all the colors perfectly!',
               ),
             );
@@ -45,7 +47,7 @@ class WaterSortScreen extends ConsumerWidget {
 
     return GameScaffold(
       title: 'WATER SORT',
-      subtitle: 'Sort the colors so each tube contains only one color.',
+      subtitle: l10n.waterSortSubtitle,
       actions: [
         TangibleButton(
           color: Theme.of(context).colorScheme.surface,
@@ -126,6 +128,7 @@ class _TubeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final tubeRadius = width / 2;
     final outerRadius = BorderRadius.vertical(

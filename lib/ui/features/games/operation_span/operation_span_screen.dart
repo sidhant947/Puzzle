@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -25,12 +26,13 @@ class _OperationSpanScreenState extends ConsumerState<OperationSpanScreen> {
   }
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     final score = ref.read(operationSpanNotifierProvider).score;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'GAME OVER',
+        title: l10n.operationSpanTitle.toUpperCase(),
         message: 'You scored $score points in Operation Span!',
         isVictory: score > 10,
         onHome: () {
@@ -47,6 +49,7 @@ class _OperationSpanScreenState extends ConsumerState<OperationSpanScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(operationSpanNotifierProvider);
     final notifier = ref.read(operationSpanNotifierProvider.notifier);
 
@@ -59,7 +62,7 @@ class _OperationSpanScreenState extends ConsumerState<OperationSpanScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
+      return GameScaffold(
         title: 'Operation Span',
         body: Center(child: CircularProgressIndicator()),
       );

@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -28,11 +29,12 @@ class _TangleFixScreenState extends ConsumerState<TangleFixScreen> {
   }
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'UNTANGLED!',
+        title: l10n.tangleFixTitle.toUpperCase(),
         message: 'All lines are clear and smooth.',
         isVictory: true,
         onHome: () {
@@ -52,6 +54,7 @@ class _TangleFixScreenState extends ConsumerState<TangleFixScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(tangleFixNotifierProvider);
     final notifier = ref.read(tangleFixNotifierProvider.notifier);
 
@@ -66,7 +69,7 @@ class _TangleFixScreenState extends ConsumerState<TangleFixScreen> {
 
     return GameScaffold(
       title: 'Tangle Fix',
-      subtitle: 'Untangle the lines so none intersect',
+      subtitle: l10n.tangleFixSubtitle,
       body: LayoutBuilder(
         builder: (context, constraints) {
           final bounds = Size(constraints.maxWidth, constraints.maxHeight);

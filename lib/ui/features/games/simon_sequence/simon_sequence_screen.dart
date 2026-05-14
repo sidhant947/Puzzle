@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -24,6 +25,7 @@ class _SimonSequenceScreenState extends ConsumerState<SimonSequenceScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(simonSequenceNotifierProvider);
 
@@ -39,7 +41,7 @@ class _SimonSequenceScreenState extends ConsumerState<SimonSequenceScreen> {
     });
 
     return GameScaffold(
-      title: 'SEQUENCE',
+      title: l10n.simonSequenceTitle.toUpperCase(),
       body: LayoutBuilder(
         builder: (context, constraints) {
           return Column(
@@ -137,6 +139,7 @@ class _SimonSequenceScreenState extends ConsumerState<SimonSequenceScreen> {
 
 
   void _showGameOverDialog(BuildContext context, WidgetRef ref, SimonSequenceState state, bool won) {
+    final l10n = AppLocalizations.of(context)!;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('simon_sequence', xpAmount: 50);
       showDialog(

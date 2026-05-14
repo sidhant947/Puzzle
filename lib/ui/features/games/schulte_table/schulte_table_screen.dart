@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -17,6 +18,7 @@ class SchulteTableScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(schulteTableNotifierProvider);
     final notifier = ref.read(schulteTableNotifierProvider.notifier);
 
@@ -28,7 +30,7 @@ class SchulteTableScreen extends ConsumerWidget {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'GREAT FOCUS!',
+            title: l10n.schulteTableTitle.toUpperCase(),
             message: 'You completed the table in ${_formatDuration(next.elapsedTime)}.\nKeep practicing to expand your peripheral vision!',
             onHome: () {
               Navigator.of(context).pop();

@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -24,6 +25,7 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
   }
 
   void _showGameOverDialog(bool won) {
+    final l10n = AppLocalizations.of(context)!;
     if (won) {
       HapticFeedbackUtil.victory();
       ref.read(gameStreakNotifierProvider.notifier).completeGame('symbol_logic');
@@ -50,6 +52,7 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(symbolLogicNotifierProvider);
     final notifier = ref.read(symbolLogicNotifierProvider.notifier);
@@ -61,8 +64,8 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
     });
 
     return GameScaffold(
-      title: 'SYMBOL LOGIC',
-      subtitle: 'Solve the visual equations to find the value of each symbol. What is the result of the last equation?',
+      title: l10n.symbolLogicTitle.toUpperCase(),
+      subtitle: l10n.symbolLogicSubtitle,
       actions: [
         TangibleButton(
           color: colorScheme.surface,

@@ -1,3 +1,4 @@
+import "package:puzzle/l10n/app_localizations.dart";
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'sudoku_provider.dart';
@@ -19,6 +20,7 @@ class SudokuScreen extends ConsumerStatefulWidget {
 class _SudokuScreenState extends ConsumerState<SudokuScreen> {
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(sudokuNotifierProvider);
     final notifier = ref.read(sudokuNotifierProvider.notifier);
@@ -32,8 +34,8 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'WELL DONE',
-            message: 'Puzzle solved successfully with perfect logic.',
+            title: l10n.wellDone.toUpperCase(),
+            message: l10n.completed,
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
@@ -48,8 +50,8 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
     });
 
     return GameScaffold(
-      title: 'SUDOKU',
-      subtitle: 'Complete the grid so that every row, column, and 3x3 box contains all digits 1 to 9.',
+      title: l10n.sudokuTitle.toUpperCase(),
+      subtitle: l10n.sudokuSubtitle,
       actions: [
         TangibleButton(
           color: colorScheme.surface,

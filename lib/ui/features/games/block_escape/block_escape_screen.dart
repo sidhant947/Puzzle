@@ -1,6 +1,7 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'block_escape_engine.dart';
 import 'block_escape_provider.dart';
 import '../../../../providers/user_providers.dart';
@@ -15,6 +16,7 @@ class BlockEscapeScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(blockEscapeNotifierProvider);
 
     ref.listen(blockEscapeNotifierProvider, (previous, next) {
@@ -25,8 +27,8 @@ class BlockEscapeScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'BLOCK ESCAPE',
-      subtitle: 'Slide the blocks to clear a path for the primary block to reach the exit.',
+      title: l10n.blockEscapeTitle,
+      subtitle: l10n.blockEscapeSubtitle,
       actions: [
         TangibleButton(
           color: Theme.of(context).colorScheme.surface,
@@ -190,14 +192,15 @@ class BlockEscapeScreen extends ConsumerWidget {
   }
 
   void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
+    final l10n = AppLocalizations.of(context)!;
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('block_escape');
     if (!context.mounted) return;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'ESCAPE!',
-        message: 'You successfully cleared the path for the primary block!',
+        title: l10n.blockEscapeWinTitle,
+        message: l10n.blockEscapeWinMessage,
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();

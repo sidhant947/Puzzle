@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -42,6 +43,7 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(spellingSprintNotifierProvider);
 
     ref.listen(spellingSprintNotifierProvider, (previous, next) {
@@ -57,8 +59,8 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
     });
 
     return GameScaffold(
-      title: 'SPELLING SPRINT',
-      subtitle: 'Race against the clock to spell as many words as you can.',
+      title: l10n.spellingSprintTitle.toUpperCase(),
+      subtitle: l10n.spellingSprintSubtitle,
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
@@ -232,6 +234,7 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
   }
 
   void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
+    final l10n = AppLocalizations.of(context)!;
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('spelling_sprint');
     if (!context.mounted) return;
     showDialog(
@@ -254,6 +257,7 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
   }
 
   void _showGameOverDialog(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,

@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -26,11 +27,12 @@ class _PaperFoldingScreenState extends ConsumerState<PaperFoldingScreen> {
   }
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'UNFOLDED PERFECTION!',
+        title: l10n.paperFoldingTitle.toUpperCase(),
         message: 'You can see the patterns in your mind.',
         isVictory: true,
         onHome: () {
@@ -47,6 +49,7 @@ class _PaperFoldingScreenState extends ConsumerState<PaperFoldingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(paperFoldingNotifierProvider);
     final notifier = ref.read(paperFoldingNotifierProvider.notifier);
@@ -60,7 +63,7 @@ class _PaperFoldingScreenState extends ConsumerState<PaperFoldingScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
+      return GameScaffold(
         title: 'Paper Folding',
         body: Center(child: CircularProgressIndicator()),
       );
@@ -68,7 +71,7 @@ class _PaperFoldingScreenState extends ConsumerState<PaperFoldingScreen> {
 
     return GameScaffold(
       title: 'Paper Folding',
-      subtitle: 'What will it look like when unfolded?',
+      subtitle: l10n.paperFoldingSubtitle,
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
         child: Column(

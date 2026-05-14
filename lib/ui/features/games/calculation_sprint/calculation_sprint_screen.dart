@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
@@ -12,6 +13,7 @@ class CalculationSprintScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(calculationSprintNotifierProvider);
     final notifier = ref.read(calculationSprintNotifierProvider.notifier);
 
@@ -29,10 +31,10 @@ class CalculationSprintScreen extends ConsumerWidget {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: isGoalReached ? 'GOAL REACHED!' : 'TIME IS UP',
+            title: isGoalReached ? l10n.calculationSprintGoalReached : l10n.calculationSprintTimeUp,
             message: isGoalReached
-                ? 'Excellent calculation speed! You scored ${next.score} points.'
-                : 'You scored ${next.score} points. Try to beat your best!',
+                ? l10n.calculationSprintScoreMessage(next.score)
+                : l10n.calculationSprintTryAgainMessage(next.score),
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
@@ -47,8 +49,8 @@ class CalculationSprintScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'CALCULATION SPRINT',
-      subtitle: 'Solve as many equations as possible in 60 seconds.',
+      title: l10n.calculationSprintTitle,
+      subtitle: l10n.calculationSprintSubtitle,
       actions: [
         TangibleButton(
           color: Theme.of(context).colorScheme.surface,
@@ -75,7 +77,7 @@ class CalculationSprintScreen extends ConsumerWidget {
                   state.currentProblem != null)
                 _buildPlayingState(state, notifier)
               else if (state.status == SprintStatus.gameOver)
-                _buildGameOverState(),
+                _buildGameOverState(context),
               const Spacer(),
             ],
           );
@@ -85,6 +87,7 @@ class CalculationSprintScreen extends ConsumerWidget {
   }
 
   Widget _buildHeader(BuildContext context, CalculationSprintState state) {
+    final l10n = AppLocalizations.of(context)!;
     final isLowTime = state.timeRemaining <= 10 && state.timeRemaining > 0;
     final timeColor = isLowTime ? DesignSystem.error : DesignSystem.accentAmber;
 
@@ -95,16 +98,16 @@ class CalculationSprintScreen extends ConsumerWidget {
         children: [
           Expanded(
               child: _buildStatCard(
-                  context, 'SCORE', state.score.toString(), DesignSystem.accentEmerald)),
+                  context, l10n.score.toUpperCase(), state.score.toString(), DesignSystem.accentEmerald)),
           const SizedBox(width: DesignSystem.spaceMD),
           Expanded(
               child: _buildStatCard(
-                  context, 'TIME', '${state.timeRemaining}s', timeColor,
+                  context, l10n.timeLeft.toUpperCase(), '${state.timeRemaining}s', timeColor,
                   animate: isLowTime)),
           const SizedBox(width: DesignSystem.spaceMD),
           Expanded(
               child: _buildStatCard(
-                  context, 'BEST', state.bestScore.toString(), DesignSystem.primary)),
+                  context, l10n.calculationSprintBest, state.bestScore.toString(), DesignSystem.primary)),
         ],
       ),
     );
@@ -159,13 +162,14 @@ class CalculationSprintScreen extends ConsumerWidget {
   }
 
   Widget _buildReadyState(BuildContext context, CalculationSprintNotifier notifier) {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Icon(Icons.timer_rounded, size: 80, color: DesignSystem.primary),
         const SizedBox(height: DesignSystem.spaceLG),
         Text(
-          '60 SECONDS',
+          l10n.calculationSprintSeconds,
           style: TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.w900,
@@ -175,7 +179,7 @@ class CalculationSprintScreen extends ConsumerWidget {
         ),
         SizedBox(height: DesignSystem.spaceSM),
         Text(
-          'Solve equations quickly.\nWrong answers deduct 3 seconds!',
+          l10n.calculationSprintDescription,
           textAlign: TextAlign.center,
           style: TextStyle(
             color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7).withValues(alpha: 0.7),
@@ -190,7 +194,7 @@ class CalculationSprintScreen extends ConsumerWidget {
             notifier.startGame();
           },
           padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 20),
-          child: const Text('START SPRINT'),
+          child: Text(l10n.calculationSprintStart),
         ),
       ],
     );
@@ -278,12 +282,13 @@ class CalculationSprintScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildGameOverState() {
-    return const Column(
+  Widget _buildGameOverState(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+    return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
         Text(
-          'TIME IS UP!',
+          l10n.calculationSprintTimeUp,
           style: TextStyle(
             fontSize: 32,
             fontWeight: FontWeight.w900,

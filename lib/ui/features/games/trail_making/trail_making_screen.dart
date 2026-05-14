@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -23,6 +24,7 @@ class _TrailMakingScreenState extends ConsumerState<TrailMakingScreen> {
   }
 
   void _showGameOverDialog(int score) {
+    final l10n = AppLocalizations.of(context)!;
     bool won = score >= 3;
     if (won) {
       HapticFeedbackUtil.victory();
@@ -50,6 +52,7 @@ class _TrailMakingScreenState extends ConsumerState<TrailMakingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(trailMakingNotifierProvider);
     final notifier = ref.read(trailMakingNotifierProvider.notifier);
@@ -61,8 +64,8 @@ class _TrailMakingScreenState extends ConsumerState<TrailMakingScreen> {
     });
 
     return GameScaffold(
-      title: 'TRAIL MAKING',
-      subtitle: 'Connect the numbers in order (1 -> 2 -> 3...) as fast as you can.',
+      title: l10n.trailMakingTitle.toUpperCase(),
+      subtitle: l10n.trailMakingSubtitle,
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(

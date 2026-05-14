@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -23,6 +24,7 @@ class _SDMTScreenState extends ConsumerState<SDMTScreen> {
   }
 
   void _showGameOverDialog(int score) {
+    final l10n = AppLocalizations.of(context)!;
     bool won = score >= 30;
     if (won) {
       HapticFeedbackUtil.victory();
@@ -50,6 +52,7 @@ class _SDMTScreenState extends ConsumerState<SDMTScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(sdmtNotifierProvider);
     final notifier = ref.read(sdmtNotifierProvider.notifier);
 
@@ -60,8 +63,8 @@ class _SDMTScreenState extends ConsumerState<SDMTScreen> {
     });
 
     return GameScaffold(
-      title: 'SDMT TEST',
-      subtitle: 'Use the key above to find the digit for the symbol shown.',
+      title: l10n.sdmtTitle.toUpperCase(),
+      subtitle: l10n.sdmtSubtitle,
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(

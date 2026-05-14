@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:math';
@@ -42,6 +43,7 @@ class _OrbitTapScreenState extends ConsumerState<OrbitTapScreen> with SingleTick
   }
 
   void _showGameOverDialog(int score) {
+    final l10n = AppLocalizations.of(context)!;
     bool won = score >= 10;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('orbit_tap');
@@ -68,6 +70,7 @@ class _OrbitTapScreenState extends ConsumerState<OrbitTapScreen> with SingleTick
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(orbitTapNotifierProvider);
     
@@ -84,8 +87,8 @@ class _OrbitTapScreenState extends ConsumerState<OrbitTapScreen> with SingleTick
     });
 
     return GameScaffold(
-      title: 'ORBIT TAP',
-      subtitle: 'Tap when balls align with the gate',
+      title: l10n.orbitTapTitle.toUpperCase(),
+      subtitle: l10n.orbitTapSubtitle,
       body: GestureDetector(
         onTapDown: (_) {
           HapticFeedbackUtil.lightImpact();

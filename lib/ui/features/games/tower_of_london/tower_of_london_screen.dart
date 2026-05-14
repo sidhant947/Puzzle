@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -24,6 +25,7 @@ class _TowerOfLondonScreenState extends ConsumerState<TowerOfLondonScreen> {
   }
 
   void _showCompletionDialog(bool isVictory, bool isOutOfMoves) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -47,6 +49,7 @@ class _TowerOfLondonScreenState extends ConsumerState<TowerOfLondonScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(towerOfLondonNotifierProvider);
     final notifier = ref.read(towerOfLondonNotifierProvider.notifier);
@@ -66,15 +69,15 @@ class _TowerOfLondonScreenState extends ConsumerState<TowerOfLondonScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
-        title: 'Tower of London',
+      return GameScaffold(
+        title: l10n.towerOfLondonTitle.toUpperCase(),
         body: Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
       title: 'Tower of London',
-      subtitle: 'Match the target configuration',
+      subtitle: l10n.towerOfLondonSubtitle,
       body: Column(
         children: [
           Padding(

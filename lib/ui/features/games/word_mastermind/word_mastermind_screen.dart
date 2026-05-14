@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'word_mastermind_provider.dart';
@@ -14,6 +15,7 @@ class WordMastermindScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(wordMastermindNotifierProvider);
     final notifier = ref.read(wordMastermindNotifierProvider.notifier);
 
@@ -29,8 +31,8 @@ class WordMastermindScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'WORD MASTERMIND',
-      subtitle: 'Crack the 4-letter code! Bulls (B) are perfect spots, Cows (C) are wrong spots.',
+      title: l10n.wordMastermindTitle.toUpperCase(),
+      subtitle: l10n.wordMastermindSubtitle,
       actions: [
         TangibleButton(
           color: Theme.of(context).colorScheme.surface,
@@ -231,6 +233,7 @@ class WordMastermindScreen extends ConsumerWidget {
   }
 
   void _showGameOverDialog(BuildContext context, WidgetRef ref, WordMastermindState state) async {
+    final l10n = AppLocalizations.of(context)!;
     if (state.isGameWon) {
       await ref.read(gameStreakNotifierProvider.notifier).completeGame('word_mastermind', xpAmount: 40);
 

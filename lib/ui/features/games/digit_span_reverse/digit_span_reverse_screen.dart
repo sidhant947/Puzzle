@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import '../../../../../providers/user_providers.dart';
 import '../../../../../utils/haptic_feedback.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -25,14 +26,15 @@ class _DigitSpanReverseScreenState extends ConsumerState<DigitSpanReverseScreen>
   }
 
   void _showCompletionDialog(bool isVictory) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: isVictory ? 'LEVEL UP!' : 'TRY AGAIN',
+        title: isVictory ? l10n.digitSpanReverseWinTitle : l10n.digitSpanReverseLoseTitle,
         message: isVictory 
-            ? 'Your working memory is impressive!' 
-            : 'The correct reverse sequence was ${ref.read(digitSpanReverseNotifierProvider).sequence.reversed.join(', ')}.',
+            ? l10n.digitSpanReverseWinMessage
+            : l10n.digitSpanReverseLoseMessage(ref.read(digitSpanReverseNotifierProvider).sequence.reversed.join(', ')),
         isVictory: isVictory,
         onHome: () {
           Navigator.of(context).pop();
@@ -50,6 +52,7 @@ class _DigitSpanReverseScreenState extends ConsumerState<DigitSpanReverseScreen>
   Widget build(BuildContext context) {
     final state = ref.watch(digitSpanReverseNotifierProvider);
     final notifier = ref.read(digitSpanReverseNotifierProvider.notifier);
+    final l10n = AppLocalizations.of(context)!;
 
     ref.listen(digitSpanReverseNotifierProvider, (previous, next) async {
       if (next.phase == DigitSpanPhase.result && previous?.phase != DigitSpanPhase.result) {
@@ -66,17 +69,17 @@ class _DigitSpanReverseScreenState extends ConsumerState<DigitSpanReverseScreen>
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
-        title: 'Reverse Span',
-        body: Center(child: CircularProgressIndicator()),
+      return GameScaffold(
+        title: l10n.digitSpanReverseTitle,
+        body: const Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
-      title: 'Reverse Span',
+      title: l10n.digitSpanReverseTitle,
       subtitle: state.phase == DigitSpanPhase.sequence 
-          ? 'Memorize the digits' 
-          : 'Enter digits in REVERSE order',
+          ? l10n.digitSpanReverseSubtitleMemorize 
+          : l10n.digitSpanReverseSubtitleEnter,
       body: Column(
         children: [
           const SizedBox(height: DesignSystem.spaceXL),

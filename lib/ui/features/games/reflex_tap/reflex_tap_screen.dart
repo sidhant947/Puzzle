@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -23,6 +24,7 @@ class _ReflexTapScreenState extends ConsumerState<ReflexTapScreen> {
   }
 
   void _showGameOverDialog(int score) {
+    final l10n = AppLocalizations.of(context)!;
     bool won = score >= 15;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('reflex_tap');
@@ -47,6 +49,7 @@ class _ReflexTapScreenState extends ConsumerState<ReflexTapScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(reflexTapNotifierProvider);
     final notifier = ref.read(reflexTapNotifierProvider.notifier);
@@ -58,7 +61,7 @@ class _ReflexTapScreenState extends ConsumerState<ReflexTapScreen> {
     });
 
     return GameScaffold(
-      title: 'REFLEX TAP',
+      title: l10n.reflexTapTitle.toUpperCase(),
       body: LayoutBuilder(
         builder: (context, constraints) {
           if (state.isLoading) {
@@ -191,6 +194,7 @@ class _Target extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return GestureDetector(
       onTapDown: (_) => onTap(),
       child: AnimatedContainer(

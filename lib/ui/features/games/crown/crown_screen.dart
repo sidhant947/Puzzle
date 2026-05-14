@@ -1,3 +1,4 @@
+import "package:puzzle/l10n/app_localizations.dart";
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -37,6 +38,7 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(crownNotifierProvider);
     final notifier = ref.read(crownNotifierProvider.notifier);
@@ -49,8 +51,8 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
     });
 
     return GameScaffold(
-      title: 'CROWN',
-      subtitle: 'Place one crown in each row, column, and color region. Crowns cannot be adjacent, even diagonally.',
+      title: l10n.crownTitle.toUpperCase(),
+      subtitle: l10n.crownSubtitle,
       actions: [
         TangibleButton(
           color: colorScheme.surface,
@@ -159,6 +161,7 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
   }
 
   void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
+    final l10n = AppLocalizations.of(context)!;
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('crown');
     if (!context.mounted) return;
     showDialog(

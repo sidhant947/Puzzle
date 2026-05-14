@@ -1,3 +1,4 @@
+import "package:puzzle/l10n/app_localizations.dart";
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -24,6 +25,7 @@ class _ChangeBlindnessScreenState extends ConsumerState<ChangeBlindnessScreen> {
   }
 
   void _showCompletionDialog(ChangeBlindnessState state) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -44,6 +46,7 @@ class _ChangeBlindnessScreenState extends ConsumerState<ChangeBlindnessScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(changeBlindnessNotifierProvider);
 
@@ -54,8 +57,8 @@ class _ChangeBlindnessScreenState extends ConsumerState<ChangeBlindnessScreen> {
     });
 
     return GameScaffold(
-      title: 'Change Blindness',
-      subtitle: 'SPOT THE CHANGING ITEM',
+      title: l10n.changeBlindnessTitle,
+      subtitle: l10n.changeBlindnessSubtitle,
       actions: [
         TangibleContainer(
           color: colorScheme.surface,

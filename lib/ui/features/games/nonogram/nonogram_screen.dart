@@ -1,3 +1,4 @@
+import "package:puzzle/l10n/app_localizations.dart";
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -19,6 +20,7 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(nonogramNotifierProvider);
 
@@ -29,8 +31,8 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'IMAGE REVEALED!',
-            message: 'Excellent logical deduction. The hidden image has been successfully revealed!',
+            title: l10n.nonogramWin.toUpperCase(),
+            message: l10n.completed,
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
@@ -45,8 +47,8 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
     });
 
     return GameScaffold(
-      title: 'NONOGRAM',
-      subtitle: 'Reveal the hidden image using logic clues.',
+      title: l10n.nonogramTitle.toUpperCase(),
+      subtitle: l10n.nonogramSubtitle,
       actions: [
         TangibleButton(
           color: colorScheme.surface,

@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -23,6 +24,7 @@ class _OddRotationScreenState extends ConsumerState<OddRotationScreen> {
   }
 
   void _showGameOverDialog(bool won) {
+    final l10n = AppLocalizations.of(context)!;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('odd_rotation');
       HapticFeedbackUtil.victory();
@@ -49,6 +51,7 @@ class _OddRotationScreenState extends ConsumerState<OddRotationScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(oddRotationNotifierProvider);
     final notifier = ref.read(oddRotationNotifierProvider.notifier);
@@ -60,8 +63,8 @@ class _OddRotationScreenState extends ConsumerState<OddRotationScreen> {
     });
 
     return GameScaffold(
-      title: 'ODD ROTATION',
-      subtitle: 'One of these is mirrored. Can you find it?',
+      title: l10n.oddRotationTitle.toUpperCase(),
+      subtitle: l10n.oddRotationSubtitle,
       actions: [
         TangibleButton(
           color: colorScheme.surface,

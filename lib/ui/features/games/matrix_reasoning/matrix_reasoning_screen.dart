@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
@@ -26,6 +27,7 @@ class _MatrixReasoningScreenState extends ConsumerState<MatrixReasoningScreen> {
   }
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.read(matrixReasoningNotifierProvider);
     showDialog(
       context: context,
@@ -48,6 +50,7 @@ class _MatrixReasoningScreenState extends ConsumerState<MatrixReasoningScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(matrixReasoningNotifierProvider);
     final notifier = ref.read(matrixReasoningNotifierProvider.notifier);
@@ -68,8 +71,8 @@ class _MatrixReasoningScreenState extends ConsumerState<MatrixReasoningScreen> {
     });
 
     return GameScaffold(
-      title: 'Matrix Reasoning',
-      subtitle: 'Complete the pattern in the 3x3 grid',
+      title: l10n.matrixReasoningTitle.toUpperCase(),
+      subtitle: l10n.matrixReasoningSubtitle,
       body: Column(
         children: [
           Padding(

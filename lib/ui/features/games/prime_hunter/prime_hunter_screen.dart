@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -25,6 +26,7 @@ class _PrimeHunterScreenState extends ConsumerState<PrimeHunterScreen> {
   }
 
   void _showCompletionDialog(bool isVictory) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -48,6 +50,7 @@ class _PrimeHunterScreenState extends ConsumerState<PrimeHunterScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(primeHunterNotifierProvider);
     final notifier = ref.read(primeHunterNotifierProvider.notifier);
@@ -68,15 +71,15 @@ class _PrimeHunterScreenState extends ConsumerState<PrimeHunterScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
-        title: 'Prime Hunter',
+      return GameScaffold(
+        title: l10n.primeHunterTitle.toUpperCase(),
         body: Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
       title: 'Prime Hunter',
-      subtitle: 'Swipe LEFT for PRIME | Swipe RIGHT for COMPOSITE',
+      subtitle: l10n.primeHunterSubtitle,
       body: Column(
         children: [
           Padding(

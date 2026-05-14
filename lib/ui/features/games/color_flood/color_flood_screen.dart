@@ -1,3 +1,4 @@
+import "package:puzzle/l10n/app_localizations.dart";
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -26,6 +27,7 @@ class _ColorFloodScreenState extends ConsumerState<ColorFloodScreen> {
   }
 
   void _showCompletionDialog(bool isVictory) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -49,6 +51,7 @@ class _ColorFloodScreenState extends ConsumerState<ColorFloodScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(colorFloodNotifierProvider);
     final notifier = ref.read(colorFloodNotifierProvider.notifier);
 
@@ -67,8 +70,8 @@ class _ColorFloodScreenState extends ConsumerState<ColorFloodScreen> {
     });
 
     return GameScaffold(
-      title: 'Color Flood',
-      subtitle: 'Moves: ${state.moves} / ${state.maxMoves}',
+      title: l10n.colorFloodTitle,
+      subtitle: l10n.colorFloodSubtitle(state.moves, state.maxMoves),
       body: state.grid.isEmpty 
           ? const Center(child: CircularProgressIndicator())
           : Column(

@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -23,6 +24,7 @@ class _NBackScreenState extends ConsumerState<NBackScreen> {
   }
 
   void _showGameOverDialog(int score) {
+    final l10n = AppLocalizations.of(context)!;
     bool won = score >= 10;
     if (won) {
       HapticFeedbackUtil.victory();
@@ -50,6 +52,7 @@ class _NBackScreenState extends ConsumerState<NBackScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(nBackNotifierProvider);
     final notifier = ref.read(nBackNotifierProvider.notifier);
@@ -61,8 +64,8 @@ class _NBackScreenState extends ConsumerState<NBackScreen> {
     });
 
     return GameScaffold(
-      title: 'N-BACK TEST',
-      subtitle: 'Tap MATCH if the current letter matches the one shown 2 steps ago.',
+      title: l10n.nBackTitle.toUpperCase(),
+      subtitle: l10n.nBackSubtitle,
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(

@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -50,6 +51,7 @@ class _RhythmMasterScreenState extends ConsumerState<RhythmMasterScreen> with Si
   }
 
   void _showGameOverDialog(int score, int perfect) {
+    final l10n = AppLocalizations.of(context)!;
     bool won = perfect >= 10;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('rhythm_master');
@@ -76,6 +78,7 @@ class _RhythmMasterScreenState extends ConsumerState<RhythmMasterScreen> with Si
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(rhythmMasterNotifierProvider);
     
@@ -91,8 +94,8 @@ class _RhythmMasterScreenState extends ConsumerState<RhythmMasterScreen> with Si
     });
 
     return GameScaffold(
-      title: 'RHYTHM MASTER',
-      subtitle: 'Tap in sync with the pulse',
+      title: l10n.rhythmMasterTitle.toUpperCase(),
+      subtitle: l10n.rhythmMasterSubtitle,
       body: GestureDetector(
         onTapDown: (_) {
           final now = DateTime.now().millisecondsSinceEpoch;

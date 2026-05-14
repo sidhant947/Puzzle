@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -14,6 +15,7 @@ class SlidePuzzleScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(slidePuzzleNotifierProvider);
 
     ref.listen(slidePuzzleNotifierProvider, (previous, next) {
@@ -24,7 +26,7 @@ class SlidePuzzleScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'SLIDE PUZZLE',
+      title: l10n.slidePuzzleTitle.toUpperCase(),
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {
@@ -151,6 +153,7 @@ class SlidePuzzleScreen extends ConsumerWidget {
   }
 
   void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
+    final l10n = AppLocalizations.of(context)!;
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('slide_puzzle');
     if (!context.mounted) return;
     showDialog(

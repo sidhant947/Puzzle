@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import '../../../core/juice/game_scaffold.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
@@ -24,12 +25,13 @@ class _AttentionalBlinkScreenState extends ConsumerState<AttentionalBlinkScreen>
   }
 
   void _showCompletionDialog(AttentionalBlinkState state) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'GAME OVER',
-        message: 'You scored ${state.score} targets!',
+        title: l10n.gameOver,
+        message: l10n.attentionalBlinkScoreMessage(state.score),
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();
@@ -44,6 +46,7 @@ class _AttentionalBlinkScreenState extends ConsumerState<AttentionalBlinkScreen>
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(attentionalBlinkNotifierProvider);
 
@@ -54,10 +57,10 @@ class _AttentionalBlinkScreenState extends ConsumerState<AttentionalBlinkScreen>
     });
 
     return GameScaffold(
-      title: 'Attentional Blink',
+      title: l10n.attentionalBlinkTitle,
       subtitle: state.phase == ABPhase.sequence
-          ? 'WATCH FOR THE NUMBERS'
-          : 'ENTER THE TWO NUMBERS YOU SAW',
+          ? l10n.attentionalBlinkSubtitleWatch
+          : l10n.attentionalBlinkSubtitleInput,
       actions: [
         TangibleContainer(
           color: colorScheme.surface,
@@ -84,7 +87,7 @@ class _AttentionalBlinkScreenState extends ConsumerState<AttentionalBlinkScreen>
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       Text(
-                        'SCORE: ${state.score}',
+                        '${l10n.score.toUpperCase()}: ${state.score}',
                         style: TextStyle(
                           fontSize: 20,
                           fontWeight: FontWeight.w900,

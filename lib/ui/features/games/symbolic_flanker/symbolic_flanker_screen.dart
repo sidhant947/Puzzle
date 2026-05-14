@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -25,12 +26,13 @@ class _SymbolicFlankerScreenState extends ConsumerState<SymbolicFlankerScreen> {
   }
 
   void _showCompletionDialog() {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.read(symbolicFlankerNotifierProvider);
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'TIME\'S UP!',
+        title: l10n.timeUp.toUpperCase(),
         message: 'You got ${state.score} correct out of ${state.totalTrials}!',
         isVictory: state.score > 20,
         onHome: () {
@@ -47,6 +49,7 @@ class _SymbolicFlankerScreenState extends ConsumerState<SymbolicFlankerScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(symbolicFlankerNotifierProvider);
     final notifier = ref.read(symbolicFlankerNotifierProvider.notifier);
@@ -61,7 +64,7 @@ class _SymbolicFlankerScreenState extends ConsumerState<SymbolicFlankerScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
+      return GameScaffold(
         title: 'Symbolic Flanker',
         body: Center(child: CircularProgressIndicator()),
       );
@@ -69,7 +72,7 @@ class _SymbolicFlankerScreenState extends ConsumerState<SymbolicFlankerScreen> {
 
     return GameScaffold(
       title: 'Symbolic Flanker',
-      subtitle: 'Focus on the center symbol',
+      subtitle: l10n.symbolicFlankerSubtitle,
       body: Column(
         children: [
           Padding(

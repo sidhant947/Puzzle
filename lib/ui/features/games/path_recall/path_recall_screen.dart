@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -25,6 +26,7 @@ class _PathRecallScreenState extends ConsumerState<PathRecallScreen> {
   }
 
   void _showGameOverDialog(bool won) {
+    final l10n = AppLocalizations.of(context)!;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('path_recall');
     }
@@ -51,6 +53,7 @@ class _PathRecallScreenState extends ConsumerState<PathRecallScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(pathRecallNotifierProvider);
     final notifier = ref.read(pathRecallNotifierProvider.notifier);
@@ -68,7 +71,7 @@ class _PathRecallScreenState extends ConsumerState<PathRecallScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(title: 'PATH RECALL', body: Center(child: CircularProgressIndicator()));
+      return GameScaffold(title: l10n.pathRecallTitle.toUpperCase(), body: Center(child: CircularProgressIndicator()));
     }
 
     return GameScaffold(

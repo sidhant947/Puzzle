@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -31,6 +32,7 @@ class _PixelMimicScreenState extends ConsumerState<PixelMimicScreen> {
   }
 
   void _showGameOverDialog(bool won) {
+    final l10n = AppLocalizations.of(context)!;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('pixel_mimic');
       HapticFeedbackUtil.victory();
@@ -57,6 +59,7 @@ class _PixelMimicScreenState extends ConsumerState<PixelMimicScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(pixelMimicNotifierProvider);
     final notifier = ref.read(pixelMimicNotifierProvider.notifier);
@@ -68,7 +71,7 @@ class _PixelMimicScreenState extends ConsumerState<PixelMimicScreen> {
     });
 
     return GameScaffold(
-      title: 'PIXEL MIMIC',
+      title: l10n.pixelMimicTitle.toUpperCase(),
       subtitle: state.isShowingPattern ? 'Memorize this pattern!' : 'Recreate the pattern!',
       actions: [
         TangibleButton(

@@ -5,6 +5,7 @@ import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../core/juice/game_scaffold.dart';
+import '../../../../l10n/app_localizations.dart';
 import 'letter_cancellation_provider.dart';
 
 class LetterCancellationScreen extends ConsumerStatefulWidget {
@@ -23,14 +24,15 @@ class _LetterCancellationScreenState extends ConsumerState<LetterCancellationScr
     });
   }
 
-  void _showCompletionDialog() {
+  void _showCompletionDialog(AppLocalizations l10n) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.read(letterCancellationNotifierProvider);
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'TIME\'S UP!',
-        message: 'You found ${state.score} letters!',
+        title: l10n.timeUp.toUpperCase(),
+        message: l10n.letterCancellationScoreMessage(state.score),
         isVictory: state.score > 30,
         onHome: () {
           Navigator.of(context).pop();
@@ -46,6 +48,7 @@ class _LetterCancellationScreenState extends ConsumerState<LetterCancellationScr
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(letterCancellationNotifierProvider);
     final notifier = ref.read(letterCancellationNotifierProvider.notifier);
@@ -55,20 +58,20 @@ class _LetterCancellationScreenState extends ConsumerState<LetterCancellationScr
         HapticFeedbackUtil.vibrate();
         await ref.read(gameStreakNotifierProvider.notifier).completeGame('letter_cancellation');
         if (!context.mounted) return;
-        _showCompletionDialog();
+        _showCompletionDialog(l10n);
       }
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
-        title: 'Letter Cancellation',
-        body: Center(child: CircularProgressIndicator()),
+      return GameScaffold(
+        title: l10n.letterCancellationTitleFull,
+        body: const Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
-      title: 'Letter Cancel',
-      subtitle: 'Find all "${state.target}" letters',
+      title: l10n.letterCancellationTitle,
+      subtitle: l10n.letterCancellationSubtitle(state.target),
       body: Column(
         children: [
           Padding(
@@ -76,8 +79,8 @@ class _LetterCancellationScreenState extends ConsumerState<LetterCancellationScr
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildStat('FOUND', '${state.foundIndices.length}/${state.targetCount}'),
-                _buildStat('TIME', '${state.timeLeft}s', color: state.timeLeft < 10 ? DesignSystem.error : null),
+                _buildStat(l10n.letterCancellationFound, '${state.foundIndices.length}/${state.targetCount}'),
+                _buildStat(l10n.letterCancellationTime, '${state.timeLeft}s', color: state.timeLeft < 10 ? DesignSystem.error : null),
               ],
             ),
           ),

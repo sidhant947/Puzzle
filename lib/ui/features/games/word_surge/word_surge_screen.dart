@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -25,6 +26,7 @@ class _WordSurgeScreenState extends ConsumerState<WordSurgeScreen> {
   }
 
   void _showCompletionDialog(bool isVictory) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
@@ -48,6 +50,7 @@ class _WordSurgeScreenState extends ConsumerState<WordSurgeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(wordSurgeNotifierProvider);
     final notifier = ref.read(wordSurgeNotifierProvider.notifier);
@@ -66,15 +69,15 @@ class _WordSurgeScreenState extends ConsumerState<WordSurgeScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
-        title: 'Word Surge',
+      return GameScaffold(
+        title: l10n.wordSurgeTitle.toUpperCase(),
         body: Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
       title: 'Word Surge',
-      subtitle: 'Synonyms & Antonyms',
+      subtitle: l10n.wordSurgeSubtitle,
       body: Padding(
         padding: const EdgeInsets.all(DesignSystem.spaceLG),
         child: Column(
