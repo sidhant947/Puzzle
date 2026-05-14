@@ -213,9 +213,9 @@ class CalculationSprintScreen extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               TangibleContainer(
-                color: Theme.of(context).colorScheme.onSurface,
-                shadowColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
-                depth: 6.0,
+                color: state.isInvalidGuess ? DesignSystem.error : Theme.of(context).colorScheme.onSurface,
+                shadowColor: state.isInvalidGuess ? DesignSystem.error.withValues(alpha: 0.5) : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
+                depth: state.isInvalidGuess ? 2.0 : 6.0,
                 padding: EdgeInsets.all(isSmall
                     ? DesignSystem.spaceXL
                     : DesignSystem.spaceXL * 1.5),

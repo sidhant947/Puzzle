@@ -84,11 +84,10 @@ class WordScrambleNotifier extends _$WordScrambleNotifier {
 
   void submitGuess() {
     if (state.isGameOver || state.currentGuess.isEmpty) return;
-    
-    final isCorrect = _engine.checkGuess(state.currentGuess, state.targetWord);
-    
-    if (isCorrect) {
-      state = state.copyWith(
+
+    final isCorrect = _engine.checkGuess(state.currentGuess, state.targetWord, _wordList);
+
+    if (isCorrect) {      state = state.copyWith(
         isGameOver: true,
         isGameWon: true,
       );

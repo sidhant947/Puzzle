@@ -159,12 +159,12 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Icon(eq.symbols[0], size: iconSize, color: DesignSystem.accentAmber),
+          Icon(eq.symbols[0], size: iconSize, color: Theme.of(context).colorScheme.primary),
           Padding(
-            padding: EdgeInsets.symmetric(horizontal: isSmall ? 8 : 12),
+            padding: EdgeInsets.symmetric(horizontal: isSmall ? 8 : DesignSystem.spaceSM),
             child: Text('+', style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))),
           ),
-          Icon(eq.symbols[1], size: iconSize, color: DesignSystem.accentIndigo),
+          Icon(eq.symbols[1], size: iconSize, color: Theme.of(context).colorScheme.primary),
           Padding(
             padding: EdgeInsets.symmetric(horizontal: isSmall ? 8 : 12),
             child: Text('=', style: TextStyle(fontSize: fontSize, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))),
@@ -190,102 +190,94 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
   }
 
   Widget _buildNumberPad(SymbolLogicNotifier notifier, bool isSmall) {
-    final keyHeight = isSmall ? 40.0 : 50.0;
-    final fontSize = isSmall ? 20.0 : 24.0;
-
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
-      child: Column(
-        children: [
-          for (var row in [[1, 2, 3], [4, 5, 6], [7, 8, 9]])
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: row.map((n) => Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: TangibleButton(
-                    onTap: () {
-                      HapticFeedbackUtil.lightImpact();
-                      notifier.onNumberPressed(n.toString());
-                    },
-                    color: Theme.of(context).colorScheme.surface,
-                    shadowColor: Theme.of(context).colorScheme.outline,
-                    child: Container(
-                      height: keyHeight,
-                      alignment: Alignment.center,
-                      child: Text(
-                        n.toString(),
-                        style: TextStyle(fontWeight: FontWeight.w900, fontSize: fontSize, color: Theme.of(context).colorScheme.onSurface),
-                      ),
-                    ),
-                  ),
-                ),
-              )).toList(),
-            ),
+    return Column(
+      children: [
+        for (var row in [[1, 2, 3, 4, 5], [6, 7, 8, 9, 0]])
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
+            children: row.map((n) => Padding(
+              padding: const EdgeInsets.all(DesignSystem.spaceXS),
+              child: TangibleButton(
+                color: Theme.of(context).colorScheme.surface,
+                shadowColor: Theme.of(context).colorScheme.outline,
+                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                onTap: () {
+                  HapticFeedbackUtil.lightImpact();
+                  notifier.onNumberPressed(n.toString());
+                },
+                child: Text(
+                  n.toString(),
+                  style: TextStyle(
+                    color: Theme.of(context).colorScheme.onSurface,
+                    fontWeight: FontWeight.w900,
+                    fontSize: 14,
+                  ),
+                ),
+              ),
+            )).toList(),
+          ),
+        const SizedBox(height: DesignSystem.spaceSM),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+          child: Row(
             children: [
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: TangibleButton(
-                    onTap: () {
-                      HapticFeedbackUtil.mediumImpact();
-                      notifier.onBackspace();
-                    },
-                    color: Theme.of(context).colorScheme.surface,
-                    shadowColor: Theme.of(context).colorScheme.outline,
-                    child: Container(
-                      height: keyHeight,
-                      alignment: Alignment.center,
-                      child: Icon(Icons.backspace_rounded, color: DesignSystem.error, size: isSmall ? 20 : 24),
-                    ),
-                  ),
-                ),
-              ),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: TangibleButton(
-                    onTap: () {
-                      HapticFeedbackUtil.lightImpact();
-                      notifier.onNumberPressed('0');
-                    },
-                    color: Theme.of(context).colorScheme.surface,
-                    shadowColor: Theme.of(context).colorScheme.outline,
-                    child: Container(
-                      height: keyHeight,
-                      alignment: Alignment.center,
-                      child: Text(
-                        '0',
-                        style: TextStyle(fontWeight: FontWeight.w900, fontSize: fontSize, color: Theme.of(context).colorScheme.onSurface),
+                child: TangibleButton(
+                  color: DesignSystem.accentBerry,
+                  shadowColor: const Color(0xFFBE185D),
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  onTap: () {
+                    HapticFeedbackUtil.mediumImpact();
+                    notifier.onBackspace();
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(Icons.backspace_rounded, color: Colors.white, size: 18),
+                      const SizedBox(width: DesignSystem.spaceSM),
+                      Text(
+                        'DEL',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w900,
+                          fontSize: 14,
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
               ),
+              const SizedBox(width: DesignSystem.spaceMD),
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(4.0),
-                  child: TangibleButton(
-                    onTap: () {
-                      HapticFeedbackUtil.heavyImpact();
-                      notifier.submitGuess();
-                    },
-                    color: DesignSystem.primary,
-                    shadowColor: const Color(0xFF1E3A8A),
-                    child: Container(
-                      height: keyHeight,
-                      alignment: Alignment.center,
-                      child: Icon(Icons.check_rounded, color: Colors.white, size: isSmall ? 20 : 24),
-                    ),
+                child: TangibleButton(
+                  color: DesignSystem.primary,
+                  shadowColor: DesignSystem.primaryShadow,
+                  padding: const EdgeInsets.symmetric(vertical: 10),
+                  onTap: () {
+                    HapticFeedbackUtil.heavyImpact();
+                    notifier.submitGuess();
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(Icons.check_rounded, color: Colors.white, size: 18),
+                      const SizedBox(width: DesignSystem.spaceSM),
+                      Text(
+                        'SUBMIT',
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontWeight: FontWeight.w900,
+                          fontSize: 14,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
             ],
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 }

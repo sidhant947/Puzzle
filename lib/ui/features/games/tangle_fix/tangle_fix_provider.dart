@@ -87,13 +87,15 @@ class TangleFixNotifier extends _$TangleFixNotifier {
       return node;
     }).toList();
 
-    state = state.copyWith(
-      nodes: updatedNodes,
-      isSolved: _engine.isSolved(updatedNodes, state.edges),
-    );
+    state = state.copyWith(nodes: updatedNodes);
   }
 
   void onDragEnd() {
-    state = state.copyWith(draggingNodeId: null);
+    if (state.draggingNodeId == null) return;
+    
+    state = state.copyWith(
+      draggingNodeId: null,
+      isSolved: _engine.isSolved(state.nodes, state.edges),
+    );
   }
 }

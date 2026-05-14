@@ -77,8 +77,11 @@ class FlankerTestNotifier extends _$FlankerTestNotifier {
     });
   }
 
+  bool _isProcessing = false;
+
   void onDirectionSelected(int dir) {
-    if (state.isGameOver) return;
+    if (state.isGameOver || _isProcessing) return;
+    _isProcessing = true;
 
     if (dir == state.targetDirection) {
       final newTrial = _engine.generateTrial();
@@ -93,5 +96,8 @@ class FlankerTestNotifier extends _$FlankerTestNotifier {
         state = state.copyWith(timeLeft: state.timeLeft - 2);
       }
     }
+    
+    // Release the lock immediately after state update
+    _isProcessing = false;
   }
 }

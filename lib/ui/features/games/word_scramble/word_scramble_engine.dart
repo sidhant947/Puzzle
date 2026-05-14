@@ -3,18 +3,35 @@ import 'package:flutter/services.dart';
 
 class WordScrambleEngine {
   static const int minWordLength = 4;
-  static const int maxWordLength = 7;
+  static const int maxWordLength = 8;
+
+  List<String>? _cachedWords;
 
   Future<List<String>> loadWords([String languageCode = 'en']) async {
+    if (_cachedWords != null && _cachedWords!.isNotEmpty) {
+      return _cachedWords!;
+    }
+
     try {
       final data = await rootBundle.loadString('assets/find_word_words.txt');
-      return data
+      _cachedWords = data
           .split('\n')
           .map((w) => w.trim().toUpperCase())
-          .where((w) => w.length >= minWordLength && w.length <= maxWordLength)
+          .where((w) => w.isNotEmpty && w.length >= minWordLength && w.length <= maxWordLength)
           .toList();
+      
+      if (_cachedWords!.isEmpty) {
+        throw Exception('No words found in file');
+      }
+      
+      return _cachedWords!;
     } catch (e) {
-      return ['APPLE', 'BANANA', 'CHERRY', 'ORANGE', 'GRAPES'];
+      // Fallback words if loading fails
+      return [
+        'APPLE', 'BANANA', 'CHERRY', 'ORANGE', 'GRAPES', 
+        'MELON', 'PEACH', 'PLUM', 'MANGO', 'LEMON',
+        'GUAVA', 'BERRY', 'FRUIT', 'CANDY', 'SWEET'
+      ];
     }
   }
 
@@ -33,7 +50,19 @@ class WordScrambleEngine {
     return scrambled;
   }
 
-  bool checkGuess(String guess, String target) {
-    return guess.trim().toUpperCase() == target.trim().toUpperCase();
+  bool checkGuess(String guess, String target, List<String> wordList) {
+    final g = guess.trim().toUpperCase();
+    final t = target.trim().toUpperCase();
+    
+    if (g == t) return true;
+    
+    // Check if it's a valid anagram
+    if (wordList.contains(g)) {
+      final gLetters = g.split('')..sort();
+      final tLetters = t.split('')..sort();
+      return gLetters.join('') == tLetters.join('');
+    }
+    
+    return false;
   }
 }

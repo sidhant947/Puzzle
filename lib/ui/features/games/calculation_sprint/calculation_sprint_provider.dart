@@ -13,6 +13,7 @@ class CalculationSprintState {
   final int score;
   final int timeRemaining;
   final int bestScore;
+  final bool isInvalidGuess;
 
   CalculationSprintState({
     this.status = SprintStatus.ready,
@@ -20,6 +21,7 @@ class CalculationSprintState {
     this.score = 0,
     this.timeRemaining = 60,
     this.bestScore = 0,
+    this.isInvalidGuess = false,
   });
 
   CalculationSprintState copyWith({
@@ -28,6 +30,7 @@ class CalculationSprintState {
     int? score,
     int? timeRemaining,
     int? bestScore,
+    bool? isInvalidGuess,
   }) {
     return CalculationSprintState(
       status: status ?? this.status,
@@ -35,6 +38,7 @@ class CalculationSprintState {
       score: score ?? this.score,
       timeRemaining: timeRemaining ?? this.timeRemaining,
       bestScore: bestScore ?? this.bestScore,
+      isInvalidGuess: isInvalidGuess ?? this.isInvalidGuess,
     );
   }
 }
@@ -77,16 +81,24 @@ class CalculationSprintNotifier extends _$CalculationSprintNotifier {
       state = state.copyWith(
         score: newScore,
         currentProblem: _engine.generateProblem(newScore),
+        isInvalidGuess: false,
       );
     } else {
       // Penalty for wrong answer (time deduction)
       final newTime = state.timeRemaining - 3;
       if (newTime <= 0) {
-        state = state.copyWith(timeRemaining: 0);
+        state = state.copyWith(timeRemaining: 0, isInvalidGuess: true);
         _endGame();
       } else {
-        state = state.copyWith(timeRemaining: newTime);
+        state = state.copyWith(timeRemaining: newTime, isInvalidGuess: true);
       }
+      
+      // Auto clear the invalid flag after a tiny delay so it can shake again
+      Future.delayed(const Duration(milliseconds: 400), () {
+        if (state.status == SprintStatus.playing) {
+          state = state.copyWith(isInvalidGuess: false);
+        }
+      });
     }
   }
 
