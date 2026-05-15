@@ -32,13 +32,13 @@ class DesignSystem {
   static const Color outline = Color(0xFFE2E8F0);
   static const Color outlineVariant = Color(0xFFCBD5E1);
 
-  // --- Dark Theme Colors ---
-  static const Color darkBackground = Color(0xFF0F172A); // Deep Slate
-  static const Color darkSurface = Color(0xFF1E293B);    // Slate 800
+  // --- Dark Theme Colors (AMOLED Optimized) ---
+  static const Color darkBackground = Color(0xFF000000); // Pure Black
+  static const Color darkSurface = Color(0xFF121212);    // Near Black
   static const Color darkInk = Color(0xFFF8FAFC);       // Slate 50
-  static const Color darkInkSlate = Color(0xFFCBD5E1);  // Slate 300
-  static const Color darkOutline = Color(0xFF334155);   // Slate 700
-  static const Color darkOutlineVariant = Color(0xFF475569); // Slate 600
+  static const Color darkInkSlate = Color(0xFFB3C1D1);  // Adjusted for contrast
+  static const Color darkOutline = Color(0xFF262626);   // Darker Grey
+  static const Color darkOutlineVariant = Color(0xFF333333); // Subtle Grey
 
   // --- Theme Building ---
   static ThemeData get lightTheme => _buildTheme(Brightness.light);

@@ -7,7 +7,7 @@ part of 'flanker_test_provider.dart';
 // **************************************************************************
 
 String _$flankerTestNotifierHash() =>
-    r'48942a6f0ef2cc08bc91cb12c12e7738f6d06e07';
+    r'e237df686739425fb47a3835c37a26c24b85a954';
 
 /// See also [FlankerTestNotifier].
 @ProviderFor(FlankerTestNotifier)

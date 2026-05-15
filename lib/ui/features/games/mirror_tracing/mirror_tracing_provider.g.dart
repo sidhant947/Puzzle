@@ -7,7 +7,7 @@ part of 'mirror_tracing_provider.dart';
 // **************************************************************************
 
 String _$mirrorTracingNotifierHash() =>
-    r'956517680743aa422b77fb9d98a9198e0138fccb';
+    r'eca7dfe8ca77d6b69a478f75171fe1a2b5cf1a3a';
 
 /// See also [MirrorTracingNotifier].
 @ProviderFor(MirrorTracingNotifier)

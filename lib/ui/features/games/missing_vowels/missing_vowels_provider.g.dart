@@ -7,7 +7,7 @@ part of 'missing_vowels_provider.dart';
 // **************************************************************************
 
 String _$missingVowelsNotifierHash() =>
-    r'bbccc87ef0891fbd523961e0e8b75a09f515ddad';
+    r'90a9319522d30874fe6d3b35018e645fce6c1a60';
 
 /// See also [MissingVowelsNotifier].
 @ProviderFor(MissingVowelsNotifier)

@@ -7,7 +7,7 @@ part of 'word_scramble_provider.dart';
 // **************************************************************************
 
 String _$wordScrambleNotifierHash() =>
-    r'cc33a148de1ff772530b72b60fdf2e051a3eb92a';
+    r'bbe4a5446db38bd8ec2744f6659236f4c9e57390';
 
 /// See also [WordScrambleNotifier].
 @ProviderFor(WordScrambleNotifier)

@@ -7,7 +7,7 @@ part of 'path_finder_provider.dart';
 // **************************************************************************
 
 String _$pathFinderNotifierHash() =>
-    r'ffa668f6bbc96d3303faba9c940bf2c6d34fe3e0';
+    r'fc7f2430bc9cc2dd31c93a26d211be371e4d03b4';
 
 /// See also [PathFinderNotifier].
 @ProviderFor(PathFinderNotifier)

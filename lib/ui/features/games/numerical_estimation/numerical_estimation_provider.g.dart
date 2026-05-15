@@ -7,7 +7,7 @@ part of 'numerical_estimation_provider.dart';
 // **************************************************************************
 
 String _$numericalEstimationNotifierHash() =>
-    r'c47036c35696aba3611e658491cccdaabcf08068';
+    r'7fe46fe01262c71e9518b606a173617d3b0a2a8b';
 
 /// See also [NumericalEstimationNotifier].
 @ProviderFor(NumericalEstimationNotifier)

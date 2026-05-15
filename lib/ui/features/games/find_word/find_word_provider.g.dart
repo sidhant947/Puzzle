@@ -6,7 +6,7 @@ part of 'find_word_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$findWordNotifierHash() => r'10d4816a42d1ccd8c50fac8800e5a855b0b01e50';
+String _$findWordNotifierHash() => r'35054f155a225855fdba1d6d51ec61885c1d1223';
 
 /// See also [FindWordNotifier].
 @ProviderFor(FindWordNotifier)

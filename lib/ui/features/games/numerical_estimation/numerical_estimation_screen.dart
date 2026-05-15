@@ -32,9 +32,9 @@ class _NumericalEstimationScreenState extends ConsumerState<NumericalEstimationS
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: l10n.timeUp.toUpperCase(),
+        title: state.isTrialMode ? l10n.completed.toUpperCase() : l10n.timeUp.toUpperCase(),
         message: 'You made ${state.score} correct estimations.',
-        isVictory: state.score >= 10,
+        isVictory: state.isTrialMode ? state.score >= 10 : state.score > 5,
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();
@@ -73,7 +73,9 @@ class _NumericalEstimationScreenState extends ConsumerState<NumericalEstimationS
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 _buildStatCard(context, 'SCORE', state.score.toString()),
-                _buildStatCard(context, 'TIME', '${state.timeLeft}s', color: state.timeLeft < 10 ? DesignSystem.error : null),
+                state.isTrialMode
+                    ? _buildStatCard(context, 'TRIALS', '${state.totalTrials}/${state.targetTrials}')
+                    : _buildStatCard(context, 'TIME', '${state.timeLeft}s', color: state.timeLeft < 10 ? DesignSystem.error : null),
               ],
             ),
           ),
