@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:math';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
@@ -81,7 +82,7 @@ class UserDataNotifier extends _$UserDataNotifier {
   Future<void> incrementTotalSolved() async {
     final newState = state.copyWith(totalSolved: (state.totalSolved ?? 0) + 1);
     state = newState;
-    await ref.read(userRepositoryProvider).saveUserData(newState);
+    unawaited(ref.read(userRepositoryProvider).saveUserData(newState));
   }
 
   Future<void> updateSuperStreak(Map<String, GameStreak> streaks) async {
@@ -110,7 +111,7 @@ class UserDataNotifier extends _$UserDataNotifier {
         lastSuperStreakDate: now,
       );
       state = newState;
-      await ref.read(userRepositoryProvider).saveUserData(newState);
+      unawaited(ref.read(userRepositoryProvider).saveUserData(newState));
     }
   }
 
@@ -142,7 +143,7 @@ class UserDataNotifier extends _$UserDataNotifier {
     }
     final newState = state.copyWith(favoriteGameIds: favorites);
     state = newState;
-    await ref.read(userRepositoryProvider).saveUserData(newState);
+    unawaited(ref.read(userRepositoryProvider).saveUserData(newState));
   }
 
   Future<void> setTrialMode(bool enabled) async {

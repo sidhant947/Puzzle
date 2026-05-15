@@ -965,6 +965,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       body: CustomScrollView(
+        cacheExtent: 1000.0,
         physics: const BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(

@@ -7,8 +7,12 @@ class UserRepository {
   static const String gameStreakBoxName = 'game_streaks';
 
   Future<void> init() async {
-    await Hive.openBox<UserData>(userDataBoxName);
-    await Hive.openBox<GameStreak>(gameStreakBoxName);
+    final userBox = await Hive.openBox<UserData>(userDataBoxName);
+    final streakBox = await Hive.openBox<GameStreak>(gameStreakBoxName);
+    
+    // Compact boxes periodically to clean up append-only log files
+    await userBox.compact();
+    await streakBox.compact();
   }
 
   UserData getUserData() {
