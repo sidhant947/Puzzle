@@ -6,9 +6,9 @@ enum LetterStatus { initial, notInWord, wrongSpot, correctSpot }
 class FindWordEngine {
   static const int maxTries = 6;
   static const int wordLength = 5;
-  static final Map<String, List<String>> _cachedWords = {};
+  static final Map<String, Set<String>> _cachedWords = {};
 
-  Future<List<String>> loadWords([String languageCode = 'en']) async {
+  Future<Set<String>> loadWords([String languageCode = 'en']) async {
     if (_cachedWords.containsKey(languageCode)) return _cachedWords[languageCode]!;
     
     try {
@@ -17,7 +17,7 @@ class FindWordEngine {
           .split('\n')
           .map((w) => w.trim().toUpperCase())
           .where((w) => w.length == wordLength)
-          .toList();
+          .toSet();
       
       if (words.isEmpty) {
         return _getFallbackWords();
@@ -29,13 +29,13 @@ class FindWordEngine {
     }
   }
 
-  List<String> _getFallbackWords() {
-    return ['APPLE', 'BRAIN', 'CHAIR', 'DANCE', 'EARTH'];
+  Set<String> _getFallbackWords() {
+    return {'APPLE', 'BRAIN', 'CHAIR', 'DANCE', 'EARTH'};
   }
 
-  String getRandomWord(List<String> words) {
+  String getRandomWord(Set<String> words) {
     if (words.isEmpty) return 'APPLE';
-    return words[Random().nextInt(words.length)];
+    return words.elementAt(Random().nextInt(words.length));
   }
 
   List<LetterStatus> checkGuess(String guess, String target) {

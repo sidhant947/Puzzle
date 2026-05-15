@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
@@ -936,6 +937,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   String _searchQuery = "";
   String _selectedCategory = "ALL";
   late final TextEditingController _searchController;
+  Timer? _debounce;
 
   @override
   void initState() {
@@ -945,6 +947,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   void dispose() {
+    _debounce?.cancel();
     _searchController.dispose();
     super.dispose();
   }
@@ -958,15 +961,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final l10n = AppLocalizations.of(context)!;
 
     final filteredGames = List<Map<String, dynamic>>.from(ref.watch(filteredGamesProvider(searchQuery: _searchQuery, selectedCategory: _selectedCategory)));
-
-    // Sort: Favorites first, then by title (or original order)
-    filteredGames.sort((a, b) {
-      final aFav = favoriteIds.contains(a['id']);
-      final bFav = favoriteIds.contains(b['id']);
-      if (aFav && !bFav) return -1;
-      if (!aFav && bFav) return 1;
-      return 0;
-    });
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -1088,7 +1082,12 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     padding: EdgeInsets.zero,
                     child: TextField(
                       controller: _searchController,
-                      onChanged: (value) => setState(() => _searchQuery = value),
+                      onChanged: (value) {
+                        if (_debounce?.isActive ?? false) _debounce!.cancel();
+                        _debounce = Timer(const Duration(milliseconds: 300), () {
+                          setState(() => _searchQuery = value);
+                        });
+                      },
                       decoration: InputDecoration(
                         hintText: l10n.searchGames.toUpperCase(),
                         hintStyle: TextStyle(

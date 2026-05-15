@@ -2,23 +2,37 @@ import 'package:flutter/services.dart';
 
 /// Centralized haptic feedback utility for consistent haptic patterns across the app
 class HapticFeedbackUtil {
+  static int _lastHapticTime = 0;
+  static const int _throttleMs = 30; // Min time between haptics
+
+  static bool _shouldThrottle() {
+    final now = DateTime.now().millisecondsSinceEpoch;
+    if (now - _lastHapticTime < _throttleMs) return true;
+    _lastHapticTime = now;
+    return false;
+  }
+
   /// Light impact for selection/tap interactions
   static void lightImpact() {
+    if (_shouldThrottle()) return;
     HapticFeedback.lightImpact();
   }
 
   /// Medium impact for important interactions
   static void mediumImpact() {
+    if (_shouldThrottle()) return;
     HapticFeedback.mediumImpact();
   }
 
   /// Heavy impact for significant events (victory, errors)
   static void heavyImpact() {
+    if (_shouldThrottle()) return;
     HapticFeedback.heavyImpact();
   }
 
   /// Selection click for cell/button selections
   static void selectionClick() {
+    if (_shouldThrottle()) return;
     HapticFeedback.selectionClick();
   }
 

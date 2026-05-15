@@ -1,4 +1,5 @@
 import 'dart:math';
+import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'word_search_engine.dart';
 import 'package:flutter/services.dart';
@@ -35,8 +36,6 @@ class WordSearchState {
 
 @riverpod
 class WordSearchNotifier extends _$WordSearchNotifier {
-  final _engine = WordSearchEngine();
-
   @override
   WordSearchState build() {
     return WordSearchState();
@@ -81,7 +80,7 @@ class WordSearchNotifier extends _$WordSearchNotifier {
       ];
     }
 
-    final board = _engine.generateBoard(selectedWords);
+    final board = await compute(WordSearchEngine.generateBoard, selectedWords);
     state = WordSearchState(board: board);
   }
 

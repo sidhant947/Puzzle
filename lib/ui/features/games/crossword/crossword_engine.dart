@@ -1,5 +1,6 @@
 import 'dart:convert';
 import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart';
 
 class CrosswordWord {
   final String word;
@@ -34,14 +35,18 @@ class CrosswordBoard {
 class CrosswordEngine {
   static const int boardSize = 5;
 
+  static List<Map<String, String>> _parseJson(String response) {
+    final data = json.decode(response) as List<dynamic>;
+    return data.map((item) => {
+      "word": item['word'].toString().toUpperCase(),
+      "clue": item['clue'].toString()
+    }).toList();
+  }
+
   Future<List<Map<String, String>>> loadData([String languageCode = 'en']) async {
     try {
       final String response = await rootBundle.loadString('assets/crossword_data.json');
-      final data = await json.decode(response) as List<dynamic>;
-      return data.map((item) => {
-        "word": item['word'].toString().toUpperCase(),
-        "clue": item['clue'].toString()
-      }).toList();
+      return await compute(_parseJson, response);
     } catch (e) {
       return [
         {"word": "ACE", "clue": "A top-ranking playing card"},

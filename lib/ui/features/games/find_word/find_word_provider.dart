@@ -54,7 +54,7 @@ class FindWordState {
 @riverpod
 class FindWordNotifier extends _$FindWordNotifier {
   final _engine = FindWordEngine();
-  List<String> _wordList = [];
+  Set<String> _wordList = {};
 
   @override
   FindWordState build() {
