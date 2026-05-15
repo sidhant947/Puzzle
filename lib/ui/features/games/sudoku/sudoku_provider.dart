@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'sudoku_engine.dart';
 
@@ -43,9 +44,17 @@ class SudokuNotifier extends _$SudokuNotifier {
   static const int boardSize = 9;
 
   @override
-  SudokuState build() {
-    final solved = _engine.generateBoard();
-    final puzzle = _engine.createPuzzle(solved, 35); // 35 clues for 9x9
+  Future<SudokuState> build() async {
+    return _generateNewGame();
+  }
+
+  Future<SudokuState> _generateNewGame() async {
+    final solved = await compute((_) => SudokuEngine.generateFullBoard(), null);
+    final puzzle = await compute(SudokuEngine.generateInitialPuzzle, {
+      'solved': solved,
+      'clues': 35,
+    });
+    
     return SudokuState(
       initialBoard: List.generate(boardSize, (r) => List.from(puzzle[r])),
       currentBoard: List.generate(boardSize, (r) => List.from(puzzle[r])),
@@ -53,32 +62,30 @@ class SudokuNotifier extends _$SudokuNotifier {
     );
   }
 
-  void initGame() {
-    final solved = _engine.generateBoard();
-    final puzzle = _engine.createPuzzle(solved, 35); // 35 clues for 9x9
-    state = SudokuState(
-      initialBoard: List.generate(boardSize, (r) => List.from(puzzle[r])),
-      currentBoard: List.generate(boardSize, (r) => List.from(puzzle[r])),
-      solvedBoard: solved,
-    );
+  Future<void> initGame() async {
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(() => _generateNewGame());
   }
 
   void selectCell(int r, int c) {
-    state = state.copyWith(selectedRow: r, selectedCol: c);
+    if (!state.hasValue) return;
+    state = AsyncValue.data(state.value!.copyWith(selectedRow: r, selectedCol: c));
   }
 
   void setNumber(int num) {
-    if (state.selectedRow == null || state.selectedCol == null) return;
-    if (state.isSolved) return;
+    if (!state.hasValue) return;
+    final currentState = state.value!;
+    if (currentState.selectedRow == null || currentState.selectedCol == null) return;
+    if (currentState.isSolved) return;
 
-    final r = state.selectedRow!;
-    final c = state.selectedCol!;
+    final r = currentState.selectedRow!;
+    final c = currentState.selectedCol!;
 
     // Prevent modifying fixed (initial) numbers
-    if (state.initialBoard[r][c] != 0) return;
+    if (currentState.initialBoard[r][c] != 0) return;
 
     final newBoard =
-        List.generate(boardSize, (i) => List<int>.from(state.currentBoard[i]));
+        List.generate(boardSize, (i) => List<int>.from(currentState.currentBoard[i]));
 
     if (newBoard[r][c] == num) {
       newBoard[r][c] = 0; // Erase if same number is tapped
@@ -87,8 +94,8 @@ class SudokuNotifier extends _$SudokuNotifier {
     }
 
     bool solved = _engine.isComplete(newBoard) &&
-        _engine.isCorrect(newBoard, state.solvedBoard);
+        _engine.isCorrect(newBoard, currentState.solvedBoard);
 
-    state = state.copyWith(currentBoard: newBoard, isSolved: solved);
+    state = AsyncValue.data(currentState.copyWith(currentBoard: newBoard, isSolved: solved));
   }
 }

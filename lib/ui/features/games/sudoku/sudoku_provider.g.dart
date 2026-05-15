@@ -6,12 +6,12 @@ part of 'sudoku_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sudokuNotifierHash() => r'89fe3ac4039689fb19d608003cee7cb5f1f5e12e';
+String _$sudokuNotifierHash() => r'9748627c661a2e46cefee37640d4c5a162757e44';
 
 /// See also [SudokuNotifier].
 @ProviderFor(SudokuNotifier)
 final sudokuNotifierProvider =
-    AutoDisposeNotifierProvider<SudokuNotifier, SudokuState>.internal(
+    AutoDisposeAsyncNotifierProvider<SudokuNotifier, SudokuState>.internal(
   SudokuNotifier.new,
   name: r'sudokuNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -21,6 +21,6 @@ final sudokuNotifierProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$SudokuNotifier = AutoDisposeNotifier<SudokuState>;
+typedef _$SudokuNotifier = AutoDisposeAsyncNotifier<SudokuState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

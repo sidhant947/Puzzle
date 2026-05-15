@@ -50,9 +50,11 @@ class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserv
     return Scaffold(
       extendBody: true,
       backgroundColor: colorScheme.surface,
-      body: IndexedStack(
-        index: _selectedIndex,
-        children: _screens,
+      body: RepaintBoundary(
+        child: IndexedStack(
+          index: _selectedIndex,
+          children: _screens,
+        ),
       ),
       bottomNavigationBar: SafeArea(
         child: Padding(
@@ -121,42 +123,44 @@ class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserv
           }
         },
         behavior: HitTestBehavior.opaque,
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: DesignSystem.spaceSM),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              AnimatedScale(
-                scale: isSelected ? 1.1 : 1.0,
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeOutBack,
-                child: Icon(
-                  icon,
-                  size: 28,
-                  color: color,
-                ),
-              ),
-              const SizedBox(height: DesignSystem.spaceXS),
-              Text(
-                label,
-                style: TextStyle(
-                  color: color,
-                  fontWeight: isSelected ? FontWeight.w900 : FontWeight.w700,
-                  letterSpacing: 1.0,
-                  fontSize: 10,
-                ),
-              ),
-              if (isSelected)
-                Container(
-                  margin: const EdgeInsets.only(top: 4),
-                  width: 6,
-                  height: 6,
-                  decoration: BoxDecoration(
-                    color: colorScheme.primary,
-                    shape: BoxShape.circle,
+        child: RepaintBoundary(
+          child: Container(
+            padding: const EdgeInsets.symmetric(vertical: DesignSystem.spaceSM),
+            child: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                AnimatedScale(
+                  scale: isSelected ? 1.1 : 1.0,
+                  duration: const Duration(milliseconds: 300),
+                  curve: Curves.easeOutBack,
+                  child: Icon(
+                    icon,
+                    size: 28,
+                    color: color,
                   ),
                 ),
-            ],
+                const SizedBox(height: DesignSystem.spaceXS),
+                Text(
+                  label,
+                  style: TextStyle(
+                    color: color,
+                    fontWeight: isSelected ? FontWeight.w900 : FontWeight.w700,
+                    letterSpacing: 1.0,
+                    fontSize: 10,
+                  ),
+                ),
+                if (isSelected)
+                  Container(
+                    margin: const EdgeInsets.only(top: 4),
+                    width: 6,
+                    height: 6,
+                    decoration: BoxDecoration(
+                      color: colorScheme.primary,
+                      shape: BoxShape.circle,
+                    ),
+                  ),
+              ],
+            ),
           ),
         ),
       ),

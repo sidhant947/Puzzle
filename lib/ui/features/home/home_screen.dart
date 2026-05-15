@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import '../../../../providers/user_providers.dart';
+import '../../../../providers/game_providers.dart';
 import '../../../../data/models/game_streak.dart';
 import '../../../../widgets/super_streak_action.dart';
 import '../../../../widgets/tangible.dart';
@@ -142,21 +143,15 @@ class HomeScreen extends ConsumerStatefulWidget {
 
   @override
   ConsumerState<HomeScreen> createState() => _HomeScreenState();
-}
 
-class _HomeScreenState extends ConsumerState<HomeScreen> {
-  String _searchQuery = "";
-  String _selectedCategory = "ALL";
-  late final TextEditingController _searchController;
-
-  final List<Map<String, dynamic>> _games = [
+  static final List<Map<String, dynamic>> allGamesList = [
     {
       'title': 'Lock Pattern',
       'id': 'lock_pattern',
       'category': 'LOGIC',
       'icon': Icons.lock_open_rounded,
       'color': DesignSystem.gameIndigo,
-      'screen': const LockPatternScreen(),
+      'builder': (context) => const LockPatternScreen(),
     },
     {
       'title': 'Object Tracking',
@@ -164,7 +159,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.track_changes_rounded,
       'color': DesignSystem.gameIndigo,
-      'screen': const MultipleObjectTrackingScreen(),
+      'builder': (context) => const MultipleObjectTrackingScreen(),
     },
     {
       'title': 'Vigilance Task',
@@ -172,7 +167,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.watch_later_rounded,
       'color': DesignSystem.gameRose,
-      'screen': const VigilanceTaskScreen(),
+      'builder': (context) => const VigilanceTaskScreen(),
     },
     {
       'title': 'Mental Rotation',
@@ -180,7 +175,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'SPATIAL',
       'icon': Icons.threed_rotation_rounded,
       'color': DesignSystem.gameIndigo,
-      'screen': const MentalRotationScreen(),
+      'builder': (context) => const MentalRotationScreen(),
     },
     {
       'title': 'Semantic Link',
@@ -188,7 +183,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'WORD',
       'icon': Icons.link_rounded,
       'color': DesignSystem.gameBlue,
-      'screen': const SemanticLinkScreen(),
+      'builder': (context) => const SemanticLinkScreen(),
     },
     {
       'title': 'Logical Syllogisms',
@@ -196,7 +191,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'LOGIC',
       'icon': Icons.account_tree_rounded,
       'color': DesignSystem.gameTeal,
-      'screen': const LogicalSyllogismsScreen(),
+      'builder': (context) => const LogicalSyllogismsScreen(),
     },
     {
       'title': 'Matrix Reasoning',
@@ -204,7 +199,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'LOGIC',
       'icon': Icons.grid_view_rounded,
       'color': DesignSystem.gameAmber,
-      'screen': const MatrixReasoningScreen(),
+      'builder': (context) => const MatrixReasoningScreen(),
     },
     {
       'title': 'Numerical Estimation',
@@ -212,7 +207,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MATH',
       'icon': Icons.scatter_plot_rounded,
       'color': DesignSystem.gameRose,
-      'screen': const NumericalEstimationScreen(),
+      'builder': (context) => const NumericalEstimationScreen(),
     },
     {
       'title': 'Reverse Span',
@@ -220,7 +215,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MEMORY',
       'icon': Icons.settings_backup_restore_rounded,
       'color': DesignSystem.gameIndigo,
-      'screen': const DigitSpanReverseScreen(),
+      'builder': (context) => const DigitSpanReverseScreen(),
     },
     {
       'title': 'Face-Name',
@@ -228,7 +223,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MEMORY',
       'icon': Icons.assignment_ind_rounded,
       'color': DesignSystem.gameTeal,
-      'screen': const FaceNameAssociationScreen(),
+      'builder': (context) => const FaceNameAssociationScreen(),
     },
     {
       'title': 'Staircase Memory',
@@ -236,7 +231,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MEMORY',
       'icon': Icons.stairs_rounded,
       'color': DesignSystem.gameAmber,
-      'screen': const StaircaseMemoryScreen(),
+      'builder': (context) => const StaircaseMemoryScreen(),
     },
     {
       'title': 'Akari',
@@ -244,7 +239,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'LOGIC',
       'icon': Icons.lightbulb_rounded,
       'color': DesignSystem.gameAmber,
-      'screen': const AkariScreen(),
+      'builder': (context) => const AkariScreen(),
     },
     {
       'title': 'Perspective',
@@ -252,7 +247,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'SPATIAL',
       'icon': Icons.view_in_ar_rounded,
       'color': DesignSystem.gamePurple,
-      'screen': const PerspectiveTakingScreen(),
+      'builder': (context) => const PerspectiveTakingScreen(),
     },
     {
       'title': 'Paper Folding',
@@ -260,7 +255,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'SPATIAL',
       'icon': Icons.note_rounded,
       'color': DesignSystem.gameRose,
-      'screen': const PaperFoldingScreen(),
+      'builder': (context) => const PaperFoldingScreen(),
     },
     {
       'title': 'Mirror Tracing',
@@ -268,7 +263,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'SPATIAL',
       'icon': Icons.gesture_rounded,
       'color': DesignSystem.gameCyan,
-      'screen': const MirrorTracingScreen(),
+      'builder': (context) => const MirrorTracingScreen(),
     },
     {
       'title': 'Silhouette Match',
@@ -276,7 +271,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'SPATIAL',
       'icon': Icons.auto_fix_normal_rounded,
       'color': DesignSystem.gameAmber,
-      'screen': const SilhouetteMatchScreen(),
+      'builder': (context) => const SilhouetteMatchScreen(),
     },
     {
       'title': 'Verbal Analogies',
@@ -284,7 +279,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'WORD',
       'icon': Icons.compare_arrows_rounded,
       'color': DesignSystem.gameBlue,
-      'screen': const VerbalAnalogiesScreen(),
+      'builder': (context) => const VerbalAnalogiesScreen(),
     },
     {
       'title': 'Category Fluency',
@@ -292,7 +287,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'WORD',
       'icon': Icons.category_rounded,
       'color': DesignSystem.gameGreen,
-      'screen': const CategoryFluencyScreen(),
+      'builder': (context) => const CategoryFluencyScreen(),
     },
     {
       'title': 'Word Surge',
@@ -300,7 +295,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'WORD',
       'icon': Icons.bolt_rounded,
       'color': DesignSystem.gameRose,
-      'screen': const WordSurgeScreen(),
+      'builder': (context) => const WordSurgeScreen(),
     },
     {
       'title': 'Mental Abacus',
@@ -308,7 +303,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MATH',
       'icon': Icons.grid_4x4_rounded,
       'color': DesignSystem.gameAmber,
-      'screen': const MentalAbacusScreen(),
+      'builder': (context) => const MentalAbacusScreen(),
     },
     {
       'title': 'Operator Mix',
@@ -316,7 +311,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MATH',
       'icon': Icons.calculate_rounded,
       'color': DesignSystem.gameBlue,
-      'screen': const MissingOperatorScreen(),
+      'builder': (context) => const MissingOperatorScreen(),
     },
     {
       'title': 'Tower of London',
@@ -324,7 +319,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'LOGIC',
       'icon': Icons.account_balance_rounded,
       'color': DesignSystem.gameIndigo,
-      'screen': const TowerOfLondonScreen(),
+      'builder': (context) => const TowerOfLondonScreen(),
     },
     {
       'title': 'Symbolic Flanker',
@@ -332,7 +327,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.font_download_rounded,
       'color': DesignSystem.gamePurple,
-      'screen': const SymbolicFlankerScreen(),
+      'builder': (context) => const SymbolicFlankerScreen(),
     },
     {
       'title': 'Rule Switcher',
@@ -340,7 +335,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.swap_calls_rounded,
       'color': DesignSystem.gameTeal,
-      'screen': const RuleSwitcherScreen(),
+      'builder': (context) => const RuleSwitcherScreen(),
     },
     {
       'title': 'Box Completion',
@@ -348,7 +343,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'SPATIAL',
       'icon': Icons.crop_square_rounded,
       'color': DesignSystem.gameAmber,
-      'screen': const BoxCompletionScreen(),
+      'builder': (context) => const BoxCompletionScreen(),
     },
     {
       'title': 'Letter Cancel',
@@ -356,7 +351,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.spellcheck_rounded,
       'color': DesignSystem.gameRose,
-      'screen': const LetterCancellationScreen(),
+      'builder': (context) => const LetterCancellationScreen(),
     },
     {
       'title': 'Choice Reaction',
@@ -364,7 +359,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.touch_app_rounded,
       'color': DesignSystem.gameBlue,
-      'screen': const ChoiceReactionTimeScreen(),
+      'builder': (context) => const ChoiceReactionTimeScreen(),
     },
     {
       'title': 'Wisconsin Card Sort',
@@ -372,7 +367,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'LOGIC',
       'icon': Icons.style_rounded,
       'color': DesignSystem.gameRose,
-      'screen': const WisconsinCardSortingScreen(),
+      'builder': (context) => const WisconsinCardSortingScreen(),
     },
     {
       'title': 'Attentional Blink',
@@ -380,7 +375,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.visibility_off_rounded,
       'color': DesignSystem.gamePurple,
-      'screen': const AttentionalBlinkScreen(),
+      'builder': (context) => const AttentionalBlinkScreen(),
     },
     {
       'title': 'Change Blindness',
@@ -388,7 +383,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.flip_camera_android_rounded,
       'color': DesignSystem.gameAmber,
-      'screen': const ChangeBlindnessScreen(),
+      'builder': (context) => const ChangeBlindnessScreen(),
     },
     {
       'title': 'Visual Learning',
@@ -396,7 +391,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MEMORY',
       'icon': Icons.pattern_rounded,
       'color': DesignSystem.gameTeal,
-      'screen': const VisualStatisticalLearningScreen(),
+      'builder': (context) => const VisualStatisticalLearningScreen(),
     },
     {
       'title': 'Sternberg Task',
@@ -404,7 +399,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MEMORY',
       'icon': Icons.memory_rounded,
       'color': DesignSystem.gameBlue,
-      'screen': const SternbergTaskScreen(),
+      'builder': (context) => const SternbergTaskScreen(),
     },
     {
       'title': 'Double N-Back',
@@ -412,7 +407,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MEMORY',
       'icon': Icons.layers_rounded,
       'color': DesignSystem.gameIndigo,
-      'screen': const DoubleNBackScreen(),
+      'builder': (context) => const DoubleNBackScreen(),
     },
     {
       'title': 'Operation Span',
@@ -420,7 +415,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MEMORY',
       'icon': Icons.calculate_rounded,
       'color': DesignSystem.gameGreen,
-      'screen': const OperationSpanScreen(),
+      'builder': (context) => const OperationSpanScreen(),
     },
     {
       'title': 'N-Back Test',
@@ -428,7 +423,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MEMORY',
       'icon': Icons.psychology_rounded,
       'color': DesignSystem.gameBlue,
-      'screen': const NBackScreen(),
+      'builder': (context) => const NBackScreen(),
     },
     {
       'title': 'Corsi Blocks',
@@ -436,7 +431,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MEMORY',
       'icon': Icons.grid_view_rounded,
       'color': DesignSystem.gameIndigo,
-      'screen': const CorsiBlocksScreen(),
+      'builder': (context) => const CorsiBlocksScreen(),
     },
     {
       'title': 'SDMT Test',
@@ -444,7 +439,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.fact_check_rounded,
       'color': DesignSystem.gameTeal,
-      'screen': const SDMTScreen(),
+      'builder': (context) => const SDMTScreen(),
     },
     {
       'title': 'Trail Making',
@@ -452,7 +447,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.timeline_rounded,
       'color': DesignSystem.gameGreen,
-      'screen': const TrailMakingScreen(),
+      'builder': (context) => const TrailMakingScreen(),
     },
     {
       'title': 'Stop Signal',
@@ -460,7 +455,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.block_flipped,
       'color': DesignSystem.gameRose,
-      'screen': const StopSignalScreen(),
+      'builder': (context) => const StopSignalScreen(),
     },
     {
       'title': 'Visual Search',
@@ -468,7 +463,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.center_focus_strong_rounded,
       'color': DesignSystem.gameIndigo,
-      'screen': const VisualSearchScreen(),
+      'builder': (context) => const VisualSearchScreen(),
     },
     {
       'title': 'Go / No-Go',
@@ -476,7 +471,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.pan_tool_alt_rounded,
       'color': DesignSystem.gameRose,
-      'screen': const GoNoGoScreen(),
+      'builder': (context) => const GoNoGoScreen(),
     },
     {
       'title': 'Divided Focus',
@@ -484,7 +479,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.vertical_split_rounded,
       'color': DesignSystem.gameTeal,
-      'screen': const DividedAttentionScreen(),
+      'builder': (context) => const DividedAttentionScreen(),
     },
     {
       'title': 'Prime Hunter',
@@ -492,7 +487,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MATH',
       'icon': Icons.gps_fixed_rounded,
       'color': DesignSystem.gameBlue,
-      'screen': const PrimeHunterScreen(),
+      'builder': (context) => const PrimeHunterScreen(),
     },
     {
       'title': 'Fraction Match',
@@ -500,7 +495,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MATH',
       'icon': Icons.pie_chart_rounded,
       'color': DesignSystem.gamePurple,
-      'screen': const FractionMatchScreen(),
+      'builder': (context) => const FractionMatchScreen(),
     },
     {
       'title': 'Path Recall',
@@ -508,7 +503,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MEMORY',
       'icon': Icons.polyline_rounded,
       'color': DesignSystem.gameBlue,
-      'screen': const PathRecallScreen(),
+      'builder': (context) => const PathRecallScreen(),
     },
     {
       'title': 'Object Shuffle',
@@ -516,7 +511,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MEMORY',
       'icon': Icons.visibility_rounded,
       'color': DesignSystem.gameAmber,
-      'screen': const ObjectShuffleScreen(),
+      'builder': (context) => const ObjectShuffleScreen(),
     },
     {
       'title': 'Grocery List',
@@ -524,7 +519,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MEMORY',
       'icon': Icons.shopping_basket_rounded,
       'color': DesignSystem.gameGreen,
-      'screen': const GroceryListScreen(),
+      'builder': (context) => const GroceryListScreen(),
     },
     {
       'title': 'Orbit Tap',
@@ -532,7 +527,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.vibration_rounded,
       'color': DesignSystem.gameIndigo,
-      'screen': const OrbitTapScreen(),
+      'builder': (context) => const OrbitTapScreen(),
     },
     {
       'title': 'Rhythm Master',
@@ -540,7 +535,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.favorite_rounded,
       'color': DesignSystem.gamePink,
-      'screen': const RhythmMasterScreen(),
+      'builder': (context) => const RhythmMasterScreen(),
     },
     {
       'title': 'Trace Path',
@@ -548,7 +543,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'SPATIAL',
       'icon': Icons.gesture_rounded,
       'color': DesignSystem.gameGreen,
-      'screen': const TracePathScreen(),
+      'builder': (context) => const TracePathScreen(),
     },
     {
       'title': 'Target 24',
@@ -556,7 +551,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MATH',
       'icon': Icons.track_changes_rounded,
       'color': DesignSystem.gameAmber,
-      'screen': const TargetNumberScreen(),
+      'builder': (context) => const TargetNumberScreen(),
     },
     {
       'title': 'Chain Calc',
@@ -564,7 +559,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MATH',
       'icon': Icons.link_rounded,
       'color': DesignSystem.gameBlue,
-      'screen': const ArithmeticChainScreen(),
+      'builder': (context) => const ArithmeticChainScreen(),
     },
     {
       'title': 'Magic Square',
@@ -572,7 +567,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MATH',
       'icon': Icons.grid_3x3_rounded,
       'color': DesignSystem.gamePurple,
-      'screen': const MagicSquaresScreen(),
+      'builder': (context) => const MagicSquaresScreen(),
     },
     {
       'title': 'KenKen',
@@ -580,7 +575,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MATH',
       'icon': Icons.calculate_outlined,
       'color': DesignSystem.gameTeal,
-      'screen': const KenKenScreen(),
+      'builder': (context) => const KenKenScreen(),
     },
     {
       'title': 'Typing Speed',
@@ -588,7 +583,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'WORD',
       'icon': Icons.keyboard_rounded,
       'color': DesignSystem.gameIndigo,
-      'screen': const TypingSpeedScreen(),
+      'builder': (context) => const TypingSpeedScreen(),
     },
     {
       'title': 'Quick Math',
@@ -596,7 +591,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MATH',
       'icon': Icons.bolt_rounded,
       'color': DesignSystem.gameAmber,
-      'screen': const QuickMathScreen(),
+      'builder': (context) => const QuickMathScreen(),
     },
     {
       'title': 'Reflex Tap',
@@ -604,7 +599,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.ads_click_rounded,
       'color': DesignSystem.gameRose,
-      'screen': const ReflexTapScreen(),
+      'builder': (context) => const ReflexTapScreen(),
     },
     {
       'title': 'Stroop Test',
@@ -612,7 +607,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.psychology_rounded,
       'color': DesignSystem.gameGreen,
-      'screen': const StroopTestScreen(),
+      'builder': (context) => const StroopTestScreen(),
     },
     {
       'title': 'Flanker Test',
@@ -620,7 +615,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.compare_arrows_rounded,
       'color': DesignSystem.gameBlue,
-      'screen': const FlankerTestScreen(),
+      'builder': (context) => const FlankerTestScreen(),
     },
     {
       'title': 'Switch Task',
@@ -628,7 +623,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.swap_horiz_rounded,
       'color': DesignSystem.gameAmber,
-      'screen': const SwitchTaskScreen(),
+      'builder': (context) => const SwitchTaskScreen(),
     },
     {
       'title': 'Cryptogram',
@@ -636,7 +631,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'WORD',
       'icon': Icons.password_rounded,
       'color': DesignSystem.gameIndigo,
-      'screen': const CryptogramScreen(),
+      'builder': (context) => const CryptogramScreen(),
     },
     {
       'title': 'Balance Scale',
@@ -644,7 +639,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MATH',
       'icon': Icons.balance_rounded,
       'color': DesignSystem.gameTeal,
-      'screen': const BalanceScaleScreen(),
+      'builder': (context) => const BalanceScaleScreen(),
     },
     {
       'title': 'Symbol Logic',
@@ -652,7 +647,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'LOGIC',
       'icon': Icons.calculate_rounded,
       'color': DesignSystem.gameAmber,
-      'screen': const SymbolLogicScreen(),
+      'builder': (context) => const SymbolLogicScreen(),
     },
     {
       'title': 'Pixel Mimic',
@@ -660,7 +655,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MEMORY',
       'icon': Icons.memory_rounded,
       'color': DesignSystem.gameIndigo,
-      'screen': const PixelMimicScreen(),
+      'builder': (context) => const PixelMimicScreen(),
     },
     {
       'title': 'Odd Rotation',
@@ -668,7 +663,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'SPATIAL',
       'icon': Icons.flip_rounded,
       'color': DesignSystem.gameRose,
-      'screen': const OddRotationScreen(),
+      'builder': (context) => const OddRotationScreen(),
     },
     {
       'title': 'Word Scramble',
@@ -676,7 +671,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'WORD',
       'icon': Icons.shuffle_rounded,
       'color': DesignSystem.gameAmber,
-      'screen': const WordScrambleScreen(),
+      'builder': (context) => const WordScrambleScreen(),
     },
     {
       'title': 'Missing Vowels',
@@ -684,7 +679,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'WORD',
       'icon': Icons.spellcheck_rounded,
       'color': DesignSystem.gameBlue,
-      'screen': const MissingVowelsScreen(),
+      'builder': (context) => const MissingVowelsScreen(),
     },
     {
       'title': 'Water Sort',
@@ -692,7 +687,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'LOGIC',
       'icon': Icons.opacity_rounded,
       'color': DesignSystem.gameBlue,
-      'screen': const WaterSortScreen(),
+      'builder': (context) => const WaterSortScreen(),
     },
     {
       'title': 'Lights Out',
@@ -700,7 +695,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'LOGIC',
       'icon': Icons.lightbulb_rounded,
       'color': DesignSystem.gameAmber,
-      'screen': const LightsOutScreen(),
+      'builder': (context) => const LightsOutScreen(),
     },
     {
       'title': 'Hue Sort',
@@ -708,7 +703,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'SPATIAL',
       'icon': Icons.gradient_rounded,
       'color': DesignSystem.gamePurple,
-      'screen': const HueSortScreen(),
+      'builder': (context) => const HueSortScreen(),
     },
     {
       'title': 'Math Path',
@@ -716,7 +711,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MATH',
       'icon': Icons.route_rounded,
       'color': DesignSystem.gameBlue,
-      'screen': const MathPathScreen(),
+      'builder': (context) => const MathPathScreen(),
     },
     {
       'title': 'Spelling Sprint',
@@ -724,7 +719,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'WORD',
       'icon': Icons.speed_rounded,
       'color': DesignSystem.gameAmber,
-      'screen': const SpellingSprintScreen(),
+      'builder': (context) => const SpellingSprintScreen(),
     },
     {
       'title': 'Odd One Out',
@@ -732,7 +727,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.visibility_rounded,
       'color': DesignSystem.gameRose,
-      'screen': const OddOneOutScreen(),
+      'builder': (context) => const OddOneOutScreen(),
     },
     {
       'title': 'Bridges',
@@ -740,7 +735,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'LOGIC',
       'icon': Icons.horizontal_rule_rounded,
       'color': DesignSystem.gameTeal,
-      'screen': const BridgesScreen(),
+      'builder': (context) => const BridgesScreen(),
     },
     {
       'title': 'Binary Puzzle',
@@ -748,7 +743,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'LOGIC',
       'icon': Icons.exposure_zero_rounded,
       'color': DesignSystem.gameBlue,
-      'screen': const BinaryPuzzleScreen(),
+      'builder': (context) => const BinaryPuzzleScreen(),
     },
     {
       'title': 'Color Match',
@@ -756,7 +751,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.palette_rounded,
       'color': DesignSystem.gameRose,
-      'screen': const ColorMatchScreen(),
+      'builder': (context) => const ColorMatchScreen(),
     },
     {
       'title': 'Path Finder',
@@ -764,7 +759,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'LOGIC',
       'icon': Icons.route_rounded,
       'color': DesignSystem.gameTeal,
-      'screen': const PathFinderScreen(),
+      'builder': (context) => const PathFinderScreen(),
     },
     {
       'title': 'Sequence',
@@ -772,7 +767,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MEMORY',
       'icon': Icons.repeat_rounded,
       'color': DesignSystem.gameCyan,
-      'screen': const SimonSequenceScreen(),
+      'builder': (context) => const SimonSequenceScreen(),
     },
     {
       'title': 'Symmetry',
@@ -780,7 +775,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'SPATIAL',
       'icon': Icons.flip_rounded,
       'color': DesignSystem.gameViolet,
-      'screen': const SymmetryScreen(),
+      'builder': (context) => const SymmetryScreen(),
     },
     {
       'title': 'Sudoku',
@@ -788,7 +783,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'LOGIC',
       'icon': Icons.grid_4x4_rounded,
       'color': DesignSystem.gameBlue,
-      'screen': const SudokuScreen(),
+      'builder': (context) => const SudokuScreen(),
     },
     {
       'title': 'Word Mastermind',
@@ -796,7 +791,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'WORD',
       'icon': Icons.psychology_rounded,
       'color': DesignSystem.gameIndigo,
-      'screen': const WordMastermindScreen(),
+      'builder': (context) => const WordMastermindScreen(),
     },
     {
       'title': 'Word Ladder',
@@ -804,7 +799,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'WORD',
       'icon': Icons.format_list_numbered_rounded,
       'color': DesignSystem.gameViolet,
-      'screen': const WordLadderScreen(),
+      'builder': (context) => const WordLadderScreen(),
     },
     {
       'title': 'Slide Puzzle',
@@ -812,7 +807,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'SPATIAL',
       'icon': Icons.grid_view_rounded,
       'color': DesignSystem.gameRose,
-      'screen': const SlidePuzzleScreen(),
+      'builder': (context) => const SlidePuzzleScreen(),
     },
     {
       'title': 'Pipes',
@@ -820,7 +815,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'LOGIC',
       'icon': Icons.hub_rounded,
       'color': DesignSystem.gameTeal,
-      'screen': const PipesScreen(),
+      'builder': (context) => const PipesScreen(),
     },
     {
       'title': 'Block Escape',
@@ -828,7 +823,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'LOGIC',
       'icon': Icons.view_column_rounded,
       'color': DesignSystem.gameOrange,
-      'screen': const BlockEscapeScreen(),
+      'builder': (context) => const BlockEscapeScreen(),
     },
     {
       'title': 'Tents & Trees',
@@ -836,7 +831,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'LOGIC',
       'icon': Icons.park_rounded,
       'color': DesignSystem.gameGreen,
-      'screen': const TentsAndTreesScreen(),
+      'builder': (context) => const TentsAndTreesScreen(),
     },
     {
       'title': 'Find Word',
@@ -844,7 +839,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'WORD',
       'icon': Icons.abc_rounded,
       'color': DesignSystem.gameGreen,
-      'screen': const FindWordScreen(),
+      'builder': (context) => const FindWordScreen(),
     },
     {
       'title': 'Crossword',
@@ -852,7 +847,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'WORD',
       'icon': Icons.grid_on_rounded,
       'color': DesignSystem.gamePurple,
-      'screen': const CrosswordScreen(),
+      'builder': (context) => const CrosswordScreen(),
     },
     {
       'title': 'Word Search',
@@ -860,7 +855,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'WORD',
       'icon': Icons.search_rounded,
       'color': DesignSystem.gameOrange,
-      'screen': const WordSearchScreen(),
+      'builder': (context) => const WordSearchScreen(),
     },
     {
       'title': '2048',
@@ -868,7 +863,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MATH',
       'icon': Icons.grid_view_rounded,
       'color': DesignSystem.gamePink,
-      'screen': const Game2048Screen(),
+      'builder': (context) => const Game2048Screen(),
     },
     {
       'title': 'Crown',
@@ -876,7 +871,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'LOGIC',
       'icon': Icons.workspace_premium_rounded,
       'color': DesignSystem.gameTeal,
-      'screen': const CrownScreen(),
+      'builder': (context) => const CrownScreen(),
     },
     {
       'title': 'Minesweeper',
@@ -884,7 +879,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'LOGIC',
       'icon': Icons.brightness_7_rounded,
       'color': DesignSystem.gameIndigo,
-      'screen': const MinesweeperScreen(),
+      'builder': (context) => const MinesweeperScreen(),
     },
     {
       'title': 'Memory Matrix',
@@ -892,7 +887,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MEMORY',
       'icon': Icons.memory_rounded,
       'color': DesignSystem.gameAmber,
-      'screen': const MemoryMatrixScreen(),
+      'builder': (context) => const MemoryMatrixScreen(),
     },
     {
       'title': 'Nonogram',
@@ -900,7 +895,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'LOGIC',
       'icon': Icons.grid_view_rounded,
       'color': DesignSystem.gameRose,
-      'screen': const NonogramScreen(),
+      'builder': (context) => const NonogramScreen(),
     },
     {
       'title': 'Schulte Table',
@@ -908,7 +903,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'ATTENTION',
       'icon': Icons.speed_rounded,
       'color': DesignSystem.gameViolet,
-      'screen': const SchulteTableScreen(),
+      'builder': (context) => const SchulteTableScreen(),
     },
     {
       'title': 'Calc Sprint',
@@ -916,7 +911,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'MATH',
       'icon': Icons.calculate_rounded,
       'color': DesignSystem.gameEmerald,
-      'screen': const CalculationSprintScreen(),
+      'builder': (context) => const CalculationSprintScreen(),
     },
     {
       'title': 'Color Flood',
@@ -924,7 +919,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'LOGIC',
       'icon': Icons.waves_rounded,
       'color': DesignSystem.primary,
-      'screen': const ColorFloodScreen(),
+      'builder': (context) => const ColorFloodScreen(),
     },
     {
       'title': 'Tangle Fix',
@@ -932,9 +927,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       'category': 'LOGIC',
       'icon': Icons.hub_rounded,
       'color': DesignSystem.accentAmber,
-      'screen': const TangleFixScreen(),
+      'builder': (context) => const TangleFixScreen(),
     },
   ];
+}
+
+class _HomeScreenState extends ConsumerState<HomeScreen> {
+  String _searchQuery = "";
+  String _selectedCategory = "ALL";
+  late final TextEditingController _searchController;
 
   @override
   void initState() {
@@ -956,11 +957,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final colorScheme = theme.colorScheme;
     final l10n = AppLocalizations.of(context)!;
 
-    final filteredGames = _games.where((game) {
-      final matchesSearch = game['title'].toLowerCase().contains(_searchQuery.toLowerCase());
-      final matchesCategory = _selectedCategory == 'ALL' || game['category'] == _selectedCategory;
-      return matchesSearch && matchesCategory;
-    }).toList();
+    final filteredGames = List<Map<String, dynamic>>.from(ref.watch(filteredGamesProvider(searchQuery: _searchQuery, selectedCategory: _selectedCategory)));
 
     // Sort: Favorites first, then by title (or original order)
     filteredGames.sort((a, b) {
@@ -1198,7 +1195,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             favoriteIds.contains(gameId),
                             () => Navigator.push(
                               context,
-                              CustomPageRoute(page: game['screen']),
+                              CustomPageRoute(page: (game['builder'] as WidgetBuilder)(context)),
                             ),
                             () {
                               HapticFeedbackUtil.mediumImpact();

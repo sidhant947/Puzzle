@@ -26,7 +26,7 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
     final notifier = ref.read(sudokuNotifierProvider.notifier);
 
     ref.listen(sudokuNotifierProvider, (previous, next) async {
-      if (next.isSolved && !(previous?.isSolved ?? false)) {
+      if (next.hasValue && next.value!.isSolved && !(previous?.value?.isSolved ?? false)) {
         HapticFeedbackUtil.victory();
         await ref.read(gameStreakNotifierProvider.notifier).completeGame('sudoku');
         if (!context.mounted) return;
@@ -68,18 +68,22 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
           ),
         ),
       ],
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          return Column(
-            children: [
-              const Spacer(),
-              _buildGrid(state, notifier, constraints.maxHeight * 0.5),
-              const Spacer(),
-              _buildNumberPad(notifier),
-              const SizedBox(height: DesignSystem.spaceLG),
-            ],
-          );
-        },
+      body: state.when(
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (err, stack) => Center(child: Text('Error: $err')),
+        data: (sudokuState) => LayoutBuilder(
+          builder: (context, constraints) {
+            return Column(
+              children: [
+                const Spacer(),
+                _buildGrid(sudokuState, notifier, constraints.maxHeight * 0.5),
+                const Spacer(),
+                _buildNumberPad(sudokuState, notifier),
+                const SizedBox(height: DesignSystem.spaceLG),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
@@ -190,8 +194,7 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
     );
   }
 
-  Widget _buildNumberPad(SudokuNotifier notifier) {
-    final state = ref.watch(sudokuNotifierProvider);
+  Widget _buildNumberPad(SudokuState state, SudokuNotifier notifier) {
     
     final counts = {
       for (int i = 1; i <= 9; i++) i: 0

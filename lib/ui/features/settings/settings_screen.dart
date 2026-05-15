@@ -16,7 +16,7 @@ class SettingsScreen extends ConsumerWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final themeMode = ref.watch(themeNotifierProvider);
-    final userData = ref.watch(userDataNotifierProvider);
+    final isTrialModeEnabled = ref.watch(userDataNotifierProvider.select((s) => s.isTrialModeEnabled ?? false));
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
@@ -56,7 +56,7 @@ class SettingsScreen extends ConsumerWidget {
                   const SizedBox(height: DesignSystem.spaceXL),
                   _buildSectionTitle(context, l10n.gameplay.toUpperCase()),
                   const SizedBox(height: DesignSystem.spaceMD),
-                  _buildTrialModeToggle(context, ref, userData.isTrialModeEnabled ?? false, l10n),
+                  _buildTrialModeToggle(context, ref, isTrialModeEnabled, l10n),
                   const SizedBox(height: DesignSystem.spaceXL),
                   _buildSectionTitle(context, l10n.supportUs.toUpperCase()),
                   const SizedBox(height: DesignSystem.spaceMD),

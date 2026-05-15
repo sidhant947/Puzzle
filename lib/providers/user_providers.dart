@@ -169,6 +169,7 @@ class GameStreakNotifier extends _$GameStreakNotifier {
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
     final Map<String, GameStreak> updatedStreaks = Map.from(currentStreaks);
+    final List<GameStreak> streaksToSave = [];
 
     updatedStreaks.forEach((gameId, streak) {
       final lastSolvedDate = streak.lastSolvedDate;
@@ -194,9 +195,13 @@ class GameStreakNotifier extends _$GameStreakNotifier {
 
       if (streakChanged) {
         updatedStreaks[gameId] = updatedStreak;
-        ref.read(userRepositoryProvider).saveGameStreak(updatedStreak);
+        streaksToSave.add(updatedStreak);
       }
     });
+
+    if (streaksToSave.isNotEmpty) {
+      ref.read(userRepositoryProvider).saveAllGameStreaks(streaksToSave);
+    }
 
     return updatedStreaks;
   }

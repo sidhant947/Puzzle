@@ -35,4 +35,12 @@ class UserRepository {
     final box = Hive.box<GameStreak>(gameStreakBoxName);
     await box.put(streak.gameId, streak);
   }
+
+  Future<void> saveAllGameStreaks(List<GameStreak> streaks) async {
+    final box = Hive.box<GameStreak>(gameStreakBoxName);
+    final Map<String, GameStreak> streakMap = {
+      for (var s in streaks) s.gameId: s
+    };
+    await box.putAll(streakMap);
+  }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
-import '../../../../data/models/user_data.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../widgets/tangible.dart';
 
@@ -87,7 +86,9 @@ class StatsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userData = ref.watch(userDataNotifierProvider);
+    final level = ref.watch(userDataNotifierProvider.select((s) => s.level));
+    final xp = ref.watch(userDataNotifierProvider.select((s) => s.xp));
+    final totalSolved = ref.watch(userDataNotifierProvider.select((s) => s.totalSolved));
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
@@ -122,7 +123,7 @@ class StatsScreen extends ConsumerWidget {
               ),
               sliver: SliverList(
                 delegate: SliverChildListDelegate([
-                  _buildUserStats(context, userData, ref),
+                  _buildUserStats(context, level, xp, totalSolved ?? 0, ref),
                   const SizedBox(height: DesignSystem.spaceXL),
                   Text(
                     'ACHIEVEMENTS',
@@ -138,7 +139,7 @@ class StatsScreen extends ConsumerWidget {
                     achievements.length,
                     (index) => Padding(
                       padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
-                      child: _buildAchievementCard(context, achievements[index], userData),
+                      child: _buildAchievementCard(context, achievements[index], totalSolved ?? 0, level, xp),
                     ),
                   ),
                 ]),
@@ -150,13 +151,13 @@ class StatsScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildUserStats(BuildContext context, UserData userData, WidgetRef ref) {
+  Widget _buildUserStats(BuildContext context, int level, int xp, int totalSolved, WidgetRef ref) {
     final notifier = ref.read(userDataNotifierProvider.notifier);
-    final currentLevelXp = notifier.xpForLevel(userData.level);
-    final nextLevelXp = notifier.xpForLevel(userData.level + 1);
+    final currentLevelXp = notifier.xpForLevel(level);
+    final nextLevelXp = notifier.xpForLevel(level + 1);
     
     final diff = nextLevelXp - currentLevelXp;
-    final progress = diff > 0 ? (userData.xp - currentLevelXp) / diff : 1.0;
+    final progress = diff > 0 ? (xp - currentLevelXp) / diff : 1.0;
 
     return Column(
       children: [
@@ -173,7 +174,7 @@ class StatsScreen extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'LEVEL ${userData.level}',
+                        'LEVEL $level',
                         style: const TextStyle(
                           fontWeight: FontWeight.w900,
                           letterSpacing: -0.5,
@@ -245,7 +246,7 @@ class StatsScreen extends ConsumerWidget {
                     ),
                   ),
                   Text(
-                    '${(progress * 100).toInt()}% TO LEVEL ${userData.level + 1}',
+                    '${(progress * 100).toInt()}% TO LEVEL ${level + 1}',
                     style: const TextStyle(
                       fontWeight: FontWeight.w800,
                       fontSize: 10,
@@ -265,7 +266,7 @@ class StatsScreen extends ConsumerWidget {
               child: _buildSmallStatCard(
                 context,
                 'TOTAL XP',
-                '${userData.xp}',
+                '${xp}',
                 Icons.bolt_rounded,
                 DesignSystem.accentAmber,
               ),
@@ -275,7 +276,7 @@ class StatsScreen extends ConsumerWidget {
               child: _buildSmallStatCard(
                 context,
                 'SOLVED',
-                '${userData.totalSolved ?? 0}',
+                '${totalSolved}',
                 Icons.extension_rounded,
                 DesignSystem.success,
               ),
@@ -333,8 +334,8 @@ class StatsScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildAchievementCard(BuildContext context, Achievement achievement, UserData userData) {
-    final isUnlocked = userData.xp >= achievement.requiredXp;
+  Widget _buildAchievementCard(BuildContext context, Achievement achievement, int totalSolved, int level, int xp) {
+    final isUnlocked = xp >= achievement.requiredXp;
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 

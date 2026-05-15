@@ -10,6 +10,16 @@ class SudokuEngine {
     return board;
   }
 
+  static List<List<int>> generateFullBoard() {
+    return SudokuEngine().generateBoard();
+  }
+
+  static List<List<int>> generateInitialPuzzle(Map<String, dynamic> params) {
+    final solved = params['solved'] as List<List<int>>;
+    final clues = params['clues'] as int;
+    return SudokuEngine().createPuzzle(solved, clues);
+  }
+
   bool _fillBoard(List<List<int>> board) {
     for (int row = 0; row < size; row++) {
       for (int col = 0; col < size; col++) {
