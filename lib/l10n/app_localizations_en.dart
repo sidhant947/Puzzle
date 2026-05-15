@@ -1222,4 +1222,110 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get oddOneOutSubtitle => 'Find the tile with a different color.';
+
+  @override
+  String get einsteinRiddleTitle => 'EINSTEIN RIDDLE';
+
+  @override
+  String get einsteinRiddleSubtitle =>
+      'Use the clues to deduce the attributes of each house.';
+
+  @override
+  String get einsteinRiddleHowToPlay =>
+      'Each house has unique attributes (color, nationality, pet, etc.). Use the provided clues to fill in the grid and find the complete solution.';
+
+  @override
+  String get mirrorImageTitle => 'Mirror Image';
+
+  @override
+  String get mirrorImageSubtitle => 'Identify the correct mirror reflection.';
+
+  @override
+  String get mirrorImageHowToPlay =>
+      'Look at the shape and choose its correct mirror reflection from the options provided.';
+
+  @override
+  String get mentalMappingTitle => 'Mental Mapping';
+
+  @override
+  String get mentalMappingSubtitle =>
+      'Follow the directions and find the destination.';
+
+  @override
+  String get mentalMappingHowToPlay =>
+      'You will be shown a sequence of directions (North, South, East, West). Mentally follow these steps starting from the center of the grid and select the final destination.';
+
+  @override
+  String get memoryPalaceTitle => 'Memory Palace';
+
+  @override
+  String get memoryPalaceSubtitle =>
+      'Remember which word was in which location.';
+
+  @override
+  String get memoryPalaceHowToPlay =>
+      'A set of words will appear in different locations on a grid. Memorize their positions. Then, you will be asked to place the words back in their original locations.';
+
+  @override
+  String get countingSheepTitle => 'Counting Sheep';
+
+  @override
+  String get countingSheepSubtitle => 'How many sheep did you see?';
+
+  @override
+  String get countingSheepHowToPlay =>
+      'Sheep will run across the screen quickly. Count them as they pass and enter the total number at the end.';
+
+  @override
+  String get faceTraitAssociationTitle => 'Face-Trait';
+
+  @override
+  String get faceTraitAssociationSubtitle => 'Memorize traits for each face';
+
+  @override
+  String get faceTraitAssociationHowToPlay =>
+      'You will be shown several faces, each with a name, occupation, and hobby. Memorize these associations. Later, you will be asked to recall the specific traits for each face.';
+
+  @override
+  String get mentalCalendarTitle => 'Mental Calendar';
+
+  @override
+  String get mentalCalendarSubtitle => 'Calculate the day of the week';
+
+  @override
+  String get mentalCalendarHowToPlay =>
+      'A random date will be shown. Use mental calculation (or the Doomsday algorithm) to determine which day of the week it falls on.';
+
+  @override
+  String get vocabularyBuilderTitle => 'Vocabulary Builder';
+
+  @override
+  String get vocabularyBuilderSubtitle =>
+      'Match synonyms and antonyms under time pressure.';
+
+  @override
+  String get vocabularyBuilderHowToPlay =>
+      'You will be shown a target word and a relation (Synonym or Antonym). Choose the correct word from the options that matches the relation. Be quick, the clock is ticking!';
+
+  @override
+  String get grammarPoliceTitle => 'Grammar Police';
+
+  @override
+  String get grammarPoliceSubtitle =>
+      'Identify and correct errors in a scrolling wall of text.';
+
+  @override
+  String get grammarPoliceHowToPlay =>
+      'Sentences will scroll up the screen. Some contain errors (spelling, grammar, or punctuation). Tap the sentences that contain errors to \'correct\' them. Don\'t let too many errors pass by!';
+
+  @override
+  String get reverseStroopTitle => 'Reverse Stroop';
+
+  @override
+  String get reverseStroopSubtitle =>
+      'A variation of the Stroop test where the focus is switched.';
+
+  @override
+  String get reverseStroopHowToPlay =>
+      'Pay attention to the instruction! If it says \'TEXT\', match the word\'s meaning. If it says \'COLOR\', match the ink color. The rules will switch frequently to test your focus.';
 }

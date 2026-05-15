@@ -2275,6 +2275,186 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Find the tile with a different color.'**
   String get oddOneOutSubtitle;
+
+  /// No description provided for @einsteinRiddleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'EINSTEIN RIDDLE'**
+  String get einsteinRiddleTitle;
+
+  /// No description provided for @einsteinRiddleSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Use the clues to deduce the attributes of each house.'**
+  String get einsteinRiddleSubtitle;
+
+  /// No description provided for @einsteinRiddleHowToPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Each house has unique attributes (color, nationality, pet, etc.). Use the provided clues to fill in the grid and find the complete solution.'**
+  String get einsteinRiddleHowToPlay;
+
+  /// No description provided for @mirrorImageTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mirror Image'**
+  String get mirrorImageTitle;
+
+  /// No description provided for @mirrorImageSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify the correct mirror reflection.'**
+  String get mirrorImageSubtitle;
+
+  /// No description provided for @mirrorImageHowToPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Look at the shape and choose its correct mirror reflection from the options provided.'**
+  String get mirrorImageHowToPlay;
+
+  /// No description provided for @mentalMappingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mental Mapping'**
+  String get mentalMappingTitle;
+
+  /// No description provided for @mentalMappingSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Follow the directions and find the destination.'**
+  String get mentalMappingSubtitle;
+
+  /// No description provided for @mentalMappingHowToPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'You will be shown a sequence of directions (North, South, East, West). Mentally follow these steps starting from the center of the grid and select the final destination.'**
+  String get mentalMappingHowToPlay;
+
+  /// No description provided for @memoryPalaceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Memory Palace'**
+  String get memoryPalaceTitle;
+
+  /// No description provided for @memoryPalaceSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Remember which word was in which location.'**
+  String get memoryPalaceSubtitle;
+
+  /// No description provided for @memoryPalaceHowToPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'A set of words will appear in different locations on a grid. Memorize their positions. Then, you will be asked to place the words back in their original locations.'**
+  String get memoryPalaceHowToPlay;
+
+  /// No description provided for @countingSheepTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Counting Sheep'**
+  String get countingSheepTitle;
+
+  /// No description provided for @countingSheepSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How many sheep did you see?'**
+  String get countingSheepSubtitle;
+
+  /// No description provided for @countingSheepHowToPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Sheep will run across the screen quickly. Count them as they pass and enter the total number at the end.'**
+  String get countingSheepHowToPlay;
+
+  /// No description provided for @faceTraitAssociationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Face-Trait'**
+  String get faceTraitAssociationTitle;
+
+  /// No description provided for @faceTraitAssociationSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize traits for each face'**
+  String get faceTraitAssociationSubtitle;
+
+  /// No description provided for @faceTraitAssociationHowToPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'You will be shown several faces, each with a name, occupation, and hobby. Memorize these associations. Later, you will be asked to recall the specific traits for each face.'**
+  String get faceTraitAssociationHowToPlay;
+
+  /// No description provided for @mentalCalendarTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mental Calendar'**
+  String get mentalCalendarTitle;
+
+  /// No description provided for @mentalCalendarSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate the day of the week'**
+  String get mentalCalendarSubtitle;
+
+  /// No description provided for @mentalCalendarHowToPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'A random date will be shown. Use mental calculation (or the Doomsday algorithm) to determine which day of the week it falls on.'**
+  String get mentalCalendarHowToPlay;
+
+  /// No description provided for @vocabularyBuilderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Vocabulary Builder'**
+  String get vocabularyBuilderTitle;
+
+  /// No description provided for @vocabularyBuilderSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Match synonyms and antonyms under time pressure.'**
+  String get vocabularyBuilderSubtitle;
+
+  /// No description provided for @vocabularyBuilderHowToPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'You will be shown a target word and a relation (Synonym or Antonym). Choose the correct word from the options that matches the relation. Be quick, the clock is ticking!'**
+  String get vocabularyBuilderHowToPlay;
+
+  /// No description provided for @grammarPoliceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Grammar Police'**
+  String get grammarPoliceTitle;
+
+  /// No description provided for @grammarPoliceSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify and correct errors in a scrolling wall of text.'**
+  String get grammarPoliceSubtitle;
+
+  /// No description provided for @grammarPoliceHowToPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Sentences will scroll up the screen. Some contain errors (spelling, grammar, or punctuation). Tap the sentences that contain errors to \'correct\' them. Don\'t let too many errors pass by!'**
+  String get grammarPoliceHowToPlay;
+
+  /// No description provided for @reverseStroopTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reverse Stroop'**
+  String get reverseStroopTitle;
+
+  /// No description provided for @reverseStroopSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A variation of the Stroop test where the focus is switched.'**
+  String get reverseStroopSubtitle;
+
+  /// No description provided for @reverseStroopHowToPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Pay attention to the instruction! If it says \'TEXT\', match the word\'s meaning. If it says \'COLOR\', match the ink color. The rules will switch frequently to test your focus.'**
+  String get reverseStroopHowToPlay;
 }
 
 class _AppLocalizationsDelegate

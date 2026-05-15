@@ -189,4 +189,9 @@ class DesignSystem {
   
   static const Color accentIndigo = primary;
   static const Color accentOrange = accentAmber;
+  static const Color accentGreen = accentEmerald;
+  static const Color accentBlue = gameBlue;
+  static const Color accentPurple = gamePurple;
+  static const Color accentRed = error;
+  static const Color secondary = accentBerry;
 }

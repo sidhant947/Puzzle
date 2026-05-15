@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'word_search_provider.dart';
+part of 'memory_palace_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$wordSearchNotifierHash() =>
-    r'b826943865bdf743ae2de86eef6e4af3acef5e30';
+String _$memoryPalaceNotifierHash() =>
+    r'3892f8125b7836771229fb6f09e648e60666daa7';
 
-/// See also [WordSearchNotifier].
-@ProviderFor(WordSearchNotifier)
-final wordSearchNotifierProvider =
-    AutoDisposeNotifierProvider<WordSearchNotifier, WordSearchState>.internal(
-  WordSearchNotifier.new,
-  name: r'wordSearchNotifierProvider',
+/// See also [MemoryPalaceNotifier].
+@ProviderFor(MemoryPalaceNotifier)
+final memoryPalaceNotifierProvider = AutoDisposeNotifierProvider<
+    MemoryPalaceNotifier, MemoryPalaceState>.internal(
+  MemoryPalaceNotifier.new,
+  name: r'memoryPalaceNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$wordSearchNotifierHash,
+      : _$memoryPalaceNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$WordSearchNotifier = AutoDisposeNotifier<WordSearchState>;
+typedef _$MemoryPalaceNotifier = AutoDisposeNotifier<MemoryPalaceState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

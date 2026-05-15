@@ -36,6 +36,10 @@ class HapticFeedbackUtil {
     HapticFeedback.selectionClick();
   }
 
+  static void selection() => selectionClick();
+
+  static void light() => lightImpact();
+
   /// Vibrate for errors or warnings
   static void vibrate() {
     HapticFeedback.vibrate();

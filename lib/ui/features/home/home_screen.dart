@@ -58,6 +58,16 @@ import '../games/mirror_tracing/mirror_tracing_screen.dart';
 import '../games/silhouette_match/silhouette_match_screen.dart';
 
 import '../games/multiple_object_tracking/multiple_object_tracking_screen.dart';
+import '../games/einstein_riddle/einstein_riddle_screen.dart';
+import '../games/mirror_image/mirror_image_screen.dart';
+import '../games/mental_mapping/mental_mapping_screen.dart';
+import '../games/counting_sheep/counting_sheep_screen.dart';
+import '../games/memory_palace/memory_palace_screen.dart';
+import '../games/face_trait_association/face_trait_association_screen.dart';
+import '../games/mental_calendar/mental_calendar_screen.dart';
+import '../games/vocabulary_builder/vocabulary_builder_screen.dart';
+import '../games/grammar_police/grammar_police_screen.dart';
+import '../games/reverse_stroop/reverse_stroop_screen.dart';
 import '../games/vigilance_task/vigilance_task_screen.dart';
 
 import '../games/visual_search/visual_search_screen.dart';
@@ -146,6 +156,86 @@ class HomeScreen extends ConsumerStatefulWidget {
   ConsumerState<HomeScreen> createState() => _HomeScreenState();
 
   static final List<Map<String, dynamic>> allGamesList = [
+    {
+      'title': 'Vocabulary',
+      'id': 'vocabulary_builder',
+      'category': 'WORD',
+      'icon': Icons.menu_book_rounded,
+      'color': DesignSystem.gameGreen,
+      'builder': (context) => const VocabularyBuilderScreen(),
+    },
+    {
+      'title': 'Grammar Police',
+      'id': 'grammar_police',
+      'category': 'WORD',
+      'icon': Icons.spellcheck_rounded,
+      'color': DesignSystem.gameBlue,
+      'builder': (context) => const GrammarPoliceScreen(),
+    },
+    {
+      'title': 'Reverse Stroop',
+      'id': 'reverse_stroop',
+      'category': 'ATTENTION',
+      'icon': Icons.psychology_rounded,
+      'color': DesignSystem.gameAmber,
+      'builder': (context) => const ReverseStroopScreen(),
+    },
+    {
+      'title': 'Mental Calendar',
+      'id': 'mental_calendar',
+      'category': 'MATH',
+      'icon': Icons.calendar_month_rounded,
+      'color': DesignSystem.gameAmber,
+      'builder': (context) => const MentalCalendarScreen(),
+    },
+    {
+      'title': 'Face-Trait',
+      'id': 'face_trait_association',
+      'category': 'MEMORY',
+      'icon': Icons.assignment_ind_rounded,
+      'color': DesignSystem.gameRose,
+      'builder': (context) => const FaceTraitAssociationScreen(),
+    },
+    {
+      'title': 'Memory Palace',
+      'id': 'memory_palace',
+      'category': 'MEMORY',
+      'icon': Icons.home_work_rounded,
+      'color': DesignSystem.gameIndigo,
+      'builder': (context) => const MemoryPalaceScreen(),
+    },
+    {
+      'title': 'Counting Sheep',
+      'id': 'counting_sheep',
+      'category': 'ATTENTION',
+      'icon': Icons.pets_rounded,
+      'color': DesignSystem.gameGreen,
+      'builder': (context) => const CountingSheepScreen(),
+    },
+    {
+      'title': 'Mental Mapping',
+      'id': 'mental_mapping',
+      'category': 'SPATIAL',
+      'icon': Icons.map_rounded,
+      'color': DesignSystem.gameTeal,
+      'builder': (context) => const MentalMappingScreen(),
+    },
+    {
+      'title': 'Mirror Image',
+      'id': 'mirror_image',
+      'category': 'SPATIAL',
+      'icon': Icons.flip_rounded,
+      'color': DesignSystem.gameIndigo,
+      'builder': (context) => const MirrorImageScreen(),
+    },
+    {
+      'title': 'Einstein Riddle',
+      'id': 'einstein_riddle',
+      'category': 'LOGIC',
+      'icon': Icons.extension_rounded,
+      'color': DesignSystem.gameAmber,
+      'builder': (context) => const EinsteinRiddleScreen(),
+    },
     {
       'title': 'Lock Pattern',
       'id': 'lock_pattern',

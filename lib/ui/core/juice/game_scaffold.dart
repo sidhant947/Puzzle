@@ -9,6 +9,8 @@ class GameScaffold extends StatelessWidget {
   final Widget? bottomNavigationBar;
   final Widget? floatingActionButton;
   final String? subtitle;
+  final VoidCallback? onHowToPlay;
+  final VoidCallback? onReset;
 
   const GameScaffold({
     super.key,
@@ -18,6 +20,8 @@ class GameScaffold extends StatelessWidget {
     this.bottomNavigationBar,
     this.floatingActionButton,
     this.subtitle,
+    this.onHowToPlay,
+    this.onReset,
   });
 
   @override
@@ -58,12 +62,14 @@ class GameScaffold extends StatelessWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
+    final hasRightButtons = onHowToPlay != null || onReset != null || (actions?.isNotEmpty ?? false);
+
     return Container(
       padding: const EdgeInsets.fromLTRB(
         DesignSystem.spaceMD,
-        DesignSystem.spaceSM, // Reduced top padding
+        DesignSystem.spaceSM,
         DesignSystem.spaceMD,
-        DesignSystem.spaceXS, // Reduced bottom padding
+        DesignSystem.spaceXS,
       ),
       child: Row(
         children: [
@@ -71,11 +77,11 @@ class GameScaffold extends StatelessWidget {
             color: colorScheme.surface,
             shadowColor: colorScheme.outline,
             onTap: () => Navigator.of(context).pop(),
-            padding: const EdgeInsets.all(12), // Compact padding for app bar
+            padding: const EdgeInsets.all(12),
             child: Icon(
               Icons.arrow_back_ios_new_rounded,
               color: colorScheme.onSurface,
-              size: 18, // Slightly smaller icon
+              size: 18,
             ),
           ),
           const SizedBox(width: DesignSystem.spaceSM),
@@ -84,7 +90,7 @@ class GameScaffold extends StatelessWidget {
               color: colorScheme.surface,
               padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
               radius: DesignSystem.radiusSM,
-              depth: 3.0, // Reduced depth for header
+              depth: 3.0,
               child: Center(
                 child: FittedBox(
                   fit: BoxFit.scaleDown,
@@ -101,6 +107,34 @@ class GameScaffold extends StatelessWidget {
               ),
             ),
           ),
+          if (onHowToPlay != null) ...[
+            const SizedBox(width: DesignSystem.spaceSM),
+            TangibleButton(
+              color: colorScheme.surface,
+              shadowColor: colorScheme.outline,
+              onTap: onHowToPlay!,
+              padding: const EdgeInsets.all(12),
+              child: Icon(
+                Icons.help_outline_rounded,
+                color: colorScheme.onSurface,
+                size: 18,
+              ),
+            ),
+          ],
+          if (onReset != null) ...[
+            const SizedBox(width: DesignSystem.spaceSM),
+            TangibleButton(
+              color: colorScheme.surface,
+              shadowColor: colorScheme.outline,
+              onTap: onReset!,
+              padding: const EdgeInsets.all(12),
+              child: Icon(
+                Icons.refresh_rounded,
+                color: colorScheme.onSurface,
+                size: 18,
+              ),
+            ),
+          ],
           if (actions != null) ...[
             const SizedBox(width: DesignSystem.spaceSM),
             ...actions!.map((action) {
@@ -112,9 +146,10 @@ class GameScaffold extends StatelessWidget {
               }
               return action;
             }),
-          ] else
+          ],
+          if (!hasRightButtons)
             // Spacer to balance back button width if no actions
-            const SizedBox(width: 44 + DesignSystem.spaceSM), 
+            const SizedBox(width: 44 + DesignSystem.spaceSM),
         ],
       ),
     );
