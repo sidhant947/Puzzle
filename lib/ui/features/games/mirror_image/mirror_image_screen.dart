@@ -66,7 +66,12 @@ class MirrorImageScreen extends ConsumerWidget {
       height: 200,
       child: TangibleContainer(
         color: Theme.of(context).colorScheme.surface,
-        child: CustomPaint(painter: ShapePainter(shape: shape)),
+        child: CustomPaint(
+          painter: ShapePainter(
+            shape: shape,
+            color: DesignSystem.primary,
+          ),
+        ),
       ),
     );
   }
@@ -80,18 +85,35 @@ class MirrorImageScreen extends ConsumerWidget {
         alignment: WrapAlignment.center,
         children: List.generate(state.level.options.length, (index) {
           final isSelected = state.selectedIndex == index;
-          return GestureDetector(
-            onTap: () {
-              HapticFeedbackUtil.selectionClick();
-              ref.read(mirrorImageNotifierProvider.notifier).selectOption(index);
-            },
-            child: SizedBox(
-              width: 140,
-              height: 140,
-              child: TangibleContainer(
-                depth: isSelected ? 0.0 : 4.0,
-                color: isSelected ? (state.isSolved ? DesignSystem.success.withValues(alpha: 0.1) : DesignSystem.error.withValues(alpha: 0.1)) : Theme.of(context).colorScheme.surface,
-                child: CustomPaint(painter: ShapePainter(shape: state.level.options[index])),
+          final isCorrect = state.level.correctIndex == index;
+          
+          Color? buttonColor;
+          if (isSelected) {
+            buttonColor = isCorrect 
+                ? DesignSystem.success.withValues(alpha: 0.2) 
+                : DesignSystem.error.withValues(alpha: 0.2);
+          } else {
+            buttonColor = Theme.of(context).colorScheme.surface;
+          }
+
+          return SizedBox(
+            width: 140,
+            height: 140,
+            child: TangibleButton(
+              onTap: state.isSolved ? null : () {
+                HapticFeedbackUtil.selectionClick();
+                ref.read(mirrorImageNotifierProvider.notifier).selectOption(index);
+              },
+              color: buttonColor,
+              depth: isSelected ? 2.0 : 6.0,
+              padding: EdgeInsets.zero,
+              child: CustomPaint(
+                painter: ShapePainter(
+                  shape: state.level.options[index],
+                  color: isSelected 
+                      ? (isCorrect ? DesignSystem.success : DesignSystem.error)
+                      : DesignSystem.primary,
+                ),
               ),
             ),
           );
@@ -101,16 +123,25 @@ class MirrorImageScreen extends ConsumerWidget {
   }
 
   void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
+    // Award XP and update streak
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('mirror_image');
+    
     if (!context.mounted) return;
+    
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        onHome: () { Navigator.of(context).pop(); Navigator.of(context).pop(); },
-        onPlayAgain: () { ref.read(mirrorImageNotifierProvider.notifier).nextLevel(); Navigator.of(context).pop(); },
-        title: 'CONGRATS',
-        message: 'You found the correct reflection!',
+        title: 'MIRROR MASTER!',
+        message: 'You perfectly identified the reflection.',
+        onHome: () {
+          Navigator.of(context).pop();
+          Navigator.of(context).pop();
+        },
+        onPlayAgain: () {
+          ref.read(mirrorImageNotifierProvider.notifier).nextLevel();
+          Navigator.of(context).pop();
+        },
       ),
     );
   }
@@ -118,21 +149,37 @@ class MirrorImageScreen extends ConsumerWidget {
 
 class ShapePainter extends CustomPainter {
   final MirrorShape shape;
-  ShapePainter({required this.shape});
+  final Color color;
+  
+  ShapePainter({required this.shape, required this.color});
 
   @override
   void paint(Canvas canvas, Size size) {
-    final paint = Paint()..color = DesignSystem.primary..style = PaintingStyle.stroke..strokeWidth = 3..strokeCap = StrokeCap.round;
+    if (size.width <= 0 || size.height <= 0) return;
+    
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 4.0
+      ..strokeCap = StrokeCap.round;
+      
     final path = Path();
     if (shape.points.isNotEmpty) {
-      path.moveTo(shape.points[0].dx * size.width, shape.points[0].dy * size.height);
+      path.moveTo(
+        shape.points[0].dx.clamp(0.0, 1.0) * size.width, 
+        shape.points[0].dy.clamp(0.0, 1.0) * size.height
+      );
       for (int i = 1; i < shape.points.length; i++) {
-        path.lineTo(shape.points[i].dx * size.width, shape.points[i].dy * size.height);
+        path.lineTo(
+          shape.points[i].dx.clamp(0.0, 1.0) * size.width, 
+          shape.points[i].dy.clamp(0.0, 1.0) * size.height
+        );
       }
     }
     canvas.drawPath(path, paint);
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+  bool shouldRepaint(covariant ShapePainter oldDelegate) => 
+      oldDelegate.shape != shape || oldDelegate.color != color;
 }

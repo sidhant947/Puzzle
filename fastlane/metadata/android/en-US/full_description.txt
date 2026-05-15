@@ -1,5 +1,16 @@
 A professional suite of minimalist puzzle games built with Flutter. Challenge your mind with daily streaks, level up your profile, and master unique puzzle experiences.
 
-Included Games:
-2048, Arithmetic Chain, Attentional Blink, Balance Scale, Binary Puzzle, Block Escape, Box Completion, Bridges, Calculation Sprint, Change Blindness, Choice Reaction Time, Color Match, Corsi Blocks, Crossword, Crown, Cryptogram, Divided Attention, Double N-Back, Find Word, Flanker Test, Fraction Match, Go No Go, Grocery List, Hue Sort, KenKen, Letter Cancellation, Lights Out, Logical Syllogisms, Magic Squares, Math Path, Matrix Reasoning, Memory Matrix, Mental Rotation, Minesweeper, Missing Vowels, N-Back, Nonogram, Numerical Estimation, Object Shuffle, Odd One Out, Odd Rotation, Operation Span, Orbit Tap, Path Finder, Path Recall, Pipes, Pixel Mimic, Prime Hunter, Quick Math, Reflex Tap, Rhythm Master, Rule Switcher, Schulte Table, SDMT, Semantic Link, Simon Sequence, Slide Puzzle, Spelling Sprint, Sternberg Task, Stop Signal, Stroop Test, Sudoku, Switch Task, Symbol Logic, Symbolic Flanker, Symmetry, Target Number, Tents and Trees, Tower of London, Trace Path, Trail Making, Typing Speed, Visual Search, Visual Statistical Learning, Water Sort, Wisconsin Card Sorting, Word Ladder, Word Mastermind, Word Scramble, Word Search & many more.
+Included Games (108 Total):
+
+ATTENTION (25): Attentional Blink, Change Blindness, Choice Reaction, Color Match, Counting Sheep, Divided Focus, Flanker Test, Go / No-Go, Letter Cancel, Object Tracking, Odd One Out, Orbit Tap, Reflex Tap, Reverse Stroop, Rhythm Master, Rule Switcher, Schulte Table, SDMT Test, Stop Signal, Stroop Test, Switch Task, Symbolic Flanker, Trail Making, Vigilance Task, Visual Search.
+
+LOGIC (22): Akari, Binary Puzzle, Block Escape, Bridges, Color Flood, Crown, Einstein Riddle, Lights Out, Lock Pattern, Logical Syllogisms, Matrix Reasoning, Minesweeper, Nonogram, Path Finder, Pipes, Sudoku, Symbol Logic, Tangle Fix, Tents & Trees, Tower of London, Water Sort, Wisconsin Card Sort.
+
+MATH (15): 2048, Arithmetic Chain, Balance Scale, Calculation Sprint, Fraction Match, KenKen, Magic Square, Math Path, Mental Abacus, Mental Calendar, Numerical Estimation, Operator Mix, Prime Hunter, Quick Math, Target 24.
+
+MEMORY (17): Corsi Blocks, Double N-Back, Face-Name Association, Face-Trait Association, Grocery List, Memory Matrix, Memory Palace, N-Back Test, Object Shuffle, Operation Span, Path Recall, Pixel Mimic, Reverse Span, Simon Sequence, Staircase Memory, Sternberg Task, Visual Learning.
+
+SPATIAL (13): Box Completion, Hue Sort, Mental Mapping, Mental Rotation, Mirror Image, Mirror Tracing, Odd Rotation, Paper Folding, Perspective, Silhouette Match, Slide Puzzle, Symmetry, Trace Path.
+
+WORD (16): Category Fluency, Crossword, Cryptogram, Find Word, Grammar Police, Missing Vowels, Semantic Link, Spelling Sprint, Typing Speed, Verbal Analogies, Vocabulary Builder, Word Ladder, Word Mastermind, Word Scramble, Word Search, Word Surge.
 
