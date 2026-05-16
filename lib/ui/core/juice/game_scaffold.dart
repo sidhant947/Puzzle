@@ -32,28 +32,42 @@ class GameScaffold extends StatelessWidget {
     return Scaffold(
       backgroundColor: colorScheme.surface,
       body: SafeArea(
-        child: Column(
-          children: [
-            _buildAppBar(context),
-            if (subtitle != null)
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG, vertical: DesignSystem.spaceXS),
-                child: Text(
-                  subtitle!,
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: colorScheme.onSurface.withValues(alpha: 0.7),
-                    fontWeight: FontWeight.w700,
-                    fontSize: 11, // Reduced from 14
-                    letterSpacing: 0.5,
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 800),
+            child: Column(
+              children: [
+                _buildAppBar(context),
+                if (subtitle != null)
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG, vertical: DesignSystem.spaceXS),
+                    child: Text(
+                      subtitle!,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(
+                        color: colorScheme.onSurface.withValues(alpha: 0.7),
+                        fontWeight: FontWeight.w700,
+                        fontSize: 11, // Reduced from 14
+                        letterSpacing: 0.5,
+                      ),
+                    ),
                   ),
-                ),
-              ),
-            Expanded(child: body),
-          ],
+                Expanded(child: body),
+              ],
+            ),
+          ),
         ),
       ),
-      bottomNavigationBar: bottomNavigationBar,
+      bottomNavigationBar: bottomNavigationBar != null
+          ? SafeArea(
+              child: Center(
+                child: ConstrainedBox(
+                  constraints: const BoxConstraints(maxWidth: 800),
+                  child: bottomNavigationBar,
+                ),
+              ),
+            )
+          : null,
       floatingActionButton: floatingActionButton,
     );
   }

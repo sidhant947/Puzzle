@@ -1234,7 +1234,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
           ),
 
-          // Full-Width Game Tiles
+          // Full-Width Game Tiles or Grid
           filteredGames.isEmpty
               ? SliverFillRemaining(
                   hasScrollBody: false,
@@ -1268,34 +1268,73 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     DesignSystem.spaceLG,
                     140, // Space for bottom nav
                   ),
-                  sliver: SliverList(
-                    delegate: SliverChildBuilderDelegate(
-                      (context, index) {
-                        final game = filteredGames[index];
-                        final gameId = game['id'] as String;
-                        return Padding(
-                          padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
-                          child: _buildFullWidthTile(
-                            context,
-                            game['title'],
-                            gameId,
-                            game['icon'],
-                            game['color'],
-                            streaks[gameId],
-                            favoriteIds.contains(gameId),
-                            () => Navigator.push(
-                              context,
-                              CustomPageRoute(page: (game['builder'] as WidgetBuilder)(context)),
-                            ),
-                            () {
-                              HapticFeedbackUtil.mediumImpact();
-                              ref.read(userDataNotifierProvider.notifier).toggleFavorite(gameId);
+                  sliver: SliverLayoutBuilder(
+                    builder: (context, constraints) {
+                      if (constraints.crossAxisExtent > 600) {
+                        return SliverGrid(
+                          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent: 400,
+                            mainAxisSpacing: DesignSystem.spaceMD,
+                            crossAxisSpacing: DesignSystem.spaceMD,
+                            childAspectRatio: 3.0,
+                          ),
+                          delegate: SliverChildBuilderDelegate(
+                            (context, index) {
+                              final game = filteredGames[index];
+                              final gameId = game['id'] as String;
+                              return _buildFullWidthTile(
+                                context,
+                                game['title'],
+                                gameId,
+                                game['icon'],
+                                game['color'],
+                                streaks[gameId],
+                                favoriteIds.contains(gameId),
+                                () => Navigator.push(
+                                  context,
+                                  CustomPageRoute(page: (game['builder'] as WidgetBuilder)(context)),
+                                ),
+                                () {
+                                  HapticFeedbackUtil.mediumImpact();
+                                  ref.read(userDataNotifierProvider.notifier).toggleFavorite(gameId);
+                                },
+                              );
                             },
+                            childCount: filteredGames.length,
                           ),
                         );
-                      },
-                      childCount: filteredGames.length,
-                    ),
+                      } else {
+                        return SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                            (context, index) {
+                              final game = filteredGames[index];
+                              final gameId = game['id'] as String;
+                              return Padding(
+                                padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
+                                child: _buildFullWidthTile(
+                                  context,
+                                  game['title'],
+                                  gameId,
+                                  game['icon'],
+                                  game['color'],
+                                  streaks[gameId],
+                                  favoriteIds.contains(gameId),
+                                  () => Navigator.push(
+                                    context,
+                                    CustomPageRoute(page: (game['builder'] as WidgetBuilder)(context)),
+                                  ),
+                                  () {
+                                    HapticFeedbackUtil.mediumImpact();
+                                    ref.read(userDataNotifierProvider.notifier).toggleFavorite(gameId);
+                                  },
+                                ),
+                              );
+                            },
+                            childCount: filteredGames.length,
+                          ),
+                        );
+                      }
+                    },
                   ),
                 ),
           ],

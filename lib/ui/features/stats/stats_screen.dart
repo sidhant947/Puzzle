@@ -95,57 +95,62 @@ class StatsScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       body: SafeArea(
-        child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            SliverAppBar(
-              floating: false,
-              snap: false,
-              backgroundColor: theme.scaffoldBackgroundColor,
-              surfaceTintColor: Colors.transparent,
-              centerTitle: true,
-              title: Text(
-                'STATS',
-                style: TextStyle(
-                  fontSize: 14,
-                  letterSpacing: 1.5,
-                  fontWeight: FontWeight.w900,
-                  color: colorScheme.onSurface,
-                ),
-              ),
-            ),
-            SliverPadding(
-              padding: const EdgeInsets.fromLTRB(
-                DesignSystem.spaceLG,
-                DesignSystem.spaceMD,
-                DesignSystem.spaceLG,
-                140, // Space for bottom nav
-              ),
-              sliver: SliverList(
-                delegate: SliverChildListDelegate([
-                  _buildUserStats(context, level, xp, totalSolved ?? 0, ref),
-                  const SizedBox(height: DesignSystem.spaceXL),
-                  Text(
-                    'ACHIEVEMENTS',
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 800),
+            child: CustomScrollView(
+              physics: const BouncingScrollPhysics(),
+              slivers: [
+                SliverAppBar(
+                  floating: false,
+                  snap: false,
+                  backgroundColor: theme.scaffoldBackgroundColor,
+                  surfaceTintColor: Colors.transparent,
+                  centerTitle: true,
+                  title: Text(
+                    'STATS',
                     style: TextStyle(
-                      letterSpacing: 2.0,
+                      fontSize: 14,
+                      letterSpacing: 1.5,
                       fontWeight: FontWeight.w900,
                       color: colorScheme.onSurface,
-                      fontSize: 16,
                     ),
                   ),
-                  const SizedBox(height: DesignSystem.spaceMD),
-                  ...List.generate(
-                    achievements.length,
-                    (index) => Padding(
-                      padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
-                      child: _buildAchievementCard(context, achievements[index], totalSolved ?? 0, level, xp),
-                    ),
+                ),
+                SliverPadding(
+                  padding: const EdgeInsets.fromLTRB(
+                    DesignSystem.spaceLG,
+                    DesignSystem.spaceMD,
+                    DesignSystem.spaceLG,
+                    140, // Space for bottom nav
                   ),
-                ]),
-              ),
+                  sliver: SliverList(
+                    delegate: SliverChildListDelegate([
+                      _buildUserStats(context, level, xp, totalSolved ?? 0, ref),
+                      const SizedBox(height: DesignSystem.spaceXL),
+                      Text(
+                        'ACHIEVEMENTS',
+                        style: TextStyle(
+                          letterSpacing: 2.0,
+                          fontWeight: FontWeight.w900,
+                          color: colorScheme.onSurface,
+                          fontSize: 16,
+                        ),
+                      ),
+                      const SizedBox(height: DesignSystem.spaceMD),
+                      ...List.generate(
+                        achievements.length,
+                        (index) => Padding(
+                          padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
+                          child: _buildAchievementCard(context, achievements[index], totalSolved ?? 0, level, xp),
+                        ),
+                      ),
+                    ]),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );

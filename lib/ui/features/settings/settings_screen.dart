@@ -22,90 +22,95 @@ class SettingsScreen extends ConsumerWidget {
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       body: SafeArea(
-        child: CustomScrollView(
-          physics: const BouncingScrollPhysics(),
-          slivers: [
-            SliverAppBar(
-              floating: false,
-              snap: false,
-              backgroundColor: theme.scaffoldBackgroundColor,
-              surfaceTintColor: Colors.transparent,
-              centerTitle: true,
-              title: Text(
-                l10n.settings.toUpperCase(),
-                style: TextStyle(
-                  letterSpacing: 2.0,
-                  fontWeight: FontWeight.w900,
-                  color: colorScheme.onSurface,
-                  fontSize: 18,
-                ),
-              ),
-            ),
-            SliverPadding(
-              padding: const EdgeInsets.fromLTRB(
-                DesignSystem.spaceLG,
-                DesignSystem.spaceMD,
-                DesignSystem.spaceLG,
-                140, // Space for bottom nav
-              ),
-              sliver: SliverList(
-                delegate: SliverChildListDelegate([
-                  _buildSectionTitle(context, l10n.appearance.toUpperCase()),
-                  const SizedBox(height: DesignSystem.spaceMD),
-                  _buildThemeSelector(context, ref, themeMode, l10n),
-                  const SizedBox(height: DesignSystem.spaceXL),
-                  _buildSectionTitle(context, l10n.gameplay.toUpperCase()),
-                  const SizedBox(height: DesignSystem.spaceMD),
-                  _buildTrialModeToggle(context, ref, isTrialModeEnabled, l10n),
-                  const SizedBox(height: DesignSystem.spaceXL),
-                  _buildSectionTitle(context, l10n.supportUs.toUpperCase()),
-                  const SizedBox(height: DesignSystem.spaceMD),
-                  _buildSettingsItem(
-                    context,
-                    l10n.starOnGithub,
-                    Icons.star_rounded,
-                    () => _launchUrl('https://github.com/sidhant947/Puzzle'),
-                    iconColor: Colors.amber,
-                  ),
-                  const SizedBox(height: DesignSystem.spaceSM),
-                  _buildSettingsItem(
-                    context,
-                    l10n.sponsorOnGithub,
-                    Icons.favorite_rounded,
-                    () => _launchUrl('https://github.com/sponsors/sidhant947'),
-                    iconColor: Colors.pink,
-                  ),
-                  const SizedBox(height: DesignSystem.spaceXL),
-                  _buildSectionTitle(context, l10n.systemLegal.toUpperCase()),
-                  const SizedBox(height: DesignSystem.spaceMD),
-                  _buildSettingsItem(
-                    context,
-                    l10n.privacyPolicy,
-                    Icons.privacy_tip_rounded,
-                    () => _launchUrl('https://sites.google.com/view/puzzlebysidhant/home'),
-                  ),
-                  const SizedBox(height: DesignSystem.spaceSM),
-                  _buildSettingsItem(
-                    context,
-                    l10n.termsOfService,
-                    Icons.description_rounded,
-                    () => _launchUrl('https://sites.google.com/view/puzzlebysidhant/home'),
-                  ),
-                  const SizedBox(height: DesignSystem.spaceSM),
-                  _buildSettingsItem(
-                    context,
-                    l10n.licenses,
-                    Icons.code_rounded,
-                    () => showLicensePage(
-                      context: context,
-                      applicationName: l10n.appTitle.toUpperCase(),
-                      applicationVersion: '1.0.3+4',
+        child: Center(
+          child: ConstrainedBox(
+            constraints: const BoxConstraints(maxWidth: 800),
+            child: CustomScrollView(
+              physics: const BouncingScrollPhysics(),
+              slivers: [
+                SliverAppBar(
+                  floating: false,
+                  snap: false,
+                  backgroundColor: theme.scaffoldBackgroundColor,
+                  surfaceTintColor: Colors.transparent,
+                  centerTitle: true,
+                  title: Text(
+                    l10n.settings.toUpperCase(),
+                    style: TextStyle(
+                      letterSpacing: 2.0,
+                      fontWeight: FontWeight.w900,
+                      color: colorScheme.onSurface,
+                      fontSize: 18,
                     ),
                   ),
-                ]),
-              ),
+                ),
+                SliverPadding(
+                  padding: const EdgeInsets.fromLTRB(
+                    DesignSystem.spaceLG,
+                    DesignSystem.spaceMD,
+                    DesignSystem.spaceLG,
+                    140, // Space for bottom nav
+                  ),
+                  sliver: SliverList(
+                    delegate: SliverChildListDelegate([
+                      _buildSectionTitle(context, l10n.appearance.toUpperCase()),
+                      const SizedBox(height: DesignSystem.spaceMD),
+                      _buildThemeSelector(context, ref, themeMode, l10n),
+                      const SizedBox(height: DesignSystem.spaceXL),
+                      _buildSectionTitle(context, l10n.gameplay.toUpperCase()),
+                      const SizedBox(height: DesignSystem.spaceMD),
+                      _buildTrialModeToggle(context, ref, isTrialModeEnabled, l10n),
+                      const SizedBox(height: DesignSystem.spaceXL),
+                      _buildSectionTitle(context, l10n.supportUs.toUpperCase()),
+                      const SizedBox(height: DesignSystem.spaceMD),
+                      _buildSettingsItem(
+                        context,
+                        l10n.starOnGithub,
+                        Icons.star_rounded,
+                        () => _launchUrl('https://github.com/sidhant947/Puzzle'),
+                        iconColor: Colors.amber,
+                      ),
+                      const SizedBox(height: DesignSystem.spaceSM),
+                      _buildSettingsItem(
+                        context,
+                        l10n.sponsorOnGithub,
+                        Icons.favorite_rounded,
+                        () => _launchUrl('https://github.com/sponsors/sidhant947'),
+                        iconColor: Colors.pink,
+                      ),
+                      const SizedBox(height: DesignSystem.spaceXL),
+                      _buildSectionTitle(context, l10n.systemLegal.toUpperCase()),
+                      const SizedBox(height: DesignSystem.spaceMD),
+                      _buildSettingsItem(
+                        context,
+                        l10n.privacyPolicy,
+                        Icons.privacy_tip_rounded,
+                        () => _launchUrl('https://sites.google.com/view/puzzlebysidhant/home'),
+                      ),
+                      const SizedBox(height: DesignSystem.spaceSM),
+                      _buildSettingsItem(
+                        context,
+                        l10n.termsOfService,
+                        Icons.description_rounded,
+                        () => _launchUrl('https://sites.google.com/view/puzzlebysidhant/home'),
+                      ),
+                      const SizedBox(height: DesignSystem.spaceSM),
+                      _buildSettingsItem(
+                        context,
+                        l10n.licenses,
+                        Icons.code_rounded,
+                        () => showLicensePage(
+                          context: context,
+                          applicationName: l10n.appTitle.toUpperCase(),
+                          applicationVersion: '1.0.3+4',
+                        ),
+                      ),
+                    ]),
+                  ),
+                ),
+              ],
             ),
-          ],
+          ),
         ),
       ),
     );
