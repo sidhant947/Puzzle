@@ -64,5 +64,6 @@
   "akariSubtitle": "Ilumina todas las celdas blancas",
   "akariHowToPlay": "Coloca bombillas en las celdas blancas para iluminar toda la cuadrícula. Las bombillas iluminan su fila y columna hasta chocar con una pared. Dos bombillas no pueden iluminarse entre sí. Las paredes numeradas indican cuántas bombillas deben colocarse en las celdas adyacentes (arriba, abajo, izquierda, derecha).",
   "akariWinTitle": "¡LUCES ENCENDIDAS!",
-  "akariWinMessage": "Todo está perfectamente iluminado."
+  "akariWinMessage": "Todo está perfectamente iluminado.",
+  "game2048Instruction": "DESLIZA EN CUALQUIER DIRECCIÓN PARA COMBINAR"
 }

@@ -2455,6 +2455,12 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Pay attention to the instruction! If it says \'TEXT\', match the word\'s meaning. If it says \'COLOR\', match the ink color. The rules will switch frequently to test your focus.'**
   String get reverseStroopHowToPlay;
+
+  /// No description provided for @game2048Instruction.
+  ///
+  /// In en, this message translates to:
+  /// **'SWIPE IN ANY DIRECTION TO MERGE'**
+  String get game2048Instruction;
 }
 
 class _AppLocalizationsDelegate

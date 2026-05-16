@@ -637,5 +637,6 @@
   "grammarPoliceHowToPlay": "Sentences will scroll up the screen. Some contain errors (spelling, grammar, or punctuation). Tap the sentences that contain errors to 'correct' them. Don't let too many errors pass by!",
   "reverseStroopTitle": "Reverse Stroop",
   "reverseStroopSubtitle": "A variation of the Stroop test where the focus is switched.",
-  "reverseStroopHowToPlay": "Pay attention to the instruction! If it says 'TEXT', match the word's meaning. If it says 'COLOR', match the ink color. The rules will switch frequently to test your focus."
-}
+  "reverseStroopHowToPlay": "Pay attention to the instruction! If it says 'TEXT', match the word's meaning. If it says 'COLOR', match the ink color. The rules will switch frequently to test your focus.",
+  "game2048Instruction": "SWIPE IN ANY DIRECTION TO MERGE"
+  }

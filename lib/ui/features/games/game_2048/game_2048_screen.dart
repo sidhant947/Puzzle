@@ -57,7 +57,7 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    _buildScoreBoard(context, 'SCORE', state.score),
+                    _buildScoreBoard(context, l10n.score.toUpperCase(), state.score),
                   ],
                 ),
               ),
@@ -67,7 +67,7 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG, vertical: DesignSystem.spaceSM),
                 child: Text(
-                  'SWIPE IN ANY DIRECTION TO MERGE',
+                  l10n.game2048Instruction,
                   style: TextStyle(
                     color: colorScheme.onSurface.withValues(alpha: 0.7),
                     letterSpacing: 1.2,
@@ -314,7 +314,6 @@ class _AnimatedTileState extends State<AnimatedTile> with SingleTickerProviderSt
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     final tile = widget.tile;
     final cellSize = widget.cellSize;
 

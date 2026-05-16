@@ -1329,4 +1329,8 @@ class AppLocalizationsEs extends AppLocalizations {
   @override
   String get reverseStroopHowToPlay =>
       'Pay attention to the instruction! If it says \'TEXT\', match the word\'s meaning. If it says \'COLOR\', match the ink color. The rules will switch frequently to test your focus.';
+
+  @override
+  String get game2048Instruction =>
+      'DESLIZA EN CUALQUIER DIRECCIÓN PARA COMBINAR';
 }
