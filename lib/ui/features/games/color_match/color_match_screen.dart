@@ -50,9 +50,9 @@ class ColorMatchScreen extends ConsumerWidget {
                     constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.4),
                     child: Row(
                       children: [
-                        _buildColorBox(context, 'TARGET', state.targetColor),
+                        _buildColorBox(context, l10n.colorMatchTarget, state.targetColor),
                         SizedBox(width: DesignSystem.spaceMD),
-                        _buildColorBox(context, 'YOURS', state.currentColor),
+                        _buildColorBox(context, l10n.colorMatchYours, state.currentColor),
                       ],
                     ),
                   ),
@@ -66,11 +66,11 @@ class ColorMatchScreen extends ConsumerWidget {
                   depth: 4.0,
                   child: Column(
                     children: [
-                      _buildSlider(context, 'RED', (state.currentColor.r * 255.0).round().toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor(v, (state.currentColor.g * 255.0).round().toDouble(), (state.currentColor.b * 255.0).round().toDouble()), DesignSystem.error),
+                      _buildSlider(context, l10n.red.toUpperCase(), (state.currentColor.r * 255.0).round().toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor(v, (state.currentColor.g * 255.0).round().toDouble(), (state.currentColor.b * 255.0).round().toDouble()), DesignSystem.error),
                       const SizedBox(height: DesignSystem.spaceSM),
-                      _buildSlider(context, 'GREEN', (state.currentColor.g * 255.0).round().toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor((state.currentColor.r * 255.0).round().toDouble(), v, (state.currentColor.b * 255.0).round().toDouble()), DesignSystem.accentEmerald),
+                      _buildSlider(context, l10n.green.toUpperCase(), (state.currentColor.g * 255.0).round().toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor((state.currentColor.r * 255.0).round().toDouble(), v, (state.currentColor.b * 255.0).round().toDouble()), DesignSystem.accentEmerald),
                       const SizedBox(height: DesignSystem.spaceSM),
-                      _buildSlider(context, 'BLUE', (state.currentColor.b * 255.0).round().toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor((state.currentColor.r * 255.0).round().toDouble(), (state.currentColor.g * 255.0).round().toDouble(), v), DesignSystem.primary),
+                      _buildSlider(context, l10n.blue.toUpperCase(), (state.currentColor.b * 255.0).round().toDouble(), (v) => ref.read(colorMatchNotifierProvider.notifier).updateColor((state.currentColor.r * 255.0).round().toDouble(), (state.currentColor.g * 255.0).round().toDouble(), v), DesignSystem.primary),
                       const SizedBox(height: DesignSystem.spaceLG),
                       TangibleButton(
                         onTap: () {
@@ -78,7 +78,7 @@ class ColorMatchScreen extends ConsumerWidget {
                           ref.read(colorMatchNotifierProvider.notifier).submit();
                         },
                         padding: const EdgeInsets.symmetric(vertical: 12),
-                        child: const Center(child: Text('CHECK MATCH', style: TextStyle(fontWeight: FontWeight.w900, fontSize: 13))),
+                        child: Center(child: Text(l10n.colorMatchCheck, style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 13))),
                       ),
                     ],
                   ),

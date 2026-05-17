@@ -67,6 +67,7 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
   }
 
   Widget _buildHeader(MinesweeperState state) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
       child: Row(
@@ -79,7 +80,7 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
               child: Column(
                 children: [
                   Text(
-                    'MINES',
+                    l10n.minesweeperMines,
                     style: TextStyle(fontSize: 10, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7)),
                   ),
                   Text(
@@ -97,11 +98,11 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
               radius: DesignSystem.radiusMD,
               depth: 4.0,
               color: state.isWon ? DesignSystem.success : (state.isGameOver ? DesignSystem.error : Theme.of(context).colorScheme.surface),
-              shadowColor: state.isWon ? Color(0xFF047857) : (state.isGameOver ? Color(0xFF991B1B) : Theme.of(context).colorScheme.outline),
+              shadowColor: state.isWon ? const Color(0xFF047857) : (state.isGameOver ? const Color(0xFF991B1B) : Theme.of(context).colorScheme.outline),
               child: Column(
                 children: [
                   Text(
-                    'STATUS',
+                    l10n.minesweeperStatus,
                     style: TextStyle(
                       fontSize: 10, 
                       fontWeight: FontWeight.w900, 
@@ -109,7 +110,7 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
                     ),
                   ),
                   Text(
-                    state.isWon ? 'WON' : (state.isGameOver ? 'BOOM' : 'PLAYING'),
+                    state.isWon ? l10n.minesweeperWon : (state.isGameOver ? l10n.minesweeperBoom : l10n.minesweeperPlaying),
                     style: TextStyle(
                       fontSize: 14, 
                       fontWeight: FontWeight.w900, 
@@ -166,6 +167,7 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
   }
 
   Widget _buildControls() {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
       child: Row(
@@ -173,7 +175,7 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
         children: [
           _buildModeButton(
             icon: Icons.ads_click_rounded,
-            label: 'REVEAL',
+            label: l10n.minesweeperReveal,
             isActive: !_isFlagMode,
             onTap: () {
               HapticFeedbackUtil.selectionClick();
@@ -183,7 +185,7 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
           const SizedBox(width: DesignSystem.spaceMD),
           _buildModeButton(
             icon: Icons.flag_rounded,
-            label: 'FLAG',
+            label: l10n.minesweeperFlag,
             isActive: _isFlagMode,
             onTap: () {
               HapticFeedbackUtil.selectionClick();

@@ -52,7 +52,7 @@ class SlidePuzzleScreen extends ConsumerWidget {
                       HapticFeedbackUtil.mediumImpact();
                       ref.read(slidePuzzleNotifierProvider.notifier).newGame();
                     },
-                    child: const Text('NEW GAME'),
+                    child: Text(l10n.slidePuzzleNewGame),
                   ),
                 ),
                 SizedBox(height: isSmall ? 16 : 32),
@@ -65,6 +65,7 @@ class SlidePuzzleScreen extends ConsumerWidget {
   }
 
   Widget _buildInstructions(BuildContext context, bool isSmall) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
       child: TangibleContainer(
@@ -74,7 +75,7 @@ class SlidePuzzleScreen extends ConsumerWidget {
         child: Column(
           children: [
             Text(
-              'TILE SLIDER',
+              l10n.slidePuzzleTileSlider,
               style: TextStyle(
                 color: DesignSystem.primary,
                 fontSize: isSmall ? 12 : 14,
@@ -84,7 +85,7 @@ class SlidePuzzleScreen extends ConsumerWidget {
             ),
             SizedBox(height: isSmall ? 4 : 8),
             Text(
-              'Rearrange the tiles into numerical order by sliding them into the empty space.',
+              l10n.slidePuzzleInstructions,
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
@@ -168,8 +169,8 @@ class SlidePuzzleScreen extends ConsumerWidget {
           ref.read(slidePuzzleNotifierProvider.notifier).newGame();
           Navigator.of(context).pop();
         },
-        title: 'CONGRATS',
-        message: 'You have successfully ordered all the tiles.',
+        title: l10n.congrats.toUpperCase(),
+        message: l10n.slidePuzzleCongrats,
       ),
     );
   }

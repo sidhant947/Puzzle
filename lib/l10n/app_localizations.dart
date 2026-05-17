@@ -5,8 +5,18 @@ import 'package:flutter/widgets.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:intl/intl.dart' as intl;
 
+import 'app_localizations_ar.dart';
+import 'app_localizations_de.dart';
 import 'app_localizations_en.dart';
 import 'app_localizations_es.dart';
+import 'app_localizations_fr.dart';
+import 'app_localizations_hi.dart';
+import 'app_localizations_it.dart';
+import 'app_localizations_ja.dart';
+import 'app_localizations_ko.dart';
+import 'app_localizations_pt.dart';
+import 'app_localizations_ru.dart';
+import 'app_localizations_zh.dart';
 
 // ignore_for_file: type=lint
 
@@ -94,8 +104,18 @@ abstract class AppLocalizations {
 
   /// A list of this localizations delegate's supported locales.
   static const List<Locale> supportedLocales = <Locale>[
+    Locale('ar'),
+    Locale('de'),
     Locale('en'),
-    Locale('es')
+    Locale('es'),
+    Locale('fr'),
+    Locale('hi'),
+    Locale('it'),
+    Locale('ja'),
+    Locale('ko'),
+    Locale('pt'),
+    Locale('ru'),
+    Locale('zh')
   ];
 
   /// The title of the application
@@ -229,6 +249,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Green'**
   String get green;
+
+  /// No description provided for @blue.
+  ///
+  /// In en, this message translates to:
+  /// **'Blue'**
+  String get blue;
+
+  /// No description provided for @yes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get yes;
+
+  /// No description provided for @no.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
+  String get no;
+
+  /// No description provided for @trueLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'True'**
+  String get trueLabel;
+
+  /// No description provided for @falseLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'False'**
+  String get falseLabel;
+
+  /// No description provided for @clear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get clear;
+
+  /// No description provided for @north.
+  ///
+  /// In en, this message translates to:
+  /// **'North'**
+  String get north;
+
+  /// No description provided for @south.
+  ///
+  /// In en, this message translates to:
+  /// **'South'**
+  String get south;
+
+  /// No description provided for @east.
+  ///
+  /// In en, this message translates to:
+  /// **'East'**
+  String get east;
+
+  /// No description provided for @west.
+  ///
+  /// In en, this message translates to:
+  /// **'West'**
+  String get west;
 
   /// No description provided for @target.
   ///
@@ -541,6 +621,48 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Victory!'**
   String get minesweeperWin;
+
+  /// No description provided for @minesweeperMines.
+  ///
+  /// In en, this message translates to:
+  /// **'MINES'**
+  String get minesweeperMines;
+
+  /// No description provided for @minesweeperStatus.
+  ///
+  /// In en, this message translates to:
+  /// **'STATUS'**
+  String get minesweeperStatus;
+
+  /// No description provided for @minesweeperWon.
+  ///
+  /// In en, this message translates to:
+  /// **'WON'**
+  String get minesweeperWon;
+
+  /// No description provided for @minesweeperBoom.
+  ///
+  /// In en, this message translates to:
+  /// **'BOOM'**
+  String get minesweeperBoom;
+
+  /// No description provided for @minesweeperPlaying.
+  ///
+  /// In en, this message translates to:
+  /// **'PLAYING'**
+  String get minesweeperPlaying;
+
+  /// No description provided for @minesweeperReveal.
+  ///
+  /// In en, this message translates to:
+  /// **'REVEAL'**
+  String get minesweeperReveal;
+
+  /// No description provided for @minesweeperFlag.
+  ///
+  /// In en, this message translates to:
+  /// **'FLAG'**
+  String get minesweeperFlag;
 
   /// No description provided for @game2048Title.
   ///
@@ -1805,8 +1927,26 @@ abstract class AppLocalizations {
   /// No description provided for @sternbergTaskTitle.
   ///
   /// In en, this message translates to:
-  /// **'Game Over'**
+  /// **'Sternberg Task'**
   String get sternbergTaskTitle;
+
+  /// No description provided for @sternbergTaskMemorize.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize the letters'**
+  String get sternbergTaskMemorize;
+
+  /// No description provided for @sternbergTaskWasLetterSet.
+  ///
+  /// In en, this message translates to:
+  /// **'Was this letter in the set?'**
+  String get sternbergTaskWasLetterSet;
+
+  /// No description provided for @sternbergTaskScore.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {score} points in Sternberg Task!'**
+  String sternbergTaskScore(int score);
 
   /// No description provided for @verbalAnalogiesTitle.
   ///
@@ -1956,7 +2096,7 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Use all 4 numbers to reach {target}'**
-  String targetNumberSubtitle(Object target);
+  String targetNumberSubtitle(int target);
 
   /// No description provided for @mirrorTracingTitle.
   ///
@@ -1985,8 +2125,26 @@ abstract class AppLocalizations {
   /// No description provided for @perspectiveTakingTitle.
   ///
   /// In en, this message translates to:
-  /// **'Great Perspective!'**
+  /// **'Perspective Taking'**
   String get perspectiveTakingTitle;
+
+  /// No description provided for @perspectiveTakingTopDownView.
+  ///
+  /// In en, this message translates to:
+  /// **'TOP-DOWN VIEW'**
+  String get perspectiveTakingTopDownView;
+
+  /// No description provided for @perspectiveTakingChoosePerspective.
+  ///
+  /// In en, this message translates to:
+  /// **'CHOOSE THE PERSPECTIVE'**
+  String get perspectiveTakingChoosePerspective;
+
+  /// No description provided for @perspectiveTakingCongrats.
+  ///
+  /// In en, this message translates to:
+  /// **'You have a sharp eye for spatial relationships.'**
+  String get perspectiveTakingCongrats;
 
   /// No description provided for @perspectiveTakingSubtitle.
   ///
@@ -2171,14 +2329,68 @@ abstract class AppLocalizations {
   /// No description provided for @operationSpanTitle.
   ///
   /// In en, this message translates to:
-  /// **'Game Over'**
+  /// **'Operation Span'**
   String get operationSpanTitle;
+
+  /// No description provided for @operationSpanMathPhase.
+  ///
+  /// In en, this message translates to:
+  /// **'Is the equation correct?'**
+  String get operationSpanMathPhase;
+
+  /// No description provided for @operationSpanLetterPhase.
+  ///
+  /// In en, this message translates to:
+  /// **'Remember the letter'**
+  String get operationSpanLetterPhase;
+
+  /// No description provided for @operationSpanRecallPhase.
+  ///
+  /// In en, this message translates to:
+  /// **'Recall the letters in order'**
+  String get operationSpanRecallPhase;
+
+  /// No description provided for @operationSpanRoundComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Round Complete!'**
+  String get operationSpanRoundComplete;
+
+  /// No description provided for @operationSpanScore.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {score} points in Operation Span!'**
+  String operationSpanScore(int score);
 
   /// No description provided for @slidePuzzleTitle.
   ///
   /// In en, this message translates to:
   /// **'Slide Puzzle'**
   String get slidePuzzleTitle;
+
+  /// No description provided for @slidePuzzleNewGame.
+  ///
+  /// In en, this message translates to:
+  /// **'NEW GAME'**
+  String get slidePuzzleNewGame;
+
+  /// No description provided for @slidePuzzleInstructions.
+  ///
+  /// In en, this message translates to:
+  /// **'Rearrange the tiles into numerical order by sliding them into the empty space.'**
+  String get slidePuzzleInstructions;
+
+  /// No description provided for @slidePuzzleTileSlider.
+  ///
+  /// In en, this message translates to:
+  /// **'TILE SLIDER'**
+  String get slidePuzzleTileSlider;
+
+  /// No description provided for @slidePuzzleCongrats.
+  ///
+  /// In en, this message translates to:
+  /// **'You have successfully ordered all the tiles.'**
+  String get slidePuzzleCongrats;
 
   /// No description provided for @visualSearchTitle.
   ///
@@ -2244,7 +2456,7 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'Every row, column and diagonal must sum to {targetSum}'**
-  String magicSquaresSubtitle(Object targetSum);
+  String magicSquaresSubtitle(int targetSum);
 
   /// No description provided for @objectShuffleTitle.
   ///
@@ -2473,8 +2685,20 @@ class _AppLocalizationsDelegate
   }
 
   @override
-  bool isSupported(Locale locale) =>
-      <String>['en', 'es'].contains(locale.languageCode);
+  bool isSupported(Locale locale) => <String>[
+        'ar',
+        'de',
+        'en',
+        'es',
+        'fr',
+        'hi',
+        'it',
+        'ja',
+        'ko',
+        'pt',
+        'ru',
+        'zh'
+      ].contains(locale.languageCode);
 
   @override
   bool shouldReload(_AppLocalizationsDelegate old) => false;
@@ -2483,10 +2707,30 @@ class _AppLocalizationsDelegate
 AppLocalizations lookupAppLocalizations(Locale locale) {
   // Lookup logic when only language code is specified.
   switch (locale.languageCode) {
+    case 'ar':
+      return AppLocalizationsAr();
+    case 'de':
+      return AppLocalizationsDe();
     case 'en':
       return AppLocalizationsEn();
     case 'es':
       return AppLocalizationsEs();
+    case 'fr':
+      return AppLocalizationsFr();
+    case 'hi':
+      return AppLocalizationsHi();
+    case 'it':
+      return AppLocalizationsIt();
+    case 'ja':
+      return AppLocalizationsJa();
+    case 'ko':
+      return AppLocalizationsKo();
+    case 'pt':
+      return AppLocalizationsPt();
+    case 'ru':
+      return AppLocalizationsRu();
+    case 'zh':
+      return AppLocalizationsZh();
   }
 
   throw FlutterError(

@@ -25,6 +25,16 @@
   "odd": "Odd",
   "red": "Red",
   "green": "Green",
+  "blue": "Blue",
+  "yes": "Yes",
+  "no": "No",
+  "trueLabel": "True",
+  "falseLabel": "False",
+  "clear": "Clear",
+  "north": "North",
+  "south": "South",
+  "east": "East",
+  "west": "West",
   "target": "Target",
   "moves": "Moves",
   "trialMode": "Trial Mode",
@@ -101,6 +111,13 @@
   "minesweeperTitle": "Minesweeper",
   "minesweeperSubtitle": "Identify all the mines without triggering them.",
   "minesweeperWin": "Victory!",
+  "minesweeperMines": "MINES",
+  "minesweeperStatus": "STATUS",
+  "minesweeperWon": "WON",
+  "minesweeperBoom": "BOOM",
+  "minesweeperPlaying": "PLAYING",
+  "minesweeperReveal": "REVEAL",
+  "minesweeperFlag": "FLAG",
   "game2048Title": "2048",
   "game2048Subtitle": "Swipe in any direction to merge tiles and reach the 2048 tile!",
   "nonogramTitle": "Nonogram",
@@ -522,7 +539,17 @@
   "logicalSyllogismsSubtitle": "Is the conclusion logically valid?",
   "mathPathTitle": "Math Path",
   "mathPathSubtitle": "Find a path that adds up exactly to the target sum.",
-  "sternbergTaskTitle": "Game Over",
+  "sternbergTaskTitle": "Sternberg Task",
+  "sternbergTaskMemorize": "Memorize the letters",
+  "sternbergTaskWasLetterSet": "Was this letter in the set?",
+  "sternbergTaskScore": "You scored {score} points in Sternberg Task!",
+  "@sternbergTaskScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "verbalAnalogiesTitle": "Analogy Master!",
   "verbalAnalogiesSubtitle": "Complete the relationship",
   "typingSpeedTitle": "Typing Speed",
@@ -548,11 +575,21 @@
   "pixelMimicTitle": "Pixel Mimic",
   "targetNumberTitle": "Target 24",
   "targetNumberSubtitle": "Use all 4 numbers to reach {target}",
+  "@targetNumberSubtitle": {
+    "placeholders": {
+      "target": {
+        "type": "int"
+      }
+    }
+  },
   "mirrorTracingTitle": "Traced To Perfection!",
   "mirrorTracingSubtitle": "Trace the star! Controls are MIRRORED.",
   "wordSurgeTitle": "Word Surge",
   "wordSurgeSubtitle": "Synonyms & Antonyms",
-  "perspectiveTakingTitle": "Great Perspective!",
+  "perspectiveTakingTitle": "Perspective Taking",
+  "perspectiveTakingTopDownView": "TOP-DOWN VIEW",
+  "perspectiveTakingChoosePerspective": "CHOOSE THE PERSPECTIVE",
+  "perspectiveTakingCongrats": "You have a sharp eye for spatial relationships.",
   "perspectiveTakingSubtitle": "Which view is from the {targetDirName}?",
   "@perspectiveTakingSubtitle": {
     "placeholders": {
@@ -590,8 +627,24 @@
   "symbolLogicSubtitle": "Solve the visual equations to find the value of each symbol. What is the result of the last equation?",
   "silhouetteMatchTitle": "Matched!",
   "silhouetteMatchSubtitle": "Which silhouette matches this object?",
-  "operationSpanTitle": "Game Over",
+  "operationSpanTitle": "Operation Span",
+  "operationSpanMathPhase": "Is the equation correct?",
+  "operationSpanLetterPhase": "Remember the letter",
+  "operationSpanRecallPhase": "Recall the letters in order",
+  "operationSpanRoundComplete": "Round Complete!",
+  "operationSpanScore": "You scored {score} points in Operation Span!",
+  "@operationSpanScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "slidePuzzleTitle": "Slide Puzzle",
+  "slidePuzzleNewGame": "NEW GAME",
+  "slidePuzzleInstructions": "Rearrange the tiles into numerical order by sliding them into the empty space.",
+  "slidePuzzleTileSlider": "TILE SLIDER",
+  "slidePuzzleCongrats": "You have successfully ordered all the tiles.",
   "visualSearchTitle": "Visual Search",
   "visualSearchSubtitle": "Find the unique symbol in the grid",
   "trailMakingTitle": "Trail Making",
@@ -603,6 +656,13 @@
   "quickMathTitle": "Quick Math",
   "magicSquaresTitle": "Magic Square",
   "magicSquaresSubtitle": "Every row, column and diagonal must sum to {targetSum}",
+  "@magicSquaresSubtitle": {
+    "placeholders": {
+      "targetSum": {
+        "type": "int"
+      }
+    }
+  },
   "objectShuffleTitle": "Object Shuffle",
   "pipesTitle": "Pipes",
   "pipesSubtitle": "Connect matching colored dots with pipes.",
@@ -639,4 +699,4 @@
   "reverseStroopSubtitle": "A variation of the Stroop test where the focus is switched.",
   "reverseStroopHowToPlay": "Pay attention to the instruction! If it says 'TEXT', match the word's meaning. If it says 'COLOR', match the ink color. The rules will switch frequently to test your focus.",
   "game2048Instruction": "SWIPE IN ANY DIRECTION TO MERGE"
-  }
+}

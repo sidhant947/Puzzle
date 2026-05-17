@@ -33,7 +33,7 @@ class _SternbergTaskScreenState extends ConsumerState<SternbergTaskScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.sternbergTaskTitle.toUpperCase(),
-        message: 'You scored $score points in Sternberg Task!',
+        message: l10n.sternbergTaskScore(score),
         isVictory: score > 15,
         onHome: () {
           Navigator.of(context).pop();
@@ -63,14 +63,14 @@ class _SternbergTaskScreenState extends ConsumerState<SternbergTaskScreen> {
 
     if (state.isLoading) {
       return GameScaffold(
-        title: 'Sternberg Task',
-        body: Center(child: CircularProgressIndicator()),
+        title: l10n.sternbergTaskTitle,
+        body: const Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
-      title: 'Sternberg Task',
-      subtitle: state.phase == SternbergPhase.memorize ? 'Memorize the letters' : 'Was this letter in the set?',
+      title: l10n.sternbergTaskTitle,
+      subtitle: state.phase == SternbergPhase.memorize ? l10n.sternbergTaskMemorize : l10n.sternbergTaskWasLetterSet,
       actions: [
         _buildTimer(state.timeLeft),
       ],
@@ -79,7 +79,7 @@ class _SternbergTaskScreenState extends ConsumerState<SternbergTaskScreen> {
         child: Column(
           children: [
             Text(
-              'Score: ${state.score}',
+              '${l10n.score}: ${state.score}',
               style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w900, color: DesignSystem.primary),
             ),
             const SizedBox(height: DesignSystem.spaceLG),
@@ -95,7 +95,7 @@ class _SternbergTaskScreenState extends ConsumerState<SternbergTaskScreen> {
                     child: TangibleButton(
                       onTap: () => notifier.answer(true),
                       color: DesignSystem.success,
-                      child: const Text('YES', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900)),
+                      child: Text(l10n.yes.toUpperCase(), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w900)),
                     ),
                   ),
                   const SizedBox(width: DesignSystem.spaceMD),
@@ -103,7 +103,7 @@ class _SternbergTaskScreenState extends ConsumerState<SternbergTaskScreen> {
                     child: TangibleButton(
                       onTap: () => notifier.answer(false),
                       color: DesignSystem.error,
-                      child: const Text('NO', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900)),
+                      child: Text(l10n.no.toUpperCase(), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w900)),
                     ),
                   ),
                 ],

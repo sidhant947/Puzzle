@@ -7,6 +7,7 @@ import '../../../core/juice/game_scaffold.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../utils/design_system.dart';
 import 'perspective_taking_provider.dart';
+import 'perspective_taking_engine.dart';
 
 class PerspectiveTakingScreen extends ConsumerStatefulWidget {
   const PerspectiveTakingScreen({super.key});
@@ -31,7 +32,7 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.perspectiveTakingTitle.toUpperCase(),
-        message: 'You have a sharp eye for spatial relationships.',
+        message: l10n.perspectiveTakingCongrats,
         isVictory: true,
         onHome: () {
           Navigator.of(context).pop();
@@ -43,6 +44,21 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
         },
       ),
     );
+  }
+
+  String _getDirectionName(AppLocalizations l10n, ViewDirection dir) {
+    switch (dir) {
+      case ViewDirection.north:
+        return l10n.north.toUpperCase();
+      case ViewDirection.south:
+        return l10n.south.toUpperCase();
+      case ViewDirection.east:
+        return l10n.east.toUpperCase();
+      case ViewDirection.west:
+        return l10n.west.toUpperCase();
+      case ViewDirection.top:
+        return '';
+    }
   }
 
   @override
@@ -62,23 +78,23 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
 
     if (state.isLoading) {
       return GameScaffold(
-        title: 'Perspective',
-        body: Center(child: CircularProgressIndicator()),
+        title: l10n.perspectiveTakingTitle,
+        body: const Center(child: CircularProgressIndicator()),
       );
     }
 
-    final targetDirName = state.targetDirection.name.toUpperCase();
+    final targetDirName = _getDirectionName(l10n, state.targetDirection);
 
     return GameScaffold(
-      title: 'Perspective',
+      title: l10n.perspectiveTakingTitle,
       subtitle: l10n.perspectiveTakingSubtitle(targetDirName),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
         child: Column(
           children: [
-            SizedBox(height: DesignSystem.spaceMD),
+            const SizedBox(height: DesignSystem.spaceMD),
             Text(
-              'TOP-DOWN VIEW',
+              l10n.perspectiveTakingTopDownView,
               style: TextStyle(
                 fontWeight: FontWeight.w900,
                 fontSize: 12,
@@ -86,14 +102,14 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
                 color: colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
-            SizedBox(height: DesignSystem.spaceMD),
+            const SizedBox(height: DesignSystem.spaceMD),
             FittedBox(
               fit: BoxFit.scaleDown,
-              child: _buildTopDownView(state.topView, colorScheme),
+              child: _buildTopDownView(state.topView, colorScheme, l10n),
             ),
             const Spacer(),
             Text(
-              'CHOOSE THE PERSPECTIVE',
+              l10n.perspectiveTakingChoosePerspective,
               style: TextStyle(
                 fontWeight: FontWeight.w900,
                 fontSize: 12,
@@ -123,7 +139,7 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
     );
   }
 
-  Widget _buildTopDownView(List<List<Color?>> view, ColorScheme colorScheme) {
+  Widget _buildTopDownView(List<List<Color?>> view, ColorScheme colorScheme, AppLocalizations l10n) {
     return Container(
       padding: const EdgeInsets.all(DesignSystem.spaceSM),
       decoration: BoxDecoration(
@@ -133,7 +149,7 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
           BoxShadow(
             color: colorScheme.onSurface.withValues(alpha: 0.05),
             blurRadius: 12,
-            offset: Offset(0, 6),
+            offset: const Offset(0, 6),
           ),
         ],
       ),
@@ -144,10 +160,10 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
             padding: const EdgeInsets.all(20.0),
             child: _buildGridView(view, 44, colorScheme),
           ),
-          Positioned(top: 4, child: Text('NORTH', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: colorScheme.onSurface.withValues(alpha: 0.7)))),
-          Positioned(bottom: 4, child: Text('SOUTH', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: colorScheme.onSurface.withValues(alpha: 0.7)))),
-          Positioned(left: 4, child: RotatedBox(quarterTurns: 3, child: Text('WEST', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: colorScheme.onSurface.withValues(alpha: 0.7))))),
-          Positioned(right: 4, child: RotatedBox(quarterTurns: 1, child: Text('EAST', style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: colorScheme.onSurface.withValues(alpha: 0.7))))),
+          Positioned(top: 4, child: Text(l10n.north.toUpperCase(), style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: colorScheme.onSurface.withValues(alpha: 0.7)))),
+          Positioned(bottom: 4, child: Text(l10n.south.toUpperCase(), style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: colorScheme.onSurface.withValues(alpha: 0.7)))),
+          Positioned(left: 4, child: RotatedBox(quarterTurns: 3, child: Text(l10n.west.toUpperCase(), style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: colorScheme.onSurface.withValues(alpha: 0.7))))),
+          Positioned(right: 4, child: RotatedBox(quarterTurns: 1, child: Text(l10n.east.toUpperCase(), style: TextStyle(fontSize: 8, fontWeight: FontWeight.w900, color: colorScheme.onSurface.withValues(alpha: 0.7))))),
         ],
       ),
     );

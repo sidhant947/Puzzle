@@ -75,6 +75,36 @@ class AppLocalizationsEn extends AppLocalizations {
   String get green => 'Green';
 
   @override
+  String get blue => 'Blue';
+
+  @override
+  String get yes => 'Yes';
+
+  @override
+  String get no => 'No';
+
+  @override
+  String get trueLabel => 'True';
+
+  @override
+  String get falseLabel => 'False';
+
+  @override
+  String get clear => 'Clear';
+
+  @override
+  String get north => 'North';
+
+  @override
+  String get south => 'South';
+
+  @override
+  String get east => 'East';
+
+  @override
+  String get west => 'West';
+
+  @override
   String get target => 'Target';
 
   @override
@@ -242,6 +272,27 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get minesweeperWin => 'Victory!';
+
+  @override
+  String get minesweeperMines => 'MINES';
+
+  @override
+  String get minesweeperStatus => 'STATUS';
+
+  @override
+  String get minesweeperWon => 'WON';
+
+  @override
+  String get minesweeperBoom => 'BOOM';
+
+  @override
+  String get minesweeperPlaying => 'PLAYING';
+
+  @override
+  String get minesweeperReveal => 'REVEAL';
+
+  @override
+  String get minesweeperFlag => 'FLAG';
 
   @override
   String get game2048Title => '2048';
@@ -964,7 +1015,18 @@ class AppLocalizationsEn extends AppLocalizations {
       'Find a path that adds up exactly to the target sum.';
 
   @override
-  String get sternbergTaskTitle => 'Game Over';
+  String get sternbergTaskTitle => 'Sternberg Task';
+
+  @override
+  String get sternbergTaskMemorize => 'Memorize the letters';
+
+  @override
+  String get sternbergTaskWasLetterSet => 'Was this letter in the set?';
+
+  @override
+  String sternbergTaskScore(int score) {
+    return 'You scored $score points in Sternberg Task!';
+  }
 
   @override
   String get verbalAnalogiesTitle => 'Analogy Master!';
@@ -1045,7 +1107,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get targetNumberTitle => 'Target 24';
 
   @override
-  String targetNumberSubtitle(Object target) {
+  String targetNumberSubtitle(int target) {
     return 'Use all 4 numbers to reach $target';
   }
 
@@ -1062,7 +1124,17 @@ class AppLocalizationsEn extends AppLocalizations {
   String get wordSurgeSubtitle => 'Synonyms & Antonyms';
 
   @override
-  String get perspectiveTakingTitle => 'Great Perspective!';
+  String get perspectiveTakingTitle => 'Perspective Taking';
+
+  @override
+  String get perspectiveTakingTopDownView => 'TOP-DOWN VIEW';
+
+  @override
+  String get perspectiveTakingChoosePerspective => 'CHOOSE THE PERSPECTIVE';
+
+  @override
+  String get perspectiveTakingCongrats =>
+      'You have a sharp eye for spatial relationships.';
 
   @override
   String perspectiveTakingSubtitle(String targetDirName) {
@@ -1166,10 +1238,41 @@ class AppLocalizationsEn extends AppLocalizations {
   String get silhouetteMatchSubtitle => 'Which silhouette matches this object?';
 
   @override
-  String get operationSpanTitle => 'Game Over';
+  String get operationSpanTitle => 'Operation Span';
+
+  @override
+  String get operationSpanMathPhase => 'Is the equation correct?';
+
+  @override
+  String get operationSpanLetterPhase => 'Remember the letter';
+
+  @override
+  String get operationSpanRecallPhase => 'Recall the letters in order';
+
+  @override
+  String get operationSpanRoundComplete => 'Round Complete!';
+
+  @override
+  String operationSpanScore(int score) {
+    return 'You scored $score points in Operation Span!';
+  }
 
   @override
   String get slidePuzzleTitle => 'Slide Puzzle';
+
+  @override
+  String get slidePuzzleNewGame => 'NEW GAME';
+
+  @override
+  String get slidePuzzleInstructions =>
+      'Rearrange the tiles into numerical order by sliding them into the empty space.';
+
+  @override
+  String get slidePuzzleTileSlider => 'TILE SLIDER';
+
+  @override
+  String get slidePuzzleCongrats =>
+      'You have successfully ordered all the tiles.';
 
   @override
   String get visualSearchTitle => 'Visual Search';
@@ -1204,7 +1307,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get magicSquaresTitle => 'Magic Square';
 
   @override
-  String magicSquaresSubtitle(Object targetSum) {
+  String magicSquaresSubtitle(int targetSum) {
     return 'Every row, column and diagonal must sum to $targetSum';
   }
 

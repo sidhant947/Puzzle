@@ -33,7 +33,7 @@ class _OperationSpanScreenState extends ConsumerState<OperationSpanScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.operationSpanTitle.toUpperCase(),
-        message: 'You scored $score points in Operation Span!',
+        message: l10n.operationSpanScore(score),
         isVictory: score > 10,
         onHome: () {
           Navigator.of(context).pop();
@@ -63,14 +63,14 @@ class _OperationSpanScreenState extends ConsumerState<OperationSpanScreen> {
 
     if (state.isLoading) {
       return GameScaffold(
-        title: 'Operation Span',
-        body: Center(child: CircularProgressIndicator()),
+        title: l10n.operationSpanTitle,
+        body: const Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
-      title: 'Operation Span',
-      subtitle: _getSubtitle(state.phase),
+      title: l10n.operationSpanTitle,
+      subtitle: _getSubtitle(context, state.phase),
       actions: [
         _buildTimer(state.timeLeft),
       ],
@@ -79,7 +79,7 @@ class _OperationSpanScreenState extends ConsumerState<OperationSpanScreen> {
         child: Column(
           children: [
             Text(
-              'Score: ${state.score}',
+              '${l10n.score}: ${state.score}',
               style: const TextStyle(
                 fontSize: 18,
                 fontWeight: FontWeight.w900,
@@ -96,16 +96,17 @@ class _OperationSpanScreenState extends ConsumerState<OperationSpanScreen> {
     );
   }
 
-  String _getSubtitle(OperationSpanPhase phase) {
+  String _getSubtitle(BuildContext context, OperationSpanPhase phase) {
+    final l10n = AppLocalizations.of(context)!;
     switch (phase) {
       case OperationSpanPhase.math:
-        return 'Is the equation correct?';
+        return l10n.operationSpanMathPhase;
       case OperationSpanPhase.letter:
-        return 'Remember the letter';
+        return l10n.operationSpanLetterPhase;
       case OperationSpanPhase.recall:
-        return 'Recall the letters in order';
+        return l10n.operationSpanRecallPhase;
       case OperationSpanPhase.result:
-        return 'Round complete';
+        return l10n.operationSpanRoundComplete;
     }
   }
 
@@ -137,6 +138,7 @@ class _OperationSpanScreenState extends ConsumerState<OperationSpanScreen> {
   }
 
   Widget _buildMainContent(OperationSpanState state, OperationSpanNotifier notifier) {
+    final l10n = AppLocalizations.of(context)!;
     switch (state.phase) {
       case OperationSpanPhase.math:
         return _buildMathPhase(state, notifier);
@@ -145,11 +147,12 @@ class _OperationSpanScreenState extends ConsumerState<OperationSpanScreen> {
       case OperationSpanPhase.recall:
         return _buildRecallPhase(state, notifier);
       case OperationSpanPhase.result:
-        return const Center(child: Text('Round Complete!', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold)));
+        return Center(child: Text(l10n.operationSpanRoundComplete, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold)));
     }
   }
 
   Widget _buildMathPhase(OperationSpanState state, OperationSpanNotifier notifier) {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -167,7 +170,7 @@ class _OperationSpanScreenState extends ConsumerState<OperationSpanScreen> {
               child: TangibleButton(
                 onTap: () => notifier.answerMath(true),
                 color: DesignSystem.success,
-                child: const Text('TRUE', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900)),
+                child: Text(l10n.trueLabel.toUpperCase(), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w900)),
               ),
             ),
             const SizedBox(width: DesignSystem.spaceMD),
@@ -175,7 +178,7 @@ class _OperationSpanScreenState extends ConsumerState<OperationSpanScreen> {
               child: TangibleButton(
                 onTap: () => notifier.answerMath(false),
                 color: DesignSystem.error,
-                child: const Text('FALSE', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900)),
+                child: Text(l10n.falseLabel.toUpperCase(), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w900)),
               ),
             ),
           ],
@@ -194,6 +197,7 @@ class _OperationSpanScreenState extends ConsumerState<OperationSpanScreen> {
   }
 
   Widget _buildRecallPhase(OperationSpanState state, OperationSpanNotifier notifier) {
+    final l10n = AppLocalizations.of(context)!;
     final letters = ['F', 'H', 'J', 'K', 'L', 'N', 'P', 'Q', 'R', 'S', 'T', 'Y'];
     
     return Column(
@@ -223,7 +227,7 @@ class _OperationSpanScreenState extends ConsumerState<OperationSpanScreen> {
         TangibleButton(
           onTap: notifier.clearRecall,
           color: Theme.of(context).colorScheme.surface,
-          child: const Text('Clear'),
+          child: Text(l10n.clear),
         ),
       ],
     );
