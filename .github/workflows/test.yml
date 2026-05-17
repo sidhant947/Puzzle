@@ -1,0 +1,92 @@
+name: Manual Build Test
+
+on:
+  workflow_dispatch:
+    inputs:
+      should_sign_android:
+        description: 'Try to sign Android (Requires secrets to be set)'
+        type: boolean
+        default: false
+
+jobs:
+  build-android:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+      
+      - name: Prepare Signing
+        if: ${{ github.event.inputs.should_sign_android == 'true' }}
+        run: |
+          echo "${{ secrets.ANDROID_KEYSTORE_BASE64 }}" | base64 --decode > android/app/upload-keystore.jks
+          echo "storeFile=upload-keystore.jks" > android/key.properties
+          echo "storePassword=${{ secrets.ANDROID_STORE_PASSWORD }}" >> android/key.properties
+          echo "keyAlias=${{ secrets.ANDROID_KEY_ALIAS }}" >> android/key.properties
+          echo "keyPassword=${{ secrets.ANDROID_KEY_PASSWORD }}" >> android/key.properties
+
+      - name: Get dependencies
+        run: flutter pub get
+      
+      - name: Build APK
+        run: flutter build apk --release
+      
+      - name: Build AppBundle
+        run: flutter build appbundle --release
+
+  build-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+      - name: Install Linux dependencies
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y libgtk-3-dev libblkid-dev liblzma-dev libgcrypt20-dev rpm
+      - name: Get dependencies
+        run: |
+          flutter pub get
+          dart pub global activate flutter_distributor
+      - name: Build Linux Packages
+        run: |
+          export PATH="$PATH":"$HOME/.pub-cache/bin"
+          flutter_distributor release --name release --target linux
+
+  build-macos:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+      - name: Get dependencies
+        run: |
+          flutter pub get
+          dart pub global activate flutter_distributor
+      - name: Build macOS Packages
+        run: |
+          export PATH="$PATH":"$HOME/.pub-cache/bin"
+          flutter_distributor release --name release --target macos
+
+  build-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+      - name: Get dependencies
+        run: |
+          flutter pub get
+          dart pub global activate flutter_distributor
+      - name: Build Windows Packages
+        run: |
+          $env:Path += ";$env:LocalAppData\Pub\Cache\bin"
+          flutter_distributor release --name release --target windows

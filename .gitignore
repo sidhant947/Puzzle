@@ -43,4 +43,7 @@ app.*.map.json
 /android/app/debug
 /android/app/profile
 /android/app/release
-/linux/
+# Linux related
+linux/flutter/ephemeral/
+linux/flutter/generated_plugins.cmake
+

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-id">
+  <id>com.sidhant.puzzle</id>
+  <name>Puzzle</name>
+  <summary>A collection of brain puzzles</summary>
+  <description>
+    <p>
+      A collection of brain puzzles built with Flutter, designed to challenge your mind.
+    </p>
+  </description>
+  <launchable type="desktop-id">com.sidhant.puzzle.desktop</launchable>
+  <screenshots>
+    <!-- Add screenshots here if available -->
+  </screenshots>
+  <url type="homepage">https://github.com/sidhant/puzzle</url>
+  <provides>
+    <binary>puzzle</binary>
+  </provides>
+</component>

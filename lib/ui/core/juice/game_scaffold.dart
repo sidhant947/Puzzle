@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:math' as math;
 import '../../../utils/design_system.dart';
 import '../../../widgets/tangible.dart';
 
@@ -28,13 +29,21 @@ class GameScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
+    final mediaQuery = MediaQuery.of(context);
+    final isMobile = DesignSystem.isMobile(context);
+    
+    // Calculate a responsive max width.
+    // For games, we don't want the board to be wider than the available height
+    // to prevent vertical overflow with AspectRatio(1) widgets.
+    final availableHeight = mediaQuery.size.height - mediaQuery.padding.top - mediaQuery.padding.bottom - kToolbarHeight;
+    final responsiveMaxWidth = math.min(600.0, availableHeight * 0.85);
 
     return Scaffold(
       backgroundColor: colorScheme.surface,
       body: SafeArea(
         child: Center(
           child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 800),
+            constraints: BoxConstraints(maxWidth: isMobile ? double.infinity : math.max(400.0, responsiveMaxWidth)),
             child: Column(
               children: [
                 _buildAppBar(context),
@@ -62,7 +71,7 @@ class GameScaffold extends StatelessWidget {
           ? SafeArea(
               child: Center(
                 child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 800),
+                  constraints: BoxConstraints(maxWidth: isMobile ? double.infinity : math.max(400.0, responsiveMaxWidth)),
                   child: bottomNavigationBar,
                 ),
               ),
@@ -169,3 +178,4 @@ class GameScaffold extends StatelessWidget {
     );
   }
 }
+
