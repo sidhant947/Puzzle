@@ -35,12 +35,12 @@ void main() async {
   final userRepository = UserRepository();
   await userRepository.init();
 
-  // Pre-cache heavy assets
-  await _preCacheAssets();
+  // Pre-cache heavy assets (non-blocking)
+  _preCacheAssets();
 
   // Log app startup time
   stopwatch.stop();
-  debugPrint('App startup time: ${stopwatch.elapsedMilliseconds}ms');
+  debugPrint('App startup time (sync): ${stopwatch.elapsedMilliseconds}ms');
 
   runApp(
     ProviderScope(

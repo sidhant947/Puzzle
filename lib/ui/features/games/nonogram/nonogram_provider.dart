@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../../../../providers/user_providers.dart';
 import 'nonogram_engine.dart';
@@ -39,15 +40,17 @@ class NonogramState {
 @riverpod
 class NonogramNotifier extends _$NonogramNotifier {
   final _engine = NonogramEngine();
-  static const int defaultSize = 5;
+  static const int defaultSize = 8; // Increased for more challenge
 
   @override
-  NonogramState build() {
-    return _initNewGame(defaultSize);
+  Future<NonogramState> build() async {
+    return _generateInitialState(defaultSize);
   }
 
-  NonogramState _initNewGame(int size) {
-    final puzzle = _engine.generatePuzzle(size);
+  Future<NonogramState> _generateInitialState(int size) async {
+    // Generate puzzle in background isolate
+    final puzzle = await compute((int s) => NonogramEngine().generatePuzzle(s), size);
+    
     return NonogramState(
       grid: List.generate(size, (_) => List.filled(size, 0)),
       rowClues: puzzle.rowClues,
@@ -57,30 +60,31 @@ class NonogramNotifier extends _$NonogramNotifier {
     );
   }
 
-  void reset() {
-    state = _initNewGame(state.size);
+  Future<void> reset() async {
+    state = const AsyncValue.loading();
+    state = await AsyncValue.guard(() => _generateInitialState(state.value?.size ?? defaultSize));
   }
 
   void toggleCell(int r, int c, bool isMarkMode) {
-    if (state.isSolved) return;
+    if (!state.hasValue || state.value!.isSolved) return;
+    
+    final currentState = state.value!;
 
     final newGrid = List.generate(
-      state.size,
-      (i) => List<int>.from(state.grid[i]),
+      currentState.size,
+      (i) => List<int>.from(currentState.grid[i]),
     );
 
     final currentValue = newGrid[r][c];
     
     if (isMarkMode) {
-      // Toggle between X-mark (2) and empty (0)
       newGrid[r][c] = currentValue == 2 ? 0 : 2;
     } else {
-      // Toggle between filled (1) and empty (0)
       newGrid[r][c] = currentValue == 1 ? 0 : 1;
     }
 
-    final solved = _engine.isCorrect(newGrid, state.solution);
-    state = state.copyWith(grid: newGrid, isSolved: solved);
+    final solved = _engine.isCorrect(newGrid, currentState.solution);
+    state = AsyncValue.data(currentState.copyWith(grid: newGrid, isSolved: solved));
 
     if (solved) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('nonogram', xpAmount: 25);

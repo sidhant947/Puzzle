@@ -1282,19 +1282,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             (context, index) {
                               final game = filteredGames[index];
                               final gameId = game['id'] as String;
-                              return _buildFullWidthTile(
-                                context,
-                                game['title'],
-                                gameId,
-                                game['icon'],
-                                game['color'],
-                                streaks[gameId],
-                                favoriteIds.contains(gameId),
-                                () => Navigator.push(
+                              return GameTile(
+                                title: game['title'],
+                                gameId: gameId,
+                                icon: game['icon'],
+                                accentColor: game['color'],
+                                streak: streaks[gameId],
+                                isFavorite: favoriteIds.contains(gameId),
+                                onTap: () => Navigator.push(
                                   context,
                                   CustomPageRoute(page: (game['builder'] as WidgetBuilder)(context)),
                                 ),
-                                () {
+                                onLongPress: () {
                                   HapticFeedbackUtil.mediumImpact();
                                   ref.read(userDataNotifierProvider.notifier).toggleFavorite(gameId);
                                 },
@@ -1311,19 +1310,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               final gameId = game['id'] as String;
                               return Padding(
                                 padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
-                                child: _buildFullWidthTile(
-                                  context,
-                                  game['title'],
-                                  gameId,
-                                  game['icon'],
-                                  game['color'],
-                                  streaks[gameId],
-                                  favoriteIds.contains(gameId),
-                                  () => Navigator.push(
+                                child: GameTile(
+                                  title: game['title'],
+                                  gameId: gameId,
+                                  icon: game['icon'],
+                                  accentColor: game['color'],
+                                  streak: streaks[gameId],
+                                  isFavorite: favoriteIds.contains(gameId),
+                                  onTap: () => Navigator.push(
                                     context,
                                     CustomPageRoute(page: (game['builder'] as WidgetBuilder)(context)),
                                   ),
-                                  () {
+                                  onLongPress: () {
                                     HapticFeedbackUtil.mediumImpact();
                                     ref.read(userDataNotifierProvider.notifier).toggleFavorite(gameId);
                                   },
@@ -1363,18 +1361,32 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       ),
     );
   }
+}
 
-  Widget _buildFullWidthTile(
-    BuildContext context,
-    String title,
-    String gameId,
-    IconData icon,
-    Color accentColor,
-    GameStreak? streak,
-    bool isFavorite,
-    VoidCallback onTap,
-    VoidCallback onLongPress,
-  ) {
+class GameTile extends StatelessWidget {
+  final String title;
+  final String gameId;
+  final IconData icon;
+  final Color accentColor;
+  final GameStreak? streak;
+  final bool isFavorite;
+  final VoidCallback onTap;
+  final VoidCallback onLongPress;
+
+  const GameTile({
+    super.key,
+    required this.title,
+    required this.gameId,
+    required this.icon,
+    required this.accentColor,
+    this.streak,
+    required this.isFavorite,
+    required this.onTap,
+    required this.onLongPress,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     final streakCount = streak?.currentStreak ?? 0;
     final isSolved = streak?.solvedToday ?? false;
     final theme = Theme.of(context);
@@ -1502,3 +1514,4 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 }
+

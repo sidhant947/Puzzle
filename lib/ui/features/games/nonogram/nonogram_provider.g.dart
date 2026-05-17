@@ -6,12 +6,12 @@ part of 'nonogram_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$nonogramNotifierHash() => r'59be1405782a1a8130261d3dfa5ce0967712dff1';
+String _$nonogramNotifierHash() => r'1ddfeaaebc4877676b3cb352eef2902cc8e51d21';
 
 /// See also [NonogramNotifier].
 @ProviderFor(NonogramNotifier)
 final nonogramNotifierProvider =
-    AutoDisposeNotifierProvider<NonogramNotifier, NonogramState>.internal(
+    AutoDisposeAsyncNotifierProvider<NonogramNotifier, NonogramState>.internal(
   NonogramNotifier.new,
   name: r'nonogramNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
@@ -21,6 +21,6 @@ final nonogramNotifierProvider =
   allTransitiveDependencies: null,
 );
 
-typedef _$NonogramNotifier = AutoDisposeNotifier<NonogramState>;
+typedef _$NonogramNotifier = AutoDisposeAsyncNotifier<NonogramState>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -89,11 +89,6 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
   }
 
   Widget _buildGrid(SudokuState state, SudokuNotifier notifier, double maxHeight) {
-    const int size = 9;
-    final int? selR = state.selectedRow;
-    final int? selC = state.selectedCol;
-    final int selectedValue = (selR != null && selC != null) ? state.currentBoard[selR][selC] : 0;
-    
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
       child: ConstrainedBox(
@@ -108,79 +103,12 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
             child: ClipRRect(
               borderRadius: BorderRadius.circular(DesignSystem.radiusSM - 2),
               child: Column(
-                children: List.generate(size, (r) {
+                children: List.generate(9, (r) {
                   return Expanded(
                     child: Row(
-                      children: List.generate(size, (c) {
-                        final isInitial = state.initialBoard[r][c] != 0;
-                        final isSelected = selR == r && selC == c;
-                        final value = state.currentBoard[r][c];
-                        
-                        // Highlights
-                        final bool isSameDigit = selectedValue != 0 && value == selectedValue;
-                        final bool isRelatedArea = selR == r || selC == c || 
-                                                 (selR != null && selC != null && 
-                                                  (r ~/ 3 == selR ~/ 3 && c ~/ 3 == selC ~/ 3));
-                        
-                        // Conflict detection
-                        bool hasConflict = false;
-                        if (value != 0 && !isInitial) {
-                          hasConflict = !SudokuEngine().isValid(state.currentBoard, r, c, value);
-                        }
-
-                        // Thick borders for 3x3 boxes
-                        final bool borderRight = (c + 1) % 3 == 0 && c < size - 1;
-                        final bool borderBottom = (r + 1) % 3 == 0 && r < size - 1;
-
+                      children: List.generate(9, (c) {
                         return Expanded(
-                          child: GestureDetector(
-                            onTap: () {
-                              HapticFeedbackUtil.selectionClick();
-                              notifier.selectCell(r, c);
-                            },
-                            child: AnimatedContainer(
-                              duration: Duration(milliseconds: 150),
-                              decoration: BoxDecoration(
-                                color: isSelected 
-                                  ? DesignSystem.primary.withValues(alpha: 0.2)
-                                  : isSameDigit
-                                    ? DesignSystem.accentAmber.withValues(alpha: 0.2)
-                                    : isRelatedArea
-                                      ? Theme.of(context).colorScheme.outline.withValues(alpha: 0.5).withValues(alpha: 0.3)
-                                      : Theme.of(context).colorScheme.surface,
-                                border: Border(
-                                  right: BorderSide(
-                                    color: Theme.of(context).colorScheme.onSurface, 
-                                    width: borderRight ? 2.0 : 0.5
-                                  ),
-                                  bottom: BorderSide(
-                                    color: Theme.of(context).colorScheme.onSurface, 
-                                    width: borderBottom ? 2.0 : 0.5
-                                  ),
-                                ),
-                              ),
-                              child: Center(
-                                child: FittedBox(
-                                  child: Text(
-                                    value == 0 ? '' : value.toString(),
-                                    style: TextStyle(
-                                      fontSize: 20, 
-                                      fontWeight: isInitial ? FontWeight.w900 : FontWeight.w700,
-                                      color: hasConflict
-                                        ? DesignSystem.error
-                                        : isSelected 
-                                          ? DesignSystem.primary 
-                                          : isSameDigit
-                                            ? DesignSystem.accentAmber
-                                            : isInitial 
-                                              ? Theme.of(context).colorScheme.onSurface 
-                                              : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ),
+                          child: SudokuCell(row: r, col: c),
                         );
                       }),
                     ),
@@ -195,10 +123,7 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
   }
 
   Widget _buildNumberPad(SudokuState state, SudokuNotifier notifier) {
-    
-    final counts = {
-      for (int i = 1; i <= 9; i++) i: 0
-    };
+    final counts = {for (int i = 1; i <= 9; i++) i: 0};
     for (var row in state.currentBoard) {
       for (var val in row) {
         if (val != 0) counts[val] = (counts[val] ?? 0) + 1;
@@ -208,8 +133,8 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
       child: Wrap(
-        spacing: DesignSystem.spaceSM, // Reduced from spaceMD
-        runSpacing: DesignSystem.spaceSM, // Reduced from spaceMD
+        spacing: DesignSystem.spaceSM,
+        runSpacing: DesignSystem.spaceSM,
         alignment: WrapAlignment.center,
         children: [
           ...List.generate(9, (i) {
@@ -221,22 +146,22 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
               children: [
                 TangibleButton(
                   color: isCompleted ? DesignSystem.success : Theme.of(context).colorScheme.surface,
-                  shadowColor: isCompleted ? Color(0xFF047857) : Theme.of(context).colorScheme.outline,
+                  shadowColor: isCompleted ? const Color(0xFF047857) : Theme.of(context).colorScheme.outline,
                   onTap: () {
                     HapticFeedbackUtil.lightImpact();
                     notifier.setNumber(num);
                   },
-                  padding: const EdgeInsets.all(10), // Compact button
+                  padding: const EdgeInsets.all(10),
                   child: Container(
-                    width: 20, 
+                    width: 20,
                     height: 20,
                     alignment: Alignment.center,
                     child: FittedBox(
                       child: Text(
-                        num.toString(), 
+                        num.toString(),
                         style: TextStyle(
                           fontWeight: FontWeight.w900,
-                          fontSize: 18, // Reduced from 20
+                          fontSize: 18,
                           color: isCompleted ? Colors.white : DesignSystem.primary,
                         ),
                       ),
@@ -269,7 +194,6 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
               ],
             );
           }),
-          // Eraser Button
           TangibleButton(
             color: Theme.of(context).colorScheme.surface,
             shadowColor: Theme.of(context).colorScheme.outline,
@@ -291,12 +215,100 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
               alignment: Alignment.center,
               child: Icon(
                 Icons.backspace_rounded,
-                size: 16, // Reduced from 20
+                size: 16,
                 color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class SudokuCell extends ConsumerWidget {
+  final int row;
+  final int col;
+
+  const SudokuCell({
+    super.key,
+    required this.row,
+    required this.col,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final notifier = ref.read(sudokuNotifierProvider.notifier);
+
+    // Selectively watch only the data this cell needs
+    final value = ref.watch(sudokuNotifierProvider.select((s) => s.value?.currentBoard[row][col] ?? 0));
+    final isInitial = ref.watch(sudokuNotifierProvider.select((s) => s.value?.initialBoard[row][col] != 0));
+    final isSelected = ref.watch(sudokuNotifierProvider.select((s) => s.value?.selectedRow == row && s.value?.selectedCol == col));
+
+    final selR = ref.watch(sudokuNotifierProvider.select((s) => s.value?.selectedRow));
+    final selC = ref.watch(sudokuNotifierProvider.select((s) => s.value?.selectedCol));
+    final selectedValue = ref.watch(sudokuNotifierProvider.select((s) =>
+        (s.value?.selectedRow != null && s.value?.selectedCol != null)
+            ? s.value!.currentBoard[s.value!.selectedRow!][s.value!.selectedCol!]
+            : 0));
+
+    // Highlights
+    final bool isSameDigit = selectedValue != 0 && value == selectedValue;
+    final bool isRelatedArea = selR == row ||
+        selC == col ||
+        (selR != null && selC != null && (row ~/ 3 == selR ~/ 3 && col ~/ 3 == selC ~/ 3));
+
+    // Conflict detection
+    final board = ref.read(sudokuNotifierProvider).value?.currentBoard;
+    bool hasConflict = false;
+    if (value != 0 && !isInitial && board != null) {
+      hasConflict = !SudokuEngine().isValid(board, row, col, value);
+    }
+
+    // Thick borders for 3x3 boxes
+    final bool borderRight = (col + 1) % 3 == 0 && col < 8;
+    final bool borderBottom = (row + 1) % 3 == 0 && row < 8;
+
+    return GestureDetector(
+      onTap: () {
+        HapticFeedbackUtil.selectionClick();
+        notifier.selectCell(row, col);
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        decoration: BoxDecoration(
+          color: isSelected
+              ? DesignSystem.primary.withValues(alpha: 0.2)
+              : isSameDigit
+                  ? DesignSystem.accentAmber.withValues(alpha: 0.2)
+                  : isRelatedArea
+                      ? Theme.of(context).colorScheme.outline.withValues(alpha: 0.5).withValues(alpha: 0.3)
+                      : Theme.of(context).colorScheme.surface,
+          border: Border(
+            right: BorderSide(color: Theme.of(context).colorScheme.onSurface, width: borderRight ? 2.0 : 0.5),
+            bottom: BorderSide(color: Theme.of(context).colorScheme.onSurface, width: borderBottom ? 2.0 : 0.5),
+          ),
+        ),
+        child: Center(
+          child: FittedBox(
+            child: Text(
+              value == 0 ? '' : value.toString(),
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: isInitial ? FontWeight.w900 : FontWeight.w700,
+                color: hasConflict
+                    ? DesignSystem.error
+                    : isSelected
+                        ? DesignSystem.primary
+                        : isSameDigit
+                            ? DesignSystem.accentAmber
+                            : isInitial
+                                ? Theme.of(context).colorScheme.onSurface
+                                : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
+              ),
+            ),
+          ),
+        ),
       ),
     );
   }

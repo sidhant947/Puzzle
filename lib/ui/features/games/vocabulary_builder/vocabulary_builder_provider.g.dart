@@ -7,7 +7,7 @@ part of 'vocabulary_builder_provider.dart';
 // **************************************************************************
 
 String _$vocabularyBuilderNotifierHash() =>
-    r'819a1f482111237371c80dfcb2e57c30632c828b';
+    r'1dcbafe6ba6b233e6216fae63499d2d991ac2cac';
 
 /// See also [VocabularyBuilderNotifier].
 @ProviderFor(VocabularyBuilderNotifier)

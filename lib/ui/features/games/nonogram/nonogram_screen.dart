@@ -25,7 +25,7 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
     final state = ref.watch(nonogramNotifierProvider);
 
     ref.listen(nonogramNotifierProvider, (previous, next) {
-      if (next.isSolved && !(previous?.isSolved ?? false)) {
+      if (next.hasValue && next.value!.isSolved && !(previous?.value?.isSolved ?? false)) {
         HapticFeedbackUtil.victory();
         showDialog(
           context: context,
@@ -65,55 +65,59 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
           ),
         ),
       ],
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          return Column(
-            children: [
-              const SizedBox(height: DesignSystem.spaceSM),
-              _buildStatusHeader(state),
-              const SizedBox(height: DesignSystem.spaceMD),
-              Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceMD),
-                  child: Column(
-                    children: [
-                      // Column Clues Area
-                      Row(
-                        children: [
-                          const SizedBox(width: 40), // Row clues spacer
-                          for (int c = 0; c < state.size; c++)
-                            Expanded(child: _buildColClue(state.colClues[c])),
-                        ],
-                      ),
-                      const SizedBox(height: 8),
-                      // Grid + Row Clues Area
-                      Expanded(
-                        child: Column(
+      body: state.when(
+        loading: () => const Center(child: CircularProgressIndicator()),
+        error: (err, stack) => Center(child: Text('Error: $err')),
+        data: (nonogramState) => LayoutBuilder(
+          builder: (context, constraints) {
+            return Column(
+              children: [
+                const SizedBox(height: DesignSystem.spaceSM),
+                _buildStatusHeader(nonogramState),
+                const SizedBox(height: DesignSystem.spaceMD),
+                Expanded(
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceMD),
+                    child: Column(
+                      children: [
+                        // Column Clues Area
+                        Row(
                           children: [
-                            for (int r = 0; r < state.size; r++)
-                              Expanded(
-                                child: Row(
-                                  children: [
-                                    _buildRowClue(state.rowClues[r]),
-                                    const SizedBox(width: 8),
-                                    for (int c = 0; c < state.size; c++)
-                                      Expanded(child: _buildCell(state, r, c)),
-                                  ],
-                                ),
-                              ),
+                            const SizedBox(width: 40), // Row clues spacer
+                            for (int c = 0; c < nonogramState.size; c++)
+                              Expanded(child: _buildColClue(nonogramState.colClues[c])),
                           ],
                         ),
-                      ),
-                    ],
+                        const SizedBox(height: 8),
+                        // Grid + Row Clues Area
+                        Expanded(
+                          child: Column(
+                            children: [
+                              for (int r = 0; r < nonogramState.size; r++)
+                                Expanded(
+                                  child: Row(
+                                    children: [
+                                      _buildRowClue(nonogramState.rowClues[r]),
+                                      const SizedBox(width: 8),
+                                      for (int c = 0; c < nonogramState.size; c++)
+                                        Expanded(child: NonogramCell(row: r, col: c, isMarkMode: _isMarkMode)),
+                                    ],
+                                  ),
+                                ),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-              ),
-              const SizedBox(height: DesignSystem.spaceMD),
-              _buildControls(),
-              const SizedBox(height: DesignSystem.spaceLG),
-            ],
-          );
-        },
+                const SizedBox(height: DesignSystem.spaceMD),
+                _buildControls(),
+                const SizedBox(height: DesignSystem.spaceLG),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
@@ -196,34 +200,6 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
     );
   }
 
-  Widget _buildCell(NonogramState state, int r, int c) {
-    final value = state.grid[r][c];
-
-    return Padding(
-      padding: const EdgeInsets.all(1),
-      child: TangibleContainer(
-        depth: value == 1 ? 0 : 2.0,
-        radius: 4,
-        color: value == 1 ? DesignSystem.accentBerry : Theme.of(context).colorScheme.surface,
-        onTap: () {
-          HapticFeedbackUtil.lightImpact();
-          ref.read(nonogramNotifierProvider.notifier).toggleCell(r, c, _isMarkMode);
-        },
-        child: Center(
-          child: value == 2
-              ? FittedBox(
-                  child: Icon(
-                    Icons.close_rounded,
-                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
-                  ),
-                )
-              : null,
-        ),
-      ),
-    );
-  }
-
-
   Widget _buildControls() {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXL),
@@ -241,7 +217,7 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.square_rounded, color: !_isMarkMode ? Colors.white : Theme.of(context).colorScheme.onSurface),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                   Text(
                     'FILL',
                     style: TextStyle(color: !_isMarkMode ? Colors.white : Theme.of(context).colorScheme.onSurface),
@@ -263,7 +239,7 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Icon(Icons.close_rounded, color: _isMarkMode ? Colors.white : Theme.of(context).colorScheme.onSurface),
-                  SizedBox(width: 8),
+                  const SizedBox(width: 8),
                   Text(
                     'MARK',
                     style: TextStyle(color: _isMarkMode ? Colors.white : Theme.of(context).colorScheme.onSurface),
@@ -273,6 +249,47 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class NonogramCell extends ConsumerWidget {
+  final int row;
+  final int col;
+  final bool isMarkMode;
+
+  const NonogramCell({
+    super.key,
+    required this.row,
+    required this.col,
+    required this.isMarkMode,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final value = ref.watch(nonogramNotifierProvider.select((s) => s.value?.grid[row][col] ?? 0));
+
+    return Padding(
+      padding: const EdgeInsets.all(1),
+      child: TangibleContainer(
+        depth: value == 1 ? 0 : 2.0,
+        radius: 4,
+        color: value == 1 ? DesignSystem.accentBerry : Theme.of(context).colorScheme.surface,
+        onTap: () {
+          HapticFeedbackUtil.lightImpact();
+          ref.read(nonogramNotifierProvider.notifier).toggleCell(row, col, isMarkMode);
+        },
+        child: Center(
+          child: value == 2
+              ? FittedBox(
+                  child: Icon(
+                    Icons.close_rounded,
+                    color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
+                  ),
+                )
+              : null,
+        ),
       ),
     );
   }

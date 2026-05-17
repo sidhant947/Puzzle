@@ -155,7 +155,7 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
                 itemBuilder: (context, index) {
                   final r = index ~/ MinesweeperNotifier.cols;
                   final c = index % MinesweeperNotifier.cols;
-                  return _buildCell(state.board[r][c], notifier);
+                  return MinesweeperCellWidget(row: r, col: c, isFlagMode: _isFlagMode);
                 },
               ),
             ),
@@ -163,75 +163,6 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
         ),
       ),
     );
-  }
-
-  Widget _buildCell(MinesweeperCell cell, MinesweeperNotifier notifier) {
-    final bool isRevealed = cell.state == CellState.revealed;
-    final bool isFlagged = cell.state == CellState.flagged;
-
-    return GestureDetector(
-      onTap: () {
-        HapticFeedbackUtil.lightImpact();
-        if (_isFlagMode) {
-          notifier.toggleFlag(cell.row, cell.col);
-        } else {
-          notifier.revealCell(cell.row, cell.col);
-        }
-      },
-      onLongPress: () {
-        HapticFeedbackUtil.mediumImpact();
-        notifier.toggleFlag(cell.row, cell.col);
-      },
-      child: AnimatedContainer(
-        duration: Duration(milliseconds: 150),
-        decoration: BoxDecoration(
-          color: isRevealed 
-              ? (cell.isMine ? DesignSystem.error.withValues(alpha: 0.2) : Theme.of(context).colorScheme.surface)
-              : (isFlagged ? DesignSystem.accentAmber.withValues(alpha: 0.1) : Theme.of(context).colorScheme.outline.withValues(alpha: 0.5).withValues(alpha: 0.5)),
-          borderRadius: BorderRadius.circular(6),
-          border: Border.all(
-            color: isRevealed ? Theme.of(context).colorScheme.outline.withValues(alpha: 0.5) : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1),
-            width: isRevealed ? 0.5 : 1.5,
-          ),
-        ),
-        child: Center(
-          child: FittedBox(child: _getCellContent(cell)),
-        ),
-      ),
-    );
-  }
-
-  Widget? _getCellContent(MinesweeperCell cell) {
-    if (cell.state == CellState.flagged) {
-      return const Icon(Icons.flag_rounded, size: 14, color: DesignSystem.accentAmber);
-    }
-    if (cell.state == CellState.revealed) {
-      if (cell.isMine) {
-        return const Icon(Icons.brightness_7_rounded, size: 16, color: DesignSystem.error);
-      }
-      if (cell.neighborMines > 0) {
-        return Text(
-          cell.neighborMines.toString(),
-          style: TextStyle(
-            fontWeight: FontWeight.w900,
-            fontSize: 14,
-            color: _getNumberColor(cell.neighborMines),
-          ),
-        );
-      }
-    }
-    return null;
-  }
-
-  Color _getNumberColor(int n) {
-    switch (n) {
-      case 1: return DesignSystem.primary;
-      case 2: return DesignSystem.success;
-      case 3: return DesignSystem.error;
-      case 4: return DesignSystem.accentBerry;
-      case 5: return DesignSystem.accentAmber;
-      default: return Theme.of(context).colorScheme.onSurface;
-    }
   }
 
   Widget _buildControls() {
@@ -333,5 +264,91 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
         message: l10n.timeUp,
       ),
     );
+  }
+}
+
+class MinesweeperCellWidget extends ConsumerWidget {
+  final int row;
+  final int col;
+  final bool isFlagMode;
+
+  const MinesweeperCellWidget({
+    super.key,
+    required this.row,
+    required this.col,
+    required this.isFlagMode,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final cell = ref.watch(minesweeperNotifierProvider.select((s) => s.board[row][col]));
+    final notifier = ref.read(minesweeperNotifierProvider.notifier);
+
+    final bool isRevealed = cell.state == CellState.revealed;
+    final bool isFlagged = cell.state == CellState.flagged;
+
+    return GestureDetector(
+      onTap: () {
+        HapticFeedbackUtil.lightImpact();
+        if (isFlagMode) {
+          notifier.toggleFlag(row, col);
+        } else {
+          notifier.revealCell(row, col);
+        }
+      },
+      onLongPress: () {
+        HapticFeedbackUtil.mediumImpact();
+        notifier.toggleFlag(row, col);
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        decoration: BoxDecoration(
+          color: isRevealed 
+              ? (cell.isMine ? DesignSystem.error.withValues(alpha: 0.2) : Theme.of(context).colorScheme.surface)
+              : (isFlagged ? DesignSystem.accentAmber.withValues(alpha: 0.1) : Theme.of(context).colorScheme.outline.withValues(alpha: 0.5).withValues(alpha: 0.5)),
+          borderRadius: BorderRadius.circular(6),
+          border: Border.all(
+            color: isRevealed ? Theme.of(context).colorScheme.outline.withValues(alpha: 0.5) : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1),
+            width: isRevealed ? 0.5 : 1.5,
+          ),
+        ),
+        child: Center(
+          child: FittedBox(child: _getCellContent(cell, context)),
+        ),
+      ),
+    );
+  }
+
+  Widget? _getCellContent(MinesweeperCell cell, BuildContext context) {
+    if (cell.state == CellState.flagged) {
+      return const Icon(Icons.flag_rounded, size: 14, color: DesignSystem.accentAmber);
+    }
+    if (cell.state == CellState.revealed) {
+      if (cell.isMine) {
+        return const Icon(Icons.brightness_7_rounded, size: 16, color: DesignSystem.error);
+      }
+      if (cell.neighborMines > 0) {
+        return Text(
+          cell.neighborMines.toString(),
+          style: TextStyle(
+            fontWeight: FontWeight.w900,
+            fontSize: 14,
+            color: _getNumberColor(cell.neighborMines, context),
+          ),
+        );
+      }
+    }
+    return null;
+  }
+
+  Color _getNumberColor(int n, BuildContext context) {
+    switch (n) {
+      case 1: return DesignSystem.primary;
+      case 2: return DesignSystem.success;
+      case 3: return DesignSystem.error;
+      case 4: return DesignSystem.accentBerry;
+      case 5: return DesignSystem.accentAmber;
+      default: return Theme.of(context).colorScheme.onSurface;
+    }
   }
 }

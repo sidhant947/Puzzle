@@ -45,6 +45,7 @@ dependencies:
   json_annotation: ^4.9.0
   intl: ^0.20.2
   url_launcher: ^6.3.2
+  fast_immutable_collections: ^11.2.0
 
 dev_dependencies:
   flutter_test:
