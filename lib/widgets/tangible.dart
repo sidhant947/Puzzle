@@ -62,9 +62,10 @@ class TangibleContainer extends StatelessWidget {
       );
     }
 
-    return RepaintBoundary(child: tangible);
+    return tangible;
   }
 }
+
 
 /// A tactile button widget.
 class TangibleButton extends StatefulWidget {
@@ -115,33 +116,32 @@ class _TangibleButtonState extends State<TangibleButton> {
         setState(() => _isPressed = false);
         widget.onLongPress?.call();
       } : null,
-      child: RepaintBoundary(
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 100),
-          curve: Curves.easeOutCubic,
-          transform: Matrix4.translationValues(0, _isPressed ? (widget.depth * 0.6) : 0.0, 0),
-          child: TangibleContainer(
-            depth: _isPressed ? 0.0 : widget.depth,
-            color: resolvedColor,
-            shadowColor: resolvedShadowColor,
-            radius: widget.radius,
-            padding: widget.padding ?? const EdgeInsets.symmetric(
-              horizontal: DesignSystem.spaceLG,
-              vertical: DesignSystem.spaceMD,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 100),
+        curve: Curves.easeOutCubic,
+        transform: Matrix4.translationValues(0, _isPressed ? (widget.depth * 0.6) : 0.0, 0),
+        child: TangibleContainer(
+          depth: _isPressed ? 0.0 : widget.depth,
+          color: resolvedColor,
+          shadowColor: resolvedShadowColor,
+          radius: widget.radius,
+          padding: widget.padding ?? const EdgeInsets.symmetric(
+            horizontal: DesignSystem.spaceLG,
+            vertical: DesignSystem.spaceMD,
+          ),
+          child: DefaultTextStyle(
+            style: TextStyle(
+              color: resolvedColor == colorScheme.surface ? colorScheme.onSurface : Colors.white,
+              fontSize: 18,
+              fontWeight: FontWeight.w800,
+              letterSpacing: 1.0,
             ),
-            child: DefaultTextStyle(
-              style: TextStyle(
-                color: resolvedColor == colorScheme.surface ? colorScheme.onSurface : Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.w800,
-                letterSpacing: 1.0,
-              ),
-              child: widget.child,
-            ),
+            child: widget.child,
           ),
         ),
       ),
     );
+
   }
 }
 

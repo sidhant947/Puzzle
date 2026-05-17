@@ -147,13 +147,16 @@ class _BalanceScaleScreenState extends ConsumerState<BalanceScaleScreen> {
             ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(DesignSystem.radiusLG - 4),
-              child: ListView(
+              child: SingleChildScrollView(
                 padding: const EdgeInsets.all(DesignSystem.spaceSM),
-                shrinkWrap: true,
-                children: state.equations.map((eq) => _buildScale(eq, state.unitIcon)).toList(),
+                child: Column(
+                  mainAxisSize: MainAxisSize.min,
+                  children: state.equations.map((eq) => _buildScale(eq, state.unitIcon)).toList(),
+                ),
               ),
             ),
           ),
+
         ),
       ),
     );

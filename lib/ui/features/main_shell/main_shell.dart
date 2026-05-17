@@ -14,7 +14,8 @@ class MainShell extends ConsumerStatefulWidget {
   ConsumerState<MainShell> createState() => _MainShellState();
 }
 
-class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserver {
+class _MainShellState extends ConsumerState<MainShell>
+    with WidgetsBindingObserver {
   int _selectedIndex = 1;
 
   final List<Widget> _screens = [
@@ -57,11 +58,9 @@ class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserv
               children: [
                 _buildSideNav(context),
                 Expanded(
-                  child: RepaintBoundary(
-                    child: IndexedStack(
-                      index: _selectedIndex,
-                      children: _screens,
-                    ),
+                  child: IndexedStack(
+                    index: _selectedIndex,
+                    children: _screens,
                   ),
                 ),
               ],
@@ -69,11 +68,9 @@ class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserv
           } else {
             return Stack(
               children: [
-                RepaintBoundary(
-                  child: IndexedStack(
-                    index: _selectedIndex,
-                    children: _screens,
-                  ),
+                IndexedStack(
+                  index: _selectedIndex,
+                  children: _screens,
                 ),
                 Positioned(
                   left: 0,
@@ -145,42 +142,41 @@ class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserv
         0,
         DesignSystem.spaceMD,
       ),
-      child: TangibleContainer(
-        radius: DesignSystem.radiusLG,
-        padding: const EdgeInsets.symmetric(
-          horizontal: DesignSystem.spaceSM,
-          vertical: DesignSystem.spaceLG,
-        ),
-        color: colorScheme.surface,
-        depth: 4.0,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _buildSideNavItem(
-              context: context,
-              index: 0,
-              icon: Icons.bar_chart_rounded,
-              label: 'STATS',
-              isSelected: _selectedIndex == 0,
-            ),
-            const SizedBox(height: DesignSystem.spaceXL),
-            _buildSideNavItem(
-              context: context,
-              index: 1,
-              icon: Icons.grid_view_rounded,
-              label: 'GAMES',
-              isSelected: _selectedIndex == 1,
-            ),
-            const SizedBox(height: DesignSystem.spaceXL),
-            _buildSideNavItem(
-              context: context,
-              index: 2,
-              icon: Icons.settings_rounded,
-              label: 'SETTINGS',
-              isSelected: _selectedIndex == 2,
-            ),
-          ],
-        ),
+      decoration: BoxDecoration(
+        color: Colors.transparent,
+        borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
+      ),
+      padding: const EdgeInsets.symmetric(
+        horizontal: DesignSystem.spaceSM,
+        vertical: DesignSystem.spaceLG,
+      ),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          _buildSideNavItem(
+            context: context,
+            index: 0,
+            icon: Icons.bar_chart_rounded,
+            label: 'STATS',
+            isSelected: _selectedIndex == 0,
+          ),
+          const SizedBox(height: DesignSystem.spaceXL),
+          _buildSideNavItem(
+            context: context,
+            index: 1,
+            icon: Icons.grid_view_rounded,
+            label: 'GAMES',
+            isSelected: _selectedIndex == 1,
+          ),
+          const SizedBox(height: DesignSystem.spaceXL),
+          _buildSideNavItem(
+            context: context,
+            index: 2,
+            icon: Icons.settings_rounded,
+            label: 'SETTINGS',
+            isSelected: _selectedIndex == 2,
+          ),
+        ],
       ),
     );
   }
@@ -194,7 +190,9 @@ class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserv
   }) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    final color = isSelected ? colorScheme.primary : colorScheme.onSurface.withValues(alpha: 0.5);
+    final color = isSelected
+        ? colorScheme.primary
+        : colorScheme.onSurface.withValues(alpha: 0.5);
 
     return GestureDetector(
       onTap: () {
@@ -203,44 +201,42 @@ class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserv
         }
       },
       behavior: HitTestBehavior.opaque,
-      child: RepaintBoundary(
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: DesignSystem.spaceSM),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              AnimatedScale(
-                scale: isSelected ? 1.1 : 1.0,
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeOutBack,
-                child: Icon(
-                  icon,
-                  size: 32,
-                  color: color,
+      child: Container(
+        padding: const EdgeInsets.symmetric(vertical: DesignSystem.spaceSM),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AnimatedScale(
+              scale: isSelected ? 1.1 : 1.0,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeOutBack,
+              child: Icon(
+                icon,
+                size: 32,
+                color: color,
+              ),
+            ),
+            const SizedBox(height: DesignSystem.spaceSM),
+            Text(
+              label,
+              style: TextStyle(
+                color: color,
+                fontWeight: isSelected ? FontWeight.w900 : FontWeight.w700,
+                letterSpacing: 1.0,
+                fontSize: 10,
+              ),
+            ),
+            if (isSelected)
+              Container(
+                margin: const EdgeInsets.only(top: 8),
+                width: 8,
+                height: 8,
+                decoration: BoxDecoration(
+                  color: colorScheme.primary,
+                  shape: BoxShape.circle,
                 ),
               ),
-              const SizedBox(height: DesignSystem.spaceSM),
-              Text(
-                label,
-                style: TextStyle(
-                  color: color,
-                  fontWeight: isSelected ? FontWeight.w900 : FontWeight.w700,
-                  letterSpacing: 1.0,
-                  fontSize: 10,
-                ),
-              ),
-              if (isSelected)
-                Container(
-                  margin: const EdgeInsets.only(top: 8),
-                  width: 8,
-                  height: 8,
-                  decoration: BoxDecoration(
-                    color: colorScheme.primary,
-                    shape: BoxShape.circle,
-                  ),
-                ),
-            ],
-          ),
+          ],
         ),
       ),
     );
@@ -255,7 +251,8 @@ class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserv
   }) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    final color = isSelected ? colorScheme.primary : colorScheme.onSurface.withValues(alpha: 0.5);
+    final color =
+        isSelected ? colorScheme.primary : colorScheme.onSurface.withValues(alpha: 0.5);
 
     return Expanded(
       child: GestureDetector(
@@ -265,44 +262,42 @@ class _MainShellState extends ConsumerState<MainShell> with WidgetsBindingObserv
           }
         },
         behavior: HitTestBehavior.opaque,
-        child: RepaintBoundary(
-          child: Container(
-            padding: const EdgeInsets.symmetric(vertical: DesignSystem.spaceSM),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                AnimatedScale(
-                  scale: isSelected ? 1.1 : 1.0,
-                  duration: const Duration(milliseconds: 300),
-                  curve: Curves.easeOutBack,
-                  child: Icon(
-                    icon,
-                    size: 28,
-                    color: color,
+        child: Container(
+          padding: const EdgeInsets.symmetric(vertical: DesignSystem.spaceSM),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AnimatedScale(
+                scale: isSelected ? 1.1 : 1.0,
+                duration: const Duration(milliseconds: 300),
+                curve: Curves.easeOutBack,
+                child: Icon(
+                  icon,
+                  size: 28,
+                  color: color,
+                ),
+              ),
+              const SizedBox(height: DesignSystem.spaceXS),
+              Text(
+                label,
+                style: TextStyle(
+                  color: color,
+                  fontWeight: isSelected ? FontWeight.w900 : FontWeight.w700,
+                  letterSpacing: 1.0,
+                  fontSize: 10,
+                ),
+              ),
+              if (isSelected)
+                Container(
+                  margin: const EdgeInsets.only(top: 4),
+                  width: 6,
+                  height: 6,
+                  decoration: BoxDecoration(
+                    color: colorScheme.primary,
+                    shape: BoxShape.circle,
                   ),
                 ),
-                const SizedBox(height: DesignSystem.spaceXS),
-                Text(
-                  label,
-                  style: TextStyle(
-                    color: color,
-                    fontWeight: isSelected ? FontWeight.w900 : FontWeight.w700,
-                    letterSpacing: 1.0,
-                    fontSize: 10,
-                  ),
-                ),
-                if (isSelected)
-                  Container(
-                    margin: const EdgeInsets.only(top: 4),
-                    width: 6,
-                    height: 6,
-                    decoration: BoxDecoration(
-                      color: colorScheme.primary,
-                      shape: BoxShape.circle,
-                    ),
-                  ),
-              ],
-            ),
+            ],
           ),
         ),
       ),
