@@ -73,6 +73,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.1.2"
+  buffer:
+    dependency: transitive
+    description:
+      name: buffer
+      sha256: "389da2ec2c16283c8787e0adaede82b1842102f8c8aae2f49003a766c5c6b3d1"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.2.3"
   build:
     dependency: transitive
     description:
@@ -314,34 +322,34 @@ packages:
     dependency: transitive
     description:
       name: flutter_app_builder
-      sha256: "9ff77d132bf2f7f9b97474fd7d369c447f4654e8d8baf7c4e7c9cf31c477ca53"
+      sha256: "75b9be9ba8b67d445a117368f7e603228e8a434136c71a3051307fc727be74f4"
       url: "https://pub.dev"
     source: hosted
-    version: "0.4.6"
+    version: "0.6.0"
   flutter_app_packager:
     dependency: transitive
     description:
       name: flutter_app_packager
-      sha256: c9a4f119f84cdfdc2dacef13f534bc6aec364ebf482ce4aec73cc9db67a8e97e
+      sha256: "93ec9ecc30f43f764a8388d68ea8aed66ce9bbf76f482e0120c6f45add6eea21"
       url: "https://pub.dev"
     source: hosted
-    version: "0.4.6"
+    version: "0.6.5"
   flutter_app_publisher:
     dependency: transitive
     description:
       name: flutter_app_publisher
-      sha256: "10a2790f9462c2b77f8aeb30fa5916c779768e866ded7496e900f651870d84e8"
+      sha256: ebaf6b01e0d28f4d5abc4959fcde3692a2f0d5297148507fb3590fe10a55d5dd
       url: "https://pub.dev"
     source: hosted
-    version: "0.4.6"
+    version: "0.6.6"
   flutter_distributor:
     dependency: "direct dev"
     description:
       name: flutter_distributor
-      sha256: "266370a43b96f2315f3a1ebd157b9e746a41589c61976ff6894819a1b824378a"
+      sha256: e139769ab3e7d58bd29c17e7da6f9001c626b0d50a375b5a374ba7bc91114037
       url: "https://pub.dev"
     source: hosted
-    version: "0.5.1"
+    version: "0.6.6"
   flutter_lints:
     dependency: "direct dev"
     description:
@@ -645,6 +653,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.0.0"
+  minio:
+    dependency: transitive
+    description:
+      name: minio
+      sha256: ee2ce47766e46c7d164f960f2f5ed6a9a82844d877f6b82574f6876ec50c56d1
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.5.8"
   msix:
     dependency: transitive
     description:
@@ -689,10 +705,10 @@ packages:
     dependency: transitive
     description:
       name: parse_app_package
-      sha256: "69f313fbadf457576015333a8da2e99018763dce88df248febcfb8883da8aedb"
+      sha256: "8ff00a930da628d5270f58f2befbbf10185ed7959b093195985bf4132e84bc8a"
       url: "https://pub.dev"
     source: hosted
-    version: "0.4.5"
+    version: "0.6.0"
   path:
     dependency: transitive
     description:
@@ -881,18 +897,18 @@ packages:
     dependency: transitive
     description:
       name: shell_executor
-      sha256: "9c024546fc96470a6b96be9902f0bc05347a017a7638ed8d93c77e8d77eb3c3c"
+      sha256: "6f41c85bffc7e839401bebc8c75cb189896ff038072060d3b0ec538949b615fc"
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.6"
+    version: "0.3.0"
   shell_uikit:
     dependency: transitive
     description:
       name: shell_uikit
-      sha256: "7a2f49718394061b68c959d366d065614a32fd5cbf3775239201ef466b1c1f05"
+      sha256: "8d5bb6bb0b220d47ef11adbe001cb31944b8eb8fe6183687258d36c9320d6c75"
       url: "https://pub.dev"
     source: hosted
-    version: "0.2.0"
+    version: "0.3.0"
   sky_engine:
     dependency: transitive
     description: flutter
@@ -998,10 +1014,10 @@ packages:
     dependency: transitive
     description:
       name: unified_distributor
-      sha256: d152c7b5cf613607c2a24a9528fbf60487ae4a263366d94899a2e1112ef69ed4
+      sha256: "4adea66430c915b46a498364fa31070ce86ad798e322d10621461c9fb2bc03be"
       url: "https://pub.dev"
     source: hosted
-    version: "0.1.1"
+    version: "0.2.6"
   url_launcher:
     dependency: "direct main"
     description:

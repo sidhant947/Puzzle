@@ -1,74 +1,96 @@
 output: dist/
 releases:
   - name: release
-    setup_configs:
+    jobs:
       # Linux
-      deb:
-        package_name: com.sidhant.puzzle
-        display_name: Puzzle
-        summary: A collection of brain puzzles.
-        description: A collection of brain puzzles built with Flutter.
-        icon: web/icon-512.png
-        categories:
-          - Game
-          - LogicGame
-      rpm:
-        package_name: puzzle
-        display_name: Puzzle
-        summary: A collection of brain puzzles.
-        description: A collection of brain puzzles built with Flutter.
-        icon: web/icon-512.png
-        categories:
-          - Game
-          - LogicGame
-      pacman:
-        package_name: puzzle
-        display_name: Puzzle
-        summary: A collection of brain puzzles.
-        description: A collection of brain puzzles built with Flutter.
-        icon: web/icon-512.png
-        categories:
-          - Game
-          - LogicGame
-      appimage:
-        display_name: Puzzle
-        summary: A collection of brain puzzles.
-        description: A collection of brain puzzles built with Flutter.
-        icon: web/icon-512.png
-        categories:
-          - Game
-          - LogicGame
+      - name: linux-deb
+        package:
+          platform: linux
+          target: deb
+          extra:
+            package_name: com.sidhant.puzzle
+            display_name: Puzzle
+            summary: A collection of brain puzzles.
+            description: A collection of brain puzzles built with Flutter.
+            icon: web/icon-512.png
+            categories:
+              - Game
+              - LogicGame
+      - name: linux-rpm
+        package:
+          platform: linux
+          target: rpm
+          extra:
+            package_name: puzzle
+            display_name: Puzzle
+            summary: A collection of brain puzzles.
+            description: A collection of brain puzzles built with Flutter.
+            icon: web/icon-512.png
+            categories:
+              - Game
+              - LogicGame
+      - name: linux-pacman
+        package:
+          platform: linux
+          target: pacman
+          extra:
+            package_name: puzzle
+            display_name: Puzzle
+            summary: A collection of brain puzzles.
+            description: A collection of brain puzzles built with Flutter.
+            icon: web/icon-512.png
+            categories:
+              - Game
+              - LogicGame
+      - name: linux-appimage
+        package:
+          platform: linux
+          target: appimage
+          extra:
+            display_name: Puzzle
+            summary: A collection of brain puzzles.
+            description: A collection of brain puzzles built with Flutter.
+            icon: web/icon-512.png
+            categories:
+              - Game
+              - LogicGame
       
       # macOS
-      dmg:
-        app_name: Puzzle
-        display_name: Puzzle
-        icon: web/icon-512.png
-      pkg:
-        app_name: Puzzle
-        display_name: Puzzle
-        install_location: /Applications
+      - name: macos-dmg
+        package:
+          platform: macos
+          target: dmg
+          extra:
+            app_name: Puzzle
+            display_name: Puzzle
+            icon: web/icon-512.png
+      - name: macos-pkg
+        package:
+          platform: macos
+          target: pkg
+          extra:
+            app_name: Puzzle
+            display_name: Puzzle
+            install_location: /Applications
       
       # Windows
-      exe:
-        app_name: Puzzle
-        display_name: Puzzle
-        executable_name: puzzle
-        icon: web/icon-512.png
-      msix:
-        display_name: Puzzle
-        publisher_display_name: Sidhant
-        identity_name: com.sidhant.puzzle
-        msix_version: 1.0.8.0
-        logo_path: web/icon-512.png
-        capabilities: internetClient
-        
-    targets:
-      - linux-deb
-      - linux-rpm
-      - linux-pacman
-      - linux-appimage
-      - macos-dmg
-      - macos-pkg
-      - windows-exe
-      - windows-msix
+      - name: windows-exe
+        package:
+          platform: windows
+          target: exe
+          extra:
+            app_name: Puzzle
+            display_name: Puzzle
+            executable_name: puzzle
+            icon: web/icon-512.png
+      - name: windows-msix
+        package:
+          platform: windows
+          target: msix
+          extra:
+            display_name: Puzzle
+            publisher_display_name: Sidhant
+            identity_name: com.sidhant.puzzle
+            msix_version: 1.0.8.0
+            logo_path: web/icon-512.png
+            capabilities: internetClient

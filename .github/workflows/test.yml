@@ -55,7 +55,7 @@ jobs:
       - name: Build Linux Packages
         run: |
           export PATH="$PATH":"$HOME/.pub-cache/bin"
-          flutter_distributor release --name release --target linux
+          flutter_distributor release --name release --jobs linux-deb,linux-rpm,linux-pacman,linux-appimage
 
   build-macos:
     runs-on: macos-latest
@@ -72,7 +72,7 @@ jobs:
       - name: Build macOS Packages
         run: |
           export PATH="$PATH":"$HOME/.pub-cache/bin"
-          flutter_distributor release --name release --target macos
+          flutter_distributor release --name release --jobs macos-dmg,macos-pkg
 
   build-windows:
     runs-on: windows-latest
@@ -89,4 +89,4 @@ jobs:
       - name: Build Windows Packages
         run: |
           $env:Path += ";$env:LocalAppData\Pub\Cache\bin"
-          flutter_distributor release --name release --target windows
+          flutter_distributor release --name release --jobs windows-exe,windows-msix
