@@ -1,0 +1,7 @@
+display_name: Puzzle
+summary: A collection of brain puzzles.
+description: A collection of brain puzzles built with Flutter.
+icon: web/icon-512.png
+categories:
+  - Game
+  - LogicGame

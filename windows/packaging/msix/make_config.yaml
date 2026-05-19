@@ -1,0 +1,5 @@
+display_name: Puzzle
+publisher_display_name: Sidhant
+identity_name: com.sidhant.puzzle
+logo_path: web/icon-512.png
+capabilities: internetClient

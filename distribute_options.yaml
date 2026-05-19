@@ -10,6 +10,10 @@ releases:
           extra:
             package_name: com.sidhant.puzzle
             display_name: Puzzle
+            maintainer:
+              name: Sidhant
+              email: sidhant@example.com
+            installed_size: 100
             summary: A collection of brain puzzles.
             description: A collection of brain puzzles built with Flutter.
             icon: web/icon-512.png

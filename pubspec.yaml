@@ -50,7 +50,7 @@ dependencies:
 dev_dependencies:
   flutter_test:
     sdk: flutter
-  flutter_distributor: ^0.6.6
+  fastforge: ^0.6.6
   build_runner: ^2.4.9
   riverpod_generator: ^2.4.0
   freezed: ^2.5.2
