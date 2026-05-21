@@ -4,25 +4,25 @@ A professional suite of minimalist puzzle games built with Flutter. Challenge yo
 
 [<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid"  height="80">](https://f-droid.org/packages/com.sidhant.puzzle)
 
-## 🎮 Included Games (108 Total)
+## 🎮 Included Games (136 Total)
 
-### 🧠 Attention (25)
-Attentional Blink, Change Blindness, Choice Reaction, Color Match, Counting Sheep, Divided Focus, Flanker Test, Go / No-Go, Letter Cancel, Object Tracking, Odd One Out, Orbit Tap, Reflex Tap, Reverse Stroop, Rhythm Master, Rule Switcher, Schulte Table, SDMT Test, Stop Signal, Stroop Test, Switch Task, Symbolic Flanker, Trail Making, Vigilance Task, Visual Search.
+### 🧠 Attention (30)
+Attentional Blink, Change Blindness, Choice Reaction, Color Match, Conjunction Search, Counting Sheep, d2 Attention, Divided Focus, Flanker Test, Go / No-Go, Letter Cancel, Object Tracking, Odd One Out, Orbit Tap, Reflex Tap, Reverse Stroop, Rhythm Master, Rule Switcher, Schulte Table, SDMT Test, Simon Command, Spatial Conflict, Spotlight Track, Stop Signal, Stroop Test, Switch Task, Symbolic Flanker, Trail Making, Vigilance Task, Visual Search.
 
-### 🧩 Logic (22)
-Akari, Binary Puzzle, Block Escape, Bridges, Color Flood, Crown, Einstein Riddle, Lights Out, Lock Pattern, Logical Syllogisms, Matrix Reasoning, Minesweeper, Nonogram, Path Finder, Pipes, Sudoku, Symbol Logic, Tangle Fix, Tents & Trees, Tower of London, Water Sort, Wisconsin Card Sort.
+### 🧩 Logic (25)
+Akari, Binary Puzzle, Block Escape, Bridges, Color Flood, Crown, Einstein Riddle, Futoshiki, Kakuro, Lights Out, Lock Pattern, Logical Syllogisms, Matrix Reasoning, Minesweeper, Nonogram, Path Finder, Pipes, Slitherlink, Sudoku, Symbol Logic, Tangle Fix, Tents & Trees, Tower of London, Water Sort, Wisconsin Card Sort.
 
-### 🔢 Math (15)
-2048, Arithmetic Chain, Balance Scale, Calculation Sprint, Fraction Match, KenKen, Magic Square, Math Path, Mental Abacus, Mental Calendar, Numerical Estimation, Operator Mix, Prime Hunter, Quick Math, Target 24.
+### 🔢 Math (22)
+2048, Balance Scale, Binary Speed, Calc Sprint, Chain Calc, Factor Finder, Fraction Match, Fraction Matcher, Inequality Dash, KenKen, Magic Square, Math Path, Mental Abacus, Mental Calendar, Modulo Clock, Numerical Estimation, Operator Mix, Prime Hunter, Quick Math, Sum Pyramid, Target 10, Target 24.
 
-### 💾 Memory (17)
-Corsi Blocks, Double N-Back, Face-Name Association, Face-Trait Association, Grocery List, Memory Matrix, Memory Palace, N-Back Test, Object Shuffle, Operation Span, Path Recall, Pixel Mimic, Reverse Span, Simon Sequence, Staircase Memory, Sternberg Task, Visual Learning.
+### 💾 Memory (24)
+Associative Pairs, Chimp Test, Corsi Blocks, Distractor Matrix, Double N-Back, Dual Coding, Face-Name, Face-Trait, Fact Binder, Grocery List, Memory Matrix, Memory Palace, N-Back Test, Object Shuffle, Operation Span, Path Recall, Pixel Mimic, Relational Memory, Reverse Span, Sequence, Staircase Memory, Sternberg Task, Temporal Order, Visual Learning.
 
-### 📐 Spatial (13)
-Box Completion, Hue Sort, Mental Mapping, Mental Rotation, Mirror Image, Mirror Tracing, Odd Rotation, Paper Folding, Perspective, Silhouette Match, Slide Puzzle, Symmetry, Trace Path.
+### 📐 Spatial (18)
+3D Block Count, Box Completion, Cube Net Fold, Hue Sort, Klotski Escape, Mental Mapping, Mental Rotation, Mirror Image, Mirror Tracing, Odd Rotation, Paper Folding, Perspective, Rotating Maze, Silhouette Match, Silhouette Match (Ortho), Slide Puzzle, Symmetry, Trace Path.
 
-### 📝 Word (16)
-Category Fluency, Crossword, Cryptogram, Find Word, Grammar Police, Missing Vowels, Semantic Link, Spelling Sprint, Typing Speed, Verbal Analogies, Vocabulary Builder, Word Ladder, Word Mastermind, Word Scramble, Word Search, Word Surge.
+### 📝 Word (17)
+Category Fluency, Context Clues, Crossword, Cryptogram, Find Word, Grammar Police, Missing Vowels, Semantic Link, Spelling Sprint, Typing Speed, Verbal Analogies, Vocabulary, Word Ladder, Word Mastermind, Word Scramble, Word Search, Word Surge.
 
 ## ✨ Key Features
 

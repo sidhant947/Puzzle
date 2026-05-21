@@ -155,6 +155,14 @@ import '../games/d2_attention/d2_attention_screen.dart';
 
 import '../games/context_clues/context_clues_screen.dart';
 
+import '../games/simon_command/simon_command_screen.dart';
+import '../games/binary_code/binary_code_screen.dart';
+import '../games/modulo_clock/modulo_clock_screen.dart';
+import '../games/chimp_test/chimp_test_screen.dart';
+import '../games/relational_memory/relational_memory_screen.dart';
+import '../games/fact_binder/fact_binder_screen.dart';
+import '../games/klotski/klotski_screen.dart';
+
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required Widget page})
       : super(
@@ -1224,6 +1232,63 @@ class HomeScreen extends ConsumerStatefulWidget {
       'icon': Icons.hub_rounded,
       'color': DesignSystem.accentAmber,
       'builder': (context) => const TangleFixScreen(),
+    },
+    // --- 15 New Games (Except Word category) ---
+    {
+      'title': 'Simon Command',
+      'id': 'simon_command',
+      'category': 'ATTENTION',
+      'icon': Icons.record_voice_over_rounded,
+      'color': DesignSystem.gameGreen,
+      'builder': (context) => const SimonCommandScreen(),
+    },
+    {
+      'title': 'Binary Speed',
+      'id': 'binary_code',
+      'category': 'MATH',
+      'icon': Icons.code_rounded,
+      'color': DesignSystem.gamePink,
+      'builder': (context) => const BinaryCodeScreen(),
+    },
+    {
+      'title': 'Modulo Clock',
+      'id': 'modulo_clock',
+      'category': 'MATH',
+      'icon': Icons.watch_later_rounded,
+      'color': DesignSystem.gameAmber,
+      'builder': (context) => const ModuloClockScreen(),
+    },
+    {
+      'title': 'Chimp Test',
+      'id': 'chimp_test',
+      'category': 'MEMORY',
+      'icon': Icons.looks_one_rounded,
+      'color': DesignSystem.gameRose,
+      'builder': (context) => const ChimpTestScreen(),
+    },
+    {
+      'title': 'Relational Memory',
+      'id': 'relational_memory',
+      'category': 'MEMORY',
+      'icon': Icons.location_on_rounded,
+      'color': DesignSystem.gameTeal,
+      'builder': (context) => const RelationalMemoryScreen(),
+    },
+    {
+      'title': 'Fact Binder',
+      'id': 'fact_binder',
+      'category': 'MEMORY',
+      'icon': Icons.book_rounded,
+      'color': DesignSystem.gamePurple,
+      'builder': (context) => const FactBinderScreen(),
+    },
+    {
+      'title': 'Klotski Escape',
+      'id': 'klotski',
+      'category': 'SPATIAL',
+      'icon': Icons.grid_view_rounded,
+      'color': DesignSystem.gameRose,
+      'builder': (context) => const KlotskiScreen(),
     },
   ];
 }
