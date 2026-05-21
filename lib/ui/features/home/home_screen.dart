@@ -128,6 +128,33 @@ import '../games/color_flood/color_flood_screen.dart';
 import '../games/tangle_fix/tangle_fix_screen.dart';
 import '../games/lock_pattern/lock_pattern_screen.dart';
 
+import '../games/slitherlink/slitherlink_screen.dart';
+import '../games/futoshiki/futoshiki_screen.dart';
+import '../games/kakuro/kakuro_screen.dart';
+
+import '../games/inequality_dash/inequality_dash_screen.dart';
+import '../games/factor_finder/factor_finder_screen.dart';
+import '../games/sum_pyramid/sum_pyramid_screen.dart';
+import '../games/target_10/target_10_screen.dart';
+import '../games/fraction_matcher/fraction_matcher_screen.dart';
+
+import '../games/dual_coding/dual_coding_screen.dart';
+import '../games/distractor_matrix/distractor_matrix_screen.dart';
+import '../games/temporal_order/temporal_order_screen.dart';
+import '../games/associative_pairs/associative_pairs_screen.dart';
+
+import '../games/block_count_3d/block_count_3d_screen.dart';
+import '../games/cube_net_fold/cube_net_fold_screen.dart';
+import '../games/rotating_maze/rotating_maze_screen.dart';
+import '../games/silhouette_match_ortho/silhouette_match_ortho_screen.dart';
+
+import '../games/conjunction_search/conjunction_search_screen.dart';
+import '../games/spatial_conflict/spatial_conflict_screen.dart';
+import '../games/spotlight_track/spotlight_track_screen.dart';
+import '../games/d2_attention/d2_attention_screen.dart';
+
+import '../games/context_clues/context_clues_screen.dart';
+
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
   CustomPageRoute({required Widget page})
       : super(
@@ -156,6 +183,184 @@ class HomeScreen extends ConsumerStatefulWidget {
   ConsumerState<HomeScreen> createState() => _HomeScreenState();
 
   static final List<Map<String, dynamic>> allGamesList = [
+    // --- Logic Games (5) ---
+    {
+      'title': 'Slitherlink',
+      'id': 'slitherlink',
+      'category': 'LOGIC',
+      'icon': Icons.grain_rounded,
+      'color': DesignSystem.gameTeal,
+      'builder': (context) => const SlitherlinkScreen(),
+    },
+    {
+      'title': 'Futoshiki',
+      'id': 'futoshiki',
+      'category': 'LOGIC',
+      'icon': Icons.unfold_more_rounded,
+      'color': DesignSystem.gameAmber,
+      'builder': (context) => const FutoshikiScreen(),
+    },
+    {
+      'title': 'Kakuro',
+      'id': 'kakuro',
+      'category': 'LOGIC',
+      'icon': Icons.tag_rounded,
+      'color': DesignSystem.gameRose,
+      'builder': (context) => const KakuroScreen(),
+    },
+
+    // --- Math Games (5) ---
+    {
+      'title': 'Inequality Dash',
+      'id': 'inequality_dash',
+      'category': 'MATH',
+      'icon': Icons.compare_arrows_rounded,
+      'color': DesignSystem.gameAmber,
+      'builder': (context) => const InequalityDashScreen(),
+    },
+    {
+      'title': 'Factor Finder',
+      'id': 'factor_finder',
+      'category': 'MATH',
+      'icon': Icons.grid_3x3_rounded,
+      'color': DesignSystem.gameGreen,
+      'builder': (context) => const FactorFinderScreen(),
+    },
+    {
+      'title': 'Sum Pyramid',
+      'id': 'sum_pyramid',
+      'category': 'MATH',
+      'icon': Icons.change_history_rounded,
+      'color': DesignSystem.gameTeal,
+      'builder': (context) => const SumPyramidScreen(),
+    },
+    {
+      'title': 'Target 10',
+      'id': 'target_10',
+      'category': 'MATH',
+      'icon': Icons.exposure_zero_rounded,
+      'color': DesignSystem.gameIndigo,
+      'builder': (context) => const Target10Screen(),
+    },
+    {
+      'title': 'Fraction Matcher',
+      'id': 'fraction_matcher',
+      'category': 'MATH',
+      'icon': Icons.pie_chart_outline_rounded,
+      'color': DesignSystem.gameBlue,
+      'builder': (context) => const FractionMatcherScreen(),
+    },
+
+    // --- Memory Games (5) ---
+    {
+      'title': 'Dual Coding',
+      'id': 'dual_coding',
+      'category': 'MEMORY',
+      'icon': Icons.hearing_rounded,
+      'color': DesignSystem.gameRose,
+      'builder': (context) => const DualCodingScreen(),
+    },
+    {
+      'title': 'Distractor Matrix',
+      'id': 'distractor_matrix',
+      'category': 'MEMORY',
+      'icon': Icons.grid_off_rounded,
+      'color': DesignSystem.gameIndigo,
+      'builder': (context) => const DistractorMatrixScreen(),
+    },
+    {
+      'title': 'Temporal Order',
+      'id': 'temporal_order',
+      'category': 'MEMORY',
+      'icon': Icons.history_toggle_off_rounded,
+      'color': DesignSystem.gameTeal,
+      'builder': (context) => const TemporalOrderScreen(),
+    },
+    {
+      'title': 'Associative Pairs',
+      'id': 'associative_pairs',
+      'category': 'MEMORY',
+      'icon': Icons.join_inner_rounded,
+      'color': DesignSystem.gamePurple,
+      'builder': (context) => const AssociativePairsScreen(),
+    },
+    // --- Spatial Games (5) ---
+    {
+      'title': '3D Block Count',
+      'id': 'block_count_3d',
+      'category': 'SPATIAL',
+      'icon': Icons.view_in_ar_rounded,
+      'color': DesignSystem.gameTeal,
+      'builder': (context) => const BlockCount3DScreen(),
+    },
+    {
+      'title': 'Cube Net Fold',
+      'id': 'cube_net_fold',
+      'category': 'SPATIAL',
+      'icon': Icons.unfold_more_double_rounded,
+      'color': DesignSystem.gameBlue,
+      'builder': (context) => const CubeNetFoldScreen(),
+    },
+    {
+      'title': 'Rotating Maze',
+      'id': 'rotating_maze',
+      'category': 'SPATIAL',
+      'icon': Icons.autorenew_rounded,
+      'color': DesignSystem.gameIndigo,
+      'builder': (context) => const RotatingMazeScreen(),
+    },
+    {
+      'title': 'Silhouette Match',
+      'id': 'silhouette_match_ortho',
+      'category': 'SPATIAL',
+      'icon': Icons.visibility_rounded,
+      'color': DesignSystem.gameRose,
+      'builder': (context) => const SilhouetteMatchOrthoScreen(),
+    },
+
+    // --- Attention Games (5) ---
+    {
+      'title': 'Conjunction Search',
+      'id': 'conjunction_search',
+      'category': 'ATTENTION',
+      'icon': Icons.manage_search_rounded,
+      'color': DesignSystem.gameGreen,
+      'builder': (context) => const ConjunctionSearchScreen(),
+    },
+    {
+      'title': 'Spatial Conflict',
+      'id': 'spatial_conflict',
+      'category': 'ATTENTION',
+      'icon': Icons.swap_horizontal_circle_rounded,
+      'color': DesignSystem.gameAmber,
+      'builder': (context) => const SpatialConflictScreen(),
+    },
+    {
+      'title': 'Spotlight Track',
+      'id': 'spotlight_track',
+      'category': 'ATTENTION',
+      'icon': Icons.track_changes_rounded,
+      'color': DesignSystem.gameBlue,
+      'builder': (context) => const SpotlightTrackScreen(),
+    },
+    {
+      'title': 'd2 Attention',
+      'id': 'd2_attention',
+      'category': 'ATTENTION',
+      'icon': Icons.fact_check_rounded,
+      'color': DesignSystem.gameTeal,
+      'builder': (context) => const D2AttentionScreen(),
+    },
+
+    // --- Word Games (5) ---
+    {
+      'title': 'Context Clues',
+      'id': 'context_clues',
+      'category': 'WORD',
+      'icon': Icons.find_in_page_rounded,
+      'color': DesignSystem.gameGreen,
+      'builder': (context) => const ContextCluesScreen(),
+    },
     {
       'title': 'Vocabulary',
       'id': 'vocabulary_builder',

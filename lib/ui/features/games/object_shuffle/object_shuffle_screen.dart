@@ -26,7 +26,6 @@ class _ObjectShuffleScreenState extends ConsumerState<ObjectShuffleScreen> {
   }
 
   void _showGameOverDialog(bool won) {
-    final l10n = AppLocalizations.of(context)!;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('object_shuffle');
     }
@@ -61,8 +60,7 @@ class _ObjectShuffleScreenState extends ConsumerState<ObjectShuffleScreen> {
     ref.listen(objectShuffleNotifierProvider, (previous, next) {
       if (next.isGameOver && !(previous?.isGameOver ?? false)) {
         // We need to know if the user's last tap was correct. 
-        // In our new logic, if it's game over, we check if they won.
-        final won = next.phase == ObjectShufflePhase.result;
+        final won = next.isWon;
         
         if (won) {
           HapticFeedbackUtil.victory();
@@ -127,7 +125,7 @@ class _ObjectShuffleScreenState extends ConsumerState<ObjectShuffleScreen> {
                             isTarget: isTarget,
                             isRevealed: state.phase == ObjectShufflePhase.showing || (state.isGameOver && isTarget),
                             isSwapping: isSwapping,
-                            isWrong: state.isGameOver && state.phase != ObjectShufflePhase.result && isTarget == false, 
+                            isWrong: state.isGameOver && !state.isWon && state.selectedSlotIndex == slotIndex, 
                           ),
                         ),
                       );
@@ -184,7 +182,6 @@ class _Shell extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     return AnimatedScale(
       duration: Duration(milliseconds: 200),
       scale: isSwapping ? 1.15 : 1.0,

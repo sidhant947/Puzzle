@@ -21,6 +21,7 @@ class DesignSystem {
   static const Color accentBerry = Color(0xFFEC4899); 
   static const Color accentEmerald = Color(0xFF10B981);
   static const Color accentAmber = Color(0xFFF59E0B);
+  static const Color accentTeal = Color(0xFF0D9488);
   static const Color success = Color(0xFF10B981);
   static const Color error = Color(0xFFEF4444);
 

@@ -14,6 +14,8 @@ class ObjectShuffleState {
   final ObjectShufflePhase phase;
   final int level;
   final bool isGameOver;
+  final bool isWon;
+  final int? selectedSlotIndex;
   final bool isLoading;
 
   ObjectShuffleState({
@@ -24,6 +26,8 @@ class ObjectShuffleState {
     this.phase = ObjectShufflePhase.showing,
     this.level = 1,
     this.isGameOver = false,
+    this.isWon = false,
+    this.selectedSlotIndex,
     this.isLoading = true,
   });
 
@@ -35,6 +39,8 @@ class ObjectShuffleState {
     ObjectShufflePhase? phase,
     int? level,
     bool? isGameOver,
+    bool? isWon,
+    int? selectedSlotIndex,
     bool? isLoading,
   }) {
     return ObjectShuffleState(
@@ -45,6 +51,8 @@ class ObjectShuffleState {
       phase: phase ?? this.phase,
       level: level ?? this.level,
       isGameOver: isGameOver ?? this.isGameOver,
+      isWon: isWon ?? this.isWon,
+      selectedSlotIndex: selectedSlotIndex ?? this.selectedSlotIndex,
       isLoading: isLoading ?? this.isLoading,
     );
   }
@@ -124,10 +132,10 @@ class ObjectShuffleNotifier extends _$ObjectShuffleNotifier {
     final objectAtSlot = state.objectSlots.indexOf(slotIndex);
     if (objectAtSlot == state.targetObjectIndex) {
       // Correct! Instant Win for this round
-      state = state.copyWith(phase: ObjectShufflePhase.result, isGameOver: true);
+      state = state.copyWith(phase: ObjectShufflePhase.result, isGameOver: true, isWon: true, selectedSlotIndex: slotIndex);
     } else {
       // Wrong
-      state = state.copyWith(isGameOver: true, phase: ObjectShufflePhase.result);
+      state = state.copyWith(isGameOver: true, isWon: false, phase: ObjectShufflePhase.result, selectedSlotIndex: slotIndex);
     }
   }
 }
