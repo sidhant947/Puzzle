@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import '../../../../providers/user_providers.dart';
@@ -129,6 +130,7 @@ import '../games/tangle_fix/tangle_fix_screen.dart';
 import '../games/lock_pattern/lock_pattern_screen.dart';
 
 import '../games/slitherlink/slitherlink_screen.dart';
+import '../games/alphabet_sudoku/alphabet_sudoku_screen.dart';
 import '../games/futoshiki/futoshiki_screen.dart';
 import '../games/kakuro/kakuro_screen.dart';
 
@@ -1090,6 +1092,14 @@ class HomeScreen extends ConsumerStatefulWidget {
       'builder': (context) => const SudokuScreen(),
     },
     {
+      'title': 'Alphabet Sudoku',
+      'id': 'alphabet_sudoku',
+      'category': 'LOGIC',
+      'icon': Icons.abc_rounded,
+      'color': DesignSystem.gameIndigo,
+      'builder': (context) => const AlphabetSudokuScreen(),
+    },
+    {
       'title': 'Word Mastermind',
       'id': 'word_mastermind',
       'category': 'WORD',
@@ -1314,18 +1324,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final streaks = ref.watch(gameStreakNotifierProvider);
-    final favoriteIds = ref.watch(userDataNotifierProvider.select((d) => d.favoriteGameIds ?? []));
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final l10n = AppLocalizations.of(context)!;
 
-    final filteredGames = List<Map<String, dynamic>>.from(ref.watch(filteredGamesProvider(searchQuery: _searchQuery, selectedCategory: _selectedCategory)));
+    final filteredGames = List<Map<String, dynamic>>.from(ref.watch(
+        filteredGamesProvider(
+            searchQuery: _searchQuery, selectedCategory: _selectedCategory)));
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       body: CustomScrollView(
-        cacheExtent: 1000.0,
+        scrollCacheExtent: ScrollCacheExtent.pixels(1000),
         physics: const BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
@@ -1360,9 +1370,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 DesignSystem.spaceLG,
                 DesignSystem.spaceLG,
               ),
-              child: Builder(
-                builder: (context) {
-                  final solvedToday = streaks.values.where((s) => s.solvedToday).length;
+              child: Consumer(
+                builder: (context, ref, child) {
+                  final streaks = ref.watch(gameStreakNotifierProvider);
+                  final solvedToday =
+                      streaks.values.where((s) => s.solvedToday).length;
                   String encouragement;
                   if (solvedToday == 0) {
                     encouragement = l10n.readyToStart;
@@ -1384,7 +1396,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           height: 60,
                           decoration: BoxDecoration(
                             color: DesignSystem.primary.withValues(alpha: 0.1),
-                            borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
+                            borderRadius:
+                                BorderRadius.circular(DesignSystem.radiusMD),
                           ),
                           child: Center(
                             child: Text(
@@ -1408,7 +1421,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                   fontSize: 10,
                                   fontWeight: FontWeight.w900,
                                   letterSpacing: 1.5,
-                                  color: colorScheme.onSurface.withValues(alpha: 0.5),
+                                  color: colorScheme.onSurface
+                                      .withValues(alpha: 0.5),
                                 ),
                               ),
                               const SizedBox(height: 2),
@@ -1435,7 +1449,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           // Search and Categories
           SliverToBoxAdapter(
             child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+              padding:
+                  const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
               child: Column(
                 children: [
                   TangibleContainer(
@@ -1445,7 +1460,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       controller: _searchController,
                       onChanged: (value) {
                         if (_debounce?.isActive ?? false) _debounce!.cancel();
-                        _debounce = Timer(const Duration(milliseconds: 300), () {
+                        _debounce =
+                            Timer(const Duration(milliseconds: 300), () {
                           setState(() => _searchQuery = value);
                         });
                       },
@@ -1464,7 +1480,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             ? IconButton(
                                 icon: Icon(
                                   Icons.close_rounded,
-                                  color: colorScheme.onSurface.withValues(alpha: 0.5),
+                                  color: colorScheme.onSurface
+                                      .withValues(alpha: 0.5),
                                   size: 20,
                                 ),
                                 onPressed: () {
@@ -1474,7 +1491,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               )
                             : null,
                         border: InputBorder.none,
-                        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                        contentPadding: const EdgeInsets.symmetric(
+                            horizontal: 16, vertical: 12),
                       ),
                       style: TextStyle(
                         fontSize: 13,
@@ -1490,7 +1508,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     child: Row(
                       children: [
                         _buildCategoryButton(l10n.categoryAll, 'ALL'),
-                        _buildCategoryButton(l10n.categoryAttention, 'ATTENTION'),
+                        _buildCategoryButton(
+                            l10n.categoryAttention, 'ATTENTION'),
                         _buildCategoryButton(l10n.categoryLogic, 'LOGIC'),
                         _buildCategoryButton(l10n.categoryMath, 'MATH'),
                         _buildCategoryButton(l10n.categoryWord, 'WORD'),
@@ -1542,7 +1561,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     builder: (context, constraints) {
                       if (constraints.crossAxisExtent > 600) {
                         return SliverGrid(
-                          gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                          gridDelegate:
+                              const SliverGridDelegateWithMaxCrossAxisExtent(
                             maxCrossAxisExtent: 400,
                             mainAxisSpacing: DesignSystem.spaceMD,
                             crossAxisSpacing: DesignSystem.spaceMD,
@@ -1552,20 +1572,40 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             (context, index) {
                               final game = filteredGames[index];
                               final gameId = game['id'] as String;
-                              return GameTile(
-                                title: game['title'],
-                                gameId: gameId,
-                                icon: game['icon'],
-                                accentColor: game['color'],
-                                streak: streaks[gameId],
-                                isFavorite: favoriteIds.contains(gameId),
-                                onTap: () => Navigator.push(
-                                  context,
-                                  CustomPageRoute(page: (game['builder'] as WidgetBuilder)(context)),
-                                ),
-                                onLongPress: () {
-                                  HapticFeedbackUtil.mediumImpact();
-                                  ref.read(userDataNotifierProvider.notifier).toggleFavorite(gameId);
+
+                              return Consumer(
+                                builder: (context, ref, child) {
+                                  final streak = ref.watch(
+                                      gameStreakNotifierProvider
+                                          .select((s) => s[gameId]));
+                                  final isFavorite = ref.watch(
+                                      userDataNotifierProvider.select((d) =>
+                                          (d.favoriteGameIds ?? [])
+                                              .contains(gameId)));
+
+                                  return RepaintBoundary(
+                                    child: GameTile(
+                                      title: game['title'],
+                                      gameId: gameId,
+                                      icon: game['icon'],
+                                      accentColor: game['color'],
+                                      streak: streak,
+                                      isFavorite: isFavorite,
+                                      onTap: () => Navigator.push(
+                                        context,
+                                        CustomPageRoute(
+                                            page: (game['builder']
+                                                as WidgetBuilder)(context)),
+                                      ),
+                                      onLongPress: () {
+                                        HapticFeedbackUtil.mediumImpact();
+                                        ref
+                                            .read(userDataNotifierProvider
+                                                .notifier)
+                                            .toggleFavorite(gameId);
+                                      },
+                                    ),
+                                  );
                                 },
                               );
                             },
@@ -1578,22 +1618,43 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             (context, index) {
                               final game = filteredGames[index];
                               final gameId = game['id'] as String;
+
                               return Padding(
-                                padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
-                                child: GameTile(
-                                  title: game['title'],
-                                  gameId: gameId,
-                                  icon: game['icon'],
-                                  accentColor: game['color'],
-                                  streak: streaks[gameId],
-                                  isFavorite: favoriteIds.contains(gameId),
-                                  onTap: () => Navigator.push(
-                                    context,
-                                    CustomPageRoute(page: (game['builder'] as WidgetBuilder)(context)),
-                                  ),
-                                  onLongPress: () {
-                                    HapticFeedbackUtil.mediumImpact();
-                                    ref.read(userDataNotifierProvider.notifier).toggleFavorite(gameId);
+                                padding: const EdgeInsets.only(
+                                    bottom: DesignSystem.spaceMD),
+                                child: Consumer(
+                                  builder: (context, ref, child) {
+                                    final streak = ref.watch(
+                                        gameStreakNotifierProvider
+                                            .select((s) => s[gameId]));
+                                    final isFavorite = ref.watch(
+                                        userDataNotifierProvider.select((d) =>
+                                            (d.favoriteGameIds ?? [])
+                                                .contains(gameId)));
+
+                                    return RepaintBoundary(
+                                      child: GameTile(
+                                        title: game['title'],
+                                        gameId: gameId,
+                                        icon: game['icon'],
+                                        accentColor: game['color'],
+                                        streak: streak,
+                                        isFavorite: isFavorite,
+                                        onTap: () => Navigator.push(
+                                          context,
+                                          CustomPageRoute(
+                                              page: (game['builder']
+                                                  as WidgetBuilder)(context)),
+                                        ),
+                                        onLongPress: () {
+                                          HapticFeedbackUtil.mediumImpact();
+                                          ref
+                                              .read(userDataNotifierProvider
+                                                  .notifier)
+                                              .toggleFavorite(gameId);
+                                        },
+                                      ),
+                                    );
                                   },
                                 ),
                               );
@@ -1605,10 +1666,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     },
                   ),
                 ),
-          ],
-          ),
-          );
-          }
+        ],
+      ),
+    );
+  }
 
   Widget _buildCategoryButton(String label, String value) {
     final isSelected = _selectedCategory == value;
@@ -1667,8 +1728,9 @@ class GameTile extends StatelessWidget {
       children: [
         TangibleButton(
           color: isSolved ? DesignSystem.success : colorScheme.surface,
-          shadowColor:
-              isSolved ? const Color(0xFF047857) : colorScheme.outline.withValues(alpha: 0.5),
+          shadowColor: isSolved
+              ? const Color(0xFF047857)
+              : colorScheme.outline.withValues(alpha: 0.5),
           onTap: onTap,
           onLongPress: onLongPress,
           padding: const EdgeInsets.only(
@@ -1714,7 +1776,8 @@ class GameTile extends StatelessWidget {
                             fontSize: 13,
                             fontWeight: FontWeight.w900,
                             letterSpacing: 0.5,
-                            color: isSolved ? Colors.white : colorScheme.onSurface,
+                            color:
+                                isSolved ? Colors.white : colorScheme.onSurface,
                           ),
                         ),
                       ),
@@ -1724,7 +1787,8 @@ class GameTile extends StatelessWidget {
                         padding: const EdgeInsets.symmetric(horizontal: 8.0),
                         child: Icon(
                           Icons.favorite_rounded,
-                          color: isSolved ? Colors.white : DesignSystem.gameRose,
+                          color:
+                              isSolved ? Colors.white : DesignSystem.gameRose,
                           size: 20,
                         ),
                       ),
@@ -1735,7 +1799,9 @@ class GameTile extends StatelessWidget {
                 isSolved
                     ? Icons.check_circle_rounded
                     : Icons.chevron_right_rounded,
-                color: isSolved ? Colors.white : colorScheme.onSurface.withValues(alpha: 0.3),
+                color: isSolved
+                    ? Colors.white
+                    : colorScheme.onSurface.withValues(alpha: 0.3),
                 size: 28,
               ),
             ],
@@ -1784,4 +1850,3 @@ class GameTile extends StatelessWidget {
     );
   }
 }
-

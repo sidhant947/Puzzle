@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'slitherlink_provider.dart';
-import 'slitherlink_engine.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../../utils/design_system.dart';
@@ -79,28 +78,7 @@ class SlitherlinkScreen extends ConsumerWidget {
                   ),
                 ),
               ),
-              const Spacer(flex: 2),
-              Padding(
-                padding: const EdgeInsets.all(DesignSystem.spaceLG),
-                child: TangibleButton(
-                  onTap: () {
-                    HapticFeedbackUtil.mediumImpact();
-                    notifier.newGame();
-                  },
-                  color: DesignSystem.primary,
-                  shadowColor: DesignSystem.primaryShadow,
-                  child: const Center(
-                    child: Text(
-                      'NEW PUZZLE',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontWeight: FontWeight.w900,
-                        letterSpacing: 1.0,
-                      ),
-                    ),
-                  ),
-                ),
-              ),
+              const Spacer(),
             ],
           );
         },
