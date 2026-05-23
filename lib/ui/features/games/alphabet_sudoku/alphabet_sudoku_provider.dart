@@ -46,7 +46,7 @@ class AlphabetSudokuState {
 @riverpod
 class AlphabetSudokuNotifier extends _$AlphabetSudokuNotifier {
   late AlphabetSudokuEngine _engine;
-  static const int defaultSize = 4;
+  static const int defaultSize = 9;
 
   @override
   Future<AlphabetSudokuState> build() async {
@@ -64,7 +64,7 @@ class AlphabetSudokuNotifier extends _$AlphabetSudokuNotifier {
       {
         'size': _engine.size,
         'solved': solved,
-        'clues': _engine.size == 4 ? 6 : 30,
+        'clues': _engine.size == 9 ? 35 : (_engine.size == 4 ? 6 : 30),
       },
     );
     

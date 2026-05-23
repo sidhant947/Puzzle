@@ -5,7 +5,7 @@ class AlphabetSudokuEngine {
   final int boxSize;
   final List<String> alphabets;
 
-  AlphabetSudokuEngine({this.size = 4}) 
+  AlphabetSudokuEngine({this.size = 9}) 
       : boxSize = sqrt(size).toInt(),
         alphabets = List.generate(size, (i) => String.fromCharCode(65 + i));
 
@@ -45,7 +45,7 @@ class AlphabetSudokuEngine {
     return true;
   }
 
-  bool _isValid(List<List<int>> board, int row, int col, int num) {
+  bool isValid(List<List<int>> board, int row, int col, int num) {
     // Check row
     for (int i = 0; i < size; i++) {
       if (i != col && board[row][i] == num) return false;
@@ -67,13 +67,21 @@ class AlphabetSudokuEngine {
     return true;
   }
 
+  bool _isValid(List<List<int>> board, int row, int col, int num) {
+    return isValid(board, row, col, num);
+  }
+
   List<List<int>> createPuzzle(List<List<int>> solvedBoard, {int? clues}) {
     List<List<int>> puzzle = List.generate(size, (r) => List.from(solvedBoard[r]));
     int totalCells = size * size;
     // Default clues: about 40-50% for 4x4, maybe 6-8 cells
-    int targetClues = clues ?? (size == 4 ? 6 : 30);
+    int targetClues = clues ?? (size == 9 ? 35 : (size == 4 ? 6 : 30));
     int toRemove = totalCells - targetClues;
-    
+
+    // Ensure we don't remove more than possible
+    int minClues = size == 9 ? 17 : (size == 4 ? 4 : 10);
+    toRemove = toRemove.clamp(0, totalCells - minClues);
+
     Random random = Random();
     while (toRemove > 0) {
       int r = random.nextInt(size);

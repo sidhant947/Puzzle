@@ -1,18 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'alphabet_sudoku_provider.dart';
+import 'alphabet_sudoku_engine.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 import '../../../core/juice/game_scaffold.dart';
 
-class AlphabetSudokuScreen extends ConsumerWidget {
+class AlphabetSudokuScreen extends ConsumerStatefulWidget {
   const AlphabetSudokuScreen({super.key});
 
   @override
-  Widget build(BuildContext context, WidgetRef ref) {
-    final stateAsync = ref.watch(alphabetSudokuNotifierProvider);
+  ConsumerState<AlphabetSudokuScreen> createState() => _AlphabetSudokuScreenState();
+}
+
+class _AlphabetSudokuScreenState extends ConsumerState<AlphabetSudokuScreen> {
+  @override
+  Widget build(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final state = ref.watch(alphabetSudokuNotifierProvider);
     final notifier = ref.read(alphabetSudokuNotifierProvider.notifier);
 
     ref.listen<AsyncValue<AlphabetSudokuState>>(alphabetSudokuNotifierProvider, (previous, next) {
@@ -38,57 +45,36 @@ class AlphabetSudokuScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'Alphabet Sudoku',
-      subtitle: 'Fill the grid so every row, column, and box contains letters A-D.',
+      title: 'ALPHABET SUDOKU',
+      subtitle: 'Fill the grid so every row, column, and box contains letters A-I.',
       actions: [
         TangibleButton(
-          color: Theme.of(context).colorScheme.surface,
-          shadowColor: Theme.of(context).colorScheme.outline,
+          color: colorScheme.surface,
+          shadowColor: colorScheme.outline,
           onTap: () {
             HapticFeedbackUtil.mediumImpact();
             notifier.newGame();
           },
           padding: const EdgeInsets.all(12),
-          child: Icon(Icons.refresh_rounded, size: 20, color: Theme.of(context).colorScheme.onSurface),
+          child: Icon(
+            Icons.refresh_rounded,
+            color: colorScheme.onSurface,
+            size: 20,
+          ),
         ),
       ],
-      body: stateAsync.when(
+      body: state.when(
         loading: () => const Center(child: CircularProgressIndicator()),
         error: (err, stack) => Center(child: Text('Error: $err')),
-        data: (state) => LayoutBuilder(
+        data: (sudokuState) => LayoutBuilder(
           builder: (context, constraints) {
-            final boardWidth = constraints.maxWidth * 0.9;
-            final boardSize = boardWidth > 400.0 ? 400.0 : boardWidth;
-
             return Column(
               children: [
                 const Spacer(),
-                Center(
-                  child: Container(
-                    width: boardSize,
-                    height: boardSize,
-                    padding: const EdgeInsets.all(4),
-                    decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.2),
-                      borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
-                    ),
-                    child: _SudokuGrid(
-                      state: state,
-                      notifier: notifier,
-                      boardSize: boardSize - 8,
-                    ),
-                  ),
-                ),
+                _buildGrid(sudokuState, notifier, constraints.maxHeight * 0.5),
                 const Spacer(),
-                _AlphabetInput(
-                  size: state.size,
-                  onSelect: (val) {
-                    HapticFeedbackUtil.lightImpact();
-                    notifier.setNumber(val);
-                  },
-                  getLetter: notifier.getLetter,
-                ),
-                const SizedBox(height: DesignSystem.spaceXL),
+                _buildNumberPad(sudokuState, notifier),
+                const SizedBox(height: DesignSystem.spaceLG),
               ],
             );
           },
@@ -96,155 +82,228 @@ class AlphabetSudokuScreen extends ConsumerWidget {
       ),
     );
   }
-}
 
-class _SudokuGrid extends StatelessWidget {
-  final AlphabetSudokuState state;
-  final AlphabetSudokuNotifier notifier;
-  final double boardSize;
-
-  const _SudokuGrid({
-    required this.state,
-    required this.notifier,
-    required this.boardSize,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final cellSize = boardSize / state.size;
-    final boxSize = state.size == 4 ? 2 : 3;
-
-    return Stack(
-      children: [
-        for (int r = 0; r < state.size; r++)
-          for (int c = 0; c < state.size; c++)
-            Positioned(
-              left: c * cellSize,
-              top: r * cellSize,
-              width: cellSize,
-              height: cellSize,
-              child: GestureDetector(
-                onTap: () => notifier.selectCell(r, c),
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: _getCellColor(context, r, c),
-                    border: Border.all(
-                      color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.2),
-                      width: 0.5,
+  Widget _buildGrid(AlphabetSudokuState state, AlphabetSudokuNotifier notifier, double maxHeight) {
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+      child: ConstrainedBox(
+        constraints: BoxConstraints(maxHeight: maxHeight),
+        child: AspectRatio(
+          aspectRatio: 1,
+          child: Container(
+            decoration: BoxDecoration(
+              border: Border.all(color: Theme.of(context).colorScheme.onSurface, width: 2.0),
+              borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.circular(DesignSystem.radiusSM - 2),
+              child: Column(
+                children: List.generate(9, (r) {
+                  return Expanded(
+                    child: Row(
+                      children: List.generate(9, (c) {
+                        return Expanded(
+                          child: AlphabetSudokuCell(row: r, col: c),
+                        );
+                      }),
                     ),
-                  ),
-                  child: Center(
-                    child: Text(
-                      notifier.getLetter(state.currentBoard[r][c]),
-                      style: TextStyle(
-                        fontSize: cellSize * 0.5,
-                        fontWeight: state.initialBoard[r][c] != 0
-                            ? FontWeight.w900
-                            : FontWeight.w500,
-                        color: state.initialBoard[r][c] != 0
-                            ? Theme.of(context).colorScheme.onSurface
-                            : DesignSystem.primary,
+                  );
+                }),
+              ),
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+
+  Widget _buildNumberPad(AlphabetSudokuState state, AlphabetSudokuNotifier notifier) {
+    final counts = {for (int i = 1; i <= 9; i++) i: 0};
+    for (var row in state.currentBoard) {
+      for (var val in row) {
+        if (val != 0) counts[val] = (counts[val] ?? 0) + 1;
+      }
+    }
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+      child: Wrap(
+        spacing: DesignSystem.spaceSM,
+        runSpacing: DesignSystem.spaceSM,
+        alignment: WrapAlignment.center,
+        children: [
+          ...List.generate(9, (i) {
+            final num = i + 1;
+            final isCompleted = (counts[num] ?? 0) >= 9;
+
+            return Stack(
+              clipBehavior: Clip.none,
+              children: [
+                TangibleButton(
+                  color: isCompleted ? DesignSystem.success : Theme.of(context).colorScheme.surface,
+                  shadowColor: isCompleted ? const Color(0xFF047857) : Theme.of(context).colorScheme.outline,
+                  onTap: () {
+                    HapticFeedbackUtil.lightImpact();
+                    notifier.setNumber(num);
+                  },
+                  padding: const EdgeInsets.all(10),
+                  child: Container(
+                    width: 20,
+                    height: 20,
+                    alignment: Alignment.center,
+                    child: FittedBox(
+                      child: Text(
+                        notifier.getLetter(num),
+                        style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          fontSize: 18,
+                          color: isCompleted ? Colors.white : DesignSystem.primary,
+                        ),
                       ),
                     ),
                   ),
                 ),
+                if (counts[num]! > 0)
+                  Positioned(
+                    right: -2,
+                    top: -2,
+                    child: Container(
+                      padding: const EdgeInsets.all(3),
+                      decoration: BoxDecoration(
+                        color: isCompleted ? DesignSystem.success : DesignSystem.primary,
+                        shape: BoxShape.circle,
+                        border: Border.all(color: Theme.of(context).colorScheme.surface, width: 1.5),
+                      ),
+                      constraints: const BoxConstraints(minWidth: 16, minHeight: 16),
+                      child: Text(
+                        (9 - counts[num]!).clamp(0, 9).toString(),
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 8,
+                          fontWeight: FontWeight.w900,
+                        ),
+                      ),
+                    ),
+                  ),
+              ],
+            );
+          }),
+          TangibleButton(
+            color: Theme.of(context).colorScheme.surface,
+            shadowColor: Theme.of(context).colorScheme.outline,
+            onTap: () {
+              HapticFeedbackUtil.mediumImpact();
+              final selR = state.selectedRow;
+              final selC = state.selectedCol;
+              if (selR != null && selC != null) {
+                final currentVal = state.currentBoard[selR][selC];
+                if (currentVal != 0) {
+                  notifier.setNumber(currentVal);
+                }
+              }
+            },
+            padding: const EdgeInsets.all(10),
+            child: Container(
+              width: 20,
+              height: 20,
+              alignment: Alignment.center,
+              child: Icon(
+                Icons.backspace_rounded,
+                size: 16,
+                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
-        // Draw thick box borders
-        IgnorePointer(
-          child: CustomPaint(
-            size: Size(boardSize, boardSize),
-            painter: _GridPainter(
-              size: state.size,
-              boxSize: boxSize,
-              color: Theme.of(context).colorScheme.onSurface,
-            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
-
-  Color _getCellColor(BuildContext context, int r, int c) {
-    final isSelected = state.selectedRow == r && state.selectedCol == c;
-    if (isSelected) return DesignSystem.primary.withValues(alpha: 0.2);
-    
-    // Highlight row and column
-    if (state.selectedRow == r || state.selectedCol == c) {
-      return DesignSystem.primary.withValues(alpha: 0.05);
-    }
-
-    return Colors.transparent;
-  }
 }
 
-class _GridPainter extends CustomPainter {
-  final int size;
-  final int boxSize;
-  final Color color;
+class AlphabetSudokuCell extends ConsumerWidget {
+  final int row;
+  final int col;
 
-  _GridPainter({required this.size, required this.boxSize, required this.color});
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final paint = Paint()
-      ..color = color
-      ..strokeWidth = 3.0
-      ..style = PaintingStyle.stroke;
-
-    final cellSize = size.width / this.size;
-
-    for (int i = 0; i <= this.size; i += boxSize) {
-      // Horizontal
-      canvas.drawLine(Offset(0, i * cellSize), Offset(size.width, i * cellSize), paint);
-      // Vertical
-      canvas.drawLine(Offset(i * cellSize, 0), Offset(i * cellSize, size.height), paint);
-    }
-  }
-
-  @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
-}
-
-class _AlphabetInput extends StatelessWidget {
-  final int size;
-  final Function(int) onSelect;
-  final String Function(int) getLetter;
-
-  const _AlphabetInput({
-    required this.size,
-    required this.onSelect,
-    required this.getLetter,
+  const AlphabetSudokuCell({
+    super.key,
+    required this.row,
+    required this.col,
   });
 
   @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: List.generate(size, (i) {
-          final val = i + 1;
-          return Expanded(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 4),
-              child: TangibleButton(
-                onTap: () => onSelect(val),
-                color: Theme.of(context).colorScheme.surface,
-                shadowColor: Theme.of(context).colorScheme.outline,
-                child: Center(
-                  child: Text(
-                    getLetter(val),
-                    style: const TextStyle(
-                      fontSize: 20,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                ),
+  Widget build(BuildContext context, WidgetRef ref) {
+    final notifier = ref.read(alphabetSudokuNotifierProvider.notifier);
+
+    // Selectively watch only the data this cell needs
+    final value = ref.watch(alphabetSudokuNotifierProvider.select((s) => s.value?.currentBoard[row][col] ?? 0));
+    final isInitial = ref.watch(alphabetSudokuNotifierProvider.select((s) => s.value?.initialBoard[row][col] != 0));
+    final isSelected = ref.watch(alphabetSudokuNotifierProvider.select((s) => s.value?.selectedRow == row && s.value?.selectedCol == col));
+
+    final selR = ref.watch(alphabetSudokuNotifierProvider.select((s) => s.value?.selectedRow));
+    final selC = ref.watch(alphabetSudokuNotifierProvider.select((s) => s.value?.selectedCol));
+    final selectedValue = ref.watch(alphabetSudokuNotifierProvider.select((s) =>
+        (s.value?.selectedRow != null && s.value?.selectedCol != null)
+            ? s.value!.currentBoard[s.value!.selectedRow!][s.value!.selectedCol!]
+            : 0));
+
+    // Highlights
+    final bool isSameDigit = selectedValue != 0 && value == selectedValue;
+    final bool isRelatedArea = selR == row ||
+        selC == col ||
+        (selR != null && selC != null && (row ~/ 3 == selR ~/ 3 && col ~/ 3 == selC ~/ 3));
+
+    // Conflict detection
+    final board = ref.read(alphabetSudokuNotifierProvider).value?.currentBoard;
+    bool hasConflict = false;
+    if (value != 0 && !isInitial && board != null) {
+      hasConflict = !AlphabetSudokuEngine(size: 9).isValid(board, row, col, value);
+    }
+
+    // Thick borders for 3x3 boxes
+    final bool borderRight = (col + 1) % 3 == 0 && col < 8;
+    final bool borderBottom = (row + 1) % 3 == 0 && row < 8;
+
+    return GestureDetector(
+      onTap: () {
+        HapticFeedbackUtil.selectionClick();
+        notifier.selectCell(row, col);
+      },
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 150),
+        decoration: BoxDecoration(
+          color: isSelected
+              ? DesignSystem.primary.withValues(alpha: 0.2)
+              : isSameDigit
+                  ? DesignSystem.accentAmber.withValues(alpha: 0.2)
+                  : isRelatedArea
+                      ? Theme.of(context).colorScheme.outline.withValues(alpha: 0.5).withValues(alpha: 0.3)
+                      : Theme.of(context).colorScheme.surface,
+          border: Border(
+            right: BorderSide(color: Theme.of(context).colorScheme.onSurface, width: borderRight ? 2.0 : 0.5),
+            bottom: BorderSide(color: Theme.of(context).colorScheme.onSurface, width: borderBottom ? 2.0 : 0.5),
+          ),
+        ),
+        child: Center(
+          child: FittedBox(
+            child: Text(
+              value == 0 ? '' : notifier.getLetter(value),
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: isInitial ? FontWeight.w900 : FontWeight.w700,
+                color: hasConflict
+                    ? DesignSystem.error
+                    : isSelected
+                        ? DesignSystem.primary
+                        : isSameDigit
+                            ? DesignSystem.accentAmber
+                            : isInitial
+                                ? Theme.of(context).colorScheme.onSurface
+                                : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
               ),
             ),
-          );
-        }),
+          ),
+        ),
       ),
     );
   }

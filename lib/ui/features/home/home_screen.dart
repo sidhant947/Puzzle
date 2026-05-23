@@ -148,6 +148,7 @@ import '../games/associative_pairs/associative_pairs_screen.dart';
 import '../games/block_count_3d/block_count_3d_screen.dart';
 import '../games/cube_net_fold/cube_net_fold_screen.dart';
 import '../games/rotating_maze/rotating_maze_screen.dart';
+import '../games/classic_maze/classic_maze_screen.dart';
 import '../games/silhouette_match_ortho/silhouette_match_ortho_screen.dart';
 
 import '../games/conjunction_search/conjunction_search_screen.dart';
@@ -318,6 +319,14 @@ class HomeScreen extends ConsumerStatefulWidget {
       'icon': Icons.autorenew_rounded,
       'color': DesignSystem.gameIndigo,
       'builder': (context) => const RotatingMazeScreen(),
+    },
+    {
+      'title': 'Classic Maze',
+      'id': 'classic_maze',
+      'category': 'SPATIAL',
+      'icon': Icons.grid_goldenratio_rounded,
+      'color': DesignSystem.gameEmerald,
+      'builder': (context) => const ClassicMazeScreen(),
     },
     {
       'title': 'Silhouette Match',

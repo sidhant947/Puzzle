@@ -7,7 +7,7 @@ part of 'alphabet_sudoku_provider.dart';
 // **************************************************************************
 
 String _$alphabetSudokuNotifierHash() =>
-    r'7ceb918488757284c0a7be0f6f10e4d58a07128e';
+    r'2ec44d5746a9c68549131bacf678bd79f7dd924f';
 
 /// See also [AlphabetSudokuNotifier].
 @ProviderFor(AlphabetSudokuNotifier)
