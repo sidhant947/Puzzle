@@ -1358,7 +1358,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             title: Text(
               l10n.games.toUpperCase(),
               style: TextStyle(
-                fontSize: 14,
+                fontSize: DesignSystem.fontSizeXL, // Reduced from 14 to 16 (for shell titles)
                 letterSpacing: 1.5,
                 fontWeight: FontWeight.w900,
                 color: theme.colorScheme.onSurface,
@@ -1442,7 +1442,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             child: Text(
                               '$solvedToday',
                               style: const TextStyle(
-                                fontSize: 32,
+                                fontSize: DesignSystem.fontSizeHero, // 32.0 (Linked to token)
                                 fontWeight: FontWeight.w900,
                                 color: DesignSystem.primary,
                               ),
@@ -1457,7 +1457,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               Text(
                                 l10n.solvedToday.toUpperCase(),
                                 style: TextStyle(
-                                  fontSize: 10,
+                                  fontSize: DesignSystem.fontSize2XS, // Reduced from 10 to 9
                                   fontWeight: FontWeight.w900,
                                   letterSpacing: 1.5,
                                   color: colorScheme.onSurface
@@ -1468,7 +1468,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               Text(
                                 encouragement,
                                 style: TextStyle(
-                                  fontSize: 13,
+                                  fontSize: DesignSystem.fontSizeMD, // 13.0
                                   fontWeight: FontWeight.w900,
                                   color: colorScheme.onSurface,
                                   letterSpacing: 0.2,
@@ -1507,7 +1507,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                       decoration: InputDecoration(
                         hintText: l10n.searchGames.toUpperCase(),
                         hintStyle: TextStyle(
-                          fontSize: 12,
+                          fontSize: DesignSystem.fontSizeSM, // Reduced from 12 to 11
                           fontWeight: FontWeight.w900,
                           color: colorScheme.onSurface.withValues(alpha: 0.3),
                         ),
@@ -1534,7 +1534,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             horizontal: 16, vertical: 12),
                       ),
                       style: TextStyle(
-                        fontSize: 13,
+                        fontSize: DesignSystem.fontSizeMD, // 13.0
                         fontWeight: FontWeight.w900,
                         color: colorScheme.onSurface,
                       ),
@@ -1579,7 +1579,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         Text(
                           l10n.noGamesMatch.toUpperCase(),
                           style: TextStyle(
-                            fontSize: 12,
+                            fontSize: DesignSystem.fontSizeSM, // Reduced from 12 to 11
                             fontWeight: FontWeight.w900,
                             letterSpacing: 1.0,
                             color: colorScheme.onSurface.withValues(alpha: 0.3),
@@ -1722,7 +1722,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         child: Text(
           label.toUpperCase(),
           style: TextStyle(
-            fontSize: 12,
+            fontSize: DesignSystem.fontSizeXS, // Reduced from 12 to 10
             fontWeight: FontWeight.w900,
             color: isSelected ? Colors.white : colorScheme.onSurface,
             letterSpacing: 0.5,
@@ -1812,7 +1812,7 @@ class GameTile extends StatelessWidget {
                           title.toUpperCase(),
                           maxLines: 1,
                           style: TextStyle(
-                            fontSize: 13,
+                            fontSize: DesignSystem.fontSizeMD, // 13.0
                             fontWeight: FontWeight.w900,
                             letterSpacing: 0.5,
                             color:
@@ -1876,7 +1876,7 @@ class GameTile extends StatelessWidget {
                   Text(
                     '$streakCount',
                     style: const TextStyle(
-                      fontSize: 12,
+                      fontSize: DesignSystem.fontSizeXS, // Reduced from 12 to 10
                       fontWeight: FontWeight.w900,
                       color: Colors.white,
                     ),

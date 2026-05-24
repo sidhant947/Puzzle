@@ -75,7 +75,7 @@ class MyApp extends ConsumerWidget {
     }
 
     return MaterialApp(
-      title: 'Puzzle Hub',
+      title: 'Puzzle Games',
       debugShowCheckedModeBanner: false,
       theme: DesignSystem.lightTheme,
       darkTheme: DesignSystem.darkTheme,

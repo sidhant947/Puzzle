@@ -1,12 +1,23 @@
 import 'package:flutter/material.dart';
 
 class DesignSystem {
-  // --- Symmetrical Design Scale ---
+  // --- Elegant Typographic System (Scale) ---
+  static const double fontSizeHero = 32.0;    // Massive splash/counters (down from 40)
+  static const double fontSize3XL  = 24.0;    // Major headings (down from 28)
+  static const double fontSize2XL  = 20.0;    // Section titles (down from 22)
+  static const double fontSizeXL   = 16.0;    // Card titles, screen titles (down from 18)
+  static const double fontSizeLG   = 14.0;    // Primary buttons, list items
+  static const double fontSizeMD   = 13.0;    // Standard body text (down from 14)
+  static const double fontSizeSM   = 11.0;    // Muted labels/secondary details
+  static const double fontSizeXS   = 10.0;    // Micro captions, badges
+  static const double fontSize2XS  = 9.0;     // Tiny inline tag labels
+
+  // --- Strict Spacing Grid ---
   static const double spaceXS = 4.0;
   static const double spaceSM = 8.0;
   static const double spaceMD = 12.0;
-  static const double spaceLG = 20.0;
-  static const double spaceXL = 28.0;
+  static const double spaceLG = 16.0;         // Scaled down from 20.0 to globally tighten layouts
+  static const double spaceXL = 24.0;         // Scaled down from 28.0 for premium proportions
 
   static const double radiusXS = 8.0;
   static const double radiusSM = 16.0;
@@ -91,53 +102,108 @@ class DesignSystem {
         scrolledUnderElevation: 0,
         titleTextStyle: TextStyle(
           color: mainInk,
-          fontSize: 20,
+          fontSize: fontSizeXL,
           fontWeight: FontWeight.w900,
           letterSpacing: 1.0,
         ),
       ),
       textTheme: TextTheme(
         displayLarge: TextStyle(
-          fontSize: 40,
+          fontSize: fontSizeHero,
           fontWeight: FontWeight.w900,
           letterSpacing: -1.0,
           color: mainInk,
           height: 1.1,
         ),
+        displayMedium: TextStyle(
+          fontSize: fontSize3XL,
+          fontWeight: FontWeight.w800,
+          letterSpacing: -0.5,
+          color: mainInk,
+          height: 1.15,
+        ),
+        displaySmall: TextStyle(
+          fontSize: fontSize2XL,
+          fontWeight: FontWeight.w800,
+          color: mainInk,
+          height: 1.2,
+        ),
         headlineLarge: TextStyle(
-          fontSize: 28,
+          fontSize: fontSize3XL,
           fontWeight: FontWeight.w900,
-          letterSpacing: 1.2,
+          letterSpacing: 0.5,
           color: mainInk,
           height: 1.2,
         ),
         headlineMedium: TextStyle(
-          fontSize: 22,
+          fontSize: fontSize2XL,
           fontWeight: FontWeight.w800,
-          letterSpacing: 0.5,
+          letterSpacing: 0.2,
           color: mainInk,
+          height: 1.25,
+        ),
+        headlineSmall: TextStyle(
+          fontSize: fontSizeXL,
+          fontWeight: FontWeight.w800,
+          color: mainInk,
+          height: 1.3,
         ),
         titleLarge: TextStyle(
-          fontSize: 18,
+          fontSize: fontSizeXL,
           fontWeight: FontWeight.w800,
           color: mainInk,
+          height: 1.3,
         ),
-        bodyLarge: TextStyle(
-          fontSize: 16,
+        titleMedium: TextStyle(
+          fontSize: fontSizeLG,
+          fontWeight: FontWeight.w700,
+          color: mainInk,
+          height: 1.35,
+        ),
+        titleSmall: TextStyle(
+          fontSize: fontSizeMD,
           fontWeight: FontWeight.w600,
-          color: subInk,
+          color: mainInk,
           height: 1.4,
         ),
+        bodyLarge: TextStyle(
+          fontSize: fontSizeLG,
+          fontWeight: FontWeight.w600,
+          color: subInk,
+          height: 1.45,
+        ),
         bodyMedium: TextStyle(
-          fontSize: 14,
+          fontSize: fontSizeMD,
           fontWeight: FontWeight.w500,
           color: subInk,
+          height: 1.5,
+        ),
+        bodySmall: TextStyle(
+          fontSize: fontSizeSM,
+          fontWeight: FontWeight.w400,
+          color: subInk,
+          height: 1.5,
         ),
         labelLarge: TextStyle(
-          fontSize: 12,
+          fontSize: fontSizeSM,
           fontWeight: FontWeight.w700,
           letterSpacing: 1.2,
           color: mainInk,
+          height: 1.2,
+        ),
+        labelMedium: TextStyle(
+          fontSize: fontSizeXS,
+          fontWeight: FontWeight.w700,
+          letterSpacing: 0.8,
+          color: mainInk,
+          height: 1.2,
+        ),
+        labelSmall: TextStyle(
+          fontSize: fontSize2XS,
+          fontWeight: FontWeight.w600,
+          letterSpacing: 0.5,
+          color: mainInk,
+          height: 1.2,
         ),
       ),
       iconTheme: IconThemeData(
@@ -159,11 +225,11 @@ class DesignSystem {
   static const EdgeInsets paddingMD = EdgeInsets.all(spaceMD);
   static const EdgeInsets paddingLG = EdgeInsets.all(spaceLG);
   static const EdgeInsets paddingXL = EdgeInsets.all(spaceXL);
-  static const EdgeInsets padding2XL = EdgeInsets.all(48.0);
+  static const EdgeInsets padding2XL = EdgeInsets.all(32.0);
   
-  static const double space2XL = 48.0;
-  static const double space3XL = 64.0;
-  static const double radius2XL = 48.0;
+  static const double space2XL = 32.0;         // Tightened from 48.0
+  static const double space3XL = 48.0;         // Tightened from 64.0
+  static const double radius2XL = 40.0;        // Balanced radius
 
   // --- Game Accents ---
   static const Color gameBlue = Color(0xFF3B82F6); 

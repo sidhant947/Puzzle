@@ -169,15 +169,15 @@ class _TangibleButtonState extends State<TangibleButton> {
             shadowColor: resolvedShadowColor,
             radius: widget.radius,
             padding: widget.padding ?? const EdgeInsets.symmetric(
-              horizontal: DesignSystem.spaceLG,
-              vertical: DesignSystem.spaceMD,
+              horizontal: DesignSystem.spaceMD,
+              vertical: DesignSystem.spaceSM,
             ),
             child: DefaultTextStyle(
               style: TextStyle(
                 color: resolvedColor == colorScheme.surface ? colorScheme.onSurface : Colors.white,
-                fontSize: 18,
-                fontWeight: FontWeight.w800,
-                letterSpacing: 1.0,
+                fontSize: DesignSystem.fontSizeLG, // Reduced from 18 to 14.0 for dynamic premium look
+                fontWeight: FontWeight.w900,
+                letterSpacing: 1.2,
               ),
               child: widget.child,
             ),

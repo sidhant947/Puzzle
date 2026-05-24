@@ -1,6 +1,6 @@
 {
-    "name": "puzzle",
-    "short_name": "puzzle",
+    "name": "Puzzle Games",
+    "short_name": "Puzzle Games",
     "start_url": ".",
     "display": "standalone",
     "background_color": "#0175C2",

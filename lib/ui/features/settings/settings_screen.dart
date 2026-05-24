@@ -42,7 +42,7 @@ class SettingsScreen extends ConsumerWidget {
                       letterSpacing: 2.0,
                       fontWeight: FontWeight.w900,
                       color: colorScheme.onSurface,
-                      fontSize: 18,
+                      fontSize: DesignSystem.fontSizeXL, // Reduced from 18 to 16
                     ),
                   ),
                 ),
@@ -158,9 +158,9 @@ class SettingsScreen extends ConsumerWidget {
       title,
       style: TextStyle(
         color: Theme.of(context).colorScheme.onSurface,
-        letterSpacing: 2,
+        letterSpacing: 2.0,
         fontWeight: FontWeight.w900,
-        fontSize: 16,
+        fontSize: DesignSystem.fontSizeSM, // Reduced from 16 to 11 for high-end feel
       ),
     );
   }
@@ -190,7 +190,7 @@ class SettingsScreen extends ConsumerWidget {
                   l10n.trialMode.toUpperCase(),
                   style: TextStyle(
                     fontWeight: FontWeight.w900,
-                    fontSize: 14,
+                    fontSize: DesignSystem.fontSizeMD, // Reduced from 14 to 13
                     letterSpacing: 0.5,
                     color: colorScheme.onSurface,
                   ),
@@ -198,7 +198,7 @@ class SettingsScreen extends ConsumerWidget {
                 Text(
                   l10n.trialModeDescription.toUpperCase(),
                   style: TextStyle(
-                    fontSize: 10,
+                    fontSize: DesignSystem.fontSize2XS, // Reduced from 10 to 9
                     fontWeight: FontWeight.w700,
                     color: colorScheme.onSurface.withValues(alpha: 0.5),
                   ),
@@ -307,7 +307,7 @@ class SettingsScreen extends ConsumerWidget {
               title.toUpperCase(),
               style: TextStyle(
                 fontWeight: FontWeight.w800,
-                fontSize: 14,
+                fontSize: DesignSystem.fontSizeMD, // Reduced from 14 to 13
                 letterSpacing: 0.5,
                 color: colorScheme.onSurface,
               ),
@@ -359,7 +359,7 @@ class SettingsScreen extends ConsumerWidget {
                       style: theme.textTheme.headlineMedium?.copyWith(
                         fontWeight: FontWeight.w900,
                         letterSpacing: 1.5,
-                        fontSize: 18,
+                        fontSize: DesignSystem.fontSizeXL, // Reduced from 18 to 16
                         color: colorScheme.onSurface,
                       ),
                     ),
@@ -375,7 +375,7 @@ class SettingsScreen extends ConsumerWidget {
                         style: TextStyle(
                           color: colorScheme.onSurface,
                           fontWeight: FontWeight.w800,
-                          fontSize: 16,
+                          fontSize: DesignSystem.fontSizeLG, // Reduced from 16 to 14
                         ),
                         decoration: const InputDecoration(
                           counterText: '',
@@ -406,7 +406,7 @@ class SettingsScreen extends ConsumerWidget {
                               child: Text(
                                 'CANCEL',
                                 style: TextStyle(
-                                  fontSize: 13,
+                                  fontSize: DesignSystem.fontSizeMD,
                                   fontWeight: FontWeight.w900,
                                 ),
                               ),
@@ -430,7 +430,7 @@ class SettingsScreen extends ConsumerWidget {
                               child: Text(
                                 'SAVE',
                                 style: TextStyle(
-                                  fontSize: 13,
+                                  fontSize: DesignSystem.fontSizeMD,
                                   fontWeight: FontWeight.w900,
                                   color: Colors.white,
                                 ),

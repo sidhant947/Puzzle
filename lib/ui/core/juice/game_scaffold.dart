@@ -56,7 +56,7 @@ class GameScaffold extends StatelessWidget {
                       style: TextStyle(
                         color: colorScheme.onSurface.withValues(alpha: 0.7),
                         fontWeight: FontWeight.w700,
-                        fontSize: 11, // Reduced from 14
+                        fontSize: DesignSystem.fontSizeSM, // Linked to 11.0
                         letterSpacing: 0.5,
                       ),
                     ),
@@ -120,7 +120,7 @@ class GameScaffold extends StatelessWidget {
                   child: Text(
                     title.toUpperCase(),
                     style: TextStyle(
-                      fontSize: 14,
+                      fontSize: DesignSystem.fontSizeLG, // Linked to 14.0
                       letterSpacing: 1.5,
                       fontWeight: FontWeight.w900,
                       color: colorScheme.onSurface,
