@@ -24,13 +24,15 @@ class UserDataAdapter extends TypeAdapter<_$UserDataImpl> {
       totalSolved: fields[4] as int?,
       favoriteGameIds: (fields[5] as List?)?.cast<String>(),
       isTrialModeEnabled: fields[6] as bool?,
+      name: fields[7] as String?,
+      isOnboarded: fields[8] as bool?,
     );
   }
 
   @override
   void write(BinaryWriter writer, _$UserDataImpl obj) {
     writer
-      ..writeByte(7)
+      ..writeByte(9)
       ..writeByte(0)
       ..write(obj.xp)
       ..writeByte(1)
@@ -43,6 +45,10 @@ class UserDataAdapter extends TypeAdapter<_$UserDataImpl> {
       ..write(obj.totalSolved)
       ..writeByte(6)
       ..write(obj.isTrialModeEnabled)
+      ..writeByte(7)
+      ..write(obj.name)
+      ..writeByte(8)
+      ..write(obj.isOnboarded)
       ..writeByte(5)
       ..write(obj.favoriteGameIds);
   }
@@ -75,6 +81,8 @@ _$UserDataImpl _$$UserDataImplFromJson(Map<String, dynamic> json) =>
           ?.map((e) => e as String)
           .toList(),
       isTrialModeEnabled: json['isTrialModeEnabled'] as bool?,
+      name: json['name'] as String?,
+      isOnboarded: json['isOnboarded'] as bool?,
     );
 
 Map<String, dynamic> _$$UserDataImplToJson(_$UserDataImpl instance) =>
@@ -86,4 +94,6 @@ Map<String, dynamic> _$$UserDataImplToJson(_$UserDataImpl instance) =>
       'totalSolved': instance.totalSolved,
       'favoriteGameIds': instance.favoriteGameIds,
       'isTrialModeEnabled': instance.isTrialModeEnabled,
+      'name': instance.name,
+      'isOnboarded': instance.isOnboarded,
     };

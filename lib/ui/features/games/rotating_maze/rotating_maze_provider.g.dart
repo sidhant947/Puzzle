@@ -7,7 +7,7 @@ part of 'rotating_maze_provider.dart';
 // **************************************************************************
 
 String _$rotatingMazeNotifierHash() =>
-    r'f390b406b03891b063a900cd8729c9e595aa3127';
+    r'e7359d1bf4cfddfcfff48a2bfae320b60bad936f';
 
 /// See also [RotatingMazeNotifier].
 @ProviderFor(RotatingMazeNotifier)

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:url_launcher/url_launcher.dart';
 import '../providers/user_providers.dart';
 import '../utils/design_system.dart';
 import '../utils/haptic_feedback.dart';
@@ -68,6 +69,13 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
     super.dispose();
   }
 
+  Future<void> _launchUrl(String url) async {
+    final uri = Uri.parse(url);
+    if (!await launchUrl(uri, mode: LaunchMode.externalApplication)) {
+      throw Exception('Could not launch $url');
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -78,8 +86,6 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
     final userData = ref.watch(userDataNotifierProvider);
     final superStreak = userData.superStreak ?? 0;
     final l10n = AppLocalizations.of(context)!;
-
-    final isMobile = DesignSystem.isMobile(context);
 
     return Dialog(
       backgroundColor: Colors.transparent,
@@ -104,14 +110,14 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
                 child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 480),
+                  constraints: const BoxConstraints(maxWidth: 380),
                   child: FadeTransition(
                     opacity: _opacityAnimation,
                     child: ScaleTransition(
                       scale: _scaleAnimation,
                       child: TangibleContainer(
-                        radius: DesignSystem.radiusXL,
-                        padding: const EdgeInsets.all(DesignSystem.spaceXL),
+                        radius: DesignSystem.radiusLG,
+                        padding: const EdgeInsets.all(DesignSystem.spaceLG),
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
@@ -127,36 +133,36 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
                                     alignment: Alignment.center,
                                     children: [
                                       Container(
-                                        padding: const EdgeInsets.all(DesignSystem.spaceLG),
+                                        padding: const EdgeInsets.all(DesignSystem.spaceMD),
                                         decoration: BoxDecoration(
                                           color: color.withValues(alpha: 0.1),
                                           shape: BoxShape.circle,
                                           border: Border.all(
                                             color: color.withValues(alpha: 0.2),
-                                            width: 3,
+                                            width: 2.5,
                                           ),
                                         ),
                                         child: Icon(
                                           icon,
                                           color: color,
-                                          size: 64,
+                                          size: 44,
                                         ),
                                       ),
                                       if (widget.isVictory && superStreak > 0)
                                         Positioned(
-                                          right: -10,
-                                          bottom: -5,
+                                          right: -8,
+                                          bottom: -4,
                                           child: Container(
-                                            padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
+                                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                                             decoration: BoxDecoration(
                                               color: DesignSystem.accentAmber,
                                               borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
-                                              border: Border.all(color: Colors.white, width: 3.0),
+                                              border: Border.all(color: Colors.white, width: 2.5),
                                               boxShadow: [
                                                 BoxShadow(
                                                   color: Colors.black.withValues(alpha: 0.15),
-                                                  blurRadius: 10,
-                                                  offset: const Offset(0, 4),
+                                                  blurRadius: 6,
+                                                  offset: const Offset(0, 3),
                                                 ),
                                               ],
                                             ),
@@ -165,14 +171,14 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
                                               children: [
                                                 const Icon(
                                                   Icons.local_fire_department_rounded,
-                                                  size: 16,
+                                                  size: 14,
                                                   color: Colors.white,
                                                 ),
-                                                const SizedBox(width: 4),
+                                                const SizedBox(width: 2),
                                                 Text(
                                                   '$superStreak',
                                                   style: const TextStyle(
-                                                    fontSize: 14,
+                                                    fontSize: 12,
                                                     fontWeight: FontWeight.w900,
                                                     color: Colors.white,
                                                   ),
@@ -186,121 +192,160 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
                                 );
                               },
                             ),
-                            const SizedBox(height: DesignSystem.spaceXL),
+                            const SizedBox(height: DesignSystem.spaceMD),
                             
                             // Title with bold styling
                             Text(
                               widget.title.toUpperCase(),
                               textAlign: TextAlign.center,
-                              style: theme.textTheme.headlineLarge?.copyWith(
+                              style: theme.textTheme.headlineMedium?.copyWith(
                                 color: colorScheme.onSurface,
-                                fontSize: 28,
+                                fontSize: 22,
                                 fontWeight: FontWeight.w900,
-                                letterSpacing: 2.0,
+                                letterSpacing: 1.5,
                               ),
                             ),
-                            const SizedBox(height: DesignSystem.spaceMD),
+                            const SizedBox(height: DesignSystem.spaceSM),
                             
                             // Message
                             Text(
                               widget.message,
                               textAlign: TextAlign.center,
-                              style: theme.textTheme.bodyLarge?.copyWith(
+                              style: theme.textTheme.bodyMedium?.copyWith(
                                 color: colorScheme.onSurface.withValues(alpha: 0.7),
                                 fontWeight: FontWeight.w700,
+                                fontSize: 13.5,
                               ),
                             ),
-                            const SizedBox(height: DesignSystem.space2XL),
+                            const SizedBox(height: DesignSystem.spaceLG),
                             
                             // Actions
                             TangibleButton(
                               onTap: widget.onPlayAgain,
                               color: DesignSystem.primary,
                               shadowColor: DesignSystem.primaryShadow,
+                              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
                               child: Center(
                                 child: Text(
                                   l10n.playAgain.toUpperCase(),
                                   style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w900,
+                                    fontSize: 14,
                                     letterSpacing: 1.0,
                                   ),
                                 ),
                               ),
                             ),
                             const SizedBox(height: DesignSystem.spaceMD),
-                            if (isMobile) ...[
-                              TangibleButton(
-                                onTap: widget.onHome,
-                                color: colorScheme.surface,
-                                shadowColor: colorScheme.outline,
-                                child: Center(
-                                  child: Text(
-                                    l10n.home.toUpperCase(),
-                                    style: TextStyle(
-                                      color: colorScheme.onSurface.withValues(alpha: 0.5),
-                                      fontWeight: FontWeight.w900,
-                                      letterSpacing: 1.0,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                              const SizedBox(height: DesignSystem.spaceMD),
-                              TangibleButton(
-                                onTap: () => setState(() => _isViewingResult = true),
-                                color: colorScheme.surface,
-                                shadowColor: colorScheme.outline,
-                                child: Center(
-                                  child: Text(
-                                    l10n.seeCompleted.toUpperCase(),
-                                    style: TextStyle(
-                                      color: colorScheme.onSurface.withValues(alpha: 0.5),
-                                      fontWeight: FontWeight.w900,
-                                      letterSpacing: 1.0,
-                                    ),
-                                  ),
-                                ),
-                              ),
-                            ] else
-                              Row(
-                                children: [
-                                  Expanded(
-                                    child: TangibleButton(
-                                      onTap: widget.onHome,
-                                      color: colorScheme.surface,
-                                      shadowColor: colorScheme.outline,
-                                      child: Center(
-                                        child: Text(
-                                          l10n.home.toUpperCase(),
-                                          style: TextStyle(
-                                            color: colorScheme.onSurface.withValues(alpha: 0.5),
-                                            fontWeight: FontWeight.w900,
-                                            letterSpacing: 1.0,
-                                          ),
+                            Row(
+                              children: [
+                                Expanded(
+                                  child: TangibleButton(
+                                    onTap: widget.onHome,
+                                    color: colorScheme.surface,
+                                    shadowColor: colorScheme.outline,
+                                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                                    child: Center(
+                                      child: Text(
+                                        l10n.home.toUpperCase(),
+                                        style: TextStyle(
+                                          color: colorScheme.onSurface.withValues(alpha: 0.5),
+                                          fontWeight: FontWeight.w900,
+                                          fontSize: 13,
+                                          letterSpacing: 0.8,
                                         ),
                                       ),
                                     ),
                                   ),
-                                  const SizedBox(width: DesignSystem.spaceMD),
-                                  Expanded(
-                                    child: TangibleButton(
-                                      onTap: () => setState(() => _isViewingResult = true),
-                                      color: colorScheme.surface,
-                                      shadowColor: colorScheme.outline,
-                                      child: Center(
-                                        child: Text(
-                                          l10n.seeCompleted.toUpperCase(),
-                                          style: TextStyle(
-                                            color: colorScheme.onSurface.withValues(alpha: 0.5),
-                                            fontWeight: FontWeight.w900,
-                                            letterSpacing: 1.0,
-                                          ),
+                                ),
+                                const SizedBox(width: DesignSystem.spaceSM),
+                                Expanded(
+                                  child: TangibleButton(
+                                    onTap: () => setState(() => _isViewingResult = true),
+                                    color: colorScheme.surface,
+                                    shadowColor: colorScheme.outline,
+                                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
+                                    child: Center(
+                                      child: Text(
+                                        l10n.seeCompleted.toUpperCase(),
+                                        style: TextStyle(
+                                          color: colorScheme.onSurface.withValues(alpha: 0.5),
+                                          fontWeight: FontWeight.w900,
+                                          fontSize: 13,
+                                          letterSpacing: 0.8,
                                         ),
                                       ),
                                     ),
                                   ),
-                                ],
-                              ),
+                                ),
+                              ],
+                            ),
+                            const SizedBox(height: DesignSystem.spaceMD),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                InkWell(
+                                  onTap: () => _launchUrl('https://play.google.com/store/apps/details?id=com.sidhant.puzzle'),
+                                  borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        const Icon(
+                                          Icons.star_rounded,
+                                          size: 16,
+                                          color: DesignSystem.accentAmber,
+                                        ),
+                                        const SizedBox(width: 4),
+                                        Text(
+                                          'LEAVE REVIEW',
+                                          style: TextStyle(
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.w800,
+                                            color: colorScheme.onSurface.withValues(alpha: 0.6),
+                                            letterSpacing: 0.5,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                Container(
+                                  width: 1,
+                                  height: 12,
+                                  color: colorScheme.outline.withValues(alpha: 0.5),
+                                ),
+                                InkWell(
+                                  onTap: () => _launchUrl('https://github.com/sidhant947/Puzzle/issues'),
+                                  borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
+                                  child: Padding(
+                                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                                    child: Row(
+                                      mainAxisSize: MainAxisSize.min,
+                                      children: [
+                                        const Icon(
+                                          Icons.bug_report_rounded,
+                                          size: 16,
+                                          color: DesignSystem.error,
+                                        ),
+                                        const SizedBox(width: 4),
+                                        Text(
+                                          'REPORT ERROR',
+                                          style: TextStyle(
+                                            fontSize: 11,
+                                            fontWeight: FontWeight.w800,
+                                            color: colorScheme.onSurface.withValues(alpha: 0.6),
+                                            letterSpacing: 0.5,
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
+                            ),
                           ],
                         ),
                       ),
@@ -319,21 +364,21 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
                   right: DesignSystem.spaceLG,
                   bottom: DesignSystem.space2XL + 16,
                 ),
-                child: ConstrainedBox(
-                  constraints: const BoxConstraints(maxWidth: 400),
+                child: SizedBox(
+                  width: 180,
                   child: TangibleButton(
                     onTap: widget.onHome,
                     color: DesignSystem.success,
                     shadowColor: const Color(0xFF047857),
-                    padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 32),
-                    child: Center(
-                      child: Text(
-                        l10n.finish.toUpperCase(),
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.w900,
-                          letterSpacing: 2.0,
-                        ),
+                    padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                    child: Text(
+                      l10n.finish.toUpperCase(),
+                      textAlign: TextAlign.center,
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w900,
+                        fontSize: 14,
+                        letterSpacing: 1.2,
                       ),
                     ),
                   ),

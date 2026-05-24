@@ -1370,6 +1370,33 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ],
           ),
 
+          // Personalized Greeting Header
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: const EdgeInsets.fromLTRB(
+                DesignSystem.spaceLG,
+                DesignSystem.spaceMD,
+                DesignSystem.spaceLG,
+                DesignSystem.spaceXS,
+              ),
+              child: Consumer(
+                builder: (context, ref, child) {
+                  final userData = ref.watch(userDataNotifierProvider);
+                  final name = userData.name ?? '';
+                  if (name.isEmpty) return const SizedBox.shrink();
+                  return Text(
+                    'HELLO, ${name.toUpperCase()} 👋',
+                    style: theme.textTheme.headlineMedium?.copyWith(
+                      fontWeight: FontWeight.w900,
+                      letterSpacing: 1.0,
+                      color: colorScheme.onSurface,
+                    ),
+                  );
+                },
+              ),
+            ),
+          ),
+
           // Daily Stats & Encouragement
           SliverToBoxAdapter(
             child: Padding(
@@ -1384,15 +1411,18 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   final streaks = ref.watch(gameStreakNotifierProvider);
                   final solvedToday =
                       streaks.values.where((s) => s.solvedToday).length;
+                  final userData = ref.watch(userDataNotifierProvider);
+                  final name = userData.name ?? 'Friend';
+
                   String encouragement;
                   if (solvedToday == 0) {
-                    encouragement = l10n.readyToStart;
+                    encouragement = 'Ready to start your daily brain workout, $name?';
                   } else if (solvedToday < 3) {
-                    encouragement = l10n.greatStart;
+                    encouragement = 'Great start, $name! Keep going.';
                   } else if (solvedToday < 7) {
-                    encouragement = l10n.onFire;
+                    encouragement = "You're on fire today, $name!";
                   } else {
-                    encouragement = l10n.incredible;
+                    encouragement = 'Incredible puzzle solving today, $name!';
                   }
 
                   return TangibleContainer(
