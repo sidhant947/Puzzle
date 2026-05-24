@@ -2,7 +2,10 @@
 
 A professional suite of minimalist puzzle games built with Flutter. Challenge your mind with daily streaks, level up your profile, and master unique puzzle experiences.
 
-[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid"  height="80">](https://f-droid.org/packages/com.sidhant.puzzle)
+| **Play Store** | **F-Droid** |
+| :---: | :---: |
+| <a href="https://play.google.com/store/apps/details?id=com.sidhant.puzzle"><img src="https://github.com/user-attachments/assets/5ff479ee-9c86-47fd-a583-2a4f8f10633e" height="60"></a> |[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid"  height="80">](https://f-droid.org/packages/com.sidhant.puzzle) |
+
 
 ## 🎮 Included Games (136 Total)
 
