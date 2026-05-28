@@ -136,82 +136,84 @@ class _AlphabetSudokuScreenState extends ConsumerState<AlphabetSudokuScreen> {
             final num = i + 1;
             final isCompleted = (counts[num] ?? 0) >= 9;
 
-            return Stack(
-              clipBehavior: Clip.none,
-              children: [
-                TangibleButton(
-                  color: isCompleted ? DesignSystem.success : Theme.of(context).colorScheme.surface,
-                  shadowColor: isCompleted ? const Color(0xFF047857) : Theme.of(context).colorScheme.outline,
-                  onTap: () {
-                    HapticFeedbackUtil.lightImpact();
-                    notifier.setNumber(num);
-                  },
-                  padding: const EdgeInsets.all(10),
-                  child: Container(
-                    width: 20,
-                    height: 20,
-                    alignment: Alignment.center,
-                    child: FittedBox(
-                      child: Text(
-                        notifier.getLetter(num),
-                        style: TextStyle(
-                          fontWeight: FontWeight.w900,
-                          fontSize: 18,
-                          color: isCompleted ? Colors.white : DesignSystem.primary,
+            return SizedBox(
+              width: 44,
+              height: 44,
+              child: Stack(
+                clipBehavior: Clip.none,
+                children: [
+                  TangibleButton(
+                    color: isCompleted ? DesignSystem.success : Theme.of(context).colorScheme.surface,
+                    shadowColor: isCompleted ? const Color(0xFF047857) : Theme.of(context).colorScheme.outline,
+                    onTap: () {
+                      HapticFeedbackUtil.lightImpact();
+                      notifier.setNumber(num);
+                    },
+                    padding: EdgeInsets.zero,
+                    child: Center(
+                      child: FittedBox(
+                        child: Text(
+                          notifier.getLetter(num),
+                          style: TextStyle(
+                            fontWeight: FontWeight.w900,
+                            fontSize: 18,
+                            color: isCompleted ? Colors.white : DesignSystem.primary,
+                          ),
                         ),
                       ),
                     ),
                   ),
-                ),
-                if (counts[num]! > 0)
-                  Positioned(
-                    right: -2,
-                    top: -2,
-                    child: Container(
-                      padding: const EdgeInsets.all(3),
-                      decoration: BoxDecoration(
-                        color: isCompleted ? DesignSystem.success : DesignSystem.primary,
-                        shape: BoxShape.circle,
-                        border: Border.all(color: Theme.of(context).colorScheme.surface, width: 1.5),
-                      ),
-                      constraints: const BoxConstraints(minWidth: 16, minHeight: 16),
-                      child: Text(
-                        (9 - counts[num]!).clamp(0, 9).toString(),
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          color: Colors.white,
-                          fontSize: 8,
-                          fontWeight: FontWeight.w900,
+                  if (counts[num]! > 0)
+                    Positioned(
+                      right: -2,
+                      top: -2,
+                      child: Container(
+                        padding: const EdgeInsets.all(3),
+                        decoration: BoxDecoration(
+                          color: isCompleted ? DesignSystem.success : DesignSystem.primary,
+                          shape: BoxShape.circle,
+                          border: Border.all(color: Theme.of(context).colorScheme.surface, width: 1.5),
+                        ),
+                        constraints: const BoxConstraints(minWidth: 16, minHeight: 16),
+                        child: Text(
+                          (9 - counts[num]!).clamp(0, 9).toString(),
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            color: Colors.white,
+                            fontSize: 8,
+                            fontWeight: FontWeight.w900,
+                          ),
                         ),
                       ),
                     ),
-                  ),
-              ],
+                ],
+              ),
             );
           }),
-          TangibleButton(
-            color: Theme.of(context).colorScheme.surface,
-            shadowColor: Theme.of(context).colorScheme.outline,
-            onTap: () {
-              HapticFeedbackUtil.mediumImpact();
-              final selR = state.selectedRow;
-              final selC = state.selectedCol;
-              if (selR != null && selC != null) {
-                final currentVal = state.currentBoard[selR][selC];
-                if (currentVal != 0) {
-                  notifier.setNumber(currentVal);
+          SizedBox(
+            width: 44,
+            height: 44,
+            child: TangibleButton(
+              color: Theme.of(context).colorScheme.surface,
+              shadowColor: Theme.of(context).colorScheme.outline,
+              onTap: () {
+                HapticFeedbackUtil.mediumImpact();
+                final selR = state.selectedRow;
+                final selC = state.selectedCol;
+                if (selR != null && selC != null) {
+                  final currentVal = state.currentBoard[selR][selC];
+                  if (currentVal != 0) {
+                    notifier.setNumber(currentVal);
+                  }
                 }
-              }
-            },
-            padding: const EdgeInsets.all(10),
-            child: Container(
-              width: 20,
-              height: 20,
-              alignment: Alignment.center,
-              child: Icon(
-                Icons.backspace_rounded,
-                size: 16,
-                color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
+              },
+              padding: EdgeInsets.zero,
+              child: Center(
+                child: Icon(
+                  Icons.backspace_rounded,
+                  size: 16,
+                  color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
+                ),
               ),
             ),
           ),

@@ -79,6 +79,7 @@ class BinaryPuzzleScreen extends ConsumerWidget {
               return TangibleContainer(
                 depth: isFixed ? 0 : 2,
                 radius: DesignSystem.radiusXS,
+                padding: const EdgeInsets.all(4.0),
                 color: isFixed 
                     ? Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1) 
                     : Theme.of(context).colorScheme.surface,
@@ -89,18 +90,15 @@ class BinaryPuzzleScreen extends ConsumerWidget {
                 child: Center(
                   child: cell == null
                       ? const SizedBox.shrink()
-                      : Padding(
-                          padding: const EdgeInsets.all(8.0),
-                          child: FittedBox(
-                            child: Text(
-                              '$cell',
-                              style: TextStyle(
-                                fontSize: 24,
-                                color: isFixed 
-                                  ? Theme.of(context).colorScheme.onSurface
-                                  : DesignSystem.primary,
-                                fontWeight: FontWeight.w900,
-                              ),
+                      : FittedBox(
+                          child: Text(
+                            '$cell',
+                            style: TextStyle(
+                              fontSize: 24,
+                              color: isFixed 
+                                ? Theme.of(context).colorScheme.onSurface
+                                : DesignSystem.primary,
+                              fontWeight: FontWeight.w900,
                             ),
                           ),
                         ),

@@ -196,10 +196,14 @@ class TargetNumberNotifier extends _$TargetNumberNotifier {
       final result = _Parser(state.currentExpression).parse();
       state = state.copyWith(currentResult: result);
       
+      final allUsed = state.usedIndexes.every((used) => used);
+      final isCorrect = (result - state.target).abs() < 1e-6;
+
       // Check for victory: all numbers used AND result == target
-      if (state.usedIndexes.every((used) => used) && 
-          (result - state.target).abs() < 1e-6) {
+      if (allUsed && isCorrect) {
         state = state.copyWith(isGameOver: true, isGameWon: true);
+      } else if (allUsed && !isCorrect) {
+        // Optional: Trigger a vibration or state update for 'wrong full expression'
       }
     } catch (_) {
       state = state.copyWith(currentResult: null);

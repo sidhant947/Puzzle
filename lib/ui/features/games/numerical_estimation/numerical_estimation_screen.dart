@@ -88,12 +88,18 @@ class _NumericalEstimationScreenState extends ConsumerState<NumericalEstimationS
                   : Column(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(
-                          state.currentPuzzle!.question,
-                          style: TextStyle(
-                            fontSize: 64,
-                            fontWeight: FontWeight.w900,
-                            color: colorScheme.onSurface,
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+                          child: FittedBox(
+                            fit: BoxFit.scaleDown,
+                            child: Text(
+                              state.currentPuzzle!.question,
+                              style: TextStyle(
+                                fontSize: 64,
+                                fontWeight: FontWeight.w900,
+                                color: colorScheme.onSurface,
+                              ),
+                            ),
                           ),
                         ),
                         const SizedBox(height: DesignSystem.space2XL),
@@ -154,7 +160,7 @@ class _NumericalEstimationScreenState extends ConsumerState<NumericalEstimationS
             fontSize: 12,
             fontWeight: FontWeight.w900,
             letterSpacing: 1.2,
-            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7).withValues(alpha: 0.6),
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
           ),
         ),
         Text(

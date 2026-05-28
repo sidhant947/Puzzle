@@ -110,14 +110,18 @@ class GameScaffold extends StatelessWidget {
           const SizedBox(width: DesignSystem.spaceSM),
           Expanded(
             child: Center(
-              child: Text(
-                title.toUpperCase(), // Game titles uppercase
-                style: TextStyle(
-                  fontFamily: 'Bebas Neue', // Header font family
-                  fontSize: DesignSystem.fontSize2XL, // 24.0 (Gorgeous, high-readability title)
-                  letterSpacing: 1.2,
-                  fontWeight: FontWeight.w700,
-                  color: colorScheme.onSurface,
+              child: FittedBox(
+                fit: BoxFit.scaleDown,
+                alignment: Alignment.center,
+                child: Text(
+                  title.toUpperCase(), // Game titles uppercase
+                  style: TextStyle(
+                    fontFamily: 'Bebas Neue', // Header font family
+                    fontSize: DesignSystem.fontSize2XL, // 24.0 (Gorgeous, high-readability title)
+                    letterSpacing: 1.2,
+                    fontWeight: FontWeight.w700,
+                    color: colorScheme.onSurface,
+                  ),
                 ),
               ),
             ),

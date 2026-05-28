@@ -153,17 +153,15 @@ class BridgesScreen extends ConsumerWidget {
             radius: DesignSystem.radiusFull,
             color: color,
             shadowColor: shadowColor,
+            padding: const EdgeInsets.all(2.0),
             child: Center(
-              child: Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: FittedBox(
-                  child: Text(
-                    '${island.count}',
-                    style: TextStyle(
-                      color: isSelected || isComplete ? Colors.white : Theme.of(context).colorScheme.onSurface,
-                      fontWeight: FontWeight.w900,
-                      fontSize: 16, // Reduced from 18
-                    ),
+              child: FittedBox(
+                child: Text(
+                  '${island.count}',
+                  style: TextStyle(
+                    color: isSelected || isComplete ? Colors.white : Theme.of(context).colorScheme.onSurface,
+                    fontWeight: FontWeight.w900,
+                    fontSize: 16, // Reduced from 18
                   ),
                 ),
               ),

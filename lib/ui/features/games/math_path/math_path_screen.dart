@@ -134,6 +134,7 @@ class MathPathScreen extends ConsumerWidget {
               return TangibleContainer(
                 depth: isInPath ? 0 : 2,
                 radius: DesignSystem.radiusSM,
+                padding: const EdgeInsets.all(4.0),
                 color: isInPath 
                     ? (isLast ? DesignSystem.primary : DesignSystem.primary.withValues(alpha: 0.3)) 
                     : Theme.of(context).colorScheme.surface,
@@ -142,16 +143,13 @@ class MathPathScreen extends ConsumerWidget {
                   ref.read(mathPathNotifierProvider.notifier).toggleTile(x, y);
                 },
                 child: Center(
-                  child: Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: FittedBox(
-                      child: Text(
-                        '${state.level.grid[y][x]}',
-                        style: TextStyle(
-                          color: isInPath && isLast ? Colors.white : Theme.of(context).colorScheme.onSurface,
-                          fontWeight: FontWeight.w900,
-                          fontSize: 18,
-                        ),
+                  child: FittedBox(
+                    child: Text(
+                      '${state.level.grid[y][x]}',
+                      style: TextStyle(
+                        color: isInPath && isLast ? Colors.white : Theme.of(context).colorScheme.onSurface,
+                        fontWeight: FontWeight.w900,
+                        fontSize: 20,
                       ),
                     ),
                   ),

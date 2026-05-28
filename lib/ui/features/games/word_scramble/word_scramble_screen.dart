@@ -159,18 +159,26 @@ class _WordScrambleScreenState extends ConsumerState<WordScrambleScreen> {
                             runSpacing: 8,
                             alignment: WrapAlignment.center,
                             children: state.scrambledWord.split('').map((letter) {
-                              return TangibleButton(
-                                onTap: () => notifier.onLetterPressed(letter),
-                                color: colorScheme.surface,
-                                shadowColor: colorScheme.outline,
-                                depth: 2,
-                                padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 10),
-                                child: Text(
-                                  letter.toUpperCase(),
-                                  style: const TextStyle(
-                                    fontWeight: FontWeight.w900,
-                                    fontSize: 18,
-                                    color: DesignSystem.primary,
+                              return SizedBox(
+                                width: 44,
+                                height: 44,
+                                child: TangibleButton(
+                                  onTap: () => notifier.onLetterPressed(letter),
+                                  color: colorScheme.surface,
+                                  shadowColor: colorScheme.outline,
+                                  depth: 2,
+                                  padding: EdgeInsets.zero,
+                                  child: Center(
+                                    child: FittedBox(
+                                      child: Text(
+                                        letter.toUpperCase(),
+                                        style: const TextStyle(
+                                          fontWeight: FontWeight.w900,
+                                          fontSize: 18,
+                                          color: DesignSystem.primary,
+                                        ),
+                                      ),
+                                    ),
                                   ),
                                 ),
                               );

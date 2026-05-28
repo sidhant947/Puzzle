@@ -122,33 +122,32 @@ class SpatialConflictScreen extends ConsumerWidget {
                             ),
                           ),
 
-                          // Left side
-                          Positioned(
-                            left: 0,
-                            top: 0,
-                            bottom: 0,
-                            right: constraints.maxWidth / 2,
-                            child: Container(
-                              color: Colors.transparent,
-                              alignment: Alignment.center,
-                              child: (trial != null && trial.position == Direction.left)
-                                  ? _buildWordCard(trial.word.label, isDark)
-                                  : const SizedBox.shrink(),
-                            ),
-                          ),
-
-                          // Right side
-                          Positioned(
-                            left: constraints.maxWidth / 2,
-                            top: 0,
-                            bottom: 0,
-                            right: 0,
-                            child: Container(
-                              color: Colors.transparent,
-                              alignment: Alignment.center,
-                              child: (trial != null && trial.position == Direction.right)
-                                  ? _buildWordCard(trial.word.label, isDark)
-                                  : const SizedBox.shrink(),
+                          Positioned.fill(
+                            child: Row(
+                              children: [
+                                // Left side
+                                Expanded(
+                                  child: Container(
+                                    color: Colors.transparent,
+                                    alignment: Alignment.center,
+                                    child: (trial != null && trial.position == Direction.left)
+                                        ? _buildWordCard(trial.word.label, isDark)
+                                        : const SizedBox.shrink(),
+                                  ),
+                                ),
+                                // Center spacer for the line
+                                const SizedBox(width: 2),
+                                // Right side
+                                Expanded(
+                                  child: Container(
+                                    color: Colors.transparent,
+                                    alignment: Alignment.center,
+                                    child: (trial != null && trial.position == Direction.right)
+                                        ? _buildWordCard(trial.word.label, isDark)
+                                        : const SizedBox.shrink(),
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
@@ -240,12 +239,15 @@ class SpatialConflictScreen extends ConsumerWidget {
         color: isDark ? const Color(0xFF262626) : Colors.white,
         shadowColor: isDark ? Colors.black : DesignSystem.outlineVariant,
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-        child: Text(
-          label,
-          style: const TextStyle(
-            fontSize: 28,
-            fontWeight: FontWeight.w900,
-            letterSpacing: 2.0,
+        child: FittedBox(
+          fit: BoxFit.scaleDown,
+          child: Text(
+            label,
+            style: const TextStyle(
+              fontSize: 28,
+              fontWeight: FontWeight.w900,
+              letterSpacing: 2.0,
+            ),
           ),
         ),
       ),

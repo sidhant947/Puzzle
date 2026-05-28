@@ -93,10 +93,10 @@ class _ChoiceReactionTimeScreenState extends ConsumerState<ChoiceReactionTimeScr
           const SizedBox(height: DesignSystem.spaceXL),
           Expanded(
             child: Center(
-              child: AspectRatio(
-                aspectRatio: 1,
-                child: Padding(
-                  padding: const EdgeInsets.all(DesignSystem.spaceLG),
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+                child: AspectRatio(
+                  aspectRatio: 1,
                   child: GridView.builder(
                     physics: const NeverScrollableScrollPhysics(),
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
@@ -113,8 +113,13 @@ class _ChoiceReactionTimeScreenState extends ConsumerState<ChoiceReactionTimeScr
                         shadowColor: isActive 
                             ? DesignSystem.primary.withValues(alpha: 0.5) 
                             : colorScheme.outline,
+                        padding: EdgeInsets.zero,
                         child: isActive 
-                            ? const Icon(Icons.flash_on, color: Colors.white, size: 48)
+                            ? const Center(
+                                child: FittedBox(
+                                  child: Icon(Icons.flash_on, color: Colors.white, size: 64),
+                                ),
+                              )
                             : const SizedBox.shrink(),
                       );
                     },

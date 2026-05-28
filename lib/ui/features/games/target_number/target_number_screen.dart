@@ -79,250 +79,265 @@ class _TargetNumberScreenState extends ConsumerState<TargetNumberScreen> {
       subtitle: l10n.targetNumberSubtitle(state.target),
       body: LayoutBuilder(
         builder: (context, constraints) {
-          final double cardHeight = constraints.maxHeight * 0.2;
-          final double displayHeight = constraints.maxHeight * 0.2;
+          final isSmall = constraints.maxHeight < 620;
+          final viewPadding = MediaQuery.of(context).padding;
+          final availableHeight = constraints.maxHeight - viewPadding.top - viewPadding.bottom;
 
-          return Column(
-            children: [
-              const Spacer(),
-              
-              // Target Display
-              ConstrainedBox(
-                constraints: BoxConstraints(maxHeight: cardHeight),
-                child: _buildTargetCard(state.target),
-              ),
-              
-              const Spacer(),
-              
-              // Expression Display
-              ConstrainedBox(
-                constraints: BoxConstraints(maxHeight: displayHeight),
-                child: _buildExpressionDisplay(state),
-              ),
-              
-              const Spacer(),
-              
-              // Numbers Grid
-              Padding(
+          return SingleChildScrollView(
+            physics: const ClampingScrollPhysics(),
+            child: ConstrainedBox(
+              constraints: BoxConstraints(minHeight: availableHeight),
+              child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
-                child: Wrap(
-                  spacing: DesignSystem.spaceMD,
-                  runSpacing: DesignSystem.spaceMD,
-                  alignment: WrapAlignment.center,
-                  children: List.generate(state.numbers.length, (index) {
-                    final isUsed = state.usedIndexes[index];
-                    return _buildNumberButton(
-                      state.numbers[index].toString(),
-                      () {
-                        HapticFeedbackUtil.selectionClick();
-                        notifier.onNumberPressed(index);
-                      },
-                      isUsed,
-                    );
-                  }),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    const SizedBox(height: DesignSystem.spaceSM),
+                    
+                    // Target Display
+                    _buildTargetCard(state.target, isSmall),
+                    
+                    const SizedBox(height: DesignSystem.spaceSM),
+                    
+                    // Expression Display
+                    _buildExpressionDisplay(state, isSmall),
+                    
+                    const SizedBox(height: DesignSystem.spaceMD),
+                    
+                    // Numbers Grid
+                    GridView.count(
+                      shrinkWrap: true,
+                      physics: const NeverScrollableScrollPhysics(),
+                      crossAxisCount: 2,
+                      childAspectRatio: isSmall ? 3.2 : 2.5,
+                      mainAxisSpacing: isSmall ? DesignSystem.spaceXS : DesignSystem.spaceMD,
+                      crossAxisSpacing: DesignSystem.spaceMD,
+                      children: List.generate(state.numbers.length, (index) {
+                        final isUsed = state.usedIndexes[index];
+                        return _buildNumberButton(
+                          state.numbers[index].toString(),
+                          () {
+                            HapticFeedbackUtil.selectionClick();
+                            notifier.onNumberPressed(index);
+                          },
+                          isUsed,
+                          isSmall,
+                        );
+                      }),
+                    ),
+                    
+                    const SizedBox(height: DesignSystem.spaceMD),
+                    
+                    // Operators & Controls
+                    _buildControls(notifier, isSmall),
+                    
+                    const SizedBox(height: DesignSystem.spaceLG),
+                  ],
                 ),
               ),
-              
-              const Spacer(),
-              
-              // Operators & Controls
-              _buildControls(notifier),
-              
-              const SizedBox(height: DesignSystem.spaceLG),
-            ],
+            ),
           );
         },
       ),
     );
   }
 
-  Widget _buildTargetCard(int target) {
-    return FittedBox(
-      fit: BoxFit.scaleDown,
-      child: TangibleContainer(
-        color: DesignSystem.accentAmber,
-        shadowColor: const Color(0xFFD97706),
-        radius: DesignSystem.radiusXL,
-        padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 20),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            const Text(
-              'TARGET',
-              style: TextStyle(
-                color: Colors.white70,
-                fontSize: 12,
-                fontWeight: FontWeight.w900,
-                letterSpacing: 2.0,
+  Widget _buildTargetCard(int target, bool isSmall) {
+    return Container(
+      constraints: BoxConstraints(maxHeight: isSmall ? 80 : 120),
+      child: FittedBox(
+        fit: BoxFit.contain,
+        child: TangibleContainer(
+          color: DesignSystem.accentAmber,
+          shadowColor: const Color(0xFFD97706),
+          radius: DesignSystem.radiusLG,
+          padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 12),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              const Text(
+                'TARGET',
+                style: TextStyle(
+                  color: Colors.white70,
+                  fontSize: 10,
+                  fontWeight: FontWeight.w900,
+                  letterSpacing: 2.0,
+                ),
               ),
-            ),
-            Text(
-              '$target',
-              style: const TextStyle(
-                color: Colors.white,
-                fontSize: 48,
-                fontWeight: FontWeight.w900,
+              Text(
+                '$target',
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 48,
+                  fontWeight: FontWeight.w900,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildExpressionDisplay(TargetNumberState state) {
+  Widget _buildExpressionDisplay(TargetNumberState state, bool isSmall) {
+    final colorScheme = Theme.of(context).colorScheme;
+    final allUsed = state.usedIndexes.every((u) => u);
+    final isWrong = allUsed && state.currentResult != null && (state.currentResult! - state.target).abs() > 1e-6;
+
     return Container(
-      margin: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
-      padding: const EdgeInsets.all(DesignSystem.spaceLG),
+      width: double.infinity,
+      constraints: BoxConstraints(maxHeight: isSmall ? 100 : 140),
+      padding: EdgeInsets.all(isSmall ? DesignSystem.spaceSM : DesignSystem.spaceMD),
       decoration: BoxDecoration(
-        color: Theme.of(context).colorScheme.surface,
+        color: isWrong ? DesignSystem.error.withValues(alpha: 0.05) : colorScheme.surface,
         borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
-        border: Border.all(color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5), width: 2),
+        border: Border.all(
+          color: isWrong 
+              ? DesignSystem.error.withValues(alpha: 0.5) 
+              : colorScheme.outline.withValues(alpha: 0.3), 
+          width: 2
+        ),
       ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          FittedBox(
-            fit: BoxFit.scaleDown,
-            child: Text(
-              state.currentExpression.isEmpty ? '???' : state.currentExpression,
+      child: FittedBox(
+        fit: BoxFit.contain,
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              state.currentExpression.isEmpty ? '---' : state.currentExpression,
               textAlign: TextAlign.center,
               style: TextStyle(
-                fontSize: 32,
+                fontSize: 28,
                 fontWeight: FontWeight.w900,
                 color: state.currentExpression.isEmpty 
-                    ? Theme.of(context).colorScheme.outline 
-                    : Theme.of(context).colorScheme.onSurface,
-                letterSpacing: 2.0,
+                    ? colorScheme.outline 
+                    : (isWrong ? DesignSystem.error : colorScheme.onSurface),
+                letterSpacing: 1.5,
               ),
             ),
-          ),
-          if (state.currentResult != null) ...[
-            const SizedBox(height: DesignSystem.spaceXS),
-            Container(
-              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
-              decoration: BoxDecoration(
-                color: DesignSystem.primary.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
-              ),
-              child: FittedBox(
-                fit: BoxFit.scaleDown,
+            if (state.currentResult != null) ...[
+              const SizedBox(height: 4),
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
+                decoration: BoxDecoration(
+                  color: (isWrong ? DesignSystem.error : DesignSystem.primary).withValues(alpha: 0.1),
+                  borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
+                ),
                 child: Text(
                   '= ${state.currentResult!.toStringAsFixed(state.currentResult! % 1 == 0 ? 0 : 2)}',
-                  style: const TextStyle(
-                    color: DesignSystem.primary,
+                  style: TextStyle(
+                    color: isWrong ? DesignSystem.error : DesignSystem.primary,
                     fontWeight: FontWeight.w800,
                     fontSize: 18,
                   ),
                 ),
               ),
-            ),
+            ],
           ],
-        ],
+        ),
       ),
     );
   }
 
-  Widget _buildNumberButton(String label, VoidCallback onTap, bool isUsed) {
+  Widget _buildNumberButton(String label, VoidCallback onTap, bool isUsed, bool isSmall) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Opacity(
-      opacity: isUsed ? 0.4 : 1.0,
+      opacity: isUsed ? 0.3 : 1.0,
       child: TangibleButton(
-        onTap: isUsed ? () {} : onTap,
-        color: Theme.of(context).colorScheme.surface,
-        shadowColor: Theme.of(context).colorScheme.outline,
-        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
-        child: Text(
-          label,
-          style: TextStyle(
-            color: Theme.of(context).colorScheme.onSurface,
-            fontSize: 24,
-            fontWeight: FontWeight.w900,
+        onTap: isUsed ? null : onTap,
+        color: colorScheme.surface,
+        shadowColor: colorScheme.outline.withValues(alpha: 0.5),
+        padding: EdgeInsets.zero,
+        child: Center(
+          child: Text(
+            label,
+            style: TextStyle(
+              color: colorScheme.onSurface,
+              fontSize: isSmall ? 22 : 28,
+              fontWeight: FontWeight.w900,
+            ),
           ),
         ),
       ),
     );
   }
 
-  Widget _buildControls(TargetNumberNotifier notifier) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          // Operators
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _buildOpButton('+', () {
-                HapticFeedbackUtil.lightImpact();
-                notifier.onOperatorPressed('+');
-              }),
-              _buildOpButton('-', () {
-                HapticFeedbackUtil.lightImpact();
-                notifier.onOperatorPressed('-');
-              }),
-              _buildOpButton('*', () {
-                HapticFeedbackUtil.lightImpact();
-                notifier.onOperatorPressed('*');
-              }),
-              _buildOpButton('/', () {
-                HapticFeedbackUtil.lightImpact();
-                notifier.onOperatorPressed('/');
-              }),
-            ],
-          ),
-          const SizedBox(height: DesignSystem.spaceSM),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              _buildOpButton('(', () {
-                HapticFeedbackUtil.lightImpact();
-                notifier.onBracketPressed('(');
-              }),
-              _buildOpButton(')', () {
-                HapticFeedbackUtil.lightImpact();
-                notifier.onBracketPressed(')');
-              }),
-              _buildControlButton(Icons.undo_rounded, () {
+  Widget _buildControls(TargetNumberNotifier notifier, bool isSmall) {
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        // Operators
+        Row(
+          children: [
+            _buildOpButton('+', () => notifier.onOperatorPressed('+'), isSmall),
+            const SizedBox(width: DesignSystem.spaceSM),
+            _buildOpButton('-', () => notifier.onOperatorPressed('-'), isSmall),
+            const SizedBox(width: DesignSystem.spaceSM),
+            _buildOpButton('*', () => notifier.onOperatorPressed('*'), isSmall),
+            const SizedBox(width: DesignSystem.spaceSM),
+            _buildOpButton('/', () => notifier.onOperatorPressed('/'), isSmall),
+          ],
+        ),
+        SizedBox(height: isSmall ? DesignSystem.spaceSM : DesignSystem.spaceMD),
+        Row(
+          children: [
+            _buildOpButton('(', () => notifier.onBracketPressed('('), isSmall),
+            const SizedBox(width: DesignSystem.spaceSM),
+            _buildOpButton(')', () => notifier.onBracketPressed(')'), isSmall),
+            const SizedBox(width: DesignSystem.spaceSM),
+            Expanded(
+              flex: 1,
+              child: _buildControlButton(Icons.undo_rounded, () {
                 HapticFeedbackUtil.mediumImpact();
                 notifier.onUndo();
-              }, DesignSystem.error),
-              _buildControlButton(Icons.refresh_rounded, () {
+              }, DesignSystem.error, isSmall),
+            ),
+            const SizedBox(width: DesignSystem.spaceSM),
+            Expanded(
+              flex: 1,
+              child: _buildControlButton(Icons.refresh_rounded, () {
                 HapticFeedbackUtil.heavyImpact();
                 notifier.onClear();
-              }, Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7)),
-            ],
-          ),
-        ],
-      ),
+              }, Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5), isSmall),
+            ),
+          ],
+        ),
+      ],
     );
   }
 
-  Widget _buildOpButton(String op, VoidCallback onTap) {
-    return TangibleButton(
-      onTap: onTap,
-      color: DesignSystem.primary,
-      shadowColor: DesignSystem.primaryShadow,
-      padding: const EdgeInsets.all(16),
-      child: Text(
-        op == '*' ? '×' : (op == '/' ? '÷' : op),
-        style: const TextStyle(
-          color: Colors.white,
-          fontSize: 20,
-          fontWeight: FontWeight.w900,
+  Widget _buildOpButton(String op, VoidCallback onTap, bool isSmall) {
+    return Expanded(
+      child: TangibleButton(
+        onTap: () {
+          HapticFeedbackUtil.lightImpact();
+          onTap();
+        },
+        color: DesignSystem.primary,
+        shadowColor: DesignSystem.primaryShadow,
+        padding: EdgeInsets.symmetric(vertical: isSmall ? 10 : 14),
+        child: Center(
+          child: Text(
+            op == '*' ? '×' : (op == '/' ? '÷' : op),
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: isSmall ? 18 : 22,
+              fontWeight: FontWeight.w900,
+            ),
+          ),
         ),
       ),
     );
   }
 
-  Widget _buildControlButton(IconData icon, VoidCallback onTap, Color color) {
+  Widget _buildControlButton(IconData icon, VoidCallback onTap, Color color, bool isSmall) {
     return TangibleButton(
       onTap: onTap,
       color: Theme.of(context).colorScheme.surface,
-      shadowColor: Theme.of(context).colorScheme.outline,
-      padding: const EdgeInsets.all(16),
-      child: Icon(icon, color: color, size: 24),
+      shadowColor: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5),
+      padding: EdgeInsets.symmetric(vertical: isSmall ? 10 : 14),
+      child: Center(child: Icon(icon, color: color, size: isSmall ? 20 : 24)),
     );
   }
 }

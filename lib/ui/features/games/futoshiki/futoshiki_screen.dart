@@ -152,13 +152,16 @@ class FutoshikiScreen extends ConsumerWidget {
         shadowColor: shadowColor,
         depth: depth,
         radius: DesignSystem.radiusSM,
+        padding: EdgeInsets.zero,
         child: Center(
-          child: Text(
-            value != null ? '$value' : '',
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: isClue ? FontWeight.w900 : FontWeight.w700,
-              color: isSelected ? Colors.white : (isClue ? colorScheme.onSurface : colorScheme.onSurface.withValues(alpha: 0.8)),
+          child: FittedBox(
+            child: Text(
+              value != null ? '$value' : '',
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: isClue ? FontWeight.w900 : FontWeight.w700,
+                color: isSelected ? Colors.white : (isClue ? colorScheme.onSurface : colorScheme.onSurface.withValues(alpha: 0.8)),
+              ),
             ),
           ),
         ),

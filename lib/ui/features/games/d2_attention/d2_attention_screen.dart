@@ -100,29 +100,31 @@ class D2AttentionScreen extends ConsumerWidget {
 
               // Scanning Board Grid
               Expanded(
-                child: Padding(
-                  padding: const EdgeInsets.all(DesignSystem.spaceLG),
-                  child: AspectRatio(
-                    aspectRatio: 1.0,
-                    child: TangibleContainer(
-                      color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
-                      shadowColor: isDark ? Colors.black : DesignSystem.outline,
-                      depth: 4.0,
-                      radius: DesignSystem.radiusLG,
-                      padding: const EdgeInsets.all(DesignSystem.spaceMD),
-                      child: GridView.builder(
-                        physics: const NeverScrollableScrollPhysics(),
-                        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                          crossAxisCount: D2AttentionEngine.gridSize,
-                          crossAxisSpacing: DesignSystem.spaceMD,
-                          mainAxisSpacing: DesignSystem.spaceMD,
+                child: Center(
+                  child: Padding(
+                    padding: const EdgeInsets.all(DesignSystem.spaceLG),
+                    child: AspectRatio(
+                      aspectRatio: 1.0,
+                      child: TangibleContainer(
+                        color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+                        shadowColor: isDark ? Colors.black : DesignSystem.outline,
+                        depth: 4.0,
+                        radius: DesignSystem.radiusLG,
+                        padding: const EdgeInsets.all(DesignSystem.spaceMD),
+                        child: GridView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: D2AttentionEngine.gridSize,
+                            crossAxisSpacing: DesignSystem.spaceSM,
+                            mainAxisSpacing: DesignSystem.spaceSM,
+                          ),
+                          itemCount: state.board.length,
+                          itemBuilder: (context, index) {
+                            final item = state.board[index];
+                            final isSelected = state.selectedIds.contains(item.id);
+                            return _buildD2Tile(item, isSelected, isDark, context, notifier);
+                          },
                         ),
-                        itemCount: state.board.length,
-                        itemBuilder: (context, index) {
-                          final item = state.board[index];
-                          final isSelected = state.selectedIds.contains(item.id);
-                          return _buildD2Tile(item, isSelected, isDark, context, notifier);
-                        },
                       ),
                     ),
                   ),
@@ -131,7 +133,7 @@ class D2AttentionScreen extends ConsumerWidget {
 
               // Bottom action submission
               Padding(
-                padding: const EdgeInsets.all(DesignSystem.spaceLG),
+                padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG, vertical: DesignSystem.spaceSM),
                 child: TangibleButton(
                   onTap: () {
                     HapticFeedbackUtil.mediumImpact();
@@ -139,7 +141,7 @@ class D2AttentionScreen extends ConsumerWidget {
                   },
                   color: DesignSystem.primary,
                   shadowColor: DesignSystem.primaryShadow,
-                  padding: const EdgeInsets.symmetric(vertical: 20),
+                  padding: const EdgeInsets.symmetric(vertical: 16),
                   child: Center(
                     child: Text(
                       state.currentBoardIndex == state.totalBoards
@@ -188,66 +190,73 @@ class D2AttentionScreen extends ConsumerWidget {
         color: resolvedColor,
         shadowColor: resolvedShadow,
         radius: DesignSystem.radiusMD,
-        padding: const EdgeInsets.symmetric(vertical: 4),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Dashes above
-            SizedBox(
-              height: 10,
-              child: Row(
+        padding: EdgeInsets.zero,
+        child: Center(
+          child: FittedBox(
+            child: Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  item.dashesAbove,
-                  (index) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 2),
-                    child: Container(
-                      width: 2,
-                      height: 6,
-                      decoration: BoxDecoration(
-                        color: dashColor,
-                        borderRadius: BorderRadius.circular(1),
+                children: [
+                  // Dashes above
+                  SizedBox(
+                    height: 10,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(
+                        item.dashesAbove,
+                        (index) => Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 2),
+                          child: Container(
+                            width: 3,
+                            height: 8,
+                            decoration: BoxDecoration(
+                              color: dashColor,
+                              borderRadius: BorderRadius.circular(1),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ),
-            ),
-            const SizedBox(height: 2),
-            // The D2 letter stimulus
-            Text(
-              item.letter,
-              style: TextStyle(
-                fontSize: 26,
-                fontWeight: FontWeight.w900,
-                fontFamily: 'Courier',
-                height: 1.0,
-                color: textColor,
-              ),
-            ),
-            const SizedBox(height: 2),
-            // Dashes below
-            SizedBox(
-              height: 10,
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: List.generate(
-                  item.dashesBelow,
-                  (index) => Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 2),
-                    child: Container(
-                      width: 2,
-                      height: 6,
-                      decoration: BoxDecoration(
-                        color: dashColor,
-                        borderRadius: BorderRadius.circular(1),
+                  const SizedBox(height: 2),
+                  // The D2 letter stimulus
+                  Text(
+                    item.letter,
+                    style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.w900,
+                      fontFamily: 'Courier',
+                      height: 1.0,
+                      color: textColor,
+                    ),
+                  ),
+                  const SizedBox(height: 2),
+                  // Dashes below
+                  SizedBox(
+                    height: 10,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: List.generate(
+                        item.dashesBelow,
+                        (index) => Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 2),
+                          child: Container(
+                            width: 3,
+                            height: 8,
+                            decoration: BoxDecoration(
+                              color: dashColor,
+                              borderRadius: BorderRadius.circular(1),
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
+                ],
               ),
             ),
-          ],
+          ),
         ),
       ),
     );

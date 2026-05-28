@@ -90,55 +90,48 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
                   final isSmall = constraints.maxHeight < 600;
                   return Column(
                     children: [
-                      Expanded(
-                        child: SingleChildScrollView(
-                          physics: BouncingScrollPhysics(),
-                          child: Padding(
-                            padding: EdgeInsets.all(isSmall ? 12 : 24),
-                            child: Column(
-                              children: [
-                                TangibleContainer(
-                                  color: colorScheme.surface,
-                                  shadowColor: colorScheme.outline,
-                                  depth: isSmall ? 2.0 : 4.0,
-                                  padding: EdgeInsets.all(isSmall ? 8 : 16),
-                                  child: Column(
-                                    children: state.equations.map((eq) => _buildEquationRow(eq, isSmall)).toList(),
-                                  ),
-                                ),
-                                SizedBox(height: isSmall ? 16 : 32),
-                                Text(
-                                  'YOUR ANSWER',
-                                  style: TextStyle(
-                                    color: colorScheme.onSurface.withValues(alpha: 0.7),
-                                    fontSize: isSmall ? 10 : 12,
-                                    fontWeight: FontWeight.w900,
-                                    letterSpacing: 2,
-                                  ),
-                                ),
-                                SizedBox(height: isSmall ? 8 : 12),
-                                TangibleContainer(
-                                  color: colorScheme.onSurface,
-                                  shadowColor: colorScheme.onSurface.withValues(alpha: 0.7),
-                                  depth: isSmall ? 2.0 : 4.0,
-                                  padding: EdgeInsets.symmetric(
-                                    horizontal: isSmall ? 30 : 40, 
-                                    vertical: isSmall ? 10 : 20
-                                  ),
-                                  child: Text(
-                                    state.currentInput.isEmpty ? '?' : state.currentInput,
-                                    style: TextStyle(
-                                      fontSize: isSmall ? 32 : 40,
-                                      fontWeight: FontWeight.w900,
-                                      color: state.isInvalidGuess ? DesignSystem.error : colorScheme.surface,
-                                    ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                      Spacer(),
+                      Padding(
+                        padding: EdgeInsets.symmetric(horizontal: isSmall ? 12 : 24),
+                        child: TangibleContainer(
+                          color: colorScheme.surface,
+                          shadowColor: colorScheme.outline,
+                          depth: isSmall ? 2.0 : 4.0,
+                          padding: EdgeInsets.all(isSmall ? 8 : 16),
+                          child: Column(
+                            children: state.equations.map((eq) => _buildEquationRow(eq, isSmall)).toList(),
                           ),
                         ),
                       ),
+                      SizedBox(height: isSmall ? 16 : 32),
+                      Text(
+                        'YOUR ANSWER',
+                        style: TextStyle(
+                          color: colorScheme.onSurface.withValues(alpha: 0.7),
+                          fontSize: isSmall ? 10 : 12,
+                          fontWeight: FontWeight.w900,
+                          letterSpacing: 2,
+                        ),
+                      ),
+                      SizedBox(height: isSmall ? 8 : 12),
+                      TangibleContainer(
+                        color: colorScheme.onSurface,
+                        shadowColor: colorScheme.onSurface.withValues(alpha: 0.7),
+                        depth: isSmall ? 2.0 : 4.0,
+                        padding: EdgeInsets.symmetric(
+                          horizontal: isSmall ? 30 : 40,
+                          vertical: isSmall ? 10 : 20,
+                        ),
+                        child: Text(
+                          state.currentInput.isEmpty ? '?' : state.currentInput,
+                          style: TextStyle(
+                            fontSize: isSmall ? 32 : 40,
+                            fontWeight: FontWeight.w900,
+                            color: state.isInvalidGuess ? DesignSystem.error : colorScheme.surface,
+                          ),
+                        ),
+                      ),
+                      Spacer(),
                       _buildNumberPad(notifier, isSmall),
                       SizedBox(height: isSmall ? 8 : 24),
                     ],

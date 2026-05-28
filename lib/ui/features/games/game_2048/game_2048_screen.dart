@@ -266,8 +266,8 @@ class _AnimatedTileState extends State<AnimatedTile> with SingleTickerProviderSt
     final tile = widget.tile;
     final cellSize = widget.cellSize;
 
-    _left = (tile.oldX ?? tile.x) * (cellSize + 8);
-    _top = (tile.oldY ?? tile.y) * (cellSize + 8);
+    _left = (tile.oldX ?? tile.x) * (cellSize + 6);
+    _top = (tile.oldY ?? tile.y) * (cellSize + 6);
 
     _controller = AnimationController(
       duration: const Duration(milliseconds: 200),
@@ -284,8 +284,8 @@ class _AnimatedTileState extends State<AnimatedTile> with SingleTickerProviderSt
     WidgetsBinding.instance.addPostFrameCallback((_) {
       if (mounted) {
         setState(() {
-          _left = tile.x * (cellSize + 8);
-          _top = tile.y * (cellSize + 8);
+          _left = tile.x * (cellSize + 6);
+          _top = tile.y * (cellSize + 6);
         });
       }
     });
@@ -300,8 +300,8 @@ class _AnimatedTileState extends State<AnimatedTile> with SingleTickerProviderSt
     }
     if (oldWidget.tile.x != widget.tile.x || oldWidget.tile.y != widget.tile.y) {
       setState(() {
-        _left = widget.tile.x * (widget.cellSize + 8);
-        _top = widget.tile.y * (widget.cellSize + 8);
+        _left = widget.tile.x * (widget.cellSize + 6);
+        _top = widget.tile.y * (widget.cellSize + 6);
       });
     }
   }
@@ -331,6 +331,7 @@ class _AnimatedTileState extends State<AnimatedTile> with SingleTickerProviderSt
           shadowColor: _getShadowColor(context, tile.value),
           radius: 12,
           depth: 4.0,
+          padding: EdgeInsets.zero,
           child: Center(
             child: Text(
               tile.value.toString(),

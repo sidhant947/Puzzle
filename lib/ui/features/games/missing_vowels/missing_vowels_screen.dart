@@ -162,29 +162,41 @@ class _MissingVowelsScreenState extends ConsumerState<MissingVowelsScreen> {
                 child: Row(
                   children: [
                     Expanded(
+                      flex: 2,
                       child: TangibleButton(
                         onTap: notifier.onBackspace,
                         color: colorScheme.surface,
                         shadowColor: colorScheme.outline,
-                        padding: const EdgeInsets.symmetric(vertical: 18),
-                        child: Icon(Icons.backspace_rounded, color: colorScheme.onSurface, size: 24),
+                        padding: EdgeInsets.zero,
+                        child: Container(
+                          height: 40,
+                          alignment: Alignment.center,
+                          child: Icon(
+                            Icons.backspace_rounded,
+                            color: colorScheme.onSurface,
+                            size: 20,
+                          ),
+                        ),
                       ),
                     ),
                     const SizedBox(width: DesignSystem.spaceMD),
                     Expanded(
-                      flex: 2,
+                      flex: 3,
                       child: TangibleButton(
                         onTap: notifier.submitGuess,
                         color: DesignSystem.primary,
                         depth: 4,
-                        padding: const EdgeInsets.symmetric(vertical: 18),
-                        child: const Center(
-                          child: Text(
+                        padding: EdgeInsets.zero,
+                        child: Container(
+                          height: 40,
+                          alignment: Alignment.center,
+                          child: const Text(
                             'SUBMIT',
                             style: TextStyle(
                               fontWeight: FontWeight.w900, 
                               fontSize: 16,
                               letterSpacing: 1.2,
+                              color: Colors.white,
                             ),
                           ),
                         ),
@@ -202,46 +214,66 @@ class _MissingVowelsScreenState extends ConsumerState<MissingVowelsScreen> {
   }
 
   Widget _buildKeyboard(MissingVowelsNotifier notifier) {
+    final colorScheme = Theme.of(context).colorScheme;
     const rows = [
       ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
       ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
       ['Z', 'X', 'C', 'V', 'B', 'N', 'M'],
     ];
 
-    return Column(
-      children: rows.map((row) {
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 2),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: row.map((letter) {
-              return Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 2),
-                child: TangibleContainer(
-                  depth: 1,
-                  radius: 4,
-                  onTap: () {
-                    HapticFeedbackUtil.lightImpact();
-                    notifier.onLetterPressed(letter);
-                  },
-                  child: SizedBox(
-                    width: 28,
-                    height: 36,
-                    child: Center(
-                      child: FittedBox(
-                        child: Text(
-                          letter,
-                          style: const TextStyle(fontWeight: FontWeight.w900, fontSize: 14),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 8),
+      child: Column(
+        children: List.generate(rows.length, (rowIndex) {
+          final row = rows[rowIndex];
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 2),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                if (rowIndex == 1) const Spacer(flex: 1),
+                if (rowIndex == 2) const Spacer(flex: 3),
+                ...row.map((letter) {
+                  return Expanded(
+                    flex: 2,
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 1.5),
+                      child: TangibleButton(
+                        onTap: () {
+                          HapticFeedbackUtil.lightImpact();
+                          notifier.onLetterPressed(letter);
+                        },
+                        color: colorScheme.surface,
+                        shadowColor: colorScheme.outline,
+                        padding: EdgeInsets.zero,
+                        child: Container(
+                          height: 38,
+                          alignment: Alignment.center,
+                          child: FittedBox(
+                            child: Padding(
+                              padding: const EdgeInsets.all(4.0),
+                              child: Text(
+                                letter,
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 14,
+                                  color: colorScheme.onSurface,
+                                ),
+                              ),
+                            ),
+                          ),
                         ),
                       ),
                     ),
-                  ),
-                ),
-              );
-            }).toList(),
-          ),
-        );
-      }).toList(),
+                  );
+                }),
+                if (rowIndex == 1) const Spacer(flex: 1),
+                if (rowIndex == 2) const Spacer(flex: 3),
+              ],
+            ),
+          );
+        }),
+      ),
     );
   }
 }

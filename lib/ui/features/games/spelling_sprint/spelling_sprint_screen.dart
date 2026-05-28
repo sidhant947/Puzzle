@@ -196,39 +196,43 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
   }
 
   Widget _buildLetterGrid(BuildContext context, WidgetRef ref, SpellingSprintState state, bool isSmall) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
-      child: Wrap(
-        spacing: isSmall ? 8 : 12,
-        runSpacing: isSmall ? 8 : 12,
-        alignment: WrapAlignment.center,
-        children: List.generate(state.availableLetters.length, (index) {
-          return TangibleButton(
-            onTap: () {
-              HapticFeedbackUtil.lightImpact();
-              ref.read(spellingSprintNotifierProvider.notifier).addLetter(index);
-            },
-            color: Theme.of(context).colorScheme.surface,
-            shadowColor: Theme.of(context).colorScheme.outline,
-            child: SizedBox(
-              width: isSmall ? 36 : 40,
-              height: isSmall ? 36 : 40,
-              child: Center(
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Text(
-                    state.availableLetters[index],
-                    style: TextStyle(
-                      color: DesignSystem.primary,
-                      fontSize: isSmall ? 20 : 24,
-                      fontWeight: FontWeight.w900,
+    return SizedBox(
+      width: double.infinity,
+      child: Padding(
+        padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
+        child: Wrap(
+          spacing: isSmall ? 8 : 12,
+          runSpacing: isSmall ? 8 : 12,
+          alignment: WrapAlignment.center,
+          children: List.generate(state.availableLetters.length, (index) {
+            return SizedBox(
+              width: isSmall ? 38 : 44,
+              height: isSmall ? 38 : 44,
+              child: TangibleButton(
+                onTap: () {
+                  HapticFeedbackUtil.lightImpact();
+                  ref.read(spellingSprintNotifierProvider.notifier).addLetter(index);
+                },
+                color: Theme.of(context).colorScheme.surface,
+                shadowColor: Theme.of(context).colorScheme.outline,
+                padding: EdgeInsets.zero,
+                child: Center(
+                  child: FittedBox(
+                    fit: BoxFit.scaleDown,
+                    child: Text(
+                      state.availableLetters[index],
+                      style: TextStyle(
+                        color: DesignSystem.primary,
+                        fontSize: isSmall ? 20 : 24,
+                        fontWeight: FontWeight.w900,
+                      ),
                     ),
                   ),
                 ),
               ),
-            ),
-          );
-        }),
+            );
+          }),
+        ),
       ),
     );
   }

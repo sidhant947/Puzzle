@@ -124,36 +124,53 @@ class KakuroScreen extends ConsumerWidget {
         shadowColor: Colors.transparent,
         depth: 0.0,
         radius: DesignSystem.radiusSM,
+        padding: EdgeInsets.zero,
         child: Stack(
           children: [
             Positioned.fill(
               child: CustomPaint(
-                painter: _KakuroCluePainter(colorScheme.outline),
+                painter: _KakuroCluePainter(colorScheme.onSurface),
               ),
             ),
             if (cell.hClue != null)
-              Positioned(
-                top: 4,
-                right: 6,
-                child: Text(
-                  '${cell.hClue}',
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w900,
-                    color: DesignSystem.accentEmerald,
+              Align(
+                alignment: Alignment.topRight,
+                child: Padding(
+                  padding: const EdgeInsets.only(top: 2, right: 4),
+                  child: FractionallySizedBox(
+                    widthFactor: 0.5,
+                    heightFactor: 0.5,
+                    child: FittedBox(
+                      alignment: Alignment.topRight,
+                      child: Text(
+                        '${cell.hClue}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          color: DesignSystem.accentEmerald,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
             if (cell.vClue != null)
-              Positioned(
-                bottom: 4,
-                left: 6,
-                child: Text(
-                  '${cell.vClue}',
-                  style: TextStyle(
-                    fontSize: 12,
-                    fontWeight: FontWeight.w900,
-                    color: DesignSystem.primary,
+              Align(
+                alignment: Alignment.bottomLeft,
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 2, left: 4),
+                  child: FractionallySizedBox(
+                    widthFactor: 0.5,
+                    heightFactor: 0.5,
+                    child: FittedBox(
+                      alignment: Alignment.bottomLeft,
+                      child: Text(
+                        '${cell.vClue}',
+                        style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          color: DesignSystem.primary,
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
@@ -186,13 +203,16 @@ class KakuroScreen extends ConsumerWidget {
         shadowColor: shadowColor,
         depth: depth,
         radius: DesignSystem.radiusSM,
+        padding: EdgeInsets.zero,
         child: Center(
-          child: Text(
-            val != null ? '$val' : '',
-            style: TextStyle(
-              fontSize: 22,
-              fontWeight: FontWeight.w900,
-              color: isSelected ? Colors.white : colorScheme.onSurface,
+          child: FittedBox(
+            child: Text(
+              val != null ? '$val' : '',
+              style: TextStyle(
+                fontSize: 22,
+                fontWeight: FontWeight.w900,
+                color: isSelected ? Colors.white : colorScheme.onSurface,
+              ),
             ),
           ),
         ),
@@ -284,8 +304,8 @@ class _KakuroCluePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = color.withValues(alpha: 0.5)
-      ..strokeWidth = 1.5
+      ..color = color.withValues(alpha: 0.3)
+      ..strokeWidth = 2.0
       ..style = PaintingStyle.stroke;
     canvas.drawLine(Offset.zero, Offset(size.width, size.height), paint);
   }

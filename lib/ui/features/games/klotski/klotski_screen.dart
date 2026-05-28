@@ -365,29 +365,13 @@ class _KlotskiScreenState extends ConsumerState<KlotskiScreen> {
                                               ),
                                             ),
 
-                                          // Block labels
-                                          Column(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Text(
-                                                block.label,
-                                                style: const TextStyle(
-                                                  color: Colors.white,
-                                                  fontWeight: FontWeight.w900,
-                                                  fontSize: 14,
-                                                  letterSpacing: 1.0,
-                                                ),
-                                              ),
-                                              if (block.id == 'hero') ...[
-                                                const SizedBox(height: 2),
-                                                const Icon(
-                                                  Icons.stars_rounded,
-                                                  color: Colors.white,
-                                                  size: 20,
-                                                ),
-                                              ],
-                                            ],
-                                          ),
+                                          // Hero icon only
+                                          if (block.id == 'hero')
+                                            const Icon(
+                                              Icons.stars_rounded,
+                                              color: Colors.white,
+                                              size: 28,
+                                            ),
 
                                           // Overlay Navigation Arrows for Selected Block
                                           if (isSelected) ...[

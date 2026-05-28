@@ -315,25 +315,27 @@ class _SpotlightPainter extends CustomPainter {
     final w = size.width;
     final h = size.height;
 
-    if (status == SpotlightTrackStatus.tracking) {
+    if (status == SpotlightTrackStatus.tracking || status == SpotlightTrackStatus.idle || status == SpotlightTrackStatus.answering) {
       // 1. Draw partial overlay to represent the dark screen
       final bgPaint = Paint()..color = const Color(0xFF050814);
       canvas.drawRect(Rect.fromLTWH(0, 0, w, h), bgPaint);
 
-      // 2. Draw spotlight illumination circle
-      final spotPaint = Paint()
-        ..color = const Color(0xFF1E293B).withValues(alpha: 0.3)
-        ..style = PaintingStyle.fill;
-      canvas.drawCircle(Offset(spotPos.x * w, spotPos.y * h), spotlightRadius * w, spotPaint);
+      if (status == SpotlightTrackStatus.tracking) {
+        // 2. Draw spotlight illumination circle
+        final spotPaint = Paint()
+          ..color = const Color(0xFF1E293B).withValues(alpha: 0.3)
+          ..style = PaintingStyle.fill;
+        canvas.drawCircle(Offset(spotPos.x * w, spotPos.y * h), spotlightRadius * w, spotPaint);
 
-      final spotBorder = Paint()
-        ..color = Colors.white.withValues(alpha: 0.15)
-        ..style = PaintingStyle.stroke
-        ..strokeWidth = 2.0;
-      canvas.drawCircle(Offset(spotPos.x * w, spotPos.y * h), spotlightRadius * w, spotBorder);
+        final spotBorder = Paint()
+          ..color = Colors.white.withValues(alpha: 0.15)
+          ..style = PaintingStyle.stroke
+          ..strokeWidth = 2.0;
+        canvas.drawCircle(Offset(spotPos.x * w, spotPos.y * h), spotlightRadius * w, spotBorder);
+      }
 
-      // 3. Draw object if it falls inside the spotlight circle
-      if (isVisible) {
+      // 3. Draw object if it falls inside the spotlight circle OR we are in IDLE state (to show target at start)
+      if (status == SpotlightTrackStatus.idle || (status == SpotlightTrackStatus.tracking && isVisible)) {
         final objPaint = Paint()
           ..color = DesignSystem.gameCyan
           ..style = PaintingStyle.fill;

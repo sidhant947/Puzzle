@@ -34,7 +34,7 @@ class LockPatternState {
     required this.currentGuess,
     this.isWon = false,
     this.isGameOver = false,
-    this.maxTries = 20,
+    this.maxTries = 30,
     this.patternLength = 5,
   });
 

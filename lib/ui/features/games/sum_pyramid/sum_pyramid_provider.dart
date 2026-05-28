@@ -195,7 +195,7 @@ class SumPyramidNotifier extends _$SumPyramidNotifier {
       // Success! Level cleared.
       final newScore = state.score + 1;
       final nextLevel = _engine.generateLevel(newScore);
-      final nextTime = (state.timeLeft + 15).clamp(0, 99); // +15 seconds bonus
+      final nextTime = state.timeLeft;
 
       state = state.copyWith(
         score: newScore,

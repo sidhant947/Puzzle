@@ -27,14 +27,14 @@ class MirrorImageScreen extends ConsumerWidget {
 
     return GameScaffold(
       title: l10n.mirrorImageTitle.toUpperCase(),
-      body: SafeArea(
+      body: SingleChildScrollView(
         child: Column(
           children: [
             const SizedBox(height: 16),
             _buildInstructions(context, l10n),
-            const Spacer(),
+            const SizedBox(height: 24),
             _buildQuestion(context, state.level.question),
-            const Spacer(),
+            const SizedBox(height: 32),
             _buildOptions(context, ref, state),
             const SizedBox(height: 32),
           ],
@@ -61,15 +61,20 @@ class MirrorImageScreen extends ConsumerWidget {
   }
 
   Widget _buildQuestion(BuildContext context, MirrorShape shape) {
-    return SizedBox(
-      width: 200,
-      height: 200,
-      child: TangibleContainer(
-        color: Theme.of(context).colorScheme.surface,
-        child: CustomPaint(
-          painter: ShapePainter(
-            shape: shape,
-            color: DesignSystem.primary,
+    return Center(
+      child: SizedBox(
+        width: 180,
+        height: 180,
+        child: TangibleContainer(
+          color: Theme.of(context).colorScheme.surface,
+          padding: const EdgeInsets.all(20),
+          child: SizedBox.expand(
+            child: CustomPaint(
+              painter: ShapePainter(
+                shape: shape,
+                color: DesignSystem.primary,
+              ),
+            ),
           ),
         ),
       ),
@@ -97,8 +102,8 @@ class MirrorImageScreen extends ConsumerWidget {
           }
 
           return SizedBox(
-            width: 140,
-            height: 140,
+            width: 130,
+            height: 130,
             child: TangibleButton(
               onTap: state.isSolved ? null : () {
                 HapticFeedbackUtil.selectionClick();
@@ -106,13 +111,15 @@ class MirrorImageScreen extends ConsumerWidget {
               },
               color: buttonColor,
               depth: isSelected ? 2.0 : 6.0,
-              padding: EdgeInsets.zero,
-              child: CustomPaint(
-                painter: ShapePainter(
-                  shape: state.level.options[index],
-                  color: isSelected 
-                      ? (isCorrect ? DesignSystem.success : DesignSystem.error)
-                      : DesignSystem.primary,
+              padding: const EdgeInsets.all(16),
+              child: SizedBox.expand(
+                child: CustomPaint(
+                  painter: ShapePainter(
+                    shape: state.level.options[index],
+                    color: isSelected 
+                        ? (isCorrect ? DesignSystem.success : DesignSystem.error)
+                        : DesignSystem.primary,
+                  ),
                 ),
               ),
             ),
