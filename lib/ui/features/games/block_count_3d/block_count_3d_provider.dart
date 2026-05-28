@@ -26,7 +26,7 @@ class BlockCount3DState {
   BlockCount3DState copyWith({
     List<List<int>>? grid,
     int? totalBlocks,
-    int? currentGuess,
+    Object? currentGuess = _sentinel,
     double? yaw,
     double? pitch,
     bool? isVictory,
@@ -35,7 +35,7 @@ class BlockCount3DState {
     return BlockCount3DState(
       grid: grid ?? this.grid,
       totalBlocks: totalBlocks ?? this.totalBlocks,
-      currentGuess: currentGuess ?? this.currentGuess,
+      currentGuess: currentGuess == _sentinel ? this.currentGuess : currentGuess as int?,
       yaw: yaw ?? this.yaw,
       pitch: pitch ?? this.pitch,
       isVictory: isVictory ?? this.isVictory,
@@ -43,6 +43,8 @@ class BlockCount3DState {
     );
   }
 }
+
+const Object _sentinel = Object();
 
 @riverpod
 class BlockCount3DNotifier extends _$BlockCount3DNotifier {
@@ -81,7 +83,7 @@ class BlockCount3DNotifier extends _$BlockCount3DNotifier {
     state = state.copyWith(yaw: newYaw, pitch: newPitch);
   }
 
-  void setGuess(int guess) {
+  void setGuess(int? guess) {
     if (state.isVictory) return;
     state = state.copyWith(currentGuess: guess);
   }

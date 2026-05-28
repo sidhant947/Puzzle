@@ -16,12 +16,49 @@ class BlockCount3DScreen extends ConsumerStatefulWidget {
 }
 
 class _BlockCount3DScreenState extends ConsumerState<BlockCount3DScreen> {
+  final TextEditingController _guessController = TextEditingController();
+
   @override
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((_) {
       ref.read(blockCount3DNotifierProvider.notifier).initGame();
     });
+  }
+
+  @override
+  void dispose() {
+    _guessController.dispose();
+    super.dispose();
+  }
+
+  void _appendDigit(String digit) {
+    final current = _guessController.text;
+    // Limit to 3 digits
+    if (current.length >= 3) return;
+    final next = current + digit;
+    _guessController.text = next;
+    final parsed = int.tryParse(next);
+    if (parsed != null && parsed > 0) {
+      HapticFeedbackUtil.selection();
+      ref.read(blockCount3DNotifierProvider.notifier).setGuess(parsed);
+    }
+  }
+
+  void _deleteDigit() {
+    final current = _guessController.text;
+    if (current.isEmpty) return;
+    final next = current.substring(0, current.length - 1);
+    _guessController.text = next;
+    HapticFeedbackUtil.selection();
+    final parsed = int.tryParse(next);
+    ref.read(blockCount3DNotifierProvider.notifier).setGuess(parsed);
+  }
+
+  void _clearInput() {
+    _guessController.clear();
+    HapticFeedbackUtil.selection();
+    ref.read(blockCount3DNotifierProvider.notifier).setGuess(null);
   }
 
   void _showHowToPlay() {
@@ -47,7 +84,7 @@ class _BlockCount3DScreenState extends ConsumerState<BlockCount3DScreen> {
                 '1. Drag your finger across the 3D viewport to rotate the block stack.\n\n'
                 '2. Count all the blocks in the stack.\n\n'
                 '3. Remember: a block in the air must have structural support blocks underneath it (hidden blocks!).\n\n'
-                '4. Select your answer and tap "SUBMIT GUESS" to check.',
+                '4. Type your answer in the input field and tap "SUBMIT GUESS" to check.',
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
@@ -87,6 +124,7 @@ class _BlockCount3DScreenState extends ConsumerState<BlockCount3DScreen> {
             },
             onPlayAgain: () {
               Navigator.of(dialogCtx).pop();
+              _guessController.clear();
               notifier.reset();
             },
           ),
@@ -98,7 +136,10 @@ class _BlockCount3DScreenState extends ConsumerState<BlockCount3DScreen> {
       title: 'Block Count 3D',
       subtitle: 'DRAG TO ROTATE • COUNT HIDDEN BLOCKS',
       onHowToPlay: _showHowToPlay,
-      onReset: notifier.reset,
+      onReset: () {
+        _guessController.clear();
+        notifier.reset();
+      },
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : LayoutBuilder(
@@ -175,42 +216,57 @@ class _BlockCount3DScreenState extends ConsumerState<BlockCount3DScreen> {
                             ),
                           ),
                           const SizedBox(height: DesignSystem.spaceSM),
-                          
-                          // Numbers grid
-                          Wrap(
-                            alignment: WrapAlignment.center,
-                            spacing: 8,
-                            runSpacing: 8,
-                            children: List.generate(12, (index) {
-                              final numVal = index + 1; // 1 to 12
-                              final isSelected = state.currentGuess == numVal;
-                              return SizedBox(
-                                width: 55,
-                                height: 50,
-                                child: TangibleButton(
-                                  depth: isSelected ? 1.0 : 4.0,
-                                  color: isSelected ? DesignSystem.primary : theme.colorScheme.surface,
-                                  shadowColor: isSelected ? DesignSystem.primaryShadow : theme.colorScheme.outline,
-                                  padding: EdgeInsets.zero,
-                                  onTap: () {
-                                    HapticFeedbackUtil.selection();
-                                    notifier.setGuess(numVal);
-                                  },
-                                  child: Center(
-                                    child: Text(
-                                      '$numVal',
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        fontWeight: FontWeight.w900,
-                                        color: isSelected ? Colors.white : theme.colorScheme.onSurface,
-                                      ),
-                                    ),
-                                  ),
+
+                          // Number input field (read-only, driven by numpad)
+                          TextField(
+                            controller: _guessController,
+                            readOnly: true,
+                            showCursor: false,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 20,
+                              fontWeight: FontWeight.w900,
+                              color: theme.colorScheme.onSurface,
+                              letterSpacing: 4,
+                            ),
+                            decoration: InputDecoration(
+                              hintText: '?',
+                              hintStyle: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.w900,
+                                color: theme.colorScheme.onSurface.withValues(alpha: 0.25),
+                              ),
+                              filled: true,
+                              fillColor: theme.colorScheme.surface,
+                              contentPadding: const EdgeInsets.symmetric(
+                                vertical: 8,
+                                horizontal: DesignSystem.spaceMD,
+                              ),
+                              enabledBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
+                                borderSide: BorderSide(
+                                  color: DesignSystem.primary.withValues(alpha: 0.6),
+                                  width: 2.0,
                                 ),
-                              );
-                            }),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
+                                borderSide: BorderSide(
+                                  color: DesignSystem.primary,
+                                  width: 2.0,
+                                ),
+                              ),
+                            ),
                           ),
-                          const SizedBox(height: DesignSystem.spaceLG),
+                          const SizedBox(height: DesignSystem.spaceSM),
+
+                          // Virtual numpad
+                          _VirtualNumpad(
+                            onDigit: _appendDigit,
+                            onDelete: _deleteDigit,
+                            onClear: _clearInput,
+                          ),
+                          const SizedBox(height: DesignSystem.spaceSM),
 
                           // Submit Button
                           SizedBox(
@@ -252,6 +308,91 @@ class _BlockCount3DScreenState extends ConsumerState<BlockCount3DScreen> {
                 );
               },
             ),
+    );
+  }
+}
+
+class _VirtualNumpad extends StatelessWidget {
+  final void Function(String digit) onDigit;
+  final VoidCallback onDelete;
+  final VoidCallback onClear;
+
+  const _VirtualNumpad({
+    required this.onDigit,
+    required this.onDelete,
+    required this.onClear,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
+    // Layout: 3 columns, 4 rows → [1,2,3], [4,5,6], [7,8,9], [C,0,⌫]
+    const keys = [
+      ['1', '2', '3'],
+      ['4', '5', '6'],
+      ['7', '8', '9'],
+      ['C', '0', '⌫'],
+    ];
+
+    return Column(
+      mainAxisSize: MainAxisSize.min,
+      children: keys.map((row) {
+        return Padding(
+          padding: const EdgeInsets.only(bottom: 4),
+          child: Row(
+            children: row.map((key) {
+              final isDelete = key == '⌫';
+              final isClear = key == 'C';
+
+              return Expanded(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 3),
+                  child: TangibleButton(
+                    depth: 4.0,
+                    color: isDelete
+                        ? theme.colorScheme.errorContainer
+                        : isClear
+                            ? theme.colorScheme.surfaceContainerHighest
+                            : theme.colorScheme.surface,
+                    shadowColor: isDelete
+                        ? theme.colorScheme.error.withValues(alpha: 0.4)
+                        : theme.colorScheme.outline,
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    onTap: () {
+                      if (isDelete) {
+                        onDelete();
+                      } else if (isClear) {
+                        onClear();
+                      } else {
+                        onDigit(key);
+                      }
+                    },
+                    child: Center(
+                      child: isDelete
+                          ? Icon(
+                              Icons.backspace_outlined,
+                              size: 16,
+                              color: theme.colorScheme.error,
+                            )
+                          : Text(
+                              key,
+                              style: TextStyle(
+                                fontSize: isClear ? 11 : 16,
+                                fontWeight: FontWeight.w900,
+                                color: isClear
+                                    ? theme.colorScheme.onSurface.withValues(alpha: 0.6)
+                                    : theme.colorScheme.onSurface,
+                              ),
+                            ),
+                    ),
+                  ),
+                ),
+              );
+            }).toList(),
+          ),
+        );
+      }).toList(),
     );
   }
 }
