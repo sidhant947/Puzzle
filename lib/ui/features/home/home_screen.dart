@@ -1315,6 +1315,7 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   String _searchQuery = "";
   String _selectedCategory = "ALL";
+  bool _isSearchVisible = false; // Controls search input box visibility
   late final TextEditingController _searchController;
   Timer? _debounce;
 
@@ -1353,6 +1354,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             backgroundColor: theme.scaffoldBackgroundColor,
             surfaceTintColor: Colors.transparent,
             centerTitle: true,
+            leading: const Padding(
+              padding: EdgeInsets.only(left: 12.0),
+              child: Center(child: SuperStreakAction()),
+            ),
+            leadingWidth: 72,
             title: Text(
               'GAMES',
               style: TextStyle(
@@ -1363,9 +1369,27 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 color: theme.colorScheme.onSurface,
               ),
             ),
-            actions: const [
-              SuperStreakAction(),
-              SizedBox(width: 16),
+            actions: [
+              TangibleButton(
+                color: Colors.transparent,
+                drawBorder: false,
+                padding: const EdgeInsets.all(12),
+                onTap: () {
+                  setState(() {
+                    _isSearchVisible = !_isSearchVisible;
+                    if (!_isSearchVisible) {
+                      _searchQuery = "";
+                      _searchController.clear();
+                    }
+                  });
+                },
+                child: Icon(
+                  _isSearchVisible ? Icons.search_off_rounded : Icons.search_rounded,
+                  color: colorScheme.onSurface,
+                  size: 22,
+                ),
+              ),
+              const SizedBox(width: 8),
             ],
           ),
 
@@ -1461,55 +1485,57 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
               child: Column(
                 children: [
-                  TangibleContainer(
-                    color: colorScheme.surface,
-                    padding: EdgeInsets.zero,
-                    child: TextField(
-                      controller: _searchController,
-                      onChanged: (value) {
-                        if (_debounce?.isActive ?? false) _debounce!.cancel();
-                        _debounce =
-                            Timer(const Duration(milliseconds: 300), () {
-                          setState(() => _searchQuery = value);
-                        });
-                      },
-                      decoration: InputDecoration(
-                        hintText: l10n.searchGames,
-                        hintStyle: TextStyle(
+                  if (_isSearchVisible) ...[
+                    TangibleContainer(
+                      color: colorScheme.surface,
+                      padding: EdgeInsets.zero,
+                      child: TextField(
+                        controller: _searchController,
+                        onChanged: (value) {
+                          if (_debounce?.isActive ?? false) _debounce!.cancel();
+                          _debounce =
+                              Timer(const Duration(milliseconds: 300), () {
+                            setState(() => _searchQuery = value);
+                          });
+                        },
+                        decoration: InputDecoration(
+                          hintText: l10n.searchGames,
+                          hintStyle: TextStyle(
+                            fontSize: DesignSystem.fontSizeMD, // 16.0
+                            fontWeight: FontWeight.w500,
+                            color: colorScheme.onSurface.withValues(alpha: 0.4),
+                          ),
+                          prefixIcon: Icon(
+                            Icons.search_rounded,
+                            color: colorScheme.onSurface.withValues(alpha: 0.5),
+                          ),
+                          suffixIcon: _searchQuery.isNotEmpty
+                              ? IconButton(
+                                  icon: Icon(
+                                    Icons.close_rounded,
+                                    color: colorScheme.onSurface
+                                        .withValues(alpha: 0.5),
+                                    size: 20,
+                                  ),
+                                  onPressed: () {
+                                    _searchController.clear();
+                                    setState(() => _searchQuery = "");
+                                  },
+                                )
+                              : null,
+                          border: InputBorder.none,
+                          contentPadding: const EdgeInsets.symmetric(
+                              horizontal: 16, vertical: 12),
+                        ),
+                        style: TextStyle(
                           fontSize: DesignSystem.fontSizeMD, // 16.0
-                          fontWeight: FontWeight.w500,
-                          color: colorScheme.onSurface.withValues(alpha: 0.4),
+                          fontWeight: FontWeight.w600,
+                          color: colorScheme.onSurface,
                         ),
-                        prefixIcon: Icon(
-                          Icons.search_rounded,
-                          color: colorScheme.onSurface.withValues(alpha: 0.5),
-                        ),
-                        suffixIcon: _searchQuery.isNotEmpty
-                            ? IconButton(
-                                icon: Icon(
-                                  Icons.close_rounded,
-                                  color: colorScheme.onSurface
-                                      .withValues(alpha: 0.5),
-                                  size: 20,
-                                ),
-                                onPressed: () {
-                                  _searchController.clear();
-                                  setState(() => _searchQuery = "");
-                                },
-                              )
-                            : null,
-                        border: InputBorder.none,
-                        contentPadding: const EdgeInsets.symmetric(
-                            horizontal: 16, vertical: 12),
-                      ),
-                      style: TextStyle(
-                        fontSize: DesignSystem.fontSizeMD, // 16.0
-                        fontWeight: FontWeight.w600,
-                        color: colorScheme.onSurface,
                       ),
                     ),
-                  ),
-                  const SizedBox(height: DesignSystem.spaceMD),
+                    const SizedBox(height: DesignSystem.spaceMD),
+                  ],
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     physics: const BouncingScrollPhysics(),
@@ -1740,34 +1766,19 @@ class GameTile extends StatelessWidget {
               : colorScheme.outline.withValues(alpha: 0.5),
           onTap: onTap,
           onLongPress: onLongPress,
-          padding: const EdgeInsets.only(
-            right: DesignSystem.spaceMD,
-            top: 0,
-            bottom: 0,
-            left: 0,
+          padding: const EdgeInsets.symmetric(
+            horizontal: DesignSystem.spaceLG,
+            vertical: DesignSystem.spaceMD,
           ),
           child: Row(
             children: [
-              // Icon Zone (Flush to left)
-              Container(
-                width: 72,
-                height: 72,
-                decoration: BoxDecoration(
-                  color: isSolved
-                      ? Colors.white.withValues(alpha: 0.1)
-                      : accentColor.withValues(alpha: 0.1),
-                  borderRadius: const BorderRadius.only(
-                    topLeft: Radius.circular(DesignSystem.radiusLG - 2),
-                    bottomLeft: Radius.circular(DesignSystem.radiusLG - 2),
-                  ),
-                ),
-                child: Icon(
-                  icon,
-                  size: 32,
-                  color: isSolved ? Colors.white : accentColor,
-                ),
+              // Clean spaced icon floating in the tile
+              Icon(
+                icon,
+                size: 28, // Sleek, modern icon size
+                color: isSolved ? Colors.white : accentColor,
               ),
-              const SizedBox(width: DesignSystem.spaceLG),
+              const SizedBox(width: DesignSystem.spaceMD),
               // Title Zone
               Expanded(
                 child: Row(
