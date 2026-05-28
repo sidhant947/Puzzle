@@ -1384,7 +1384,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   });
                 },
                 child: Icon(
-                  _isSearchVisible ? Icons.search_off_rounded : Icons.search_rounded,
+                  _isSearchVisible ? Icons.close_rounded : Icons.search_rounded,
                   color: colorScheme.onSurface,
                   size: 22,
                 ),
@@ -1419,52 +1419,79 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     encouragement = 'Incredible puzzle solving today!';
                   }
 
-                  return TangibleContainer(
-                    padding: const EdgeInsets.all(DesignSystem.spaceMD),
-                    color: colorScheme.surface,
+                  final isDark = theme.brightness == Brightness.dark;
+                  final displayColor = solvedToday > 0 ? DesignSystem.primary : DesignSystem.gameBlue;
+
+                  return Container(
+                    decoration: BoxDecoration(
+                      color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+                      borderRadius: BorderRadius.circular(16.0), // slightly smaller radius for more compact look
+                      border: Border.all(
+                        color: isDark ? const Color(0xFF2D2D2D) : const Color(0xFFE2E8F0),
+                        width: 1.5,
+                      ),
+                    ),
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0), // highly compacted vertical space
                     child: Row(
                       children: [
+                        // Left Count Box - compacted to 46x46
                         Container(
-                          width: 60,
-                          height: 60,
+                          width: 46,
+                          height: 46,
                           decoration: BoxDecoration(
-                            color: DesignSystem.primary.withValues(alpha: 0.1),
-                            borderRadius:
-                                BorderRadius.circular(DesignSystem.radiusMD),
+                            color: Colors.transparent,
+                            borderRadius: BorderRadius.circular(12.0),
+                            border: Border.all(color: displayColor, width: 1.5),
                           ),
-                          child: Center(
-                            child: Text(
-                              '$solvedToday',
-                              style: const TextStyle(
-                                fontFamily: 'Bebas Neue',
-                                fontSize: 40.0, // Large display number
-                                fontWeight: FontWeight.w700,
-                                color: DesignSystem.primary,
+                          padding: const EdgeInsets.all(3.0),
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: displayColor,
+                              borderRadius: BorderRadius.circular(9.0),
+                            ),
+                            child: Center(
+                              child: Text(
+                                '$solvedToday',
+                                style: const TextStyle(
+                                  fontFamily: 'Bebas Neue',
+                                  fontSize: 22.0, // smaller count font size
+                                  fontWeight: FontWeight.w700,
+                                  color: Color(0xFF121212),
+                                  height: 1.0,
+                                ),
                               ),
                             ),
                           ),
                         ),
-                        const SizedBox(width: DesignSystem.spaceMD),
+                        const SizedBox(width: 16.0),
+                        // Right Side - Compact Single-Line Info
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(
-                                l10n.solvedToday,
+                                l10n.solvedToday.toUpperCase(),
                                 style: TextStyle(
-                                  fontSize: DesignSystem.fontSizeSM, // 14.0 (Legible, not tiny 9px!)
-                                  fontWeight: FontWeight.w600,
-                                  color: colorScheme.onSurface
-                                      .withValues(alpha: 0.6),
+                                  fontFamily: 'Geist',
+                                  fontSize: 11.0,
+                                  fontWeight: FontWeight.w900,
+                                  color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF475569),
+                                  letterSpacing: 0.5,
+                                  height: 1.1,
                                 ),
                               ),
-                              const SizedBox(height: 2),
+                              const SizedBox(height: 3.0),
                               Text(
                                 encouragement,
                                 style: TextStyle(
-                                  fontSize: DesignSystem.fontSizeMD, // 16.0
-                                  fontWeight: FontWeight.w500, // Clean regular/medium
-                                  color: colorScheme.onSurface,
+                                  fontFamily: 'Geist',
+                                  fontSize: 13.0,
+                                  fontWeight: FontWeight.w600,
+                                  color: isDark ? Colors.white : colorScheme.onSurface,
+                                  letterSpacing: 0.2,
+                                  height: 1.1,
                                 ),
                               ),
                             ],
