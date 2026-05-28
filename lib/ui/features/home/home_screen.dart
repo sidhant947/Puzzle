@@ -1600,7 +1600,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             maxCrossAxisExtent: 400,
                             mainAxisSpacing: DesignSystem.spaceMD,
                             crossAxisSpacing: DesignSystem.spaceMD,
-                            childAspectRatio: 3.0,
+                            childAspectRatio: 1.73, // Adjusted ratio to mathematically guarantee no bottom overflows under any display width
                           ),
                           delegate: SliverChildBuilderDelegate(
                             (context, index) {
@@ -1621,6 +1621,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                     child: GameTile(
                                       title: game['title'],
                                       gameId: gameId,
+                                      category: game['category'],
                                       icon: game['icon'],
                                       accentColor: game['color'],
                                       streak: streak,
@@ -1670,6 +1671,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                       child: GameTile(
                                         title: game['title'],
                                         gameId: gameId,
+                                        category: game['category'],
                                         icon: game['icon'],
                                         accentColor: game['color'],
                                         streak: streak,
@@ -1707,29 +1709,173 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
   Widget _buildCategoryButton(String label, String value) {
     final isSelected = _selectedCategory == value;
-    final colorScheme = Theme.of(context).colorScheme;
+    final categoryStyle = _getCategoryStyle(value);
     return Padding(
       padding: const EdgeInsets.only(right: DesignSystem.spaceMD),
-      child: TangibleButton(
+      child: CategoryButton(
+        label: label,
+        value: value,
+        isSelected: isSelected,
+        categoryStyle: categoryStyle,
         onTap: () => setState(() => _selectedCategory = value),
-        color: isSelected ? DesignSystem.primary : colorScheme.surface,
-        padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
-        child: Text(
-          label.toUpperCase(),
-          style: TextStyle(
-            fontSize: DesignSystem.fontSizeSM, // 14.0 (Comfortable category text)
-            fontWeight: FontWeight.w600,
-            color: isSelected ? Colors.white : colorScheme.onSurface,
-          ),
+      ),
+    );
+  }
+
+  CategoryStyle _getCategoryStyle(String category) {
+    final styles = {
+      'ALL': const CategoryStyle(
+        icon: Icons.apps_rounded,
+        color: DesignSystem.primary,
+      ),
+      'ATTENTION': const CategoryStyle(
+        icon: Icons.bolt_rounded,
+        color: DesignSystem.gameOrange,
+      ),
+      'LOGIC': const CategoryStyle(
+        icon: Icons.bubble_chart_rounded,
+        color: DesignSystem.gameRose,
+      ),
+      'MATH': const CategoryStyle(
+        icon: Icons.tune_rounded,
+        color: DesignSystem.gameAmber,
+      ),
+      'WORD': const CategoryStyle(
+        icon: Icons.abc_rounded,
+        color: DesignSystem.gamePurple,
+      ),
+      'MEMORY': const CategoryStyle(
+        icon: Icons.filter_none_rounded,
+        color: DesignSystem.gameBlue,
+      ),
+      'SPATIAL': const CategoryStyle(
+        icon: Icons.widgets_rounded,
+        color: DesignSystem.gameGreen,
+      ),
+    };
+    return styles[category.toUpperCase()] ?? const CategoryStyle(
+      icon: Icons.extension_rounded,
+      color: DesignSystem.primary,
+    );
+  }
+}
+
+class CategoryStyle {
+  final IconData icon;
+  final Color color;
+
+  const CategoryStyle({required this.icon, required this.color});
+}
+
+class CategoryButton extends StatefulWidget {
+  final String label;
+  final String value;
+  final bool isSelected;
+  final CategoryStyle categoryStyle;
+  final VoidCallback onTap;
+
+  const CategoryButton({
+    super.key,
+    required this.label,
+    required this.value,
+    required this.isSelected,
+    required this.categoryStyle,
+    required this.onTap,
+  });
+
+  @override
+  State<CategoryButton> createState() => _CategoryButtonState();
+}
+
+class _CategoryButtonState extends State<CategoryButton> {
+  bool _isPressed = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+
+    return GestureDetector(
+      onTapDown: (_) => setState(() => _isPressed = true),
+      onTapUp: (_) {
+        setState(() => _isPressed = false);
+        widget.onTap();
+      },
+      onTapCancel: () => setState(() => _isPressed = false),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 80),
+        curve: Curves.easeInOutCubic,
+        transformAlignment: Alignment.center,
+        transform: Matrix4.diagonal3Values(
+          _isPressed ? 0.95 : 1.0,
+          _isPressed ? 0.95 : 1.0,
+          1.0,
+        ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Container(
+              width: 74,
+              height: 74,
+              decoration: BoxDecoration(
+                color: widget.isSelected
+                    ? Colors.transparent
+                    : (isDark ? const Color(0xFF1E1E1E) : Colors.white),
+                borderRadius: BorderRadius.circular(20),
+                border: Border.all(
+                  color: widget.isSelected
+                      ? widget.categoryStyle.color
+                      : (isDark ? const Color(0xFF2D2D2D) : const Color(0xFFE2E8F0)),
+                  width: widget.isSelected ? 2.5 : 1.5,
+                ),
+              ),
+              padding: widget.isSelected ? const EdgeInsets.all(4.0) : EdgeInsets.zero,
+              child: widget.isSelected
+                  ? Container(
+                      decoration: BoxDecoration(
+                        color: widget.categoryStyle.color,
+                        borderRadius: BorderRadius.circular(15),
+                      ),
+                      child: Center(
+                        child: Icon(
+                          widget.categoryStyle.icon,
+                          size: 30,
+                          color: const Color(0xFF121212),
+                        ),
+                      ),
+                    )
+                  : Center(
+                      child: Icon(
+                        widget.categoryStyle.icon,
+                        size: 30,
+                        color: widget.categoryStyle.color.withValues(alpha: 0.8),
+                      ),
+                    ),
+            ),
+            const SizedBox(height: 8),
+            Text(
+              widget.label.toUpperCase(),
+              style: TextStyle(
+                fontFamily: 'Geist',
+                fontSize: 12,
+                fontWeight: widget.isSelected ? FontWeight.w900 : FontWeight.w600,
+                color: widget.isSelected
+                    ? widget.categoryStyle.color
+                    : (isDark ? const Color(0xFF94A3B8) : const Color(0xFF475569)),
+                letterSpacing: 0.8,
+              ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
 
-class GameTile extends StatelessWidget {
+class GameTile extends StatefulWidget {
   final String title;
   final String gameId;
+  final String category;
   final IconData icon;
   final Color accentColor;
   final GameStreak? streak;
@@ -1741,6 +1887,7 @@ class GameTile extends StatelessWidget {
     super.key,
     required this.title,
     required this.gameId,
+    required this.category,
     required this.icon,
     required this.accentColor,
     this.streak,
@@ -1750,122 +1897,340 @@ class GameTile extends StatelessWidget {
   });
 
   @override
-  Widget build(BuildContext context) {
-    final streakCount = streak?.currentStreak ?? 0;
-    final isSolved = streak?.solvedToday ?? false;
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
+  State<GameTile> createState() => _GameTileState();
+}
 
-    return Stack(
-      clipBehavior: Clip.none,
-      children: [
-        TangibleButton(
-          color: isSolved ? DesignSystem.success : colorScheme.surface,
-          shadowColor: isSolved
-              ? const Color(0xFF047857)
-              : colorScheme.outline.withValues(alpha: 0.5),
-          onTap: onTap,
-          onLongPress: onLongPress,
-          padding: const EdgeInsets.symmetric(
-            horizontal: DesignSystem.spaceLG,
-            vertical: DesignSystem.spaceMD,
+class _GameTileState extends State<GameTile> {
+  bool _isPressed = false;
+
+  String _getGameDescription(String gameId) {
+    final descriptions = {
+      'slitherlink': 'LOOP THE PIN GRID USING NUMBER CLUES.',
+      'futoshiki': 'FILL GRIDS WITH GREATER-THAN CLUES.',
+      'kakuro': 'SOLVE CROSSWORDS WITH NUMBERS AND SUMS.',
+      'inequality_dash': 'SOLVE INEQUALITIES UNDER TIME PRESSURE.',
+      'factor_finder': 'IDENTIFY ALL FACTORS OF TARGET NUMBERS.',
+      'sum_pyramid': 'FILL PYRAMID CELLS WITH SUM MATH CLUES.',
+      'target_10': 'COMBINE NUMBER TILES TO REAP TEN SUMS.',
+      'fraction_matcher': 'MATCH EQUIVALENT FRACTIONS VISUALLY.',
+      'dual_coding': 'MATCH LETTERS AND SYMBOLS CONCURRENTLY.',
+      'distractor_matrix': 'FIND TARGET SHAPES AMID DISTRACTORS.',
+      'temporal_order': 'RECALL THE CHRONOLOGICAL SEQUENCE.',
+      'associative_pairs': 'PAIR AND MATCH CORRESPONDING SYMBOLS.',
+      'block_count_3d': 'COUNT BLOCKS IN THREE-DIMENSIONAL SPACE.',
+      'cube_net_fold': 'VISUALIZE 3D CUBES FROM FLAT NETS.',
+      'rotating_maze': 'ROTATE MAZES TO GUIDE BALLS TO THE EXIT.',
+      'classic_maze': 'NAVIGATE PATHWAYS TO REVEAL THE OUTLET.',
+      'silhouette_match_ortho': 'MATCH 3D OBJECTS WITH ORTHO SHADOWS.',
+      'conjunction_search': 'SEARCH AND FOCUS ON MULTI-FEATURE TILES.',
+      'spatial_conflict': 'RESOLVE TEXT AND DIRECTION DISCREPANCIES.',
+      'spotlight_track': 'TRACK BLINKING ITEMS IN MOVING SHADOWS.',
+      'd2_attention': 'TAP TARGET SYMBOLS WITH STRICT CRITERIA.',
+      'context_clues': 'INFER HIDDEN WORDS FROM CONTEXT HINTS.',
+      'vocabulary_builder': 'EXPAND VOCABULARY BY CORRELATING WORDS.',
+      'grammar_police': 'IDENTIFY AND CORRECT GRAMMATICAL ERRORS.',
+      'reverse_stroop': 'RESOLVE REVERSED COLOR AND WORD CLUES.',
+      'mental_calendar': 'CALCULATE WEEKDAYS FOR ANY RANDOM DATE.',
+      'face_trait_association': 'ASSOCIATE FACES WITH THEIR UNIQUE TRAITS.',
+      'memory_palace': 'RECALL ITEMS USING SPATIAL ROOM MAPS.',
+      'counting_sheep': 'COUNT MOVING SHEEP RAPIDLY AND ACCURATELY.',
+      'mental_mapping': 'NAVIGATE SPATIAL COORDINATES IN MIND.',
+      'mirror_image': 'IDENTIFY PERFECT MIRROR REFLECTIONS.',
+      'einstein_riddle': 'SOLVE COMPLEX LOGIC RIDDLES WITH CLUES.',
+      'lock_pattern': 'FIND THE HIDDEN LOCK PATTERN COMBINATION.',
+      'multiple_object_tracking': 'TRACK SEVERAL MOVING BALLS DYNAMICLY.',
+      'vigilance_task': 'MAINTAIN FOCUS AND TAP RARE TARGETS.',
+      'mental_rotation': 'ROTATE 3D SHAPES IN YOUR MIND TO MATCH.',
+      'semantic_link': 'LINK RELATED WORDS IN SEMANTIC CHAIN.',
+      'logical_syllogisms': 'EVALUATE IF DEDUCTIVE STATEMENTS ARE TRUE.',
+      'matrix_reasoning': 'FIND PATTERNS AND COMPLETE MATRIX GRIDS.',
+      'numerical_estimation': 'ESTIMATE QUANTITIES OF ITEMS RAPIDLY.',
+      'digit_span_reverse': 'RECALL NUMBER DIGITS IN REVERSE ORDER.',
+      'face_name_association': 'RECALL NAMES FOR DIVERSE PRESENTED FACES.',
+      'staircase_memory': 'MEMORIZE BLOCKS IN STEPWISE SEQUENCE.',
+      'akari': 'LIGHT UP THE GRIDS WITH BULB PLACEMENTS.',
+      'perspective_taking': 'DETERMINE VIEWS FROM OTHER ANGLES.',
+      'paper_folding': 'FOLD AND UNFOLD PAPER SHEETS TO MATCH.',
+      'mirror_tracing': 'TRACE COMPLEX PATHS IN REVERSED VIEWS.',
+      'silhouette_match': 'MATCH OBJECTS WITH THEIR SHADOW OUTLINES.',
+      'verbal_analogies': 'SOLVE ANALOGIES BETWEEN RELATED WORDS.',
+      'category_fluency': 'ENTER ITEMS CORRESPONDING TO CATEGORY.',
+      'word_surge': 'SEARCH AND DISCOVER MANY HIDDEN WORDS.',
+      'mental_abacus': 'DO COMPLICATED MATH ON MENTAL ABACUS.',
+      'missing_operator': 'FILL IN MISSING ARITHMETIC OPERATORS.',
+      'tower_of_london': 'MOVE PEG DISCS TO MATCH PLAN TARGETS.',
+      'symbolic_flanker': 'RESOLVE DIRECTION FLANKERS WITH SYMBOLS.',
+      'rule_switcher': 'ADAPT RAPIDLY TO CONSTANTLY CHANGING RULES.',
+      'box_completion': 'COMPLETE SQUARES IN CLASSIC DOT GRIDS.',
+      'letter_cancellation': 'CROSS OUT TARGET LETTERS UNDER CLOCK.',
+      'choice_reaction_time': 'TAP SPECIFIC BUTTONS MATCHING CUES FAST.',
+      'wisconsin_card_sorting': 'SORT CARDS ACCORDING TO HIDDEN RULES.',
+      'attentional_blink': 'SPARK RAPID TARGETS FLASHING IN STREAMS.',
+      'change_blindness': 'SPOT DIFFERENCES BETWEEN ROTATING IMAGES.',
+      'visual_statistical_learning': 'LEARN TEMPORAL SHAPE PATTERNS VISUALLY.',
+      'sternberg_task': 'RECALL IF SYMBOL WAS IN THE MEMORY SET.',
+      'double_n_back': 'TRACK SOUNDS AND SHAPES AT N-STEPS BACK.',
+      'operation_span': 'SOLVE MATH AND RECALL ALPHABET STRINGS.',
+      'n_back': 'REMEMBER ITEMS PRESENTED N-STEPS AGO.',
+      'corsi_blocks': 'TAP BLOCK SEQUENCES IN PERFECT ORDER.',
+      'sdmt': 'MATCH NUMBERS WITH SYMBOLS USING KEYS.',
+      'trail_making': 'CONNECT NUMBERS AND LETTERS IN SEQUENCE.',
+      'stop_signal': 'REACT RAPIDLY BUT HALT ON STOP SOUNDS.',
+      'visual_search': 'FIND THE SINGLE TARGET AMONG DISTRACTORS.',
+      'go_no_go': 'REACT ON GO CUES BUT RESIST NO-GO CUES.',
+      'divided_attention': 'TRACK MULTIPLE SIMULTANEOUS STIMULI FAST.',
+      'prime_hunter': 'TAP PRIME NUMBERS IN FALLING BUBBLES.',
+      'fraction_match': 'PAIR EQUIVALENT ARITHMETIC FRACTIONS.',
+      'path_recall': 'MEMORIZE AND REPEAT PATHWAY SELECTIONS.',
+      'object_shuffle': 'TRACK ITEMS SHUFFLED UNDER DEEP CUPS.',
+      'grocery_list': 'MEMORIZE AND CHECK OFF ITEMS ON THE LIST.',
+      'orbit_tap': 'TAP BUBBLES ROTATING IN DYNAMIC ORBITS.',
+      'rhythm_master': 'TAP RHYTHM BEATS TO MATCH MUSIC TIMINGS.',
+      'trace_path': 'TRACE CONTINUOUS SEGMENTS ALONG PIN GRIDS.',
+      'target_number': 'REACH TARGET VALUES USING BASIC MATH.',
+      'arithmetic_chain': 'SOLVE A CHAIN OF SEQUENTIAL OPERATIONS.',
+      'magic_squares': 'ARRANGE GRIDS SO SUMS MATCH EVERYWHERE.',
+      'kenken': 'SOLVE MATH GRIDS WITH ARITHMETIC CAGES.',
+      'typing_speed': 'TYPE SENTENCES ACCURATELY AGAINST CLOCK.',
+      'quick_math': 'SOLVE ARITHMETIC QUESTIONS AT TOP SPEED.',
+      'reflex_tap': 'TAP STIMULI AS FAST AS HUMANLY POSSIBLE.',
+      'stroop_test': 'RESOLVE CONFLICT BETWEEN WORDS AND COLORS.',
+      'flanker_test': 'TAP DIRECTIONS MATCHING CENTER ARROWS FAST.',
+      'switch_task': 'SWITCH FLUIDLY BETWEEN NUMBER AND LETTER RULES.',
+      'cryptogram': 'DECRYPT ENCODED QUOTES USING ALPHABETS.',
+      'balance_scale': 'BALANCE SCALES USING NUMBER WEIGHT LOGIC.',
+      'symbol_logic': 'EVALUATE SYMBOL VALUE STATEMENTS RAPIDLY.',
+      'pixel_mimic': 'MIMIC DESIGN PATTERNS ON PIXEL GRIDS.',
+      'odd_rotation': 'FIND THE SINGLE SHAPE ROTATED ODDLY.',
+      'word_scramble': 'UNSCRAMBLE LETTERS TO REVEAL KEY WORDS.',
+      'missing_vowels': 'FILL IN VOWELS TO REVEAL HIDDEN PHRASES.',
+      'water_sort': 'SORT COLOR WATER TILES INTO SINGLE TUBES.',
+      'lights_out': 'SWITCH OFF ALL LIGHTS ON CLOCK GRIDS.',
+      'hue_sort': 'ARRANGE COLOR HUES IN SEAMLESS GRADIENTS.',
+      'math_path': 'NAVIGATE NUMBERS TO CREATE AN EQUATION.',
+      'spelling_sprint': 'SPELL COMPLEX PHRASES RAPIDLY ON THE FLY.',
+      'odd_one_out': 'IDENTIFY THE SINGLE SHAPE THAT DIFFERS.',
+      'bridges': 'CONNECT GRIDS WITH SINGLE OR DOUBLE BRIDGES.',
+      'binary_puzzle': 'FILL GRID CELLS WITH ZEROES AND ONES.',
+      'color_match': 'IDENTIFY IF COLOR AND WORD MEANINGS MATCH.',
+      'path_finder': 'TRACE THE OPTIMAL PATH ACROSS GRIDS.',
+      'simon_sequence': 'REPEAT SHAPE SEQUENCES FROM MEMORY.',
+      'symmetry': 'REFLECT MIRROR SHAPES ACROSS GRIDS.',
+      'sudoku': 'CLASSIC NINE-BY-NINE NUMBER PUZZLES.',
+      'alphabet_sudoku': 'FILL SUDOKU GRIDS WITH NOVEL LETTERS.',
+      'word_mastermind': 'SOLVE CODED WORD SCRAMBLES WITH CLUES.',
+      'word_ladder': 'TRANSFORM WORDS ONE LETTER AT A TIME.',
+      'slide_puzzle': 'REARRANGE SQUARE SLIDING GRID TILES.',
+      'pipes': 'CONNECT MATCHING DOTS WITH FLUID PIPES.',
+      'block_escape': 'SLIDE BLOCKS TO LET THE RED SHAPE OUT.',
+      'tents_and_trees': 'PLACE LOGICAL TENTS DIRECTLY BY TREES.',
+      'find_word': 'DISCOVER HIDDEN WORDS INSIDE SCRAMBLES.',
+      'crossword': 'COMPLETE INTERSECTING WORD PUZZLES.',
+      'word_search': 'LOCATE HIDDEN WORD SEQUENCES IN GRIDS.',
+      'game_2048': 'MERGE NUMBER TILES TO CREATE THE 2048.',
+      'crown': 'PLACE CROWNS WITHOUT ANY SHIELD THREATS.',
+      'minesweeper': 'EXPOSE MINES WITHOUT DETONATING THEM.',
+      'memory_matrix': 'RECALL HIGHLIGHTED GRID TILES QUICKLY.',
+      'nonogram': 'REVEAL HIDDEN PIXEL ART USING LOGIC.',
+      'schulte_table': 'TAP NUMBERS FROM ONE TO TWENTY-FIVE.',
+      'calculation_sprint': 'SOLVE SPEED MATH EQUATIONS RAPIDLY.',
+      'color_flood': 'FILL SCRAMBLED COLOR GRIDS IN FEW TAPS.',
+      'tangle_fix': 'UNTANGLE NODES AND LINES WITH SPEED.',
+      'simon_command': 'PERFORM VOICE INSTRUCTIONS QUICKLY.',
+      'binary_code': 'TRANSLATE BINARY CODES INTO DECIMAL.',
+      'modulo_clock': 'CALCULATE MATH EQUATIONS USING CLOCKS.',
+      'chimp_test': 'TAP RANDOM NUMBERS IN ASCENDING ORDER.',
+      'relational_memory': 'RECALL THE EXACT GRID ITEM POSITIONS.',
+      'fact_binder': 'CONNECT SYMBOLS AND RECALL STATEMENTS.',
+      'klotski': 'SLIDE BLOCKS TO REACH THE EXITS.',
+    };
+    return descriptions[gameId] ?? 'CHALLENGE AND TRAIN YOUR COGNITIVE SKILLS.';
+  }
+
+  String _getCategoryDisplayLabel(String cat) {
+    switch (cat.toUpperCase()) {
+      case 'SPATIAL':
+        return 'PUZZLE';
+      default:
+        return cat.toUpperCase();
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+    final colorScheme = theme.colorScheme;
+    final isSolved = widget.streak?.solvedToday ?? false;
+    final streakCount = widget.streak?.currentStreak ?? 0;
+
+    final displayTitle = widget.title.toUpperCase();
+
+    final description = _getGameDescription(widget.gameId);
+    final displayCategory = _getCategoryDisplayLabel(widget.category);
+
+    return GestureDetector(
+      onTapDown: (_) => setState(() => _isPressed = true),
+      onTapUp: (_) {
+        setState(() => _isPressed = false);
+        widget.onTap();
+      },
+      onTapCancel: () => setState(() => _isPressed = false),
+      onLongPress: widget.onLongPress,
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 80),
+        curve: Curves.easeInOutCubic,
+        transformAlignment: Alignment.center,
+        transform: Matrix4.diagonal3Values(
+          _isPressed ? 0.97 : 1.0,
+          _isPressed ? 0.97 : 1.0,
+          1.0,
+        ),
+        child: Container(
+          decoration: BoxDecoration(
+            color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+            borderRadius: BorderRadius.circular(24.0),
+            border: Border.all(
+              color: isDark ? const Color(0xFF2D2D2D) : const Color(0xFFE2E8F0),
+              width: 1.5,
+            ),
           ),
-          child: Row(
+          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 18.0), // Streamlined padding to optimize internal spacing and eliminate overflows
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              // Clean spaced icon floating in the tile
-              Icon(
-                icon,
-                size: 28, // Sleek, modern icon size
-                color: isSolved ? Colors.white : accentColor,
-              ),
-              const SizedBox(width: DesignSystem.spaceMD),
-              // Title Zone
-              Expanded(
-                child: Row(
-                  children: [
-                    Expanded(
-                      child: FittedBox(
-                        fit: BoxFit.scaleDown,
-                        alignment: Alignment.centerLeft,
-                        child: Text(
-                          title.toUpperCase(), // Game titles uppercase
-                          maxLines: 1,
-                          style: TextStyle(
-                            fontFamily: 'Bebas Neue', // Header font family
-                            fontSize: DesignSystem.fontSizeLG, // 18.0
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 0.5,
-                            color:
-                                isSolved ? Colors.white : colorScheme.onSurface,
-                          ),
-                        ),
+              // Row 1: Header tags
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    decoration: BoxDecoration(
+                      color: widget.accentColor.withValues(alpha: 0.15),
+                      borderRadius: BorderRadius.circular(6.0),
+                    ),
+                    child: Text(
+                      displayCategory,
+                      style: TextStyle(
+                        fontFamily: 'Geist',
+                        fontSize: 12.0,
+                        fontWeight: FontWeight.w900,
+                        color: widget.accentColor,
+                        letterSpacing: 0.5,
                       ),
                     ),
-                    if (isFavorite)
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                        child: Icon(
+                  ),
+                  Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      if (streakCount > 0) ...[
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          decoration: BoxDecoration(
+                            color: DesignSystem.accentAmber.withValues(alpha: 0.15),
+                            borderRadius: BorderRadius.circular(6.0),
+                          ),
+                          child: Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              const Icon(
+                                Icons.local_fire_department_rounded,
+                                size: 14,
+                                color: DesignSystem.accentAmber,
+                              ),
+                              const SizedBox(width: 3),
+                              Text(
+                                '$streakCount',
+                                style: const TextStyle(
+                                  fontFamily: 'Geist',
+                                  fontSize: 12.0,
+                                  fontWeight: FontWeight.w900,
+                                  color: DesignSystem.accentAmber,
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                      ],
+                      if (isSolved) ...[
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          decoration: BoxDecoration(
+                            color: widget.accentColor,
+                            borderRadius: BorderRadius.circular(6.0),
+                          ),
+                          child: Text(
+                            "JUST PLAYED",
+                            style: TextStyle(
+                              fontFamily: 'Geist',
+                              fontSize: 11.0,
+                              fontWeight: FontWeight.w900,
+                              color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+                              letterSpacing: 0.5,
+                            ),
+                          ),
+                        ),
+                      ],
+                      if (widget.isFavorite) ...[
+                        if (isSolved) const SizedBox(width: 8),
+                        const Icon(
                           Icons.favorite_rounded,
-                          color:
-                              isSolved ? Colors.white : DesignSystem.gameRose,
+                          color: DesignSystem.gameRose,
                           size: 20,
                         ),
-                      ),
-                  ],
-                ),
+                      ],
+                    ],
+                  ),
+                ],
               ),
-              Icon(
-                isSolved
-                    ? Icons.check_circle_rounded
-                    : Icons.chevron_right_rounded,
-                color: isSolved
-                    ? Colors.white
-                    : colorScheme.onSurface.withValues(alpha: 0.3),
-                size: 28,
+              const SizedBox(height: 12.0), // Reduced spacer height to compact vertical stack footprint
+              // Row 2: Title and play button
+              Row(
+                children: [
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          displayTitle,
+                          maxLines: 2,
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(
+                            fontFamily: 'Bebas Neue',
+                            fontSize: 30.0,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: 0.5,
+                            height: 1.0,
+                            color: isDark ? Colors.white : colorScheme.onSurface,
+                          ),
+                        ),
+                        const SizedBox(height: 8.0),
+                        Text(
+                          description.toUpperCase(),
+                          style: TextStyle(
+                            fontFamily: 'Geist',
+                            fontSize: 12.0,
+                            fontWeight: FontWeight.w500,
+                            color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF475569),
+                            letterSpacing: 0.3,
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                  const SizedBox(width: 16.0),
+                  Icon(
+                    Icons.play_arrow_rounded,
+                    color: widget.accentColor,
+                    size: 22,
+                  ),
+                ],
               ),
             ],
           ),
         ),
-        if (streakCount > 0)
-          Positioned(
-            top: -6,
-            right: -6,
-            child: Container(
-              padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
-              decoration: BoxDecoration(
-                color: DesignSystem.accentAmber,
-                borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
-                border: Border.all(color: Colors.white, width: 2.0),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black.withValues(alpha: 0.15),
-                    blurRadius: 8,
-                    offset: const Offset(0, 4),
-                  ),
-                ],
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Icon(
-                    Icons.local_fire_department_rounded,
-                    size: 14,
-                    color: Colors.white,
-                  ),
-                  const SizedBox(width: 4),
-                  Text(
-                    '$streakCount',
-                    style: const TextStyle(
-                      fontSize: DesignSystem.fontSizeSM, // 14.0
-                      fontWeight: FontWeight.w700,
-                      color: Colors.white,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-      ],
+      ),
     );
   }
 }
