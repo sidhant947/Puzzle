@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
-import '../providers/user_providers.dart';
 import '../utils/design_system.dart';
 import '../utils/haptic_feedback.dart';
 import 'tangible.dart';
@@ -80,11 +79,6 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    final color = widget.isVictory ? DesignSystem.success : DesignSystem.error;
-    final icon = widget.isVictory ? Icons.auto_awesome_rounded : Icons.sentiment_very_dissatisfied_rounded;
-    
-    final userData = ref.watch(userDataNotifierProvider);
-    final superStreak = userData.superStreak ?? 0;
     final l10n = AppLocalizations.of(context)!;
 
     return Dialog(
@@ -121,88 +115,16 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
                         child: Column(
                           mainAxisSize: MainAxisSize.min,
                           children: [
-                            // Animated Icon Header
-                            TweenAnimationBuilder<double>(
-                              tween: Tween(begin: 0.0, end: 1.0),
-                              duration: const Duration(milliseconds: 800),
-                              curve: Curves.elasticOut,
-                              builder: (context, value, child) {
-                                return Transform.scale(
-                                  scale: value,
-                                  child: Stack(
-                                    alignment: Alignment.center,
-                                    children: [
-                                      Container(
-                                        padding: const EdgeInsets.all(DesignSystem.spaceMD),
-                                        decoration: BoxDecoration(
-                                          color: color.withValues(alpha: 0.1),
-                                          shape: BoxShape.circle,
-                                          border: Border.all(
-                                            color: color.withValues(alpha: 0.2),
-                                            width: 2.5,
-                                          ),
-                                        ),
-                                        child: Icon(
-                                          icon,
-                                          color: color,
-                                          size: 44,
-                                        ),
-                                      ),
-                                      if (widget.isVictory && superStreak > 0)
-                                        Positioned(
-                                          right: -8,
-                                          bottom: -4,
-                                          child: Container(
-                                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                                            decoration: BoxDecoration(
-                                              color: DesignSystem.accentAmber,
-                                              borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
-                                              border: Border.all(color: Colors.white, width: 2.5),
-                                              boxShadow: [
-                                                BoxShadow(
-                                                  color: Colors.black.withValues(alpha: 0.15),
-                                                  blurRadius: 6,
-                                                  offset: const Offset(0, 3),
-                                                ),
-                                              ],
-                                            ),
-                                            child: Row(
-                                              mainAxisSize: MainAxisSize.min,
-                                              children: [
-                                                const Icon(
-                                                  Icons.local_fire_department_rounded,
-                                                  size: 14,
-                                                  color: Colors.white,
-                                                ),
-                                                const SizedBox(width: 2),
-                                                Text(
-                                                  '$superStreak',
-                                                  style: const TextStyle(
-                                                    fontSize: 12,
-                                                    fontWeight: FontWeight.w900,
-                                                    color: Colors.white,
-                                                  ),
-                                                ),
-                                              ],
-                                            ),
-                                          ),
-                                        ),
-                                    ],
-                                  ),
-                                );
-                              },
-                            ),
-                            const SizedBox(height: DesignSystem.spaceMD),
-                            
                             // Title with bold styling
                             Text(
                               widget.title.toUpperCase(),
                               textAlign: TextAlign.center,
-                              style: theme.textTheme.headlineMedium?.copyWith(
+                              style: TextStyle(
+                                fontFamily: 'Bebas Neue',
                                 color: colorScheme.onSurface,
-                                fontSize: 22,
-                                fontWeight: FontWeight.w900,
-                                letterSpacing: 1.5,
+                                fontSize: 32, // Large elegant display title
+                                fontWeight: FontWeight.w700,
+                                letterSpacing: 1.2,
                               ),
                             ),
                             const SizedBox(height: DesignSystem.spaceSM),
@@ -229,10 +151,11 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
                                 child: Text(
                                   l10n.playAgain.toUpperCase(),
                                   style: const TextStyle(
+                                    fontFamily: 'Geist',
                                     color: Colors.white,
-                                    fontWeight: FontWeight.w900,
-                                    fontSize: 14,
-                                    letterSpacing: 1.0,
+                                    fontWeight: FontWeight.w700, // Premium elegant weight
+                                    fontSize: DesignSystem.fontSizeMD, // 16.0
+                                    letterSpacing: 0.5,
                                   ),
                                 ),
                               ),
@@ -250,10 +173,11 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
                                       child: Text(
                                         l10n.home.toUpperCase(),
                                         style: TextStyle(
-                                          color: colorScheme.onSurface.withValues(alpha: 0.5),
-                                          fontWeight: FontWeight.w900,
-                                          fontSize: 13,
-                                          letterSpacing: 0.8,
+                                          fontFamily: 'Geist',
+                                          color: colorScheme.onSurface.withValues(alpha: 0.6),
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: DesignSystem.fontSizeSM, // 14.0
+                                          letterSpacing: 0.5,
                                         ),
                                       ),
                                     ),
@@ -270,10 +194,11 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
                                       child: Text(
                                         l10n.seeCompleted.toUpperCase(),
                                         style: TextStyle(
-                                          color: colorScheme.onSurface.withValues(alpha: 0.5),
-                                          fontWeight: FontWeight.w900,
-                                          fontSize: 13,
-                                          letterSpacing: 0.8,
+                                          fontFamily: 'Geist',
+                                          color: colorScheme.onSurface.withValues(alpha: 0.6),
+                                          fontWeight: FontWeight.w700,
+                                          fontSize: DesignSystem.fontSizeSM, // 14.0
+                                          letterSpacing: 0.5,
                                         ),
                                       ),
                                     ),

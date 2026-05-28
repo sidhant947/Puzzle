@@ -1,16 +1,17 @@
 import 'package:flutter/material.dart';
 import '../utils/design_system.dart';
 
-/// A base container that implements the "Universal Tangible" (Phygital) aesthetic.
-/// It uses "Bottom-Sinking" geometry to look like a physical tile.
+/// A minimalistic, highly readable card container.
+/// It uses flat, high-contrast borders and perfect accessibility proportions.
 class TangibleContainer extends StatelessWidget {
   final Widget child;
   final Color? color;
   final Color? shadowColor;
-  final double depth;
+  final double depth; // Ignored for flat minimalist design
   final double radius;
   final EdgeInsetsGeometry? padding;
   final VoidCallback? onTap;
+  final bool drawBorder; // Optional borders for clean headers/tabs
 
   const TangibleContainer({
     super.key,
@@ -18,31 +19,38 @@ class TangibleContainer extends StatelessWidget {
     this.color,
     this.shadowColor,
     this.depth = 6.0,
-    this.radius = DesignSystem.radiusLG,
+    this.radius = DesignSystem.radiusMD, // Upgraded to modern medium radius
     this.padding,
     this.onTap,
+    this.drawBorder = true,
   });
 
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    
     final resolvedColor = color ?? colorScheme.surface;
-    final resolvedShadowColor = shadowColor ?? colorScheme.outline;
 
-    Widget content = CustomPaint(
-      painter: _TangiblePainter(
+    // Check if background color is default to decide border coloring
+    final isDefaultBg = resolvedColor == colorScheme.surface || 
+                        resolvedColor == theme.scaffoldBackgroundColor ||
+                        resolvedColor == Colors.transparent;
+
+    Widget content = Container(
+      decoration: BoxDecoration(
         color: resolvedColor,
-        shadowColor: resolvedShadowColor,
-        depth: depth,
-        radius: radius,
-        borderColor: colorScheme.outline,
+        borderRadius: BorderRadius.circular(radius),
+        border: drawBorder
+            ? Border.all(
+                color: isDefaultBg
+                    ? colorScheme.outline.withValues(alpha: 0.8)
+                    : resolvedColor, // Avoid dirty grey outline on colored boxes
+                width: 1.5,
+              )
+            : null,
       ),
-      child: Padding(
-        padding: (padding ?? EdgeInsets.zero).add(EdgeInsets.only(bottom: depth)),
-        child: child,
-      ),
+      padding: padding ?? const EdgeInsets.all(DesignSystem.spaceMD),
+      child: child,
     );
 
     if (onTap != null) {
@@ -57,68 +65,18 @@ class TangibleContainer extends StatelessWidget {
   }
 }
 
-class _TangiblePainter extends CustomPainter {
-  final Color color;
-  final Color shadowColor;
-  final double depth;
-  final double radius;
-  final Color borderColor;
-
-  _TangiblePainter({
-    required this.color,
-    required this.shadowColor,
-    required this.depth,
-    required this.radius,
-    required this.borderColor,
-  });
-
-  @override
-  void paint(Canvas canvas, Size size) {
-    final RRect outerRRect = RRect.fromRectAndRadius(
-      Rect.fromLTWH(0, 0, size.width, size.height),
-      Radius.circular(radius),
-    );
-
-    // 1. Draw Shadow/Bottom Part
-    final Paint shadowPaint = Paint()..color = shadowColor;
-    canvas.drawRRect(outerRRect, shadowPaint);
-
-    // 2. Draw Top Surface
-    final Paint surfacePaint = Paint()..color = color;
-    final RRect surfaceRRect = RRect.fromRectAndRadius(
-      Rect.fromLTWH(0, 0, size.width, size.height - depth),
-      Radius.circular(radius),
-    );
-    canvas.drawRRect(surfaceRRect, surfacePaint);
-
-    // 3. Draw Border (on top surface only)
-    final Paint borderPaint = Paint()
-      ..color = borderColor.withValues(alpha: 0.5)
-      ..style = PaintingStyle.stroke
-      ..strokeWidth = 1.5;
-    canvas.drawRRect(surfaceRRect, borderPaint);
-  }
-
-  @override
-  bool shouldRepaint(covariant _TangiblePainter oldDelegate) {
-    return oldDelegate.color != color ||
-        oldDelegate.shadowColor != shadowColor ||
-        oldDelegate.depth != depth ||
-        oldDelegate.radius != radius;
-  }
-}
-
-
-/// A tactile button widget.
+/// A clean, flat button widget with modern micro-scale animations.
+/// Ensures touch targets meet standard accessibility requirements (>= 48dp).
 class TangibleButton extends StatefulWidget {
   final Widget child;
   final VoidCallback? onTap;
   final VoidCallback? onLongPress;
   final Color? color;
-  final Color? shadowColor;
+  final Color? shadowColor; // Ignored for flat design
   final EdgeInsetsGeometry? padding;
-  final double depth;
+  final double depth; // Ignored for flat design
   final double radius;
+  final bool drawBorder; // Optional borders
 
   const TangibleButton({
     super.key,
@@ -129,7 +87,8 @@ class TangibleButton extends StatefulWidget {
     this.shadowColor,
     this.padding,
     this.depth = 6.0,
-    this.radius = DesignSystem.radiusLG,
+    this.radius = DesignSystem.radiusMD, // Modern radius SM/MD
+    this.drawBorder = true,
   });
 
   @override
@@ -141,10 +100,11 @@ class _TangibleButtonState extends State<TangibleButton> {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    
+    // Default to primary color for button if not specified
     final resolvedColor = widget.color ?? colorScheme.primary;
-    final resolvedShadowColor = widget.shadowColor ?? (widget.color == null ? colorScheme.primary.withValues(alpha: 0.8) : resolvedColor.withValues(alpha: 0.8));
-
     final isEnabled = widget.onTap != null || widget.onLongPress != null;
 
     return GestureDetector(
@@ -160,24 +120,34 @@ class _TangibleButtonState extends State<TangibleButton> {
       } : null,
       child: RepaintBoundary(
         child: AnimatedContainer(
-          duration: const Duration(milliseconds: 100),
-          curve: Curves.easeOutCubic,
-          transform: Matrix4.translationValues(0, _isPressed ? (widget.depth * 0.6) : 0.0, 0),
+          duration: const Duration(milliseconds: 80),
+          curve: Curves.easeInOutCubic,
+          alignment: Alignment.center,
+          transformAlignment: Alignment.center,
+          transform: Matrix4.diagonal3Values(
+            _isPressed ? 0.97 : 1.0,
+            _isPressed ? 0.97 : 1.0,
+            1.0,
+          ),
           child: TangibleContainer(
-            depth: _isPressed ? 0.0 : widget.depth,
-            color: resolvedColor,
-            shadowColor: resolvedShadowColor,
+            color: isEnabled ? resolvedColor : colorScheme.surface.withValues(alpha: 0.5),
             radius: widget.radius,
+            drawBorder: widget.drawBorder,
             padding: widget.padding ?? const EdgeInsets.symmetric(
-              horizontal: DesignSystem.spaceMD,
-              vertical: DesignSystem.spaceSM,
+              horizontal: DesignSystem.spaceLG, // Comfortable touch targets padding
+              vertical: DesignSystem.spaceMD,
             ),
             child: DefaultTextStyle(
               style: TextStyle(
-                color: resolvedColor == colorScheme.surface ? colorScheme.onSurface : Colors.white,
-                fontSize: DesignSystem.fontSizeLG, // Reduced from 18 to 14.0 for dynamic premium look
-                fontWeight: FontWeight.w900,
-                letterSpacing: 1.2,
+                fontFamily: 'Geist', // Geist is default font family for buttons
+                color: isEnabled
+                    ? (resolvedColor == colorScheme.surface || resolvedColor == Colors.transparent
+                        ? colorScheme.onSurface
+                        : Colors.white)
+                    : colorScheme.onSurface.withValues(alpha: 0.3),
+                fontSize: DesignSystem.fontSizeLG, // 18.0 (Accessible scale)
+                fontWeight: FontWeight.w700,      // Elegant bold (accessible)
+                letterSpacing: 0.5,
               ),
               child: widget.child,
             ),
@@ -185,7 +155,5 @@ class _TangibleButtonState extends State<TangibleButton> {
         ),
       ),
     );
-
   }
 }
-

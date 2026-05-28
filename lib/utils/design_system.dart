@@ -2,31 +2,31 @@ import 'package:flutter/material.dart';
 
 class DesignSystem {
   // --- Elegant Typographic System (Scale) ---
-  static const double fontSizeHero = 32.0;    // Massive splash/counters (down from 40)
-  static const double fontSize3XL  = 24.0;    // Major headings (down from 28)
-  static const double fontSize2XL  = 20.0;    // Section titles (down from 22)
-  static const double fontSizeXL   = 16.0;    // Card titles, screen titles (down from 18)
-  static const double fontSizeLG   = 14.0;    // Primary buttons, list items
-  static const double fontSizeMD   = 13.0;    // Standard body text (down from 14)
-  static const double fontSizeSM   = 11.0;    // Muted labels/secondary details
-  static const double fontSizeXS   = 10.0;    // Micro captions, badges
-  static const double fontSize2XS  = 9.0;     // Tiny inline tag labels
+  static const double fontSizeHero = 36.0;    // Massive splash/counters (optimized for legibility)
+  static const double fontSize3XL  = 28.0;    // Major headings
+  static const double fontSize2XL  = 24.0;    // Section titles
+  static const double fontSizeXL   = 20.0;    // Card titles, screen titles
+  static const double fontSizeLG   = 18.0;    // Primary buttons, list items (highly readable)
+  static const double fontSizeMD   = 16.0;    // Standard body text (comfort scale)
+  static const double fontSizeSM   = 14.0;    // Muted labels/secondary details
+  static const double fontSizeXS   = 13.0;    // Micro captions, badges (highly accessible)
+  static const double fontSize2XS  = 12.0;    // Tiny inline tag labels (absolute minimum)
 
   // --- Strict Spacing Grid ---
-  static const double spaceXS = 4.0;
-  static const double spaceSM = 8.0;
-  static const double spaceMD = 12.0;
-  static const double spaceLG = 16.0;         // Scaled down from 20.0 to globally tighten layouts
-  static const double spaceXL = 24.0;         // Scaled down from 28.0 for premium proportions
+  static const double spaceXS = 6.0;          // Spaced out for better touch targets
+  static const double spaceSM = 10.0;
+  static const double spaceMD = 16.0;
+  static const double spaceLG = 20.0;         // Clean margins
+  static const double spaceXL = 28.0;         // Spacious proportions
 
   static const double radiusXS = 8.0;
-  static const double radiusSM = 16.0;
-  static const double radiusMD = 24.0;
-  static const double radiusLG = 32.0;
-  static const double radiusXL = 40.0;
+  static const double radiusSM = 12.0;        // Soft, minimalistic radius
+  static const double radiusMD = 16.0;
+  static const double radiusLG = 24.0;
+  static const double radiusXL = 32.0;
   static const double radiusFull = 999.0;
 
-  // --- Universal Tangible Colors (Shared) ---
+  // --- Universal Minimalist Colors (Shared) ---
   static const Color primary = Color(0xFF6366F1); // Indigo
   static const Color primaryShadow = Color(0xFF4F46E5);
   static const Color accentBerry = Color(0xFFEC4899); 
@@ -37,20 +37,20 @@ class DesignSystem {
   static const Color error = Color(0xFFEF4444);
 
   // --- Light Theme Colors ---
-  static const Color background = Color(0xFFF3F6F8);
+  static const Color background = Color(0xFFF8FAFC); // Clean Slate 50
   static const Color surface = Colors.white;
   static const Color ink = Color(0xFF0F172A);
-  static const Color inkSlate = Color(0xFF1E293B);
+  static const Color inkSlate = Color(0xFF334155);    // Slate 700 for better soft contrast
   static const Color outline = Color(0xFFE2E8F0);
   static const Color outlineVariant = Color(0xFFCBD5E1);
 
   // --- Dark Theme Colors (AMOLED Optimized) ---
-  static const Color darkBackground = Color(0xFF000000); // Pure Black
-  static const Color darkSurface = Color(0xFF121212);    // Near Black
+  static const Color darkBackground = Color(0xFF121212); // Deep charcoal / Near-black
+  static const Color darkSurface = Color(0xFF1E1E1E);    // Dark gray card background
   static const Color darkInk = Color(0xFFF8FAFC);       // Slate 50
-  static const Color darkInkSlate = Color(0xFFB3C1D1);  // Adjusted for contrast
-  static const Color darkOutline = Color(0xFF262626);   // Darker Grey
-  static const Color darkOutlineVariant = Color(0xFF333333); // Subtle Grey
+  static const Color darkInkSlate = Color(0xFF94A3B8);  // Slate 400 for balanced contrast
+  static const Color darkOutline = Color(0xFF2D2D2D);   // Dark Slate Outline matching deep charcoal
+  static const Color darkOutlineVariant = Color(0xFF3A3A3A); // Subtle Slate Grey
 
   // --- Theme Building ---
   static ThemeData get lightTheme => _buildTheme(Brightness.light);
@@ -68,6 +68,7 @@ class DesignSystem {
     return ThemeData(
       useMaterial3: true,
       brightness: brightness,
+      fontFamily: 'Geist', // Sets Geist as the default app font family
       scaffoldBackgroundColor: bgColor,
       colorScheme: isDark 
         ? ColorScheme.dark(
@@ -101,107 +102,131 @@ class DesignSystem {
         centerTitle: true,
         scrolledUnderElevation: 0,
         titleTextStyle: TextStyle(
+          fontFamily: 'Bebas Neue', // Integrated Bebas Neue headings font
           color: mainInk,
           fontSize: fontSizeXL,
-          fontWeight: FontWeight.w900,
-          letterSpacing: 1.0,
+          fontWeight: FontWeight.w700, // Modern bold
+          letterSpacing: 0.8,         // Opened up slightly for premium display breathing room
         ),
       ),
       textTheme: TextTheme(
         displayLarge: TextStyle(
+          fontFamily: 'Bebas Neue', // Headings keep Bebas Neue
           fontSize: fontSizeHero,
-          fontWeight: FontWeight.w900,
-          letterSpacing: -1.0,
+          fontWeight: FontWeight.w700,
+          letterSpacing: 1.0,         // Slightly spaced all-caps display
           color: mainInk,
-          height: 1.1,
+          height: 1.15,               // Tight but non-colliding display heights
         ),
         displayMedium: TextStyle(
+          fontFamily: 'Bebas Neue',
           fontSize: fontSize3XL,
-          fontWeight: FontWeight.w800,
-          letterSpacing: -0.5,
+          fontWeight: FontWeight.w700,
+          letterSpacing: 0.8,
           color: mainInk,
           height: 1.15,
         ),
         displaySmall: TextStyle(
+          fontFamily: 'Bebas Neue',
           fontSize: fontSize2XL,
-          fontWeight: FontWeight.w800,
+          fontWeight: FontWeight.w700,
+          letterSpacing: 0.6,
           color: mainInk,
           height: 1.2,
         ),
         headlineLarge: TextStyle(
+          fontFamily: 'Bebas Neue',
           fontSize: fontSize3XL,
-          fontWeight: FontWeight.w900,
-          letterSpacing: 0.5,
-          color: mainInk,
-          height: 1.2,
-        ),
-        headlineMedium: TextStyle(
-          fontSize: fontSize2XL,
-          fontWeight: FontWeight.w800,
-          letterSpacing: 0.2,
-          color: mainInk,
-          height: 1.25,
-        ),
-        headlineSmall: TextStyle(
-          fontSize: fontSizeXL,
-          fontWeight: FontWeight.w800,
-          color: mainInk,
-          height: 1.3,
-        ),
-        titleLarge: TextStyle(
-          fontSize: fontSizeXL,
-          fontWeight: FontWeight.w800,
-          color: mainInk,
-          height: 1.3,
-        ),
-        titleMedium: TextStyle(
-          fontSize: fontSizeLG,
-          fontWeight: FontWeight.w700,
-          color: mainInk,
-          height: 1.35,
-        ),
-        titleSmall: TextStyle(
-          fontSize: fontSizeMD,
-          fontWeight: FontWeight.w600,
-          color: mainInk,
-          height: 1.4,
-        ),
-        bodyLarge: TextStyle(
-          fontSize: fontSizeLG,
-          fontWeight: FontWeight.w600,
-          color: subInk,
-          height: 1.45,
-        ),
-        bodyMedium: TextStyle(
-          fontSize: fontSizeMD,
-          fontWeight: FontWeight.w500,
-          color: subInk,
-          height: 1.5,
-        ),
-        bodySmall: TextStyle(
-          fontSize: fontSizeSM,
-          fontWeight: FontWeight.w400,
-          color: subInk,
-          height: 1.5,
-        ),
-        labelLarge: TextStyle(
-          fontSize: fontSizeSM,
-          fontWeight: FontWeight.w700,
-          letterSpacing: 1.2,
-          color: mainInk,
-          height: 1.2,
-        ),
-        labelMedium: TextStyle(
-          fontSize: fontSizeXS,
           fontWeight: FontWeight.w700,
           letterSpacing: 0.8,
           color: mainInk,
           height: 1.2,
         ),
+        headlineMedium: TextStyle(
+          fontFamily: 'Bebas Neue',
+          fontSize: fontSize2XL,
+          fontWeight: FontWeight.w700,
+          letterSpacing: 0.6,
+          color: mainInk,
+          height: 1.25,
+        ),
+        headlineSmall: TextStyle(
+          fontFamily: 'Bebas Neue',
+          fontSize: fontSizeXL,
+          fontWeight: FontWeight.w700,
+          letterSpacing: 0.6,
+          color: mainInk,
+          height: 1.25,
+        ),
+        titleLarge: TextStyle(
+          fontFamily: 'Geist', // Switched to Geist (all-age readability)
+          fontSize: fontSizeXL,
+          fontWeight: FontWeight.w700,
+          letterSpacing: 0.2,
+          color: mainInk,
+          height: 1.25,
+        ),
+        titleMedium: TextStyle(
+          fontFamily: 'Geist',
+          fontSize: fontSizeLG,
+          fontWeight: FontWeight.w600,
+          letterSpacing: 0.15,
+          color: mainInk,
+          height: 1.3,
+        ),
+        titleSmall: TextStyle(
+          fontFamily: 'Geist',
+          fontSize: fontSizeMD,
+          fontWeight: FontWeight.w600,
+          letterSpacing: 0.15,
+          color: mainInk,
+          height: 1.3,
+        ),
+        bodyLarge: TextStyle(
+          fontFamily: 'Geist',
+          fontSize: fontSizeLG,
+          fontWeight: FontWeight.w500,
+          color: subInk,
+          letterSpacing: 0.15,       // Clean paragraph track spacing
+          height: 1.55,               // Golden ratio for highly accessible reading (children/seniors)
+        ),
+        bodyMedium: TextStyle(
+          fontFamily: 'Geist',
+          fontSize: fontSizeMD,
+          fontWeight: FontWeight.w500,
+          color: subInk,
+          letterSpacing: 0.15,
+          height: 1.6,
+        ),
+        bodySmall: TextStyle(
+          fontFamily: 'Geist',
+          fontSize: fontSizeSM,
+          fontWeight: FontWeight.w400,
+          color: subInk,
+          letterSpacing: 0.15,
+          height: 1.6,
+        ),
+        labelLarge: TextStyle(
+          fontFamily: 'Geist',
+          fontSize: fontSizeSM,
+          fontWeight: FontWeight.w700,
+          letterSpacing: 0.5,
+          color: mainInk,
+          height: 1.2,
+        ),
+        labelMedium: TextStyle(
+          fontFamily: 'Geist',
+          fontSize: fontSizeXS,
+          fontWeight: FontWeight.w700,
+          letterSpacing: 0.3,
+          color: mainInk,
+          height: 1.2,
+        ),
         labelSmall: TextStyle(
+          fontFamily: 'Geist',
           fontSize: fontSize2XS,
           fontWeight: FontWeight.w600,
-          letterSpacing: 0.5,
+          letterSpacing: 0.2,
           color: mainInk,
           height: 1.2,
         ),

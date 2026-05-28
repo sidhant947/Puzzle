@@ -110,10 +110,11 @@ class StatsScreen extends ConsumerWidget {
                   title: Text(
                     'STATS',
                     style: TextStyle(
-                      fontSize: 14,
+                      fontFamily: 'Bebas Neue',
                       letterSpacing: 1.5,
-                      fontWeight: FontWeight.w900,
+                      fontWeight: FontWeight.w700,
                       color: colorScheme.onSurface,
+                      fontSize: DesignSystem.fontSize2XL, // Beautiful large Bebas Neue title
                     ),
                   ),
                 ),
@@ -131,10 +132,11 @@ class StatsScreen extends ConsumerWidget {
                       Text(
                         'ACHIEVEMENTS',
                         style: TextStyle(
-                          letterSpacing: 2.0,
-                          fontWeight: FontWeight.w900,
-                          color: colorScheme.onSurface,
-                          fontSize: 16,
+                          fontFamily: 'Bebas Neue',
+                          letterSpacing: 1.2,
+                          fontWeight: FontWeight.w700,
+                          color: colorScheme.primary,
+                          fontSize: DesignSystem.fontSizeLG,
                         ),
                       ),
                       const SizedBox(height: DesignSystem.spaceMD),
@@ -181,19 +183,21 @@ class StatsScreen extends ConsumerWidget {
                       Text(
                         'LEVEL $level',
                         style: const TextStyle(
-                          fontWeight: FontWeight.w900,
-                          letterSpacing: -0.5,
+                          fontFamily: 'Bebas Neue',
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 1.0,
                           color: Colors.white,
-                          fontSize: 32,
+                          fontSize: 36,
                         ),
                       ),
                       const SizedBox(height: 4),
                       Text(
                         'MAINTAIN YOUR STREAK!',
                         style: TextStyle(
+                          fontFamily: 'Geist',
                           letterSpacing: 0.5,
-                          fontWeight: FontWeight.w800,
-                          fontSize: 12,
+                          fontWeight: FontWeight.w600,
+                          fontSize: DesignSystem.fontSizeXS,
                           color: Colors.white.withValues(alpha: 0.8),
                         ),
                       ),
@@ -244,18 +248,20 @@ class StatsScreen extends ConsumerWidget {
                   Text(
                     'XP PROGRESS',
                     style: TextStyle(
-                      fontWeight: FontWeight.w800,
-                      fontSize: 10,
-                      letterSpacing: 1.0,
+                      fontFamily: 'Geist',
+                      fontWeight: FontWeight.w600,
+                      fontSize: DesignSystem.fontSizeXS,
+                      letterSpacing: 0.5,
                       color: Colors.white.withValues(alpha: 0.7),
                     ),
                   ),
                   Text(
                     '${(progress * 100).toInt()}% TO LEVEL ${level + 1}',
                     style: const TextStyle(
-                      fontWeight: FontWeight.w800,
-                      fontSize: 10,
-                      letterSpacing: 1.0,
+                      fontFamily: 'Geist',
+                      fontWeight: FontWeight.w700,
+                      fontSize: DesignSystem.fontSizeXS,
+                      letterSpacing: 0.5,
                       color: Colors.white,
                     ),
                   ),
@@ -271,7 +277,7 @@ class StatsScreen extends ConsumerWidget {
               child: _buildSmallStatCard(
                 context,
                 'TOTAL XP',
-                '${xp}',
+                '$xp',
                 Icons.bolt_rounded,
                 DesignSystem.accentAmber,
               ),
@@ -281,7 +287,7 @@ class StatsScreen extends ConsumerWidget {
               child: _buildSmallStatCard(
                 context,
                 'SOLVED',
-                '${totalSolved}',
+                '$totalSolved',
                 Icons.extension_rounded,
                 DesignSystem.success,
               ),
@@ -317,9 +323,10 @@ class StatsScreen extends ConsumerWidget {
               Text(
                 label,
                 style: TextStyle(
-                  fontWeight: FontWeight.w900,
-                  fontSize: 10,
-                  letterSpacing: 1.0,
+                  fontFamily: 'Geist',
+                  fontWeight: FontWeight.w600,
+                  fontSize: DesignSystem.fontSizeXS,
+                  letterSpacing: 0.5,
                   color: colorScheme.onSurface.withValues(alpha: 0.5),
                 ),
               ),
@@ -329,8 +336,10 @@ class StatsScreen extends ConsumerWidget {
           Text(
             value,
             style: TextStyle(
-              fontWeight: FontWeight.w900,
-              fontSize: 20,
+              fontFamily: 'Bebas Neue',
+              fontWeight: FontWeight.w700,
+              fontSize: 28,
+              letterSpacing: 0.5,
               color: colorScheme.onSurface,
             ),
           ),
@@ -371,12 +380,13 @@ class StatsScreen extends ConsumerWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(
+                 Text(
                   achievement.title,
                   style: TextStyle(
-                    fontWeight: FontWeight.w900,
-                    letterSpacing: 0.5,
-                    fontSize: 16,
+                    fontFamily: 'Bebas Neue',
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 1.0,
+                    fontSize: DesignSystem.fontSizeLG,
                     color: isUnlocked ? colorScheme.onSurface : colorScheme.onSurface.withValues(alpha: 0.4),
                   ),
                 ),
@@ -384,9 +394,10 @@ class StatsScreen extends ConsumerWidget {
                 Text(
                   achievement.description,
                   style: TextStyle(
-                    fontWeight: FontWeight.w600,
-                    fontSize: 12,
-                    color: isUnlocked ? colorScheme.onSurface.withValues(alpha: 0.7) : colorScheme.onSurface.withValues(alpha: 0.3),
+                    fontFamily: 'Geist',
+                    fontWeight: FontWeight.w500,
+                    fontSize: DesignSystem.fontSizeSM,
+                    color: isUnlocked ? colorScheme.onSurface.withValues(alpha: 0.6) : colorScheme.onSurface.withValues(alpha: 0.3),
                   ),
                 ),
               ],

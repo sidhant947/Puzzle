@@ -6,7 +6,6 @@ import '../../../widgets/tangible.dart';
 import '../home/home_screen.dart';
 import '../stats/stats_screen.dart';
 import '../settings/settings_screen.dart';
-import '../onboarding/onboarding_screen.dart';
 
 class MainShell extends ConsumerStatefulWidget {
   const MainShell({super.key});
@@ -48,13 +47,6 @@ class _MainShellState extends ConsumerState<MainShell>
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-
-    final userData = ref.watch(userDataNotifierProvider);
-    final isOnboarded = userData.isOnboarded ?? false;
-
-    if (!isOnboarded) {
-      return const OnboardingScreen();
-    }
 
     return Scaffold(
       extendBody: true,
@@ -139,9 +131,6 @@ class _MainShellState extends ConsumerState<MainShell>
   }
 
   Widget _buildSideNav(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-
     return Container(
       width: 100,
       margin: const EdgeInsets.fromLTRB(

@@ -55,9 +55,8 @@ class GameScaffold extends StatelessWidget {
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         color: colorScheme.onSurface.withValues(alpha: 0.7),
-                        fontWeight: FontWeight.w700,
-                        fontSize: DesignSystem.fontSizeSM, // Linked to 11.0
-                        letterSpacing: 0.5,
+                        fontWeight: FontWeight.w500, // Balanced weight
+                        fontSize: DesignSystem.fontSizeSM, // Legible size
                       ),
                     ),
                   ),
@@ -96,36 +95,29 @@ class GameScaffold extends StatelessWidget {
       ),
       child: Row(
         children: [
+          // Back button: simple, modern, borderless flat scaling button
           TangibleButton(
-            color: colorScheme.surface,
-            shadowColor: colorScheme.outline,
+            color: Colors.transparent,
+            drawBorder: false,
             onTap: () => Navigator.of(context).pop(),
             padding: const EdgeInsets.all(12),
             child: Icon(
               Icons.arrow_back_ios_new_rounded,
               color: colorScheme.onSurface,
-              size: 18,
+              size: 22,
             ),
           ),
           const SizedBox(width: DesignSystem.spaceSM),
           Expanded(
-            child: TangibleContainer(
-              color: colorScheme.surface,
-              padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
-              radius: DesignSystem.radiusSM,
-              depth: 3.0,
-              child: Center(
-                child: FittedBox(
-                  fit: BoxFit.scaleDown,
-                  child: Text(
-                    title.toUpperCase(),
-                    style: TextStyle(
-                      fontSize: DesignSystem.fontSizeLG, // Linked to 14.0
-                      letterSpacing: 1.5,
-                      fontWeight: FontWeight.w900,
-                      color: colorScheme.onSurface,
-                    ),
-                  ),
+            child: Center(
+              child: Text(
+                title.toUpperCase(), // Game titles uppercase
+                style: TextStyle(
+                  fontFamily: 'Bebas Neue', // Header font family
+                  fontSize: DesignSystem.fontSize2XL, // 24.0 (Gorgeous, high-readability title)
+                  letterSpacing: 1.2,
+                  fontWeight: FontWeight.w700,
+                  color: colorScheme.onSurface,
                 ),
               ),
             ),
@@ -133,28 +125,28 @@ class GameScaffold extends StatelessWidget {
           if (onHowToPlay != null) ...[
             const SizedBox(width: DesignSystem.spaceSM),
             TangibleButton(
-              color: colorScheme.surface,
-              shadowColor: colorScheme.outline,
+              color: Colors.transparent,
+              drawBorder: false,
               onTap: onHowToPlay!,
               padding: const EdgeInsets.all(12),
               child: Icon(
                 Icons.help_outline_rounded,
                 color: colorScheme.onSurface,
-                size: 18,
+                size: 22,
               ),
             ),
           ],
           if (onReset != null) ...[
             const SizedBox(width: DesignSystem.spaceSM),
             TangibleButton(
-              color: colorScheme.surface,
-              shadowColor: colorScheme.outline,
+              color: Colors.transparent,
+              drawBorder: false,
               onTap: onReset!,
               padding: const EdgeInsets.all(12),
               child: Icon(
                 Icons.refresh_rounded,
                 color: colorScheme.onSurface,
-                size: 18,
+                size: 22,
               ),
             ),
           ],
@@ -172,7 +164,7 @@ class GameScaffold extends StatelessWidget {
           ],
           if (!hasRightButtons)
             // Spacer to balance back button width if no actions
-            const SizedBox(width: 44 + DesignSystem.spaceSM),
+            const SizedBox(width: 48),
         ],
       ),
     );

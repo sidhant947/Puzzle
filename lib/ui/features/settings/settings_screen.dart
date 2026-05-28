@@ -18,7 +18,6 @@ class SettingsScreen extends ConsumerWidget {
     final themeMode = ref.watch(themeNotifierProvider);
     final isTrialModeEnabled = ref.watch(
         userDataNotifierProvider.select((s) => s.isTrialModeEnabled ?? false));
-    final userData = ref.watch(userDataNotifierProvider);
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
@@ -39,10 +38,11 @@ class SettingsScreen extends ConsumerWidget {
                   title: Text(
                     l10n.settings.toUpperCase(),
                     style: TextStyle(
-                      letterSpacing: 2.0,
-                      fontWeight: FontWeight.w900,
+                      fontFamily: 'Bebas Neue',
+                      letterSpacing: 1.5,
+                      fontWeight: FontWeight.w700,
                       color: colorScheme.onSurface,
-                      fontSize: DesignSystem.fontSizeXL, // Reduced from 18 to 16
+                      fontSize: DesignSystem.fontSize2XL, // Beautiful large Bebas Neue title
                     ),
                   ),
                 ),
@@ -55,16 +55,6 @@ class SettingsScreen extends ConsumerWidget {
                   ),
                   sliver: SliverList(
                     delegate: SliverChildListDelegate([
-                      _buildSectionTitle(context, 'PROFILE'),
-                      const SizedBox(height: DesignSystem.spaceMD),
-                      _buildSettingsItem(
-                        context,
-                        'Name: ${userData.name ?? "Friend"}',
-                        Icons.person_rounded,
-                        () => _showChangeNameDialog(context, ref, userData.name ?? ''),
-                        iconColor: DesignSystem.primary,
-                      ),
-                      const SizedBox(height: DesignSystem.spaceXL),
                       _buildSectionTitle(
                           context, l10n.appearance.toUpperCase()),
                       const SizedBox(height: DesignSystem.spaceMD),
@@ -154,13 +144,15 @@ class SettingsScreen extends ConsumerWidget {
   }
 
   Widget _buildSectionTitle(BuildContext context, String title) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Text(
       title,
       style: TextStyle(
-        color: Theme.of(context).colorScheme.onSurface,
-        letterSpacing: 2.0,
-        fontWeight: FontWeight.w900,
-        fontSize: DesignSystem.fontSizeSM, // Reduced from 16 to 11 for high-end feel
+        fontFamily: 'Bebas Neue',
+        color: colorScheme.primary,
+        letterSpacing: 1.2,
+        fontWeight: FontWeight.w700,
+        fontSize: DesignSystem.fontSizeLG, // 18.0 is perfectly readable in Bebas Neue
       ),
     );
   }
@@ -219,65 +211,63 @@ class SettingsScreen extends ConsumerWidget {
 
   Widget _buildThemeSelector(BuildContext context, WidgetRef ref,
       AppThemeMode currentMode, AppLocalizations l10n) {
-    return TangibleContainer(
-      color: Theme.of(context).colorScheme.surface,
-      shadowColor: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5),
-      padding: const EdgeInsets.all(DesignSystem.spaceSM),
-      child: Row(
-        children: [
-          _buildThemeOption(context, ref, AppThemeMode.light, l10n.themeLight,
-              Icons.light_mode_rounded, currentMode == AppThemeMode.light),
-          const SizedBox(width: DesignSystem.spaceSM),
-          _buildThemeOption(context, ref, AppThemeMode.dark, l10n.themeDark,
-              Icons.dark_mode_rounded, currentMode == AppThemeMode.dark),
-          const SizedBox(width: DesignSystem.spaceSM),
-          _buildThemeOption(
-              context,
-              ref,
-              AppThemeMode.system,
-              l10n.themeSystem,
-              Icons.brightness_auto_rounded,
-              currentMode == AppThemeMode.system),
-        ],
-      ),
+    return Column(
+      children: [
+        _buildThemeOption(context, ref, AppThemeMode.light, l10n.themeLight,
+            Icons.light_mode_rounded, currentMode == AppThemeMode.light),
+        const SizedBox(height: DesignSystem.spaceSM),
+        _buildThemeOption(context, ref, AppThemeMode.dark, l10n.themeDark,
+            Icons.dark_mode_rounded, currentMode == AppThemeMode.dark),
+        const SizedBox(height: DesignSystem.spaceSM),
+        _buildThemeOption(
+            context,
+            ref,
+            AppThemeMode.system,
+            l10n.themeSystem,
+            Icons.brightness_auto_rounded,
+            currentMode == AppThemeMode.system),
+      ],
     );
   }
 
   Widget _buildThemeOption(BuildContext context, WidgetRef ref,
       AppThemeMode mode, String label, IconData icon, bool isSelected) {
-    final colorScheme = Theme.of(context).colorScheme;
-    final color = isSelected
-        ? DesignSystem.primary
-        : colorScheme.onSurface.withValues(alpha: 0.5);
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
 
-    return Expanded(
-      child: TangibleButton(
-        onTap: () =>
-            ref.read(themeNotifierProvider.notifier).setThemeMode(mode),
-        color: isSelected
-            ? colorScheme.primary.withValues(alpha: 0.1)
-            : colorScheme.surface,
-        shadowColor: isSelected
-            ? DesignSystem.primaryShadow.withValues(alpha: 0.3)
-            : colorScheme.outline.withValues(alpha: 0.2),
-        depth: isSelected ? 4.0 : 2.0,
-        padding: const EdgeInsets.symmetric(vertical: DesignSystem.spaceMD),
-        child: Column(
-          children: [
-            Icon(icon,
-                color: isSelected ? DesignSystem.primary : color, size: 24),
-            const SizedBox(height: 8),
-            Text(
-              label,
+    final Color resolvedColor = isSelected ? colorScheme.primary : colorScheme.surface;
+    final Color textColor = isSelected ? Colors.white : colorScheme.onSurface;
+    final Color iconColor = isSelected ? Colors.white : colorScheme.onSurface.withValues(alpha: 0.7);
+
+    return TangibleButton(
+      color: resolvedColor,
+      onTap: () => ref.read(themeNotifierProvider.notifier).setThemeMode(mode),
+      child: Row(
+        children: [
+          Icon(
+            icon,
+            size: 24,
+            color: iconColor,
+          ),
+          const SizedBox(width: DesignSystem.spaceMD),
+          Expanded(
+            child: Text(
+              label.toUpperCase(),
               style: TextStyle(
-                color: isSelected ? DesignSystem.primary : color,
-                fontWeight: isSelected ? FontWeight.w900 : FontWeight.w700,
-                fontSize: 10,
+                fontFamily: 'Geist',
+                color: textColor,
+                fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
+                fontSize: DesignSystem.fontSizeMD, // 16.0
                 letterSpacing: 0.5,
               ),
             ),
-          ],
-        ),
+          ),
+          Icon(
+            isSelected ? Icons.check_circle_rounded : Icons.radio_button_off_rounded,
+            size: 24,
+            color: isSelected ? Colors.white : colorScheme.onSurface.withValues(alpha: 0.2),
+          ),
+        ],
       ),
     );
   }
@@ -328,125 +318,5 @@ class SettingsScreen extends ConsumerWidget {
     if (!await launchUrl(uri)) {
       throw Exception('Could not launch $url');
     }
-  }
-
-  void _showChangeNameDialog(BuildContext context, WidgetRef ref, String currentName) {
-    final TextEditingController controller = TextEditingController(text: currentName);
-    final formKey = GlobalKey<FormState>();
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-
-    showDialog(
-      context: context,
-      builder: (context) {
-        return Dialog(
-          backgroundColor: Colors.transparent,
-          child: ConstrainedBox(
-            constraints: const BoxConstraints(maxWidth: 360),
-            child: TangibleContainer(
-              radius: DesignSystem.radiusLG,
-              padding: const EdgeInsets.all(DesignSystem.spaceLG),
-              color: colorScheme.surface,
-              child: Form(
-                key: formKey,
-                child: Column(
-                  mainAxisSize: MainAxisSize.min,
-                  crossAxisAlignment: CrossAxisAlignment.stretch,
-                  children: [
-                    Text(
-                      'CHANGE YOUR NAME',
-                      textAlign: TextAlign.center,
-                      style: theme.textTheme.headlineMedium?.copyWith(
-                        fontWeight: FontWeight.w900,
-                        letterSpacing: 1.5,
-                        fontSize: DesignSystem.fontSizeXL, // Reduced from 18 to 16
-                        color: colorScheme.onSurface,
-                      ),
-                    ),
-                    const SizedBox(height: DesignSystem.spaceMD),
-                    TangibleContainer(
-                      radius: DesignSystem.radiusMD,
-                      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceMD),
-                      color: colorScheme.surface,
-                      child: TextFormField(
-                        controller: controller,
-                        textCapitalization: TextCapitalization.words,
-                        maxLength: 15,
-                        style: TextStyle(
-                          color: colorScheme.onSurface,
-                          fontWeight: FontWeight.w800,
-                          fontSize: DesignSystem.fontSizeLG, // Reduced from 16 to 14
-                        ),
-                        decoration: const InputDecoration(
-                          counterText: '',
-                          border: InputBorder.none,
-                          hintText: 'ENTER YOUR NAME...',
-                        ),
-                        validator: (value) {
-                          if (value == null || value.trim().isEmpty) {
-                            return 'PLEASE ENTER A NAME';
-                          }
-                          if (value.trim().length < 2) {
-                            return 'NAME IS TOO SHORT';
-                          }
-                          return null;
-                        },
-                      ),
-                    ),
-                    const SizedBox(height: DesignSystem.spaceLG),
-                    Row(
-                      children: [
-                        Expanded(
-                          child: TangibleButton(
-                            onTap: () => Navigator.pop(context),
-                            color: colorScheme.surface,
-                            shadowColor: colorScheme.outline,
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: const Center(
-                              child: Text(
-                                'CANCEL',
-                                style: TextStyle(
-                                  fontSize: DesignSystem.fontSizeMD,
-                                  fontWeight: FontWeight.w900,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                        const SizedBox(width: DesignSystem.spaceSM),
-                        Expanded(
-                          child: TangibleButton(
-                            onTap: () {
-                              if (formKey.currentState!.validate()) {
-                                final newName = controller.text.trim();
-                                Navigator.pop(context);
-                                ref.read(userDataNotifierProvider.notifier).updateName(newName);
-                              }
-                            },
-                            color: DesignSystem.primary,
-                            shadowColor: DesignSystem.primaryShadow,
-                            padding: const EdgeInsets.symmetric(vertical: 10),
-                            child: const Center(
-                              child: Text(
-                                'SAVE',
-                                style: TextStyle(
-                                  fontSize: DesignSystem.fontSizeMD,
-                                  fontWeight: FontWeight.w900,
-                                  color: Colors.white,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
-                  ],
-                ),
-              ),
-            ),
-          ),
-        );
-      },
-    );
   }
 }

@@ -1350,17 +1350,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
           SliverAppBar(
             floating: false,
             snap: false,
-            expandedHeight: 80,
-            collapsedHeight: 80,
             backgroundColor: theme.scaffoldBackgroundColor,
             surfaceTintColor: Colors.transparent,
             centerTitle: true,
             title: Text(
-              l10n.games.toUpperCase(),
+              'GAMES',
               style: TextStyle(
-                fontSize: DesignSystem.fontSizeXL, // Reduced from 14 to 16 (for shell titles)
+                fontFamily: 'Bebas Neue',
+                fontSize: DesignSystem.fontSize2XL, // Matches STATS and SETTINGS perfectly
                 letterSpacing: 1.5,
-                fontWeight: FontWeight.w900,
+                fontWeight: FontWeight.w700,
                 color: theme.colorScheme.onSurface,
               ),
             ),
@@ -1368,33 +1367,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               SuperStreakAction(),
               SizedBox(width: 16),
             ],
-          ),
-
-          // Personalized Greeting Header
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(
-                DesignSystem.spaceLG,
-                DesignSystem.spaceMD,
-                DesignSystem.spaceLG,
-                DesignSystem.spaceXS,
-              ),
-              child: Consumer(
-                builder: (context, ref, child) {
-                  final userData = ref.watch(userDataNotifierProvider);
-                  final name = userData.name ?? '';
-                  if (name.isEmpty) return const SizedBox.shrink();
-                  return Text(
-                    'HELLO, ${name.toUpperCase()} 👋',
-                    style: theme.textTheme.headlineMedium?.copyWith(
-                      fontWeight: FontWeight.w900,
-                      letterSpacing: 1.0,
-                      color: colorScheme.onSurface,
-                    ),
-                  );
-                },
-              ),
-            ),
           ),
 
           // Daily Stats & Encouragement
@@ -1411,18 +1383,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   final streaks = ref.watch(gameStreakNotifierProvider);
                   final solvedToday =
                       streaks.values.where((s) => s.solvedToday).length;
-                  final userData = ref.watch(userDataNotifierProvider);
-                  final name = userData.name ?? 'Friend';
 
                   String encouragement;
                   if (solvedToday == 0) {
-                    encouragement = 'Ready to start your daily brain workout, $name?';
+                    encouragement = 'Ready to start your daily brain workout?';
                   } else if (solvedToday < 3) {
-                    encouragement = 'Great start, $name! Keep going.';
+                    encouragement = 'Great start! Keep going.';
                   } else if (solvedToday < 7) {
-                    encouragement = "You're on fire today, $name!";
+                    encouragement = "You're on fire today!";
                   } else {
-                    encouragement = 'Incredible puzzle solving today, $name!';
+                    encouragement = 'Incredible puzzle solving today!';
                   }
 
                   return TangibleContainer(
@@ -1442,8 +1412,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             child: Text(
                               '$solvedToday',
                               style: const TextStyle(
-                                fontSize: DesignSystem.fontSizeHero, // 32.0 (Linked to token)
-                                fontWeight: FontWeight.w900,
+                                fontFamily: 'Bebas Neue',
+                                fontSize: 40.0, // Large display number
+                                fontWeight: FontWeight.w700,
                                 color: DesignSystem.primary,
                               ),
                             ),
@@ -1455,23 +1426,21 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
-                                l10n.solvedToday.toUpperCase(),
+                                l10n.solvedToday,
                                 style: TextStyle(
-                                  fontSize: DesignSystem.fontSize2XS, // Reduced from 10 to 9
-                                  fontWeight: FontWeight.w900,
-                                  letterSpacing: 1.5,
+                                  fontSize: DesignSystem.fontSizeSM, // 14.0 (Legible, not tiny 9px!)
+                                  fontWeight: FontWeight.w600,
                                   color: colorScheme.onSurface
-                                      .withValues(alpha: 0.5),
+                                      .withValues(alpha: 0.6),
                                 ),
                               ),
                               const SizedBox(height: 2),
                               Text(
                                 encouragement,
                                 style: TextStyle(
-                                  fontSize: DesignSystem.fontSizeMD, // 13.0
-                                  fontWeight: FontWeight.w900,
+                                  fontSize: DesignSystem.fontSizeMD, // 16.0
+                                  fontWeight: FontWeight.w500, // Clean regular/medium
                                   color: colorScheme.onSurface,
-                                  letterSpacing: 0.2,
                                 ),
                               ),
                             ],
@@ -1505,11 +1474,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         });
                       },
                       decoration: InputDecoration(
-                        hintText: l10n.searchGames.toUpperCase(),
+                        hintText: l10n.searchGames,
                         hintStyle: TextStyle(
-                          fontSize: DesignSystem.fontSizeSM, // Reduced from 12 to 11
-                          fontWeight: FontWeight.w900,
-                          color: colorScheme.onSurface.withValues(alpha: 0.3),
+                          fontSize: DesignSystem.fontSizeMD, // 16.0
+                          fontWeight: FontWeight.w500,
+                          color: colorScheme.onSurface.withValues(alpha: 0.4),
                         ),
                         prefixIcon: Icon(
                           Icons.search_rounded,
@@ -1534,8 +1503,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             horizontal: 16, vertical: 12),
                       ),
                       style: TextStyle(
-                        fontSize: DesignSystem.fontSizeMD, // 13.0
-                        fontWeight: FontWeight.w900,
+                        fontSize: DesignSystem.fontSizeMD, // 16.0
+                        fontWeight: FontWeight.w600,
                         color: colorScheme.onSurface,
                       ),
                     ),
@@ -1722,10 +1691,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         child: Text(
           label.toUpperCase(),
           style: TextStyle(
-            fontSize: DesignSystem.fontSizeXS, // Reduced from 12 to 10
-            fontWeight: FontWeight.w900,
+            fontSize: DesignSystem.fontSizeSM, // 14.0 (Comfortable category text)
+            fontWeight: FontWeight.w600,
             color: isSelected ? Colors.white : colorScheme.onSurface,
-            letterSpacing: 0.5,
           ),
         ),
       ),
@@ -1809,11 +1777,12 @@ class GameTile extends StatelessWidget {
                         fit: BoxFit.scaleDown,
                         alignment: Alignment.centerLeft,
                         child: Text(
-                          title.toUpperCase(),
+                          title.toUpperCase(), // Game titles uppercase
                           maxLines: 1,
                           style: TextStyle(
-                            fontSize: DesignSystem.fontSizeMD, // 13.0
-                            fontWeight: FontWeight.w900,
+                            fontFamily: 'Bebas Neue', // Header font family
+                            fontSize: DesignSystem.fontSizeLG, // 18.0
+                            fontWeight: FontWeight.w700,
                             letterSpacing: 0.5,
                             color:
                                 isSolved ? Colors.white : colorScheme.onSurface,
@@ -1876,8 +1845,8 @@ class GameTile extends StatelessWidget {
                   Text(
                     '$streakCount',
                     style: const TextStyle(
-                      fontSize: DesignSystem.fontSizeXS, // Reduced from 12 to 10
-                      fontWeight: FontWeight.w900,
+                      fontSize: DesignSystem.fontSizeSM, // 14.0
+                      fontWeight: FontWeight.w700,
                       color: Colors.white,
                     ),
                   ),
