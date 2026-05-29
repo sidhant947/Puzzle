@@ -31,6 +31,18 @@ class HueSortState {
       isSolved: isSolved ?? this.isSolved,
     );
   }
+
+  int get wrongTilesCount {
+    int count = 0;
+    for (int i = 0; i < currentColors.length; i++) {
+      if (currentColors[i].r != level.solution[i].r ||
+          currentColors[i].g != level.solution[i].g ||
+          currentColors[i].b != level.solution[i].b) {
+        count++;
+      }
+    }
+    return count;
+  }
 }
 
 @riverpod

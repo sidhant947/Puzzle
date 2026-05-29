@@ -1660,6 +1660,12 @@ abstract class AppLocalizations {
   /// **'You perfectly sorted the color spectrum!'**
   String get hueSortWinMessage;
 
+  /// No description provided for @hueSortWrongTiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Tiles in wrong position: {count}'**
+  String hueSortWrongTiles(int count);
+
   /// No description provided for @kenkenTitle.
   ///
   /// In en, this message translates to:

@@ -474,6 +474,14 @@
   "hueSortSubtitle": "Swap tiles to create a smooth transition between corner colors. Dots indicate fixed tiles.",
   "hueSortWinTitle": "PERFECT GRADIENT!",
   "hueSortWinMessage": "You perfectly sorted the color spectrum!",
+  "hueSortWrongTiles": "Tiles in wrong position: {count}",
+  "@hueSortWrongTiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "kenkenTitle": "KenKen",
   "kenkenWinTitle": "GENIUS!",
   "kenkenLoseTitle": "GAME OVER",

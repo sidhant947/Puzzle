@@ -861,6 +861,11 @@ class AppLocalizationsAr extends AppLocalizations {
   String get hueSortWinMessage => 'لقد فرزت طيف الألوان بشكل مثالي!';
 
   @override
+  String hueSortWrongTiles(int count) {
+    return 'Tiles in wrong position: $count';
+  }
+
+  @override
   String get kenkenTitle => 'كين كين';
 
   @override

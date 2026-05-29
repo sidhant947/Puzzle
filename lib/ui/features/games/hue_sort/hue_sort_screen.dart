@@ -47,10 +47,49 @@ class HueSortScreen extends ConsumerWidget {
               Center(
                 child: _buildGrid(context, ref, state, constraints.maxHeight * 0.55),
               ),
+              const SizedBox(height: DesignSystem.spaceLG),
+              _buildStats(context, state),
               const Spacer(flex: 2),
             ],
           );
         },
+      ),
+    );
+  }
+
+  Widget _buildStats(BuildContext context, HueSortState state) {
+    final l10n = AppLocalizations.of(context)!;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+      child: TangibleContainer(
+        radius: DesignSystem.radiusMD,
+        padding: const EdgeInsets.symmetric(
+          horizontal: DesignSystem.spaceMD,
+          vertical: DesignSystem.spaceSM,
+        ),
+        color: colorScheme.surface,
+        child: Row(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            Icon(
+              Icons.grid_on_rounded,
+              size: 18,
+              color: colorScheme.primary,
+            ),
+            const SizedBox(width: DesignSystem.spaceSM),
+            Text(
+              l10n.hueSortWrongTiles(state.wrongTilesCount),
+              style: TextStyle(
+                fontSize: DesignSystem.fontSizeSM,
+                fontWeight: FontWeight.w600,
+                color: colorScheme.onSurface.withValues(alpha: 0.8),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

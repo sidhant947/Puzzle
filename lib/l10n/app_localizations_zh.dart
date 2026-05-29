@@ -837,6 +837,11 @@ class AppLocalizationsZh extends AppLocalizations {
   String get hueSortWinMessage => '你完美地排序了色谱！';
 
   @override
+  String hueSortWrongTiles(int count) {
+    return 'Tiles in wrong position: $count';
+  }
+
+  @override
   String get kenkenTitle => '贤贤';
 
   @override

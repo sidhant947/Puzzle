@@ -874,6 +874,11 @@ class AppLocalizationsPt extends AppLocalizations {
       'Você ordenou o espectro de cores perfeitamente!';
 
   @override
+  String hueSortWrongTiles(int count) {
+    return 'Tiles in wrong position: $count';
+  }
+
+  @override
   String get kenkenTitle => 'KenKen';
 
   @override
