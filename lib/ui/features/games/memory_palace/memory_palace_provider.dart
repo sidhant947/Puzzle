@@ -24,19 +24,24 @@ class MemoryPalaceState {
 
   MemoryPalaceState copyWith({
     Map<int, String>? userRecall,
-    int? selectedPosition,
-    String? selectedWord,
+    Object? selectedPosition = const _Unset(),
+    Object? selectedWord = const _Unset(),
     MemoryPalaceStatus? status,
   }) {
     return MemoryPalaceState(
       assignments: assignments,
       userRecall: userRecall ?? this.userRecall,
-      selectedPosition: selectedPosition ?? this.selectedPosition,
-      selectedWord: selectedWord ?? this.selectedWord,
+      selectedPosition: selectedPosition is _Unset ? this.selectedPosition : selectedPosition as int?,
+      selectedWord: selectedWord is _Unset ? this.selectedWord : selectedWord as String?,
       status: status ?? this.status,
       availableWords: availableWords,
     );
   }
+}
+
+/// Sentinel class used to distinguish "not provided" from explicit null in copyWith.
+class _Unset {
+  const _Unset();
 }
 
 @riverpod
@@ -78,12 +83,17 @@ class MemoryPalaceNotifier extends _$MemoryPalaceNotifier {
   void _checkAssignment() {
     if (state.selectedWord != null && state.selectedPosition != null) {
       final newUserRecall = Map<int, String>.from(state.userRecall);
+
+      // If this word was already placed at another position, remove it from there
+      newUserRecall.removeWhere((pos, w) => w == state.selectedWord);
+
+      // If the target position already had a word, it will simply be overwritten
       newUserRecall[state.selectedPosition!] = state.selectedWord!;
-      
+
       state = state.copyWith(
         userRecall: newUserRecall,
-        selectedWord: null,
-        selectedPosition: null,
+        selectedWord: null,     // explicit null — now works correctly
+        selectedPosition: null, // explicit null — now works correctly
       );
 
       if (newUserRecall.length == state.assignments.length) {

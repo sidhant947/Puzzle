@@ -120,14 +120,17 @@ class MemoryPalaceScreen extends ConsumerWidget {
             color: isSelected ? DesignSystem.primary.withValues(alpha: 0.1) : Theme.of(context).colorScheme.surface,
             child: Center(
               child: Padding(
-                padding: const EdgeInsets.all(4.0),
-                child: Text(
-                  displayText ?? '',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.bold,
-                    color: displayText != null ? DesignSystem.primary : Colors.transparent,
+                padding: const EdgeInsets.all(6.0),
+                child: FittedBox(
+                  fit: BoxFit.scaleDown,
+                  child: Text(
+                    displayText ?? '',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.bold,
+                      color: displayText != null ? DesignSystem.primary : Colors.transparent,
+                    ),
                   ),
                 ),
               ),
@@ -141,7 +144,11 @@ class MemoryPalaceScreen extends ConsumerWidget {
   Widget _buildWordPool(BuildContext context, WidgetRef ref, MemoryPalaceState state) {
     // Filter out words already placed
     final placedWords = state.userRecall.values.toSet();
+    // ignore: unused_local_variable
     final remainingWords = state.availableWords.where((w) => !placedWords.contains(w)).toList();
+
+    // Each chip gets at most ~30% of screen width so 3 can sit comfortably per row
+    final chipMaxWidth = (MediaQuery.sizeOf(context).width - 48) * 0.30;
 
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -156,20 +163,27 @@ class MemoryPalaceScreen extends ConsumerWidget {
             final isSelected = state.selectedWord == word;
 
             return GestureDetector(
-              onTap: !isPlaced 
-                ? () => ref.read(memoryPalaceNotifierProvider.notifier).selectWord(word)
-                : null,
+              onTap: !isPlaced
+                  ? () => ref.read(memoryPalaceNotifierProvider.notifier).selectWord(word)
+                  : null,
               child: Opacity(
                 opacity: isPlaced ? 0.3 : 1.0,
-                child: TangibleContainer(
-                  depth: isSelected ? 0 : 2,
-                  color: isSelected ? DesignSystem.accentEmerald : Theme.of(context).colorScheme.surface,
-                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-                  child: Text(
-                    word,
-                    style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      color: isSelected ? Colors.white : Theme.of(context).colorScheme.onSurface,
+                child: ConstrainedBox(
+                  constraints: BoxConstraints(maxWidth: chipMaxWidth),
+                  child: TangibleContainer(
+                    depth: isSelected ? 0 : 2,
+                    color: isSelected ? DesignSystem.accentEmerald : Theme.of(context).colorScheme.surface,
+                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 8),
+                    child: FittedBox(
+                      fit: BoxFit.scaleDown,
+                      child: Text(
+                        word,
+                        maxLines: 1,
+                        style: TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: isSelected ? Colors.white : Theme.of(context).colorScheme.onSurface,
+                        ),
+                      ),
                     ),
                   ),
                 ),
