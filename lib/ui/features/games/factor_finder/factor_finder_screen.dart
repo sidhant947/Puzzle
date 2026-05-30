@@ -5,7 +5,6 @@ import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../core/juice/game_scaffold.dart';
-import 'factor_finder_engine.dart';
 import 'factor_finder_provider.dart';
 
 class FactorFinderScreen extends ConsumerStatefulWidget {

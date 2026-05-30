@@ -98,6 +98,54 @@
   "crosswordTitle": "Crossword",
   "crosswordSubtitle": "Complete the grid with the correct words based on the clues provided.",
   "wordSearchTitle": "Word Search",
+  "radicalRootsTitle": "Radical Roots",
+  "radicalRootsSubtitle": "Find the square or cube root of the given number. Round to the nearest integer if necessary.",
+  "radicalRootsGoalReached": "Goal Reached!",
+  "radicalRootsTimeUp": "Time's Up!",
+  "radicalRootsScoreMessage": "You calculated {score} roots correctly!",
+  "@radicalRootsScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "radicalRootsTryAgainMessage": "Keep practicing! You calculated {score} roots.",
+  "@radicalRootsTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "radicalRootsStart": "Start Calculating",
+  "radicalRootsDescription": "You have 60 seconds to solve as many as you can.",
+  "radicalRootsBest": "Best",
+  "radicalRootsSeconds": "60 SECONDS",
+  "romanArithmeticTitle": "Roman Arithmetic",
+  "romanArithmeticSubtitle": "Solve addition and subtraction problems using Roman Numerals.",
+  "romanArithmeticGoalReached": "Centurion Level!",
+  "romanArithmeticTimeUp": "Time's Up!",
+  "romanArithmeticScoreMessage": "You solved {score} Roman problems!",
+  "@romanArithmeticScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "romanArithmeticTryAgainMessage": "Veni, Vidi, Vici! You solved {score} problems.",
+  "@romanArithmeticTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "romanArithmeticStart": "Begin Quest",
+  "romanArithmeticDescription": "Convert and solve. You have 60 seconds.",
+  "romanArithmeticBest": "Best",
+  "romanArithmeticSeconds": "60 SECONDS",
   "wordSearchSubtitle": "Find all the hidden words in the grid. Drag to select.",
   "missingVowelsTitle": "Missing Vowels",
   "missingVowelsSubtitle": "Identify the word with its vowels hidden.",
@@ -706,5 +754,21 @@
   "reverseStroopTitle": "Reverse Stroop",
   "reverseStroopSubtitle": "A variation of the Stroop test where the focus is switched.",
   "reverseStroopHowToPlay": "Pay attention to the instruction! If it says 'TEXT', match the word's meaning. If it says 'COLOR', match the ink color. The rules will switch frequently to test your focus.",
-  "game2048Instruction": "SWIPE IN ANY DIRECTION TO MERGE"
+  "game2048Instruction": "SWIPE IN ANY DIRECTION TO MERGE",
+  "fibonacciMergeTitle": "Fibonacci Merge",
+  "fibonacciMergeSubtitle": "Merge consecutive Fibonacci numbers (1, 1, 2, 3, 5, 8, 13...).",
+  "sequenceSleuthTitle": "Sequence Sleuth",
+  "sequenceSleuthSubtitle": "Find the missing number in the mathematical sequence.",
+  "divisibilityDashTitle": "Divisibility Dash",
+  "divisibilityDashSubtitle": "Tap all single-digit divisors (2-9) for the given number.",
+  "percentagePeakTitle": "Percentage Peak",
+  "percentagePeakSubtitle": "Solve mental percentage calculations quickly.",
+  "vennNumbersTitle": "Venn Numbers",
+  "vennNumbersSubtitle": "Categorize numbers into the correct Venn diagram regions.",
+  "commonDenominatorTitle": "Common Denominator",
+  "commonDenominatorSubtitle": "Find the Greatest Common Divisor or Least Common Multiple.",
+  "angleFinderTitle": "Angle Finder",
+  "angleFinderSubtitle": "Calculate the missing angle in the geometric problem.",
+  "sumSnakeTitle": "Sum Snake",
+  "sumSnakeSubtitle": "Connect adjacent numbers to reach the target sum."
 }

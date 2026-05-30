@@ -228,6 +228,78 @@ class AppLocalizationsKo extends AppLocalizations {
   String get wordSearchTitle => '단어 찾기';
 
   @override
+  String get radicalRootsTitle => 'Radical Roots';
+
+  @override
+  String get radicalRootsSubtitle =>
+      'Find the square or cube root of the given number. Round to the nearest integer if necessary.';
+
+  @override
+  String get radicalRootsGoalReached => 'Goal Reached!';
+
+  @override
+  String get radicalRootsTimeUp => 'Time\'s Up!';
+
+  @override
+  String radicalRootsScoreMessage(int score) {
+    return 'You calculated $score roots correctly!';
+  }
+
+  @override
+  String radicalRootsTryAgainMessage(int score) {
+    return 'Keep practicing! You calculated $score roots.';
+  }
+
+  @override
+  String get radicalRootsStart => 'Start Calculating';
+
+  @override
+  String get radicalRootsDescription =>
+      'You have 60 seconds to solve as many as you can.';
+
+  @override
+  String get radicalRootsBest => 'Best';
+
+  @override
+  String get radicalRootsSeconds => '60 SECONDS';
+
+  @override
+  String get romanArithmeticTitle => 'Roman Arithmetic';
+
+  @override
+  String get romanArithmeticSubtitle =>
+      'Solve addition and subtraction problems using Roman Numerals.';
+
+  @override
+  String get romanArithmeticGoalReached => 'Centurion Level!';
+
+  @override
+  String get romanArithmeticTimeUp => 'Time\'s Up!';
+
+  @override
+  String romanArithmeticScoreMessage(int score) {
+    return 'You solved $score Roman problems!';
+  }
+
+  @override
+  String romanArithmeticTryAgainMessage(int score) {
+    return 'Veni, Vidi, Vici! You solved $score problems.';
+  }
+
+  @override
+  String get romanArithmeticStart => 'Begin Quest';
+
+  @override
+  String get romanArithmeticDescription =>
+      'Convert and solve. You have 60 seconds.';
+
+  @override
+  String get romanArithmeticBest => 'Best';
+
+  @override
+  String get romanArithmeticSeconds => '60 SECONDS';
+
+  @override
   String get wordSearchSubtitle => '격자에서 숨겨진 단어를 모두 찾으세요. 드래그하여 선택합니다.';
 
   @override
@@ -1382,4 +1454,60 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get game2048Instruction => '아무 방향으로나 밀어서 합치세요';
+
+  @override
+  String get fibonacciMergeTitle => 'Fibonacci Merge';
+
+  @override
+  String get fibonacciMergeSubtitle =>
+      'Merge consecutive Fibonacci numbers (1, 1, 2, 3, 5, 8, 13...).';
+
+  @override
+  String get sequenceSleuthTitle => 'Sequence Sleuth';
+
+  @override
+  String get sequenceSleuthSubtitle =>
+      'Find the missing number in the mathematical sequence.';
+
+  @override
+  String get divisibilityDashTitle => 'Divisibility Dash';
+
+  @override
+  String get divisibilityDashSubtitle =>
+      'Tap all single-digit divisors (2-9) for the given number.';
+
+  @override
+  String get percentagePeakTitle => 'Percentage Peak';
+
+  @override
+  String get percentagePeakSubtitle =>
+      'Solve mental percentage calculations quickly.';
+
+  @override
+  String get vennNumbersTitle => 'Venn Numbers';
+
+  @override
+  String get vennNumbersSubtitle =>
+      'Categorize numbers into the correct Venn diagram regions.';
+
+  @override
+  String get commonDenominatorTitle => 'Common Denominator';
+
+  @override
+  String get commonDenominatorSubtitle =>
+      'Find the Greatest Common Divisor or Least Common Multiple.';
+
+  @override
+  String get angleFinderTitle => 'Angle Finder';
+
+  @override
+  String get angleFinderSubtitle =>
+      'Calculate the missing angle in the geometric problem.';
+
+  @override
+  String get sumSnakeTitle => 'Sum Snake';
+
+  @override
+  String get sumSnakeSubtitle =>
+      'Connect adjacent numbers to reach the target sum.';
 }

@@ -147,6 +147,16 @@ import '../games/dual_coding/dual_coding_screen.dart';
 import '../games/distractor_matrix/distractor_matrix_screen.dart';
 import '../games/temporal_order/temporal_order_screen.dart';
 import '../games/associative_pairs/associative_pairs_screen.dart';
+import '../games/fibonacci_merge/fibonacci_merge_screen.dart';
+import '../games/sequence_sleuth/sequence_sleuth_screen.dart';
+import '../games/divisibility_dash/divisibility_dash_screen.dart';
+import '../games/percentage_peak/percentage_peak_screen.dart';
+import '../games/venn_numbers/venn_numbers_screen.dart';
+import '../games/common_denominator/common_denominator_screen.dart';
+import '../games/radical_roots/radical_roots_screen.dart';
+import '../games/roman_arithmetic/roman_arithmetic_screen.dart';
+import '../games/angle_finder/angle_finder_screen.dart';
+import '../games/sum_snake/sum_snake_screen.dart';
 
 import '../games/block_count_3d/block_count_3d_screen.dart';
 import '../games/cube_net_fold/cube_net_fold_screen.dart';
@@ -281,6 +291,86 @@ class HomeScreen extends ConsumerStatefulWidget {
       'icon': Icons.pie_chart_outline_rounded,
       'color': DesignSystem.gameBlue,
       'builder': (context) => const FractionMatcherScreen(),
+    },
+    {
+      'title': 'Fibonacci Merge',
+      'id': 'fibonacci_merge',
+      'category': 'MATH',
+      'icon': Icons.merge_type_rounded,
+      'color': DesignSystem.gameTeal,
+      'builder': (context) => const FibonacciMergeScreen(),
+    },
+    {
+      'title': 'Sequence Sleuth',
+      'id': 'sequence_sleuth',
+      'category': 'MATH',
+      'icon': Icons.linear_scale_rounded,
+      'color': DesignSystem.gameIndigo,
+      'builder': (context) => const SequenceSleuthScreen(),
+    },
+    {
+      'title': 'Divisibility Dash',
+      'id': 'divisibility_dash',
+      'category': 'MATH',
+      'icon': Icons.speed_rounded,
+      'color': DesignSystem.gameAmber,
+      'builder': (context) => const DivisibilityDashScreen(),
+    },
+    {
+      'title': 'Percentage Peak',
+      'id': 'percentage_peak',
+      'category': 'MATH',
+      'icon': Icons.percent_rounded,
+      'color': DesignSystem.gameGreen,
+      'builder': (context) => const PercentagePeakScreen(),
+    },
+    {
+      'title': 'Venn Numbers',
+      'id': 'venn_numbers',
+      'category': 'MATH',
+      'icon': Icons.vignette_rounded,
+      'color': DesignSystem.gamePurple,
+      'builder': (context) => const VennNumbersScreen(),
+    },
+    {
+      'title': 'Common Denominator',
+      'id': 'common_denominator',
+      'category': 'MATH',
+      'icon': Icons.calculate_rounded,
+      'color': DesignSystem.gameBlue,
+      'builder': (context) => const CommonDenominatorScreen(),
+    },
+    {
+      'title': 'Radical Roots',
+      'id': 'radical_roots',
+      'category': 'MATH',
+      'icon': Icons.square_foot_rounded,
+      'color': DesignSystem.gameRose,
+      'builder': (context) => const RadicalRootsScreen(),
+    },
+    {
+      'title': 'Roman Arithmetic',
+      'id': 'roman_arithmetic',
+      'category': 'MATH',
+      'icon': Icons.account_balance_rounded,
+      'color': DesignSystem.gameOrange,
+      'builder': (context) => const RomanArithmeticScreen(),
+    },
+    {
+      'title': 'Angle Finder',
+      'id': 'angle_finder',
+      'category': 'MATH',
+      'icon': Icons.architecture_rounded,
+      'color': DesignSystem.gameCyan,
+      'builder': (context) => const AngleFinderScreen(),
+    },
+    {
+      'title': 'Sum Snake',
+      'id': 'sum_snake',
+      'category': 'MATH',
+      'icon': Icons.gesture_rounded,
+      'color': DesignSystem.gameEmerald,
+      'builder': (context) => const SumSnakeScreen(),
     },
 
     // --- Memory Games (5) ---

@@ -5,7 +5,6 @@ import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../core/juice/game_scaffold.dart';
-import 'context_clues_engine.dart';
 import 'context_clues_provider.dart';
 
 class ContextCluesScreen extends ConsumerWidget {

@@ -544,6 +544,126 @@ abstract class AppLocalizations {
   /// **'Word Search'**
   String get wordSearchTitle;
 
+  /// No description provided for @radicalRootsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Radical Roots'**
+  String get radicalRootsTitle;
+
+  /// No description provided for @radicalRootsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find the square or cube root of the given number. Round to the nearest integer if necessary.'**
+  String get radicalRootsSubtitle;
+
+  /// No description provided for @radicalRootsGoalReached.
+  ///
+  /// In en, this message translates to:
+  /// **'Goal Reached!'**
+  String get radicalRootsGoalReached;
+
+  /// No description provided for @radicalRootsTimeUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Time\'s Up!'**
+  String get radicalRootsTimeUp;
+
+  /// No description provided for @radicalRootsScoreMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You calculated {score} roots correctly!'**
+  String radicalRootsScoreMessage(int score);
+
+  /// No description provided for @radicalRootsTryAgainMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep practicing! You calculated {score} roots.'**
+  String radicalRootsTryAgainMessage(int score);
+
+  /// No description provided for @radicalRootsStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Calculating'**
+  String get radicalRootsStart;
+
+  /// No description provided for @radicalRootsDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'You have 60 seconds to solve as many as you can.'**
+  String get radicalRootsDescription;
+
+  /// No description provided for @radicalRootsBest.
+  ///
+  /// In en, this message translates to:
+  /// **'Best'**
+  String get radicalRootsBest;
+
+  /// No description provided for @radicalRootsSeconds.
+  ///
+  /// In en, this message translates to:
+  /// **'60 SECONDS'**
+  String get radicalRootsSeconds;
+
+  /// No description provided for @romanArithmeticTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Roman Arithmetic'**
+  String get romanArithmeticTitle;
+
+  /// No description provided for @romanArithmeticSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Solve addition and subtraction problems using Roman Numerals.'**
+  String get romanArithmeticSubtitle;
+
+  /// No description provided for @romanArithmeticGoalReached.
+  ///
+  /// In en, this message translates to:
+  /// **'Centurion Level!'**
+  String get romanArithmeticGoalReached;
+
+  /// No description provided for @romanArithmeticTimeUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Time\'s Up!'**
+  String get romanArithmeticTimeUp;
+
+  /// No description provided for @romanArithmeticScoreMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You solved {score} Roman problems!'**
+  String romanArithmeticScoreMessage(int score);
+
+  /// No description provided for @romanArithmeticTryAgainMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Veni, Vidi, Vici! You solved {score} problems.'**
+  String romanArithmeticTryAgainMessage(int score);
+
+  /// No description provided for @romanArithmeticStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Begin Quest'**
+  String get romanArithmeticStart;
+
+  /// No description provided for @romanArithmeticDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Convert and solve. You have 60 seconds.'**
+  String get romanArithmeticDescription;
+
+  /// No description provided for @romanArithmeticBest.
+  ///
+  /// In en, this message translates to:
+  /// **'Best'**
+  String get romanArithmeticBest;
+
+  /// No description provided for @romanArithmeticSeconds.
+  ///
+  /// In en, this message translates to:
+  /// **'60 SECONDS'**
+  String get romanArithmeticSeconds;
+
   /// No description provided for @wordSearchSubtitle.
   ///
   /// In en, this message translates to:
@@ -2679,6 +2799,102 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'SWIPE IN ANY DIRECTION TO MERGE'**
   String get game2048Instruction;
+
+  /// No description provided for @fibonacciMergeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Fibonacci Merge'**
+  String get fibonacciMergeTitle;
+
+  /// No description provided for @fibonacciMergeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Merge consecutive Fibonacci numbers (1, 1, 2, 3, 5, 8, 13...).'**
+  String get fibonacciMergeSubtitle;
+
+  /// No description provided for @sequenceSleuthTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sequence Sleuth'**
+  String get sequenceSleuthTitle;
+
+  /// No description provided for @sequenceSleuthSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find the missing number in the mathematical sequence.'**
+  String get sequenceSleuthSubtitle;
+
+  /// No description provided for @divisibilityDashTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Divisibility Dash'**
+  String get divisibilityDashTitle;
+
+  /// No description provided for @divisibilityDashSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap all single-digit divisors (2-9) for the given number.'**
+  String get divisibilityDashSubtitle;
+
+  /// No description provided for @percentagePeakTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Percentage Peak'**
+  String get percentagePeakTitle;
+
+  /// No description provided for @percentagePeakSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Solve mental percentage calculations quickly.'**
+  String get percentagePeakSubtitle;
+
+  /// No description provided for @vennNumbersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Venn Numbers'**
+  String get vennNumbersTitle;
+
+  /// No description provided for @vennNumbersSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Categorize numbers into the correct Venn diagram regions.'**
+  String get vennNumbersSubtitle;
+
+  /// No description provided for @commonDenominatorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Common Denominator'**
+  String get commonDenominatorTitle;
+
+  /// No description provided for @commonDenominatorSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find the Greatest Common Divisor or Least Common Multiple.'**
+  String get commonDenominatorSubtitle;
+
+  /// No description provided for @angleFinderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Angle Finder'**
+  String get angleFinderTitle;
+
+  /// No description provided for @angleFinderSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate the missing angle in the geometric problem.'**
+  String get angleFinderSubtitle;
+
+  /// No description provided for @sumSnakeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sum Snake'**
+  String get sumSnakeTitle;
+
+  /// No description provided for @sumSnakeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect adjacent numbers to reach the target sum.'**
+  String get sumSnakeSubtitle;
 }
 
 class _AppLocalizationsDelegate

@@ -190,8 +190,11 @@ class _MentalMappingScreenState extends ConsumerState<MentalMappingScreen> {
 
                   Color cellColor = Theme.of(context).colorScheme.surface;
                   if (showResult) {
-                    if (isTarget) cellColor = DesignSystem.success.withValues(alpha: 0.3);
-                    else if (isSelected) cellColor = DesignSystem.error.withValues(alpha: 0.3);
+                    if (isTarget) {
+                      cellColor = DesignSystem.success.withValues(alpha: 0.3);
+                    } else if (isSelected) {
+                      cellColor = DesignSystem.error.withValues(alpha: 0.3);
+                    }
                   } else if (isSelected) {
                     cellColor = DesignSystem.primary.withValues(alpha: 0.2);
                   }

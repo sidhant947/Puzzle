@@ -168,7 +168,9 @@ class EinsteinSolver {
     
     // Map category names to indices
     final catIdx = <String, int>{};
-    for (var i = 0; i < categories.length; i++) catIdx[categories[i]] = i;
+    for (var i = 0; i < categories.length; i++) {
+      catIdx[categories[i]] = i;
+    }
     
     // Pre-process clues into index-based constraints
     final constraints = clues.map((c) {

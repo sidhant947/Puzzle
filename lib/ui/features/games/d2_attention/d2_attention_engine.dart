@@ -65,7 +65,11 @@ class D2AttentionEngine {
         // Must not have 2 dashes
         final dashCount = [0, 1, 3, 4][_random.nextInt(4)];
         if (dashCount == 1) {
-          if (_random.nextBool()) above = 1; else below = 1;
+          if (_random.nextBool()) {
+            above = 1;
+          } else {
+            below = 1;
+          }
         } else if (dashCount == 3) {
           above = 1 + _random.nextInt(2);
           below = 3 - above;
@@ -77,7 +81,11 @@ class D2AttentionEngine {
         // If it's 'p', it can have any number of dashes (even 2) because it's a distractor anyway
         final dashCount = _random.nextInt(4); // 0 to 3 dashes
         if (dashCount == 1) {
-          if (_random.nextBool()) above = 1; else below = 1;
+          if (_random.nextBool()) {
+            above = 1;
+          } else {
+            below = 1;
+          }
         } else if (dashCount == 2) {
           above = 1; below = 1;
         } else if (dashCount == 3) {
