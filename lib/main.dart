@@ -86,7 +86,22 @@ class MyApp extends ConsumerWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
-      supportedLocales: AppLocalizations.supportedLocales,
+      supportedLocales: [
+        const Locale('en'),
+        ...AppLocalizations.supportedLocales.where((l) => l.languageCode != 'en'),
+      ],
+      localeListResolutionCallback: (locales, supportedLocales) {
+        if (locales != null) {
+          for (var locale in locales) {
+            for (var supportedLocale in supportedLocales) {
+              if (supportedLocale.languageCode == locale.languageCode) {
+                return supportedLocale;
+              }
+            }
+          }
+        }
+        return const Locale('en');
+      },
       home: const MainShell(),
     );
   }
