@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/ui/features/games/base_shift/base_shift_screen.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../providers/game_providers.dart';
 import '../../../../data/models/game_streak.dart';
@@ -138,6 +139,7 @@ import '../games/kakuro/kakuro_screen.dart';
 import '../games/inequality_dash/inequality_dash_screen.dart';
 import '../games/factor_finder/factor_finder_screen.dart';
 import '../games/sum_pyramid/sum_pyramid_screen.dart';
+import '../games/collatz/collatz_screen.dart';
 import '../games/target_10/target_10_screen.dart';
 import '../games/fraction_matcher/fraction_matcher_screen.dart';
 
@@ -151,12 +153,13 @@ import '../games/cube_net_fold/cube_net_fold_screen.dart';
 import '../games/rotating_maze/rotating_maze_screen.dart';
 import '../games/classic_maze/classic_maze_screen.dart';
 import '../games/silhouette_match_ortho/silhouette_match_ortho_screen.dart';
+import '../games/topology/topology_screen.dart';
 
 import '../games/conjunction_search/conjunction_search_screen.dart';
 import '../games/spatial_conflict/spatial_conflict_screen.dart';
 import '../games/spotlight_track/spotlight_track_screen.dart';
 import '../games/d2_attention/d2_attention_screen.dart';
-
+import '../games/dual_mirror/dual_mirror_screen.dart';
 import '../games/context_clues/context_clues_screen.dart';
 
 import '../games/simon_command/simon_command_screen.dart';
@@ -165,6 +168,7 @@ import '../games/modulo_clock/modulo_clock_screen.dart';
 import '../games/chimp_test/chimp_test_screen.dart';
 import '../games/relational_memory/relational_memory_screen.dart';
 import '../games/fact_binder/fact_binder_screen.dart';
+import '../games/source_monitoring/source_monitoring_screen.dart';
 import '../games/klotski/klotski_screen.dart';
 
 class CustomPageRoute<T> extends PageRouteBuilder<T> {
@@ -237,6 +241,22 @@ class HomeScreen extends ConsumerStatefulWidget {
       'icon': Icons.grid_3x3_rounded,
       'color': DesignSystem.gameGreen,
       'builder': (context) => const FactorFinderScreen(),
+    },
+    {
+      'title': 'Collatz Path',
+      'id': 'collatz',
+      'category': 'MATH',
+      'icon': Icons.route_rounded,
+      'color': DesignSystem.gameIndigo,
+      'builder': (context) => const CollatzScreen(),
+    },
+    {
+      'title': 'Base Shift Blitz',
+      'id': 'base_shift',
+      'category': 'MATH',
+      'icon': Icons.exposure_rounded,
+      'color': DesignSystem.gameTeal,
+      'builder': (context) => const BaseShiftScreen(),
     },
     {
       'title': 'Sum Pyramid',
@@ -330,12 +350,20 @@ class HomeScreen extends ConsumerStatefulWidget {
       'builder': (context) => const ClassicMazeScreen(),
     },
     {
-      'title': 'Silhouette Match',
+      'title': 'Silhouette Match (Ortho)',
       'id': 'silhouette_match_ortho',
       'category': 'SPATIAL',
-      'icon': Icons.visibility_rounded,
-      'color': DesignSystem.gameRose,
+      'icon': Icons.view_in_ar_rounded,
+      'color': DesignSystem.gameGreen,
       'builder': (context) => const SilhouetteMatchOrthoScreen(),
+    },
+    {
+      'title': 'Topological Equivalence',
+      'id': 'topology',
+      'category': 'SPATIAL',
+      'icon': Icons.category_rounded,
+      'color': DesignSystem.gameIndigo,
+      'builder': (context) => const TopologyScreen(),
     },
 
     // --- Attention Games (5) ---
@@ -367,9 +395,17 @@ class HomeScreen extends ConsumerStatefulWidget {
       'title': 'd2 Attention',
       'id': 'd2_attention',
       'category': 'ATTENTION',
-      'icon': Icons.fact_check_rounded,
-      'color': DesignSystem.gameTeal,
+      'icon': Icons.track_changes_rounded,
+      'color': DesignSystem.gameIndigo,
       'builder': (context) => const D2AttentionScreen(),
+    },
+    {
+      'title': 'Dual-Mirror Navigation',
+      'id': 'dual_mirror',
+      'category': 'ATTENTION',
+      'icon': Icons.compare_rounded,
+      'color': DesignSystem.gameRose,
+      'builder': (context) => const DualMirrorScreen(),
     },
 
     // --- Word Games (5) ---
@@ -609,8 +645,8 @@ class HomeScreen extends ConsumerStatefulWidget {
       'title': 'Word Surge',
       'id': 'word_surge',
       'category': 'WORD',
-      'icon': Icons.bolt_rounded,
-      'color': DesignSystem.gameRose,
+      'icon': Icons.trending_up_rounded,
+      'color': DesignSystem.gameIndigo,
       'builder': (context) => const WordSurgeScreen(),
     },
     {
@@ -1257,8 +1293,8 @@ class HomeScreen extends ConsumerStatefulWidget {
       'title': 'Tangle Fix',
       'id': 'tangle_fix',
       'category': 'LOGIC',
-      'icon': Icons.hub_rounded,
-      'color': DesignSystem.accentAmber,
+      'icon': Icons.gesture_rounded,
+      'color': DesignSystem.gameIndigo,
       'builder': (context) => const TangleFixScreen(),
     },
     // --- 15 New Games (Except Word category) ---
@@ -1306,9 +1342,17 @@ class HomeScreen extends ConsumerStatefulWidget {
       'title': 'Fact Binder',
       'id': 'fact_binder',
       'category': 'MEMORY',
-      'icon': Icons.book_rounded,
-      'color': DesignSystem.gamePurple,
+      'icon': Icons.folder_shared_rounded,
+      'color': DesignSystem.gameIndigo,
       'builder': (context) => const FactBinderScreen(),
+    },
+    {
+      'title': 'Source Monitoring',
+      'id': 'source_monitoring',
+      'category': 'MEMORY',
+      'icon': Icons.source_rounded,
+      'color': DesignSystem.gameTeal,
+      'builder': (context) => const SourceMonitoringScreen(),
     },
     {
       'title': 'Klotski Escape',
@@ -1372,7 +1416,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               'GAMES',
               style: TextStyle(
                 fontFamily: 'Bebas Neue',
-                fontSize: DesignSystem.fontSize2XL, // Matches STATS and SETTINGS perfectly
+                fontSize: DesignSystem
+                    .fontSize2XL, // Matches STATS and SETTINGS perfectly
                 letterSpacing: 1.5,
                 fontWeight: FontWeight.w700,
                 color: theme.colorScheme.onSurface,
@@ -1429,18 +1474,25 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   }
 
                   final isDark = theme.brightness == Brightness.dark;
-                  final displayColor = solvedToday > 0 ? DesignSystem.primary : DesignSystem.gameBlue;
+                  final displayColor = solvedToday > 0
+                      ? DesignSystem.primary
+                      : DesignSystem.gameBlue;
 
                   return Container(
                     decoration: BoxDecoration(
                       color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
-                      borderRadius: BorderRadius.circular(16.0), // slightly smaller radius for more compact look
+                      borderRadius: BorderRadius.circular(
+                          16.0), // slightly smaller radius for more compact look
                       border: Border.all(
-                        color: isDark ? const Color(0xFF2D2D2D) : const Color(0xFFE2E8F0),
+                        color: isDark
+                            ? const Color(0xFF2D2D2D)
+                            : const Color(0xFFE2E8F0),
                         width: 1.5,
                       ),
                     ),
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 10.0), // highly compacted vertical space
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0,
+                        vertical: 10.0), // highly compacted vertical space
                     child: Row(
                       children: [
                         // Left Count Box - compacted to 46x46
@@ -1486,7 +1538,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                   fontFamily: 'Geist',
                                   fontSize: 11.0,
                                   fontWeight: FontWeight.w900,
-                                  color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF475569),
+                                  color: isDark
+                                      ? const Color(0xFF94A3B8)
+                                      : const Color(0xFF475569),
                                   letterSpacing: 0.5,
                                   height: 1.1,
                                 ),
@@ -1498,7 +1552,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                   fontFamily: 'Geist',
                                   fontSize: 13.0,
                                   fontWeight: FontWeight.w600,
-                                  color: isDark ? Colors.white : colorScheme.onSurface,
+                                  color: isDark
+                                      ? Colors.white
+                                      : colorScheme.onSurface,
                                   letterSpacing: 0.2,
                                   height: 1.1,
                                 ),
@@ -1610,7 +1666,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         Text(
                           l10n.noGamesMatch.toUpperCase(),
                           style: TextStyle(
-                            fontSize: DesignSystem.fontSizeSM, // Reduced from 12 to 11
+                            fontSize: DesignSystem
+                                .fontSizeSM, // Reduced from 12 to 11
                             fontWeight: FontWeight.w900,
                             letterSpacing: 1.0,
                             color: colorScheme.onSurface.withValues(alpha: 0.3),
@@ -1636,7 +1693,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             maxCrossAxisExtent: 400,
                             mainAxisSpacing: DesignSystem.spaceMD,
                             crossAxisSpacing: DesignSystem.spaceMD,
-                            childAspectRatio: 1.73, // Adjusted ratio to mathematically guarantee no bottom overflows under any display width
+                            childAspectRatio:
+                                1.73, // Adjusted ratio to mathematically guarantee no bottom overflows under any display width
                           ),
                           delegate: SliverChildBuilderDelegate(
                             (context, index) {
@@ -1789,10 +1847,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         color: DesignSystem.gameGreen,
       ),
     };
-    return styles[category.toUpperCase()] ?? const CategoryStyle(
-      icon: Icons.extension_rounded,
-      color: DesignSystem.primary,
-    );
+    return styles[category.toUpperCase()] ??
+        const CategoryStyle(
+          icon: Icons.extension_rounded,
+          color: DesignSystem.primary,
+        );
   }
 }
 
@@ -1861,11 +1920,15 @@ class _CategoryButtonState extends State<CategoryButton> {
                 border: Border.all(
                   color: widget.isSelected
                       ? widget.categoryStyle.color
-                      : (isDark ? const Color(0xFF2D2D2D) : const Color(0xFFE2E8F0)),
+                      : (isDark
+                          ? const Color(0xFF2D2D2D)
+                          : const Color(0xFFE2E8F0)),
                   width: widget.isSelected ? 2.5 : 1.5,
                 ),
               ),
-              padding: widget.isSelected ? const EdgeInsets.all(4.0) : EdgeInsets.zero,
+              padding: widget.isSelected
+                  ? const EdgeInsets.all(4.0)
+                  : EdgeInsets.zero,
               child: widget.isSelected
                   ? Container(
                       decoration: BoxDecoration(
@@ -1884,7 +1947,8 @@ class _CategoryButtonState extends State<CategoryButton> {
                       child: Icon(
                         widget.categoryStyle.icon,
                         size: 30,
-                        color: widget.categoryStyle.color.withValues(alpha: 0.8),
+                        color:
+                            widget.categoryStyle.color.withValues(alpha: 0.8),
                       ),
                     ),
             ),
@@ -1894,10 +1958,13 @@ class _CategoryButtonState extends State<CategoryButton> {
               style: TextStyle(
                 fontFamily: 'Geist',
                 fontSize: 12,
-                fontWeight: widget.isSelected ? FontWeight.w900 : FontWeight.w600,
+                fontWeight:
+                    widget.isSelected ? FontWeight.w900 : FontWeight.w600,
                 color: widget.isSelected
                     ? widget.categoryStyle.color
-                    : (isDark ? const Color(0xFF94A3B8) : const Color(0xFF475569)),
+                    : (isDark
+                        ? const Color(0xFF94A3B8)
+                        : const Color(0xFF475569)),
                 letterSpacing: 0.8,
               ),
             ),
@@ -2029,7 +2096,7 @@ class _GameTileState extends State<GameTile> {
       'kenken': 'SOLVE MATH GRIDS WITH ARITHMETIC CAGES.',
       'typing_speed': 'TYPE SENTENCES ACCURATELY AGAINST CLOCK.',
       'quick_math': 'SOLVE ARITHMETIC QUESTIONS AT TOP SPEED.',
-      'math_guess': 'GUESS THE HIDDEN NUMBER WITHIN 10 CHANCES.',
+      'math_guess': 'GUESS THE HIDDEN NUMBER WITHIN 15 CHANCES.',
       'reflex_tap': 'TAP STIMULI AS FAST AS HUMANLY POSSIBLE.',
       'stroop_test': 'RESOLVE CONFLICT BETWEEN WORDS AND COLORS.',
       'flanker_test': 'TAP DIRECTIONS MATCHING CENTER ARROWS FAST.',
@@ -2132,7 +2199,10 @@ class _GameTileState extends State<GameTile> {
               width: 1.5,
             ),
           ),
-          padding: const EdgeInsets.symmetric(horizontal: 24.0, vertical: 18.0), // Streamlined padding to optimize internal spacing and eliminate overflows
+          padding: const EdgeInsets.symmetric(
+              horizontal: 24.0,
+              vertical:
+                  18.0), // Streamlined padding to optimize internal spacing and eliminate overflows
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -2141,7 +2211,8 @@ class _GameTileState extends State<GameTile> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                    padding:
+                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
                     decoration: BoxDecoration(
                       color: widget.accentColor.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(6.0),
@@ -2162,9 +2233,11 @@ class _GameTileState extends State<GameTile> {
                     children: [
                       if (streakCount > 0) ...[
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 4),
                           decoration: BoxDecoration(
-                            color: DesignSystem.accentAmber.withValues(alpha: 0.15),
+                            color: DesignSystem.accentAmber
+                                .withValues(alpha: 0.15),
                             borderRadius: BorderRadius.circular(6.0),
                           ),
                           child: Row(
@@ -2192,7 +2265,8 @@ class _GameTileState extends State<GameTile> {
                       ],
                       if (isSolved) ...[
                         Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 10, vertical: 5),
                           decoration: BoxDecoration(
                             color: widget.accentColor,
                             borderRadius: BorderRadius.circular(6.0),
@@ -2203,7 +2277,9 @@ class _GameTileState extends State<GameTile> {
                               fontFamily: 'Geist',
                               fontSize: 11.0,
                               fontWeight: FontWeight.w900,
-                              color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+                              color: isDark
+                                  ? const Color(0xFF1E1E1E)
+                                  : Colors.white,
                               letterSpacing: 0.5,
                             ),
                           ),
@@ -2221,7 +2297,9 @@ class _GameTileState extends State<GameTile> {
                   ),
                 ],
               ),
-              const SizedBox(height: 12.0), // Reduced spacer height to compact vertical stack footprint
+              const SizedBox(
+                  height:
+                      12.0), // Reduced spacer height to compact vertical stack footprint
               // Row 2: Title and play button
               Row(
                 children: [
@@ -2239,7 +2317,8 @@ class _GameTileState extends State<GameTile> {
                             fontWeight: FontWeight.w700,
                             letterSpacing: 0.5,
                             height: 1.0,
-                            color: isDark ? Colors.white : colorScheme.onSurface,
+                            color:
+                                isDark ? Colors.white : colorScheme.onSurface,
                           ),
                         ),
                         const SizedBox(height: 8.0),
@@ -2249,7 +2328,9 @@ class _GameTileState extends State<GameTile> {
                             fontFamily: 'Geist',
                             fontSize: 12.0,
                             fontWeight: FontWeight.w500,
-                            color: isDark ? const Color(0xFF94A3B8) : const Color(0xFF475569),
+                            color: isDark
+                                ? const Color(0xFF94A3B8)
+                                : const Color(0xFF475569),
                             letterSpacing: 0.3,
                           ),
                         ),
