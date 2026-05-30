@@ -108,12 +108,16 @@ class PipesScreen extends ConsumerWidget {
           padding: const EdgeInsets.all(DesignSystem.spaceSM),
           child: GestureDetector(
             onPanStart: (details) {
-              final pos = _getPos(details.localPosition, cellSize);
-              ref.read(pipesNotifierProvider.notifier).startPath(pos.x, pos.y);
+              final pos = _getPos(details.localPosition, cellSize, state.level.size);
+              if (pos != null) {
+                ref.read(pipesNotifierProvider.notifier).startPath(pos.x, pos.y);
+              }
             },
             onPanUpdate: (details) {
-              final pos = _getPos(details.localPosition, cellSize);
-              ref.read(pipesNotifierProvider.notifier).updatePath(pos.x, pos.y);
+              final pos = _getPos(details.localPosition, cellSize, state.level.size);
+              if (pos != null) {
+                ref.read(pipesNotifierProvider.notifier).updatePath(pos.x, pos.y);
+              }
             },
             onPanEnd: (_) {
               ref.read(pipesNotifierProvider.notifier).endPath();
@@ -121,12 +125,14 @@ class PipesScreen extends ConsumerWidget {
             child: SizedBox(
               width: boardSize - DesignSystem.spaceSM * 2,
               height: boardSize - DesignSystem.spaceSM * 2,
-              child: CustomPaint(
-                painter: PipesPainter(
-                  state: state,
-                  cellSize: cellSize,
-                  pipeColors: pipeColors,
-                  gridColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1),
+              child: ClipRect(
+                child: CustomPaint(
+                  painter: PipesPainter(
+                    state: state,
+                    cellSize: cellSize,
+                    pipeColors: pipeColors,
+                    gridColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1),
+                  ),
                 ),
               ),
             ),
@@ -136,11 +142,11 @@ class PipesScreen extends ConsumerWidget {
     );
   }
 
-  Point _getPos(Offset localPos, double cellSize) {
-    return Point(
-      (localPos.dx / cellSize).floor(),
-      (localPos.dy / cellSize).floor(),
-    );
+  Point? _getPos(Offset localPos, double cellSize, int size) {
+    final x = (localPos.dx / cellSize).floor();
+    final y = (localPos.dy / cellSize).floor();
+    if (x < 0 || x >= size || y < 0 || y >= size) return null;
+    return Point(x, y);
   }
 
   void _showVictoryDialog(BuildContext context, WidgetRef ref) async {

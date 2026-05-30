@@ -53,6 +53,7 @@ class PipesNotifier extends _$PipesNotifier {
   }
 
   void startPath(int x, int y) {
+    if (x < 0 || x >= state.level.size || y < 0 || y >= state.level.size) return;
     final point = Point(x, y);
     int? colorIndex;
 
@@ -87,6 +88,7 @@ class PipesNotifier extends _$PipesNotifier {
 
   void updatePath(int x, int y) {
     if (state.activeColorIndex == null) return;
+    if (x < 0 || x >= state.level.size || y < 0 || y >= state.level.size) return;
     final colorIndex = state.activeColorIndex!;
     final point = Point(x, y);
     final currentPath = state.paths[colorIndex];
