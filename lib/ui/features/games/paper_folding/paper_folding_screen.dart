@@ -72,39 +72,41 @@ class _PaperFoldingScreenState extends ConsumerState<PaperFoldingScreen> {
     return GameScaffold(
       title: 'Paper Folding',
       subtitle: l10n.paperFoldingSubtitle,
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
-        child: Column(
-          children: [
-            SizedBox(height: DesignSystem.spaceMD),
-            _buildFoldingSequence(state),
-            const Spacer(),
-            Text(
-              'CHOOSE THE RESULT',
-              style: TextStyle(
-                fontWeight: FontWeight.w900,
-                fontSize: 12,
-                letterSpacing: 1.2,
-                color: colorScheme.onSurface.withValues(alpha: 0.7),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+          child: Column(
+            children: [
+              const SizedBox(height: DesignSystem.spaceMD),
+              _buildFoldingSequence(state),
+              const SizedBox(height: DesignSystem.spaceXL),
+              Text(
+                'CHOOSE THE RESULT',
+                style: TextStyle(
+                  fontWeight: FontWeight.w900,
+                  fontSize: 12,
+                  letterSpacing: 1.2,
+                  color: colorScheme.onSurface.withValues(alpha: 0.7),
+                ),
               ),
-            ),
-            const SizedBox(height: DesignSystem.spaceMD),
-            GridView.builder(
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
-                crossAxisSpacing: DesignSystem.spaceMD,
-                mainAxisSpacing: DesignSystem.spaceMD,
-                childAspectRatio: 1.1,
+              const SizedBox(height: DesignSystem.spaceMD),
+              GridView.builder(
+                shrinkWrap: true,
+                physics: const NeverScrollableScrollPhysics(),
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  crossAxisSpacing: DesignSystem.spaceMD,
+                  mainAxisSpacing: DesignSystem.spaceMD,
+                  childAspectRatio: 1.0,
+                ),
+                itemCount: state.options.length,
+                itemBuilder: (context, index) {
+                  return _buildOption(state, notifier, index);
+                },
               ),
-              itemCount: state.options.length,
-              itemBuilder: (context, index) {
-                return _buildOption(state, notifier, index);
-              },
-            ),
-            const SizedBox(height: DesignSystem.space2XL),
-          ],
+              const SizedBox(height: DesignSystem.space2XL),
+            ],
+          ),
         ),
       ),
     );
@@ -183,25 +185,33 @@ class _PaperFoldingScreenState extends ConsumerState<PaperFoldingScreen> {
     final isCorrect = state.correctIndex == index;
     final showResult = state.selectedIndex != null;
 
-    Color borderColor = Theme.of(context).colorScheme.outline.withValues(alpha: 0.5);
+    Color borderColor = Theme.of(context).colorScheme.outline.withValues(alpha: 0.3);
+    double borderWidth = 2.0;
+
     if (showResult) {
       if (isCorrect) {
         borderColor = DesignSystem.success;
+        borderWidth = 3.0;
       } else if (isSelected) {
         borderColor = DesignSystem.error;
+        borderWidth = 3.0;
       }
     } else if (isSelected) {
       borderColor = DesignSystem.primary;
+      borderWidth = 3.0;
     }
 
     return GestureDetector(
-      onTap: () => notifier.selectOption(index),
+      onTap: () {
+        HapticFeedbackUtil.lightImpact();
+        notifier.selectOption(index);
+      },
       child: Container(
-        padding: const EdgeInsets.all(DesignSystem.spaceXS),
+        padding: const EdgeInsets.all(DesignSystem.spaceSM),
         decoration: BoxDecoration(
           color: Theme.of(context).colorScheme.surface,
           borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
-          border: Border.all(color: borderColor, width: 3),
+          border: Border.all(color: borderColor, width: borderWidth),
           boxShadow: [
             BoxShadow(
               color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.05),
@@ -213,19 +223,24 @@ class _PaperFoldingScreenState extends ConsumerState<PaperFoldingScreen> {
         child: Stack(
           alignment: Alignment.center,
           children: [
-            FittedBox(
-              fit: BoxFit.scaleDown,
-              child: _buildResultGrid(state.options[index], 14),
+            LayoutBuilder(
+              builder: (context, constraints) {
+                final size = min(constraints.maxWidth, constraints.maxHeight);
+                final cellSize = size / (PaperFoldingEngine.gridSize + 1);
+                return _buildResultGrid(state.options[index], cellSize);
+              },
             ),
             if (showResult && isCorrect)
               const Positioned(
-                top: 4, right: 4,
-                child: Icon(Icons.check_circle, color: DesignSystem.success, size: 20),
+                top: -2,
+                right: -2,
+                child: Icon(Icons.check_circle, color: DesignSystem.success, size: 24),
               ),
             if (showResult && isSelected && !isCorrect)
               const Positioned(
-                top: 4, right: 4,
-                child: Icon(Icons.cancel, color: DesignSystem.error, size: 20),
+                top: -2,
+                right: -2,
+                child: Icon(Icons.cancel, color: DesignSystem.error, size: 24),
               ),
           ],
         ),
@@ -236,17 +251,21 @@ class _PaperFoldingScreenState extends ConsumerState<PaperFoldingScreen> {
   Widget _buildResultGrid(List<Point<int>> holes, double cellSize) {
     return Column(
       mainAxisSize: MainAxisSize.min,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: List.generate(PaperFoldingEngine.gridSize, (y) {
         return Row(
           mainAxisSize: MainAxisSize.min,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: List.generate(PaperFoldingEngine.gridSize, (x) {
             final hasHole = holes.any((p) => p.x == x && p.y == y);
             return Container(
               width: cellSize,
               height: cellSize,
-              margin: const EdgeInsets.all(1),
+              margin: const EdgeInsets.all(1.5),
               decoration: BoxDecoration(
-                color: hasHole ? Theme.of(context).colorScheme.onSurface : Theme.of(context).colorScheme.outline.withValues(alpha: 0.5).withValues(alpha: 0.3),
+                color: hasHole
+                    ? Theme.of(context).colorScheme.onSurface
+                    : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1),
                 shape: BoxShape.circle,
               ),
             );
@@ -278,16 +297,23 @@ class FoldStepPainter extends CustomPainter {
 
     // Draw the active area based on previous folds
     double left = 0, top = 0, right = size.width, bottom = size.height;
+    bool hasDiagonal = false;
     for (int i = 0; i < stepIndex; i++) {
       if (folds[i] == FoldType.vertical) right = size.width / 2;
       if (folds[i] == FoldType.horizontal) bottom = size.height / 2;
-      if (folds[i] == FoldType.diagonal) {
-         // Diagonal fold logic for drawing active area is complex, 
-         // let's just draw the full square for simplicity in step diagrams
-      }
+      if (folds[i] == FoldType.diagonal) hasDiagonal = true;
     }
 
-    canvas.drawRect(Rect.fromLTRB(left, top, right, bottom), paint);
+    if (hasDiagonal) {
+      final path = Path()
+        ..moveTo(left, top)
+        ..lineTo(left, bottom)
+        ..lineTo(right, bottom)
+        ..close();
+      canvas.drawPath(path, paint);
+    } else {
+      canvas.drawRect(Rect.fromLTRB(left, top, right, bottom), paint);
+    }
 
     // Draw the fold line for the current step
     final fold = folds[stepIndex];
@@ -348,26 +374,35 @@ class PunchStepPainter extends CustomPainter {
       ..style = PaintingStyle.stroke;
 
     double left = 0, top = 0, right = size.width, bottom = size.height;
+    bool hasDiagonal = false;
     for (int i = 0; i < folds.length; i++) {
       if (folds[i] == FoldType.vertical) right = size.width / 2;
       if (folds[i] == FoldType.horizontal) bottom = size.height / 2;
+      if (folds[i] == FoldType.diagonal) hasDiagonal = true;
     }
 
-    canvas.drawRect(Rect.fromLTRB(left, top, right, bottom), paint);
+    if (hasDiagonal) {
+      final path = Path()
+        ..moveTo(left, top)
+        ..lineTo(left, bottom)
+        ..lineTo(right, bottom)
+        ..close();
+      canvas.drawPath(path, paint);
+    } else {
+      canvas.drawRect(Rect.fromLTRB(left, top, right, bottom), paint);
+    }
 
     // Draw the punch hole
     final punchPaint = Paint()
       ..color = DesignSystem.error
       ..style = PaintingStyle.fill;
 
-    // Calculate grid cell size in the final area
-    // Original grid is 6x6. 
-    // Final area is usually 3x3 (after V and H folds)
-    double gridX = punch.x.toDouble();
-    double gridY = punch.y.toDouble();
-    
     double cellSize = (size.width / PaperFoldingEngine.gridSize);
-    canvas.drawCircle(Offset(gridX * cellSize + cellSize / 2, gridY * cellSize + cellSize / 2), 4, punchPaint);
+    canvas.drawCircle(
+      Offset(punch.x * cellSize + cellSize / 2, punch.y * cellSize + cellSize / 2),
+      4,
+      punchPaint,
+    );
   }
 
   @override

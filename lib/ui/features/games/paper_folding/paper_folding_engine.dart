@@ -44,24 +44,28 @@ class PaperFoldingEngine {
   Map<String, dynamic> generateLevel() {
     final random = Random();
     
-    // We'll use a fixed sequence of folds for simplicity in visualization
-    // But we can randomize which ones are used.
-    // Let's always do Vertical, then Horizontal, maybe Diagonal.
+    // Randomize the order of initial folds
     final folds = [FoldType.vertical, FoldType.horizontal];
+    folds.shuffle();
+
+    // Optionally add a diagonal fold
     if (random.nextBool()) {
       folds.add(FoldType.diagonal);
     }
 
     // Determine the available area for the punch
-    // After V: x in [0, 2]
-    // After H: x in [0, 2], y in [0, 2]
-    // After D: x in [0, 2], y in [0, 2], y <= x
+    // After V/H: x in [0, 2], y in [0, 2] for gridSize 6
+    // After Diagonal: must be in the active triangle.
+    // Based on the painter (arrow from Top-Right to Bottom-Left), 
+    // the active area is the Bottom-Left triangle: y >= x.
     
     List<Point<int>> availablePoints = [];
-    for (int x = 0; x <= 2; x++) {
-      for (int y = 0; y <= 2; y++) {
+    final maxIdx = (gridSize / 2).floor() - 1;
+
+    for (int x = 0; x <= maxIdx; x++) {
+      for (int y = 0; y <= maxIdx; y++) {
         if (folds.contains(FoldType.diagonal)) {
-          if (y <= x) {
+          if (y >= x) {
             availablePoints.add(Point(x, y));
           }
         } else {
@@ -76,29 +80,29 @@ class PaperFoldingEngine {
     // Generate 3 distractors
     final List<List<Point<int>>> options = [correctHoles];
     
-    while (options.length < 4) {
-      // Create a distractor by picking a different punch or slightly modifying the holes
-      final otherPunch = availablePoints[random.nextInt(availablePoints.length)];
-      final otherHoles = getHoles(otherPunch, folds);
-      
-      bool exists = false;
-      for (final opt in options) {
-        if (_areHolesSame(opt, otherHoles)) {
-          exists = true;
-          break;
-        }
-      }
-      
-      if (!exists) {
+    // For more interesting distractors, try to find different punch locations first
+    List<Point<int>> distractorPunches = List.from(availablePoints)..remove(punch);
+    distractorPunches.shuffle();
+
+    for (final p in distractorPunches) {
+      if (options.length >= 4) break;
+      final otherHoles = getHoles(p, folds);
+      if (!options.any((opt) => _areHolesSame(opt, otherHoles))) {
         options.add(otherHoles);
-      } else {
-        // If we can't find a different punch, just randomly add/remove a hole (unlikely to be needed)
-        // Or just move one hole.
-        final modifiedHoles = List<Point<int>>.from(otherHoles);
-        if (modifiedHoles.isNotEmpty) {
-           final i = random.nextInt(modifiedHoles.length);
-           modifiedHoles[i] = Point((modifiedHoles[i].x + 1) % gridSize, modifiedHoles[i].y);
-           options.add(modifiedHoles);
+      }
+    }
+    
+    // If we still don't have enough, we'll have to mutate (unlikely with gridSize 6)
+    while (options.length < 4) {
+      final base = options[random.nextInt(options.length)];
+      final modifiedHoles = List<Point<int>>.from(base);
+      if (modifiedHoles.isNotEmpty) {
+        final i = random.nextInt(modifiedHoles.length);
+        // Move one hole slightly
+        final p = modifiedHoles[i];
+        modifiedHoles[i] = Point((p.x + 1) % gridSize, p.y);
+        if (!options.any((opt) => _areHolesSame(opt, modifiedHoles))) {
+          options.add(modifiedHoles);
         }
       }
     }
