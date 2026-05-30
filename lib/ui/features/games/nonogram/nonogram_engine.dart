@@ -1,12 +1,10 @@
 import 'dart:math';
 
 class NonogramPuzzle {
-  final List<List<bool>> solution;
   final List<List<int>> rowClues;
   final List<List<int>> colClues;
 
   NonogramPuzzle({
-    required this.solution,
     required this.rowClues,
     required this.colClues,
   });
@@ -40,7 +38,6 @@ class NonogramEngine {
     }
 
     return NonogramPuzzle(
-      solution: solution,
       rowClues: rowClues,
       colClues: colClues,
     );
@@ -63,15 +60,33 @@ class NonogramEngine {
     return clues.isEmpty ? [0] : clues;
   }
 
-  bool isCorrect(List<List<int>> currentGrid, List<List<bool>> solution) {
-    // 0: empty, 1: filled, 2: marked (X)
-    for (int r = 0; r < solution.length; r++) {
-      for (int c = 0; c < solution[r].length; c++) {
-        final bool isFilled = currentGrid[r][c] == 1;
-        if (isFilled != solution[r][c]) {
-          return false;
-        }
+  bool isCorrect(List<List<int>> currentGrid, List<List<int>> rowClues, List<List<int>> colClues) {
+    final size = currentGrid.length;
+
+    // Check rows
+    for (int r = 0; r < size; r++) {
+      final List<bool> row = currentGrid[r].map((e) => e == 1).toList();
+      final calculatedClues = _calculateClues(row);
+      if (!_listEquals(calculatedClues, rowClues[r])) return false;
+    }
+
+    // Check columns
+    for (int c = 0; c < size; c++) {
+      final List<bool> column = [];
+      for (int r = 0; r < size; r++) {
+        column.add(currentGrid[r][c] == 1);
       }
+      final calculatedClues = _calculateClues(column);
+      if (!_listEquals(calculatedClues, colClues[c])) return false;
+    }
+
+    return true;
+  }
+
+  bool _listEquals(List<int> a, List<int> b) {
+    if (a.length != b.length) return false;
+    for (int i = 0; i < a.length; i++) {
+      if (a[i] != b[i]) return false;
     }
     return true;
   }

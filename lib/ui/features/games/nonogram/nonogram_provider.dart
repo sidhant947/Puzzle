@@ -9,7 +9,6 @@ class NonogramState {
   final List<List<int>> grid;
   final List<List<int>> rowClues;
   final List<List<int>> colClues;
-  final List<List<bool>> solution;
   final bool isSolved;
   final int size;
 
@@ -17,7 +16,6 @@ class NonogramState {
     required this.grid,
     required this.rowClues,
     required this.colClues,
-    required this.solution,
     this.isSolved = false,
     this.size = 5,
   });
@@ -30,7 +28,6 @@ class NonogramState {
       grid: grid ?? this.grid,
       rowClues: rowClues,
       colClues: colClues,
-      solution: solution,
       isSolved: isSolved ?? this.isSolved,
       size: size,
     );
@@ -55,7 +52,6 @@ class NonogramNotifier extends _$NonogramNotifier {
       grid: List.generate(size, (_) => List.filled(size, 0)),
       rowClues: puzzle.rowClues,
       colClues: puzzle.colClues,
-      solution: puzzle.solution,
       size: size,
     );
   }
@@ -83,7 +79,7 @@ class NonogramNotifier extends _$NonogramNotifier {
       newGrid[r][c] = currentValue == 1 ? 0 : 1;
     }
 
-    final solved = _engine.isCorrect(newGrid, currentState.solution);
+    final solved = _engine.isCorrect(newGrid, currentState.rowClues, currentState.colClues);
     state = AsyncValue.data(currentState.copyWith(grid: newGrid, isSolved: solved));
 
     if (solved) {
