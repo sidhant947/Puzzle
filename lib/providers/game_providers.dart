@@ -33,6 +33,7 @@ List<Map<String, dynamic>> filteredGames(FilteredGamesRef ref, {required String 
     'kenken',
     'typing_speed',
     'quick_math',
+    'math_guess',
     'cryptogram',
     'word_scramble',
     'water_sort',

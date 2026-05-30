@@ -7,7 +7,7 @@ part of 'memory_palace_provider.dart';
 // **************************************************************************
 
 String _$memoryPalaceNotifierHash() =>
-    r'3892f8125b7836771229fb6f09e648e60666daa7';
+    r'3ea7fdbc3350711f3f9250441df0c5c99c2ef8c0';
 
 /// See also [MemoryPalaceNotifier].
 @ProviderFor(MemoryPalaceNotifier)

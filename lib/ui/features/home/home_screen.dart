@@ -85,6 +85,7 @@ import '../games/cryptogram/cryptogram_screen.dart';
 
 import '../games/typing_speed/typing_speed_screen.dart';
 import '../games/quick_math/quick_math_screen.dart';
+import '../games/math_guess/math_guess_screen.dart';
 import '../games/reflex_tap/reflex_tap_screen.dart';
 import '../games/stroop_test/stroop_test_screen.dart';
 import '../games/flanker_test/flanker_test_screen.dart';
@@ -907,6 +908,14 @@ class HomeScreen extends ConsumerStatefulWidget {
       'icon': Icons.bolt_rounded,
       'color': DesignSystem.gameAmber,
       'builder': (context) => const QuickMathScreen(),
+    },
+    {
+      'title': 'Math Guess',
+      'id': 'math_guess',
+      'category': 'MATH',
+      'icon': Icons.question_mark_rounded,
+      'color': DesignSystem.gameIndigo,
+      'builder': (context) => const MathGuessScreen(),
     },
     {
       'title': 'Reflex Tap',
@@ -2020,6 +2029,7 @@ class _GameTileState extends State<GameTile> {
       'kenken': 'SOLVE MATH GRIDS WITH ARITHMETIC CAGES.',
       'typing_speed': 'TYPE SENTENCES ACCURATELY AGAINST CLOCK.',
       'quick_math': 'SOLVE ARITHMETIC QUESTIONS AT TOP SPEED.',
+      'math_guess': 'GUESS THE HIDDEN NUMBER WITHIN 10 CHANCES.',
       'reflex_tap': 'TAP STIMULI AS FAST AS HUMANLY POSSIBLE.',
       'stroop_test': 'RESOLVE CONFLICT BETWEEN WORDS AND COLORS.',
       'flanker_test': 'TAP DIRECTIONS MATCHING CENTER ARROWS FAST.',

@@ -7,7 +7,7 @@ part of 'block_count_3d_provider.dart';
 // **************************************************************************
 
 String _$blockCount3DNotifierHash() =>
-    r'2a50ce75dc9eaf955b268011e8403e88c500d9a9';
+    r'c959bdf26e1916e4499e6b1b7dbeddbcf82145f3';
 
 /// See also [BlockCount3DNotifier].
 @ProviderFor(BlockCount3DNotifier)

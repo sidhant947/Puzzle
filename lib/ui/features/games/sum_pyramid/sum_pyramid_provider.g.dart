@@ -7,7 +7,7 @@ part of 'sum_pyramid_provider.dart';
 // **************************************************************************
 
 String _$sumPyramidNotifierHash() =>
-    r'274e08aa141281811347f4b87e38108016f749d6';
+    r'09d03dee906b2bc7a8e47f294f502c848b18f072';
 
 /// See also [SumPyramidNotifier].
 @ProviderFor(SumPyramidNotifier)

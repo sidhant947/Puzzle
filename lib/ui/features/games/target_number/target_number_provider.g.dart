@@ -7,7 +7,7 @@ part of 'target_number_provider.dart';
 // **************************************************************************
 
 String _$targetNumberNotifierHash() =>
-    r'5bacdd54f91c5e0d1a68ccce6036be33aae086fe';
+    r'e060d604e28d80741023c53fec2a54516cf0badc';
 
 /// See also [TargetNumberNotifier].
 @ProviderFor(TargetNumberNotifier)
