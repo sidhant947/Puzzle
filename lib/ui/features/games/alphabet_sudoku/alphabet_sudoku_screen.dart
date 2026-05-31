@@ -7,6 +7,7 @@ import '../../../../widgets/tangible.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 import '../../../core/juice/game_scaffold.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 
 class AlphabetSudokuScreen extends ConsumerStatefulWidget {
   const AlphabetSudokuScreen({super.key});
@@ -21,6 +22,7 @@ class _AlphabetSudokuScreenState extends ConsumerState<AlphabetSudokuScreen> {
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(alphabetSudokuNotifierProvider);
     final notifier = ref.read(alphabetSudokuNotifierProvider.notifier);
+    final l10n = AppLocalizations.of(context)!;
 
     ref.listen<AsyncValue<AlphabetSudokuState>>(alphabetSudokuNotifierProvider, (previous, next) {
       if (next.hasValue && next.value!.isSolved && !(previous?.value?.isSolved ?? false)) {
@@ -29,8 +31,8 @@ class _AlphabetSudokuScreenState extends ConsumerState<AlphabetSudokuScreen> {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'SUDOKU SOLVED!',
-            message: 'Brilliant! You mastered the letters.',
+            title: l10n.alphabetSudokuWinTitle,
+            message: l10n.alphabetSudokuWinMessage,
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
@@ -45,8 +47,8 @@ class _AlphabetSudokuScreenState extends ConsumerState<AlphabetSudokuScreen> {
     });
 
     return GameScaffold(
-      title: 'ALPHABET SUDOKU',
-      subtitle: 'Fill the grid so every row, column, and box contains letters A-I.',
+      title: l10n.alphabetSudokuTitle,
+      subtitle: l10n.alphabetSudokuSubtitle,
       actions: [
         TangibleButton(
           color: colorScheme.surface,

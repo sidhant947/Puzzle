@@ -776,5 +776,109 @@
   "angleFinderTitle": "Angle Finder",
   "angleFinderSubtitle": "Calculate the missing angle in the geometric problem.",
   "sumSnakeTitle": "Sum Snake",
-  "sumSnakeSubtitle": "Connect adjacent numbers to reach the target sum."
+  "sumSnakeSubtitle": "Connect adjacent numbers to reach the target sum.",
+  "baseShiftTitle": "BASE SHIFT BLITZ",
+  "baseShiftSubtitle": "Solve in decimal",
+  "baseShiftDescription": "Solve the equation and type the answer in decimal (Base 10).",
+  "baseShiftEquation": "EQUATION",
+  "baseShiftHint": "Enter decimal result...",
+  "baseShiftCorrect": "Correct!",
+  "baseShiftIncorrect": "Incorrect!",
+  "baseShiftSubmit": "SUBMIT",
+  "baseShiftQuickGuide": "Quick Guide:",
+  "baseShiftBinary": "Binary (bin): Base 2 (0, 1)",
+  "baseShiftHex": "Hexadecimal (0x): Base 16 (0-9, A-F)",
+  "baseShiftDecimal": "Decimal (dec): Base 10 (0-9)",
+  "baseShiftWinTitle": "MATH WIZARD!",
+  "baseShiftWinMessage": "You correctly solved 5 base-shift equations!",
+  "blockCount3DTitle": "Block Count 3D",
+  "blockCount3DSubtitle": "DRAG TO ROTATE • COUNT HIDDEN BLOCKS",
+  "blockCount3DHowMany": "HOW MANY BLOCKS?",
+  "blockCount3DSubmitGuess": "SUBMIT GUESS",
+  "blockCount3DNotQuite": "Not quite! Try rotating to count again.",
+  "blockCount3DExcellent": "EXCELLENT",
+  "blockCount3DWinMessage": "You correctly identified all {count} blocks!",
+  "@blockCount3DWinMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "blockCount3DHowToPlayDescription": "1. Drag your finger across the 3D viewport to rotate the block stack.\n\n2. Count all the blocks in the stack.\n\n3. Remember: a block in the air must have structural support blocks underneath it (hidden blocks!).\n\n4. Type your answer in the input field and tap \"SUBMIT GUESS\" to check.",
+  "alphabetSudokuTitle": "ALPHABET SUDOKU",
+  "alphabetSudokuSubtitle": "Fill the grid so every row, column, and box contains letters A-I.",
+  "alphabetSudokuWinTitle": "SUDOKU SOLVED!",
+  "alphabetSudokuWinMessage": "Brilliant! You mastered the letters.",
+  "classicMazeTitle": "Classic Maze",
+  "classicMazeSubtitle": "EXPLORE & SOLVE • A NEW MAZE EACH GAME",
+  "classicMazeWinTitle": "MAZE CLEARED",
+  "classicMazeWinMessage": "Incredible navigation! You solved the maze in {count} moves.",
+  "@classicMazeWinMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "classicMazeMoves": "MOVES: ",
+  "classicMazeHowToPlayDescription": "1. Guide the glowing yellow marble (player) to the green portal (exit) at the bottom-right.\n\n2. Use swipes anywhere on the maze, physical keyboard arrow keys, or the arrow pad buttons at the bottom to move.\n\n3. The purple trail shows the path you have explored. Backtrack onto your trail to erase it dynamically!\n\n4. Toggle difficulties from the top action bar to challenge yourself with larger mazes!",
+  "conjunctionSearchTitle": "Conjunction Search",
+  "conjunctionSearchSubtitle": "Attentional Focus & Feature Conjunction",
+  "conjunctionSearchWinTitle": "VICTORY",
+  "conjunctionSearchWinMessage": "You have found all targets with perfect attentional focus!",
+  "conjunctionSearchHowToPlayDescription": "A specific target shape and color combination will be shown in the instructions. Find and tap it in the dense grid as quickly as possible. Distractor shapes share either the same color or shape, so look closely!",
+  "conjunctionSearchRound": "ROUND: ",
+  "conjunctionSearchScore": "SCORE: ",
+  "conjunctionSearchFind": "FIND: ",
+  "shapeCircle": "CIRCLE",
+  "shapeSquare": "SQUARE",
+  "shapeTriangle": "TRIANGLE",
+  "shapeStar": "STAR",
+  "colorRedLabel": "RED",
+  "colorBlueLabel": "BLUE",
+  "colorGreenLabel": "GREEN",
+  "colorAmberLabel": "AMBER",
+  "cubeNetFoldTitle": "Cube Net Fold",
+  "cubeNetFoldSubtitle": "SELECT THE MATCHING 3D CUBE OPTION",
+  "cubeNetFoldWinTitle": "CORRECT",
+  "cubeNetFoldWinMessage": "You have perfect 3D spatial folding logic!",
+  "cubeNetFoldHowToPlayDescription": "1. Look at the unfolded 2D net at the top.\n\n2. Mentally fold the net into a 3D cube.\n\n3. Choose the option below that represents a valid 3D perspective of that folded cube.\n\n4. Be careful: opposite faces in the net cannot be adjacent in 3D, and the order of adjacent faces must match!",
+  "cubeNetFoldUnfoldedNet": "UNFOLDED 2D NET",
+  "cubeNetFoldWhichMatches": "WHICH CUBE MATCHES?",
+  "cubeNetFoldIncorrect": "Incorrect fold logic! Tap Reset or change your choice.",
+  "cubeNetFoldSubmitChoice": "SUBMIT CHOICE",
+  "cubeNetFoldFailed": "FAILED (TAP RESET)",
+  "faceTraitAssociationMemorize": "MEMORIZE ALL 4 PEOPLE",
+  "faceTraitAssociationPersonOf": "PERSON {current} OF {total}",
+  "@faceTraitAssociationPersonOf": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "faceTraitAssociationWhatOccupation": "WHAT IS THEIR OCCUPATION?",
+  "faceTraitAssociationWhatHobby": "WHAT IS THEIR HOBBY?",
+  "faceTraitAssociationWinTitle": "MEMORY MASTER!",
+  "faceTraitAssociationLoseTitle": "GAME OVER",
+  "faceTraitAssociationScoreMessage": "You got {correct} out of {total} correct.",
+  "@faceTraitAssociationScoreMessage": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "topologyTitle": "TOPOLOGY",
+  "topologySubtitle": "Are these shapes topologically equivalent? (Can one be deformed into the other without cutting or gluing?)",
+  "topologyWinTitle": "GEOMETRY GENIUS!",
+  "topologyWinMessage": "You correctly identified 10 topological pairs!",
+  "topologyScore": "SCORE: "
 }

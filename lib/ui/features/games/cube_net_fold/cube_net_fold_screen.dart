@@ -7,6 +7,7 @@ import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 
 class CubeNetFoldScreen extends ConsumerStatefulWidget {
   const CubeNetFoldScreen({super.key});
@@ -25,6 +26,7 @@ class _CubeNetFoldScreenState extends ConsumerState<CubeNetFoldScreen> {
   }
 
   void _showHowToPlay() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => Dialog(
@@ -35,7 +37,7 @@ class _CubeNetFoldScreenState extends ConsumerState<CubeNetFoldScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'HOW TO PLAY',
+                l10n.howToPlay.toUpperCase(),
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w900,
@@ -44,10 +46,7 @@ class _CubeNetFoldScreenState extends ConsumerState<CubeNetFoldScreen> {
               ),
               const SizedBox(height: DesignSystem.spaceMD),
               Text(
-                '1. Look at the unfolded 2D net at the top.\n\n'
-                '2. Mentally fold the net into a 3D cube.\n\n'
-                '3. Choose the option below that represents a valid 3D perspective of that folded cube.\n\n'
-                '4. Be careful: opposite faces in the net cannot be adjacent in 3D, and the order of adjacent faces must match!',
+                l10n.cubeNetFoldHowToPlayDescription,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
@@ -57,7 +56,7 @@ class _CubeNetFoldScreenState extends ConsumerState<CubeNetFoldScreen> {
               const SizedBox(height: DesignSystem.spaceLG),
               TangibleButton(
                 onTap: () => Navigator.of(context).pop(),
-                child: const Text('GOT IT'),
+                child: Text(l10n.gotIt.toUpperCase()),
               ),
             ],
           ),
@@ -100,6 +99,7 @@ class _CubeNetFoldScreenState extends ConsumerState<CubeNetFoldScreen> {
     final state = ref.watch(cubeNetFoldNotifierProvider);
     final notifier = ref.read(cubeNetFoldNotifierProvider.notifier);
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     if (state.isVictory) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -107,8 +107,8 @@ class _CubeNetFoldScreenState extends ConsumerState<CubeNetFoldScreen> {
           context: context,
           barrierDismissible: false,
           builder: (dialogCtx) => GameCompletionDialog(
-            title: 'CORRECT',
-            message: 'You have perfect 3D spatial folding logic!',
+            title: l10n.cubeNetFoldWinTitle,
+            message: l10n.cubeNetFoldWinMessage,
             onHome: () {
               Navigator.of(dialogCtx).pop();
               Navigator.of(context).pop();
@@ -123,8 +123,8 @@ class _CubeNetFoldScreenState extends ConsumerState<CubeNetFoldScreen> {
     }
 
     return GameScaffold(
-      title: 'Cube Net Fold',
-      subtitle: 'SELECT THE MATCHING 3D CUBE OPTION',
+      title: l10n.cubeNetFoldTitle,
+      subtitle: l10n.cubeNetFoldSubtitle,
       onHowToPlay: _showHowToPlay,
       onReset: notifier.reset,
       body: state.isLoading
@@ -137,7 +137,7 @@ class _CubeNetFoldScreenState extends ConsumerState<CubeNetFoldScreen> {
                   
                   // Section 1: The 2D net card
                   Text(
-                    'UNFOLDED 2D NET',
+                    l10n.cubeNetFoldUnfoldedNet,
                     style: theme.textTheme.titleMedium?.copyWith(
                       letterSpacing: 1.0,
                       fontSize: 13,
@@ -164,7 +164,7 @@ class _CubeNetFoldScreenState extends ConsumerState<CubeNetFoldScreen> {
                   
                   // Section 2: The folded 3D cube options
                   Text(
-                    'WHICH CUBE MATCHES?',
+                    l10n.cubeNetFoldWhichMatches,
                     style: theme.textTheme.titleMedium?.copyWith(
                       letterSpacing: 1.0,
                       fontSize: 13,
@@ -260,9 +260,9 @@ class _CubeNetFoldScreenState extends ConsumerState<CubeNetFoldScreen> {
                               } else {
                                 HapticFeedbackUtil.error();
                                 ScaffoldMessenger.of(context).showSnackBar(
-                                  const SnackBar(
-                                    content: Text('Incorrect fold logic! Tap Reset or change your choice.'),
-                                    duration: Duration(seconds: 2),
+                                  SnackBar(
+                                    content: Text(l10n.cubeNetFoldIncorrect),
+                                    duration: const Duration(seconds: 2),
                                   ),
                                 );
                               }
@@ -275,7 +275,7 @@ class _CubeNetFoldScreenState extends ConsumerState<CubeNetFoldScreen> {
                           : (state.isFailed ? theme.colorScheme.error : const Color(0xFF047857)),
                       child: Center(
                         child: Text(
-                          state.isFailed ? 'FAILED (TAP RESET)' : 'SUBMIT CHOICE',
+                          state.isFailed ? l10n.cubeNetFoldFailed : l10n.cubeNetFoldSubmitChoice,
                           style: const TextStyle(
                             color: Colors.white,
                             fontWeight: FontWeight.w900,

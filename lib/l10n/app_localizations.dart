@@ -2931,6 +2931,426 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Connect adjacent numbers to reach the target sum.'**
   String get sumSnakeSubtitle;
+
+  /// No description provided for @baseShiftTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'BASE SHIFT BLITZ'**
+  String get baseShiftTitle;
+
+  /// No description provided for @baseShiftSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Solve in decimal'**
+  String get baseShiftSubtitle;
+
+  /// No description provided for @baseShiftDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Solve the equation and type the answer in decimal (Base 10).'**
+  String get baseShiftDescription;
+
+  /// No description provided for @baseShiftEquation.
+  ///
+  /// In en, this message translates to:
+  /// **'EQUATION'**
+  String get baseShiftEquation;
+
+  /// No description provided for @baseShiftHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter decimal result...'**
+  String get baseShiftHint;
+
+  /// No description provided for @baseShiftCorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct!'**
+  String get baseShiftCorrect;
+
+  /// No description provided for @baseShiftIncorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect!'**
+  String get baseShiftIncorrect;
+
+  /// No description provided for @baseShiftSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'SUBMIT'**
+  String get baseShiftSubmit;
+
+  /// No description provided for @baseShiftQuickGuide.
+  ///
+  /// In en, this message translates to:
+  /// **'Quick Guide:'**
+  String get baseShiftQuickGuide;
+
+  /// No description provided for @baseShiftBinary.
+  ///
+  /// In en, this message translates to:
+  /// **'Binary (bin): Base 2 (0, 1)'**
+  String get baseShiftBinary;
+
+  /// No description provided for @baseShiftHex.
+  ///
+  /// In en, this message translates to:
+  /// **'Hexadecimal (0x): Base 16 (0-9, A-F)'**
+  String get baseShiftHex;
+
+  /// No description provided for @baseShiftDecimal.
+  ///
+  /// In en, this message translates to:
+  /// **'Decimal (dec): Base 10 (0-9)'**
+  String get baseShiftDecimal;
+
+  /// No description provided for @baseShiftWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MATH WIZARD!'**
+  String get baseShiftWinTitle;
+
+  /// No description provided for @baseShiftWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You correctly solved 5 base-shift equations!'**
+  String get baseShiftWinMessage;
+
+  /// No description provided for @blockCount3DTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Block Count 3D'**
+  String get blockCount3DTitle;
+
+  /// No description provided for @blockCount3DSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'DRAG TO ROTATE • COUNT HIDDEN BLOCKS'**
+  String get blockCount3DSubtitle;
+
+  /// No description provided for @blockCount3DHowMany.
+  ///
+  /// In en, this message translates to:
+  /// **'HOW MANY BLOCKS?'**
+  String get blockCount3DHowMany;
+
+  /// No description provided for @blockCount3DSubmitGuess.
+  ///
+  /// In en, this message translates to:
+  /// **'SUBMIT GUESS'**
+  String get blockCount3DSubmitGuess;
+
+  /// No description provided for @blockCount3DNotQuite.
+  ///
+  /// In en, this message translates to:
+  /// **'Not quite! Try rotating to count again.'**
+  String get blockCount3DNotQuite;
+
+  /// No description provided for @blockCount3DExcellent.
+  ///
+  /// In en, this message translates to:
+  /// **'EXCELLENT'**
+  String get blockCount3DExcellent;
+
+  /// No description provided for @blockCount3DWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You correctly identified all {count} blocks!'**
+  String blockCount3DWinMessage(int count);
+
+  /// No description provided for @blockCount3DHowToPlayDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'1. Drag your finger across the 3D viewport to rotate the block stack.\n\n2. Count all the blocks in the stack.\n\n3. Remember: a block in the air must have structural support blocks underneath it (hidden blocks!).\n\n4. Type your answer in the input field and tap \"SUBMIT GUESS\" to check.'**
+  String get blockCount3DHowToPlayDescription;
+
+  /// No description provided for @alphabetSudokuTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'ALPHABET SUDOKU'**
+  String get alphabetSudokuTitle;
+
+  /// No description provided for @alphabetSudokuSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill the grid so every row, column, and box contains letters A-I.'**
+  String get alphabetSudokuSubtitle;
+
+  /// No description provided for @alphabetSudokuWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SUDOKU SOLVED!'**
+  String get alphabetSudokuWinTitle;
+
+  /// No description provided for @alphabetSudokuWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Brilliant! You mastered the letters.'**
+  String get alphabetSudokuWinMessage;
+
+  /// No description provided for @classicMazeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Classic Maze'**
+  String get classicMazeTitle;
+
+  /// No description provided for @classicMazeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'EXPLORE & SOLVE • A NEW MAZE EACH GAME'**
+  String get classicMazeSubtitle;
+
+  /// No description provided for @classicMazeWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MAZE CLEARED'**
+  String get classicMazeWinTitle;
+
+  /// No description provided for @classicMazeWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Incredible navigation! You solved the maze in {count} moves.'**
+  String classicMazeWinMessage(int count);
+
+  /// No description provided for @classicMazeMoves.
+  ///
+  /// In en, this message translates to:
+  /// **'MOVES: '**
+  String get classicMazeMoves;
+
+  /// No description provided for @classicMazeHowToPlayDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'1. Guide the glowing yellow marble (player) to the green portal (exit) at the bottom-right.\n\n2. Use swipes anywhere on the maze, physical keyboard arrow keys, or the arrow pad buttons at the bottom to move.\n\n3. The purple trail shows the path you have explored. Backtrack onto your trail to erase it dynamically!\n\n4. Toggle difficulties from the top action bar to challenge yourself with larger mazes!'**
+  String get classicMazeHowToPlayDescription;
+
+  /// No description provided for @conjunctionSearchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Conjunction Search'**
+  String get conjunctionSearchTitle;
+
+  /// No description provided for @conjunctionSearchSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Attentional Focus & Feature Conjunction'**
+  String get conjunctionSearchSubtitle;
+
+  /// No description provided for @conjunctionSearchWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'VICTORY'**
+  String get conjunctionSearchWinTitle;
+
+  /// No description provided for @conjunctionSearchWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You have found all targets with perfect attentional focus!'**
+  String get conjunctionSearchWinMessage;
+
+  /// No description provided for @conjunctionSearchHowToPlayDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'A specific target shape and color combination will be shown in the instructions. Find and tap it in the dense grid as quickly as possible. Distractor shapes share either the same color or shape, so look closely!'**
+  String get conjunctionSearchHowToPlayDescription;
+
+  /// No description provided for @conjunctionSearchRound.
+  ///
+  /// In en, this message translates to:
+  /// **'ROUND: '**
+  String get conjunctionSearchRound;
+
+  /// No description provided for @conjunctionSearchScore.
+  ///
+  /// In en, this message translates to:
+  /// **'SCORE: '**
+  String get conjunctionSearchScore;
+
+  /// No description provided for @conjunctionSearchFind.
+  ///
+  /// In en, this message translates to:
+  /// **'FIND: '**
+  String get conjunctionSearchFind;
+
+  /// No description provided for @shapeCircle.
+  ///
+  /// In en, this message translates to:
+  /// **'CIRCLE'**
+  String get shapeCircle;
+
+  /// No description provided for @shapeSquare.
+  ///
+  /// In en, this message translates to:
+  /// **'SQUARE'**
+  String get shapeSquare;
+
+  /// No description provided for @shapeTriangle.
+  ///
+  /// In en, this message translates to:
+  /// **'TRIANGLE'**
+  String get shapeTriangle;
+
+  /// No description provided for @shapeStar.
+  ///
+  /// In en, this message translates to:
+  /// **'STAR'**
+  String get shapeStar;
+
+  /// No description provided for @colorRedLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'RED'**
+  String get colorRedLabel;
+
+  /// No description provided for @colorBlueLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'BLUE'**
+  String get colorBlueLabel;
+
+  /// No description provided for @colorGreenLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'GREEN'**
+  String get colorGreenLabel;
+
+  /// No description provided for @colorAmberLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'AMBER'**
+  String get colorAmberLabel;
+
+  /// No description provided for @cubeNetFoldTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cube Net Fold'**
+  String get cubeNetFoldTitle;
+
+  /// No description provided for @cubeNetFoldSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SELECT THE MATCHING 3D CUBE OPTION'**
+  String get cubeNetFoldSubtitle;
+
+  /// No description provided for @cubeNetFoldWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'CORRECT'**
+  String get cubeNetFoldWinTitle;
+
+  /// No description provided for @cubeNetFoldWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You have perfect 3D spatial folding logic!'**
+  String get cubeNetFoldWinMessage;
+
+  /// No description provided for @cubeNetFoldHowToPlayDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'1. Look at the unfolded 2D net at the top.\n\n2. Mentally fold the net into a 3D cube.\n\n3. Choose the option below that represents a valid 3D perspective of that folded cube.\n\n4. Be careful: opposite faces in the net cannot be adjacent in 3D, and the order of adjacent faces must match!'**
+  String get cubeNetFoldHowToPlayDescription;
+
+  /// No description provided for @cubeNetFoldUnfoldedNet.
+  ///
+  /// In en, this message translates to:
+  /// **'UNFOLDED 2D NET'**
+  String get cubeNetFoldUnfoldedNet;
+
+  /// No description provided for @cubeNetFoldWhichMatches.
+  ///
+  /// In en, this message translates to:
+  /// **'WHICH CUBE MATCHES?'**
+  String get cubeNetFoldWhichMatches;
+
+  /// No description provided for @cubeNetFoldIncorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect fold logic! Tap Reset or change your choice.'**
+  String get cubeNetFoldIncorrect;
+
+  /// No description provided for @cubeNetFoldSubmitChoice.
+  ///
+  /// In en, this message translates to:
+  /// **'SUBMIT CHOICE'**
+  String get cubeNetFoldSubmitChoice;
+
+  /// No description provided for @cubeNetFoldFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'FAILED (TAP RESET)'**
+  String get cubeNetFoldFailed;
+
+  /// No description provided for @faceTraitAssociationMemorize.
+  ///
+  /// In en, this message translates to:
+  /// **'MEMORIZE ALL 4 PEOPLE'**
+  String get faceTraitAssociationMemorize;
+
+  /// No description provided for @faceTraitAssociationPersonOf.
+  ///
+  /// In en, this message translates to:
+  /// **'PERSON {current} OF {total}'**
+  String faceTraitAssociationPersonOf(int current, int total);
+
+  /// No description provided for @faceTraitAssociationWhatOccupation.
+  ///
+  /// In en, this message translates to:
+  /// **'WHAT IS THEIR OCCUPATION?'**
+  String get faceTraitAssociationWhatOccupation;
+
+  /// No description provided for @faceTraitAssociationWhatHobby.
+  ///
+  /// In en, this message translates to:
+  /// **'WHAT IS THEIR HOBBY?'**
+  String get faceTraitAssociationWhatHobby;
+
+  /// No description provided for @faceTraitAssociationWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MEMORY MASTER!'**
+  String get faceTraitAssociationWinTitle;
+
+  /// No description provided for @faceTraitAssociationLoseTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'GAME OVER'**
+  String get faceTraitAssociationLoseTitle;
+
+  /// No description provided for @faceTraitAssociationScoreMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You got {correct} out of {total} correct.'**
+  String faceTraitAssociationScoreMessage(int correct, int total);
+
+  /// No description provided for @topologyTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'TOPOLOGY'**
+  String get topologyTitle;
+
+  /// No description provided for @topologySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Are these shapes topologically equivalent? (Can one be deformed into the other without cutting or gluing?)'**
+  String get topologySubtitle;
+
+  /// No description provided for @topologyWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'GEOMETRY GENIUS!'**
+  String get topologyWinTitle;
+
+  /// No description provided for @topologyWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You correctly identified 10 topological pairs!'**
+  String get topologyWinMessage;
+
+  /// No description provided for @topologyScore.
+  ///
+  /// In en, this message translates to:
+  /// **'SCORE: '**
+  String get topologyScore;
 }
 
 class _AppLocalizationsDelegate

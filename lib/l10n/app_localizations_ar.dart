@@ -317,7 +317,7 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get missingVowelsHowToPlay =>
-      'تظهر كلمة مع إخفاء حروف العلة الخاصة بها (A, E, I, O, U). خمن الكلمة الكاملة!';
+      'تظهر كلمة مع إخفاء حروف العلة الخاصة بها (A, E, I, O, U) تخمن الكلمة الكاملة!';
 
   @override
   String get wordScrambleTitle => 'بعثرة الكلمات';
@@ -1512,58 +1512,284 @@ class AppLocalizationsAr extends AppLocalizations {
   String get game2048Instruction => 'اسحب في أي اتجاه للدمج';
 
   @override
-  String get fibonacciMergeTitle => 'Fibonacci Merge';
+  String get fibonacciMergeTitle => 'دمج فيبوناتشي';
 
   @override
   String get fibonacciMergeSubtitle =>
-      'Merge consecutive Fibonacci numbers (1, 1, 2, 3, 5, 8, 13...).';
+      'ادمج أرقام فيبوناتشي المتتالية (1، 1، 2، 3، 5، 8، 13...).';
 
   @override
-  String get sequenceSleuthTitle => 'Sequence Sleuth';
+  String get sequenceSleuthTitle => 'مخبر التسلسل';
 
   @override
   String get sequenceSleuthSubtitle =>
-      'Find the missing number in the mathematical sequence.';
+      'ابحث عن الرقم المفقود في التسلسل الرياضي.';
 
   @override
-  String get divisibilityDashTitle => 'Divisibility Dash';
+  String get divisibilityDashTitle => 'سباق القابلية للقسمة';
 
   @override
   String get divisibilityDashSubtitle =>
-      'Tap all single-digit divisors (2-9) for the given number.';
+      'اضغط على جميع القواسم المكونة من رقم واحد (2-9) للرقم المعطى.';
 
   @override
-  String get percentagePeakTitle => 'Percentage Peak';
+  String get percentagePeakTitle => 'قمة النسبة المئوية';
 
   @override
   String get percentagePeakSubtitle =>
-      'Solve mental percentage calculations quickly.';
+      'حل حسابات النسبة المئوية الذهنية بسرعة.';
 
   @override
-  String get vennNumbersTitle => 'Venn Numbers';
+  String get vennNumbersTitle => 'أرقام فين';
 
   @override
-  String get vennNumbersSubtitle =>
-      'Categorize numbers into the correct Venn diagram regions.';
+  String get vennNumbersSubtitle => 'صنف الأرقام في مناطق مخطط فين الصحيحة.';
 
   @override
-  String get commonDenominatorTitle => 'Common Denominator';
+  String get commonDenominatorTitle => 'القاسم المشترك';
 
   @override
   String get commonDenominatorSubtitle =>
-      'Find the Greatest Common Divisor or Least Common Multiple.';
+      'أوجد القاسم المشترك الأكبر أو المضاعف المشترك الأصغر.';
 
   @override
-  String get angleFinderTitle => 'Angle Finder';
+  String get angleFinderTitle => 'مكتشف الزوايا';
 
   @override
   String get angleFinderSubtitle =>
-      'Calculate the missing angle in the geometric problem.';
+      'احسب الزاوية المفقودة في المسألة الهندسية.';
 
   @override
-  String get sumSnakeTitle => 'Sum Snake';
+  String get sumSnakeTitle => 'ثعبان المجموع';
 
   @override
   String get sumSnakeSubtitle =>
-      'Connect adjacent numbers to reach the target sum.';
+      'صل الأرقام المتجاورة للوصول إلى المجموع المستهدف.';
+
+  @override
+  String get baseShiftTitle => 'هجوم تحويل القواعد';
+
+  @override
+  String get baseShiftSubtitle => 'حل بالعشري';
+
+  @override
+  String get baseShiftDescription =>
+      'حل المعادلة واكتب الإجابة بالنظام العشري (القاعدة 10).';
+
+  @override
+  String get baseShiftEquation => 'المعادلة';
+
+  @override
+  String get baseShiftHint => 'أدخل النتيجة العشرية...';
+
+  @override
+  String get baseShiftCorrect => 'صحيح!';
+
+  @override
+  String get baseShiftIncorrect => 'خطأ!';
+
+  @override
+  String get baseShiftSubmit => 'إرسال';
+
+  @override
+  String get baseShiftQuickGuide => 'دليل سريع:';
+
+  @override
+  String get baseShiftBinary => 'ثنائي (bin): قاعدة 2 (0, 1)';
+
+  @override
+  String get baseShiftHex => 'ستة عشري (0x): قاعدة 16 (0-9, A-F)';
+
+  @override
+  String get baseShiftDecimal => 'عشري (dec): قاعدة 10 (0-9)';
+
+  @override
+  String get baseShiftWinTitle => 'ساحر الرياضيات!';
+
+  @override
+  String get baseShiftWinMessage => 'لقد حللت 5 معادلات تحويل قواعد بشكل صحيح!';
+
+  @override
+  String get blockCount3DTitle => 'عد المكعبات ثلاثي الأبعاد';
+
+  @override
+  String get blockCount3DSubtitle => 'اسحب للتدوير • عد المكعبات المخفية';
+
+  @override
+  String get blockCount3DHowMany => 'كم عدد المكعبات؟';
+
+  @override
+  String get blockCount3DSubmitGuess => 'إرسال التخمين';
+
+  @override
+  String get blockCount3DNotQuite => 'ليس تماماً! حاول التدوير للعد مرة أخرى.';
+
+  @override
+  String get blockCount3DExcellent => 'ممتاز';
+
+  @override
+  String blockCount3DWinMessage(int count) {
+    return 'لقد حددت جميع المكعبات الـ $count بشكل صحيح!';
+  }
+
+  @override
+  String get blockCount3DHowToPlayDescription =>
+      '1. اسحب إصبعك عبر شاشة العرض ثلاثية الأبعاد لتدوير كومة المكعبات.\n\n2. عد جميع المكعبات في الكومة.\n\n3. تذكر: يجب أن يحتوي المكعب الموجود في الهواء على مكعبات دعم هيكلي تحته (مكعبات مخفية!).\n\n4. اكتب إجابتك واضغط على \"إرسال التخمين\" للتحقق.';
+
+  @override
+  String get alphabetSudokuTitle => 'سودوكو الأبجدية';
+
+  @override
+  String get alphabetSudokuSubtitle =>
+      'املأ الشبكة بحيث يحتوي كل صف وعمود ومربع على الحروف A-I.';
+
+  @override
+  String get alphabetSudokuWinTitle => 'تم حل السودوكو!';
+
+  @override
+  String get alphabetSudokuWinMessage => 'عبقري! لقد أتقنت الحروف.';
+
+  @override
+  String get classicMazeTitle => 'المتاهة الكلاسيكية';
+
+  @override
+  String get classicMazeSubtitle => 'استكشف وحل • متاهة جديدة في كل لعبة';
+
+  @override
+  String get classicMazeWinTitle => 'تم اجتياز المتاهة';
+
+  @override
+  String classicMazeWinMessage(int count) {
+    return 'ملاحة مذهلة! لقد حللت المتاهة في $count حركات.';
+  }
+
+  @override
+  String get classicMazeMoves => 'الحركات: ';
+
+  @override
+  String get classicMazeHowToPlayDescription =>
+      '1. وجه الكرة الصفراء المتوهجة (اللاعب) إلى البوابة الخضراء (المخرج) في أسفل اليمين.\n\n2. اسحب في أي مكان، أو استخدم مفاتيح الأسهم، أو أزرار لوحة الأسهم للتحرك.\n\n3. يظهر المسار الأرجواني المسار الذي استكشفته. عد إلى مسارك لمسحه ديناميكياً!\n\n4. بدّل الصعوبات لتحدي نفسك بمتاهات أكبر.';
+
+  @override
+  String get conjunctionSearchTitle => 'البحث المجمع';
+
+  @override
+  String get conjunctionSearchSubtitle => 'التركيز الانتباهي ودمج الميزات';
+
+  @override
+  String get conjunctionSearchWinTitle => 'نصر';
+
+  @override
+  String get conjunctionSearchWinMessage =>
+      'لقد وجدت جميع الأهداف بتركيز انتباهي مثالي!';
+
+  @override
+  String get conjunctionSearchHowToPlayDescription =>
+      'سيظهر مزيج محدد من الشكل واللون في التعليمات. ابحث عنه واضغط عليه في الشبكة بأسرع ما يمكن. تشارك الأشكال المشتتة إما في اللون أو الشكل، لذا انظر بتمعن!';
+
+  @override
+  String get conjunctionSearchRound => 'الجولة: ';
+
+  @override
+  String get conjunctionSearchScore => 'النتيجة: ';
+
+  @override
+  String get conjunctionSearchFind => 'ابحث عن: ';
+
+  @override
+  String get shapeCircle => 'دائرة';
+
+  @override
+  String get shapeSquare => 'مربع';
+
+  @override
+  String get shapeTriangle => 'مثلث';
+
+  @override
+  String get shapeStar => 'نجمة';
+
+  @override
+  String get colorRedLabel => 'أحمر';
+
+  @override
+  String get colorBlueLabel => 'أزرق';
+
+  @override
+  String get colorGreenLabel => 'أخضر';
+
+  @override
+  String get colorAmberLabel => 'كهرماني';
+
+  @override
+  String get cubeNetFoldTitle => 'طي شبكة المكعب';
+
+  @override
+  String get cubeNetFoldSubtitle => 'اختر خيار المكعب ثلاثي الأبعاد المطابق';
+
+  @override
+  String get cubeNetFoldWinTitle => 'صحيح';
+
+  @override
+  String get cubeNetFoldWinMessage => 'لديك منطق طي مكاني ثلاثي الأبعاد مثالي!';
+
+  @override
+  String get cubeNetFoldHowToPlayDescription =>
+      '1. انظر إلى الشبكة ثنائية الأبعاد المبسوطة في الأعلى.\n\n2. اطوِ الشبكة ذهنياً لتكوين مكعب ثلاثي الأبعاد.\n\n3. اختر الخيار أدناه الذي يمثل منظوراً صحيحاً ثلاثي الأبعاد لهذا المكعب المطوي.\n\n4. احذر: الوجوه المتقابلة في الشبكة لا يمكن أن تكون متجاورة في الأبعاد الثلاثة.';
+
+  @override
+  String get cubeNetFoldUnfoldedNet => 'شبكة ثنائية الأبعاد مبسوطة';
+
+  @override
+  String get cubeNetFoldWhichMatches => 'أي مكعب يطابق؟';
+
+  @override
+  String get cubeNetFoldIncorrect =>
+      'منطق طي غير صحيح! اضغط على إعادة التعيين أو غير اختيارك.';
+
+  @override
+  String get cubeNetFoldSubmitChoice => 'إرسال الاختيار';
+
+  @override
+  String get cubeNetFoldFailed => 'فشل (اضغط على إعادة التعيين)';
+
+  @override
+  String get faceTraitAssociationMemorize => 'احفظ جميع الأشخاص الأربعة';
+
+  @override
+  String faceTraitAssociationPersonOf(int current, int total) {
+    return 'الشخص $current من $total';
+  }
+
+  @override
+  String get faceTraitAssociationWhatOccupation => 'ما هي مهنتهم؟';
+
+  @override
+  String get faceTraitAssociationWhatHobby => 'ما هي هوايتهم؟';
+
+  @override
+  String get faceTraitAssociationWinTitle => 'سيد الذاكرة!';
+
+  @override
+  String get faceTraitAssociationLoseTitle => 'انتهت اللعبة';
+
+  @override
+  String faceTraitAssociationScoreMessage(int correct, int total) {
+    return 'لقد أجبت بشكل صحيح على $correct من أصل $total.';
+  }
+
+  @override
+  String get topologyTitle => 'الطوبولوجيا';
+
+  @override
+  String get topologySubtitle =>
+      'هل هذه الأشكال متكافئة طوبولوجياً؟ (هل يمكن تشكيل أحدها من الآخر دون قطع أو لصق؟)';
+
+  @override
+  String get topologyWinTitle => 'عبقري الهندسة!';
+
+  @override
+  String get topologyWinMessage => 'لقد حددت 10 أزواج طوبولوجية بشكل صحيح!';
+
+  @override
+  String get topologyScore => 'النتيجة: ';
 }

@@ -1042,7 +1042,7 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get sdmtSubtitle =>
-      'दिखाए गए प्रतीक के लिए अंक खोजने के लिए ऊपर दी गई कुंजी का उपयोग करें।';
+      'उपयोग करें दिखाएँ प्रतीक के लिए अंक खोजने के लिए ऊपर दी गई कुंजी का।';
 
   @override
   String get memoryMatrixTitle => 'लक्ष्य पूरा हुआ!';
@@ -1271,7 +1271,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get choiceReactionTimeTitle => 'प्रतिक्रिया समय';
 
   @override
-  String get pathRecallTitle => 'पाथ रिकॉल';
+  String get pathRecallTitle => 'path recall';
 
   @override
   String get switchTaskTitle => 'स्विच टास्क';
@@ -1437,7 +1437,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get einsteinRiddleHouse => 'घर';
 
   @override
-  String get mirrorImageTitle => 'मिरر इमेज';
+  String get mirrorImageTitle => 'मिरर इमेज';
 
   @override
   String get mirrorImageSubtitle => 'सही दर्पण प्रतिबिंब को पहचानें।';
@@ -1536,58 +1536,291 @@ class AppLocalizationsHi extends AppLocalizations {
       'मर्ज करने के लिए किसी भी दिशा में स्वाइप करें';
 
   @override
-  String get fibonacciMergeTitle => 'Fibonacci Merge';
+  String get fibonacciMergeTitle => 'फिबोनाची मर्ज';
 
   @override
   String get fibonacciMergeSubtitle =>
-      'Merge consecutive Fibonacci numbers (1, 1, 2, 3, 5, 8, 13...).';
+      'लगातार फिबोनाची संख्याओं (1, 1, 2, 3, 5, 8, 13...) को मिलाएं।';
 
   @override
-  String get sequenceSleuthTitle => 'Sequence Sleuth';
+  String get sequenceSleuthTitle => 'क्रम का पता लगाने वाला';
 
   @override
   String get sequenceSleuthSubtitle =>
-      'Find the missing number in the mathematical sequence.';
+      'गणितीय क्रम में लुप्त संख्या ज्ञात कीजिए।';
 
   @override
-  String get divisibilityDashTitle => 'Divisibility Dash';
+  String get divisibilityDashTitle => 'विभाज्यता डैश';
 
   @override
   String get divisibilityDashSubtitle =>
-      'Tap all single-digit divisors (2-9) for the given number.';
+      'दी गई संख्या के लिए सभी एक-अंकों वाले विभाजकों (2-9) पर टैप करें।';
 
   @override
-  String get percentagePeakTitle => 'Percentage Peak';
+  String get percentagePeakTitle => 'प्रतिशत शिखर';
 
   @override
   String get percentagePeakSubtitle =>
-      'Solve mental percentage calculations quickly.';
+      'मानसिक प्रतिशत गणनाओं को तेज़ी से हल करें।';
 
   @override
-  String get vennNumbersTitle => 'Venn Numbers';
+  String get vennNumbersTitle => 'वेन संख्याएं';
 
   @override
   String get vennNumbersSubtitle =>
-      'Categorize numbers into the correct Venn diagram regions.';
+      'संख्याओं को सही वेन आरेख क्षेत्रों में वर्गीकृत करें।';
 
   @override
-  String get commonDenominatorTitle => 'Common Denominator';
+  String get commonDenominatorTitle => 'सामान्य हर (Common Denominator)';
 
   @override
   String get commonDenominatorSubtitle =>
-      'Find the Greatest Common Divisor or Least Common Multiple.';
+      'महत्तम समापवर्तक (GCD) या लघुत्तम समापवर्त्य (LCM) ज्ञात कीजिए।';
 
   @override
-  String get angleFinderTitle => 'Angle Finder';
+  String get angleFinderTitle => 'कोण खोजने वाला';
 
   @override
   String get angleFinderSubtitle =>
-      'Calculate the missing angle in the geometric problem.';
+      'ज्यामितीय समस्या में लुप्त कोण की गणना करें।';
 
   @override
-  String get sumSnakeTitle => 'Sum Snake';
+  String get sumSnakeTitle => 'योग साँप';
 
   @override
   String get sumSnakeSubtitle =>
-      'Connect adjacent numbers to reach the target sum.';
+      'लक्ष्य योग तक पहुँचने के लिए आस-पास की संख्याओं को जोड़ें।';
+
+  @override
+  String get baseShiftTitle => 'बेस शिफ्ट ब्लिट्ज़';
+
+  @override
+  String get baseShiftSubtitle => 'दशमलव में हल करें';
+
+  @override
+  String get baseShiftDescription =>
+      'समीकरण हल करें और उत्तर दशमलव (बेस 10) में टाइप करें।';
+
+  @override
+  String get baseShiftEquation => 'समीकरण';
+
+  @override
+  String get baseShiftHint => 'दशमलव परिणाम दर्ज करें...';
+
+  @override
+  String get baseShiftCorrect => 'सही!';
+
+  @override
+  String get baseShiftIncorrect => 'गलत!';
+
+  @override
+  String get baseShiftSubmit => 'सबमिट करें';
+
+  @override
+  String get baseShiftQuickGuide => 'त्वरित मार्गदर्शिका:';
+
+  @override
+  String get baseShiftBinary => 'बाइनरी (bin): बेस 2 (0, 1)';
+
+  @override
+  String get baseShiftHex => 'हेक्साडेसिमल (0x): बेस 16 (0-9, A-F)';
+
+  @override
+  String get baseShiftDecimal => 'दशमलव (dec): बेस 10 (0-9)';
+
+  @override
+  String get baseShiftWinTitle => 'गणित के जादूगर!';
+
+  @override
+  String get baseShiftWinMessage =>
+      'आपने 5 बेस-शिफ्ट समीकरणों को सफलतापूर्वक हल किया!';
+
+  @override
+  String get blockCount3DTitle => 'ब्लॉक गणना 3D';
+
+  @override
+  String get blockCount3DSubtitle =>
+      'घुमाने के लिए ड्रैग करें • छिपे हुए ब्लॉकों को गिनें';
+
+  @override
+  String get blockCount3DHowMany => 'कितने ब्लॉक हैं?';
+
+  @override
+  String get blockCount3DSubmitGuess => 'अनुमान सबमिट करें';
+
+  @override
+  String get blockCount3DNotQuite =>
+      'बिल्कुल नहीं! फिर से गिनने के लिए घुमाने की कोशिश करें।';
+
+  @override
+  String get blockCount3DExcellent => 'उत्कृष्ट';
+
+  @override
+  String blockCount3DWinMessage(int count) {
+    return 'आपने सभी $count ब्लॉकों की सही पहचान की!';
+  }
+
+  @override
+  String get blockCount3DHowToPlayDescription =>
+      '1. ब्लॉक स्टैक को घुमाने के लिए 3D व्यूपोर्ट पर अपनी उंगली खींचें।\n\n2. स्टैक में सभी ब्लॉकों को गिनें।\n\n3. याद रखें: हवा में एक ब्लॉक के नीचे संरचनात्मक समर्थन ब्लॉक होने चाहिए (छिपे हुए ब्लॉक!)।\n\n4. अपना उत्तर टाइप करें और जाँचने के लिए \"अनुमान सबमिट करें\" पर टैप करें।';
+
+  @override
+  String get alphabetSudokuTitle => 'वर्णमाला सुडोकु';
+
+  @override
+  String get alphabetSudokuSubtitle =>
+      'ग्रिड को इस तरह भरें कि हर पंक्ति, कॉलम और बॉक्स में A-I अक्षर हों।';
+
+  @override
+  String get alphabetSudokuWinTitle => 'सुडोकु हल हुआ!';
+
+  @override
+  String get alphabetSudokuWinMessage =>
+      'शानदार! आपने अक्षरों में महारत हासिल कर ली है।';
+
+  @override
+  String get classicMazeTitle => 'क्लासिक भूलभुलैया';
+
+  @override
+  String get classicMazeSubtitle => 'खोजें और हल करें • हर बार एक नई भूलभुलैया';
+
+  @override
+  String get classicMazeWinTitle => 'भूलभुलैया साफ हुई';
+
+  @override
+  String classicMazeWinMessage(int count) {
+    return 'अविश्वसनीय नेविगेशन! आपने $count चालों में भूलभुलैया को हल किया।';
+  }
+
+  @override
+  String get classicMazeMoves => 'चालें: ';
+
+  @override
+  String get classicMazeHowToPlayDescription =>
+      '1. चमकते पीले कंचे (खिलाड़ी) को नीचे-दाएं स्थित हरे पोर्टल (निकास) तक ले जाएं।\n\n2. स्थानांतरित करने के लिए भूलभुलैया पर कहीं भी स्वाइप करें, कीबोर्ड एरो कीज़ या नीचे दिए गए बटन का उपयोग करें।\n\n3. बैंगनी निशान आपके द्वारा खोजे गए रास्ते को दिखाता है। इसे मिटाने के लिए अपने रास्ते पर वापस आएं!\n\n4. बड़ी भूलभुलैया के साथ खुद को चुनौती देने के लिए कठिनाई बदलें।';
+
+  @override
+  String get conjunctionSearchTitle => 'संयोजन खोज (Conjunction Search)';
+
+  @override
+  String get conjunctionSearchSubtitle => 'अटेंशनल फोकस और फीचर कंजंक्चर';
+
+  @override
+  String get conjunctionSearchWinTitle => 'विजय';
+
+  @override
+  String get conjunctionSearchWinMessage =>
+      'आपने सही एकाग्रता के साथ सभी लक्ष्यों को पा लिया है!';
+
+  @override
+  String get conjunctionSearchHowToPlayDescription =>
+      'निर्देशों में एक विशिष्ट आकार और रंग संयोजन दिखाया जाएगा। इसे ग्रिड में जितनी जल्दी हो सके ढूंढें और टैप करें। विचलित करने वाले आकार या तो रंग या आकार साझा करते हैं, इसलिए ध्यान से देखें!';
+
+  @override
+  String get conjunctionSearchRound => 'राउंड: ';
+
+  @override
+  String get conjunctionSearchScore => 'स्कोर: ';
+
+  @override
+  String get conjunctionSearchFind => 'खोजें: ';
+
+  @override
+  String get shapeCircle => 'वृत्त (CIRCLE)';
+
+  @override
+  String get shapeSquare => 'वर्ग (SQUARE)';
+
+  @override
+  String get shapeTriangle => 'त्रिकोण (TRIANGLE)';
+
+  @override
+  String get shapeStar => 'तारा (STAR)';
+
+  @override
+  String get colorRedLabel => 'लाल (RED)';
+
+  @override
+  String get colorBlueLabel => 'नीला (BLUE)';
+
+  @override
+  String get colorGreenLabel => 'हरा (GREEN)';
+
+  @override
+  String get colorAmberLabel => 'एम्बर (AMBER)';
+
+  @override
+  String get cubeNetFoldTitle => 'क्यूब नेट फोल्ड';
+
+  @override
+  String get cubeNetFoldSubtitle =>
+      'मिलान करने वाले 3D क्यूब विकल्प का चयन करें';
+
+  @override
+  String get cubeNetFoldWinTitle => 'सही';
+
+  @override
+  String get cubeNetFoldWinMessage =>
+      'आपके पास सटीक 3D स्थानिक फोल्डिंग तर्क है!';
+
+  @override
+  String get cubeNetFoldHowToPlayDescription =>
+      '1. ऊपर खुले हुए 2D नेट को देखें।\n\n2. नेट को मानसिक रूप से एक 3D क्यूब में मोड़ें।\n\n3. नीचे वह विकल्प चुनें जो उस मुड़े हुए क्यूब के वैध 3D परिप्रेक्ष्य का प्रतिनिधित्व करता है।\n\n4. सावधान रहें: नेट में विपरीत फलक 3D में पास-पास नहीं हो सकते, और आस-पास के फलकों का क्रम मेल खाना चाहिए!';
+
+  @override
+  String get cubeNetFoldUnfoldedNet => 'खुला हुआ 2D नेट';
+
+  @override
+  String get cubeNetFoldWhichMatches => 'कौन सा क्यूब मेल खाता है?';
+
+  @override
+  String get cubeNetFoldIncorrect =>
+      'गलत फोल्डिंग तर्क! रीसेट टैप करें या अपनी पसंद बदलें।';
+
+  @override
+  String get cubeNetFoldSubmitChoice => 'विकल्प सबमिट करें';
+
+  @override
+  String get cubeNetFoldFailed => 'विफल (रीसेट टैप करें)';
+
+  @override
+  String get faceTraitAssociationMemorize => 'सभी 4 लोगों को याद रखें';
+
+  @override
+  String faceTraitAssociationPersonOf(int current, int total) {
+    return 'व्यक्ति $total में से $current';
+  }
+
+  @override
+  String get faceTraitAssociationWhatOccupation => 'उनका पेशा क्या है?';
+
+  @override
+  String get faceTraitAssociationWhatHobby => 'उनका शौक क्या है?';
+
+  @override
+  String get faceTraitAssociationWinTitle => 'मेमोरी मास्टर!';
+
+  @override
+  String get faceTraitAssociationLoseTitle => 'खेल समाप्त';
+
+  @override
+  String faceTraitAssociationScoreMessage(int correct, int total) {
+    return 'आपने $total में से $correct सही प्राप्त किए।';
+  }
+
+  @override
+  String get topologyTitle => 'टोपोलॉजी';
+
+  @override
+  String get topologySubtitle =>
+      'क्या ये आकार टोपोलॉजिक रूप से समान हैं? (क्या एक को बिना काटे या चिपकाए दूसरे में बदला जा सकता है?)';
+
+  @override
+  String get topologyWinTitle => 'ज्यामिति के जादूगर!';
+
+  @override
+  String get topologyWinMessage => 'आपने 10 टोपोलॉजिकल जोड़ों की सही पहचान की!';
+
+  @override
+  String get topologyScore => 'स्कोर: ';
 }

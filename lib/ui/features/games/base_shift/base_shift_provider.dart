@@ -65,16 +65,16 @@ class BaseShiftNotifier extends _$BaseShiftNotifier {
         state = state.copyWith(
           score: nextScore,
           currentLevel: _engine.generateLevel(),
-          message: 'Correct!',
+          message: 'correct',
         );
         Future.delayed(const Duration(seconds: 1), () {
-          if (state.message == 'Correct!') state = state.copyWith(message: null);
+          if (state.message == 'correct') state = state.copyWith(message: null);
         });
       }
     } else {
-      state = state.copyWith(message: 'Wrong! Try again.');
+      state = state.copyWith(message: 'incorrect');
       Future.delayed(const Duration(seconds: 1), () {
-        if (state.message == 'Wrong! Try again.') state = state.copyWith(message: null);
+        if (state.message == 'incorrect') state = state.copyWith(message: null);
       });
     }
   }

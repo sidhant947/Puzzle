@@ -7,6 +7,7 @@ import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 
 class BlockCount3DScreen extends ConsumerStatefulWidget {
   const BlockCount3DScreen({super.key});
@@ -62,6 +63,7 @@ class _BlockCount3DScreenState extends ConsumerState<BlockCount3DScreen> {
   }
 
   void _showHowToPlay() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => Dialog(
@@ -72,7 +74,7 @@ class _BlockCount3DScreenState extends ConsumerState<BlockCount3DScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'HOW TO PLAY',
+                l10n.howToPlay.toUpperCase(),
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w900,
@@ -81,10 +83,7 @@ class _BlockCount3DScreenState extends ConsumerState<BlockCount3DScreen> {
               ),
               const SizedBox(height: DesignSystem.spaceMD),
               Text(
-                '1. Drag your finger across the 3D viewport to rotate the block stack.\n\n'
-                '2. Count all the blocks in the stack.\n\n'
-                '3. Remember: a block in the air must have structural support blocks underneath it (hidden blocks!).\n\n'
-                '4. Type your answer in the input field and tap "SUBMIT GUESS" to check.',
+                l10n.blockCount3DHowToPlayDescription,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
@@ -94,7 +93,7 @@ class _BlockCount3DScreenState extends ConsumerState<BlockCount3DScreen> {
               const SizedBox(height: DesignSystem.spaceLG),
               TangibleButton(
                 onTap: () => Navigator.of(context).pop(),
-                child: const Text('GOT IT'),
+                child: Text(l10n.gotIt.toUpperCase()),
               ),
             ],
           ),
@@ -108,6 +107,7 @@ class _BlockCount3DScreenState extends ConsumerState<BlockCount3DScreen> {
     final state = ref.watch(blockCount3DNotifierProvider);
     final notifier = ref.read(blockCount3DNotifierProvider.notifier);
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     // Show dialog when won
     if (state.isVictory) {
@@ -116,8 +116,8 @@ class _BlockCount3DScreenState extends ConsumerState<BlockCount3DScreen> {
           context: context,
           barrierDismissible: false,
           builder: (dialogCtx) => GameCompletionDialog(
-            title: 'EXCELLENT',
-            message: 'You correctly identified all ${state.totalBlocks} blocks!',
+            title: l10n.blockCount3DExcellent,
+            message: l10n.blockCount3DWinMessage(state.totalBlocks),
             onHome: () {
               Navigator.of(dialogCtx).pop();
               Navigator.of(context).pop();
@@ -133,8 +133,8 @@ class _BlockCount3DScreenState extends ConsumerState<BlockCount3DScreen> {
     }
 
     return GameScaffold(
-      title: 'Block Count 3D',
-      subtitle: 'DRAG TO ROTATE • COUNT HIDDEN BLOCKS',
+      title: l10n.blockCount3DTitle,
+      subtitle: l10n.blockCount3DSubtitle,
       onHowToPlay: _showHowToPlay,
       onReset: () {
         _guessController.clear();
@@ -209,7 +209,7 @@ class _BlockCount3DScreenState extends ConsumerState<BlockCount3DScreen> {
                         mainAxisSize: MainAxisSize.min,
                         children: [
                           Text(
-                            'HOW MANY BLOCKS?',
+                            l10n.blockCount3DHowMany,
                             style: theme.textTheme.titleLarge?.copyWith(
                               letterSpacing: 1.0,
                               fontSize: 15,
@@ -280,19 +280,19 @@ class _BlockCount3DScreenState extends ConsumerState<BlockCount3DScreen> {
                                       if (state.currentGuess != state.totalBlocks) {
                                         HapticFeedbackUtil.error();
                                         ScaffoldMessenger.of(context).showSnackBar(
-                                          const SnackBar(
-                                            content: Text('Not quite! Try rotating to count again.'),
-                                            duration: Duration(seconds: 2),
+                                          SnackBar(
+                                            content: Text(l10n.blockCount3DNotQuite),
+                                            duration: const Duration(seconds: 2),
                                           ),
                                         );
                                       }
                                     },
                               color: state.currentGuess == null ? theme.colorScheme.outline : DesignSystem.success,
                               shadowColor: state.currentGuess == null ? theme.colorScheme.outline : const Color(0xFF047857),
-                              child: const Center(
+                              child: Center(
                                 child: Text(
-                                  'SUBMIT GUESS',
-                                  style: TextStyle(
+                                  l10n.blockCount3DSubmitGuess,
+                                  style: const TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w900,
                                   ),

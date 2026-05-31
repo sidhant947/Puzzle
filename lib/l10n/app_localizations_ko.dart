@@ -397,8 +397,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get akariSubtitle => '모든 흰색 칸을 밝히세요';
 
   @override
-  String get akariHowToPlay =>
-      '흰색 칸에 전구를 배치하여 전체 격자를 밝히세요. 전구는 벽에 닿을 때까지 해당 행과 열을 밝힙니다. 두 전구가 서로를 비출 수 없습니다. 숫자가 적힌 벽은 인접한 칸(상하좌우)에 배치해야 하는 전구의 수를 나타냅니다.';
+  String get akariHowToPlay => '모든 흰색 칸을 밝히세요';
 
   @override
   String get akariWinTitle => '점등 완료!';
@@ -1474,58 +1473,274 @@ class AppLocalizationsKo extends AppLocalizations {
   String get game2048Instruction => '아무 방향으로나 밀어서 합치세요';
 
   @override
-  String get fibonacciMergeTitle => 'Fibonacci Merge';
+  String get fibonacciMergeTitle => '피보나치 머지';
 
   @override
   String get fibonacciMergeSubtitle =>
-      'Merge consecutive Fibonacci numbers (1, 1, 2, 3, 5, 8, 13...).';
+      '연속된 피보나치 수(1, 1, 2, 3, 5, 8, 13...)를 합치세요.';
 
   @override
-  String get sequenceSleuthTitle => 'Sequence Sleuth';
+  String get sequenceSleuthTitle => '수열 탐정';
 
   @override
-  String get sequenceSleuthSubtitle =>
-      'Find the missing number in the mathematical sequence.';
+  String get sequenceSleuthSubtitle => '수학적 수열에서 빠진 숫자를 찾으세요.';
 
   @override
-  String get divisibilityDashTitle => 'Divisibility Dash';
+  String get divisibilityDashTitle => '배수 대시';
 
   @override
-  String get divisibilityDashSubtitle =>
-      'Tap all single-digit divisors (2-9) for the given number.';
+  String get divisibilityDashSubtitle => '주어진 숫자의 한 자리 약수(2-9)를 모두 탭하세요.';
 
   @override
-  String get percentagePeakTitle => 'Percentage Peak';
+  String get percentagePeakTitle => '퍼센트 피크';
 
   @override
-  String get percentagePeakSubtitle =>
-      'Solve mental percentage calculations quickly.';
+  String get percentagePeakSubtitle => '암산으로 퍼센트 계산을 빠르게 해결하세요.';
 
   @override
-  String get vennNumbersTitle => 'Venn Numbers';
+  String get vennNumbersTitle => '벤 다이어그램 숫자';
 
   @override
-  String get vennNumbersSubtitle =>
-      'Categorize numbers into the correct Venn diagram regions.';
+  String get vennNumbersSubtitle => '숫자를 벤 다이어그램의 올바른 영역으로 분류하세요.';
 
   @override
-  String get commonDenominatorTitle => 'Common Denominator';
+  String get commonDenominatorTitle => '공통 분모';
 
   @override
-  String get commonDenominatorSubtitle =>
-      'Find the Greatest Common Divisor or Least Common Multiple.';
+  String get commonDenominatorSubtitle => '최대공약수나 최소공배수를 찾으세요.';
 
   @override
-  String get angleFinderTitle => 'Angle Finder';
+  String get angleFinderTitle => '각도 찾기';
 
   @override
-  String get angleFinderSubtitle =>
-      'Calculate the missing angle in the geometric problem.';
+  String get angleFinderSubtitle => '기하학 문제에서 빠진 각도를 계산하세요.';
 
   @override
-  String get sumSnakeTitle => 'Sum Snake';
+  String get sumSnakeTitle => '합계 스네이크';
 
   @override
-  String get sumSnakeSubtitle =>
-      'Connect adjacent numbers to reach the target sum.';
+  String get sumSnakeSubtitle => '인접한 숫자를 연결하여 목표 합계에 도달하세요.';
+
+  @override
+  String get baseShiftTitle => '진법 변환 블리츠';
+
+  @override
+  String get baseShiftSubtitle => '10진수로 해결';
+
+  @override
+  String get baseShiftDescription => '수식을 풀고 답을 10진수(Base 10)로 입력하세요.';
+
+  @override
+  String get baseShiftEquation => '수식';
+
+  @override
+  String get baseShiftHint => '10진수 결과 입력...';
+
+  @override
+  String get baseShiftCorrect => '정답입니다!';
+
+  @override
+  String get baseShiftIncorrect => '틀렸습니다!';
+
+  @override
+  String get baseShiftSubmit => '제출';
+
+  @override
+  String get baseShiftQuickGuide => '빠른 가이드:';
+
+  @override
+  String get baseShiftBinary => '2진수 (bin): 2진법 (0, 1)';
+
+  @override
+  String get baseShiftHex => '16진수 (0x): 16진법 (0-9, A-F)';
+
+  @override
+  String get baseShiftDecimal => '10진수 (dec): 10진법 (0-9)';
+
+  @override
+  String get baseShiftWinTitle => '수학 마법사!';
+
+  @override
+  String get baseShiftWinMessage => '5개의 진법 변환 수식을 모두 맞혔습니다!';
+
+  @override
+  String get blockCount3DTitle => '3D 블록 세기';
+
+  @override
+  String get blockCount3DSubtitle => '드래그하여 회전 • 숨겨진 블록 세기';
+
+  @override
+  String get blockCount3DHowMany => '블록이 몇 개인가요?';
+
+  @override
+  String get blockCount3DSubmitGuess => '답안 제출';
+
+  @override
+  String get blockCount3DNotQuite => '아쉬워요! 회전시켜서 다시 세어보세요.';
+
+  @override
+  String get blockCount3DExcellent => '훌륭합니다';
+
+  @override
+  String blockCount3DWinMessage(int count) {
+    return '$count개의 블록을 모두 정확히 찾았습니다!';
+  }
+
+  @override
+  String get blockCount3DHowToPlayDescription =>
+      '1. Drag your finger across the 3D viewport to rotate the block stack.\n\n2. Count all the blocks in the stack.\n\n3. Remember: a block in the air must have structural support blocks underneath it (hidden blocks!).\n\n4. Type your answer in the input field and tap \"SUBMIT GUESS\" to check.';
+
+  @override
+  String get alphabetSudokuTitle => '알파벳 스도쿠';
+
+  @override
+  String get alphabetSudokuSubtitle => '모든 행, 열, 박스에 A-I 글자가 들어가도록 격자를 채우세요.';
+
+  @override
+  String get alphabetSudokuWinTitle => '스도쿠 해결!';
+
+  @override
+  String get alphabetSudokuWinMessage => '멋져요! 알파벳을 완벽히 마스터했습니다.';
+
+  @override
+  String get classicMazeTitle => '클래식 미로';
+
+  @override
+  String get classicMazeSubtitle => '탐험하고 해결하기 • 매번 새로운 미로';
+
+  @override
+  String get classicMazeWinTitle => '미로 탈출';
+
+  @override
+  String classicMazeWinMessage(int count) {
+    return '놀라운 길 찾기 능력이네요! $count번의 이동으로 미로를 풀었습니다.';
+  }
+
+  @override
+  String get classicMazeMoves => '이동 횟수: ';
+
+  @override
+  String get classicMazeHowToPlayDescription =>
+      '1. 빛나는 노란 구슬(플레이어)을 오른쪽 하단의 초록색 포털(출구)로 인도하세요.\n\n2. 미로 위를 스와이프하거나, 키보드 화살표 키, 또는 하단의 화살표 버튼을 사용하여 이동합니다.\n\n3. 보라색 흔적은 탐험한 경로를 보여줍니다. 왔던 길을 되돌아가면 흔적이 지워집니다!\n\n4. 상단 바에서 난이도를 조절하여 더 큰 미로에 도전해 보세요!';
+
+  @override
+  String get conjunctionSearchTitle => '결합 탐색';
+
+  @override
+  String get conjunctionSearchSubtitle => '주의 집중 및 특징 결합';
+
+  @override
+  String get conjunctionSearchWinTitle => '승리';
+
+  @override
+  String get conjunctionSearchWinMessage => '완벽한 집중력으로 모든 목표를 찾았습니다!';
+
+  @override
+  String get conjunctionSearchHowToPlayDescription =>
+      '지시사항에 특정 모양과 색상 조합이 표시됩니다. 밀집된 격자에서 최대한 빨리 찾아 탭하세요. 방해물 모양은 색상이나 모양 중 하나를 공유하므로 자세히 살펴보세요!';
+
+  @override
+  String get conjunctionSearchRound => '라운드: ';
+
+  @override
+  String get conjunctionSearchScore => '점수: ';
+
+  @override
+  String get conjunctionSearchFind => '찾을 대상: ';
+
+  @override
+  String get shapeCircle => '원';
+
+  @override
+  String get shapeSquare => '사각형';
+
+  @override
+  String get shapeTriangle => '삼각형';
+
+  @override
+  String get shapeStar => '별';
+
+  @override
+  String get colorRedLabel => '빨강';
+
+  @override
+  String get colorBlueLabel => '파랑';
+
+  @override
+  String get colorGreenLabel => '초록';
+
+  @override
+  String get colorAmberLabel => '황색';
+
+  @override
+  String get cubeNetFoldTitle => '입체도형 전개도';
+
+  @override
+  String get cubeNetFoldSubtitle => '일치하는 3D 정육면체 선택';
+
+  @override
+  String get cubeNetFoldWinTitle => '정답';
+
+  @override
+  String get cubeNetFoldWinMessage => '완벽한 3D 공간 전개 논리를 가지고 계시네요!';
+
+  @override
+  String get cubeNetFoldHowToPlayDescription =>
+      '1. 상단의 펼쳐진 2D 전개도를 보세요.\n\n2. 머릿속으로 전개도를 접어 3D 정육면체를 만듭니다.\n\n3. 아래 옵션 중에서 해당 정육면체의 올바른 3D 관점을 선택하세요.\n\n4. 주의: 전개도에서 마주 보는 면은 3D에서 인접할 수 없으며, 인접한 면들의 순서가 일치해야 합니다!';
+
+  @override
+  String get cubeNetFoldUnfoldedNet => '펼쳐진 2D 전개도';
+
+  @override
+  String get cubeNetFoldWhichMatches => '어떤 정육면체가 일치하나요?';
+
+  @override
+  String get cubeNetFoldIncorrect => '잘못된 전개 논리입니다! 다시 시도하거나 선택을 변경하세요.';
+
+  @override
+  String get cubeNetFoldSubmitChoice => '선택 제출';
+
+  @override
+  String get cubeNetFoldFailed => '실패 (다시 시도 탭)';
+
+  @override
+  String get faceTraitAssociationMemorize => '4명 모두 기억하기';
+
+  @override
+  String faceTraitAssociationPersonOf(int current, int total) {
+    return '인물 $current / 전체 $total';
+  }
+
+  @override
+  String get faceTraitAssociationWhatOccupation => '이분들의 직업은 무엇인가요?';
+
+  @override
+  String get faceTraitAssociationWhatHobby => '이분들의 취미는 무엇인가요?';
+
+  @override
+  String get faceTraitAssociationWinTitle => '기억력 마스터!';
+
+  @override
+  String get faceTraitAssociationLoseTitle => '게임 종료';
+
+  @override
+  String faceTraitAssociationScoreMessage(int correct, int total) {
+    return '$total개 중 $correct개를 맞혔습니다.';
+  }
+
+  @override
+  String get topologyTitle => '위상수학';
+
+  @override
+  String get topologySubtitle =>
+      '이 모양들은 위상적으로 동일합니까? (자르거나 붙이지 않고 하나를 다른 하나로 변형할 수 있습니까?)';
+
+  @override
+  String get topologyWinTitle => '기하학 천재!';
+
+  @override
+  String get topologyWinMessage => '10개의 위상학적 쌍을 정확히 찾았습니다!';
+
+  @override
+  String get topologyScore => '점수: ';
 }

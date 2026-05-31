@@ -8,6 +8,7 @@ import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 
 class ClassicMazeScreen extends ConsumerStatefulWidget {
   const ClassicMazeScreen({super.key});
@@ -34,6 +35,7 @@ class _ClassicMazeScreenState extends ConsumerState<ClassicMazeScreen> {
   }
 
   void _showHowToPlay() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => Dialog(
@@ -44,7 +46,7 @@ class _ClassicMazeScreenState extends ConsumerState<ClassicMazeScreen> {
             mainAxisSize: MainAxisSize.min,
             children: [
               Text(
-                'HOW TO PLAY',
+                l10n.howToPlay.toUpperCase(),
                 style: TextStyle(
                   fontSize: 20,
                   fontWeight: FontWeight.w900,
@@ -53,10 +55,7 @@ class _ClassicMazeScreenState extends ConsumerState<ClassicMazeScreen> {
               ),
               const SizedBox(height: DesignSystem.spaceMD),
               Text(
-                '1. Guide the glowing yellow marble (player) to the green portal (exit) at the bottom-right.\n\n'
-                '2. Use swipes anywhere on the maze, physical keyboard arrow keys, or the arrow pad buttons at the bottom to move.\n\n'
-                '3. The purple trail shows the path you have explored. Backtrack onto your trail to erase it dynamically!\n\n'
-                '4. Toggle difficulties from the top action bar to challenge yourself with larger mazes!',
+                l10n.classicMazeHowToPlayDescription,
                 style: TextStyle(
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
@@ -66,7 +65,7 @@ class _ClassicMazeScreenState extends ConsumerState<ClassicMazeScreen> {
               const SizedBox(height: DesignSystem.spaceLG),
               TangibleButton(
                 onTap: () => Navigator.of(context).pop(),
-                child: const Text('GOT IT'),
+                child: Text(l10n.gotIt.toUpperCase()),
               ),
             ],
           ),
@@ -94,6 +93,7 @@ class _ClassicMazeScreenState extends ConsumerState<ClassicMazeScreen> {
     final state = ref.watch(classicMazeNotifierProvider);
     final notifier = ref.read(classicMazeNotifierProvider.notifier);
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     // Focus node request for physical keyboard
     if (!state.isLoading && !state.isVictory) {
@@ -107,8 +107,8 @@ class _ClassicMazeScreenState extends ConsumerState<ClassicMazeScreen> {
           context: context,
           barrierDismissible: false,
           builder: (dialogCtx) => GameCompletionDialog(
-            title: 'MAZE CLEARED',
-            message: 'Incredible navigation! You solved the maze in ${next.moves} moves.',
+            title: l10n.classicMazeWinTitle,
+            message: l10n.classicMazeWinMessage(next.moves),
             onHome: () {
               Navigator.of(dialogCtx).pop();
               Navigator.of(context).pop();
@@ -123,8 +123,8 @@ class _ClassicMazeScreenState extends ConsumerState<ClassicMazeScreen> {
     });
 
     return GameScaffold(
-      title: 'Classic Maze',
-      subtitle: 'EXPLORE & SOLVE • A NEW MAZE EACH GAME',
+      title: l10n.classicMazeTitle,
+      subtitle: l10n.classicMazeSubtitle,
       onHowToPlay: _showHowToPlay,
       actions: [
         TangibleButton(
@@ -169,7 +169,7 @@ class _ClassicMazeScreenState extends ConsumerState<ClassicMazeScreen> {
                       const Spacer(),
 
                       // Stats Row
-                      _buildStatsRow(state),
+                      _buildStatsRow(state, l10n),
                       const SizedBox(height: DesignSystem.spaceMD),
 
                       // Swipe gesture wrapper around board
@@ -239,7 +239,7 @@ class _ClassicMazeScreenState extends ConsumerState<ClassicMazeScreen> {
     );
   }
 
-  Widget _buildStatsRow(ClassicMazeState state) {
+  Widget _buildStatsRow(ClassicMazeState state, AppLocalizations l10n) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -256,7 +256,7 @@ class _ClassicMazeScreenState extends ConsumerState<ClassicMazeScreen> {
               ),
               const SizedBox(width: 8),
               Text(
-                'MOVES: ',
+                l10n.classicMazeMoves,
                 style: TextStyle(
                   fontSize: 12,
                   fontWeight: FontWeight.w800,

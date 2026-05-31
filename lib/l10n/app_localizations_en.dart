@@ -1585,4 +1585,235 @@ class AppLocalizationsEn extends AppLocalizations {
   @override
   String get sumSnakeSubtitle =>
       'Connect adjacent numbers to reach the target sum.';
+
+  @override
+  String get baseShiftTitle => 'BASE SHIFT BLITZ';
+
+  @override
+  String get baseShiftSubtitle => 'Solve in decimal';
+
+  @override
+  String get baseShiftDescription =>
+      'Solve the equation and type the answer in decimal (Base 10).';
+
+  @override
+  String get baseShiftEquation => 'EQUATION';
+
+  @override
+  String get baseShiftHint => 'Enter decimal result...';
+
+  @override
+  String get baseShiftCorrect => 'Correct!';
+
+  @override
+  String get baseShiftIncorrect => 'Incorrect!';
+
+  @override
+  String get baseShiftSubmit => 'SUBMIT';
+
+  @override
+  String get baseShiftQuickGuide => 'Quick Guide:';
+
+  @override
+  String get baseShiftBinary => 'Binary (bin): Base 2 (0, 1)';
+
+  @override
+  String get baseShiftHex => 'Hexadecimal (0x): Base 16 (0-9, A-F)';
+
+  @override
+  String get baseShiftDecimal => 'Decimal (dec): Base 10 (0-9)';
+
+  @override
+  String get baseShiftWinTitle => 'MATH WIZARD!';
+
+  @override
+  String get baseShiftWinMessage =>
+      'You correctly solved 5 base-shift equations!';
+
+  @override
+  String get blockCount3DTitle => 'Block Count 3D';
+
+  @override
+  String get blockCount3DSubtitle => 'DRAG TO ROTATE • COUNT HIDDEN BLOCKS';
+
+  @override
+  String get blockCount3DHowMany => 'HOW MANY BLOCKS?';
+
+  @override
+  String get blockCount3DSubmitGuess => 'SUBMIT GUESS';
+
+  @override
+  String get blockCount3DNotQuite => 'Not quite! Try rotating to count again.';
+
+  @override
+  String get blockCount3DExcellent => 'EXCELLENT';
+
+  @override
+  String blockCount3DWinMessage(int count) {
+    return 'You correctly identified all $count blocks!';
+  }
+
+  @override
+  String get blockCount3DHowToPlayDescription =>
+      '1. Drag your finger across the 3D viewport to rotate the block stack.\n\n2. Count all the blocks in the stack.\n\n3. Remember: a block in the air must have structural support blocks underneath it (hidden blocks!).\n\n4. Type your answer in the input field and tap \"SUBMIT GUESS\" to check.';
+
+  @override
+  String get alphabetSudokuTitle => 'ALPHABET SUDOKU';
+
+  @override
+  String get alphabetSudokuSubtitle =>
+      'Fill the grid so every row, column, and box contains letters A-I.';
+
+  @override
+  String get alphabetSudokuWinTitle => 'SUDOKU SOLVED!';
+
+  @override
+  String get alphabetSudokuWinMessage => 'Brilliant! You mastered the letters.';
+
+  @override
+  String get classicMazeTitle => 'Classic Maze';
+
+  @override
+  String get classicMazeSubtitle => 'EXPLORE & SOLVE • A NEW MAZE EACH GAME';
+
+  @override
+  String get classicMazeWinTitle => 'MAZE CLEARED';
+
+  @override
+  String classicMazeWinMessage(int count) {
+    return 'Incredible navigation! You solved the maze in $count moves.';
+  }
+
+  @override
+  String get classicMazeMoves => 'MOVES: ';
+
+  @override
+  String get classicMazeHowToPlayDescription =>
+      '1. Guide the glowing yellow marble (player) to the green portal (exit) at the bottom-right.\n\n2. Use swipes anywhere on the maze, physical keyboard arrow keys, or the arrow pad buttons at the bottom to move.\n\n3. The purple trail shows the path you have explored. Backtrack onto your trail to erase it dynamically!\n\n4. Toggle difficulties from the top action bar to challenge yourself with larger mazes!';
+
+  @override
+  String get conjunctionSearchTitle => 'Conjunction Search';
+
+  @override
+  String get conjunctionSearchSubtitle =>
+      'Attentional Focus & Feature Conjunction';
+
+  @override
+  String get conjunctionSearchWinTitle => 'VICTORY';
+
+  @override
+  String get conjunctionSearchWinMessage =>
+      'You have found all targets with perfect attentional focus!';
+
+  @override
+  String get conjunctionSearchHowToPlayDescription =>
+      'A specific target shape and color combination will be shown in the instructions. Find and tap it in the dense grid as quickly as possible. Distractor shapes share either the same color or shape, so look closely!';
+
+  @override
+  String get conjunctionSearchRound => 'ROUND: ';
+
+  @override
+  String get conjunctionSearchScore => 'SCORE: ';
+
+  @override
+  String get conjunctionSearchFind => 'FIND: ';
+
+  @override
+  String get shapeCircle => 'CIRCLE';
+
+  @override
+  String get shapeSquare => 'SQUARE';
+
+  @override
+  String get shapeTriangle => 'TRIANGLE';
+
+  @override
+  String get shapeStar => 'STAR';
+
+  @override
+  String get colorRedLabel => 'RED';
+
+  @override
+  String get colorBlueLabel => 'BLUE';
+
+  @override
+  String get colorGreenLabel => 'GREEN';
+
+  @override
+  String get colorAmberLabel => 'AMBER';
+
+  @override
+  String get cubeNetFoldTitle => 'Cube Net Fold';
+
+  @override
+  String get cubeNetFoldSubtitle => 'SELECT THE MATCHING 3D CUBE OPTION';
+
+  @override
+  String get cubeNetFoldWinTitle => 'CORRECT';
+
+  @override
+  String get cubeNetFoldWinMessage =>
+      'You have perfect 3D spatial folding logic!';
+
+  @override
+  String get cubeNetFoldHowToPlayDescription =>
+      '1. Look at the unfolded 2D net at the top.\n\n2. Mentally fold the net into a 3D cube.\n\n3. Choose the option below that represents a valid 3D perspective of that folded cube.\n\n4. Be careful: opposite faces in the net cannot be adjacent in 3D, and the order of adjacent faces must match!';
+
+  @override
+  String get cubeNetFoldUnfoldedNet => 'UNFOLDED 2D NET';
+
+  @override
+  String get cubeNetFoldWhichMatches => 'WHICH CUBE MATCHES?';
+
+  @override
+  String get cubeNetFoldIncorrect =>
+      'Incorrect fold logic! Tap Reset or change your choice.';
+
+  @override
+  String get cubeNetFoldSubmitChoice => 'SUBMIT CHOICE';
+
+  @override
+  String get cubeNetFoldFailed => 'FAILED (TAP RESET)';
+
+  @override
+  String get faceTraitAssociationMemorize => 'MEMORIZE ALL 4 PEOPLE';
+
+  @override
+  String faceTraitAssociationPersonOf(int current, int total) {
+    return 'PERSON $current OF $total';
+  }
+
+  @override
+  String get faceTraitAssociationWhatOccupation => 'WHAT IS THEIR OCCUPATION?';
+
+  @override
+  String get faceTraitAssociationWhatHobby => 'WHAT IS THEIR HOBBY?';
+
+  @override
+  String get faceTraitAssociationWinTitle => 'MEMORY MASTER!';
+
+  @override
+  String get faceTraitAssociationLoseTitle => 'GAME OVER';
+
+  @override
+  String faceTraitAssociationScoreMessage(int correct, int total) {
+    return 'You got $correct out of $total correct.';
+  }
+
+  @override
+  String get topologyTitle => 'TOPOLOGY';
+
+  @override
+  String get topologySubtitle =>
+      'Are these shapes topologically equivalent? (Can one be deformed into the other without cutting or gluing?)';
+
+  @override
+  String get topologyWinTitle => 'GEOMETRY GENIUS!';
+
+  @override
+  String get topologyWinMessage =>
+      'You correctly identified 10 topological pairs!';
+
+  @override
+  String get topologyScore => 'SCORE: ';
 }

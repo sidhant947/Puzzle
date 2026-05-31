@@ -229,76 +229,76 @@ class AppLocalizationsRu extends AppLocalizations {
   String get wordSearchTitle => 'Поиск слов';
 
   @override
-  String get radicalRootsTitle => 'Radical Roots';
+  String get radicalRootsTitle => 'Радикальные корни';
 
   @override
   String get radicalRootsSubtitle =>
-      'Find the square or cube root of the given number. Round to the nearest integer if necessary.';
+      'Найдите квадратный или кубический корень из заданного числа. При необходимости округлите до ближайшего целого числа.';
 
   @override
-  String get radicalRootsGoalReached => 'Goal Reached!';
+  String get radicalRootsGoalReached => 'Цель достигнута!';
 
   @override
-  String get radicalRootsTimeUp => 'Time\'s Up!';
+  String get radicalRootsTimeUp => 'Время вышло!';
 
   @override
   String radicalRootsScoreMessage(int score) {
-    return 'You calculated $score roots correctly!';
+    return 'Вы правильно вычислили $score корней!';
   }
 
   @override
   String radicalRootsTryAgainMessage(int score) {
-    return 'Keep practicing! You calculated $score roots.';
+    return 'Продолжайте практиковаться! Вы вычислили $score корней.';
   }
 
   @override
-  String get radicalRootsStart => 'Start Calculating';
+  String get radicalRootsStart => 'Начать вычисления';
 
   @override
   String get radicalRootsDescription =>
-      'You have 60 seconds to solve as many as you can.';
+      'У вас есть 60 секунд, чтобы решить как можно больше задач.';
 
   @override
-  String get radicalRootsBest => 'Best';
+  String get radicalRootsBest => 'Рекорд';
 
   @override
-  String get radicalRootsSeconds => '60 SECONDS';
+  String get radicalRootsSeconds => '60 СЕКУНД';
 
   @override
-  String get romanArithmeticTitle => 'Roman Arithmetic';
+  String get romanArithmeticTitle => 'Римская арифметика';
 
   @override
   String get romanArithmeticSubtitle =>
-      'Solve addition and subtraction problems using Roman Numerals.';
+      'Решайте задачи на сложение и вычитание, используя римские цифры.';
 
   @override
-  String get romanArithmeticGoalReached => 'Centurion Level!';
+  String get romanArithmeticGoalReached => 'Уровень Центуриона!';
 
   @override
-  String get romanArithmeticTimeUp => 'Time\'s Up!';
+  String get romanArithmeticTimeUp => 'Время вышло!';
 
   @override
   String romanArithmeticScoreMessage(int score) {
-    return 'You solved $score Roman problems!';
+    return 'Вы решили $score римских задач!';
   }
 
   @override
   String romanArithmeticTryAgainMessage(int score) {
-    return 'Veni, Vidi, Vici! You solved $score problems.';
+    return 'Veni, Vidi, Vici! Вы решили $score задач.';
   }
 
   @override
-  String get romanArithmeticStart => 'Begin Quest';
+  String get romanArithmeticStart => 'Начать квест';
 
   @override
   String get romanArithmeticDescription =>
-      'Convert and solve. You have 60 seconds.';
+      'Конвертируйте и решайте. У вас есть 60 секунд.';
 
   @override
-  String get romanArithmeticBest => 'Best';
+  String get romanArithmeticBest => 'Рекорд';
 
   @override
-  String get romanArithmeticSeconds => '60 SECONDS';
+  String get romanArithmeticSeconds => '60 СЕКУНД';
 
   @override
   String get wordSearchSubtitle =>
@@ -942,7 +942,7 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String hueSortWrongTiles(int count) {
-    return 'Tiles in wrong position: $count';
+    return 'Плитки в неправильном положении: $count';
   }
 
   @override
@@ -1400,22 +1400,22 @@ class AppLocalizationsRu extends AppLocalizations {
       'У каждого дома свои атрибуты (цвет, жилец и т.д.). Разгадайте их все.';
 
   @override
-  String get einsteinRiddleColor => 'Color';
+  String get einsteinRiddleColor => 'Цвет';
 
   @override
-  String get einsteinRiddleNationality => 'Nationality';
+  String get einsteinRiddleNationality => 'Национальность';
 
   @override
-  String get einsteinRiddleDrink => 'Drink';
+  String get einsteinRiddleDrink => 'Напиток';
 
   @override
-  String get einsteinRiddlePet => 'Pet';
+  String get einsteinRiddlePet => 'Питомец';
 
   @override
-  String get einsteinRiddleSmoke => 'Smoke';
+  String get einsteinRiddleSmoke => 'Сигареты';
 
   @override
-  String get einsteinRiddleHouse => 'House';
+  String get einsteinRiddleHouse => 'Дом';
 
   @override
   String get mirrorImageTitle => 'Зеркало';
@@ -1510,58 +1510,291 @@ class AppLocalizationsRu extends AppLocalizations {
   String get game2048Instruction => 'СМАХНИТЕ ДЛЯ СЛИЯНИЯ';
 
   @override
-  String get fibonacciMergeTitle => 'Fibonacci Merge';
+  String get fibonacciMergeTitle => 'Слияние Фибоначчи';
 
   @override
   String get fibonacciMergeSubtitle =>
-      'Merge consecutive Fibonacci numbers (1, 1, 2, 3, 5, 8, 13...).';
+      'Объединяйте последовательные числа Фибоначчи (1, 1, 2, 3, 5, 8, 13...).';
 
   @override
-  String get sequenceSleuthTitle => 'Sequence Sleuth';
+  String get sequenceSleuthTitle => 'Детектив последовательностей';
 
   @override
   String get sequenceSleuthSubtitle =>
-      'Find the missing number in the mathematical sequence.';
+      'Найдите недостающее число в математической последовательности.';
 
   @override
-  String get divisibilityDashTitle => 'Divisibility Dash';
+  String get divisibilityDashTitle => 'Рывок делимости';
 
   @override
   String get divisibilityDashSubtitle =>
-      'Tap all single-digit divisors (2-9) for the given number.';
+      'Нажмите все однозначные делители (2-9) для данного числа.';
 
   @override
-  String get percentagePeakTitle => 'Percentage Peak';
+  String get percentagePeakTitle => 'Пик процентов';
 
   @override
   String get percentagePeakSubtitle =>
-      'Solve mental percentage calculations quickly.';
+      'Быстро решайте вычисления процентов в уме.';
 
   @override
-  String get vennNumbersTitle => 'Venn Numbers';
+  String get vennNumbersTitle => 'Числа Венна';
 
   @override
   String get vennNumbersSubtitle =>
-      'Categorize numbers into the correct Venn diagram regions.';
+      'Распределите числа по правильным областям диаграммы Венна.';
 
   @override
-  String get commonDenominatorTitle => 'Common Denominator';
+  String get commonDenominatorTitle => 'Общий знаменатель';
 
   @override
   String get commonDenominatorSubtitle =>
-      'Find the Greatest Common Divisor or Least Common Multiple.';
+      'Найдите наибольший общий делитель или наименьшее общее кратное.';
 
   @override
-  String get angleFinderTitle => 'Angle Finder';
+  String get angleFinderTitle => 'Поиск углов';
 
   @override
   String get angleFinderSubtitle =>
-      'Calculate the missing angle in the geometric problem.';
+      'Вычислите недостающий угол в геометрической задаче.';
 
   @override
-  String get sumSnakeTitle => 'Sum Snake';
+  String get sumSnakeTitle => 'Змейка суммы';
 
   @override
   String get sumSnakeSubtitle =>
-      'Connect adjacent numbers to reach the target sum.';
+      'Соедините соседние числа, чтобы получить целевую сумму.';
+
+  @override
+  String get baseShiftTitle => 'Блиц смены систем счисления';
+
+  @override
+  String get baseShiftSubtitle => 'Решите в десятичной системе';
+
+  @override
+  String get baseShiftDescription =>
+      'Решите уравнение и введите ответ в десятичной системе (основание 10).';
+
+  @override
+  String get baseShiftEquation => 'УРАВНЕНИЕ';
+
+  @override
+  String get baseShiftHint => 'Введите десятичный результат...';
+
+  @override
+  String get baseShiftCorrect => 'Верно!';
+
+  @override
+  String get baseShiftIncorrect => 'Неверно!';
+
+  @override
+  String get baseShiftSubmit => 'ОТПРАВИТЬ';
+
+  @override
+  String get baseShiftQuickGuide => 'Краткое руководство:';
+
+  @override
+  String get baseShiftBinary => 'Двоичная (bin): Основание 2 (0, 1)';
+
+  @override
+  String get baseShiftHex => 'Шестнадцатеричная (0x): Основание 16 (0-9, A-F)';
+
+  @override
+  String get baseShiftDecimal => 'Десятичная (dec): Основание 10 (0-9)';
+
+  @override
+  String get baseShiftWinTitle => 'МАСТЕР МАТЕМАТИКИ!';
+
+  @override
+  String get baseShiftWinMessage =>
+      'Вы правильно решили 5 уравнений со сменой систем счисления!';
+
+  @override
+  String get blockCount3DTitle => 'Подсчет блоков 3D';
+
+  @override
+  String get blockCount3DSubtitle =>
+      'ТЯНИТЕ ДЛЯ ВРАЩЕНИЯ • СЧИТАЙТЕ СКРЫТЫЕ БЛОКИ';
+
+  @override
+  String get blockCount3DHowMany => 'СКОЛЬКО БЛОКОВ?';
+
+  @override
+  String get blockCount3DSubmitGuess => 'ОТПРАВИТЬ ОТВЕТ';
+
+  @override
+  String get blockCount3DNotQuite =>
+      'Не совсем так! Попробуйте повращать и посчитать снова.';
+
+  @override
+  String get blockCount3DExcellent => 'ОТЛИЧНО';
+
+  @override
+  String blockCount3DWinMessage(int count) {
+    return 'Вы правильно определили все $count блоков!';
+  }
+
+  @override
+  String get blockCount3DHowToPlayDescription =>
+      '1. Проведите пальцем по 3D-области просмотра, чтобы повернуть стопку блоков.\n\n2. Посчитайте все блоки в стопке.\n\n3. Помните: блок в воздухе должен иметь под собой опорные блоки (скрытые блоки!).\n\n4. Введите свой ответ в поле ввода и нажмите \"ОТПРАВИТЬ ОТВЕТ\", чтобы проверить.';
+
+  @override
+  String get alphabetSudokuTitle => 'АЛФАВИТНОЕ СУДОКУ';
+
+  @override
+  String get alphabetSudokuSubtitle =>
+      'Заполните сетку так, чтобы в каждой строке, столбце и блоке были буквы A-I.';
+
+  @override
+  String get alphabetSudokuWinTitle => 'СУДОКУ РЕШЕНО!';
+
+  @override
+  String get alphabetSudokuWinMessage => 'Блестяще! Вы освоили буквы.';
+
+  @override
+  String get classicMazeTitle => 'Классический лабиринт';
+
+  @override
+  String get classicMazeSubtitle =>
+      'ИССЛЕДУЙТЕ И РЕШАЙТЕ • НОВЫЙ ЛАБИРИНТ В КАЖДОЙ ИГРЕ';
+
+  @override
+  String get classicMazeWinTitle => 'ЛАБИРИНТ ПРОЙДЕН';
+
+  @override
+  String classicMazeWinMessage(int count) {
+    return 'Невероятная навигация! Вы прошли лабиринт за $count ходов.';
+  }
+
+  @override
+  String get classicMazeMoves => 'ХОДЫ: ';
+
+  @override
+  String get classicMazeHowToPlayDescription =>
+      '1. Проведите светящийся желтый шарик (игрок) к зеленому порталу (выход) в правом нижнем углу.\n\n2. Используйте свайпы в любом месте лабиринта, клавиши со стрелками на физической клавиатуре или кнопки со стрелками внизу для перемещения.\n\n3. Фиолетовый след показывает пройденный вами путь. Возвращайтесь по своему следу, чтобы динамически стирать его!\n\n4. Переключайте уровень сложности в верхней панели действий, чтобы бросить себе вызов в более крупных лабиринтах!';
+
+  @override
+  String get conjunctionSearchTitle => 'Поиск по признакам';
+
+  @override
+  String get conjunctionSearchSubtitle =>
+      'Концентрация внимания и сочетание признаков';
+
+  @override
+  String get conjunctionSearchWinTitle => 'ПОБЕДА';
+
+  @override
+  String get conjunctionSearchWinMessage =>
+      'Вы нашли все цели с идеальной концентрацией внимания!';
+
+  @override
+  String get conjunctionSearchHowToPlayDescription =>
+      'В инструкции будет показана определенная комбинация формы и цвета цели. Найдите и нажмите на нее в плотной сетке как можно быстрее. Отвлекающие фигуры имеют либо тот же цвет, либо ту же форму, так что смотрите внимательно!';
+
+  @override
+  String get conjunctionSearchRound => 'РАУНД: ';
+
+  @override
+  String get conjunctionSearchScore => 'СЧЕТ: ';
+
+  @override
+  String get conjunctionSearchFind => 'НАЙТИ: ';
+
+  @override
+  String get shapeCircle => 'КРУГ';
+
+  @override
+  String get shapeSquare => 'КВАДРАТ';
+
+  @override
+  String get shapeTriangle => 'ТРЕУГОЛЬНИК';
+
+  @override
+  String get shapeStar => 'ЗВЕЗДА';
+
+  @override
+  String get colorRedLabel => 'КРАСНЫЙ';
+
+  @override
+  String get colorBlueLabel => 'СИНИЙ';
+
+  @override
+  String get colorGreenLabel => 'ЗЕЛЕНЫЙ';
+
+  @override
+  String get colorAmberLabel => 'ЯНТАРНЫЙ';
+
+  @override
+  String get cubeNetFoldTitle => 'Развертка куба';
+
+  @override
+  String get cubeNetFoldSubtitle => 'ВЫБЕРИТЕ СООТВЕТСТВУЮЩИЙ 3D-КУБ';
+
+  @override
+  String get cubeNetFoldWinTitle => 'ВЕРНО';
+
+  @override
+  String get cubeNetFoldWinMessage => 'У вас идеальная логика 3D-складывания!';
+
+  @override
+  String get cubeNetFoldHowToPlayDescription =>
+      '1. Посмотрите на развернутую 2D-сетку вверху.\n\n2. Мысленно сложите сетку в 3D-куб.\n\n3. Выберите ниже вариант, который представляет собой правильную 3D-перспективу этого сложенного куба.\n\n4. Будьте осторожны: противоположные грани в развертке не могут быть соседними в 3D, и порядок соседних граней должен совпадать!';
+
+  @override
+  String get cubeNetFoldUnfoldedNet => 'РАЗВЕРНУТАЯ 2D-СЕТКА';
+
+  @override
+  String get cubeNetFoldWhichMatches => 'КАКОЙ КУБ ПОДХОДИТ?';
+
+  @override
+  String get cubeNetFoldIncorrect =>
+      'Неверная логика складывания! Нажмите «Сброс» или измените свой выбор.';
+
+  @override
+  String get cubeNetFoldSubmitChoice => 'ОТПРАВИТЬ ВЫБОР';
+
+  @override
+  String get cubeNetFoldFailed => 'ОШИБКА (НАЖМИТЕ СБРОС)';
+
+  @override
+  String get faceTraitAssociationMemorize => 'ЗАПОМНИТЕ ВСЕХ 4 ЧЕЛОВЕК';
+
+  @override
+  String faceTraitAssociationPersonOf(int current, int total) {
+    return 'ЧЕЛОВЕК $current ИЗ $total';
+  }
+
+  @override
+  String get faceTraitAssociationWhatOccupation => 'КАКАЯ У НИХ ПРОФЕССИЯ?';
+
+  @override
+  String get faceTraitAssociationWhatHobby => 'КАКОЕ У НИХ ХОББИ?';
+
+  @override
+  String get faceTraitAssociationWinTitle => 'МАСТЕР ПАМЯТИ!';
+
+  @override
+  String get faceTraitAssociationLoseTitle => 'ИГРА ОКОНЧЕНА';
+
+  @override
+  String faceTraitAssociationScoreMessage(int correct, int total) {
+    return 'Правильно $correct из $total.';
+  }
+
+  @override
+  String get topologyTitle => 'ТОПОЛОГИЯ';
+
+  @override
+  String get topologySubtitle =>
+      'Эквивалентны ли эти фигуры топологически? (Можно ли одну деформировать в другую без разрезания или склеивания?)';
+
+  @override
+  String get topologyWinTitle => 'ГЕНИЙ ГЕОМЕТРИИ!';
+
+  @override
+  String get topologyWinMessage =>
+      'Вы правильно определили 10 топологических пар!';
+
+  @override
+  String get topologyScore => 'СЧЕТ: ';
 }

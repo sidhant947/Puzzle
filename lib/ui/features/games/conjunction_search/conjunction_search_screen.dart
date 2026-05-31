@@ -7,6 +7,7 @@ import '../../../../widgets/tangible.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 import '../../../core/juice/game_scaffold.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 
 class TriangleClipper extends CustomClipper<Path> {
   @override
@@ -36,6 +37,32 @@ class ConjunctionSearchScreen extends ConsumerWidget {
         return DesignSystem.gameGreen;
       case ColorType.amber:
         return DesignSystem.gameAmber;
+    }
+  }
+
+  String _getColorLabel(ColorType colorType, AppLocalizations l10n) {
+    switch (colorType) {
+      case ColorType.red:
+        return l10n.colorRedLabel;
+      case ColorType.blue:
+        return l10n.colorBlueLabel;
+      case ColorType.green:
+        return l10n.colorGreenLabel;
+      case ColorType.amber:
+        return l10n.colorAmberLabel;
+    }
+  }
+
+  String _getShapeLabel(ShapeType shapeType, AppLocalizations l10n) {
+    switch (shapeType) {
+      case ShapeType.circle:
+        return l10n.shapeCircle;
+      case ShapeType.square:
+        return l10n.shapeSquare;
+      case ShapeType.triangle:
+        return l10n.shapeTriangle;
+      case ShapeType.star:
+        return l10n.shapeStar;
     }
   }
 
@@ -81,6 +108,7 @@ class ConjunctionSearchScreen extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final state = ref.watch(conjunctionSearchNotifierProvider);
     final notifier = ref.read(conjunctionSearchNotifierProvider.notifier);
+    final l10n = AppLocalizations.of(context)!;
 
     ref.listen(conjunctionSearchNotifierProvider, (previous, next) {
       if (next.isCompleted && !(previous?.isCompleted ?? false)) {
@@ -89,8 +117,8 @@ class ConjunctionSearchScreen extends ConsumerWidget {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'VICTORY',
-            message: 'You have found all targets with perfect attentional focus!',
+            title: l10n.conjunctionSearchWinTitle,
+            message: l10n.conjunctionSearchWinMessage,
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
@@ -108,8 +136,8 @@ class ConjunctionSearchScreen extends ConsumerWidget {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'Conjunction Search',
-      subtitle: 'Attentional Focus & Feature Conjunction',
+      title: l10n.conjunctionSearchTitle,
+      subtitle: l10n.conjunctionSearchSubtitle,
       onReset: () {
         HapticFeedbackUtil.mediumImpact();
         notifier.reset();
@@ -118,16 +146,12 @@ class ConjunctionSearchScreen extends ConsumerWidget {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text('HOW TO PLAY'),
-            content: const Text(
-              'A specific target shape and color combination will be shown in the instructions. '
-              'Find and tap it in the dense grid as quickly as possible. '
-              'Distractor shapes share either the same color or shape, so look closely!',
-            ),
+            title: Text(l10n.howToPlay.toUpperCase()),
+            content: Text(l10n.conjunctionSearchHowToPlayDescription),
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('GOT IT'),
+                child: Text(l10n.gotIt.toUpperCase()),
               ),
             ],
           ),
@@ -149,7 +173,7 @@ class ConjunctionSearchScreen extends ConsumerWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       radius: DesignSystem.radiusSM,
                       child: Text(
-                        'ROUND: ${state.currentRound}/${state.totalRounds}',
+                        '${l10n.conjunctionSearchRound}${state.currentRound}/${state.totalRounds}',
                         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
                       ),
                     ),
@@ -158,7 +182,7 @@ class ConjunctionSearchScreen extends ConsumerWidget {
                       padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                       radius: DesignSystem.radiusSM,
                       child: Text(
-                        'SCORE: ${state.score}',
+                        '${l10n.conjunctionSearchScore}${state.score}',
                         style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 13, color: DesignSystem.primary),
                       ),
                     ),
@@ -177,9 +201,9 @@ class ConjunctionSearchScreen extends ConsumerWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      const Text(
-                        'FIND: ',
-                        style: TextStyle(
+                      Text(
+                        l10n.conjunctionSearchFind,
+                        style: const TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w900,
                           letterSpacing: 1.0,
@@ -189,7 +213,7 @@ class ConjunctionSearchScreen extends ConsumerWidget {
                       _buildShape(state.target.shape, targetColor, 28),
                       const SizedBox(width: DesignSystem.spaceSM),
                       Text(
-                        '${state.target.color.label} ${state.target.shape.label}',
+                        '${_getColorLabel(state.target.color, l10n)} ${_getShapeLabel(state.target.shape, l10n)}',
                         style: TextStyle(
                           fontSize: 15,
                           fontWeight: FontWeight.w900,

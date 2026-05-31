@@ -228,76 +228,72 @@ class AppLocalizationsZh extends AppLocalizations {
   String get wordSearchTitle => '单词搜索';
 
   @override
-  String get radicalRootsTitle => 'Radical Roots';
+  String get radicalRootsTitle => '开方运算';
 
   @override
-  String get radicalRootsSubtitle =>
-      'Find the square or cube root of the given number. Round to the nearest integer if necessary.';
+  String get radicalRootsSubtitle => '求给定数字的的平方根或立方根。如果需要，请四舍五入到最接近的整数。';
 
   @override
-  String get radicalRootsGoalReached => 'Goal Reached!';
+  String get radicalRootsGoalReached => '达成目标！';
 
   @override
-  String get radicalRootsTimeUp => 'Time\'s Up!';
+  String get radicalRootsTimeUp => '时间到！';
 
   @override
   String radicalRootsScoreMessage(int score) {
-    return 'You calculated $score roots correctly!';
+    return '你正确计算了 $score 个方根！';
   }
 
   @override
   String radicalRootsTryAgainMessage(int score) {
-    return 'Keep practicing! You calculated $score roots.';
+    return '继续练习！你计算了 $score 个方根。';
   }
 
   @override
-  String get radicalRootsStart => 'Start Calculating';
+  String get radicalRootsStart => '开始计算';
 
   @override
-  String get radicalRootsDescription =>
-      'You have 60 seconds to solve as many as you can.';
+  String get radicalRootsDescription => '你有 60 秒的时间来解决尽可能多的题目。';
 
   @override
-  String get radicalRootsBest => 'Best';
+  String get radicalRootsBest => '最高纪录';
 
   @override
-  String get radicalRootsSeconds => '60 SECONDS';
+  String get radicalRootsSeconds => '60 秒';
 
   @override
-  String get romanArithmeticTitle => 'Roman Arithmetic';
+  String get romanArithmeticTitle => '罗马算术';
 
   @override
-  String get romanArithmeticSubtitle =>
-      'Solve addition and subtraction problems using Roman Numerals.';
+  String get romanArithmeticSubtitle => '使用罗马数字解决加减法题目。';
 
   @override
-  String get romanArithmeticGoalReached => 'Centurion Level!';
+  String get romanArithmeticGoalReached => '百夫长级别！';
 
   @override
-  String get romanArithmeticTimeUp => 'Time\'s Up!';
+  String get romanArithmeticTimeUp => '时间到！';
 
   @override
   String romanArithmeticScoreMessage(int score) {
-    return 'You solved $score Roman problems!';
+    return '你解决了 $score 道罗马数字题目！';
   }
 
   @override
   String romanArithmeticTryAgainMessage(int score) {
-    return 'Veni, Vidi, Vici! You solved $score problems.';
+    return '我来，我见，我征服！你解决了 $score 道题目。';
   }
 
   @override
-  String get romanArithmeticStart => 'Begin Quest';
+  String get romanArithmeticStart => '开始任务';
 
   @override
-  String get romanArithmeticDescription =>
-      'Convert and solve. You have 60 seconds.';
+  String get romanArithmeticDescription => '转换并计算。你有 60 秒时间。';
 
   @override
-  String get romanArithmeticBest => 'Best';
+  String get romanArithmeticBest => '最高纪录';
 
   @override
-  String get romanArithmeticSeconds => '60 SECONDS';
+  String get romanArithmeticSeconds => '60 秒';
 
   @override
   String get wordSearchSubtitle => '找出网格中所有隐藏的单词。拖动以选择。';
@@ -910,7 +906,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String hueSortWrongTiles(int count) {
-    return 'Tiles in wrong position: $count';
+    return '位置错误的方块：$count';
   }
 
   @override
@@ -1463,58 +1459,272 @@ class AppLocalizationsZh extends AppLocalizations {
   String get game2048Instruction => '向任何方向滑动以合并';
 
   @override
-  String get fibonacciMergeTitle => 'Fibonacci Merge';
+  String get fibonacciMergeTitle => '斐波那契合并';
 
   @override
-  String get fibonacciMergeSubtitle =>
-      'Merge consecutive Fibonacci numbers (1, 1, 2, 3, 5, 8, 13...).';
+  String get fibonacciMergeSubtitle => '合并连续的斐波那契数 (1, 1, 2, 3, 5, 8, 13...)。';
 
   @override
-  String get sequenceSleuthTitle => 'Sequence Sleuth';
+  String get sequenceSleuthTitle => '序列侦探';
 
   @override
-  String get sequenceSleuthSubtitle =>
-      'Find the missing number in the mathematical sequence.';
+  String get sequenceSleuthSubtitle => '找出数学序列中缺失的数字。';
 
   @override
-  String get divisibilityDashTitle => 'Divisibility Dash';
+  String get divisibilityDashTitle => '整除冲刺';
 
   @override
-  String get divisibilityDashSubtitle =>
-      'Tap all single-digit divisors (2-9) for the given number.';
+  String get divisibilityDashSubtitle => '点击给定数字的所有个位数因数 (2-9)。';
 
   @override
-  String get percentagePeakTitle => 'Percentage Peak';
+  String get percentagePeakTitle => '百分比巅峰';
 
   @override
-  String get percentagePeakSubtitle =>
-      'Solve mental percentage calculations quickly.';
+  String get percentagePeakSubtitle => '快速解决心理百分比计算。';
 
   @override
-  String get vennNumbersTitle => 'Venn Numbers';
+  String get vennNumbersTitle => '韦恩图数字';
 
   @override
-  String get vennNumbersSubtitle =>
-      'Categorize numbers into the correct Venn diagram regions.';
+  String get vennNumbersSubtitle => '将数字归类到正确的韦恩图区域。';
 
   @override
-  String get commonDenominatorTitle => 'Common Denominator';
+  String get commonDenominatorTitle => '公分母';
 
   @override
-  String get commonDenominatorSubtitle =>
-      'Find the Greatest Common Divisor or Least Common Multiple.';
+  String get commonDenominatorSubtitle => '求最大公约数或最小公倍数。';
 
   @override
-  String get angleFinderTitle => 'Angle Finder';
+  String get angleFinderTitle => '角度搜索';
 
   @override
-  String get angleFinderSubtitle =>
-      'Calculate the missing angle in the geometric problem.';
+  String get angleFinderSubtitle => '计算几何题目中缺失的角度。';
 
   @override
-  String get sumSnakeTitle => 'Sum Snake';
+  String get sumSnakeTitle => '求和蛇';
 
   @override
-  String get sumSnakeSubtitle =>
-      'Connect adjacent numbers to reach the target sum.';
+  String get sumSnakeSubtitle => '连接相邻数字以达到目标和。';
+
+  @override
+  String get baseShiftTitle => '进制转换挑战';
+
+  @override
+  String get baseShiftSubtitle => '以十进制求解';
+
+  @override
+  String get baseShiftDescription => '解方程并以十进制（基数 10）输入答案。';
+
+  @override
+  String get baseShiftEquation => '方程式';
+
+  @override
+  String get baseShiftHint => '输入十进制结果...';
+
+  @override
+  String get baseShiftCorrect => '正确！';
+
+  @override
+  String get baseShiftIncorrect => '不正确！';
+
+  @override
+  String get baseShiftSubmit => '提交';
+
+  @override
+  String get baseShiftQuickGuide => '快速指南：';
+
+  @override
+  String get baseShiftBinary => '二进制 (bin): 基数 2 (0, 1)';
+
+  @override
+  String get baseShiftHex => '十六进制 (0x): 基数 16 (0-9, A-F)';
+
+  @override
+  String get baseShiftDecimal => '十进制 (dec): 基数 10 (0-9)';
+
+  @override
+  String get baseShiftWinTitle => '数学奇才！';
+
+  @override
+  String get baseShiftWinMessage => '你正确解决了 5 道进制转换方程！';
+
+  @override
+  String get blockCount3DTitle => '3D 数方块';
+
+  @override
+  String get blockCount3DSubtitle => '拖动旋转 • 数出隐藏的方块';
+
+  @override
+  String get blockCount3DHowMany => '有多少个方块？';
+
+  @override
+  String get blockCount3DSubmitGuess => '提交答案';
+
+  @override
+  String get blockCount3DNotQuite => '不完全正确！尝试旋转并重新数数。';
+
+  @override
+  String get blockCount3DExcellent => '出色';
+
+  @override
+  String blockCount3DWinMessage(int count) {
+    return '你正确识别了所有 $count 个方块！';
+  }
+
+  @override
+  String get blockCount3DHowToPlayDescription =>
+      '1. 在 3D 视图中拖动手指以旋转方块堆叠。\n\n2. 数出堆叠中的所有方块。\n\n3. 请记住：悬空的方块下方必须有支撑方块（隐藏方块！）。\n\n4. 在输入框中输入你的答案，然后点击“提交答案”进行检查。';
+
+  @override
+  String get alphabetSudokuTitle => '字母数独';
+
+  @override
+  String get alphabetSudokuSubtitle => '填充网格，使每一行、每一列和每个宫格都包含字母 A-I。';
+
+  @override
+  String get alphabetSudokuWinTitle => '数独已解决！';
+
+  @override
+  String get alphabetSudokuWinMessage => '太棒了！你掌握了字母规律。';
+
+  @override
+  String get classicMazeTitle => '经典迷宫';
+
+  @override
+  String get classicMazeSubtitle => '探索并解决 • 每局都是新迷宫';
+
+  @override
+  String get classicMazeWinTitle => '迷宫已扫清';
+
+  @override
+  String classicMazeWinMessage(int count) {
+    return '不可思议的导航！你用了 $count 步解决了迷宫。';
+  }
+
+  @override
+  String get classicMazeMoves => '步数：';
+
+  @override
+  String get classicMazeHowToPlayDescription =>
+      '1. 引导发光的黄色大理石（玩家）到达右下角的绿色门户（出口）。\n\n2. 在迷宫任意位置滑动、使用物理键盘方向键或底部的方向盘按钮来移动。\n\n3. 紫色痕迹显示了你已经探索过的路径。返回你的痕迹可以动态擦除它！\n\n4. 在顶部操作栏切换难度，挑战更大的迷宫！';
+
+  @override
+  String get conjunctionSearchTitle => '合取搜索';
+
+  @override
+  String get conjunctionSearchSubtitle => '注意力集中与特征合取';
+
+  @override
+  String get conjunctionSearchWinTitle => '胜利';
+
+  @override
+  String get conjunctionSearchWinMessage => '你以完美的注意力找到了所有目标！';
+
+  @override
+  String get conjunctionSearchHowToPlayDescription =>
+      '说明中将显示特定的目标形状和颜色组合。在密集的网格中尽快找到并点击它。干扰形状具有相同的颜色或形状，请仔细观察！';
+
+  @override
+  String get conjunctionSearchRound => '轮次：';
+
+  @override
+  String get conjunctionSearchScore => '分数：';
+
+  @override
+  String get conjunctionSearchFind => '寻找：';
+
+  @override
+  String get shapeCircle => '圆形';
+
+  @override
+  String get shapeSquare => '正方形';
+
+  @override
+  String get shapeTriangle => '三角形';
+
+  @override
+  String get shapeStar => '星星';
+
+  @override
+  String get colorRedLabel => '红色';
+
+  @override
+  String get colorBlueLabel => '蓝色';
+
+  @override
+  String get colorGreenLabel => '绿色';
+
+  @override
+  String get colorAmberLabel => '琥珀色';
+
+  @override
+  String get cubeNetFoldTitle => '立方体折叠';
+
+  @override
+  String get cubeNetFoldSubtitle => '选择匹配的 3D 立方体选项';
+
+  @override
+  String get cubeNetFoldWinTitle => '正确';
+
+  @override
+  String get cubeNetFoldWinMessage => '你拥有完美的 3D 空间折叠逻辑！';
+
+  @override
+  String get cubeNetFoldHowToPlayDescription =>
+      '1. 查看顶部的展开 2D 平面图。\n\n2. 在脑海中将平面图折叠成 3D 立方体。\n\n3. 在下方选择代表该折叠立方体有效 3D 视角的选项。\n\n4. 注意：平面图中的相对面在 3D 中不能相邻，且相邻面的顺序必须匹配！';
+
+  @override
+  String get cubeNetFoldUnfoldedNet => '展开 2D 平面图';
+
+  @override
+  String get cubeNetFoldWhichMatches => '哪个立方体匹配？';
+
+  @override
+  String get cubeNetFoldIncorrect => '折叠逻辑错误！点击重置或更改选择。';
+
+  @override
+  String get cubeNetFoldSubmitChoice => '提交选择';
+
+  @override
+  String get cubeNetFoldFailed => '失败（点击重置）';
+
+  @override
+  String get faceTraitAssociationMemorize => '记住这 4 个人';
+
+  @override
+  String faceTraitAssociationPersonOf(int current, int total) {
+    return '第 $current 人（共 $total 人）';
+  }
+
+  @override
+  String get faceTraitAssociationWhatOccupation => '他们的职业是什么？';
+
+  @override
+  String get faceTraitAssociationWhatHobby => '他们的爱好是什么？';
+
+  @override
+  String get faceTraitAssociationWinTitle => '记忆大师！';
+
+  @override
+  String get faceTraitAssociationLoseTitle => '游戏结束';
+
+  @override
+  String faceTraitAssociationScoreMessage(int correct, int total) {
+    return '你在 $total 次中答对了 $correct 次。';
+  }
+
+  @override
+  String get topologyTitle => '拓扑学';
+
+  @override
+  String get topologySubtitle => '这些形状在拓扑上等效吗？（其中一个能否在不切割或粘贴的情况下变形为另一个？）';
+
+  @override
+  String get topologyWinTitle => '几何天才！';
+
+  @override
+  String get topologyWinMessage => '你正确识别了 10 对拓扑对！';
+
+  @override
+  String get topologyScore => '分数：';
 }

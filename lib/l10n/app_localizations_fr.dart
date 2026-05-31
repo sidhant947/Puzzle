@@ -1557,58 +1557,294 @@ class AppLocalizationsFr extends AppLocalizations {
   String get game2048Instruction => 'GLISSEZ POUR FUSIONNER';
 
   @override
-  String get fibonacciMergeTitle => 'Fibonacci Merge';
+  String get fibonacciMergeTitle => 'Fusion de Fibonacci';
 
   @override
   String get fibonacciMergeSubtitle =>
-      'Merge consecutive Fibonacci numbers (1, 1, 2, 3, 5, 8, 13...).';
+      'Fusionnez les nombres de Fibonacci consécutifs (1, 1, 2, 3, 5, 8, 13...).';
 
   @override
-  String get sequenceSleuthTitle => 'Sequence Sleuth';
+  String get sequenceSleuthTitle => 'Détective de Séquences';
 
   @override
   String get sequenceSleuthSubtitle =>
-      'Find the missing number in the mathematical sequence.';
+      'Trouvez le nombre manquant dans la séquence mathématique.';
 
   @override
-  String get divisibilityDashTitle => 'Divisibility Dash';
+  String get divisibilityDashTitle => 'Course à la Divisibilité';
 
   @override
   String get divisibilityDashSubtitle =>
-      'Tap all single-digit divisors (2-9) for the given number.';
+      'Appuyez sur tous les diviseurs à un chiffre (2-9) pour le nombre donné.';
 
   @override
-  String get percentagePeakTitle => 'Percentage Peak';
+  String get percentagePeakTitle => 'Sommet du Pourcentage';
 
   @override
   String get percentagePeakSubtitle =>
-      'Solve mental percentage calculations quickly.';
+      'Résolvez des calculs de pourcentage mentaux rapidement.';
 
   @override
-  String get vennNumbersTitle => 'Venn Numbers';
+  String get vennNumbersTitle => 'Nombres de Venn';
 
   @override
   String get vennNumbersSubtitle =>
-      'Categorize numbers into the correct Venn diagram regions.';
+      'Catégorisez les nombres dans les bonnes régions du diagramme de Venn.';
 
   @override
-  String get commonDenominatorTitle => 'Common Denominator';
+  String get commonDenominatorTitle => 'Dénominateur Commun';
 
   @override
   String get commonDenominatorSubtitle =>
-      'Find the Greatest Common Divisor or Least Common Multiple.';
+      'Trouvez le Plus Grand Commun Diviseur ou le Plus Petit Commun Multiple.';
 
   @override
-  String get angleFinderTitle => 'Angle Finder';
+  String get angleFinderTitle => 'Chercheur d\'Angle';
 
   @override
   String get angleFinderSubtitle =>
-      'Calculate the missing angle in the geometric problem.';
+      'Calculez l\'angle manquant dans le problème géométrique.';
 
   @override
-  String get sumSnakeTitle => 'Sum Snake';
+  String get sumSnakeTitle => 'Serpent de Somme';
 
   @override
   String get sumSnakeSubtitle =>
-      'Connect adjacent numbers to reach the target sum.';
+      'Reliez les nombres adjacents pour atteindre la somme cible.';
+
+  @override
+  String get baseShiftTitle => 'BLITZ DE CHANGEMENT DE BASE';
+
+  @override
+  String get baseShiftSubtitle => 'Résoudre en décimal';
+
+  @override
+  String get baseShiftDescription =>
+      'Résolvez l\'équation et tapez la réponse en décimal (Base 10).';
+
+  @override
+  String get baseShiftEquation => 'ÉQUATION';
+
+  @override
+  String get baseShiftHint => 'Entrez le résultat décimal...';
+
+  @override
+  String get baseShiftCorrect => 'Correct !';
+
+  @override
+  String get baseShiftIncorrect => 'Incorrect !';
+
+  @override
+  String get baseShiftSubmit => 'SOUMETTRE';
+
+  @override
+  String get baseShiftQuickGuide => 'Guide Rapide :';
+
+  @override
+  String get baseShiftBinary => 'Binaire (bin) : Base 2 (0, 1)';
+
+  @override
+  String get baseShiftHex => 'Hexadécimal (0x) : Base 16 (0-9, A-F)';
+
+  @override
+  String get baseShiftDecimal => 'Décimal (dec) : Base 10 (0-9)';
+
+  @override
+  String get baseShiftWinTitle => 'SORCIER DES MATHS !';
+
+  @override
+  String get baseShiftWinMessage =>
+      'Vous avez résolu correctement 5 équations de changement de base !';
+
+  @override
+  String get blockCount3DTitle => 'Comptage de Blocs 3D';
+
+  @override
+  String get blockCount3DSubtitle =>
+      'GLISSEZ POUR PIVOTER • COMPTEZ LES BLOCS CACHÉS';
+
+  @override
+  String get blockCount3DHowMany => 'COMBIEN DE BLOCS ?';
+
+  @override
+  String get blockCount3DSubmitGuess => 'SOUMETTRE LA RÉPONSE';
+
+  @override
+  String get blockCount3DNotQuite =>
+      'Pas tout à fait ! Essayez de pivoter pour recompter.';
+
+  @override
+  String get blockCount3DExcellent => 'EXCELLENT';
+
+  @override
+  String blockCount3DWinMessage(int count) {
+    return 'Vous avez correctement identifié les $count blocs !';
+  }
+
+  @override
+  String get blockCount3DHowToPlayDescription =>
+      '1. Glissez votre doigt sur la vue 3D pour faire pivoter la pile.\n\n2. Comptez tous les blocs de la pile.\n\n3. Rappel : un bloc en l\'air doit avoir des blocs de support en dessous (blocs cachés !).\n\n4. Tapez votre réponse et appuyez sur \"SOUMETTRE LA RÉPONSE\".';
+
+  @override
+  String get alphabetSudokuTitle => 'SUDOKU ALPHABÉTIQUE';
+
+  @override
+  String get alphabetSudokuSubtitle =>
+      'Remplissez la grille pour que chaque ligne, colonne et carré contienne les lettres A-I.';
+
+  @override
+  String get alphabetSudokuWinTitle => 'SUDOKU RÉSOLU !';
+
+  @override
+  String get alphabetSudokuWinMessage =>
+      'Brillant ! Vous avez maîtrisé les lettres.';
+
+  @override
+  String get classicMazeTitle => 'Labyrinthe Classique';
+
+  @override
+  String get classicMazeSubtitle =>
+      'EXPLOREZ ET RÉSOLVEZ • UN NOUVEAU LABYRINTHE À CHAQUE JEU';
+
+  @override
+  String get classicMazeWinTitle => 'LABYRINTHE TERMINÉ';
+
+  @override
+  String classicMazeWinMessage(int count) {
+    return 'Navigation incroyable ! Vous avez résolu le labyrinthe en $count mouvements.';
+  }
+
+  @override
+  String get classicMazeMoves => 'MOUVEMENTS : ';
+
+  @override
+  String get classicMazeHowToPlayDescription =>
+      '1. Guidez la bille jaune (joueur) vers le portail vert (sortie) en bas à droite.\n\n2. Glissez n\'importe où, utilisez les flèches du clavier ou les boutons pour vous déplacer.\n\n3. La trace violette montre le chemin exploré. Revenez sur vos pas pour l\'effacer !\n\n4. Changez la difficulté pour des labyrinthes plus grands.';
+
+  @override
+  String get conjunctionSearchTitle => 'Recherche de Conjonction';
+
+  @override
+  String get conjunctionSearchSubtitle =>
+      'Focalisation attentionnelle et conjonction de caractéristiques';
+
+  @override
+  String get conjunctionSearchWinTitle => 'VICTOIRE';
+
+  @override
+  String get conjunctionSearchWinMessage =>
+      'Vous avez trouvé toutes les cibles avec une focalisation attentionnelle parfaite !';
+
+  @override
+  String get conjunctionSearchHowToPlayDescription =>
+      'Une combinaison spécifique de forme et de couleur sera affichée. Trouvez-la et appuyez dessus le plus vite possible. Les distracteurs partagent soit la couleur, soit la forme !';
+
+  @override
+  String get conjunctionSearchRound => 'MANCHE : ';
+
+  @override
+  String get conjunctionSearchScore => 'SCORE : ';
+
+  @override
+  String get conjunctionSearchFind => 'TROUVEZ : ';
+
+  @override
+  String get shapeCircle => 'CERCLE';
+
+  @override
+  String get shapeSquare => 'CARRÉ';
+
+  @override
+  String get shapeTriangle => 'TRIANGLE';
+
+  @override
+  String get shapeStar => 'ÉTOILE';
+
+  @override
+  String get colorRedLabel => 'ROUGE';
+
+  @override
+  String get colorBlueLabel => 'BLEU';
+
+  @override
+  String get colorGreenLabel => 'VERT';
+
+  @override
+  String get colorAmberLabel => 'AMBRE';
+
+  @override
+  String get cubeNetFoldTitle => 'Pliage de Cube';
+
+  @override
+  String get cubeNetFoldSubtitle => 'SÉLECTIONNEZ LE CUBE 3D CORRESPONDANT';
+
+  @override
+  String get cubeNetFoldWinTitle => 'CORRECT';
+
+  @override
+  String get cubeNetFoldWinMessage =>
+      'Vous avez une logique de pliage spatial 3D parfaite !';
+
+  @override
+  String get cubeNetFoldHowToPlayDescription =>
+      '1. Regardez le patron 2D en haut.\n\n2. Pliez mentalement le patron en un cube 3D.\n\n3. Choisissez l\'option qui représente une perspective 3D valide de ce cube.\n\n4. Attention : les faces opposées dans le patron ne peuvent pas être adjacentes en 3D.';
+
+  @override
+  String get cubeNetFoldUnfoldedNet => 'PATRON 2D DÉPLIÉ';
+
+  @override
+  String get cubeNetFoldWhichMatches => 'QUEL CUBE CORRESPOND ?';
+
+  @override
+  String get cubeNetFoldIncorrect =>
+      'Logique de pliage incorrecte ! Appuyez sur Reset ou changez votre choix.';
+
+  @override
+  String get cubeNetFoldSubmitChoice => 'SOUMETTRE LE CHOIX';
+
+  @override
+  String get cubeNetFoldFailed => 'ÉCHEC (APPUYEZ SUR RESET)';
+
+  @override
+  String get faceTraitAssociationMemorize => 'MÉMORISEZ LES 4 PERSONNES';
+
+  @override
+  String faceTraitAssociationPersonOf(int current, int total) {
+    return 'PERSONNE $current SUR $total';
+  }
+
+  @override
+  String get faceTraitAssociationWhatOccupation =>
+      'QUELLE EST LEUR PROFESSION ?';
+
+  @override
+  String get faceTraitAssociationWhatHobby => 'QUEL EST LEUR PASSE-TEMPS ?';
+
+  @override
+  String get faceTraitAssociationWinTitle => 'MAÎTRE DE LA MÉMOIRE !';
+
+  @override
+  String get faceTraitAssociationLoseTitle => 'PARTIE TERMINÉE';
+
+  @override
+  String faceTraitAssociationScoreMessage(int correct, int total) {
+    return 'Vous avez $correct bonnes réponses sur $total.';
+  }
+
+  @override
+  String get topologyTitle => 'TOPOLOGIE';
+
+  @override
+  String get topologySubtitle =>
+      'Ces formes sont-elles topologiquement équivalentes ? (Peut-on en déformer une en l\'autre sans couper ni coller ?)';
+
+  @override
+  String get topologyWinTitle => 'GÉNIE DE LA GÉOMÉTRIE !';
+
+  @override
+  String get topologyWinMessage =>
+      'Vous avez correctement identifié 10 paires topologiques !';
+
+  @override
+  String get topologyScore => 'SCORE : ';
 }

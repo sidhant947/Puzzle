@@ -44,11 +44,11 @@ class FaceTraitAssociationScreen extends ConsumerWidget {
     final l10n = AppLocalizations.of(context)!;
     return Column(
       children: [
-        const Padding(
-          padding: EdgeInsets.symmetric(vertical: DesignSystem.spaceMD),
+        Padding(
+          padding: const EdgeInsets.symmetric(vertical: DesignSystem.spaceMD),
           child: Text(
-            'MEMORIZE ALL 4 PEOPLE',
-            style: TextStyle(fontSize: 18, fontWeight: FontWeight.w900, letterSpacing: 1.2),
+            l10n.faceTraitAssociationMemorize,
+            style: const TextStyle(fontSize: 18, fontWeight: FontWeight.w900, letterSpacing: 1.2),
           ),
         ),
         Expanded(
@@ -124,13 +124,14 @@ class FaceTraitAssociationScreen extends ConsumerWidget {
   }
 
   Widget _buildTestPhase(BuildContext context, WidgetRef ref, FaceTraitAssociationState state) {
+    final l10n = AppLocalizations.of(context)!;
     final face = state.trials[state.currentIndex];
     return SingleChildScrollView(
       padding: const EdgeInsets.all(DesignSystem.spaceLG),
       child: Column(
         children: [
           Text(
-            'PERSON ${state.currentIndex + 1} OF ${state.trials.length}',
+            l10n.faceTraitAssociationPersonOf(state.currentIndex + 1, state.trials.length),
             style: const TextStyle(fontWeight: FontWeight.w900, color: DesignSystem.primary),
           ),
           const SizedBox(height: DesignSystem.spaceLG),
@@ -148,7 +149,7 @@ class FaceTraitAssociationScreen extends ConsumerWidget {
             ),
           ),
           const SizedBox(height: DesignSystem.spaceXL),
-          const Text('WHAT IS THEIR OCCUPATION?', style: TextStyle(fontWeight: FontWeight.w900)),
+          Text(l10n.faceTraitAssociationWhatOccupation, style: const TextStyle(fontWeight: FontWeight.w900)),
           const SizedBox(height: DesignSystem.spaceMD),
           Wrap(
             spacing: 8,
@@ -166,7 +167,7 @@ class FaceTraitAssociationScreen extends ConsumerWidget {
             }).toList(),
           ),
           const SizedBox(height: DesignSystem.spaceXL),
-          const Text('WHAT IS THEIR HOBBY?', style: TextStyle(fontWeight: FontWeight.w900)),
+          Text(l10n.faceTraitAssociationWhatHobby, style: const TextStyle(fontWeight: FontWeight.w900)),
           const SizedBox(height: DesignSystem.spaceMD),
           Wrap(
             spacing: 8,
@@ -194,10 +195,10 @@ class FaceTraitAssociationScreen extends ConsumerWidget {
             color: (state.selectedOccupation != null && state.selectedHobby != null)
                 ? DesignSystem.accentGreen
                 : Theme.of(context).colorScheme.outline.withValues(alpha: 0.5),
-            child: const Center(
+            child: Center(
               child: Text(
-                'SUBMIT',
-                style: TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
+                l10n.finish.toUpperCase(),
+                style: const TextStyle(fontWeight: FontWeight.bold, color: Colors.white),
               ),
             ),
           ),
@@ -207,13 +208,14 @@ class FaceTraitAssociationScreen extends ConsumerWidget {
   }
 
   void _showResultDialog(BuildContext context, WidgetRef ref, FaceTraitAssociationState state) {
+    final l10n = AppLocalizations.of(context)!;
     final won = state.correctCount == state.trials.length;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: won ? 'MEMORY MASTER!' : 'GAME OVER',
-        message: 'You got ${state.correctCount} out of ${state.trials.length} correct.',
+        title: won ? l10n.faceTraitAssociationWinTitle : l10n.faceTraitAssociationLoseTitle,
+        message: l10n.faceTraitAssociationScoreMessage(state.correctCount, state.trials.length),
         onPlayAgain: () {
           Navigator.pop(context);
           ref.read(faceTraitAssociationNotifierProvider.notifier).reset();

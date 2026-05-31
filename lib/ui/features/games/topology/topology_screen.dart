@@ -6,6 +6,7 @@ import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../core/juice/game_scaffold.dart';
 import 'topology_provider.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 
 class TopologyScreen extends ConsumerStatefulWidget {
   const TopologyScreen({super.key});
@@ -27,6 +28,7 @@ class _TopologyScreenState extends ConsumerState<TopologyScreen> {
   Widget build(BuildContext context) {
     final state = ref.watch(topologyNotifierProvider);
     final colorScheme = Theme.of(context).colorScheme;
+    final l10n = AppLocalizations.of(context)!;
 
     ref.listen(topologyNotifierProvider, (previous, next) {
       if (next.isGameOver && !(previous?.isGameOver ?? false)) {
@@ -35,8 +37,8 @@ class _TopologyScreenState extends ConsumerState<TopologyScreen> {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'GEOMETRY GENIUS!',
-            message: 'You correctly identified 10 topological pairs!',
+            title: l10n.topologyWinTitle,
+            message: l10n.topologyWinMessage,
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
@@ -52,8 +54,8 @@ class _TopologyScreenState extends ConsumerState<TopologyScreen> {
 
     if (state.isLoading || state.currentLevel == null) {
       return GameScaffold(
-        title: 'TOPOLOGICAL EQUIVALENCE',
-        subtitle: 'Are they the same?',
+        title: l10n.topologyTitle,
+        subtitle: l10n.topologySubtitle,
         body: const Center(child: CircularProgressIndicator()),
       );
     }
@@ -61,8 +63,8 @@ class _TopologyScreenState extends ConsumerState<TopologyScreen> {
     final level = state.currentLevel!;
 
     return GameScaffold(
-      title: 'TOPOLOGY',
-      subtitle: 'Are these shapes topologically equivalent? (Can one be deformed into the other without cutting or gluing?)',
+      title: l10n.topologyTitle,
+      subtitle: l10n.topologySubtitle,
       onReset: () {
         HapticFeedbackUtil.mediumImpact();
         ref.read(topologyNotifierProvider.notifier).reset();
@@ -70,7 +72,7 @@ class _TopologyScreenState extends ConsumerState<TopologyScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('SCORE: ${state.score} / 10', style: const TextStyle(fontWeight: FontWeight.bold)),
+          Text('${l10n.topologyScore}${state.score} / 10', style: const TextStyle(fontWeight: FontWeight.bold)),
           const SizedBox(height: DesignSystem.spaceXL),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -90,7 +92,7 @@ class _TopologyScreenState extends ConsumerState<TopologyScreen> {
                   ref.read(topologyNotifierProvider.notifier).submitAnswer(true);
                 },
                 color: DesignSystem.accentEmerald,
-                child: const Text('YES', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24)),
+                child: Text(l10n.yes.toUpperCase(), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24)),
               ),
               const SizedBox(width: DesignSystem.spaceXL),
               TangibleButton(
@@ -99,16 +101,16 @@ class _TopologyScreenState extends ConsumerState<TopologyScreen> {
                   ref.read(topologyNotifierProvider.notifier).submitAnswer(false);
                 },
                 color: colorScheme.error,
-                child: const Text('NO', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24)),
+                child: Text(l10n.no.toUpperCase(), style: const TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24)),
               ),
             ],
           ),
           const SizedBox(height: DesignSystem.spaceLG),
           if (state.message != null)
             Text(
-              state.message!,
+              state.message == 'correct' ? l10n.baseShiftCorrect : l10n.baseShiftIncorrect,
               style: TextStyle(
-                color: state.message == 'Correct!' ? DesignSystem.accentEmerald : colorScheme.error,
+                color: state.message == 'correct' ? DesignSystem.accentEmerald : colorScheme.error,
                 fontWeight: FontWeight.bold,
                 fontSize: 18,
               ),

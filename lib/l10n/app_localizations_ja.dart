@@ -904,7 +904,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get hueSortTitle => '色相ソート';
 
   @override
-  String get hueSortSubtitle => 'タイルを入れ替えて、角の色を滑らかにつなげます。ドットは固定タイルです。';
+  String get hueSortSubtitle => 'タイルを入れ替えて、角の色を滑らかをつなげます。ドットは固定タイルです。';
 
   @override
   String get hueSortWinTitle => '完璧なグラデーション！';
@@ -1473,58 +1473,274 @@ class AppLocalizationsJa extends AppLocalizations {
   String get game2048Instruction => '任意の方向にスワイプして合体';
 
   @override
-  String get fibonacciMergeTitle => 'Fibonacci Merge';
+  String get fibonacciMergeTitle => 'フィボナッチ・マージ';
 
   @override
   String get fibonacciMergeSubtitle =>
-      'Merge consecutive Fibonacci numbers (1, 1, 2, 3, 5, 8, 13...).';
+      '連続するフィボナッチ数（1, 1, 2, 3, 5, 8, 13...）を合体させます。';
 
   @override
-  String get sequenceSleuthTitle => 'Sequence Sleuth';
+  String get sequenceSleuthTitle => '数列の探偵';
 
   @override
-  String get sequenceSleuthSubtitle =>
-      'Find the missing number in the mathematical sequence.';
+  String get sequenceSleuthSubtitle => '数学的な数列の中の欠けている数字を見つけてください。';
 
   @override
-  String get divisibilityDashTitle => 'Divisibility Dash';
+  String get divisibilityDashTitle => '割り算ダッシュ';
 
   @override
-  String get divisibilityDashSubtitle =>
-      'Tap all single-digit divisors (2-9) for the given number.';
+  String get divisibilityDashSubtitle => '表示された数字の1桁の約数（2-9）をすべてタップしてください。';
 
   @override
-  String get percentagePeakTitle => 'Percentage Peak';
+  String get percentagePeakTitle => 'パーセンテージ・ピーク';
 
   @override
-  String get percentagePeakSubtitle =>
-      'Solve mental percentage calculations quickly.';
+  String get percentagePeakSubtitle => '暗算でパーセント計算を素早く解いてください。';
 
   @override
-  String get vennNumbersTitle => 'Venn Numbers';
+  String get vennNumbersTitle => 'ベン図の数字';
 
   @override
-  String get vennNumbersSubtitle =>
-      'Categorize numbers into the correct Venn diagram regions.';
+  String get vennNumbersSubtitle => '数字をベン図の正しい領域に分類してください。';
 
   @override
-  String get commonDenominatorTitle => 'Common Denominator';
+  String get commonDenominatorTitle => '共通分母';
 
   @override
-  String get commonDenominatorSubtitle =>
-      'Find the Greatest Common Divisor or Least Common Multiple.';
+  String get commonDenominatorSubtitle => '最大公約数または最小公倍数を見つけてください。';
 
   @override
-  String get angleFinderTitle => 'Angle Finder';
+  String get angleFinderTitle => '角度ハンター';
 
   @override
-  String get angleFinderSubtitle =>
-      'Calculate the missing angle in the geometric problem.';
+  String get angleFinderSubtitle => '幾何学問題の欠けている角度を計算してください。';
 
   @override
-  String get sumSnakeTitle => 'Sum Snake';
+  String get sumSnakeTitle => '合計スネーク';
 
   @override
-  String get sumSnakeSubtitle =>
-      'Connect adjacent numbers to reach the target sum.';
+  String get sumSnakeSubtitle => '隣接する数字をつなげて、ターゲットの合計値に到達させてください。';
+
+  @override
+  String get baseShiftTitle => 'ベースシフト・ブリッツ';
+
+  @override
+  String get baseShiftSubtitle => '10進数で解く';
+
+  @override
+  String get baseShiftDescription => '式を解き、答えを10進数（Base 10）で入力してください。';
+
+  @override
+  String get baseShiftEquation => '式';
+
+  @override
+  String get baseShiftHint => '10進数の結果を入力...';
+
+  @override
+  String get baseShiftCorrect => '正解！';
+
+  @override
+  String get baseShiftIncorrect => '不正解！';
+
+  @override
+  String get baseShiftSubmit => '送信';
+
+  @override
+  String get baseShiftQuickGuide => 'クイックガイド：';
+
+  @override
+  String get baseShiftBinary => '2進数 (bin): 基数 2 (0, 1)';
+
+  @override
+  String get baseShiftHex => '16進数 (0x): 基数 16 (0-9, A-F)';
+
+  @override
+  String get baseShiftDecimal => '10進数 (dec): 基数 10 (0-9)';
+
+  @override
+  String get baseShiftWinTitle => '数学の魔術師！';
+
+  @override
+  String get baseShiftWinMessage => '5つのベースシフト問題を正解しました！';
+
+  @override
+  String get blockCount3DTitle => '3Dブロック・カウント';
+
+  @override
+  String get blockCount3DSubtitle => 'ドラッグして回転 • 隠れたブロックを数える';
+
+  @override
+  String get blockCount3DHowMany => 'ブロックはいくつ？';
+
+  @override
+  String get blockCount3DSubmitGuess => '回答を送信';
+
+  @override
+  String get blockCount3DNotQuite => '惜しい！回転させて、もう一度数えてみましょう。';
+
+  @override
+  String get blockCount3DExcellent => '素晴らしい！';
+
+  @override
+  String blockCount3DWinMessage(int count) {
+    return '$count個のブロックをすべて正しく特定しました！';
+  }
+
+  @override
+  String get blockCount3DHowToPlayDescription =>
+      '1. 3Dビューポート上で指をドラッグして、ブロックの山を回転させます。\n\n2. 山の中にあるすべてのブロックを数えます。\n\n3. 覚えておいてください：空中に浮いているブロックの下には、必ず支えとなるブロックがあります（隠れたブロック！）。\n\n4. 入力欄に答えを入力し、「回答を送信」をタップして確認してください。';
+
+  @override
+  String get alphabetSudokuTitle => 'アルファベット数独';
+
+  @override
+  String get alphabetSudokuSubtitle => 'すべての行、列、ブロックにA-Iの文字が入るようにグリッドを埋めます。';
+
+  @override
+  String get alphabetSudokuWinTitle => '数独クリア！';
+
+  @override
+  String get alphabetSudokuWinMessage => 'お見事！アルファベットをマスターしました。';
+
+  @override
+  String get classicMazeTitle => 'クラシック迷路';
+
+  @override
+  String get classicMazeSubtitle => '探索して解決 • 毎回新しい迷路';
+
+  @override
+  String get classicMazeWinTitle => '迷路クリア';
+
+  @override
+  String classicMazeWinMessage(int count) {
+    return '信じられないナビゲーションです！$count手で迷路を解きました。';
+  }
+
+  @override
+  String get classicMazeMoves => '手数： ';
+
+  @override
+  String get classicMazeHowToPlayDescription =>
+      '1. 光る黄色い玉（プレイヤー）を右下の緑のポータル（出口）まで導いてください。\n\n2. 迷路のどこかをスワイプするか、キーボードの矢印キー、または下のボタンで移動します。\n\n3. 紫色の跡は探索した道を示します。戻ると跡が消えます！\n\n4. 上のアクションバーで難易度を切り替えて、より大きな迷路に挑戦しましょう。';
+
+  @override
+  String get conjunctionSearchTitle => '結合探索';
+
+  @override
+  String get conjunctionSearchSubtitle => '注意力の集中と特徴の結合';
+
+  @override
+  String get conjunctionSearchWinTitle => '勝利';
+
+  @override
+  String get conjunctionSearchWinMessage => '完璧な注意力ですべてのターゲットを見つけました！';
+
+  @override
+  String get conjunctionSearchHowToPlayDescription =>
+      '指示に特定の図形と色の組み合わせが表示されます。密集したグリッドの中からできるだけ早くそれを見つけてタップしてください。おとり図形は色か形のどちらかが共通しているので、よく見てください！';
+
+  @override
+  String get conjunctionSearchRound => 'ラウンド： ';
+
+  @override
+  String get conjunctionSearchScore => 'スコア： ';
+
+  @override
+  String get conjunctionSearchFind => '探すもの： ';
+
+  @override
+  String get shapeCircle => '円';
+
+  @override
+  String get shapeSquare => '正方形';
+
+  @override
+  String get shapeTriangle => '三角形';
+
+  @override
+  String get shapeStar => '星';
+
+  @override
+  String get colorRedLabel => '赤';
+
+  @override
+  String get colorBlueLabel => '青';
+
+  @override
+  String get colorGreenLabel => '緑';
+
+  @override
+  String get colorAmberLabel => 'アンバー';
+
+  @override
+  String get cubeNetFoldTitle => '立方体展開図折り';
+
+  @override
+  String get cubeNetFoldSubtitle => '一致する3D立方体を選択';
+
+  @override
+  String get cubeNetFoldWinTitle => '正解';
+
+  @override
+  String get cubeNetFoldWinMessage => '完璧な3D空間折り畳み論理をお持ちですね！';
+
+  @override
+  String get cubeNetFoldHowToPlayDescription =>
+      '1. 上の開いた2D展開図を見てください。\n\n2. 頭の中で展開図を折り畳んで3Dの立方体を作ります。\n\n3. 下の選択肢から、その折り畳まれた立方体の正しい3Dパースペクティブを選んでください。\n\n4. 注意：展開図で向かい合っている面は3Dでは隣り合わせにならず、隣接する面の順序も一致する必要があります！';
+
+  @override
+  String get cubeNetFoldUnfoldedNet => '2D展開図';
+
+  @override
+  String get cubeNetFoldWhichMatches => '一致する立方体は？';
+
+  @override
+  String get cubeNetFoldIncorrect => '折り畳み論理が間違っています！リセットするか選択し直してください。';
+
+  @override
+  String get cubeNetFoldSubmitChoice => '選択を送信';
+
+  @override
+  String get cubeNetFoldFailed => '失敗（リセットをタップ）';
+
+  @override
+  String get faceTraitAssociationMemorize => '4人全員を覚える';
+
+  @override
+  String faceTraitAssociationPersonOf(int current, int total) {
+    return '$current人目 / 全$total人';
+  }
+
+  @override
+  String get faceTraitAssociationWhatOccupation => '彼らの職業は何ですか？';
+
+  @override
+  String get faceTraitAssociationWhatHobby => '彼らの趣味は何ですか？';
+
+  @override
+  String get faceTraitAssociationWinTitle => '記憶マスター！';
+
+  @override
+  String get faceTraitAssociationLoseTitle => 'ゲームオーバー';
+
+  @override
+  String faceTraitAssociationScoreMessage(int correct, int total) {
+    return '$total問中$correct問正解しました。';
+  }
+
+  @override
+  String get topologyTitle => 'トポロジー';
+
+  @override
+  String get topologySubtitle =>
+      'これらの図形はトポロジー的に同等ですか？（切ったり貼ったりせずに、一方を変形させて他方にできますか？）';
+
+  @override
+  String get topologyWinTitle => '幾何学の天才！';
+
+  @override
+  String get topologyWinMessage => '10個のトポロジー的なペアを正しく特定しました！';
+
+  @override
+  String get topologyScore => 'スコア： ';
 }
