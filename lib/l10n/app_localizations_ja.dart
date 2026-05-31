@@ -1363,6 +1363,24 @@ class AppLocalizationsJa extends AppLocalizations {
       '各家には固有の属性（色、国籍、ペットなど）があります。ヒントを使ってグリッドを埋め、完全な正解を導き出してください。';
 
   @override
+  String get einsteinRiddleColor => '色';
+
+  @override
+  String get einsteinRiddleNationality => '国籍';
+
+  @override
+  String get einsteinRiddleDrink => '飲み物';
+
+  @override
+  String get einsteinRiddlePet => 'ペット';
+
+  @override
+  String get einsteinRiddleSmoke => 'タバコ';
+
+  @override
+  String get einsteinRiddleHouse => '家';
+
+  @override
   String get mirrorImageTitle => '鏡像';
 
   @override

@@ -1419,7 +1419,25 @@ class AppLocalizationsHi extends AppLocalizations {
       'प्रत्येक घर की अनूठी विशेषताएं (रंग, राष्ट्रीयता, पालतू जानवर, आदि) हैं। ग्रिड को भरने और पूरा समाधान खोजने के लिए दिए गए सुरागों का उपयोग करें।';
 
   @override
-  String get mirrorImageTitle => 'मिरर इमेज';
+  String get einsteinRiddleColor => 'रंग';
+
+  @override
+  String get einsteinRiddleNationality => 'राष्ट्रीयता';
+
+  @override
+  String get einsteinRiddleDrink => 'पेय';
+
+  @override
+  String get einsteinRiddlePet => 'पालतू जानवर';
+
+  @override
+  String get einsteinRiddleSmoke => 'धूम्रपान';
+
+  @override
+  String get einsteinRiddleHouse => 'घर';
+
+  @override
+  String get mirrorImageTitle => 'मिरر इमेज';
 
   @override
   String get mirrorImageSubtitle => 'सही दर्पण प्रतिबिंब को पहचानें।';

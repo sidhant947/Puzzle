@@ -1355,6 +1355,24 @@ class AppLocalizationsZh extends AppLocalizations {
       '每间房子都有独特的属性（颜色、国籍、宠物等）。使用提供的线索填满网格并找到完整的解决方案。';
 
   @override
+  String get einsteinRiddleColor => '颜色';
+
+  @override
+  String get einsteinRiddleNationality => '国籍';
+
+  @override
+  String get einsteinRiddleDrink => '饮料';
+
+  @override
+  String get einsteinRiddlePet => '宠物';
+
+  @override
+  String get einsteinRiddleSmoke => '香烟';
+
+  @override
+  String get einsteinRiddleHouse => '房子';
+
+  @override
   String get mirrorImageTitle => '镜像';
 
   @override

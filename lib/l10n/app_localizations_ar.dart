@@ -1399,6 +1399,24 @@ class AppLocalizationsAr extends AppLocalizations {
       'لكل منزل سمات فريدة (لون، جنسية، حيوان أليف، إلخ). استخدم التلميحات المقدمة لملء الشبكة والعثور على الحل الكامل.';
 
   @override
+  String get einsteinRiddleColor => 'اللون';
+
+  @override
+  String get einsteinRiddleNationality => 'الجنسية';
+
+  @override
+  String get einsteinRiddleDrink => 'المشروب';
+
+  @override
+  String get einsteinRiddlePet => 'الحيوان الأليف';
+
+  @override
+  String get einsteinRiddleSmoke => 'التدخين';
+
+  @override
+  String get einsteinRiddleHouse => 'المنزل';
+
+  @override
   String get mirrorImageTitle => 'صورة المرآة';
 
   @override

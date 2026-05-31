@@ -2632,6 +2632,42 @@ abstract class AppLocalizations {
   /// **'Each house has unique attributes (color, nationality, pet, etc.). Use the provided clues to fill in the grid and find the complete solution.'**
   String get einsteinRiddleHowToPlay;
 
+  /// No description provided for @einsteinRiddleColor.
+  ///
+  /// In en, this message translates to:
+  /// **'Color'**
+  String get einsteinRiddleColor;
+
+  /// No description provided for @einsteinRiddleNationality.
+  ///
+  /// In en, this message translates to:
+  /// **'Nationality'**
+  String get einsteinRiddleNationality;
+
+  /// No description provided for @einsteinRiddleDrink.
+  ///
+  /// In en, this message translates to:
+  /// **'Drink'**
+  String get einsteinRiddleDrink;
+
+  /// No description provided for @einsteinRiddlePet.
+  ///
+  /// In en, this message translates to:
+  /// **'Pet'**
+  String get einsteinRiddlePet;
+
+  /// No description provided for @einsteinRiddleSmoke.
+  ///
+  /// In en, this message translates to:
+  /// **'Smoke'**
+  String get einsteinRiddleSmoke;
+
+  /// No description provided for @einsteinRiddleHouse.
+  ///
+  /// In en, this message translates to:
+  /// **'House'**
+  String get einsteinRiddleHouse;
+
   /// No description provided for @mirrorImageTitle.
   ///
   /// In en, this message translates to:

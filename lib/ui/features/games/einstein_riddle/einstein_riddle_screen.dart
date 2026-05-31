@@ -115,6 +115,7 @@ class _EinsteinRiddleScreenState extends ConsumerState<EinsteinRiddleScreen> {
   }
 
   Widget _buildGrid(EinsteinRiddleState state, EinsteinRiddleNotifier notifier) {
+    final l10n = AppLocalizations.of(context)!;
     final houses = state.options['House']!;
     final categories = state.categories.where((c) => c != 'House').toList();
 
@@ -128,18 +129,18 @@ class _EinsteinRiddleScreenState extends ConsumerState<EinsteinRiddleScreen> {
         children: [
           TableRow(
             children: [
-              const _Cell(text: 'House', isHeader: true),
+              _Cell(text: _translateCategory('House', l10n), isHeader: true),
               ...houses.map((h) => _Cell(text: h, isHeader: true)),
             ],
           ),
           ...categories.map((cat) {
             return TableRow(
               children: [
-                _Cell(text: cat, isHeader: true),
+                _Cell(text: _translateCategory(cat, l10n), isHeader: true),
                 ...houses.map((house) {
                   final value = state.userSolution[house]![cat] ?? '-';
                   return GestureDetector(
-                    onTap: () => _showPicker(context, cat, state.options[cat]!, (val) {
+                    onTap: () => _showPicker(context, _translateCategory(cat, l10n), state.options[cat]!, (val) {
                       notifier.updateAssignment(house, cat, val);
                     }),
                     child: _Cell(text: value),
@@ -151,6 +152,18 @@ class _EinsteinRiddleScreenState extends ConsumerState<EinsteinRiddleScreen> {
         ],
       ),
     );
+  }
+
+  String _translateCategory(String cat, AppLocalizations l10n) {
+    switch (cat) {
+      case 'Color': return l10n.einsteinRiddleColor;
+      case 'Nationality': return l10n.einsteinRiddleNationality;
+      case 'Drink': return l10n.einsteinRiddleDrink;
+      case 'Pet': return l10n.einsteinRiddlePet;
+      case 'Cigar': return l10n.einsteinRiddleSmoke;
+      case 'House': return l10n.einsteinRiddleHouse;
+      default: return cat;
+    }
   }
 
   Widget _buildClues(EinsteinRiddleState state) {
@@ -225,16 +238,20 @@ class _Cell extends StatelessWidget {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     return Container(
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.all(4),
       height: 60,
       alignment: Alignment.center,
       color: isHeader ? colorScheme.surfaceContainerHighest : null,
-      child: Text(
-        text,
-        textAlign: TextAlign.center,
-        style: TextStyle(
-          fontWeight: isHeader ? FontWeight.bold : FontWeight.normal,
-          fontSize: 12,
+      child: FittedBox(
+        fit: BoxFit.scaleDown,
+        child: Text(
+          text,
+          textAlign: TextAlign.center,
+          maxLines: 1,
+          style: TextStyle(
+            fontWeight: isHeader ? FontWeight.bold : FontWeight.normal,
+            fontSize: 12,
+          ),
         ),
       ),
     );

@@ -1400,6 +1400,24 @@ class AppLocalizationsRu extends AppLocalizations {
       'У каждого дома свои атрибуты (цвет, жилец и т.д.). Разгадайте их все.';
 
   @override
+  String get einsteinRiddleColor => 'Color';
+
+  @override
+  String get einsteinRiddleNationality => 'Nationality';
+
+  @override
+  String get einsteinRiddleDrink => 'Drink';
+
+  @override
+  String get einsteinRiddlePet => 'Pet';
+
+  @override
+  String get einsteinRiddleSmoke => 'Smoke';
+
+  @override
+  String get einsteinRiddleHouse => 'House';
+
+  @override
   String get mirrorImageTitle => 'Зеркало';
 
   @override

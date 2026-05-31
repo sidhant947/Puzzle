@@ -1364,6 +1364,24 @@ class AppLocalizationsKo extends AppLocalizations {
       '각 집은 고유한 속성(색상, 국적, 애완동물 등)을 가지고 있습니다. 제공된 힌트를 사용해 격자를 채워 전체 해결책을 찾으세요.';
 
   @override
+  String get einsteinRiddleColor => '색상';
+
+  @override
+  String get einsteinRiddleNationality => '국적';
+
+  @override
+  String get einsteinRiddleDrink => '음료';
+
+  @override
+  String get einsteinRiddlePet => '반려동물';
+
+  @override
+  String get einsteinRiddleSmoke => '담배';
+
+  @override
+  String get einsteinRiddleHouse => '집';
+
+  @override
   String get mirrorImageTitle => '거울 이미지';
 
   @override

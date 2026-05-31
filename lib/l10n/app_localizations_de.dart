@@ -1433,6 +1433,24 @@ class AppLocalizationsDe extends AppLocalizations {
       'Jedes Haus hat einzigartige Merkmale (Farbe, Nationalität, Haustier usw.). Nutze die Hinweise, um das Gitter auszufüllen und die Lösung zu finden.';
 
   @override
+  String get einsteinRiddleColor => 'Farbe';
+
+  @override
+  String get einsteinRiddleNationality => 'Nationalität';
+
+  @override
+  String get einsteinRiddleDrink => 'Getränk';
+
+  @override
+  String get einsteinRiddlePet => 'Haustier';
+
+  @override
+  String get einsteinRiddleSmoke => 'Rauchen';
+
+  @override
+  String get einsteinRiddleHouse => 'Haus';
+
+  @override
   String get mirrorImageTitle => 'Spiegelbild';
 
   @override

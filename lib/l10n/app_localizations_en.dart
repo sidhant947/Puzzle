@@ -1415,6 +1415,24 @@ class AppLocalizationsEn extends AppLocalizations {
       'Each house has unique attributes (color, nationality, pet, etc.). Use the provided clues to fill in the grid and find the complete solution.';
 
   @override
+  String get einsteinRiddleColor => 'Color';
+
+  @override
+  String get einsteinRiddleNationality => 'Nationality';
+
+  @override
+  String get einsteinRiddleDrink => 'Drink';
+
+  @override
+  String get einsteinRiddlePet => 'Pet';
+
+  @override
+  String get einsteinRiddleSmoke => 'Smoke';
+
+  @override
+  String get einsteinRiddleHouse => 'House';
+
+  @override
   String get mirrorImageTitle => 'Mirror Image';
 
   @override

@@ -1436,6 +1436,24 @@ class AppLocalizationsEs extends AppLocalizations {
       'Cada casa tiene atributos únicos (color, nacionalidad, mascota, etc.). Usa las pistas proporcionadas para rellenar la cuadrícula y encontrar la solución completa.';
 
   @override
+  String get einsteinRiddleColor => 'Color';
+
+  @override
+  String get einsteinRiddleNationality => 'Nacionalidad';
+
+  @override
+  String get einsteinRiddleDrink => 'Bebida';
+
+  @override
+  String get einsteinRiddlePet => 'Mascota';
+
+  @override
+  String get einsteinRiddleSmoke => 'Tabaco';
+
+  @override
+  String get einsteinRiddleHouse => 'Casa';
+
+  @override
   String get mirrorImageTitle => 'Imagen en espejo';
 
   @override
