@@ -9,7 +9,37 @@ on:
         default: false
 
 jobs:
-  build-android:
+  # build-android:
+  #   runs-on: ubuntu-latest
+  #   steps:
+  #     - uses: actions/checkout@v4
+  #     - uses: subosito/flutter-action@v2
+  #       with:
+  #         channel: 'stable'
+  #         cache: true
+      
+  #     - name: Prepare Signing
+  #       if: ${{ github.event.inputs.should_sign_android == 'true' }}
+  #       run: |
+  #         echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/upload-keystore.jks
+  #         echo "storePassword=${{ secrets.STORE_PASSWORD }}" > android/key.properties
+  #         echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
+  #         echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
+  #         echo "storeFile=upload-keystore.jks" >> android/key.properties
+
+  #     - name: Get dependencies
+  #       run: flutter pub get
+      
+  #     - name: Build APK
+  #       run: flutter build apk --release
+      
+  #     - name: Build AppBundle
+  #       run: flutter build appbundle --release
+
+  #     - name: Confirm Android Success
+  #       run: echo "Android build and packaging completed successfully."
+
+  build-linux:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -17,21 +47,23 @@ jobs:
         with:
           channel: 'stable'
           cache: true
-      
-      - name: Prepare Signing
-        if: ${{ github.event.inputs.should_sign_android == 'true' }}
+
+      - name: Install Linux dependencies
         run: |
-          echo "${{ secrets.KEYSTORE_BASE64 }}" | base64 --decode > android/app/upload-keystore.jks
-          echo "storePassword=${{ secrets.STORE_PASSWORD }}" > android/key.properties
-          echo "keyPassword=${{ secrets.KEY_PASSWORD }}" >> android/key.properties
-          echo "keyAlias=${{ secrets.KEY_ALIAS }}" >> android/key.properties
-          echo "storeFile=upload-keystore.jks" >> android/key.properties
+          sudo apt-get update
+          sudo apt-get install -y clang cmake ninja-build pkg-config libgtk-3-dev liblzma-dev
 
       - name: Get dependencies
         run: flutter pub get
+
+      - name: Build Linux
+        run: flutter build linux --release
+
+      - name: Package Linux Build
+        run: |
+          cp -r build/linux/x64/release/bundle puzzle-games-linux
+          tar -czf puzzle-games-linux.tar.gz puzzle-games-linux
       
-      - name: Build APK
-        run: flutter build apk --release
+      - name: Confirm Linux Success
+        run: echo "Linux build and packaging completed successfully."
       
-      - name: Build AppBundle
-        run: flutter build appbundle --release
