@@ -230,76 +230,76 @@ class AppLocalizationsFr extends AppLocalizations {
   String get wordSearchTitle => 'Mots Cachés';
 
   @override
-  String get radicalRootsTitle => 'Radical Roots';
+  String get radicalRootsTitle => 'Racines Radicales';
 
   @override
   String get radicalRootsSubtitle =>
-      'Find the square or cube root of the given number. Round to the nearest integer if necessary.';
+      'Trouvez la racine carrée ou cubique du nombre donné. Arrondissez à l\'entier le plus proche si nécessaire.';
 
   @override
-  String get radicalRootsGoalReached => 'Goal Reached!';
+  String get radicalRootsGoalReached => 'Objectif atteint !';
 
   @override
-  String get radicalRootsTimeUp => 'Time\'s Up!';
+  String get radicalRootsTimeUp => 'Temps écoulé !';
 
   @override
   String radicalRootsScoreMessage(int score) {
-    return 'You calculated $score roots correctly!';
+    return 'Vous avez calculé $score racines correctement !';
   }
 
   @override
   String radicalRootsTryAgainMessage(int score) {
-    return 'Keep practicing! You calculated $score roots.';
+    return 'Continuez à vous entraîner ! Vous avez calculé $score racines.';
   }
 
   @override
-  String get radicalRootsStart => 'Start Calculating';
+  String get radicalRootsStart => 'Commencer à calculer';
 
   @override
   String get radicalRootsDescription =>
-      'You have 60 seconds to solve as many as you can.';
+      'Vous avez 60 secondes pour en résoudre un maximum.';
 
   @override
-  String get radicalRootsBest => 'Best';
+  String get radicalRootsBest => 'Meilleur';
 
   @override
-  String get radicalRootsSeconds => '60 SECONDS';
+  String get radicalRootsSeconds => '60 SECONDES';
 
   @override
-  String get romanArithmeticTitle => 'Roman Arithmetic';
+  String get romanArithmeticTitle => 'Arithmétique Romaine';
 
   @override
   String get romanArithmeticSubtitle =>
-      'Solve addition and subtraction problems using Roman Numerals.';
+      'Résolvez des problèmes d\'addition et de soustraction en utilisant des chiffres romains.';
 
   @override
-  String get romanArithmeticGoalReached => 'Centurion Level!';
+  String get romanArithmeticGoalReached => 'Niveau Centurion !';
 
   @override
-  String get romanArithmeticTimeUp => 'Time\'s Up!';
+  String get romanArithmeticTimeUp => 'Temps écoulé !';
 
   @override
   String romanArithmeticScoreMessage(int score) {
-    return 'You solved $score Roman problems!';
+    return 'Vous avez résolu $score problèmes romains !';
   }
 
   @override
   String romanArithmeticTryAgainMessage(int score) {
-    return 'Veni, Vidi, Vici! You solved $score problems.';
+    return 'Veni, Vidi, Vici ! Vous avez résolu $score problèmes.';
   }
 
   @override
-  String get romanArithmeticStart => 'Begin Quest';
+  String get romanArithmeticStart => 'Commencer la quête';
 
   @override
   String get romanArithmeticDescription =>
-      'Convert and solve. You have 60 seconds.';
+      'Convertissez et résolvez. Vous avez 60 secondes.';
 
   @override
-  String get romanArithmeticBest => 'Best';
+  String get romanArithmeticBest => 'Meilleur';
 
   @override
-  String get romanArithmeticSeconds => '60 SECONDS';
+  String get romanArithmeticSeconds => '60 SECONDES';
 
   @override
   String get wordSearchSubtitle =>
@@ -951,7 +951,7 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String hueSortWrongTiles(int count) {
-    return 'Tiles in wrong position: $count';
+    return 'Tuiles en mauvaise position : $count';
   }
 
   @override

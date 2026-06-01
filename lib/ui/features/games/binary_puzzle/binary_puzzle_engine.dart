@@ -3,12 +3,10 @@ import 'dart:math';
 class BinaryPuzzleBoard {
   final int size;
   final List<List<int?>> grid; // null for empty, 0 or 1
-  final List<List<int>> solution;
 
   BinaryPuzzleBoard({
     required this.size,
     required this.grid,
-    required this.solution,
   });
 }
 
@@ -22,7 +20,6 @@ class BinaryPuzzleEngine {
     return BinaryPuzzleBoard(
       size: size,
       grid: grid,
-      solution: solution,
     );
   }
 

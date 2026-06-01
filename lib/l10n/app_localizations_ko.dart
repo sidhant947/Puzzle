@@ -228,76 +228,73 @@ class AppLocalizationsKo extends AppLocalizations {
   String get wordSearchTitle => '단어 찾기';
 
   @override
-  String get radicalRootsTitle => 'Radical Roots';
+  String get radicalRootsTitle => '근호 계산';
 
   @override
   String get radicalRootsSubtitle =>
-      'Find the square or cube root of the given number. Round to the nearest integer if necessary.';
+      '주어진 수의 제곱근 또는 세제곱근을 구하세요. 필요한 경우 가장 가까운 정수로 반올림하세요.';
 
   @override
-  String get radicalRootsGoalReached => 'Goal Reached!';
+  String get radicalRootsGoalReached => '목표 달성!';
 
   @override
-  String get radicalRootsTimeUp => 'Time\'s Up!';
+  String get radicalRootsTimeUp => '시간 종료!';
 
   @override
   String radicalRootsScoreMessage(int score) {
-    return 'You calculated $score roots correctly!';
+    return '$score개의 근호를 정확히 계산했습니다!';
   }
 
   @override
   String radicalRootsTryAgainMessage(int score) {
-    return 'Keep practicing! You calculated $score roots.';
+    return '계속 연습하세요! $score개의 근호를 계산했습니다.';
   }
 
   @override
-  String get radicalRootsStart => 'Start Calculating';
+  String get radicalRootsStart => '계산 시작';
 
   @override
-  String get radicalRootsDescription =>
-      'You have 60 seconds to solve as many as you can.';
+  String get radicalRootsDescription => '60초 동안 가능한 한 많이 푸세요.';
 
   @override
-  String get radicalRootsBest => 'Best';
+  String get radicalRootsBest => '최고 기록';
 
   @override
-  String get radicalRootsSeconds => '60 SECONDS';
+  String get radicalRootsSeconds => '60초';
 
   @override
-  String get romanArithmeticTitle => 'Roman Arithmetic';
+  String get romanArithmeticTitle => '로마 숫자 산술';
 
   @override
-  String get romanArithmeticSubtitle =>
-      'Solve addition and subtraction problems using Roman Numerals.';
+  String get romanArithmeticSubtitle => '로마 숫자를 사용하여 덧셈과 뺄셈 문제를 푸세요.';
 
   @override
-  String get romanArithmeticGoalReached => 'Centurion Level!';
+  String get romanArithmeticGoalReached => '백인대장 레벨!';
 
   @override
-  String get romanArithmeticTimeUp => 'Time\'s Up!';
+  String get romanArithmeticTimeUp => '시간 종료!';
 
   @override
   String romanArithmeticScoreMessage(int score) {
-    return 'You solved $score Roman problems!';
+    return '$score개의 로마 숫자 문제를 풀었습니다!';
   }
 
   @override
   String romanArithmeticTryAgainMessage(int score) {
-    return 'Veni, Vidi, Vici! You solved $score problems.';
+    return '왔노라, 보았노라, 이겼노라! $score문제를 풀었습니다.';
   }
 
   @override
-  String get romanArithmeticStart => 'Begin Quest';
+  String get romanArithmeticStart => '퀘스트 시작';
 
   @override
-  String get romanArithmeticDescription =>
-      'Convert and solve. You have 60 seconds.';
+  String get romanArithmeticDescription => '변환하고 푸세요. 제한 시간은 60초입니다.';
 
   @override
-  String get romanArithmeticBest => 'Best';
+  String get romanArithmeticBest => '최고 기록';
 
   @override
-  String get romanArithmeticSeconds => '60 SECONDS';
+  String get romanArithmeticSeconds => '60초';
 
   @override
   String get wordSearchSubtitle => '격자에서 숨겨진 단어를 모두 찾으세요. 드래그하여 선택합니다.';
@@ -915,7 +912,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String hueSortWrongTiles(int count) {
-    return 'Tiles in wrong position: $count';
+    return '잘못된 위치의 타일: $count';
   }
 
   @override
@@ -1588,7 +1585,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get blockCount3DHowToPlayDescription =>
-      '1. Drag your finger across the 3D viewport to rotate the block stack.\n\n2. Count all the blocks in the stack.\n\n3. Remember: a block in the air must have structural support blocks underneath it (hidden blocks!).\n\n4. Type your answer in the input field and tap \"SUBMIT GUESS\" to check.';
+      '1. 3D 뷰포트를 손가락으로 드래그하여 블록 스택을 회전시킵니다.\n\n2. 스택에 있는 모든 블록의 개수를 셉니다.\n\n3. 기억하세요: 공중에 떠 있는 블록은 아래에 구조적 지지 블록이 있어야 합니다 (숨겨진 블록!).\n\n4. 입력 필드에 정답을 입력하고 \"답안 제출\"을 눌러 확인하세요.';
 
   @override
   String get alphabetSudokuTitle => '알파벳 스도쿠';

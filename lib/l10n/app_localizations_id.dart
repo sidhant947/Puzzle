@@ -114,7 +114,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get trialMode => 'Mode Percobaan';
 
   @override
-  String get trialModeDescription => 'Selesaikan 20 teka-teki untuk selesai, bukan dengan pengatur waktu 60 detik';
+  String get trialModeDescription =>
+      'Selesaikan 20 teka-teki untuk selesai, bukan dengan pengatur waktu 60 detik';
 
   @override
   String get appearance => 'Tampilan';
@@ -202,17 +203,17 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String findWordSubtitle(int maxTries, int wordLength) {
-    return 'Anda memiliki ${maxTries} kesempatan untuk menemukan kata ${wordLength} huruf yang tersembunyi.';
+    return 'Anda memiliki $maxTries kesempatan untuk menemukan kata $wordLength huruf yang tersembunyi.';
   }
 
   @override
   String wordFoundMessage(String word) {
-    return 'Kata berhasil ditemukan: ${word}';
+    return 'Kata berhasil ditemukan: $word';
   }
 
   @override
   String gameOverMessage(String word) {
-    return 'Kata yang benar adalah: ${word}';
+    return 'Kata yang benar adalah: $word';
   }
 
   @override
@@ -222,7 +223,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get crosswordTitle => 'Teka-Teki Silang';
 
   @override
-  String get crosswordSubtitle => 'Lengkapi kisi dengan kata yang benar berdasarkan petunjuk yang diberikan.';
+  String get crosswordSubtitle =>
+      'Lengkapi kisi dengan kata yang benar berdasarkan petunjuk yang diberikan.';
 
   @override
   String get wordSearchTitle => 'Cari Kata';
@@ -231,7 +233,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get radicalRootsTitle => 'Akar Radikal';
 
   @override
-  String get radicalRootsSubtitle => 'Temukan akar kuadrat atau kubik dari angka yang diberikan. Bulatkan ke bilangan bulat terdekat jika diperlukan.';
+  String get radicalRootsSubtitle =>
+      'Temukan akar kuadrat atau kubik dari angka yang diberikan. Bulatkan ke bilangan bulat terdekat jika diperlukan.';
 
   @override
   String get radicalRootsGoalReached => 'Target Tercapai!';
@@ -241,19 +244,20 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String radicalRootsScoreMessage(int score) {
-    return 'Anda menghitung ${score} akar dengan benar!';
+    return 'Anda menghitung $score akar dengan benar!';
   }
 
   @override
   String radicalRootsTryAgainMessage(int score) {
-    return 'Teruslah berlatih! Anda menghitung ${score} akar.';
+    return 'Teruslah berlatih! Anda menghitung $score akar.';
   }
 
   @override
   String get radicalRootsStart => 'Mulai Menghitung';
 
   @override
-  String get radicalRootsDescription => 'Anda memiliki waktu 60 detik untuk memecahkan sebanyak mungkin.';
+  String get radicalRootsDescription =>
+      'Anda memiliki waktu 60 detik untuk memecahkan sebanyak mungkin.';
 
   @override
   String get radicalRootsBest => 'Terbaik';
@@ -265,7 +269,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get romanArithmeticTitle => 'Aritmetika Romawi';
 
   @override
-  String get romanArithmeticSubtitle => 'Selesaikan soal penjumlahan dan pengurangan menggunakan Angka Romawi.';
+  String get romanArithmeticSubtitle =>
+      'Selesaikan soal penjumlahan dan pengurangan menggunakan Angka Romawi.';
 
   @override
   String get romanArithmeticGoalReached => 'Level Centurion!';
@@ -275,19 +280,20 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String romanArithmeticScoreMessage(int score) {
-    return 'Anda memecahkan ${score} soal Romawi!';
+    return 'Anda memecahkan $score soal Romawi!';
   }
 
   @override
   String romanArithmeticTryAgainMessage(int score) {
-    return 'Veni, Vidi, Vici! Anda memecahkan ${score} soal.';
+    return 'Veni, Vidi, Vici! Anda memecahkan $score soal.';
   }
 
   @override
   String get romanArithmeticStart => 'Mulai Quest';
 
   @override
-  String get romanArithmeticDescription => 'Konversikan dan selesaikan. Anda memiliki waktu 60 detik.';
+  String get romanArithmeticDescription =>
+      'Konversikan dan selesaikan. Anda memiliki waktu 60 detik.';
 
   @override
   String get romanArithmeticBest => 'Terbaik';
@@ -296,25 +302,29 @@ class AppLocalizationsId extends AppLocalizations {
   String get romanArithmeticSeconds => '60 DETIK';
 
   @override
-  String get wordSearchSubtitle => 'Temukan semua kata tersembunyi di kisi. Seret untuk memilih.';
+  String get wordSearchSubtitle =>
+      'Temukan semua kata tersembunyi di kisi. Seret untuk memilih.';
 
   @override
   String get missingVowelsTitle => 'Vokal yang Hilang';
 
   @override
-  String get missingVowelsSubtitle => 'Identifikasi kata dengan huruf vokal tersembunyi.';
+  String get missingVowelsSubtitle =>
+      'Identifikasi kata dengan huruf vokal tersembunyi.';
 
   @override
   String get missingVowelsWin => 'Vokal Dipulihkan!';
 
   @override
-  String get missingVowelsHowToPlay => 'Sebuah kata ditampilkan dengan huruf vokal (A, E, I, O, U) tersembunyi. Tebak kata lengkapnya!';
+  String get missingVowelsHowToPlay =>
+      'Sebuah kata ditampilkan dengan huruf vokal (A, E, I, O, U) tersembunyi. Tebak kata lengkapnya!';
 
   @override
   String get wordScrambleTitle => 'Acak Kata';
 
   @override
-  String get wordScrambleSubtitle => 'Ketuk huruf untuk menyusun kata yang tersembunyi!';
+  String get wordScrambleSubtitle =>
+      'Ketuk huruf untuk menyusun kata yang tersembunyi!';
 
   @override
   String get wordScrambleWin => 'Kata Terpecahkan!';
@@ -323,13 +333,15 @@ class AppLocalizationsId extends AppLocalizations {
   String get sudokuTitle => 'Sudoku';
 
   @override
-  String get sudokuSubtitle => 'Lengkapi kisi sehingga setiap baris, kolom, dan kotak 3x3 berisi semua angka dari 1 hingga 9.';
+  String get sudokuSubtitle =>
+      'Lengkapi kisi sehingga setiap baris, kolom, dan kotak 3x3 berisi semua angka dari 1 hingga 9.';
 
   @override
   String get minesweeperTitle => 'Minesweeper';
 
   @override
-  String get minesweeperSubtitle => 'Identifikasi semua ranjau tanpa meledakkannya.';
+  String get minesweeperSubtitle =>
+      'Identifikasi semua ranjau tanpa meledakkannya.';
 
   @override
   String get minesweeperWin => 'Kemenangan!';
@@ -359,13 +371,15 @@ class AppLocalizationsId extends AppLocalizations {
   String get game2048Title => '2048';
 
   @override
-  String get game2048Subtitle => 'Geser ke arah mana pun untuk menggabungkan ubin dan mencapai ubin 2048!';
+  String get game2048Subtitle =>
+      'Geser ke arah mana pun untuk menggabungkan ubin dan mencapai ubin 2048!';
 
   @override
   String get nonogramTitle => 'Nonogram';
 
   @override
-  String get nonogramSubtitle => 'Ungkap gambar tersembunyi menggunakan petunjuk logika.';
+  String get nonogramSubtitle =>
+      'Ungkap gambar tersembunyi menggunakan petunjuk logika.';
 
   @override
   String get nonogramWin => 'Gambar Terungkap!';
@@ -392,7 +406,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get akariSubtitle => 'Terangi semua sel putih';
 
   @override
-  String get akariHowToPlay => 'Tempatkan bola lampu di sel putih untuk menerangi seluruh kisi. Lampu menerangi baris dan kolomnya hingga menabrak dinding. Dua lampu tidak boleh saling menyinari. Dinding bernomor menunjukkan dengan tepat berapa banyak lampu yang harus ditempatkan di sel yang berdekatan (atas, bawah, kiri, kanan).';
+  String get akariHowToPlay =>
+      'Tempatkan bola lampu di sel putih untuk menerangi seluruh kisi. Lampu menerangi baris dan kolomnya hingga menabrak dinding. Dua lampu tidak boleh saling menyinari. Dinding bernomor menunjukkan dengan tepat berapa banyak lampu yang harus ditempatkan di sel yang berdekatan (atas, bawah, kiri, kanan).';
 
   @override
   String get akariWinTitle => 'TERANG BENDERANG!';
@@ -410,14 +425,15 @@ class AppLocalizationsId extends AppLocalizations {
   String get arithmeticChainWinTitle => 'LEVEL UP!';
 
   @override
-  String get arithmeticChainWinMessage => 'Perhitungan mental Anda sangat tajam!';
+  String get arithmeticChainWinMessage =>
+      'Perhitungan mental Anda sangat tajam!';
 
   @override
   String get arithmeticChainLoseTitle => 'COBA LAGI';
 
   @override
   String arithmeticChainLoseMessage(String answer) {
-    return 'Jawaban yang benar adalah ${answer}.';
+    return 'Jawaban yang benar adalah $answer.';
   }
 
   @override
@@ -433,30 +449,34 @@ class AppLocalizationsId extends AppLocalizations {
   String get attentionalBlinkSubtitleWatch => 'PERHATIKAN ANGKA-ANGKANYA';
 
   @override
-  String get attentionalBlinkSubtitleInput => 'MASUKKAN DUA ANGKA YANG ANDA LIHAT';
+  String get attentionalBlinkSubtitleInput =>
+      'MASUKKAN DUA ANGKA YANG ANDA LIHAT';
 
   @override
   String attentionalBlinkScoreMessage(int score) {
-    return 'Anda mencetak ${score} target!';
+    return 'Anda mencetak $score target!';
   }
 
   @override
   String get balanceScaleTitle => 'Timbangan';
 
   @override
-  String get balanceScaleSubtitle => 'Deduksikan berat item terakhir berdasarkan timbangan.';
+  String get balanceScaleSubtitle =>
+      'Deduksikan berat item terakhir berdasarkan timbangan.';
 
   @override
   String get balanceScaleWinTitle => 'SEIMBANG!';
 
   @override
-  String get balanceScaleWinMessage => 'Anda berhasil mendeduksi beratnya dengan benar!';
+  String get balanceScaleWinMessage =>
+      'Anda berhasil mendeduksi beratnya dengan benar!';
 
   @override
   String get balanceScaleLoseTitle => 'TIDAK SEIMBANG';
 
   @override
-  String get balanceScaleLoseMessage => 'Coba lagi untuk menemukan keseimbangan yang benar.';
+  String get balanceScaleLoseMessage =>
+      'Coba lagi untuk menemukan keseimbangan yang benar.';
 
   @override
   String get balanceScaleBack => 'KEMBALI';
@@ -468,25 +488,29 @@ class AppLocalizationsId extends AppLocalizations {
   String get binaryPuzzleTitle => 'Teka-Teki Biner';
 
   @override
-  String get binaryPuzzleSubtitle => 'Isi dengan 0 dan 1. Maksimal dua digit sama yang bersebelahan. Jumlah 0 dan 1 harus sama di setiap baris dan kolom.';
+  String get binaryPuzzleSubtitle =>
+      'Isi dengan 0 dan 1. Maksimal dua digit sama yang bersebelahan. Jumlah 0 dan 1 harus sama di setiap baris dan kolom.';
 
   @override
   String get binaryPuzzleWinTitle => 'KERJA BAGUS';
 
   @override
-  String get binaryPuzzleWinMessage => 'Anda memecahkan teka-teki biner dengan logika sempurna!';
+  String get binaryPuzzleWinMessage =>
+      'Anda memecahkan teka-teki biner dengan logika sempurna!';
 
   @override
   String get blockEscapeTitle => 'Escape Balok';
 
   @override
-  String get blockEscapeSubtitle => 'Geser balok untuk membersihkan jalur agar balok utama dapat mencapai pintu keluar.';
+  String get blockEscapeSubtitle =>
+      'Geser balok untuk membersihkan jalur agar balok utama dapat mencapai pintu keluar.';
 
   @override
   String get blockEscapeWinTitle => 'BERHASIL KELUAR!';
 
   @override
-  String get blockEscapeWinMessage => 'Anda berhasil membersihkan jalur untuk balok utama!';
+  String get blockEscapeWinMessage =>
+      'Anda berhasil membersihkan jalur untuk balok utama!';
 
   @override
   String get boxCompletionTitle => 'Penyusunan Kotak';
@@ -496,7 +520,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String boxCompletionScoreMessage(int score, int totalTrials) {
-    return 'Skor Anda ${score} benar dari ${totalTrials}!';
+    return 'Skor Anda $score benar dari $totalTrials!';
   }
 
   @override
@@ -506,7 +530,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get bridgesTitle => 'Jembatan';
 
   @override
-  String get bridgesSubtitle => 'Hubungkan pulau-pulau dengan jembatan. Setiap pulau membutuhkan jumlah jembatan tertentu. Jembatan tidak boleh saling bersilangan.';
+  String get bridgesSubtitle =>
+      'Hubungkan pulau-pulau dengan jembatan. Setiap pulau membutuhkan jumlah jembatan tertentu. Jembatan tidak boleh saling bersilangan.';
 
   @override
   String get bridgesWinTitle => 'TERHUBUNG!';
@@ -518,7 +543,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get calculationSprintTitle => 'Sprint Berhitung';
 
   @override
-  String get calculationSprintSubtitle => 'Selesaikan persamaan sebanyak mungkin dalam 60 detik.';
+  String get calculationSprintSubtitle =>
+      'Selesaikan persamaan sebanyak mungkin dalam 60 detik.';
 
   @override
   String get calculationSprintGoalReached => 'TARGET TERCAPAI!';
@@ -528,12 +554,12 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String calculationSprintScoreMessage(int score) {
-    return 'Kecepatan menghitung yang luar biasa! Anda mencetak ${score} poin.';
+    return 'Kecepatan menghitung yang luar biasa! Anda mencetak $score poin.';
   }
 
   @override
   String calculationSprintTryAgainMessage(int score) {
-    return 'Anda mencetak ${score} poin. Cobalah untuk mengalahkan rekor terbaik Anda!';
+    return 'Anda mencetak $score poin. Cobalah untuk mengalahkan rekor terbaik Anda!';
   }
 
   @override
@@ -543,7 +569,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get calculationSprintSeconds => '60 DETIK';
 
   @override
-  String get calculationSprintDescription => 'Selesaikan persamaan dengan cepat.\nJawaban yang salah mengurangi 3 detik!';
+  String get calculationSprintDescription =>
+      'Selesaikan persamaan dengan cepat.\nJawaban yang salah mengurangi 3 detik!';
 
   @override
   String get calculationSprintStart => 'MULAI SPRINT';
@@ -552,7 +579,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get categoryFluencyTitle => 'Kefasihan Kategori';
 
   @override
-  String get categoryFluencySubtitle => 'Masukkan item yang termasuk dalam kategori';
+  String get categoryFluencySubtitle =>
+      'Masukkan item yang termasuk dalam kategori';
 
   @override
   String get categoryFluencyExpert => 'PAKAR KEFASIHAN!';
@@ -561,11 +589,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get categoryFluencyTimeUp => 'WAKTU HABIS!';
 
   @override
-  String get categoryFluencyWinMessage => 'Anda memiliki kosakata yang sangat luas!';
+  String get categoryFluencyWinMessage =>
+      'Anda memiliki kosakata yang sangat luas!';
 
   @override
   String categoryFluencyFoundMessage(int count) {
-    return 'Anda menemukan ${count} kata.';
+    return 'Anda menemukan $count kata.';
   }
 
   @override
@@ -576,7 +605,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String categoryFluencyWordCount(int entered, int target) {
-    return '${entered} / ${target} kata';
+    return '$entered / $target kata';
   }
 
   @override
@@ -587,12 +616,12 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String changeBlindnessScore(int score) {
-    return 'SKOR: ${score}';
+    return 'SKOR: $score';
   }
 
   @override
   String changeBlindnessFoundMessage(int score) {
-    return 'Anda menemukan ${score} perubahan!';
+    return 'Anda menemukan $score perubahan!';
   }
 
   @override
@@ -608,12 +637,12 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String choiceRtTimeRemaining(int time) {
-    return 'Sisa Waktu: ${time} detik';
+    return 'Sisa Waktu: $time detik';
   }
 
   @override
   String choiceRtTaps(int count) {
-    return 'Ketukan: ${count}';
+    return 'Ketukan: $count';
   }
 
   @override
@@ -621,7 +650,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String colorFloodSubtitle(int moves, int maxMoves) {
-    return 'Langkah: ${moves} / ${maxMoves}';
+    return 'Langkah: $moves / $maxMoves';
   }
 
   @override
@@ -631,7 +660,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get colorFloodDryLand => 'DARATAN KERING...';
 
   @override
-  String get colorFloodWinMessage => 'Anda membasahi seluruh kisi dengan warna!';
+  String get colorFloodWinMessage =>
+      'Anda membasahi seluruh kisi dengan warna!';
 
   @override
   String get colorFloodLoseMessage => 'Anda kehabisan langkah. Coba lagi!';
@@ -640,7 +670,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get colorMatchTitle => 'COCOKKAN WARNA';
 
   @override
-  String get colorMatchSubtitle => 'Sesuaikan slider untuk mencocokkan warna target semirip mungkin.';
+  String get colorMatchSubtitle =>
+      'Sesuaikan slider untuk mencocokkan warna target semirip mungkin.';
 
   @override
   String get colorMatchTarget => 'TARGET';
@@ -656,14 +687,15 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String colorMatchAccuracy(String accuracy) {
-    return 'Akurasi Anda: ${accuracy}%';
+    return 'Akurasi Anda: $accuracy%';
   }
 
   @override
   String get corsiBlocksTitle => 'Blok Corsi';
 
   @override
-  String get corsiBlocksSubtitle => 'Perhatikan blok menyala dan ketuk dalam urutan yang sama.';
+  String get corsiBlocksSubtitle =>
+      'Perhatikan blok menyala dan ketuk dalam urutan yang sama.';
 
   @override
   String get corsiBlocksWinTitle => 'MASTER SPASIAL!';
@@ -673,7 +705,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String corsiBlocksMessage(int score, int span) {
-    return 'Anda mengingat ${score} urutan! Rentang memori spasial Anda mencapai ${span}.';
+    return 'Anda mengingat $score urutan! Rentang memori spasial Anda mencapai $span.';
   }
 
   @override
@@ -692,19 +724,22 @@ class AppLocalizationsId extends AppLocalizations {
   String get crownTitle => 'Mahkota';
 
   @override
-  String get crownSubtitle => 'Tempatkan satu mahkota di setiap baris, kolom, dan wilayah warna. Mahkota tidak boleh bersebelahan, bahkan secara diagonal.';
+  String get crownSubtitle =>
+      'Tempatkan satu mahkota di setiap baris, kolom, dan wilayah warna. Mahkota tidak boleh bersebelahan, bahkan secara diagonal.';
 
   @override
   String get crownCrowned => 'MAHKOTA DITEMPATKAN!';
 
   @override
-  String get crownSuccess => 'Semua mahkota berhasil ditempatkan dengan logika sempurna.';
+  String get crownSuccess =>
+      'Semua mahkota berhasil ditempatkan dengan logika sempurna.';
 
   @override
   String get cryptogramTitle => 'Kriptogram';
 
   @override
-  String get cryptogramSubtitle => 'Tetapkan huruf untuk memecahkan kode pesan rahasia! Setiap huruf yang disandikan mewakili huruf asli.';
+  String get cryptogramSubtitle =>
+      'Tetapkan huruf untuk memecahkan kode pesan rahasia! Setiap huruf yang disandikan mewakili huruf asli.';
 
   @override
   String get cryptogramBroken => 'KODE TERPECAHKAN!';
@@ -725,7 +760,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get digitSpanReverseSubtitleMemorize => 'Hafalkan digitnya';
 
   @override
-  String get digitSpanReverseSubtitleEnter => 'Masukkan digit dalam urutan TERBALIK';
+  String get digitSpanReverseSubtitleEnter =>
+      'Masukkan digit dalam urutan TERBALIK';
 
   @override
   String get digitSpanReverseWinTitle => 'LEVEL UP!';
@@ -738,26 +774,27 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String digitSpanReverseLoseMessage(String sequence) {
-    return 'Urutan terbalik yang benar adalah ${sequence}.';
+    return 'Urutan terbalik yang benar adalah $sequence.';
   }
 
   @override
   String get dividedAttentionTitle => 'Fokus Terbagi';
 
   @override
-  String get dividedAttentionSubtitle => 'Ketuk KIRI untuk BINTANG ⭐ | Ketuk KANAN untuk MERAH 🔴';
+  String get dividedAttentionSubtitle =>
+      'Ketuk KIRI untuk BINTANG ⭐ | Ketuk KANAN untuk MERAH 🔴';
 
   @override
   String get dividedAttentionGameOverTitle => 'FOKUS TERPECAH';
 
   @override
   String dividedAttentionGameOverMessage(int score) {
-    return 'Multitasking itu sulit! Skor Anda adalah ${score}.';
+    return 'Multitasking itu sulit! Skor Anda adalah $score.';
   }
 
   @override
   String dividedAttentionScore(int score) {
-    return 'SKOR: ${score}';
+    return 'SKOR: $score';
   }
 
   @override
@@ -765,7 +802,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String doubleNBackSubtitle(int n) {
-    return 'Cocokkan stimulus ${n} langkah sebelumnya';
+    return 'Cocokkan stimulus $n langkah sebelumnya';
   }
 
   @override
@@ -773,12 +810,12 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String doubleNBackGameOverMessage(int score) {
-    return 'Anda mencetak ${score} poin di Double N-Back!';
+    return 'Anda mencetak $score poin di Double N-Back!';
   }
 
   @override
   String doubleNBackScore(int score) {
-    return 'Skor: ${score}';
+    return 'Skor: $score';
   }
 
   @override
@@ -791,7 +828,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get faceNameAssociationTitle => 'Wajah & Nama';
 
   @override
-  String get faceNameAssociationSubtitleStudy => 'Hafalkan nama untuk setiap wajah';
+  String get faceNameAssociationSubtitleStudy =>
+      'Hafalkan nama untuk setiap wajah';
 
   @override
   String get faceNameAssociationSubtitleTest => 'Siapa ini?';
@@ -803,11 +841,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get faceNameAssociationGameOver => 'GAME OVER';
 
   @override
-  String get faceNameAssociationWinMessage => 'Anda memiliki ingatan yang hebat untuk wajah dan nama!';
+  String get faceNameAssociationWinMessage =>
+      'Anda memiliki ingatan yang hebat untuk wajah dan nama!';
 
   @override
   String faceNameAssociationLoseMessage(int correct, int total) {
-    return 'Anda menjawab ${correct} benar dari ${total}.';
+    return 'Anda menjawab $correct benar dari $total.';
   }
 
   @override
@@ -821,14 +860,15 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String flankerTestScoreMessage(int score) {
-    return 'Anda menjawab ${score} dengan benar!';
+    return 'Anda menjawab $score dengan benar!';
   }
 
   @override
   String get flankerTestTitle => 'TES FLANKER';
 
   @override
-  String get flankerTestSubtitle => 'Tunjukkan arah panah tengah, abaikan panah di sampingnya.';
+  String get flankerTestSubtitle =>
+      'Tunjukkan arah panah tengah, abaikan panah di sampingnya.';
 
   @override
   String get flankerTestLeft => 'KIRI';
@@ -847,7 +887,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String fractionMatchLoseMessage(String correctAnswer) {
-    return 'Jawaban yang benar adalah ${correctAnswer}.';
+    return 'Jawaban yang benar adalah $correctAnswer.';
   }
 
   @override
@@ -882,7 +922,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String groceryListScoreMessage(int score) {
-    return 'Anda mencetak ${score} poin di Daftar Belanja!';
+    return 'Anda mencetak $score poin di Daftar Belanja!';
   }
 
   @override
@@ -895,17 +935,19 @@ class AppLocalizationsId extends AppLocalizations {
   String get hueSortTitle => 'Urutkan Warna';
 
   @override
-  String get hueSortSubtitle => 'Tukar ubin untuk membuat transisi yang mulus antara warna sudut. Titik menunjukkan ubin tetap.';
+  String get hueSortSubtitle =>
+      'Tukar ubin untuk membuat transisi yang mulus antara warna sudut. Titik menunjukkan ubin tetap.';
 
   @override
   String get hueSortWinTitle => 'GRADIEN SEMPURNA!';
 
   @override
-  String get hueSortWinMessage => 'Anda mengurutkan spektrum warna dengan sempurna!';
+  String get hueSortWinMessage =>
+      'Anda mengurutkan spektrum warna dengan sempurna!';
 
   @override
   String hueSortWrongTiles(int count) {
-    return 'Ubin di posisi yang salah: ${count}';
+    return 'Ubin di posisi yang salah: $count';
   }
 
   @override
@@ -925,7 +967,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String kenkenSubtitle(int size) {
-    return 'Isi 1-${size} tanpa pengulangan di baris/kolom';
+    return 'Isi 1-$size tanpa pengulangan di baris/kolom';
   }
 
   @override
@@ -936,12 +978,12 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String letterCancellationScoreMessage(int score) {
-    return 'Anda menemukan ${score} huruf!';
+    return 'Anda menemukan $score huruf!';
   }
 
   @override
   String letterCancellationSubtitle(String target) {
-    return 'Temukan semua huruf "${target}"';
+    return 'Temukan semua huruf \"$target\"';
   }
 
   @override
@@ -954,7 +996,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get lightsOutTitle => 'Lights Out';
 
   @override
-  String get lightsOutSubtitle => 'Ketukan pada ubin akan mengubah ubin tersebut dan ubin yang berdekatan. Matikan semua lampu untuk memecahkannya.';
+  String get lightsOutSubtitle =>
+      'Ketukan pada ubin akan mengubah ubin tersebut dan ubin yang berdekatan. Matikan semua lampu untuk memecahkannya.';
 
   @override
   String get lightsOutWinTitle => 'TEKA-TEKI TERPECAHKAN!';
@@ -966,13 +1009,15 @@ class AppLocalizationsId extends AppLocalizations {
   String get symmetryTitle => 'Simetri';
 
   @override
-  String get symmetrySubtitle => 'Cerminkan pola di sebelah kiri ke kisi kosong di sebelah kanan.';
+  String get symmetrySubtitle =>
+      'Cerminkan pola di sebelah kiri ke kisi kosong di sebelah kanan.';
 
   @override
   String get semanticLinkTitle => 'Tautan Semantik';
 
   @override
-  String get semanticLinkSubtitle => 'Temukan kata yang menghubungkan ketiganya';
+  String get semanticLinkSubtitle =>
+      'Temukan kata yang menghubungkan ketiganya';
 
   @override
   String get reflexTapTitle => 'Ketuk Refleks';
@@ -993,13 +1038,15 @@ class AppLocalizationsId extends AppLocalizations {
   String get multipleObjectTrackingTitle => 'Pelacak Objek';
 
   @override
-  String get multipleObjectTrackingSubtitle => 'Perhatikan objek yang disorot. Lacak objek saat bergerak, lalu pilih objek tersebut.';
+  String get multipleObjectTrackingSubtitle =>
+      'Perhatikan objek yang disorot. Lacak objek saat bergerak, lalu pilih objek tersebut.';
 
   @override
   String get sdmtTitle => 'Tes SDMT';
 
   @override
-  String get sdmtSubtitle => 'Gunakan kunci di atas untuk menemukan digit dari simbol yang ditampilkan.';
+  String get sdmtSubtitle =>
+      'Gunakan kunci di atas untuk menemukan digit dari simbol yang ditampilkan.';
 
   @override
   String get memoryMatrixTitle => 'Target Tercapai!';
@@ -1017,13 +1064,15 @@ class AppLocalizationsId extends AppLocalizations {
   String get spellingSprintTitle => 'Sprint Ejaan';
 
   @override
-  String get spellingSprintSubtitle => 'Berlomba dengan waktu untuk mengeja kata sebanyak mungkin.';
+  String get spellingSprintSubtitle =>
+      'Berlomba dengan waktu untuk mengeja kata sebanyak mungkin.';
 
   @override
   String get stopSignalTitle => 'Sinyal Berhenti';
 
   @override
-  String get stopSignalSubtitle => 'Ketuk arah panah, tetapi BERHENTI segera jika panah berubah menjadi MERAH.';
+  String get stopSignalSubtitle =>
+      'Ketuk arah panah, tetapi BERHENTI segera jika panah berubah menjadi MERAH.';
 
   @override
   String get staircaseMemoryTitle => 'Memori Tangga';
@@ -1032,19 +1081,22 @@ class AppLocalizationsId extends AppLocalizations {
   String get vigilanceTaskTitle => 'Tugas Kewaspadaan';
 
   @override
-  String get vigilanceTaskSubtitle => 'Ketuk tombol ketika jarum melompati posisi';
+  String get vigilanceTaskSubtitle =>
+      'Ketuk tombol ketika jarum melompati posisi';
 
   @override
   String get logicalSyllogismsTitle => 'Silogisme Logis';
 
   @override
-  String get logicalSyllogismsSubtitle => 'Apakah kesimpulan tersebut valid secara logis?';
+  String get logicalSyllogismsSubtitle =>
+      'Apakah kesimpulan tersebut valid secara logis?';
 
   @override
   String get mathPathTitle => 'Jalur Matematika';
 
   @override
-  String get mathPathSubtitle => 'Temukan jalur yang menghasilkan jumlah tepat sesuai target.';
+  String get mathPathSubtitle =>
+      'Temukan jalur yang menghasilkan jumlah tepat sesuai target.';
 
   @override
   String get sternbergTaskTitle => 'Tugas Sternberg';
@@ -1053,11 +1105,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get sternbergTaskMemorize => 'Hafalkan huruf-hurufnya';
 
   @override
-  String get sternbergTaskWasLetterSet => 'Apakah huruf ini ada dalam kumpulan?';
+  String get sternbergTaskWasLetterSet =>
+      'Apakah huruf ini ada dalam kumpulan?';
 
   @override
   String sternbergTaskScore(int score) {
-    return 'Anda mencetak ${score} poin di Tugas Sternberg!';
+    return 'Anda mencetak $score poin di Tugas Sternberg!';
   }
 
   @override
@@ -1070,25 +1123,29 @@ class AppLocalizationsId extends AppLocalizations {
   String get typingSpeedTitle => 'Kecepatan Mengetik';
 
   @override
-  String get typingSpeedSubtitle => 'Ketik frasa persis seperti yang ditampilkan secepat mungkin!';
+  String get typingSpeedSubtitle =>
+      'Ketik frasa persis seperti yang ditampilkan secepat mungkin!';
 
   @override
   String get wordLadderTitle => 'Tangga Kata';
 
   @override
-  String get wordLadderSubtitle => 'Hubungkan kata dengan mengubah satu huruf pada satu waktu.';
+  String get wordLadderSubtitle =>
+      'Hubungkan kata dengan mengubah satu huruf pada satu waktu.';
 
   @override
   String get tangleFixTitle => 'Terurai!';
 
   @override
-  String get tangleFixSubtitle => 'Urai garis-garisnya agar tidak ada yang saling bersilangan';
+  String get tangleFixSubtitle =>
+      'Urai garis-garisnya agar tidak ada yang saling bersilangan';
 
   @override
   String get oddRotationTitle => 'Rotasi Ganjil';
 
   @override
-  String get oddRotationSubtitle => 'Salah satu dari ini dicerminkan. Bisakah Anda menemukannya?';
+  String get oddRotationSubtitle =>
+      'Salah satu dari ini dicerminkan. Bisakah Anda menemukannya?';
 
   @override
   String get towerOfLondonTitle => 'Menara London';
@@ -1106,19 +1163,22 @@ class AppLocalizationsId extends AppLocalizations {
   String get stroopTestTitle => 'Tes Stroop';
 
   @override
-  String get stroopTestSubtitle => 'Identifikasi warna tinta kata yang ditampilkan. Abaikan kata yang sebenarnya tertulis!';
+  String get stroopTestSubtitle =>
+      'Identifikasi warna tinta kata yang ditampilkan. Abaikan kata yang sebenarnya tertulis!';
 
   @override
   String get wisconsinCardSortingTitle => 'Penyortiran Kartu Wisconsin';
 
   @override
-  String get wisconsinCardSortingSubtitle => 'COCOKKAN KARTU DENGAN SALAH SATU DARI EMPAT KARTU DI ATAS';
+  String get wisconsinCardSortingSubtitle =>
+      'COCOKKAN KARTU DENGAN SALAH SATU DARI EMPAT KARTU DI ATAS';
 
   @override
   String get nBackTitle => 'Tes N-Back';
 
   @override
-  String get nBackSubtitle => 'Ketuk COCOK jika huruf saat ini cocok dengan yang ditampilkan 2 langkah sebelumnya.';
+  String get nBackSubtitle =>
+      'Ketuk COCOK jika huruf saat ini cocok dengan yang ditampilkan 2 langkah sebelumnya.';
 
   @override
   String get rhythmMasterTitle => 'Master Ritme';
@@ -1134,14 +1194,15 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String targetNumberSubtitle(int target) {
-    return 'Gunakan keempat angka untuk mencapai ${target}';
+    return 'Gunakan keempat angka untuk mencapai $target';
   }
 
   @override
   String get mirrorTracingTitle => 'Tracer Cermin';
 
   @override
-  String get mirrorTracingSubtitle => 'Jiplak bintang! Kontrol dicerminkan secara terbalik.';
+  String get mirrorTracingSubtitle =>
+      'Jiplak bintang! Kontrol dicerminkan secara terbalik.';
 
   @override
   String get wordSurgeTitle => 'Gelombang Kata';
@@ -1159,11 +1220,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get perspectiveTakingChoosePerspective => 'PILIH PERSPEKTIF';
 
   @override
-  String get perspectiveTakingCongrats => 'Anda memiliki pandangan tajam untuk hubungan spasial.';
+  String get perspectiveTakingCongrats =>
+      'Anda memiliki pandangan tajam untuk hubungan spasial.';
 
   @override
   String perspectiveTakingSubtitle(String targetDirName) {
-    return 'Tampilan mana yang dari arah ${targetDirName}?';
+    return 'Tampilan mana yang dari arah $targetDirName?';
   }
 
   @override
@@ -1176,25 +1238,29 @@ class AppLocalizationsId extends AppLocalizations {
   String get waterSortTitle => 'Urutkan Air';
 
   @override
-  String get waterSortSubtitle => 'Urutkan warna sehingga setiap tabung hanya berisi satu warna.';
+  String get waterSortSubtitle =>
+      'Urutkan warna sehingga setiap tabung hanya berisi satu warna.';
 
   @override
   String get numericalEstimationTitle => 'Estimasi Numerik';
 
   @override
-  String get numericalEstimationSubtitle => 'Pilih jawaban terdekat dengan cepat!';
+  String get numericalEstimationSubtitle =>
+      'Pilih jawaban terdekat dengan cepat!';
 
   @override
   String get lockPatternTitle => 'Pola Kunci';
 
   @override
-  String get lockPatternSubtitle => 'Temukan pola rahasia. Setiap tebakan memberikan umpan balik tentang posisi dan titik.';
+  String get lockPatternSubtitle =>
+      'Temukan pola rahasia. Setiap tebakan memberikan umpan balik tentang posisi dan titik.';
 
   @override
   String get primeHunterTitle => 'Prime Hunter';
 
   @override
-  String get primeHunterSubtitle => 'Geser KIRI untuk PRIMA | Geser KANAN untuk KOMPOSIT';
+  String get primeHunterSubtitle =>
+      'Geser KIRI untuk PRIMA | Geser KANAN untuk KOMPOSIT';
 
   @override
   String get tracePathTitle => 'Jiplak Jalur';
@@ -1218,25 +1284,29 @@ class AppLocalizationsId extends AppLocalizations {
   String get switchTaskTitle => 'Alih Tugas';
 
   @override
-  String get switchTaskSubtitle => 'Perhatikan aturannya! Aturan akan beralih antara mencocokkan bentuk dan mencocokkan warna.';
+  String get switchTaskSubtitle =>
+      'Perhatikan aturannya! Aturan akan beralih antara mencocokkan bentuk dan mencocokkan warna.';
 
   @override
   String get mentalRotationTitle => 'Rotasi Mental';
 
   @override
-  String get mentalRotationSubtitle => 'Apakah bentuk-bentuk ini sama, hanya diputar?';
+  String get mentalRotationSubtitle =>
+      'Apakah bentuk-bentuk ini sama, hanya diputar?';
 
   @override
   String get missingOperatorTitle => 'Campuran Operator';
 
   @override
-  String get missingOperatorSubtitle => 'Isi kekosongan untuk menyelesaikan persamaan';
+  String get missingOperatorSubtitle =>
+      'Isi kekosongan untuk menyelesaikan persamaan';
 
   @override
   String get wordMastermindTitle => 'Kata Mastermind';
 
   @override
-  String get wordMastermindSubtitle => 'Pecahkan kode 4 huruf! Bulls (B) adalah posisi tepat, Cows (C) adalah posisi salah.';
+  String get wordMastermindSubtitle =>
+      'Pecahkan kode 4 huruf! Bulls (B) adalah posisi tepat, Cows (C) adalah posisi salah.';
 
   @override
   String get simonSequenceTitle => 'Urutan Simon';
@@ -1245,13 +1315,15 @@ class AppLocalizationsId extends AppLocalizations {
   String get symbolLogicTitle => 'Logika Simbol';
 
   @override
-  String get symbolLogicSubtitle => 'Selesaikan persamaan visual untuk menemukan nilai setiap simbol. Apa hasil dari persamaan terakhir?';
+  String get symbolLogicSubtitle =>
+      'Selesaikan persamaan visual untuk menemukan nilai setiap simbol. Apa hasil dari persamaan terakhir?';
 
   @override
   String get silhouetteMatchTitle => 'Cocok!';
 
   @override
-  String get silhouetteMatchSubtitle => 'Siluet mana yang cocok dengan objek ini?';
+  String get silhouetteMatchSubtitle =>
+      'Siluet mana yang cocok dengan objek ini?';
 
   @override
   String get operationSpanTitle => 'Operation Span';
@@ -1263,14 +1335,15 @@ class AppLocalizationsId extends AppLocalizations {
   String get operationSpanLetterPhase => 'Ingat hurufnya';
 
   @override
-  String get operationSpanRecallPhase => 'Ingat huruf-hurufnya secara berurutan';
+  String get operationSpanRecallPhase =>
+      'Ingat huruf-hurufnya secara berurutan';
 
   @override
   String get operationSpanRoundComplete => 'Putaran Selesai!';
 
   @override
   String operationSpanScore(int score) {
-    return 'Anda mencetak ${score} poin di Operation Span!';
+    return 'Anda mencetak $score poin di Operation Span!';
   }
 
   @override
@@ -1280,7 +1353,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get slidePuzzleNewGame => 'GAME BARU';
 
   @override
-  String get slidePuzzleInstructions => 'Susun kembali ubin ke dalam urutan numerik dengan menggesernya ke ruang kosong.';
+  String get slidePuzzleInstructions =>
+      'Susun kembali ubin ke dalam urutan numerik dengan menggesernya ke ruang kosong.';
 
   @override
   String get slidePuzzleTileSlider => 'TILE SLIDER';
@@ -1298,7 +1372,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get trailMakingTitle => 'Trail Making';
 
   @override
-  String get trailMakingSubtitle => 'Hubungkan angka secara berurutan (1 -> 2 -> 3...) secepat mungkin.';
+  String get trailMakingSubtitle =>
+      'Hubungkan angka secara berurutan (1 -> 2 -> 3...) secepat mungkin.';
 
   @override
   String get matrixReasoningTitle => 'Penalaran Matriks';
@@ -1310,7 +1385,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get tentsAndTreesTitle => 'Tenda & Pohon';
 
   @override
-  String get tentsAndTreesSubtitle => 'Tempatkan tenda di sebelah pohon. Angka menunjukkan berapa banyak tenda di setiap baris/kolom. Tenda tidak boleh saling bersentuhan.';
+  String get tentsAndTreesSubtitle =>
+      'Tempatkan tenda di sebelah pohon. Angka menunjukkan berapa banyak tenda di setiap baris/kolom. Tenda tidak boleh saling bersentuhan.';
 
   @override
   String get quickMathTitle => 'Matematika Cepat';
@@ -1320,7 +1396,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String magicSquaresSubtitle(int targetSum) {
-    return 'Setiap baris, kolom, dan diagonal harus berjumlah ${targetSum}';
+    return 'Setiap baris, kolom, dan diagonal harus berjumlah $targetSum';
   }
 
   @override
@@ -1330,7 +1406,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get pipesTitle => 'Pipa';
 
   @override
-  String get pipesSubtitle => 'Hubungkan titik-titik berwarna sama dengan pipa.';
+  String get pipesSubtitle =>
+      'Hubungkan titik-titik berwarna sama dengan pipa.';
 
   @override
   String get oddOneOutTitle => 'Cari yang Berbeda';
@@ -1342,10 +1419,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get einsteinRiddleTitle => 'TEKA-TEKI EINSTEIN';
 
   @override
-  String get einsteinRiddleSubtitle => 'Gunakan petunjuk untuk mendeduksi atribut masing-masing rumah.';
+  String get einsteinRiddleSubtitle =>
+      'Gunakan petunjuk untuk mendeduksi atribut masing-masing rumah.';
 
   @override
-  String get einsteinRiddleHowToPlay => 'Masing-masing rumah memiliki atribut unik (warna, kebangsaan, hewan peliharaan, dll.). Gunakan petunjuk yang disediakan untuk mengisi kisi dan menemukan solusi lengkap.';
+  String get einsteinRiddleHowToPlay =>
+      'Masing-masing rumah memiliki atribut unik (warna, kebangsaan, hewan peliharaan, dll.). Gunakan petunjuk yang disediakan untuk mengisi kisi dan menemukan solusi lengkap.';
 
   @override
   String get einsteinRiddleColor => 'Warna';
@@ -1372,25 +1451,30 @@ class AppLocalizationsId extends AppLocalizations {
   String get mirrorImageSubtitle => 'Identifikasi refleksi cermin yang benar.';
 
   @override
-  String get mirrorImageHowToPlay => 'Lihatlah bentuk dan pilih refleksi cermin yang benar dari opsi yang disediakan.';
+  String get mirrorImageHowToPlay =>
+      'Lihatlah bentuk dan pilih refleksi cermin yang benar dari opsi yang disediakan.';
 
   @override
   String get mentalMappingTitle => 'Pemetaan Mental';
 
   @override
-  String get mentalMappingSubtitle => 'Ikuti petunjuk arah dan temukan tujuannya.';
+  String get mentalMappingSubtitle =>
+      'Ikuti petunjuk arah dan temukan tujuannya.';
 
   @override
-  String get mentalMappingHowToPlay => 'Anda akan diperlihatkan urutan petunjuk arah (Utara, Selatan, Timur, Barat). Ikuti langkah-langkah ini secara mental mulai dari pusat kisi dan pilih tujuan akhir.';
+  String get mentalMappingHowToPlay =>
+      'Anda akan diperlihatkan urutan petunjuk arah (Utara, Selatan, Timur, Barat). Ikuti langkah-langkah ini secara mental mulai dari pusat kisi dan pilih tujuan akhir.';
 
   @override
   String get memoryPalaceTitle => 'Istana Memori';
 
   @override
-  String get memoryPalaceSubtitle => 'Ingat kata mana yang berada di lokasi mana.';
+  String get memoryPalaceSubtitle =>
+      'Ingat kata mana yang berada di lokasi mana.';
 
   @override
-  String get memoryPalaceHowToPlay => 'Sekumpulan kata akan muncul di berbagai lokasi pada kisi. Hafalkan posisi mereka. Kemudian, Anda akan diminta untuk menempatkan kata-kata tersebut kembali ke lokasi asalnya.';
+  String get memoryPalaceHowToPlay =>
+      'Sekumpulan kata akan muncul di berbagai lokasi pada kisi. Hafalkan posisi mereka. Kemudian, Anda akan diminta untuk menempatkan kata-kata tersebut kembali ke lokasi asalnya.';
 
   @override
   String get countingSheepTitle => 'Menghitung Domba';
@@ -1399,16 +1483,19 @@ class AppLocalizationsId extends AppLocalizations {
   String get countingSheepSubtitle => 'Berapa banyak domba yang Anda lihat?';
 
   @override
-  String get countingSheepHowToPlay => 'Domba akan berlari melintasi layar dengan cepat. Hitung domba saat mereka lewat dan masukkan jumlah totalnya di akhir.';
+  String get countingSheepHowToPlay =>
+      'Domba akan berlari melintasi layar dengan cepat. Hitung domba saat mereka lewat dan masukkan jumlah totalnya di akhir.';
 
   @override
   String get faceTraitAssociationTitle => 'Wajah & Sifat';
 
   @override
-  String get faceTraitAssociationSubtitle => 'Hafalkan sifat-sifat untuk setiap wajah';
+  String get faceTraitAssociationSubtitle =>
+      'Hafalkan sifat-sifat untuk setiap wajah';
 
   @override
-  String get faceTraitAssociationHowToPlay => 'Anda akan diperlihatkan beberapa wajah, masing-masing dengan nama, pekerjaan, dan hobi. Hafalkan asosiasi ini. Nanti, Anda akan diminta untuk mengingat sifat spesifik dari masing-masing wajah.';
+  String get faceTraitAssociationHowToPlay =>
+      'Anda akan diperlihatkan beberapa wajah, masing-masing dengan nama, pekerjaan, dan hobi. Hafalkan asosiasi ini. Nanti, Anda akan diminta untuk mengingat sifat spesifik dari masing-masing wajah.';
 
   @override
   String get mentalCalendarTitle => 'Kalender Mental';
@@ -1417,85 +1504,101 @@ class AppLocalizationsId extends AppLocalizations {
   String get mentalCalendarSubtitle => 'Hitung hari dalam seminggu';
 
   @override
-  String get mentalCalendarHowToPlay => 'Tanggal acak akan ditampilkan. Gunakan perhitungan mental (atau algoritma Doomsday) untuk menentukan hari apa dalam seminggu tanggal tersebut jatuh.';
+  String get mentalCalendarHowToPlay =>
+      'Tanggal acak akan ditampilkan. Gunakan perhitungan mental (atau algoritma Doomsday) untuk menentukan hari apa dalam seminggu tanggal tersebut jatuh.';
 
   @override
   String get vocabularyBuilderTitle => 'Vocabulary Builder';
 
   @override
-  String get vocabularyBuilderSubtitle => 'Cocokkan sinonim dan antonim di bawah tekanan waktu.';
+  String get vocabularyBuilderSubtitle =>
+      'Cocokkan sinonim dan antonim di bawah tekanan waktu.';
 
   @override
-  String get vocabularyBuilderHowToPlay => 'Anda akan diperlihatkan kata target dan hubungan (Sinonim atau Antonim). Pilih kata yang benar dari opsi yang cocok dengan hubungan tersebut. Cepatlah, waktu terus berjalan!';
+  String get vocabularyBuilderHowToPlay =>
+      'Anda akan diperlihatkan kata target dan hubungan (Sinonim atau Antonim). Pilih kata yang benar dari opsi yang cocok dengan hubungan tersebut. Cepatlah, waktu terus berjalan!';
 
   @override
   String get grammarPoliceTitle => 'Polisi Tata Bahasa';
 
   @override
-  String get grammarPoliceSubtitle => 'Identifikasi dan perbaiki kesalahan dalam teks yang bergulir.';
+  String get grammarPoliceSubtitle =>
+      'Identifikasi dan perbaiki kesalahan dalam teks yang bergulir.';
 
   @override
-  String get grammarPoliceHowToPlay => 'Kalimat akan bergulir ke atas layar. Beberapa di antaranya mengandung kesalahan (ejaan, tata bahasa, atau tanda baca). Ketuk kalimat yang mengandung kesalahan untuk \'memperbaikinya\'. Jangan biarkan terlalu banyak kesalahan lewat begitu saja!';
+  String get grammarPoliceHowToPlay =>
+      'Kalimat akan bergulir ke atas layar. Beberapa di antaranya mengandung kesalahan (ejaan, tata bahasa, atau tanda baca). Ketuk kalimat yang mengandung kesalahan untuk \'memperbaikinya\'. Jangan biarkan terlalu banyak kesalahan lewat begitu saja!';
 
   @override
   String get reverseStroopTitle => 'Reverse Stroop';
 
   @override
-  String get reverseStroopSubtitle => 'Variasi tes Stroop di mana fokusnya dialihkan.';
+  String get reverseStroopSubtitle =>
+      'Variasi tes Stroop di mana fokusnya dialihkan.';
 
   @override
-  String get reverseStroopHowToPlay => 'Perhatikan instruksinya! Jika tertulis \'TEKS\', cocokkan arti kata tersebut. Jika tertulis \'WARNA\', cocokkan warna tinta. Aturan akan sering beralih untuk menguji fokus Anda.';
+  String get reverseStroopHowToPlay =>
+      'Perhatikan instruksinya! Jika tertulis \'TEKS\', cocokkan arti kata tersebut. Jika tertulis \'WARNA\', cocokkan warna tinta. Aturan akan sering beralih untuk menguji fokus Anda.';
 
   @override
-  String get game2048Instruction => 'GESER KE ARAH MANA PUN UNTUK MENGGABUNGKAN';
+  String get game2048Instruction =>
+      'GESER KE ARAH MANA PUN UNTUK MENGGABUNGKAN';
 
   @override
   String get fibonacciMergeTitle => 'Penggabungan Fibonacci';
 
   @override
-  String get fibonacciMergeSubtitle => 'Gabungkan angka-angka Fibonacci yang berurutan (1, 1, 2, 3, 5, 8, 13...).';
+  String get fibonacciMergeSubtitle =>
+      'Gabungkan angka-angka Fibonacci yang berurutan (1, 1, 2, 3, 5, 8, 13...).';
 
   @override
   String get sequenceSleuthTitle => 'Sequence Sleuth';
 
   @override
-  String get sequenceSleuthSubtitle => 'Temukan angka yang hilang dalam urutan matematika.';
+  String get sequenceSleuthSubtitle =>
+      'Temukan angka yang hilang dalam urutan matematika.';
 
   @override
   String get divisibilityDashTitle => 'Divisibility Dash';
 
   @override
-  String get divisibilityDashSubtitle => 'Ketuk semua pembagi satu digit (2-9) untuk angka yang diberikan.';
+  String get divisibilityDashSubtitle =>
+      'Ketuk semua pembagi satu digit (2-9) untuk angka yang diberikan.';
 
   @override
   String get percentagePeakTitle => 'Persentase Puncak';
 
   @override
-  String get percentagePeakSubtitle => 'Selesaikan perhitungan persentase mental dengan cepat.';
+  String get percentagePeakSubtitle =>
+      'Selesaikan perhitungan persentase mental dengan cepat.';
 
   @override
   String get vennNumbersTitle => 'Angka Venn';
 
   @override
-  String get vennNumbersSubtitle => 'Kategorikan angka-angka ke dalam wilayah diagram Venn yang benar.';
+  String get vennNumbersSubtitle =>
+      'Kategorikan angka-angka ke dalam wilayah diagram Venn yang benar.';
 
   @override
   String get commonDenominatorTitle => 'Penyebut Umum';
 
   @override
-  String get commonDenominatorSubtitle => 'Temukan Faktor Persekutuan Terbesar atau Kelipatan Persekutuan Terkecil.';
+  String get commonDenominatorSubtitle =>
+      'Temukan Faktor Persekutuan Terbesar atau Kelipatan Persekutuan Terkecil.';
 
   @override
   String get angleFinderTitle => 'Pencari Sudut';
 
   @override
-  String get angleFinderSubtitle => 'Hitung sudut yang hilang dalam masalah geometri.';
+  String get angleFinderSubtitle =>
+      'Hitung sudut yang hilang dalam masalah geometri.';
 
   @override
   String get sumSnakeTitle => 'Sum Snake';
 
   @override
-  String get sumSnakeSubtitle => 'Hubungkan angka-angka yang berdekatan untuk mencapai jumlah target.';
+  String get sumSnakeSubtitle =>
+      'Hubungkan angka-angka yang berdekatan untuk mencapai jumlah target.';
 
   @override
   String get baseShiftTitle => 'BLITZ PERGESERAN BASIS';
@@ -1504,7 +1607,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get baseShiftSubtitle => 'Selesaikan dalam desimal';
 
   @override
-  String get baseShiftDescription => 'Selesaikan persamaan dan ketik jawaban dalam desimal (Basis 10).';
+  String get baseShiftDescription =>
+      'Selesaikan persamaan dan ketik jawaban dalam desimal (Basis 10).';
 
   @override
   String get baseShiftEquation => 'PERSAMAAN';
@@ -1537,13 +1641,15 @@ class AppLocalizationsId extends AppLocalizations {
   String get baseShiftWinTitle => 'PENYIHIR MATEMATIKA!';
 
   @override
-  String get baseShiftWinMessage => 'Anda berhasil memecahkan 5 persamaan pergeseran basis!';
+  String get baseShiftWinMessage =>
+      'Anda berhasil memecahkan 5 persamaan pergeseran basis!';
 
   @override
   String get blockCount3DTitle => 'Hitung Balok 3D';
 
   @override
-  String get blockCount3DSubtitle => 'SERET UNTUK MEROTASI • HITUNG BALOK YANG TERSEMBUNYI';
+  String get blockCount3DSubtitle =>
+      'SERET UNTUK MEROTASI • HITUNG BALOK YANG TERSEMBUNYI';
 
   @override
   String get blockCount3DHowMany => 'BERAPA BANYAK BALOK?';
@@ -1552,50 +1658,56 @@ class AppLocalizationsId extends AppLocalizations {
   String get blockCount3DSubmitGuess => 'KIRIM TEBAKAN';
 
   @override
-  String get blockCount3DNotQuite => 'Kurang tepat! Coba rotasikan untuk menghitung kembali.';
+  String get blockCount3DNotQuite =>
+      'Kurang tepat! Coba rotasikan untuk menghitung kembali.';
 
   @override
   String get blockCount3DExcellent => 'LUAR BIASA';
 
   @override
   String blockCount3DWinMessage(int count) {
-    return 'Anda berhasil mengidentifikasi semua ${count} balok!';
+    return 'Anda berhasil mengidentifikasi semua $count balok!';
   }
 
   @override
-  String get blockCount3DHowToPlayDescription => '1. Seret jari Anda melintasi viewport 3D untuk merotasi tumpukan balok.\n\n2. Hitung semua balok dalam tumpukan.\n\n3. Ingat: sebuah balok yang menggantung di udara harus memiliki balok penopang struktural di bawahnya (balok tersembunyi!).\n\n4. Ketik jawaban Anda di kolom input dan ketuk "KIRIM TEBAKAN" untuk memeriksa.';
+  String get blockCount3DHowToPlayDescription =>
+      '1. Seret jari Anda melintasi viewport 3D untuk merotasi tumpukan balok.\n\n2. Hitung semua balok dalam tumpukan.\n\n3. Ingat: sebuah balok yang menggantung di udara harus memiliki balok penopang struktural di bawahnya (balok tersembunyi!).\n\n4. Ketik jawaban Anda di kolom input dan ketuk \"KIRIM TEBAKAN\" untuk memeriksa.';
 
   @override
   String get alphabetSudokuTitle => 'SUDOKU ABJAD';
 
   @override
-  String get alphabetSudokuSubtitle => 'Lengkapi kisi sehingga setiap baris, kolom, dan kotak berisi huruf A-I.';
+  String get alphabetSudokuSubtitle =>
+      'Lengkapi kisi sehingga setiap baris, kolom, dan kotak berisi huruf A-I.';
 
   @override
   String get alphabetSudokuWinTitle => 'SUDOKU TERPECAHKAN!';
 
   @override
-  String get alphabetSudokuWinMessage => 'Brilian! Anda menguasai huruf-huruf tersebut.';
+  String get alphabetSudokuWinMessage =>
+      'Brilian! Anda menguasai huruf-huruf tersebut.';
 
   @override
   String get classicMazeTitle => 'Labirin Klasik';
 
   @override
-  String get classicMazeSubtitle => 'JELAJAHI & PECAHKAN • LABIRIN BARU SETIAP PERMAINAN';
+  String get classicMazeSubtitle =>
+      'JELAJAHI & PECAHKAN • LABIRIN BARU SETIAP PERMAINAN';
 
   @override
   String get classicMazeWinTitle => 'LABIRIN DISELESAIKAN';
 
   @override
   String classicMazeWinMessage(int count) {
-    return 'Navigasi yang luar biasa! Anda menyelesaikan labirin dalam ${count} langkah.';
+    return 'Navigasi yang luar biasa! Anda menyelesaikan labirin dalam $count langkah.';
   }
 
   @override
   String get classicMazeMoves => 'LANGKAH: ';
 
   @override
-  String get classicMazeHowToPlayDescription => '1. Pandu kelereng kuning bercahaya (pemain) ke portal hijau (keluar) di kanan bawah.\n\n2. Gunakan gesekan di mana saja pada labirin, tombol panah keyboard fisik, atau tombol bantalan panah di bagian bawah untuk bergerak.\n\n3. Jejak ungu menunjukkan jalur yang telah Anda jelajahi. Telusuri kembali jejak Anda untuk menghapusnya secara dinamis!\n\n4. Beralih kesulitan dari bilah tindakan atas untuk menantang diri Anda dengan labirin yang lebih besar!';
+  String get classicMazeHowToPlayDescription =>
+      '1. Pandu kelereng kuning bercahaya (pemain) ke portal hijau (keluar) di kanan bawah.\n\n2. Gunakan gesekan di mana saja pada labirin, tombol panah keyboard fisik, atau tombol bantalan panah di bagian bawah untuk bergerak.\n\n3. Jejak ungu menunjukkan jalur yang telah Anda jelajahi. Telusuri kembali jejak Anda untuk menghapusnya secara dinamis!\n\n4. Beralih kesulitan dari bilah tindakan atas untuk menantang diri Anda dengan labirin yang lebih besar!';
 
   @override
   String get conjunctionSearchTitle => 'Conjunction Search';
@@ -1607,10 +1719,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get conjunctionSearchWinTitle => 'VICTORY';
 
   @override
-  String get conjunctionSearchWinMessage => 'Anda telah menemukan semua target dengan fokus perhatian yang sempurna!';
+  String get conjunctionSearchWinMessage =>
+      'Anda telah menemukan semua target dengan fokus perhatian yang sempurna!';
 
   @override
-  String get conjunctionSearchHowToPlayDescription => 'Kombinasi bentuk dan warna target tertentu akan ditampilkan dalam instruksi. Temukan dan ketuk di kisi padat secepat mungkin. Bentuk pengalih memiliki warna atau bentuk yang sama, jadi perhatikan baik-baik!';
+  String get conjunctionSearchHowToPlayDescription =>
+      'Kombinasi bentuk dan warna target tertentu akan ditampilkan dalam instruksi. Temukan dan ketuk di kisi padat secepat mungkin. Bentuk pengalih memiliki warna atau bentuk yang sama, jadi perhatikan baik-baik!';
 
   @override
   String get conjunctionSearchRound => 'PUTARAN: ';
@@ -1655,10 +1769,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get cubeNetFoldWinTitle => 'BENAR';
 
   @override
-  String get cubeNetFoldWinMessage => 'Anda memiliki logika pelipatan spasial 3D yang sempurna!';
+  String get cubeNetFoldWinMessage =>
+      'Anda memiliki logika pelipatan spasial 3D yang sempurna!';
 
   @override
-  String get cubeNetFoldHowToPlayDescription => '1. Lihatlah jaring 2D terbuka di bagian atas.\n\n2. Lipat jaring tersebut secara mental menjadi kubus 3D.\n\n3. Pilih opsi di bawah yang mewakili perspektif 3D yang valid dari kubus yang dilipat tersebut.\n\n4. Hati-hati: sisi yang berlawanan di jaring tidak boleh bersebelahan di 3D, dan urutan sisi yang bersebelahan harus cocok!';
+  String get cubeNetFoldHowToPlayDescription =>
+      '1. Lihatlah jaring 2D terbuka di bagian atas.\n\n2. Lipat jaring tersebut secara mental menjadi kubus 3D.\n\n3. Pilih opsi di bawah yang mewakili perspektif 3D yang valid dari kubus yang dilipat tersebut.\n\n4. Hati-hati: sisi yang berlawanan di jaring tidak boleh bersebelahan di 3D, dan urutan sisi yang bersebelahan harus cocok!';
 
   @override
   String get cubeNetFoldUnfoldedNet => 'NET 2D TERBUKA';
@@ -1667,7 +1783,8 @@ class AppLocalizationsId extends AppLocalizations {
   String get cubeNetFoldWhichMatches => 'KUBUS MANA YANG COCOK?';
 
   @override
-  String get cubeNetFoldIncorrect => 'Logika pelipatan salah! Ketuk Reset atau ubah pilihan Anda.';
+  String get cubeNetFoldIncorrect =>
+      'Logika pelipatan salah! Ketuk Reset atau ubah pilihan Anda.';
 
   @override
   String get cubeNetFoldSubmitChoice => 'KIRIM PILIHAN';
@@ -1680,7 +1797,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String faceTraitAssociationPersonOf(int current, int total) {
-    return 'ORANG KE ${current} DARI ${total}';
+    return 'ORANG KE $current DARI $total';
   }
 
   @override
@@ -1697,22 +1814,23 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String faceTraitAssociationScoreMessage(int correct, int total) {
-    return 'Anda menjawab ${correct} benar dari ${total}.';
+    return 'Anda menjawab $correct benar dari $total.';
   }
 
   @override
   String get topologyTitle => 'TOPOLOGI';
 
   @override
-  String get topologySubtitle => 'Apakah bentuk-bentuk ini setara secara topologi? (Dapatkah salah satu diubah bentuknya menjadi yang lain tanpa memotong atau mengelem?)';
+  String get topologySubtitle =>
+      'Apakah bentuk-bentuk ini setara secara topologi? (Dapatkah salah satu diubah bentuknya menjadi yang lain tanpa memotong atau mengelem?)';
 
   @override
   String get topologyWinTitle => 'GEOMETRY GENIUS!';
 
   @override
-  String get topologyWinMessage => 'Anda berhasil mengidentifikasi 10 pasangan topologi dengan benar!';
+  String get topologyWinMessage =>
+      'Anda berhasil mengidentifikasi 10 pasangan topologi dengan benar!';
 
   @override
   String get topologyScore => 'SKOR: ';
-
 }
