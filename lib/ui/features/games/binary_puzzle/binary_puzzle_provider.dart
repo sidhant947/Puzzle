@@ -83,14 +83,6 @@ class BinaryPuzzleNotifier extends _$BinaryPuzzleNotifier {
   }
 
   bool _checkSolved(List<List<int?>> grid) {
-    final size = state.board.size;
-    final solution = state.board.solution;
-
-    for (int r = 0; r < size; r++) {
-      for (int c = 0; c < size; c++) {
-        if (grid[r][c] != solution[r][c]) return false;
-      }
-    }
-    return true;
+    return _engine.isCompleteAndValid(grid, state.board.size);
   }
 }

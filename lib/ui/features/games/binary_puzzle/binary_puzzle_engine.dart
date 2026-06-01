@@ -105,57 +105,17 @@ class BinaryPuzzleEngine {
     }
     cells.shuffle(_random);
 
-    // Try to remove as many cells as possible while maintaining uniqueness
-    // For a 6x6, we usually want about 14-18 clues.
-    int minClues = size * 2 + 2; 
+    // Remove cells until we reach the target number of clues.
+    // For binary puzzles, we want enough clues to make it interesting but allow multiple solutions.
+    int targetClues = (size * size * 0.4).toInt() + _random.nextInt(size); 
     int removed = 0;
     for (var cell in cells) {
-      if ((size * size - removed) <= minClues) break;
-
-      int? originalVal = puzzle[cell.y][cell.x];
+      if ((size * size - removed) <= targetClues) break;
       puzzle[cell.y][cell.x] = null;
-      
-      if (_countSolutions(puzzle, size) != 1) {
-        puzzle[cell.y][cell.x] = originalVal;
-      } else {
-        removed++;
-      }
+      removed++;
     }
 
     return puzzle;
-  }
-
-  int _countSolutions(List<List<int?>> puzzle, int size) {
-    int count = 0;
-    List<List<int>> grid = List.generate(size, (r) => List.generate(size, (c) => puzzle[r][c] ?? -1));
-    
-    void solve(int row, int col) {
-      if (count > 1) return;
-      if (row == size) {
-        if (_isFinalValid(grid, size)) {
-          count++;
-        }
-        return;
-      }
-
-      int nextRow = col == size - 1 ? row + 1 : row;
-      int nextCol = col == size - 1 ? 0 : col + 1;
-
-      if (grid[row][col] != -1) {
-        solve(nextRow, nextCol);
-      } else {
-        for (int val in [0, 1]) {
-          if (_isValidPlacement(grid, row, col, val, size)) {
-            grid[row][col] = val;
-            solve(nextRow, nextCol);
-            grid[row][col] = -1;
-          }
-        }
-      }
-    }
-
-    solve(0, 0);
-    return count;
   }
 
   bool _isFinalValid(List<List<int>> grid, int size) {
@@ -184,5 +144,43 @@ class BinaryPuzzleEngine {
       }
     }
     return true;
+  }
+
+  bool isCompleteAndValid(List<List<int?>> grid, int size) {
+    // 1. Check all cells are filled
+    for (int r = 0; r < size; r++) {
+      for (int c = 0; c < size; c++) {
+        if (grid[r][c] == null) return false;
+      }
+    }
+
+    // Convert to List<List<int>> for internal checks
+    List<List<int>> fullGrid = grid.map((row) => row.map((e) => e!).toList()).toList();
+
+    // 2. Check no more than two same adjacent (Rule 1)
+    for (int r = 0; r < size; r++) {
+      for (int c = 0; c < size; c++) {
+        int val = fullGrid[r][c];
+        // Horizontal
+        if (c < size - 2 && fullGrid[r][c + 1] == val && fullGrid[r][c + 2] == val) return false;
+        // Vertical
+        if (r < size - 2 && fullGrid[r + 1][c] == val && fullGrid[r + 2][c] == val) return false;
+      }
+    }
+
+    // 3. Equal number of 0s and 1s (Rule 2)
+    int half = size ~/ 2;
+    for (int i = 0; i < size; i++) {
+      int row0 = 0, row1 = 0, col0 = 0, col1 = 0;
+      for (int j = 0; j < size; j++) {
+        if (fullGrid[i][j] == 0) row0++; else row1++;
+        if (fullGrid[j][i] == 0) col0++; else col1++;
+      }
+      if (row0 != half || row1 != half) return false;
+      if (col0 != half || col1 != half) return false;
+    }
+
+    // 4. Uniqueness of rows and columns (Rule 3)
+    return _isFinalValid(fullGrid, size);
   }
 }
