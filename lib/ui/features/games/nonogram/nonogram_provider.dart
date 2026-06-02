@@ -46,7 +46,7 @@ class NonogramNotifier extends _$NonogramNotifier {
 
   Future<NonogramState> _generateInitialState(int size) async {
     // Generate puzzle in background isolate
-    final puzzle = await compute((int s) => NonogramEngine().generatePuzzle(s), size);
+    final puzzle = await compute(NonogramEngine.generatePuzzleWrapper, size);
     
     return NonogramState(
       grid: List.generate(size, (_) => List.filled(size, 0)),
@@ -61,7 +61,7 @@ class NonogramNotifier extends _$NonogramNotifier {
     state = await AsyncValue.guard(() => _generateInitialState(state.value?.size ?? defaultSize));
   }
 
-  void toggleCell(int r, int c, bool isMarkMode) {
+  Future<void> toggleCell(int r, int c, bool isMarkMode) async {
     if (!state.hasValue || state.value!.isSolved) return;
     
     final currentState = state.value!;
@@ -79,7 +79,12 @@ class NonogramNotifier extends _$NonogramNotifier {
       newGrid[r][c] = currentValue == 1 ? 0 : 1;
     }
 
-    final solved = _engine.isCorrect(newGrid, currentState.rowClues, currentState.colClues);
+    final solved = await compute(NonogramEngine.isCorrectWrapper, {
+      'grid': newGrid,
+      'rowClues': currentState.rowClues,
+      'colClues': currentState.colClues,
+    });
+    
     state = AsyncValue.data(currentState.copyWith(grid: newGrid, isSolved: solved));
 
     if (solved) {

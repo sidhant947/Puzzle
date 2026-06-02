@@ -1,13 +1,14 @@
 import 'package:flutter/foundation.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import 'sudoku_engine.dart';
 
 part 'sudoku_provider.g.dart';
 
 class SudokuState {
-  final List<List<int>> initialBoard;
-  final List<List<int>> currentBoard;
-  final List<List<int>> solvedBoard;
+  final IList<IList<int>> initialBoard;
+  final IList<IList<int>> currentBoard;
+  final IList<IList<int>> solvedBoard;
   final int? selectedRow;
   final int? selectedCol;
   final bool isSolved;
@@ -22,7 +23,7 @@ class SudokuState {
   });
 
   SudokuState copyWith({
-    List<List<int>>? currentBoard,
+    IList<IList<int>>? currentBoard,
     int? selectedRow,
     int? selectedCol,
     bool? isSolved,
@@ -49,16 +50,16 @@ class SudokuNotifier extends _$SudokuNotifier {
   }
 
   Future<SudokuState> _generateNewGame() async {
-    final solved = await compute((_) => SudokuEngine.generateFullBoard(), null);
+    final solved = await compute(SudokuEngine.generateFullBoard, null);
     final puzzle = await compute(SudokuEngine.generateInitialPuzzle, {
       'solved': solved,
       'clues': 35,
     });
     
     return SudokuState(
-      initialBoard: List.generate(boardSize, (r) => List.from(puzzle[r])),
-      currentBoard: List.generate(boardSize, (r) => List.from(puzzle[r])),
-      solvedBoard: solved,
+      initialBoard: puzzle.map((r) => r.lock).toIList(),
+      currentBoard: puzzle.map((r) => r.lock).toIList(),
+      solvedBoard: solved.map((r) => r.lock).toIList(),
     );
   }
 
@@ -72,7 +73,7 @@ class SudokuNotifier extends _$SudokuNotifier {
     state = AsyncValue.data(state.value!.copyWith(selectedRow: r, selectedCol: c));
   }
 
-  void setNumber(int num) {
+  Future<void> setNumber(int num) async {
     if (!state.hasValue) return;
     final currentState = state.value!;
     if (currentState.selectedRow == null || currentState.selectedCol == null) return;
@@ -84,17 +85,32 @@ class SudokuNotifier extends _$SudokuNotifier {
     // Prevent modifying fixed (initial) numbers
     if (currentState.initialBoard[r][c] != 0) return;
 
-    final newBoard =
-        List.generate(boardSize, (i) => List<int>.from(currentState.currentBoard[i]));
+    final newBoardList = currentState.currentBoard.map((row) => row.toList()).toList();
 
-    if (newBoard[r][c] == num) {
-      newBoard[r][c] = 0; // Erase if same number is tapped
+    if (newBoardList[r][c] == num) {
+      newBoardList[r][c] = 0; // Erase if same number is tapped
     } else {
-      newBoard[r][c] = num;
+      newBoardList[r][c] = num;
     }
 
-    bool solved = _engine.isComplete(newBoard) &&
-        _engine.isCorrect(newBoard, currentState.solvedBoard);
+    final newBoard = newBoardList.map((row) => row.lock).toIList();
+
+    // Check completion and correctness in background if board is full
+    bool isComplete = true;
+    for (var row in newBoardList) {
+      if (row.contains(0)) {
+        isComplete = false;
+        break;
+      }
+    }
+
+    bool solved = false;
+    if (isComplete) {
+      solved = await compute(SudokuEngine.isCorrectWrapper, {
+        'board': newBoardList,
+        'solvedBoard': currentState.solvedBoard.map((row) => row.toList()).toList(),
+      });
+    }
 
     state = AsyncValue.data(currentState.copyWith(currentBoard: newBoard, isSolved: solved));
   }

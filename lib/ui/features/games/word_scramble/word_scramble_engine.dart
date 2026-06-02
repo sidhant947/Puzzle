@@ -1,11 +1,20 @@
 import 'dart:math';
 import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart';
 
 class WordScrambleEngine {
   static const int minWordLength = 4;
   static const int maxWordLength = 8;
 
   List<String>? _cachedWords;
+
+  static List<String> _processWords(String data) {
+    return data
+        .split('\n')
+        .map((w) => w.trim().toUpperCase())
+        .where((w) => w.isNotEmpty && w.length >= minWordLength && w.length <= maxWordLength)
+        .toList();
+  }
 
   Future<List<String>> loadWords([String languageCode = 'en']) async {
     if (_cachedWords != null && _cachedWords!.isNotEmpty) {
@@ -14,11 +23,7 @@ class WordScrambleEngine {
 
     try {
       final data = await rootBundle.loadString('assets/find_word_words.txt');
-      _cachedWords = data
-          .split('\n')
-          .map((w) => w.trim().toUpperCase())
-          .where((w) => w.isNotEmpty && w.length >= minWordLength && w.length <= maxWordLength)
-          .toList();
+      _cachedWords = await compute(_processWords, data);
       
       if (_cachedWords!.isEmpty) {
         throw Exception('No words found in file');

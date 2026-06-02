@@ -60,14 +60,15 @@ class NonogramEngine {
     return clues.isEmpty ? [0] : clues;
   }
 
-  bool isCorrect(List<List<int>> currentGrid, List<List<int>> rowClues, List<List<int>> colClues) {
+  static bool isCorrect(List<List<int>> currentGrid, List<List<int>> rowClues, List<List<int>> colClues) {
     final size = currentGrid.length;
+    final engine = NonogramEngine();
 
     // Check rows
     for (int r = 0; r < size; r++) {
       final List<bool> row = currentGrid[r].map((e) => e == 1).toList();
-      final calculatedClues = _calculateClues(row);
-      if (!_listEquals(calculatedClues, rowClues[r])) return false;
+      final calculatedClues = engine._calculateClues(row);
+      if (!engine._listEquals(calculatedClues, rowClues[r])) return false;
     }
 
     // Check columns
@@ -76,8 +77,8 @@ class NonogramEngine {
       for (int r = 0; r < size; r++) {
         column.add(currentGrid[r][c] == 1);
       }
-      final calculatedClues = _calculateClues(column);
-      if (!_listEquals(calculatedClues, colClues[c])) return false;
+      final calculatedClues = engine._calculateClues(column);
+      if (!engine._listEquals(calculatedClues, colClues[c])) return false;
     }
 
     return true;
@@ -89,5 +90,17 @@ class NonogramEngine {
       if (a[i] != b[i]) return false;
     }
     return true;
+  }
+
+  static NonogramPuzzle generatePuzzleWrapper(int size) {
+    return NonogramEngine().generatePuzzle(size);
+  }
+
+  static bool isCorrectWrapper(Map<String, dynamic> params) {
+    return isCorrect(
+      params['grid'] as List<List<int>>,
+      params['rowClues'] as List<List<int>>,
+      params['colClues'] as List<List<int>>,
+    );
   }
 }

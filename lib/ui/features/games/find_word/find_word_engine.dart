@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/services.dart';
+import 'package:flutter/foundation.dart';
 
 enum LetterStatus { initial, notInWord, wrongSpot, correctSpot }
 
@@ -8,16 +9,20 @@ class FindWordEngine {
   static const int wordLength = 5;
   static final Map<String, Set<String>> _cachedWords = {};
 
+  static Set<String> _processWords(String data) {
+    return data
+        .split('\n')
+        .map((w) => w.trim().toUpperCase())
+        .where((w) => w.length == wordLength)
+        .toSet();
+  }
+
   Future<Set<String>> loadWords([String languageCode = 'en']) async {
     if (_cachedWords.containsKey(languageCode)) return _cachedWords[languageCode]!;
     
     try {
       final data = await rootBundle.loadString('assets/find_word_words.txt');
-      final words = data
-          .split('\n')
-          .map((w) => w.trim().toUpperCase())
-          .where((w) => w.length == wordLength)
-          .toSet();
+      final words = await compute(_processWords, data);
       
       if (words.isEmpty) {
         return _getFallbackWords();

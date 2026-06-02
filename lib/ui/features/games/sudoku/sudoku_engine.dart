@@ -10,7 +10,7 @@ class SudokuEngine {
     return board;
   }
 
-  static List<List<int>> generateFullBoard() {
+  static List<List<int>> generateFullBoard([dynamic _]) {
     return SudokuEngine().generateBoard();
   }
 
@@ -39,7 +39,7 @@ class SudokuEngine {
     return true;
   }
 
-  bool isValid(List<List<int>> board, int row, int col, int num) {
+  bool isValid(dynamic board, int row, int col, int num) {
     // Check row
     for (int i = 0; i < size; i++) {
       if (i != col && board[row][i] == num) return false;
@@ -61,7 +61,7 @@ class SudokuEngine {
     return true;
   }
 
-  bool _isValid(List<List<int>> board, int row, int col, int num) {
+  bool _isValid(dynamic board, int row, int col, int num) {
     return isValid(board, row, col, num);
   }
 
@@ -109,5 +109,12 @@ class SudokuEngine {
       }
     }
     return true;
+  }
+
+  static bool isCorrectWrapper(Map<String, dynamic> params) {
+    final engine = SudokuEngine();
+    final board = params['board'] as List<List<int>>;
+    final solvedBoard = params['solvedBoard'] as List<List<int>>;
+    return engine.isCorrect(board, solvedBoard);
   }
 }

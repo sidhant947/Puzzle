@@ -57,7 +57,7 @@ class CrosswordEngine {
     }
   }
 
-  CrosswordBoard generateBoard(List<Map<String, String>> allWords) {
+  static CrosswordBoard generateBoard(List<Map<String, String>> allWords) {
     // Filter words that actually fit on the board
     final validWords = allWords.where((w) => w['word']!.length <= boardSize).toList();
     
@@ -113,7 +113,7 @@ class CrosswordEngine {
     return CrosswordBoard(size: boardSize, grid: bestGrid, words: bestPlacedWords);
   }
 
-  void _tryPlaceCandidate(List<List<String>> grid, CrosswordWord candidate, List<CrosswordWord> placedWords) {
+  static void _tryPlaceCandidate(List<List<String>> grid, CrosswordWord candidate, List<CrosswordWord> placedWords) {
     // Try random placed words to intersect with
     var targets = List.from(placedWords)..shuffle();
     
@@ -141,7 +141,7 @@ class CrosswordEngine {
     }
   }
 
-  bool _canPlaceSafely(List<List<String>> grid, CrosswordWord w) {
+  static bool _canPlaceSafely(List<List<String>> grid, CrosswordWord w) {
     if (w.x < 0 || w.y < 0) return false;
     if (w.isHorizontal && w.x + w.word.length > boardSize) return false;
     if (!w.isHorizontal && w.y + w.word.length > boardSize) return false;
@@ -182,7 +182,7 @@ class CrosswordEngine {
     return true;
   }
 
-  void _place(List<List<String>> grid, CrosswordWord w) {
+  static void _place(List<List<String>> grid, CrosswordWord w) {
     for (int i = 0; i < w.word.length; i++) {
       int cx = w.isHorizontal ? w.x + i : w.x;
       int cy = w.isHorizontal ? w.y : w.y + i;
@@ -190,7 +190,7 @@ class CrosswordEngine {
     }
   }
 
-  void _assignNumbers(List<CrosswordWord> words) {
+  static void _assignNumbers(List<CrosswordWord> words) {
     // Sort primarily by y (row), then by x (column)
     words.sort((a, b) {
       if (a.y != b.y) return a.y.compareTo(b.y);

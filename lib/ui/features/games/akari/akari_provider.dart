@@ -1,12 +1,14 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:fast_immutable_collections/fast_immutable_collections.dart';
+import 'package:flutter/foundation.dart';
 import 'akari_engine.dart';
 
 part 'akari_provider.g.dart';
 
 class AkariState {
-  final List<List<int>> grid; // -2: white, -1: wall, 0-4: numbered wall
-  final List<List<bool>> bulbs;
-  final List<List<bool>> lit;
+  final IList<IList<int>> grid; // -2: white, -1: wall, 0-4: numbered wall
+  final IList<IList<bool>> bulbs;
+  final IList<IList<bool>> lit;
   final bool isVictory;
   final bool isLoading;
 
@@ -19,9 +21,9 @@ class AkariState {
   });
 
   AkariState copyWith({
-    List<List<int>>? grid,
-    List<List<bool>>? bulbs,
-    List<List<bool>>? lit,
+    IList<IList<int>>? grid,
+    IList<IList<bool>>? bulbs,
+    IList<IList<bool>>? lit,
     bool? isVictory,
     bool? isLoading,
   }) {
@@ -41,17 +43,25 @@ class AkariNotifier extends _$AkariNotifier {
 
   @override
   AkariState build() {
-    return AkariState(grid: [], bulbs: [], lit: []);
+    return AkariState(
+      grid: <IList<int>>[].lock,
+      bulbs: <IList<bool>>[].lock,
+      lit: <IList<bool>>[].lock,
+    );
   }
 
   void initGame() {
     final level = _engine.generateLevel();
     final grid = level['grid'] as List<List<int>>;
     final size = grid.length;
+    
+    final immutableGrid = grid.map((r) => r.lock).toIList();
+    final immutableBulbs = List.generate(size, (_) => List.filled(size, false).lock).toIList();
+    
     state = AkariState(
-      grid: grid,
-      bulbs: List.generate(size, (_) => List.filled(size, false)),
-      lit: List.generate(size, (_) => List.filled(size, false)),
+      grid: immutableGrid,
+      bulbs: immutableBulbs,
+      lit: List.generate(size, (_) => List.filled(size, false).lock).toIList(),
       isLoading: false,
     );
     _updateLit();
@@ -60,85 +70,32 @@ class AkariNotifier extends _$AkariNotifier {
   void toggleBulb(int r, int c) {
     if (state.isVictory || state.grid[r][c] != -2) return;
 
-    final newBulbs = state.bulbs.map((row) => List<bool>.from(row)).toList();
-    newBulbs[r][c] = !newBulbs[r][c];
+    final bulbs = state.bulbs.map((row) => row.toList()).toList();
+    bulbs[r][c] = !bulbs[r][c];
     
-    state = state.copyWith(bulbs: newBulbs);
+    state = state.copyWith(bulbs: bulbs.map((row) => row.lock).toIList());
     _updateLit();
+  }
+
+  Future<void> _updateLit() async {
+    final grid = state.grid.map((r) => r.toList()).toList();
+    final bulbs = state.bulbs.map((r) => r.toList()).toList();
+
+    final newLit = await compute(AkariEngine.calculateLitWrapper, {'grid': grid, 'bulbs': bulbs});
+
+    state = state.copyWith(lit: newLit.map((r) => r.lock).toIList());
     _checkVictory();
   }
 
-  void _updateLit() {
-    final size = state.grid.length;
-    final newLit = List.generate(size, (_) => List.filled(size, false));
+  Future<void> _checkVictory() async {
+    final grid = state.grid.map((r) => r.toList()).toList();
+    final bulbs = state.bulbs.map((r) => r.toList()).toList();
+    final lit = state.lit.map((r) => r.toList()).toList();
 
-    for (int r = 0; r < size; r++) {
-      for (int c = 0; c < size; c++) {
-        if (state.bulbs[r][c]) {
-          newLit[r][c] = true;
-          // Up
-          for (int i = r - 1; i >= 0 && state.grid[i][c] == -2; i--) {
-            newLit[i][c] = true;
-          }
-          // Down
-          for (int i = r + 1; i < size && state.grid[i][c] == -2; i++) {
-            newLit[i][c] = true;
-          }
-          // Left
-          for (int j = c - 1; j >= 0 && state.grid[r][j] == -2; j--) {
-            newLit[r][j] = true;
-          }
-          // Right
-          for (int j = c + 1; j < size && state.grid[r][j] == -2; j++) {
-            newLit[r][j] = true;
-          }
-        }
-      }
+    final isVictory = await compute(AkariEngine.checkVictoryWrapper, {'grid': grid, 'bulbs': bulbs, 'lit': lit});
+
+    if (isVictory) {
+      state = state.copyWith(isVictory: true);
     }
-    state = state.copyWith(lit: newLit);
-  }
-
-  void _checkVictory() {
-    final size = state.grid.length;
-
-    // 1. All white cells must be lit
-    for (int r = 0; r < size; r++) {
-      for (int c = 0; c < size; c++) {
-        if (state.grid[r][c] == -2 && !state.lit[r][c]) return;
-      }
-    }
-
-    // 2. Bulbs can't see each other
-    for (int r = 0; r < size; r++) {
-      for (int c = 0; c < size; c++) {
-        if (state.bulbs[r][c]) {
-          // Check horizontal
-          for (int j = c + 1; j < size && state.grid[r][j] == -2; j++) {
-            if (state.bulbs[r][j]) return;
-          }
-          // Check vertical
-          for (int i = r + 1; i < size && state.grid[i][c] == -2; i++) {
-            if (state.bulbs[i][c]) return;
-          }
-        }
-      }
-    }
-
-    // 3. Numbered walls must have exact adjacent bulbs
-    for (int r = 0; r < size; r++) {
-      for (int c = 0; c < size; c++) {
-        final val = state.grid[r][c];
-        if (val >= 0) {
-          int count = 0;
-          if (r > 0 && state.bulbs[r - 1][c]) count++;
-          if (r < size - 1 && state.bulbs[r + 1][c]) count++;
-          if (c > 0 && state.bulbs[r][c - 1]) count++;
-          if (c < size - 1 && state.bulbs[r][c + 1]) count++;
-          if (count != val) return;
-        }
-      }
-    }
-
-    state = state.copyWith(isVictory: true);
   }
 }

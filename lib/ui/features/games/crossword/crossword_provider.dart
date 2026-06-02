@@ -1,4 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
+import 'package:flutter/foundation.dart';
 import 'crossword_engine.dart';
 
 part 'crossword_provider.g.dart';
@@ -52,7 +53,7 @@ class CrosswordNotifier extends _$CrosswordNotifier {
 
   Future<void> initGame() async {
     final allData = await _engine.loadData();
-    final board = _engine.generateBoard(allData);
+    final board = await compute(CrosswordEngine.generateBoard, allData);
     
     state = CrosswordState(
       board: board,
