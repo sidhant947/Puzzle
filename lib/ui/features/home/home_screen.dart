@@ -1816,7 +1816,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             mainAxisSpacing: DesignSystem.spaceMD,
                             crossAxisSpacing: DesignSystem.spaceMD,
                             childAspectRatio:
-                                1.73, // Adjusted ratio to mathematically guarantee no bottom overflows under any display width
+                                2.2, // Adjusted ratio for new compact tiles to prevent bottom empty space on large screens
                           ),
                           delegate: SliverChildBuilderDelegate(
                             (context, index) {
@@ -2378,8 +2378,9 @@ class _GameTileState extends State<GameTile> {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
     final colorScheme = theme.colorScheme;
-    final isSolved = widget.streak?.solvedToday ?? false;
+    final isSolvedToday = widget.streak?.solvedToday ?? false;
     final streakCount = widget.streak?.currentStreak ?? 0;
+    final isNew = widget.streak == null;
 
     final displayTitle = widget.title.toUpperCase();
 
@@ -2443,7 +2444,28 @@ class _GameTileState extends State<GameTile> {
                   Row(
                     mainAxisSize: MainAxisSize.min,
                     children: [
+                      if (isNew) ...[
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                              horizontal: 8, vertical: 4),
+                          decoration: BoxDecoration(
+                            color: DesignSystem.gameBlue,
+                            borderRadius: BorderRadius.circular(6.0),
+                          ),
+                          child: const Text(
+                            "NEW",
+                            style: TextStyle(
+                              fontFamily: 'Geist',
+                              fontSize: 9.0,
+                              fontWeight: FontWeight.w900,
+                              color: Colors.white,
+                              letterSpacing: 1.0,
+                            ),
+                          ),
+                        ),
+                      ],
                       if (streakCount > 0) ...[
+                        if (isNew) const SizedBox(width: 8),
                         Container(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 6, vertical: 3),
@@ -2473,9 +2495,9 @@ class _GameTileState extends State<GameTile> {
                             ],
                           ),
                         ),
-                        const SizedBox(width: 8),
                       ],
-                      if (isSolved) ...[
+                      if (isSolvedToday) ...[
+                        if (isNew || streakCount > 0) const SizedBox(width: 8),
                         Container(
                           padding: const EdgeInsets.symmetric(
                               horizontal: 8, vertical: 4),
@@ -2498,7 +2520,7 @@ class _GameTileState extends State<GameTile> {
                         ),
                       ],
                       if (widget.isFavorite) ...[
-                        if (isSolved) const SizedBox(width: 8),
+                        if (isSolvedToday || isNew || streakCount > 0) const SizedBox(width: 8),
                         const Icon(
                           Icons.favorite_rounded,
                           color: DesignSystem.gameRose,
