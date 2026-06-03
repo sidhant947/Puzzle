@@ -6,7 +6,7 @@ part of 'topology_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$topologyNotifierHash() => r'1db98f2bcf42fa918cb71ef7756d53743e3db50d';
+String _$topologyNotifierHash() => r'129281ec60be2a85599a7af14dd325c1435031e7';
 
 /// See also [TopologyNotifier].
 @ProviderFor(TopologyNotifier)

@@ -6,7 +6,7 @@ part of 'base_shift_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$baseShiftNotifierHash() => r'5dfb5a59a2217e44e8899074acdfa4efeda8523d';
+String _$baseShiftNotifierHash() => r'daa44c3cd7201372b516577ad785aa981bdd08ed';
 
 /// See also [BaseShiftNotifier].
 @ProviderFor(BaseShiftNotifier)

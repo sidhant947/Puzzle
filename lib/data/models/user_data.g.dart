@@ -26,13 +26,14 @@ class UserDataAdapter extends TypeAdapter<_$UserDataImpl> {
       isTrialModeEnabled: fields[6] as bool?,
       name: fields[7] as String?,
       isOnboarded: fields[8] as bool?,
+      activityLog: (fields[9] as Map?)?.cast<String, int>(),
     );
   }
 
   @override
   void write(BinaryWriter writer, _$UserDataImpl obj) {
     writer
-      ..writeByte(9)
+      ..writeByte(10)
       ..writeByte(0)
       ..write(obj.xp)
       ..writeByte(1)
@@ -50,7 +51,9 @@ class UserDataAdapter extends TypeAdapter<_$UserDataImpl> {
       ..writeByte(8)
       ..write(obj.isOnboarded)
       ..writeByte(5)
-      ..write(obj.favoriteGameIds);
+      ..write(obj.favoriteGameIds)
+      ..writeByte(9)
+      ..write(obj.activityLog);
   }
 
   @override
@@ -83,6 +86,9 @@ _$UserDataImpl _$$UserDataImplFromJson(Map<String, dynamic> json) =>
       isTrialModeEnabled: json['isTrialModeEnabled'] as bool?,
       name: json['name'] as String?,
       isOnboarded: json['isOnboarded'] as bool?,
+      activityLog: (json['activityLog'] as Map<String, dynamic>?)?.map(
+        (k, e) => MapEntry(k, (e as num).toInt()),
+      ),
     );
 
 Map<String, dynamic> _$$UserDataImplToJson(_$UserDataImpl instance) =>
@@ -96,4 +102,5 @@ Map<String, dynamic> _$$UserDataImplToJson(_$UserDataImpl instance) =>
       'isTrialModeEnabled': instance.isTrialModeEnabled,
       'name': instance.name,
       'isOnboarded': instance.isOnboarded,
+      'activityLog': instance.activityLog,
     };

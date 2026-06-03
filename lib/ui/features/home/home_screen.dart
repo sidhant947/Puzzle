@@ -2442,3 +2442,98 @@ class _GameTileState extends State<GameTile> {
     );
   }
 }
+
+class CompactFavoriteTile extends StatefulWidget {
+  final String title;
+  final String gameId;
+  final IconData icon;
+  final Color accentColor;
+  final VoidCallback onTap;
+
+  const CompactFavoriteTile({
+    super.key,
+    required this.title,
+    required this.gameId,
+    required this.icon,
+    required this.accentColor,
+    required this.onTap,
+  });
+
+  @override
+  State<CompactFavoriteTile> createState() => _CompactFavoriteTileState();
+}
+
+class _CompactFavoriteTileState extends State<CompactFavoriteTile> {
+  bool _isPressed = false;
+
+  @override
+  Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isDark = theme.brightness == Brightness.dark;
+
+    return GestureDetector(
+      onTapDown: (_) => setState(() => _isPressed = true),
+      onTapUp: (_) {
+        setState(() => _isPressed = false);
+        widget.onTap();
+      },
+      onTapCancel: () => setState(() => _isPressed = false),
+      child: AnimatedContainer(
+        duration: const Duration(milliseconds: 80),
+        curve: Curves.easeInOutCubic,
+        transformAlignment: Alignment.center,
+        transform: Matrix4.diagonal3Values(
+          _isPressed ? 0.95 : 1.0,
+          _isPressed ? 0.95 : 1.0,
+          1.0,
+        ),
+        child: Container(
+          width: 120,
+          margin: const EdgeInsets.only(right: DesignSystem.spaceMD),
+          decoration: BoxDecoration(
+            color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+            borderRadius: BorderRadius.circular(20.0),
+            border: Border.all(
+              color: isDark ? const Color(0xFF2D2D2D) : const Color(0xFFE2E8F0),
+              width: 1.5,
+            ),
+          ),
+          padding: const EdgeInsets.all(12.0),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                width: 44,
+                height: 44,
+                decoration: BoxDecoration(
+                  color: widget.accentColor.withValues(alpha: 0.15),
+                  borderRadius: BorderRadius.circular(12.0),
+                ),
+                child: Icon(
+                  widget.icon,
+                  color: widget.accentColor,
+                  size: 24,
+                ),
+              ),
+              const SizedBox(height: 10),
+              Text(
+                widget.title.toUpperCase(),
+                textAlign: TextAlign.center,
+                maxLines: 2,
+                overflow: TextOverflow.ellipsis,
+                style: TextStyle(
+                  fontFamily: 'Bebas Neue',
+                  fontSize: 16.0,
+                  fontWeight: FontWeight.w700,
+                  color: isDark ? Colors.white : theme.colorScheme.onSurface,
+                  height: 1.0,
+                  letterSpacing: 0.5,
+                ),
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+}
