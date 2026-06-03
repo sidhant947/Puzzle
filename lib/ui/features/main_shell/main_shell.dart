@@ -49,7 +49,6 @@ class _MainShellState extends ConsumerState<MainShell>
     final colorScheme = theme.colorScheme;
 
     return Scaffold(
-      extendBody: true,
       backgroundColor: colorScheme.surface,
       body: LayoutBuilder(
         builder: (context, constraints) {
@@ -66,67 +65,60 @@ class _MainShellState extends ConsumerState<MainShell>
               ],
             );
           } else {
-            return Stack(
-              children: [
-                IndexedStack(
-                  index: _selectedIndex,
-                  children: _screens,
-                ),
-                Positioned(
-                  left: 0,
-                  right: 0,
-                  bottom: 0,
-                  child: SafeArea(
-                    child: Padding(
-                      padding: const EdgeInsets.fromLTRB(
-                        DesignSystem.spaceLG,
-                        0,
-                        DesignSystem.spaceLG,
-                        DesignSystem.spaceMD,
-                      ),
-                      child: TangibleContainer(
-                        radius: DesignSystem.radiusLG,
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: DesignSystem.spaceMD,
-                          vertical: DesignSystem.spaceSM,
-                        ),
-                        color: colorScheme.surface,
-                        depth: 4.0, // Less depth for the navigation bar
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            _buildNavItem(
-                              context: context,
-                              index: 0,
-                              icon: Icons.bar_chart_rounded,
-                              label: 'STATS',
-                              isSelected: _selectedIndex == 0,
-                            ),
-                            _buildNavItem(
-                              context: context,
-                              index: 1,
-                              icon: Icons.grid_view_rounded,
-                              label: 'GAMES',
-                              isSelected: _selectedIndex == 1,
-                            ),
-                            _buildNavItem(
-                              context: context,
-                              index: 2,
-                              icon: Icons.settings_rounded,
-                              label: 'SETTINGS',
-                              isSelected: _selectedIndex == 2,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-              ],
+            return IndexedStack(
+              index: _selectedIndex,
+              children: _screens,
             );
           }
         },
       ),
+      bottomNavigationBar: MediaQuery.of(context).size.width <= 600
+          ? Container(
+              decoration: BoxDecoration(
+                color: colorScheme.surface,
+                border: Border(
+                  top: BorderSide(
+                    color: colorScheme.outline.withValues(alpha: 0.1),
+                    width: 1.5,
+                  ),
+                ),
+              ),
+              child: SafeArea(
+                child: Container(
+                  height: 72,
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: DesignSystem.spaceMD,
+                  ),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      _buildNavItem(
+                        context: context,
+                        index: 0,
+                        icon: Icons.bar_chart_rounded,
+                        label: 'STATS',
+                        isSelected: _selectedIndex == 0,
+                      ),
+                      _buildNavItem(
+                        context: context,
+                        index: 1,
+                        icon: Icons.grid_view_rounded,
+                        label: 'GAMES',
+                        isSelected: _selectedIndex == 1,
+                      ),
+                      _buildNavItem(
+                        context: context,
+                        index: 2,
+                        icon: Icons.settings_rounded,
+                        label: 'SETTINGS',
+                        isSelected: _selectedIndex == 2,
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            )
+          : null,
     );
   }
 
@@ -223,16 +215,6 @@ class _MainShellState extends ConsumerState<MainShell>
                 fontSize: 10,
               ),
             ),
-            if (isSelected)
-              Container(
-                margin: const EdgeInsets.only(top: 8),
-                width: 8,
-                height: 8,
-                decoration: BoxDecoration(
-                  color: colorScheme.primary,
-                  shape: BoxShape.circle,
-                ),
-              ),
           ],
         ),
       ),
@@ -284,16 +266,6 @@ class _MainShellState extends ConsumerState<MainShell>
                   fontSize: 10,
                 ),
               ),
-              if (isSelected)
-                Container(
-                  margin: const EdgeInsets.only(top: 4),
-                  width: 6,
-                  height: 6,
-                  decoration: BoxDecoration(
-                    color: colorScheme.primary,
-                    shape: BoxShape.circle,
-                  ),
-                ),
             ],
           ),
         ),

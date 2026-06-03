@@ -1485,6 +1485,26 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         filteredGamesProvider(
             searchQuery: _searchQuery, selectedCategory: _selectedCategory)));
 
+    // Calculate category progress
+    final streaks = ref.watch(gameStreakNotifierProvider);
+    final Map<String, int> totalPerCategory = {};
+    final Map<String, int> solvedPerCategory = {};
+
+    for (final game in HomeScreen.allGamesList) {
+      final category = game['category'] as String;
+      final id = game['id'] as String;
+      totalPerCategory[category] = (totalPerCategory[category] ?? 0) + 1;
+      if (streaks.containsKey(id)) {
+        solvedPerCategory[category] = (solvedPerCategory[category] ?? 0) + 1;
+      }
+    }
+
+    // "ALL" progress
+    final totalGames = HomeScreen.allGamesList.length;
+    final solvedGames = streaks.length;
+    totalPerCategory['ALL'] = totalGames;
+    solvedPerCategory['ALL'] = solvedGames;
+
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
       body: CustomScrollView(
@@ -1571,8 +1591,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   return Container(
                     decoration: BoxDecoration(
                       color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
-                      borderRadius: BorderRadius.circular(
-                          16.0), // slightly smaller radius for more compact look
+                      borderRadius: BorderRadius.circular(16.0),
                       border: Border.all(
                         color: isDark
                             ? const Color(0xFF2D2D2D)
@@ -1660,11 +1679,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
           ),
 
+          // Favorites Quick Access
+          SliverToBoxAdapter(
+            child: _buildFavoritesSection(),
+          ),
+
           // Search and Categories
           SliverToBoxAdapter(
             child: Padding(
-              padding:
-                  const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+              padding: const EdgeInsets.fromLTRB(
+                DesignSystem.spaceLG,
+                0,
+                DesignSystem.spaceLG,
+                DesignSystem.spaceMD,
+              ),
               child: Column(
                 children: [
                   if (_isSearchVisible) ...[
@@ -1721,17 +1749,21 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     physics: const BouncingScrollPhysics(),
-                    child: Row(
-                      children: [
-                        _buildCategoryButton(l10n.categoryAll, 'ALL'),
-                        _buildCategoryButton(
-                            l10n.categoryAttention, 'ATTENTION'),
-                        _buildCategoryButton(l10n.categoryLogic, 'LOGIC'),
-                        _buildCategoryButton(l10n.categoryMath, 'MATH'),
-                        _buildCategoryButton(l10n.categoryWord, 'WORD'),
-                        _buildCategoryButton(l10n.categoryMemory, 'MEMORY'),
-                        _buildCategoryButton(l10n.categorySpatial, 'SPATIAL'),
-                      ],
+                    clipBehavior: Clip.none, // Prevent clipping of larger rings
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 8.0), // Give space for the ring stroke
+                      child: Row(
+                        children: [
+                          _buildCategoryButton(l10n.categoryAll, 'ALL', solvedPerCategory['ALL'] ?? 0, totalPerCategory['ALL'] ?? 1),
+                          _buildCategoryButton(
+                              l10n.categoryAttention, 'ATTENTION', solvedPerCategory['ATTENTION'] ?? 0, totalPerCategory['ATTENTION'] ?? 1),
+                          _buildCategoryButton(l10n.categoryLogic, 'LOGIC', solvedPerCategory['LOGIC'] ?? 0, totalPerCategory['LOGIC'] ?? 1),
+                          _buildCategoryButton(l10n.categoryMath, 'MATH', solvedPerCategory['MATH'] ?? 0, totalPerCategory['MATH'] ?? 1),
+                          _buildCategoryButton(l10n.categoryWord, 'WORD', solvedPerCategory['WORD'] ?? 0, totalPerCategory['WORD'] ?? 1),
+                          _buildCategoryButton(l10n.categoryMemory, 'MEMORY', solvedPerCategory['MEMORY'] ?? 0, totalPerCategory['MEMORY'] ?? 1),
+                          _buildCategoryButton(l10n.categorySpatial, 'SPATIAL', solvedPerCategory['SPATIAL'] ?? 0, totalPerCategory['SPATIAL'] ?? 1),
+                        ],
+                      ),
                     ),
                   ),
                 ],
@@ -1891,7 +1923,68 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  Widget _buildCategoryButton(String label, String value) {
+  Widget _buildFavoritesSection() {
+    final userData = ref.watch(userDataNotifierProvider);
+    final favoriteIds = userData.favoriteGameIds ?? [];
+    if (favoriteIds.isEmpty) return const SizedBox.shrink();
+
+    final favoriteGames = HomeScreen.allGamesList
+        .where((game) => favoriteIds.contains(game['id']))
+        .toList();
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+          child: Text(
+            'YOUR FAVORITES',
+            style: TextStyle(
+              fontFamily: 'Bebas Neue',
+              fontSize: DesignSystem.fontSizeMD, // Reduced from LG
+              fontWeight: FontWeight.w700,
+              letterSpacing: 1.0,
+              color: Theme.of(context).colorScheme.primary,
+            ),
+          ),
+        ),
+        const SizedBox(height: DesignSystem.spaceSM),
+        SizedBox(
+          height: 102, // Reduced from 124
+          child: ListView.builder(
+            scrollDirection: Axis.horizontal,
+            physics: const BouncingScrollPhysics(),
+            padding:
+                const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+            itemCount: favoriteGames.length,
+            itemBuilder: (context, index) {
+              final game = favoriteGames[index];
+              return CompactFavoriteTile(
+                title: game['title'],
+                gameId: game['id'],
+                icon: game['icon'],
+                accentColor: game['color'],
+                onTap: () => Navigator.push(
+                  context,
+                  CustomPageRoute(
+                      page: (game['builder'] as WidgetBuilder)(context)),
+                ),
+                onRemove: () {
+                  HapticFeedbackUtil.lightImpact();
+                  ref
+                      .read(userDataNotifierProvider.notifier)
+                      .toggleFavorite(game['id']);
+                },
+              );
+            },
+          ),
+        ),
+        const SizedBox(height: DesignSystem.spaceLG), // Reduced from XL
+      ],
+    );
+  }
+
+  Widget _buildCategoryButton(String label, String value, int solved, int total) {
     final isSelected = _selectedCategory == value;
     final categoryStyle = _getCategoryStyle(value);
     return Padding(
@@ -1901,6 +1994,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         value: value,
         isSelected: isSelected,
         categoryStyle: categoryStyle,
+        solved: solved,
+        total: total,
         onTap: () => setState(() => _selectedCategory = value),
       ),
     );
@@ -1957,6 +2052,8 @@ class CategoryButton extends StatefulWidget {
   final String value;
   final bool isSelected;
   final CategoryStyle categoryStyle;
+  final int solved;
+  final int total;
   final VoidCallback onTap;
 
   const CategoryButton({
@@ -1965,6 +2062,8 @@ class CategoryButton extends StatefulWidget {
     required this.value,
     required this.isSelected,
     required this.categoryStyle,
+    required this.solved,
+    required this.total,
     required this.onTap,
   });
 
@@ -1979,6 +2078,7 @@ class _CategoryButtonState extends State<CategoryButton> {
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
+    final progress = (widget.solved / widget.total).clamp(0.0, 1.0);
 
     return GestureDetector(
       onTapDown: (_) => setState(() => _isPressed = true),
@@ -1999,55 +2099,64 @@ class _CategoryButtonState extends State<CategoryButton> {
         child: Column(
           mainAxisSize: MainAxisSize.min,
           children: [
-            Container(
-              width: 74,
-              height: 74,
-              decoration: BoxDecoration(
-                color: widget.isSelected
-                    ? Colors.transparent
-                    : (isDark ? const Color(0xFF1E1E1E) : Colors.white),
-                borderRadius: BorderRadius.circular(20),
-                border: Border.all(
-                  color: widget.isSelected
-                      ? widget.categoryStyle.color
-                      : (isDark
-                          ? const Color(0xFF2D2D2D)
-                          : const Color(0xFFE2E8F0)),
-                  width: widget.isSelected ? 2.5 : 1.5,
+            Stack(
+              alignment: Alignment.center,
+              children: [
+                // Progress Ring - Scaled down
+                SizedBox(
+                  width: 66,
+                  height: 66,
+                  child: CircularProgressIndicator(
+                    value: progress,
+                    backgroundColor: widget.categoryStyle.color.withValues(alpha: 0.1),
+                    color: widget.isSelected
+                        ? widget.categoryStyle.color
+                        : widget.categoryStyle.color.withValues(alpha: 0.7),
+                    strokeWidth: 3.5,
+                    strokeCap: StrokeCap.round,
+                  ),
                 ),
-              ),
-              padding: widget.isSelected
-                  ? const EdgeInsets.all(4.0)
-                  : EdgeInsets.zero,
-              child: widget.isSelected
-                  ? Container(
-                      decoration: BoxDecoration(
-                        color: widget.categoryStyle.color,
-                        borderRadius: BorderRadius.circular(15),
-                      ),
-                      child: Center(
-                        child: Icon(
-                          widget.categoryStyle.icon,
-                          size: 30,
-                          color: const Color(0xFF121212),
+                Container(
+                  width: 54,
+                  height: 54,
+                  decoration: const BoxDecoration(
+                    color: Colors.transparent,
+                    shape: BoxShape.circle,
+                  ),
+                  padding: widget.isSelected
+                      ? const EdgeInsets.all(3.0)
+                      : EdgeInsets.zero,
+                  child: widget.isSelected
+                      ? Container(
+                          decoration: BoxDecoration(
+                            color: widget.categoryStyle.color,
+                            shape: BoxShape.circle,
+                          ),
+                          child: Center(
+                            child: Icon(
+                              widget.categoryStyle.icon,
+                              size: 24,
+                              color: const Color(0xFF121212),
+                            ),
+                          ),
+                        )
+                      : Center(
+                          child: Icon(
+                            widget.categoryStyle.icon,
+                            size: 24,
+                            color:
+                                widget.categoryStyle.color.withValues(alpha: 0.8),
+                          ),
                         ),
-                      ),
-                    )
-                  : Center(
-                      child: Icon(
-                        widget.categoryStyle.icon,
-                        size: 30,
-                        color:
-                            widget.categoryStyle.color.withValues(alpha: 0.8),
-                      ),
-                    ),
+                ),
+              ],
             ),
-            const SizedBox(height: 8),
+            const SizedBox(height: 6),
             Text(
               widget.label.toUpperCase(),
               style: TextStyle(
                 fontFamily: 'Geist',
-                fontSize: 12,
+                fontSize: 10,
                 fontWeight:
                     widget.isSelected ? FontWeight.w900 : FontWeight.w600,
                 color: widget.isSelected
@@ -2056,6 +2165,20 @@ class _CategoryButtonState extends State<CategoryButton> {
                         ? const Color(0xFF94A3B8)
                         : const Color(0xFF475569)),
                 letterSpacing: 0.8,
+              ),
+            ),
+            Text(
+              '${widget.solved}/${widget.total}',
+              style: TextStyle(
+                fontFamily: 'Bebas Neue',
+                fontSize: 9,
+                fontWeight: FontWeight.w700,
+                color: widget.isSelected
+                    ? widget.categoryStyle.color.withValues(alpha: 0.7)
+                    : (isDark
+                        ? const Color(0xFF94A3B8).withValues(alpha: 0.5)
+                        : const Color(0xFF475569).withValues(alpha: 0.5)),
+                letterSpacing: 0.5,
               ),
             ),
           ],
@@ -2283,16 +2406,15 @@ class _GameTileState extends State<GameTile> {
         child: Container(
           decoration: BoxDecoration(
             color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
-            borderRadius: BorderRadius.circular(24.0),
+            borderRadius: BorderRadius.circular(16.0),
             border: Border.all(
               color: isDark ? const Color(0xFF2D2D2D) : const Color(0xFFE2E8F0),
               width: 1.5,
             ),
           ),
           padding: const EdgeInsets.symmetric(
-              horizontal: 24.0,
-              vertical:
-                  18.0), // Streamlined padding to optimize internal spacing and eliminate overflows
+              horizontal: 16.0,
+              vertical: 14.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
@@ -2302,7 +2424,7 @@ class _GameTileState extends State<GameTile> {
                 children: [
                   Container(
                     padding:
-                        const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
                     decoration: BoxDecoration(
                       color: widget.accentColor.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(6.0),
@@ -2311,7 +2433,7 @@ class _GameTileState extends State<GameTile> {
                       displayCategory,
                       style: TextStyle(
                         fontFamily: 'Geist',
-                        fontSize: 12.0,
+                        fontSize: 10.0,
                         fontWeight: FontWeight.w900,
                         color: widget.accentColor,
                         letterSpacing: 0.5,
@@ -2324,7 +2446,7 @@ class _GameTileState extends State<GameTile> {
                       if (streakCount > 0) ...[
                         Container(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 4),
+                              horizontal: 6, vertical: 3),
                           decoration: BoxDecoration(
                             color: DesignSystem.accentAmber
                                 .withValues(alpha: 0.15),
@@ -2335,15 +2457,15 @@ class _GameTileState extends State<GameTile> {
                             children: [
                               const Icon(
                                 Icons.local_fire_department_rounded,
-                                size: 14,
+                                size: 12,
                                 color: DesignSystem.accentAmber,
                               ),
-                              const SizedBox(width: 3),
+                              const SizedBox(width: 2),
                               Text(
                                 '$streakCount',
                                 style: const TextStyle(
                                   fontFamily: 'Geist',
-                                  fontSize: 12.0,
+                                  fontSize: 10.0,
                                   fontWeight: FontWeight.w900,
                                   color: DesignSystem.accentAmber,
                                 ),
@@ -2356,7 +2478,7 @@ class _GameTileState extends State<GameTile> {
                       if (isSolved) ...[
                         Container(
                           padding: const EdgeInsets.symmetric(
-                              horizontal: 10, vertical: 5),
+                              horizontal: 8, vertical: 4),
                           decoration: BoxDecoration(
                             color: widget.accentColor,
                             borderRadius: BorderRadius.circular(6.0),
@@ -2365,7 +2487,7 @@ class _GameTileState extends State<GameTile> {
                             "JUST PLAYED",
                             style: TextStyle(
                               fontFamily: 'Geist',
-                              fontSize: 11.0,
+                              fontSize: 9.0,
                               fontWeight: FontWeight.w900,
                               color: isDark
                                   ? const Color(0xFF1E1E1E)
@@ -2380,16 +2502,14 @@ class _GameTileState extends State<GameTile> {
                         const Icon(
                           Icons.favorite_rounded,
                           color: DesignSystem.gameRose,
-                          size: 20,
+                          size: 18,
                         ),
                       ],
                     ],
                   ),
                 ],
               ),
-              const SizedBox(
-                  height:
-                      12.0), // Reduced spacer height to compact vertical stack footprint
+              const SizedBox(height: 8.0),
               // Row 2: Title and play button
               Row(
                 children: [
@@ -2399,11 +2519,11 @@ class _GameTileState extends State<GameTile> {
                       children: [
                         Text(
                           displayTitle,
-                          maxLines: 2,
+                          maxLines: 1,
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontFamily: 'Bebas Neue',
-                            fontSize: 30.0,
+                            fontSize: 24.0,
                             fontWeight: FontWeight.w700,
                             letterSpacing: 0.5,
                             height: 1.0,
@@ -2411,12 +2531,14 @@ class _GameTileState extends State<GameTile> {
                                 isDark ? Colors.white : colorScheme.onSurface,
                           ),
                         ),
-                        const SizedBox(height: 8.0),
+                        const SizedBox(height: 4.0),
                         Text(
                           description.toUpperCase(),
+                          maxLines: 1,
+                          overflow: TextOverflow.ellipsis,
                           style: TextStyle(
                             fontFamily: 'Geist',
-                            fontSize: 12.0,
+                            fontSize: 11.0,
                             fontWeight: FontWeight.w500,
                             color: isDark
                                 ? const Color(0xFF94A3B8)
@@ -2427,11 +2549,11 @@ class _GameTileState extends State<GameTile> {
                       ],
                     ),
                   ),
-                  const SizedBox(width: 16.0),
+                  const SizedBox(width: 12.0),
                   Icon(
                     Icons.play_arrow_rounded,
                     color: widget.accentColor,
-                    size: 22,
+                    size: 20,
                   ),
                 ],
               ),
@@ -2449,6 +2571,7 @@ class CompactFavoriteTile extends StatefulWidget {
   final IconData icon;
   final Color accentColor;
   final VoidCallback onTap;
+  final VoidCallback onRemove;
 
   const CompactFavoriteTile({
     super.key,
@@ -2457,6 +2580,7 @@ class CompactFavoriteTile extends StatefulWidget {
     required this.icon,
     required this.accentColor,
     required this.onTap,
+    required this.onRemove,
   });
 
   @override
@@ -2471,69 +2595,96 @@ class _CompactFavoriteTileState extends State<CompactFavoriteTile> {
     final theme = Theme.of(context);
     final isDark = theme.brightness == Brightness.dark;
 
-    return GestureDetector(
-      onTapDown: (_) => setState(() => _isPressed = true),
-      onTapUp: (_) {
-        setState(() => _isPressed = false);
-        widget.onTap();
-      },
-      onTapCancel: () => setState(() => _isPressed = false),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 80),
-        curve: Curves.easeInOutCubic,
-        transformAlignment: Alignment.center,
-        transform: Matrix4.diagonal3Values(
-          _isPressed ? 0.95 : 1.0,
-          _isPressed ? 0.95 : 1.0,
-          1.0,
-        ),
-        child: Container(
-          width: 120,
-          margin: const EdgeInsets.only(right: DesignSystem.spaceMD),
-          decoration: BoxDecoration(
-            color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
-            borderRadius: BorderRadius.circular(20.0),
-            border: Border.all(
-              color: isDark ? const Color(0xFF2D2D2D) : const Color(0xFFE2E8F0),
-              width: 1.5,
+    return Stack(
+      children: [
+        GestureDetector(
+          onTapDown: (_) => setState(() => _isPressed = true),
+          onTapUp: (_) {
+            setState(() => _isPressed = false);
+            widget.onTap();
+          },
+          onTapCancel: () => setState(() => _isPressed = false),
+          child: AnimatedContainer(
+            duration: const Duration(milliseconds: 80),
+            curve: Curves.easeInOutCubic,
+            transformAlignment: Alignment.center,
+            transform: Matrix4.diagonal3Values(
+              _isPressed ? 0.95 : 1.0,
+              _isPressed ? 0.95 : 1.0,
+              1.0,
+            ),
+            child: Container(
+              width: 94, // Reduced from 120
+              margin: const EdgeInsets.only(right: DesignSystem.spaceMD),
+              decoration: BoxDecoration(
+                color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
+                borderRadius: BorderRadius.circular(16.0), // Reduced from 20
+                border: Border.all(
+                  color: isDark ? const Color(0xFF2D2D2D) : const Color(0xFFE2E8F0),
+                  width: 1.5,
+                ),
+              ),
+              padding: const EdgeInsets.all(10.0), // Reduced from 12
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: 36, // Reduced from 44
+                    height: 36, // Reduced from 44
+                    decoration: BoxDecoration(
+                      color: widget.accentColor.withValues(alpha: 0.15),
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Icon(
+                      widget.icon,
+                      color: widget.accentColor,
+                      size: 20, // Reduced from 24
+                    ),
+                  ),
+                  const SizedBox(height: 6), // Reduced from 10
+                  Text(
+                    widget.title.toUpperCase(),
+                    textAlign: TextAlign.center,
+                    maxLines: 2,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      fontFamily: 'Bebas Neue',
+                      fontSize: 13.0, // Reduced from 16
+                      fontWeight: FontWeight.w700,
+                      color: isDark ? Colors.white : theme.colorScheme.onSurface,
+                      height: 1.0,
+                      letterSpacing: 0.5,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
-          padding: const EdgeInsets.all(12.0),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Container(
-                width: 44,
-                height: 44,
-                decoration: BoxDecoration(
-                  color: widget.accentColor.withValues(alpha: 0.15),
-                  borderRadius: BorderRadius.circular(12.0),
-                ),
-                child: Icon(
-                  widget.icon,
-                  color: widget.accentColor,
-                  size: 24,
-                ),
-              ),
-              const SizedBox(height: 10),
-              Text(
-                widget.title.toUpperCase(),
-                textAlign: TextAlign.center,
-                maxLines: 2,
-                overflow: TextOverflow.ellipsis,
-                style: TextStyle(
-                  fontFamily: 'Bebas Neue',
-                  fontSize: 16.0,
-                  fontWeight: FontWeight.w700,
-                  color: isDark ? Colors.white : theme.colorScheme.onSurface,
-                  height: 1.0,
-                  letterSpacing: 0.5,
+        ),
+        Positioned(
+          top: 4, // Reduced from 6
+          right: 18, // Reduced from 22
+          child: GestureDetector(
+            onTap: widget.onRemove,
+            child: Container(
+              padding: const EdgeInsets.all(3), // Reduced from 4
+              decoration: BoxDecoration(
+                color: isDark ? const Color(0xFF2D2D2D) : const Color(0xFFF1F5F9),
+                shape: BoxShape.circle,
+                border: Border.all(
+                  color: isDark ? const Color(0xFF3D3D3D) : const Color(0xFFE2E8F0),
+                  width: 1,
                 ),
               ),
-            ],
+              child: Icon(
+                Icons.close_rounded,
+                size: 12, // Reduced from 14
+                color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
+              ),
+            ),
           ),
         ),
-      ),
+      ],
     );
   }
 }
