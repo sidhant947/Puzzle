@@ -108,11 +108,11 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
       child: TangibleContainer(
-        color: Theme.of(context).colorScheme.onSurface,
-        shadowColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
-        depth: 4.0,
+        color: Theme.of(context).colorScheme.surface,
+        shadowColor: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5),
+        depth: 2.0,
         radius: DesignSystem.radiusMD,
-        padding: const EdgeInsets.all(DesignSystem.spaceSM),
+        padding: const EdgeInsets.all(DesignSystem.spaceMD),
         child: Column(
           children: List.generate(FindWordEngine.maxTries, (rowIndex) {
             String word = '';
@@ -128,7 +128,7 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
             bool isCurrentRow = rowIndex == state.guesses.length;
 
             Widget rowContent = Padding(
-              padding: const EdgeInsets.symmetric(vertical: 2),
+              padding: const EdgeInsets.symmetric(vertical: 4),
               child: Row(
                 children: List.generate(FindWordEngine.wordLength, (colIndex) {
                   String letter = '';
@@ -140,7 +140,7 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
                       : LetterStatus.initial;
                   return Expanded(
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 2),
+                      padding: const EdgeInsets.symmetric(horizontal: 4),
                       child: _buildTile(letter, status,
                           isCurrentRow && colIndex < word.length),
                     ),
@@ -166,37 +166,43 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
   }
 
   Widget _buildTile(String letter, LetterStatus status, bool isTyping) {
-    Color color = Theme.of(context).colorScheme.surface;
-    Color shadowColor = Theme.of(context).colorScheme.outline;
-    Color textColor = Theme.of(context).colorScheme.onSurface;
+    final colorScheme = Theme.of(context).colorScheme;
+    Color color = colorScheme.surface;
+    Color shadowColor = colorScheme.outline;
+    Color textColor = colorScheme.onSurface;
+    double depth = 2.0;
 
     switch (status) {
       case LetterStatus.correctSpot:
         color = DesignSystem.success;
-        shadowColor = const Color(0xFF047857);
+        shadowColor = DesignSystem.success.withValues(alpha: 0.6);
         textColor = Colors.white;
+        depth = 4.0;
         break;
       case LetterStatus.wrongSpot:
         color = DesignSystem.accentAmber;
-        shadowColor = const Color(0xFFB45309);
+        shadowColor = DesignSystem.accentAmber.withValues(alpha: 0.6);
         textColor = Colors.white;
+        depth = 4.0;
         break;
       case LetterStatus.notInWord:
-        color = Theme.of(context).scaffoldBackgroundColor;
-        shadowColor = Theme.of(context).colorScheme.outline.withValues(alpha: 0.5);
-        textColor = Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.3);
+        color = colorScheme.outline.withValues(alpha: 0.2);
+        shadowColor = Colors.transparent;
+        textColor = colorScheme.onSurface.withValues(alpha: 0.3);
+        depth = 0.0;
         break;
       case LetterStatus.initial:
         if (isTyping) {
-          color = DesignSystem.primary.withValues(alpha: 0.05);
-          shadowColor = DesignSystem.primary;
+          color = DesignSystem.primary.withValues(alpha: 0.1);
+          shadowColor = DesignSystem.primary.withValues(alpha: 0.5);
+          depth = 3.0;
         }
         break;
     }
 
     return TangibleContainer(
-      depth: status == LetterStatus.initial ? 1.0 : 3.0,
-      radius: DesignSystem.radiusXS,
+      depth: depth,
+      radius: DesignSystem.radiusSM,
       color: color,
       shadowColor: shadowColor,
       child: Center(
@@ -206,6 +212,7 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
             child: Text(
               letter,
               style: TextStyle(
+                fontSize: 24,
                 fontWeight: FontWeight.w900,
                 color: textColor,
               ),
@@ -220,15 +227,15 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
     final rows = [
       ['Q', 'W', 'E', 'R', 'T', 'Y', 'U', 'I', 'O', 'P'],
       ['A', 'S', 'D', 'F', 'G', 'H', 'J', 'K', 'L'],
-      ['DEL', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'ENTER'],
+      ['ENTER', 'Z', 'X', 'C', 'V', 'B', 'N', 'M', 'DEL'],
     ];
 
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 4),
+      padding: const EdgeInsets.symmetric(horizontal: 8),
       child: Column(
         children: rows.map((row) {
           return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 1),
+            padding: const EdgeInsets.symmetric(vertical: 2),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children:
@@ -243,42 +250,42 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
   Widget _buildKey(
       String label, FindWordState state, FindWordNotifier notifier) {
     bool isSpecialKey = label == 'ENTER' || label == 'DEL';
+    final colorScheme = Theme.of(context).colorScheme;
 
     LetterStatus status = state.keyboardStatus[label] ?? LetterStatus.initial;
-    Color color = Theme.of(context).colorScheme.surface;
-    Color shadowColor = Theme.of(context).colorScheme.outline;
-    Color textColor = Theme.of(context).colorScheme.onSurface;
+    Color color = colorScheme.surface;
+    Color shadowColor = colorScheme.outline;
+    Color textColor = colorScheme.onSurface;
 
     switch (status) {
       case LetterStatus.correctSpot:
         color = DesignSystem.success;
-        shadowColor = const Color(0xFF047857);
+        shadowColor = DesignSystem.success.withValues(alpha: 0.5);
         textColor = Colors.white;
         break;
       case LetterStatus.wrongSpot:
         color = DesignSystem.accentAmber;
-        shadowColor = const Color(0xFFB45309);
+        shadowColor = DesignSystem.accentAmber.withValues(alpha: 0.5);
         textColor = Colors.white;
         break;
       case LetterStatus.notInWord:
-        color = Theme.of(context).scaffoldBackgroundColor;
-        shadowColor = Theme.of(context).colorScheme.outline.withValues(alpha: 0.5);
-        textColor = Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2);
+        color = colorScheme.outline.withValues(alpha: 0.3);
+        shadowColor = Colors.transparent;
+        textColor = colorScheme.onSurface.withValues(alpha: 0.2);
         break;
       default:
+        if (isSpecialKey) {
+          color = DesignSystem.primary;
+          shadowColor = DesignSystem.primaryShadow;
+          textColor = Colors.white;
+        }
         break;
-    }
-
-    if (isSpecialKey) {
-      color = DesignSystem.primary;
-      shadowColor = DesignSystem.primaryShadow;
-      textColor = Colors.white;
     }
 
     return Expanded(
-      flex: isSpecialKey ? 4 : 2,
+      flex: isSpecialKey ? 3 : 2,
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 1),
+        padding: const EdgeInsets.symmetric(horizontal: 2),
         child: TangibleButton(
           color: color,
           shadowColor: shadowColor,
@@ -294,15 +301,15 @@ class _FindWordScreenState extends ConsumerState<FindWordScreen>
             }
           },
           child: Container(
-            height: 40,
+            height: 48,
             alignment: Alignment.center,
             child: label == 'DEL'
-                ? const Icon(Icons.backspace_rounded,
-                    size: 16, color: Colors.white)
+                ? Icon(Icons.backspace_rounded,
+                    size: 18, color: textColor)
                 : Text(
                     label,
                     style: TextStyle(
-                      fontSize: label.length > 1 ? 9 : 14,
+                      fontSize: label.length > 1 ? 10 : 16,
                       fontWeight: FontWeight.w900,
                       color: textColor,
                     ),
