@@ -2,8 +2,9 @@
 Name=Puzzle Games
 Comment=A professional suite of minimalist puzzle games
 Exec=puzzle-games
-Icon=${SNAP}/meta/gui/puzzle-games.png
+Icon=${SNAP}/meta/gui/com.sidhant.puzzle.png
 Type=Application
 Categories=Game;LogicGame;
+Keywords=puzzle;game;logic;minimalist;
 Terminal=false
 StartupNotify=true

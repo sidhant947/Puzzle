@@ -1,79 +1,33 @@
 name: puzzle-games
 base: core22
-version: "1.0.13"
+version: '1.0.13'
 summary: A professional suite of minimalist puzzle games
 description: |
-  Challenge your mind with 154 unique puzzle games across 6 categories:
-  Attention, Logic, Math, Memory, Spatial, and Word. Features daily streaks,
-  a deep leveling system (1-100), and 10 achievement tiers.
+  A professional suite of minimalist puzzle games.
 
-  Games include Sudoku, Minesweeper, 2048, Crossword, Nonogram, Stroop Test,
-  N-Back, Word Search, and many more — all in a single app.
-
-license: GPL-3.0-only
 confinement: strict
 grade: stable
 
-architectures:
-  - build-on: amd64
-  - build-on: arm64
-
 apps:
   puzzle-games:
-    command: bin/puzzle
+    command: puzzle
     extensions: [gnome]
+    desktop: gui/com.sidhant.puzzle.desktop
     plugs:
-      - opengl
-      - desktop
-      - desktop-legacy
-      - wayland
-      - x11
+      - home
 
 parts:
   puzzle:
     source: .
-    plugin: nil
-    build-snaps:
-      - flutter/stable
+    plugin: flutter
+    flutter-target: lib/main.dart
+    flutter-channel: stable
     build-packages:
-      - clang
-      - cmake
-      - ninja-build
-      - pkg-config
       - libgtk-3-dev
       - liblzma-dev
-      - libgcrypt20-dev
-      - libepoxy-dev
-      - libfontconfig1-dev
-      - libfreetype6-dev
-      - libblkid-dev
-    override-build: |
-      set -eux
-
-      # Use the system toolchain from the core22 base
-      export CC=/usr/bin/clang
-      export CXX=/usr/bin/clang++
-
-      # Add flutter to PATH at the end to avoid its bundled toolchain taking precedence
-      export PATH="$PATH:/snap/flutter/current/bin"
-      export HOME="$SNAPCRAFT_PART_BUILD/.home"
-
-      flutter config --no-analytics --no-cli-animations
-
-      flutter pub get
-
-      flutter build linux --release
-
-      ARCH=$(case $(uname -m) in x86_64) echo x64 ;; aarch64) echo arm64 ;; esac)
-      BUNDLE_DIR="build/linux/$ARCH/release/bundle"
-      
-      # Copy the entire bundle to the bin directory to match the app command
-      mkdir -p "$SNAPCRAFT_PART_INSTALL/bin"
-      cp -r "$BUNDLE_DIR"/* "$SNAPCRAFT_PART_INSTALL/bin/"
-
-      # Copy desktop file and icon for Snap integration
-      mkdir -p "$SNAPCRAFT_PART_INSTALL/meta/gui/"
-      cp "$SNAPCRAFT_PART_SOURCE/snap/gui/puzzle-games.desktop" \
-        "$SNAPCRAFT_PART_INSTALL/meta/gui/"
-      cp "$SNAPCRAFT_PART_SOURCE/snap/gui/puzzle-games.png" \
-        "$SNAPCRAFT_PART_INSTALL/meta/gui/"
+      - pkg-config
+  metadata:
+    plugin: dump
+    source: snap/local
+    organize:
+      com.sidhant.puzzle.metainfo.xml: usr/share/metainfo/com.sidhant.puzzle.metainfo.xml

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component type="desktop-application">
+  <id>com.sidhant.puzzle</id>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0</project_license>
+  <name>Puzzle Games</name>
+  <summary>A professional suite of minimalist puzzle games</summary>
+  <description>
+    <p>A professional suite of minimalist puzzle games.</p>
+  </description>
+  <launchable type="desktop-id">com.sidhant.puzzle.desktop</launchable>
+  <content_rating type="oars-1.1" />
+</component>
