@@ -42,10 +42,20 @@ parts:
       - pkg-config
       - libgtk-3-dev
       - liblzma-dev
+      - libgcrypt20-dev
+      - libepoxy-dev
+      - libfontconfig1-dev
+      - libfreetype6-dev
+      - libblkid-dev
     override-build: |
       set -eux
 
-      export PATH="/snap/flutter/current/bin:$PATH"
+      # Use the system toolchain from the core22 base
+      export CC=clang
+      export CXX=clang++
+
+      # Add flutter to PATH at the end to avoid its bundled toolchain taking precedence
+      export PATH="$PATH:/snap/flutter/current/bin"
       export HOME="$SNAPCRAFT_PART_BUILD/.home"
 
       flutter config --no-analytics --no-cli-animations
@@ -57,8 +67,9 @@ parts:
       ARCH=$(case $(uname -m) in x86_64) echo x64 ;; aarch64) echo arm64 ;; esac)
       BUNDLE_DIR="build/linux/$ARCH/release/bundle"
       
-      # Copy the entire bundle to the install directory
-      cp -r "$BUNDLE_DIR"/* "$SNAPCRAFT_PART_INSTALL/"
+      # Copy the entire bundle to the bin directory to match the app command
+      mkdir -p "$SNAPCRAFT_PART_INSTALL/bin"
+      cp -r "$BUNDLE_DIR"/* "$SNAPCRAFT_PART_INSTALL/bin/"
 
       # Copy desktop file and icon for Snap integration
       mkdir -p "$SNAPCRAFT_PART_INSTALL/meta/gui/"
