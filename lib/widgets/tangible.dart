@@ -11,6 +11,7 @@ class TangibleContainer extends StatelessWidget {
   final double radius;
   final EdgeInsetsGeometry? padding;
   final VoidCallback? onTap;
+  final VoidCallback? onLongPress;
   final bool drawBorder; // Optional borders for clean headers/tabs
 
   const TangibleContainer({
@@ -22,6 +23,7 @@ class TangibleContainer extends StatelessWidget {
     this.radius = DesignSystem.radiusMD, // Upgraded to modern medium radius
     this.padding,
     this.onTap,
+    this.onLongPress,
     this.drawBorder = true,
   });
 
@@ -53,9 +55,10 @@ class TangibleContainer extends StatelessWidget {
       child: child,
     );
 
-    if (onTap != null) {
+    if (onTap != null || onLongPress != null) {
       return GestureDetector(
         onTap: onTap,
+        onLongPress: onLongPress,
         behavior: HitTestBehavior.opaque,
         child: content,
       );

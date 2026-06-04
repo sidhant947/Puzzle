@@ -275,10 +275,15 @@ class NonogramCell extends ConsumerWidget {
       child: TangibleContainer(
         depth: value == 1 ? 0 : 2.0,
         radius: 4,
+        padding: EdgeInsets.zero,
         color: value == 1 ? DesignSystem.accentBerry : Theme.of(context).colorScheme.surface,
         onTap: () {
           HapticFeedbackUtil.lightImpact();
           ref.read(nonogramNotifierProvider.notifier).toggleCell(row, col, isMarkMode);
+        },
+        onLongPress: () {
+          HapticFeedbackUtil.mediumImpact();
+          ref.read(nonogramNotifierProvider.notifier).toggleCell(row, col, true);
         },
         child: Center(
           child: value == 2

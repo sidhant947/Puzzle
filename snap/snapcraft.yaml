@@ -1,6 +1,6 @@
 name: puzzle-games
 base: core22
-version: '1.0.13'
+adopt-info: puzzle
 summary: A professional suite of minimalist puzzle games
 description: |
   A professional suite of minimalist puzzle games.
@@ -20,6 +20,9 @@ parts:
   puzzle:
     source: .
     plugin: flutter
+    override-pull: |
+      snapcraftctl pull
+      snapcraftctl set-version $(grep 'version:' pubspec.yaml | cut -d' ' -f2 | cut -d'+' -f1)
     flutter-target: lib/main.dart
     flutter-channel: stable
     build-packages:
