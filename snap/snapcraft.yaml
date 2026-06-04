@@ -51,8 +51,8 @@ parts:
       set -eux
 
       # Use the system toolchain from the core22 base
-      export CC=clang
-      export CXX=clang++
+      export CC=/usr/bin/clang
+      export CXX=/usr/bin/clang++
 
       # Add flutter to PATH at the end to avoid its bundled toolchain taking precedence
       export PATH="$PATH:/snap/flutter/current/bin"
