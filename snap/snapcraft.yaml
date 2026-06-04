@@ -12,7 +12,7 @@ apps:
   puzzle-games:
     command: puzzle
     extensions: [gnome]
-    desktop: gui/com.sidhant.puzzle.desktop
+    desktop: snap/gui/com.sidhant.puzzle.desktop
     plugs:
       - home
 
@@ -26,6 +26,7 @@ parts:
       - libgtk-3-dev
       - liblzma-dev
       - pkg-config
+      - default-jdk
   metadata:
     plugin: dump
     source: snap/local
