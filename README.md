@@ -1,34 +1,75 @@
-# PUZZLE 
+# PUZZLE
 
-A professional suite of minimalist puzzle games built with Flutter. Challenge your mind with daily streaks, level up your profile, and master unique puzzle experiences.
+[![Version](https://img.shields.io/badge/version-1.0.13-blue.svg)](https://github.com/sidhant947/Puzzle/releases)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Platform](https://img.shields.io/badge/platform-Android%20%7C%20Linux-lightgrey.svg)](#-downloads)
+[![Framework](https://img.shields.io/badge/framework-Flutter-02569B.svg)](https://flutter.dev)
 
+A professional suite of minimalist puzzle games built with Flutter. Master over 150 unique puzzles.
+
+
+---
+
+## 📥 Downloads
+
+### 📱 Android
 | **Play Store** | **F-Droid** |
 | :---: | :---: |
-| <a href="https://play.google.com/store/apps/details?id=com.sidhant.puzzle"><img src="https://github.com/user-attachments/assets/5ff479ee-9c86-47fd-a583-2a4f8f10633e" height="60"></a> |[<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid"  height="80">](https://f-droid.org/packages/com.sidhant.puzzle) |
+| <a href="https://play.google.com/store/apps/details?id=com.sidhant.puzzle"><img src="https://github.com/user-attachments/assets/5ff479ee-9c86-47fd-a583-2a4f8f10633e" height="60"></a> | [<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/com.sidhant.puzzle) |
 
+### 🐧 Linux
+ [<img src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" height="50">](https://snapcraft.io/puzzle-games)
+*   **GitHub Release:** [**Get tarball directly from GitHub**](https://github.com/sidhant947/Puzzle/releases/latest/)
+
+---
 
 ## 🎮 Included Games (154 Total)
 
-### 🧠 Attention (31)
+<details>
+<summary><b>🧠 Attention (31)</b></summary>
 Attentional Blink, Change Blindness, Choice Reaction, Color Match, Conjunction Search, Counting Sheep, d2 Attention, Divided Focus, Dual-Mirror Navigation, Flanker Test, Go / No-Go, Letter Cancel, Object Tracking, Odd One Out, Orbit Tap, Reflex Tap, Reverse Stroop, Rhythm Master, Rule Switcher, Schulte Table, SDMT Test, Simon Command, Spatial Conflict, Spotlight Track, Stop Signal, Stroop Test, Switch Task, Symbolic Flanker, Trail Making, Vigilance Task, Visual Search.
+</details>
 
-### 🧩 Logic (26)
+<details>
+<summary><b>🧩 Logic (26)</b></summary>
 Akari, Alphabet Sudoku, Binary Puzzle, Block Escape, Bridges, Color Flood, Crown, Einstein Riddle, Futoshiki, Kakuro, Lights Out, Lock Pattern, Logical Syllogisms, Matrix Reasoning, Minesweeper, Nonogram, Path Finder, Pipes, Slitherlink, Sudoku, Symbol Logic, Tangle Fix, Tents & Trees, Tower of London, Water Sort, Wisconsin Card Sort.
+</details>
 
-### 🔢 Math (35)
+<details>
+<summary><b>🔢 Math (35)</b></summary>
 2048, Angle Finder, Balance Scale, Base Shift Blitz, Binary Speed, Calc Sprint, Chain Calc, Collatz Path, Common Denominator, Divisibility Dash, Factor Finder, Fibonacci Merge, Fraction Match, Fraction Matcher, Inequality Dash, KenKen, Magic Square, Math Guess, Math Path, Mental Abacus, Mental Calendar, Modulo Clock, Numerical Estimation, Operator Mix, Percentage Peak, Prime Hunter, Quick Math, Radical Roots, Roman Arithmetic, Sequence Sleuth, Sum Pyramid, Sum Snake, Target 10, Target 24, Venn Numbers.
+</details>
 
-### 💾 Memory (25)
+<details>
+<summary><b>💾 Memory (25)</b></summary>
 Associative Pairs, Chimp Test, Corsi Blocks, Distractor Matrix, Double N-Back, Dual Coding, Face-Name, Face-Trait, Fact Binder, Grocery List, Memory Matrix, Memory Palace, N-Back Test, Object Shuffle, Operation Span, Path Recall, Pixel Mimic, Relational Memory, Reverse Span, Sequence, Source Monitoring, Staircase Memory, Sternberg Task, Temporal Order, Visual Learning.
+</details>
 
-### 📐 Spatial (20)
+<details>
+<summary><b>📐 Spatial (20)</b></summary>
 3D Block Count, Box Completion, Classic Maze, Cube Net Fold, Hue Sort, Klotski Escape, Mental Mapping, Mental Rotation, Mirror Image, Mirror Tracing, Odd Rotation, Paper Folding, Perspective, Rotating Maze, Silhouette Match, Silhouette Match (Ortho), Slide Puzzle, Symmetry, Topological Equivalence, Trace Path.
+</details>
 
-### 📝 Word (17)
+<details>
+<summary><b>📝 Word (17)</b></summary>
 Category Fluency, Context Clues, Crossword, Cryptogram, Find Word, Grammar Police, Missing Vowels, Semantic Link, Spelling Sprint, Typing Speed, Verbal Analogies, Vocabulary, Word Ladder, Word Mastermind, Word Scramble, Word Search, Word Surge.
+</details>
 
-## ✨ Key Features
+---
 
-*   **Deep Progression System:** A curved leveling system scaling from Level 1 to 100, requiring up to 1,000,000 total XP for the ultimate "Eternal" status.
-*   **Tactile Achievements:** 10 prestigious achievement tiers (Seeker to Eternal) with high-fidelity visual badges.
-*   **Daily Streaks:** Maintain individual game streaks and an overall **Super Streak** by solving puzzles every day.
+## 🤝 Contributing
+
+Contributions are welcome! Please read our [Contributing Guidelines](CONTRIBUTING.md) and [Code of Conduct](CODE_OF_CONDUCT.md) before submitting a pull request.
+
+---
+
+## 🛡️ Security
+
+To report security vulnerabilities, please refer to our [Security Policy](SECURITY.md).
+
+---
+
+## 📄 License
+
+This project is licensed under the **GNU General Public License v3.0**. See the [LICENSE](LICENSE) file for details.
+
