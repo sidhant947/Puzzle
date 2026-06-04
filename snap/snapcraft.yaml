@@ -1,0 +1,68 @@
+name: puzzle-games
+base: core22
+version: "1.0.13"
+summary: A professional suite of minimalist puzzle games
+description: |
+  Challenge your mind with 154 unique puzzle games across 6 categories:
+  Attention, Logic, Math, Memory, Spatial, and Word. Features daily streaks,
+  a deep leveling system (1-100), and 10 achievement tiers.
+
+  Games include Sudoku, Minesweeper, 2048, Crossword, Nonogram, Stroop Test,
+  N-Back, Word Search, and many more — all in a single app.
+
+license: GPL-3.0-only
+confinement: strict
+grade: stable
+
+architectures:
+  - build-on: amd64
+  - build-on: arm64
+
+apps:
+  puzzle-games:
+    command: bin/puzzle
+    extensions: [gnome]
+    plugs:
+      - opengl
+      - desktop
+      - desktop-legacy
+      - wayland
+      - x11
+
+parts:
+  puzzle:
+    source: .
+    plugin: nil
+    build-snaps:
+      - flutter/stable
+    build-packages:
+      - clang
+      - cmake
+      - ninja-build
+      - pkg-config
+      - libgtk-3-dev
+      - liblzma-dev
+    override-build: |
+      set -eux
+
+      export PATH="/snap/flutter/current/bin:$PATH"
+      export HOME="$SNAPCRAFT_PART_BUILD/.home"
+
+      flutter config --no-analytics --no-cli-animations
+
+      flutter pub get
+
+      flutter build linux --release
+
+      ARCH=$(case $(uname -m) in x86_64) echo x64 ;; aarch64) echo arm64 ;; esac)
+      BUNDLE_DIR="build/linux/$ARCH/release/bundle"
+      
+      # Copy the entire bundle to the install directory
+      cp -r "$BUNDLE_DIR"/* "$SNAPCRAFT_PART_INSTALL/"
+
+      # Copy desktop file and icon for Snap integration
+      mkdir -p "$SNAPCRAFT_PART_INSTALL/meta/gui/"
+      cp "$SNAPCRAFT_PART_SOURCE/snap/gui/puzzle-games.desktop" \
+        "$SNAPCRAFT_PART_INSTALL/meta/gui/"
+      cp "$SNAPCRAFT_PART_SOURCE/snap/gui/puzzle-games.png" \
+        "$SNAPCRAFT_PART_INSTALL/meta/gui/"

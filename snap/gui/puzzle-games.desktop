@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Puzzle Games
+Comment=A professional suite of minimalist puzzle games
+Exec=puzzle-games
+Icon=${SNAP}/meta/gui/puzzle-games.png
+Type=Application
+Categories=Game;LogicGame;
+Terminal=false
+StartupNotify=true
