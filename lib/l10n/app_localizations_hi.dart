@@ -21,6 +21,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get playAgain => 'फिर से खेलें';
 
   @override
+  String get playNext => 'Play Next';
+
+  @override
   String get seeCompleted => 'पहेली की समीक्षा करें';
 
   @override

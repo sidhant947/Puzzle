@@ -21,6 +21,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get playAgain => 'بازی مجدد';
 
   @override
+  String get playNext => 'Play Next';
+
+  @override
   String get seeCompleted => 'مرور';
 
   @override

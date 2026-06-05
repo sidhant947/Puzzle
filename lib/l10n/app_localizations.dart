@@ -164,6 +164,12 @@ abstract class AppLocalizations {
   /// **'Play Again'**
   String get playAgain;
 
+  /// No description provided for @playNext.
+  ///
+  /// In en, this message translates to:
+  /// **'Play Next'**
+  String get playNext;
+
   /// No description provided for @seeCompleted.
   ///
   /// In en, this message translates to:

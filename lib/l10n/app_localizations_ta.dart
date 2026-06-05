@@ -21,6 +21,9 @@ class AppLocalizationsTa extends AppLocalizations {
   String get playAgain => 'மீண்டும் விளையாடு';
 
   @override
+  String get playNext => 'Play Next';
+
+  @override
   String get seeCompleted => 'மதிப்பாய்வு';
 
   @override

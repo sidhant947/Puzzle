@@ -21,6 +21,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get playAgain => 'Tekrar Oyna';
 
   @override
+  String get playNext => 'Play Next';
+
+  @override
   String get seeCompleted => 'İncele';
 
   @override

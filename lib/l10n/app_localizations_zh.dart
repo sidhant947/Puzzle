@@ -21,6 +21,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get playAgain => '再玩一次';
 
   @override
+  String get playNext => 'Play Next';
+
+  @override
   String get seeCompleted => '查看拼图';
 
   @override

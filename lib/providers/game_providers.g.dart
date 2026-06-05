@@ -6,7 +6,7 @@ part of 'game_providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$filteredGamesHash() => r'1dcfbd229cae78575cd077b764a40090b1817ff2';
+String _$filteredGamesHash() => r'373ec2e724d5642b0556146587e57becf290fa2f';
 
 /// Copied from Dart SDK
 class _SystemHash {

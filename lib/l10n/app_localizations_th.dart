@@ -21,6 +21,9 @@ class AppLocalizationsTh extends AppLocalizations {
   String get playAgain => 'เล่นอีกครั้ง';
 
   @override
+  String get playNext => 'Play Next';
+
+  @override
   String get seeCompleted => 'รีวิว';
 
   @override

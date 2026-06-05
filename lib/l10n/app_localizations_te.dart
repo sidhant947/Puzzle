@@ -21,6 +21,9 @@ class AppLocalizationsTe extends AppLocalizations {
   String get playAgain => 'మళ్ళీ ఆడండి';
 
   @override
+  String get playNext => 'Play Next';
+
+  @override
   String get seeCompleted => 'సమీక్ష';
 
   @override

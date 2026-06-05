@@ -21,6 +21,9 @@ class AppLocalizationsIt extends AppLocalizations {
   String get playAgain => 'Gioca ancora';
 
   @override
+  String get playNext => 'Play Next';
+
+  @override
   String get seeCompleted => 'Vedi completato';
 
   @override

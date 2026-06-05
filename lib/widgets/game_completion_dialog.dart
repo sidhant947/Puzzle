@@ -4,6 +4,9 @@ import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../utils/design_system.dart';
 import '../utils/haptic_feedback.dart';
+import '../utils/navigation_utils.dart';
+import '../providers/game_providers.dart';
+import '../providers/game_session_provider.dart';
 import 'tangible.dart';
 
 class GameCompletionDialog extends ConsumerStatefulWidget {
@@ -80,6 +83,23 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
     final colorScheme = theme.colorScheme;
     final l10n = AppLocalizations.of(context)!;
 
+    final session = ref.watch(gameSessionNotifierProvider);
+    final filteredGamesList = ref.watch(filteredGamesProvider(
+      searchQuery: session.searchQuery,
+      selectedCategory: session.selectedCategory,
+    ));
+
+    Map<String, dynamic>? nextGame;
+    bool isSameGame = true;
+    if (session.lastGameId != null && filteredGamesList.isNotEmpty) {
+      final currentIndex = filteredGamesList.indexWhere((g) => g['id'] == session.lastGameId);
+      if (currentIndex != -1) {
+        final nextIndex = (currentIndex + 1) % filteredGamesList.length;
+        nextGame = filteredGamesList[nextIndex];
+        isSameGame = nextGame['id'] == session.lastGameId;
+      }
+    }
+
     return Dialog(
       backgroundColor: Colors.transparent,
       surfaceTintColor: Colors.transparent,
@@ -125,12 +145,33 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
                   
                   // Actions
                   TangibleButton(
-                    onTap: widget.onPlayAgain,
+                    onTap: () {
+                      if (nextGame != null && !isSameGame) {
+                        // Set new session for the next game
+                        ref.read(gameSessionNotifierProvider.notifier).setSession(
+                          gameId: nextGame['id'],
+                          category: session.selectedCategory,
+                          query: session.searchQuery,
+                        );
+                        
+                        // Close dialog and current game screen
+                        Navigator.of(context).pop(); // Dialog
+                        Navigator.of(context).pop(); // Current Game
+                        
+                        // Navigate to next game
+                        Navigator.push(
+                          context,
+                          CustomPageRoute(page: (nextGame['builder'] as WidgetBuilder)(context)),
+                        );
+                      } else {
+                        widget.onPlayAgain();
+                      }
+                    },
                     color: DesignSystem.primary,
                     padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
                     child: Center(
                       child: Text(
-                        l10n.playAgain.toUpperCase(),
+                        (isSameGame ? l10n.playAgain : l10n.playNext).toUpperCase(),
                         style: const TextStyle(
                           fontFamily: 'Geist',
                           color: Colors.white,

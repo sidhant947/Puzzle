@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../widgets/tangible.dart';
-import '../home/home_screen.dart';
+import '../../../data/game_data.dart';
 
 class Achievement {
   final String title;
@@ -434,7 +434,7 @@ class StatsScreen extends ConsumerWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-    final allGames = HomeScreen.allGamesList;
+    final allGames = GameData.allGamesList;
     final Map<String, int> totalPerCategory = {};
     final Map<String, int> solvedPerCategory = {};
 

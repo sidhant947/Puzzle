@@ -21,6 +21,9 @@ class AppLocalizationsUr extends AppLocalizations {
   String get playAgain => 'دوبارہ کھیلیں';
 
   @override
+  String get playNext => 'Play Next';
+
+  @override
   String get seeCompleted => 'جائزہ';
 
   @override

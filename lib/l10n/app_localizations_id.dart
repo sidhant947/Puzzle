@@ -21,6 +21,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get playAgain => 'Main Lagi';
 
   @override
+  String get playNext => 'Play Next';
+
+  @override
   String get seeCompleted => 'Tinjau';
 
   @override

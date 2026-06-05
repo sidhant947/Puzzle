@@ -1,13 +1,12 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import '../ui/features/home/home_screen.dart';
-
+import '../data/game_data.dart';
 import '../providers/user_providers.dart';
 
 part 'game_providers.g.dart';
 
 @riverpod
 List<Map<String, dynamic>> filteredGames(FilteredGamesRef ref, {required String searchQuery, required String selectedCategory}) {
-  final allGames = HomeScreen.allGamesList; 
+  final allGames = GameData.allGamesList; 
   final favoriteIds = ref.watch(userDataNotifierProvider.select((d) => d.favoriteGameIds ?? []));
   
   final filtered = allGames.where((game) {

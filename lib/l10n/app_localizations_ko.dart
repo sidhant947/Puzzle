@@ -21,6 +21,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get playAgain => '다시 플레이';
 
   @override
+  String get playNext => 'Play Next';
+
+  @override
   String get seeCompleted => '퍼즐 검토';
 
   @override

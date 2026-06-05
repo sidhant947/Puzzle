@@ -1,27 +1,27 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'grammar_police_provider.dart';
+part of 'game_session_provider.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$grammarPoliceNotifierHash() =>
-    r'bda127903cc33244a4681d3f435558cc931f719e';
+String _$gameSessionNotifierHash() =>
+    r'8e6cfd6031bae53c30653e1594c2be7b7c54b637';
 
-/// See also [GrammarPoliceNotifier].
-@ProviderFor(GrammarPoliceNotifier)
-final grammarPoliceNotifierProvider = AutoDisposeNotifierProvider<
-    GrammarPoliceNotifier, GrammarPoliceState>.internal(
-  GrammarPoliceNotifier.new,
-  name: r'grammarPoliceNotifierProvider',
+/// See also [GameSessionNotifier].
+@ProviderFor(GameSessionNotifier)
+final gameSessionNotifierProvider =
+    NotifierProvider<GameSessionNotifier, GameSession>.internal(
+  GameSessionNotifier.new,
+  name: r'gameSessionNotifierProvider',
   debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
       ? null
-      : _$grammarPoliceNotifierHash,
+      : _$gameSessionNotifierHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
 
-typedef _$GrammarPoliceNotifier = AutoDisposeNotifier<GrammarPoliceState>;
+typedef _$GameSessionNotifier = Notifier<GameSession>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

@@ -21,6 +21,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get playAgain => 'Chơi lại';
 
   @override
+  String get playNext => 'Play Next';
+
+  @override
   String get seeCompleted => 'Xem lại';
 
   @override

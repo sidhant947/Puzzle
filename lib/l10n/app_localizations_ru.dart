@@ -21,6 +21,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get playAgain => 'Играть снова';
 
   @override
+  String get playNext => 'Play Next';
+
+  @override
   String get seeCompleted => 'Просмотр пазла';
 
   @override

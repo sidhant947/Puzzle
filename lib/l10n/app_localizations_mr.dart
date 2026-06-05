@@ -21,6 +21,9 @@ class AppLocalizationsMr extends AppLocalizations {
   String get playAgain => 'पुन्हा खेळा';
 
   @override
+  String get playNext => 'Play Next';
+
+  @override
   String get seeCompleted => 'पुनरावलोकन';
 
   @override
