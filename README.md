@@ -1,9 +1,7 @@
 # PUZZLE
 
-[![Version](https://img.shields.io/badge/version-1.0.13-blue.svg)](https://github.com/sidhant947/Puzzle/releases)
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Platform](https://img.shields.io/badge/platform-Android%20%7C%20Linux-lightgrey.svg)](#-downloads)
-[![Framework](https://img.shields.io/badge/framework-Flutter-02569B.svg)](https://flutter.dev)
+[![Platform](https://img.shields.io/badge/platform-Android%20%7C%20Linux%20%7C%20Web-blue.svg)](#-downloads)
 
 A professional suite of minimalist puzzle games built with Flutter. Master over 150 unique puzzles.
 
