@@ -1486,6 +1486,12 @@ class AppLocalizationsTh extends AppLocalizations {
       'คุณจะเห็นคำศัพท์เป้าหมายและความสัมพันธ์ (คำเหมือนหรือคำตรงข้าม) เลือกคำที่ถูกต้องจากตัวเลือกที่ตรงกับความสัมพันธ์นั้น ต้องเร็วหน่อยนะ เวลาเดินอยู่!';
 
   @override
+  String get correct => 'CORRECT';
+
+  @override
+  String get incorrect => 'INCORRECT';
+
+  @override
   String get grammarPoliceTitle => 'ตำรวจไวยากรณ์';
 
   @override

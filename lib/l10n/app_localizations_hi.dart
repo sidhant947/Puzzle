@@ -1510,6 +1510,12 @@ class AppLocalizationsHi extends AppLocalizations {
       'आपको एक लक्ष्य शब्द और एक संबंध (पर्यायवाची या विलोम) दिखाया जाएगा। विकल्पों में से सही शब्द चुनें जो संबंध से मेल खाता हो। जल्दी करें, घड़ी चल रही है!';
 
   @override
+  String get correct => 'CORRECT';
+
+  @override
+  String get incorrect => 'INCORRECT';
+
+  @override
   String get grammarPoliceTitle => 'ग्रामर पुलिस';
 
   @override

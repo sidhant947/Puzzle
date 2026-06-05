@@ -1505,6 +1505,12 @@ class AppLocalizationsFa extends AppLocalizations {
       'یک کلمه هدف و یک رابطه (مترادف یا متضاد) به شما نشان داده می‌شود. کلمه صحیح را از گزینه‌ها انتخاب کنید. سریع باشید، زمان در حال گذر است!';
 
   @override
+  String get correct => 'CORRECT';
+
+  @override
+  String get incorrect => 'INCORRECT';
+
+  @override
   String get grammarPoliceTitle => 'پلیس دستور زبان';
 
   @override

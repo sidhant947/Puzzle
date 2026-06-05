@@ -6,7 +6,7 @@ part of 'crossword_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$crosswordNotifierHash() => r'c278ce415b1ffb75a696e4827b827ef101c2df81';
+String _$crosswordNotifierHash() => r'108d18f33b74d29ae76254c095a2816e3657e57e';
 
 /// See also [CrosswordNotifier].
 @ProviderFor(CrosswordNotifier)

@@ -1523,6 +1523,12 @@ class AppLocalizationsIt extends AppLocalizations {
       'Ti verrà mostrata una parola target e una relazione (Sinonimo o Contrario). Scegli la parola corretta tra le opzioni che corrisponde alla relazione. Sii veloce, il tempo scorre!';
 
   @override
+  String get correct => 'CORRECT';
+
+  @override
+  String get incorrect => 'INCORRECT';
+
+  @override
   String get grammarPoliceTitle => 'Polizia della Grammatica';
 
   @override

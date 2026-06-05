@@ -1528,6 +1528,12 @@ class AppLocalizationsEs extends AppLocalizations {
       'Se te mostrará una palabra objetivo y una relación (Sinónimo o Antónimo). Elige la palabra correcta de las opciones que coincida con la relación. ¡Rápido, el tiempo vuela!';
 
   @override
+  String get correct => 'CORRECT';
+
+  @override
+  String get incorrect => 'INCORRECT';
+
+  @override
   String get grammarPoliceTitle => 'Policía gramatical';
 
   @override

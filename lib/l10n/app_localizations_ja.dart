@@ -1447,6 +1447,12 @@ class AppLocalizationsJa extends AppLocalizations {
       'ターゲットの単語と関係性（類義語または対義語）が表示されます。選択肢の中からその関係に一致する正しい単語を選んでください。急いでください、時間は刻々と過ぎています！';
 
   @override
+  String get correct => 'CORRECT';
+
+  @override
+  String get incorrect => 'INCORRECT';
+
+  @override
   String get grammarPoliceTitle => 'グラマーポリス';
 
   @override

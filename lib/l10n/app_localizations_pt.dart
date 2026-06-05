@@ -1515,6 +1515,12 @@ class AppLocalizationsPt extends AppLocalizations {
       'Uma palavra alvo e uma relação (Sinônimo ou Antônimo) serão mostradas. Escolha a palavra correta rapidamente.';
 
   @override
+  String get correct => 'CORRECT';
+
+  @override
+  String get incorrect => 'INCORRECT';
+
+  @override
   String get grammarPoliceTitle => 'Polícia Gramatical';
 
   @override

@@ -2816,6 +2816,18 @@ abstract class AppLocalizations {
   /// **'You will be shown a target word and a relation (Synonym or Antonym). Choose the correct word from the options that matches the relation. Be quick, the clock is ticking!'**
   String get vocabularyBuilderHowToPlay;
 
+  /// No description provided for @correct.
+  ///
+  /// In en, this message translates to:
+  /// **'CORRECT'**
+  String get correct;
+
+  /// No description provided for @incorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'INCORRECT'**
+  String get incorrect;
+
   /// No description provided for @grammarPoliceTitle.
   ///
   /// In en, this message translates to:
@@ -2825,13 +2837,13 @@ abstract class AppLocalizations {
   /// No description provided for @grammarPoliceSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Identify and correct errors in a scrolling wall of text.'**
+  /// **'Identify if the sentence is grammatically correct or contains errors.'**
   String get grammarPoliceSubtitle;
 
   /// No description provided for @grammarPoliceHowToPlay.
   ///
   /// In en, this message translates to:
-  /// **'Sentences will scroll up the screen. Some contain errors (spelling, grammar, or punctuation). Tap the sentences that contain errors to \'correct\' them. Don\'t let too many errors pass by!'**
+  /// **'A sentence will appear in the center of the screen. Decide if it is grammatically correct or if it contains an error. Tap \'CORRECT\' if it\'s fine, or \'INCORRECT\' if you spot a mistake. Don\'t lose all your lives!'**
   String get grammarPoliceHowToPlay;
 
   /// No description provided for @reverseStroopTitle.

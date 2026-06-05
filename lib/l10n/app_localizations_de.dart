@@ -1525,6 +1525,12 @@ class AppLocalizationsDe extends AppLocalizations {
       'Ein Wort und eine Beziehung (Synonym oder Antonym) werden gezeigt. Wähle schnell das passende Wort.';
 
   @override
+  String get correct => 'CORRECT';
+
+  @override
+  String get incorrect => 'INCORRECT';
+
+  @override
   String get grammarPoliceTitle => 'Grammatik-Polizei';
 
   @override

@@ -1508,6 +1508,12 @@ class AppLocalizationsMr extends AppLocalizations {
       'तुम्हाला एक लक्ष्य शब्द आणि संबंध (समानार्थी किंवा विरुद्धार्थी) दाखवला जाईल. पर्यायांतून संबंधाशी जुळणारा योग्य शब्द निवडा. जलद व्हा, वेळ संपत आहे!';
 
   @override
+  String get correct => 'CORRECT';
+
+  @override
+  String get incorrect => 'INCORRECT';
+
+  @override
   String get grammarPoliceTitle => 'ग्रामर पोलीस';
 
   @override

@@ -5,143 +5,68 @@ import 'grammar_police_engine.dart';
 part 'grammar_police_provider.g.dart';
 
 class GrammarPoliceState {
-  final List<ActiveSentence> activeSentences;
+  final GrammarSentence? currentSentence;
   final int score;
   final int lives;
   final bool isGameOver;
+  final bool? lastAnswerWasCorrect;
 
   GrammarPoliceState({
-    this.activeSentences = const [],
+    this.currentSentence,
     this.score = 0,
-    this.lives = 3,
+    this.lives = 1,
     this.isGameOver = false,
+    this.lastAnswerWasCorrect,
   });
 
   GrammarPoliceState copyWith({
-    List<ActiveSentence>? activeSentences,
+    GrammarSentence? currentSentence,
     int? score,
     int? lives,
     bool? isGameOver,
+    bool? lastAnswerWasCorrect,
   }) {
     return GrammarPoliceState(
-      activeSentences: activeSentences ?? this.activeSentences,
+      currentSentence: currentSentence ?? this.currentSentence,
       score: score ?? this.score,
       lives: lives ?? this.lives,
       isGameOver: isGameOver ?? this.isGameOver,
-    );
-  }
-}
-
-class ActiveSentence {
-  final GrammarSentence sentence;
-  final double y;
-  final DateTime createdAt;
-  bool isHandled;
-
-  ActiveSentence({
-    required this.sentence,
-    required this.y,
-    required this.createdAt,
-    this.isHandled = false,
-  });
-
-  ActiveSentence copyWith({double? y, bool? isHandled}) {
-    return ActiveSentence(
-      sentence: sentence,
-      y: y ?? this.y,
-      createdAt: createdAt,
-      isHandled: isHandled ?? this.isHandled,
+      lastAnswerWasCorrect: lastAnswerWasCorrect ?? this.lastAnswerWasCorrect,
     );
   }
 }
 
 @riverpod
 class GrammarPoliceNotifier extends _$GrammarPoliceNotifier {
-  Timer? _gameTimer;
-  Timer? _spawnTimer;
-
   @override
   GrammarPoliceState build() {
-    ref.onDispose(() {
-      _gameTimer?.cancel();
-      _spawnTimer?.cancel();
-    });
     return GrammarPoliceState();
   }
 
   void startGame() {
-    _gameTimer?.cancel();
-    _spawnTimer?.cancel();
-    state = GrammarPoliceState();
-    _startSpawning();
-    _startGameLoop();
+    state = GrammarPoliceState(
+      currentSentence: GrammarPoliceEngine.generateSentence(),
+    );
   }
 
-  void _startSpawning() {
-    _spawnTimer = Timer.periodic(const Duration(milliseconds: 2500), (timer) {
-      if (state.isGameOver) return;
-      final newSentence = ActiveSentence(
-        sentence: GrammarPoliceEngine.generateSentence(),
-        y: 1.1, // Start below screen
-        createdAt: DateTime.now(),
-      );
-      state = state.copyWith(
-        activeSentences: [...state.activeSentences, newSentence],
-      );
-    });
-  }
+  void submitAnswer(bool isCorrect) {
+    if (state.isGameOver || state.currentSentence == null) return;
 
-  void _startGameLoop() {
-    _gameTimer = Timer.periodic(const Duration(milliseconds: 50), (timer) {
-      if (state.isGameOver) return;
+    final sentence = state.currentSentence!;
+    final isActuallyCorrect = !sentence.hasError;
+    final answeredCorrectly = (isCorrect == isActuallyCorrect);
 
-      final List<ActiveSentence> updated = [];
-      int missedErrors = 0;
-
-      for (var s in state.activeSentences) {
-        final nextY = s.y - 0.01;
-        if (nextY < -0.1) {
-          if (s.sentence.hasError && !s.isHandled) {
-            missedErrors++;
-          }
-          continue;
-        }
-        updated.add(s.copyWith(y: nextY));
-      }
-
-      if (missedErrors > 0) {
-        final newLives = (state.lives - missedErrors).clamp(0, 3);
-        state = state.copyWith(
-          lives: newLives,
-          activeSentences: updated,
-          isGameOver: newLives <= 0,
-        );
-      } else {
-        state = state.copyWith(activeSentences: updated);
-      }
-    });
-  }
-
-  void handleTap(ActiveSentence active) {
-    if (state.isGameOver || active.isHandled) return;
-
-    final updatedSentences = state.activeSentences.map((s) {
-      if (s.createdAt == active.createdAt) {
-        return s.copyWith(isHandled: true);
-      }
-      return s;
-    }).toList();
-
-    if (active.sentence.hasError) {
+    if (answeredCorrectly) {
       state = state.copyWith(
         score: state.score + 10,
-        activeSentences: updatedSentences,
+        lastAnswerWasCorrect: true,
+        currentSentence: GrammarPoliceEngine.generateSentence(),
       );
     } else {
       state = state.copyWith(
         lives: 0,
         isGameOver: true,
-        activeSentences: updatedSentences,
+        lastAnswerWasCorrect: false,
       );
     }
   }

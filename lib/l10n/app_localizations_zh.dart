@@ -1436,6 +1436,12 @@ class AppLocalizationsZh extends AppLocalizations {
       '你将看到一个目标词和一个关系（同义词或反义词）。从选项中选择与该关系匹配的正确单词。动作要快，时间在流逝！';
 
   @override
+  String get correct => 'CORRECT';
+
+  @override
+  String get incorrect => 'INCORRECT';
+
+  @override
   String get grammarPoliceTitle => '语法警察';
 
   @override

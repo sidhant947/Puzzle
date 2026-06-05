@@ -1510,6 +1510,12 @@ class AppLocalizationsUr extends AppLocalizations {
       'آپ کو ایک ٹارگٹ لفظ اور ایک تعلق (مترادف یا متضاد) دکھایا جائے گا۔ اختیارات میں سے وہ صحیح لفظ منتخب کریں جو تعلق سے میچ کرتا ہو۔ جلدی کریں، وقت گزر رہا ہے!';
 
   @override
+  String get correct => 'CORRECT';
+
+  @override
+  String get incorrect => 'INCORRECT';
+
+  @override
   String get grammarPoliceTitle => 'گرامر پولیس';
 
   @override

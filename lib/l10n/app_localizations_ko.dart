@@ -1447,6 +1447,12 @@ class AppLocalizationsKo extends AppLocalizations {
       '목표 단어와 관계(유의어 또는 반의어)가 주어집니다. 옵션 중에서 관계에 맞는 단어를 고르세요. 시간이 촉박하니 서두르세요!';
 
   @override
+  String get correct => 'CORRECT';
+
+  @override
+  String get incorrect => 'INCORRECT';
+
+  @override
   String get grammarPoliceTitle => '문법 경찰';
 
   @override

@@ -1515,6 +1515,12 @@ class AppLocalizationsTe extends AppLocalizations {
       'మీకు ఒక టార్గెట్ పదం మరియు సంబంధం (పర్యాయపదం లేదా వ్యతిరేక పదం) చూపబడుతుంది. సంబంధానికి సరిపోయే సరైన పదాన్ని ఎంచుకోండి. వేగంగా చేయండి, సమయం మించిపోతోంది!';
 
   @override
+  String get correct => 'CORRECT';
+
+  @override
+  String get incorrect => 'INCORRECT';
+
+  @override
   String get grammarPoliceTitle => 'గ్రామర్ పోలీస్';
 
   @override

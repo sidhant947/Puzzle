@@ -1488,6 +1488,12 @@ class AppLocalizationsRu extends AppLocalizations {
       'Выбирайте верные слова согласно заданному отношению.';
 
   @override
+  String get correct => 'CORRECT';
+
+  @override
+  String get incorrect => 'INCORRECT';
+
+  @override
   String get grammarPoliceTitle => 'Грамотей';
 
   @override

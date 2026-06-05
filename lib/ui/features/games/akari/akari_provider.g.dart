@@ -6,7 +6,7 @@ part of 'akari_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$akariNotifierHash() => r'f9bd9a38cbd4cc6ef61ef8798ba6cb4a08ad67c0';
+String _$akariNotifierHash() => r'b48250cfee1aea345773e726632c38e091f1aa42';
 
 /// See also [AkariNotifier].
 @ProviderFor(AkariNotifier)

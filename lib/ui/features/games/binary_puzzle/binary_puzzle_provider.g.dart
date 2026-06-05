@@ -7,7 +7,7 @@ part of 'binary_puzzle_provider.dart';
 // **************************************************************************
 
 String _$binaryPuzzleNotifierHash() =>
-    r'b6770d159157b8d2c9132c2e7d0a924eaf3cbb59';
+    r'83d0f32ffe83e5ba0fbbbf47bf1b90b88df107f2';
 
 /// See also [BinaryPuzzleNotifier].
 @ProviderFor(BinaryPuzzleNotifier)

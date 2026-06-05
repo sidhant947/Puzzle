@@ -7,7 +7,7 @@ part of 'grammar_police_provider.dart';
 // **************************************************************************
 
 String _$grammarPoliceNotifierHash() =>
-    r'4dfba6353f95a81a7ff42d3a378f8a7c2ed2044d';
+    r'7562819d41147a89294f0c6eade392923496f928';
 
 /// See also [GrammarPoliceNotifier].
 @ProviderFor(GrammarPoliceNotifier)

@@ -1532,6 +1532,12 @@ class AppLocalizationsFr extends AppLocalizations {
       'Un mot cible et une relation (Synonyme ou Antonyme) vous seront montrés. Choisissez le mot correct. Soyez rapide !';
 
   @override
+  String get correct => 'CORRECT';
+
+  @override
+  String get incorrect => 'INCORRECT';
+
+  @override
   String get grammarPoliceTitle => 'Police de la Grammaire';
 
   @override

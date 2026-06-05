@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../l10n/app_localizations.dart';
 import 'grammar_police_provider.dart';
-import '../../../../providers/game_providers.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
@@ -50,8 +49,8 @@ class _GrammarPoliceScreenState extends ConsumerState<GrammarPoliceScreen> {
       if (next.isGameOver && !(previous?.isGameOver ?? false)) {
         HapticFeedbackUtil.victory();
         _showGameOverDialog(context, ref, next.score);
-      } else if (next.lives < (previous?.lives ?? 3)) {
-        HapticFeedbackUtil.error();
+      } else if (next.score > (previous?.score ?? 0)) {
+        HapticFeedbackUtil.success();
       }
     });
 
@@ -70,14 +69,70 @@ class _GrammarPoliceScreenState extends ConsumerState<GrammarPoliceScreen> {
             child: _buildHeader(state),
           ),
           Expanded(
-            child: ClipRect(
-              child: Stack(
-                children: state.activeSentences.map((active) {
-                  return _buildSentence(active, notifier);
-                }).toList(),
+            child: Center(
+              child: Padding(
+                padding: const EdgeInsets.all(DesignSystem.spaceLG),
+                child: state.currentSentence != null
+                    ? TangibleContainer(
+                        color: Theme.of(context).colorScheme.surface,
+                        shadowColor: Theme.of(context).colorScheme.outline,
+                        padding: const EdgeInsets.all(DesignSystem.spaceXL),
+                        child: Text(
+                          state.currentSentence!.text,
+                          style: const TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.bold,
+                          ),
+                          textAlign: TextAlign.center,
+                        ),
+                      )
+                    : const SizedBox.shrink(),
               ),
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.all(DesignSystem.spaceLG),
+            child: Row(
+              children: [
+                Expanded(
+                  child: TangibleButton(
+                    onTap: () {
+                      HapticFeedbackUtil.selectionClick();
+                      notifier.submitAnswer(true);
+                    },
+                    color: DesignSystem.success,
+                    child: Text(
+                      l10n.correct.toUpperCase(),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: DesignSystem.spaceLG),
+                Expanded(
+                  child: TangibleButton(
+                    onTap: () {
+                      HapticFeedbackUtil.selectionClick();
+                      notifier.submitAnswer(false);
+                    },
+                    color: DesignSystem.error,
+                    child: Text(
+                      l10n.incorrect.toUpperCase(),
+                      style: const TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.w900,
+                        fontSize: 18,
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const SizedBox(height: DesignSystem.spaceXL),
         ],
       ),
     );
@@ -85,10 +140,9 @@ class _GrammarPoliceScreenState extends ConsumerState<GrammarPoliceScreen> {
 
   Widget _buildHeader(GrammarPoliceState state) {
     return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisAlignment: MainAxisAlignment.center,
       children: [
         _buildStatCard('SCORE', state.score.toString(), DesignSystem.primary),
-        _buildStatCard('LIVES', '❤' * state.lives, DesignSystem.error),
       ],
     );
   }
@@ -103,43 +157,6 @@ class _GrammarPoliceScreenState extends ConsumerState<GrammarPoliceScreen> {
           Text(label, style: TextStyle(fontSize: 10, fontWeight: FontWeight.w900, color: color)),
           Text(value, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900, color: color)),
         ],
-      ),
-    );
-  }
-
-  Widget _buildSentence(ActiveSentence active, GrammarPoliceNotifier notifier) {
-    return Positioned(
-      left: 20,
-      right: 20,
-      top: active.y * MediaQuery.of(context).size.height * 0.7,
-      child: GestureDetector(
-        onTap: () {
-          if (!active.isHandled) {
-            HapticFeedbackUtil.selectionClick();
-            notifier.handleTap(active);
-          }
-        },
-        child: TangibleContainer(
-          color: active.isHandled
-              ? (active.sentence.hasError ? DesignSystem.success.withValues(alpha: 0.2) : DesignSystem.error.withValues(alpha: 0.2))
-              : Theme.of(context).colorScheme.surface,
-          shadowColor: active.isHandled
-              ? (active.sentence.hasError ? DesignSystem.success : DesignSystem.error)
-              : Theme.of(context).colorScheme.outline,
-          padding: const EdgeInsets.all(16),
-          child: Text(
-            active.sentence.text,
-            style: TextStyle(
-              fontSize: 16,
-              fontWeight: FontWeight.bold,
-              color: active.isHandled
-                  ? (active.sentence.hasError ? DesignSystem.success : DesignSystem.error)
-                  : Theme.of(context).colorScheme.onSurface,
-              decoration: active.isHandled && !active.sentence.hasError ? TextDecoration.lineThrough : null,
-            ),
-            textAlign: TextAlign.center,
-          ),
-        ),
       ),
     );
   }

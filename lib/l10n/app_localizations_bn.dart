@@ -1509,6 +1509,12 @@ class AppLocalizationsBn extends AppLocalizations {
       'আপনাকে একটি টার্গেট শব্দ এবং একটি সম্পর্ক (সমার্থক বা বিপরীতার্থক) দেখানো হবে। বিকল্পগুলো থেকে সঠিক শব্দটি চয়ন করুন যা সম্পর্কের সাথে মেলে। দ্রুত করুন, সময় চলে যাচ্ছে!';
 
   @override
+  String get correct => 'CORRECT';
+
+  @override
+  String get incorrect => 'INCORRECT';
+
+  @override
   String get grammarPoliceTitle => 'ব্যাকরণ পুলিশ';
 
   @override

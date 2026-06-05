@@ -1537,6 +1537,12 @@ class AppLocalizationsTa extends AppLocalizations {
       'உங்களுக்கு ஒரு இலக்கு வார்த்தை மற்றும் ஒரு தொடர்பு (ஒத்த அல்லது எதிர்ச்சொல்) காட்டப்படும். விருப்பங்களிலிருந்து தொடர்புடன் பொருந்தும் சரியான வார்த்தையைத் தேர்ந்தெடுக்கவும். விரைவாகச் செய்யுங்கள், நேரம் ஓடிக்கொண்டிருக்கிறது!';
 
   @override
+  String get correct => 'CORRECT';
+
+  @override
+  String get incorrect => 'INCORRECT';
+
+  @override
   String get grammarPoliceTitle => 'இலக்கணக் காவலர்';
 
   @override
