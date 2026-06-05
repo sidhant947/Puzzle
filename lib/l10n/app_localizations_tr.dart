@@ -21,7 +21,7 @@ class AppLocalizationsTr extends AppLocalizations {
   String get playAgain => 'Tekrar Oyna';
 
   @override
-  String get playNext => 'Play Next';
+  String get playNext => 'Sonrakini Oyna';
 
   @override
   String get seeCompleted => 'İncele';
@@ -1500,21 +1500,21 @@ class AppLocalizationsTr extends AppLocalizations {
       'Sana bir hedef kelime ve bir ilişki (Eş Anlamlı veya Zıt Anlamlı) gösterilecek. Seçenekler arasından ilişkiyle eşleşen doğru kelimeyi seç. Hızlı ol, zaman daralıyor!';
 
   @override
-  String get correct => 'CORRECT';
+  String get correct => 'DOĞRU';
 
   @override
-  String get incorrect => 'INCORRECT';
+  String get incorrect => 'YANLIŞ';
 
   @override
   String get grammarPoliceTitle => 'Dilbilgisi Polisi';
 
   @override
   String get grammarPoliceSubtitle =>
-      'Kayan bir metin duvarındaki hataları tanımla ve düzelt.';
+      'Cümlenin dilbilgisi açısından doğru mu yoksa hatalı mı olduğunu belirleyin.';
 
   @override
   String get grammarPoliceHowToPlay =>
-      'Cümleler ekranda yukarı doğru kayacak. Bazıları hatalar içerir (yazım, dilbilgisi veya noktalama). Hataları \'düzeltmek\' için hatalı cümlelere dokun. Çok fazla hatanın geçip gitmesine izin verme!';
+      'Ekranın ortasında bir cümle belirecektir. Dilbilgisi açısından doğru mu yoksa hata mı içerdiğine karar verin. Sorun yoksa \'DOĞRU\'ya, hata fark ederseniz \'YANLIŞ\'a dokunun. Tüm canlarınızı kaybetmeyin!';
 
   @override
   String get reverseStroopTitle => 'Ters Stroop';

@@ -21,7 +21,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get playAgain => '다시 플레이';
 
   @override
-  String get playNext => 'Play Next';
+  String get playNext => '다음 놀이';
 
   @override
   String get seeCompleted => '퍼즐 검토';
@@ -1450,20 +1450,20 @@ class AppLocalizationsKo extends AppLocalizations {
       '목표 단어와 관계(유의어 또는 반의어)가 주어집니다. 옵션 중에서 관계에 맞는 단어를 고르세요. 시간이 촉박하니 서두르세요!';
 
   @override
-  String get correct => 'CORRECT';
+  String get correct => '정답';
 
   @override
-  String get incorrect => 'INCORRECT';
+  String get incorrect => '오답';
 
   @override
   String get grammarPoliceTitle => '문법 경찰';
 
   @override
-  String get grammarPoliceSubtitle => '스크롤되는 텍스트에서 오류를 찾아 수정하세요.';
+  String get grammarPoliceSubtitle => '문장이 문법적으로 올바른지 또는 오류가 포함되어 있는지 확인하세요.';
 
   @override
   String get grammarPoliceHowToPlay =>
-      '문장들이 화면 위로 스크롤됩니다. 일부 문장에는 오류(철자, 문법, 문장 부호)가 있습니다. 오류가 있는 문장을 탭하여 \'수정\'하세요. 너무 많은 오류를 놓치지 마세요!';
+      '화면 중앙에 문장이 나타납니다. 문법적으로 올바른지 또는 오류가 있는지 결정하세요. 괜찮으면 \'정답\'을, 실수를 발견하면 \'오답\'을 누르세요. 모든 생명을 잃지 마세요!';
 
   @override
   String get reverseStroopTitle => '역 스트룹';

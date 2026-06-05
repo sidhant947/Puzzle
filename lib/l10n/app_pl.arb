@@ -447,8 +447,8 @@
   "vocabularyBuilderSubtitle": "Dopasuj synonimy i antonimy pod presją czasu.",
   "vocabularyBuilderHowToPlay": "Zostanie ci pokazane słowo docelowe i relacja (synonim lub antonim). Wybierz poprawne słowo z opcji pasujących do relacji. Bądź szybki, czas ucieka!",
   "grammarPoliceTitle": "Policja gramatyczna",
-  "grammarPoliceSubtitle": "Zidentyfikuj i popraw błędy w przewijającej się ścianie tekstu.",
-  "grammarPoliceHowToPlay": "Zdania będą przewijać się w górę ekranu. Niektóre zawierają błędy (ortograficzne, gramatyczne lub interpunkcyjne). Dotknij zdań zawierających błędy, aby je 'poprawić'. Nie pozwól, aby przeszło zbyt wiele błędów!",
+  "grammarPoliceSubtitle": "Określ, czy zdanie jest poprawne pod względem gramatycznym, czy zawiera błędy.",
+  "grammarPoliceHowToPlay": "Na środku ekranu pojawi się zdanie. Zdecyduj, czy jest ono poprawne gramatycznie, czy zawiera błąd. Dotknij 'POPRAWNE', jeśli wszystko jest w porządku, lub 'BŁĘDNE', jeśli zauważysz błąd. Nie trać wszystkich żyć!",
   "reverseStroopTitle": "Odwrócony Stroop",
   "reverseStroopSubtitle": "Wariacja testu Stroopa, w której skupienie zostaje przełączone.",
   "reverseStroopHowToPlay": "Zwracaj uwagę na instrukcję! Jeśli mówi 'TEKST', dopasuj znaczenie słowa. Jeśli mówi 'KOLOR', dopasuj kolor atramentu. Zasady będą się często zmieniać, aby przetestować twoje skupienie.",
@@ -538,5 +538,8 @@
   "topologySubtitle": "Czy te kształty są topologicznie równoważne? (Czy jeden można przekształcić w drugi bez przecinania lub sklejania?)",
   "topologyWinTitle": "GENIUSZ GEOMETRII!",
   "topologyWinMessage": "Poprawnie zidentyfikowałeś 10 par topologicznych!",
-  "topologyScore": "WYNIK: "
+  "topologyScore": "WYNIK: ",
+  "playNext": "Graj dalej",
+  "correct": "POPRAWNE",
+  "incorrect": "BŁĘDNE"
 }

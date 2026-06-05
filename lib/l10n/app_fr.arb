@@ -446,8 +446,8 @@
   "vocabularyBuilderSubtitle": "Associez synonymes et antonymes sous pression.",
   "vocabularyBuilderHowToPlay": "Un mot cible et une relation (Synonyme ou Antonyme) vous seront montrés. Choisissez le mot correct. Soyez rapide !",
   "grammarPoliceTitle": "Police de la Grammaire",
-  "grammarPoliceSubtitle": "Identifiez et corrigez les erreurs dans un texte défilant.",
-  "grammarPoliceHowToPlay": "Des phrases défileront vers le haut. Certaines contiennent des erreurs. Appuyez sur les phrases erronées pour les 'corriger'. Ne laissez pas passer trop d'erreurs !",
+  "grammarPoliceSubtitle": "Identifiez si la phrase est grammaticalement correcte ou contient des erreurs.",
+  "grammarPoliceHowToPlay": "Une phrase apparaîtra au centre de l'écran. Décidez si elle est grammaticalement correcte ou si elle contient une erreur. Appuyez sur 'CORRECT' si elle est correcte, ou sur 'INCORRECT' si vous repérez une erreur. Ne perdez pas toutes vos vies !",
   "reverseStroopTitle": "Stroop Inversé",
   "reverseStroopSubtitle": "Une variante du test de Stroop où la focalisation est inversée.",
   "reverseStroopHowToPlay": "Faites attention à l'instruction ! S'il est écrit 'TEXTE', faites correspondre le sens. S'il est écrit 'COULEUR', faites correspondre la couleur de l'encre.",
@@ -538,5 +538,8 @@
   "topologyWinTitle": "GÉNIE DE LA GÉOMÉTRIE !",
   "topologyWinMessage": "Vous avez correctement identifié 10 paires topologiques !",
   "topologyScore": "SCORE : ",
-  "hueSortWrongTiles": "Tuiles en mauvaise position : {count}"
+  "hueSortWrongTiles": "Tuiles en mauvaise position : {count}",
+  "playNext": "Suivant",
+  "correct": "CORRECT",
+  "incorrect": "INCORRECT"
 }

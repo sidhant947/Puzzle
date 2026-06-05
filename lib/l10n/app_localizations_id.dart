@@ -21,7 +21,7 @@ class AppLocalizationsId extends AppLocalizations {
   String get playAgain => 'Main Lagi';
 
   @override
-  String get playNext => 'Play Next';
+  String get playNext => 'Main Berikutnya';
 
   @override
   String get seeCompleted => 'Tinjau';
@@ -1522,21 +1522,21 @@ class AppLocalizationsId extends AppLocalizations {
       'Anda akan diperlihatkan kata target dan hubungan (Sinonim atau Antonim). Pilih kata yang benar dari opsi yang cocok dengan hubungan tersebut. Cepatlah, waktu terus berjalan!';
 
   @override
-  String get correct => 'CORRECT';
+  String get correct => 'BENAR';
 
   @override
-  String get incorrect => 'INCORRECT';
+  String get incorrect => 'SALAH';
 
   @override
   String get grammarPoliceTitle => 'Polisi Tata Bahasa';
 
   @override
   String get grammarPoliceSubtitle =>
-      'Identifikasi dan perbaiki kesalahan dalam teks yang bergulir.';
+      'Identifikasi apakah kalimat tersebut benar secara tata bahasa atau mengandung kesalahan.';
 
   @override
   String get grammarPoliceHowToPlay =>
-      'Kalimat akan bergulir ke atas layar. Beberapa di antaranya mengandung kesalahan (ejaan, tata bahasa, atau tanda baca). Ketuk kalimat yang mengandung kesalahan untuk \'memperbaikinya\'. Jangan biarkan terlalu banyak kesalahan lewat begitu saja!';
+      'Sebuah kalimat akan muncul di tengah layar. Tentukan apakah kalimat tersebut benar secara tata bahasa atau mengandung kesalahan. Ketuk \'BENAR\' jika baik-baik saja, atau \'SALAH\' jika Anda menemukan kesalahan. Jangan sampai kehilangan semua nyawa Anda!';
 
   @override
   String get reverseStroopTitle => 'Reverse Stroop';

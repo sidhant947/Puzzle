@@ -447,8 +447,8 @@
   "vocabularyBuilderSubtitle": "Zaman baskısı altında eş anlamlı ve zıt anlamlıları eşleştir.",
   "vocabularyBuilderHowToPlay": "Sana bir hedef kelime ve bir ilişki (Eş Anlamlı veya Zıt Anlamlı) gösterilecek. Seçenekler arasından ilişkiyle eşleşen doğru kelimeyi seç. Hızlı ol, zaman daralıyor!",
   "grammarPoliceTitle": "Dilbilgisi Polisi",
-  "grammarPoliceSubtitle": "Kayan bir metin duvarındaki hataları tanımla ve düzelt.",
-  "grammarPoliceHowToPlay": "Cümleler ekranda yukarı doğru kayacak. Bazıları hatalar içerir (yazım, dilbilgisi veya noktalama). Hataları 'düzeltmek' için hatalı cümlelere dokun. Çok fazla hatanın geçip gitmesine izin verme!",
+  "grammarPoliceSubtitle": "Cümlenin dilbilgisi açısından doğru mu yoksa hatalı mı olduğunu belirleyin.",
+  "grammarPoliceHowToPlay": "Ekranın ortasında bir cümle belirecektir. Dilbilgisi açısından doğru mu yoksa hata mı içerdiğine karar verin. Sorun yoksa 'DOĞRU'ya, hata fark ederseniz 'YANLIŞ'a dokunun. Tüm canlarınızı kaybetmeyin!",
   "reverseStroopTitle": "Ters Stroop",
   "reverseStroopSubtitle": "Odağın değiştirildiği bir Stroop testi varyasyonu.",
   "reverseStroopHowToPlay": "Talimata dikkat et! Eğer 'METİN' diyorsa kelimenin anlamını eşleştir. Eğer 'RENK' diyorsa mürekkep rengini eşleştir. Odaklanmanı test etmek için kurallar sık sık değişecektir.",
@@ -538,5 +538,8 @@
   "topologySubtitle": "Bu şekiller topolojik olarak eşdeğer mi? (Biri kesilmeden veya yapıştırılmadan diğerine dönüştürülebilir mi?)",
   "topologyWinTitle": "GEOMETRİ DAHİSİ!",
   "topologyWinMessage": "10 topolojik çifti doğru tanımladın!",
-  "topologyScore": "PUAN: "
+  "topologyScore": "PUAN: ",
+  "playNext": "Sonrakini Oyna",
+  "correct": "DOĞRU",
+  "incorrect": "YANLIŞ"
 }

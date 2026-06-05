@@ -21,7 +21,7 @@ class AppLocalizationsRu extends AppLocalizations {
   String get playAgain => 'Играть снова';
 
   @override
-  String get playNext => 'Play Next';
+  String get playNext => 'Играть дальше';
 
   @override
   String get seeCompleted => 'Просмотр пазла';
@@ -1491,19 +1491,21 @@ class AppLocalizationsRu extends AppLocalizations {
       'Выбирайте верные слова согласно заданному отношению.';
 
   @override
-  String get correct => 'CORRECT';
+  String get correct => 'ВЕРНО';
 
   @override
-  String get incorrect => 'INCORRECT';
+  String get incorrect => 'НЕВЕРНО';
 
   @override
   String get grammarPoliceTitle => 'Грамотей';
 
   @override
-  String get grammarPoliceSubtitle => 'Исправляйте ошибки в тексте.';
+  String get grammarPoliceSubtitle =>
+      'Определите, является ли предложение грамматически правильным или содержит ошибки.';
 
   @override
-  String get grammarPoliceHowToPlay => 'Нажимайте на предложения с ошибками.';
+  String get grammarPoliceHowToPlay =>
+      'В центре экрана появится предложение. Решите, является ли оно грамматически правильным или содержит ошибку. Нажмите «ВЕРНО», если все в порядке, или «НЕВЕРНО», если вы заметили ошибку. Не потеряйте все свои жизни!';
 
   @override
   String get reverseStroopTitle => 'Обратный Струп';

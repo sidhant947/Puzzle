@@ -21,7 +21,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get playAgain => '再玩一次';
 
   @override
-  String get playNext => 'Play Next';
+  String get playNext => '玩下一个';
 
   @override
   String get seeCompleted => '查看拼图';
@@ -1439,20 +1439,20 @@ class AppLocalizationsZh extends AppLocalizations {
       '你将看到一个目标词和一个关系（同义词或反义词）。从选项中选择与该关系匹配的正确单词。动作要快，时间在流逝！';
 
   @override
-  String get correct => 'CORRECT';
+  String get correct => '正确';
 
   @override
-  String get incorrect => 'INCORRECT';
+  String get incorrect => '错误';
 
   @override
   String get grammarPoliceTitle => '语法警察';
 
   @override
-  String get grammarPoliceSubtitle => '在滚动的文本墙中识别并纠正错误。';
+  String get grammarPoliceSubtitle => '识别句子语法是否正确或包含错误。';
 
   @override
   String get grammarPoliceHowToPlay =>
-      '句子会在屏幕上向上滚动。有些包含错误（拼写、语法或标点）。点击包含错误的句子来“纠正”它们。不要让太多的错误溜走！';
+      '屏幕中央会出现一个句子。判断其语法是否正确或包含错误。如果没问题，点击“正确”；如果发现错误，点击“错误”。不要失去所有的生命！';
 
   @override
   String get reverseStroopTitle => '逆向斯特鲁普';

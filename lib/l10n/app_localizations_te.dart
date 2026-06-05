@@ -21,7 +21,7 @@ class AppLocalizationsTe extends AppLocalizations {
   String get playAgain => 'మళ్ళీ ఆడండి';
 
   @override
-  String get playNext => 'Play Next';
+  String get playNext => 'తదుపరి ప్లే చేయండి';
 
   @override
   String get seeCompleted => 'సమీక్ష';
@@ -1518,21 +1518,21 @@ class AppLocalizationsTe extends AppLocalizations {
       'మీకు ఒక టార్గెట్ పదం మరియు సంబంధం (పర్యాయపదం లేదా వ్యతిరేక పదం) చూపబడుతుంది. సంబంధానికి సరిపోయే సరైన పదాన్ని ఎంచుకోండి. వేగంగా చేయండి, సమయం మించిపోతోంది!';
 
   @override
-  String get correct => 'CORRECT';
+  String get correct => 'సరైనది';
 
   @override
-  String get incorrect => 'INCORRECT';
+  String get incorrect => 'తప్పు';
 
   @override
   String get grammarPoliceTitle => 'గ్రామర్ పోలీస్';
 
   @override
   String get grammarPoliceSubtitle =>
-      'టెక్స్ట్ గోడలో లోపాలను గుర్తించి సరిదిద్దండి.';
+      'వాక్యం వ్యాకరణపరంగా సరైనదా లేదా తప్పులు ఉన్నాయా అని గుర్తించండి.';
 
   @override
   String get grammarPoliceHowToPlay =>
-      'వాక్యాలు స్క్రీన్ పైకి కదులుతాయి. కొన్నింటిలో లోపాలు (స్పెల్లింగ్, వ్యాకరణం లేదా విరామ చిహ్నాలు) ఉంటాయి. వాటిని \'సరిదిద్దడానికి\' ఆ వాక్యాలను నొక్కండి. చాలా లోపాలు దాటిపోనివ్వకండి!';
+      'స్క్రీన్ మధ్యలో ఒక వాక్యం కనిపిస్తుంది. అది వ్యాకరణపరంగా సరైనదా లేదా అందులో లోపం ఉందా అని నిర్ణయించండి. అది బాగుంటే \'సరైనది\' అని, లేదా మీరు తప్పును గుర్తిస్తే \'తప్పు\' అని ట్యాప్ చేయండి. మీ ప్రాణాలన్నింటినీ కోల్పోకండి!';
 
   @override
   String get reverseStroopTitle => 'రివర్స్ స్ట్రూప్';

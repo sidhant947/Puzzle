@@ -21,7 +21,7 @@ class AppLocalizationsTa extends AppLocalizations {
   String get playAgain => 'மீண்டும் விளையாடு';
 
   @override
-  String get playNext => 'Play Next';
+  String get playNext => 'அடுத்தது விளையாடு';
 
   @override
   String get seeCompleted => 'மதிப்பாய்வு';
@@ -1540,21 +1540,21 @@ class AppLocalizationsTa extends AppLocalizations {
       'உங்களுக்கு ஒரு இலக்கு வார்த்தை மற்றும் ஒரு தொடர்பு (ஒத்த அல்லது எதிர்ச்சொல்) காட்டப்படும். விருப்பங்களிலிருந்து தொடர்புடன் பொருந்தும் சரியான வார்த்தையைத் தேர்ந்தெடுக்கவும். விரைவாகச் செய்யுங்கள், நேரம் ஓடிக்கொண்டிருக்கிறது!';
 
   @override
-  String get correct => 'CORRECT';
+  String get correct => 'சரி';
 
   @override
-  String get incorrect => 'INCORRECT';
+  String get incorrect => 'தவறு';
 
   @override
   String get grammarPoliceTitle => 'இலக்கணக் காவலர்';
 
   @override
   String get grammarPoliceSubtitle =>
-      'நகரும் உரையில் உள்ள பிழைகளைக் கண்டறிந்து சரிசெய்யவும்.';
+      'வாக்கியம் இலக்கணப்படி சரியானதா அல்லது பிழைகள் உள்ளதா என்பதைக் கண்டறியவும்.';
 
   @override
   String get grammarPoliceHowToPlay =>
-      'வாக்கியங்கள் திரையில் மேலே நகரும். சிலவற்றில் பிழைகள் (எழுத்துப்பிழை, இலக்கணம் அல்லது நிறுத்தற்குறிகள்) இருக்கும். பிழைகள் உள்ள வாக்கியங்களை \'சரிசெய்ய\' அவற்றைத் தட்டவும். அதிக பிழைகளை விடாதீர்கள்!';
+      'திரையின் நடுவில் ஒரு வாக்கியம் தோன்றும். அது இலக்கணப்படி சரியானதா அல்லது பிழையுள்ளதா என்பதை முடிவு செய்யவும். சரியாக இருந்தால் \'சரி\' என்பதையும், தவறு இருந்தால் \'தவறு\' என்பதையும் தட்டவும். உங்கள் உயிர்கள் அனைத்தையும் இழக்காதீர்கள்!';
 
   @override
   String get reverseStroopTitle => 'தலைகீழ் ஸ்ட்ரூப்';

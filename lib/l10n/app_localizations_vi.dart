@@ -21,7 +21,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get playAgain => 'Chơi lại';
 
   @override
-  String get playNext => 'Play Next';
+  String get playNext => 'Chơi tiếp';
 
   @override
   String get seeCompleted => 'Xem lại';
@@ -1519,21 +1519,21 @@ class AppLocalizationsVi extends AppLocalizations {
       'Bạn sẽ được xem một từ mục tiêu và một mối quan hệ (Đồng nghĩa hoặc Trái nghĩa). Chọn từ chính xác từ các lựa chọn phù hợp với mối quan hệ đó. Hãy nhanh tay, thời gian đang trôi đi!';
 
   @override
-  String get correct => 'CORRECT';
+  String get correct => 'ĐÚNG';
 
   @override
-  String get incorrect => 'INCORRECT';
+  String get incorrect => 'SAI';
 
   @override
   String get grammarPoliceTitle => 'Cảnh sát ngữ pháp';
 
   @override
   String get grammarPoliceSubtitle =>
-      'Xác định và sửa lỗi trong một văn bản đang cuộn.';
+      'Xác định xem câu đó có đúng ngữ pháp hay có lỗi hay không.';
 
   @override
   String get grammarPoliceHowToPlay =>
-      'Các câu văn sẽ cuộn lên trên màn hình. Một số câu có lỗi (chính tả, ngữ pháp hoặc dấu câu). Nhấn vào các câu có lỗi để \'sửa\' chúng. Đừng để quá nhiều lỗi trôi qua!';
+      'Một câu sẽ xuất hiện ở giữa màn hình. Hãy quyết định xem nó có đúng ngữ pháp hay có lỗi hay không. Nhấn \'ĐÚNG\' nếu nó ổn hoặc \'SAI\' nếu bạn phát hiện ra lỗi. Đừng để mất hết mạng sống!';
 
   @override
   String get reverseStroopTitle => 'Stroop ngược';

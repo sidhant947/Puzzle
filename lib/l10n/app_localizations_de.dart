@@ -21,7 +21,7 @@ class AppLocalizationsDe extends AppLocalizations {
   String get playAgain => 'Nochmal spielen';
 
   @override
-  String get playNext => 'Play Next';
+  String get playNext => 'Nächstes Spiel';
 
   @override
   String get seeCompleted => 'Puzzle ansehen';
@@ -1528,21 +1528,21 @@ class AppLocalizationsDe extends AppLocalizations {
       'Ein Wort und eine Beziehung (Synonym oder Antonym) werden gezeigt. Wähle schnell das passende Wort.';
 
   @override
-  String get correct => 'CORRECT';
+  String get correct => 'RICHTIG';
 
   @override
-  String get incorrect => 'INCORRECT';
+  String get incorrect => 'FALSCH';
 
   @override
   String get grammarPoliceTitle => 'Grammatik-Polizei';
 
   @override
   String get grammarPoliceSubtitle =>
-      'Korrigiere Fehler in einem scrollenden Text.';
+      'Bestimmen Sie, ob der Satz grammatikalisch korrekt ist oder Fehler enthält.';
 
   @override
   String get grammarPoliceHowToPlay =>
-      'Sätze scrollen nach oben. Tippe auf Sätze mit Fehlern (Rechtschreibung, Grammatik), um sie zu korrigieren.';
+      'Ein Satz erscheint in der Mitte des Bildschirms. Entscheiden Sie, ob er grammatikalisch korrekt ist oder einen Fehler enthält. Tippen Sie auf \'RICHTIG\', wenn er in Ordnung ist, oder auf \'FALSCH\', wenn Sie einen Fehler entdecken. Verlieren Sie nicht alle Ihre Leben!';
 
   @override
   String get reverseStroopTitle => 'Reverse Stroop';

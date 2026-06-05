@@ -426,8 +426,8 @@
   "vocabularyBuilderSubtitle": "制限時間内に類義語や対義語を一致させます。",
   "vocabularyBuilderHowToPlay": "ターゲットの単語と関係性（類義語または対義語）が表示されます。選択肢の中からその関係に一致する正しい単語を選んでください。急いでください、時間は刻々と過ぎています！",
   "grammarPoliceTitle": "グラマーポリス",
-  "grammarPoliceSubtitle": "流れるテキストの中から間違いを見つけて修正してください。",
-  "grammarPoliceHowToPlay": "文章が画面を下から上に流れます。いくつかは間違い（スペル、文法、句読点）を含んでいます。間違いのある文章をタップして「修正」してください。間違いを見逃しすぎないように！",
+  "grammarPoliceSubtitle": "文章が文法的に正しいか、誤りがあるかを確認します。",
+  "grammarPoliceHowToPlay": "画面の中央に文章が表示されます。それが文法的に正しいか、誤りがあるかを判断してください。問題なければ「正解」を、間違いを見つけたら「不正解」をタップしてください。すべてのライフを失わないように！",
   "reverseStroopTitle": "逆ストループ",
   "reverseStroopSubtitle": "焦点が切り替わるストループテストのバリエーションです。",
   "reverseStroopHowToPlay": "指示に注意してください！「文字」と表示されたら単语の意味を一致させます。「色」と表示されたらインクの色を一致させます。集中力を試すため、ルールは頻繁に切り替わります。",
@@ -538,5 +538,8 @@
   "romanArithmeticTimeUp": "タイムアップ！",
   "romanArithmeticGoalReached": "百人隊長レベル！",
   "romanArithmeticScoreMessage": "ローマ数字の問題を{score}問解きました！",
-  "romanArithmeticTryAgainMessage": "来た、見た、勝った！{score}問解きました。"
+  "romanArithmeticTryAgainMessage": "来た、見た、勝った！{score}問解きました。",
+  "playNext": "次を再生",
+  "correct": "正解",
+  "incorrect": "不正解"
 }

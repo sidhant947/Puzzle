@@ -447,8 +447,8 @@
   "vocabularyBuilderSubtitle": "Cocokkan sinonim dan antonim di bawah tekanan waktu.",
   "vocabularyBuilderHowToPlay": "Anda akan diperlihatkan kata target dan hubungan (Sinonim atau Antonim). Pilih kata yang benar dari opsi yang cocok dengan hubungan tersebut. Cepatlah, waktu terus berjalan!",
   "grammarPoliceTitle": "Polisi Tata Bahasa",
-  "grammarPoliceSubtitle": "Identifikasi dan perbaiki kesalahan dalam teks yang bergulir.",
-  "grammarPoliceHowToPlay": "Kalimat akan bergulir ke atas layar. Beberapa di antaranya mengandung kesalahan (ejaan, tata bahasa, atau tanda baca). Ketuk kalimat yang mengandung kesalahan untuk 'memperbaikinya'. Jangan biarkan terlalu banyak kesalahan lewat begitu saja!",
+  "grammarPoliceSubtitle": "Identifikasi apakah kalimat tersebut benar secara tata bahasa atau mengandung kesalahan.",
+  "grammarPoliceHowToPlay": "Sebuah kalimat akan muncul di tengah layar. Tentukan apakah kalimat tersebut benar secara tata bahasa atau mengandung kesalahan. Ketuk 'BENAR' jika baik-baik saja, atau 'SALAH' jika Anda menemukan kesalahan. Jangan sampai kehilangan semua nyawa Anda!",
   "reverseStroopTitle": "Reverse Stroop",
   "reverseStroopSubtitle": "Variasi tes Stroop di mana fokusnya dialihkan.",
   "reverseStroopHowToPlay": "Perhatikan instruksinya! Jika tertulis 'TEKS', cocokkan arti kata tersebut. Jika tertulis 'WARNA', cocokkan warna tinta. Aturan akan sering beralih untuk menguji fokus Anda.",
@@ -538,5 +538,8 @@
   "topologySubtitle": "Apakah bentuk-bentuk ini setara secara topologi? (Dapatkah salah satu diubah bentuknya menjadi yang lain tanpa memotong atau mengelem?)",
   "topologyWinTitle": "GEOMETRY GENIUS!",
   "topologyWinMessage": "Anda berhasil mengidentifikasi 10 pasangan topologi dengan benar!",
-  "topologyScore": "SKOR: "
+  "topologyScore": "SKOR: ",
+  "playNext": "Main Berikutnya",
+  "correct": "BENAR",
+  "incorrect": "SALAH"
 }

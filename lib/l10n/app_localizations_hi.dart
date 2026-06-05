@@ -21,7 +21,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get playAgain => 'फिर से खेलें';
 
   @override
-  String get playNext => 'Play Next';
+  String get playNext => 'अगला खेलें';
 
   @override
   String get seeCompleted => 'पहेली की समीक्षा करें';
@@ -1513,21 +1513,21 @@ class AppLocalizationsHi extends AppLocalizations {
       'आपको एक लक्ष्य शब्द और एक संबंध (पर्यायवाची या विलोम) दिखाया जाएगा। विकल्पों में से सही शब्द चुनें जो संबंध से मेल खाता हो। जल्दी करें, घड़ी चल रही है!';
 
   @override
-  String get correct => 'CORRECT';
+  String get correct => 'सही';
 
   @override
-  String get incorrect => 'INCORRECT';
+  String get incorrect => 'गलत';
 
   @override
   String get grammarPoliceTitle => 'ग्रामर पुलिस';
 
   @override
   String get grammarPoliceSubtitle =>
-      'टेक्स्ट की स्क्रॉलिंग दीवार में त्रुटियों को पहचानें और ठीक करें।';
+      'पहचानें कि वाक्य व्याकरण की दृष्टि से सही है या उसमें त्रुटियां हैं।';
 
   @override
   String get grammarPoliceHowToPlay =>
-      'वाक्य स्क्रीन पर ऊपर की ओर स्क्रॉल करेंगे। कुछ में त्रुटियां (वर्तनी, व्याकरण, या विराम चिह्न) होती हैं। त्रुटियों वाले वाक्यों को \'ठीक\' करने के लिए उन पर टैप करें। बहुत अधिक त्रुटियों को न जाने दें!';
+      'स्क्रीन के बीच में एक वाक्य दिखाई देगा। तय करें कि क्या यह व्याकरणिक रूप से सही है या इसमें कोई त्रुटि है। यदि यह ठीक है तो \'सही\' पर टैप करें, या यदि आपको कोई गलती दिखती है तो \'गलत\' पर टैप करें। अपनी सभी जानें न गवाएं!';
 
   @override
   String get reverseStroopTitle => 'रिवर्स स्ट्रूप';

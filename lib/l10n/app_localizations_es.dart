@@ -21,7 +21,7 @@ class AppLocalizationsEs extends AppLocalizations {
   String get playAgain => 'Jugar de nuevo';
 
   @override
-  String get playNext => 'Play Next';
+  String get playNext => 'Jugar Siguiente';
 
   @override
   String get seeCompleted => 'Revisar puzzle';
@@ -1531,21 +1531,21 @@ class AppLocalizationsEs extends AppLocalizations {
       'Se te mostrará una palabra objetivo y una relación (Sinónimo o Antónimo). Elige la palabra correcta de las opciones que coincida con la relación. ¡Rápido, el tiempo vuela!';
 
   @override
-  String get correct => 'CORRECT';
+  String get correct => 'CORRECTO';
 
   @override
-  String get incorrect => 'INCORRECT';
+  String get incorrect => 'INCORRECTO';
 
   @override
   String get grammarPoliceTitle => 'Policía gramatical';
 
   @override
   String get grammarPoliceSubtitle =>
-      'Identifica y corrige errores en un muro de texto que se desplaza.';
+      'Identifica si la oración es gramaticalmente correcta o contiene errores.';
 
   @override
   String get grammarPoliceHowToPlay =>
-      'Las frases se desplazarán hacia arriba por la pantalla. Algunas contienen errores (ortografía, gramática o puntuación). Toca las frases que contengan errores para \'corregirlas\'. ¡No dejes pasar demasiados errores!';
+      'Aparecerá una oración en el centro de la pantalla. Decide si es gramaticalmente correcta o si contiene un error. Pulsa \'CORRECTO\' si está bien, o \'INCORRECTO\' si detectas un error. ¡No pierdas todas tus vidas!';
 
   @override
   String get reverseStroopTitle => 'Stroop inverso';

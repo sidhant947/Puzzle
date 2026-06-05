@@ -144,44 +144,72 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
                   const SizedBox(height: DesignSystem.spaceLG),
                   
                   // Actions
-                  TangibleButton(
-                    onTap: () {
-                      if (nextGame != null && !isSameGame) {
-                        // Set new session for the next game
-                        ref.read(gameSessionNotifierProvider.notifier).setSession(
-                          gameId: nextGame['id'],
-                          category: session.selectedCategory,
-                          query: session.searchQuery,
-                        );
-                        
-                        // Close dialog and current game screen
-                        Navigator.of(context).pop(); // Dialog
-                        Navigator.of(context).pop(); // Current Game
-                        
-                        // Navigate to next game
-                        Navigator.push(
-                          context,
-                          CustomPageRoute(page: (nextGame['builder'] as WidgetBuilder)(context)),
-                        );
-                      } else {
-                        widget.onPlayAgain();
-                      }
-                    },
-                    color: DesignSystem.primary,
-                    padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
-                    child: Center(
-                      child: Text(
-                        (isSameGame ? l10n.playAgain : l10n.playNext).toUpperCase(),
-                        style: const TextStyle(
-                          fontFamily: 'Geist',
-                          color: Colors.white,
-                          fontWeight: FontWeight.w700, // Premium elegant weight
-                          fontSize: DesignSystem.fontSizeMD, // 16.0
-                          letterSpacing: 0.5,
+                  if (nextGame != null && !isSameGame)
+                    Row(
+                      children: [
+                        TangibleButton(
+                          onTap: widget.onPlayAgain,
+                          color: colorScheme.surface,
+                          shadowColor: colorScheme.outline,
+                          padding: const EdgeInsets.all(11),
+                          child: Icon(
+                            Icons.refresh_rounded,
+                            color: colorScheme.onSurface.withValues(alpha: 0.7),
+                            size: 22,
+                          ),
+                        ),
+                        const SizedBox(width: DesignSystem.spaceSM),
+                        Expanded(
+                          child: TangibleButton(
+                            onTap: () {
+                              ref.read(gameSessionNotifierProvider.notifier).setSession(
+                                gameId: nextGame!['id'],
+                                category: session.selectedCategory,
+                                query: session.searchQuery,
+                              );
+                              Navigator.of(context).pop(); // Dialog
+                              Navigator.of(context).pop(); // Current Game
+                              Navigator.push(
+                                context,
+                                CustomPageRoute(page: (nextGame['builder'] as WidgetBuilder)(context)),
+                              );
+                            },
+                            color: DesignSystem.primary,
+                            padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                            child: Center(
+                              child: Text(
+                                l10n.playNext.toUpperCase(),
+                                style: const TextStyle(
+                                  fontFamily: 'Geist',
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: DesignSystem.fontSizeMD,
+                                  letterSpacing: 0.5,
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    )
+                  else
+                    TangibleButton(
+                      onTap: widget.onPlayAgain,
+                      color: DesignSystem.primary,
+                      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 16),
+                      child: Center(
+                        child: Text(
+                          l10n.playAgain.toUpperCase(),
+                          style: const TextStyle(
+                            fontFamily: 'Geist',
+                            color: Colors.white,
+                            fontWeight: FontWeight.w700,
+                            fontSize: DesignSystem.fontSizeMD,
+                            letterSpacing: 0.5,
+                          ),
                         ),
                       ),
                     ),
-                  ),
                   const SizedBox(height: DesignSystem.spaceMD),
                   Row(
                     children: [

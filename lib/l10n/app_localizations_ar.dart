@@ -21,7 +21,7 @@ class AppLocalizationsAr extends AppLocalizations {
   String get playAgain => 'العب ثانية';
 
   @override
-  String get playNext => 'Play Next';
+  String get playNext => 'العب التالي';
 
   @override
   String get seeCompleted => 'مراجعة اللغز';
@@ -1489,20 +1489,21 @@ class AppLocalizationsAr extends AppLocalizations {
       'ستظهر لك كلمة مستهدفة وعلاقة (مرادف أو متضاد). اختر الكلمة الصحيحة من الخيارات التي تطابق العلاقة. كن سريعاً، الوقت يمر!';
 
   @override
-  String get correct => 'CORRECT';
+  String get correct => 'صحيح';
 
   @override
-  String get incorrect => 'INCORRECT';
+  String get incorrect => 'غير صحيح';
 
   @override
   String get grammarPoliceTitle => 'شرطة القواعد';
 
   @override
-  String get grammarPoliceSubtitle => 'حدد وصحح الأخطاء في جدار نصي متحرك.';
+  String get grammarPoliceSubtitle =>
+      'حدد ما إذا كانت الجملة صحيحة لغوياً أم تحتوي على أخطاء.';
 
   @override
   String get grammarPoliceHowToPlay =>
-      'ستتحرك الجمل للأعلى على الشاشة. يحتوي بعضها على أخطاء (تهجئة، قواعد، أو علامات ترقيم). اضغط على الجمل التي تحتوي على أخطاء لـ \'تصحيحها\'. لا تدع الكثير من الأخطاء تمر!';
+      'ستظهر جملة في منتصف الشاشة. قرر ما إذا كانت صحيحة لغوياً أم تحتوي على خطأ. اضغط على \'صحيح\' إذا كانت جيدة، أو \'غير صحيح\' إذا لاحظت خطأً. لا تفقد كل أرواحك!';
 
   @override
   String get reverseStroopTitle => 'ستروب المعكوس';

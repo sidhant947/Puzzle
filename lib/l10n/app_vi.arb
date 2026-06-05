@@ -447,8 +447,8 @@
   "vocabularyBuilderSubtitle": "Khớp các từ đồng nghĩa và trái nghĩa dưới áp lực thời gian.",
   "vocabularyBuilderHowToPlay": "Bạn sẽ được xem một từ mục tiêu và một mối quan hệ (Đồng nghĩa hoặc Trái nghĩa). Chọn từ chính xác từ các lựa chọn phù hợp với mối quan hệ đó. Hãy nhanh tay, thời gian đang trôi đi!",
   "grammarPoliceTitle": "Cảnh sát ngữ pháp",
-  "grammarPoliceSubtitle": "Xác định và sửa lỗi trong một văn bản đang cuộn.",
-  "grammarPoliceHowToPlay": "Các câu văn sẽ cuộn lên trên màn hình. Một số câu có lỗi (chính tả, ngữ pháp hoặc dấu câu). Nhấn vào các câu có lỗi để 'sửa' chúng. Đừng để quá nhiều lỗi trôi qua!",
+  "grammarPoliceSubtitle": "Xác định xem câu đó có đúng ngữ pháp hay có lỗi hay không.",
+  "grammarPoliceHowToPlay": "Một câu sẽ xuất hiện ở giữa màn hình. Hãy quyết định xem nó có đúng ngữ pháp hay có lỗi hay không. Nhấn 'ĐÚNG' nếu nó ổn hoặc 'SAI' nếu bạn phát hiện ra lỗi. Đừng để mất hết mạng sống!",
   "reverseStroopTitle": "Stroop ngược",
   "reverseStroopSubtitle": "Một biến thể của bài kiểm tra Stroop nơi sự tập trung được chuyển đổi.",
   "reverseStroopHowToPlay": "Hãy chú ý đến hướng dẫn! Nếu nó ghi 'CHỮ', hãy khớp với ý nghĩa của từ. Nếu nó ghi 'MÀU', hãy khớp với màu mực. Các quy tắc sẽ thay đổi thường xuyên để kiểm tra sự tập trung của bạn.",
@@ -538,5 +538,8 @@
   "topologySubtitle": "Các hình này có tương đương về mặt tô pô không? (Có thể biến đổi hình này thành hình kia mà không cần cắt hay dán không?)",
   "topologyWinTitle": "THIÊN TÀI HÌNH HỌC!",
   "topologyWinMessage": "Bạn đã xác định đúng 10 cặp tô pô!",
-  "topologyScore": "ĐIỂM: "
+  "topologyScore": "ĐIỂM: ",
+  "playNext": "Chơi tiếp",
+  "correct": "ĐÚNG",
+  "incorrect": "SAI"
 }

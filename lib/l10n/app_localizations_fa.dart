@@ -21,7 +21,7 @@ class AppLocalizationsFa extends AppLocalizations {
   String get playAgain => 'بازی مجدد';
 
   @override
-  String get playNext => 'Play Next';
+  String get playNext => 'بازی بعدی';
 
   @override
   String get seeCompleted => 'مرور';
@@ -1508,21 +1508,21 @@ class AppLocalizationsFa extends AppLocalizations {
       'یک کلمه هدف و یک رابطه (مترادف یا متضاد) به شما نشان داده می‌شود. کلمه صحیح را از گزینه‌ها انتخاب کنید. سریع باشید، زمان در حال گذر است!';
 
   @override
-  String get correct => 'CORRECT';
+  String get correct => 'درست';
 
   @override
-  String get incorrect => 'INCORRECT';
+  String get incorrect => 'نادرست';
 
   @override
   String get grammarPoliceTitle => 'پلیس دستور زبان';
 
   @override
   String get grammarPoliceSubtitle =>
-      'خطاها را در یک متن متحرک شناسایی و اصلاح کنید.';
+      'تشخیص دهید که آیا جمله از نظر دستوری صحیح است یا دارای خطا است.';
 
   @override
   String get grammarPoliceHowToPlay =>
-      'جملات روی صفحه به سمت بالا حرکت می‌کنند. برخی شامل خطا هستند (هجی، دستور زبان یا نقطه‌گذاری). روی جملات دارای خطا بزنید تا آن‌ها را \'اصلاح\' کنید. اجازه ندهید خطاهای زیادی عبور کنند!';
+      'یک جمله در وسط صفحه ظاهر می‌شود. تصمیم بگیرید که آیا از نظر دستوری صحیح است یا دارای خطا است. اگر درست است روی «درست» و اگر اشتباهی مشاهده کردید روی «نادرست» ضربه بزنید. تمام جان‌های خود را از دست ندهید!';
 
   @override
   String get reverseStroopTitle => 'استروپ معکوس';

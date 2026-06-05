@@ -426,8 +426,8 @@
   "vocabularyBuilderSubtitle": "在时间压力下匹配同义词和反义词。",
   "vocabularyBuilderHowToPlay": "你将看到一个目标词和一个关系（同义词或反义词）。从选项中选择与该关系匹配的正确单词。动作要快，时间在流逝！",
   "grammarPoliceTitle": "语法警察",
-  "grammarPoliceSubtitle": "在滚动的文本墙中识别并纠正错误。",
-  "grammarPoliceHowToPlay": "句子会在屏幕上向上滚动。有些包含错误（拼写、语法或标点）。点击包含错误的句子来“纠正”它们。不要让太多的错误溜走！",
+  "grammarPoliceSubtitle": "识别句子语法是否正确或包含错误。",
+  "grammarPoliceHowToPlay": "屏幕中央会出现一个句子。判断其语法是否正确或包含错误。如果没问题，点击“正确”；如果发现错误，点击“错误”。不要失去所有的生命！",
   "reverseStroopTitle": "逆向斯特鲁普",
   "reverseStroopSubtitle": "斯特鲁普测试的一个变体，重点发生了切换。",
   "reverseStroopHowToPlay": "注意指示！如果显示“文字”，请匹配单词的含义。如果显示“颜色”，请匹配墨水颜色。规则会经常切换以测试你的注意力。",
@@ -538,5 +538,8 @@
   "topologySubtitle": "这些形状在拓扑上等效吗？（其中一个能否在不切割或粘贴的情况下变形为另一个？）",
   "topologyWinTitle": "几何天才！",
   "topologyWinMessage": "你正确识别了 10 对拓扑对！",
-  "topologyScore": "分数："
+  "topologyScore": "分数：",
+  "playNext": "玩下一个",
+  "correct": "正确",
+  "incorrect": "错误"
 }

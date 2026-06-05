@@ -21,7 +21,7 @@ class AppLocalizationsFr extends AppLocalizations {
   String get playAgain => 'Rejouer';
 
   @override
-  String get playNext => 'Play Next';
+  String get playNext => 'Suivant';
 
   @override
   String get seeCompleted => 'Revoir le Puzzle';
@@ -1545,11 +1545,11 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get grammarPoliceSubtitle =>
-      'Identifiez et corrigez les erreurs dans un texte défilant.';
+      'Identifiez si la phrase est grammaticalement correcte ou contient des erreurs.';
 
   @override
   String get grammarPoliceHowToPlay =>
-      'Des phrases défileront vers le haut. Certaines contiennent des erreurs. Appuyez sur les phrases erronées pour les \'corriger\'. Ne laissez pas passer trop d\'erreurs !';
+      'Une phrase apparaîtra au centre de l\'écran. Décidez si elle est grammaticalement correcte ou si elle contient une erreur. Appuyez sur \'CORRECT\' si elle est correcte, ou sur \'INCORRECT\' si vous repérez une erreur. Ne perdez pas toutes vos vies !';
 
   @override
   String get reverseStroopTitle => 'Stroop Inversé';

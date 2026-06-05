@@ -446,8 +446,8 @@
   "vocabularyBuilderSubtitle": "Empareja sinónimos y antónimos bajo presión de tiempo.",
   "vocabularyBuilderHowToPlay": "Se te mostrará una palabra objetivo y una relación (Sinónimo o Antónimo). Elige la palabra correcta de las opciones que coincida con la relación. ¡Rápido, el tiempo vuela!",
   "grammarPoliceTitle": "Policía gramatical",
-  "grammarPoliceSubtitle": "Identifica y corrige errores en un muro de texto que se desplaza.",
-  "grammarPoliceHowToPlay": "Las frases se desplazarán hacia arriba por la pantalla. Algunas contienen errores (ortografía, gramática o puntuación). Toca las frases que contengan errores para 'corregirlas'. ¡No dejes pasar demasiados errores!",
+  "grammarPoliceSubtitle": "Identifica si la oración es gramaticalmente correcta o contiene errores.",
+  "grammarPoliceHowToPlay": "Aparecerá una oración en el centro de la pantalla. Decide si es gramaticalmente correcta o si contiene un error. Pulsa 'CORRECTO' si está bien, o 'INCORRECTO' si detectas un error. ¡No pierdas todas tus vidas!",
   "reverseStroopTitle": "Stroop inverso",
   "reverseStroopSubtitle": "Una variación del test de Stroop donde el enfoque cambia.",
   "reverseStroopHowToPlay": "¡Presta atención a las instrucciones! Si dice 'TEXTO', coincide con el significado de la palabra. Si dice 'COLOR', coincide con el color de la tinta. Las reglas cambiarán frecuentemente para poner a prueba tu concentración.",
@@ -538,5 +538,8 @@
   "topologyWinTitle": "¡GENIO DE LA GEOMETRÍA!",
   "topologyWinMessage": "¡Has identificado correctamente 10 pares topológicos!",
   "topologyScore": "PUNTUACIÓN: ",
-  "hueSortWrongTiles": "Azulejos en la posición incorrecta: {count}"
+  "hueSortWrongTiles": "Azulejos en la posición incorrecta: {count}",
+  "playNext": "Jugar Siguiente",
+  "correct": "CORRECTO",
+  "incorrect": "INCORRECTO"
 }

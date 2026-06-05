@@ -446,8 +446,8 @@
   "vocabularyBuilderSubtitle": "Ordne Synonyme und Antonyme unter Zeitdruck zu.",
   "vocabularyBuilderHowToPlay": "Ein Wort und eine Beziehung (Synonym oder Antonym) werden gezeigt. Wähle schnell das passende Wort.",
   "grammarPoliceTitle": "Grammatik-Polizei",
-  "grammarPoliceSubtitle": "Korrigiere Fehler in einem scrollenden Text.",
-  "grammarPoliceHowToPlay": "Sätze scrollen nach oben. Tippe auf Sätze mit Fehlern (Rechtschreibung, Grammatik), um sie zu korrigieren.",
+  "grammarPoliceSubtitle": "Bestimmen Sie, ob der Satz grammatikalisch korrekt ist oder Fehler enthält.",
+  "grammarPoliceHowToPlay": "Ein Satz erscheint in der Mitte des Bildschirms. Entscheiden Sie, ob er grammatikalisch korrekt ist oder einen Fehler enthält. Tippen Sie auf 'RICHTIG', wenn er in Ordnung ist, oder auf 'FALSCH', wenn Sie einen Fehler entdecken. Verlieren Sie nicht alle Ihre Leben!",
   "reverseStroopTitle": "Reverse Stroop",
   "reverseStroopSubtitle": "Eine variante des Stroop-Tests mit vertauschtem Fokus.",
   "reverseStroopHowToPlay": "Achte auf die Anweisung! Bei 'TEXT' achte auf die Bedeutung, bei 'FARBE' auf die Schriftfarbe.",
@@ -538,5 +538,8 @@
   "topologyWinTitle": "GEOMETRIE-GENIE!",
   "topologyWinMessage": "Du hast 10 topologische Paare korrekt identifiziert!",
   "topologyScore": "PUNKTE: ",
-  "hueSortWrongTiles": "Kacheln an der falschen Position: {count}"
+  "hueSortWrongTiles": "Kacheln an der falschen Position: {count}",
+  "playNext": "Nächstes Spiel",
+  "correct": "RICHTIG",
+  "incorrect": "FALSCH"
 }

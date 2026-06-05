@@ -21,7 +21,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get playAgain => 'もう一度プレイ';
 
   @override
-  String get playNext => 'Play Next';
+  String get playNext => '次を再生';
 
   @override
   String get seeCompleted => 'パズルを確認';
@@ -1450,20 +1450,20 @@ class AppLocalizationsJa extends AppLocalizations {
       'ターゲットの単語と関係性（類義語または対義語）が表示されます。選択肢の中からその関係に一致する正しい単語を選んでください。急いでください、時間は刻々と過ぎています！';
 
   @override
-  String get correct => 'CORRECT';
+  String get correct => '正解';
 
   @override
-  String get incorrect => 'INCORRECT';
+  String get incorrect => '不正解';
 
   @override
   String get grammarPoliceTitle => 'グラマーポリス';
 
   @override
-  String get grammarPoliceSubtitle => '流れるテキストの中から間違いを見つけて修正してください。';
+  String get grammarPoliceSubtitle => '文章が文法的に正しいか、誤りがあるかを確認します。';
 
   @override
   String get grammarPoliceHowToPlay =>
-      '文章が画面を下から上に流れます。いくつかは間違い（スペル、文法、句読点）を含んでいます。間違いのある文章をタップして「修正」してください。間違いを見逃しすぎないように！';
+      '画面の中央に文章が表示されます。それが文法的に正しいか、誤りがあるかを判断してください。問題なければ「正解」を、間違いを見つけたら「不正解」をタップしてください。すべてのライフを失わないように！';
 
   @override
   String get reverseStroopTitle => '逆ストループ';

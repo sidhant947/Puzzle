@@ -446,8 +446,8 @@
   "vocabularyBuilderSubtitle": "Abbina sinonimi e contrari sotto pressione temporale.",
   "vocabularyBuilderHowToPlay": "Ti verrà mostrata una parola target e una relazione (Sinonimo o Contrario). Scegli la parola corretta tra le opzioni che corrisponde alla relazione. Sii veloce, il tempo scorre!",
   "grammarPoliceTitle": "Polizia della Grammatica",
-  "grammarPoliceSubtitle": "Identifica e corregge gli errori in un testo a scorrimento.",
-  "grammarPoliceHowToPlay": "Le frasi scorreranno sullo schermo. Alcune contengono errori (ortografia, grammatica o punteggiatura). Tocca le frasi che contengono errori per 'correggerle'. Non lasciare passare troppi errori!",
+  "grammarPoliceSubtitle": "Identifica se la frase è grammaticalmente corretta o contiene errori.",
+  "grammarPoliceHowToPlay": "Una frase apparirà al centro dello schermo. Decidi se è grammaticalmente corretta o se contiene un errore. Tocca 'CORRETTO' se va bene, o 'ERRATO' se noti un errore. Non perdere tutte le tue vite!",
   "reverseStroopTitle": "Stroop Inverso",
   "reverseStroopSubtitle": "Una variante del test di Stroop in cui il focus è scambiato.",
   "reverseStroopHowToPlay": "Presta attenzione alle istruzioni! Se dice 'TESTO', abbina il significato della parola. Se dice 'COLORE', abbina il colore dell'inchiostro. Le regole cambieranno frequentemente per testare la tua concentrazione.",
@@ -538,5 +538,8 @@
   "topologyWinTitle": "GENIO DELLA GEOMETRIA!",
   "topologyWinMessage": "Hai identificato correttamente 10 coppie topologiche!",
   "topologyScore": "PUNTEGGIO: ",
-  "hueSortWrongTiles": "Piastrelle in posizione errata: {count}"
+  "hueSortWrongTiles": "Piastrelle in posizione errata: {count}",
+  "playNext": "Gioca Successivo",
+  "correct": "CORRETTO",
+  "incorrect": "ERRATO"
 }

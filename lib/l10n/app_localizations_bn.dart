@@ -21,7 +21,7 @@ class AppLocalizationsBn extends AppLocalizations {
   String get playAgain => 'আবার খেলুন';
 
   @override
-  String get playNext => 'Play Next';
+  String get playNext => 'পরবর্তী খেলুন';
 
   @override
   String get seeCompleted => 'পর্যালোচনা';
@@ -1512,21 +1512,21 @@ class AppLocalizationsBn extends AppLocalizations {
       'আপনাকে একটি টার্গেট শব্দ এবং একটি সম্পর্ক (সমার্থক বা বিপরীতার্থক) দেখানো হবে। বিকল্পগুলো থেকে সঠিক শব্দটি চয়ন করুন যা সম্পর্কের সাথে মেলে। দ্রুত করুন, সময় চলে যাচ্ছে!';
 
   @override
-  String get correct => 'CORRECT';
+  String get correct => 'সঠিক';
 
   @override
-  String get incorrect => 'INCORRECT';
+  String get incorrect => 'ভুল';
 
   @override
   String get grammarPoliceTitle => 'ব্যাকরণ পুলিশ';
 
   @override
   String get grammarPoliceSubtitle =>
-      'লেখার একটি স্ক্রলিং দেয়ালে ত্রুটিগুলো শনাক্ত করুন এবং সংশোধন করুন।';
+      'বাক্যটি ব্যাকরণগতভাবে সঠিক নাকি ভুল আছে তা সনাক্ত করুন।';
 
   @override
   String get grammarPoliceHowToPlay =>
-      'বাক্যগুলো স্ক্রিনে ওপরের দিকে স্ক্রল করবে। কিছুতে ত্রুটি (বানান, ব্যাকরণ বা বিরামচিহ্ন) রয়েছে। বাক্যগুলো \'সংশোধন\' করতে সেগুলোতে ট্যাপ করুন। খুব বেশি ত্রুটি যেতে দেবেন না!';
+      'পর্দার মাঝখানে একটি বাক্য উপস্থিত হবে। এটি ব্যাকরণগতভাবে সঠিক নাকি এতে কোনো ভুল আছে তা স্থির করুন। যদি এটি ঠিক থাকে তবে \'সঠিক\' ট্যাপ করুন, অথবা যদি আপনি কোনো ভুল দেখেন তবে \'ভুল\' ট্যাপ করুন। আপনার সমস্ত জীবন হারাবেন না!';
 
   @override
   String get reverseStroopTitle => 'রিভার্স স্ট্রুপ';

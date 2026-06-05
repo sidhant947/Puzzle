@@ -426,8 +426,8 @@
   "vocabularyBuilderSubtitle": "Combine sinônimos e antônimos sob pressão de tempo.",
   "vocabularyBuilderHowToPlay": "Uma palavra alvo e uma relação (Sinônimo ou Antônimo) serão mostradas. Escolha a palavra correta rapidamente.",
   "grammarPoliceTitle": "Polícia Gramatical",
-  "grammarPoliceSubtitle": "Identifique e corrija erros em um texto que rola na tela.",
-  "grammarPoliceHowToPlay": "Frases rolarão na tela. Algumas contêm erros (ortografia, gramática). Toque nelas para corrigi-las.",
+  "grammarPoliceSubtitle": "Identifique se a frase está gramaticalmente correta ou se contém erros.",
+  "grammarPoliceHowToPlay": "Uma frase aparecerá no centro do ecrã. Decida se está gramaticalmente correta ou se contém um erro. Toque em 'CORRETO' se estiver tudo bem, ou em 'INCORRETO' se detetar um erro. Não perca todas as suas vidas!",
   "reverseStroopTitle": "Stroop Reverso",
   "reverseStroopSubtitle": "Uma variação do teste de Stroop onde o foco é invertido.",
   "reverseStroopHowToPlay": "Preste atenção na instrução! Se disser 'TEXTO', combine com o significado. Se disser 'COR', combine com a cor da tinta.",
@@ -538,5 +538,8 @@
   "topologySubtitle": "Essas formas são topologicamente equivalentes? (Uma pode ser deformada na outra sem cortar ou colar?)",
   "topologyWinTitle": "GÊNIO DA GEOMETRIA!",
   "topologyWinMessage": "Você identificou corretamente 10 pares topológicos!",
-  "topologyScore": "PONTUAÇÃO: "
+  "topologyScore": "PONTUAÇÃO: ",
+  "playNext": "Jogar Próximo",
+  "correct": "CORRETO",
+  "incorrect": "INCORRETO"
 }

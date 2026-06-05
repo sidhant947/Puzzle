@@ -21,7 +21,7 @@ class AppLocalizationsPl extends AppLocalizations {
   String get playAgain => 'Graj ponownie';
 
   @override
-  String get playNext => 'Play Next';
+  String get playNext => 'Graj dalej';
 
   @override
   String get seeCompleted => 'Przegląd';
@@ -1517,21 +1517,21 @@ class AppLocalizationsPl extends AppLocalizations {
       'Zostanie ci pokazane słowo docelowe i relacja (synonim lub antonim). Wybierz poprawne słowo z opcji pasujących do relacji. Bądź szybki, czas ucieka!';
 
   @override
-  String get correct => 'CORRECT';
+  String get correct => 'POPRAWNE';
 
   @override
-  String get incorrect => 'INCORRECT';
+  String get incorrect => 'BŁĘDNE';
 
   @override
   String get grammarPoliceTitle => 'Policja gramatyczna';
 
   @override
   String get grammarPoliceSubtitle =>
-      'Zidentyfikuj i popraw błędy w przewijającej się ścianie tekstu.';
+      'Określ, czy zdanie jest poprawne pod względem gramatycznym, czy zawiera błędy.';
 
   @override
   String get grammarPoliceHowToPlay =>
-      'Zdania będą przewijać się w górę ekranu. Niektóre zawierają błędy (ortograficzne, gramatyczne lub interpunkcyjne). Dotknij zdań zawierających błędy, aby je \'poprawić\'. Nie pozwól, aby przeszło zbyt wiele błędów!';
+      'Na środku ekranu pojawi się zdanie. Zdecyduj, czy jest ono poprawne gramatycznie, czy zawiera błąd. Dotknij \'POPRAWNE\', jeśli wszystko jest w porządku, lub \'BŁĘDNE\', jeśli zauważysz błąd. Nie trać wszystkich żyć!';
 
   @override
   String get reverseStroopTitle => 'Odwrócony Stroop';

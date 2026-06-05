@@ -21,7 +21,7 @@ class AppLocalizationsUr extends AppLocalizations {
   String get playAgain => 'دوبارہ کھیلیں';
 
   @override
-  String get playNext => 'Play Next';
+  String get playNext => 'اگلا کھیلیں';
 
   @override
   String get seeCompleted => 'جائزہ';
@@ -1513,21 +1513,21 @@ class AppLocalizationsUr extends AppLocalizations {
       'آپ کو ایک ٹارگٹ لفظ اور ایک تعلق (مترادف یا متضاد) دکھایا جائے گا۔ اختیارات میں سے وہ صحیح لفظ منتخب کریں جو تعلق سے میچ کرتا ہو۔ جلدی کریں، وقت گزر رہا ہے!';
 
   @override
-  String get correct => 'CORRECT';
+  String get correct => 'درست';
 
   @override
-  String get incorrect => 'INCORRECT';
+  String get incorrect => 'غلط';
 
   @override
   String get grammarPoliceTitle => 'گرامر پولیس';
 
   @override
   String get grammarPoliceSubtitle =>
-      'ٹیکسٹ کی ایک اسکرولنگ دیوار میں غلطیوں کی شناخت اور اصلاح کریں۔';
+      'شناخت کریں کہ آیا جملہ گرامر کے لحاظ سے درست ہے یا اس میں غلطیاں ہیں۔';
 
   @override
   String get grammarPoliceHowToPlay =>
-      'جملے اسکرین پر اسکرول کریں گے۔ کچھ میں غلطیاں (املا، گرامر، یا رموز اوقاف) ہوں گی۔ ان جملوں پر ٹیپ کریں جن میں غلطیاں ہوں تاکہ ان کی \'اصلاح\' ہو سکے۔ بہت زیادہ غلطیاں گزرنے نہ دیں!';
+      'اسکرین کے بیچ میں ایک جملہ ظاہر ہوگا۔ فیصلہ کریں کہ کیا یہ گرامر کے لحاظ سے درست ہے یا اس میں کوئی غلطی ہے۔ اگر یہ ٹھیک ہے تو \'درست\' پر ٹیپ کریں، یا اگر آپ کو کوئی غلطی نظر آتی ہے تو \'غلط\' پر ٹیپ کریں. اپنی تمام زندگیوں کو نہ کھوئیں!';
 
   @override
   String get reverseStroopTitle => 'ریورس اسٹروپ';

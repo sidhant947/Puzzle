@@ -21,7 +21,7 @@ class AppLocalizationsTh extends AppLocalizations {
   String get playAgain => 'เล่นอีกครั้ง';
 
   @override
-  String get playNext => 'Play Next';
+  String get playNext => 'เล่นถัดไป';
 
   @override
   String get seeCompleted => 'รีวิว';
@@ -1489,21 +1489,21 @@ class AppLocalizationsTh extends AppLocalizations {
       'คุณจะเห็นคำศัพท์เป้าหมายและความสัมพันธ์ (คำเหมือนหรือคำตรงข้าม) เลือกคำที่ถูกต้องจากตัวเลือกที่ตรงกับความสัมพันธ์นั้น ต้องเร็วหน่อยนะ เวลาเดินอยู่!';
 
   @override
-  String get correct => 'CORRECT';
+  String get correct => 'ถูกต้อง';
 
   @override
-  String get incorrect => 'INCORRECT';
+  String get incorrect => 'ไม่ถูกต้อง';
 
   @override
   String get grammarPoliceTitle => 'ตำรวจไวยากรณ์';
 
   @override
   String get grammarPoliceSubtitle =>
-      'ระบุและแก้ไขข้อผิดพลาดในข้อความที่เลื่อนไปมา';
+      'ระบุว่าประโยคนั้นถูกต้องตามหลักไวยากรณ์หรือมีข้อผิดพลาด';
 
   @override
   String get grammarPoliceHowToPlay =>
-      'ประโยคจะเลื่อนขึ้นบนหน้าจอ บางประโยคมีข้อผิดพลาด (การสะกด ไวยากรณ์ หรือเครื่องหมายวรรคตอน) แตะประโยคที่มีข้อผิดพลาดเพื่อ \'แก้ไข\' อย่าปล่อยให้มีข้อผิดพลาดผ่านไปมากเกินไป!';
+      'ประโยคจะปรากฏขึ้นตรงกลางหน้าจอ ตัดสินใจว่าถูกต้องตามหลักไวยากรณ์หรือมีข้อผิดพลาด แตะ \'ถูกต้อง\' หากไม่มีปัญหา หรือ \'ไม่ถูกต้อง\' หากคุณพบข้อผิดพลาด อย่าเสียชีวิตทั้งหมดของคุณ!';
 
   @override
   String get reverseStroopTitle => 'สตรูปย้อนกลับ';
