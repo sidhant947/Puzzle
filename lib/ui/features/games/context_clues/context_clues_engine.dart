@@ -120,8 +120,15 @@ class ContextCluesEngine {
     // If level exceeds 5, cap it at 5
     final levelKey = level > 5 ? 5 : level;
     final questions = _questionsPool[levelKey] ?? [];
-    // Return a shuffled copy of the questions
-    return List<ClueQuestion>.from(questions)..shuffle();
+    // Return a copy of the questions with their options shuffled
+    return questions.map((q) {
+      return ClueQuestion(
+        sentence: q.sentence,
+        clue: q.clue,
+        correctWord: q.correctWord,
+        options: List<String>.from(q.options)..shuffle(),
+      );
+    }).toList();
   }
 
   bool validateAnswer(ClueQuestion question, String answer) {
