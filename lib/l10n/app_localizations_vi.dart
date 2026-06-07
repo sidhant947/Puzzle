@@ -387,6 +387,128 @@ class AppLocalizationsVi extends AppLocalizations {
   String get nonogramWin => 'Đã hiện hình ảnh!';
 
   @override
+  String get magnetsTitle => 'NAM CHÂM';
+
+  @override
+  String get magnetsSubtitle => 'Đặt nam châm vào lưới dựa trên số lượng cực.';
+
+  @override
+  String get magnetsHowToPlay =>
+      'Đổ đầy các hộp chứa kích thước bằng quân domino bằng các nam châm \'+\' và \'-\' hoặc để trống. Các gợi ý ở hàng và cột xác định tổng số mỗi cực trong dòng đó. Các cực giống nhau không được nằm cạnh nhau theo chiều dọc hoặc ngang.';
+
+  @override
+  String get magnetsWinTitle => 'CÂN BẰNG PHÂN CỰC!';
+
+  @override
+  String get magnetsWinMessage =>
+      'Tất cả các nam châm đã được sắp xếp hoàn hảo!';
+
+  @override
+  String get lighthousesTitle => 'NGỌN HẢI ĐĂNG';
+
+  @override
+  String get lighthousesSubtitle =>
+      'Đặt tàu dựa trên các gợi ý từ ngọn hải đăng.';
+
+  @override
+  String get lighthousesHowToPlay =>
+      'Đặt các con tàu 1x1 vào lưới. Ngọn hải đăng cho biết tổng số tàu có thể nhìn thấy theo chiều ngang và chiều dọc. Các tàu không được chạm vào ngọn hải đăng hoặc chạm vào nhau, kể cả theo đường chéo.';
+
+  @override
+  String get lighthousesWinTitle => 'BIỂN AN TOÀN!';
+
+  @override
+  String get lighthousesWinMessage =>
+      'Tất cả các ngọn hải đăng đang dẫn đường cho các con tàu một cách hoàn hảo!';
+
+  @override
+  String get dominosaTitle => 'DOMINOSA';
+
+  @override
+  String get dominosaSubtitle => 'Tìm tất cả các quân domino ẩn trong lưới.';
+
+  @override
+  String get dominosaHowToPlay =>
+      'Sắp xếp một bộ domino hoàn chỉnh trên một lưới các con số sao cho mỗi cặp số liền kề được bao phủ bởi đúng một quân domino. Mỗi cặp số chỉ tồn tại một lần trong bộ.';
+
+  @override
+  String get dominosaWinTitle => 'BẬC THẦY DOMINO!';
+
+  @override
+  String get dominosaWinMessage =>
+      'Mọi quân domino đã được tìm thấy và đặt đúng chỗ!';
+
+  @override
+  String get skyscrapersTitle => 'NHÀ CHỌC TRỜI';
+
+  @override
+  String get skyscrapersSubtitle => 'Điền vào lưới độ cao của các tòa nhà.';
+
+  @override
+  String get skyscrapersHowToPlay =>
+      'Điền vào lưới các độ cao (1-N) sao cho mỗi hàng và cột chứa mỗi độ cao đúng một lần. Các gợi ý ở các cạnh cho biết có bao nhiêu tòa nhà có thể nhìn thấy từ hướng đó, với các tòa nhà cao hơn sẽ che khuất các tòa nhà thấp hơn.';
+
+  @override
+  String get skyscrapersWinTitle => 'ĐƯỜNG CHÂN TRỜI ĐƯỢC KHÔI PHỤC!';
+
+  @override
+  String get skyscrapersWinMessage =>
+      'Tất cả các tòa nhà đều được đặt ở vị trí hoàn hảo!';
+
+  @override
+  String get nurikabeTitle => 'NURIKABE';
+
+  @override
+  String get nurikabeSubtitle =>
+      'Tạo thành một vùng biển kết nối và các hòn đảo tách biệt.';
+
+  @override
+  String get nurikabeHowToPlay =>
+      'Tô bóng các ô để tạo thành một \'biển\' kết nối duy nhất (không có khối 2x2). Các ô không được tô bóng tạo thành các \'đảo\', mỗi đảo chứa đúng một con số biểu thị tổng diện tích của nó.';
+
+  @override
+  String get nurikabeWinTitle => 'BIỂN ĐANG CHẢY!';
+
+  @override
+  String get nurikabeWinMessage =>
+      'Các hòn đảo đã được tách biệt, biển đã được kết nối!';
+
+  @override
+  String get fillominoTitle => 'FILLOMINO';
+
+  @override
+  String get fillominoSubtitle =>
+      'Chia lưới thành các khối polyomino có kích thước quy định.';
+
+  @override
+  String get fillominoHowToPlay =>
+      'Chia lưới thành các khối polyomino sao cho mỗi khối polyomino kích thước N chứa số N trong tất cả các ô của nó. Các khối polyomino có cùng kích thước không được nằm cạnh nhau theo chiều dọc hoặc ngang.';
+
+  @override
+  String get fillominoWinTitle => 'LƯỚI ĐÃ ĐƯỢC CHIA!';
+
+  @override
+  String get fillominoWinMessage => 'Được lấp đầy hoàn hảo bằng logic!';
+
+  @override
+  String get hitoriTitle => 'HITORI';
+
+  @override
+  String get hitoriSubtitle =>
+      'Tô bóng các số trùng lặp trong mỗi hàng và cột.';
+
+  @override
+  String get hitoriHowToPlay =>
+      'Tô bóng các ô sao cho không có con số nào xuất hiện quá một lần trong bất kỳ hàng hoặc cột nào. Các ô được tô bóng không được nằm cạnh nhau (theo chiều dọc hoặc ngang) và tất cả các ô không được tô bóng phải tạo thành một nhóm kết nối duy nhất.';
+
+  @override
+  String get hitoriWinTitle => 'BẬC THẦY HITORI!';
+
+  @override
+  String get hitoriWinMessage =>
+      'Bạn đã giải quyết thành công tất cả các số trùng lặp!';
+
+  @override
   String get pathFinderTitle => 'Tìm đường';
 
   @override

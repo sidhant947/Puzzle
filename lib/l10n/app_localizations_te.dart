@@ -387,6 +387,125 @@ class AppLocalizationsTe extends AppLocalizations {
   String get nonogramWin => 'చిత్రం బయటపడింది!';
 
   @override
+  String get magnetsTitle => 'అయస్కాంతాలు';
+
+  @override
+  String get magnetsSubtitle =>
+      'పోల్ కౌంట్ల ఆధారంగా గ్రిడ్‌లో అయస్కాంతాలను ఉంచండి.';
+
+  @override
+  String get magnetsHowToPlay =>
+      'డొమినో పరిమాణపు కంటైనర్‌లను \'+\' మరియు \'-\' అయస్కాంతాలతో నింపండి లేదా ఖాళీగా వదిలివేయండి. అడ్డు వరుస మరియు నిలువు వరుస ఆధారాలు ఆ లైన్‌లోని ప్రతి పోల్ యొక్క మొత్తం సంఖ్యను తెలియజేస్తాయి. ఒకే రకమైన పోల్స్ పక్కపక్కనే ఉండకూడదు.';
+
+  @override
+  String get magnetsWinTitle => 'ధృవణత సమతుల్యం!';
+
+  @override
+  String get magnetsWinMessage => 'అన్ని అయస్కాంతాలు సరిగ్గా అమర్చబడ్డాయి!';
+
+  @override
+  String get lighthousesTitle => 'లైట్‌హౌస్‌లు';
+
+  @override
+  String get lighthousesSubtitle => 'లైట్‌హౌస్ క్లూల ఆధారంగా షిప్పులను ఉంచండి.';
+
+  @override
+  String get lighthousesHowToPlay =>
+      'గ్రిడ్‌లో 1x1 షిప్పులను ఉంచండి. లైట్‌హౌస్‌లు అడ్డంగా మరియు నిలువుగా కనిపించే షిప్పుల మొత్తం సంఖ్యను సూచిస్తాయి. షిప్పులు లైట్‌హౌస్‌లను లేదా ఒకదానికొకటి తాకకూడదు, వికర్ణంగా కూడా.';
+
+  @override
+  String get lighthousesWinTitle => 'సముద్రం సురక్షితం!';
+
+  @override
+  String get lighthousesWinMessage =>
+      'అన్ని లైట్‌హౌస్‌లు షిప్పులకు సరిగ్గా మార్గనిర్దేశం చేస్తున్నాయి!';
+
+  @override
+  String get dominosaTitle => 'డొమినోసా';
+
+  @override
+  String get dominosaSubtitle =>
+      'గ్రిడ్‌లో దాగి ఉన్న అన్ని డొమినోలను కనుగొనండి.';
+
+  @override
+  String get dominosaHowToPlay =>
+      'సంఖ్యల గ్రిడ్‌పై పూర్తి డొమినోల సెట్‌ను అమర్చండి, తద్వారా పక్కపక్కనే ఉన్న సంఖ్యల ప్రతి జంట సరిగ్గా ఒక డొమినోతో కప్పబడి ఉంటుంది. ప్రతి సంఖ్య జంట సెట్‌లో ఒకసారి మాత్రమే ఉంటుంది.';
+
+  @override
+  String get dominosaWinTitle => 'డొమినో మాస్టర్!';
+
+  @override
+  String get dominosaWinMessage => 'ప్రతి డొమినో కనుగొనబడింది మరియు ఉంచబడింది!';
+
+  @override
+  String get skyscrapersTitle => 'స్కైస్క్రాపర్స్';
+
+  @override
+  String get skyscrapersSubtitle => 'గ్రిడ్‌ను భవనాల ఎత్తులతో నింపండి.';
+
+  @override
+  String get skyscrapersHowToPlay =>
+      'ప్రతి అడ్డు వరుస మరియు నిలువు వరుసలో ప్రతి ఎత్తు సరిగ్గా ఒకసారి ఉండేలా గ్రిడ్‌ను ఎత్తులతో (1-N) నింపండి. అంచులలోని క్లూలు ఆ దిశ నుండి ఎన్ని భవనాలు కనిపిస్తాయో సూచిస్తాయి, ఎత్తైన భవనాలు తక్కువ ఎత్తు ఉన్న భవనాలను అడ్డుకుంటాయి.';
+
+  @override
+  String get skyscrapersWinTitle => 'స్కైలైన్ పునరుద్ధరించబడింది!';
+
+  @override
+  String get skyscrapersWinMessage => 'అన్ని భవనాలు సరిగ్గా అమర్చబడ్డాయి!';
+
+  @override
+  String get nurikabeTitle => 'నూరికాబే';
+
+  @override
+  String get nurikabeSubtitle =>
+      'అనుసంధానించబడిన సముద్రం మరియు విడివిడి ద్వీపాలను ఏర్పాటు చేయండి.';
+
+  @override
+  String get nurikabeHowToPlay =>
+      'ఒకే అనుసంధానించబడిన \'సముద్రం\' (2x2 బ్లాక్‌లు ఉండకూడదు) ఏర్పరచడానికి సెల్‌లను షేడ్ చేయండి. షేడ్ చేయని సెల్‌లు \'ద్వీపాలను\' ఏర్పరుస్తాయి, ప్రతి ద్వీపంలో దాని మొత్తం వైశాల్యాన్ని సూచించే ఖచ్చితంగా ఒక సంఖ్య ఉంటుంది.';
+
+  @override
+  String get nurikabeWinTitle => 'సముద్రం ప్రవహిస్తోంది!';
+
+  @override
+  String get nurikabeWinMessage => 'ద్వీపాలు విడిపోయాయి, సముద్రం కలిసింది!';
+
+  @override
+  String get fillominoTitle => 'ఫిల్లోమినో';
+
+  @override
+  String get fillominoSubtitle =>
+      'గ్రిడ్‌ను నిర్దేశించిన పరిమాణాల పాలిమినోలుగా విభజించండి.';
+
+  @override
+  String get fillominoHowToPlay =>
+      'గ్రిడ్‌ను పాలిమినోలుగా విభజించండి, తద్వారా N పరిమాణం కలిగిన ప్రతి పాలిమినో దానిలోని అన్ని సెల్‌లలో N సంఖ్యను కలిగి ఉంటుంది. ఒకే పరిమాణం కలిగిన పాలిమినోలు పక్కపక్కనే ఉండకూడదు.';
+
+  @override
+  String get fillominoWinTitle => 'గ్రిడ్ విభజించబడింది!';
+
+  @override
+  String get fillominoWinMessage => 'తర్కంతో సరిగ్గా అమర్చబడింది!';
+
+  @override
+  String get hitoriTitle => 'హిటోరి';
+
+  @override
+  String get hitoriSubtitle =>
+      'ప్రతి అడ్డు వరుస మరియు నిలువు వరుసలో ఉన్న నకిలీ సంఖ్యలను షేడ్ చేయండి.';
+
+  @override
+  String get hitoriHowToPlay =>
+      'ఏ అడ్డు వరుస లేదా నిలువు వరుసలోనైనా ఏ సంఖ్య ఒకటి కంటే ఎక్కువసార్లు కనిపించకుండా సెల్‌లను షేడ్ చేయండి. షేడ్ చేసిన సెల్‌లు పక్కపక్కనే ఉండకూడదు మరియు షేడ్ చేయని సెల్‌లన్నీ ఒకే అనుసంధానించబడిన సమూహంగా ఉండాలి.';
+
+  @override
+  String get hitoriWinTitle => 'హిటోరి మాస్టర్!';
+
+  @override
+  String get hitoriWinMessage =>
+      'మీరు విజయవంతంగా అన్ని నకిలీలను పరిష్కరించారు!';
+
+  @override
   String get pathFinderTitle => 'పాత్ ఫైండర్';
 
   @override

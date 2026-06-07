@@ -384,6 +384,119 @@ class AppLocalizationsTh extends AppLocalizations {
   String get nonogramWin => 'เปิดเผยภาพสำเร็จ!';
 
   @override
+  String get magnetsTitle => 'แม่เหล็ก';
+
+  @override
+  String get magnetsSubtitle => 'วางแม่เหล็กในตารางตามจำนวนขั้ว';
+
+  @override
+  String get magnetsHowToPlay =>
+      'เติมคอนเทนเนอร์ขนาดเท่าโดมิโนด้วยแม่เหล็ก \'+\' และ \'-\' หรือปล่อยว่างไว้ คำใบ้ในแถวและคอลัมน์จะระบุจำนวนรวมของแต่ละขั้วในเส้นนั้น ขั้วที่เหมือนกันไม่สามารถอยู่ติดกันในแนวตั้งหรือแนวนอนได้';
+
+  @override
+  String get magnetsWinTitle => 'ปรับสมดุลขั้วแม่เหล็กแล้ว!';
+
+  @override
+  String get magnetsWinMessage => 'แม่เหล็กทั้งหมดถูกจัดเรียงอย่างสมบูรณ์แบบ!';
+
+  @override
+  String get lighthousesTitle => 'ประภาคาร';
+
+  @override
+  String get lighthousesSubtitle => 'วางเรือตามคำใบ้ของประภาคาร';
+
+  @override
+  String get lighthousesHowToPlay =>
+      'วางเรือขนาด 1x1 ในตาราง ประภาคารจะระบุจำนวนรวมของเรือที่มองเห็นได้ในแนวตั้งและแนวนอน เรือไม่สามารถสัมผัสประภาคารหรือสัมผัสกันเองได้ แม้แต่ในแนวทแยง';
+
+  @override
+  String get lighthousesWinTitle => 'ท้องทะเลปลอดภัย!';
+
+  @override
+  String get lighthousesWinMessage =>
+      'ประภาคารทั้งหมดกำลังนำทางเรืออย่างสมบูรณ์แบบ!';
+
+  @override
+  String get dominosaTitle => 'โดมิโนซา';
+
+  @override
+  String get dominosaSubtitle => 'หาโดมิโนที่ซ่อนอยู่ทั้งหมดในตาราง';
+
+  @override
+  String get dominosaHowToPlay =>
+      'จัดเรียงชุดโดมิโนที่สมบูรณ์บนตารางตัวเลข โดยที่ตัวเลขคู่ที่อยู่ติดกันแต่ละคู่จะถูกครอบคลุมด้วยโดมิโนเพียงหนึ่งตัวเท่านั้น ตัวเลขแต่ละคู่จะมีเพียงครั้งเดียวในชุด';
+
+  @override
+  String get dominosaWinTitle => 'ปรมาจารย์โดมิโน!';
+
+  @override
+  String get dominosaWinMessage => 'พบและวางโดมิโนทุกตัวแล้ว!';
+
+  @override
+  String get skyscrapersTitle => 'ตึกระฟ้า';
+
+  @override
+  String get skyscrapersSubtitle => 'เติมความสูงของตึกลงในตาราง';
+
+  @override
+  String get skyscrapersHowToPlay =>
+      'เติมความสูง (1-N) ลงในตาราง โดยที่แต่ละแถวและคอลัมน์จะต้องมีความสูงแต่ละค่าเพียงครั้งเดียวเท่านั้น คำใบ้ที่ขอบจะระบุจำนวนตึกที่มองเห็นได้จากทิศทางนั้น โดยตึกที่สูงกว่าจะบังตึกที่เตี้ยกว่า';
+
+  @override
+  String get skyscrapersWinTitle => 'เส้นขอบฟ้าถูกฟื้นฟู!';
+
+  @override
+  String get skyscrapersWinMessage => 'อาคารทั้งหมดถูกจัดวางอย่างสมบูรณ์แบบ!';
+
+  @override
+  String get nurikabeTitle => 'นูริคาเบะ';
+
+  @override
+  String get nurikabeSubtitle => 'สร้างทะเลที่เชื่อมต่อกันและแยกเกาะออกจากกัน';
+
+  @override
+  String get nurikabeHowToPlay =>
+      'ระบายสีเซลล์เพื่อสร้าง \'ทะเล\' ที่เชื่อมต่อกันเพียงหนึ่งเดียว (ห้ามมีบล็อกขนาด 2x2) เซลล์ที่ไม่ได้ระบายสีจะกลายเป็น \'เกาะ\' ซึ่งแต่ละเกาะจะมีตัวเลขเพียงหนึ่งตัวที่แสดงถึงพื้นที่ทั้งหมดของเกาะนั้น';
+
+  @override
+  String get nurikabeWinTitle => 'ทะเลไหลลื่น!';
+
+  @override
+  String get nurikabeWinMessage => 'เกาะถูกแยกออก ทะเลเชื่อมต่อกันแล้ว!';
+
+  @override
+  String get fillominoTitle => 'ฟิลโลมิโน';
+
+  @override
+  String get fillominoSubtitle => 'แบ่งตารางออกเป็นโพลีโอมิโนตามขนาดที่กำหนด';
+
+  @override
+  String get fillominoHowToPlay =>
+      'แบ่งตารางออกเป็นโพลีโอมิโน โดยที่โพลีโอมิโนขนาด Nแต่ละอันจะต้องมีตัวเลข N ในเซลล์ทั้งหมด โพลีโอมิโนที่มีขนาดเท่ากันไม่สามารถอยู่ติดกันในแนวตั้งหรือแนวนอนได้';
+
+  @override
+  String get fillominoWinTitle => 'แบ่งตารางแล้ว!';
+
+  @override
+  String get fillominoWinMessage => 'ปูด้วยตรรกะอย่างสมบูรณ์แบบ!';
+
+  @override
+  String get hitoriTitle => 'ฮิโตริ';
+
+  @override
+  String get hitoriSubtitle => 'ระบายสีตัวเลขที่ซ้ำกันในแต่ละแถวและคอลัมน์';
+
+  @override
+  String get hitoriHowToPlay =>
+      'ระบายสีเซลล์เพื่อไม่ให้มีตัวเลขใดปรากฏมากกว่าหนึ่งครั้งในแถวหรือคอลัมน์ใดๆ เซลล์ที่ระบายสีไม่สามารถอยู่ติดกันได้ (ในแนวตั้งหรือแนวนอน) และเซลล์ที่ไม่ได้ระบายสีทั้งหมดจะต้องรวมกันเป็นกลุ่มเดียวที่เชื่อมต่อกัน';
+
+  @override
+  String get hitoriWinTitle => 'ปรมาจารย์ฮิโตริ!';
+
+  @override
+  String get hitoriWinMessage => 'คุณแก้ไขตัวเลขที่ซ้ำกันทั้งหมดได้สำเร็จ!';
+
+  @override
   String get pathFinderTitle => 'หาเส้นทาง';
 
   @override

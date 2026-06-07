@@ -385,6 +385,126 @@ class AppLocalizationsTr extends AppLocalizations {
   String get nonogramWin => 'Resim Ortaya Çıktı!';
 
   @override
+  String get magnetsTitle => 'MIKNATISLAR';
+
+  @override
+  String get magnetsSubtitle =>
+      'Mıknatısları kutup sayılarına göre ızgaraya yerleştirin.';
+
+  @override
+  String get magnetsHowToPlay =>
+      'Domino boyutundaki kapları \'+\' ve \'-\' mıknatıslarla doldurun veya boş bırakın. Satır ve sütun ipuçları, o hattaki her kutbun toplam sayısını belirtir. Özdeş kutuplar dikey veya yatay olarak bitişik olamaz.';
+
+  @override
+  String get magnetsWinTitle => 'POLARİTE DENGELENDİ!';
+
+  @override
+  String get magnetsWinMessage =>
+      'Tüm mıknatıslar mükemmel bir şekilde düzenlendi!';
+
+  @override
+  String get lighthousesTitle => 'DENİZ FENERLERİ';
+
+  @override
+  String get lighthousesSubtitle =>
+      'Deniz feneri ipuçlarına göre gemileri yerleştirin.';
+
+  @override
+  String get lighthousesHowToPlay =>
+      'Izgaraya 1x1 gemiler yerleştirin. Deniz fenerleri, yatay ve dikey olarak görülebilen toplam gemi sayısını gösterir. Gemiler deniz fenerlerine veya birbirlerine çapraz olarak bile dokunamazlar.';
+
+  @override
+  String get lighthousesWinTitle => 'DENİZ GÜVENDE!';
+
+  @override
+  String get lighthousesWinMessage =>
+      'Tüm deniz fenerleri gemilere mükemmel bir şekilde rehberlik ediyor!';
+
+  @override
+  String get dominosaTitle => 'DOMINOSA';
+
+  @override
+  String get dominosaSubtitle => 'Izgaradaki tüm gizli dominoları bulun.';
+
+  @override
+  String get dominosaHowToPlay =>
+      'Komşu sayıların her bir çiftinin tam olarak bir domino ile kaplanacağı şekilde, sayıların olduğu bir ızgaraya tam bir domino seti yerleştirin. Her sayı çifti sette yalnızca bir kez bulunur.';
+
+  @override
+  String get dominosaWinTitle => 'DOMİNO USTASI!';
+
+  @override
+  String get dominosaWinMessage => 'Her domino bulundu ve yerleştirildi!';
+
+  @override
+  String get skyscrapersTitle => 'GÖKDELENLER';
+
+  @override
+  String get skyscrapersSubtitle => 'Izgarayı bina yükseklikleriyle doldurun.';
+
+  @override
+  String get skyscrapersHowToPlay =>
+      'Izgarayı yüksekliklerle (1-N) doldurun; her satır ve sütun her yüksekliği tam olarak bir kez içermelidir. Kenarlardaki ipuçları, o yönden kaç binanın görülebildiğini gösterir; daha uzun binalar daha kısa olanları engeller.';
+
+  @override
+  String get skyscrapersWinTitle => 'SİLUET RESTORE EDİLDİ!';
+
+  @override
+  String get skyscrapersWinMessage =>
+      'Tüm binalar mükemmel bir şekilde konumlandırıldı!';
+
+  @override
+  String get nurikabeTitle => 'NURIKABE';
+
+  @override
+  String get nurikabeSubtitle =>
+      'Bağlantılı bir deniz ve ayrı adalar oluşturun.';
+
+  @override
+  String get nurikabeHowToPlay =>
+      'Tek bir bağlantılı \'deniz\' oluşturmak için hücreleri gölgeleyin (2x2 blok olmamalıdır). Gölgelenmemiş hücreler, هر biri toplam alanını temsil eden tam olarak bir sayı içeren \'adalar\' oluşturur.';
+
+  @override
+  String get nurikabeWinTitle => 'DENİZ AKIYOR!';
+
+  @override
+  String get nurikabeWinMessage => 'Adalar ayrıldı, deniz bağlandı!';
+
+  @override
+  String get fillominoTitle => 'FILLOMINO';
+
+  @override
+  String get fillominoSubtitle =>
+      'Izgarayı belirtilen boyutlardaki poliominolara bölün.';
+
+  @override
+  String get fillominoHowToPlay =>
+      'Izgarayı poliominolara bölün; N boyutundaki her poliomino, tüm hücrelerinde N sayısını içermelidir. Aynı boyuttaki poliominolar dikey veya yatay olarak bitişik olamaz.';
+
+  @override
+  String get fillominoWinTitle => 'IZGARA BÖLÜNDÜ!';
+
+  @override
+  String get fillominoWinMessage => 'Mantıkla mükemmel bir şekilde döşendi!';
+
+  @override
+  String get hitoriTitle => 'HITORI';
+
+  @override
+  String get hitoriSubtitle =>
+      'Her satır ve sütundaki yinelenen sayıları gölgeleyin.';
+
+  @override
+  String get hitoriHowToPlay =>
+      'Hücreleri gölgeleyin; böylece herhangi bir satır veya sütunda hiçbir sayı birden fazla görünmez. Gölgelenmiş hücreler dikey veya yatay olarak bitişik olamaz ve tüm gölgelenmemiş hücreler tek bir bağlantılı grup oluşturmalıdır.';
+
+  @override
+  String get hitoriWinTitle => 'HITORI USTASI!';
+
+  @override
+  String get hitoriWinMessage => 'Tüm yinelenenleri başarıyla çözdünüz!';
+
+  @override
   String get pathFinderTitle => 'Yol Bulucu';
 
   @override

@@ -376,6 +376,118 @@ class AppLocalizationsKo extends AppLocalizations {
   String get nonogramWin => '이미지 완성!';
 
   @override
+  String get magnetsTitle => '마그넷';
+
+  @override
+  String get magnetsSubtitle => '극 수에 따라 그리드에 자석을 배치하세요.';
+
+  @override
+  String get magnetsHowToPlay =>
+      '도미노 크기의 용기에 \'+\' 및 \'-\' 자석을 채우거나 비워 둡니다. 행과 열의 힌트는 해당 라인의 각 극의 총 수를 지정합니다. 동일한 극은 직교하여 인접할 수 없습니다.';
+
+  @override
+  String get magnetsWinTitle => '극성 균형!';
+
+  @override
+  String get magnetsWinMessage => '모든 자석이 완벽하게 배치되었습니다!';
+
+  @override
+  String get lighthousesTitle => '등대';
+
+  @override
+  String get lighthousesSubtitle => '등대 힌트에 따라 배를 배치하세요.';
+
+  @override
+  String get lighthousesHowToPlay =>
+      '그리드에 1x1 배를 배치하세요. 등대는 가로 및 세로로 보이는 배의 총 수를 나타냅니다. 배는 등대나 서로에게 대각선으로도 닿을 수 없습니다.';
+
+  @override
+  String get lighthousesWinTitle => '바다 안전!';
+
+  @override
+  String get lighthousesWinMessage => '모든 등대가 배를 완벽하게 안내하고 있습니다!';
+
+  @override
+  String get dominosaTitle => '도미노사';
+
+  @override
+  String get dominosaSubtitle => '그리드에 숨겨진 모든 도미노를 찾으세요.';
+
+  @override
+  String get dominosaHowToPlay =>
+      '인접한 모든 숫자 쌍이 정확히 하나의 도미노로 덮이도록 숫자 그리드에 전체 도미노 세트를 배치하세요. 각 숫자 쌍은 세트에 단 한 번만 존재합니다.';
+
+  @override
+  String get dominosaWinTitle => '도미노 마스터!';
+
+  @override
+  String get dominosaWinMessage => '모든 도미노를 찾아 배치했습니다!';
+
+  @override
+  String get skyscrapersTitle => '스카이스크래퍼';
+
+  @override
+  String get skyscrapersSubtitle => '그리드를 건물 높이로 채우세요.';
+
+  @override
+  String get skyscrapersHowToPlay =>
+      '각 행과 열에 각 높이가 정확히 한 번씩 포함되도록 그리드를 높이(1-N)로 채우세요. 가장자리의 힌트는 해당 방향에서 보이는 건물의 수를 나타내며, 높은 건물이 낮은 건물을 가립니다.';
+
+  @override
+  String get skyscrapersWinTitle => '스카이라인 복구!';
+
+  @override
+  String get skyscrapersWinMessage => '모든 건물이 완벽하게 배치되었습니다!';
+
+  @override
+  String get nurikabeTitle => '누리카베';
+
+  @override
+  String get nurikabeSubtitle => '연결된 바다와 분리된 섬을 만드세요.';
+
+  @override
+  String get nurikabeHowToPlay =>
+      '셀을 칠하여 하나의 연결된 \'바다\'를 만듭니다(2x2 블록 금지). 칠하지 않은 셀은 \'섬\'을 형성하며, 각 섬에는 총 면적을 나타내는 숫자가 정확히 하나 포함됩니다.';
+
+  @override
+  String get nurikabeWinTitle => '바다가 흐른다!';
+
+  @override
+  String get nurikabeWinMessage => '섬이 분리되고 바다가 연결되었습니다!';
+
+  @override
+  String get fillominoTitle => '필로미노';
+
+  @override
+  String get fillominoSubtitle => '그리드를 지정된 크기의 폴리오미노로 나눕니다.';
+
+  @override
+  String get fillominoHowToPlay =>
+      '그리드를 폴리오미노로 나누어 크기 N의 각 폴리오미노가 모든 셀에 숫자 N을 포함하도록 합니다. 같은 크기의 폴리오미노는 직교하여 인접할 수 없습니다.';
+
+  @override
+  String get fillominoWinTitle => '그리드 분할!';
+
+  @override
+  String get fillominoWinMessage => '논리로 완벽하게 타일링되었습니다!';
+
+  @override
+  String get hitoriTitle => '히토리';
+
+  @override
+  String get hitoriSubtitle => '각 행과 열의 중복 숫자를 칠하세요.';
+
+  @override
+  String get hitoriHowToPlay =>
+      '어떤 행이나 열에서도 숫자가 두 번 이상 나타나지 않도록 셀을 칠하세요. 칠한 셀은 (직교하여) 인접할 수 없으며, 칠하지 않은 모든 셀은 하나의 연결된 그룹을 형성해야 합니다.';
+
+  @override
+  String get hitoriWinTitle => '히토리 마스터!';
+
+  @override
+  String get hitoriWinMessage => '모든 중복을 성공적으로 해결했습니다!';
+
+  @override
   String get pathFinderTitle => '경로 찾기';
 
   @override

@@ -386,6 +386,124 @@ class AppLocalizationsRu extends AppLocalizations {
   String get nonogramWin => 'Картинка открыта!';
 
   @override
+  String get magnetsTitle => 'МАГНИТЫ';
+
+  @override
+  String get magnetsSubtitle =>
+      'Разместите магниты в сетке в соответствии с количеством полюсов.';
+
+  @override
+  String get magnetsHowToPlay =>
+      'Заполните контейнеры размером с домино магнитами «+» и «-» или оставьте их пустыми. Подсказки в строках и столбцах указывают общее количество каждого полюса в этой линии. Одинаковые полюса не могут быть соседними по горизонтали или вертикали.';
+
+  @override
+  String get magnetsWinTitle => 'ПОЛЯРНОСТЬ СБАЛАНСИРОВАНА!';
+
+  @override
+  String get magnetsWinMessage => 'Все магниты идеально расположены!';
+
+  @override
+  String get lighthousesTitle => 'МАЯКИ';
+
+  @override
+  String get lighthousesSubtitle =>
+      'Разместите корабли на основе подсказок маяков.';
+
+  @override
+  String get lighthousesHowToPlay =>
+      'Разместите корабли размером 1x1 в сетке. Маяки показывают общее количество кораблей, видимых по горизонтали и вертикали. Корабли не могут касаться маяков или друг друга, даже по диагонали.';
+
+  @override
+  String get lighthousesWinTitle => 'МОРЕ В БЕЗОПАСНОСТИ!';
+
+  @override
+  String get lighthousesWinMessage => 'Все маяки идеально направляют корабли!';
+
+  @override
+  String get dominosaTitle => 'ДОМИНОЗА';
+
+  @override
+  String get dominosaSubtitle => 'Найдите все скрытые костяшки домино в сетке.';
+
+  @override
+  String get dominosaHowToPlay =>
+      'Расположите полный набор костяшек домино на сетке с числами так, чтобы каждая пара соседних чисел была закрыта ровно одной костяшкой. Каждая пара чисел встречается в наборе только один раз.';
+
+  @override
+  String get dominosaWinTitle => 'МАСТЕР ДОМИНО!';
+
+  @override
+  String get dominosaWinMessage => 'Все костяшки домино найдены и размещены!';
+
+  @override
+  String get skyscrapersTitle => 'НЕБОСКРЕБЫ';
+
+  @override
+  String get skyscrapersSubtitle => 'Заполните сетку высотами зданий.';
+
+  @override
+  String get skyscrapersHowToPlay =>
+      'Заполните сетку высотами (1-N) так, чтобы в каждой строке и каждом столбце каждая высота встречалась ровно один раз. Подсказки по краям показывают, сколько зданий видно с этого направления, при этом более высокие здания закрывают более низкие.';
+
+  @override
+  String get skyscrapersWinTitle => 'СКАЙЛАЙН ВОССТАНОВЛЕН!';
+
+  @override
+  String get skyscrapersWinMessage => 'Все здания идеально расположены!';
+
+  @override
+  String get nurikabeTitle => 'НУРИКАБЕ';
+
+  @override
+  String get nurikabeSubtitle =>
+      'Сформируйте связанное море и разделите острова.';
+
+  @override
+  String get nurikabeHowToPlay =>
+      'Закрасьте клетки, чтобы сформировать единое связанное «море» (без блоков 2x2). Незакрашенные клетки образуют «острова», каждый из которых содержит ровно одно число, представляющее его общую площадь.';
+
+  @override
+  String get nurikabeWinTitle => 'МОРЕ ТЕЧЕТ!';
+
+  @override
+  String get nurikabeWinMessage => 'Острова разделены, море соединено!';
+
+  @override
+  String get fillominoTitle => 'ФИЛЛОМИНО';
+
+  @override
+  String get fillominoSubtitle =>
+      'Разделите сетку на полимино заданных размеров.';
+
+  @override
+  String get fillominoHowToPlay =>
+      'Разделите сетку на полимино так, чтобы каждое полимино размера N содержало число N во всех своих клетках. Полимино одного размера не могут примыкать друг к другу по горизонтали или вертикали.';
+
+  @override
+  String get fillominoWinTitle => 'СЕТКА РАЗДЕЛЕНА!';
+
+  @override
+  String get fillominoWinMessage =>
+      'Идеально выложено плиткой с помощью логики!';
+
+  @override
+  String get hitoriTitle => 'ХИТОРИ';
+
+  @override
+  String get hitoriSubtitle =>
+      'Закрасьте повторяющиеся числа в каждой строке и столбце.';
+
+  @override
+  String get hitoriHowToPlay =>
+      'Закрасьте клетки так, чтобы ни одно число не появлялось более одного раза в любой строке или столбце. Закрашенные клетки не могут быть соседними (по горизонтали или вертикали), а все незакрашенные клетки должны образовывать единую связанную группу.';
+
+  @override
+  String get hitoriWinTitle => 'МАСТЕР ХИТОРИ!';
+
+  @override
+  String get hitoriWinMessage => 'Вы успешно устранили все дубликаты!';
+
+  @override
   String get pathFinderTitle => 'Поиск пути';
 
   @override

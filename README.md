@@ -3,8 +3,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Platform](https://img.shields.io/badge/platform-Android%20%7C%20Linux%20%7C%20Web-blue.svg)](#-downloads)
 
-A professional suite of minimalist puzzle games built with Flutter. Master over 150 unique puzzles.
-
+A professional suite of minimalist puzzle games built with Flutter. Master over 160 unique puzzles.
 
 ---
 
@@ -21,7 +20,7 @@ A professional suite of minimalist puzzle games built with Flutter. Master over 
 
 ---
 
-## 🎮 Included Games (154 Total)
+## 🎮 Included Games (161 Total)
 
 <details>
 <summary><b>🧠 Attention (31)</b></summary>
@@ -29,8 +28,8 @@ Attentional Blink, Change Blindness, Choice Reaction, Color Match, Conjunction S
 </details>
 
 <details>
-<summary><b>🧩 Logic (26)</b></summary>
-Akari, Alphabet Sudoku, Binary Puzzle, Block Escape, Bridges, Color Flood, Crown, Einstein Riddle, Futoshiki, Kakuro, Lights Out, Lock Pattern, Logical Syllogisms, Matrix Reasoning, Minesweeper, Nonogram, Path Finder, Pipes, Slitherlink, Sudoku, Symbol Logic, Tangle Fix, Tents & Trees, Tower of London, Water Sort, Wisconsin Card Sort.
+<summary><b>🧩 Logic (33)</b></summary>
+Akari, Alphabet Sudoku, Binary Puzzle, Block Escape, Bridges, Color Flood, Crown, Dominosa, Einstein Riddle, Fillomino, Futoshiki, Hitori, Kakuro, Lighthouses, Lights Out, Lock Pattern, Logical Syllogisms, Magnets, Matrix Reasoning, Minesweeper, Nonogram, Nurikabe, Path Finder, Pipes, Skyscrapers, Slitherlink, Sudoku, Symbol Logic, Tangle Fix, Tents & Trees, Tower of London, Water Sort, Wisconsin Card Sort.
 </details>
 
 <details>

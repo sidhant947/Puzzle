@@ -388,6 +388,128 @@ class AppLocalizationsId extends AppLocalizations {
   String get nonogramWin => 'Gambar Terungkap!';
 
   @override
+  String get magnetsTitle => 'MAGNET';
+
+  @override
+  String get magnetsSubtitle =>
+      'Tempatkan magnet di kisi berdasarkan jumlah kutub.';
+
+  @override
+  String get magnetsHowToPlay =>
+      'Isi wadah seukuran domino dengan magnet \'+\' dan \'-\' atau biarkan kosong. Petunjuk baris dan kolom menentukan jumlah total setiap kutub di baris tersebut. Kutub yang identik tidak boleh berdekatan secara ortogonal.';
+
+  @override
+  String get magnetsWinTitle => 'POLARITAS SEIMBANG!';
+
+  @override
+  String get magnetsWinMessage => 'Semua magnet telah diatur dengan sempurna!';
+
+  @override
+  String get lighthousesTitle => 'MERCUSUAR';
+
+  @override
+  String get lighthousesSubtitle =>
+      'Tempatkan kapal berdasarkan petunjuk mercusuar.';
+
+  @override
+  String get lighthousesHowToPlay =>
+      'Tempatkan kapal 1x1 di kisi. Mercusuar menunjukkan jumlah total kapal yang terlihat secara horizontal dan vertikal. Kapal tidak boleh menyentuh mercusuar atau satu sama lain, bahkan secara diagonal.';
+
+  @override
+  String get lighthousesWinTitle => 'LAUT AMAN!';
+
+  @override
+  String get lighthousesWinMessage =>
+      'Semua mercusuar memandu kapal dengan sempurna!';
+
+  @override
+  String get dominosaTitle => 'DOMINOSA';
+
+  @override
+  String get dominosaSubtitle =>
+      'Temukan semua domino yang tersembunyi di kisi.';
+
+  @override
+  String get dominosaHowToPlay =>
+      'Susun satu set lengkap domino pada kisi angka sedemikian rupa sehingga setiap pasangan angka yang berdekatan ditutupi oleh tepat satu domino. Setiap pasangan angka hanya ada satu kali dalam set tersebut.';
+
+  @override
+  String get dominosaWinTitle => 'MASTER DOMINO!';
+
+  @override
+  String get dominosaWinMessage =>
+      'Setiap domino telah ditemukan và ditempatkan!';
+
+  @override
+  String get skyscrapersTitle => 'PENCERAK LANGIT';
+
+  @override
+  String get skyscrapersSubtitle => 'Isi kisi dengan ketinggian bangunan.';
+
+  @override
+  String get skyscrapersHowToPlay =>
+      'Isi kisi dengan ketinggian (1-N) sedemikian rupa sehingga setiap baris dan kolom berisi setiap ketinggian tepat satu kali. Petunjuk di tepian menunjukkan berapa banyak bangunan yang terlihat dari arah tersebut, dengan bangunan yang lebih tinggi menghalangi yang lebih pendek.';
+
+  @override
+  String get skyscrapersWinTitle => 'CAKRAWALA DIPULIHKAN!';
+
+  @override
+  String get skyscrapersWinMessage =>
+      'Semua bangunan diposisikan dengan sempurna!';
+
+  @override
+  String get nurikabeTitle => 'NURIKABE';
+
+  @override
+  String get nurikabeSubtitle =>
+      'Bentuk laut yang terhubung dan pulau-pulau yang terpisah.';
+
+  @override
+  String get nurikabeHowToPlay =>
+      'Arsir sel untuk membentuk satu \'laut\' yang terhubung (tidak ada blok 2x2). Sel yang tidak diarsir membentuk \'pulau\', masing-masing berisi tepat satu angka yang mewakili total luasnya.';
+
+  @override
+  String get nurikabeWinTitle => 'LAUT MENGALIR!';
+
+  @override
+  String get nurikabeWinMessage => 'Pulau-pulau terpisah, laut terhubung!';
+
+  @override
+  String get fillominoTitle => 'FILLOMINO';
+
+  @override
+  String get fillominoSubtitle =>
+      'Bagi kisi menjadi poliomino dengan ukuran yang ditentukan.';
+
+  @override
+  String get fillominoHowToPlay =>
+      'Bagi kisi menjadi poliomino sedemikian rupa sehingga setiap poliomino berukuran N berisi angka N di semua selnya. Poliomino dengan ukuran yang sama không boleh berdekatan secara ortogonal.';
+
+  @override
+  String get fillominoWinTitle => 'KISI TERBAGI!';
+
+  @override
+  String get fillominoWinMessage => 'Terpasang sempurna dengan logika!';
+
+  @override
+  String get hitoriTitle => 'HITORI';
+
+  @override
+  String get hitoriSubtitle =>
+      'Arsir angka duplikat di setiap baris dan kolom.';
+
+  @override
+  String get hitoriHowToPlay =>
+      'Arsir sel sehingga tidak ada angka yang muncul lebih dari satu kali di baris atau kolom mana pun. Sel yang diarsir tidak boleh berdekatan (secara ortogonal), và semua sel yang tidak diarsir harus membentuk satu kelompok yang terhubung.';
+
+  @override
+  String get hitoriWinTitle => 'MASTER HITORI!';
+
+  @override
+  String get hitoriWinMessage =>
+      'Anda telah berhasil menyelesaikan semua duplikat!';
+
+  @override
   String get pathFinderTitle => 'Pencari Jalur';
 
   @override

@@ -388,6 +388,126 @@ class AppLocalizationsUr extends AppLocalizations {
   String get nonogramWin => 'تصویر ظاہر ہو گئی!';
 
   @override
+  String get magnetsTitle => 'میگنےٹس';
+
+  @override
+  String get magnetsSubtitle =>
+      'پول کی گنتی کی بنیاد پر گرڈ میں میگنےٹس رکھیں۔';
+
+  @override
+  String get magnetsHowToPlay =>
+      'ڈومینو سائز کے کنٹینرز کو \'+\' اور \'-\' میگنےٹس سے بھریں یا انہیں خالی چھوڑ دیں۔ قطار اور کالم کے اشارے اس لائن میں ہر پول کی کل تعداد بتاتے ہیں۔ ایک جیسے پول عمودی یا افقی طور پر ایک دوسرے کے ساتھ نہیں ہو سکتے۔';
+
+  @override
+  String get magnetsWinTitle => 'قطبیت متوازن!';
+
+  @override
+  String get magnetsWinMessage =>
+      'تمام میگنےٹس مکمل طور پر ترتیب دیئے گئے ہیں!';
+
+  @override
+  String get lighthousesTitle => 'لائٹ ہاؤسز';
+
+  @override
+  String get lighthousesSubtitle =>
+      'لائٹ ہاؤس کے اشاروں کی بنیاد پر بحری جہاز رکھیں۔';
+
+  @override
+  String get lighthousesHowToPlay =>
+      'گرڈ میں 1x1 سائز کے بحری جہاز رکھیں۔ لائٹ ہاؤسز افقی اور عمودی طور پر نظر آنے والے جہازوں کی کل تعداد کی نشاندہی کرتے ہیں۔ بحری جہاز لائٹ ہاؤسز یا ایک دوسرے کو نہیں چھو سکتے، یہاں تک کہ ترچھی شکل میں بھی نہیں۔';
+
+  @override
+  String get lighthousesWinTitle => 'سمندر محفوظ!';
+
+  @override
+  String get lighthousesWinMessage =>
+      'تمام لائٹ ہاؤسز جہازوں کی مکمل رہنمائی کر رہے ہیں!';
+
+  @override
+  String get dominosaTitle => 'ڈومینوسا';
+
+  @override
+  String get dominosaSubtitle => 'گرڈ میں تمام چھپے ہوئے ڈومینوز تلاش کریں۔';
+
+  @override
+  String get dominosaHowToPlay =>
+      'نمبروں کے گرڈ پر ڈومینوز کا ایک مکمل سیٹ اس طرح ترتیب دیں کہ ملحقہ نمبروں کا ہر جوڑا بالکل ایک ڈومینو سے ڈھکا ہوا ہو۔ نمبروں کا ہر جوڑا سیٹ میں صرف ایک بار ہوتا ہے۔';
+
+  @override
+  String get dominosaWinTitle => 'ڈومینو ماسٹر!';
+
+  @override
+  String get dominosaWinMessage => 'ہر ڈومینو مل گیا ہے اور رکھ دیا گیا ہے!';
+
+  @override
+  String get skyscrapersTitle => 'سکائی سکریپرز';
+
+  @override
+  String get skyscrapersSubtitle => 'گرڈ کو عمارتوں کی بلندیوں سے بھریں۔';
+
+  @override
+  String get skyscrapersHowToPlay =>
+      'گرڈ کو بلندیوں (1-N) سے بھریں تاکہ ہر قطار اور کالم میں ہر بلندی بالکل ایک بار ہو۔ کناروں پر موجود اشارے بتاتے ہیں کہ اس سمت سے کتنی عمارتیں نظر آ رہی ہیں، اونچی عمارتیں چھوٹی عمارتوں کو چھپا لیتی ہیں۔';
+
+  @override
+  String get skyscrapersWinTitle => 'اسکائی لائن بحال!';
+
+  @override
+  String get skyscrapersWinMessage =>
+      'تمام عمارتیں مکمل طور پر اپنی جگہ پر ہیں!';
+
+  @override
+  String get nurikabeTitle => 'نوریکابے';
+
+  @override
+  String get nurikabeSubtitle => 'ایک جڑا ہوا سمندر اور الگ الگ جزیرے بنائیں۔';
+
+  @override
+  String get nurikabeHowToPlay =>
+      'ایک واحد جڑے ہوئے \'سمندر\' (کوئی 2x2 بلاکس نہیں) بنانے کے لیے سیلز کو شیڈ کریں۔ بغیر شیڈ والے سیلز \'جزیرے\' بناتے ہیں، جن میں سے ہر ایک میں بالکل ایک نمبر ہوتا ہے جو اس کے کل رقبے کی نمائندگی کرتا ہے۔';
+
+  @override
+  String get nurikabeWinTitle => 'سمندر بہہ رہا ہے!';
+
+  @override
+  String get nurikabeWinMessage => 'جزیرے الگ ہو گئے، سمندر جڑ گیا!';
+
+  @override
+  String get fillominoTitle => 'فیلو مینو';
+
+  @override
+  String get fillominoSubtitle =>
+      'گرڈ کو مخصوص سائز کے پولی مینو میں تقسیم کریں۔';
+
+  @override
+  String get fillominoHowToPlay =>
+      'گرڈ کو پولی مینو میں تقسیم کریں تاکہ سائز N کا ہر پولی مینو اپنے تمام سیلز میں نمبر N رکھے۔ ایک ہی سائز کے پولی مینو عمودی یا افقی طور پر ایک دوسرے کے ساتھ نہیں ہو سکتے۔';
+
+  @override
+  String get fillominoWinTitle => 'گرڈ تقسیم ہو گیا!';
+
+  @override
+  String get fillominoWinMessage => 'منطق کے ساتھ مکمل طور پر ٹائل کیا گیا!';
+
+  @override
+  String get hitoriTitle => 'ہٹوری';
+
+  @override
+  String get hitoriSubtitle =>
+      'ہر قطار اور کالم میں ڈپلیکیٹ نمبروں کو شیڈ کریں۔';
+
+  @override
+  String get hitoriHowToPlay =>
+      'سیلز کو شیڈ کریں تاکہ کوئی بھی نمبر کسی بھی قطار یا کالم میں ایک سے زیادہ بار نہ آئے۔ شیڈ شدہ سیلز ایک دوسرے کے ساتھ (عمودی یا افقی طور پر) نہیں ہو سکتے، اور تمام بغیر شیڈ والے سیلز کو ایک واحد جڑا ہوا گروپ بنانا چاہیے۔';
+
+  @override
+  String get hitoriWinTitle => 'ہٹوری ماسٹر!';
+
+  @override
+  String get hitoriWinMessage =>
+      'آپ نے کامیابی سے تمام ڈپلیکیٹس کو حل کر لیا ہے!';
+
+  @override
   String get pathFinderTitle => 'راستہ تلاش کرنے والا';
 
   @override

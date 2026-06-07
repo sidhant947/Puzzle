@@ -374,6 +374,118 @@ class AppLocalizationsZh extends AppLocalizations {
   String get nonogramWin => '图像已揭晓！';
 
   @override
+  String get magnetsTitle => '磁铁';
+
+  @override
+  String get magnetsSubtitle => '根据磁极计数在网格中放置磁铁。';
+
+  @override
+  String get magnetsHowToPlay =>
+      '在多米诺骨牌大小的容器中放入“+”和“-”磁铁，或者留空。行和列线索指定了该行中每个磁极的总数。相同的磁极在正交方向上不能相邻。';
+
+  @override
+  String get magnetsWinTitle => '极性平衡！';
+
+  @override
+  String get magnetsWinMessage => '所有磁铁都已完美排列！';
+
+  @override
+  String get lighthousesTitle => '灯塔';
+
+  @override
+  String get lighthousesSubtitle => '根据灯塔线索放置船只。';
+
+  @override
+  String get lighthousesHowToPlay =>
+      '在网格中放置 1x1 的船只。灯塔指示水平和垂直方向上可见的船只总数。船只不能接触灯塔或彼此接触，即使是斜对角也不行。';
+
+  @override
+  String get lighthousesWinTitle => '海洋安全！';
+
+  @override
+  String get lighthousesWinMessage => '所有灯塔都完美地引导着船只！';
+
+  @override
+  String get dominosaTitle => '多米诺';
+
+  @override
+  String get dominosaSubtitle => '找出网格中所有隐藏的多米诺骨牌。';
+
+  @override
+  String get dominosaHowToPlay =>
+      '在数字网格上排列一套完整的多米诺骨牌，使得每一对相邻的数字恰好被一个多米诺骨牌覆盖。每对数字在集合中只出现一次。';
+
+  @override
+  String get dominosaWinTitle => '多米诺大师！';
+
+  @override
+  String get dominosaWinMessage => '所有的多米诺骨牌都已被找到并放置！';
+
+  @override
+  String get skyscrapersTitle => '摩天大楼';
+
+  @override
+  String get skyscrapersSubtitle => '在网格中填入建筑物高度。';
+
+  @override
+  String get skyscrapersHowToPlay =>
+      '在网格中填入高度（1-N），使得每行每列恰好包含每个高度一次。边缘的线索指示从该方向可以看到多少座建筑物，较高的建筑物会遮挡较低的建筑物。';
+
+  @override
+  String get skyscrapersWinTitle => '天际线修复！';
+
+  @override
+  String get skyscrapersWinMessage => '所有建筑物都已完美定位！';
+
+  @override
+  String get nurikabeTitle => '涂壁';
+
+  @override
+  String get nurikabeSubtitle => '形成一片相连的海并分隔岛屿。';
+
+  @override
+  String get nurikabeHowToPlay =>
+      '为单元格涂色以形成一片单一相连的“海”（不能有 2x2 的方块）。未涂色的单元格形成“岛屿”，每个岛屿恰好包含一个代表其总面积的数字。';
+
+  @override
+  String get nurikabeWinTitle => '海水流动！';
+
+  @override
+  String get nurikabeWinMessage => '岛屿已分隔，海洋已连接！';
+
+  @override
+  String get fillominoTitle => '填充多米诺';
+
+  @override
+  String get fillominoSubtitle => '将网格划分为指定大小的多义骨牌。';
+
+  @override
+  String get fillominoHowToPlay =>
+      '将网格划分为多义骨牌，使得每个大小为 N 的多义骨牌在其所有单元格中都包含数字 N。相同大小的多义骨牌在正交方向上不能相邻。';
+
+  @override
+  String get fillominoWinTitle => '网格已划分！';
+
+  @override
+  String get fillominoWinMessage => '逻辑完美平铺！';
+
+  @override
+  String get hitoriTitle => '数连';
+
+  @override
+  String get hitoriSubtitle => '为每行每列中的重复数字涂色。';
+
+  @override
+  String get hitoriHowToPlay =>
+      '为单元格涂色，使得任何行或列中的数字出现次数不超过一次。涂色的单元格不能相邻（正交方向），且所有未涂色的单元格必须形成一个单一的连接组。';
+
+  @override
+  String get hitoriWinTitle => '数连大师！';
+
+  @override
+  String get hitoriWinMessage => '您已成功解决了所有重复项！';
+
+  @override
   String get pathFinderTitle => '路径寻找';
 
   @override

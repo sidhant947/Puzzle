@@ -388,6 +388,128 @@ class AppLocalizationsEs extends AppLocalizations {
   String get nonogramWin => '¡Imagen revelada!';
 
   @override
+  String get magnetsTitle => 'IMANES';
+
+  @override
+  String get magnetsSubtitle =>
+      'Coloca imanes en la cuadrícula según los recuentos de polos.';
+
+  @override
+  String get magnetsHowToPlay =>
+      'Llena contenedores del tamaño de un dominó con imanes \'+\' y \'-\' o déjalos en blanco. Las pistas de filas y columnas especifican el número total de cada polo en esa línea. Los polos idénticos no pueden estar adyacentes ortogonalmente.';
+
+  @override
+  String get magnetsWinTitle => '¡POLARIDAD EQUILIBRADA!';
+
+  @override
+  String get magnetsWinMessage =>
+      '¡Todos los imanes están perfectamente dispuestos!';
+
+  @override
+  String get lighthousesTitle => 'FAROS';
+
+  @override
+  String get lighthousesSubtitle => 'Coloca barcos basados en pistas de faros.';
+
+  @override
+  String get lighthousesHowToPlay =>
+      'Coloca barcos de 1x1 en la cuadrícula. Los faros indican el número total de barcos visibles horizontal y verticalmente. Los barcos no pueden tocar los faros ni entre sí, ni siquiera en diagonal.';
+
+  @override
+  String get lighthousesWinTitle => '¡MAR SEGURO!';
+
+  @override
+  String get lighthousesWinMessage =>
+      '¡Todos los faros están guiando los barcos perfectamente!';
+
+  @override
+  String get dominosaTitle => 'DOMINOSA';
+
+  @override
+  String get dominosaSubtitle =>
+      'Encuentra todos los dominós ocultos en la cuadrícula.';
+
+  @override
+  String get dominosaHowToPlay =>
+      'Organiza un juego completo de dominós en una cuadrícula de números de modo que cada par de números adyacentes esté cubierto por exactamente un dominó. Cada par de números existe solo una vez en el conjunto.';
+
+  @override
+  String get dominosaWinTitle => '¡MAESTRO DEL DOMINÓ!';
+
+  @override
+  String get dominosaWinMessage =>
+      '¡Se han encontrado y colocado todos los dominós!';
+
+  @override
+  String get skyscrapersTitle => 'RASCACIELOS';
+
+  @override
+  String get skyscrapersSubtitle =>
+      'Llena la cuadrícula con alturas de edificios.';
+
+  @override
+  String get skyscrapersHowToPlay =>
+      'Llena la cuadrícula con alturas (1-N) de modo que cada fila y columna contenga cada altura exactamente una vez. Las pistas en los bordes indican cuántos edificios son visibles desde esa dirección, con los edificios más altos bloqueando a los más bajos.';
+
+  @override
+  String get skyscrapersWinTitle => '¡HORIZONTE RESTAURADO!';
+
+  @override
+  String get skyscrapersWinMessage =>
+      '¡Todos los edificios están perfectamente posicionados!';
+
+  @override
+  String get nurikabeTitle => 'NURIKABE';
+
+  @override
+  String get nurikabeSubtitle => 'Forma un mar conectado e islas separadas.';
+
+  @override
+  String get nurikabeHowToPlay =>
+      'Sombrea celdas para formar un único \'mar\' conectado (sin bloques de 2x2). Las celdas sin sombrear forman \'islas\', cada una con exactamente un número que representa su área total.';
+
+  @override
+  String get nurikabeWinTitle => '¡MAR FLUYENDO!';
+
+  @override
+  String get nurikabeWinMessage => '¡Islas separadas, mar conectado!';
+
+  @override
+  String get fillominoTitle => 'FILLOMINO';
+
+  @override
+  String get fillominoSubtitle =>
+      'Divide la cuadrícula en poliominós de los tamaños especificados.';
+
+  @override
+  String get fillominoHowToPlay =>
+      'Divide la cuadrícula en poliominós de modo que cada poliominó de tamaño N contenga el número N en todas sus celdas. Los poliominós del mismo tamaño no pueden estar adyacentes ortogonalmente.';
+
+  @override
+  String get fillominoWinTitle => '¡CUADRÍCULA DIVIDIDA!';
+
+  @override
+  String get fillominoWinMessage => '¡Perfectamente embaldosado con lógica!';
+
+  @override
+  String get hitoriTitle => 'HITORI';
+
+  @override
+  String get hitoriSubtitle =>
+      'Sombrea los números duplicados en cada fila y columna.';
+
+  @override
+  String get hitoriHowToPlay =>
+      'Sombrea celdas para que ningún número aparezca más de una vez en cualquier fila o columna. Las celdas sombreadas no pueden estar adyacentes (ortogonalmente), y todas las celdas sin sombrear deben formar un único grupo conectado.';
+
+  @override
+  String get hitoriWinTitle => '¡MAESTRO DE HITORI!';
+
+  @override
+  String get hitoriWinMessage =>
+      '¡Has resuelto con éxito todos los duplicados!';
+
+  @override
   String get pathFinderTitle => 'Buscador de caminos';
 
   @override

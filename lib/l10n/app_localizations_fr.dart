@@ -388,6 +388,129 @@ class AppLocalizationsFr extends AppLocalizations {
   String get nonogramWin => 'Image Révélée !';
 
   @override
+  String get magnetsTitle => 'AIMANTS';
+
+  @override
+  String get magnetsSubtitle =>
+      'Placez des aimants dans la grille en fonction du nombre de pôles.';
+
+  @override
+  String get magnetsHowToPlay =>
+      'Remplissez des conteneurs de la taille d\'un domino avec des aimants \'+\' et \'-\' ou laissez-les vides. Les indices de ligne et de colonne spécifient le nombre total de chaque pôle sur cette ligne. Des pôles identiques ne peuvent pas être adjacents orthogonalement.';
+
+  @override
+  String get magnetsWinTitle => 'POLARITÉ ÉQUILIBRÉE !';
+
+  @override
+  String get magnetsWinMessage =>
+      'Tous les aimants sont parfaitement disposés !';
+
+  @override
+  String get lighthousesTitle => 'PHARES';
+
+  @override
+  String get lighthousesSubtitle =>
+      'Placez des navires en fonction des indices des phares.';
+
+  @override
+  String get lighthousesHowToPlay =>
+      'Placez des navires 1x1 dans la grille. Les phares indiquent le nombre total de navires visibles horizontalement et verticalement. Les navires ne peuvent pas toucher les phares ni se toucher entre eux, même en diagonale.';
+
+  @override
+  String get lighthousesWinTitle => 'MER SÉCURISÉE !';
+
+  @override
+  String get lighthousesWinMessage =>
+      'Tous les phares guident parfaitement les navires !';
+
+  @override
+  String get dominosaTitle => 'DOMINOSA';
+
+  @override
+  String get dominosaSubtitle =>
+      'Trouvez tous les dominos cachés dans la grille.';
+
+  @override
+  String get dominosaHowToPlay =>
+      'Disposez un jeu complet de dominos sur une grille de nombres de sorte que chaque paire de nombres adjacents soit couverte par exactement un domino. Chaque paire de nombres n\'existe qu\'une seule fois dans le jeu.';
+
+  @override
+  String get dominosaWinTitle => 'MAÎTRE DES DOMINOS !';
+
+  @override
+  String get dominosaWinMessage => 'Chaque domino a été trouvé et placé !';
+
+  @override
+  String get skyscrapersTitle => 'GRATTE-CIEL';
+
+  @override
+  String get skyscrapersSubtitle =>
+      'Remplissez la grille avec les hauteurs des bâtiments.';
+
+  @override
+  String get skyscrapersHowToPlay =>
+      'Remplissez la grille avec des hauteurs (1-N) de sorte que chaque ligne et colonne contienne chaque hauteur exactement une fois. Les indices sur les bords indiquent combien de bâtiments sont visibles depuis cette direction, les bâtiments plus grands bloquant les plus petits.';
+
+  @override
+  String get skyscrapersWinTitle => 'SKYLINE RESTAURÉE !';
+
+  @override
+  String get skyscrapersWinMessage =>
+      'Tous les bâtiments sont parfaitement positionnés !';
+
+  @override
+  String get nurikabeTitle => 'NURIKABE';
+
+  @override
+  String get nurikabeSubtitle =>
+      'Formez une mer connectée et séparez les îles.';
+
+  @override
+  String get nurikabeHowToPlay =>
+      'Ombrez les cases pour former une seule « mer » connectée (pas de blocs 2x2). Les cases non ombrées forment des « îles », chacune contenant exactement un nombre qui représente sa surface totale.';
+
+  @override
+  String get nurikabeWinTitle => 'LA MER COULE !';
+
+  @override
+  String get nurikabeWinMessage => 'Îles séparées, mer connectée !';
+
+  @override
+  String get fillominoTitle => 'FILLOMINO';
+
+  @override
+  String get fillominoSubtitle =>
+      'Divisez la grille en polyominos des tailles spécifiées.';
+
+  @override
+  String get fillominoHowToPlay =>
+      'Divisez la grille en polyominos de sorte que chaque polyomino de taille N contienne le nombre N dans toutes ses cases. Les polyominos de même taille ne peuvent pas être adjacents orthogonalement.';
+
+  @override
+  String get fillominoWinTitle => 'GRILLE DIVISÉE !';
+
+  @override
+  String get fillominoWinMessage => 'Parfaitement carrelé avec logique !';
+
+  @override
+  String get hitoriTitle => 'HITORI';
+
+  @override
+  String get hitoriSubtitle =>
+      'Ombrez les numéros en double dans chaque ligne et colonne.';
+
+  @override
+  String get hitoriHowToPlay =>
+      'Ombrez les cases de sorte qu\'aucun nombre n\'apparaisse plus d\'une fois dans une ligne ou une colonne. Les cases ombrées ne peuvent pas être adjacentes (orthogonalement), et toutes les cases non ombrées doivent former un seul groupe connecté.';
+
+  @override
+  String get hitoriWinTitle => 'MAÎTRE HITORI !';
+
+  @override
+  String get hitoriWinMessage =>
+      'Vous avez réussi à résoudre tous les doublons !';
+
+  @override
   String get pathFinderTitle => 'Chercheur de Chemin';
 
   @override

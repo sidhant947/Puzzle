@@ -42,6 +42,13 @@ import '../ui/features/games/orbit_tap/orbit_tap_screen.dart';
 import '../ui/features/games/rhythm_master/rhythm_master_screen.dart';
 import '../ui/features/games/trace_path/trace_path_screen.dart';
 import '../ui/features/games/akari/akari_screen.dart';
+import '../ui/features/games/hitori/hitori_screen.dart';
+import '../ui/features/games/fillomino/fillomino_screen.dart';
+import '../ui/features/games/nurikabe/nurikabe_screen.dart';
+import '../ui/features/games/skyscrapers/skyscrapers_screen.dart';
+import '../ui/features/games/dominosa/dominosa_screen.dart';
+import '../ui/features/games/lighthouses/lighthouses_screen.dart';
+import '../ui/features/games/magnets/magnets_screen.dart';
 import '../ui/features/games/perspective_taking/perspective_taking_screen.dart';
 import '../ui/features/games/paper_folding/paper_folding_screen.dart';
 import '../ui/features/games/mirror_tracing/mirror_tracing_screen.dart';
@@ -630,6 +637,62 @@ class GameData {
       'icon': Icons.lightbulb_rounded,
       'color': DesignSystem.gameAmber,
       'builder': (context) => const AkariScreen(),
+    },
+    {
+      'title': 'Hitori',
+      'id': 'hitori',
+      'category': 'LOGIC',
+      'icon': Icons.grid_off_rounded,
+      'color': DesignSystem.gameIndigo,
+      'builder': (context) => const HitoriScreen(),
+    },
+    {
+      'title': 'Fillomino',
+      'id': 'fillomino',
+      'category': 'LOGIC',
+      'icon': Icons.grid_3x3_rounded,
+      'color': DesignSystem.gameAmber,
+      'builder': (context) => const FillominoScreen(),
+    },
+    {
+      'title': 'Nurikabe',
+      'id': 'nurikabe',
+      'category': 'LOGIC',
+      'icon': Icons.landscape_rounded,
+      'color': DesignSystem.gameTeal,
+      'builder': (context) => const NurikabeScreen(),
+    },
+    {
+      'title': 'Skyscrapers',
+      'id': 'skyscrapers',
+      'category': 'LOGIC',
+      'icon': Icons.domain_rounded,
+      'color': DesignSystem.gameIndigo,
+      'builder': (context) => const SkyscrapersScreen(),
+    },
+    {
+      'title': 'Dominosa',
+      'id': 'dominosa',
+      'category': 'LOGIC',
+      'icon': Icons.view_module_rounded,
+      'color': DesignSystem.gameBlue,
+      'builder': (context) => const DominosaScreen(),
+    },
+    {
+      'title': 'Lighthouses',
+      'id': 'lighthouses',
+      'category': 'LOGIC',
+      'icon': Icons.light_rounded,
+      'color': DesignSystem.gameAmber,
+      'builder': (context) => const LighthousesScreen(),
+    },
+    {
+      'title': 'Magnets',
+      'id': 'magnets',
+      'category': 'LOGIC',
+      'icon': Icons.exposure_rounded,
+      'color': DesignSystem.gameIndigo,
+      'builder': (context) => const MagnetsScreen(),
     },
     {
       'title': 'Perspective',

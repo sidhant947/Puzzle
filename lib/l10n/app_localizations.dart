@@ -842,6 +842,216 @@ abstract class AppLocalizations {
   /// **'Image Revealed!'**
   String get nonogramWin;
 
+  /// No description provided for @magnetsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MAGNETS'**
+  String get magnetsTitle;
+
+  /// No description provided for @magnetsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Place magnets in the grid based on pole counts.'**
+  String get magnetsSubtitle;
+
+  /// No description provided for @magnetsHowToPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill domino-sized containers with \'+\' and \'-\' magnets or leave them blank. Row and column clues specify the total number of each pole in that line. Identical poles cannot be adjacent orthogonally.'**
+  String get magnetsHowToPlay;
+
+  /// No description provided for @magnetsWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'POLARITY BALANCED!'**
+  String get magnetsWinTitle;
+
+  /// No description provided for @magnetsWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'All magnets are perfectly arranged!'**
+  String get magnetsWinMessage;
+
+  /// No description provided for @lighthousesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'LIGHTHOUSES'**
+  String get lighthousesTitle;
+
+  /// No description provided for @lighthousesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Place ships based on lighthouse clues.'**
+  String get lighthousesSubtitle;
+
+  /// No description provided for @lighthousesHowToPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Place 1x1 ships in the grid. Lighthouses indicate the total number of ships visible horizontally and vertically. Ships cannot touch lighthouses or each other, even diagonally.'**
+  String get lighthousesHowToPlay;
+
+  /// No description provided for @lighthousesWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SEA SAFE!'**
+  String get lighthousesWinTitle;
+
+  /// No description provided for @lighthousesWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'All lighthouses are guiding the ships perfectly!'**
+  String get lighthousesWinMessage;
+
+  /// No description provided for @dominosaTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'DOMINOSA'**
+  String get dominosaTitle;
+
+  /// No description provided for @dominosaSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find all the hidden dominoes in the grid.'**
+  String get dominosaSubtitle;
+
+  /// No description provided for @dominosaHowToPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrange a complete set of dominoes on a grid of numbers such that every pair of adjacent numbers is covered by exactly one domino. Each number pair exists only once in the set.'**
+  String get dominosaHowToPlay;
+
+  /// No description provided for @dominosaWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'DOMINO MASTER!'**
+  String get dominosaWinTitle;
+
+  /// No description provided for @dominosaWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Every domino has been found and placed!'**
+  String get dominosaWinMessage;
+
+  /// No description provided for @skyscrapersTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SKYSCRAPERS'**
+  String get skyscrapersTitle;
+
+  /// No description provided for @skyscrapersSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill the grid with building heights.'**
+  String get skyscrapersSubtitle;
+
+  /// No description provided for @skyscrapersHowToPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill the grid with heights (1-N) such that each row and column contains each height exactly once. Clues on the edges indicate how many buildings are visible from that direction, with taller buildings blocking shorter ones.'**
+  String get skyscrapersHowToPlay;
+
+  /// No description provided for @skyscrapersWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SKYLINE RESTORED!'**
+  String get skyscrapersWinTitle;
+
+  /// No description provided for @skyscrapersWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'All buildings are perfectly positioned!'**
+  String get skyscrapersWinMessage;
+
+  /// No description provided for @nurikabeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'NURIKABE'**
+  String get nurikabeTitle;
+
+  /// No description provided for @nurikabeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Form a connected sea and separate islands.'**
+  String get nurikabeSubtitle;
+
+  /// No description provided for @nurikabeHowToPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Shade cells to form a single connected \'sea\' (no 2x2 blocks). Unshaded cells form \'islands\', each containing exactly one number that represents its total area.'**
+  String get nurikabeHowToPlay;
+
+  /// No description provided for @nurikabeWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SEA FLOWING!'**
+  String get nurikabeWinTitle;
+
+  /// No description provided for @nurikabeWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Islands separated, sea connected!'**
+  String get nurikabeWinMessage;
+
+  /// No description provided for @fillominoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'FILLOMINO'**
+  String get fillominoTitle;
+
+  /// No description provided for @fillominoSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Divide the grid into polyominoes of the specified sizes.'**
+  String get fillominoSubtitle;
+
+  /// No description provided for @fillominoHowToPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Divide the grid into polyominoes such that each polyomino of size N contains the number N in all its cells. Polyominoes of the same size cannot be orthogonally adjacent.'**
+  String get fillominoHowToPlay;
+
+  /// No description provided for @fillominoWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'GRID DIVIDED!'**
+  String get fillominoWinTitle;
+
+  /// No description provided for @fillominoWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Perfectly tiled with logic!'**
+  String get fillominoWinMessage;
+
+  /// No description provided for @hitoriTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'HITORI'**
+  String get hitoriTitle;
+
+  /// No description provided for @hitoriSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Shade duplicate numbers in each row and column.'**
+  String get hitoriSubtitle;
+
+  /// No description provided for @hitoriHowToPlay.
+  ///
+  /// In en, this message translates to:
+  /// **'Shade cells so that no number appears more than once in any row or column. Shaded cells cannot be adjacent (orthogonally), and all unshaded cells must form a single connected group.'**
+  String get hitoriHowToPlay;
+
+  /// No description provided for @hitoriWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'HITORI MASTER!'**
+  String get hitoriWinTitle;
+
+  /// No description provided for @hitoriWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You\'ve successfully resolved all the duplicates!'**
+  String get hitoriWinMessage;
+
   /// No description provided for @pathFinderTitle.
   ///
   /// In en, this message translates to:

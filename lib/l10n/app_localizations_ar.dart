@@ -384,6 +384,119 @@ class AppLocalizationsAr extends AppLocalizations {
   String get nonogramWin => 'تم كشف الصورة!';
 
   @override
+  String get magnetsTitle => 'مغناطيسات';
+
+  @override
+  String get magnetsSubtitle =>
+      'ضع المغناطيسات في الشبكة بناءً على عدد الأقطاب.';
+
+  @override
+  String get magnetsHowToPlay =>
+      'املأ الحاويات بحجم الدومينو بمغناطيسات \'+\' و \'-\' أو اتركها فارغة. تحدد أدلة الصفوف والأعمدة العدد الإجمالي لكل قطب في ذلك الخط. لا يمكن أن تكون الأقطاب المتماثلة متجاورة بشكل متعامد.';
+
+  @override
+  String get magnetsWinTitle => 'توازن القطبية!';
+
+  @override
+  String get magnetsWinMessage => 'تم ترتيب جميع المغناطيسات بشكل مثالي!';
+
+  @override
+  String get lighthousesTitle => 'منارات';
+
+  @override
+  String get lighthousesSubtitle => 'ضع السفن بناءً على أدلة المنارات.';
+
+  @override
+  String get lighthousesHowToPlay =>
+      'ضع سفنًا بحجم 1x1 في الشبكة. تشير المنارات إلى العدد الإجمالي للسفن المرئية أفقيًا ورأسيًا. لا يمكن للسفن أن تلمس المنارات أو بعضها البعض، حتى قطريًا.';
+
+  @override
+  String get lighthousesWinTitle => 'البحر آمن!';
+
+  @override
+  String get lighthousesWinMessage => 'جميع المنارات توجه السفن بشكل مثالي!';
+
+  @override
+  String get dominosaTitle => 'دومينوسا';
+
+  @override
+  String get dominosaSubtitle => 'ابحث عن جميع قطع الدومينو المخفية في الشبكة.';
+
+  @override
+  String get dominosaHowToPlay =>
+      'رتب مجموعة كاملة من قطع الدومينو على شبكة من الأرقام بحيث يتم تغطية كل زوج من الأرقام المتجاورة بقطعة دومينو واحدة بالضبط. يوجد كل زوج من الأرقام مرة واحدة فقط في المجموعة.';
+
+  @override
+  String get dominosaWinTitle => 'سيد الدومينو!';
+
+  @override
+  String get dominosaWinMessage => 'تم العثور على كل قطعة دومينو ووضعها!';
+
+  @override
+  String get skyscrapersTitle => 'ناطحات سحاب';
+
+  @override
+  String get skyscrapersSubtitle => 'املأ الشبكة بارتفاعات المباني.';
+
+  @override
+  String get skyscrapersHowToPlay =>
+      'املأ الشبكة بارتفاعات (1-N) بحيث يحتوي كل صف وعمود على كل ارتفاع مرة واحدة بالضبط. تشير الأدلة الموجودة على الحواف إلى عدد المباني المرئية من ذلك الاتجاه، حيث تحجب المباني الأطول المباني الأقصر.';
+
+  @override
+  String get skyscrapersWinTitle => 'استعادة الأفق!';
+
+  @override
+  String get skyscrapersWinMessage => 'جميع المباني في وضع مثالي!';
+
+  @override
+  String get nurikabeTitle => 'نوريكابي';
+
+  @override
+  String get nurikabeSubtitle => 'شكل بحرًا متصلاً وجزرًا منفصلة.';
+
+  @override
+  String get nurikabeHowToPlay =>
+      'ظلل الخلايا لتشكيل \"بحر\" واحد متصل (لا توجد كتل 2x2). تشكل الخلايا غير المظللة \"جزرًا\"، تحتوي كل منها على رقم واحد بالضبط يمثل مساحتها الإجمالية.';
+
+  @override
+  String get nurikabeWinTitle => 'البحر يتدفق!';
+
+  @override
+  String get nurikabeWinMessage => 'الجزر منفصلة، البحر متصل!';
+
+  @override
+  String get fillominoTitle => 'فيلومينو';
+
+  @override
+  String get fillominoSubtitle => 'قسم الشبكة إلى بوليومينو بالأحجام المحددة.';
+
+  @override
+  String get fillominoHowToPlay =>
+      'قسم الشبكة إلى بوليومينو بحيث يحتوي كل بوليومينو من الحجم N على الرقم N في جميع خلاياه. لا يمكن أن تكون البوليومينو من نفس الحجم متجاورة بشكل متعامد.';
+
+  @override
+  String get fillominoWinTitle => 'تم تقسيم الشبكة!';
+
+  @override
+  String get fillominoWinMessage => 'تم التبليط بشكل مثالي بالمنطق!';
+
+  @override
+  String get hitoriTitle => 'هيتوري';
+
+  @override
+  String get hitoriSubtitle => 'ظلل الأرقام المكررة في كل صف وعمود.';
+
+  @override
+  String get hitoriHowToPlay =>
+      'ظلل الخلايا بحيث لا يظهر أي رقم أكثر من مرة في أي صف أو عمود. لا يمكن أن تكون الخلايا المظللة متجاورة (متعامدة)، ويجب أن تشكل جميع الخلايا غير المظللة مجموعة واحدة متصلة.';
+
+  @override
+  String get hitoriWinTitle => 'سيد هيتوري!';
+
+  @override
+  String get hitoriWinMessage => 'لقد نجحت في حل جميع التكرارات!';
+
+  @override
   String get pathFinderTitle => 'مكتشف المسار';
 
   @override

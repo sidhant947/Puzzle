@@ -387,6 +387,127 @@ class AppLocalizationsDe extends AppLocalizations {
   String get nonogramWin => 'Bild enthüllt!';
 
   @override
+  String get magnetsTitle => 'MAGNETE';
+
+  @override
+  String get magnetsSubtitle =>
+      'Platziere Magnete im Raster basierend auf den Polzahlen.';
+
+  @override
+  String get magnetsHowToPlay =>
+      'Fülle dominogroße Behälter mit „+“- und „-“-Magneten oder lasse sie leer. Zeilen- und Spaltenhinweise geben die Gesamtzahl jedes Pols in dieser Linie an. Identische Pole dürfen orthogonal nicht benachbart sein.';
+
+  @override
+  String get magnetsWinTitle => 'POLARITÄT AUSGEGLICHEN!';
+
+  @override
+  String get magnetsWinMessage => 'Alle Magnete sind perfekt angeordnet!';
+
+  @override
+  String get lighthousesTitle => 'LEUCHTTÜRME';
+
+  @override
+  String get lighthousesSubtitle =>
+      'Platziere Schiffe basierend auf Leuchtturm-Hinweisen.';
+
+  @override
+  String get lighthousesHowToPlay =>
+      'Platziere 1x1-Schiffe im Raster. Leuchttürme geben die Gesamtzahl der horizontal und vertikal sichtbaren Schiffe an. Schiffe dürfen weder Leuchttürme noch einander berühren, auch nicht diagonal.';
+
+  @override
+  String get lighthousesWinTitle => 'SEE SICHER!';
+
+  @override
+  String get lighthousesWinMessage =>
+      'Alle Leuchttürme leiten die Schiffe perfekt!';
+
+  @override
+  String get dominosaTitle => 'DOMINOSA';
+
+  @override
+  String get dominosaSubtitle =>
+      'Finde alle versteckten Dominosteine im Raster.';
+
+  @override
+  String get dominosaHowToPlay =>
+      'Ordne einen kompletten Satz Dominosteine auf einem Zahlenraster so an, dass jedes Paar benachbarter Zahlen von genau einem Dominostein bedeckt wird. Jedes Zahlenpaar existiert nur einmal im Satz.';
+
+  @override
+  String get dominosaWinTitle => 'DOMINO-MEISTER!';
+
+  @override
+  String get dominosaWinMessage =>
+      'Jeder Dominostein wurde gefunden und platziert!';
+
+  @override
+  String get skyscrapersTitle => 'WOLKENKRATZER';
+
+  @override
+  String get skyscrapersSubtitle => 'Fülle das Raster mit Gebäudehöhen.';
+
+  @override
+  String get skyscrapersHowToPlay =>
+      'Fülle das Raster mit Höhen (1-N), sodass jede Zeile und Spalte jede Höhe genau einmal enthält. Hinweise an den Rändern geben an, wie viele Gebäude aus dieser Richtung sichtbar sind, wobei höhere Gebäude kürzere blockieren.';
+
+  @override
+  String get skyscrapersWinTitle => 'SKYLINE WIEDERHERGESTELLT!';
+
+  @override
+  String get skyscrapersWinMessage => 'Alle Gebäude sind perfekt positioniert!';
+
+  @override
+  String get nurikabeTitle => 'NURIKABE';
+
+  @override
+  String get nurikabeSubtitle =>
+      'Bilde ein zusammenhängendes Meer und trenne Inseln.';
+
+  @override
+  String get nurikabeHowToPlay =>
+      'Schattiere Zellen, um ein einzelnes zusammenhängendes „Meer“ zu bilden (keine 2x2-Blöcke). Unschattierte Zellen bilden „Inseln“, die jeweils genau eine Zahl enthalten, die ihre Gesamtfläche darstellt.';
+
+  @override
+  String get nurikabeWinTitle => 'MEER FLIESST!';
+
+  @override
+  String get nurikabeWinMessage => 'Inseln getrennt, Meer verbunden!';
+
+  @override
+  String get fillominoTitle => 'FILLOMINO';
+
+  @override
+  String get fillominoSubtitle =>
+      'Unterteile das Raster in Polyominos der angegebenen Größen.';
+
+  @override
+  String get fillominoHowToPlay =>
+      'Unterteile das Raster in Polyominos, sodass jedes Polyomino der Größe N die Zahl N in all seinen Zellen enthält. Polyominos der gleichen Größe dürfen orthogonal nicht benachbart sein.';
+
+  @override
+  String get fillominoWinTitle => 'RASTER UNTERTEILT!';
+
+  @override
+  String get fillominoWinMessage => 'Perfekt mit Logik gekachelt!';
+
+  @override
+  String get hitoriTitle => 'HITORI';
+
+  @override
+  String get hitoriSubtitle =>
+      'Schattiere doppelte Zahlen in jeder Zeile und Spalte.';
+
+  @override
+  String get hitoriHowToPlay =>
+      'Schattiere Zellen, sodass keine Zahl mehr als einmal in einer Zeile oder Spalte vorkommt. Schattierte Zellen dürfen nicht benachbart sein (orthogonal), und alle unschattierten Zellen müssen eine einzige zusammenhängende Gruppe bilden.';
+
+  @override
+  String get hitoriWinTitle => 'HITORI-MEISTER!';
+
+  @override
+  String get hitoriWinMessage =>
+      'Du hast alle Duplikate erfolgreich aufgelöst!';
+
+  @override
   String get pathFinderTitle => 'Pfadfinder';
 
   @override

@@ -387,6 +387,129 @@ class AppLocalizationsPt extends AppLocalizations {
   String get nonogramWin => 'Imagem Revelada!';
 
   @override
+  String get magnetsTitle => 'ÍMÃS';
+
+  @override
+  String get magnetsSubtitle =>
+      'Coloque ímãs na grade com base na contagem de polos.';
+
+  @override
+  String get magnetsHowToPlay =>
+      'Preencha recipientes do tamanho de um dominó com ímãs \'+\' e \'-\' ou deixe-os em branco. As pistas de linha e coluna especificam o número total de cada polo naquela linha. Polos idênticos não podem ser adjacentes ortogonalmente.';
+
+  @override
+  String get magnetsWinTitle => 'POLARIDADE EQUILIBRADA!';
+
+  @override
+  String get magnetsWinMessage =>
+      'Todos os ímãs estão perfeitamente organizados!';
+
+  @override
+  String get lighthousesTitle => 'FARÓIS';
+
+  @override
+  String get lighthousesSubtitle =>
+      'Posicione navios com base nas pistas dos faróis.';
+
+  @override
+  String get lighthousesHowToPlay =>
+      'Coloque navios 1x1 na grade. Os faróis indicam o número total de navios visíveis horizontal e verticalmente. Os navios não podem tocar nos faróis nem uns nos outros, nem mesmo diagonalmente.';
+
+  @override
+  String get lighthousesWinTitle => 'MAR SEGURO!';
+
+  @override
+  String get lighthousesWinMessage =>
+      'Todos os faróis estão guiando os navios perfeitamente!';
+
+  @override
+  String get dominosaTitle => 'DOMINOSA';
+
+  @override
+  String get dominosaSubtitle =>
+      'Encontre todos os dominós escondidos na grade.';
+
+  @override
+  String get dominosaHowToPlay =>
+      'Organize um conjunto completo de dominós em uma grade de números de modo que cada par de números adjacentes seja coberto por exatamente um dominó. Cada par de números existe apenas uma vez no conjunto.';
+
+  @override
+  String get dominosaWinTitle => 'MESTRE DO DOMINÓ!';
+
+  @override
+  String get dominosaWinMessage =>
+      'Todos os dominós foram encontrados e colocados!';
+
+  @override
+  String get skyscrapersTitle => 'ARRANHA-CÉUS';
+
+  @override
+  String get skyscrapersSubtitle =>
+      'Preencha a grade with as alturas dos edifícios.';
+
+  @override
+  String get skyscrapersHowToPlay =>
+      'Preencha a grade com alturas (1-N) de modo que cada linha e coluna contenha cada altura exatamente uma vez. Pistas nas bordas indicam quantos edifícios são visíveis daquela direção, com edifícios mais altos bloqueando os mais baixos.';
+
+  @override
+  String get skyscrapersWinTitle => 'SKYLINE RESTAURADO!';
+
+  @override
+  String get skyscrapersWinMessage =>
+      'Todos os edifícios estão perfeitamente posicionados!';
+
+  @override
+  String get nurikabeTitle => 'NURIKABE';
+
+  @override
+  String get nurikabeSubtitle => 'Forme um mar conectado e separe as ilhas.';
+
+  @override
+  String get nurikabeHowToPlay =>
+      'Sombreie as células para formar um único \'mar\' conectado (sem blocos 2x2). Células não sombreadas formam \'ilhas\', cada uma contendo exatamente un número que representa sua área total.';
+
+  @override
+  String get nurikabeWinTitle => 'MAR FLUINDO!';
+
+  @override
+  String get nurikabeWinMessage => 'Ilhas separadas, mar conectado!';
+
+  @override
+  String get fillominoTitle => 'FILLOMINO';
+
+  @override
+  String get fillominoSubtitle =>
+      'Divida a grade em poliominós dos tamanhos especificados.';
+
+  @override
+  String get fillominoHowToPlay =>
+      'Divida a grade em poliominós de modo que cada poliominó de tamanho N contenha o número N em todas as suas células. Poliominós do mesmo tamanho não podem ser adjacentes ortogonalmente.';
+
+  @override
+  String get fillominoWinTitle => 'GRADE DIVIDIDA!';
+
+  @override
+  String get fillominoWinMessage => 'Perfeitamente ladrilhado com lógica!';
+
+  @override
+  String get hitoriTitle => 'HITORI';
+
+  @override
+  String get hitoriSubtitle =>
+      'Sombreie os números duplicados em cada linha e coluna.';
+
+  @override
+  String get hitoriHowToPlay =>
+      'Sombreie as células para que nenhum número apareça mais de uma vez em qualquer linha ou coluna. Células sombreadas não podem ser adjacentes (ortogonalmente), e todas as células não sombreadas devem formar um único grupo conectado.';
+
+  @override
+  String get hitoriWinTitle => 'MESTRE HITORI!';
+
+  @override
+  String get hitoriWinMessage =>
+      'Você resolveu com sucesso todos os duplicados!';
+
+  @override
   String get pathFinderTitle => 'Buscador de Caminho';
 
   @override

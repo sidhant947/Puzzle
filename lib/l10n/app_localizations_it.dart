@@ -387,6 +387,126 @@ class AppLocalizationsIt extends AppLocalizations {
   String get nonogramWin => 'Immagine Rivelata!';
 
   @override
+  String get magnetsTitle => 'MAGNETI';
+
+  @override
+  String get magnetsSubtitle =>
+      'Posiziona i magneti nella griglia in base al conteggio dei poli.';
+
+  @override
+  String get magnetsHowToPlay =>
+      'Riempi contenitori delle dimensioni di un domino con magneti \'+\' e \'-\' o lasciali vuoti. Gli indizi di riga e colonna specificano il numero totale di ciascun polo in quella linea. Poli identici non possono essere adiacenti ortogonalmente.';
+
+  @override
+  String get magnetsWinTitle => 'POLARITÀ BILANCIATA!';
+
+  @override
+  String get magnetsWinMessage =>
+      'Tutti i magneti sono disposti perfettamente!';
+
+  @override
+  String get lighthousesTitle => 'FARI';
+
+  @override
+  String get lighthousesSubtitle =>
+      'Posiziona le navi in base agli indizi dei fari.';
+
+  @override
+  String get lighthousesHowToPlay =>
+      'Posiziona navi 1x1 nella griglia. I fari indicano il numero totale di navi visibili orizzontalmente e verticalmente. Le navi non possono toccare i fari né toccarsi tra loro, nemmeno in diagonale.';
+
+  @override
+  String get lighthousesWinTitle => 'MARE SICURO!';
+
+  @override
+  String get lighthousesWinMessage =>
+      'Tutti i fari guidano le navi perfettamente!';
+
+  @override
+  String get dominosaTitle => 'DOMINOSA';
+
+  @override
+  String get dominosaSubtitle => 'Trova tutti i domino nascosti nella griglia.';
+
+  @override
+  String get dominosaHowToPlay =>
+      'Disponi un set completo di domino su una griglia di numeri in modo che ogni coppia di numeri adiacenti sia coperta da esattamente un domino. Ogni coppia di numeri esiste solo una volta nel set.';
+
+  @override
+  String get dominosaWinTitle => 'MAESTRO DEL DOMINO!';
+
+  @override
+  String get dominosaWinMessage => 'Ogni domino è stato trovato e posizionato!';
+
+  @override
+  String get skyscrapersTitle => 'GRATTACIELI';
+
+  @override
+  String get skyscrapersSubtitle =>
+      'Riempi la griglia con le altezze degli edifici.';
+
+  @override
+  String get skyscrapersHowToPlay =>
+      'Riempi la griglia con altezze (1-N) in modo che ogni riga e colonna contenga ogni altezza esattamente una volta. Gli indizi sui bordi indicano quanti edifici sono visibili da quella direzione, con gli edifici più alti che bloccano quelli più bassi.';
+
+  @override
+  String get skyscrapersWinTitle => 'SKYLINE RIPRISTINATO!';
+
+  @override
+  String get skyscrapersWinMessage =>
+      'Tutti gli edifici sono posizionati perfettamente!';
+
+  @override
+  String get nurikabeTitle => 'NURIKABE';
+
+  @override
+  String get nurikabeSubtitle => 'Forma un mare collegato e separa le isole.';
+
+  @override
+  String get nurikabeHowToPlay =>
+      'Ombreggia le celle per formare un unico \"mare\" collegato (nessun blocco 2x2). Le celle non ombreggiate formano \"isole\", ognuna contenente esattamente un numero che rappresenta la sua area totale.';
+
+  @override
+  String get nurikabeWinTitle => 'MARE FLUIDO!';
+
+  @override
+  String get nurikabeWinMessage => 'Isole separate, mare collegato!';
+
+  @override
+  String get fillominoTitle => 'FILLOMINO';
+
+  @override
+  String get fillominoSubtitle =>
+      'Dividi la griglia in polimini delle dimensioni specificate.';
+
+  @override
+  String get fillominoHowToPlay =>
+      'Dividi la griglia in polimini in modo che ogni polimino di dimensione N contenga il numero N in tutte le sue celle. Polimini della stessa dimensione non possono essere adiacenti ortogonalmente.';
+
+  @override
+  String get fillominoWinTitle => 'GRIGLIA DIVISA!';
+
+  @override
+  String get fillominoWinMessage => 'Perfettamente piastrellato con logica!';
+
+  @override
+  String get hitoriTitle => 'HITORI';
+
+  @override
+  String get hitoriSubtitle =>
+      'Ombreggia i numeri duplicati in ogni riga e colonna.';
+
+  @override
+  String get hitoriHowToPlay =>
+      'Ombreggia le celle in modo che nessun numero appaia più di una volta in ogni riga o colonna. Le celle ombreggiate non possono essere adiacenti (ortogonalmente) e tutte le celle non ombreggiate devono formare un unico gruppo collegato.';
+
+  @override
+  String get hitoriWinTitle => 'MAESTRO HITORI!';
+
+  @override
+  String get hitoriWinMessage => 'Hai risolto con successo tutti i duplicati!';
+
+  @override
   String get pathFinderTitle => 'Cercatore di Percorsi';
 
   @override

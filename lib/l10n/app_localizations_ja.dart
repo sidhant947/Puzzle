@@ -376,6 +376,118 @@ class AppLocalizationsJa extends AppLocalizations {
   String get nonogramWin => '画像が表示されました！';
 
   @override
+  String get magnetsTitle => 'マグネット';
+
+  @override
+  String get magnetsSubtitle => '磁極数に基づいてグリッドにマグネットを配置します。';
+
+  @override
+  String get magnetsHowToPlay =>
+      'ドミノサイズの容器に「+」と「-」のマグネットを入れるか、空のままにします。行と列のヒントは、そのライン内の各磁極の総数を指定します。同じ磁極は直交して隣接させることはできません。';
+
+  @override
+  String get magnetsWinTitle => '極性のバランス！';
+
+  @override
+  String get magnetsWinMessage => 'すべてのマグネットが完璧に配置されました！';
+
+  @override
+  String get lighthousesTitle => '灯台';
+
+  @override
+  String get lighthousesSubtitle => '灯台のヒントに基づいて船を配置します。';
+
+  @override
+  String get lighthousesHowToPlay =>
+      'グリッドに1x1の船を配置します。灯台は、水平および垂直に見える船の総数を示します。船は灯台や他の船に（斜めであっても）接触させることはできません。';
+
+  @override
+  String get lighthousesWinTitle => '海の安全！';
+
+  @override
+  String get lighthousesWinMessage => 'すべての灯台が船を完璧に誘導しています！';
+
+  @override
+  String get dominosaTitle => 'ドミノサ';
+
+  @override
+  String get dominosaSubtitle => 'グリッドに隠されたすべてのドミノを見つけます。';
+
+  @override
+  String get dominosaHowToPlay =>
+      '数字のグリッド上にドミノの完全なセットを配置し、隣接する数字のすべてのペアがちょうど1つのドミノで覆われるようにします。各数字のペアはセットに1回だけ存在します。';
+
+  @override
+  String get dominosaWinTitle => 'ドミノマスター！';
+
+  @override
+  String get dominosaWinMessage => 'すべてのドミノが見つかり、配置されました！';
+
+  @override
+  String get skyscrapersTitle => 'ビルディング';
+
+  @override
+  String get skyscrapersSubtitle => 'グリッドを建物の高さで埋めます。';
+
+  @override
+  String get skyscrapersHowToPlay =>
+      '各行と列に各高さがちょうど1回ずつ含まれるように、グリッドを高さ（1-N）で埋めます。端のヒントは、その方向から見える建物の数を示し、高い建物は低い建物を遮ります。';
+
+  @override
+  String get skyscrapersWinTitle => 'スカイライン復元！';
+
+  @override
+  String get skyscrapersWinMessage => 'すべての建物が完璧に配置されました！';
+
+  @override
+  String get nurikabeTitle => 'ぬりかべ';
+
+  @override
+  String get nurikabeSubtitle => 'つながった海と離れた島を作ります。';
+
+  @override
+  String get nurikabeHowToPlay =>
+      'セルを塗りつぶして、1つのつながった「海」を作ります（2x2のブロックは不可）。塗りつぶされていないセルは「島」を形成し、各島にはその総面積を表す数字がちょうど1つ含まれます。';
+
+  @override
+  String get nurikabeWinTitle => '海の流れ！';
+
+  @override
+  String get nurikabeWinMessage => '島が分離され、海がつながりました！';
+
+  @override
+  String get fillominoTitle => 'フィルオミノ';
+
+  @override
+  String get fillominoSubtitle => 'グリッドを指定されたサイズのポリオミノに分割します。';
+
+  @override
+  String get fillominoHowToPlay =>
+      'グリッドをポリオミノに分割し、サイズNの各ポリオミノのすべてのセルに数字Nが含まれるようにします。同じサイズのポリオミノは直交して隣接させることはできません。';
+
+  @override
+  String get fillominoWinTitle => 'グリッド分割！';
+
+  @override
+  String get fillominoWinMessage => 'ロジックで完璧にタイル状に並べられました！';
+
+  @override
+  String get hitoriTitle => 'ひとりにしてくれ';
+
+  @override
+  String get hitoriSubtitle => '各行と列の重複する数字を塗りつぶします。';
+
+  @override
+  String get hitoriHowToPlay =>
+      'どの行や列にも同じ数字が2回以上現れないようにセルを塗りつぶします。塗りつぶされたセルは（直交して）隣接できず、塗りつぶされていないすべてのセルは1つのつながったグループを形成する必要があります。';
+
+  @override
+  String get hitoriWinTitle => 'ひとりにしてくれマスター！';
+
+  @override
+  String get hitoriWinMessage => 'すべてを正常に解決しました！';
+
+  @override
   String get pathFinderTitle => 'パスファインダー';
 
   @override

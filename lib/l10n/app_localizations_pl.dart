@@ -388,6 +388,127 @@ class AppLocalizationsPl extends AppLocalizations {
   String get nonogramWin => 'Obrazek odkryty!';
 
   @override
+  String get magnetsTitle => 'MAGNESY';
+
+  @override
+  String get magnetsSubtitle =>
+      'Umieść magnesy w siatce na podstawie liczby biegunów.';
+
+  @override
+  String get magnetsHowToPlay =>
+      'Wypełnij pojemniki wielkości domina magnesami „+” i „-” lub pozostaw je puste. Wskazówki w wierszach i kolumnach określają całkowitą liczbę każdego bieguna w danej linii. Identyczne bieguny nie mogą sąsiadować ze sobą prostopadle.';
+
+  @override
+  String get magnetsWinTitle => 'POLARYZACJA ZRÓWNOWAŻONA!';
+
+  @override
+  String get magnetsWinMessage => 'Wszystkie magnesy są idealnie ułożone!';
+
+  @override
+  String get lighthousesTitle => 'LATARNIE MORSKIE';
+
+  @override
+  String get lighthousesSubtitle =>
+      'Rozmieść statki na podstawie wskazówek z latarń.';
+
+  @override
+  String get lighthousesHowToPlay =>
+      'Umieść statki 1x1 w siatce. Latarnie wskazują całkowitą liczbę statków widocznych w poziomie i pionie. Statki nie mogą dotykać latarń ani siebie nawzajem, nawet po przekątnej.';
+
+  @override
+  String get lighthousesWinTitle => 'MORZE BEZPIECZNE!';
+
+  @override
+  String get lighthousesWinMessage =>
+      'Wszystkie latarnie idealnie prowadzą statki!';
+
+  @override
+  String get dominosaTitle => 'DOMINOSA';
+
+  @override
+  String get dominosaSubtitle =>
+      'Znajdź wszystkie ukryte kostki domina w siatce.';
+
+  @override
+  String get dominosaHowToPlay =>
+      'Ułóż kompletny zestaw kostek domina na siatce liczb tak, aby każda para sąsiednich liczb była zakryta dokładnie jedną kostką. Każda para liczb występuje w zestawie tylko raz.';
+
+  @override
+  String get dominosaWinTitle => 'MISTRZ DOMINA!';
+
+  @override
+  String get dominosaWinMessage =>
+      'Każda kostka domina została znaleziona i umieszczona!';
+
+  @override
+  String get skyscrapersTitle => 'WIEŻOWCE';
+
+  @override
+  String get skyscrapersSubtitle => 'Wypełnij siatkę wysokościami budynków.';
+
+  @override
+  String get skyscrapersHowToPlay =>
+      'Wypełnij siatkę wysokościami (1-N) tak, aby każdy wiersz i kolumna zawierały każdą wysokość dokładnie raz. Wskazówki na krawędziach informują, ile budynków jest widocznych z danego kierunku, przy czym wyższe budynki zasłaniają niższe.';
+
+  @override
+  String get skyscrapersWinTitle => 'PANORAMA PRZYWRÓCONA!';
+
+  @override
+  String get skyscrapersWinMessage =>
+      'Wszystkie budynki są idealnie rozmieszczone!';
+
+  @override
+  String get nurikabeTitle => 'NURIKABE';
+
+  @override
+  String get nurikabeSubtitle => 'Stwórz połączone morze i oddzielne wyspy.';
+
+  @override
+  String get nurikabeHowToPlay =>
+      'Zamaluj komórki, aby utworzyć jedno połączone „morze” (bez bloków 2x2). Niezamalowane komórki tworzą „wyspy”, z których każda zawiera dokładnie jedną liczbę reprezentującą jej całkowitą powierzchnię.';
+
+  @override
+  String get nurikabeWinTitle => 'MORZE PŁYNIE!';
+
+  @override
+  String get nurikabeWinMessage => 'Wyspy oddzielone, morze połączone!';
+
+  @override
+  String get fillominoTitle => 'FILLOMINO';
+
+  @override
+  String get fillominoSubtitle =>
+      'Podziel siatkę na poliamina o określonych rozmiarach.';
+
+  @override
+  String get fillominoHowToPlay =>
+      'Podziel siatkę na poliamina tak, aby każde poliamino o rozmiarze N zawierało liczbę N we wszystkich swoich komórkach. Poliamina o tym samym rozmiarze nie mogą sąsiadować ze sobą prostopadle.';
+
+  @override
+  String get fillominoWinTitle => 'SIATKA PODZIELONA!';
+
+  @override
+  String get fillominoWinMessage => 'Idealnie ułożone kafelki dzięki logice!';
+
+  @override
+  String get hitoriTitle => 'HITORI';
+
+  @override
+  String get hitoriSubtitle =>
+      'Zamaluj powtarzające się liczby w każdym wierszu i kolumnie.';
+
+  @override
+  String get hitoriHowToPlay =>
+      'Zamaluj komórki tak, aby żadna liczba nie pojawiła się więcej niż raz w żadnym wierszu ani kolumnie. Zamalowane komórki nie mogą ze sobą sąsiadować (prostopadle), a wszystkie niezamalowane komórki muszą tworzyć jedną połączoną grupę.';
+
+  @override
+  String get hitoriWinTitle => 'MISTRZ HITORI!';
+
+  @override
+  String get hitoriWinMessage =>
+      'Udało Ci się pomyślnie usunąć wszystkie duplikaty!';
+
+  @override
   String get pathFinderTitle => 'Poszukiwacz ścieżki';
 
   @override

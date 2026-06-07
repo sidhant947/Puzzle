@@ -386,6 +386,122 @@ class AppLocalizationsHi extends AppLocalizations {
   String get nonogramWin => 'छवि प्रकट हुई!';
 
   @override
+  String get magnetsTitle => 'मैग्नेट';
+
+  @override
+  String get magnetsSubtitle => 'ध्रुव गणना के आधार पर ग्रिड में मैग्नेट रखें।';
+
+  @override
+  String get magnetsHowToPlay =>
+      'डोमिनोज़ के आकार के कंटेनरों को \'+\' और \'-\' मैग्नेट से भरें या उन्हें खाली छोड़ दें। पंक्ति और स्तंभ संकेत उस रेखा में प्रत्येक ध्रुव की कुल संख्या निर्दिष्ट करते हैं। समान ध्रुव ऑर्थोगोनली (लंबवत या क्षैतिज रूप से) आसन्न नहीं हो सकते।';
+
+  @override
+  String get magnetsWinTitle => 'ध्रुवीयता संतुलित!';
+
+  @override
+  String get magnetsWinMessage => 'सभी मैग्नेट पूरी तरह से व्यवस्थित हैं!';
+
+  @override
+  String get lighthousesTitle => 'लाइटहाउस';
+
+  @override
+  String get lighthousesSubtitle => 'लाइटहाउस संकेतों के आधार पर जहाज रखें।';
+
+  @override
+  String get lighthousesHowToPlay =>
+      'ग्रिड में 1x1 जहाज रखें। लाइटहाउस क्षैतिज और ऊर्ध्वाधर रूप से दिखाई देने वाले जहाजों की कुल संख्या का संकेत देते हैं। जहाज लाइटहाउस या एक-दूसरे को नहीं छू सकते, यहाँ तक कि तिरछे भी नहीं।';
+
+  @override
+  String get lighthousesWinTitle => 'सुरक्षित समुद्र!';
+
+  @override
+  String get lighthousesWinMessage =>
+      'सभी लाइटहाउस जहाजों का पूरी तरह से मार्गदर्शन कर रहे हैं!';
+
+  @override
+  String get dominosaTitle => 'डोमिनोसा';
+
+  @override
+  String get dominosaSubtitle => 'ग्रिड में छिपे हुए सभी डोमिनोज़ खोजें।';
+
+  @override
+  String get dominosaHowToPlay =>
+      'संख्याओं के ग्रिड पर डोमिनोज़ का एक पूरा सेट इस तरह व्यवस्थित करें कि आसन्न संख्याओं का प्रत्येक जोड़ा बिल्कुल एक डोमिनोज़ से ढका हो। प्रत्येक संख्या युग्म सेट में केवल एक बार मौजूद होता है।';
+
+  @override
+  String get dominosaWinTitle => 'डोमिनोज़ मास्टर!';
+
+  @override
+  String get dominosaWinMessage => 'हर डोमिनोज़ मिल गया है और रख दिया गया है!';
+
+  @override
+  String get skyscrapersTitle => 'स्काईस्क्रेपर्स';
+
+  @override
+  String get skyscrapersSubtitle => 'ग्रिड को इमारतों की ऊंचाई से भरें।';
+
+  @override
+  String get skyscrapersHowToPlay =>
+      'ग्रिड को ऊंचाई (1-N) से भरें ताकि प्रत्येक पंक्ति और स्तंभ में प्रत्येक ऊंचाई बिल्कुल एक बार हो। किनारों पर संकेत बताते हैं कि उस दिशा से कितनी इमारतें दिखाई दे रही हैं, जिसमें ऊंची इमारतें छोटी इमारतों को रोकती हैं।';
+
+  @override
+  String get skyscrapersWinTitle => 'क्षितिज बहाल!';
+
+  @override
+  String get skyscrapersWinMessage => 'सभी इमारतें पूरी तरह से स्थित हैं!';
+
+  @override
+  String get nurikabeTitle => 'नुरिकाबे';
+
+  @override
+  String get nurikabeSubtitle => 'एक जुड़ा हुआ समुद्र और अलग द्वीप बनाएं।';
+
+  @override
+  String get nurikabeHowToPlay =>
+      'एक एकल जुड़ा हुआ \'समुद्र\' (कोई 2x2 ब्लॉक नहीं) बनाने के लिए सेल को शेड करें। बिना शेड वाले सेल \'द्वीप\' बनाते हैं, जिनमें से प्रत्येक में बिल्कुल एक संख्या होती है जो उसके कुल क्षेत्रफल का प्रतिनिधित्व करती है।';
+
+  @override
+  String get nurikabeWinTitle => 'बहता हुआ समुद्र!';
+
+  @override
+  String get nurikabeWinMessage => 'द्वीप अलग हो गए, समुद्र जुड़ गया!';
+
+  @override
+  String get fillominoTitle => 'फिलोमिनो';
+
+  @override
+  String get fillominoSubtitle =>
+      'ग्रिड को निर्दिष्ट आकार के पॉलिमिनो में विभाजित करें।';
+
+  @override
+  String get fillominoHowToPlay =>
+      'ग्रिड को पॉलिमिनो में विभाजित करें ताकि आकार N के प्रत्येक पॉलिमिनो में उसके सभी सेल में संख्या N हो। समान आकार के पॉलिमिनो ऑर्थोगोनली आसन्न नहीं हो सकते।';
+
+  @override
+  String get fillominoWinTitle => 'ग्रिड विभाजित!';
+
+  @override
+  String get fillominoWinMessage => 'तर्क के साथ पूरी तरह से टाइल किया गया!';
+
+  @override
+  String get hitoriTitle => 'हितोरी';
+
+  @override
+  String get hitoriSubtitle =>
+      'प्रत्येक पंक्ति और स्तंभ में डुप्लिकेट नंबरों को शेड करें।';
+
+  @override
+  String get hitoriHowToPlay =>
+      'सेल को शेड करें ताकि कोई भी नंबर किसी भी पंक्ति या स्तंभ में एक से अधिक बार न आए। शेड किए गए सेल आसन्न (ऑर्थोगोनली) नहीं हो सकते, और सभी बिना शेड वाले सेल को एक एकल जुड़ा हुआ समूह बनाना चाहिए।';
+
+  @override
+  String get hitoriWinTitle => 'हितोरी मास्टर!';
+
+  @override
+  String get hitoriWinMessage =>
+      'आपने सफलतापूर्वक सभी डुप्लिकेट को हल कर लिया है!';
+
+  @override
   String get pathFinderTitle => 'पाथ फाइंडर';
 
   @override

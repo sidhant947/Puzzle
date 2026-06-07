@@ -386,6 +386,123 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nonogramWin => 'Image Revealed!';
 
   @override
+  String get magnetsTitle => 'MAGNETS';
+
+  @override
+  String get magnetsSubtitle =>
+      'Place magnets in the grid based on pole counts.';
+
+  @override
+  String get magnetsHowToPlay =>
+      'Fill domino-sized containers with \'+\' and \'-\' magnets or leave them blank. Row and column clues specify the total number of each pole in that line. Identical poles cannot be adjacent orthogonally.';
+
+  @override
+  String get magnetsWinTitle => 'POLARITY BALANCED!';
+
+  @override
+  String get magnetsWinMessage => 'All magnets are perfectly arranged!';
+
+  @override
+  String get lighthousesTitle => 'LIGHTHOUSES';
+
+  @override
+  String get lighthousesSubtitle => 'Place ships based on lighthouse clues.';
+
+  @override
+  String get lighthousesHowToPlay =>
+      'Place 1x1 ships in the grid. Lighthouses indicate the total number of ships visible horizontally and vertically. Ships cannot touch lighthouses or each other, even diagonally.';
+
+  @override
+  String get lighthousesWinTitle => 'SEA SAFE!';
+
+  @override
+  String get lighthousesWinMessage =>
+      'All lighthouses are guiding the ships perfectly!';
+
+  @override
+  String get dominosaTitle => 'DOMINOSA';
+
+  @override
+  String get dominosaSubtitle => 'Find all the hidden dominoes in the grid.';
+
+  @override
+  String get dominosaHowToPlay =>
+      'Arrange a complete set of dominoes on a grid of numbers such that every pair of adjacent numbers is covered by exactly one domino. Each number pair exists only once in the set.';
+
+  @override
+  String get dominosaWinTitle => 'DOMINO MASTER!';
+
+  @override
+  String get dominosaWinMessage => 'Every domino has been found and placed!';
+
+  @override
+  String get skyscrapersTitle => 'SKYSCRAPERS';
+
+  @override
+  String get skyscrapersSubtitle => 'Fill the grid with building heights.';
+
+  @override
+  String get skyscrapersHowToPlay =>
+      'Fill the grid with heights (1-N) such that each row and column contains each height exactly once. Clues on the edges indicate how many buildings are visible from that direction, with taller buildings blocking shorter ones.';
+
+  @override
+  String get skyscrapersWinTitle => 'SKYLINE RESTORED!';
+
+  @override
+  String get skyscrapersWinMessage => 'All buildings are perfectly positioned!';
+
+  @override
+  String get nurikabeTitle => 'NURIKABE';
+
+  @override
+  String get nurikabeSubtitle => 'Form a connected sea and separate islands.';
+
+  @override
+  String get nurikabeHowToPlay =>
+      'Shade cells to form a single connected \'sea\' (no 2x2 blocks). Unshaded cells form \'islands\', each containing exactly one number that represents its total area.';
+
+  @override
+  String get nurikabeWinTitle => 'SEA FLOWING!';
+
+  @override
+  String get nurikabeWinMessage => 'Islands separated, sea connected!';
+
+  @override
+  String get fillominoTitle => 'FILLOMINO';
+
+  @override
+  String get fillominoSubtitle =>
+      'Divide the grid into polyominoes of the specified sizes.';
+
+  @override
+  String get fillominoHowToPlay =>
+      'Divide the grid into polyominoes such that each polyomino of size N contains the number N in all its cells. Polyominoes of the same size cannot be orthogonally adjacent.';
+
+  @override
+  String get fillominoWinTitle => 'GRID DIVIDED!';
+
+  @override
+  String get fillominoWinMessage => 'Perfectly tiled with logic!';
+
+  @override
+  String get hitoriTitle => 'HITORI';
+
+  @override
+  String get hitoriSubtitle =>
+      'Shade duplicate numbers in each row and column.';
+
+  @override
+  String get hitoriHowToPlay =>
+      'Shade cells so that no number appears more than once in any row or column. Shaded cells cannot be adjacent (orthogonally), and all unshaded cells must form a single connected group.';
+
+  @override
+  String get hitoriWinTitle => 'HITORI MASTER!';
+
+  @override
+  String get hitoriWinMessage =>
+      'You\'ve successfully resolved all the duplicates!';
+
+  @override
   String get pathFinderTitle => 'Path Finder';
 
   @override

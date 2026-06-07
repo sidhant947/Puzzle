@@ -387,6 +387,125 @@ class AppLocalizationsBn extends AppLocalizations {
   String get nonogramWin => 'চিত্র প্রকাশিত!';
 
   @override
+  String get magnetsTitle => 'ম্যাগনেটস';
+
+  @override
+  String get magnetsSubtitle =>
+      'মেরু গণনার উপর ভিত্তি করে গ্রিডে ম্যাগনেট রাখুন।';
+
+  @override
+  String get magnetsHowToPlay =>
+      'ডমিনো-আকারের কন্টেইনারগুলি \'+\' এবং \'-\' ম্যাগনেট দিয়ে পূরণ করুন অথবা খালি রাখুন। সারি এবং কলামের সূত্রগুলি সেই লাইনে প্রতিটি মেরুর মোট সংখ্যা নির্দিষ্ট করে। অভিন্ন মেরুগুলি লম্বভাবে সংলগ্ন হতে পারে না।';
+
+  @override
+  String get magnetsWinTitle => 'পোলারিটি ব্যালেন্সড!';
+
+  @override
+  String get magnetsWinMessage => 'সব ম্যাগনেট নিখুঁতভাবে সাজানো হয়েছে!';
+
+  @override
+  String get lighthousesTitle => 'লাইটহাউস';
+
+  @override
+  String get lighthousesSubtitle =>
+      'লাইটহাউস সূত্রের উপর ভিত্তি করে জাহাজ রাখুন।';
+
+  @override
+  String get lighthousesHowToPlay =>
+      'গ্রিডে ১x১ জাহাজ রাখুন। লাইটহাউসগুলি অনুভূমিকভাবে এবং উল্লম্বভাবে দৃশ্যমান জাহাজের মোট সংখ্যা নির্দেশ করে। জাহাজগুলি লাইটহাউস বা একে অপরকে স্পর্শ করতে পারবে না, এমনকি তির্যকভাবেও না।';
+
+  @override
+  String get lighthousesWinTitle => 'নিরাপদ সমুদ্র!';
+
+  @override
+  String get lighthousesWinMessage =>
+      'সব লাইটহাউস জাহাজগুলোকে নিখুঁতভাবে পথ দেখাচ্ছে!';
+
+  @override
+  String get dominosaTitle => 'ডমিনোসা';
+
+  @override
+  String get dominosaSubtitle => 'গ্রিডে লুকানো সব ডমিনো খুঁজে বের করুন।';
+
+  @override
+  String get dominosaHowToPlay =>
+      'সংখ্যার গ্রিডে ডমিনোর একটি সম্পূর্ণ সেট এমনভাবে সাজান যাতে প্রতিটি সংলগ্ন সংখ্যার জোড়া ঠিক একটি ডমিনো দ্বারা আচ্ছাদিত হয়। প্রতিটি সংখ্যার জোড়া সেটে কেবল একবার থাকে।';
+
+  @override
+  String get dominosaWinTitle => 'ডমিনো মাস্টার!';
+
+  @override
+  String get dominosaWinMessage =>
+      'প্রতিটি ডমিনো খুঁজে পাওয়া গেছে এবং স্থাপন করা হয়েছে!';
+
+  @override
+  String get skyscrapersTitle => 'স্কাইস্ক্র্যাপারস';
+
+  @override
+  String get skyscrapersSubtitle => 'গ্রিডটি ভবনের উচ্চতা দিয়ে পূরণ করুন।';
+
+  @override
+  String get skyscrapersHowToPlay =>
+      'গ্রিডটি উচ্চতা (1-N) দিয়ে পূরণ করুন যাতে প্রতিটি সারি এবং কলামে প্রতিটি উচ্চতা ঠিক একবার থাকে। ধারের সূত্রগুলি নির্দেশ করে যে সেই দিক থেকে কয়টি ভবন দৃশ্যমান, যেখানে উঁচু ভবনগুলি ছোট ভবনগুলিকে আড়াল করে।';
+
+  @override
+  String get skyscrapersWinTitle => 'স্কাইলাইন পুনরুদ্ধার!';
+
+  @override
+  String get skyscrapersWinMessage => 'সব ভবন নিখুঁতভাবে অবস্থিত!';
+
+  @override
+  String get nurikabeTitle => 'নুরিকেব';
+
+  @override
+  String get nurikabeSubtitle =>
+      'একটি সংযুক্ত সমুদ্র এবং পৃথক দ্বীপ তৈরি করুন।';
+
+  @override
+  String get nurikabeHowToPlay =>
+      'একটি একক সংযুক্ত \'সমুদ্র\' (কোনো ২x২ ব্লক নেই) তৈরি করতে সেলগুলি শেড করুন। শেডহীন সেলগুলি \'দ্বীপ\' গঠন করে, যার প্রতিটিতে ঠিক একটি সংখ্যা থাকে যা তার মোট ক্ষেত্রফলকে উপস্থাপন করে।';
+
+  @override
+  String get nurikabeWinTitle => 'সমুদ্র প্রবাহিত!';
+
+  @override
+  String get nurikabeWinMessage => 'দ্বীপগুলো আলাদা, সমুদ্র সংযুক্ত!';
+
+  @override
+  String get fillominoTitle => 'ফিলোমিনো';
+
+  @override
+  String get fillominoSubtitle =>
+      'গ্রিডটিকে নির্দিষ্ট আকারের পলিওমিনোতে ভাগ করুন।';
+
+  @override
+  String get fillominoHowToPlay =>
+      'গ্রিডটিকে পলিওমিনোতে ভাগ করুন যাতে আকার N-এর প্রতিটি পলিওমিনো তার সমস্ত সেলে সংখ্যা N ধারণ করে। একই আকারের পলিওমিনো লম্বভাবে সংলগ্ন হতে পারে না।';
+
+  @override
+  String get fillominoWinTitle => 'গ্রিড বিভক্ত!';
+
+  @override
+  String get fillominoWinMessage => 'যুক্তির সাথে নিখুঁতভাবে সাজানো!';
+
+  @override
+  String get hitoriTitle => 'হিতোরি';
+
+  @override
+  String get hitoriSubtitle =>
+      'প্রতিটি সারি এবং কলামে ডুপ্লিকেট সংখ্যাগুলি শেড করুন।';
+
+  @override
+  String get hitoriHowToPlay =>
+      'সেলগুলি শেড করুন যাতে কোনো সারি বা কলামে কোনো সংখ্যা একাধিকবার না আসে। শেড করা সেলগুলি সংলগ্ন (লম্বভাবে) হতে পারে না এবং সমস্ত শেডহীন সেলকে একটি একক সংযুক্ত দল গঠন করতে হবে।';
+
+  @override
+  String get hitoriWinTitle => 'হিতোরি মাস্টার!';
+
+  @override
+  String get hitoriWinMessage => 'আপনি সফলভাবে সব ডুপ্লিকেট সমাধান করেছেন!';
+
+  @override
   String get pathFinderTitle => 'পাথ ফাইন্ডার';
 
   @override

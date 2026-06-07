@@ -388,6 +388,123 @@ class AppLocalizationsFa extends AppLocalizations {
   String get nonogramWin => 'تصویر نمایان شد!';
 
   @override
+  String get magnetsTitle => 'آهنرباها';
+
+  @override
+  String get magnetsSubtitle =>
+      'آهنرباها را بر اساس تعداد قطب‌ها در جدول قرار دهید.';
+
+  @override
+  String get magnetsHowToPlay =>
+      'ظروف به اندازه دومینو را با آهنرباهای \'+\' و \'-\' پر کنید یا آن‌ها را خالی بگذارید. سرنخ‌های سطر و ستون، تعداد کل هر قطب را در آن خط مشخص می‌کنند. قطب‌های یکسان نمی‌توانند به صورت متعامد مجاور باشند.';
+
+  @override
+  String get magnetsWinTitle => 'قطبیت متعادل شد!';
+
+  @override
+  String get magnetsWinMessage => 'همه آهنرباها به خوبی چیده شده‌اند!';
+
+  @override
+  String get lighthousesTitle => 'فانوس‌های دریایی';
+
+  @override
+  String get lighthousesSubtitle =>
+      'کشتی‌ها را بر اساس سرنخ‌های فانوس دریایی قرار دهید.';
+
+  @override
+  String get lighthousesHowToPlay =>
+      'کشتی‌های ۱x۱ را در جدول قرار دهید. فانوس‌های دریایی تعداد کل کشتی‌های قابل مشاهده به صورت افقی و عمودی را نشان می‌دهند. کشتی‌ها نباید با فانوس‌های دریایی یا یکدیگر تماس داشته باشند، حتی به صورت مورب.';
+
+  @override
+  String get lighthousesWinTitle => 'دریا امن است!';
+
+  @override
+  String get lighthousesWinMessage =>
+      'همه فانوس‌های دریایی کشتی‌ها را به خوبی هدایت می‌کنند!';
+
+  @override
+  String get dominosaTitle => 'دومینوسا';
+
+  @override
+  String get dominosaSubtitle => 'همه دومینوهای پنهان را در جدول پیدا کنید.';
+
+  @override
+  String get dominosaHowToPlay =>
+      'یک مجموعه کامل از دومینوها را روی جدولی از اعداد طوری بچینید که هر جفت عدد مجاور دقیقاً با یک دومینو پوشانده شود. هر جفت عدد فقط یک بار در مجموعه وجود دارد.';
+
+  @override
+  String get dominosaWinTitle => 'استاد دومینو!';
+
+  @override
+  String get dominosaWinMessage => 'هر دومینو پیدا و جایگذاری شده است!';
+
+  @override
+  String get skyscrapersTitle => 'آسمان‌خراش‌ها';
+
+  @override
+  String get skyscrapersSubtitle => 'جدول را با ارتفاع ساختمان‌ها پر کنید.';
+
+  @override
+  String get skyscrapersHowToPlay =>
+      'جدول را با ارتفاع‌های (1-N) پر کنید طوری که هر سطر و ستون دقیقاً یک بار شامل هر ارتفاع باشد. سرنخ‌های لبه‌ها نشان می‌دهند که چه تعداد ساختمان از آن جهت قابل مشاهده است، ساختمان‌های بلندتر مانع دیده شدن ساختمان‌های کوتاه‌تر می‌شوند.';
+
+  @override
+  String get skyscrapersWinTitle => 'خط افق بازسازی شد!';
+
+  @override
+  String get skyscrapersWinMessage =>
+      'همه ساختمان‌ها در موقعیت عالی قرار دارند!';
+
+  @override
+  String get nurikabeTitle => 'نوریکابه';
+
+  @override
+  String get nurikabeSubtitle => 'یک دریای متصل و جزایر جداگانه تشکیل دهید.';
+
+  @override
+  String get nurikabeHowToPlay =>
+      'خانه‌ها را سایه بزنید تا یک «دریای» متصل واحد تشکیل شود (بدون بلوک‌های ۲x۲). خانه‌های سایه نزده «جزایر» را تشکیل می‌دهند که هر کدام دقیقاً شامل یک عدد است که نشان‌دهنده مساحت کل آن است.';
+
+  @override
+  String get nurikabeWinTitle => 'دریا جاری است!';
+
+  @override
+  String get nurikabeWinMessage => 'جزایر جدا شدند، دریا متصل شد!';
+
+  @override
+  String get fillominoTitle => 'فیلومینو';
+
+  @override
+  String get fillominoSubtitle =>
+      'جدول را به پلی‌امینوهایی با اندازه‌های مشخص تقسیم کنید.';
+
+  @override
+  String get fillominoHowToPlay =>
+      'جدول را به پلی‌امینوهایی تقسیم کنید طوری که هر پلی‌امینو به اندازه N، شامل عدد N در تمام خانه‌هایش باشد. پلی‌امینوهای هم‌اندازه نمی‌توانند به صورت متعامد مجاور باشند.';
+
+  @override
+  String get fillominoWinTitle => 'جدول تقسیم شد!';
+
+  @override
+  String get fillominoWinMessage => 'با منطق عالی چیده شد!';
+
+  @override
+  String get hitoriTitle => 'هیتوری';
+
+  @override
+  String get hitoriSubtitle => 'اعداد تکراری را در هر سطر و ستون سایه بزنید.';
+
+  @override
+  String get hitoriHowToPlay =>
+      'خانه‌ها را طوری سایه بزنید که هیچ عددی بیش از یک بار در هیچ سطر یا ستونی ظاهر نشود. خانه‌های سایه‌دار نمی‌توانند مجاور باشند (به صورت متعامد) و تمام خانه‌های سایه نزده باید یک گروه متصل واحد را تشکیل دهند.';
+
+  @override
+  String get hitoriWinTitle => 'استاد هیتوری!';
+
+  @override
+  String get hitoriWinMessage => 'شما با موفقیت تمام تکرارها را حل کردید!';
+
+  @override
   String get pathFinderTitle => 'مسیر یاب';
 
   @override
