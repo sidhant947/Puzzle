@@ -106,6 +106,5 @@ msix_config:
   publisher_display_name: Sidhant
   identity_name: com.sidhant.puzzle
   logo_path: windows\runner\resources\app_icon.ico
-  capabilities: internetClient
   executable_name: bin\puzzle.exe
   install_certificate: false
