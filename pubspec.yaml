@@ -44,6 +44,7 @@ dependencies:
   intl: ^0.20.2
   url_launcher: ^6.3.2
   fast_immutable_collections: ^11.2.0
+  window_manager: ^0.4.3
 
 dev_dependencies:
   flutter_test:
@@ -53,6 +54,7 @@ dev_dependencies:
   freezed: ^2.5.2
   hive_generator: ^2.0.1
   json_serializable: ^6.8.0
+  msix: ^3.16.1
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
@@ -98,3 +100,12 @@ flutter:
           weight: 600
         - asset: assets/fonts/Geist/static/Geist-Bold.ttf
           weight: 700
+
+msix_config:
+  display_name: Puzzle Games
+  publisher_display_name: Sidhant
+  identity_name: com.sidhant.puzzle
+  logo_path: windows\runner\resources\app_icon.ico
+  capabilities: internetClient
+  executable_name: bin\puzzle.exe
+  install_certificate: false
