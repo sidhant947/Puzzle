@@ -1,6 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
+import '../../../../utils/design_system.dart';
+
 enum StroopRule { text, color }
 
 class StroopStimulus {
@@ -25,13 +27,13 @@ class ReverseStroopEngine {
   static final Random _random = Random();
 
   static const Map<String, Color> _colors = {
-    'RED': Colors.red,
-    'GREEN': Colors.green,
-    'BLUE': Colors.blue,
-    'YELLOW': Colors.orange, // Use orange for better visibility on white
-    'PURPLE': Colors.purple,
-    'ORANGE': Colors.orange,
-    'PINK': Colors.pink,
+    'RED': DesignSystem.gameRose,
+    'GREEN': DesignSystem.gameGreen,
+    'BLUE': DesignSystem.gameBlue,
+    'YELLOW': DesignSystem.gameAmber,
+    'PURPLE': DesignSystem.gamePurple,
+    'ORANGE': DesignSystem.gameOrange,
+    'PINK': DesignSystem.gamePink,
   };
 
   static StroopStimulus generateStimulus(String difficulty) {

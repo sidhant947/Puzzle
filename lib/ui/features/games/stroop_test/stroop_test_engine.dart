@@ -1,6 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
+import '../../../../utils/design_system.dart';
+
 class StroopItem {
   final String text;
   final Color color;
@@ -12,12 +14,12 @@ class StroopItem {
 class StroopTestEngine {
   final Random _random = Random();
   final Map<String, Color> _colorData = {
-    'RED': Colors.red,
-    'BLUE': Colors.blue,
-    'GREEN': Colors.green,
-    'YELLOW': Colors.amber,
-    'PURPLE': Colors.purple,
-    'ORANGE': Colors.orange,
+    'RED': DesignSystem.gameRose,
+    'BLUE': DesignSystem.gameBlue,
+    'GREEN': DesignSystem.gameGreen,
+    'YELLOW': DesignSystem.gameAmber,
+    'PURPLE': DesignSystem.gamePurple,
+    'ORANGE': DesignSystem.gameOrange,
   };
 
   StroopItem generateItem() {

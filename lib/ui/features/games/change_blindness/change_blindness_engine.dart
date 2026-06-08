@@ -1,6 +1,8 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 
+import '../../../../utils/design_system.dart';
+
 class ChangeBlindnessEngine {
   final Random _random = Random();
 
@@ -12,8 +14,14 @@ class ChangeBlindnessEngine {
   ];
 
   final List<Color> _colors = [
-    Colors.red, Colors.blue, Colors.green, Colors.orange,
-    Colors.purple, Colors.pink, Colors.teal, Colors.indigo,
+    DesignSystem.gameRose,
+    DesignSystem.gameBlue,
+    DesignSystem.gameGreen,
+    DesignSystem.gameOrange,
+    DesignSystem.gamePurple,
+    DesignSystem.gamePink,
+    DesignSystem.gameTeal,
+    DesignSystem.gameIndigo,
   ];
 
   Map<String, dynamic> generateTrial(int gridSize) {
