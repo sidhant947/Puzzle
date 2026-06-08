@@ -87,9 +87,6 @@ jobs:
       - name: Build Windows
         run: flutter build windows --release
 
-      - name: Create MSIX
-        run: flutter pub run msix:create
-
       - name: Create Portable Zip
         run: |
           powershell Compress-Archive -Path build/windows/x64/runner/release/* -DestinationPath build/windows/x64/runner/release/puzzle-games-windows-portable.zip
@@ -100,7 +97,6 @@ jobs:
         with:
           name: windows-artifacts
           path: |
-            build/windows/x64/runner/release/*.msix
             build/windows/x64/runner/release/puzzle-games-windows-portable.zip
 
   release:

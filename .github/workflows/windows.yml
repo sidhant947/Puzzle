@@ -26,14 +26,7 @@ jobs:
       - name: Build Windows
         run: flutter build windows --release
 
-      - name: Create MSIX
-        run: flutter pub run msix:create
-
-      - name: Upload MSIX Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: puzzle-games-windows-msix
-          path: build/windows/x64/runner/release/*.msix
+     
 
       - name: Create Portable Zip
         run: |
