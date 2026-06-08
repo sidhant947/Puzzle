@@ -1,7 +1,7 @@
 # PUZZLE: 190+ Free Brain Games & Logic Puzzles
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Platform](https://img.shields.io/badge/platform-Android%20%7C%20Linux%20%7C%20Web-blue.svg)](#-downloads)
+[![Platform](https://img.shields.io/badge/platform-Android%20%7C%20Linux%20%7C%20Web%20%7C%20Windows-blue.svg)](#-downloads)
 
 The ultimate collection of **puzzle challenge games**. A professional suite of minimalist **free brain games** built with Flutter. Master over 190 unique puzzles in this essential **logic puzzle** library, featuring the best **offline games** including **Minesweeper**, **2048**, **Sudoku**, and more.
 
