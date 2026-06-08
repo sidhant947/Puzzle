@@ -3,7 +3,7 @@
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Platform](https://img.shields.io/badge/platform-Android%20%7C%20Linux%20%7C%20Web%20%7C%20Windows-blue.svg)](#-downloads)
 
-The ultimate collection of **puzzle challenge games**. A professional suite of minimalist **free brain games** built with Flutter. Master over 190 unique puzzles in this essential **logic puzzle** library, featuring the best **offline games** including **Minesweeper**, **2048**, **Sudoku**, and more.
+The ultimate collection of **puzzle challenge games** available for Android , Linux and Windows. A professional suite of minimalist **free brain games** built with Flutter. Master over 190 unique puzzles in this essential **logic puzzle** library, featuring the best **offline games** including **Minesweeper**, **2048**, **Sudoku**, and more. 
 
 ---
 
@@ -29,9 +29,18 @@ The best **puzzle games for adults** and kids on the Play Store.
 | <a href="https://play.google.com/store/apps/details?id=com.sidhant.puzzle"><img src="https://github.com/user-attachments/assets/5ff479ee-9c86-47fd-a583-2a4f8f10633e" height="60"></a> | [<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="80">](https://f-droid.org/packages/com.sidhant.puzzle) |
 
 ### 🐧 Linux
-Get the full suite of **brain puzzle games** for your desktop.
- [<img src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" height="50">](https://snapcraft.io/puzzle-games)
-*   **GitHub Release:** [**Get tarball directly from GitHub**](https://github.com/sidhant947/Puzzle/releases/latest/)
+Get the full suite of **puzzle games** for your linux.
+
+| **Snap Store** | **Github** |
+| :---: | :---: |
+| <a href="https://snapcraft.io/puzzle-games"><img src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" height="60"></a> | [<img  height="80" alt="image" src="https://github.com/user-attachments/assets/22dac90e-9807-4ce6-ba7c-d6829a083358" />](https://github.com/sidhant947/Puzzle/releases/latest/) |
+
+### Windows
+Get the full suite of **puzzle games** for your Windows.
+
+| **Github** |
+| :---: |
+| [<img  height="80" alt="image" src="https://github.com/user-attachments/assets/22dac90e-9807-4ce6-ba7c-d6829a083358" />](https://github.com/sidhant947/Puzzle/releases/latest/) |
 
 ---
 
