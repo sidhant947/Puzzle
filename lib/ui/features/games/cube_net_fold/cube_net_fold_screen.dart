@@ -177,7 +177,6 @@ class _CubeNetFoldScreenState extends ConsumerState<CubeNetFoldScreen> {
                     children: List.generate(3, (index) {
                       final option = state.options[index];
                       final isSelected = state.selectedIndex == index;
-                      final isCorrect = option.isValid;
                       
                       Color cardColor = theme.colorScheme.surface;
                       Color shadow = theme.colorScheme.outline;

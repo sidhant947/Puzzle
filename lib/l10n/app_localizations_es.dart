@@ -42,6 +42,12 @@ class AppLocalizationsEs extends AppLocalizations {
   String get timeUp => '¡Se acabó el tiempo!';
 
   @override
+  String get victory => 'Victory!';
+
+  @override
+  String get gameWin => 'WELL DONE!';
+
+  @override
   String get completed => '¡Completado!';
 
   @override
@@ -1974,4 +1980,184 @@ class AppLocalizationsEs extends AppLocalizations {
 
   @override
   String get topologyScore => 'PUNTUACIÓN: ';
+
+  @override
+  String get semanticDistanceTitle => 'Semantic Distance';
+
+  @override
+  String get semanticDistanceSubtitle =>
+      'Measure the conceptual distance between words';
+
+  @override
+  String get oxymoronHuntTitle => 'Oxymoron Hunt';
+
+  @override
+  String get oxymoronHuntSubtitle => 'Pair contradictory words in the grid';
+
+  @override
+  String get portmanteauSplitTitle => 'Portmanteau Split';
+
+  @override
+  String get portmanteauSplitSubtitle =>
+      'Identify the source words of a portmanteau';
+
+  @override
+  String get chainReactionTitle => 'Chain Reaction';
+
+  @override
+  String get chainReactionSubtitle => 'Connect words using overlapping letters';
+
+  @override
+  String get rhymeMasterTitle => 'Rhyme Master';
+
+  @override
+  String get rhymeMasterSubtitle => 'Identify words that rhyme with the target';
+
+  @override
+  String get definitionDashTitle => 'Definition Dash';
+
+  @override
+  String get definitionDashSubtitle =>
+      'Match the correct word to its definition';
+
+  @override
+  String get syllableStackTitle => 'Syllable Stack';
+
+  @override
+  String get syllableStackSubtitle => 'Stack syllables to form complete words';
+
+  @override
+  String get sentenceUnscrambleTitle => 'Sentence Unscramble';
+
+  @override
+  String get sentenceUnscrambleSubtitle =>
+      'Reorder words to form a valid sentence';
+
+  @override
+  String get grammarSortTitle => 'Grammar Sort';
+
+  @override
+  String get grammarSortSubtitle => 'Categorize words by their part of speech';
+
+  @override
+  String get vowelReconstructTitle => 'Vowel Reconstruct';
+
+  @override
+  String get vowelReconstructSubtitle =>
+      'Fill in the missing vowels in the sentence';
+
+  @override
+  String get consonantReconstructTitle => 'Consonant Reconstruct';
+
+  @override
+  String get consonantReconstructSubtitle =>
+      'Fill in the missing consonants in the sentence';
+
+
+
+
+
+  @override
+  String get homophoneHuntTitle => 'Homophone Hunt';
+
+  @override
+  String get homophone_huntSubtitle => 'Choose the correctly spelled homophone';
+
+  @override
+  String get silentLetterSearchTitle => 'Silent Letter Search';
+
+  @override
+  String get silentLetterSearchSubtitle =>
+      'Identify silent letters in the given words';
+
+  @override
+  String get palindromeBuilderTitle => 'Palindrome Builder';
+
+  @override
+  String get palindromeBuilderSubtitle =>
+      'Create a palindrome by adding minimal letters';
+
+  @override
+  String get phoneticGuessTitle => 'Phonetic Guess';
+
+  @override
+  String get phoneticGuessSubtitle =>
+      'Identify the word from its phonetic spelling';
+
+  @override
+  String get spoonerismSolverTitle => 'Spoonerism Solver';
+
+  @override
+  String get spoonerismSolverSubtitle =>
+      'Identify the correct spoonerism for the phrase';
+
+  @override
+  String get etymonOddballTitle => 'Etymon Oddball';
+
+  @override
+  String get etymonOddballSubtitle =>
+      'Find the word that does not share the same root';
+
+  @override
+  String get etymologyOriginTitle => 'Etymology Origin';
+
+  @override
+  String get etymologyOriginSubtitle =>
+      'Guess the origin language of the loanword';
+
+  @override
+  String get affixFactoryTitle => 'Affix Factory';
+
+  @override
+  String get affixFactorySubtitle =>
+      'Create valid words using prefixes and suffixes';
+
+  @override
+  String get cognateCatchTitle => 'Cognate Catch';
+
+  @override
+  String get cognateCatchSubtitle =>
+      'Distinguish between true cognates and false friends';
+
+  @override
+  String get compoundConnectTitle => 'Compound Connect';
+
+  @override
+  String get compoundConnectSubtitle =>
+      'Combine two words to form a compound word';
+
+  @override
+  String get pangramSprintTitle => 'Pangram Sprint';
+
+  @override
+  String get pangramSprintSubtitle =>
+      'Build a sentence using every letter of the alphabet';
+
+  @override
+  String get anagramDefinitionTitle => 'Anagram Definition';
+
+  @override
+  String get anagramDefinitionSubtitle =>
+      'Solve the anagram based on its definition';
+
+  @override
+  String get letterBridgeTitle => 'Letter Bridge';
+
+  @override
+  String get letterBridgeSubtitle =>
+      'Find the missing letter that bridges two words';
+
+  @override
+  String get letterFrequencyScanTitle => 'Letter Frequency Scan';
+
+  @override
+  String get letterFrequencyScanSubtitle =>
+      'Count how many times a letter appears in the text';
+
+  @override
+  String get oneLetterShiftTitle => 'One-Letter Shift';
+
+  @override
+  String get oneLetterShiftSubtitle =>
+      'Transform one word into another with one letter change';
 }

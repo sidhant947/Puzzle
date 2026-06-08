@@ -9,7 +9,6 @@ class DominosaEngine {
     // 2. Arrange them in a grid of size (maxVal+1) x (maxVal+2).
     // 3. Shuffle and present the numbers.
     
-    int numDominoes = (maxVal + 1) * (maxVal + 2) ~/ 2;
     List<List<int>> dominoes = [];
     for (int i = 0; i <= maxVal; i++) {
       for (int j = i; j <= maxVal; j++) {

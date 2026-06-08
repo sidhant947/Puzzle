@@ -159,6 +159,32 @@ import '../ui/features/games/relational_memory/relational_memory_screen.dart';
 import '../ui/features/games/fact_binder/fact_binder_screen.dart';
 import '../ui/features/games/source_monitoring/source_monitoring_screen.dart';
 import '../ui/features/games/klotski/klotski_screen.dart';
+import '../ui/features/games/semantic_distance/semantic_distance_screen.dart';
+import '../ui/features/games/oxymoron_hunt/oxymoron_hunt_screen.dart';
+import '../ui/features/games/portmanteau_split/portmanteau_split_screen.dart';
+import '../ui/features/games/chain_reaction/chain_reaction_screen.dart';
+import '../ui/features/games/rhyme_master/rhyme_master_screen.dart';
+import '../ui/features/games/definition_dash/definition_dash_screen.dart';
+import '../ui/features/games/syllable_stack/syllable_stack_screen.dart';
+import '../ui/features/games/sentence_unscramble/sentence_unscramble_screen.dart';
+import '../ui/features/games/grammar_sort/grammar_sort_screen.dart';
+import '../ui/features/games/vowel_reconstruct/vowel_reconstruct_screen.dart';
+import '../ui/features/games/consonant_reconstruct/consonant_reconstruct_screen.dart';
+import '../ui/features/games/homophone_hunt/homophone_hunt_screen.dart';
+import '../ui/features/games/silent_letter_search/silent_letter_search_screen.dart';
+import '../ui/features/games/palindrome_builder/palindrome_builder_screen.dart';
+import '../ui/features/games/phonetic_guess/phonetic_guess_screen.dart';
+import '../ui/features/games/spoonerism_solver/spoonerism_solver_screen.dart';
+import '../ui/features/games/etymon_oddball/etymon_oddball_screen.dart';
+import '../ui/features/games/etymology_origin/etymology_origin_screen.dart';
+import '../ui/features/games/affix_factory/affix_factory_screen.dart';
+import '../ui/features/games/cognate_catch/cognate_catch_screen.dart';
+import '../ui/features/games/compound_connect/compound_connect_screen.dart';
+import '../ui/features/games/pangram_sprint/pangram_sprint_screen.dart';
+import '../ui/features/games/anagram_definition/anagram_definition_screen.dart';
+import '../ui/features/games/letter_bridge/letter_bridge_screen.dart';
+import '../ui/features/games/letter_frequency_scan/letter_frequency_scan_screen.dart';
+import '../ui/features/games/one_letter_shift/one_letter_shift_screen.dart';
 import '../ui/features/games/base_shift/base_shift_screen.dart';
 import '../utils/design_system.dart';
 
@@ -1461,6 +1487,214 @@ class GameData {
       'icon': Icons.grid_view_rounded,
       'color': DesignSystem.gameRose,
       'builder': (context) => const KlotskiScreen(),
+    },
+    {
+      'title': 'Semantic Distance',
+      'id': 'semantic_distance',
+      'category': 'WORD',
+      'icon': Icons.radar_rounded,
+      'color': DesignSystem.gameBlue,
+      'builder': (context) => const SemanticDistanceScreen(),
+    },
+    {
+      'title': 'Oxymoron Hunt',
+      'id': 'oxymoron_hunt',
+      'category': 'WORD',
+      'icon': Icons.contrast_rounded,
+      'color': DesignSystem.gamePurple,
+      'builder': (context) => const OxymoronHuntScreen(),
+    },
+    {
+      'title': 'Portmanteau Split',
+      'id': 'portmanteau_split',
+      'category': 'WORD',
+      'icon': Icons.call_split_rounded,
+      'color': DesignSystem.gameIndigo,
+      'builder': (context) => const PortmanteauSplitScreen(),
+    },
+    {
+      'title': 'Chain Reaction',
+      'id': 'chain_reaction',
+      'category': 'WORD',
+      'icon': Icons.cable_rounded,
+      'color': DesignSystem.gameGreen,
+      'builder': (context) => const ChainReactionScreen(),
+    },
+    {
+      'title': 'Rhyme Master',
+      'id': 'rhyme_master',
+      'category': 'WORD',
+      'icon': Icons.music_note_rounded,
+      'color': DesignSystem.gameAmber,
+      'builder': (context) => const RhymeMasterScreen(),
+    },
+    {
+      'title': 'Definition Dash',
+      'id': 'definition_dash',
+      'category': 'WORD',
+      'icon': Icons.menu_book_rounded,
+      'color': DesignSystem.gamePurple,
+      'builder': (context) => const DefinitionDashScreen(),
+    },
+    {
+      'title': 'Syllable Stack',
+      'id': 'syllable_stack',
+      'category': 'WORD',
+      'icon': Icons.layers_rounded,
+      'color': DesignSystem.gameIndigo,
+      'builder': (context) => const SyllableStackScreen(),
+    },
+    {
+      'title': 'Sentence Unscramble',
+      'id': 'sentence_unscramble',
+      'category': 'WORD',
+      'icon': Icons.reorder_rounded,
+      'color': DesignSystem.gameBlue,
+      'builder': (context) => const SentenceUnscrambleScreen(),
+    },
+    {
+      'title': 'Grammar Sort',
+      'id': 'grammar_sort',
+      'category': 'WORD',
+      'icon': Icons.rule_folder_rounded,
+      'color': DesignSystem.gameGreen,
+      'builder': (context) => const GrammarSortScreen(),
+    },
+    {
+      'title': 'Vowel Reconstruct',
+      'id': 'vowel_reconstruct',
+      'category': 'WORD',
+      'icon': Icons.spellcheck_rounded,
+      'color': DesignSystem.gameAmber,
+      'builder': (context) => const VowelReconstructScreen(),
+    },
+    {
+      'title': 'Consonant Reconstruct',
+      'id': 'consonant_reconstruct',
+      'category': 'WORD',
+      'icon': Icons.text_fields_rounded,
+      'color': DesignSystem.gamePurple,
+      'builder': (context) => const ConsonantReconstructScreen(),
+    },
+    {
+      'title': 'Homophone Hunt',
+      'id': 'homophone_hunt',
+      'category': 'WORD',
+      'icon': Icons.hearing_rounded,
+      'color': DesignSystem.gameBlue,
+      'builder': (context) => const HomophoneHuntScreen(),
+    },
+    {
+      'title': 'Silent Letter Search',
+      'id': 'silent_letter_search',
+      'category': 'WORD',
+      'icon': Icons.volume_off_rounded,
+      'color': DesignSystem.gameGreen,
+      'builder': (context) => const SilentLetterSearchScreen(),
+    },
+    {
+      'title': 'Palindrome Builder',
+      'id': 'palindrome_builder',
+      'category': 'WORD',
+      'icon': Icons.repeat_rounded,
+      'color': DesignSystem.gameAmber,
+      'builder': (context) => const PalindromeBuilderScreen(),
+    },
+    {
+      'title': 'Phonetic Guess',
+      'id': 'phonetic_guess',
+      'category': 'WORD',
+      'icon': Icons.record_voice_over_rounded,
+      'color': DesignSystem.gamePurple,
+      'builder': (context) => const PhoneticGuessScreen(),
+    },
+    {
+      'title': 'Spoonerism Solver',
+      'id': 'spoonerism_solver',
+      'category': 'WORD',
+      'icon': Icons.swap_horiz_rounded,
+      'color': DesignSystem.gameIndigo,
+      'builder': (context) => const SpoonerismSolverScreen(),
+    },
+    {
+      'title': 'Etymon Oddball',
+      'id': 'etymon_oddball',
+      'category': 'WORD',
+      'icon': Icons.psychology_alt_rounded,
+      'color': DesignSystem.gameBlue,
+      'builder': (context) => const EtymonOddballScreen(),
+    },
+    {
+      'title': 'Etymology Origin',
+      'id': 'etymology_origin',
+      'category': 'WORD',
+      'icon': Icons.history_edu_rounded,
+      'color': DesignSystem.gameGreen,
+      'builder': (context) => const EtymologyOriginScreen(),
+    },
+    {
+      'title': 'Affix Factory',
+      'id': 'affix_factory',
+      'category': 'WORD',
+      'icon': Icons.add_box_rounded,
+      'color': DesignSystem.gameAmber,
+      'builder': (context) => const AffixFactoryScreen(),
+    },
+    {
+      'title': 'Cognate Catch',
+      'id': 'cognate_catch',
+      'category': 'WORD',
+      'icon': Icons.handshake_rounded,
+      'color': DesignSystem.gamePurple,
+      'builder': (context) => const CognateCatchScreen(),
+    },
+    {
+      'title': 'Compound Connect',
+      'id': 'compound_connect',
+      'category': 'WORD',
+      'icon': Icons.merge_rounded,
+      'color': DesignSystem.gameIndigo,
+      'builder': (context) => const CompoundConnectScreen(),
+    },
+    {
+      'title': 'Pangram Sprint',
+      'id': 'pangram_sprint',
+      'category': 'WORD',
+      'icon': Icons.abc_rounded,
+      'color': DesignSystem.gameBlue,
+      'builder': (context) => const PangramSprintScreen(),
+    },
+    {
+      'title': 'Anagram Definition',
+      'id': 'anagram_definition',
+      'category': 'WORD',
+      'icon': Icons.find_replace_rounded,
+      'color': DesignSystem.gameGreen,
+      'builder': (context) => const AnagramDefinitionScreen(),
+    },
+    {
+      'title': 'Letter Bridge',
+      'id': 'letter_bridge',
+      'category': 'WORD',
+      'icon': Icons.straighten_rounded,
+      'color': DesignSystem.gameAmber,
+      'builder': (context) => const LetterBridgeScreen(),
+    },
+    {
+      'title': 'Letter Frequency Scan',
+      'id': 'letter_frequency_scan',
+      'category': 'WORD',
+      'icon': Icons.analytics_rounded,
+      'color': DesignSystem.gamePurple,
+      'builder': (context) => const LetterFrequencyScanScreen(),
+    },
+    {
+      'title': 'One-Letter Shift',
+      'id': 'one_letter_shift',
+      'category': 'WORD',
+      'icon': Icons.published_with_changes_rounded,
+      'color': DesignSystem.gameIndigo,
+      'builder': (context) => const OneLetterShiftScreen(),
     },
   ];
 }

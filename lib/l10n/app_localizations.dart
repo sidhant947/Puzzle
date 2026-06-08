@@ -206,6 +206,18 @@ abstract class AppLocalizations {
   /// **'Time\'s Up!'**
   String get timeUp;
 
+  /// No description provided for @victory.
+  ///
+  /// In en, this message translates to:
+  /// **'Victory!'**
+  String get victory;
+
+  /// No description provided for @gameWin.
+  ///
+  /// In en, this message translates to:
+  /// **'WELL DONE!'**
+  String get gameWin;
+
   /// No description provided for @completed.
   ///
   /// In en, this message translates to:
@@ -3601,6 +3613,318 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'SCORE: '**
   String get topologyScore;
+
+  /// No description provided for @semanticDistanceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Semantic Distance'**
+  String get semanticDistanceTitle;
+
+  /// No description provided for @semanticDistanceSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Measure the conceptual distance between words'**
+  String get semanticDistanceSubtitle;
+
+  /// No description provided for @oxymoronHuntTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Oxymoron Hunt'**
+  String get oxymoronHuntTitle;
+
+  /// No description provided for @oxymoronHuntSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pair contradictory words in the grid'**
+  String get oxymoronHuntSubtitle;
+
+  /// No description provided for @portmanteauSplitTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Portmanteau Split'**
+  String get portmanteauSplitTitle;
+
+  /// No description provided for @portmanteauSplitSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify the source words of a portmanteau'**
+  String get portmanteauSplitSubtitle;
+
+  /// No description provided for @chainReactionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Chain Reaction'**
+  String get chainReactionTitle;
+
+  /// No description provided for @chainReactionSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect words using overlapping letters'**
+  String get chainReactionSubtitle;
+
+  /// No description provided for @rhymeMasterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rhyme Master'**
+  String get rhymeMasterTitle;
+
+  /// No description provided for @rhymeMasterSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify words that rhyme with the target'**
+  String get rhymeMasterSubtitle;
+
+  /// No description provided for @definitionDashTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Definition Dash'**
+  String get definitionDashTitle;
+
+  /// No description provided for @definitionDashSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Match the correct word to its definition'**
+  String get definitionDashSubtitle;
+
+  /// No description provided for @syllableStackTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Syllable Stack'**
+  String get syllableStackTitle;
+
+  /// No description provided for @syllableStackSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Stack syllables to form complete words'**
+  String get syllableStackSubtitle;
+
+  /// No description provided for @sentenceUnscrambleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sentence Unscramble'**
+  String get sentenceUnscrambleTitle;
+
+  /// No description provided for @sentenceUnscrambleSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reorder words to form a valid sentence'**
+  String get sentenceUnscrambleSubtitle;
+
+  /// No description provided for @grammarSortTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Grammar Sort'**
+  String get grammarSortTitle;
+
+  /// No description provided for @grammarSortSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Categorize words by their part of speech'**
+  String get grammarSortSubtitle;
+
+  /// No description provided for @vowelReconstructTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Vowel Reconstruct'**
+  String get vowelReconstructTitle;
+
+  /// No description provided for @vowelReconstructSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill in the missing vowels in the sentence'**
+  String get vowelReconstructSubtitle;
+
+  /// No description provided for @consonantReconstructTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Consonant Reconstruct'**
+  String get consonantReconstructTitle;
+
+  /// No description provided for @consonantReconstructSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill in the missing consonants in the sentence'**
+  String get consonantReconstructSubtitle;
+
+  /// No description provided for @homophoneHuntTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Homophone Hunt'**
+  String get homophoneHuntTitle;
+
+  /// No description provided for @homophone_huntSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the correctly spelled homophone'**
+  String get homophone_huntSubtitle;
+
+  /// No description provided for @silentLetterSearchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Silent Letter Search'**
+  String get silentLetterSearchTitle;
+
+  /// No description provided for @silentLetterSearchSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify silent letters in the given words'**
+  String get silentLetterSearchSubtitle;
+
+  /// No description provided for @palindromeBuilderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Palindrome Builder'**
+  String get palindromeBuilderTitle;
+
+  /// No description provided for @palindromeBuilderSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create a palindrome by adding minimal letters'**
+  String get palindromeBuilderSubtitle;
+
+  /// No description provided for @phoneticGuessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Phonetic Guess'**
+  String get phoneticGuessTitle;
+
+  /// No description provided for @phoneticGuessSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify the word from its phonetic spelling'**
+  String get phoneticGuessSubtitle;
+
+  /// No description provided for @spoonerismSolverTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Spoonerism Solver'**
+  String get spoonerismSolverTitle;
+
+  /// No description provided for @spoonerismSolverSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify the correct spoonerism for the phrase'**
+  String get spoonerismSolverSubtitle;
+
+  /// No description provided for @etymonOddballTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Etymon Oddball'**
+  String get etymonOddballTitle;
+
+  /// No description provided for @etymonOddballSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find the word that does not share the same root'**
+  String get etymonOddballSubtitle;
+
+  /// No description provided for @etymologyOriginTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Etymology Origin'**
+  String get etymologyOriginTitle;
+
+  /// No description provided for @etymologyOriginSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Guess the origin language of the loanword'**
+  String get etymologyOriginSubtitle;
+
+  /// No description provided for @affixFactoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Affix Factory'**
+  String get affixFactoryTitle;
+
+  /// No description provided for @affixFactorySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Create valid words using prefixes and suffixes'**
+  String get affixFactorySubtitle;
+
+  /// No description provided for @cognateCatchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cognate Catch'**
+  String get cognateCatchTitle;
+
+  /// No description provided for @cognateCatchSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Distinguish between true cognates and false friends'**
+  String get cognateCatchSubtitle;
+
+  /// No description provided for @compoundConnectTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Compound Connect'**
+  String get compoundConnectTitle;
+
+  /// No description provided for @compoundConnectSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Combine two words to form a compound word'**
+  String get compoundConnectSubtitle;
+
+  /// No description provided for @pangramSprintTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pangram Sprint'**
+  String get pangramSprintTitle;
+
+  /// No description provided for @pangramSprintSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Build a sentence using every letter of the alphabet'**
+  String get pangramSprintSubtitle;
+
+  /// No description provided for @anagramDefinitionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Anagram Definition'**
+  String get anagramDefinitionTitle;
+
+  /// No description provided for @anagramDefinitionSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Solve the anagram based on its definition'**
+  String get anagramDefinitionSubtitle;
+
+  /// No description provided for @letterBridgeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Letter Bridge'**
+  String get letterBridgeTitle;
+
+  /// No description provided for @letterBridgeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find the missing letter that bridges two words'**
+  String get letterBridgeSubtitle;
+
+  /// No description provided for @letterFrequencyScanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Letter Frequency Scan'**
+  String get letterFrequencyScanTitle;
+
+  /// No description provided for @letterFrequencyScanSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Count how many times a letter appears in the text'**
+  String get letterFrequencyScanSubtitle;
+
+  /// No description provided for @oneLetterShiftTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'One-Letter Shift'**
+  String get oneLetterShiftTitle;
+
+  /// No description provided for @oneLetterShiftSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Transform one word into another with one letter change'**
+  String get oneLetterShiftSubtitle;
 }
 
 class _AppLocalizationsDelegate

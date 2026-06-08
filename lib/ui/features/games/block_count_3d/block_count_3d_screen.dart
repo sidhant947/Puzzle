@@ -144,8 +144,6 @@ class _BlockCount3DScreenState extends ConsumerState<BlockCount3DScreen> {
           ? const Center(child: CircularProgressIndicator())
           : LayoutBuilder(
               builder: (context, constraints) {
-                final viewSize = math.min(constraints.maxWidth, constraints.maxHeight * 0.55);
-                
                 return Column(
                   children: [
                     // 3D Viewport
@@ -493,7 +491,6 @@ class IsometricBlocksPainter extends CustomPainter {
             final vertices = facesVertices[f];
 
             // 3D rotation of normal
-            final rotNormalX = normal.x * math.cos(yaw) - normal.y * math.sin(yaw);
             final rotNormalY = normal.x * math.sin(yaw) + normal.y * math.cos(yaw);
             final rotNormalZ = normal.z;
 

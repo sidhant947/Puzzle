@@ -10,6 +10,8 @@ class TangibleContainer extends StatelessWidget {
   final double depth; // Ignored for flat minimalist design
   final double radius;
   final EdgeInsetsGeometry? padding;
+  final double? width;
+  final double? height;
   final VoidCallback? onTap;
   final VoidCallback? onLongPress;
   final bool drawBorder; // Optional borders for clean headers/tabs
@@ -22,6 +24,8 @@ class TangibleContainer extends StatelessWidget {
     this.depth = 6.0,
     this.radius = DesignSystem.radiusMD, // Upgraded to modern medium radius
     this.padding,
+    this.width,
+    this.height,
     this.onTap,
     this.onLongPress,
     this.drawBorder = true,
@@ -39,6 +43,8 @@ class TangibleContainer extends StatelessWidget {
                         resolvedColor == Colors.transparent;
 
     Widget content = Container(
+      width: width,
+      height: height,
       decoration: BoxDecoration(
         color: resolvedColor,
         borderRadius: BorderRadius.circular(radius),
@@ -77,6 +83,8 @@ class TangibleButton extends StatefulWidget {
   final Color? color;
   final Color? shadowColor; // Ignored for flat design
   final EdgeInsetsGeometry? padding;
+  final double? width;
+  final double? height;
   final double depth; // Ignored for flat design
   final double radius;
   final bool drawBorder; // Optional borders
@@ -89,6 +97,8 @@ class TangibleButton extends StatefulWidget {
     this.color,
     this.shadowColor,
     this.padding,
+    this.width,
+    this.height,
     this.depth = 6.0,
     this.radius = DesignSystem.radiusMD, // Modern radius SM/MD
     this.drawBorder = true,
@@ -136,6 +146,8 @@ class _TangibleButtonState extends State<TangibleButton> {
             color: isEnabled ? resolvedColor : colorScheme.surface.withValues(alpha: 0.5),
             radius: widget.radius,
             drawBorder: widget.drawBorder,
+            width: widget.width,
+            height: widget.height,
             padding: widget.padding ?? const EdgeInsets.symmetric(
               horizontal: DesignSystem.spaceLG, // Comfortable touch targets padding
               vertical: DesignSystem.spaceMD,

@@ -325,30 +325,36 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
                     ],
                   ),
                   const SizedBox(height: DesignSystem.spaceMD),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  Wrap(
+                    alignment: WrapAlignment.center,
+                    crossAxisAlignment: WrapCrossAlignment.center,
+                    spacing: 4,
+                    runSpacing: 4,
                     children: [
                       InkWell(
                         onTap: () => _launchUrl('https://play.google.com/store/apps/details?id=com.sidhant.puzzle'),
                         borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               const Icon(
                                 Icons.star_rounded,
-                                size: 16,
+                                size: 14,
                                 color: DesignSystem.accentAmber,
                               ),
                               const SizedBox(width: 4),
-                              Text(
-                                'LEAVE REVIEW',
-                                style: TextStyle(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w800,
-                                  color: colorScheme.onSurface.withValues(alpha: 0.6),
-                                  letterSpacing: 0.5,
+                              Flexible(
+                                child: Text(
+                                  'LEAVE REVIEW',
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w800,
+                                    color: colorScheme.onSurface.withValues(alpha: 0.6),
+                                    letterSpacing: 0.5,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ),
                             ],
@@ -364,23 +370,26 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> wit
                         onTap: () => _launchUrl('https://github.com/sidhant947/Puzzle/issues'),
                         borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
                         child: Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                          padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
                           child: Row(
                             mainAxisSize: MainAxisSize.min,
                             children: [
                               const Icon(
                                 Icons.bug_report_rounded,
-                                size: 16,
+                                size: 14,
                                 color: DesignSystem.error,
                               ),
                               const SizedBox(width: 4),
-                              Text(
-                                'REPORT ERROR',
-                                style: TextStyle(
-                                  fontSize: 11,
-                                  fontWeight: FontWeight.w800,
-                                  color: colorScheme.onSurface.withValues(alpha: 0.6),
-                                  letterSpacing: 0.5,
+                              Flexible(
+                                child: Text(
+                                  'REPORT ERROR',
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    fontWeight: FontWeight.w800,
+                                    color: colorScheme.onSurface.withValues(alpha: 0.6),
+                                    letterSpacing: 0.5,
+                                  ),
+                                  overflow: TextOverflow.ellipsis,
                                 ),
                               ),
                             ],
