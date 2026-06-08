@@ -55,6 +55,8 @@ class SettingsScreen extends ConsumerWidget {
                   ),
                   sliver: SliverList(
                     delegate: SliverChildListDelegate([
+                      _buildSupportBanner(context),
+                      const SizedBox(height: DesignSystem.spaceXL),
                       _buildSectionTitle(
                           context, l10n.appearance.toUpperCase()),
                       const SizedBox(height: DesignSystem.spaceMD),
@@ -307,6 +309,54 @@ class SettingsScreen extends ConsumerWidget {
             Icons.chevron_right_rounded,
             size: 24,
             color: colorScheme.onSurface.withValues(alpha: 0.5),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildSupportBanner(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
+    return TangibleButton(
+      color: colorScheme.secondary,
+      onTap: () => _launchUrl('https://github.com/sponsors/sidhant947'),
+      child: Row(
+        children: [
+          const Icon(
+            Icons.apple_rounded,
+            size: 32,
+            color: Colors.white,
+          ),
+          const SizedBox(width: DesignSystem.spaceMD),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                const Text(
+                  'SUPPORT IOS RELEASE',
+                  style: TextStyle(
+                    fontFamily: 'Bebas Neue',
+                    fontWeight: FontWeight.w700,
+                    fontSize: DesignSystem.fontSizeLG,
+                    letterSpacing: 1.0,
+                    color: Colors.white,
+                  ),
+                ),
+                Text(
+                  'HELP US COVER THE APPLE DEVELOPER FEE',
+                  style: TextStyle(
+                    fontSize: DesignSystem.fontSize2XS,
+                    fontWeight: FontWeight.w700,
+                    color: Colors.white.withValues(alpha: 0.8),
+                  ),
+                ),
+              ],
+            ),
+          ),
+          const Icon(
+            Icons.favorite_rounded,
+            size: 24,
+            color: Colors.white,
           ),
         ],
       ),

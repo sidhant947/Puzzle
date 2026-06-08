@@ -2047,10 +2047,6 @@ class AppLocalizationsDe extends AppLocalizations {
   String get consonantReconstructSubtitle =>
       'Fill in the missing consonants in the sentence';
 
-
-
-
-
   @override
   String get homophoneHuntTitle => 'Homophone Hunt';
 

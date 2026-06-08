@@ -12,8 +12,8 @@ permissions:
   contents: write
 
 jobs:
-  build:
-    name: Build & Release
+  build-ubuntu:
+    name: Build Android & Linux
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Code
@@ -59,17 +59,72 @@ jobs:
           cp -r build/linux/x64/release/bundle puzzle-games-linux
           tar -czf puzzle-games-linux.tar.gz puzzle-games-linux
 
+      - name: Upload Ubuntu Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: ubuntu-artifacts
+          path: |
+            build/app/outputs/flutter-apk/*.apk
+            build/app/outputs/bundle/release/*.aab
+            puzzle-games-linux.tar.gz
+
+  build-windows:
+    name: Build Windows
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Get Dependencies
+        run: flutter pub get
+
+      - name: Build Windows
+        run: flutter build windows --release
+
+      - name: Create MSIX
+        run: flutter pub run msix:create
+
+      - name: Create Portable Zip
+        run: |
+          powershell Compress-Archive -Path build/windows/x64/runner/release/* -DestinationPath build/windows/x64/runner/release/puzzle-games-windows-portable.zip
+        shell: pwsh
+
+      - name: Upload Windows Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: windows-artifacts
+          path: |
+            build/windows/x64/runner/release/*.msix
+            build/windows/x64/runner/release/puzzle-games-windows-portable.zip
+
+  release:
+    name: Create Unified Release
+    needs: [build-ubuntu, build-windows]
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Ubuntu Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: ubuntu-artifacts
+          path: release-artifacts
+
+      - name: Download Windows Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: windows-artifacts
+          path: release-artifacts
+
       - name: Create Release
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ github.event.inputs.version }}
-          files: |
-            build/app/outputs/flutter-apk/app-release.apk
-            build/app/outputs/flutter-apk/app-armeabi-v7a-release.apk
-            build/app/outputs/flutter-apk/app-arm64-v8a-release.apk
-            build/app/outputs/flutter-apk/app-x86_64-release.apk
-            build/app/outputs/bundle/release/app-release.aab
-            puzzle-games-linux.tar.gz
+          files: release-artifacts/**/*
           generate_release_notes: true
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

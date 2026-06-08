@@ -45,16 +45,3 @@ jobs:
         with:
           name: puzzle-games-windows-portable
           path: build/windows/x64/runner/release/puzzle-games-windows-portable.zip
-
-      - name: Build Installer (Inno Setup)
-        run: |
-          $pubspec = Get-Content pubspec.yaml | ConvertFrom-StringData
-          $version = (Get-Content pubspec.yaml | Select-String "^version: ").ToString().Split(":")[1].Trim().Split("+")[0]
-          & "C:\Program Files (x86)\Inno Setup 6\ISCC.exe" /DMyAppVersion=$version windows/runner/installer_script.iss
-        shell: pwsh
-
-      - name: Upload Windows Installer Artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: puzzle-games-windows-setup
-          path: build/windows/x64/runner/release/installer/*.exe
