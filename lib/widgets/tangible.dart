@@ -109,8 +109,6 @@ class TangibleButton extends StatefulWidget {
 }
 
 class _TangibleButtonState extends State<TangibleButton> {
-  bool _isPressed = false;
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -121,51 +119,33 @@ class _TangibleButtonState extends State<TangibleButton> {
     final isEnabled = widget.onTap != null || widget.onLongPress != null;
 
     return GestureDetector(
-      onTapDown: isEnabled ? (_) => setState(() => _isPressed = true) : null,
-      onTapUp: isEnabled ? (_) {
-        setState(() => _isPressed = false);
-        widget.onTap?.call();
-      } : null,
-      onTapCancel: isEnabled ? () => setState(() => _isPressed = false) : null,
-      onLongPress: widget.onLongPress != null ? () {
-        setState(() => _isPressed = false);
-        widget.onLongPress?.call();
-      } : null,
+      onTap: widget.onTap,
+      onLongPress: widget.onLongPress,
+      behavior: HitTestBehavior.opaque,
       child: RepaintBoundary(
-        child: AnimatedContainer(
-          duration: const Duration(milliseconds: 80),
-          curve: Curves.easeInOutCubic,
-          alignment: Alignment.center,
-          transformAlignment: Alignment.center,
-          transform: Matrix4.diagonal3Values(
-            _isPressed ? 0.97 : 1.0,
-            _isPressed ? 0.97 : 1.0,
-            1.0,
+        child: TangibleContainer(
+          color: isEnabled ? resolvedColor : colorScheme.surface.withValues(alpha: 0.5),
+          radius: widget.radius,
+          drawBorder: widget.drawBorder,
+          width: widget.width,
+          height: widget.height,
+          padding: widget.padding ?? const EdgeInsets.symmetric(
+            horizontal: DesignSystem.spaceLG,
+            vertical: DesignSystem.spaceMD,
           ),
-          child: TangibleContainer(
-            color: isEnabled ? resolvedColor : colorScheme.surface.withValues(alpha: 0.5),
-            radius: widget.radius,
-            drawBorder: widget.drawBorder,
-            width: widget.width,
-            height: widget.height,
-            padding: widget.padding ?? const EdgeInsets.symmetric(
-              horizontal: DesignSystem.spaceLG, // Comfortable touch targets padding
-              vertical: DesignSystem.spaceMD,
+          child: DefaultTextStyle(
+            style: TextStyle(
+              fontFamily: 'Geist',
+              color: isEnabled
+                  ? (resolvedColor == colorScheme.surface || resolvedColor == Colors.transparent
+                      ? colorScheme.onSurface
+                      : Colors.white)
+                  : colorScheme.onSurface.withValues(alpha: 0.3),
+              fontSize: DesignSystem.fontSizeLG,
+              fontWeight: FontWeight.w700,
+              letterSpacing: 0.5,
             ),
-            child: DefaultTextStyle(
-              style: TextStyle(
-                fontFamily: 'Geist', // Geist is default font family for buttons
-                color: isEnabled
-                    ? (resolvedColor == colorScheme.surface || resolvedColor == Colors.transparent
-                        ? colorScheme.onSurface
-                        : Colors.white)
-                    : colorScheme.onSurface.withValues(alpha: 0.3),
-                fontSize: DesignSystem.fontSizeLG, // 18.0 (Accessible scale)
-                fontWeight: FontWeight.w700,      // Elegant bold (accessible)
-                letterSpacing: 0.5,
-              ),
-              child: widget.child,
-            ),
+            child: widget.child,
           ),
         ),
       ),

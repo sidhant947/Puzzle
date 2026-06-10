@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../providers/user_providers.dart';
 import '../../../utils/design_system.dart';
-import '../../../widgets/tangible.dart';
 import '../home/home_screen.dart';
 import '../stats/stats_screen.dart';
 import '../settings/settings_screen.dart';
@@ -47,12 +46,13 @@ class _MainShellState extends ConsumerState<MainShell>
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
+    final isMobile = MediaQuery.of(context).size.width <= 600;
 
     return Scaffold(
-      backgroundColor: colorScheme.surface,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: LayoutBuilder(
         builder: (context, constraints) {
-          if (constraints.maxWidth > 600) {
+          if (!isMobile) {
             return Row(
               children: [
                 _buildSideNav(context),
@@ -72,7 +72,7 @@ class _MainShellState extends ConsumerState<MainShell>
           }
         },
       ),
-      bottomNavigationBar: MediaQuery.of(context).size.width <= 600
+      bottomNavigationBar: isMobile
           ? Container(
               decoration: BoxDecoration(
                 color: colorScheme.surface,
@@ -123,17 +123,17 @@ class _MainShellState extends ConsumerState<MainShell>
   }
 
   Widget _buildSideNav(BuildContext context) {
+    final colorScheme = Theme.of(context).colorScheme;
     return Container(
       width: 100,
-      margin: const EdgeInsets.fromLTRB(
-        DesignSystem.spaceMD,
-        DesignSystem.spaceMD,
-        0,
-        DesignSystem.spaceMD,
-      ),
       decoration: BoxDecoration(
-        color: Colors.transparent,
-        borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
+        color: colorScheme.surface,
+        border: Border(
+          right: BorderSide(
+            color: colorScheme.outline.withValues(alpha: 0.1),
+            width: 1.5,
+          ),
+        ),
       ),
       padding: const EdgeInsets.symmetric(
         horizontal: DesignSystem.spaceSM,
@@ -190,33 +190,30 @@ class _MainShellState extends ConsumerState<MainShell>
         }
       },
       behavior: HitTestBehavior.opaque,
-      child: Container(
-        padding: const EdgeInsets.symmetric(vertical: DesignSystem.spaceSM),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            AnimatedScale(
-              scale: isSelected ? 1.1 : 1.0,
-              duration: const Duration(milliseconds: 300),
-              curve: Curves.easeOutBack,
-              child: Icon(
-                icon,
-                size: 32,
-                color: color,
-              ),
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          AnimatedScale(
+            scale: isSelected ? 1.1 : 1.0,
+            duration: const Duration(milliseconds: 300),
+            curve: Curves.easeOutBack,
+            child: Icon(
+              icon,
+              size: 32,
+              color: color,
             ),
-            const SizedBox(height: DesignSystem.spaceSM),
-            Text(
-              label,
-              style: TextStyle(
-                color: color,
-                fontWeight: isSelected ? FontWeight.w900 : FontWeight.w700,
-                letterSpacing: 1.0,
-                fontSize: 10,
-              ),
+          ),
+          const SizedBox(height: DesignSystem.spaceXS),
+          Text(
+            label,
+            style: theme.textTheme.labelMedium?.copyWith(
+              color: color,
+              fontWeight: isSelected ? FontWeight.w900 : FontWeight.w700,
+              letterSpacing: 1.0,
+              fontSize: 10,
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -241,35 +238,34 @@ class _MainShellState extends ConsumerState<MainShell>
           }
         },
         behavior: HitTestBehavior.opaque,
-        child: Container(
-          padding: const EdgeInsets.symmetric(vertical: DesignSystem.spaceSM),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: [
-              AnimatedScale(
-                scale: isSelected ? 1.1 : 1.0,
-                duration: const Duration(milliseconds: 300),
-                curve: Curves.easeOutBack,
-                child: Icon(
-                  icon,
-                  size: 28,
-                  color: color,
-                ),
+        child: Column(
+          mainAxisSize: MainAxisSize.min,
+          children: [
+            AnimatedScale(
+              scale: isSelected ? 1.1 : 1.0,
+              duration: const Duration(milliseconds: 300),
+              curve: Curves.easeOutBack,
+              child: Icon(
+                icon,
+                size: 28,
+                color: color,
               ),
-              const SizedBox(height: DesignSystem.spaceXS),
-              Text(
-                label,
-                style: TextStyle(
-                  color: color,
-                  fontWeight: isSelected ? FontWeight.w900 : FontWeight.w700,
-                  letterSpacing: 1.0,
-                  fontSize: 10,
-                ),
+            ),
+            const SizedBox(height: 4),
+            Text(
+              label,
+              style: theme.textTheme.labelMedium?.copyWith(
+                color: color,
+                fontWeight: isSelected ? FontWeight.w900 : FontWeight.w700,
+                letterSpacing: 1.0,
+                fontSize: 10,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );
   }
 }
+
+

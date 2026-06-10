@@ -15,7 +15,6 @@ class SuperStreakAction extends ConsumerWidget {
 
     return Center(
       child: Container(
-        margin: const EdgeInsets.only(right: 4),
         padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
         decoration: BoxDecoration(
           color: theme.colorScheme.primary.withValues(alpha: 0.1),
@@ -37,9 +36,11 @@ class SuperStreakAction extends ConsumerWidget {
             Text(
               streak.toString(),
               style: theme.textTheme.labelMedium?.copyWith(
-                fontWeight: FontWeight.w900,
+                fontFamily: 'Bebas Neue',
+                fontWeight: FontWeight.w700,
                 color: theme.colorScheme.primary,
-                letterSpacing: 0.5,
+                letterSpacing: 1.0,
+                fontSize: 14,
               ),
             ),
           ],
@@ -48,3 +49,5 @@ class SuperStreakAction extends ConsumerWidget {
     );
   }
 }
+
+

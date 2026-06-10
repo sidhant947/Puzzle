@@ -90,7 +90,6 @@ class StatsScreen extends ConsumerWidget {
     final userData = ref.watch(userDataNotifierProvider);
     final streaks = ref.watch(gameStreakNotifierProvider);
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -105,16 +104,13 @@ class StatsScreen extends ConsumerWidget {
                   floating: false,
                   snap: false,
                   backgroundColor: theme.scaffoldBackgroundColor,
-                  surfaceTintColor: Colors.transparent,
+                  elevation: 0,
+                  scrolledUnderElevation: 0,
                   centerTitle: true,
                   title: Text(
                     'STATS',
-                    style: TextStyle(
-                      fontFamily: 'Bebas Neue',
-                      letterSpacing: 1.5,
-                      fontWeight: FontWeight.w700,
-                      color: colorScheme.onSurface,
-                      fontSize: DesignSystem.fontSize2XL,
+                    style: theme.textTheme.displaySmall?.copyWith(
+                      letterSpacing: 2.0,
                     ),
                   ),
                 ),
@@ -123,7 +119,7 @@ class StatsScreen extends ConsumerWidget {
                     DesignSystem.spaceLG,
                     DesignSystem.spaceMD,
                     DesignSystem.spaceLG,
-                    140, // Space for bottom nav
+                    140,
                   ),
                   sliver: SliverList(
                     delegate: SliverChildListDelegate([
@@ -141,12 +137,10 @@ class StatsScreen extends ConsumerWidget {
                       const SizedBox(height: DesignSystem.spaceXL),
                       Text(
                         'ACHIEVEMENTS',
-                        style: TextStyle(
-                          fontFamily: 'Bebas Neue',
-                          letterSpacing: 1.2,
-                          fontWeight: FontWeight.w700,
-                          color: colorScheme.primary,
+                        style: theme.textTheme.displaySmall?.copyWith(
                           fontSize: DesignSystem.fontSizeLG,
+                          color: theme.colorScheme.primary,
+                          letterSpacing: 1.5,
                         ),
                       ),
                       const SizedBox(height: DesignSystem.spaceMD),
@@ -183,6 +177,7 @@ class StatsScreen extends ConsumerWidget {
     DateTime? lastDate,
     WidgetRef ref,
   ) {
+    final theme = Theme.of(context);
     final notifier = ref.read(userDataNotifierProvider.notifier);
     final currentLevelXp = notifier.xpForLevel(level);
     final nextLevelXp = notifier.xpForLevel(level + 1);
@@ -196,7 +191,6 @@ class StatsScreen extends ConsumerWidget {
         const SizedBox(height: DesignSystem.spaceMD),
         TangibleContainer(
           color: DesignSystem.primary,
-          shadowColor: DesignSystem.primaryShadow,
           padding: const EdgeInsets.all(DesignSystem.spaceLG),
           child: Column(
             children: [
@@ -208,23 +202,19 @@ class StatsScreen extends ConsumerWidget {
                     children: [
                       Text(
                         'LEVEL $level',
-                        style: const TextStyle(
-                          fontFamily: 'Bebas Neue',
-                          fontWeight: FontWeight.w700,
-                          letterSpacing: 1.0,
+                        style: theme.textTheme.displayLarge?.copyWith(
+                          fontSize: 42,
                           color: Colors.white,
-                          fontSize: 36,
+                          letterSpacing: 1.0,
                         ),
                       ),
                       const SizedBox(height: 4),
                       Text(
                         'MAINTAIN YOUR STREAK!',
-                        style: TextStyle(
-                          fontFamily: 'Geist',
-                          letterSpacing: 0.5,
-                          fontWeight: FontWeight.w600,
-                          fontSize: DesignSystem.fontSizeXS,
+                        style: theme.textTheme.labelMedium?.copyWith(
+                          fontWeight: FontWeight.w900,
                           color: Colors.white.withValues(alpha: 0.8),
+                          letterSpacing: 0.5,
                         ),
                       ),
                     ],
@@ -238,7 +228,7 @@ class StatsScreen extends ConsumerWidget {
                     ),
                     child: const Icon(
                       Icons.workspace_premium_rounded,
-                      size: 32,
+                      size: 36,
                       color: Colors.white,
                     ),
                   ),
@@ -269,16 +259,15 @@ class StatsScreen extends ConsumerWidget {
               ),
               const SizedBox(height: 12),
               Row(
-                mainAxisAlignment: MainAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    'XP PROGRESS',
-                    style: TextStyle(
-                      fontFamily: 'Geist',
-                      fontWeight: FontWeight.w600,
-                      fontSize: DesignSystem.fontSizeXS,
-                      letterSpacing: 0.5,
-                      color: Colors.white.withValues(alpha: 0.7),
+                    '${(progress * 100).toInt()}% TO LEVEL ${level + 1}',
+                    style: theme.textTheme.labelLarge?.copyWith(
+                      fontFamily: 'Bebas Neue',
+                      fontSize: DesignSystem.fontSizeSM,
+                      color: Colors.white.withValues(alpha: 0.9),
+                      letterSpacing: 1.0,
                     ),
                   ),
                 ],
@@ -325,8 +314,6 @@ class StatsScreen extends ConsumerWidget {
     final mondayOfThisWeek = today.subtract(Duration(days: currentWeekday - 1));
 
     return TangibleContainer(
-      color: colorScheme.surface,
-      shadowColor: colorScheme.outline.withValues(alpha: 0.5),
       padding: const EdgeInsets.all(DesignSystem.spaceMD),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -336,12 +323,10 @@ class StatsScreen extends ConsumerWidget {
             children: [
               Text(
                 'WEEKLY ACTIVITY',
-                style: TextStyle(
-                  fontFamily: 'Bebas Neue',
-                  letterSpacing: 1.0,
-                  fontWeight: FontWeight.w700,
-                  color: colorScheme.onSurface.withValues(alpha: 0.6),
+                style: theme.textTheme.displaySmall?.copyWith(
                   fontSize: DesignSystem.fontSizeMD,
+                  color: colorScheme.onSurface.withValues(alpha: 0.6),
+                  letterSpacing: 1.0,
                 ),
               ),
               Row(
@@ -351,12 +336,10 @@ class StatsScreen extends ConsumerWidget {
                   const SizedBox(width: 4),
                   Text(
                     '$superStreak DAY STREAK',
-                    style: const TextStyle(
-                      fontFamily: 'Bebas Neue',
-                      letterSpacing: 0.5,
-                      fontWeight: FontWeight.w700,
-                      color: DesignSystem.gameOrange,
+                    style: theme.textTheme.displaySmall?.copyWith(
                       fontSize: DesignSystem.fontSizeMD,
+                      color: DesignSystem.gameOrange,
+                      letterSpacing: 0.5,
                     ),
                   ),
                 ],
@@ -365,7 +348,6 @@ class StatsScreen extends ConsumerWidget {
           ),
           const SizedBox(height: DesignSystem.spaceMD),
           Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: List.generate(7, (index) {
               final dayDate = mondayOfThisWeek.add(Duration(days: index));
               final dayLabel = ['M', 'T', 'W', 'T', 'F', 'S', 'S'][index];
@@ -386,41 +368,44 @@ class StatsScreen extends ConsumerWidget {
                 }
               }
 
-              return Column(
-                children: [
-                  Container(
-                    width: 38,
-                    height: 38,
-                    decoration: BoxDecoration(
-                      color: isSolved
-                          ? DesignSystem.gameOrange
-                          : (isToday
-                              ? colorScheme.primary.withValues(alpha: 0.1)
-                              : colorScheme.outline.withValues(alpha: 0.1)),
-                      borderRadius:
-                          BorderRadius.circular(DesignSystem.radiusSM),
-                      border: isToday && !isSolved
-                          ? Border.all(color: colorScheme.primary, width: 2)
-                          : null,
-                    ),
-                    child: Center(
-                      child: isSolved
-                          ? const Icon(Icons.check_rounded,
-                              color: Colors.white, size: 20)
-                          : Text(
-                              dayLabel,
-                              style: TextStyle(
-                                fontWeight: FontWeight.w800,
-                                fontSize: 12,
-                                color: isToday
-                                    ? colorScheme.primary
-                                    : colorScheme.onSurface
-                                        .withValues(alpha: 0.3),
+              return Expanded(
+                child: Padding(
+                  padding: EdgeInsets.only(right: index == 6 ? 0 : 4.0),
+                  child: AspectRatio(
+                    aspectRatio: 1,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        color: isSolved
+                            ? DesignSystem.gameOrange
+                            : (isToday
+                                ? colorScheme.primary.withValues(alpha: 0.1)
+                                : colorScheme.onSurface.withValues(alpha: 0.05)),
+                        borderRadius:
+                            BorderRadius.circular(DesignSystem.radiusSM),
+                        border: isToday && !isSolved
+                            ? Border.all(color: colorScheme.primary, width: 2)
+                            : null,
+                      ),
+                      child: Center(
+                        child: isSolved
+                            ? const Icon(Icons.check_rounded,
+                                color: Colors.white, size: 20)
+                            : Text(
+                                dayLabel,
+                                style: TextStyle(
+                                  fontFamily: 'Geist',
+                                  fontWeight: FontWeight.w900,
+                                  fontSize: 12,
+                                  color: isToday
+                                      ? colorScheme.primary
+                                      : colorScheme.onSurface
+                                          .withValues(alpha: 0.3),
+                                ),
                               ),
-                            ),
+                      ),
                     ),
                   ),
-                ],
+                ),
               );
             }),
           ),
@@ -464,18 +449,14 @@ class StatsScreen extends ConsumerWidget {
       children: [
         Text(
           'COGNITIVE PROFILE',
-          style: TextStyle(
-            fontFamily: 'Bebas Neue',
-            letterSpacing: 1.2,
-            fontWeight: FontWeight.w700,
-            color: colorScheme.primary,
+          style: theme.textTheme.displaySmall?.copyWith(
             fontSize: DesignSystem.fontSizeLG,
+            color: colorScheme.primary,
+            letterSpacing: 1.5,
           ),
         ),
         const SizedBox(height: DesignSystem.spaceMD),
         TangibleContainer(
-          color: colorScheme.surface,
-          shadowColor: colorScheme.outline.withValues(alpha: 0.5),
           padding: const EdgeInsets.all(DesignSystem.spaceMD),
           child: Column(
             children: categories.map((cat) {
@@ -509,22 +490,18 @@ class StatsScreen extends ConsumerWidget {
           children: [
             Text(
               category,
-              style: TextStyle(
-                fontFamily: 'Geist',
-                fontWeight: FontWeight.w700,
-                fontSize: DesignSystem.fontSizeXS,
-                letterSpacing: 0.5,
+              style: theme.textTheme.labelMedium?.copyWith(
+                fontWeight: FontWeight.w900,
                 color: colorScheme.onSurface.withValues(alpha: 0.7),
+                letterSpacing: 0.5,
               ),
             ),
             Text(
               '$solved / $total',
-              style: TextStyle(
-                fontFamily: 'Bebas Neue',
-                fontWeight: FontWeight.w700,
+              style: theme.textTheme.displaySmall?.copyWith(
                 fontSize: DesignSystem.fontSizeSM,
-                letterSpacing: 0.5,
                 color: color,
+                letterSpacing: 1.0,
               ),
             ),
           ],
@@ -533,20 +510,20 @@ class StatsScreen extends ConsumerWidget {
         Stack(
           children: [
             Container(
-              height: 8,
+              height: 10,
               width: double.infinity,
               decoration: BoxDecoration(
                 color: color.withValues(alpha: 0.1),
-                borderRadius: BorderRadius.circular(4),
+                borderRadius: BorderRadius.circular(5),
               ),
             ),
             FractionallySizedBox(
               widthFactor: progress,
               child: Container(
-                height: 8,
+                height: 10,
                 decoration: BoxDecoration(
                   color: color,
-                  borderRadius: BorderRadius.circular(4),
+                  borderRadius: BorderRadius.circular(5),
                 ),
               ),
             ),
@@ -567,8 +544,6 @@ class StatsScreen extends ConsumerWidget {
     final colorScheme = theme.colorScheme;
 
     return TangibleContainer(
-      color: colorScheme.surface,
-      shadowColor: colorScheme.outline.withValues(alpha: 0.5),
       padding: const EdgeInsets.all(DesignSystem.spaceMD),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
@@ -576,16 +551,14 @@ class StatsScreen extends ConsumerWidget {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Icon(icon, size: 16, color: color),
+              Icon(icon, size: 18, color: color),
               const SizedBox(width: 8),
               Text(
                 label,
-                style: TextStyle(
-                  fontFamily: 'Geist',
-                  fontWeight: FontWeight.w600,
-                  fontSize: DesignSystem.fontSizeXS,
-                  letterSpacing: 0.5,
+                style: theme.textTheme.labelMedium?.copyWith(
+                  fontWeight: FontWeight.w900,
                   color: colorScheme.onSurface.withValues(alpha: 0.5),
+                  letterSpacing: 0.5,
                 ),
               ),
             ],
@@ -593,12 +566,9 @@ class StatsScreen extends ConsumerWidget {
           const SizedBox(height: 8),
           Text(
             value,
-            style: TextStyle(
-              fontFamily: 'Bebas Neue',
-              fontWeight: FontWeight.w700,
-              fontSize: 28,
-              letterSpacing: 0.5,
-              color: colorScheme.onSurface,
+            style: theme.textTheme.displayMedium?.copyWith(
+              fontSize: 32,
+              letterSpacing: 1.0,
             ),
           ),
         ],
@@ -613,27 +583,30 @@ class StatsScreen extends ConsumerWidget {
     final colorScheme = theme.colorScheme;
 
     return TangibleContainer(
-      color: isUnlocked ? colorScheme.surface : theme.scaffoldBackgroundColor,
-      shadowColor: colorScheme.outline.withValues(alpha: 0.5),
-      depth: isUnlocked ? 6.0 : 2.0,
       padding: const EdgeInsets.all(DesignSystem.spaceMD),
       child: Row(
         children: [
           Container(
-            width: 56,
-            height: 56,
+            width: 60,
+            height: 60,
             decoration: BoxDecoration(
               color: isUnlocked
                   ? DesignSystem.accentAmber.withValues(alpha: 0.2)
-                  : colorScheme.outline.withValues(alpha: 0.2),
+                  : colorScheme.onSurface.withValues(alpha: 0.05),
               borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
+              border: Border.all(
+                color: isUnlocked
+                    ? DesignSystem.accentAmber.withValues(alpha: 0.3)
+                    : Colors.transparent,
+                width: 1.5,
+              ),
             ),
             child: Icon(
               achievement.icon,
-              size: 28,
+              size: 32,
               color: isUnlocked
                   ? DesignSystem.accentAmber
-                  : colorScheme.onSurface.withValues(alpha: 0.2),
+                  : colorScheme.onSurface.withValues(alpha: 0.1),
             ),
           ),
           const SizedBox(width: DesignSystem.spaceMD),
@@ -643,26 +616,23 @@ class StatsScreen extends ConsumerWidget {
               children: [
                 Text(
                   achievement.title,
-                  style: TextStyle(
-                    fontFamily: 'Bebas Neue',
-                    fontWeight: FontWeight.w700,
-                    letterSpacing: 1.0,
+                  style: theme.textTheme.displaySmall?.copyWith(
                     fontSize: DesignSystem.fontSizeLG,
                     color: isUnlocked
                         ? colorScheme.onSurface
-                        : colorScheme.onSurface.withValues(alpha: 0.4),
+                        : colorScheme.onSurface.withValues(alpha: 0.3),
+                    letterSpacing: 1.5,
                   ),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   achievement.description,
-                  style: TextStyle(
-                    fontFamily: 'Geist',
-                    fontWeight: FontWeight.w500,
-                    fontSize: DesignSystem.fontSizeSM,
+                  style: theme.textTheme.labelMedium?.copyWith(
+                    fontWeight: FontWeight.w700,
                     color: isUnlocked
                         ? colorScheme.onSurface.withValues(alpha: 0.6)
-                        : colorScheme.onSurface.withValues(alpha: 0.3),
+                        : colorScheme.onSurface.withValues(alpha: 0.2),
+                    letterSpacing: 0.5,
                   ),
                 ),
               ],
@@ -671,22 +641,23 @@ class StatsScreen extends ConsumerWidget {
           if (isUnlocked)
             const Icon(
               Icons.check_circle_rounded,
-              size: 28,
+              size: 32,
               color: DesignSystem.success,
             )
           else
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 6),
               decoration: BoxDecoration(
-                color: colorScheme.outline.withValues(alpha: 0.2),
+                color: colorScheme.onSurface.withValues(alpha: 0.05),
                 borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
               ),
               child: Text(
                 'LOCKED',
                 style: TextStyle(
-                  fontWeight: FontWeight.w800,
-                  fontSize: 10,
-                  letterSpacing: 1.0,
+                  fontFamily: 'Geist',
+                  fontWeight: FontWeight.w900,
+                  fontSize: 9,
+                  letterSpacing: 1.5,
                   color: colorScheme.onSurface.withValues(alpha: 0.3),
                 ),
               ),
@@ -696,3 +667,5 @@ class StatsScreen extends ConsumerWidget {
     );
   }
 }
+
+

@@ -3,7 +3,6 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import '../../../providers/theme_provider.dart';
-
 import '../../../providers/user_providers.dart';
 import '../../../utils/design_system.dart';
 import '../../../widgets/tangible.dart';
@@ -14,7 +13,6 @@ class SettingsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
     final themeMode = ref.watch(themeNotifierProvider);
     final isTrialModeEnabled = ref.watch(
         userDataNotifierProvider.select((s) => s.isTrialModeEnabled ?? false));
@@ -33,16 +31,13 @@ class SettingsScreen extends ConsumerWidget {
                   floating: false,
                   snap: false,
                   backgroundColor: theme.scaffoldBackgroundColor,
-                  surfaceTintColor: Colors.transparent,
+                  elevation: 0,
+                  scrolledUnderElevation: 0,
                   centerTitle: true,
                   title: Text(
                     l10n.settings.toUpperCase(),
-                    style: TextStyle(
-                      fontFamily: 'Bebas Neue',
-                      letterSpacing: 1.5,
-                      fontWeight: FontWeight.w700,
-                      color: colorScheme.onSurface,
-                      fontSize: DesignSystem.fontSize2XL, // Beautiful large Bebas Neue title
+                    style: theme.textTheme.displaySmall?.copyWith(
+                      letterSpacing: 2.0,
                     ),
                   ),
                 ),
@@ -51,7 +46,7 @@ class SettingsScreen extends ConsumerWidget {
                     DesignSystem.spaceLG,
                     DesignSystem.spaceMD,
                     DesignSystem.spaceLG,
-                    140, // Space for bottom nav
+                    140,
                   ),
                   sliver: SliverList(
                     delegate: SliverChildListDelegate([
@@ -146,25 +141,23 @@ class SettingsScreen extends ConsumerWidget {
   }
 
   Widget _buildSectionTitle(BuildContext context, String title) {
-    final colorScheme = Theme.of(context).colorScheme;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     return Text(
       title,
-      style: TextStyle(
-        fontFamily: 'Bebas Neue',
+      style: theme.textTheme.displaySmall?.copyWith(
+        fontSize: DesignSystem.fontSizeLG,
         color: colorScheme.primary,
-        letterSpacing: 1.2,
-        fontWeight: FontWeight.w700,
-        fontSize: DesignSystem.fontSizeLG, // 18.0 is perfectly readable in Bebas Neue
+        letterSpacing: 1.5,
       ),
     );
   }
 
   Widget _buildTrialModeToggle(BuildContext context, WidgetRef ref,
       bool isEnabled, AppLocalizations l10n) {
-    final colorScheme = Theme.of(context).colorScheme;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     return TangibleContainer(
-      color: colorScheme.surface,
-      shadowColor: colorScheme.outline.withValues(alpha: 0.5),
       padding: const EdgeInsets.symmetric(
           horizontal: DesignSystem.spaceMD, vertical: DesignSystem.spaceSM),
       child: Row(
@@ -182,19 +175,18 @@ class SettingsScreen extends ConsumerWidget {
               children: [
                 Text(
                   l10n.trialMode.toUpperCase(),
-                  style: TextStyle(
+                  style: theme.textTheme.titleMedium?.copyWith(
                     fontWeight: FontWeight.w900,
-                    fontSize: DesignSystem.fontSizeMD, // Reduced from 14 to 13
+                    fontSize: DesignSystem.fontSizeMD,
                     letterSpacing: 0.5,
-                    color: colorScheme.onSurface,
                   ),
                 ),
                 Text(
                   l10n.trialModeDescription.toUpperCase(),
-                  style: TextStyle(
-                    fontSize: DesignSystem.fontSize2XS, // Reduced from 10 to 9
+                  style: theme.textTheme.labelSmall?.copyWith(
                     fontWeight: FontWeight.w700,
                     color: colorScheme.onSurface.withValues(alpha: 0.5),
+                    letterSpacing: 0.2,
                   ),
                 ),
               ],
@@ -237,29 +229,24 @@ class SettingsScreen extends ConsumerWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-    final Color resolvedColor = isSelected ? colorScheme.primary : colorScheme.surface;
-    final Color textColor = isSelected ? Colors.white : colorScheme.onSurface;
-    final Color iconColor = isSelected ? Colors.white : colorScheme.onSurface.withValues(alpha: 0.7);
-
     return TangibleButton(
-      color: resolvedColor,
+      color: isSelected ? colorScheme.primary : colorScheme.surface,
       onTap: () => ref.read(themeNotifierProvider.notifier).setThemeMode(mode),
       child: Row(
         children: [
           Icon(
             icon,
             size: 24,
-            color: iconColor,
+            color: isSelected ? Colors.white : colorScheme.onSurface.withValues(alpha: 0.7),
           ),
           const SizedBox(width: DesignSystem.spaceMD),
           Expanded(
             child: Text(
               label.toUpperCase(),
-              style: TextStyle(
-                fontFamily: 'Geist',
-                color: textColor,
-                fontWeight: isSelected ? FontWeight.w700 : FontWeight.w600,
-                fontSize: DesignSystem.fontSizeMD, // 16.0
+              style: theme.textTheme.titleMedium?.copyWith(
+                color: isSelected ? Colors.white : colorScheme.onSurface,
+                fontWeight: isSelected ? FontWeight.w900 : FontWeight.w700,
+                fontSize: DesignSystem.fontSizeMD,
                 letterSpacing: 0.5,
               ),
             ),
@@ -281,10 +268,10 @@ class SettingsScreen extends ConsumerWidget {
     VoidCallback onTap, {
     Color? iconColor,
   }) {
-    final colorScheme = Theme.of(context).colorScheme;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     return TangibleButton(
       color: colorScheme.surface,
-      shadowColor: colorScheme.outline.withValues(alpha: 0.5),
       onTap: onTap,
       child: Row(
         children: [
@@ -297,11 +284,10 @@ class SettingsScreen extends ConsumerWidget {
           Expanded(
             child: Text(
               title.toUpperCase(),
-              style: TextStyle(
-                fontWeight: FontWeight.w800,
-                fontSize: DesignSystem.fontSizeMD, // Reduced from 14 to 13
+              style: theme.textTheme.titleMedium?.copyWith(
+                fontWeight: FontWeight.w900,
+                fontSize: DesignSystem.fontSizeMD,
                 letterSpacing: 0.5,
-                color: colorScheme.onSurface,
               ),
             ),
           ),
@@ -316,7 +302,8 @@ class SettingsScreen extends ConsumerWidget {
   }
 
   Widget _buildSupportBanner(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
     return TangibleButton(
       color: colorScheme.secondary,
       onTap: () => _launchUrl('https://github.com/sponsors/sidhant947'),
@@ -344,10 +331,10 @@ class SettingsScreen extends ConsumerWidget {
                 ),
                 Text(
                   'HELP US COVER THE APPLE DEVELOPER FEE',
-                  style: TextStyle(
-                    fontSize: DesignSystem.fontSize2XS,
-                    fontWeight: FontWeight.w700,
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    fontWeight: FontWeight.w900,
                     color: Colors.white.withValues(alpha: 0.8),
+                    letterSpacing: 0.5,
                   ),
                 ),
               ],
@@ -370,3 +357,5 @@ class SettingsScreen extends ConsumerWidget {
     }
   }
 }
+
+

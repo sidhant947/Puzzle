@@ -12,7 +12,6 @@ import '../../../../widgets/super_streak_action.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
-
 import '../../../../utils/navigation_utils.dart';
 
 class HomeScreen extends ConsumerStatefulWidget {
@@ -25,7 +24,7 @@ class HomeScreen extends ConsumerStatefulWidget {
 class _HomeScreenState extends ConsumerState<HomeScreen> {
   String _searchQuery = "";
   String _selectedCategory = "ALL";
-  bool _isSearchVisible = false; // Controls search input box visibility
+  bool _isSearchVisible = false;
   late final TextEditingController _searchController;
   Timer? _debounce;
 
@@ -52,7 +51,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         filteredGamesProvider(
             searchQuery: _searchQuery, selectedCategory: _selectedCategory)));
 
-    // Calculate category progress
     final streaks = ref.watch(gameStreakNotifierProvider);
     final Map<String, int> totalPerCategory = {};
     final Map<String, int> solvedPerCategory = {};
@@ -66,7 +64,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
       }
     }
 
-    // "ALL" progress
     final totalGames = GameData.allGamesList.length;
     final solvedGames = streaks.length;
     totalPerCategory['ALL'] = totalGames;
@@ -79,10 +76,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         physics: const BouncingScrollPhysics(),
         slivers: [
           SliverAppBar(
-            floating: false,
-            snap: false,
+            floating: true,
+            pinned: false,
             backgroundColor: theme.scaffoldBackgroundColor,
-            surfaceTintColor: Colors.transparent,
+            elevation: 0,
+            scrolledUnderElevation: 0,
             centerTitle: true,
             leading: const Padding(
               padding: EdgeInsets.only(left: 12.0),
@@ -91,40 +89,36 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             leadingWidth: 72,
             title: Text(
               'GAMES',
-              style: TextStyle(
-                fontFamily: 'Bebas Neue',
-                fontSize: DesignSystem
-                    .fontSize2XL, // Matches STATS and SETTINGS perfectly
-                letterSpacing: 1.5,
-                fontWeight: FontWeight.w700,
-                color: theme.colorScheme.onSurface,
+              style: theme.textTheme.displaySmall?.copyWith(
+                letterSpacing: 2.0,
               ),
             ),
             actions: [
-              TangibleButton(
-                color: Colors.transparent,
-                drawBorder: false,
-                padding: const EdgeInsets.all(12),
-                onTap: () {
-                  setState(() {
-                    _isSearchVisible = !_isSearchVisible;
-                    if (!_isSearchVisible) {
-                      _searchQuery = "";
-                      _searchController.clear();
-                    }
-                  });
-                },
-                child: Icon(
-                  _isSearchVisible ? Icons.close_rounded : Icons.search_rounded,
-                  color: colorScheme.onSurface,
-                  size: 22,
+              Padding(
+                padding: const EdgeInsets.only(right: 8.0),
+                child: TangibleButton(
+                  color: Colors.transparent,
+                  drawBorder: false,
+                  padding: const EdgeInsets.all(12),
+                  onTap: () {
+                    setState(() {
+                      _isSearchVisible = !_isSearchVisible;
+                      if (!_isSearchVisible) {
+                        _searchQuery = "";
+                        _searchController.clear();
+                      }
+                    });
+                  },
+                  child: Icon(
+                    _isSearchVisible ? Icons.close_rounded : Icons.search_rounded,
+                    color: colorScheme.onSurface,
+                    size: 22,
+                  ),
                 ),
               ),
-              const SizedBox(width: 8),
             ],
           ),
 
-          // Daily Stats & Encouragement
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(
@@ -141,97 +135,65 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
                   String encouragement;
                   if (solvedToday == 0) {
-                    encouragement = 'Ready to start your daily brain workout?';
+                    encouragement = 'READY FOR YOUR DAILY WORKOUT?';
                   } else if (solvedToday < 3) {
-                    encouragement = 'Great start! Keep going.';
+                    encouragement = 'GREAT START! KEEP GOING.';
                   } else if (solvedToday < 7) {
-                    encouragement = "You're on fire today!";
+                    encouragement = "YOU'RE ON FIRE TODAY!";
                   } else {
-                    encouragement = 'Incredible puzzle solving today!';
+                    encouragement = 'INCREDIBLE SOLVING TODAY!';
                   }
 
-                  final isDark = theme.brightness == Brightness.dark;
                   final displayColor = solvedToday > 0
                       ? DesignSystem.primary
                       : DesignSystem.gameBlue;
 
-                  return Container(
-                    decoration: BoxDecoration(
-                      color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
-                      borderRadius: BorderRadius.circular(16.0),
-                      border: Border.all(
-                        color: isDark
-                            ? const Color(0xFF2D2D2D)
-                            : const Color(0xFFE2E8F0),
-                        width: 1.5,
-                      ),
-                    ),
+                  return TangibleContainer(
                     padding: const EdgeInsets.symmetric(
-                        horizontal: 16.0,
-                        vertical: 10.0), // highly compacted vertical space
+                        horizontal: 16.0, vertical: 12.0),
                     child: Row(
                       children: [
-                        // Left Count Box - compacted to 46x46
                         Container(
-                          width: 46,
-                          height: 46,
+                          width: 48,
+                          height: 48,
                           decoration: BoxDecoration(
-                            color: Colors.transparent,
+                            color: displayColor,
                             borderRadius: BorderRadius.circular(12.0),
-                            border: Border.all(color: displayColor, width: 1.5),
                           ),
-                          padding: const EdgeInsets.all(3.0),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: displayColor,
-                              borderRadius: BorderRadius.circular(9.0),
-                            ),
-                            child: Center(
-                              child: Text(
-                                '$solvedToday',
-                                style: const TextStyle(
-                                  fontFamily: 'Bebas Neue',
-                                  fontSize: 22.0, // smaller count font size
-                                  fontWeight: FontWeight.w700,
-                                  color: Color(0xFF121212),
-                                  height: 1.0,
-                                ),
+                          child: Center(
+                            child: Text(
+                              '$solvedToday',
+                              style: const TextStyle(
+                                fontFamily: 'Bebas Neue',
+                                fontSize: 24.0,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white,
+                                height: 1.0,
                               ),
                             ),
                           ),
                         ),
                         const SizedBox(width: 16.0),
-                        // Right Side - Compact Single-Line Info
                         Expanded(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            mainAxisSize: MainAxisSize.min,
                             children: [
                               Text(
                                 l10n.solvedToday.toUpperCase(),
-                                style: TextStyle(
-                                  fontFamily: 'Geist',
-                                  fontSize: 11.0,
-                                  fontWeight: FontWeight.w900,
-                                  color: isDark
+                                style: theme.textTheme.labelMedium?.copyWith(
+                                  color: theme.brightness == Brightness.dark
                                       ? const Color(0xFF94A3B8)
                                       : const Color(0xFF475569),
-                                  letterSpacing: 0.5,
-                                  height: 1.1,
+                                  letterSpacing: 1.0,
+                                  fontWeight: FontWeight.w900,
                                 ),
                               ),
-                              const SizedBox(height: 3.0),
+                              const SizedBox(height: 4.0),
                               Text(
                                 encouragement,
-                                style: TextStyle(
-                                  fontFamily: 'Geist',
-                                  fontSize: 13.0,
-                                  fontWeight: FontWeight.w600,
-                                  color: isDark
-                                      ? Colors.white
-                                      : colorScheme.onSurface,
-                                  letterSpacing: 0.2,
+                                style: theme.textTheme.headlineSmall?.copyWith(
+                                  fontSize: 18.0,
+                                  letterSpacing: 0.5,
                                   height: 1.1,
                                 ),
                               ),
@@ -246,12 +208,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
           ),
 
-          // Favorites Quick Access
           SliverToBoxAdapter(
             child: _buildFavoritesSection(),
           ),
 
-          // Search and Categories
           SliverToBoxAdapter(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(
@@ -264,7 +224,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 children: [
                   if (_isSearchVisible) ...[
                     TangibleContainer(
-                      color: colorScheme.surface,
                       padding: EdgeInsets.zero,
                       child: TextField(
                         controller: _searchController,
@@ -276,15 +235,17 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                           });
                         },
                         decoration: InputDecoration(
-                          hintText: l10n.searchGames,
+                          hintText: l10n.searchGames.toUpperCase(),
                           hintStyle: TextStyle(
-                            fontSize: DesignSystem.fontSizeMD, // 16.0
-                            fontWeight: FontWeight.w500,
+                            fontFamily: 'Geist',
+                            fontSize: DesignSystem.fontSizeSM,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: 0.5,
                             color: colorScheme.onSurface.withValues(alpha: 0.4),
                           ),
                           prefixIcon: Icon(
                             Icons.search_rounded,
-                            color: colorScheme.onSurface.withValues(alpha: 0.5),
+                            color: colorScheme.onSurface.withValues(alpha: 0.4),
                           ),
                           suffixIcon: _searchQuery.isNotEmpty
                               ? IconButton(
@@ -302,10 +263,11 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               : null,
                           border: InputBorder.none,
                           contentPadding: const EdgeInsets.symmetric(
-                              horizontal: 16, vertical: 12),
+                              horizontal: 16, vertical: 14),
                         ),
                         style: TextStyle(
-                          fontSize: DesignSystem.fontSizeMD, // 16.0
+                          fontFamily: 'Geist',
+                          fontSize: DesignSystem.fontSizeMD,
                           fontWeight: FontWeight.w600,
                           color: colorScheme.onSurface,
                         ),
@@ -316,9 +278,9 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                   SingleChildScrollView(
                     scrollDirection: Axis.horizontal,
                     physics: const BouncingScrollPhysics(),
-                    clipBehavior: Clip.none, // Prevent clipping of larger rings
+                    clipBehavior: Clip.none,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 8.0), // Give space for the ring stroke
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
                       child: Row(
                         children: [
                           _buildCategoryButton(l10n.categoryAll, 'ALL', solvedPerCategory['ALL'] ?? 0, totalPerCategory['ALL'] ?? 1),
@@ -338,7 +300,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
           ),
 
-          // Full-Width Game Tiles or Grid
           filteredGames.isEmpty
               ? SliverFillRemaining(
                   hasScrollBody: false,
@@ -355,10 +316,10 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                         Text(
                           l10n.noGamesMatch.toUpperCase(),
                           style: TextStyle(
-                            fontSize: DesignSystem
-                                .fontSizeSM, // Reduced from 12 to 11
-                            fontWeight: FontWeight.w900,
-                            letterSpacing: 1.0,
+                            fontFamily: 'Bebas Neue',
+                            fontSize: DesignSystem.fontSizeLG,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: 1.5,
                             color: colorScheme.onSurface.withValues(alpha: 0.3),
                           ),
                         ),
@@ -371,7 +332,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                     DesignSystem.spaceLG,
                     DesignSystem.spaceMD,
                     DesignSystem.spaceLG,
-                    140, // Space for bottom nav
+                    140,
                   ),
                   sliver: SliverLayoutBuilder(
                     builder: (context, constraints) {
@@ -382,8 +343,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                             maxCrossAxisExtent: 400,
                             mainAxisSpacing: DesignSystem.spaceMD,
                             crossAxisSpacing: DesignSystem.spaceMD,
-                            childAspectRatio:
-                                2.2, // Adjusted ratio for new compact tiles to prevent bottom empty space on large screens
+                            childAspectRatio: 2.2,
                           ),
                           delegate: SliverChildBuilderDelegate(
                             (context, index) {
@@ -400,36 +360,34 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                           (d.favoriteGameIds ?? [])
                                               .contains(gameId)));
 
-                                  return RepaintBoundary(
-                                    child: GameTile(
-                                      title: game['title'],
-                                      gameId: gameId,
-                                      category: game['category'],
-                                      icon: game['icon'],
-                                      accentColor: game['color'],
-                                      streak: streak,
-                                      isFavorite: isFavorite,
-                                      onTap: () {
-                                        ref.read(gameSessionNotifierProvider.notifier).setSession(
-                                          gameId: gameId,
-                                          category: _selectedCategory,
-                                          query: _searchQuery,
-                                        );
-                                        Navigator.push(
-                                          context,
-                                          CustomPageRoute(
-                                              page: (game['builder']
-                                                  as WidgetBuilder)(context)),
-                                        );
-                                      },
-                                      onLongPress: () {
-                                        HapticFeedbackUtil.mediumImpact();
-                                        ref
-                                            .read(userDataNotifierProvider
-                                                .notifier)
-                                            .toggleFavorite(gameId);
-                                      },
-                                    ),
+                                  return GameTile(
+                                    title: game['title'],
+                                    gameId: gameId,
+                                    category: game['category'],
+                                    icon: game['icon'],
+                                    accentColor: game['color'],
+                                    streak: streak,
+                                    isFavorite: isFavorite,
+                                    onTap: () {
+                                      ref.read(gameSessionNotifierProvider.notifier).setSession(
+                                        gameId: gameId,
+                                        category: _selectedCategory,
+                                        query: _searchQuery,
+                                      );
+                                      Navigator.push(
+                                        context,
+                                        CustomPageRoute(
+                                            page: (game['builder']
+                                                as WidgetBuilder)(context)),
+                                      );
+                                    },
+                                    onLongPress: () {
+                                      HapticFeedbackUtil.mediumImpact();
+                                      ref
+                                          .read(userDataNotifierProvider
+                                              .notifier)
+                                          .toggleFavorite(gameId);
+                                    },
                                   );
                                 },
                               );
@@ -457,36 +415,34 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                             (d.favoriteGameIds ?? [])
                                                 .contains(gameId)));
 
-                                    return RepaintBoundary(
-                                      child: GameTile(
-                                        title: game['title'],
-                                        gameId: gameId,
-                                        category: game['category'],
-                                        icon: game['icon'],
-                                        accentColor: game['color'],
-                                        streak: streak,
-                                        isFavorite: isFavorite,
-                                        onTap: () {
-                                          ref.read(gameSessionNotifierProvider.notifier).setSession(
-                                            gameId: gameId,
-                                            category: _selectedCategory,
-                                            query: _searchQuery,
-                                          );
-                                          Navigator.push(
-                                            context,
-                                            CustomPageRoute(
-                                                page: (game['builder']
-                                                    as WidgetBuilder)(context)),
-                                          );
-                                        },
-                                        onLongPress: () {
-                                          HapticFeedbackUtil.mediumImpact();
-                                          ref
-                                              .read(userDataNotifierProvider
-                                                  .notifier)
-                                              .toggleFavorite(gameId);
-                                        },
-                                      ),
+                                    return GameTile(
+                                      title: game['title'],
+                                      gameId: gameId,
+                                      category: game['category'],
+                                      icon: game['icon'],
+                                      accentColor: game['color'],
+                                      streak: streak,
+                                      isFavorite: isFavorite,
+                                      onTap: () {
+                                        ref.read(gameSessionNotifierProvider.notifier).setSession(
+                                          gameId: gameId,
+                                          category: _selectedCategory,
+                                          query: _searchQuery,
+                                        );
+                                        Navigator.push(
+                                          context,
+                                          CustomPageRoute(
+                                              page: (game['builder']
+                                                  as WidgetBuilder)(context)),
+                                        );
+                                      },
+                                      onLongPress: () {
+                                        HapticFeedbackUtil.mediumImpact();
+                                        ref
+                                            .read(userDataNotifierProvider
+                                                .notifier)
+                                            .toggleFavorite(gameId);
+                                      },
                                     );
                                   },
                                 ),
@@ -522,16 +478,16 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             'YOUR FAVORITES',
             style: TextStyle(
               fontFamily: 'Bebas Neue',
-              fontSize: DesignSystem.fontSizeMD, // Reduced from LG
+              fontSize: DesignSystem.fontSizeMD,
               fontWeight: FontWeight.w700,
-              letterSpacing: 1.0,
+              letterSpacing: 2.0,
               color: Theme.of(context).colorScheme.primary,
             ),
           ),
         ),
         const SizedBox(height: DesignSystem.spaceSM),
         SizedBox(
-          height: 102, // Reduced from 124
+          height: 110,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             physics: const BouncingScrollPhysics(),
@@ -567,7 +523,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             },
           ),
         ),
-        const SizedBox(height: DesignSystem.spaceLG), // Reduced from XL
+        const SizedBox(height: DesignSystem.spaceLG),
       ],
     );
   }
@@ -660,117 +616,68 @@ class CategoryButton extends StatefulWidget {
 }
 
 class _CategoryButtonState extends State<CategoryButton> {
-  bool _isPressed = false;
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
     final progress = (widget.solved / widget.total).clamp(0.0, 1.0);
 
     return GestureDetector(
-      onTapDown: (_) => setState(() => _isPressed = true),
-      onTapUp: (_) {
-        setState(() => _isPressed = false);
-        widget.onTap();
-      },
-      onTapCancel: () => setState(() => _isPressed = false),
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 80),
-        curve: Curves.easeInOutCubic,
-        transformAlignment: Alignment.center,
-        transform: Matrix4.diagonal3Values(
-          _isPressed ? 0.95 : 1.0,
-          _isPressed ? 0.95 : 1.0,
-          1.0,
-        ),
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
-          children: [
-            Stack(
-              alignment: Alignment.center,
-              children: [
-                // Progress Ring - Scaled down
-                SizedBox(
-                  width: 66,
-                  height: 66,
-                  child: CircularProgressIndicator(
-                    value: progress,
-                    backgroundColor: widget.categoryStyle.color.withValues(alpha: 0.1),
+      onTap: widget.onTap,
+      child: Column(
+        mainAxisSize: MainAxisSize.min,
+        children: [
+          Stack(
+            alignment: Alignment.center,
+            children: [
+              SizedBox(
+                width: 68,
+                height: 68,
+                child: CircularProgressIndicator(
+                  value: progress,
+                  backgroundColor: widget.categoryStyle.color.withValues(alpha: 0.1),
+                  color: widget.categoryStyle.color,
+                  strokeWidth: 3,
+                  strokeCap: StrokeCap.round,
+                ),
+              ),
+              Container(
+                width: 56,
+                height: 56,
+                decoration: BoxDecoration(
+                  color: widget.isSelected ? widget.categoryStyle.color : theme.colorScheme.surface,
+                  shape: BoxShape.circle,
+                  border: Border.all(
+                    color: widget.categoryStyle.color.withValues(alpha: widget.isSelected ? 0.5 : 0.2),
+                    width: 1.5,
+                  ),
+                ),
+                child: Center(
+                  child: Icon(
+                    widget.categoryStyle.icon,
+                    size: 24,
                     color: widget.isSelected
-                        ? widget.categoryStyle.color
-                        : widget.categoryStyle.color.withValues(alpha: 0.7),
-                    strokeWidth: 3.5,
-                    strokeCap: StrokeCap.round,
+                        ? Colors.white
+                        : widget.categoryStyle.color,
                   ),
                 ),
-                Container(
-                  width: 54,
-                  height: 54,
-                  decoration: const BoxDecoration(
-                    color: Colors.transparent,
-                    shape: BoxShape.circle,
-                  ),
-                  padding: widget.isSelected
-                      ? const EdgeInsets.all(3.0)
-                      : EdgeInsets.zero,
-                  child: widget.isSelected
-                      ? Container(
-                          decoration: BoxDecoration(
-                            color: widget.categoryStyle.color,
-                            shape: BoxShape.circle,
-                          ),
-                          child: Center(
-                            child: Icon(
-                              widget.categoryStyle.icon,
-                              size: 24,
-                              color: const Color(0xFF121212),
-                            ),
-                          ),
-                        )
-                      : Center(
-                          child: Icon(
-                            widget.categoryStyle.icon,
-                            size: 24,
-                            color:
-                                widget.categoryStyle.color.withValues(alpha: 0.8),
-                          ),
-                        ),
-                ),
-              ],
-            ),
-            const SizedBox(height: 6),
-            Text(
-              widget.label.toUpperCase(),
-              style: TextStyle(
-                fontFamily: 'Geist',
-                fontSize: 10,
-                fontWeight:
-                    widget.isSelected ? FontWeight.w900 : FontWeight.w600,
-                color: widget.isSelected
-                    ? widget.categoryStyle.color
-                    : (isDark
-                        ? const Color(0xFF94A3B8)
-                        : const Color(0xFF475569)),
-                letterSpacing: 0.8,
               ),
+            ],
+          ),
+          const SizedBox(height: 8),
+          Text(
+            widget.label.toUpperCase(),
+            style: theme.textTheme.labelMedium?.copyWith(
+              fontSize: 10,
+              fontWeight: widget.isSelected ? FontWeight.w900 : FontWeight.w700,
+              color: widget.isSelected
+                  ? widget.categoryStyle.color
+                  : (theme.brightness == Brightness.dark
+                      ? const Color(0xFF94A3B8)
+                      : const Color(0xFF475569)),
+              letterSpacing: 1.2,
             ),
-            Text(
-              '${widget.solved}/${widget.total}',
-              style: TextStyle(
-                fontFamily: 'Bebas Neue',
-                fontSize: 9,
-                fontWeight: FontWeight.w700,
-                color: widget.isSelected
-                    ? widget.categoryStyle.color.withValues(alpha: 0.7)
-                    : (isDark
-                        ? const Color(0xFF94A3B8).withValues(alpha: 0.5)
-                        : const Color(0xFF475569).withValues(alpha: 0.5)),
-                letterSpacing: 0.5,
-              ),
-            ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }
@@ -805,8 +712,6 @@ class GameTile extends StatefulWidget {
 }
 
 class _GameTileState extends State<GameTile> {
-  bool _isPressed = false;
-
   String _getGameDescription(String gameId) {
     final descriptions = {
       'slitherlink': 'LOOP THE PIN GRID USING NUMBER CLUES.',
@@ -952,224 +857,153 @@ class _GameTileState extends State<GameTile> {
     return descriptions[gameId] ?? 'CHALLENGE AND TRAIN YOUR COGNITIVE SKILLS.';
   }
 
-  String _getCategoryDisplayLabel(String cat) {
-    switch (cat.toUpperCase()) {
-      case 'SPATIAL':
-        return 'PUZZLE';
-      default:
-        return cat.toUpperCase();
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
-    final colorScheme = theme.colorScheme;
     final isSolvedToday = widget.streak?.solvedToday ?? false;
     final streakCount = widget.streak?.currentStreak ?? 0;
     final isNew = widget.streak == null;
 
-    final displayTitle = widget.title.toUpperCase();
-
     final description = _getGameDescription(widget.gameId);
-    final displayCategory = _getCategoryDisplayLabel(widget.category);
 
-    return GestureDetector(
-      onTapDown: (_) => setState(() => _isPressed = true),
-      onTapUp: (_) {
-        setState(() => _isPressed = false);
-        widget.onTap();
-      },
-      onTapCancel: () => setState(() => _isPressed = false),
+    return TangibleContainer(
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+      onTap: widget.onTap,
       onLongPress: widget.onLongPress,
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 80),
-        curve: Curves.easeInOutCubic,
-        transformAlignment: Alignment.center,
-        transform: Matrix4.diagonal3Values(
-          _isPressed ? 0.97 : 1.0,
-          _isPressed ? 0.97 : 1.0,
-          1.0,
-        ),
-        child: Container(
-          decoration: BoxDecoration(
-            color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
-            borderRadius: BorderRadius.circular(16.0),
-            border: Border.all(
-              color: isDark ? const Color(0xFF2D2D2D) : const Color(0xFFE2E8F0),
-              width: 1.5,
-            ),
-          ),
-          padding: const EdgeInsets.symmetric(
-              horizontal: 16.0,
-              vertical: 14.0),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              // Row 1: Header tags
+              Container(
+                padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                decoration: BoxDecoration(
+                  color: widget.accentColor.withValues(alpha: 0.2),
+                  borderRadius: BorderRadius.circular(6.0),
+                  border: Border.all(
+                    color: widget.accentColor.withValues(alpha: 0.3),
+                    width: 1.0,
+                  ),
+                ),
+                child: Text(
+                  widget.category.toUpperCase(),
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    fontSize: 10.0,
+                    fontWeight: FontWeight.w900,
+                    color: widget.accentColor,
+                    letterSpacing: 0.8,
+                  ),
+                ),
+              ),
               Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                mainAxisSize: MainAxisSize.min,
                 children: [
-                  Container(
-                    padding:
-                        const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
-                    decoration: BoxDecoration(
-                      color: widget.accentColor.withValues(alpha: 0.15),
-                      borderRadius: BorderRadius.circular(6.0),
-                    ),
-                    child: Text(
-                      displayCategory,
-                      style: TextStyle(
-                        fontFamily: 'Geist',
-                        fontSize: 10.0,
-                        fontWeight: FontWeight.w900,
-                        color: widget.accentColor,
-                        letterSpacing: 0.5,
+                  if (isNew)
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                      decoration: BoxDecoration(
+                        color: DesignSystem.gameBlue,
+                        borderRadius: BorderRadius.circular(6.0),
+                      ),
+                      child: const Text(
+                        "NEW",
+                        style: TextStyle(
+                          fontFamily: 'Geist',
+                          fontSize: 9.0,
+                          fontWeight: FontWeight.w900,
+                          color: Colors.white,
+                          letterSpacing: 1.0,
+                        ),
                       ),
                     ),
-                  ),
-                  Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      if (isNew) ...[
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 4),
-                          decoration: BoxDecoration(
-                            color: DesignSystem.gameBlue,
-                            borderRadius: BorderRadius.circular(6.0),
-                          ),
-                          child: const Text(
-                            "NEW",
-                            style: TextStyle(
+                  if (streakCount > 0) ...[
+                    if (isNew) const SizedBox(width: 8),
+                    Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 3),
+                      decoration: BoxDecoration(
+                        color: DesignSystem.accentAmber.withValues(alpha: 0.15),
+                        borderRadius: BorderRadius.circular(6.0),
+                      ),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(Icons.local_fire_department_rounded,
+                              size: 12, color: DesignSystem.accentAmber),
+                          const SizedBox(width: 2),
+                          Text(
+                            '$streakCount',
+                            style: const TextStyle(
                               fontFamily: 'Geist',
-                              fontSize: 9.0,
+                              fontSize: 10.0,
                               fontWeight: FontWeight.w900,
-                              color: Colors.white,
-                              letterSpacing: 1.0,
+                              color: DesignSystem.accentAmber,
                             ),
                           ),
-                        ),
-                      ],
-                      if (streakCount > 0) ...[
-                        if (isNew) const SizedBox(width: 8),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 6, vertical: 3),
-                          decoration: BoxDecoration(
-                            color: DesignSystem.accentAmber
-                                .withValues(alpha: 0.15),
-                            borderRadius: BorderRadius.circular(6.0),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
-                            children: [
-                              const Icon(
-                                Icons.local_fire_department_rounded,
-                                size: 12,
-                                color: DesignSystem.accentAmber,
-                              ),
-                              const SizedBox(width: 2),
-                              Text(
-                                '$streakCount',
-                                style: const TextStyle(
-                                  fontFamily: 'Geist',
-                                  fontSize: 10.0,
-                                  fontWeight: FontWeight.w900,
-                                  color: DesignSystem.accentAmber,
-                                ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ],
-                      if (isSolvedToday) ...[
-                        if (isNew || streakCount > 0) const SizedBox(width: 8),
-                        Container(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 8, vertical: 4),
-                          decoration: BoxDecoration(
-                            color: widget.accentColor,
-                            borderRadius: BorderRadius.circular(6.0),
-                          ),
-                          child: Text(
-                            "JUST PLAYED",
-                            style: TextStyle(
-                              fontFamily: 'Geist',
-                              fontSize: 9.0,
-                              fontWeight: FontWeight.w900,
-                              color: isDark
-                                  ? const Color(0xFF1E1E1E)
-                                  : Colors.white,
-                              letterSpacing: 0.5,
-                            ),
-                          ),
-                        ),
-                      ],
-                      if (widget.isFavorite) ...[
-                        if (isSolvedToday || isNew || streakCount > 0) const SizedBox(width: 8),
-                        const Icon(
-                          Icons.favorite_rounded,
-                          color: DesignSystem.gameRose,
-                          size: 18,
-                        ),
-                      ],
-                    ],
-                  ),
-                ],
-              ),
-              const SizedBox(height: 8.0),
-              // Row 2: Title and play button
-              Row(
-                children: [
-                  Expanded(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Text(
-                          displayTitle,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontFamily: 'Bebas Neue',
-                            fontSize: 24.0,
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 0.5,
-                            height: 1.0,
-                            color:
-                                isDark ? Colors.white : colorScheme.onSurface,
-                          ),
-                        ),
-                        const SizedBox(height: 4.0),
-                        Text(
-                          description.toUpperCase(),
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
-                            fontFamily: 'Geist',
-                            fontSize: 11.0,
-                            fontWeight: FontWeight.w500,
-                            color: isDark
-                                ? const Color(0xFF94A3B8)
-                                : const Color(0xFF475569),
-                            letterSpacing: 0.3,
-                          ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
-                  ),
-                  const SizedBox(width: 12.0),
-                  Icon(
-                    Icons.play_arrow_rounded,
-                    color: widget.accentColor,
-                    size: 20,
-                  ),
+                  ],
+                  if (widget.isFavorite) ...[
+                    const SizedBox(width: 8),
+                    const Icon(Icons.favorite_rounded,
+                        color: DesignSystem.gameRose, size: 18),
+                  ],
                 ],
               ),
             ],
           ),
-        ),
+          const SizedBox(height: 12.0),
+          Row(
+            children: [
+              Expanded(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(
+                      widget.title.toUpperCase(),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: theme.textTheme.headlineMedium?.copyWith(
+                        fontSize: 26.0,
+                        letterSpacing: 0.5,
+                        height: 1.0,
+                      ),
+                    ),
+                    const SizedBox(height: 6.0),
+                    Text(
+                      description.toUpperCase(),
+                      maxLines: 1,
+                      overflow: TextOverflow.ellipsis,
+                      style: theme.textTheme.bodySmall?.copyWith(
+                        fontSize: 11.0,
+                        fontWeight: FontWeight.w700,
+                        color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
+                        letterSpacing: 0.5,
+                        height: 1.2,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+              const SizedBox(width: 12.0),
+              Container(
+                padding: const EdgeInsets.all(8),
+                decoration: BoxDecoration(
+                  color: isSolvedToday
+                      ? widget.accentColor
+                      : widget.accentColor.withValues(alpha: 0.1),
+                  shape: BoxShape.circle,
+                ),
+                child: Icon(
+                  isSolvedToday ? Icons.check_rounded : Icons.play_arrow_rounded,
+                  color: isSolvedToday ? Colors.white : widget.accentColor,
+                  size: 20,
+                ),
+              ),
+            ],
+          ),
+        ],
       ),
     );
   }
@@ -1198,97 +1032,69 @@ class CompactFavoriteTile extends StatefulWidget {
 }
 
 class _CompactFavoriteTileState extends State<CompactFavoriteTile> {
-  bool _isPressed = false;
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
-    final isDark = theme.brightness == Brightness.dark;
 
     return Stack(
       children: [
-        GestureDetector(
-          onTapDown: (_) => setState(() => _isPressed = true),
-          onTapUp: (_) {
-            setState(() => _isPressed = false);
-            widget.onTap();
-          },
-          onTapCancel: () => setState(() => _isPressed = false),
-          child: AnimatedContainer(
-            duration: const Duration(milliseconds: 80),
-            curve: Curves.easeInOutCubic,
-            transformAlignment: Alignment.center,
-            transform: Matrix4.diagonal3Values(
-              _isPressed ? 0.95 : 1.0,
-              _isPressed ? 0.95 : 1.0,
-              1.0,
-            ),
-            child: Container(
-              width: 94, // Reduced from 120
-              margin: const EdgeInsets.only(right: DesignSystem.spaceMD),
-              decoration: BoxDecoration(
-                color: isDark ? const Color(0xFF1E1E1E) : Colors.white,
-                borderRadius: BorderRadius.circular(16.0), // Reduced from 20
-                border: Border.all(
-                  color: isDark ? const Color(0xFF2D2D2D) : const Color(0xFFE2E8F0),
-                  width: 1.5,
+        Padding(
+          padding: const EdgeInsets.only(right: DesignSystem.spaceMD),
+          child: TangibleContainer(
+            width: 100,
+            padding: const EdgeInsets.all(12.0),
+            onTap: widget.onTap,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 40,
+                  height: 40,
+                  decoration: BoxDecoration(
+                    color: widget.accentColor.withValues(alpha: 0.2),
+                    borderRadius: BorderRadius.circular(12.0),
+                  ),
+                  child: Icon(
+                    widget.icon,
+                    color: widget.accentColor,
+                    size: 22,
+                  ),
                 ),
-              ),
-              padding: const EdgeInsets.all(10.0), // Reduced from 12
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 36, // Reduced from 44
-                    height: 36, // Reduced from 44
-                    decoration: BoxDecoration(
-                      color: widget.accentColor.withValues(alpha: 0.15),
-                      borderRadius: BorderRadius.circular(10.0),
-                    ),
-                    child: Icon(
-                      widget.icon,
-                      color: widget.accentColor,
-                      size: 20, // Reduced from 24
-                    ),
+                const SizedBox(height: 8),
+                Text(
+                  widget.title.toUpperCase(),
+                  textAlign: TextAlign.center,
+                  maxLines: 1,
+                  overflow: TextOverflow.ellipsis,
+                  style: theme.textTheme.headlineSmall?.copyWith(
+                    fontSize: 14.0,
+                    fontWeight: FontWeight.w700,
+                    height: 1.0,
+                    letterSpacing: 0.5,
                   ),
-                  const SizedBox(height: 6), // Reduced from 10
-                  Text(
-                    widget.title.toUpperCase(),
-                    textAlign: TextAlign.center,
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                    style: TextStyle(
-                      fontFamily: 'Bebas Neue',
-                      fontSize: 13.0, // Reduced from 16
-                      fontWeight: FontWeight.w700,
-                      color: isDark ? Colors.white : theme.colorScheme.onSurface,
-                      height: 1.0,
-                      letterSpacing: 0.5,
-                    ),
-                  ),
-                ],
-              ),
+                ),
+              ],
             ),
           ),
         ),
         Positioned(
-          top: 4, // Reduced from 6
-          right: 18, // Reduced from 22
+          top: 6,
+          right: 22,
           child: GestureDetector(
             onTap: widget.onRemove,
             child: Container(
-              padding: const EdgeInsets.all(3), // Reduced from 4
+              padding: const EdgeInsets.all(4),
               decoration: BoxDecoration(
-                color: isDark ? const Color(0xFF2D2D2D) : const Color(0xFFF1F5F9),
+                color: theme.colorScheme.surface,
                 shape: BoxShape.circle,
                 border: Border.all(
-                  color: isDark ? const Color(0xFF3D3D3D) : const Color(0xFFE2E8F0),
-                  width: 1,
+                  color: theme.colorScheme.outline.withValues(alpha: 0.3),
+                  width: 1.0,
                 ),
               ),
               child: Icon(
                 Icons.close_rounded,
-                size: 12, // Reduced from 14
+                size: 10,
                 color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
               ),
             ),
@@ -1298,3 +1104,4 @@ class _CompactFavoriteTileState extends State<CompactFavoriteTile> {
     );
   }
 }
+
