@@ -68,12 +68,15 @@ class ContextCluesNotifier extends _$ContextCluesNotifier {
 
   void startLevel(int level) {
     _timer?.cancel();
-    final questions = _engine.generateQuestionsForLevel(level);
+    final allQuestions = _engine.generateQuestionsForLevel(level);
+    // Take only one random question for the one-shot game
+    allQuestions.shuffle();
+    final question = allQuestions.first;
 
     state = ContextCluesState(
       currentLevel: level,
       status: ContextCluesStatus.playing,
-      questions: questions,
+      questions: [question],
       currentQuestionIndex: 0,
       selectedOption: null,
       isCorrect: null,
@@ -93,25 +96,7 @@ class ContextCluesNotifier extends _$ContextCluesNotifier {
 
     if (isCorrect) {
       _timer = Timer(const Duration(milliseconds: 1000), () {
-        if (state.currentQuestionIndex == state.questions.length - 1) {
-          // Level success
-          state = state.copyWith(status: ContextCluesStatus.success);
-          
-          _timer = Timer(const Duration(milliseconds: 1200), () {
-            if (state.currentLevel >= 5) {
-              _completeGame();
-            } else {
-              startLevel(state.currentLevel + 1);
-            }
-          });
-        } else {
-          // Go to next question
-          state = state.copyWith(
-            currentQuestionIndex: state.currentQuestionIndex + 1,
-            selectedOption: null,
-            isCorrect: null,
-          );
-        }
+        _completeGame();
       });
     } else {
       state = state.copyWith(status: ContextCluesStatus.failure);
@@ -123,7 +108,8 @@ class ContextCluesNotifier extends _$ContextCluesNotifier {
       status: ContextCluesStatus.completed,
       isWon: true,
     );
-    ref.read(gameStreakNotifierProvider.notifier).completeGame('context_clues', xpAmount: 25);
+    // Adjust XP for one-shot game
+    ref.read(gameStreakNotifierProvider.notifier).completeGame('context_clues', xpAmount: 10);
   }
 
   void reset() {
