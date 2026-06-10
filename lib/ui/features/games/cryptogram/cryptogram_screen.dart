@@ -24,7 +24,6 @@ class _CryptogramScreenState extends ConsumerState<CryptogramScreen> {
   }
 
   void _showGameOverDialog(bool won) {
-    final l10n = AppLocalizations.of(context)!;
     if (won) {
       HapticFeedbackUtil.victory();
       ref.read(gameStreakNotifierProvider.notifier).completeGame('cryptogram');

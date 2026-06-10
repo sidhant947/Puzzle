@@ -1,15 +1,21 @@
 {
   "@@locale": "fa",
   "appTitle": "مرکز پازل",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
   "home": "خانه",
   "settings": "تنظیمات",
   "playAgain": "بازی مجدد",
+  "playNext": "بازی بعدی",
   "seeCompleted": "مرور",
   "finish": "پایان",
   "congrats": "تبریک",
   "perfectGradient": "گرادیان عالی!",
   "wellDone": "آفرین",
   "timeUp": "زمان تمام شد!",
+  "victory": "پیروزی!",
+  "gameWin": "آفرین!",
   "completed": "کامل شد!",
   "score": "امتیاز",
   "timeLeft": "زمان",
@@ -65,8 +71,32 @@
   "termsOfService": "شرایط خدمات",
   "licenses": "مجوزها",
   "findWordSubtitle": "شما {maxTries} فرصت دارید تا کلمه مخفی {wordLength} حرفی را پیدا کنید.",
+  "@findWordSubtitle": {
+    "placeholders": {
+      "maxTries": {
+        "type": "int"
+      },
+      "wordLength": {
+        "type": "int"
+      }
+    }
+  },
   "wordFoundMessage": "کلمه با موفقیت پیدا شد: {word}",
+  "@wordFoundMessage": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
   "gameOverMessage": "کلمه این بود: {word}",
+  "@gameOverMessage": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
   "gameOver": "پایان بازی",
   "crosswordTitle": "جدول کلمات",
   "crosswordSubtitle": "جدول را بر اساس راهنماهای ارائه شده با کلمات صحیح پر کنید.",
@@ -76,7 +106,21 @@
   "radicalRootsGoalReached": "هدف محقق شد!",
   "radicalRootsTimeUp": "زمان تمام شد!",
   "radicalRootsScoreMessage": "شما {score} ریشه را به درستی محاسبه کردید!",
+  "@radicalRootsScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "radicalRootsTryAgainMessage": "تمرین کنید! شما {score} ریشه را محاسبه کردید.",
+  "@radicalRootsTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "radicalRootsStart": "شروع محاسبه",
   "radicalRootsDescription": "شما ۶۰ ثانیه فرصت دارید تا هر تعداد که می‌توانید حل کنید.",
   "radicalRootsBest": "بهترین",
@@ -86,7 +130,21 @@
   "romanArithmeticGoalReached": "سطح سِنتوریون!",
   "romanArithmeticTimeUp": "زمان تمام شد!",
   "romanArithmeticScoreMessage": "شما {score} مسئله رومی را حل کردید!",
+  "@romanArithmeticScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "romanArithmeticTryAgainMessage": "آمدی، دیدی، پیروز شدی! شما {score} مسئله را حل کردید.",
+  "@romanArithmeticTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "romanArithmeticStart": "شروع ماموریت",
   "romanArithmeticDescription": "تبدیل و حل کنید. ۶۰ ثانیه فرصت دارید.",
   "romanArithmeticBest": "بهترین",
@@ -116,6 +174,41 @@
   "nonogramTitle": "نونوگرام",
   "nonogramSubtitle": "تصویر مخفی را با استفاده از سرنخ‌های منطقی نمایان کنید.",
   "nonogramWin": "تصویر نمایان شد!",
+  "magnetsTitle": "آهنرباها",
+  "magnetsSubtitle": "آهنرباها را بر اساس تعداد قطب‌ها در جدول قرار دهید.",
+  "magnetsHowToPlay": "ظروف به اندازه دومینو را با آهنرباهای '+' و '-' پر کنید یا آن‌ها را خالی بگذارید. سرنخ‌های سطر و ستون، تعداد کل هر قطب را در آن خط مشخص می‌کنند. قطب‌های یکسان نمی‌توانند به صورت متعامد مجاور باشند.",
+  "magnetsWinTitle": "قطبیت متعادل شد!",
+  "magnetsWinMessage": "همه آهنرباها به خوبی چیده شده‌اند!",
+  "lighthousesTitle": "فانوس‌های دریایی",
+  "lighthousesSubtitle": "کشتی‌ها را بر اساس سرنخ‌های فانوس دریایی قرار دهید.",
+  "lighthousesHowToPlay": "کشتی‌های ۱x۱ را در جدول قرار دهید. فانوس‌های دریایی تعداد کل کشتی‌های قابل مشاهده به صورت افقی و عمودی را نشان می‌دهند. کشتی‌ها نباید با فانوس‌های دریایی یا یکدیگر تماس داشته باشند، حتی به صورت مورب.",
+  "lighthousesWinTitle": "دریا امن است!",
+  "lighthousesWinMessage": "همه فانوس‌های دریایی کشتی‌ها را به خوبی هدایت می‌کنند!",
+  "dominosaTitle": "دومینوسا",
+  "dominosaSubtitle": "همه دومینوهای پنهان را در جدول پیدا کنید.",
+  "dominosaHowToPlay": "یک مجموعه کامل از دومینوها را روی جدولی از اعداد طوری بچینید که هر جفت عدد مجاور دقیقاً با یک دومینو پوشانده شود. هر جفت عدد فقط یک بار در مجموعه وجود دارد.",
+  "dominosaWinTitle": "استاد دومینو!",
+  "dominosaWinMessage": "هر دومینو پیدا و جایگذاری شده است!",
+  "skyscrapersTitle": "آسمان‌خراش‌ها",
+  "skyscrapersSubtitle": "جدول را با ارتفاع ساختمان‌ها پر کنید.",
+  "skyscrapersHowToPlay": "جدول را با ارتفاع‌های (1-N) پر کنید طوری که هر سطر و ستون دقیقاً یک بار شامل هر ارتفاع باشد. سرنخ‌های لبه‌ها نشان می‌دهند که چه تعداد ساختمان از آن جهت قابل مشاهده است، ساختمان‌های بلندتر مانع دیده شدن ساختمان‌های کوتاه‌تر می‌شوند.",
+  "skyscrapersWinTitle": "خط افق بازسازی شد!",
+  "skyscrapersWinMessage": "همه ساختمان‌ها در موقعیت عالی قرار دارند!",
+  "nurikabeTitle": "نوریکابه",
+  "nurikabeSubtitle": "یک دریای متصل و جزایر جداگانه تشکیل دهید.",
+  "nurikabeHowToPlay": "خانه‌ها را سایه بزنید تا یک «دریای» متصل واحد تشکیل شود (بدون بلوک‌های ۲x۲). خانه‌های سایه نزده «جزایر» را تشکیل می‌دهند که هر کدام دقیقاً شامل یک عدد است که نشان‌دهنده مساحت کل آن است.",
+  "nurikabeWinTitle": "دریا جاری است!",
+  "nurikabeWinMessage": "جزایر جدا شدند، دریا متصل شد!",
+  "fillominoTitle": "فیلومینو",
+  "fillominoSubtitle": "جدول را به پلی‌امینوهایی با اندازه‌های مشخص تقسیم کنید.",
+  "fillominoHowToPlay": "جدول را به پلی‌امینوهایی تقسیم کنید طوری که هر پلی‌امینو به اندازه N، شامل عدد N در تمام خانه‌هایش باشد. پلی‌امینوهای هم‌اندازه نمی‌توانند به صورت متعامد مجاور باشند.",
+  "fillominoWinTitle": "جدول تقسیم شد!",
+  "fillominoWinMessage": "با منطق عالی چیده شد!",
+  "hitoriTitle": "هیتوری",
+  "hitoriSubtitle": "اعداد تکراری را در هر سطر و ستون سایه بزنید.",
+  "hitoriHowToPlay": "خانه‌ها را طوری سایه بزنید که هیچ عددی بیش از یک بار در هیچ سطر یا ستونی ظاهر نشود. خانه‌های سایه‌دار نمی‌توانند مجاور باشند (به صورت متعامد) و تمام خانه‌های سایه نزده باید یک گروه متصل واحد را تشکیل دهند.",
+  "hitoriWinTitle": "استاد هیتوری!",
+  "hitoriWinMessage": "شما با موفقیت تمام تکرارها را حل کردید!",
   "pathFinderTitle": "مسیر یاب",
   "pathFinderSubtitle": "مسیر مخفی از S تا E را پیدا کنید.",
   "pathFinderWin": "مسیر فتح شد!",
@@ -132,12 +225,26 @@
   "arithmeticChainWinMessage": "محاسبات ذهنی شما تیز است!",
   "arithmeticChainLoseTitle": "تلاش مجدد",
   "arithmeticChainLoseMessage": "پاسخ صحیح {answer} بود.",
+  "@arithmeticChainLoseMessage": {
+    "placeholders": {
+      "answer": {
+        "type": "String"
+      }
+    }
+  },
   "arithmeticChainStart": "شروع",
   "arithmeticChainNext": "بعدی",
   "attentionalBlinkTitle": "پلک‌زدن توجهی",
   "attentionalBlinkSubtitleWatch": "مراقب اعداد باشید",
   "attentionalBlinkSubtitleInput": "دو عددی که دیدید را وارد کنید",
   "attentionalBlinkScoreMessage": "شما {score} هدف را کسب کردید!",
+  "@attentionalBlinkScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "balanceScaleTitle": "ترازوی تعادل",
   "balanceScaleSubtitle": "وزن آخرین مورد را بر اساس ترازوها استنتاج کنید.",
   "balanceScaleWinTitle": "متعادل!",
@@ -157,6 +264,16 @@
   "boxCompletionTitle": "تکمیل جعبه",
   "boxCompletionSubtitle": "کدام مکعب را می‌توان ساخت؟",
   "boxCompletionScoreMessage": "شما {score} پاسخ صحیح از {totalTrials} تلاش داشتید!",
+  "@boxCompletionScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "totalTrials": {
+        "type": "int"
+      }
+    }
+  },
   "boxCompletionOptions": "گزینه‌ها",
   "bridgesTitle": "پل‌ها",
   "bridgesSubtitle": "جزایر را با پل‌ها وصل کنید. هر جزیره به تعداد مشخصی پل نیاز دارد. پل‌ها نباید از روی هم عبور کنند.",
@@ -167,7 +284,21 @@
   "calculationSprintGoalReached": "هدف محقق شد!",
   "calculationSprintTimeUp": "زمان تمام شد",
   "calculationSprintScoreMessage": "سرعت محاسبات عالی! شما {score} امتیاز کسب کردید.",
+  "@calculationSprintScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "calculationSprintTryAgainMessage": "شما {score} امتیاز کسب کردید. سعی کنید رکورد خود را بزنید!",
+  "@calculationSprintTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "calculationSprintBest": "بهترین",
   "calculationSprintSeconds": "۶۰ ثانیه",
   "calculationSprintDescription": "معادلات را سریع حل کنید.\nپاسخ‌های اشتباه ۳ ثانیه کسر می‌کنند!",
@@ -178,20 +309,82 @@
   "categoryFluencyTimeUp": "زمان تمام شد!",
   "categoryFluencyWinMessage": "شما دایره لغات وسیعی دارید!",
   "categoryFluencyFoundMessage": "شما {count} کلمه پیدا کردید.",
+  "@categoryFluencyFoundMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "categoryFluencyCategoryLabel": "دسته:",
   "categoryFluencyEnterItem": "موردی وارد کنید...",
   "categoryFluencyWordCount": "{entered} / {target} کلمه",
+  "@categoryFluencyWordCount": {
+    "placeholders": {
+      "entered": {
+        "type": "int"
+      },
+      "target": {
+        "type": "int"
+      }
+    }
+  },
   "changeBlindnessTitle": "کوری تغییر",
   "changeBlindnessSubtitle": "مورد در حال تغییر را پیدا کنید",
   "changeBlindnessScore": "امتیاز: {score}",
+  "@changeBlindnessScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "changeBlindnessFoundMessage": "شما {score} تغییر پیدا کردید!",
+  "@changeBlindnessFoundMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "choiceRtTitle": "زمان واکنش انتخابی",
   "choiceRtSubtitle": "روی مربع فعال با بیشترین سرعت ممکن بزنید",
   "choiceRtAvgMessage": "میانگین زمان واکنش شما: {avg} میلی‌ثانیه",
+  "@choiceRtAvgMessage": {
+    "placeholders": {
+      "avg": {
+        "type": "String"
+      }
+    }
+  },
   "choiceRtTimeRemaining": "زمان باقی‌مانده: {time} ثانیه",
+  "@choiceRtTimeRemaining": {
+    "placeholders": {
+      "time": {
+        "type": "int"
+      }
+    }
+  },
   "choiceRtTaps": "ضربه ها: {count}",
+  "@choiceRtTaps": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "colorFloodTitle": "سیل رنگ",
   "colorFloodSubtitle": "حرکات: {moves} / {maxMoves}",
+  "@colorFloodSubtitle": {
+    "placeholders": {
+      "moves": {
+        "type": "int"
+      },
+      "maxMoves": {
+        "type": "int"
+      }
+    }
+  },
   "colorFloodSuccess": "سیل موفقیت‌آمیز!",
   "colorFloodDryLand": "زمین خشک...",
   "colorFloodWinMessage": "شما کل جدول را با رنگ اشباع کردید!",
@@ -203,11 +396,28 @@
   "colorMatchCheck": "بررسی تطبیق",
   "colorMatchResult": "نتیجه تطبیق",
   "colorMatchAccuracy": "دقت شما: {accuracy}%",
+  "@colorMatchAccuracy": {
+    "placeholders": {
+      "accuracy": {
+        "type": "String"
+      }
+    }
+  },
   "corsiBlocksTitle": "بلوک‌های کورسی",
   "corsiBlocksSubtitle": "روشن شدن بلوک‌ها را تماشا کنید و با همان ترتیب روی آن‌ها بزنید.",
   "corsiBlocksWinTitle": "استاد فضایی!",
   "corsiBlocksLoseTitle": "گم‌شده در فضا",
   "corsiBlocksMessage": "شما {score} توالی را به خاطر آوردید! دامنه حافظه فضایی شما به {span} رسید.",
+  "@corsiBlocksMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "span": {
+        "type": "int"
+      }
+    }
+  },
   "corsiBlocksWatch": "الگو را تماشا کنید",
   "corsiBlocksRepeat": "الگو را تکرار کنید",
   "corsiBlocksExcellent": "عالی!",
@@ -229,16 +439,58 @@
   "digitSpanReverseWinMessage": "حافظه کاری شما تحسین‌برانگیز است!",
   "digitSpanReverseLoseTitle": "تلاش مجدد",
   "digitSpanReverseLoseMessage": "توالی معکوس صحیح {sequence} بود.",
+  "@digitSpanReverseLoseMessage": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
   "dividedAttentionTitle": "توجه تقسیم‌شده",
   "dividedAttentionSubtitle": "چپ برای ستاره ⭐ | راست برای قرمز 🔴",
   "dividedAttentionGameOverTitle": "تمرکز از دست رفت",
   "dividedAttentionGameOverMessage": "انجام چند کار همزمان سخت است! امتیاز شما {score} بود.",
+  "@dividedAttentionGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "dividedAttentionScore": "امتیاز: {score}",
+  "@dividedAttentionScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackTitle": "ان-بک دوگانه",
   "doubleNBackSubtitle": "محرک‌ها را با {n} مرحله قبل مطابقت دهید",
+  "@doubleNBackSubtitle": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackGameOverTitle": "پایان بازی",
   "doubleNBackGameOverMessage": "شما {score} امتیاز در ان-بک دوگانه کسب کردید!",
+  "@doubleNBackGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackScore": "امتیاز: {score}",
+  "@doubleNBackScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackPositionMatch": "تطبیق موقعیت",
   "doubleNBackLetterMatch": "تطبیق حرف",
   "faceNameAssociationTitle": "چهره-نام",
@@ -248,10 +500,27 @@
   "faceNameAssociationGameOver": "پایان بازی",
   "faceNameAssociationWinMessage": "شما حافظه خوبی برای چهره‌ها و نام‌ها دارید!",
   "faceNameAssociationLoseMessage": "شما {correct} از {total} مورد را درست زدید.",
+  "@faceNameAssociationLoseMessage": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "faceNameAssociationStartTest": "شروع آزمون",
   "flankerTestWinTitle": "تمرکز لیزری!",
   "flankerTestLoseTitle": "حواس‌پرتی",
   "flankerTestScoreMessage": "شما {score} مورد را به درستی زدید!",
+  "@flankerTestScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "flankerTestTitle": "آزمون فلنکر",
   "flankerTestSubtitle": "جهت فلش مرکزی را نشان دهید، فلش‌های کناری را نادیده بگیرید.",
   "flankerTestLeft": "چپ",
@@ -260,6 +529,13 @@
   "fractionMatchSubtitle": "تصویر را با کسر آن مطابقت دهید",
   "fractionMatchLoseTitle": "عدم تطبیق کسر",
   "fractionMatchLoseMessage": "پاسخ صحیح {correctAnswer} بود.",
+  "@fractionMatchLoseMessage": {
+    "placeholders": {
+      "correctAnswer": {
+        "type": "String"
+      }
+    }
+  },
   "goNoGoTitle": "برو / نرو",
   "goNoGoSubtitle": "برای سبز بزنید، قرمز را نادیده بگیرید!",
   "goNoGoLoseTitle": "واکنش متوقف شد",
@@ -271,6 +547,13 @@
   "groceryListWinTitle": "استاد خرید!",
   "groceryListLoseTitle": "چیزی فراموش شده؟",
   "groceryListScoreMessage": "شما {score} امتیاز در لیست خرید کسب کردید!",
+  "@groceryListScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "groceryListReady": "آماده‌ام",
   "groceryListWhereBelong": "این متعلق به کجاست؟",
   "hueSortTitle": "مرتب‌سازی رنگ",
@@ -278,16 +561,44 @@
   "hueSortWinTitle": "گرادیان عالی!",
   "hueSortWinMessage": "شما طیف رنگی را به طور کامل مرتب کردید!",
   "hueSortWrongTiles": "کاشی‌ها در موقعیت اشتباه: {count}",
+  "@hueSortWrongTiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "kenkenTitle": "کن‌کن",
   "kenkenWinTitle": "نابغه!",
   "kenkenLoseTitle": "پایان بازی",
   "kenkenWinMessage": "شما پازل کن‌کن را حل کردید!",
   "kenkenLoseMessage": "قوانین سطر/ستون و قفس را بررسی کنید.",
   "kenkenSubtitle": "اعداد ۱ تا {size} را بدون تکرار در سطر/ستون پر کنید",
+  "@kenkenSubtitle": {
+    "placeholders": {
+      "size": {
+        "type": "int"
+      }
+    }
+  },
   "letterCancellationTitle": "حذف حروف",
   "letterCancellationTitleFull": "آزمون حذف حروف",
   "letterCancellationScoreMessage": "شما {score} حرف پیدا کردید!",
+  "@letterCancellationScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "letterCancellationSubtitle": "همه حروف \"{target}\" را پیدا کنید",
+  "@letterCancellationSubtitle": {
+    "placeholders": {
+      "target": {
+        "type": "String"
+      }
+    }
+  },
   "letterCancellationFound": "پیدا شد",
   "letterCancellationTime": "زمان",
   "lightsOutTitle": "خاموشی چراغ‌ها",
@@ -326,6 +637,13 @@
   "sternbergTaskMemorize": "حروف را حفظ کنید",
   "sternbergTaskWasLetterSet": "آیا این حرف در مجموعه بود؟",
   "sternbergTaskScore": "شما {score} امتیاز در تست استرنبرگ کسب کردید!",
+  "@sternbergTaskScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "verbalAnalogiesTitle": "استاد شباهت!",
   "verbalAnalogiesSubtitle": "رابطه را کامل کنید",
   "typingSpeedTitle": "سرعت تایپ",
@@ -351,6 +669,13 @@
   "pixelMimicTitle": "تقلید پیکسلی",
   "targetNumberTitle": "هدف ۲۴",
   "targetNumberSubtitle": "از هر ۴ عدد برای رسیدن به {target} استفاده کنید",
+  "@targetNumberSubtitle": {
+    "placeholders": {
+      "target": {
+        "type": "int"
+      }
+    }
+  },
   "mirrorTracingTitle": "ترسیم عالی!",
   "mirrorTracingSubtitle": "ستاره را ترسیم کنید! کنترل‌ها معکوس هستند.",
   "wordSurgeTitle": "موج کلمات",
@@ -360,6 +685,13 @@
   "perspectiveTakingChoosePerspective": "دیدگاه را انتخاب کنید",
   "perspectiveTakingCongrats": "شما دید دقیقی برای روابط فضایی دارید.",
   "perspectiveTakingSubtitle": "کدام نما از جهت {targetDirName} است؟",
+  "@perspectiveTakingSubtitle": {
+    "placeholders": {
+      "targetDirName": {
+        "type": "String"
+      }
+    }
+  },
   "paperFoldingTitle": "کمال تاشده!",
   "paperFoldingSubtitle": "وقتی باز شود چگونه به نظر می‌رسد؟",
   "waterSortTitle": "آفرین!",
@@ -395,6 +727,13 @@
   "operationSpanRecallPhase": "حروف را به ترتیب یادآوری کنید",
   "operationSpanRoundComplete": "دور کامل شد!",
   "operationSpanScore": "شما {score} امتیاز در دامنه عملیات کسب کردید!",
+  "@operationSpanScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "slidePuzzleTitle": "پازل کشویی",
   "slidePuzzleNewGame": "بازی جدید",
   "slidePuzzleInstructions": "کاشی‌ها را با لغزاندن به فضای خالی به ترتیب عددی مرتب کنید.",
@@ -411,6 +750,13 @@
   "quickMathTitle": "ریاضی سریع",
   "magicSquaresTitle": "مربع جادویی",
   "magicSquaresSubtitle": "هر سطر، ستون و قطر باید مجموع {targetSum} را داشته باشد",
+  "@magicSquaresSubtitle": {
+    "placeholders": {
+      "targetSum": {
+        "type": "int"
+      }
+    }
+  },
   "objectShuffleTitle": "جابجایی اشیاء",
   "pipesTitle": "لوله‌ها",
   "pipesSubtitle": "نقاط رنگی مشابه را با لوله‌ها وصل کنید.",
@@ -446,6 +792,8 @@
   "vocabularyBuilderTitle": "واژه‌ساز",
   "vocabularyBuilderSubtitle": "مترادف‌ها و متضادها را تحت فشار زمان مطابقت دهید.",
   "vocabularyBuilderHowToPlay": "یک کلمه هدف و یک رابطه (مترادف یا متضاد) به شما نشان داده می‌شود. کلمه صحیح را از گزینه‌ها انتخاب کنید. سریع باشید، زمان در حال گذر است!",
+  "correct": "درست",
+  "incorrect": "نادرست",
   "grammarPoliceTitle": "پلیس دستور زبان",
   "grammarPoliceSubtitle": "تشخیص دهید که آیا جمله از نظر دستوری صحیح است یا دارای خطا است.",
   "grammarPoliceHowToPlay": "یک جمله در وسط صفحه ظاهر می‌شود. تصمیم بگیرید که آیا از نظر دستوری صحیح است یا دارای خطا است. اگر درست است روی «درست» و اگر اشتباهی مشاهده کردید روی «نادرست» ضربه بزنید. تمام جان‌های خود را از دست ندهید!",
@@ -490,6 +838,13 @@
   "blockCount3DNotQuite": "نه کاملاً! برای شمارش دوباره بچرخانید.",
   "blockCount3DExcellent": "عالی",
   "blockCount3DWinMessage": "شما همه {count} بلوک را به درستی شناسایی کردید!",
+  "@blockCount3DWinMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "blockCount3DHowToPlayDescription": "۱. انگشت خود را روی نمای سه‌بعدی بکشید تا دسته بلوک‌ها بچرخد.\n\n۲. همه بلوک‌های موجود در دسته را بشمارید.\n\n۳. به یاد داشته باشید: بلوکی که در هواست باید بلوک‌های تکیه‌گاه در زیر خود داشته باشد (بلوک‌های مخفی!).\n\n۴. پاسخ خود را در کادر ورودی تایپ کرده و برای بررسی روی \"ارسال حدس\" بزنید.",
   "alphabetSudokuTitle": "سودوکوی الفبا",
   "alphabetSudokuSubtitle": "جدول را طوری پر کنید که هر سطر، ستون و مربع شامل حروف A تا I باشد.",
@@ -499,6 +854,13 @@
   "classicMazeSubtitle": "کاوش و حل • یک ماز جدید در هر بازی",
   "classicMazeWinTitle": "ماز فتح شد",
   "classicMazeWinMessage": "مسیریابی فوق‌العاده! شما ماز را در {count} حرکت حل کردید.",
+  "@classicMazeWinMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "classicMazeMoves": "حرکات: ",
   "classicMazeHowToPlayDescription": "۱. گوی زرد درخشان (بازیکن) را به پورتال سبز (خروجی) در پایین سمت راست هدایت کنید.\n\n۲. برای حرکت، روی ماز بکشید، از کلیدهای جهت‌دار کیبورد یا دکمه‌های جهت‌دار پایین استفاده کنید.\n\n۳. رد بنفش مسیری را که کاوش کرده‌اید نشان می‌دهد. برای پاک کردن دینامیک مسیر، به عقب برگردید!\n\n۴. از نوار ابزار بالا درجه سختی را تغییر دهید تا خود را با مازهای بزرگتر به چالش بکشید!",
   "conjunctionSearchTitle": "جستجوی ترکیبی",
@@ -529,52 +891,910 @@
   "cubeNetFoldFailed": "شکست خورد (ریست را بزنید)",
   "faceTraitAssociationMemorize": "هر ۴ نفر را حفظ کنید",
   "faceTraitAssociationPersonOf": "شخص {current} از {total}",
+  "@faceTraitAssociationPersonOf": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "faceTraitAssociationWhatOccupation": "شغل آن‌ها چیست؟",
   "faceTraitAssociationWhatHobby": "سرگرمی آن‌ها چیست؟",
   "faceTraitAssociationWinTitle": "استاد حافظه!",
   "faceTraitAssociationLoseTitle": "پایان بازی",
   "faceTraitAssociationScoreMessage": "شما {correct} از {total} مورد را درست زدید.",
+  "@faceTraitAssociationScoreMessage": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "topologyTitle": "توپولوژی",
   "topologySubtitle": "آیا این اشکال از نظر توپولوژیکی معادل هستند؟ (آیا می‌توان یکی را بدون بریدن یا چسباندن به دیگری تغییر شکل داد؟)",
   "topologyWinTitle": "نابغه هندسه!",
   "topologyWinMessage": "شما ۱۰ جفت توپولوژیکی را به درستی شناسایی کردید!",
   "topologyScore": "امتیاز: ",
-  "playNext": "بازی بعدی",
-  "correct": "درست",
-  "incorrect": "نادرست",
-  "magnetsTitle": "آهنرباها",
-  "magnetsSubtitle": "آهنرباها را بر اساس تعداد قطب‌ها در جدول قرار دهید.",
-  "magnetsHowToPlay": "ظروف به اندازه دومینو را با آهنرباهای '+' و '-' پر کنید یا آن‌ها را خالی بگذارید. سرنخ‌های سطر و ستون، تعداد کل هر قطب را در آن خط مشخص می‌کنند. قطب‌های یکسان نمی‌توانند به صورت متعامد مجاور باشند.",
-  "magnetsWinTitle": "قطبیت متعادل شد!",
-  "magnetsWinMessage": "همه آهنرباها به خوبی چیده شده‌اند!",
-  "lighthousesTitle": "فانوس‌های دریایی",
-  "lighthousesSubtitle": "کشتی‌ها را بر اساس سرنخ‌های فانوس دریایی قرار دهید.",
-  "lighthousesHowToPlay": "کشتی‌های ۱x۱ را در جدول قرار دهید. فانوس‌های دریایی تعداد کل کشتی‌های قابل مشاهده به صورت افقی و عمودی را نشان می‌دهند. کشتی‌ها نباید با فانوس‌های دریایی یا یکدیگر تماس داشته باشند، حتی به صورت مورب.",
-  "lighthousesWinTitle": "دریا امن است!",
-  "lighthousesWinMessage": "همه فانوس‌های دریایی کشتی‌ها را به خوبی هدایت می‌کنند!",
-  "dominosaTitle": "دومینوسا",
-  "dominosaSubtitle": "همه دومینوهای پنهان را در جدول پیدا کنید.",
-  "dominosaHowToPlay": "یک مجموعه کامل از دومینوها را روی جدولی از اعداد طوری بچینید که هر جفت عدد مجاور دقیقاً با یک دومینو پوشانده شود. هر جفت عدد فقط یک بار در مجموعه وجود دارد.",
-  "dominosaWinTitle": "استاد دومینو!",
-  "dominosaWinMessage": "هر دومینو پیدا و جایگذاری شده است!",
-  "skyscrapersTitle": "آسمان‌خراش‌ها",
-  "skyscrapersSubtitle": "جدول را با ارتفاع ساختمان‌ها پر کنید.",
-  "skyscrapersHowToPlay": "جدول را با ارتفاع‌های (1-N) پر کنید طوری که هر سطر و ستون دقیقاً یک بار شامل هر ارتفاع باشد. سرنخ‌های لبه‌ها نشان می‌دهند که چه تعداد ساختمان از آن جهت قابل مشاهده است، ساختمان‌های بلندتر مانع دیده شدن ساختمان‌های کوتاه‌تر می‌شوند.",
-  "skyscrapersWinTitle": "خط افق بازسازی شد!",
-  "skyscrapersWinMessage": "همه ساختمان‌ها در موقعیت عالی قرار دارند!",
-  "nurikabeTitle": "نوریکابه",
-  "nurikabeSubtitle": "یک دریای متصل و جزایر جداگانه تشکیل دهید.",
-  "nurikabeHowToPlay": "خانه‌ها را سایه بزنید تا یک «دریای» متصل واحد تشکیل شود (بدون بلوک‌های ۲x۲). خانه‌های سایه نزده «جزایر» را تشکیل می‌دهند که هر کدام دقیقاً شامل یک عدد است که نشان‌دهنده مساحت کل آن است.",
-  "nurikabeWinTitle": "دریا جاری است!",
-  "nurikabeWinMessage": "جزایر جدا شدند، دریا متصل شد!",
-  "fillominoTitle": "فیلومینو",
-  "fillominoSubtitle": "جدول را به پلی‌امینوهایی با اندازه‌های مشخص تقسیم کنید.",
-  "fillominoHowToPlay": "جدول را به پلی‌امینوهایی تقسیم کنید طوری که هر پلی‌امینو به اندازه N، شامل عدد N در تمام خانه‌هایش باشد. پلی‌امینوهای هم‌اندازه نمی‌توانند به صورت متعامد مجاور باشند.",
-  "fillominoWinTitle": "جدول تقسیم شد!",
-  "fillominoWinMessage": "با منطق عالی چیده شد!",
-  "hitoriTitle": "هیتوری",
-  "hitoriSubtitle": "اعداد تکراری را در هر سطر و ستون سایه بزنید.",
-  "hitoriHowToPlay": "خانه‌ها را طوری سایه بزنید که هیچ عددی بیش از یک بار در هیچ سطر یا ستونی ظاهر نشود. خانه‌های سایه‌دار نمی‌توانند مجاور باشند (به صورت متعامد) و تمام خانه‌های سایه نزده باید یک گروه متصل واحد را تشکیل دهند.",
-  "hitoriWinTitle": "استاد هیتوری!",
-  "hitoriWinMessage": "شما با موفقیت تمام تکرارها را حل کردید!"
+  "semanticDistanceTitle": "فاصله معنایی",
+  "semanticDistanceSubtitle": "سنجش فاصله مفهومی بین کلمات",
+  "oxymoronHuntTitle": "شکار متناقض‌نما",
+  "oxymoronHuntSubtitle": "جفت کردن کلمات متضاد در جدول",
+  "portmanteauSplitTitle": "تجزیه واژه‌های آمیخته",
+  "portmanteauSplitSubtitle": "شناسایی کلمات سازنده یک واژه مرکب",
+  "chainReactionTitle": "واکنش زنجیره‌ای",
+  "chainReactionSubtitle": "اتصال کلمات با استفاده از حروف مشترک",
+  "rhymeMasterTitle": "استاد قافیه",
+  "rhymeMasterSubtitle": "شناسایی کلماتی که با کلمه هدف هم‌قافیه هستند",
+  "definitionDashTitle": "جورچین تعاریف",
+  "definitionDashSubtitle": "تطبیق کلمه صحیح با تعریف آن",
+  "syllableStackTitle": "چیدمان هجاها",
+  "syllableStackSubtitle": "چیدن هجاها برای ساخت کلمات کامل",
+  "sentenceUnscrambleTitle": "مرتب‌سازی جمله",
+  "sentenceUnscrambleSubtitle": "مرتب کردن کلمات برای ساخت یک جمله صحیح",
+  "grammarSortTitle": "دسته‌بندی دستوری",
+  "grammarSortSubtitle": "دسته‌بندی کلمات بر اساس نقش دستوری آن‌ها",
+  "vowelReconstructTitle": "بازسازی حروف صدادار",
+  "vowelReconstructSubtitle": "پر کردن حروف صدادار حذف شده در جمله",
+  "consonantReconstructTitle": "بازسازی حروف بی‌صدا",
+  "consonantReconstructSubtitle": "پر کردن حروف بی‌صدای حذف شده در جمله",
+  "homophoneHuntTitle": "شکار واژگان هم‌آوا",
+  "homophone_huntSubtitle": "انتخاب واژه هم‌آوا با املای درست",
+  "silentLetterSearchTitle": "جستجوی حروف ناخوانا",
+  "silentLetterSearchSubtitle": "شناسایی حروف ناخوانا در کلمات داده شده",
+  "palindromeBuilderTitle": "سازنده پالیندروم",
+  "palindromeBuilderSubtitle": "ساخت یک پالیندروم با اضافه کردن کمترین حروف",
+  "phoneticGuessTitle": "حدس آوایی",
+  "phoneticGuessSubtitle": "شناسایی کلمه از روی املای آوایی آن",
+  "spoonerismSolverTitle": "حل‌کننده اسپنریسم",
+  "spoonerismSolverSubtitle": "شناسایی اسپنریسم صحیح برای عبارت",
+  "etymonOddballTitle": "ریشه ناهماهنگ",
+  "etymonOddballSubtitle": "یافتن کلمه‌ای که ریشه مشترک ندارد",
+  "etymologyOriginTitle": "منشا واژه‌شناسی",
+  "etymologyOriginSubtitle": "حدس زدن زبان مبدأ کلمه دخیل",
+  "affixFactoryTitle": "کارخانه وندها",
+  "affixFactorySubtitle": "ساخت کلمات معتبر با استفاده از پیشوندها و پسوندها",
+  "cognateCatchTitle": "شکار کلمات هم‌ریشه",
+  "cognateCatchSubtitle": "تشخیص بین کلمات واقعاً هم‌ریشه و کلمات مشابه کاذب",
+  "compoundConnectTitle": "اتصال کلمات مرکب",
+  "compoundConnectSubtitle": "ترکیب دو کلمه برای ساخت یک کلمه مرکب",
+  "pangramSprintTitle": "دوی پانگرام",
+  "pangramSprintSubtitle": "ساخت جمله‌ای که شامل تمام حروف الفبا باشد",
+  "anagramDefinitionTitle": "تعریف آنارام",
+  "anagramDefinitionSubtitle": "حل آنارام بر اساس تعریف آن",
+  "letterBridgeTitle": "پل حروفی",
+  "letterBridgeSubtitle": "یافتن حرف گم‌شده‌ای که دو کلمه را به هم وصل می‌کند",
+  "letterFrequencyScanTitle": "اسکن تکرار حروف",
+  "letterFrequencyScanSubtitle": "شمارش دفعات تکرار یک حرف در متن",
+  "oneLetterShiftTitle": "تغییر تک‌حرفی",
+  "oneLetterShiftSubtitle": "تبدیل یک کلمه به کلمه دیگر با تغییر یک حرف",
+  "vocabularyBuilderMessage": "آفرین! دایره لغات شما تحسین‌برانگیز است. امتیاز: {arg0}",
+  "@vocabularyBuilderMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "symmetryMessage": "شما الگو را با دقت جراحی به طور کامل قرینه کردید.",
+  "temporalOrderMessage": "فوق‌العاده است! حافظه توالی زمانی شما بسیار دقیق است.",
+  "temporalOrderMessage1": "حافظه توالی نادرست. تمرین باعث پیشرفت می‌شود!",
+  "wordSearchMessage": "تمام کلمات با دقت و مشاهده قوی پیدا شدند.",
+  "colorMatchMessage": "دقت شما: {arg0}٪",
+  "@colorMatchMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "semanticLinkMessage": "شما {arg0} امتیاز کسب کردید!",
+  "@semanticLinkMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "reflexTapMessage": "شما روی {arg0} هدف ضربه زدید!",
+  "@reflexTapMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "angleFinderMessage": "درک هندسی شما عالی است!",
+  "angleFinderMessage1": "پاسخ صحیح {arg0} درجه بود",
+  "@angleFinderMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "angleFinderText": "{arg0} درجه",
+  "@angleFinderText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "visualStatisticalLearningMessage": "شما {arg0} الگوی صحیح را تشخیص دادید!",
+  "@visualStatisticalLearningMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "nonogramText": "خطا: {arg0}",
+  "@nonogramText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "mentalCalendarMessage": "شما {arg0} مورد از ۱۰ مورد را درست جواب دادید!",
+  "@mentalCalendarMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "orbitTapMessage": "شما با موفقیت {arg0} بار ضربه زدید!",
+  "@orbitTapMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "schulteTableMessage": "شما جدول را در {arg0} تمام کردید.\\nبه تمرین ادامه دهید تا دید محیطی خود را تقویت کنید!",
+  "@schulteTableMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "schulteTableText": "شروع تست",
+  "relationalMemoryMessage": "دقت حافظه رابطه‌ای فضایی شما عالی است!",
+  "sudokuText": "خطا: {arg0}",
+  "@sudokuText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sdmtMessage": "شما {arg0} نماد را مطابقت دادید! این تست سرعت اسکن و توجه بصری شما را می‌سنجد.",
+  "@sdmtMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "futoshikiMessage": "فوق‌العاده است! شما مربع لاتین فوتوشیکی را حل کردید.",
+  "letterFrequencyScanMessage": "شما به درستی {arg0} بار تکرار «{arg1}» را شمردید.",
+  "@letterFrequencyScanMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "letterFrequencyScanText": "نادرست. تعداد {arg0} بود.",
+  "@letterFrequencyScanText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "memoryMatrixMessage": "تحسین‌برانگیز است! حافظه فعال شما تیز است. هدف روزانه انجام شد!",
+  "memoryMatrixMessage1": "تمرکز کنید و دوباره تلاش کنید تا امتیاز حافظه خود را بهبود ببخشید.",
+  "contextCluesMessage": "استثنایی! دایره لغات و تحلیل متنی شما درجه یک است.",
+  "contextCluesMessage1": "کلمه اشتباه انتخاب شد! استدلال متنی کلامی خود را تمرین دهید و دوباره تلاش کنید.",
+  "oneLetterShiftMessage": "شما به درستی {arg0} را به {arg1} تغییر دادید.",
+  "@oneLetterShiftMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "mentalAbacusMessage": "محاسبات ذهنی شما در سطح عالی است.",
+  "fractionMatcherMessage": "شما با تطبیق نمایش‌ها {arg0} امتیاز کسب کردید!",
+  "@fractionMatcherMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spellingSprintMessage": "شما هر ۱۰ کلمه را درست هجی کردید!",
+  "spellingSprintMessage1": "شما {arg0} کلمه را درست هجی کردید.",
+  "@spellingSprintMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "stopSignalMessage": "شما {arg0} پاسخ صحیح ثبت کردید! این تست توانایی شما را در مهار یک عمل برنامه‌ریزی شده می‌سنجد.",
+  "@stopSignalMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "grammarPoliceMessage": "بازی تمام شد! شما نظم را در دنیای دستور زبان حفظ کردید. امتیاز: {arg0}",
+  "@grammarPoliceMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "consonantReconstructMessage": "شما امتیاز {arg0} را در بازسازی کسب کردید!",
+  "@consonantReconstructMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "rhymeMasterMessage": "شما {arg0} قافیه از {arg1} قافیه را پیدا کردید!",
+  "@rhymeMasterMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "vigilanceTaskMessage": "موفقیت‌ها: {arg0}، خطاها: {arg1}\\nهشدارهای کاذب: {arg2}",
+  "@vigilanceTaskMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "silhouetteMatchOrthoMessage": "شما مهارت‌های تراز ارتوگرافیک بی‌نقصی دارید!",
+  "silhouetteMatchOrthoText": "متوجه شدم",
+  "silhouetteMatchOrthoText1": "تصویرسازی پرسپکتیو نادرست! برای تلاش مجدد روی بازنشانی ضربه بزنید.",
+  "fibonacciMergeMessage": "{arg0}: {arg1}",
+  "@fibonacciMergeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "factorFinderMessage": "شما با پیدا کردن تمام عوامل {arg0} امتیاز کسب کردید!",
+  "@factorFinderMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "logicalSyllogismsMessage": "شما {arg0} قیاس منطقی را به درستی حل کردید!",
+  "@logicalSyllogismsMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "rotatingMazeMessage": "شما با موفقیت در هزارتوی چرخشی متحرک حرکت کردید!",
+  "rotatingMazeText": "متوجه شدم",
+  "rotatingMazeText1": "🌀 هزارتو ۹۰ درجه چرخید! جدول جابجا شد!",
+  "mathPathMessage": "شما مسیری را پیدا کردید که مجموع آن به هدف می‌رسد!",
+  "bridgesMessage": "شما با موفقیت تمام جزیره‌ها را به هم متصل کردید!",
+  "compoundConnectMessage": "کلمه مرکب {arg0}{arg1} است.",
+  "@compoundConnectMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "pangramSprintMessage": "شما جمله‌ای با استفاده از تمام 26 حرف ساختید.",
+  "mirrorImageMessage": "شما بازتاب را به درستی تشخیص دادید.",
+  "mirrorImageText": "تصویر آینه‌ای",
+  "reverseStroopMessage": "شما {arg0} امتیاز کسب کردید! چشمانتان را به دستورالعمل‌ها بدوزید.",
+  "@reverseStroopMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "verbalAnalogiesMessage": "شما ذهن تیزی در تشخیص روابط دارید.",
+  "corsiBlocksMessage1": "شما {arg1} توالی را به یاد آوردید! دامنه حافظه فضایی شما به {arg0} رسید.",
+  "@corsiBlocksMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "wordLadderMessage": "شما با موفقیت {arg0} را به {arg1} در {arg2} مرحله متصل کردید.",
+  "@wordLadderMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "d2AttentionMessage": "اسکن انتخابی باورنکردنی! امتیاز نهایی: {arg0}.",
+  "@d2AttentionMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "d2AttentionText": "نحوه بازی",
+  "d2AttentionText1": "فهمیدم",
+  "tangleFixMessage": "تمام خطوط واضح و روان هستند.",
+  "distractorMatrixMessage": "باورنکردنی! شما علی‌رغم حواس‌پرت‌کن‌های ریاضی شناختی، الگوها را به یاد آوردید!",
+  "distractorMatrixMessage1": "حواس‌پرت‌کن‌ها شما را شکست دادند! حافظه فعال خود را دوباره آموزش دهید.",
+  "sentenceUnscrambleMessage": "شما با مرتب‌سازی جملات امتیاز {arg0} را کسب کردید!",
+  "@sentenceUnscrambleMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "kakuroMessage": "باورنکردنی! شما تمام بخش‌های مجموع را به طور کامل مطابقت دادید.",
+  "symbolicFlankerMessage": "شما {arg0} مورد صحیح از {arg1} مورد داشتید!",
+  "@symbolicFlankerMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "stroopTestMessage": "شما {arg0} مورد را به درستی پاسخ دادید! روی رنگ جوهر تمرکز کنید، نه کلمه.",
+  "@stroopTestMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wisconsinCardSortingMessage": "شما {arg0} کارت را به درستی دسته‌بندی کردید!",
+  "@wisconsinCardSortingMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "nBackMessage": "شما {arg0} مورد مطابقت 2-back به دست آوردید! حافظه فعال شما برای انجام همزمان چند کار حیاتی است.",
+  "@nBackMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "rhythmMasterMessage": "شما {arg0} ضربه عالی و {arg1} امتیاز کسب کردید!",
+  "@rhythmMasterMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "groceryListMessage": "شما {arg0} امتیاز در لیست خرید کسب کردید!",
+  "@groceryListMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "groceryListText": "من",
+  "mirrorTracingMessage": "مغز شما با موفقیت هماهنگی خود را بازسازی کرد.",
+  "moduloClockMessage": "هماهنگی عالی در محاسبات ذهنی پیمانه‌ای! امتیاز: {arg0}",
+  "@moduloClockMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "moduloClockMessage1": "شما {arg0} از {arg1} راه حل ساعت پیمانه‌ای را مدیریت کردید. امتیاز: {arg2}",
+  "@moduloClockMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "crownMessage": "تمام تاج‌ها با منطق عالی با موفقیت قرار گرفتند.",
+  "dualCodingMessage": "عملکرد فوق‌العاده در انجام دو کار همزمان! امتیاز حافظه فعال شما: {arg0}",
+  "@dualCodingMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "inequalityDashMessage": "شما {arg0} امتیاز در مطابقت نابرابری‌ها کسب کردید!",
+  "@inequalityDashMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sourceMonitoringMessage": "شما {arg0} از {arg1} امتیاز کسب کردید!",
+  "@sourceMonitoringMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "sourceMonitoringText": "شروع یادآوری",
+  "memoryPalaceText": "کلمات موجود",
+  "target10Message": "شما {arg0} امتیاز در مطابقت اعداد با 10 کسب کردید!",
+  "@target10Message": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "paperFoldingMessage": "شما می‌توانید الگوها را در ذهن خود ببینید.",
+  "topologyText": "{arg0}{arg1} / 10",
+  "@topologyText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "waterSortMessage": "شما تمام رنگ‌ها را به طور کامل دسته‌بندی کردید!",
+  "anagramDefinitionMessage": "کلمه واقعاً \"{arg0}\" بود.",
+  "@anagramDefinitionMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "game2048Message": "{arg0}: {arg1}\\n{arg2}",
+  "@game2048Message": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "game2048Message1": "{arg0}: {arg1}",
+  "@game2048Message1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "numericalEstimationMessage": "شما {arg0} تخمین صحیح زدید.",
+  "@numericalEstimationMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "grammarSortMessage": "شما {arg0} کلمه را به درستی دسته‌بندی کردید!",
+  "@grammarSortMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "vowelReconstructMessage": "شما امتیاز {arg0} را بازسازی کردید!",
+  "@vowelReconstructMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spatialConflictMessage": "شما امتیاز {arg0} را با {arg1} خطا به دست آوردید!",
+  "@spatialConflictMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "spatialConflictText": "نحوه بازی",
+  "spatialConflictText1": "فهمیدم",
+  "tracePathMessage": "دقت شما {arg0}٪ بود!",
+  "@tracePathMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "ruleSwitcherMessage": "شما {arg0} مورد صحیح از {arg1} مورد داشتید!",
+  "@ruleSwitcherMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "collatzMessage": "شما {arg0} مرحله انجام دادید. حداقل ممکن {arg1} بود.",
+  "@collatzMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "collatzText": "/ 2",
+  "collatzText1": "+ 1",
+  "collatzText2": "3n + 1",
+  "divisibilityDashMessage": "شما {arg0} عدد را حل کردید!",
+  "@divisibilityDashMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "switchTaskMessage": "شما {arg0} مورد را به درستی پاسخ دادید! تعویض سریع کلید انعطاف‌پذیری ذهنی است.",
+  "@switchTaskMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sequenceSleuthMessage": "شما {arg0} توالی را حل کردید!",
+  "@sequenceSleuthMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "changeBlindnessMessage": "شما {arg0} تغییر را پیدا کردید!",
+  "@changeBlindnessMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "mentalRotationMessage": "شما {arg0} شکل را به درستی چرخاندید!",
+  "@mentalRotationMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wordMastermindMessage": "شما بر کد مسلط شدید!\\nکلمه این بود: {arg0}",
+  "@wordMastermindMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wordMastermindMessage1": "کلمه مخفی این بود: {arg0}",
+  "@wordMastermindMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wordMastermindText": "{arg0}",
+  "@wordMastermindText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "simonSequenceMessage": "شما تمام 10 کاشی را حفظ کردید!",
+  "simonSequenceMessage1": "دوباره امتحان کنید تا بر توالی مسلط شوید.",
+  "oxymoronHuntMessage": "شما {arg0} متناقض‌نما پیدا کردید!",
+  "@oxymoronHuntMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spotlightTrackMessage": "ردیابی فضایی باورنکردنی! شما {arg0} امتیاز کسب کردید.",
+  "@spotlightTrackMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spotlightTrackText": "نحوه بازی",
+  "spotlightTrackText1": "فهمیدم",
+  "spotlightTrackText2": "شروع مرحله",
+  "vennNumbersMessage": "شما {arg0} عدد را دسته‌بندی کردید!",
+  "@vennNumbersMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "vennNumbersText": "هیچ‌کدام",
+  "vennNumbersText1": "هر دو",
+  "silhouetteMatchMessage": "مغز شما در تبدیل سه‌بعدی به دوبعدی عالی است.",
+  "sumSnakeMessage": "هدف {arg0} با دقت کامل حاصل شد!",
+  "@sumSnakeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sumSnakeText": "پاک کردن مسیر",
+  "percentagePeakMessage": "شما {arg0} مسئله درصد را حل کردید!",
+  "@percentagePeakMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "trailMakingMessage": "شما {arg0} مسیر را کامل کردید! این تست سرعت جستجوی بصری و انعطاف‌پذیری ذهنی شما را می‌سنجد.",
+  "@trailMakingMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "matrixReasoningMessage": "شما {arg0} ماتریس را به درستی کامل کردید!",
+  "@matrixReasoningMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "tentsAndTreesMessage": "شما با موفقیت تمام چادرها را قرار دادید.",
+  "klotskiMessage": "لغزش فوق‌العاده! شما بلوک قهرمان را در {arg0} حرکت آزاد کردید.",
+  "@klotskiMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sumPyramidMessage": "شما {arg0} هرم مجموع را با موفقیت حل کردید!",
+  "@sumPyramidMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "simonCommandMessage": "پاسخ انتخابی و تمرکز عالی! امتیاز کل: {arg0}",
+  "@simonCommandMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "simonCommandMessage1": "شما {arg0} امتیاز کسب کردید اما به {arg1} مطابقت در زمان معین نرسیدید.",
+  "@simonCommandMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "syllableStackMessage": "شما امتیاز {arg0} را روی هم جمع کردید!",
+  "@syllableStackMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "slitherlinkMessage": "عالی بود! شما با موفقیت پازل حلقه را کامل کردید.",
+  "quickMathMessage": "شما {arg0} مسئله را حل کردید!",
+  "@quickMathMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "commonDenominatorMessage": "شما {arg0} مسئله ب.م.م/ک.م.م را حل کردید!",
+  "@commonDenominatorMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "chainReactionMessage": "امتیاز نهایی شما {arg0} است. شما زنجیره‌ای از {arg1} کلمه ساختید.",
+  "@chainReactionMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "chainReactionText": "{arg0}",
+  "@chainReactionText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "associativePairsMessage": "درخشان! شما ویژگی‌های بصری را بدون نقص به هم مرتبط کردید.",
+  "associativePairsMessage1": "ارتباط اشتباه! حافظه پیوندی خود را تقویت کرده و دوباره امتحان کنید.",
+  "portmanteauSplitMessage": "شما {arg0} کلمه آمیزه را جدا کردید!",
+  "@portmanteauSplitMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "magicSquaresText": "پاک کردن",
+  "alphabetSudokuText": "خطا: {arg0}",
+  "@alphabetSudokuText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "pipesMessage": "شما تمام لوله‌ها را متصل کرده و جدول را پر کردید.",
+  "dualMirrorMessage": "شما هر دو آیکون را به اهدافشان هدایت کردید!",
+  "binaryCodeMessage": "ترجمه دهدهی سریع فوق‌العاده! امتیاز نهایی: {arg0}",
+  "@binaryCodeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "binaryCodeMessage1": "شما {arg0} عدد دودویی را به درستی تبدیل کردید. امتیاز: {arg1}",
+  "@binaryCodeMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "oddOneOutMessage": "شما 50 مورد متفاوت را پیدا کردید! امتیاز نهایی: {arg0}",
+  "@oddOneOutMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "oddOneOutMessage1": "امتیاز شما: {arg0}",
+  "@oddOneOutMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "letterBridgeMessage": "شما حرف رابط را پیدا کردید: {arg0}",
+  "@letterBridgeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "imReady": "من آماده‌ام"
 }

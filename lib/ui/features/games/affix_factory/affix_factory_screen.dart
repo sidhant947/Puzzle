@@ -46,7 +46,6 @@ class _AffixFactoryScreenState extends ConsumerState<AffixFactoryScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(affixFactoryNotifierProvider);
     final notifier = ref.read(affixFactoryNotifierProvider.notifier);

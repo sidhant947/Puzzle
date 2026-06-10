@@ -71,7 +71,6 @@ class FaceTraitAssociationNotifier extends _$FaceTraitAssociationNotifier {
   }
 
   void _prepareCurrentTest() {
-    final current = state.trials[state.currentIndex];
     final allOccupations = state.trials.map((t) => t.occupation).toList();
     final allHobbies = state.trials.map((t) => t.hobby).toList();
     

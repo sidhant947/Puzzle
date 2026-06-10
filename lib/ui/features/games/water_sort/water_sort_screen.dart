@@ -128,7 +128,6 @@ class _TubeWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final tubeRadius = width / 2;
     final outerRadius = BorderRadius.vertical(

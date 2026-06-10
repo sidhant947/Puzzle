@@ -24,7 +24,6 @@ class _ReflexTapScreenState extends ConsumerState<ReflexTapScreen> {
   }
 
   void _showGameOverDialog(int score) {
-    final l10n = AppLocalizations.of(context)!;
     bool won = score >= 15;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('reflex_tap');
@@ -194,7 +193,6 @@ class _Target extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     return GestureDetector(
       onTapDown: (_) => onTap(),
       child: AnimatedContainer(

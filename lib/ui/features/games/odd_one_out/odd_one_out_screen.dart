@@ -202,7 +202,6 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
   }
 
   void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
-    final l10n = AppLocalizations.of(context)!;
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('odd_one_out');
     if (!context.mounted) return;
     showDialog(
@@ -225,7 +224,6 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
   }
 
   void _showGameOverDialog(BuildContext context, WidgetRef ref) {
-    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,

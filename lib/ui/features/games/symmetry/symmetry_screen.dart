@@ -158,7 +158,6 @@ class _SymmetryScreenState extends ConsumerState<SymmetryScreen> {
   }
 
   void _showGameOverDialog(BuildContext context, WidgetRef ref) {
-    final l10n = AppLocalizations.of(context)!;
     ref.read(gameStreakNotifierProvider.notifier).completeGame('symmetry', xpAmount: 25);
     showDialog(
       context: context,

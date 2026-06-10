@@ -151,7 +151,6 @@ class MultipleObjectTrackingScreen extends ConsumerWidget {
   }
 
   void _showResultDialog(BuildContext context, WidgetRef ref) {
-    final l10n = AppLocalizations.of(context)!;
     final state = ref.read(mOTNotifierProvider);
     final targetCount = state.balls.where((b) => b.isTarget).length;
     final correctCount = state.balls.where((b) => b.isSelected && b.isTarget).length;

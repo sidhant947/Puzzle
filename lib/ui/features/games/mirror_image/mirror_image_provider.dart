@@ -11,7 +11,7 @@ class MirrorImageState {
   MirrorImageState({required this.level, this.selectedIndex, this.isSolved = false});
 
   MirrorImageState copyWith({int? selectedIndex, bool? isSolved}) {
-    return MirrorImageState(level: this.level, selectedIndex: selectedIndex, isSolved: isSolved ?? this.isSolved);
+    return MirrorImageState(level: level, selectedIndex: selectedIndex, isSolved: isSolved ?? this.isSolved);
   }
 }
 

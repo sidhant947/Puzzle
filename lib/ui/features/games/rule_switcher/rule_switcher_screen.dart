@@ -27,7 +27,6 @@ class _RuleSwitcherScreenState extends ConsumerState<RuleSwitcherScreen> {
   }
 
   void _showCompletionDialog() {
-    final l10n = AppLocalizations.of(context)!;
     final state = ref.read(ruleSwitcherNotifierProvider);
     showDialog(
       context: context,

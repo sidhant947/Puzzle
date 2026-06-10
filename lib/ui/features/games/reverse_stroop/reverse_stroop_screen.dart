@@ -25,7 +25,6 @@ class _ReverseStroopScreenState extends ConsumerState<ReverseStroopScreen> {
   }
 
   void _showGameOverDialog(int score) {
-    final l10n = AppLocalizations.of(context)!;
     bool won = score >= 50; // Threshold for winning
     if (won) {
       HapticFeedbackUtil.victory();

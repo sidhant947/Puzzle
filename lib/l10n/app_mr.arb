@@ -576,5 +576,1225 @@
   "hitoriSubtitle": "प्रत्येक पंक्ती आणि स्तंभातील डुप्लिकेट संख्या शेड करा.",
   "hitoriHowToPlay": "सेल्स शेड करा जेणेकरून कोणतीही संख्या कोणतीही पंक्ती किंवा स्तंभात एकापेक्षा जास्त वेळा येणार नाही. शेड केलेले सेल्स शेजारी (उभे किंवा आडवे) असू शकत नाहीत आणि सर्व शेड न केलेल्या सेल्सनी एक जोडलेला गट तयार केला पाहिजे.",
   "hitoriWinTitle": "हितोरी मास्टर!",
-  "hitoriWinMessage": "तुम्ही सर्व डुप्लिकेट्स यशस्वीरित्या सोडवले आहेत!"
+  "hitoriWinMessage": "तुम्ही सर्व डुप्लिकेट्स यशस्वीरित्या सोडवले आहेत!",
+  "victory": "विजय!",
+  "gameWin": "शाब्बास!",
+  "semanticDistanceTitle": "सिमेंटिक अंतर",
+  "semanticDistanceSubtitle": "शब्दांमधील वैचारिक अंतर मोजा",
+  "oxymoronHuntTitle": "विरोधाभास शोध",
+  "oxymoronHuntSubtitle": "ग्रिडमधील परस्परविरोधी शब्दांच्या जोड्या लावा",
+  "portmanteauSplitTitle": "मिश्र शब्द विभागणी",
+  "portmanteauSplitSubtitle": "मिश्र शब्दाचे मूळ शब्द ओळखा",
+  "chainReactionTitle": "साखळी अभिक्रिया",
+  "chainReactionSubtitle": "ओव्हरलॅपिंग अक्षरांचा वापर करून शब्द जोडा",
+  "rhymeMasterTitle": "यमक मास्टर",
+  "rhymeMasterSubtitle": "लक्ष्य शब्दाशी यमक जुळणारे शब्द ओळखा",
+  "definitionDashTitle": "व्याख्या धाव",
+  "definitionDashSubtitle": "योग्य शब्दाची त्याच्या व्याख्येशी जोडी लावा",
+  "syllableStackTitle": "अक्षर संच",
+  "syllableStackSubtitle": "पूर्ण शब्द तयार करण्यासाठी अक्षरे साचवा",
+  "sentenceUnscrambleTitle": "वाक्य उलगडा",
+  "sentenceUnscrambleSubtitle": "वैध वाक्य तयार करण्यासाठी शब्दांचा क्रम लावा",
+  "grammarSortTitle": "व्याकरण वर्गीकरण",
+  "grammarSortSubtitle": "शब्दांचे त्यांच्या जातीनुसार वर्गीकरण करा",
+  "vowelReconstructTitle": "स्वर पुनर्बांधणी",
+  "vowelReconstructSubtitle": "वाक्यातील गहाळ स्वर भरा",
+  "consonantReconstructTitle": "व्यंजन पुनर्बांधणी",
+  "consonantReconstructSubtitle": "वाक्यातील गहाळ व्यंजने भरा",
+  "homophoneHuntTitle": "समानार्थी शब्द शोध",
+  "homophone_huntSubtitle": "योग्य स्पेलिंग असलेला समानार्थी शब्द निवडा",
+  "silentLetterSearchTitle": "मूक अक्षर शोध",
+  "silentLetterSearchSubtitle": "दिलेल्या शब्दांमधील मूक अक्षरे ओळखा",
+  "palindromeBuilderTitle": "पालिंड्रोम निर्माता",
+  "palindromeBuilderSubtitle": "किमान अक्षरे जोडून पालिंड्रोम तयार करा",
+  "phoneticGuessTitle": "ध्वन्यात्मक अंदाज",
+  "phoneticGuessSubtitle": "शब्दाच्या ध्वन्यात्मक स्पेलिंगवरून तो ओळखा",
+  "spoonerismSolverTitle": "स्पूनरिझम सॉल्वर",
+  "spoonerismSolverSubtitle": "वाक्यांशासाठी योग्य स्पूनरिझम ओळखा",
+  "etymonOddballTitle": "व्युत्पत्ती वेगळेपण",
+  "etymonOddballSubtitle": "एकच मूळ नसलेला शब्द शोधा",
+  "etymologyOriginTitle": "व्युत्पत्ती मूळ",
+  "etymologyOriginSubtitle": "परकीय शब्दाच्या मूळ भाषेचा अंदाज लावा",
+  "affixFactoryTitle": "प्रत्यय कारखाना",
+  "affixFactorySubtitle": "उपसर्ग आणि प्रत्यय वापरून वैध शब्द तयार करा",
+  "cognateCatchTitle": "समानार्थी शब्द पकडा",
+  "cognateCatchSubtitle": "खरे आणि खोटे समानार्थी शब्द यातील फरक ओळखा",
+  "compoundConnectTitle": "संयुक्त जोडणी",
+  "compoundConnectSubtitle": "संयुक्त शब्द तयार करण्यासाठी दोन शब्द एकत्र करा",
+  "pangramSprintTitle": "पॅन्ग्राम स्प्रिंट",
+  "pangramSprintSubtitle": "मुळाक्षरातील प्रत्येक अक्षर वापरून वाक्य तयार करा",
+  "anagramDefinitionTitle": "अॅनाग्राम व्याख्या",
+  "anagramDefinitionSubtitle": "व्याख्येच्या आधारे अॅनाग्राम सोडवा",
+  "letterBridgeTitle": "अक्षर पूल",
+  "letterBridgeSubtitle": "दोन शब्दांना जोडणारे गहाळ अक्षर शोधा",
+  "letterFrequencyScanTitle": "अक्षर वारंवारता स्कॅन",
+  "letterFrequencyScanSubtitle": "मजकुरात एखादे अक्षर किती वेळा आले आहे ते मोजा",
+  "oneLetterShiftTitle": "एक-अक्षर बदल",
+  "oneLetterShiftSubtitle": "एक अक्षर बदलून एका शब्दाचे दुसऱ्या शब्दात रूपांतर करा",
+  "vocabularyBuilderMessage": "उत्तम काम! तुमचा शब्दसंग्रह प्रभावी आहे. गुण: {arg0}",
+  "symmetryMessage": "तुम्ही पॅटर्नचे अचूक प्रतिबिंब तयार केले आहे.",
+  "temporalOrderMessage": "अविश्वसनीय! तुमची कालक्रमानुसार स्मृती खूप चांगली आहे.",
+  "temporalOrderMessage1": "चुकीची क्रमवारी स्मृती. सरावाने माणूस परिपूर्ण होतो!",
+  "wordSearchMessage": "सूक्ष्म निरीक्षणाने सर्व शब्द यशस्वीरित्या सापडले.",
+  "colorMatchMessage": "तुमची अचूकता: {arg0}%",
+  "semanticLinkMessage": "तुम्ही {arg0} गुण मिळवले!",
+  "reflexTapMessage": "तुम्ही {arg0} लक्षांवर टॅप केले!",
+  "angleFinderMessage": "तुमची भूमितीय अंतर्ज्ञान उत्तम आहे!",
+  "angleFinderMessage1": "योग्य उत्तर {arg0}° होते",
+  "angleFinderText": "{arg0}°",
+  "visualStatisticalLearningMessage": "तुम्ही {arg0} अचूक पॅटर्न ओळखले!",
+  "nonogramText": "त्रुटी: {arg0}",
+  "mentalCalendarMessage": "तुम्ही १० पैकी {arg0} बरोबर मिळवले!",
+  "orbitTapMessage": "तुम्ही यशस्वीरित्या {arg0} वेळा टॅप केले!",
+  "schulteTableMessage": "तुम्ही {arg0} मध्ये तक्ता पूर्ण केला. आपली दृष्टी विस्तारण्यासाठी सराव सुरू ठेवा!",
+  "schulteTableText": "चाचणी सुरू करा",
+  "relationalMemoryMessage": "विलक्षण अवकाशीय स्मृती अचूकता!",
+  "sudokuText": "त्रुटी: {arg0}",
+  "sdmtMessage": "तुम्ही {arg0} चिन्हे जुळवली! ही चाचणी तुमचा स्कॅनिंग वेग आणि दृश्य लक्ष मोजते.",
+  "futoshikiMessage": "अविश्वसनीय! तुम्ही फुतोशिकी लॅटिन स्क्वेअर सोडवले.",
+  "letterFrequencyScanMessage": "तुम्ही \"{arg1}\" अक्षराच्या {arg0} घटना अचूकपणे मोजल्या.",
+  "letterFrequencyScanText": "चूक. गणना {arg0} होती.",
+  "memoryMatrixMessage": "प्रभावी! तुमची मेमरी तीक्ष्ण आहे. दैनिक लक्ष्य पूर्ण!",
+  "memoryMatrixMessage1": "तुमचा मेमरी स्कोअर सुधारण्यासाठी लक्ष केंद्रित करा आणि पुन्हा प्रयत्न करा.",
+  "contextCluesMessage": "अपवादात्मक! तुमचा शब्दसंग्रह आणि संदर्भात्मक विश्लेषण उत्कृष्ट आहे.",
+  "contextCluesMessage1": "चुकीचा शब्द निवडला! तुमचे शाब्दिक संदर्भातील तर्क प्रशिक्षित करा आणि पुन्हा प्रयत्न करा.",
+  "oneLetterShiftMessage": "तुम्ही यशस्वीरित्या {arg0} मधून {arg1} मध्ये बदल केले.",
+  "mentalAbacusMessage": "तुमचे मानसिक अंकगणित उच्च दर्जाचे आहे.",
+  "fractionMatcherMessage": "तुम्ही जोड्या जुळवून {arg0} गुण मिळवले!",
+  "spellingSprintMessage": "तुम्ही सर्व १० शब्दांचे स्पेलिंग बरोबर लिहिले!",
+  "spellingSprintMessage1": "तुम्ही {arg0} शब्दांचे स्पेलिंग बरोबर लिहिले.",
+  "stopSignalMessage": "तुम्ही {arg0} अचूक प्रतिसाद दिले! ही चाचणी नियोजित कृती रोखण्याच्या तुमच्या क्षमतेचे मोजमाप करते.",
+  "grammarPoliceMessage": "खेळ संपला! तुम्ही व्याकरणाच्या जगात सुव्यवस्था राखली. गुण: {arg0}",
+  "consonantReconstructMessage": "तुम्ही {arg0} स्कोअरची पुनर्बांधणी केली!",
+  "rhymeMasterMessage": "तुम्हाला {arg1} पैकी {arg0} यमक सापडले!",
+  "vigilanceTaskMessage": "हिट्स: {arg0}, चुका: {arg1}\nखोटे अलार्म: {arg2}",
+  "silhouetteMatchOrthoMessage": "तुमची रेखाटन संरेखन कौशल्ये निर्दोष आहेत!",
+  "silhouetteMatchOrthoText": "समजले",
+  "silhouetteMatchOrthoText1": "चुकीचा दृष्टीकोन! पुन्हा प्रयत्न करण्यासाठी रिसेटवर टॅप करा.",
+  "fibonacciMergeMessage": "{arg0}: {arg1}",
+  "factorFinderMessage": "तुम्ही सर्व अवयव शोधून {arg0} गुण मिळवले!",
+  "logicalSyllogismsMessage": "तुम्ही {arg0} तर्कशास्त्र अचूकपणे सोडवले!",
+  "rotatingMazeMessage": "तुम्ही फिरणाऱ्या चक्रव्यूहातून यशस्वीरित्या मार्ग काढला!",
+  "rotatingMazeText": "समजले",
+  "rotatingMazeText1": "🌀 चक्रव्यूह ९०° फिरला! ग्रिड बदलली!",
+  "mathPathMessage": "तुम्हाला लक्ष्यापर्यंत पोहोचणारा मार्ग सापडला!",
+  "bridgesMessage": "तुम्ही सर्व बेटे यशस्वीरित्या जोडली!",
+  "compoundConnectMessage": "संयुक्त शब्द {arg0}{arg1} आहे.",
+  "pangramSprintMessage": "तुम्ही २६ अक्षरे वापरून वाक्य तयार केले.",
+  "mirrorImageMessage": "तुम्ही प्रतिबिंब अचूकपणे ओळखले.",
+  "mirrorImageText": "दर्पण प्रतिमा",
+  "reverseStroopMessage": "तुम्ही {arg0} गुण मिळवले! सूचनांकडे लक्ष द्या.",
+  "verbalAnalogiesMessage": "नात्यांच्या बाबतीत तुमचे मन तीक्ष्ण आहे.",
+  "corsiBlocksMessage1": "तुम्ही {arg1} क्रम लक्षात ठेवले! तुमची अवकाशीय स्मृती व्याप्ती {arg0} पर्यंत पोहोचली.",
+  "wordLadderMessage": "तुम्ही यशस्वीरित्या {arg2} पायऱ्यांमध्ये {arg0} ला {arg1} शी जोडले.",
+  "d2AttentionMessage": "अविश्वसनीय निवडक स्कॅनिंग! अंतिम गुण: {arg0}.",
+  "d2AttentionText": "कसे खेळायचे",
+  "d2AttentionText1": "समजले",
+  "tangleFixMessage": "सर्व रेषा स्पष्ट आणि गुळगुळीत आहेत.",
+  "distractorMatrixMessage": "अविश्वसनीय! गणिताच्या अडथळ्यांनंतरही तुम्ही पॅटर्न लक्षात ठेवले!",
+  "distractorMatrixMessage1": "तुम्ही अडथळ्यात अडकलात! तुमची कार्यरत स्मृती पुन्हा प्रशिक्षित करा.",
+  "sentenceUnscrambleMessage": "तुम्ही {arg0} गुणांचे वाक्य सोडवले!",
+  "kakuroMessage": "अविश्वसनीय! तुम्ही सर्व बेरीज विभागांना पूर्णपणे जुळवले.",
+  "symbolicFlankerMessage": "तुम्ही {arg1} पैकी {arg0} बरोबर मिळवले!",
+  "stroopTestMessage": "तुम्ही {arg0} अचूक गुण मिळवले! शब्दाकडे नाही, तर शाईच्या रंगाकडे लक्ष द्या.",
+  "wisconsinCardSortingMessage": "तुम्ही {arg0} कार्डे बरोबर वर्गीकृत केली!",
+  "nBackMessage": "तुम्ही {arg0} २-बॅक जोड्या जुळवल्या! मल्टीटास्किंगसाठी तुमची कार्यरत स्मृती महत्त्वाची आहे.",
+  "rhythmMasterMessage": "तुम्ही {arg0} अचूक फटके आणि {arg1} गुण मिळवले!",
+  "groceryListMessage": "तुम्ही किराणा यादीमध्ये {arg0} गुण मिळवले!",
+  "groceryListText": "मी",
+  "mirrorTracingMessage": "तुमच्या मेंदूने त्याच्या समन्वयाची यशस्वीरित्या पुनर्रचना केली.",
+  "moduloClockMessage": "उत्कृष्ट मॉड्युलर मानसिक गणित समन्वय! गुण: {arg0}",
+  "moduloClockMessage1": "तुम्ही {arg1} पैकी {arg0} मॉड्युलर क्लॉक सोल्यूशन्स मॅनेज केले. गुण: {arg2}",
+  "crownMessage": "योग्य तर्कासह सर्व मुकुट यशस्वीरित्या ठेवले गेले.",
+  "dualCodingMessage": "विलक्षण दुहेरी कार्यक्षमता! तुमचा कार्यरत स्मृती स्कोअर: {arg0}",
+  "inequalityDashMessage": "तुम्ही असमानता जुळवून {arg0} गुण मिळवले!",
+  "sourceMonitoringMessage": "तुम्ही {arg1} पैकी {arg0} गुण मिळवले!",
+  "sourceMonitoringText": "आठवायला सुरुवात करा",
+  "memoryPalaceText": "उपलब्ध शब्द",
+  "target10Message": "तुम्ही १० पर्यंत संख्या जोडून {arg0} गुण मिळवले!",
+  "paperFoldingMessage": "तुम्ही तुमच्या मनात पॅटर्न पाहू शकता.",
+  "topologyText": "{arg0}{arg1} / १०",
+  "waterSortMessage": "तुम्ही सर्व रंग अचूकपणे लावले!",
+  "anagramDefinitionMessage": "तो शब्द खरोखर \"{arg0}\" होता.",
+  "game2048Message": "{arg0}: {arg1}\n{arg2}",
+  "game2048Message1": "{arg0}: {arg1}",
+  "numericalEstimationMessage": "तुम्ही {arg0} अचूक अंदाज लावले.",
+  "grammarSortMessage": "तुम्ही {arg0} शब्द अचूकपणे वर्गीकृत केले!",
+  "vowelReconstructMessage": "तुम्ही {arg0} स्कोअरची पुनर्बांधणी केली!",
+  "spatialConflictMessage": "तुम्ही {arg1} त्रुटींसह {arg0} गुण मिळवले!",
+  "spatialConflictText": "कसे खेळायचे",
+  "spatialConflictText1": "समजले",
+  "tracePathMessage": "तुमची अचूकता {arg0}% होती!",
+  "ruleSwitcherMessage": "तुम्ही {arg1} पैकी {arg0} बरोबर गुण मिळवले!",
+  "collatzMessage": "तुम्ही {arg0} पावले उचलली. किमान शक्य {arg1} होती.",
+  "collatzText": "/ २",
+  "collatzText1": "+ १",
+  "collatzText2": "3n + 1",
+  "divisibilityDashMessage": "तुम्ही {arg0} संख्या सोडवल्या!",
+  "switchTaskMessage": "तुम्ही {arg0} बरोबर गुण मिळवले! मानसिक लवचिकतेसाठी वेगाने बदल करणे महत्त्वाचे आहे.",
+  "sequenceSleuthMessage": "तुम्ही {arg0} क्रम सोडवले!",
+  "changeBlindnessMessage": "तुम्हाला {arg0} बदल सापडले!",
+  "mentalRotationMessage": "तुम्ही {arg0} आकार बरोबर फिरवले!",
+  "wordMastermindMessage": "तुम्ही कोडमध्ये प्राविण्य मिळवले!\nतो शब्द होता: {arg0}",
+  "wordMastermindMessage1": "तो लपलेला शब्द होता: {arg0}",
+  "wordMastermindText": "{arg0}",
+  "simonSequenceMessage": "तुम्ही सर्व १० टाइल्स लक्षात ठेवल्या!",
+  "simonSequenceMessage1": "क्रमात प्राविण्य मिळवण्यासाठी पुन्हा प्रयत्न करा.",
+  "oxymoronHuntMessage": "तुम्हाला {arg0} विरोधाभास सापडले!",
+  "spotlightTrackMessage": "अविश्वसनीय अवकाशीय ट्रॅकिंग! तुम्ही {arg0} गुण मिळवले.",
+  "spotlightTrackText": "कसे खेळायचे",
+  "spotlightTrackText1": "समजले",
+  "spotlightTrackText2": "फेरी सुरू करा",
+  "vennNumbersMessage": "तुम्ही {arg0} संख्या वर्गीकृत केल्या!",
+  "vennNumbersText": "दोन्हीपैकी काहीही नाही",
+  "vennNumbersText1": "दोन्ही",
+  "silhouetteMatchMessage": "तुमचा मेंदू ३डी ते २डी अनुवादात उत्कृष्ट आहे.",
+  "sumSnakeMessage": "अचूकतेसह लक्ष्य {arg0} गाठले!",
+  "sumSnakeText": "मार्ग मोकळा करा",
+  "percentagePeakMessage": "तुम्ही {arg0} टक्केवारीची उदाहरणे सोडवली!",
+  "trailMakingMessage": "तुम्ही {arg0} ट्रेल्स पूर्ण केले! ही चाचणी तुमचा व्हिज्युअल शोध वेग आणि मानसिक लवचिकता मोजते.",
+  "matrixReasoningMessage": "तुम्ही {arg0} मॅट्रिक्स बरोबर पूर्ण केले!",
+  "tentsAndTreesMessage": "तुम्ही सर्व तंबू यशस्वीरित्या लावले आहेत.",
+  "klotskiMessage": "विलक्षण स्लाइडिंग! तुम्ही {arg0} चालींमध्ये हिरो ब्लॉक मुक्त केला.",
+  "sumPyramidMessage": "तुम्ही {arg0} बेरीज पिरामिड यशस्वीरित्या सोडवले!",
+  "simonCommandMessage": "उत्कृष्ट निवडक प्रतिसाद आणि लक्ष! एकूण गुण: {arg0}",
+  "simonCommandMessage1": "तुम्ही {arg0} गुण मिळवले पण वेळेत {arg1} जोड्यांपर्यंत पोहोचू शकला नाही.",
+  "syllableStackMessage": "तुम्ही {arg0} स्कोअरचा संच तयार केला!",
+  "slitherlinkMessage": "छान! तुम्ही यशस्वीरित्या लूप पहेली पूर्ण केली.",
+  "quickMathMessage": "तुम्ही {arg0} उदाहरणे सोडवली!",
+  "commonDenominatorMessage": "तुम्ही {arg0} मसावि/लसावि उदाहरणे सोडवली!",
+  "chainReactionMessage": "तुमचा अंतिम स्कोअर {arg0} आहे. तुम्ही {arg1} शब्दांची साखळी तयार केली.",
+  "chainReactionText": "{arg0}",
+  "associativePairsMessage": "उत्कृष्ट! तुम्ही दृश्य वैशिष्ट्ये निर्दोषपणे जोडली.",
+  "associativePairsMessage1": "चुकीचे कनेक्शन! तुमची मेमरी तीक्ष्ण करा आणि पुन्हा प्रयत्न करा.",
+  "portmanteauSplitMessage": "तुम्ही {arg0} मिश्र शब्द वेगळे केले!",
+  "magicSquaresText": "साफ करा",
+  "alphabetSudokuText": "त्रुटी: {arg0}",
+  "pipesMessage": "तुम्ही सर्व पाईप्स जोडले आणि ग्रिड भरली.",
+  "dualMirrorMessage": "तुम्ही दोन्ही चिन्हांना त्यांच्या लक्ष्यापर्यंत पोहोचवले!",
+  "binaryCodeMessage": "विलक्षण जलद दशांश रूपांतर! अंतिम गुण: {arg0}",
+  "binaryCodeMessage1": "तुम्ही {arg0} बायनरी संख्या बरोबर रूपांतरित केल्या. गुण: {arg1}",
+  "oddOneOutMessage": "तुम्हाला ५० वेगळे शब्द सापडले! अंतिम गुण: {arg0}",
+  "oddOneOutMessage1": "तुमचा स्कोअर: {arg0}",
+  "letterBridgeMessage": "तुम्हाला जोड अक्षर सापडले: {arg0}",
+  "imReady": "मी तयार आहे",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
+  "@findWordSubtitle": {
+    "placeholders": {
+      "maxTries": {
+        "type": "int"
+      },
+      "wordLength": {
+        "type": "int"
+      }
+    }
+  },
+  "@wordFoundMessage": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
+  "@gameOverMessage": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
+  "@radicalRootsScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@radicalRootsTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@romanArithmeticScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@romanArithmeticTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@arithmeticChainLoseMessage": {
+    "placeholders": {
+      "answer": {
+        "type": "String"
+      }
+    }
+  },
+  "@attentionalBlinkScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@boxCompletionScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "totalTrials": {
+        "type": "int"
+      }
+    }
+  },
+  "@calculationSprintScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@calculationSprintTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@categoryFluencyFoundMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@categoryFluencyWordCount": {
+    "placeholders": {
+      "entered": {
+        "type": "int"
+      },
+      "target": {
+        "type": "int"
+      }
+    }
+  },
+  "@changeBlindnessScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@changeBlindnessFoundMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@choiceRtAvgMessage": {
+    "placeholders": {
+      "avg": {
+        "type": "String"
+      }
+    }
+  },
+  "@choiceRtTimeRemaining": {
+    "placeholders": {
+      "time": {
+        "type": "int"
+      }
+    }
+  },
+  "@choiceRtTaps": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@colorFloodSubtitle": {
+    "placeholders": {
+      "moves": {
+        "type": "int"
+      },
+      "maxMoves": {
+        "type": "int"
+      }
+    }
+  },
+  "@colorMatchAccuracy": {
+    "placeholders": {
+      "accuracy": {
+        "type": "String"
+      }
+    }
+  },
+  "@corsiBlocksMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "span": {
+        "type": "int"
+      }
+    }
+  },
+  "@digitSpanReverseLoseMessage": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@dividedAttentionGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@dividedAttentionScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@doubleNBackSubtitle": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
+  "@doubleNBackGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@doubleNBackScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@faceNameAssociationLoseMessage": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@flankerTestScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@fractionMatchLoseMessage": {
+    "placeholders": {
+      "correctAnswer": {
+        "type": "String"
+      }
+    }
+  },
+  "@groceryListScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@hueSortWrongTiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@kenkenSubtitle": {
+    "placeholders": {
+      "size": {
+        "type": "int"
+      }
+    }
+  },
+  "@letterCancellationScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@letterCancellationSubtitle": {
+    "placeholders": {
+      "target": {
+        "type": "String"
+      }
+    }
+  },
+  "@sternbergTaskScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@targetNumberSubtitle": {
+    "placeholders": {
+      "target": {
+        "type": "int"
+      }
+    }
+  },
+  "@perspectiveTakingSubtitle": {
+    "placeholders": {
+      "targetDirName": {
+        "type": "String"
+      }
+    }
+  },
+  "@operationSpanScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@magicSquaresSubtitle": {
+    "placeholders": {
+      "targetSum": {
+        "type": "int"
+      }
+    }
+  },
+  "@blockCount3DWinMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@classicMazeWinMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@faceTraitAssociationPersonOf": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@faceTraitAssociationScoreMessage": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
+  "@vocabularyBuilderMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@colorMatchMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@semanticLinkMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@reflexTapMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@angleFinderMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@angleFinderText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@visualStatisticalLearningMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@nonogramText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@mentalCalendarMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@orbitTapMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@schulteTableMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@sudokuText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@sdmtMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@letterFrequencyScanMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "@letterFrequencyScanText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@oneLetterShiftMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "@fractionMatcherMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@spellingSprintMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@stopSignalMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@grammarPoliceMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@consonantReconstructMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@rhymeMasterMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "@vigilanceTaskMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "@fibonacciMergeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "@factorFinderMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@logicalSyllogismsMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@compoundConnectMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "@reverseStroopMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@corsiBlocksMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "@wordLadderMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "@d2AttentionMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@sentenceUnscrambleMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@symbolicFlankerMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "@stroopTestMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@wisconsinCardSortingMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@nBackMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@rhythmMasterMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "@groceryListMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@moduloClockMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@moduloClockMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "@dualCodingMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@inequalityDashMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@sourceMonitoringMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "@target10Message": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@topologyText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "@anagramDefinitionMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@game2048Message": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "@game2048Message1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "@numericalEstimationMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@grammarSortMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@vowelReconstructMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@spatialConflictMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "@tracePathMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@ruleSwitcherMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "@collatzMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "@divisibilityDashMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@switchTaskMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@sequenceSleuthMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@changeBlindnessMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@mentalRotationMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@wordMastermindMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@wordMastermindMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@wordMastermindText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@oxymoronHuntMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@spotlightTrackMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@vennNumbersMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@sumSnakeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@percentagePeakMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@trailMakingMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@matrixReasoningMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@klotskiMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@sumPyramidMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@simonCommandMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@simonCommandMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "@syllableStackMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@quickMathMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@commonDenominatorMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@chainReactionMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "@chainReactionText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@portmanteauSplitMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@alphabetSudokuText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@binaryCodeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@binaryCodeMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "@oddOneOutMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@oddOneOutMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "@letterBridgeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  }
 }

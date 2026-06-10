@@ -1,15 +1,21 @@
 {
   "@@locale": "es",
   "appTitle": "Puzzle Hub",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
   "home": "Inicio",
   "settings": "Ajustes",
   "playAgain": "Jugar de nuevo",
+  "playNext": "Jugar Siguiente",
   "seeCompleted": "Revisar puzzle",
   "finish": "Finalizar",
   "congrats": "¡Felicidades!",
   "perfectGradient": "¡Gradiente perfecto!",
   "wellDone": "Bien hecho",
   "timeUp": "¡Se acabó el tiempo!",
+  "victory": "¡Victoria!",
+  "gameWin": "¡BIEN HECHO!",
   "completed": "¡Completado!",
   "score": "Puntuación",
   "timeLeft": "Tiempo",
@@ -65,8 +71,32 @@
   "termsOfService": "Términos de servicio",
   "licenses": "Licencias",
   "findWordSubtitle": "Tienes {maxTries} intentos para encontrar la palabra oculta de {wordLength} letras.",
+  "@findWordSubtitle": {
+    "placeholders": {
+      "maxTries": {
+        "type": "int"
+      },
+      "wordLength": {
+        "type": "int"
+      }
+    }
+  },
   "wordFoundMessage": "Palabra encontrada con éxito: {word}",
+  "@wordFoundMessage": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
   "gameOverMessage": "La palabra era: {word}",
+  "@gameOverMessage": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
   "gameOver": "Fin del juego",
   "crosswordTitle": "Crucigrama",
   "crosswordSubtitle": "Completa la cuadrícula con las palabras correctas según las pistas proporcionadas.",
@@ -76,7 +106,21 @@
   "radicalRootsGoalReached": "¡Objetivo alcanzado!",
   "radicalRootsTimeUp": "¡Tiempo agotado!",
   "radicalRootsScoreMessage": "¡Calculaste {score} raíces correctamente!",
+  "@radicalRootsScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "radicalRootsTryAgainMessage": "¡Sigue practicando! Calculaste {score} raíces.",
+  "@radicalRootsTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "radicalRootsStart": "Empezar a calcular",
   "radicalRootsDescription": "Tienes 60 segundos para resolver tantos como puedas.",
   "radicalRootsBest": "Mejor",
@@ -86,7 +130,21 @@
   "romanArithmeticGoalReached": "¡Nivel Centurión!",
   "romanArithmeticTimeUp": "¡Tiempo agotado!",
   "romanArithmeticScoreMessage": "¡Resolviste {score} problemas romanos!",
+  "@romanArithmeticScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "romanArithmeticTryAgainMessage": "¡Veni, Vidi, Vici! Resolviste {score} problemas.",
+  "@romanArithmeticTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "romanArithmeticStart": "Comenzar búsqueda",
   "romanArithmeticDescription": "Convierte y resuelve. Tienes 60 segundos.",
   "romanArithmeticBest": "Mejor",
@@ -116,6 +174,41 @@
   "nonogramTitle": "Nonograma",
   "nonogramSubtitle": "Revela la imagen oculta usando pistas lógicas.",
   "nonogramWin": "¡Imagen revelada!",
+  "magnetsTitle": "IMANES",
+  "magnetsSubtitle": "Coloca imanes en la cuadrícula según los recuentos de polos.",
+  "magnetsHowToPlay": "Llena contenedores del tamaño de un dominó con imanes \"+\" y \"-\" o déjalos en blanco. Las pistas de filas y columnas especifican el número total de cada polo en esa línea. Los polos idénticos no pueden estar adyacentes ortogonalmente.",
+  "magnetsWinTitle": "¡POLARIDAD EQUILIBRADA!",
+  "magnetsWinMessage": "¡Todos los imanes están perfectamente dispuestos!",
+  "lighthousesTitle": "FAROS",
+  "lighthousesSubtitle": "Coloca barcos basados en pistas de faros.",
+  "lighthousesHowToPlay": "Coloca barcos de 1x1 en la cuadrícula. Los faros indican el número total de barcos visibles horizontal y verticalmente. Los barcos no pueden tocar los faros ni entre sí, ni siquiera en diagonal.",
+  "lighthousesWinTitle": "¡MAR SEGURO!",
+  "lighthousesWinMessage": "¡Todos los faros están guiando los barcos perfectamente!",
+  "dominosaTitle": "DOMINOSA",
+  "dominosaSubtitle": "Encuentra todos los dominós ocultos en la cuadrícula.",
+  "dominosaHowToPlay": "Organiza un juego completo de dominós en una cuadrícula de números de modo que cada par de números adyacentes esté cubierto por exactamente un dominó. Cada par de números existe solo una vez en el conjunto.",
+  "dominosaWinTitle": "¡MAESTRO DEL DOMINÓ!",
+  "dominosaWinMessage": "¡Se han encontrado y colocado todos los dominós!",
+  "skyscrapersTitle": "RASCACIELOS",
+  "skyscrapersSubtitle": "Llena la cuadrícula con alturas de edificios.",
+  "skyscrapersHowToPlay": "Llena la cuadrícula con alturas (1-N) de modo que cada fila y columna contenga cada altura exactamente una vez. Las pistas en los bordes indican cuántos edificios son visibles desde esa dirección, con los edificios más altos bloqueando a los más bajos.",
+  "skyscrapersWinTitle": "¡HORIZONTE RESTAURADO!",
+  "skyscrapersWinMessage": "¡Todos los edificios están perfectamente posicionados!",
+  "nurikabeTitle": "NURIKABE",
+  "nurikabeSubtitle": "Forma un mar conectado e islas separadas.",
+  "nurikabeHowToPlay": "Sombrea celdas para formar un único \"mar\" conectado (sin bloques de 2x2). Las celdas sin sombrear forman \"islas\", cada una con exactamente un número que representa su área total.",
+  "nurikabeWinTitle": "¡MAR FLUYENDO!",
+  "nurikabeWinMessage": "¡Islas separadas, mar conectado!",
+  "fillominoTitle": "FILLOMINO",
+  "fillominoSubtitle": "Divide la cuadrícula en poliominós de los tamaños especificados.",
+  "fillominoHowToPlay": "Divide la cuadrícula en poliominós de modo que cada poliominó de tamaño N contenga el número N en todas sus celdas. Los poliominós del mismo tamaño no pueden estar adyacentes ortogonalmente.",
+  "fillominoWinTitle": "¡CUADRÍCULA DIVIDIDA!",
+  "fillominoWinMessage": "¡Perfectamente embaldosado con lógica!",
+  "hitoriTitle": "HITORI",
+  "hitoriSubtitle": "Sombrea los números duplicados en cada fila y columna.",
+  "hitoriHowToPlay": "Sombrea celdas para que ningún número aparezca más de una vez en cualquier fila o columna. Las celdas sombreadas no pueden estar adyacentes (ortogonalmente), y todas las celdas sin sombrear deben formar un único grupo conectado.",
+  "hitoriWinTitle": "¡MAESTRO DE HITORI!",
+  "hitoriWinMessage": "¡Has resuelto con éxito todos los duplicados!",
   "pathFinderTitle": "Buscador de caminos",
   "pathFinderSubtitle": "Encuentra el camino oculto de S a E.",
   "pathFinderWin": "¡Camino dominado!",
@@ -132,12 +225,26 @@
   "arithmeticChainWinMessage": "¡Tu cálculo mental es agudo!",
   "arithmeticChainLoseTitle": "INTÉNTALO DE NUEVO",
   "arithmeticChainLoseMessage": "La respuesta correcta era {answer}.",
+  "@arithmeticChainLoseMessage": {
+    "placeholders": {
+      "answer": {
+        "type": "String"
+      }
+    }
+  },
   "arithmeticChainStart": "EMPEZAR",
   "arithmeticChainNext": "SIGUIENTE",
   "attentionalBlinkTitle": "Parpadeo atencional",
   "attentionalBlinkSubtitleWatch": "OBSERVA LOS NÚMEROS",
   "attentionalBlinkSubtitleInput": "INTRODUCE LOS DOS NÚMEROS QUE VISTE",
   "attentionalBlinkScoreMessage": "¡Acertaste {score} objetivos!",
+  "@attentionalBlinkScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "balanceScaleTitle": "BALANZA",
   "balanceScaleSubtitle": "Deduce el peso del último objeto basándote en las balanzas.",
   "balanceScaleWinTitle": "¡EQUILIBRADO!",
@@ -157,6 +264,16 @@
   "boxCompletionTitle": "Cubo plegado",
   "boxCompletionSubtitle": "¿Qué cubo se puede formar?",
   "boxCompletionScoreMessage": "¡Acertaste {score} de {totalTrials}!",
+  "@boxCompletionScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "totalTrials": {
+        "type": "int"
+      }
+    }
+  },
   "boxCompletionOptions": "OPCIONES",
   "bridgesTitle": "PUENTES",
   "bridgesSubtitle": "Conecta las islas con puentes. Cada isla necesita un número específico de puentes. Los puentes no pueden cruzarse.",
@@ -167,7 +284,21 @@
   "calculationSprintGoalReached": "¡OBJETIVO ALCANZADO!",
   "calculationSprintTimeUp": "SE ACABÓ EL TIEMPO",
   "calculationSprintScoreMessage": "¡Excelente velocidad de cálculo! Has conseguido {score} puntos.",
+  "@calculationSprintScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "calculationSprintTryAgainMessage": "Has conseguido {score} puntos. ¡Intenta superar tu mejor marca!",
+  "@calculationSprintTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "calculationSprintBest": "MEJOR",
   "calculationSprintSeconds": "60 SEGUNDOS",
   "calculationSprintDescription": "Resuelve ecuaciones rápido.\n¡Las respuestas incorrectas restan 3 segundos!",
@@ -178,20 +309,82 @@
   "categoryFluencyTimeUp": "¡TIEMPO AGOTADO!",
   "categoryFluencyWinMessage": "¡Tienes un vocabulario inmenso!",
   "categoryFluencyFoundMessage": "Encontraste {count} palabras.",
+  "@categoryFluencyFoundMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "categoryFluencyCategoryLabel": "Categoría:",
   "categoryFluencyEnterItem": "Introduce un elemento...",
   "categoryFluencyWordCount": "{entered} / {target} palabras",
+  "@categoryFluencyWordCount": {
+    "placeholders": {
+      "entered": {
+        "type": "int"
+      },
+      "target": {
+        "type": "int"
+      }
+    }
+  },
   "changeBlindnessTitle": "Ceguera al cambio",
   "changeBlindnessSubtitle": "ENCUENTRA EL OBJETO QUE CAMBIA",
   "changeBlindnessScore": "PUNTUACIÓN: {score}",
+  "@changeBlindnessScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "changeBlindnessFoundMessage": "¡Encontraste {score} cambios!",
+  "@changeBlindnessFoundMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "choiceRtTitle": "Tiempo de reacción",
   "choiceRtSubtitle": "Toca el cuadrado activo tan rápido como puedas",
   "choiceRtAvgMessage": "Tu tiempo medio de reacción: {avg}ms",
+  "@choiceRtAvgMessage": {
+    "placeholders": {
+      "avg": {
+        "type": "String"
+      }
+    }
+  },
   "choiceRtTimeRemaining": "Tiempo restante: {time}s",
+  "@choiceRtTimeRemaining": {
+    "placeholders": {
+      "time": {
+        "type": "int"
+      }
+    }
+  },
   "choiceRtTaps": "Toques: {count}",
+  "@choiceRtTaps": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "colorFloodTitle": "Inundación de color",
   "colorFloodSubtitle": "Movimientos: {moves} / {maxMoves}",
+  "@colorFloodSubtitle": {
+    "placeholders": {
+      "moves": {
+        "type": "int"
+      },
+      "maxMoves": {
+        "type": "int"
+      }
+    }
+  },
   "colorFloodSuccess": "¡ÉXITO EN LA INUNDACIÓN!",
   "colorFloodDryLand": "TIERRA SECA...",
   "colorFloodWinMessage": "¡Saturaste toda la cuadrícula con color!",
@@ -203,11 +396,28 @@
   "colorMatchCheck": "COMPROBAR",
   "colorMatchResult": "RESULTADO",
   "colorMatchAccuracy": "Tu precisión: {accuracy}%",
+  "@colorMatchAccuracy": {
+    "placeholders": {
+      "accuracy": {
+        "type": "String"
+      }
+    }
+  },
   "corsiBlocksTitle": "BLOQUES DE CORSI",
   "corsiBlocksSubtitle": "Observa cómo se iluminan los bloques y tócalos en el mismo orden.",
   "corsiBlocksWinTitle": "¡MAESTRO ESPACIAL!",
   "corsiBlocksLoseTitle": "PERDIDO EN EL ESPACIO",
   "corsiBlocksMessage": "¡Recordaste {score} secuencias! Tu capacidad de memoria espacial alcanzó {span}.",
+  "@corsiBlocksMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "span": {
+        "type": "int"
+      }
+    }
+  },
   "corsiBlocksWatch": "OBSERVA EL PATRÓN",
   "corsiBlocksRepeat": "REPITE EL PATRÓN",
   "corsiBlocksExcellent": "¡EXCELENTE!",
@@ -229,16 +439,58 @@
   "digitSpanReverseWinMessage": "¡Tu memoria de trabajo es impresionante!",
   "digitSpanReverseLoseTitle": "INTÉNTALO DE NUEVO",
   "digitSpanReverseLoseMessage": "La secuencia inversa correcta era {sequence}.",
+  "@digitSpanReverseLoseMessage": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
   "dividedAttentionTitle": "Atención dividida",
   "dividedAttentionSubtitle": "Toca IZQUIERDA para ESTRELLA ⭐ | Toca DERECHA para ROJO 🔴",
   "dividedAttentionGameOverTitle": "CONCENTRACIÓN PERDIDA",
   "dividedAttentionGameOverMessage": "¡La multitarea es difícil! Tu puntuación fue {score}.",
+  "@dividedAttentionGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "dividedAttentionScore": "PUNTUACIÓN: {score}",
+  "@dividedAttentionScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackTitle": "Doble N-Back",
   "doubleNBackSubtitle": "Coincide los estímulos de {n} pasos atrás",
+  "@doubleNBackSubtitle": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackGameOverTitle": "FIN DEL JUEGO",
   "doubleNBackGameOverMessage": "¡Has conseguido {score} puntos en Doble N-Back!",
+  "@doubleNBackGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackScore": "Puntuación: {score}",
+  "@doubleNBackScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackPositionMatch": "COINCIDENCIA DE POSICIÓN",
   "doubleNBackLetterMatch": "COINCIDENCIA DE LETRA",
   "faceNameAssociationTitle": "Cara-Nombre",
@@ -248,10 +500,27 @@
   "faceNameAssociationGameOver": "FIN DEL JUEGO",
   "faceNameAssociationWinMessage": "¡Tienes una gran memoria para las caras y los nombres!",
   "faceNameAssociationLoseMessage": "Acertaste {correct} de {total}.",
+  "@faceNameAssociationLoseMessage": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "faceNameAssociationStartTest": "EMPEZAR TEST",
   "flankerTestWinTitle": "¡CONCENTRACIÓN LÁSER!",
   "flankerTestLoseTitle": "DISTRAÍDO",
   "flankerTestScoreMessage": "¡Has acertado {score} correctamente!",
+  "@flankerTestScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "flankerTestTitle": "TEST DE FLANCOS",
   "flankerTestSubtitle": "Indica la dirección de la flecha central, ignorando las flechas laterales.",
   "flankerTestLeft": "IZQUIERDA",
@@ -260,6 +529,13 @@
   "fractionMatchSubtitle": "Empareja la imagen con su fracción",
   "fractionMatchLoseTitle": "FRACCIÓN INCORRECTA",
   "fractionMatchLoseMessage": "La respuesta correcta era {correctAnswer}.",
+  "@fractionMatchLoseMessage": {
+    "placeholders": {
+      "correctAnswer": {
+        "type": "String"
+      }
+    }
+  },
   "goNoGoTitle": "Go / No-Go",
   "goNoGoSubtitle": "¡Toca para Verde, IGNORA el Rojo!",
   "goNoGoLoseTitle": "REACCIÓN DETENIDA",
@@ -271,22 +547,58 @@
   "groceryListWinTitle": "¡GURÚ DE LA COMPRA!",
   "groceryListLoseTitle": "¿OLVIDASTE ALGO?",
   "groceryListScoreMessage": "¡Has conseguido {score} puntos en Lista de la Compra!",
+  "@groceryListScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "groceryListReady": "ESTOY LISTO",
   "groceryListWhereBelong": "¿DÓNDE PERTENECE ESTO?",
   "hueSortTitle": "ORDENAR MATICES",
   "hueSortSubtitle": "Intercambia las fichas para crear una transición suave entre los colores de las esquinas. Los puntos indican fichas fijas.",
   "hueSortWinTitle": "¡GRADIENTE PERFECTO!",
   "hueSortWinMessage": "¡Has ordenado perfectamente el espectro de colores!",
+  "hueSortWrongTiles": "Azulejos en la posición incorrecta: {count}",
+  "@hueSortWrongTiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "kenkenTitle": "KenKen",
   "kenkenWinTitle": "¡GENIO!",
   "kenkenLoseTitle": "FIN DEL JUEGO",
   "kenkenWinMessage": "¡Has resuelto el puzzle KenKen!",
   "kenkenLoseMessage": "Comprueba las reglas de fila/columna y de las celdas.",
   "kenkenSubtitle": "Rellena del 1 al {size} sin repetir en filas o columnas",
+  "@kenkenSubtitle": {
+    "placeholders": {
+      "size": {
+        "type": "int"
+      }
+    }
+  },
   "letterCancellationTitle": "Cancelación de letras",
   "letterCancellationTitleFull": "Cancelación de letras",
   "letterCancellationScoreMessage": "¡Encontraste {score} letras!",
+  "@letterCancellationScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "letterCancellationSubtitle": "Encuentra todas las letras \"{target}\"",
+  "@letterCancellationSubtitle": {
+    "placeholders": {
+      "target": {
+        "type": "String"
+      }
+    }
+  },
   "letterCancellationFound": "ENCONTRADO",
   "letterCancellationTime": "TIEMPO",
   "lightsOutTitle": "LUCES FUERA",
@@ -325,6 +637,13 @@
   "sternbergTaskMemorize": "Memoriza las letras",
   "sternbergTaskWasLetterSet": "¿Estaba esta letra en el conjunto?",
   "sternbergTaskScore": "¡Has conseguido {score} puntos en la Tarea de Sternberg!",
+  "@sternbergTaskScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "verbalAnalogiesTitle": "Analogías verbales",
   "verbalAnalogiesSubtitle": "Completa la relación",
   "typingSpeedTitle": "Velocidad de mecanografía",
@@ -350,6 +669,13 @@
   "pixelMimicTitle": "Mímica de píxeles",
   "targetNumberTitle": "Objetivo 24",
   "targetNumberSubtitle": "Usa los 4 números para llegar a {target}",
+  "@targetNumberSubtitle": {
+    "placeholders": {
+      "target": {
+        "type": "int"
+      }
+    }
+  },
   "mirrorTracingTitle": "Trazado en espejo",
   "mirrorTracingSubtitle": "¡Traza la estrella! Los controles están REFLEJADOS.",
   "wordSurgeTitle": "Oleada de palabras",
@@ -359,6 +685,13 @@
   "perspectiveTakingChoosePerspective": "ELIGE LA PERSPECTIVA",
   "perspectiveTakingCongrats": "Tienes una gran agudeza visual para las relaciones espaciales.",
   "perspectiveTakingSubtitle": "¿Qué vista corresponde al {targetDirName}?",
+  "@perspectiveTakingSubtitle": {
+    "placeholders": {
+      "targetDirName": {
+        "type": "String"
+      }
+    }
+  },
   "paperFoldingTitle": "Plegado de papel",
   "paperFoldingSubtitle": "¿Cómo se verá al desplegarlo?",
   "waterSortTitle": "Ordenar agua",
@@ -394,6 +727,13 @@
   "operationSpanRecallPhase": "Recuerda las letras en orden",
   "operationSpanRoundComplete": "¡Ronda completada!",
   "operationSpanScore": "¡Has conseguido {score} puntos en Memoria de operaciones!",
+  "@operationSpanScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "slidePuzzleTitle": "Puzzle deslizante",
   "slidePuzzleNewGame": "NUEVO JUEGO",
   "slidePuzzleInstructions": "Reorganiza las fichas en orden numérico deslizándolas hacia el espacio vacío.",
@@ -410,6 +750,13 @@
   "quickMathTitle": "Matemáticas rápidas",
   "magicSquaresTitle": "Cuadro mágico",
   "magicSquaresSubtitle": "Cada fila, columna y diagonal debe sumar {targetSum}",
+  "@magicSquaresSubtitle": {
+    "placeholders": {
+      "targetSum": {
+        "type": "int"
+      }
+    }
+  },
   "objectShuffleTitle": "Barajado de objetos",
   "pipesTitle": "Tuberías",
   "pipesSubtitle": "Conecta los puntos del mismo color con tuberías.",
@@ -445,12 +792,14 @@
   "vocabularyBuilderTitle": "Constructor de vocabulario",
   "vocabularyBuilderSubtitle": "Empareja sinónimos y antónimos bajo presión de tiempo.",
   "vocabularyBuilderHowToPlay": "Se te mostrará una palabra objetivo y una relación (Sinónimo o Antónimo). Elige la palabra correcta de las opciones que coincida con la relación. ¡Rápido, el tiempo vuela!",
+  "correct": "CORRECTO",
+  "incorrect": "INCORRECTO",
   "grammarPoliceTitle": "Policía gramatical",
   "grammarPoliceSubtitle": "Identifica si la oración es gramaticalmente correcta o contiene errores.",
-  "grammarPoliceHowToPlay": "Aparecerá una oración en el centro de la pantalla. Decide si es gramaticalmente correcta o si contiene un error. Pulsa 'CORRECTO' si está bien, o 'INCORRECTO' si detectas un error. ¡No pierdas todas tus vidas!",
+  "grammarPoliceHowToPlay": "Aparecerá una oración en el centro de la pantalla. Decide si es gramaticalmente correcta o si contiene un error. Pulsa \"CORRECTO\" si está bien, o \"INCORRECTO\" si detectas un error. ¡No pierdas todas tus vidas!",
   "reverseStroopTitle": "Stroop inverso",
   "reverseStroopSubtitle": "Una variación del test de Stroop donde el enfoque cambia.",
-  "reverseStroopHowToPlay": "¡Presta atención a las instrucciones! Si dice 'TEXTO', coincide con el significado de la palabra. Si dice 'COLOR', coincide con el color de la tinta. Las reglas cambiarán frecuentemente para poner a prueba tu concentración.",
+  "reverseStroopHowToPlay": "¡Presta atención a las instrucciones! Si dice \"TEXTO\", coincide con el significado de la palabra. Si dice \"COLOR\", coincide con el color de la tinta. Las reglas cambiarán frecuentemente para poner a prueba tu concentración.",
   "game2048Instruction": "DESLIZA EN CUALQUIER DIRECCIÓN PARA COMBINAR",
   "fibonacciMergeTitle": "Fusión de Fibonacci",
   "fibonacciMergeSubtitle": "Combina números de Fibonacci consecutivos (1, 1, 2, 3, 5, 8, 13...).",
@@ -489,6 +838,13 @@
   "blockCount3DNotQuite": "¡Casi! Intenta rotar para contar de nuevo.",
   "blockCount3DExcellent": "EXCELENTE",
   "blockCount3DWinMessage": "¡Has identificado correctamente todos los {count} bloques!",
+  "@blockCount3DWinMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "blockCount3DHowToPlayDescription": "1. Arrastra el dedo por la vista 3D para rotar la pila de bloques.\n\n2. Cuenta todos los bloques de la pila.\n\n3. Recuerda: un bloque en el aire debe tener bloques de soporte estructural debajo (¡bloques ocultos!).\n\n4. Escribe tu respuesta y toca \"ENVIAR RESPUESTA\" para comprobarlo.",
   "alphabetSudokuTitle": "SUDOKU ALFABÉTICO",
   "alphabetSudokuSubtitle": "Rellena la cuadrícula para que cada fila, columna y cuadro contenga las letras A-I.",
@@ -498,6 +854,13 @@
   "classicMazeSubtitle": "EXPLORA Y RESUELVE • UN LABERINTO NUEVO CADA VEZ",
   "classicMazeWinTitle": "LABERINTO COMPLETADO",
   "classicMazeWinMessage": "¡Navegación increíble! Has resuelto el laberinto en {count} movimientos.",
+  "@classicMazeWinMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "classicMazeMoves": "MOVIMIENTOS: ",
   "classicMazeHowToPlayDescription": "1. Guía la canica amarilla brillante (jugador) hasta el portal verde (salida) en la parte inferior derecha.\n\n2. Desliza en cualquier lugar del laberinto, usa las flechas del teclado o los botones de dirección para moverte.\n\n3. El rastro morado muestra el camino explorado. ¡Vuelve sobre tus pasos para borrarlo dinámicamente!\n\n4. Cambia la dificultad para desafiarte con laberintos más grandes.",
   "conjunctionSearchTitle": "Búsqueda de conjunciones",
@@ -528,53 +891,910 @@
   "cubeNetFoldFailed": "FALLÓ (TOCA REINICIAR)",
   "faceTraitAssociationMemorize": "MEMORIZA A LAS 4 PERSONAS",
   "faceTraitAssociationPersonOf": "PERSONA {current} DE {total}",
+  "@faceTraitAssociationPersonOf": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "faceTraitAssociationWhatOccupation": "¿CUÁL ES SU PROFESIÓN?",
   "faceTraitAssociationWhatHobby": "¿CUÁL ES SU AFICIÓN?",
   "faceTraitAssociationWinTitle": "¡MAESTRO DE LA MEMORIA!",
   "faceTraitAssociationLoseTitle": "FIN DEL JUEGO",
   "faceTraitAssociationScoreMessage": "Acertaste {correct} de {total}.",
+  "@faceTraitAssociationScoreMessage": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "topologyTitle": "TOPOLOGÍA",
   "topologySubtitle": "¿Son estas formas topológicamente equivalentes? (¿Se puede deformar una en la otra sin cortar ni pegar?)",
   "topologyWinTitle": "¡GENIO DE LA GEOMETRÍA!",
   "topologyWinMessage": "¡Has identificado correctamente 10 pares topológicos!",
   "topologyScore": "PUNTUACIÓN: ",
-  "hueSortWrongTiles": "Azulejos en la posición incorrecta: {count}",
-  "playNext": "Jugar Siguiente",
-  "correct": "CORRECTO",
-  "incorrect": "INCORRECTO",
-  "magnetsTitle": "IMANES",
-  "magnetsSubtitle": "Coloca imanes en la cuadrícula según los recuentos de polos.",
-  "magnetsHowToPlay": "Llena contenedores del tamaño de un dominó con imanes '+' y '-' o déjalos en blanco. Las pistas de filas y columnas especifican el número total de cada polo en esa línea. Los polos idénticos no pueden estar adyacentes ortogonalmente.",
-  "magnetsWinTitle": "¡POLARIDAD EQUILIBRADA!",
-  "magnetsWinMessage": "¡Todos los imanes están perfectamente dispuestos!",
-  "lighthousesTitle": "FAROS",
-  "lighthousesSubtitle": "Coloca barcos basados en pistas de faros.",
-  "lighthousesHowToPlay": "Coloca barcos de 1x1 en la cuadrícula. Los faros indican el número total de barcos visibles horizontal y verticalmente. Los barcos no pueden tocar los faros ni entre sí, ni siquiera en diagonal.",
-  "lighthousesWinTitle": "¡MAR SEGURO!",
-  "lighthousesWinMessage": "¡Todos los faros están guiando los barcos perfectamente!",
-  "dominosaTitle": "DOMINOSA",
-  "dominosaSubtitle": "Encuentra todos los dominós ocultos en la cuadrícula.",
-  "dominosaHowToPlay": "Organiza un juego completo de dominós en una cuadrícula de números de modo que cada par de números adyacentes esté cubierto por exactamente un dominó. Cada par de números existe solo una vez en el conjunto.",
-  "dominosaWinTitle": "¡MAESTRO DEL DOMINÓ!",
-  "dominosaWinMessage": "¡Se han encontrado y colocado todos los dominós!",
-  "skyscrapersTitle": "RASCACIELOS",
-  "skyscrapersSubtitle": "Llena la cuadrícula con alturas de edificios.",
-  "skyscrapersHowToPlay": "Llena la cuadrícula con alturas (1-N) de modo que cada fila y columna contenga cada altura exactamente una vez. Las pistas en los bordes indican cuántos edificios son visibles desde esa dirección, con los edificios más altos bloqueando a los más bajos.",
-  "skyscrapersWinTitle": "¡HORIZONTE RESTAURADO!",
-  "skyscrapersWinMessage": "¡Todos los edificios están perfectamente posicionados!",
-  "nurikabeTitle": "NURIKABE",
-  "nurikabeSubtitle": "Forma un mar conectado e islas separadas.",
-  "nurikabeHowToPlay": "Sombrea celdas para formar un único 'mar' conectado (sin bloques de 2x2). Las celdas sin sombrear forman 'islas', cada una con exactamente un número que representa su área total.",
-  "nurikabeWinTitle": "¡MAR FLUYENDO!",
-  "nurikabeWinMessage": "¡Islas separadas, mar conectado!",
-  "fillominoTitle": "FILLOMINO",
-  "fillominoSubtitle": "Divide la cuadrícula en poliominós de los tamaños especificados.",
-  "fillominoHowToPlay": "Divide la cuadrícula en poliominós de modo que cada poliominó de tamaño N contenga el número N en todas sus celdas. Los poliominós del mismo tamaño no pueden estar adyacentes ortogonalmente.",
-  "fillominoWinTitle": "¡CUADRÍCULA DIVIDIDA!",
-  "fillominoWinMessage": "¡Perfectamente embaldosado con lógica!",
-  "hitoriTitle": "HITORI",
-  "hitoriSubtitle": "Sombrea los números duplicados en cada fila y columna.",
-  "hitoriHowToPlay": "Sombrea celdas para que ningún número aparezca más de una vez en cualquier fila o columna. Las celdas sombreadas no pueden estar adyacentes (ortogonalmente), y todas las celdas sin sombrear deben formar un único grupo conectado.",
-  "hitoriWinTitle": "¡MAESTRO DE HITORI!",
-  "hitoriWinMessage": "¡Has resuelto con éxito todos los duplicados!"
+  "semanticDistanceTitle": "Distancia semántica",
+  "semanticDistanceSubtitle": "Mide la distancia conceptual entre palabras",
+  "oxymoronHuntTitle": "Caza de oxímoron",
+  "oxymoronHuntSubtitle": "Empareja palabras contradictorias en la cuadrícula",
+  "portmanteauSplitTitle": "División de acrónimos",
+  "portmanteauSplitSubtitle": "Identifica las palabras origen de un acrónimo",
+  "chainReactionTitle": "Reacción en cadena",
+  "chainReactionSubtitle": "Conecta palabras usando letras superpuestas",
+  "rhymeMasterTitle": "Maestro de las rimas",
+  "rhymeMasterSubtitle": "Identifica palabras que riman con el objetivo",
+  "definitionDashTitle": "Carrera de definiciones",
+  "definitionDashSubtitle": "Empareja la palabra correcta con su definición",
+  "syllableStackTitle": "Pila de sílabas",
+  "syllableStackSubtitle": "Apila sílabas para formar palabras completas",
+  "sentenceUnscrambleTitle": "Descifrar frases",
+  "sentenceUnscrambleSubtitle": "Reordena las palabras para formar una frase válida",
+  "grammarSortTitle": "Clasificación gramatical",
+  "grammarSortSubtitle": "Clasifica las palabras por su categoría gramatical",
+  "vowelReconstructTitle": "Reconstrucción de vocales",
+  "vowelReconstructSubtitle": "Rellena las vocales que faltan en la frase",
+  "consonantReconstructTitle": "Reconstrucción de consonantes",
+  "consonantReconstructSubtitle": "Rellena las consonantes que faltan en la frase",
+  "homophoneHuntTitle": "Caza de homófonos",
+  "homophone_huntSubtitle": "Elige el homófono escrito correctamente",
+  "silentLetterSearchTitle": "Búsqueda de letras mudas",
+  "silentLetterSearchSubtitle": "Identifica las letras mudas en las palabras dadas",
+  "palindromeBuilderTitle": "Constructor de palíndromos",
+  "palindromeBuilderSubtitle": "Crea un palíndromo añadiendo las mínimas letras posibles",
+  "phoneticGuessTitle": "Adivinanza fonética",
+  "phoneticGuessSubtitle": "Identifica la palabra a partir de su escritura fonética",
+  "spoonerismSolverTitle": "Solucionador de retruécanos",
+  "spoonerismSolverSubtitle": "Identifica el retruécano correcto para la frase",
+  "etymonOddballTitle": "Intruso etimológico",
+  "etymonOddballSubtitle": "Encuentra la palabra que no comparte la misma raíz",
+  "etymologyOriginTitle": "Origen etimológico",
+  "etymologyOriginSubtitle": "Adivina el idioma de origen del préstamo",
+  "affixFactoryTitle": "Fábrica de afijos",
+  "affixFactorySubtitle": "Crea palabras válidas usando prefijos y sufijos",
+  "cognateCatchTitle": "Captura de cognados",
+  "cognateCatchSubtitle": "Distingue entre cognados verdaderos y falsos amigos",
+  "compoundConnectTitle": "Conexión compuesta",
+  "compoundConnectSubtitle": "Combina dos palabras para formar una palabra compuesta",
+  "pangramSprintTitle": "Sprint de pangramas",
+  "pangramSprintSubtitle": "Construye una frase usando todas las letras del abecedario",
+  "anagramDefinitionTitle": "Definición de anagrama",
+  "anagramDefinitionSubtitle": "Resuelve el anagrama basado en su definición",
+  "letterBridgeTitle": "Puente de letras",
+  "letterBridgeSubtitle": "Encuentra la letra que falta que une dos palabras",
+  "letterFrequencyScanTitle": "Escaneo de frecuencia de letras",
+  "letterFrequencyScanSubtitle": "Cuenta cuántas veces aparece una letra en el texto",
+  "oneLetterShiftTitle": "Cambio de una letra",
+  "oneLetterShiftSubtitle": "Transforma una palabra en otra con el cambio de una letra",
+  "vocabularyBuilderMessage": "¡Buen trabajo! Tu vocabulario es impresionante. Puntuación: {arg0}",
+  "@vocabularyBuilderMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "symmetryMessage": "Has reflejado el patrón perfectamente con precisión quirúrgica.",
+  "temporalOrderMessage": "¡Increíble! Tu memoria de secuencia temporal es de alta fidelidad.",
+  "temporalOrderMessage1": "Memoria de secuencia incorrecta. ¡La práctica hace al maestro!",
+  "wordSearchMessage": "Todas las palabras encontradas con éxito con una observación aguda.",
+  "colorMatchMessage": "Tu precisión: {arg0}%",
+  "@colorMatchMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "semanticLinkMessage": "¡Has conseguido {arg0} puntos!",
+  "@semanticLinkMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "reflexTapMessage": "¡Has tocado {arg0} objetivos!",
+  "@reflexTapMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "angleFinderMessage": "¡Tu intuición geométrica es perfecta!",
+  "angleFinderMessage1": "La respuesta correcta era {arg0}°",
+  "@angleFinderMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "angleFinderText": "{arg0}°",
+  "@angleFinderText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "visualStatisticalLearningMessage": "¡Has logrado {arg0} patrones correctos!",
+  "@visualStatisticalLearningMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "nonogramText": "Error: {arg0}",
+  "@nonogramText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "mentalCalendarMessage": "¡Acertaste {arg0} de 10!",
+  "@mentalCalendarMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "orbitTapMessage": "¡Has tocado con éxito {arg0} veces!",
+  "@orbitTapMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "schulteTableMessage": "¡Completaste la tabla en {arg0}!\\n¡Sigue practicando para ampliar tu visión periférica!",
+  "@schulteTableMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "schulteTableText": "EMPEZAR TEST",
+  "relationalMemoryMessage": "¡Fabulosa precisión de memoria relacional espacial!",
+  "sudokuText": "Error: {arg0}",
+  "@sudokuText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sdmtMessage": "¡Has emparejado {arg0} símbolos! Este test mide tu velocidad de escaneo y atención visual.",
+  "@sdmtMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "futoshikiMessage": "¡Increíble! Has resuelto el cuadrado latino Futoshiki.",
+  "letterFrequencyScanMessage": "Has contado correctamente {arg0} apariciones de \"{arg1}\".",
+  "@letterFrequencyScanMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "letterFrequencyScanText": "Incorrecto. El recuento fue {arg0}.",
+  "@letterFrequencyScanText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "memoryMatrixMessage": "¡Impresionante! Tu memoria de trabajo es aguda. ¡Objetivo diario completado!",
+  "memoryMatrixMessage1": "Concéntrate e inténtalo de nuevo para mejorar tu puntuación de memoria.",
+  "contextCluesMessage": "¡Excepcional! Tu vocabulario y análisis contextual son de primer nivel.",
+  "contextCluesMessage1": "¡Palabra incorrecta seleccionada! Entrena tu razonamiento de contexto verbal e inténtalo de nuevo.",
+  "oneLetterShiftMessage": "Has cambiado correctamente {arg0} a {arg1}.",
+  "@oneLetterShiftMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "mentalAbacusMessage": "Tu aritmética mental es de primer nivel.",
+  "fractionMatcherMessage": "¡Has conseguido {arg0} puntos emparejando representaciones!",
+  "@fractionMatcherMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spellingSprintMessage": "¡Has escrito correctamente las 10 palabras!",
+  "spellingSprintMessage1": "Has escrito {arg0} palabras.",
+  "@spellingSprintMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "stopSignalMessage": "¡Has logrado {arg0} respuestas correctas! Este test mide tu capacidad para inhibir una acción planeada.",
+  "@stopSignalMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "grammarPoliceMessage": "¡Fin del juego! Mantuviste el orden en el mundo de la gramática. Puntuación: {arg0}",
+  "@grammarPoliceMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "consonantReconstructMessage": "¡Has reconstruido una puntuación de {arg0}!",
+  "@consonantReconstructMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "rhymeMasterMessage": "¡Has encontrado {arg0} de {arg1} rimas!",
+  "@rhymeMasterMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "vigilanceTaskMessage": "Aciertos: {arg0}, Fallos: {arg1}\\nFalsas alarmas: {arg2}",
+  "@vigilanceTaskMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "silhouetteMatchOrthoMessage": "¡Tienes unas habilidades de alineación ortográfica impecables!",
+  "silhouetteMatchOrthoText": "ENTENDIDO",
+  "silhouetteMatchOrthoText1": "¡Proyección de perspectiva incorrecta! Toca Reiniciar para volver a intentarlo.",
+  "fibonacciMergeMessage": "{arg0}: {arg1}",
+  "@fibonacciMergeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "factorFinderMessage": "¡Has conseguido {arg0} puntos encontrando todos los factores!",
+  "@factorFinderMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "logicalSyllogismsMessage": "¡Has resuelto {arg0} silogismos correctamente!",
+  "@logicalSyllogismsMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "rotatingMazeMessage": "¡Has navegado con éxito por el laberinto rotativo cinético!",
+  "rotatingMazeText": "ENTENDIDO",
+  "rotatingMazeText1": "🌀 ¡Laberinto rotado 90°! ¡Cuadrícula desplazada!",
+  "mathPathMessage": "¡Has encontrado el camino que suma el objetivo!",
+  "bridgesMessage": "¡Has conectado correctamente todas las islas!",
+  "compoundConnectMessage": "La palabra compuesta es {arg0}{arg1}.",
+  "@compoundConnectMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "pangramSprintMessage": "Has construido una frase usando las 26 letras.",
+  "mirrorImageMessage": "Has identificado perfectamente el reflejo.",
+  "mirrorImageText": "IMAGEN EN ESPEJO",
+  "reverseStroopMessage": "¡Has conseguido {arg0} puntos! No pierdas de vista las instrucciones.",
+  "@reverseStroopMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "verbalAnalogiesMessage": "Tienes una mente aguda para las relaciones.",
+  "corsiBlocksMessage1": "¡Recordaste {arg1} secuencias! Tu capacidad de memoria espacial alcanzó {arg0}.",
+  "@corsiBlocksMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "wordLadderMessage": "Has conectado con éxito {arg0} con {arg1} en {arg2} pasos.",
+  "@wordLadderMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "d2AttentionMessage": "¡Increíble escaneo selectivo! Puntuación final: {arg0}.",
+  "@d2AttentionMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "d2AttentionText": "CÓMO JUGAR",
+  "d2AttentionText1": "ENTENDIDO",
+  "tangleFixMessage": "Todas las líneas están despejadas y suaves.",
+  "distractorMatrixMessage": "¡Increíble! ¡Recordaste patrones a pesar de los distractores matemáticos cognitivos!",
+  "distractorMatrixMessage1": "¡Los distractores te atraparon! Vuelve a entrenar tu memoria de trabajo.",
+  "sentenceUnscrambleMessage": "¡Has descifrado una puntuación de {arg0}!",
+  "@sentenceUnscrambleMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "kakuroMessage": "¡Increíble! Has emparejado todos los segmentos de suma perfectamente.",
+  "symbolicFlankerMessage": "¡Acertaste {arg0} de {arg1}!",
+  "@symbolicFlankerMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "stroopTestMessage": "¡Has acertado {arg0} correctamente! Concéntrate en el color de la tinta, no en la palabra.",
+  "@stroopTestMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wisconsinCardSortingMessage": "¡Has clasificado correctamente {arg0} cartas!",
+  "@wisconsinCardSortingMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "nBackMessage": "¡Lograste {arg0} coincidencias de 2-back! Tu memoria de trabajo es vital para la multitarea.",
+  "@nBackMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "rhythmMasterMessage": "¡Has conseguido {arg0} golpes perfectos y {arg1} puntos!",
+  "@rhythmMasterMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "groceryListMessage": "¡Has conseguido {arg0} puntos en Lista de la compra!",
+  "@groceryListMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "groceryListText": "ESTOY",
+  "mirrorTracingMessage": "Tu cerebro ha reconfigurado con éxito su coordinación.",
+  "moduloClockMessage": "¡Excelente coordinación matemática mental modular! Puntuación: {arg0}",
+  "@moduloClockMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "moduloClockMessage1": "Lograste {arg0} de {arg1} soluciones de reloj modular. Puntuación: {arg2}",
+  "@moduloClockMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "crownMessage": "Todas las coronas colocadas con éxito con lógica perfecta.",
+  "dualCodingMessage": "¡Fantástico rendimiento en doble tarea! Tu puntuación de memoria de trabajo: {arg0}",
+  "@dualCodingMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "inequalityDashMessage": "¡Has conseguido {arg0} puntos emparejando desigualdades!",
+  "@inequalityDashMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sourceMonitoringMessage": "¡Acertaste {arg0} de {arg1}!",
+  "@sourceMonitoringMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "sourceMonitoringText": "EMPEZAR RECUERDO",
+  "memoryPalaceText": "PALABRAS DISPONIBLES",
+  "target10Message": "¡Has conseguido {arg0} puntos emparejando números que suman 10!",
+  "@target10Message": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "paperFoldingMessage": "Puedes ver los patrones en tu mente.",
+  "topologyText": "{arg0}{arg1} / 10",
+  "@topologyText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "waterSortMessage": "¡Has ordenado todos los colores perfectamente!",
+  "anagramDefinitionMessage": "La palabra era, de hecho, \"{arg0}\".",
+  "@anagramDefinitionMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "game2048Message": "{arg0}: {arg1}\\n{arg2}",
+  "@game2048Message": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "game2048Message1": "{arg0}: {arg1}",
+  "@game2048Message1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "numericalEstimationMessage": "Has hecho {arg0} estimaciones correctas.",
+  "@numericalEstimationMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "grammarSortMessage": "¡Has clasificado {arg0} palabras correctamente!",
+  "@grammarSortMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "vowelReconstructMessage": "¡Has reconstruido una puntuación de {arg0}!",
+  "@vowelReconstructMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spatialConflictMessage": "¡Has logrado una puntuación de {arg0} con {arg1} errores!",
+  "@spatialConflictMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "spatialConflictText": "CÓMO JUGAR",
+  "spatialConflictText1": "ENTENDIDO",
+  "tracePathMessage": "¡Tu precisión fue del {arg0}%!",
+  "@tracePathMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "ruleSwitcherMessage": "¡Acertaste {arg0} de {arg1}!",
+  "@ruleSwitcherMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "collatzMessage": "Te tomó {arg0} pasos. El mínimo posible era {arg1}.",
+  "@collatzMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "collatzText": "/ 2",
+  "collatzText1": "+ 1",
+  "collatzText2": "3n + 1",
+  "divisibilityDashMessage": "¡Has resuelto {arg0} números!",
+  "@divisibilityDashMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "switchTaskMessage": "¡Has acertado {arg0} correctamente! El cambio rápido es clave para la flexibilidad mental.",
+  "@switchTaskMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sequenceSleuthMessage": "¡Has resuelto {arg0} secuencias!",
+  "@sequenceSleuthMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "changeBlindnessMessage": "¡Has encontrado {arg0} cambios!",
+  "@changeBlindnessMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "mentalRotationMessage": "¡Has rotado {arg0} formas correctamente!",
+  "@mentalRotationMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wordMastermindMessage": "¡Dominaste el código!\\nLa palabra era: {arg0}",
+  "@wordMastermindMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wordMastermindMessage1": "La palabra oculta era: {arg0}",
+  "@wordMastermindMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wordMastermindText": "{arg0}",
+  "@wordMastermindText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "simonSequenceMessage": "¡Has memorizado las 10 fichas!",
+  "simonSequenceMessage1": "Inténtalo de nuevo para dominar la secuencia.",
+  "oxymoronHuntMessage": "¡Has encontrado {arg0} oxímoron!",
+  "@oxymoronHuntMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spotlightTrackMessage": "¡Seguimiento espacial increíble! Has conseguido {arg0} puntos.",
+  "@spotlightTrackMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spotlightTrackText": "CÓMO JUGAR",
+  "spotlightTrackText1": "ENTENDIDO",
+  "spotlightTrackText2": "EMPEZAR RONDA",
+  "vennNumbersMessage": "¡Has clasificado {arg0} números!",
+  "@vennNumbersMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "vennNumbersText": "NINGUNO",
+  "vennNumbersText1": "AMBOS",
+  "silhouetteMatchMessage": "Tu cerebro es excelente en la traducción de 3D a 2D.",
+  "sumSnakeMessage": "¡Objetivo {arg0} alcanzado con una precisión perfecta!",
+  "@sumSnakeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sumSnakeText": "BORRAR CAMINO",
+  "percentagePeakMessage": "¡Has resuelto {arg0} problemas de porcentajes!",
+  "@percentagePeakMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "trailMakingMessage": "¡Has completado {arg0} senderos! Este test mide tu velocidad de búsqueda visual y flexibilidad mental.",
+  "@trailMakingMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "matrixReasoningMessage": "¡Has completado {arg0} matrices correctamente!",
+  "@matrixReasoningMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "tentsAndTreesMessage": "Has colocado correctamente todas las tiendas.",
+  "klotskiMessage": "¡Deslizamiento sensacional! Has liberado el bloque Héroe en {arg0} movimientos.",
+  "@klotskiMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sumPyramidMessage": "¡Has resuelto {arg0} pirámides de suma con éxito!",
+  "@sumPyramidMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "simonCommandMessage": "¡Excelente respuesta selectiva y concentración! Puntuación total: {arg0}",
+  "@simonCommandMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "simonCommandMessage1": "Has conseguido {arg0} pero no llegaste a {arg1} coincidencias a tiempo.",
+  "@simonCommandMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "syllableStackMessage": "¡Has acumulado una puntuación de {arg0}!",
+  "@syllableStackMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "slitherlinkMessage": "¡Impresionante! Has completado con éxito el puzzle de bucles.",
+  "quickMathMessage": "¡Has resuelto {arg0} problemas!",
+  "@quickMathMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "commonDenominatorMessage": "¡Has resuelto {arg0} problemas de MCD/MCM!",
+  "@commonDenominatorMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "chainReactionMessage": "Tu puntuación final es {arg0}. Has construido una cadena de {arg1} palabras.",
+  "@chainReactionMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "chainReactionText": "{arg0}",
+  "@chainReactionText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "associativePairsMessage": "¡Brillante! Has asociado los rasgos visuales sin fallos.",
+  "associativePairsMessage1": "¡Asociación incorrecta! Agudiza tu memoria de enlaces e inténtalo de nuevo.",
+  "portmanteauSplitMessage": "¡Has dividido {arg0} acrónimos!",
+  "@portmanteauSplitMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "magicSquaresText": "LIMPIAR",
+  "alphabetSudokuText": "Error: {arg0}",
+  "@alphabetSudokuText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "pipesMessage": "Has conectado todas las tuberías y llenado la cuadrícula.",
+  "dualMirrorMessage": "¡Has navegado ambos iconos hacia sus objetivos!",
+  "binaryCodeMessage": "¡Sensacional traducción decimal rápida! Puntuación final: {arg0}",
+  "@binaryCodeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "binaryCodeMessage1": "Has convertido correctamente {arg0} números binarios. Puntuación: {arg1}",
+  "@binaryCodeMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "oddOneOutMessage": "¡Has encontrado 50 intrusos! Puntuación final: {arg0}",
+  "@oddOneOutMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "oddOneOutMessage1": "Tu puntuación: {arg0}",
+  "@oddOneOutMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "letterBridgeMessage": "Has encontrado la letra puente: {arg0}",
+  "@letterBridgeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "imReady": "ESTOY LISTO"
 }

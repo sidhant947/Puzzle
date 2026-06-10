@@ -6,7 +6,6 @@ import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../core/juice/game_scaffold.dart';
-import 'target_10_engine.dart';
 import 'target_10_provider.dart';
 
 class Target10Screen extends ConsumerStatefulWidget {

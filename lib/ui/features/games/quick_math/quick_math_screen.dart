@@ -24,7 +24,6 @@ class _QuickMathScreenState extends ConsumerState<QuickMathScreen> {
   }
 
   void _showGameOverDialog(int score) {
-    final l10n = AppLocalizations.of(context)!;
     bool won = score >= 5;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('quick_math');
@@ -241,7 +240,6 @@ class _PadKey extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     return SizedBox(
       width: width.clamp(0, 80),
       height: 60,

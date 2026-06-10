@@ -1,15 +1,21 @@
 {
   "@@locale": "ur",
   "appTitle": "پزل حب",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
   "home": "ہوم",
   "settings": "سیٹنگز",
   "playAgain": "دوبارہ کھیلیں",
+  "playNext": "اگلا کھیلیں",
   "seeCompleted": "جائزہ",
   "finish": "ختم کریں",
   "congrats": "مبارک ہو",
   "perfectGradient": "بہترین گریڈینٹ!",
   "wellDone": "بہت اچھے",
   "timeUp": "وقت ختم!",
+  "victory": "فتح!",
+  "gameWin": "بہت خوب!",
   "completed": "مکمل ہو گیا!",
   "score": "اسکور",
   "timeLeft": "وقت",
@@ -65,8 +71,32 @@
   "termsOfService": "سروس کی شرائط",
   "licenses": "لائسنس",
   "findWordSubtitle": "آپ کے پاس چھپے ہوئے {wordLength} حروف والے لفظ کو تلاش کرنے کے لیے {maxTries} کوششیں ہیں۔",
+  "@findWordSubtitle": {
+    "placeholders": {
+      "maxTries": {
+        "type": "int"
+      },
+      "wordLength": {
+        "type": "int"
+      }
+    }
+  },
   "wordFoundMessage": "لفظ کامیابی سے مل گیا: {word}",
+  "@wordFoundMessage": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
   "gameOverMessage": "لفظ یہ تھا: {word}",
+  "@gameOverMessage": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
   "gameOver": "گیم ختم",
   "crosswordTitle": "کراس ورڈ",
   "crosswordSubtitle": "فراہم کردہ اشاروں کی بنیاد پر گرڈ کو صحیح الفاظ کے ساتھ مکمل کریں۔",
@@ -76,7 +106,21 @@
   "radicalRootsGoalReached": "ہدف مکمل!",
   "radicalRootsTimeUp": "وقت ختم!",
   "radicalRootsScoreMessage": "آپ نے {score} جڑیں صحیح طریقے سے حساب کیں!",
+  "@radicalRootsScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "radicalRootsTryAgainMessage": "مشق جاری رکھیں! آپ نے {score} جڑیں حساب کیں۔",
+  "@radicalRootsTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "radicalRootsStart": "حساب شروع کریں",
   "radicalRootsDescription": "آپ کے پاس زیادہ سے زیادہ حل کرنے کے لیے 60 سیکنڈ ہیں۔",
   "radicalRootsBest": "بہترین",
@@ -86,7 +130,21 @@
   "romanArithmeticGoalReached": "سینچورین لیول!",
   "romanArithmeticTimeUp": "وقت ختم!",
   "romanArithmeticScoreMessage": "آپ نے {score} رومی مسائل حل کیے!",
+  "@romanArithmeticScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "romanArithmeticTryAgainMessage": "وینی، ویڈی، ویچی! آپ نے {score} مسائل حل کیے۔",
+  "@romanArithmeticTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "romanArithmeticStart": "مہم شروع کریں",
   "romanArithmeticDescription": "تبدیل کریں اور حل کریں۔ آپ کے پاس 60 سیکنڈ ہیں۔",
   "romanArithmeticBest": "بہترین",
@@ -116,6 +174,41 @@
   "nonogramTitle": "نونگرام",
   "nonogramSubtitle": "منطق کے اشاروں کا استعمال کرتے ہوئے چھپی ہوئی تصویر ظاہر کریں۔",
   "nonogramWin": "تصویر ظاہر ہو گئی!",
+  "magnetsTitle": "میگنےٹس",
+  "magnetsSubtitle": "پول کی گنتی کی بنیاد پر گرڈ میں میگنےٹس رکھیں۔",
+  "magnetsHowToPlay": "ڈومینو سائز کے کنٹینرز کو '+' اور '-' میگنےٹس سے بھریں یا انہیں خالی چھوڑ دیں۔ قطار اور کالم کے اشارے اس لائن میں ہر پول کی کل تعداد بتاتے ہیں۔ ایک جیسے پول عمودی یا افقی طور پر ایک دوسرے کے ساتھ نہیں ہو سکتے۔",
+  "magnetsWinTitle": "قطبیت متوازن!",
+  "magnetsWinMessage": "تمام میگنےٹس مکمل طور پر ترتیب دیئے گئے ہیں!",
+  "lighthousesTitle": "لائٹ ہاؤسز",
+  "lighthousesSubtitle": "لائٹ ہاؤس کے اشاروں کی بنیاد پر بحری جہاز رکھیں۔",
+  "lighthousesHowToPlay": "گرڈ میں 1x1 سائز کے بحری جہاز رکھیں۔ لائٹ ہاؤسز افقی اور عمودی طور پر نظر آنے والے جہازوں کی کل تعداد کی نشاندہی کرتے ہیں۔ بحری جہاز لائٹ ہاؤسز یا ایک دوسرے کو نہیں چھو سکتے، یہاں تک کہ ترچھی شکل میں بھی نہیں۔",
+  "lighthousesWinTitle": "سمندر محفوظ!",
+  "lighthousesWinMessage": "تمام لائٹ ہاؤسز جہازوں کی مکمل رہنمائی کر رہے ہیں!",
+  "dominosaTitle": "ڈومینوسا",
+  "dominosaSubtitle": "گرڈ میں تمام چھپے ہوئے ڈومینوز تلاش کریں۔",
+  "dominosaHowToPlay": "نمبروں کے گرڈ پر ڈومینوز کا ایک مکمل سیٹ اس طرح ترتیب دیں کہ ملحقہ نمبروں کا ہر جوڑا بالکل ایک ڈومینو سے ڈھکا ہوا ہو۔ نمبروں کا ہر جوڑا سیٹ میں صرف ایک بار ہوتا ہے۔",
+  "dominosaWinTitle": "ڈومینو ماسٹر!",
+  "dominosaWinMessage": "ہر ڈومینو مل گیا ہے اور رکھ دیا گیا ہے!",
+  "skyscrapersTitle": "سکائی سکریپرز",
+  "skyscrapersSubtitle": "گرڈ کو عمارتوں کی بلندیوں سے بھریں۔",
+  "skyscrapersHowToPlay": "گرڈ کو بلندیوں (1-N) سے بھریں تاکہ ہر قطار اور کالم میں ہر بلندی بالکل ایک بار ہو۔ کناروں پر موجود اشارے بتاتے ہیں کہ اس سمت سے کتنی عمارتیں نظر آ رہی ہیں، اونچی عمارتیں چھوٹی عمارتوں کو چھپا لیتی ہیں۔",
+  "skyscrapersWinTitle": "اسکائی لائن بحال!",
+  "skyscrapersWinMessage": "تمام عمارتیں مکمل طور پر اپنی جگہ پر ہیں!",
+  "nurikabeTitle": "نوریکابے",
+  "nurikabeSubtitle": "ایک جڑا ہوا سمندر اور الگ الگ جزیرے بنائیں۔",
+  "nurikabeHowToPlay": "ایک واحد جڑے ہوئے 'سمندر' (کوئی 2x2 بلاکس نہیں) بنانے کے لیے سیلز کو شیڈ کریں۔ بغیر شیڈ والے سیلز 'جزیرے' بناتے ہیں، جن میں سے ہر ایک میں بالکل ایک نمبر ہوتا ہے جو اس کے کل رقبے کی نمائندگی کرتا ہے۔",
+  "nurikabeWinTitle": "سمندر بہہ رہا ہے!",
+  "nurikabeWinMessage": "جزیرے الگ ہو گئے، سمندر جڑ گیا!",
+  "fillominoTitle": "فیلو مینو",
+  "fillominoSubtitle": "گرڈ کو مخصوص سائز کے پولی مینو میں تقسیم کریں۔",
+  "fillominoHowToPlay": "گرڈ کو پولی مینو میں تقسیم کریں تاکہ سائز N کا ہر پولی مینو اپنے تمام سیلز میں نمبر N رکھے۔ ایک ہی سائز کے پولی مینو عمودی یا افقی طور پر ایک دوسرے کے ساتھ نہیں ہو سکتے۔",
+  "fillominoWinTitle": "گرڈ تقسیم ہو گیا!",
+  "fillominoWinMessage": "منطق کے ساتھ مکمل طور پر ٹائل کیا گیا!",
+  "hitoriTitle": "ہٹوری",
+  "hitoriSubtitle": "ہر قطار اور کالم میں ڈپلیکیٹ نمبروں کو شیڈ کریں۔",
+  "hitoriHowToPlay": "سیلز کو شیڈ کریں تاکہ کوئی بھی نمبر کسی بھی قطار یا کالم میں ایک سے زیادہ بار نہ آئے۔ شیڈ شدہ سیلز ایک دوسرے کے ساتھ (عمودی یا افقی طور پر) نہیں ہو سکتے، اور تمام بغیر شیڈ والے سیلز کو ایک واحد جڑا ہوا گروپ بنانا چاہیے۔",
+  "hitoriWinTitle": "ہٹوری ماسٹر!",
+  "hitoriWinMessage": "آپ نے کامیابی سے تمام ڈپلیکیٹس کو حل کر لیا ہے!",
   "pathFinderTitle": "راستہ تلاش کرنے والا",
   "pathFinderSubtitle": "S سے E تک چھپا ہوا راستہ تلاش کریں۔",
   "pathFinderWin": "راستہ مل گیا!",
@@ -132,12 +225,26 @@
   "arithmeticChainWinMessage": "آپ کا ذہنی حساب تیز ہے!",
   "arithmeticChainLoseTitle": "دوبارہ کوشش کریں",
   "arithmeticChainLoseMessage": "صحیح جواب {answer} تھا۔",
+  "@arithmeticChainLoseMessage": {
+    "placeholders": {
+      "answer": {
+        "type": "String"
+      }
+    }
+  },
   "arithmeticChainStart": "شروع کریں",
   "arithmeticChainNext": "اگلا",
   "attentionalBlinkTitle": "توجہ کا جھپکنا",
   "attentionalBlinkSubtitleWatch": "نمبروں پر نظر رکھیں",
   "attentionalBlinkSubtitleInput": "وہ دو نمبر درج کریں جو آپ نے دیکھے",
   "attentionalBlinkScoreMessage": "آپ نے {score} اہداف حاصل کیے!",
+  "@attentionalBlinkScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "balanceScaleTitle": "ترازو",
   "balanceScaleSubtitle": "ترازو کی بنیاد پر آخری چیز کے وزن کا اندازہ لگائیں۔",
   "balanceScaleWinTitle": "متوازن!",
@@ -157,6 +264,16 @@
   "boxCompletionTitle": "باکس کی تکمیل",
   "boxCompletionSubtitle": "کون سا مکعب بن سکتا ہے؟",
   "boxCompletionScoreMessage": "آپ نے {totalTrials} میں سے {score} صحیح کیے!",
+  "@boxCompletionScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "totalTrials": {
+        "type": "int"
+      }
+    }
+  },
   "boxCompletionOptions": "آپشنز",
   "bridgesTitle": "پل",
   "bridgesSubtitle": "جزیروں کو پلوں سے جوڑیں۔ ہر جزیرے کو پلوں کی ایک خاص تعداد کی ضرورت ہوتی ہے۔ پل ایک دوسرے کو کراس نہیں کر سکتے۔",
@@ -167,7 +284,21 @@
   "calculationSprintGoalReached": "ہدف حاصل کر لیا!",
   "calculationSprintTimeUp": "وقت ختم ہو گیا",
   "calculationSprintScoreMessage": "بہترین حساب کی رفتار! آپ نے {score} پوائنٹس حاصل کیے۔",
+  "@calculationSprintScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "calculationSprintTryAgainMessage": "آپ نے {score} پوائنٹس حاصل کیے۔ اپنے بہترین اسکور کو توڑنے کی کوشش کریں!",
+  "@calculationSprintTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "calculationSprintBest": "بہترین",
   "calculationSprintSeconds": "60 سیکنڈ",
   "calculationSprintDescription": "تیزی سے مساواتیں حل کریں۔\nغلط جواب پر 3 سیکنڈ کاٹ دیے جائیں گے!",
@@ -178,20 +309,82 @@
   "categoryFluencyTimeUp": "وقت ختم!",
   "categoryFluencyWinMessage": "آپ کا ذخیرہ الفاظ وسیع ہے!",
   "categoryFluencyFoundMessage": "آپ نے {count} الفاظ تلاش کیے۔",
+  "@categoryFluencyFoundMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "categoryFluencyCategoryLabel": "زمرہ:",
   "categoryFluencyEnterItem": "کوئی چیز درج کریں...",
   "categoryFluencyWordCount": "{entered} / {target} الفاظ",
+  "@categoryFluencyWordCount": {
+    "placeholders": {
+      "entered": {
+        "type": "int"
+      },
+      "target": {
+        "type": "int"
+      }
+    }
+  },
   "changeBlindnessTitle": "تبدیلی سے لاعلمی",
   "changeBlindnessSubtitle": "تبدیل ہونے والی چیز کو پہچانیں",
   "changeBlindnessScore": "اسکور: {score}",
+  "@changeBlindnessScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "changeBlindnessFoundMessage": "آپ نے {score} تبدیلیاں تلاش کیں!",
+  "@changeBlindnessFoundMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "choiceRtTitle": "انتخاب کا ردعمل",
   "choiceRtSubtitle": "فعال مربع پر جتنی جلدی ہو سکے ٹیپ کریں",
   "choiceRtAvgMessage": "آپ کا اوسط ردعمل وقت: {avg}ms",
+  "@choiceRtAvgMessage": {
+    "placeholders": {
+      "avg": {
+        "type": "String"
+      }
+    }
+  },
   "choiceRtTimeRemaining": "باقی وقت: {time}s",
+  "@choiceRtTimeRemaining": {
+    "placeholders": {
+      "time": {
+        "type": "int"
+      }
+    }
+  },
   "choiceRtTaps": "ٹیپس: {count}",
+  "@choiceRtTaps": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "colorFloodTitle": "رنگوں کا سیلاب",
   "colorFloodSubtitle": "چالیں: {moves} / {maxMoves}",
+  "@colorFloodSubtitle": {
+    "placeholders": {
+      "moves": {
+        "type": "int"
+      },
+      "maxMoves": {
+        "type": "int"
+      }
+    }
+  },
   "colorFloodSuccess": "سیلاب کامیاب!",
   "colorFloodDryLand": "خشک زمین...",
   "colorFloodWinMessage": "آپ نے پورے گرڈ کو رنگ سے بھر دیا!",
@@ -203,11 +396,28 @@
   "colorMatchCheck": "میچ چیک کریں",
   "colorMatchResult": "میچ کا نتیجہ",
   "colorMatchAccuracy": "آپ کی درستگی: {accuracy}%",
+  "@colorMatchAccuracy": {
+    "placeholders": {
+      "accuracy": {
+        "type": "String"
+      }
+    }
+  },
   "corsiBlocksTitle": "کورسی بلاکس",
   "corsiBlocksSubtitle": "بلاکس کو روشن ہوتے دیکھیں اور انہیں اسی ترتیب میں ٹیپ کریں۔",
   "corsiBlocksWinTitle": "مکانی ماہر!",
   "corsiBlocksLoseTitle": "خلا میں گم",
   "corsiBlocksMessage": "آپ نے {score} ترتیبیں یاد کیں! آپ کی مکانی یادداشت کی حد {span} تک پہنچ گئی۔",
+  "@corsiBlocksMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "span": {
+        "type": "int"
+      }
+    }
+  },
   "corsiBlocksWatch": "پیٹرن دیکھیں",
   "corsiBlocksRepeat": "پیٹرن دہرائیں",
   "corsiBlocksExcellent": "بہترین!",
@@ -229,16 +439,58 @@
   "digitSpanReverseWinMessage": "آپ کی کام کرنے والی یادداشت متاثر کن ہے!",
   "digitSpanReverseLoseTitle": "دوبارہ کوشش کریں",
   "digitSpanReverseLoseMessage": "صحیح الٹی ترتیب {sequence} تھی۔",
+  "@digitSpanReverseLoseMessage": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
   "dividedAttentionTitle": "تقسیم شدہ توجہ",
   "dividedAttentionSubtitle": "ستارے ⭐ کے لیے بائیں ٹیپ کریں | سرخ 🔴 کے لیے دائیں ٹیپ کریں",
   "dividedAttentionGameOverTitle": "توجہ ٹوٹ گئی",
   "dividedAttentionGameOverMessage": "ملٹی ٹاسکنگ مشکل ہے! آپ کا اسکور {score} تھا۔",
+  "@dividedAttentionGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "dividedAttentionScore": "اسکور: {score}",
+  "@dividedAttentionScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackTitle": "ڈبل N-Back",
   "doubleNBackSubtitle": "محرکات کو {n} قدم پیچھے میچ کریں",
+  "@doubleNBackSubtitle": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackGameOverTitle": "گیم ختم",
   "doubleNBackGameOverMessage": "آپ نے ڈبل N-Back میں {score} پوائنٹس حاصل کیے!",
+  "@doubleNBackGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackScore": "اسکور: {score}",
+  "@doubleNBackScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackPositionMatch": "پوزیشن میچ",
   "doubleNBackLetterMatch": "حرف میچ",
   "faceNameAssociationTitle": "چہرہ اور نام",
@@ -248,10 +500,27 @@
   "faceNameAssociationGameOver": "گیم ختم",
   "faceNameAssociationWinMessage": "آپ کے پاس چہروں اور ناموں کو یاد رکھنے کی بہترین یادداشت ہے!",
   "faceNameAssociationLoseMessage": "آپ نے {total} میں سے {correct} صحیح کیے۔",
+  "@faceNameAssociationLoseMessage": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "faceNameAssociationStartTest": "ٹیسٹ شروع کریں",
   "flankerTestWinTitle": "لیزر فوکس!",
   "flankerTestLoseTitle": "توجہ ہٹ گئی",
   "flankerTestScoreMessage": "آپ نے {score} صحیح اسکور کیے!",
+  "@flankerTestScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "flankerTestTitle": "فلینکر ٹیسٹ",
   "flankerTestSubtitle": "درمیان والے تیر کی سمت بتائیں، بغلی تیروں کو نظر انداز کرتے ہوئے۔",
   "flankerTestLeft": "بائیں",
@@ -260,6 +529,13 @@
   "fractionMatchSubtitle": "تصویر کو اس کی کسر سے میچ کریں",
   "fractionMatchLoseTitle": "کسر کا غلط میچ",
   "fractionMatchLoseMessage": "صحیح جواب {correctAnswer} تھا۔",
+  "@fractionMatchLoseMessage": {
+    "placeholders": {
+      "correctAnswer": {
+        "type": "String"
+      }
+    }
+  },
   "goNoGoTitle": "جاؤ / نہ جاؤ",
   "goNoGoSubtitle": "سبز کے لیے ٹیپ کریں، سرخ کو نظر انداز کریں!",
   "goNoGoLoseTitle": "ردعمل رک گیا",
@@ -271,6 +547,13 @@
   "groceryListWinTitle": "گراسری گرو!",
   "groceryListLoseTitle": "کچھ بھول گئے؟",
   "groceryListScoreMessage": "آپ نے گراسری لسٹ میں {score} پوائنٹس حاصل کیے!",
+  "@groceryListScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "groceryListReady": "میں تیار ہوں",
   "groceryListWhereBelong": "یہ کہاں سے تعلق رکھتا ہے؟",
   "hueSortTitle": "رنگوں کی ترتیب",
@@ -278,16 +561,44 @@
   "hueSortWinTitle": "بہترین گریڈینٹ!",
   "hueSortWinMessage": "آپ نے رنگوں کے طیف کو بہترین طریقے سے ترتیب دیا!",
   "hueSortWrongTiles": "غلط پوزیشن پر ٹائلیں: {count}",
+  "@hueSortWrongTiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "kenkenTitle": "کین کین",
   "kenkenWinTitle": "ذہین!",
   "kenkenLoseTitle": "گیم ختم",
   "kenkenWinMessage": "آپ نے کین کین پزل حل کر لیا!",
   "kenkenLoseMessage": "قطار/کالم اور کیج کے اصول چیک کریں۔",
   "kenkenSubtitle": "قطاروں/کالموں میں دہرائے بغیر 1-{size} بھریں",
+  "@kenkenSubtitle": {
+    "placeholders": {
+      "size": {
+        "type": "int"
+      }
+    }
+  },
   "letterCancellationTitle": "حرف منسوخی",
   "letterCancellationTitleFull": "حروف کی منسوخی",
   "letterCancellationScoreMessage": "آپ کو {score} حروف ملے!",
+  "@letterCancellationScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "letterCancellationSubtitle": "تمام \"{target}\" حروف تلاش کریں",
+  "@letterCancellationSubtitle": {
+    "placeholders": {
+      "target": {
+        "type": "String"
+      }
+    }
+  },
   "letterCancellationFound": "مل گئے",
   "letterCancellationTime": "وقت",
   "lightsOutTitle": "لائٹس آؤٹ",
@@ -326,6 +637,13 @@
   "sternbergTaskMemorize": "حروف کو یاد کریں",
   "sternbergTaskWasLetterSet": "کیا یہ حرف سیٹ میں تھا؟",
   "sternbergTaskScore": "آپ نے سٹرنبرگ ٹاسک میں {score} پوائنٹس حاصل کیے!",
+  "@sternbergTaskScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "verbalAnalogiesTitle": "تمثیل کے ماہر!",
   "verbalAnalogiesSubtitle": "تعلق کو مکمل کریں",
   "typingSpeedTitle": "ٹائپنگ کی رفتار",
@@ -351,6 +669,13 @@
   "pixelMimicTitle": "پکسل میمک",
   "targetNumberTitle": "ٹارگٹ 24",
   "targetNumberSubtitle": "{target} تک پہنچنے کے لیے تمام 4 نمبر استعمال کریں",
+  "@targetNumberSubtitle": {
+    "placeholders": {
+      "target": {
+        "type": "int"
+      }
+    }
+  },
   "mirrorTracingTitle": "بہترین ٹریسنگ!",
   "mirrorTracingSubtitle": "ستارے کو ٹریس کریں! کنٹرولز عکس میں ہیں۔",
   "wordSurgeTitle": "لفظوں کی لہر",
@@ -360,6 +685,13 @@
   "perspectiveTakingChoosePerspective": "نقطہ نظر کا انتخاب کریں",
   "perspectiveTakingCongrats": "آپ کی مکانی تعلقات پر گہری نظر ہے۔",
   "perspectiveTakingSubtitle": "کون سا منظر {targetDirName} سے ہے؟",
+  "@perspectiveTakingSubtitle": {
+    "placeholders": {
+      "targetDirName": {
+        "type": "String"
+      }
+    }
+  },
   "paperFoldingTitle": "کھلی ہوئی کمال!",
   "paperFoldingSubtitle": "کھولنے پر یہ کیسا لگے گا؟",
   "waterSortTitle": "بہت اچھے!",
@@ -395,6 +727,13 @@
   "operationSpanRecallPhase": "حروف کو ترتیب سے یاد کریں",
   "operationSpanRoundComplete": "راؤنڈ مکمل!",
   "operationSpanScore": "آپ نے آپریشن سپین میں {score} پوائنٹس حاصل کیے!",
+  "@operationSpanScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "slidePuzzleTitle": "سلائیڈ پزل",
   "slidePuzzleNewGame": "نیا گیم",
   "slidePuzzleInstructions": "ٹائلوں کو خالی جگہ میں سلائیڈ کر کے عددی ترتیب میں ترتیب دیں۔",
@@ -411,6 +750,13 @@
   "quickMathTitle": "تیز ریاضی",
   "magicSquaresTitle": "جادوئی مربع",
   "magicSquaresSubtitle": "ہر قطار، کالم اور ترچھی لکیر کا مجموعہ {targetSum} ہونا چاہیے",
+  "@magicSquaresSubtitle": {
+    "placeholders": {
+      "targetSum": {
+        "type": "int"
+      }
+    }
+  },
   "objectShuffleTitle": "چیزوں کا الٹ پلٹ",
   "pipesTitle": "پائپ",
   "pipesSubtitle": "میچنگ رنگین نقطوں کو پائپوں سے جوڑیں۔",
@@ -446,6 +792,8 @@
   "vocabularyBuilderTitle": "ذخیرہ الفاظ بنانے والا",
   "vocabularyBuilderSubtitle": "وقت کے دباؤ میں مترادفات اور متضاد الفاظ میچ کریں۔",
   "vocabularyBuilderHowToPlay": "آپ کو ایک ٹارگٹ لفظ اور ایک تعلق (مترادف یا متضاد) دکھایا جائے گا۔ اختیارات میں سے وہ صحیح لفظ منتخب کریں جو تعلق سے میچ کرتا ہو۔ جلدی کریں، وقت گزر رہا ہے!",
+  "correct": "درست",
+  "incorrect": "غلط",
   "grammarPoliceTitle": "گرامر پولیس",
   "grammarPoliceSubtitle": "شناخت کریں کہ آیا جملہ گرامر کے لحاظ سے درست ہے یا اس میں غلطیاں ہیں۔",
   "grammarPoliceHowToPlay": "اسکرین کے بیچ میں ایک جملہ ظاہر ہوگا۔ فیصلہ کریں کہ کیا یہ گرامر کے لحاظ سے درست ہے یا اس میں کوئی غلطی ہے۔ اگر یہ ٹھیک ہے تو 'درست' پر ٹیپ کریں، یا اگر آپ کو کوئی غلطی نظر آتی ہے تو 'غلط' پر ٹیپ کریں. اپنی تمام زندگیوں کو نہ کھوئیں!",
@@ -490,6 +838,13 @@
   "blockCount3DNotQuite": "بالکل نہیں! دوبارہ گننے کے لیے گھمائیں۔",
   "blockCount3DExcellent": "بہترین",
   "blockCount3DWinMessage": "آپ نے تمام {count} بلاکس کی صحیح شناخت کی!",
+  "@blockCount3DWinMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "blockCount3DHowToPlayDescription": "1. بلاک اسٹیک کو گھمانے کے لیے 3D ویو پورٹ پر انگلی گھسیٹیں۔\n\n2. اسٹیک میں موجود تمام بلاکس گنیں۔\n\n3. یاد رکھیں: ہوا میں موجود بلاک کے نیچے سپورٹ بلاکس ہونے چاہئیں (چھپے ہوئے بلاکس!)۔\n\n4. ان پٹ فیلڈ میں اپنا جواب ٹائپ کریں اور چیک کرنے کے لیے \"اندازہ جمع کریں\" پر ٹیپ کریں۔",
   "alphabetSudokuTitle": "حروف تہجی کا سوڈوکو",
   "alphabetSudokuSubtitle": "گرڈ کو بھریں تاکہ ہر قطار، کالم اور باکس میں A-I تک حروف ہوں۔",
@@ -499,6 +854,13 @@
   "classicMazeSubtitle": "تلاش کریں اور حل کریں • ہر گیم میں نئی بھول بھلیاں",
   "classicMazeWinTitle": "بھول بھلیاں صاف ہو گئیں",
   "classicMazeWinMessage": "بہترین نیویگیشن! آپ نے {count} چالوں میں بھول بھلیاں حل کر لیں۔",
+  "@classicMazeWinMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "classicMazeMoves": "چالیں: ",
   "classicMazeHowToPlayDescription": "1. چمکتے ہوئے پیلے ماربل (کھلاڑی) کو نیچے دائیں طرف سبز پورٹل (باہر نکلنے کا راستہ) تک لے جائیں۔\n\n2. حرکت کرنے کے لیے بھول بھلیوں پر سوائپ، فزیکل کی بورڈ کے تیروں، یا نیچے دیے گئے تیر والے بٹنوں کا استعمال کریں۔\n\n3. جامنی رنگ کا نشان وہ راستہ دکھاتا ہے جو آپ نے تلاش کیا ہے۔ اپنے تلاش کردہ راستے پر واپس جا کر اسے مٹا دیں!\n\n4. بڑی بھول بھلیوں کے ساتھ خود کو چیلنج کرنے کے لیے اوپر والے ایکشن بار سے مشکل کی سطح تبدیل کریں!",
   "conjunctionSearchTitle": "کنجنکشن تلاش",
@@ -529,52 +891,910 @@
   "cubeNetFoldFailed": "ناکام (RESET ٹیپ کریں)",
   "faceTraitAssociationMemorize": "تمام 4 لوگوں کو یاد کریں",
   "faceTraitAssociationPersonOf": "شخص {current} از {total}",
+  "@faceTraitAssociationPersonOf": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "faceTraitAssociationWhatOccupation": "ان کا پیشہ کیا ہے؟",
   "faceTraitAssociationWhatHobby": "ان کا مشغلہ کیا ہے؟",
   "faceTraitAssociationWinTitle": "میموری ماسٹر!",
   "faceTraitAssociationLoseTitle": "گیم ختم",
   "faceTraitAssociationScoreMessage": "آپ نے {total} میں سے {correct} صحیح کیے۔",
+  "@faceTraitAssociationScoreMessage": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "topologyTitle": "ٹوپولوجی",
   "topologySubtitle": "کیا یہ شکلیں ٹوپولوجیکل طور پر برابر ہیں؟ (کیا ایک کو کاٹے یا جوڑے بغیر دوسرے میں بدلا جا سکتا ہے؟)",
   "topologyWinTitle": "جیومیٹری کے ماہر!",
   "topologyWinMessage": "آپ نے 10 ٹوپولوجیکل جوڑوں کی صحیح شناخت کی!",
   "topologyScore": "اسکور: ",
-  "playNext": "اگلا کھیلیں",
-  "correct": "درست",
-  "incorrect": "غلط",
-  "magnetsTitle": "میگنےٹس",
-  "magnetsSubtitle": "پول کی گنتی کی بنیاد پر گرڈ میں میگنےٹس رکھیں۔",
-  "magnetsHowToPlay": "ڈومینو سائز کے کنٹینرز کو '+' اور '-' میگنےٹس سے بھریں یا انہیں خالی چھوڑ دیں۔ قطار اور کالم کے اشارے اس لائن میں ہر پول کی کل تعداد بتاتے ہیں۔ ایک جیسے پول عمودی یا افقی طور پر ایک دوسرے کے ساتھ نہیں ہو سکتے۔",
-  "magnetsWinTitle": "قطبیت متوازن!",
-  "magnetsWinMessage": "تمام میگنےٹس مکمل طور پر ترتیب دیئے گئے ہیں!",
-  "lighthousesTitle": "لائٹ ہاؤسز",
-  "lighthousesSubtitle": "لائٹ ہاؤس کے اشاروں کی بنیاد پر بحری جہاز رکھیں۔",
-  "lighthousesHowToPlay": "گرڈ میں 1x1 سائز کے بحری جہاز رکھیں۔ لائٹ ہاؤسز افقی اور عمودی طور پر نظر آنے والے جہازوں کی کل تعداد کی نشاندہی کرتے ہیں۔ بحری جہاز لائٹ ہاؤسز یا ایک دوسرے کو نہیں چھو سکتے، یہاں تک کہ ترچھی شکل میں بھی نہیں۔",
-  "lighthousesWinTitle": "سمندر محفوظ!",
-  "lighthousesWinMessage": "تمام لائٹ ہاؤسز جہازوں کی مکمل رہنمائی کر رہے ہیں!",
-  "dominosaTitle": "ڈومینوسا",
-  "dominosaSubtitle": "گرڈ میں تمام چھپے ہوئے ڈومینوز تلاش کریں۔",
-  "dominosaHowToPlay": "نمبروں کے گرڈ پر ڈومینوز کا ایک مکمل سیٹ اس طرح ترتیب دیں کہ ملحقہ نمبروں کا ہر جوڑا بالکل ایک ڈومینو سے ڈھکا ہوا ہو۔ نمبروں کا ہر جوڑا سیٹ میں صرف ایک بار ہوتا ہے۔",
-  "dominosaWinTitle": "ڈومینو ماسٹر!",
-  "dominosaWinMessage": "ہر ڈومینو مل گیا ہے اور رکھ دیا گیا ہے!",
-  "skyscrapersTitle": "سکائی سکریپرز",
-  "skyscrapersSubtitle": "گرڈ کو عمارتوں کی بلندیوں سے بھریں۔",
-  "skyscrapersHowToPlay": "گرڈ کو بلندیوں (1-N) سے بھریں تاکہ ہر قطار اور کالم میں ہر بلندی بالکل ایک بار ہو۔ کناروں پر موجود اشارے بتاتے ہیں کہ اس سمت سے کتنی عمارتیں نظر آ رہی ہیں، اونچی عمارتیں چھوٹی عمارتوں کو چھپا لیتی ہیں۔",
-  "skyscrapersWinTitle": "اسکائی لائن بحال!",
-  "skyscrapersWinMessage": "تمام عمارتیں مکمل طور پر اپنی جگہ پر ہیں!",
-  "nurikabeTitle": "نوریکابے",
-  "nurikabeSubtitle": "ایک جڑا ہوا سمندر اور الگ الگ جزیرے بنائیں۔",
-  "nurikabeHowToPlay": "ایک واحد جڑے ہوئے 'سمندر' (کوئی 2x2 بلاکس نہیں) بنانے کے لیے سیلز کو شیڈ کریں۔ بغیر شیڈ والے سیلز 'جزیرے' بناتے ہیں، جن میں سے ہر ایک میں بالکل ایک نمبر ہوتا ہے جو اس کے کل رقبے کی نمائندگی کرتا ہے۔",
-  "nurikabeWinTitle": "سمندر بہہ رہا ہے!",
-  "nurikabeWinMessage": "جزیرے الگ ہو گئے، سمندر جڑ گیا!",
-  "fillominoTitle": "فیلو مینو",
-  "fillominoSubtitle": "گرڈ کو مخصوص سائز کے پولی مینو میں تقسیم کریں۔",
-  "fillominoHowToPlay": "گرڈ کو پولی مینو میں تقسیم کریں تاکہ سائز N کا ہر پولی مینو اپنے تمام سیلز میں نمبر N رکھے۔ ایک ہی سائز کے پولی مینو عمودی یا افقی طور پر ایک دوسرے کے ساتھ نہیں ہو سکتے۔",
-  "fillominoWinTitle": "گرڈ تقسیم ہو گیا!",
-  "fillominoWinMessage": "منطق کے ساتھ مکمل طور پر ٹائل کیا گیا!",
-  "hitoriTitle": "ہٹوری",
-  "hitoriSubtitle": "ہر قطار اور کالم میں ڈپلیکیٹ نمبروں کو شیڈ کریں۔",
-  "hitoriHowToPlay": "سیلز کو شیڈ کریں تاکہ کوئی بھی نمبر کسی بھی قطار یا کالم میں ایک سے زیادہ بار نہ آئے۔ شیڈ شدہ سیلز ایک دوسرے کے ساتھ (عمودی یا افقی طور پر) نہیں ہو سکتے، اور تمام بغیر شیڈ والے سیلز کو ایک واحد جڑا ہوا گروپ بنانا چاہیے۔",
-  "hitoriWinTitle": "ہٹوری ماسٹر!",
-  "hitoriWinMessage": "آپ نے کامیابی سے تمام ڈپلیکیٹس کو حل کر لیا ہے!"
+  "semanticDistanceTitle": "معنوی فاصلہ",
+  "semanticDistanceSubtitle": "الفاظ کے درمیان تصوراتی فاصلے کی پیمائش کریں",
+  "oxymoronHuntTitle": "متضاد الفاظ کی تلاش",
+  "oxymoronHuntSubtitle": "گرڈ میں متضاد الفاظ کے جوڑے بنائیں",
+  "portmanteauSplitTitle": "مرکب الفاظ کی تقسیم",
+  "portmanteauSplitSubtitle": "مرکب لفظ کے ماخذ الفاظ کی شناخت کریں",
+  "chainReactionTitle": "سلسلہ وار ردعمل",
+  "chainReactionSubtitle": "اوورلیپنگ حروف کا استعمال کرتے ہوئے الفاظ کو جوڑیں",
+  "rhymeMasterTitle": "ہم قافیہ ماسٹر",
+  "rhymeMasterSubtitle": "ہدف کے ساتھ ہم قافیہ الفاظ کی شناخت کریں",
+  "definitionDashTitle": "تعریف کی دوڑ",
+  "definitionDashSubtitle": "صحیح لفظ کو اس کی تعریف کے ساتھ ملائیں",
+  "syllableStackTitle": "ہجوں کا ڈھیر",
+  "syllableStackSubtitle": "مکمل الفاظ بنانے کے لئے ہجوں کو جوڑیں",
+  "sentenceUnscrambleTitle": "جملہ درست کریں",
+  "sentenceUnscrambleSubtitle": "ایک درست جملہ بنانے کے لیے الفاظ کی ترتیب درست کریں",
+  "grammarSortTitle": "گرامر کی درجہ بندی",
+  "grammarSortSubtitle": "الفاظ کو ان کے اجزائے کلام کے لحاظ سے درجہ بندی کریں",
+  "vowelReconstructTitle": "حروف علت کی تشکیل نو",
+  "vowelReconstructSubtitle": "جملے میں غائب حروف علت بھریں",
+  "consonantReconstructTitle": "حروف صحیح کی تشکیل نو",
+  "consonantReconstructSubtitle": "جملے میں غائب حروف صحیح بھریں",
+  "homophoneHuntTitle": "ہم آواز الفاظ کی تلاش",
+  "homophone_huntSubtitle": "صحیح ہجے والے ہم آواز لفظ کا انتخاب کریں",
+  "silentLetterSearchTitle": "خاموش حروف کی تلاش",
+  "silentLetterSearchSubtitle": "دیے گئے الفاظ میں خاموش حروف کی شناخت کریں",
+  "palindromeBuilderTitle": "پیلنڈروم بلڈر",
+  "palindromeBuilderSubtitle": "کم از کم حروف کا اضافہ کر کے پیلنڈروم بنائیں",
+  "phoneticGuessTitle": "صوتی اندازہ",
+  "phoneticGuessSubtitle": "اس کے صوتی ہجے سے لفظ کی شناخت کریں",
+  "spoonerismSolverTitle": "سپونرزم حل کرنے والا",
+  "spoonerismSolverSubtitle": "فقرے کے لیے صحیح سپونرزم کی شناخت کریں",
+  "etymonOddballTitle": "مختلف ماخذ کا لفظ",
+  "etymonOddballSubtitle": "وہ لفظ تلاش کریں جس کی جڑ ایک جیسی نہیں ہے",
+  "etymologyOriginTitle": "ماخذ کی زبان",
+  "etymologyOriginSubtitle": "مستعار لفظ کی اصل زبان کا اندازہ لگائیں",
+  "affixFactoryTitle": "سابقے اور لاحقے کی فیکٹری",
+  "affixFactorySubtitle": "سابقے اور لاحقے استعمال کر کے درست الفاظ بنائیں",
+  "cognateCatchTitle": "ہم اصل الفاظ کی پہچان",
+  "cognateCatchSubtitle": "حقیقی ہم اصل اور غلط دوست الفاظ کے درمیان فرق کریں",
+  "compoundConnectTitle": "مرکب جوڑ",
+  "compoundConnectSubtitle": "دو الفاظ کو ملا کر ایک مرکب لفظ بنائیں",
+  "pangramSprintTitle": "پینگرام دوڑ",
+  "pangramSprintSubtitle": "حروف تہجی کے ہر حرف کا استعمال کرتے ہوئے ایک جملہ بنائیں",
+  "anagramDefinitionTitle": "ایناگرام کی تعریف",
+  "anagramDefinitionSubtitle": "اس کی تعریف کی بنیاد پر ایناگرام کو حل کریں",
+  "letterBridgeTitle": "حروف کا پل",
+  "letterBridgeSubtitle": "غائب حرف تلاش کریں جو دو الفاظ کو جوڑتا ہے",
+  "letterFrequencyScanTitle": "حروف کی فریکوئنسی کا اسکین",
+  "letterFrequencyScanSubtitle": "شمار کریں کہ ایک حرف متن میں کتنی بار ظاہر ہوتا ہے",
+  "oneLetterShiftTitle": "ایک حرف کی تبدیلی",
+  "oneLetterShiftSubtitle": "ایک حرف کی تبدیلی کے ساتھ ایک لفظ کو دوسرے میں تبدیل کریں",
+  "vocabularyBuilderMessage": "بہت خوب! آپ کی ذخیرہ الفاظ متاثر کن ہے۔ اسکور: {arg0}",
+  "@vocabularyBuilderMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "symmetryMessage": "آپ نے جراحی کی درستگی کے ساتھ پیٹرن کی بالکل صحیح عکس بندی کی۔",
+  "temporalOrderMessage": "ناقابل یقین! آپ کی وقتی ترتیب کی یادداشت بہت اعلیٰ ہے۔",
+  "temporalOrderMessage1": "غلط ترتیب کی یادداشت۔ مشق انسان کو کامل بناتی ہے!",
+  "wordSearchMessage": "گہری مشاہدے کے ساتھ تمام الفاظ کامیابی سے مل گئے۔",
+  "colorMatchMessage": "آپ کی درستگی: {arg0}%",
+  "@colorMatchMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "semanticLinkMessage": "آپ نے {arg0} پوائنٹس حاصل کیے!",
+  "@semanticLinkMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "reflexTapMessage": "آپ نے {arg0} اہداف کو ٹیپ کیا!",
+  "@reflexTapMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "angleFinderMessage": "آپ کی ہندسی بصیرت کامل ہے!",
+  "angleFinderMessage1": "درست جواب {arg0}° تھا۔",
+  "@angleFinderMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "angleFinderText": "{arg0}°",
+  "@angleFinderText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "visualStatisticalLearningMessage": "آپ نے {arg0} درست پیٹرن حاصل کیے!",
+  "@visualStatisticalLearningMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "nonogramText": "خرابی: {arg0}",
+  "@nonogramText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "mentalCalendarMessage": "آپ نے 10 میں سے {arg0} درست کیے!",
+  "@mentalCalendarMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "orbitTapMessage": "آپ نے کامیابی کے ساتھ {arg0} بار ٹیپ کیا!",
+  "@orbitTapMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "schulteTableMessage": "آپ نے {arg0} میں ٹیبل مکمل کیا۔\\nاپنی محیطی بصارت کو بڑھانے کے لیے مشق جاری رکھیں!",
+  "@schulteTableMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "schulteTableText": "ٹیسٹ شروع کریں",
+  "relationalMemoryMessage": "شاندار مقامی تعلقات کی یادداشت کی درستگی!",
+  "sudokuText": "خرابی: {arg0}",
+  "@sudokuText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sdmtMessage": "آپ نے {arg0} علامتوں کو ملایا! یہ ٹیسٹ آپ کی اسکیننگ کی رفتار اور بصری توجہ کی پیمائش کرتا ہے۔",
+  "@sdmtMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "futoshikiMessage": "ناقابل یقین! آپ نے Futoshiki لاطینی مربع حل کر لیا۔",
+  "letterFrequencyScanMessage": "آپ نے \"{arg1}\" کی {arg0} موجودگیوں کو صحیح طریقے سے شمار کیا۔",
+  "@letterFrequencyScanMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "letterFrequencyScanText": "غلط۔ گنتی {arg0} تھی۔",
+  "@letterFrequencyScanText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "memoryMatrixMessage": "متاثر کن! آپ کی کام کرنے کی یادداشت تیز ہے۔ روزانہ کا ہدف مکمل!",
+  "memoryMatrixMessage1": "توجہ مرکوز کریں اور اپنی یادداشت کا اسکور بہتر بنانے کے لیے دوبارہ کوشش کریں۔",
+  "contextCluesMessage": "غیر معمولی! آپ کی ذخیرہ الفاظ اور سیاق و سباق کا تجزیہ اعلیٰ درجے کا ہے۔",
+  "contextCluesMessage1": "غلط لفظ کا انتخاب کیا گیا! اپنے زبانی سیاق و سباق کے استدلال کی تربیت کریں اور دوبارہ کوشش کریں۔",
+  "oneLetterShiftMessage": "آپ نے صحیح طریقے سے {arg0} کو {arg1} میں تبدیل کیا۔",
+  "@oneLetterShiftMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "mentalAbacusMessage": "آپ کا ذہنی حساب کتاب اعلیٰ درجے کا ہے۔",
+  "fractionMatcherMessage": "آپ نے نمائندگیوں کو ملا کر {arg0} پوائنٹس حاصل کیے!",
+  "@fractionMatcherMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spellingSprintMessage": "آپ نے تمام 10 الفاظ کے ہجے صحیح کیے!",
+  "spellingSprintMessage1": "آپ نے {arg0} الفاظ کے ہجے کیے۔",
+  "@spellingSprintMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "stopSignalMessage": "آپ نے {arg0} درست جوابات حاصل کیے! یہ ٹیسٹ کسی منصوبہ بند کارروائی کو روکنے کی آپ کی صلاحیت کو ماپتا ہے۔",
+  "@stopSignalMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "grammarPoliceMessage": "گیم اوور! آپ نے گرامر کی دنیا میں نظم برقرار رکھا۔ اسکور: {arg0}",
+  "@grammarPoliceMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "consonantReconstructMessage": "آپ نے {arg0} کا اسکور دوبارہ تشکیل دیا!",
+  "@consonantReconstructMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "rhymeMasterMessage": "آپ کو {arg1} میں سے {arg0} ہم قافیہ الفاظ ملے!",
+  "@rhymeMasterMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "vigilanceTaskMessage": "نشانہ لگے: {arg0}، چوک گئے: {arg1}\\nغلط الارم: {arg2}",
+  "@vigilanceTaskMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "silhouetteMatchOrthoMessage": "آپ کے پاس بے عیب آرتھوگرافک سیدھ کی مہارت ہے!",
+  "silhouetteMatchOrthoText": "سمجھ گیا",
+  "silhouetteMatchOrthoText1": "غلط نقطہ نظر پروجیکشن! دوبارہ کوشش کرنے کے لیے ری سیٹ پر ٹیپ کریں۔",
+  "fibonacciMergeMessage": "{arg0}: {arg1}",
+  "@fibonacciMergeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "factorFinderMessage": "آپ نے تمام عوامل تلاش کر کے {arg0} پوائنٹس حاصل کیے!",
+  "@factorFinderMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "logicalSyllogismsMessage": "آپ نے {arg0} منطقی استدلال صحیح طریقے سے حل کیے!",
+  "@logicalSyllogismsMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "rotatingMazeMessage": "آپ نے حرکیاتی گھومتی ہوئی بھول بھلیوں میں کامیابی کے ساتھ راستہ تلاش کیا!",
+  "rotatingMazeText": "سمجھ گیا",
+  "rotatingMazeText1": "🌀 بھول بھلیاں 90° گھوم گئی! گرڈ منتقل ہو گیا!",
+  "mathPathMessage": "آپ نے وہ راستہ تلاش کر لیا جو ہدف تک پہنچاتا ہے!",
+  "bridgesMessage": "آپ نے تمام جزیروں کو کامیابی کے ساتھ جوڑ دیا!",
+  "compoundConnectMessage": "مرکب لفظ {arg0}{arg1} ہے۔",
+  "@compoundConnectMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "pangramSprintMessage": "آپ نے تمام 26 حروف استعمال کرتے ہوئے ایک جملہ بنایا۔",
+  "mirrorImageMessage": "آپ نے عکس کی بالکل صحیح شناخت کی۔",
+  "mirrorImageText": "آئینہ نما عکس",
+  "reverseStroopMessage": "آپ نے {arg0} پوائنٹس حاصل کیے! ہدایات پر نظر رکھیں۔",
+  "@reverseStroopMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "verbalAnalogiesMessage": "آپ رشتوں کو سمجھنے کے لیے تیز ذہن رکھتے ہیں۔",
+  "corsiBlocksMessage1": "آپ نے {arg1} تسلسل یاد کیے! آپ کی مکانی یادداشت کی حد {arg0} تک پہنچ گئی۔",
+  "@corsiBlocksMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "wordLadderMessage": "آپ نے {arg0} کو {arg1} سے {arg2} مراحل میں کامیابی کے ساتھ جوڑ دیا۔",
+  "@wordLadderMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "d2AttentionMessage": "حیرت انگیز انتخابی سکیننگ! حتمی سکور: {arg0}۔",
+  "@d2AttentionMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "d2AttentionText": "کیسے کھیلیں",
+  "d2AttentionText1": "سمجھ آگیا",
+  "tangleFixMessage": "تمام لائنیں صاف اور ہموار ہیں۔",
+  "distractorMatrixMessage": "لاجواب! آپ نے ریاضی کی ذہنی الجھنوں کے باوجود پیٹرن یاد رکھے!",
+  "distractorMatrixMessage1": "الجھنوں نے آپ کو ہرا دیا! اپنی ورکنگ میموری کو دوبارہ تربیت دیں۔",
+  "sentenceUnscrambleMessage": "آپ نے {arg0} کا سکور ترتیب دیا!",
+  "@sentenceUnscrambleMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "kakuroMessage": "لاجواب! آپ نے تمام مجموعی حصوں کا بالکل صحیح ملاپ کیا۔",
+  "symbolicFlankerMessage": "آپ نے {arg1} میں سے {arg0} درست کیے!",
+  "@symbolicFlankerMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "stroopTestMessage": "آپ نے {arg0} درست سکور کیے! سیاہی کے رنگ پر توجہ دیں، لفظ پر نہیں۔",
+  "@stroopTestMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wisconsinCardSortingMessage": "آپ نے {arg0} کارڈز کی درست درجہ بندی کی!",
+  "@wisconsinCardSortingMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "nBackMessage": "آپ نے {arg0} 2-back میچز حاصل کیے! آپ کی ورکنگ میموری ملٹی ٹاسکنگ کے لیے اہم ہے۔",
+  "@nBackMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "rhythmMasterMessage": "آپ نے {arg0} بہترین ہٹ اور {arg1} پوائنٹس حاصل کیے!",
+  "@rhythmMasterMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "groceryListMessage": "آپ نے کریانہ کی فہرست میں {arg0} پوائنٹس حاصل کیے!",
+  "@groceryListMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "groceryListText": "میں",
+  "mirrorTracingMessage": "آپ کے دماغ نے اپنی ہم آہنگی کو کامیابی کے ساتھ دوبارہ ترتیب دیا ہے۔",
+  "moduloClockMessage": "بہترین ماڈیولر ذہنی ریاضی کی ہم آہنگی! سکور: {arg0}",
+  "@moduloClockMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "moduloClockMessage1": "آپ نے {arg1} میں سے {arg0} ماڈیولر کلاک حل کیے۔ سکور: {arg2}",
+  "@moduloClockMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "crownMessage": "تمام تاج بہترین منطق کے ساتھ کامیابی سے رکھے گئے۔",
+  "dualCodingMessage": "شاندار ڈبل ٹاسک کارکردگی! آپ کا ورکنگ میموری سکور: {arg0}",
+  "@dualCodingMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "inequalityDashMessage": "آپ نے عدم مساوات کے ملاپ میں {arg0} پوائنٹس حاصل کیے!",
+  "@inequalityDashMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sourceMonitoringMessage": "آپ نے {arg1} میں سے {arg0} سکور کیے!",
+  "@sourceMonitoringMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "sourceMonitoringText": "یاد دہانی شروع کریں",
+  "memoryPalaceText": "دستیاب الفاظ",
+  "target10Message": "آپ نے 10 تک نمبروں کے ملاپ میں {arg0} پوائنٹس حاصل کیے!",
+  "@target10Message": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "paperFoldingMessage": "آپ اپنے ذہن میں پیٹرن دیکھ سکتے ہیں۔",
+  "topologyText": "{arg0}{arg1} / 10",
+  "@topologyText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "waterSortMessage": "آپ نے تمام رنگوں کی بالکل صحیح درجہ بندی کی!",
+  "anagramDefinitionMessage": "لفظ درحقیقت \"{arg0}\" تھا۔",
+  "@anagramDefinitionMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "game2048Message": "{arg0}: {arg1}\\n{arg2}",
+  "@game2048Message": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "game2048Message1": "{arg0}: {arg1}",
+  "@game2048Message1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "numericalEstimationMessage": "آپ نے {arg0} درست تخمینے لگائے۔",
+  "@numericalEstimationMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "grammarSortMessage": "آپ نے {arg0} الفاظ کی درست درجہ بندی کی!",
+  "@grammarSortMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "vowelReconstructMessage": "آپ نے {arg0} کے سکور کی دوبارہ تشکیل کی!",
+  "@vowelReconstructMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spatialConflictMessage": "آپ نے {arg1} غلطیوں کے ساتھ {arg0} کا سکور حاصل کیا!",
+  "@spatialConflictMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "spatialConflictText": "کیسے کھیلیں",
+  "spatialConflictText1": "سمجھ آگیا",
+  "tracePathMessage": "آپ کی درستگی {arg0}% تھی!",
+  "@tracePathMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "ruleSwitcherMessage": "آپ نے {arg1} میں سے {arg0} درست کیے!",
+  "@ruleSwitcherMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "collatzMessage": "آپ نے {arg0} اقدامات کیے۔ کم از کم ممکنہ {arg1} تھے۔",
+  "@collatzMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "collatzText": "/ 2",
+  "collatzText1": "+ 1",
+  "collatzText2": "3n + 1",
+  "divisibilityDashMessage": "آپ نے {arg0} اعداد حل کیے!",
+  "@divisibilityDashMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "switchTaskMessage": "آپ نے {arg0} درست سکور کیے! تیزی سے کام بدلنا ذہنی لچک کی کلید ہے۔",
+  "@switchTaskMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sequenceSleuthMessage": "آپ نے {arg0} تسلسل حل کیے!",
+  "@sequenceSleuthMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "changeBlindnessMessage": "آپ نے {arg0} تبدیلیاں تلاش کیں!",
+  "@changeBlindnessMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "mentalRotationMessage": "آپ نے {arg0} شکلوں کو درست طریقے سے گھمایا!",
+  "@mentalRotationMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wordMastermindMessage": "آپ نے کوڈ میں مہارت حاصل کر لی!\\nلفظ تھا: {arg0}",
+  "@wordMastermindMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wordMastermindMessage1": "پوشیدہ لفظ تھا: {arg0}",
+  "@wordMastermindMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wordMastermindText": "{arg0}",
+  "@wordMastermindText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "simonSequenceMessage": "آپ نے تمام 10 ٹائلیں یاد کر لیں!",
+  "simonSequenceMessage1": "تسلسل میں مہارت حاصل کرنے کے لیے دوبارہ کوشش کریں۔",
+  "oxymoronHuntMessage": "آپ نے {arg0} تضادات تلاش کیے!",
+  "@oxymoronHuntMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spotlightTrackMessage": "حیرت انگیز مکانی ٹریکنگ! آپ نے {arg0} پوائنٹس حاصل کیے۔",
+  "@spotlightTrackMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spotlightTrackText": "کیسے کھیلیں",
+  "spotlightTrackText1": "سمجھ آگیا",
+  "spotlightTrackText2": "راؤنڈ شروع کریں",
+  "vennNumbersMessage": "آپ نے {arg0} اعداد کی درجہ بندی کی!",
+  "@vennNumbersMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "vennNumbersText": "کوئی بھی نہیں",
+  "vennNumbersText1": "دونوں",
+  "silhouetteMatchMessage": "آپ کا دماغ 3D سے 2D ترجمہ میں بہترین ہے۔",
+  "sumSnakeMessage": "ہدف {arg0} بہترین درستگی کے ساتھ حاصل کیا گیا!",
+  "@sumSnakeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sumSnakeText": "راستہ صاف کریں",
+  "percentagePeakMessage": "آپ نے فیصد کے {arg0} مسائل حل کیے!",
+  "@percentagePeakMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "trailMakingMessage": "آپ نے {arg0} ٹریلز مکمل کیں! یہ ٹیسٹ آپ کی بصری تلاش کی رفتار اور ذہنی لچک کی پیمائش کرتا ہے۔",
+  "@trailMakingMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "matrixReasoningMessage": "آپ نے {arg0} میٹرکس درست طریقے سے مکمل کیے!",
+  "@matrixReasoningMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "tentsAndTreesMessage": "آپ نے تمام خیمے کامیابی کے ساتھ لگا دیے ہیں۔",
+  "klotskiMessage": "شاندار سلائیڈنگ! آپ نے ہیرو بلاک کو {arg0} چالوں میں آزاد کر دیا۔",
+  "@klotskiMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sumPyramidMessage": "آپ نے کامیابی کے ساتھ {arg0} مجموعی اہرام حل کیے!",
+  "@sumPyramidMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "simonCommandMessage": "بہترین انتخابی ردعمل اور توجہ! کل سکور: {arg0}",
+  "@simonCommandMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "simonCommandMessage1": "آپ نے {arg0} سکور کیے لیکن وقت پر {arg1} میچز تک نہیں پہنچ سکے۔",
+  "@simonCommandMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "syllableStackMessage": "آپ نے {arg0} کا سکور اکٹھا کیا!",
+  "@syllableStackMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "slitherlinkMessage": "زبردست! آپ نے لوپ پزل کامیابی کے ساتھ مکمل کر لیا۔",
+  "quickMathMessage": "آپ نے {arg0} مسائل حل کیے!",
+  "@quickMathMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "commonDenominatorMessage": "آپ نے {arg0} GCD/LCM مسائل حل کیے!",
+  "@commonDenominatorMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "chainReactionMessage": "آپ کا حتمی سکور {arg0} ہے۔ آپ نے {arg1} الفاظ کی ایک زنجیر بنائی۔",
+  "@chainReactionMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "chainReactionText": "{arg0}",
+  "@chainReactionText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "associativePairsMessage": "شاندار! آپ نے بصری خصوصیات کو بغیر کسی غلطی کے جوڑ دیا۔",
+  "associativePairsMessage1": "غلط تعلق! اپنی لنک میموری کو تیز کریں اور دوبارہ کوشش کریں۔",
+  "portmanteauSplitMessage": "آپ نے {arg0} مخلوط الفاظ کو الگ کیا!",
+  "@portmanteauSplitMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "magicSquaresText": "صاف کریں",
+  "alphabetSudokuText": "غلطی: {arg0}",
+  "@alphabetSudokuText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "pipesMessage": "آپ نے تمام پائپوں کو جوڑ دیا اور گرڈ بھر دیا۔",
+  "dualMirrorMessage": "آپ نے دونوں آئیکنز کو ان کے اہداف تک پہنچا دیا!",
+  "binaryCodeMessage": "شاندار تیز رفتار اعشاریہ ترجمہ! حتمی سکور: {arg0}",
+  "@binaryCodeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "binaryCodeMessage1": "آپ نے {arg0} بائنری نمبرز کو درست طریقے سے تبدیل کیا۔ سکور: {arg1}",
+  "@binaryCodeMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "oddOneOutMessage": "آپ نے 50 مختلف چیزیں تلاش کیں! حتمی سکور: {arg0}",
+  "@oddOneOutMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "oddOneOutMessage1": "آپ کا سکور: {arg0}",
+  "@oddOneOutMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "letterBridgeMessage": "آپ کو پل کا حرف مل گیا: {arg0}",
+  "@letterBridgeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "imReady": "میں تیار ہوں"
 }

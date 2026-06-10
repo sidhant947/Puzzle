@@ -24,7 +24,6 @@ class _CorsiBlocksScreenState extends ConsumerState<CorsiBlocksScreen> {
   }
 
   void _showGameOverDialog(int score) {
-    final l10n = AppLocalizations.of(context)!;
     bool won = score >= 5;
     if (won) {
       HapticFeedbackUtil.victory();

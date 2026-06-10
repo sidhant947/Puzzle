@@ -61,7 +61,6 @@ class _SemanticDistanceScreenState extends ConsumerState<SemanticDistanceScreen>
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(semanticDistanceNotifierProvider);
     final notifier = ref.read(semanticDistanceNotifierProvider.notifier);

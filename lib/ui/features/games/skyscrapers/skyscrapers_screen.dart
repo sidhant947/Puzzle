@@ -141,7 +141,7 @@ class _SkyscrapersScreenState extends ConsumerState<SkyscrapersScreen> {
 
   Widget _buildClue(int val, double size) {
     final colorScheme = Theme.of(context).colorScheme;
-    return Container(
+    return SizedBox(
       width: size,
       height: size,
       child: Center(

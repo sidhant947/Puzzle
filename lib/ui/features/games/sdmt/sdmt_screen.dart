@@ -24,7 +24,6 @@ class _SDMTScreenState extends ConsumerState<SDMTScreen> {
   }
 
   void _showGameOverDialog(int score) {
-    final l10n = AppLocalizations.of(context)!;
     bool won = score >= 30;
     if (won) {
       HapticFeedbackUtil.victory();

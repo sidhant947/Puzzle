@@ -1,7 +1,5 @@
-import 'dart:math';
 
 class SkyscrapersEngine {
-  final Random _random = Random();
 
   Map<String, dynamic> generateLevel({int size = 4}) {
     // 1. Generate a Latin Square of size N

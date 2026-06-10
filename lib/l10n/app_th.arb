@@ -1,15 +1,21 @@
 {
   "@@locale": "th",
   "appTitle": "Puzzle Hub",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
   "home": "หน้าแรก",
   "settings": "การตั้งค่า",
   "playAgain": "เล่นอีกครั้ง",
+  "playNext": "เล่นถัดไป",
   "seeCompleted": "รีวิว",
   "finish": "จบ",
   "congrats": "ยินดีด้วย",
   "perfectGradient": "ไล่เฉดสีได้สมบูรณ์แบบ!",
   "wellDone": "ทำได้ดีมาก",
   "timeUp": "หมดเวลา!",
+  "victory": "ชัยชนะ!",
+  "gameWin": "ยอดเยี่ยม!",
   "completed": "เสร็จสิ้น!",
   "score": "คะแนน",
   "timeLeft": "เวลา",
@@ -65,8 +71,32 @@
   "termsOfService": "ข้อกำหนดการให้บริการ",
   "licenses": "ใบอนุญาต",
   "findWordSubtitle": "คุณมีโอกาส {maxTries} ครั้งในการหาคำศัพท์ {wordLength} ตัวอักษรที่ซ่อนอยู่",
+  "@findWordSubtitle": {
+    "placeholders": {
+      "maxTries": {
+        "type": "int"
+      },
+      "wordLength": {
+        "type": "int"
+      }
+    }
+  },
   "wordFoundMessage": "พบคำศัพท์แล้ว: {word}",
+  "@wordFoundMessage": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
   "gameOverMessage": "คำศัพท์คือ: {word}",
+  "@gameOverMessage": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
   "gameOver": "จบเกม",
   "crosswordTitle": "อักษรไขว้",
   "crosswordSubtitle": "เติมคำในตารางให้ถูกต้องตามคำใบ้ที่ให้ไว้",
@@ -76,7 +106,21 @@
   "radicalRootsGoalReached": "บรรลุเป้าหมาย!",
   "radicalRootsTimeUp": "หมดเวลา!",
   "radicalRootsScoreMessage": "คุณคำนวณรากได้ถูกต้อง {score} ข้อ!",
+  "@radicalRootsScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "radicalRootsTryAgainMessage": "ฝึกฝนต่อไป! คุณคำนวณรากได้ {score} ข้อ",
+  "@radicalRootsTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "radicalRootsStart": "เริ่มคำนวณ",
   "radicalRootsDescription": "คุณมีเวลา 60 วินาทีในการแก้ให้ได้มากที่สุด",
   "radicalRootsBest": "ดีที่สุด",
@@ -86,7 +130,21 @@
   "romanArithmeticGoalReached": "ระดับเซ็นจูเรียน!",
   "romanArithmeticTimeUp": "หมดเวลา!",
   "romanArithmeticScoreMessage": "คุณแก้โจทย์โรมันได้ {score} ข้อ!",
+  "@romanArithmeticScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "romanArithmeticTryAgainMessage": "Veni, Vidi, Vici! คุณแก้โจทย์ได้ {score} ข้อ",
+  "@romanArithmeticTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "romanArithmeticStart": "เริ่มภารกิจ",
   "romanArithmeticDescription": "แปลงค่าและแก้โจทย์ คุณมีเวลา 60 วินาที",
   "romanArithmeticBest": "ดีที่สุด",
@@ -116,6 +174,41 @@
   "nonogramTitle": "โนโนแกรม",
   "nonogramSubtitle": "เปิดเผยภาพที่ซ่อนอยู่โดยใช้คำใบ้ตรรกะ",
   "nonogramWin": "เปิดเผยภาพสำเร็จ!",
+  "magnetsTitle": "แม่เหล็ก",
+  "magnetsSubtitle": "วางแม่เหล็กในตารางตามจำนวนขั้ว",
+  "magnetsHowToPlay": "เติมคอนเทนเนอร์ขนาดเท่าโดมิโนด้วยแม่เหล็ก '+' และ '-' หรือปล่อยว่างไว้ คำใบ้ในแถวและคอลัมน์จะระบุจำนวนรวมของแต่ละขั้วในเส้นนั้น ขั้วที่เหมือนกันไม่สามารถอยู่ติดกันในแนวตั้งหรือแนวนอนได้",
+  "magnetsWinTitle": "ปรับสมดุลขั้วแม่เหล็กแล้ว!",
+  "magnetsWinMessage": "แม่เหล็กทั้งหมดถูกจัดเรียงอย่างสมบูรณ์แบบ!",
+  "lighthousesTitle": "ประภาคาร",
+  "lighthousesSubtitle": "วางเรือตามคำใบ้ของประภาคาร",
+  "lighthousesHowToPlay": "วางเรือขนาด 1x1 ในตาราง ประภาคารจะระบุจำนวนรวมของเรือที่มองเห็นได้ในแนวตั้งและแนวนอน เรือไม่สามารถสัมผัสประภาคารหรือสัมผัสกันเองได้ แม้แต่ในแนวทแยง",
+  "lighthousesWinTitle": "ท้องทะเลปลอดภัย!",
+  "lighthousesWinMessage": "ประภาคารทั้งหมดกำลังนำทางเรืออย่างสมบูรณ์แบบ!",
+  "dominosaTitle": "โดมิโนซา",
+  "dominosaSubtitle": "หาโดมิโนที่ซ่อนอยู่ทั้งหมดในตาราง",
+  "dominosaHowToPlay": "จัดเรียงชุดโดมิโนที่สมบูรณ์บนตารางตัวเลข โดยที่ตัวเลขคู่ที่อยู่ติดกันแต่ละคู่จะถูกครอบคลุมด้วยโดมิโนเพียงหนึ่งตัวเท่านั้น ตัวเลขแต่ละคู่จะมีเพียงครั้งเดียวในชุด",
+  "dominosaWinTitle": "ปรมาจารย์โดมิโน!",
+  "dominosaWinMessage": "พบและวางโดมิโนทุกตัวแล้ว!",
+  "skyscrapersTitle": "ตึกระฟ้า",
+  "skyscrapersSubtitle": "เติมความสูงของตึกลงในตาราง",
+  "skyscrapersHowToPlay": "เติมความสูง (1-N) ลงในตาราง โดยที่แต่ละแถวและคอลัมน์จะต้องมีความสูงแต่ละค่าเพียงครั้งเดียวเท่านั้น คำใบ้ที่ขอบจะระบุจำนวนตึกที่มองเห็นได้จากทิศทางนั้น โดยตึกที่สูงกว่าจะบังตึกที่เตี้ยกว่า",
+  "skyscrapersWinTitle": "เส้นขอบฟ้าถูกฟื้นฟู!",
+  "skyscrapersWinMessage": "อาคารทั้งหมดถูกจัดวางอย่างสมบูรณ์แบบ!",
+  "nurikabeTitle": "นูริคาเบะ",
+  "nurikabeSubtitle": "สร้างทะเลที่เชื่อมต่อกันและแยกเกาะออกจากกัน",
+  "nurikabeHowToPlay": "ระบายสีเซลล์เพื่อสร้าง 'ทะเล' ที่เชื่อมต่อกันเพียงหนึ่งเดียว (ห้ามมีบล็อกขนาด 2x2) เซลล์ที่ไม่ได้ระบายสีจะกลายเป็น 'เกาะ' ซึ่งแต่ละเกาะจะมีตัวเลขเพียงหนึ่งตัวที่แสดงถึงพื้นที่ทั้งหมดของเกาะนั้น",
+  "nurikabeWinTitle": "ทะเลไหลลื่น!",
+  "nurikabeWinMessage": "เกาะถูกแยกออก ทะเลเชื่อมต่อกันแล้ว!",
+  "fillominoTitle": "ฟิลโลมิโน",
+  "fillominoSubtitle": "แบ่งตารางออกเป็นโพลีโอมิโนตามขนาดที่กำหนด",
+  "fillominoHowToPlay": "แบ่งตารางออกเป็นโพลีโอมิโน โดยที่โพลีโอมิโนขนาด Nแต่ละอันจะต้องมีตัวเลข N ในเซลล์ทั้งหมด โพลีโอมิโนที่มีขนาดเท่ากันไม่สามารถอยู่ติดกันในแนวตั้งหรือแนวนอนได้",
+  "fillominoWinTitle": "แบ่งตารางแล้ว!",
+  "fillominoWinMessage": "ปูด้วยตรรกะอย่างสมบูรณ์แบบ!",
+  "hitoriTitle": "ฮิโตริ",
+  "hitoriSubtitle": "ระบายสีตัวเลขที่ซ้ำกันในแต่ละแถวและคอลัมน์",
+  "hitoriHowToPlay": "ระบายสีเซลล์เพื่อไม่ให้มีตัวเลขใดปรากฏมากกว่าหนึ่งครั้งในแถวหรือคอลัมน์ใดๆ เซลล์ที่ระบายสีไม่สามารถอยู่ติดกันได้ (ในแนวตั้งหรือแนวนอน) และเซลล์ที่ไม่ได้ระบายสีทั้งหมดจะต้องรวมกันเป็นกลุ่มเดียวที่เชื่อมต่อกัน",
+  "hitoriWinTitle": "ปรมาจารย์ฮิโตริ!",
+  "hitoriWinMessage": "คุณแก้ไขตัวเลขที่ซ้ำกันทั้งหมดได้สำเร็จ!",
   "pathFinderTitle": "หาเส้นทาง",
   "pathFinderSubtitle": "หาเส้นทางที่ซ่อนอยู่จาก S ไป E",
   "pathFinderWin": "เชี่ยวชาญเส้นทาง!",
@@ -132,12 +225,26 @@
   "arithmeticChainWinMessage": "การคำนวณในใจของคุณเฉียบคมมาก!",
   "arithmeticChainLoseTitle": "ลองอีกครั้ง",
   "arithmeticChainLoseMessage": "คำตอบที่ถูกต้องคือ {answer}",
+  "@arithmeticChainLoseMessage": {
+    "placeholders": {
+      "answer": {
+        "type": "String"
+      }
+    }
+  },
   "arithmeticChainStart": "เริ่ม",
   "arithmeticChainNext": "ถัดไป",
   "attentionalBlinkTitle": "สมาธิฉับพลัน",
   "attentionalBlinkSubtitleWatch": "มองหาตัวเลข",
   "attentionalBlinkSubtitleInput": "ใส่ตัวเลขสองตัวที่คุณเห็น",
   "attentionalBlinkScoreMessage": "คุณทำคะแนนเป้าหมายได้ {score} แต้ม!",
+  "@attentionalBlinkScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "balanceScaleTitle": "ตาชั่งสมดุล",
   "balanceScaleSubtitle": "สรุปน้ำหนักของชิ้นสุดท้ายตามตาชั่ง",
   "balanceScaleWinTitle": "สมดุล!",
@@ -157,6 +264,16 @@
   "boxCompletionTitle": "ประกอบกล่อง",
   "boxCompletionSubtitle": "ลูกบาศก์ใดที่สามารถประกอบได้?",
   "boxCompletionScoreMessage": "คุณตอบถูก {score} จาก {totalTrials} ข้อ!",
+  "@boxCompletionScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "totalTrials": {
+        "type": "int"
+      }
+    }
+  },
   "boxCompletionOptions": "ตัวเลือก",
   "bridgesTitle": "สะพาน",
   "bridgesSubtitle": "เชื่อมต่อเกาะด้วยสะพาน แต่ละเกาะต้องการจำนวนสะพานที่เจาะจง สะพานห้ามตัดกัน",
@@ -167,7 +284,21 @@
   "calculationSprintGoalReached": "บรรลุเป้าหมาย!",
   "calculationSprintTimeUp": "หมดเวลา",
   "calculationSprintScoreMessage": "ความเร็วในการคำนวณยอดเยี่ยมมาก! คุณได้ {score} คะแนน",
+  "@calculationSprintScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "calculationSprintTryAgainMessage": "คุณได้ {score} คะแนน ลองทำลายสถิติเดิมดู!",
+  "@calculationSprintTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "calculationSprintBest": "ดีที่สุด",
   "calculationSprintSeconds": "60 วินาที",
   "calculationSprintDescription": "แก้สมการอย่างรวดเร็ว\nคำตอบผิดจะหักเวลา 3 วินาที!",
@@ -178,20 +309,82 @@
   "categoryFluencyTimeUp": "หมดเวลา!",
   "categoryFluencyWinMessage": "คุณมีคลังคำศัพท์ที่กว้างขวางมาก!",
   "categoryFluencyFoundMessage": "คุณพบคำศัพท์ {count} คำ",
+  "@categoryFluencyFoundMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "categoryFluencyCategoryLabel": "หมวดหมู่:",
   "categoryFluencyEnterItem": "ระบุสิ่งของ...",
   "categoryFluencyWordCount": "{entered} / {target} คำ",
+  "@categoryFluencyWordCount": {
+    "placeholders": {
+      "entered": {
+        "type": "int"
+      },
+      "target": {
+        "type": "int"
+      }
+    }
+  },
   "changeBlindnessTitle": "การตาบอดต่อการเปลี่ยนแปลง",
   "changeBlindnessSubtitle": "จับผิดภาพที่เปลี่ยนไป",
   "changeBlindnessScore": "คะแนน: {score}",
+  "@changeBlindnessScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "changeBlindnessFoundMessage": "คุณพบจุดเปลี่ยน {score} จุด!",
+  "@changeBlindnessFoundMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "choiceRtTitle": "เวลาตอบสนองเชิงเลือก",
   "choiceRtSubtitle": "แตะช่องที่ใช้งานให้เร็วที่สุดเท่าที่จะทำได้",
   "choiceRtAvgMessage": "เวลาตอบสนองเฉลี่ยของคุณ: {avg}ms",
+  "@choiceRtAvgMessage": {
+    "placeholders": {
+      "avg": {
+        "type": "String"
+      }
+    }
+  },
   "choiceRtTimeRemaining": "เวลาที่เหลือ: {time}s",
+  "@choiceRtTimeRemaining": {
+    "placeholders": {
+      "time": {
+        "type": "int"
+      }
+    }
+  },
   "choiceRtTaps": "การแตะ: {count}",
+  "@choiceRtTaps": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "colorFloodTitle": "สีท่วม",
   "colorFloodSubtitle": "จำนวนครั้ง: {moves} / {maxMoves}",
+  "@colorFloodSubtitle": {
+    "placeholders": {
+      "moves": {
+        "type": "int"
+      },
+      "maxMoves": {
+        "type": "int"
+      }
+    }
+  },
   "colorFloodSuccess": "สีท่วมสำเร็จ!",
   "colorFloodDryLand": "แผ่นดินแห้งผาก...",
   "colorFloodWinMessage": "คุณเติมสีจนเต็มตารางแล้ว!",
@@ -203,11 +396,28 @@
   "colorMatchCheck": "ตรวจสอบความใกล้เคียง",
   "colorMatchResult": "ผลลัพธ์",
   "colorMatchAccuracy": "ความแม่นยำของคุณ: {accuracy}%",
+  "@colorMatchAccuracy": {
+    "placeholders": {
+      "accuracy": {
+        "type": "String"
+      }
+    }
+  },
   "corsiBlocksTitle": "บล็อกคอร์ซี่",
   "corsiBlocksSubtitle": "ดูบล็อกที่สว่างขึ้นแล้วแตะตามลำดับเดิม",
   "corsiBlocksWinTitle": "ปรมาจารย์ด้านมิติสัมพันธ์!",
   "corsiBlocksLoseTitle": "หลงทางในอวกาศ",
   "corsiBlocksMessage": "คุณจำลำดับได้ {score} ชุด! ระดับความจำด้านมิติสัมพันธ์ของคุณถึง {span}",
+  "@corsiBlocksMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "span": {
+        "type": "int"
+      }
+    }
+  },
   "corsiBlocksWatch": "จดจำรูปแบบ",
   "corsiBlocksRepeat": "ทำตามรูปแบบ",
   "corsiBlocksExcellent": "ยอดเยี่ยม!",
@@ -229,16 +439,58 @@
   "digitSpanReverseWinMessage": "ความจำระยะสั้นของคุณน่าประทับใจมาก!",
   "digitSpanReverseLoseTitle": "ลองอีกครั้ง",
   "digitSpanReverseLoseMessage": "ลำดับย้อนกลับที่ถูกต้องคือ {sequence}",
+  "@digitSpanReverseLoseMessage": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
   "dividedAttentionTitle": "การแบ่งสมาธิ",
   "dividedAttentionSubtitle": "แตะซ้ายเพื่อ ดาว ⭐ | แตะขวาเพื่อ แดง 🔴",
   "dividedAttentionGameOverTitle": "เสียสมาธิ",
   "dividedAttentionGameOverMessage": "การทำหลายอย่างพร้อมกันมันยากนะ! คะแนนของคุณคือ {score}",
+  "@dividedAttentionGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "dividedAttentionScore": "คะแนน: {score}",
+  "@dividedAttentionScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackTitle": "Double N-Back",
   "doubleNBackSubtitle": "จับคู่สิ่งเร้าถอยหลังไป {n} ขั้น",
+  "@doubleNBackSubtitle": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackGameOverTitle": "จบเกม",
   "doubleNBackGameOverMessage": "คุณได้ {score} คะแนนใน Double N-Back!",
+  "@doubleNBackGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackScore": "คะแนน: {score}",
+  "@doubleNBackScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackPositionMatch": "ตำแหน่งตรงกัน",
   "doubleNBackLetterMatch": "ตัวอักษรตรงกัน",
   "faceNameAssociationTitle": "ชื่อและใบหน้า",
@@ -248,10 +500,27 @@
   "faceNameAssociationGameOver": "จบเกม",
   "faceNameAssociationWinMessage": "คุณมีความจำด้านใบหน้าและชื่อที่ยอดเยี่ยมมาก!",
   "faceNameAssociationLoseMessage": "คุณทำถูก {correct} จากทั้งหมด {total} ข้อ",
+  "@faceNameAssociationLoseMessage": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "faceNameAssociationStartTest": "เริ่มแบบทดสอบ",
   "flankerTestWinTitle": "สมาธิเฉียบคม!",
   "flankerTestLoseTitle": "วอกแวก",
   "flankerTestScoreMessage": "คุณทำได้ถูกต้อง {score} ข้อ!",
+  "@flankerTestScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "flankerTestTitle": "การทดสอบแฟรงเกอร์",
   "flankerTestSubtitle": "ระบุทิศทางของลูกศรตรงกลาง โดยไม่ต้องสนใจลูกศรด้านข้าง",
   "flankerTestLeft": "ซ้าย",
@@ -260,6 +529,13 @@
   "fractionMatchSubtitle": "จับคู่รูปภาพกับเศษส่วนให้ถูกต้อง",
   "fractionMatchLoseTitle": "เศษส่วนไม่ตรงกัน",
   "fractionMatchLoseMessage": "คำตอบที่ถูกต้องคือ {correctAnswer}",
+  "@fractionMatchLoseMessage": {
+    "placeholders": {
+      "correctAnswer": {
+        "type": "String"
+      }
+    }
+  },
   "goNoGoTitle": "ไป / ไม่ไป",
   "goNoGoSubtitle": "แตะเมื่อเป็นสีเขียว ข้ามเมื่อเป็นสีแดง!",
   "goNoGoLoseTitle": "การตอบสนองหยุดชะงัก",
@@ -271,6 +547,13 @@
   "groceryListWinTitle": "กูรูด้านการช้อป!",
   "groceryListLoseTitle": "ลืมอะไรไปหรือเปล่า?",
   "groceryListScoreMessage": "คุณได้ {score} คะแนนในรายการซื้อของ!",
+  "@groceryListScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "groceryListReady": "ฉันพร้อมแล้ว",
   "groceryListWhereBelong": "สิ่งนี้ควรอยู่ที่ไหน?",
   "hueSortTitle": "เรียงเฉดสี",
@@ -278,16 +561,44 @@
   "hueSortWinTitle": "ไล่เฉดสีได้สมบูรณ์แบบ!",
   "hueSortWinMessage": "คุณจัดเรียงสเปกตรัมสีได้สมบูรณ์แบบ!",
   "hueSortWrongTiles": "แผ่นสีที่อยู่ในตำแหน่งผิด: {count}",
+  "@hueSortWrongTiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "kenkenTitle": "เคนเคน",
   "kenkenWinTitle": "อัจฉริยะ!",
   "kenkenLoseTitle": "จบเกม",
   "kenkenWinMessage": "คุณแก้ปริศนาเคนเคนสำเร็จ!",
   "kenkenLoseMessage": "ตรวจสอบแถว คอลัมน์ และกฎในกรง",
   "kenkenSubtitle": "เติมตัวเลข 1-{size} โดยไม่ซ้ำในแถว/คอลัมน์",
+  "@kenkenSubtitle": {
+    "placeholders": {
+      "size": {
+        "type": "int"
+      }
+    }
+  },
   "letterCancellationTitle": "ยกเลิกตัวอักษร",
   "letterCancellationTitleFull": "การยกเลิกตัวอักษร",
   "letterCancellationScoreMessage": "คุณพบตัวอักษร {score} ตัว!",
+  "@letterCancellationScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "letterCancellationSubtitle": "ค้นหาตัวอักษร \"{target}\" ทั้งหมด",
+  "@letterCancellationSubtitle": {
+    "placeholders": {
+      "target": {
+        "type": "String"
+      }
+    }
+  },
   "letterCancellationFound": "พบแล้ว",
   "letterCancellationTime": "เวลา",
   "lightsOutTitle": "ปิดไฟ",
@@ -326,6 +637,13 @@
   "sternbergTaskMemorize": "จดจำตัวอักษร",
   "sternbergTaskWasLetterSet": "ตัวอักษรนี้อยู่ในชุดก่อนหน้าหรือไม่?",
   "sternbergTaskScore": "คุณได้ {score} คะแนนในแบบทดสอบสเติร์นเบิร์ก!",
+  "@sternbergTaskScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "verbalAnalogiesTitle": "ปรมาจารย์การเปรียบเทียบ!",
   "verbalAnalogiesSubtitle": "เติมความสัมพันธ์ให้สมบูรณ์",
   "typingSpeedTitle": "ความเร็วในการพิมพ์",
@@ -351,6 +669,13 @@
   "pixelMimicTitle": "เลียนแบบพิกเซล",
   "targetNumberTitle": "เป้าหมาย 24",
   "targetNumberSubtitle": "ใช้ตัวเลขทั้ง 4 ตัวเพื่อให้ได้ผลลัพธ์เป็น {target}",
+  "@targetNumberSubtitle": {
+    "placeholders": {
+      "target": {
+        "type": "int"
+      }
+    }
+  },
   "mirrorTracingTitle": "ลากเส้นในกระจก!",
   "mirrorTracingSubtitle": "ลากเส้นตามรูปดาว! การควบคุมจะถูกสะท้อนแบบกระจกเงา",
   "wordSurgeTitle": "คำศัพท์ถาโถม",
@@ -360,6 +685,13 @@
   "perspectiveTakingChoosePerspective": "เลือกมุมมอง",
   "perspectiveTakingCongrats": "คุณมีสายตาที่เฉียบคมสำหรับความสัมพันธ์เชิงพื้นที่",
   "perspectiveTakingSubtitle": "มุมมองไหนมาจากทิศ {targetDirName}?",
+  "@perspectiveTakingSubtitle": {
+    "placeholders": {
+      "targetDirName": {
+        "type": "String"
+      }
+    }
+  },
   "paperFoldingTitle": "คลี่กระดาษ!",
   "paperFoldingSubtitle": "เมื่อคลี่ออกมาแล้วจะเป็นอย่างไร?",
   "waterSortTitle": "ทำได้ดีมาก!",
@@ -395,6 +727,13 @@
   "operationSpanRecallPhase": "ระลึกตัวอักษรตามลำดับ",
   "operationSpanRoundComplete": "จบรอบ!",
   "operationSpanScore": "คุณได้ {score} คะแนนในความจำช่วงการทำงาน!",
+  "@operationSpanScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "slidePuzzleTitle": "เกมเลื่อนภาพ",
   "slidePuzzleNewGame": "เริ่มเกมใหม่",
   "slidePuzzleInstructions": "จัดเรียงแผ่นตัวเลขตามลำดับโดยเลื่อนเข้าไปในที่ว่าง",
@@ -411,6 +750,13 @@
   "quickMathTitle": "คิดเลขเร็ว",
   "magicSquaresTitle": "จัตุรัสกล",
   "magicSquaresSubtitle": "ทุกแถว คอลัมน์ และแนวทแยงต้องมีผลรวมเท่ากับ {targetSum}",
+  "@magicSquaresSubtitle": {
+    "placeholders": {
+      "targetSum": {
+        "type": "int"
+      }
+    }
+  },
   "objectShuffleTitle": "สลับวัตถุ",
   "pipesTitle": "ท่อประปา",
   "pipesSubtitle": "เชื่อมต่อจุดสีที่ตรงกันด้วยท่อ",
@@ -446,6 +792,8 @@
   "vocabularyBuilderTitle": "คลังคำศัพท์",
   "vocabularyBuilderSubtitle": "จับคู่คำเหมือนและคำตรงข้ามภายใต้ความกดดันของเวลา",
   "vocabularyBuilderHowToPlay": "คุณจะเห็นคำศัพท์เป้าหมายและความสัมพันธ์ (คำเหมือนหรือคำตรงข้าม) เลือกคำที่ถูกต้องจากตัวเลือกที่ตรงกับความสัมพันธ์นั้น ต้องเร็วหน่อยนะ เวลาเดินอยู่!",
+  "correct": "ถูกต้อง",
+  "incorrect": "ไม่ถูกต้อง",
   "grammarPoliceTitle": "ตำรวจไวยากรณ์",
   "grammarPoliceSubtitle": "ระบุว่าประโยคนั้นถูกต้องตามหลักไวยากรณ์หรือมีข้อผิดพลาด",
   "grammarPoliceHowToPlay": "ประโยคจะปรากฏขึ้นตรงกลางหน้าจอ ตัดสินใจว่าถูกต้องตามหลักไวยากรณ์หรือมีข้อผิดพลาด แตะ 'ถูกต้อง' หากไม่มีปัญหา หรือ 'ไม่ถูกต้อง' หากคุณพบข้อผิดพลาด อย่าเสียชีวิตทั้งหมดของคุณ!",
@@ -490,6 +838,13 @@
   "blockCount3DNotQuite": "ยังไม่ถูก! ลองหมุนเพื่อนับใหม่อีกครั้งนะ",
   "blockCount3DExcellent": "ยอดเยี่ยม",
   "blockCount3DWinMessage": "คุณระบุจำนวนบล็อกทั้ง {count} อันได้ถูกต้อง!",
+  "@blockCount3DWinMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "blockCount3DHowToPlayDescription": "1. ลากนิ้วบนหน้าจอ 3 มิติเพื่อหมุนกองบล็อก\n\n2. นับบล็อกทั้งหมดในกอง\n\n3. จำไว้ว่า: บล็อกที่ลอยอยู่ในอากาศต้องมีบล็อกรองรับอยู่ข้างล่าง (บล็อกที่ซ่อนอยู่!)\n\n4. พิมพ์คำตอบในช่องใส่ข้อมูลแล้วแตะ \"ส่งคำตอบ\" เพื่อตรวจสอบ",
   "alphabetSudokuTitle": "ซูโดกุตัวอักษร",
   "alphabetSudokuSubtitle": "เติมตัวอักษร A-I ลงในตารางโดยไม่ซ้ำในแถว คอลัมน์ และบล็อก",
@@ -499,6 +854,13 @@
   "classicMazeSubtitle": "สำรวจและหาทางออก • เขาวงกตใหม่ทุกเกม",
   "classicMazeWinTitle": "ผ่านเขาวงกต!",
   "classicMazeWinMessage": "นำทางได้ยอดเยี่ยมมาก! คุณผ่านเขาวงกตได้ใน {count} ครั้ง",
+  "@classicMazeWinMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "classicMazeMoves": "จำนวนครั้ง: ",
   "classicMazeHowToPlayDescription": "1. นำทางลูกหินสีเหลือง (ผู้เล่น) ไปยังพอร์ทัลสีเขียว (ทางออก) ที่มุมขวาล่าง\n\n2. ปัดหน้าจอ ใช้ปุ่มลูกศรบนคีย์บอร์ด หรือปุ่มลูกศรด้านล่างเพื่อเคลื่อนที่\n\n3. เส้นสีม่วงแสดงเส้นทางที่คุณเคยผ่าน คุณสามารถเดินย้อนกลับเพื่อลบเส้นทางได้!\n\n4. เปลี่ยนระดับความยากจากแถบด้านบนเพื่อท้าทายตัวเองด้วยเขาวงกตที่ใหญ่ขึ้น!",
   "conjunctionSearchTitle": "การค้นหาแบบเชื่อมโยง",
@@ -529,52 +891,910 @@
   "cubeNetFoldFailed": "พลาดแล้ว (แตะรีเซ็ต)",
   "faceTraitAssociationMemorize": "จดจำทั้ง 4 คนนี้",
   "faceTraitAssociationPersonOf": "คนที่ {current} จาก {total}",
+  "@faceTraitAssociationPersonOf": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "faceTraitAssociationWhatOccupation": "พวกเขาทำอาชีพอะไร?",
   "faceTraitAssociationWhatHobby": "งานอดิเรกของพวกเขาคืออะไร?",
   "faceTraitAssociationWinTitle": "ปรมาจารย์ความจำ!",
   "faceTraitAssociationLoseTitle": "จบเกม",
   "faceTraitAssociationScoreMessage": "คุณทำถูก {correct} จากทั้งหมด {total} ข้อ",
+  "@faceTraitAssociationScoreMessage": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "topologyTitle": "ทอพอโลยี",
   "topologySubtitle": "รูปร่างเหล่านี้เหมือนกันทางทอพอโลยีหรือไม่? (สามารถเปลี่ยนรูปหนึ่งเป็นอีกรูปหนึ่งได้โดยไม่ตัดหรือดึง?)",
   "topologyWinTitle": "อัจฉริยะเรขาคณิต!",
   "topologyWinMessage": "คุณระบุคู่ทอพอโลยีได้ถูกต้อง 10 คู่!",
   "topologyScore": "คะแนน: ",
-  "playNext": "เล่นถัดไป",
-  "correct": "ถูกต้อง",
-  "incorrect": "ไม่ถูกต้อง",
-  "magnetsTitle": "แม่เหล็ก",
-  "magnetsSubtitle": "วางแม่เหล็กในตารางตามจำนวนขั้ว",
-  "magnetsHowToPlay": "เติมคอนเทนเนอร์ขนาดเท่าโดมิโนด้วยแม่เหล็ก '+' และ '-' หรือปล่อยว่างไว้ คำใบ้ในแถวและคอลัมน์จะระบุจำนวนรวมของแต่ละขั้วในเส้นนั้น ขั้วที่เหมือนกันไม่สามารถอยู่ติดกันในแนวตั้งหรือแนวนอนได้",
-  "magnetsWinTitle": "ปรับสมดุลขั้วแม่เหล็กแล้ว!",
-  "magnetsWinMessage": "แม่เหล็กทั้งหมดถูกจัดเรียงอย่างสมบูรณ์แบบ!",
-  "lighthousesTitle": "ประภาคาร",
-  "lighthousesSubtitle": "วางเรือตามคำใบ้ของประภาคาร",
-  "lighthousesHowToPlay": "วางเรือขนาด 1x1 ในตาราง ประภาคารจะระบุจำนวนรวมของเรือที่มองเห็นได้ในแนวตั้งและแนวนอน เรือไม่สามารถสัมผัสประภาคารหรือสัมผัสกันเองได้ แม้แต่ในแนวทแยง",
-  "lighthousesWinTitle": "ท้องทะเลปลอดภัย!",
-  "lighthousesWinMessage": "ประภาคารทั้งหมดกำลังนำทางเรืออย่างสมบูรณ์แบบ!",
-  "dominosaTitle": "โดมิโนซา",
-  "dominosaSubtitle": "หาโดมิโนที่ซ่อนอยู่ทั้งหมดในตาราง",
-  "dominosaHowToPlay": "จัดเรียงชุดโดมิโนที่สมบูรณ์บนตารางตัวเลข โดยที่ตัวเลขคู่ที่อยู่ติดกันแต่ละคู่จะถูกครอบคลุมด้วยโดมิโนเพียงหนึ่งตัวเท่านั้น ตัวเลขแต่ละคู่จะมีเพียงครั้งเดียวในชุด",
-  "dominosaWinTitle": "ปรมาจารย์โดมิโน!",
-  "dominosaWinMessage": "พบและวางโดมิโนทุกตัวแล้ว!",
-  "skyscrapersTitle": "ตึกระฟ้า",
-  "skyscrapersSubtitle": "เติมความสูงของตึกลงในตาราง",
-  "skyscrapersHowToPlay": "เติมความสูง (1-N) ลงในตาราง โดยที่แต่ละแถวและคอลัมน์จะต้องมีความสูงแต่ละค่าเพียงครั้งเดียวเท่านั้น คำใบ้ที่ขอบจะระบุจำนวนตึกที่มองเห็นได้จากทิศทางนั้น โดยตึกที่สูงกว่าจะบังตึกที่เตี้ยกว่า",
-  "skyscrapersWinTitle": "เส้นขอบฟ้าถูกฟื้นฟู!",
-  "skyscrapersWinMessage": "อาคารทั้งหมดถูกจัดวางอย่างสมบูรณ์แบบ!",
-  "nurikabeTitle": "นูริคาเบะ",
-  "nurikabeSubtitle": "สร้างทะเลที่เชื่อมต่อกันและแยกเกาะออกจากกัน",
-  "nurikabeHowToPlay": "ระบายสีเซลล์เพื่อสร้าง 'ทะเล' ที่เชื่อมต่อกันเพียงหนึ่งเดียว (ห้ามมีบล็อกขนาด 2x2) เซลล์ที่ไม่ได้ระบายสีจะกลายเป็น 'เกาะ' ซึ่งแต่ละเกาะจะมีตัวเลขเพียงหนึ่งตัวที่แสดงถึงพื้นที่ทั้งหมดของเกาะนั้น",
-  "nurikabeWinTitle": "ทะเลไหลลื่น!",
-  "nurikabeWinMessage": "เกาะถูกแยกออก ทะเลเชื่อมต่อกันแล้ว!",
-  "fillominoTitle": "ฟิลโลมิโน",
-  "fillominoSubtitle": "แบ่งตารางออกเป็นโพลีโอมิโนตามขนาดที่กำหนด",
-  "fillominoHowToPlay": "แบ่งตารางออกเป็นโพลีโอมิโน โดยที่โพลีโอมิโนขนาด Nแต่ละอันจะต้องมีตัวเลข N ในเซลล์ทั้งหมด โพลีโอมิโนที่มีขนาดเท่ากันไม่สามารถอยู่ติดกันในแนวตั้งหรือแนวนอนได้",
-  "fillominoWinTitle": "แบ่งตารางแล้ว!",
-  "fillominoWinMessage": "ปูด้วยตรรกะอย่างสมบูรณ์แบบ!",
-  "hitoriTitle": "ฮิโตริ",
-  "hitoriSubtitle": "ระบายสีตัวเลขที่ซ้ำกันในแต่ละแถวและคอลัมน์",
-  "hitoriHowToPlay": "ระบายสีเซลล์เพื่อไม่ให้มีตัวเลขใดปรากฏมากกว่าหนึ่งครั้งในแถวหรือคอลัมน์ใดๆ เซลล์ที่ระบายสีไม่สามารถอยู่ติดกันได้ (ในแนวตั้งหรือแนวนอน) และเซลล์ที่ไม่ได้ระบายสีทั้งหมดจะต้องรวมกันเป็นกลุ่มเดียวที่เชื่อมต่อกัน",
-  "hitoriWinTitle": "ปรมาจารย์ฮิโตริ!",
-  "hitoriWinMessage": "คุณแก้ไขตัวเลขที่ซ้ำกันทั้งหมดได้สำเร็จ!"
+  "semanticDistanceTitle": "ระยะห่างทางอรรถศาสตร์",
+  "semanticDistanceSubtitle": "วัดระยะห่างเชิงแนวคิดระหว่างคำ",
+  "oxymoronHuntTitle": "ล่าคำย้อนแย้ง",
+  "oxymoronHuntSubtitle": "จับคู่คำที่มีความหมายขัดแย้งกันในตาราง",
+  "portmanteauSplitTitle": "แยกคำผสม",
+  "portmanteauSplitSubtitle": "ระบุคำต้นฉบับของคำผสม (Portmanteau)",
+  "chainReactionTitle": "ปฏิกิริยาลูกโซ่",
+  "chainReactionSubtitle": "เชื่อมต่อคำโดยใช้ตัวอักษรที่ซ้อนทับกัน",
+  "rhymeMasterTitle": "เจ้าแห่งคำคล้องจอง",
+  "rhymeMasterSubtitle": "ระบุคำที่คล้องจองกับคำเป้าหมาย",
+  "definitionDashTitle": "วิ่งสู้คำจำกัดความ",
+  "definitionDashSubtitle": "จับคู่คำที่ถูกต้องกับคำจำกัดความ",
+  "syllableStackTitle": "เรียงซ้อนพยางค์",
+  "syllableStackSubtitle": "วางพยางค์ซ้อนกันเพื่อให้กลายเป็นคำที่สมบูรณ์",
+  "sentenceUnscrambleTitle": "ถอดรหัสประโยค",
+  "sentenceUnscrambleSubtitle": "เรียงลำดับคำใหม่เพื่อให้เป็นประโยคที่ถูกต้อง",
+  "grammarSortTitle": "แยกประเภทไวยากรณ์",
+  "grammarSortSubtitle": "จัดหมวดหมู่คำตามส่วนของประโยค",
+  "vowelReconstructTitle": "เติมสระ",
+  "vowelReconstructSubtitle": "เติมสระที่หายไปในประโยคให้สมบูรณ์",
+  "consonantReconstructTitle": "เติมพยัญชนะ",
+  "consonantReconstructSubtitle": "เติมพยัญชนะที่หายไปในประโยคให้สมบูรณ์",
+  "homophoneHuntTitle": "ล่าคำพ้องเสียง",
+  "homophone_huntSubtitle": "เลือกคำพ้องเสียงที่สะกดถูกต้อง",
+  "silentLetterSearchTitle": "ค้นหาอักษรไม่ออกเสียง",
+  "silentLetterSearchSubtitle": "ระบุอักษรที่ไม่ออกเสียงในคำที่กำหนด",
+  "palindromeBuilderTitle": "สร้างคำพัลลินโดรม",
+  "palindromeBuilderSubtitle": "สร้างคำพัลลินโดรมโดยการเพิ่มตัวอักษรให้น้อยที่สุด",
+  "phoneticGuessTitle": "ทายคำจากเสียง",
+  "phoneticGuessSubtitle": "ระบุคำจากการสะกดตามเสียงอ่าน",
+  "spoonerismSolverTitle": "แก้โจทย์คำผวน",
+  "spoonerismSolverSubtitle": "ระบุคำผวนที่ถูกต้องสำหรับวลีนั้นๆ",
+  "etymonOddballTitle": "คำแปลกแยกทางรากศัพท์",
+  "etymonOddballSubtitle": "ค้นหาคำที่ไม่ได้ใช้รากศัพท์เดียวกัน",
+  "etymologyOriginTitle": "ต้นกำเนิดนิรุกติศาสตร์",
+  "etymologyOriginSubtitle": "ทายภาษาต้นกำเนิดของคำยืม",
+  "affixFactoryTitle": "โรงงานส่วนขยายคำ",
+  "affixFactorySubtitle": "สร้างคำที่ถูกต้องโดยใช้คำอุปสรรคและคำปัจจัย",
+  "cognateCatchTitle": "จับผิดคำพ้อง",
+  "cognateCatchSubtitle": "แยกแยะระหว่างคำที่มีรากศัพท์เดียวกันจริงกับคำที่ดูเหมือนจะใช่แต่ไม่ใช่",
+  "compoundConnectTitle": "เชื่อมคำประสม",
+  "compoundConnectSubtitle": "รวมคำสองคำเข้าด้วยกันเพื่อสร้างคำประสม",
+  "pangramSprintTitle": "วิ่งแข่งแพนแกรม",
+  "pangramSprintSubtitle": "สร้างประโยคโดยใช้ตัวอักษรทุกตัวในพยัญชนะ",
+  "anagramDefinitionTitle": "นิยามอนาแกรม",
+  "anagramDefinitionSubtitle": "แก้โจทย์อนาแกรมตามคำจำกัดความ",
+  "letterBridgeTitle": "สะพานตัวอักษร",
+  "letterBridgeSubtitle": "ค้นหาตัวอักษรที่หายไปซึ่งเชื่อมคำสองคำเข้าด้วยกัน",
+  "letterFrequencyScanTitle": "สแกนความถี่ตัวอักษร",
+  "letterFrequencyScanSubtitle": "นับจำนวนครั้งที่ตัวอักษรปรากฏในข้อความ",
+  "oneLetterShiftTitle": "เปลี่ยนหนึ่งอักษร",
+  "oneLetterShiftSubtitle": "เปลี่ยนคำหนึ่งให้เป็นอีกคำหนึ่งโดยการเปลี่ยนตัวอักษรเพียงตัวเดียว",
+  "vocabularyBuilderMessage": "ยอดเยี่ยมมาก! คลังคำศัพท์ของคุณน่าประทับใจมาก คะแนน: {arg0}",
+  "@vocabularyBuilderMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "symmetryMessage": "คุณสะท้อนรูปแบบได้อย่างสมบูรณ์แบบด้วยความแม่นยำสูง",
+  "temporalOrderMessage": "น่าทึ่งมาก! ความจำลำดับเหตุการณ์ของคุณมีความแม่นยำสูง",
+  "temporalOrderMessage1": "ความจำลำดับไม่ถูกต้อง ฝึกฝนบ่อยๆ นะ!",
+  "wordSearchMessage": "พบคำศัพท์ทั้งหมดแล้วด้วยการสังเกตที่เฉียบคม",
+  "colorMatchMessage": "ความแม่นยำของคุณ: {arg0}%",
+  "@colorMatchMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "semanticLinkMessage": "คุณทำได้ {arg0} คะแนน!",
+  "@semanticLinkMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "reflexTapMessage": "คุณแตะเป้าหมายได้ {arg0} ครั้ง!",
+  "@reflexTapMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "angleFinderMessage": "สัญชาตญาณทางเรขาคณิตของคุณสมบูรณ์แบบ!",
+  "angleFinderMessage1": "คำตอบที่ถูกต้องคือ {arg0}°",
+  "@angleFinderMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "angleFinderText": "{arg0}°",
+  "@angleFinderText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "visualStatisticalLearningMessage": "คุณทำคะแนนรูปแบบที่ถูกต้องได้ {arg0} รูปแบบ!",
+  "@visualStatisticalLearningMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "nonogramText": "ข้อผิดพลาด: {arg0}",
+  "@nonogramText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "mentalCalendarMessage": "คุณทำถูก {arg0} จาก 10 ข้อ!",
+  "@mentalCalendarMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "orbitTapMessage": "คุณแตะสำเร็จ {arg0} ครั้ง!",
+  "@orbitTapMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "schulteTableMessage": "คุณทำตารางเสร็จในเวลา {arg0}\\nฝึกฝนต่อไปเพื่อขยายการมองเห็นรอบข้างของคุณ!",
+  "@schulteTableMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "schulteTableText": "เริ่มการทดสอบ",
+  "relationalMemoryMessage": "ความแม่นยำของความจำเชิงสัมพันธ์เชิงพื้นที่ยอดเยี่ยมมาก!",
+  "sudokuText": "ข้อผิดพลาด: {arg0}",
+  "@sudokuText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sdmtMessage": "คุณจับคู่สัญลักษณ์ได้ {arg0} ตัว! การทดสอบนี้วัดความเร็วในการสแกนและการจดจ่อทางสายตาของคุณ",
+  "@sdmtMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "futoshikiMessage": "เหลือเชื่อ! คุณแก้โจทย์ตาราง Futoshiki Latin Square ได้สำเร็จ",
+  "letterFrequencyScanMessage": "คุณนับจำนวนการปรากฏของ \"{arg1}\" ได้ถูกต้อง {arg0} ครั้ง",
+  "@letterFrequencyScanMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "letterFrequencyScanText": "ไม่ถูกต้อง จำนวนจริงคือ {arg0}",
+  "@letterFrequencyScanText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "memoryMatrixMessage": "น่าประทับใจ! ความจำใช้งานของคุณเฉียบคมมาก บรรลุเป้าหมายรายวันแล้ว!",
+  "memoryMatrixMessage1": "ตั้งสติแล้วลองอีกครั้งเพื่อเพิ่มคะแนนความจำของคุณ",
+  "contextCluesMessage": "ยอดเยี่ยม! คลังคำศัพท์และการวิเคราะห์บริบทของคุณอยู่ในระดับสูงสุด",
+  "contextCluesMessage1": "เลือกคำผิด! ฝึกการใช้เหตุผลตามบริบทของคำแล้วลองอีกครั้ง",
+  "oneLetterShiftMessage": "คุณเปลี่ยนจาก {arg0} เป็น {arg1} ได้ถูกต้อง",
+  "@oneLetterShiftMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "mentalAbacusMessage": "การคิดเลขในใจของคุณอยู่ในระดับสูงสุด",
+  "fractionMatcherMessage": "คุณทำได้ {arg0} คะแนนจากการจับคู่รูปแบบเศษส่วน!",
+  "@fractionMatcherMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spellingSprintMessage": "คุณสะกดคำทั้ง 10 คำได้ถูกต้อง!",
+  "spellingSprintMessage1": "คุณสะกดคำได้ {arg0} คำ",
+  "@spellingSprintMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "stopSignalMessage": "คุณตอบสนองถูกต้อง {arg0} ครั้ง! การทดสอบนี้วัดความสามารถในการยับยั้งการกระทำที่วางแผนไว้",
+  "@stopSignalMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "grammarPoliceMessage": "จบเกม! คุณรักษาความระเบียบเรียบร้อยในโลกของไวยากรณ์ คะแนน: {arg0}",
+  "@grammarPoliceMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "consonantReconstructMessage": "คุณสร้างคำใหม่ได้คะแนน {arg0}!",
+  "@consonantReconstructMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "rhymeMasterMessage": "คุณหาคำคล้องจองได้ {arg0} จาก {arg1} คำ!",
+  "@rhymeMasterMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "vigilanceTaskMessage": "สำเร็จ: {arg0}, พลาด: {arg1}\\nแจ้งเตือนผิดพลาด: {arg2}",
+  "@vigilanceTaskMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "silhouetteMatchOrthoMessage": "คุณมีทักษะการจัดตำแหน่งออร์โธกราฟิกที่ไร้ที่ติ!",
+  "silhouetteMatchOrthoText": "รับทราบ",
+  "silhouetteMatchOrthoText1": "การฉายภาพทัศนียภาพไม่ถูกต้อง! แตะรีเซ็ตเพื่อลองอีกครั้ง",
+  "fibonacciMergeMessage": "{arg0}: {arg1}",
+  "@fibonacciMergeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "factorFinderMessage": "คุณได้ {arg0} คะแนนจากการหาตัวประกอบทั้งหมด!",
+  "@factorFinderMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "logicalSyllogismsMessage": "คุณแก้โจทย์ตรรกบทถูกต้อง {arg0} ข้อ!",
+  "@logicalSyllogismsMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "rotatingMazeMessage": "คุณผ่านเขาวงกตที่หมุนอยู่ได้สำเร็จ!",
+  "rotatingMazeText": "รับทราบ",
+  "rotatingMazeText1": "🌀 เขาวงกตหมุน 90°! ตารางขยับแล้ว!",
+  "mathPathMessage": "คุณพบเส้นทางที่รวมกันได้เท่ากับเป้าหมายแล้ว!",
+  "bridgesMessage": "คุณเชื่อมต่อเกาะทั้งหมดได้สำเร็จ!",
+  "compoundConnectMessage": "คำผสมคือ {arg0}{arg1}",
+  "@compoundConnectMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "pangramSprintMessage": "คุณสร้างประโยคโดยใช้ตัวอักษรครบทั้ง 26 ตัว",
+  "mirrorImageMessage": "คุณระบุภาพสะท้อนได้อย่างสมบูรณ์แบบ",
+  "mirrorImageText": "ภาพกระจกเงา",
+  "reverseStroopMessage": "คุณทำได้ {arg0} คะแนน! อย่าลืมดูคำแนะนำให้ดี",
+  "@reverseStroopMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "verbalAnalogiesMessage": "คุณมีความคิดที่เฉียบแหลมในเรื่องความสัมพันธ์",
+  "corsiBlocksMessage1": "คุณจำลำดับได้ {arg1} ชุด! ระดับความจำเชิงพื้นที่ของคุณถึง {arg0} แล้ว",
+  "@corsiBlocksMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "wordLadderMessage": "คุณเชื่อมต่อ {arg0} กับ {arg1} ได้สำเร็จใน {arg2} ขั้นตอน",
+  "@wordLadderMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "d2AttentionMessage": "การสแกนแบบเลือกสรรที่น่าทึ่ง! คะแนนสุดท้าย: {arg0}",
+  "@d2AttentionMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "d2AttentionText": "วิธีเล่น",
+  "d2AttentionText1": "เข้าใจแล้ว",
+  "tangleFixMessage": "เส้นทั้งหมดชัดเจนและราบรื่นแล้ว",
+  "distractorMatrixMessage": "เหลือเชื่อ! คุณจำรูปแบบได้แม้จะมีตัวเลขคณิตศาสตร์มาดึงดูดความสนใจ!",
+  "distractorMatrixMessage1": "คุณโดนตัวดึงดูดความสนใจหลอกซะแล้ว! ฝึกฝนความจำขณะทำงานของคุณใหม่นะ",
+  "sentenceUnscrambleMessage": "คุณถอดรหัสประโยคได้คะแนน {arg0}!",
+  "@sentenceUnscrambleMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "kakuroMessage": "ยอดเยี่ยม! คุณจับคู่ส่วนรวมของตัวเลขทั้งหมดได้อย่างสมบูรณ์แบบ",
+  "symbolicFlankerMessage": "คุณตอบถูก {arg0} จาก {arg1}!",
+  "@symbolicFlankerMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "stroopTestMessage": "คุณตอบถูก {arg0} ข้อ! จดจ่อที่สีของน้ำหมึก ไม่ใช่ตัวหนังสือ",
+  "@stroopTestMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wisconsinCardSortingMessage": "คุณแยกประเภทการ์ดได้ถูกต้อง {arg0} ใบ!",
+  "@wisconsinCardSortingMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "nBackMessage": "คุณทำ 2-back แมตช์ได้ {arg0} ครั้ง! ความจำขณะทำงานของคุณสำคัญมากสำหรับการทำงานหลายอย่างพร้อมกัน",
+  "@nBackMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "rhythmMasterMessage": "คุณทำ Perfect ได้ {arg0} ครั้ง และได้ {arg1} คะแนน!",
+  "@rhythmMasterMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "groceryListMessage": "คุณทำได้ {arg0} คะแนนในรายการซื้อของ!",
+  "@groceryListMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "groceryListText": "ฉัน",
+  "mirrorTracingMessage": "สมองของคุณปรับจูนการประสานงานใหม่ได้สำเร็จ",
+  "moduloClockMessage": "ยอดเยี่ยมสำหรับการคำนวณเลขมอดูโลในใจ! คะแนน: {arg0}",
+  "@moduloClockMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "moduloClockMessage1": "คุณแก้โจทย์นาฬิกามอดูโลได้ {arg0} จาก {arg1} ข้อ คะแนน: {arg2}",
+  "@moduloClockMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "crownMessage": "วางมงกุฎทั้งหมดได้สำเร็จด้วยตรรกะที่สมบูรณ์แบบ",
+  "dualCodingMessage": "ประสิทธิภาพการทำงานสองอย่างพร้อมกันที่ยอดเยี่ยม! คะแนนความจำขณะทำงานของคุณ: {arg0}",
+  "@dualCodingMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "inequalityDashMessage": "คุณได้ {arg0} คะแนนจากการจับคู่อสมการ!",
+  "@inequalityDashMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sourceMonitoringMessage": "คุณทำได้ {arg0} จาก {arg1} คะแนน!",
+  "@sourceMonitoringMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "sourceMonitoringText": "เริ่มการระลึกความจำ",
+  "memoryPalaceText": "คำที่มีอยู่",
+  "target10Message": "คุณได้ {arg0} คะแนนจากการจับคู่ตัวเลขให้รวมกันได้ 10!",
+  "@target10Message": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "paperFoldingMessage": "คุณมองเห็นรูปแบบในจินตนาการของคุณได้",
+  "topologyText": "{arg0}{arg1} / 10",
+  "@topologyText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "waterSortMessage": "คุณแยกสีทั้งหมดได้อย่างสมบูรณ์แบบ!",
+  "anagramDefinitionMessage": "คำนั้นคือ \"{arg0}\" จริงๆ",
+  "@anagramDefinitionMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "game2048Message": "{arg0}: {arg1}\\n{arg2}",
+  "@game2048Message": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "game2048Message1": "{arg0}: {arg1}",
+  "@game2048Message1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "numericalEstimationMessage": "คุณประมาณค่าได้ถูกต้อง {arg0} ครั้ง",
+  "@numericalEstimationMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "grammarSortMessage": "คุณจัดหมวดหมู่คำศัพท์ได้ถูกต้อง {arg0} คำ!",
+  "@grammarSortMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "vowelReconstructMessage": "คุณประกอบสระใหม่ได้คะแนน {arg0}!",
+  "@vowelReconstructMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spatialConflictMessage": "คุณทำคะแนนได้ {arg0} โดยมีข้อผิดพลาด {arg1} ครั้ง!",
+  "@spatialConflictMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "spatialConflictText": "วิธีเล่น",
+  "spatialConflictText1": "เข้าใจแล้ว",
+  "tracePathMessage": "ความแม่นยำของคุณคือ {arg0}%!",
+  "@tracePathMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "ruleSwitcherMessage": "คุณตอบถูก {arg0} จาก {arg1}!",
+  "@ruleSwitcherMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "collatzMessage": "คุณใช้ {arg0} ขั้นตอน ขั้นต่ำที่เป็นไปได้คือ {arg1}",
+  "@collatzMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "collatzText": "/ 2",
+  "collatzText1": "+ 1",
+  "collatzText2": "3n + 1",
+  "divisibilityDashMessage": "คุณแก้โจทย์ตัวเลขได้ {arg0} จำนวน!",
+  "@divisibilityDashMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "switchTaskMessage": "คุณตอบถูก {arg0} ข้อ! การสลับงานอย่างรวดเร็วคือหัวใจของความยืดหยุ่นทางความคิด",
+  "@switchTaskMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sequenceSleuthMessage": "คุณหาคำตอบลำดับตัวเลขได้ {arg0} ชุด!",
+  "@sequenceSleuthMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "changeBlindnessMessage": "คุณพบการเปลี่ยนแปลง {arg0} จุด!",
+  "@changeBlindnessMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "mentalRotationMessage": "คุณหมุนรูปทรงได้ถูกต้อง {arg0} รูป!",
+  "@mentalRotationMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wordMastermindMessage": "คุณถอดรหัสได้แล้ว!\\nคำนั้นคือ: {arg0}",
+  "@wordMastermindMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wordMastermindMessage1": "คำที่ซ่อนอยู่คือ: {arg0}",
+  "@wordMastermindMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wordMastermindText": "{arg0}",
+  "@wordMastermindText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "simonSequenceMessage": "คุณจำแผ่นป้ายได้ครบทั้ง 10 แผ่น!",
+  "simonSequenceMessage1": "ลองอีกครั้งเพื่อฝึกฝนลำดับให้แม่นยำ",
+  "oxymoronHuntMessage": "คุณพบคำที่ขัดแย้งในตัวเอง {arg0} คำ!",
+  "@oxymoronHuntMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spotlightTrackMessage": "การติดตามเชิงพื้นที่ที่น่าทึ่ง! คุณทำได้ {arg0} คะแนน",
+  "@spotlightTrackMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spotlightTrackText": "วิธีเล่น",
+  "spotlightTrackText1": "เข้าใจแล้ว",
+  "spotlightTrackText2": "เริ่มรอบ",
+  "vennNumbersMessage": "คุณจัดหมวดหมู่ตัวเลขได้ {arg0} จำนวน!",
+  "@vennNumbersMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "vennNumbersText": "ไม่ใช่ทั้งสองอย่าง",
+  "vennNumbersText1": "ทั้งสองอย่าง",
+  "silhouetteMatchMessage": "สมองของคุณยอดเยี่ยมในการแปลงภาพ 3 มิติเป็น 2 มิติ",
+  "sumSnakeMessage": "บรรลุเป้าหมาย {arg0} ด้วยความแม่นยำที่สมบูรณ์แบบ!",
+  "@sumSnakeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sumSnakeText": "ล้างเส้นทาง",
+  "percentagePeakMessage": "คุณแก้โจทย์ร้อยละได้ {arg0} ข้อ!",
+  "@percentagePeakMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "trailMakingMessage": "คุณลากเส้นได้ {arg0} เส้น! แบบทดสอบนี้วัดความเร็วในการค้นหาด้วยสายตาและความยืดหยุ่นทางความคิดของคุณ",
+  "@trailMakingMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "matrixReasoningMessage": "คุณทำโจทย์เมทริกซ์เสร็จสมบูรณ์ {arg0} ชุด!",
+  "@matrixReasoningMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "tentsAndTreesMessage": "คุณกางเต็นท์ทั้งหมดได้สำเร็จแล้ว",
+  "klotskiMessage": "การเลื่อนที่ยอดเยี่ยม! คุณพาบล็อกฮีโร่ออกมาได้ใน {arg0} การเคลื่อนที่",
+  "@klotskiMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sumPyramidMessage": "คุณแก้โจทย์พีระมิดตัวเลขได้ {arg0} พีระมิดสำเร็จ!",
+  "@sumPyramidMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "simonCommandMessage": "การตอบสนองแบบเลือกสรรและสมาธิที่ยอดเยี่ยม! คะแนนรวม: {arg0}",
+  "@simonCommandMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "simonCommandMessage1": "คุณทำได้ {arg0} คะแนน แต่ยังไม่ถึง {arg1} คู่ในเวลาที่กำหนด",
+  "@simonCommandMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "syllableStackMessage": "คุณสะสมคะแนนได้ {arg0}!",
+  "@syllableStackMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "slitherlinkMessage": "สุดยอด! คุณไขปริศนาห่วงโซ่ได้สำเร็จ",
+  "quickMathMessage": "คุณแก้โจทย์ได้ {arg0} ข้อ!",
+  "@quickMathMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "commonDenominatorMessage": "คุณแก้โจทย์ ห.ร.ม./ค.ร.น. ได้ {arg0} ข้อ!",
+  "@commonDenominatorMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "chainReactionMessage": "คะแนนสุดท้ายของคุณคือ {arg0} คุณสร้างโซ่คำศัพท์ได้ {arg1} คำ",
+  "@chainReactionMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "chainReactionText": "{arg0}",
+  "@chainReactionText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "associativePairsMessage": "ยอดเยี่ยม! คุณเชื่อมโยงลักษณะทางสายตาได้อย่างไร้ที่ติ",
+  "associativePairsMessage1": "การเชื่อมโยงผิดพลาด! ฝึกฝนความจำในการเชื่อมโยงและลองใหม่อีกครั้ง",
+  "portmanteauSplitMessage": "คุณแยกคำสนธิได้ {arg0} คำ!",
+  "@portmanteauSplitMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "magicSquaresText": "ล้าง",
+  "alphabetSudokuText": "ข้อผิดพลาด: {arg0}",
+  "@alphabetSudokuText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "pipesMessage": "คุณเชื่อมต่อท่อทั้งหมดและเติมเต็มตารางแล้ว",
+  "dualMirrorMessage": "คุณนำทางไอคอนทั้งสองไปยังเป้าหมายได้สำเร็จ!",
+  "binaryCodeMessage": "การแปลงเลขฐานสิบอย่างรวดเร็วที่น่าทึ่ง! คะแนนสุดท้าย: {arg0}",
+  "@binaryCodeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "binaryCodeMessage1": "คุณแปลงเลขฐานสองได้ถูกต้อง {arg0} จำนวน คะแนน: {arg1}",
+  "@binaryCodeMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "oddOneOutMessage": "คุณหาจุดที่ต่างกันได้ 50 จุด! คะแนนสุดท้าย: {arg0}",
+  "@oddOneOutMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "oddOneOutMessage1": "คะแนนของคุณ: {arg0}",
+  "@oddOneOutMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "letterBridgeMessage": "คุณพบตัวอักษรเชื่อมโยงแล้ว: {arg0}",
+  "@letterBridgeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "imReady": "ฉันพร้อมแล้ว"
 }

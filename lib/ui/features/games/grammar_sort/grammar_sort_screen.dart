@@ -51,7 +51,6 @@ class _GrammarSortScreenState extends ConsumerState<GrammarSortScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(grammarSortNotifierProvider);
     final notifier = ref.read(grammarSortNotifierProvider.notifier);

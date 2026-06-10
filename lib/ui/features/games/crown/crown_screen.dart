@@ -161,7 +161,6 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
   }
 
   void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
-    final l10n = AppLocalizations.of(context)!;
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('crown');
     if (!context.mounted) return;
     showDialog(

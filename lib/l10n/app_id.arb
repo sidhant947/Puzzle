@@ -1,15 +1,21 @@
 {
   "@@locale": "id",
   "appTitle": "Puzzle Hub",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
   "home": "Beranda",
   "settings": "Pengaturan",
   "playAgain": "Main Lagi",
+  "playNext": "Main Berikutnya",
   "seeCompleted": "Tinjau",
   "finish": "Selesai",
   "congrats": "Selamat!",
   "perfectGradient": "Gradien Sempurna!",
   "wellDone": "Kerja Bagus!",
   "timeUp": "Waktu Habis!",
+  "victory": "Kemenangan!",
+  "gameWin": "BAGUS SEKALI!",
   "completed": "Selesai!",
   "score": "Skor",
   "timeLeft": "Waktu",
@@ -65,8 +71,32 @@
   "termsOfService": "Ketentuan Layanan",
   "licenses": "Lisensi",
   "findWordSubtitle": "Anda memiliki {maxTries} kesempatan untuk menemukan kata {wordLength} huruf yang tersembunyi.",
+  "@findWordSubtitle": {
+    "placeholders": {
+      "maxTries": {
+        "type": "int"
+      },
+      "wordLength": {
+        "type": "int"
+      }
+    }
+  },
   "wordFoundMessage": "Kata berhasil ditemukan: {word}",
+  "@wordFoundMessage": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
   "gameOverMessage": "Kata yang benar adalah: {word}",
+  "@gameOverMessage": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
   "gameOver": "Permainan Berakhir",
   "crosswordTitle": "Teka-Teki Silang",
   "crosswordSubtitle": "Lengkapi kisi dengan kata yang benar berdasarkan petunjuk yang diberikan.",
@@ -76,7 +106,21 @@
   "radicalRootsGoalReached": "Target Tercapai!",
   "radicalRootsTimeUp": "Waktu Habis!",
   "radicalRootsScoreMessage": "Anda menghitung {score} akar dengan benar!",
+  "@radicalRootsScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "radicalRootsTryAgainMessage": "Teruslah berlatih! Anda menghitung {score} akar.",
+  "@radicalRootsTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "radicalRootsStart": "Mulai Menghitung",
   "radicalRootsDescription": "Anda memiliki waktu 60 detik untuk memecahkan sebanyak mungkin.",
   "radicalRootsBest": "Terbaik",
@@ -86,7 +130,21 @@
   "romanArithmeticGoalReached": "Level Centurion!",
   "romanArithmeticTimeUp": "Waktu Habis!",
   "romanArithmeticScoreMessage": "Anda memecahkan {score} soal Romawi!",
+  "@romanArithmeticScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "romanArithmeticTryAgainMessage": "Veni, Vidi, Vici! Anda memecahkan {score} soal.",
+  "@romanArithmeticTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "romanArithmeticStart": "Mulai Quest",
   "romanArithmeticDescription": "Konversikan dan selesaikan. Anda memiliki waktu 60 detik.",
   "romanArithmeticBest": "Terbaik",
@@ -116,6 +174,41 @@
   "nonogramTitle": "Nonogram",
   "nonogramSubtitle": "Ungkap gambar tersembunyi menggunakan petunjuk logika.",
   "nonogramWin": "Gambar Terungkap!",
+  "magnetsTitle": "MAGNET",
+  "magnetsSubtitle": "Tempatkan magnet di kisi berdasarkan jumlah kutub.",
+  "magnetsHowToPlay": "Isi wadah seukuran domino dengan magnet '+' dan '-' atau biarkan kosong. Petunjuk baris dan kolom menentukan jumlah total setiap kutub di baris tersebut. Kutub yang identik tidak boleh berdekatan secara ortogonal.",
+  "magnetsWinTitle": "POLARITAS SEIMBANG!",
+  "magnetsWinMessage": "Semua magnet telah diatur dengan sempurna!",
+  "lighthousesTitle": "MERCUSUAR",
+  "lighthousesSubtitle": "Tempatkan kapal berdasarkan petunjuk mercusuar.",
+  "lighthousesHowToPlay": "Tempatkan kapal 1x1 di kisi. Mercusuar menunjukkan jumlah total kapal yang terlihat secara horizontal dan vertikal. Kapal tidak boleh menyentuh mercusuar atau satu sama lain, bahkan secara diagonal.",
+  "lighthousesWinTitle": "LAUT AMAN!",
+  "lighthousesWinMessage": "Semua mercusuar memandu kapal dengan sempurna!",
+  "dominosaTitle": "DOMINOSA",
+  "dominosaSubtitle": "Temukan semua domino yang tersembunyi di kisi.",
+  "dominosaHowToPlay": "Susun satu set lengkap domino pada kisi angka sedemikian rupa sehingga setiap pasangan angka yang berdekatan ditutupi oleh tepat satu domino. Setiap pasangan angka hanya ada satu kali dalam set tersebut.",
+  "dominosaWinTitle": "MASTER DOMINO!",
+  "dominosaWinMessage": "Setiap domino telah ditemukan và ditempatkan!",
+  "skyscrapersTitle": "PENCERAK LANGIT",
+  "skyscrapersSubtitle": "Isi kisi dengan ketinggian bangunan.",
+  "skyscrapersHowToPlay": "Isi kisi dengan ketinggian (1-N) sedemikian rupa sehingga setiap baris dan kolom berisi setiap ketinggian tepat satu kali. Petunjuk di tepian menunjukkan berapa banyak bangunan yang terlihat dari arah tersebut, dengan bangunan yang lebih tinggi menghalangi yang lebih pendek.",
+  "skyscrapersWinTitle": "CAKRAWALA DIPULIHKAN!",
+  "skyscrapersWinMessage": "Semua bangunan diposisikan dengan sempurna!",
+  "nurikabeTitle": "NURIKABE",
+  "nurikabeSubtitle": "Bentuk laut yang terhubung dan pulau-pulau yang terpisah.",
+  "nurikabeHowToPlay": "Arsir sel untuk membentuk satu 'laut' yang terhubung (tidak ada blok 2x2). Sel yang tidak diarsir membentuk 'pulau', masing-masing berisi tepat satu angka yang mewakili total luasnya.",
+  "nurikabeWinTitle": "LAUT MENGALIR!",
+  "nurikabeWinMessage": "Pulau-pulau terpisah, laut terhubung!",
+  "fillominoTitle": "FILLOMINO",
+  "fillominoSubtitle": "Bagi kisi menjadi poliomino dengan ukuran yang ditentukan.",
+  "fillominoHowToPlay": "Bagi kisi menjadi poliomino sedemikian rupa sehingga setiap poliomino berukuran N berisi angka N di semua selnya. Poliomino dengan ukuran yang sama không boleh berdekatan secara ortogonal.",
+  "fillominoWinTitle": "KISI TERBAGI!",
+  "fillominoWinMessage": "Terpasang sempurna dengan logika!",
+  "hitoriTitle": "HITORI",
+  "hitoriSubtitle": "Arsir angka duplikat di setiap baris dan kolom.",
+  "hitoriHowToPlay": "Arsir sel sehingga tidak ada angka yang muncul lebih dari satu kali di baris atau kolom mana pun. Sel yang diarsir tidak boleh berdekatan (secara ortogonal), và semua sel yang tidak diarsir harus membentuk satu kelompok yang terhubung.",
+  "hitoriWinTitle": "MASTER HITORI!",
+  "hitoriWinMessage": "Anda telah berhasil menyelesaikan semua duplikat!",
   "pathFinderTitle": "Pencari Jalur",
   "pathFinderSubtitle": "Temukan jalur tersembunyi dari S ke E.",
   "pathFinderWin": "Jalur Dikuasai!",
@@ -132,12 +225,26 @@
   "arithmeticChainWinMessage": "Perhitungan mental Anda sangat tajam!",
   "arithmeticChainLoseTitle": "COBA LAGI",
   "arithmeticChainLoseMessage": "Jawaban yang benar adalah {answer}.",
+  "@arithmeticChainLoseMessage": {
+    "placeholders": {
+      "answer": {
+        "type": "String"
+      }
+    }
+  },
   "arithmeticChainStart": "MULAI",
   "arithmeticChainNext": "LANJUT",
   "attentionalBlinkTitle": "Kedipan Perhatian",
   "attentionalBlinkSubtitleWatch": "PERHATIKAN ANGKA-ANGKANYA",
   "attentionalBlinkSubtitleInput": "MASUKKAN DUA ANGKA YANG ANDA LIHAT",
   "attentionalBlinkScoreMessage": "Anda mencetak {score} target!",
+  "@attentionalBlinkScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "balanceScaleTitle": "Timbangan",
   "balanceScaleSubtitle": "Deduksikan berat item terakhir berdasarkan timbangan.",
   "balanceScaleWinTitle": "SEIMBANG!",
@@ -157,6 +264,16 @@
   "boxCompletionTitle": "Penyusunan Kotak",
   "boxCompletionSubtitle": "Kubus mana yang dapat terbentuk?",
   "boxCompletionScoreMessage": "Skor Anda {score} benar dari {totalTrials}!",
+  "@boxCompletionScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "totalTrials": {
+        "type": "int"
+      }
+    }
+  },
   "boxCompletionOptions": "PILIHAN",
   "bridgesTitle": "Jembatan",
   "bridgesSubtitle": "Hubungkan pulau-pulau dengan jembatan. Setiap pulau membutuhkan jumlah jembatan tertentu. Jembatan tidak boleh saling bersilangan.",
@@ -167,7 +284,21 @@
   "calculationSprintGoalReached": "TARGET TERCAPAI!",
   "calculationSprintTimeUp": "WAKTUNYA HABIS",
   "calculationSprintScoreMessage": "Kecepatan menghitung yang luar biasa! Anda mencetak {score} poin.",
+  "@calculationSprintScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "calculationSprintTryAgainMessage": "Anda mencetak {score} poin. Cobalah untuk mengalahkan rekor terbaik Anda!",
+  "@calculationSprintTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "calculationSprintBest": "TERBAIK",
   "calculationSprintSeconds": "60 DETIK",
   "calculationSprintDescription": "Selesaikan persamaan dengan cepat.\nJawaban yang salah mengurangi 3 detik!",
@@ -178,20 +309,82 @@
   "categoryFluencyTimeUp": "WAKTU HABIS!",
   "categoryFluencyWinMessage": "Anda memiliki kosakata yang sangat luas!",
   "categoryFluencyFoundMessage": "Anda menemukan {count} kata.",
+  "@categoryFluencyFoundMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "categoryFluencyCategoryLabel": "Kategori:",
   "categoryFluencyEnterItem": "Masukkan item...",
   "categoryFluencyWordCount": "{entered} / {target} kata",
+  "@categoryFluencyWordCount": {
+    "placeholders": {
+      "entered": {
+        "type": "int"
+      },
+      "target": {
+        "type": "int"
+      }
+    }
+  },
   "changeBlindnessTitle": "Kebutaan Perubahan",
   "changeBlindnessSubtitle": "TEMUKAN ITEM YANG BERUBAH",
   "changeBlindnessScore": "SKOR: {score}",
+  "@changeBlindnessScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "changeBlindnessFoundMessage": "Anda menemukan {score} perubahan!",
+  "@changeBlindnessFoundMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "choiceRtTitle": "Waktu Reaksi Pilihan",
   "choiceRtSubtitle": "Ketuk kotak aktif secepat mungkin",
   "choiceRtAvgMessage": "Rata-rata waktu reaksi Anda: {avg}ms",
+  "@choiceRtAvgMessage": {
+    "placeholders": {
+      "avg": {
+        "type": "String"
+      }
+    }
+  },
   "choiceRtTimeRemaining": "Sisa Waktu: {time} detik",
+  "@choiceRtTimeRemaining": {
+    "placeholders": {
+      "time": {
+        "type": "int"
+      }
+    }
+  },
   "choiceRtTaps": "Ketukan: {count}",
+  "@choiceRtTaps": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "colorFloodTitle": "Banjir Warna",
   "colorFloodSubtitle": "Langkah: {moves} / {maxMoves}",
+  "@colorFloodSubtitle": {
+    "placeholders": {
+      "moves": {
+        "type": "int"
+      },
+      "maxMoves": {
+        "type": "int"
+      }
+    }
+  },
   "colorFloodSuccess": "BANJIR BERHASIL!",
   "colorFloodDryLand": "DARATAN KERING...",
   "colorFloodWinMessage": "Anda membasahi seluruh kisi dengan warna!",
@@ -203,11 +396,28 @@
   "colorMatchCheck": "PERIKSA KECOCOKAN",
   "colorMatchResult": "HASIL KECOCOKAN",
   "colorMatchAccuracy": "Akurasi Anda: {accuracy}%",
+  "@colorMatchAccuracy": {
+    "placeholders": {
+      "accuracy": {
+        "type": "String"
+      }
+    }
+  },
   "corsiBlocksTitle": "Blok Corsi",
   "corsiBlocksSubtitle": "Perhatikan blok menyala dan ketuk dalam urutan yang sama.",
   "corsiBlocksWinTitle": "MASTER SPASIAL!",
   "corsiBlocksLoseTitle": "TERSESAT DI LUAR ANGKASA",
   "corsiBlocksMessage": "Anda mengingat {score} urutan! Rentang memori spasial Anda mencapai {span}.",
+  "@corsiBlocksMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "span": {
+        "type": "int"
+      }
+    }
+  },
   "corsiBlocksWatch": "PERHATIKAN POLANYA",
   "corsiBlocksRepeat": "ULANGI POLANYA",
   "corsiBlocksExcellent": "HEBAT!",
@@ -229,16 +439,58 @@
   "digitSpanReverseWinMessage": "Memori kerja Anda luar biasa!",
   "digitSpanReverseLoseTitle": "COBA LAGI",
   "digitSpanReverseLoseMessage": "Urutan terbalik yang benar adalah {sequence}.",
+  "@digitSpanReverseLoseMessage": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
   "dividedAttentionTitle": "Fokus Terbagi",
   "dividedAttentionSubtitle": "Ketuk KIRI untuk BINTANG ⭐ | Ketuk KANAN untuk MERAH 🔴",
   "dividedAttentionGameOverTitle": "FOKUS TERPECAH",
   "dividedAttentionGameOverMessage": "Multitasking itu sulit! Skor Anda adalah {score}.",
+  "@dividedAttentionGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "dividedAttentionScore": "SKOR: {score}",
+  "@dividedAttentionScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackTitle": "Double N-Back",
   "doubleNBackSubtitle": "Cocokkan stimulus {n} langkah sebelumnya",
+  "@doubleNBackSubtitle": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackGameOverTitle": "GAME OVER",
   "doubleNBackGameOverMessage": "Anda mencetak {score} poin di Double N-Back!",
+  "@doubleNBackGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackScore": "Skor: {score}",
+  "@doubleNBackScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackPositionMatch": "COCOKKAN POSISI",
   "doubleNBackLetterMatch": "COCOKKAN HURUF",
   "faceNameAssociationTitle": "Wajah & Nama",
@@ -248,10 +500,27 @@
   "faceNameAssociationGameOver": "GAME OVER",
   "faceNameAssociationWinMessage": "Anda memiliki ingatan yang hebat untuk wajah dan nama!",
   "faceNameAssociationLoseMessage": "Anda menjawab {correct} benar dari {total}.",
+  "@faceNameAssociationLoseMessage": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "faceNameAssociationStartTest": "MULAI TES",
   "flankerTestWinTitle": "FOKUS LASER!",
   "flankerTestLoseTitle": "TERALIHKAN",
   "flankerTestScoreMessage": "Anda menjawab {score} dengan benar!",
+  "@flankerTestScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "flankerTestTitle": "TES FLANKER",
   "flankerTestSubtitle": "Tunjukkan arah panah tengah, abaikan panah di sampingnya.",
   "flankerTestLeft": "KIRI",
@@ -260,6 +529,13 @@
   "fractionMatchSubtitle": "Cocokkan gambar dengan pecahannya",
   "fractionMatchLoseTitle": "PECAHAN TIDAK COCOK",
   "fractionMatchLoseMessage": "Jawaban yang benar adalah {correctAnswer}.",
+  "@fractionMatchLoseMessage": {
+    "placeholders": {
+      "correctAnswer": {
+        "type": "String"
+      }
+    }
+  },
   "goNoGoTitle": "Go / No-Go",
   "goNoGoSubtitle": "Ketuk untuk Hijau, ABAIKAN Merah!",
   "goNoGoLoseTitle": "REAKSI TERHENTI",
@@ -271,6 +547,13 @@
   "groceryListWinTitle": "GURU BELANJA!",
   "groceryListLoseTitle": "ADA YANG LUPA?",
   "groceryListScoreMessage": "Anda mencetak {score} poin di Daftar Belanja!",
+  "@groceryListScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "groceryListReady": "SAYA SIAP",
   "groceryListWhereBelong": "DI MANA ITEM INI TERMASUK?",
   "hueSortTitle": "Urutkan Warna",
@@ -278,16 +561,44 @@
   "hueSortWinTitle": "GRADIEN SEMPURNA!",
   "hueSortWinMessage": "Anda mengurutkan spektrum warna dengan sempurna!",
   "hueSortWrongTiles": "Ubin di posisi yang salah: {count}",
+  "@hueSortWrongTiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "kenkenTitle": "KenKen",
   "kenkenWinTitle": "JENIUS!",
   "kenkenLoseTitle": "GAME OVER",
   "kenkenWinMessage": "Anda memecahkan teka-teki KenKen!",
   "kenkenLoseMessage": "Periksa aturan baris/kolom dan kotak.",
   "kenkenSubtitle": "Isi 1-{size} tanpa pengulangan di baris/kolom",
+  "@kenkenSubtitle": {
+    "placeholders": {
+      "size": {
+        "type": "int"
+      }
+    }
+  },
   "letterCancellationTitle": "Pembatalan Huruf",
   "letterCancellationTitleFull": "Pembatalan Huruf",
   "letterCancellationScoreMessage": "Anda menemukan {score} huruf!",
+  "@letterCancellationScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "letterCancellationSubtitle": "Temukan semua huruf \"{target}\"",
+  "@letterCancellationSubtitle": {
+    "placeholders": {
+      "target": {
+        "type": "String"
+      }
+    }
+  },
   "letterCancellationFound": "DITEMUKAN",
   "letterCancellationTime": "WAKTU",
   "lightsOutTitle": "Lights Out",
@@ -326,6 +637,13 @@
   "sternbergTaskMemorize": "Hafalkan huruf-hurufnya",
   "sternbergTaskWasLetterSet": "Apakah huruf ini ada dalam kumpulan?",
   "sternbergTaskScore": "Anda mencetak {score} poin di Tugas Sternberg!",
+  "@sternbergTaskScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "verbalAnalogiesTitle": "Master Analogi!",
   "verbalAnalogiesSubtitle": "Lengkapi hubungan tersebut",
   "typingSpeedTitle": "Kecepatan Mengetik",
@@ -351,6 +669,13 @@
   "pixelMimicTitle": "Peniru Piksel",
   "targetNumberTitle": "Target 24",
   "targetNumberSubtitle": "Gunakan keempat angka untuk mencapai {target}",
+  "@targetNumberSubtitle": {
+    "placeholders": {
+      "target": {
+        "type": "int"
+      }
+    }
+  },
   "mirrorTracingTitle": "Tracer Cermin",
   "mirrorTracingSubtitle": "Jiplak bintang! Kontrol dicerminkan secara terbalik.",
   "wordSurgeTitle": "Gelombang Kata",
@@ -360,6 +685,13 @@
   "perspectiveTakingChoosePerspective": "PILIH PERSPEKTIF",
   "perspectiveTakingCongrats": "Anda memiliki pandangan tajam untuk hubungan spasial.",
   "perspectiveTakingSubtitle": "Tampilan mana yang dari arah {targetDirName}?",
+  "@perspectiveTakingSubtitle": {
+    "placeholders": {
+      "targetDirName": {
+        "type": "String"
+      }
+    }
+  },
   "paperFoldingTitle": "Lipatan Kertas",
   "paperFoldingSubtitle": "Seperti apa bentuknya jika dibuka?",
   "waterSortTitle": "Urutkan Air",
@@ -395,6 +727,13 @@
   "operationSpanRecallPhase": "Ingat huruf-hurufnya secara berurutan",
   "operationSpanRoundComplete": "Putaran Selesai!",
   "operationSpanScore": "Anda mencetak {score} poin di Operation Span!",
+  "@operationSpanScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "slidePuzzleTitle": "Slide Puzzle",
   "slidePuzzleNewGame": "GAME BARU",
   "slidePuzzleInstructions": "Susun kembali ubin ke dalam urutan numerik dengan menggesernya ke ruang kosong.",
@@ -411,6 +750,13 @@
   "quickMathTitle": "Matematika Cepat",
   "magicSquaresTitle": "Kotak Ajaib",
   "magicSquaresSubtitle": "Setiap baris, kolom, dan diagonal harus berjumlah {targetSum}",
+  "@magicSquaresSubtitle": {
+    "placeholders": {
+      "targetSum": {
+        "type": "int"
+      }
+    }
+  },
   "objectShuffleTitle": "Kocok Objek",
   "pipesTitle": "Pipa",
   "pipesSubtitle": "Hubungkan titik-titik berwarna sama dengan pipa.",
@@ -446,6 +792,8 @@
   "vocabularyBuilderTitle": "Vocabulary Builder",
   "vocabularyBuilderSubtitle": "Cocokkan sinonim dan antonim di bawah tekanan waktu.",
   "vocabularyBuilderHowToPlay": "Anda akan diperlihatkan kata target dan hubungan (Sinonim atau Antonim). Pilih kata yang benar dari opsi yang cocok dengan hubungan tersebut. Cepatlah, waktu terus berjalan!",
+  "correct": "BENAR",
+  "incorrect": "SALAH",
   "grammarPoliceTitle": "Polisi Tata Bahasa",
   "grammarPoliceSubtitle": "Identifikasi apakah kalimat tersebut benar secara tata bahasa atau mengandung kesalahan.",
   "grammarPoliceHowToPlay": "Sebuah kalimat akan muncul di tengah layar. Tentukan apakah kalimat tersebut benar secara tata bahasa atau mengandung kesalahan. Ketuk 'BENAR' jika baik-baik saja, atau 'SALAH' jika Anda menemukan kesalahan. Jangan sampai kehilangan semua nyawa Anda!",
@@ -490,6 +838,13 @@
   "blockCount3DNotQuite": "Kurang tepat! Coba rotasikan untuk menghitung kembali.",
   "blockCount3DExcellent": "LUAR BIASA",
   "blockCount3DWinMessage": "Anda berhasil mengidentifikasi semua {count} balok!",
+  "@blockCount3DWinMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "blockCount3DHowToPlayDescription": "1. Seret jari Anda melintasi viewport 3D untuk merotasi tumpukan balok.\n\n2. Hitung semua balok dalam tumpukan.\n\n3. Ingat: sebuah balok yang menggantung di udara harus memiliki balok penopang struktural di bawahnya (balok tersembunyi!).\n\n4. Ketik jawaban Anda di kolom input dan ketuk \"KIRIM TEBAKAN\" untuk memeriksa.",
   "alphabetSudokuTitle": "SUDOKU ABJAD",
   "alphabetSudokuSubtitle": "Lengkapi kisi sehingga setiap baris, kolom, dan kotak berisi huruf A-I.",
@@ -499,6 +854,13 @@
   "classicMazeSubtitle": "JELAJAHI & PECAHKAN • LABIRIN BARU SETIAP PERMAINAN",
   "classicMazeWinTitle": "LABIRIN DISELESAIKAN",
   "classicMazeWinMessage": "Navigasi yang luar biasa! Anda menyelesaikan labirin dalam {count} langkah.",
+  "@classicMazeWinMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "classicMazeMoves": "LANGKAH: ",
   "classicMazeHowToPlayDescription": "1. Pandu kelereng kuning bercahaya (pemain) ke portal hijau (keluar) di kanan bawah.\n\n2. Gunakan gesekan di mana saja pada labirin, tombol panah keyboard fisik, atau tombol bantalan panah di bagian bawah untuk bergerak.\n\n3. Jejak ungu menunjukkan jalur yang telah Anda jelajahi. Telusuri kembali jejak Anda untuk menghapusnya secara dinamis!\n\n4. Beralih kesulitan dari bilah tindakan atas untuk menantang diri Anda dengan labirin yang lebih besar!",
   "conjunctionSearchTitle": "Conjunction Search",
@@ -529,52 +891,910 @@
   "cubeNetFoldFailed": "GAGAL (KETUK RESET)",
   "faceTraitAssociationMemorize": "HAFALKAN KE-4 ORANG INI",
   "faceTraitAssociationPersonOf": "ORANG KE {current} DARI {total}",
+  "@faceTraitAssociationPersonOf": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "faceTraitAssociationWhatOccupation": "APA PEKERJAAN MEREKA?",
   "faceTraitAssociationWhatHobby": "APA HOBI MEREKA?",
   "faceTraitAssociationWinTitle": "MASTER MEMORI!",
   "faceTraitAssociationLoseTitle": "GAME OVER",
   "faceTraitAssociationScoreMessage": "Anda menjawab {correct} benar dari {total}.",
+  "@faceTraitAssociationScoreMessage": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "topologyTitle": "TOPOLOGI",
   "topologySubtitle": "Apakah bentuk-bentuk ini setara secara topologi? (Dapatkah salah satu diubah bentuknya menjadi yang lain tanpa memotong atau mengelem?)",
   "topologyWinTitle": "GEOMETRY GENIUS!",
   "topologyWinMessage": "Anda berhasil mengidentifikasi 10 pasangan topologi dengan benar!",
   "topologyScore": "SKOR: ",
-  "playNext": "Main Berikutnya",
-  "correct": "BENAR",
-  "incorrect": "SALAH",
-  "magnetsTitle": "MAGNET",
-  "magnetsSubtitle": "Tempatkan magnet di kisi berdasarkan jumlah kutub.",
-  "magnetsHowToPlay": "Isi wadah seukuran domino dengan magnet '+' dan '-' atau biarkan kosong. Petunjuk baris dan kolom menentukan jumlah total setiap kutub di baris tersebut. Kutub yang identik tidak boleh berdekatan secara ortogonal.",
-  "magnetsWinTitle": "POLARITAS SEIMBANG!",
-  "magnetsWinMessage": "Semua magnet telah diatur dengan sempurna!",
-  "lighthousesTitle": "MERCUSUAR",
-  "lighthousesSubtitle": "Tempatkan kapal berdasarkan petunjuk mercusuar.",
-  "lighthousesHowToPlay": "Tempatkan kapal 1x1 di kisi. Mercusuar menunjukkan jumlah total kapal yang terlihat secara horizontal dan vertikal. Kapal tidak boleh menyentuh mercusuar atau satu sama lain, bahkan secara diagonal.",
-  "lighthousesWinTitle": "LAUT AMAN!",
-  "lighthousesWinMessage": "Semua mercusuar memandu kapal dengan sempurna!",
-  "dominosaTitle": "DOMINOSA",
-  "dominosaSubtitle": "Temukan semua domino yang tersembunyi di kisi.",
-  "dominosaHowToPlay": "Susun satu set lengkap domino pada kisi angka sedemikian rupa sehingga setiap pasangan angka yang berdekatan ditutupi oleh tepat satu domino. Setiap pasangan angka hanya ada satu kali dalam set tersebut.",
-  "dominosaWinTitle": "MASTER DOMINO!",
-  "dominosaWinMessage": "Setiap domino telah ditemukan và ditempatkan!",
-  "skyscrapersTitle": "PENCERAK LANGIT",
-  "skyscrapersSubtitle": "Isi kisi dengan ketinggian bangunan.",
-  "skyscrapersHowToPlay": "Isi kisi dengan ketinggian (1-N) sedemikian rupa sehingga setiap baris dan kolom berisi setiap ketinggian tepat satu kali. Petunjuk di tepian menunjukkan berapa banyak bangunan yang terlihat dari arah tersebut, dengan bangunan yang lebih tinggi menghalangi yang lebih pendek.",
-  "skyscrapersWinTitle": "CAKRAWALA DIPULIHKAN!",
-  "skyscrapersWinMessage": "Semua bangunan diposisikan dengan sempurna!",
-  "nurikabeTitle": "NURIKABE",
-  "nurikabeSubtitle": "Bentuk laut yang terhubung dan pulau-pulau yang terpisah.",
-  "nurikabeHowToPlay": "Arsir sel untuk membentuk satu 'laut' yang terhubung (tidak ada blok 2x2). Sel yang tidak diarsir membentuk 'pulau', masing-masing berisi tepat satu angka yang mewakili total luasnya.",
-  "nurikabeWinTitle": "LAUT MENGALIR!",
-  "nurikabeWinMessage": "Pulau-pulau terpisah, laut terhubung!",
-  "fillominoTitle": "FILLOMINO",
-  "fillominoSubtitle": "Bagi kisi menjadi poliomino dengan ukuran yang ditentukan.",
-  "fillominoHowToPlay": "Bagi kisi menjadi poliomino sedemikian rupa sehingga setiap poliomino berukuran N berisi angka N di semua selnya. Poliomino dengan ukuran yang sama không boleh berdekatan secara ortogonal.",
-  "fillominoWinTitle": "KISI TERBAGI!",
-  "fillominoWinMessage": "Terpasang sempurna dengan logika!",
-  "hitoriTitle": "HITORI",
-  "hitoriSubtitle": "Arsir angka duplikat di setiap baris dan kolom.",
-  "hitoriHowToPlay": "Arsir sel sehingga tidak ada angka yang muncul lebih dari satu kali di baris atau kolom mana pun. Sel yang diarsir tidak boleh berdekatan (secara ortogonal), và semua sel yang tidak diarsir harus membentuk satu kelompok yang terhubung.",
-  "hitoriWinTitle": "MASTER HITORI!",
-  "hitoriWinMessage": "Anda telah berhasil menyelesaikan semua duplikat!"
+  "semanticDistanceTitle": "Jarak Semantik",
+  "semanticDistanceSubtitle": "Ukur jarak konseptual antar kata",
+  "oxymoronHuntTitle": "Cari Oksimoron",
+  "oxymoronHuntSubtitle": "Pasangkan kata-kata yang kontradiktif di dalam kisi",
+  "portmanteauSplitTitle": "Pemisah Portmanteau",
+  "portmanteauSplitSubtitle": "Identifikasi kata asal dari sebuah portmanteau",
+  "chainReactionTitle": "Reaksi Berantai",
+  "chainReactionSubtitle": "Hubungkan kata-kata menggunakan huruf yang tumpang tindih",
+  "rhymeMasterTitle": "Ahli Rima",
+  "rhymeMasterSubtitle": "Identifikasi kata-kata yang berima dengan target",
+  "definitionDashTitle": "Sprint Definisi",
+  "definitionDashSubtitle": "Cocokkan kata yang benar dengan definisinya",
+  "syllableStackTitle": "Susun Suku Kata",
+  "syllableStackSubtitle": "Susun suku kata untuk membentuk kata yang utuh",
+  "sentenceUnscrambleTitle": "Susun Kalimat",
+  "sentenceUnscrambleSubtitle": "Urutkan ulang kata-kata untuk membentuk kalimat yang valid",
+  "grammarSortTitle": "Sortir Tata Bahasa",
+  "grammarSortSubtitle": "Kategorikan kata-kata berdasarkan kelas katanya",
+  "vowelReconstructTitle": "Rekonstruksi Vokal",
+  "vowelReconstructSubtitle": "Isi huruf vokal yang hilang dalam kalimat",
+  "consonantReconstructTitle": "Rekonstruksi Konsonan",
+  "consonantReconstructSubtitle": "Isi huruf konsonan yang hilang dalam kalimat",
+  "homophoneHuntTitle": "Cari Homofon",
+  "homophone_huntSubtitle": "Pilih homofon dengan ejaan yang benar",
+  "silentLetterSearchTitle": "Cari Huruf Senyap",
+  "silentLetterSearchSubtitle": "Identifikasi huruf senyap dalam kata-kata yang diberikan",
+  "palindromeBuilderTitle": "Pembuat Palindrom",
+  "palindromeBuilderSubtitle": "Buat palindrom dengan menambahkan huruf sesedikit mungkin",
+  "phoneticGuessTitle": "Tebakan Fonetik",
+  "phoneticGuessSubtitle": "Identifikasi kata dari ejaan fonetiknya",
+  "spoonerismSolverTitle": "Penyelesai Spoonerisme",
+  "spoonerismSolverSubtitle": "Identifikasi spoonerisme yang benar untuk frasa tersebut",
+  "etymonOddballTitle": "Akar Kata Berbeda",
+  "etymonOddballSubtitle": "Temukan kata yang tidak memiliki akar kata yang sama",
+  "etymologyOriginTitle": "Asal-usul Etimologi",
+  "etymologyOriginSubtitle": "Tebak bahasa asal dari kata serapan tersebut",
+  "affixFactoryTitle": "Pabrik Imbuhan",
+  "affixFactorySubtitle": "Buat kata-kata yang valid menggunakan awalan dan akhiran",
+  "cognateCatchTitle": "Cari Kognat",
+  "cognateCatchSubtitle": "Bedakan antara kognat sejati dan teman palsu",
+  "compoundConnectTitle": "Gabungan Kata Majemuk",
+  "compoundConnectSubtitle": "Gabungkan dua kata untuk membentuk kata majemuk",
+  "pangramSprintTitle": "Sprint Pangram",
+  "pangramSprintSubtitle": "Bangun kalimat menggunakan setiap huruf dalam alfabet",
+  "anagramDefinitionTitle": "Anagram Definisi",
+  "anagramDefinitionSubtitle": "Selesaikan anagram berdasarkan definisinya",
+  "letterBridgeTitle": "Jembatan Huruf",
+  "letterBridgeSubtitle": "Temukan huruf yang hilang yang menghubungkan dua kata",
+  "letterFrequencyScanTitle": "Scan Frekuensi Huruf",
+  "letterFrequencyScanSubtitle": "Hitung berapa kali sebuah huruf muncul dalam teks",
+  "oneLetterShiftTitle": "Geser Satu Huruf",
+  "oneLetterShiftSubtitle": "Ubah satu kata menjadi kata lain dengan perubahan satu huruf",
+  "vocabularyBuilderMessage": "Kerja bagus! Kosakata Anda mengesankan. Skor: {arg0}",
+  "@vocabularyBuilderMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "symmetryMessage": "Anda mencerminkan pola dengan sempurna dengan presisi bedah.",
+  "temporalOrderMessage": "Luar biasa! Memori urutan temporal Anda sangat akurat.",
+  "temporalOrderMessage1": "Memori urutan salah. Berlatih membuat sempurna!",
+  "wordSearchMessage": "Semua kata berhasil ditemukan dengan pengamatan yang tajam.",
+  "colorMatchMessage": "Akurasi Anda: {arg0}%",
+  "@colorMatchMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "semanticLinkMessage": "Anda mencetak {arg0} poin!",
+  "@semanticLinkMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "reflexTapMessage": "Anda mengetuk {arg0} target!",
+  "@reflexTapMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "angleFinderMessage": "Intuisi geometris Anda sempurna!",
+  "angleFinderMessage1": "Jawaban yang benar adalah {arg0}°",
+  "@angleFinderMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "angleFinderText": "{arg0}°",
+  "@angleFinderText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "visualStatisticalLearningMessage": "Anda mencetak {arg0} pola yang benar!",
+  "@visualStatisticalLearningMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "nonogramText": "Kesalahan: {arg0}",
+  "@nonogramText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "mentalCalendarMessage": "Anda benar {arg0} dari 10!",
+  "@mentalCalendarMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "orbitTapMessage": "Anda berhasil mengetuk {arg0} kali!",
+  "@orbitTapMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "schulteTableMessage": "Anda menyelesaikan tabel dalam {arg0}.\\nTeruslah berlatih untuk memperluas penglihatan tepi Anda!",
+  "@schulteTableMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "schulteTableText": "MULAI TES",
+  "relationalMemoryMessage": "Akurasi memori relasional spasial yang luar biasa!",
+  "sudokuText": "Kesalahan: {arg0}",
+  "@sudokuText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sdmtMessage": "Anda mencocokkan {arg0} simbol! Tes ini mengukur kecepatan pemindaian dan perhatian visual Anda.",
+  "@sdmtMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "futoshikiMessage": "Luar biasa! Anda menyelesaikan Persegi Latin Futoshiki.",
+  "letterFrequencyScanMessage": "Anda menghitung dengan benar {arg0} kemunculan \"{arg1}\".",
+  "@letterFrequencyScanMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "letterFrequencyScanText": "Salah. Hitungannya adalah {arg0}.",
+  "@letterFrequencyScanText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "memoryMatrixMessage": "Mengesankan! Memori kerja Anda tajam. Target harian selesai!",
+  "memoryMatrixMessage1": "Fokus dan coba lagi untuk meningkatkan skor memori Anda.",
+  "contextCluesMessage": "Luar biasa! Kosakata dan analisis kontekstual Anda sangat hebat.",
+  "contextCluesMessage1": "Kata yang salah dipilih! Latih penalaran konteks verbal Anda dan coba lagi.",
+  "oneLetterShiftMessage": "Anda menggeser {arg0} ke {arg1} dengan benar.",
+  "@oneLetterShiftMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "mentalAbacusMessage": "Aritmatika mental Anda berada di level atas.",
+  "fractionMatcherMessage": "Anda mencetak {arg0} poin dalam mencocokkan representasi!",
+  "@fractionMatcherMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spellingSprintMessage": "Anda mengeja ke-10 kata dengan benar!",
+  "spellingSprintMessage1": "Anda mengeja {arg0} kata.",
+  "@spellingSprintMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "stopSignalMessage": "Anda mencapai {arg0} respons yang benar! Tes ini mengukur kemampuan Anda untuk menahan tindakan yang direncanakan.",
+  "@stopSignalMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "grammarPoliceMessage": "Permainan Berakhir! Anda menjaga keteraturan dalam dunia tata bahasa. Skor: {arg0}",
+  "@grammarPoliceMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "consonantReconstructMessage": "Anda merekonstruksi skor sebesar {arg0}!",
+  "@consonantReconstructMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "rhymeMasterMessage": "Anda menemukan {arg0} dari {arg1} rima!",
+  "@rhymeMasterMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "vigilanceTaskMessage": "Tepat: {arg0}, Meleset: {arg1}\\nAlarm Palsu: {arg2}",
+  "@vigilanceTaskMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "silhouetteMatchOrthoMessage": "Anda memiliki keterampilan penyelarasan ortografis yang tanpa cela!",
+  "silhouetteMatchOrthoText": "MENGERTI",
+  "silhouetteMatchOrthoText1": "Proyeksi perspektif salah! Ketuk Atur Ulang untuk mencoba lagi.",
+  "fibonacciMergeMessage": "{arg0}: {arg1}",
+  "@fibonacciMergeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "factorFinderMessage": "Anda mencetak {arg0} poin dengan menemukan semua faktor!",
+  "@factorFinderMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "logicalSyllogismsMessage": "Anda menyelesaikan {arg0} silogisme dengan benar!",
+  "@logicalSyllogismsMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "rotatingMazeMessage": "Anda berhasil menavigasi labirin berputar kinetik!",
+  "rotatingMazeText": "MENGERTI",
+  "rotatingMazeText1": "🌀 Labirin diputar 90°! Kisi bergeser!",
+  "mathPathMessage": "Anda menemukan jalur yang jumlahnya mencapai target!",
+  "bridgesMessage": "Anda berhasil menghubungkan semua pulau!",
+  "compoundConnectMessage": "Kata majemuknya adalah {arg0}{arg1}.",
+  "@compoundConnectMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "pangramSprintMessage": "Anda menyusun kalimat menggunakan semua 26 huruf.",
+  "mirrorImageMessage": "Anda mengidentifikasi pantulan dengan sempurna.",
+  "mirrorImageText": "GAMBAR PANTULAN",
+  "reverseStroopMessage": "Anda mencetak {arg0} poin! Perhatikan instruksinya.",
+  "@reverseStroopMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "verbalAnalogiesMessage": "Anda memiliki pikiran yang tajam untuk sebuah hubungan.",
+  "corsiBlocksMessage1": "Anda mengingat {arg1} urutan! Rentang memori spasial Anda mencapai {arg0}.",
+  "@corsiBlocksMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "wordLadderMessage": "Anda berhasil menghubungkan {arg0} ke {arg1} dalam {arg2} langkah.",
+  "@wordLadderMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "d2AttentionMessage": "Pemindaian selektif yang luar biasa! Skor akhir: {arg0}.",
+  "@d2AttentionMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "d2AttentionText": "CARA BERMAIN",
+  "d2AttentionText1": "MENGERTI",
+  "tangleFixMessage": "Semua garis terurai dan halus.",
+  "distractorMatrixMessage": "Luar biasa! Anda mengingat pola meskipun ada pengecoh matematika kognitif!",
+  "distractorMatrixMessage1": "Pengecoh mengecoh Anda! Latih kembali memori kerja Anda.",
+  "sentenceUnscrambleMessage": "Anda mencetak skor {arg0} dari menyusun kalimat!",
+  "@sentenceUnscrambleMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "kakuroMessage": "Luar biasa! Anda mencocokkan semua segmen jumlah dengan sempurna.",
+  "symbolicFlankerMessage": "Anda menjawab {arg0} benar dari {arg1}!",
+  "@symbolicFlankerMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "stroopTestMessage": "Anda mencetak {arg0} dengan benar! Fokus pada warna tinta, bukan pada kata.",
+  "@stroopTestMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wisconsinCardSortingMessage": "Anda menyortir {arg0} kartu dengan benar!",
+  "@wisconsinCardSortingMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "nBackMessage": "Anda mencapai {arg0} kecocokan 2-back! Memori kerja Anda penting untuk multitasking.",
+  "@nBackMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "rhythmMasterMessage": "Anda mendapatkan {arg0} pukulan sempurna dan {arg1} poin!",
+  "@rhythmMasterMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "groceryListMessage": "Anda mencetak {arg0} poin di Daftar Belanja!",
+  "@groceryListMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "groceryListText": "I\\",
+  "mirrorTracingMessage": "Otak Anda berhasil mengatur ulang koordinasinya.",
+  "moduloClockMessage": "Koordinasi matematika mental modular yang sangat baik! Skor: {arg0}",
+  "@moduloClockMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "moduloClockMessage1": "Anda menyelesaikan {arg0} dari {arg1} solusi jam modular. Skor: {arg2}",
+  "@moduloClockMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "crownMessage": "Semua mahkota berhasil ditempatkan dengan logika yang sempurna.",
+  "dualCodingMessage": "Performa tugas ganda yang fantastis! Skor memori kerja Anda: {arg0}",
+  "@dualCodingMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "inequalityDashMessage": "Anda mencetak {arg0} poin dengan mencocokkan pertidaksamaan!",
+  "@inequalityDashMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sourceMonitoringMessage": "Anda mencetak {arg0} dari {arg1}!",
+  "@sourceMonitoringMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "sourceMonitoringText": "MULAI MENGINGAT",
+  "memoryPalaceText": "KATA YANG TERSEDIA",
+  "target10Message": "Anda mencetak {arg0} poin dengan mencocokkan angka ke 10!",
+  "@target10Message": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "paperFoldingMessage": "Anda dapat melihat pola di dalam pikiran Anda.",
+  "topologyText": "{arg0}{arg1} / 10",
+  "@topologyText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "waterSortMessage": "Anda menyortir semua warna dengan sempurna!",
+  "anagramDefinitionMessage": "Katanya memang benar \"{arg0}\".",
+  "@anagramDefinitionMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "game2048Message": "{arg0}: {arg1}\\n{arg2}",
+  "@game2048Message": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "game2048Message1": "{arg0}: {arg1}",
+  "@game2048Message1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "numericalEstimationMessage": "Anda membuat {arg0} estimasi yang benar.",
+  "@numericalEstimationMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "grammarSortMessage": "Anda menyortir {arg0} kata dengan benar!",
+  "@grammarSortMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "vowelReconstructMessage": "Anda merekonstruksi skor sebesar {arg0}!",
+  "@vowelReconstructMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spatialConflictMessage": "Anda mencapai skor {arg0} dengan {arg1} kesalahan!",
+  "@spatialConflictMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "spatialConflictText": "CARA BERMAIN",
+  "spatialConflictText1": "MENGERTI",
+  "tracePathMessage": "Akurasi Anda adalah {arg0}%!",
+  "@tracePathMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "ruleSwitcherMessage": "Anda menjawab {arg0} benar dari {arg1}!",
+  "@ruleSwitcherMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "collatzMessage": "Anda mengambil {arg0} langkah. Kemungkinan minimum adalah {arg1}.",
+  "@collatzMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "collatzText": "/ 2",
+  "collatzText1": "+ 1",
+  "collatzText2": "3n + 1",
+  "divisibilityDashMessage": "Anda memecahkan {arg0} angka!",
+  "@divisibilityDashMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "switchTaskMessage": "Anda mencetak {arg0} dengan benar! Peralihan cepat adalah kunci fleksibilitas mental.",
+  "@switchTaskMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sequenceSleuthMessage": "Anda memecahkan {arg0} urutan!",
+  "@sequenceSleuthMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "changeBlindnessMessage": "Anda menemukan {arg0} perubahan!",
+  "@changeBlindnessMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "mentalRotationMessage": "Anda memutar {arg0} bentuk dengan benar!",
+  "@mentalRotationMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wordMastermindMessage": "Anda menguasai kodenya!\\nKatanya adalah: {arg0}",
+  "@wordMastermindMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wordMastermindMessage1": "Kata tersembunyinya adalah: {arg0}",
+  "@wordMastermindMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wordMastermindText": "{arg0}",
+  "@wordMastermindText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "simonSequenceMessage": "Anda mengingat semua 10 ubin!",
+  "simonSequenceMessage1": "Coba lagi untuk menguasai urutannya.",
+  "oxymoronHuntMessage": "Anda menemukan {arg0} oksimoron!",
+  "@oxymoronHuntMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spotlightTrackMessage": "Pelacakan spasial yang luar biasa! Anda mencetak {arg0} poin.",
+  "@spotlightTrackMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spotlightTrackText": "CARA BERMAIN",
+  "spotlightTrackText1": "MENGERTI",
+  "spotlightTrackText2": "MULAI RONDE",
+  "vennNumbersMessage": "Anda mengkategorikan {arg0} angka!",
+  "@vennNumbersMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "vennNumbersText": "TIDAK KEDUANYA",
+  "vennNumbersText1": "KEDUANYA",
+  "silhouetteMatchMessage": "Otak Anda sangat baik dalam terjemahan 3D ke 2D.",
+  "sumSnakeMessage": "Target {arg0} tercapai dengan presisi sempurna!",
+  "@sumSnakeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sumSnakeText": "BERSIHKAN JALUR",
+  "percentagePeakMessage": "Anda memecahkan {arg0} masalah persentase!",
+  "@percentagePeakMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "trailMakingMessage": "Anda menyelesaikan {arg0} jejak! Tes ini mengukur kecepatan pencarian visual dan fleksibilitas mental Anda.",
+  "@trailMakingMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "matrixReasoningMessage": "Anda menyelesaikan {arg0} matriks dengan benar!",
+  "@matrixReasoningMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "tentsAndTreesMessage": "Anda berhasil menempatkan semua tenda.",
+  "klotskiMessage": "Pergeseran yang sensasional! Anda membebaskan blok Hero dalam {arg0} langkah.",
+  "@klotskiMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sumPyramidMessage": "Anda memecahkan {arg0} piramida jumlah dengan sukses!",
+  "@sumPyramidMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "simonCommandMessage": "Respons dan fokus selektif yang sangat baik! Total Skor: {arg0}",
+  "@simonCommandMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "simonCommandMessage1": "Anda mencetak {arg0} tetapi tidak mencapai {arg1} kecocokan tepat waktu.",
+  "@simonCommandMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "syllableStackMessage": "Anda mengumpulkan skor sebesar {arg0}!",
+  "@syllableStackMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "slitherlinkMessage": "Luar biasa! Anda berhasil menyelesaikan teka-teki loop.",
+  "quickMathMessage": "Anda memecahkan {arg0} masalah!",
+  "@quickMathMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "commonDenominatorMessage": "Anda memecahkan {arg0} masalah FPB/KPK!",
+  "@commonDenominatorMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "chainReactionMessage": "Skor akhir Anda adalah {arg0}. Anda membangun rantai {arg1} kata.",
+  "@chainReactionMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "chainReactionText": "{arg0}",
+  "@chainReactionText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "associativePairsMessage": "Brilian! Anda mengaitkan ciri visual dengan sempurna.",
+  "associativePairsMessage1": "Asosiasi salah! Pertajam memori tautan Anda dan coba lagi.",
+  "portmanteauSplitMessage": "Anda membelah {arg0} kata lakur!",
+  "@portmanteauSplitMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "magicSquaresText": "BERSIHKAN",
+  "alphabetSudokuText": "Kesalahan: {arg0}",
+  "@alphabetSudokuText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "pipesMessage": "Anda menghubungkan semua pipa dan mengisi grid.",
+  "dualMirrorMessage": "Anda menavigasi kedua ikon ke targetnya!",
+  "binaryCodeMessage": "Terjemahan desimal cepat yang sensasional! Skor Akhir: {arg0}",
+  "@binaryCodeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "binaryCodeMessage1": "Anda dengan benar mengonversi {arg0} angka biner. Skor: {arg1}",
+  "@binaryCodeMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "oddOneOutMessage": "Anda menemukan 50 yang berbeda! Skor akhir: {arg0}",
+  "@oddOneOutMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "oddOneOutMessage1": "Skor Anda: {arg0}",
+  "@oddOneOutMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "letterBridgeMessage": "Anda menemukan huruf jembatan: {arg0}",
+  "@letterBridgeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "imReady": "SAYA SIAP"
 }

@@ -28,7 +28,6 @@ class _MissingOperatorScreenState extends ConsumerState<MissingOperatorScreen> {
   }
 
   void _showCompletionDialog(bool isVictory) {
-    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,

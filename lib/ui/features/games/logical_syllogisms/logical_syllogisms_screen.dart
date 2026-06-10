@@ -26,7 +26,6 @@ class _LogicalSyllogismsScreenState extends ConsumerState<LogicalSyllogismsScree
   }
 
   void _showCompletionDialog() {
-    final l10n = AppLocalizations.of(context)!;
     final state = ref.read(logicalSyllogismsNotifierProvider);
     showDialog(
       context: context,

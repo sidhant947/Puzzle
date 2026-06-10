@@ -238,7 +238,6 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
   }
 
   void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
-    final l10n = AppLocalizations.of(context)!;
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('spelling_sprint');
     if (!context.mounted) return;
     showDialog(
@@ -261,7 +260,6 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
   }
 
   void _showGameOverDialog(BuildContext context, WidgetRef ref) {
-    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,

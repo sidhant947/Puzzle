@@ -59,7 +59,6 @@ class _RhymeMasterScreenState extends ConsumerState<RhymeMasterScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(rhymeMasterNotifierProvider);
     final notifier = ref.read(rhymeMasterNotifierProvider.notifier);
@@ -176,7 +175,7 @@ class _RhymeMasterScreenState extends ConsumerState<RhymeMasterScreen> {
                 final rhyme = state.puzzle!.allRhymes[index];
                 final isFound = state.foundRhymes.contains(rhyme);
                 return TangibleContainer(
-                  color: isFound ? DesignSystem.gameGreen : colorScheme.surfaceVariant.withValues(alpha: 0.3),
+                  color: isFound ? DesignSystem.gameGreen : colorScheme.surfaceContainerHighest.withValues(alpha: 0.3),
                   child: Center(
                     child: Text(
                       isFound ? rhyme : '?',

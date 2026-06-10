@@ -49,7 +49,6 @@ class _OxymoronHuntScreenState extends ConsumerState<OxymoronHuntScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(oxymoronHuntNotifierProvider);
     final notifier = ref.read(oxymoronHuntNotifierProvider.notifier);

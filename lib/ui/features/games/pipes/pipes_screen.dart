@@ -150,7 +150,6 @@ class PipesScreen extends ConsumerWidget {
   }
 
   void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
-    final l10n = AppLocalizations.of(context)!;
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('pipes');
     if (!context.mounted) return;
     showDialog(

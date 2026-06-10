@@ -25,7 +25,6 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
   }
 
   void _showGameOverDialog(bool won) {
-    final l10n = AppLocalizations.of(context)!;
     if (won) {
       HapticFeedbackUtil.victory();
       ref.read(gameStreakNotifierProvider.notifier).completeGame('symbol_logic');

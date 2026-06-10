@@ -33,7 +33,6 @@ class _CategoryFluencyScreenState extends ConsumerState<CategoryFluencyScreen> {
   }
 
   void _showCompletionDialog(bool isVictory) {
-    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,

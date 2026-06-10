@@ -1,4 +1,3 @@
-import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
@@ -52,8 +51,6 @@ class _HomophoneHuntScreenState extends ConsumerState<HomophoneHuntScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
-    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(homophoneHuntNotifierProvider);
     final notifier = ref.read(homophoneHuntNotifierProvider.notifier);
 

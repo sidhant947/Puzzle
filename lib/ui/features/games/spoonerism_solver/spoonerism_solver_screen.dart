@@ -24,7 +24,6 @@ class _SpoonerismSolverScreenState extends ConsumerState<SpoonerismSolverScreen>
   }
 
   void _showCompletionDialog() {
-    final l10n = AppLocalizations.of(context)!;
     final state = ref.read(spoonerismSolverNotifierProvider);
     
     if (state.isGameWon) {

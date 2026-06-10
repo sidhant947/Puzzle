@@ -1,4 +1,3 @@
-import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
@@ -52,7 +51,6 @@ class _DefinitionDashScreenState extends ConsumerState<DefinitionDashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(definitionDashNotifierProvider);
     final notifier = ref.read(definitionDashNotifierProvider.notifier);

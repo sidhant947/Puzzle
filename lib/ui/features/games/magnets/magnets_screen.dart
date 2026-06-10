@@ -138,7 +138,7 @@ class _MagnetsScreenState extends ConsumerState<MagnetsScreen> {
   }
 
   Widget _buildClue(int val, double size, Color color, String sign) {
-    return Container(
+    return SizedBox(
       width: size,
       height: size,
       child: Center(
@@ -169,12 +169,15 @@ class _MagnetsScreenState extends ConsumerState<MagnetsScreen> {
       }
     }
 
-    if (domIdx == -1) return Container(width: size, height: size);
+    if (domIdx == -1) return SizedBox(width: size, height: size);
 
     int s = state.states[domIdx];
     int cellType = 0; // 0: blank, 1: +, 2: -
-    if (s == 1) cellType = (cellIdx == 0 ? 1 : 2);
-    else if (s == 2) cellType = (cellIdx == 0 ? 2 : 1);
+    if (s == 1) {
+      cellType = (cellIdx == 0 ? 1 : 2);
+    } else if (s == 2) {
+      cellType = (cellIdx == 0 ? 2 : 1);
+    }
 
     return GestureDetector(
       onTap: () => notifier.toggleDomino(domIdx),

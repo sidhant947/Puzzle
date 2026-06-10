@@ -2,7 +2,6 @@ import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import '../../../../l10n/app_localizations.dart';
 import '../../../core/juice/game_scaffold.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../widgets/tangible.dart';
@@ -141,6 +140,7 @@ class MentalCalendarScreen extends ConsumerWidget {
 
   Widget _buildResult(BuildContext context, WidgetRef ref, MentalCalendarState state) {
     Future.microtask(() {
+      if (!context.mounted) return;
       final score = state.correctCount;
       if (score >= 7) {
         ref.read(gameStreakNotifierProvider.notifier).completeGame('mental_calendar');

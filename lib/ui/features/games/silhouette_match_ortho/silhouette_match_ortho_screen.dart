@@ -449,7 +449,6 @@ class IsometricFigurePainter extends CustomPainter {
             final vertices = facesVertices[f];
 
             // 3D rotation of normal
-            final rotNormalX = normal.x * math.cos(yaw) - normal.y * math.sin(yaw);
             final rotNormalY = normal.x * math.sin(yaw) + normal.y * math.cos(yaw);
             final rotNormalZ = normal.z;
 

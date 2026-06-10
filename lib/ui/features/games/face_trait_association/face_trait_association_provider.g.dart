@@ -7,7 +7,7 @@ part of 'face_trait_association_provider.dart';
 // **************************************************************************
 
 String _$faceTraitAssociationNotifierHash() =>
-    r'8f76f45ad78067b6d5d2d2a8caeb19260dc2d2fc';
+    r'4bfe44772e7609828f88bbdde2586d81f1581e5d';
 
 /// See also [FaceTraitAssociationNotifier].
 @ProviderFor(FaceTraitAssociationNotifier)

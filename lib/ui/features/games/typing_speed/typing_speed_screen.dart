@@ -32,7 +32,6 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
   }
 
   void _showGameOverDialog(bool won, double wpm) {
-    final l10n = AppLocalizations.of(context)!;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('typing_speed');
       HapticFeedbackUtil.victory();

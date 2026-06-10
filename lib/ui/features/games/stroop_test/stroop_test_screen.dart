@@ -24,7 +24,6 @@ class _StroopTestScreenState extends ConsumerState<StroopTestScreen> {
   }
 
   void _showGameOverDialog(int score) {
-    final l10n = AppLocalizations.of(context)!;
     bool won = score >= 10;
     if (won) {
       HapticFeedbackUtil.victory();

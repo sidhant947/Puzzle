@@ -25,7 +25,6 @@ class _ChangeBlindnessScreenState extends ConsumerState<ChangeBlindnessScreen> {
   }
 
   void _showCompletionDialog(ChangeBlindnessState state) {
-    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,

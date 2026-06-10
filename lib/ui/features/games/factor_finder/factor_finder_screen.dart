@@ -257,7 +257,7 @@ class _FactorFinderScreenState extends ConsumerState<FactorFinderScreen> {
                           return AnimatedContainer(
                             duration: const Duration(milliseconds: 150),
                             transform: isWrongTap
-                                ? (Matrix4.identity()..translate(2.0, 0.0)) // simple wiggle
+                                ? (Matrix4.identity()..translateByDouble(2.0, 0.0, 0.0, 1.0)) // simple wiggle
                                 : Matrix4.identity(),
                             child: TangibleButton(
                               depth: depth,

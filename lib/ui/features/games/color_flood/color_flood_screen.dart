@@ -27,7 +27,6 @@ class _ColorFloodScreenState extends ConsumerState<ColorFloodScreen> {
   }
 
   void _showCompletionDialog(bool isVictory) {
-    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,

@@ -29,7 +29,7 @@ class _ChimpTestScreenState extends ConsumerState<ChimpTestScreen> {
   
   bool _numbersCovered = false;
   int _nextExpectedNumber = 1;
-  List<int> _correctlyTappedList = [];
+  final List<int> _correctlyTappedList = [];
 
   @override
   void initState() {

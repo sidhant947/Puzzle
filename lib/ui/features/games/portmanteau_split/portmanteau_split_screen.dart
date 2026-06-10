@@ -49,7 +49,6 @@ class _PortmanteauSplitScreenState extends ConsumerState<PortmanteauSplitScreen>
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(portmanteauSplitNotifierProvider);
     final notifier = ref.read(portmanteauSplitNotifierProvider.notifier);

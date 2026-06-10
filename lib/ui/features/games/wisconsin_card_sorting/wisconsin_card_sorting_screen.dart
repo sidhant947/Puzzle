@@ -151,7 +151,6 @@ class _CardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     Color color;
     switch (card.color) {
       case 'red': color = Colors.red; break;

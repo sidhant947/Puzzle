@@ -1,15 +1,21 @@
 {
   "@@locale": "vi",
   "appTitle": "Puzzle Hub",
+  "@appTitle": {
+    "description": "The title of the application"
+  },
   "home": "Trang chủ",
   "settings": "Cài đặt",
   "playAgain": "Chơi lại",
+  "playNext": "Chơi tiếp",
   "seeCompleted": "Xem lại",
   "finish": "Kết thúc",
   "congrats": "Chúc mừng",
   "perfectGradient": "Chuyển màu hoàn hảo!",
   "wellDone": "Làm tốt lắm",
   "timeUp": "Hết giờ!",
+  "victory": "Chiến thắng!",
+  "gameWin": "LÀM TỐT LẮM!",
   "completed": "Hoàn thành!",
   "score": "Điểm số",
   "timeLeft": "Thời gian",
@@ -65,8 +71,32 @@
   "termsOfService": "Điều khoản dịch vụ",
   "licenses": "Giấy phép",
   "findWordSubtitle": "Bạn có {maxTries} lượt để tìm từ có {wordLength} chữ cái đang ẩn giấu.",
+  "@findWordSubtitle": {
+    "placeholders": {
+      "maxTries": {
+        "type": "int"
+      },
+      "wordLength": {
+        "type": "int"
+      }
+    }
+  },
   "wordFoundMessage": "Đã tìm thấy từ: {word}",
+  "@wordFoundMessage": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
   "gameOverMessage": "Từ đó là: {word}",
+  "@gameOverMessage": {
+    "placeholders": {
+      "word": {
+        "type": "String"
+      }
+    }
+  },
   "gameOver": "Trò chơi kết thúc",
   "crosswordTitle": "Ô chữ",
   "crosswordSubtitle": "Hoàn thành lưới với các từ chính xác dựa trên gợi ý.",
@@ -76,7 +106,21 @@
   "radicalRootsGoalReached": "Đã đạt mục tiêu!",
   "radicalRootsTimeUp": "Hết giờ!",
   "radicalRootsScoreMessage": "Bạn đã tính đúng {score} căn thức!",
+  "@radicalRootsScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "radicalRootsTryAgainMessage": "Hãy tiếp tục luyện tập! Bạn đã tính được {score} căn thức.",
+  "@radicalRootsTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "radicalRootsStart": "Bắt đầu tính",
   "radicalRootsDescription": "Bạn có 60 giây để giải càng nhiều càng tốt.",
   "radicalRootsBest": "Kỷ lục",
@@ -86,7 +130,21 @@
   "romanArithmeticGoalReached": "Cấp độ Centurion!",
   "romanArithmeticTimeUp": "Hết giờ!",
   "romanArithmeticScoreMessage": "Bạn đã giải được {score} bài toán La Mã!",
+  "@romanArithmeticScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "romanArithmeticTryAgainMessage": "Veni, Vidi, Vici! Bạn đã giải được {score} bài toán.",
+  "@romanArithmeticTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "romanArithmeticStart": "Bắt đầu hành trình",
   "romanArithmeticDescription": "Chuyển đổi và giải toán. Bạn có 60 giây.",
   "romanArithmeticBest": "Kỷ lục",
@@ -116,6 +174,41 @@
   "nonogramTitle": "Nonogram",
   "nonogramSubtitle": "Khám phá hình ảnh ẩn giấu bằng các gợi ý logic.",
   "nonogramWin": "Đã hiện hình ảnh!",
+  "magnetsTitle": "NAM CHÂM",
+  "magnetsSubtitle": "Đặt nam châm vào lưới dựa trên số lượng cực.",
+  "magnetsHowToPlay": "Đổ đầy các hộp chứa kích thước bằng quân domino bằng các nam châm '+' và '-' hoặc để trống. Các gợi ý ở hàng và cột xác định tổng số mỗi cực trong dòng đó. Các cực giống nhau không được nằm cạnh nhau theo chiều dọc hoặc ngang.",
+  "magnetsWinTitle": "CÂN BẰNG PHÂN CỰC!",
+  "magnetsWinMessage": "Tất cả các nam châm đã được sắp xếp hoàn hảo!",
+  "lighthousesTitle": "NGỌN HẢI ĐĂNG",
+  "lighthousesSubtitle": "Đặt tàu dựa trên các gợi ý từ ngọn hải đăng.",
+  "lighthousesHowToPlay": "Đặt các con tàu 1x1 vào lưới. Ngọn hải đăng cho biết tổng số tàu có thể nhìn thấy theo chiều ngang và chiều dọc. Các tàu không được chạm vào ngọn hải đăng hoặc chạm vào nhau, kể cả theo đường chéo.",
+  "lighthousesWinTitle": "BIỂN AN TOÀN!",
+  "lighthousesWinMessage": "Tất cả các ngọn hải đăng đang dẫn đường cho các con tàu một cách hoàn hảo!",
+  "dominosaTitle": "DOMINOSA",
+  "dominosaSubtitle": "Tìm tất cả các quân domino ẩn trong lưới.",
+  "dominosaHowToPlay": "Sắp xếp một bộ domino hoàn chỉnh trên một lưới các con số sao cho mỗi cặp số liền kề được bao phủ bởi đúng một quân domino. Mỗi cặp số chỉ tồn tại một lần trong bộ.",
+  "dominosaWinTitle": "BẬC THẦY DOMINO!",
+  "dominosaWinMessage": "Mọi quân domino đã được tìm thấy và đặt đúng chỗ!",
+  "skyscrapersTitle": "NHÀ CHỌC TRỜI",
+  "skyscrapersSubtitle": "Điền vào lưới độ cao của các tòa nhà.",
+  "skyscrapersHowToPlay": "Điền vào lưới các độ cao (1-N) sao cho mỗi hàng và cột chứa mỗi độ cao đúng một lần. Các gợi ý ở các cạnh cho biết có bao nhiêu tòa nhà có thể nhìn thấy từ hướng đó, với các tòa nhà cao hơn sẽ che khuất các tòa nhà thấp hơn.",
+  "skyscrapersWinTitle": "ĐƯỜNG CHÂN TRỜI ĐƯỢC KHÔI PHỤC!",
+  "skyscrapersWinMessage": "Tất cả các tòa nhà đều được đặt ở vị trí hoàn hảo!",
+  "nurikabeTitle": "NURIKABE",
+  "nurikabeSubtitle": "Tạo thành một vùng biển kết nối và các hòn đảo tách biệt.",
+  "nurikabeHowToPlay": "Tô bóng các ô để tạo thành một 'biển' kết nối duy nhất (không có khối 2x2). Các ô không được tô bóng tạo thành các 'đảo', mỗi đảo chứa đúng một con số biểu thị tổng diện tích của nó.",
+  "nurikabeWinTitle": "BIỂN ĐANG CHẢY!",
+  "nurikabeWinMessage": "Các hòn đảo đã được tách biệt, biển đã được kết nối!",
+  "fillominoTitle": "FILLOMINO",
+  "fillominoSubtitle": "Chia lưới thành các khối polyomino có kích thước quy định.",
+  "fillominoHowToPlay": "Chia lưới thành các khối polyomino sao cho mỗi khối polyomino kích thước N chứa số N trong tất cả các ô của nó. Các khối polyomino có cùng kích thước không được nằm cạnh nhau theo chiều dọc hoặc ngang.",
+  "fillominoWinTitle": "LƯỚI ĐÃ ĐƯỢC CHIA!",
+  "fillominoWinMessage": "Được lấp đầy hoàn hảo bằng logic!",
+  "hitoriTitle": "HITORI",
+  "hitoriSubtitle": "Tô bóng các số trùng lặp trong mỗi hàng và cột.",
+  "hitoriHowToPlay": "Tô bóng các ô sao cho không có con số nào xuất hiện quá một lần trong bất kỳ hàng hoặc cột nào. Các ô được tô bóng không được nằm cạnh nhau (theo chiều dọc hoặc ngang) và tất cả các ô không được tô bóng phải tạo thành một nhóm kết nối duy nhất.",
+  "hitoriWinTitle": "BẬC THẦY HITORI!",
+  "hitoriWinMessage": "Bạn đã giải quyết thành công tất cả các số trùng lặp!",
   "pathFinderTitle": "Tìm đường",
   "pathFinderSubtitle": "Tìm đường ẩn từ S đến E.",
   "pathFinderWin": "Đã tìm thấy đường!",
@@ -132,12 +225,26 @@
   "arithmeticChainWinMessage": "Khả năng tính nhẩm của bạn thật sắc bén!",
   "arithmeticChainLoseTitle": "THỬ LẠI",
   "arithmeticChainLoseMessage": "Đáp án đúng là {answer}.",
+  "@arithmeticChainLoseMessage": {
+    "placeholders": {
+      "answer": {
+        "type": "String"
+      }
+    }
+  },
   "arithmeticChainStart": "BẮT ĐẦU",
   "arithmeticChainNext": "TIẾP THEO",
   "attentionalBlinkTitle": "Chớp mắt chú ý",
   "attentionalBlinkSubtitleWatch": "QUAN SÁT CÁC CON SỐ",
   "attentionalBlinkSubtitleInput": "NHẬP HAI CON SỐ BẠN ĐÃ THẤY",
   "attentionalBlinkScoreMessage": "Bạn đã ghi được {score} mục tiêu!",
+  "@attentionalBlinkScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "balanceScaleTitle": "CÂN THĂNG BẰNG",
   "balanceScaleSubtitle": "Suy luận trọng lượng của vật cuối cùng dựa trên các bàn cân.",
   "balanceScaleWinTitle": "THĂNG BẰNG!",
@@ -157,6 +264,16 @@
   "boxCompletionTitle": "Hoàn thành hộp",
   "boxCompletionSubtitle": "Hình lập phương nào có thể được tạo thành?",
   "boxCompletionScoreMessage": "Bạn đã trả lời đúng {score} trên tổng số {totalTrials} câu!",
+  "@boxCompletionScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "totalTrials": {
+        "type": "int"
+      }
+    }
+  },
   "boxCompletionOptions": "LỰA CHỌN",
   "bridgesTitle": "CÂY CẦU",
   "bridgesSubtitle": "Nối các hòn đảo bằng những cây cầu. Mỗi hòn đảo cần một số lượng cầu nhất định. Các cây cầu không được chồng chéo lên nhau.",
@@ -167,7 +284,21 @@
   "calculationSprintGoalReached": "ĐÃ ĐẠT MỤC TIÊU!",
   "calculationSprintTimeUp": "HẾT GIỜ",
   "calculationSprintScoreMessage": "Tốc độ tính toán tuyệt vời! Bạn ghi được {score} điểm.",
+  "@calculationSprintScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "calculationSprintTryAgainMessage": "Bạn ghi được {score} điểm. Hãy cố gắng vượt qua kỷ lục của mình!",
+  "@calculationSprintTryAgainMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "calculationSprintBest": "KỶ LỤC",
   "calculationSprintSeconds": "60 GIÂY",
   "calculationSprintDescription": "Giải các phép tính nhanh chóng.\nĐáp án sai sẽ bị trừ 3 giây!",
@@ -178,20 +309,82 @@
   "categoryFluencyTimeUp": "HẾT GIỜ!",
   "categoryFluencyWinMessage": "Bạn có vốn từ vựng thật phong phú!",
   "categoryFluencyFoundMessage": "Bạn đã tìm được {count} từ.",
+  "@categoryFluencyFoundMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "categoryFluencyCategoryLabel": "Danh mục:",
   "categoryFluencyEnterItem": "Nhập một mục...",
   "categoryFluencyWordCount": "{entered} / {target} từ",
+  "@categoryFluencyWordCount": {
+    "placeholders": {
+      "entered": {
+        "type": "int"
+      },
+      "target": {
+        "type": "int"
+      }
+    }
+  },
   "changeBlindnessTitle": "Mù thay đổi",
   "changeBlindnessSubtitle": "TÌM KIẾM CHI TIẾT THAY ĐỔI",
   "changeBlindnessScore": "ĐIỂM: {score}",
+  "@changeBlindnessScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "changeBlindnessFoundMessage": "Bạn đã tìm thấy {score} sự thay đổi!",
+  "@changeBlindnessFoundMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "choiceRtTitle": "Thời gian phản ứng",
   "choiceRtSubtitle": "Nhấn vào ô vuông đang hoạt động nhanh nhất có thể",
   "choiceRtAvgMessage": "Thời gian phản ứng trung bình của bạn: {avg}ms",
+  "@choiceRtAvgMessage": {
+    "placeholders": {
+      "avg": {
+        "type": "String"
+      }
+    }
+  },
   "choiceRtTimeRemaining": "Thời gian còn lại: {time}s",
+  "@choiceRtTimeRemaining": {
+    "placeholders": {
+      "time": {
+        "type": "int"
+      }
+    }
+  },
   "choiceRtTaps": "Số lần nhấn: {count}",
+  "@choiceRtTaps": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "colorFloodTitle": "Tràn màu",
   "colorFloodSubtitle": "Lượt đi: {moves} / {maxMoves}",
+  "@colorFloodSubtitle": {
+    "placeholders": {
+      "moves": {
+        "type": "int"
+      },
+      "maxMoves": {
+        "type": "int"
+      }
+    }
+  },
   "colorFloodSuccess": "TRÀN MÀU THÀNH CÔNG!",
   "colorFloodDryLand": "VÙNG ĐẤT KHÔ CẰN...",
   "colorFloodWinMessage": "Bạn đã phủ kín lưới bằng màu sắc!",
@@ -203,11 +396,28 @@
   "colorMatchCheck": "KIỂM TRA ĐỘ KHỚP",
   "colorMatchResult": "KẾT QUẢ",
   "colorMatchAccuracy": "Độ chính xác của bạn: {accuracy}%",
+  "@colorMatchAccuracy": {
+    "placeholders": {
+      "accuracy": {
+        "type": "String"
+      }
+    }
+  },
   "corsiBlocksTitle": "KHỐI CORSI",
   "corsiBlocksSubtitle": "Quan sát các khối phát sáng và nhấn vào chúng theo đúng thứ tự.",
   "corsiBlocksWinTitle": "BẬC THẦY KHÔNG GIAN!",
   "corsiBlocksLoseTitle": "LẠC TRONG KHÔNG GIAN",
   "corsiBlocksMessage": "Bạn đã nhớ được {score} chuỗi! Khả năng ghi nhớ không gian của bạn đạt mức {span}.",
+  "@corsiBlocksMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      },
+      "span": {
+        "type": "int"
+      }
+    }
+  },
   "corsiBlocksWatch": "QUAN SÁT MẪU",
   "corsiBlocksRepeat": "LẶP LẠI MẪU",
   "corsiBlocksExcellent": "TUYỆT VỜI!",
@@ -229,16 +439,58 @@
   "digitSpanReverseWinMessage": "Trí nhớ ngắn hạn của bạn thật ấn tượng!",
   "digitSpanReverseLoseTitle": "THỬ LẠI",
   "digitSpanReverseLoseMessage": "Chuỗi ngược chính xác là {sequence}.",
+  "@digitSpanReverseLoseMessage": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
   "dividedAttentionTitle": "Sự tập trung phân tán",
   "dividedAttentionSubtitle": "Nhấn TRÁI cho SAO ⭐ | Nhấn PHẢI cho ĐỎ 🔴",
   "dividedAttentionGameOverTitle": "MẤT TẬP TRUNG",
   "dividedAttentionGameOverMessage": "Làm nhiều việc cùng lúc thật khó! Điểm của bạn là {score}.",
+  "@dividedAttentionGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "dividedAttentionScore": "ĐIỂM: {score}",
+  "@dividedAttentionScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackTitle": "Double N-Back",
   "doubleNBackSubtitle": "Khớp các kích thích từ {n} bước trước",
+  "@doubleNBackSubtitle": {
+    "placeholders": {
+      "n": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackGameOverTitle": "TRÒ CHƠI KẾT THÚC",
   "doubleNBackGameOverMessage": "Bạn đã ghi được {score} điểm trong Double N-Back!",
+  "@doubleNBackGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackScore": "Điểm: {score}",
+  "@doubleNBackScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "doubleNBackPositionMatch": "KHỚP VỊ TRÍ",
   "doubleNBackLetterMatch": "KHỚP CHỮ CÁI",
   "faceNameAssociationTitle": "Nhớ mặt và tên",
@@ -248,10 +500,27 @@
   "faceNameAssociationGameOver": "TRÒ CHƠI KẾT THÚC",
   "faceNameAssociationWinMessage": "Bạn có trí nhớ tuyệt vời về khuôn mặt và tên gọi!",
   "faceNameAssociationLoseMessage": "Bạn đã trả lời đúng {correct} trên tổng số {total} câu.",
+  "@faceNameAssociationLoseMessage": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "faceNameAssociationStartTest": "BẮT ĐẦU KIỂM TRA",
   "flankerTestWinTitle": "TẬP TRUNG CAO ĐỘ!",
   "flankerTestLoseTitle": "BỊ XAO NHÃNG",
   "flankerTestScoreMessage": "Bạn đã trả lời đúng {score} câu!",
+  "@flankerTestScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "flankerTestTitle": "BÀI KIỂM TRA FLANKER",
   "flankerTestSubtitle": "Chỉ ra hướng của mũi tên trung tâm, bỏ qua các mũi tên hai bên.",
   "flankerTestLeft": "TRÁI",
@@ -260,6 +529,13 @@
   "fractionMatchSubtitle": "Khớp hình ảnh với phân số tương ứng",
   "fractionMatchLoseTitle": "PHÂN SỐ KHÔNG KHỚP",
   "fractionMatchLoseMessage": "Đáp án đúng là {correctAnswer}.",
+  "@fractionMatchLoseMessage": {
+    "placeholders": {
+      "correctAnswer": {
+        "type": "String"
+      }
+    }
+  },
   "goNoGoTitle": "Go / No-Go",
   "goNoGoSubtitle": "Nhấn khi hiện màu Xanh, BỎ QUA màu Đỏ!",
   "goNoGoLoseTitle": "PHẢN ỨNG ĐÃ DỪNG",
@@ -271,6 +547,13 @@
   "groceryListWinTitle": "BẬC THẦY MUA SẮM!",
   "groceryListLoseTitle": "QUÊN GÌ ĐÓ SAO?",
   "groceryListScoreMessage": "Bạn đã ghi được {score} điểm trong Danh sách mua sắm!",
+  "@groceryListScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "groceryListReady": "TÔI ĐÃ SẴN SÀNG",
   "groceryListWhereBelong": "MỤC NÀY THUỘC VỀ ĐÂU?",
   "hueSortTitle": "SẮP XẾP TÔNG MÀU",
@@ -278,16 +561,44 @@
   "hueSortWinTitle": "CHUYỂN MÀU HOÀN HẢO!",
   "hueSortWinMessage": "Bạn đã sắp xếp quang phổ màu một cách hoàn hảo!",
   "hueSortWrongTiles": "Số ô sai vị trí: {count}",
+  "@hueSortWrongTiles": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "kenkenTitle": "KenKen",
   "kenkenWinTitle": "THIÊN TÀI!",
   "kenkenLoseTitle": "TRÒ CHƠI KẾT THÚC",
   "kenkenWinMessage": "Bạn đã giải được câu đố KenKen!",
   "kenkenLoseMessage": "Hãy kiểm tra quy tắc hàng/cột và lồng.",
   "kenkenSubtitle": "Điền từ 1-{size} mà không lặp lại trong hàng/cột",
+  "@kenkenSubtitle": {
+    "placeholders": {
+      "size": {
+        "type": "int"
+      }
+    }
+  },
   "letterCancellationTitle": "Hủy chữ cái",
   "letterCancellationTitleFull": "Bài kiểm tra Hủy chữ cái",
   "letterCancellationScoreMessage": "Bạn đã tìm thấy {score} chữ cái!",
+  "@letterCancellationScoreMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "letterCancellationSubtitle": "Tìm tất cả các chữ cái \"{target}\"",
+  "@letterCancellationSubtitle": {
+    "placeholders": {
+      "target": {
+        "type": "String"
+      }
+    }
+  },
   "letterCancellationFound": "ĐÃ TÌM THẤY",
   "letterCancellationTime": "THỜI GIAN",
   "lightsOutTitle": "TẮT ĐÈN",
@@ -326,6 +637,13 @@
   "sternbergTaskMemorize": "Ghi nhớ các chữ cái",
   "sternbergTaskWasLetterSet": "Chữ cái này có trong bộ vừa rồi không?",
   "sternbergTaskScore": "Bạn đã ghi được {score} điểm trong Nhiệm vụ Sternberg!",
+  "@sternbergTaskScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "verbalAnalogiesTitle": "Bậc thầy ẩn dụ!",
   "verbalAnalogiesSubtitle": "Hoàn thành mối quan hệ",
   "typingSpeedTitle": "Tốc độ đánh máy",
@@ -351,6 +669,13 @@
   "pixelMimicTitle": "Bắt chước điểm ảnh",
   "targetNumberTitle": "Mục tiêu 24",
   "targetNumberSubtitle": "Sử dụng cả 4 số để đạt được kết quả {target}",
+  "@targetNumberSubtitle": {
+    "placeholders": {
+      "target": {
+        "type": "int"
+      }
+    }
+  },
   "mirrorTracingTitle": "Vẽ ngược hoàn hảo!",
   "mirrorTracingSubtitle": "Vẽ theo hình ngôi sao! Các điều khiển bị PHẢN CHIẾU.",
   "wordSurgeTitle": "Từ vựng bùng nổ",
@@ -360,6 +685,13 @@
   "perspectiveTakingChoosePerspective": "CHỌN GÓC NHÌN",
   "perspectiveTakingCongrats": "Bạn có cái nhìn sắc bén về các mối quan hệ không gian.",
   "perspectiveTakingSubtitle": "Góc nhìn nào là từ hướng {targetDirName}?",
+  "@perspectiveTakingSubtitle": {
+    "placeholders": {
+      "targetDirName": {
+        "type": "String"
+      }
+    }
+  },
   "paperFoldingTitle": "Gấp giấy hoàn hảo!",
   "paperFoldingSubtitle": "Nó sẽ trông như thế nào khi mở ra?",
   "waterSortTitle": "Làm tốt lắm!",
@@ -395,6 +727,13 @@
   "operationSpanRecallPhase": "Nhớ lại các chữ cái theo thứ tự",
   "operationSpanRoundComplete": "Hoàn thành vòng chơi!",
   "operationSpanScore": "Bạn đã ghi được {score} điểm trong Phạm vi hoạt động!",
+  "@operationSpanScore": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
   "slidePuzzleTitle": "Trò chơi trượt ô",
   "slidePuzzleNewGame": "TRÒ CHƠI MỚI",
   "slidePuzzleInstructions": "Sắp xếp các ô theo thứ tự số bằng cách trượt chúng vào ô trống.",
@@ -411,6 +750,13 @@
   "quickMathTitle": "Toán nhanh",
   "magicSquaresTitle": "Ô vuông ma thuật",
   "magicSquaresSubtitle": "Mỗi hàng, cột và đường chéo phải có tổng bằng {targetSum}",
+  "@magicSquaresSubtitle": {
+    "placeholders": {
+      "targetSum": {
+        "type": "int"
+      }
+    }
+  },
   "objectShuffleTitle": "Xáo trộn đối tượng",
   "pipesTitle": "Đường ống",
   "pipesSubtitle": "Nối các điểm cùng màu bằng đường ống.",
@@ -446,6 +792,8 @@
   "vocabularyBuilderTitle": "Xây dựng vốn từ",
   "vocabularyBuilderSubtitle": "Khớp các từ đồng nghĩa và trái nghĩa dưới áp lực thời gian.",
   "vocabularyBuilderHowToPlay": "Bạn sẽ được xem một từ mục tiêu và một mối quan hệ (Đồng nghĩa hoặc Trái nghĩa). Chọn từ chính xác từ các lựa chọn phù hợp với mối quan hệ đó. Hãy nhanh tay, thời gian đang trôi đi!",
+  "correct": "ĐÚNG",
+  "incorrect": "SAI",
   "grammarPoliceTitle": "Cảnh sát ngữ pháp",
   "grammarPoliceSubtitle": "Xác định xem câu đó có đúng ngữ pháp hay có lỗi hay không.",
   "grammarPoliceHowToPlay": "Một câu sẽ xuất hiện ở giữa màn hình. Hãy quyết định xem nó có đúng ngữ pháp hay có lỗi hay không. Nhấn 'ĐÚNG' nếu nó ổn hoặc 'SAI' nếu bạn phát hiện ra lỗi. Đừng để mất hết mạng sống!",
@@ -490,6 +838,13 @@
   "blockCount3DNotQuite": "Chưa đúng lắm! Hãy thử xoay để đếm lại xem.",
   "blockCount3DExcellent": "TUYỆT VỜI",
   "blockCount3DWinMessage": "Bạn đã xác định đúng tất cả {count} khối!",
+  "@blockCount3DWinMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "blockCount3DHowToPlayDescription": "1. Kéo ngón tay của bạn qua khung nhìn 3D để xoay chồng khối.\n\n2. Đếm tất cả các khối trong chồng.\n\n3. Lưu ý: một khối ở trên cao phải có các khối đỡ bên dưới (các khối bị ẩn!).\n\n4. Nhập câu trả lời của bạn vào ô trống và nhấn \"GỬI KẾT QUẢ\" để kiểm tra.",
   "alphabetSudokuTitle": "SUDOKU CHỮ CÁI",
   "alphabetSudokuSubtitle": "Điền vào lưới sao cho mỗi hàng, cột và ô đều chứa các chữ cái từ A đến I.",
@@ -499,6 +854,13 @@
   "classicMazeSubtitle": "KHÁM PHÁ & GIẢI MÃ • MÊ CUNG MỚI MỖI VÁN",
   "classicMazeWinTitle": "ĐÃ VƯỢT MÊ CUNG",
   "classicMazeWinMessage": "Khả năng điều hướng đáng kinh ngạc! Bạn đã giải mê cung trong {count} lượt đi.",
+  "@classicMazeWinMessage": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
   "classicMazeMoves": "LƯỢT ĐI: ",
   "classicMazeHowToPlayDescription": "1. Dẫn đường cho viên bi vàng phát sáng (người chơi) đến cổng xanh (lối thoát) ở phía dưới bên phải.\n\n2. Vuốt bất cứ đâu trên mê cung, sử dụng các phím mũi tên trên bàn phím vật lý hoặc các nút trên bảng điều khiển để di chuyển.\n\n3. Đường mòn màu tím hiển thị con đường bạn đã khám phá. Quay lại đường mòn để xóa nó đi!\n\n4. Thay đổi độ khó từ thanh tác vụ phía trên để thử thách bản thân với những mê cung lớn hơn!",
   "conjunctionSearchTitle": "Tìm kiếm kết hợp",
@@ -529,52 +891,910 @@
   "cubeNetFoldFailed": "THẤT BẠI (NHẤN ĐẶT LẠI)",
   "faceTraitAssociationMemorize": "GHI NHỚ TẤT CẢ 4 NGƯỜI",
   "faceTraitAssociationPersonOf": "NGƯỜI THỨ {current} TRÊN {total}",
+  "@faceTraitAssociationPersonOf": {
+    "placeholders": {
+      "current": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "faceTraitAssociationWhatOccupation": "NGHỀ NGHIỆP CỦA HỌ LÀ GÌ?",
   "faceTraitAssociationWhatHobby": "SỞ THÍCH CỦA HỌ LÀ GÌ?",
   "faceTraitAssociationWinTitle": "BẬC THẦY TRÍ NHỚ!",
   "faceTraitAssociationLoseTitle": "TRÒ CHƠI KẾT THÚC",
   "faceTraitAssociationScoreMessage": "Bạn đã trả lời đúng {correct} trên tổng số {total} câu.",
+  "@faceTraitAssociationScoreMessage": {
+    "placeholders": {
+      "correct": {
+        "type": "int"
+      },
+      "total": {
+        "type": "int"
+      }
+    }
+  },
   "topologyTitle": "TÔ PÔ HỌC",
   "topologySubtitle": "Các hình này có tương đương về mặt tô pô không? (Có thể biến đổi hình này thành hình kia mà không cần cắt hay dán không?)",
   "topologyWinTitle": "THIÊN TÀI HÌNH HỌC!",
   "topologyWinMessage": "Bạn đã xác định đúng 10 cặp tô pô!",
   "topologyScore": "ĐIỂM: ",
-  "playNext": "Chơi tiếp",
-  "correct": "ĐÚNG",
-  "incorrect": "SAI",
-  "magnetsTitle": "NAM CHÂM",
-  "magnetsSubtitle": "Đặt nam châm vào lưới dựa trên số lượng cực.",
-  "magnetsHowToPlay": "Đổ đầy các hộp chứa kích thước bằng quân domino bằng các nam châm '+' và '-' hoặc để trống. Các gợi ý ở hàng và cột xác định tổng số mỗi cực trong dòng đó. Các cực giống nhau không được nằm cạnh nhau theo chiều dọc hoặc ngang.",
-  "magnetsWinTitle": "CÂN BẰNG PHÂN CỰC!",
-  "magnetsWinMessage": "Tất cả các nam châm đã được sắp xếp hoàn hảo!",
-  "lighthousesTitle": "NGỌN HẢI ĐĂNG",
-  "lighthousesSubtitle": "Đặt tàu dựa trên các gợi ý từ ngọn hải đăng.",
-  "lighthousesHowToPlay": "Đặt các con tàu 1x1 vào lưới. Ngọn hải đăng cho biết tổng số tàu có thể nhìn thấy theo chiều ngang và chiều dọc. Các tàu không được chạm vào ngọn hải đăng hoặc chạm vào nhau, kể cả theo đường chéo.",
-  "lighthousesWinTitle": "BIỂN AN TOÀN!",
-  "lighthousesWinMessage": "Tất cả các ngọn hải đăng đang dẫn đường cho các con tàu một cách hoàn hảo!",
-  "dominosaTitle": "DOMINOSA",
-  "dominosaSubtitle": "Tìm tất cả các quân domino ẩn trong lưới.",
-  "dominosaHowToPlay": "Sắp xếp một bộ domino hoàn chỉnh trên một lưới các con số sao cho mỗi cặp số liền kề được bao phủ bởi đúng một quân domino. Mỗi cặp số chỉ tồn tại một lần trong bộ.",
-  "dominosaWinTitle": "BẬC THẦY DOMINO!",
-  "dominosaWinMessage": "Mọi quân domino đã được tìm thấy và đặt đúng chỗ!",
-  "skyscrapersTitle": "NHÀ CHỌC TRỜI",
-  "skyscrapersSubtitle": "Điền vào lưới độ cao của các tòa nhà.",
-  "skyscrapersHowToPlay": "Điền vào lưới các độ cao (1-N) sao cho mỗi hàng và cột chứa mỗi độ cao đúng một lần. Các gợi ý ở các cạnh cho biết có bao nhiêu tòa nhà có thể nhìn thấy từ hướng đó, với các tòa nhà cao hơn sẽ che khuất các tòa nhà thấp hơn.",
-  "skyscrapersWinTitle": "ĐƯỜNG CHÂN TRỜI ĐƯỢC KHÔI PHỤC!",
-  "skyscrapersWinMessage": "Tất cả các tòa nhà đều được đặt ở vị trí hoàn hảo!",
-  "nurikabeTitle": "NURIKABE",
-  "nurikabeSubtitle": "Tạo thành một vùng biển kết nối và các hòn đảo tách biệt.",
-  "nurikabeHowToPlay": "Tô bóng các ô để tạo thành một 'biển' kết nối duy nhất (không có khối 2x2). Các ô không được tô bóng tạo thành các 'đảo', mỗi đảo chứa đúng một con số biểu thị tổng diện tích của nó.",
-  "nurikabeWinTitle": "BIỂN ĐANG CHẢY!",
-  "nurikabeWinMessage": "Các hòn đảo đã được tách biệt, biển đã được kết nối!",
-  "fillominoTitle": "FILLOMINO",
-  "fillominoSubtitle": "Chia lưới thành các khối polyomino có kích thước quy định.",
-  "fillominoHowToPlay": "Chia lưới thành các khối polyomino sao cho mỗi khối polyomino kích thước N chứa số N trong tất cả các ô của nó. Các khối polyomino có cùng kích thước không được nằm cạnh nhau theo chiều dọc hoặc ngang.",
-  "fillominoWinTitle": "LƯỚI ĐÃ ĐƯỢC CHIA!",
-  "fillominoWinMessage": "Được lấp đầy hoàn hảo bằng logic!",
-  "hitoriTitle": "HITORI",
-  "hitoriSubtitle": "Tô bóng các số trùng lặp trong mỗi hàng và cột.",
-  "hitoriHowToPlay": "Tô bóng các ô sao cho không có con số nào xuất hiện quá một lần trong bất kỳ hàng hoặc cột nào. Các ô được tô bóng không được nằm cạnh nhau (theo chiều dọc hoặc ngang) và tất cả các ô không được tô bóng phải tạo thành một nhóm kết nối duy nhất.",
-  "hitoriWinTitle": "BẬC THẦY HITORI!",
-  "hitoriWinMessage": "Bạn đã giải quyết thành công tất cả các số trùng lặp!"
+  "semanticDistanceTitle": "Khoảng cách Ngữ nghĩa",
+  "semanticDistanceSubtitle": "Đo lường khoảng cách khái niệm giữa các từ",
+  "oxymoronHuntTitle": "Săn tìm Nghịch hợp",
+  "oxymoronHuntSubtitle": "Ghép các cặp từ mâu thuẫn trong lưới",
+  "portmanteauSplitTitle": "Phân tách Từ ghép lai",
+  "portmanteauSplitSubtitle": "Xác định các từ gốc của một từ ghép lai",
+  "chainReactionTitle": "Phản ứng Chuỗi",
+  "chainReactionSubtitle": "Kết nối các từ bằng các chữ cái lặp lại",
+  "rhymeMasterTitle": "Bậc thầy Gieo vần",
+  "rhymeMasterSubtitle": "Xác định các từ vần với từ mục tiêu",
+  "definitionDashTitle": "Chạy đua Định nghĩa",
+  "definitionDashSubtitle": "Nối từ đúng với định nghĩa của nó",
+  "syllableStackTitle": "Xếp chồng Âm tiết",
+  "syllableStackSubtitle": "Xếp các âm tiết để tạo thành từ hoàn chỉnh",
+  "sentenceUnscrambleTitle": "Sắp xếp Câu",
+  "sentenceUnscrambleSubtitle": "Sắp xếp lại các từ để tạo thành một câu có nghĩa",
+  "grammarSortTitle": "Phân loại Ngữ pháp",
+  "grammarSortSubtitle": "Phân loại từ theo từ loại",
+  "vowelReconstructTitle": "Khôi phục Nguyên âm",
+  "vowelReconstructSubtitle": "Điền các nguyên âm còn thiếu vào câu",
+  "consonantReconstructTitle": "Khôi phục Phụ âm",
+  "consonantReconstructSubtitle": "Điền các phụ âm còn thiếu vào câu",
+  "homophoneHuntTitle": "Săn tìm Từ đồng âm",
+  "homophone_huntSubtitle": "Chọn từ đồng âm có cách viết đúng",
+  "silentLetterSearchTitle": "Tìm chữ cái câm",
+  "silentLetterSearchSubtitle": "Xác định các chữ cái không phát âm trong từ",
+  "palindromeBuilderTitle": "Tạo từ Đối xứng",
+  "palindromeBuilderSubtitle": "Tạo một từ đối xứng bằng cách thêm ít chữ cái nhất",
+  "phoneticGuessTitle": "Đoán theo Phiên âm",
+  "phoneticGuessSubtitle": "Xác định từ dựa trên cách phiên âm của nó",
+  "spoonerismSolverTitle": "Giải mã Nói lái",
+  "spoonerismSolverSubtitle": "Xác định cách nói lái đúng cho cụm từ",
+  "etymonOddballTitle": "Tìm gốc từ khác biệt",
+  "etymonOddballSubtitle": "Tìm từ không có chung gốc từ với các từ còn lại",
+  "etymologyOriginTitle": "Nguồn gốc Từ nguyên",
+  "etymologyOriginSubtitle": "Đoán ngôn ngữ gốc của từ mượn",
+  "affixFactoryTitle": "Xưởng Phụ tố",
+  "affixFactorySubtitle": "Tạo các từ có nghĩa bằng tiền tố và hậu tố",
+  "cognateCatchTitle": "Tìm Từ đồng gốc",
+  "cognateCatchSubtitle": "Phân biệt giữa từ đồng gốc thật và từ giả đồng gốc",
+  "compoundConnectTitle": "Kết nối Từ ghép",
+  "compoundConnectSubtitle": "Kết hợp hai từ để tạo thành một từ ghép",
+  "pangramSprintTitle": "Chạy đua Pangram",
+  "pangramSprintSubtitle": "Xây dựng một câu sử dụng mọi chữ cái trong bảng chữ cái",
+  "anagramDefinitionTitle": "Định nghĩa Từ đảo chữ",
+  "anagramDefinitionSubtitle": "Giải từ đảo chữ dựa trên định nghĩa của nó",
+  "letterBridgeTitle": "Cầu nối Chữ cái",
+  "letterBridgeSubtitle": "Tìm chữ cái còn thiếu để nối hai từ",
+  "letterFrequencyScanTitle": "Quét tần suất Chữ cái",
+  "letterFrequencyScanSubtitle": "Đếm số lần một chữ cái xuất hiện trong văn bản",
+  "oneLetterShiftTitle": "Dịch chuyển một chữ cái",
+  "oneLetterShiftSubtitle": "Biến đổi một từ thành từ khác bằng cách thay đổi một chữ cái",
+  "vocabularyBuilderMessage": "Làm tốt lắm! Vốn từ vựng của bạn rất ấn tượng. Điểm: {arg0}",
+  "@vocabularyBuilderMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "symmetryMessage": "Bạn đã đối xứng hóa mẫu hình một cách hoàn hảo với độ chính xác tuyệt đối.",
+  "temporalOrderMessage": "Đáng kinh ngạc! Trí nhớ trình tự thời gian của bạn rất chuẩn xác.",
+  "temporalOrderMessage1": "Trí nhớ trình tự không chính xác. Có công mài sắt có ngày nên kim!",
+  "wordSearchMessage": "Đã tìm thấy tất cả các từ với khả năng quan sát tinh tường.",
+  "colorMatchMessage": "Độ chính xác của bạn: {arg0}%",
+  "@colorMatchMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "semanticLinkMessage": "Bạn đã ghi được {arg0} điểm!",
+  "@semanticLinkMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "reflexTapMessage": "Bạn đã chạm vào {arg0} mục tiêu!",
+  "@reflexTapMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "angleFinderMessage": "Trực giác hình học của bạn thật hoàn hảo!",
+  "angleFinderMessage1": "Câu trả lời đúng là {arg0}°",
+  "@angleFinderMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "angleFinderText": "{arg0}°",
+  "@angleFinderText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "visualStatisticalLearningMessage": "Bạn đã ghi được {arg0} mẫu hình đúng!",
+  "@visualStatisticalLearningMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "nonogramText": "Lỗi: {arg0}",
+  "@nonogramText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "mentalCalendarMessage": "Bạn đã làm đúng {arg0} trên 10!",
+  "@mentalCalendarMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "orbitTapMessage": "Bạn đã chạm thành công {arg0} lần!",
+  "@orbitTapMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "schulteTableMessage": "Bạn đã hoàn thành bảng trong {arg0}.\\nHãy tiếp tục luyện tập để mở rộng tầm nhìn ngoại vi!",
+  "@schulteTableMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "schulteTableText": "BẮT ĐẦU KIỂM TRA",
+  "relationalMemoryMessage": "Độ chính xác trí nhớ quan hệ không gian thật tuyệt vời!",
+  "sudokuText": "Lỗi: {arg0}",
+  "@sudokuText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sdmtMessage": "Bạn đã khớp được {arg0} biểu tượng! Bài kiểm tra này đo tốc độ quét và sự chú ý thị giác của bạn.",
+  "@sdmtMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "futoshikiMessage": "Đáng kinh ngạc! Bạn đã giải được ô số Futoshiki.",
+  "letterFrequencyScanMessage": "Bạn đã đếm đúng {arg0} lần xuất hiện của \"{arg1}\".",
+  "@letterFrequencyScanMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "letterFrequencyScanText": "Không chính xác. Số lượng là {arg0}.",
+  "@letterFrequencyScanText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "memoryMatrixMessage": "Ấn tượng! Trí nhớ ngắn hạn của bạn rất nhạy bén. Mục tiêu hàng ngày đã hoàn thành!",
+  "memoryMatrixMessage1": "Hãy tập trung và thử lại để cải thiện điểm trí nhớ của bạn.",
+  "contextCluesMessage": "Xuất sắc! Vốn từ vựng và khả năng phân tích ngữ cảnh của bạn thật tuyệt vời.",
+  "contextCluesMessage1": "Đã chọn sai từ! Hãy rèn luyện tư duy ngữ cảnh ngôn ngữ và thử lại.",
+  "oneLetterShiftMessage": "Bạn đã chuyển đổi chính xác {arg0} thành {arg1}.",
+  "@oneLetterShiftMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "mentalAbacusMessage": "Khả năng tính nhẩm của bạn thuộc hàng đẳng cấp.",
+  "fractionMatcherMessage": "Bạn đã ghi được {arg0} điểm khi ghép các biểu thức!",
+  "@fractionMatcherMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spellingSprintMessage": "Bạn đã đánh vần đúng cả 10 từ!",
+  "spellingSprintMessage1": "Bạn đã đánh vần được {arg0} từ.",
+  "@spellingSprintMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "stopSignalMessage": "Bạn đã đạt được {arg0} phản hồi chính xác! Bài kiểm tra này đo khả năng kiềm chế một hành động đã dự định.",
+  "@stopSignalMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "grammarPoliceMessage": "Trò chơi kết thúc! Bạn đã duy trì trật tự trong thế giới ngữ pháp. Điểm: {arg0}",
+  "@grammarPoliceMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "consonantReconstructMessage": "Bạn đã khôi phục thành công với số điểm {arg0}!",
+  "@consonantReconstructMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "rhymeMasterMessage": "Bạn đã tìm được {arg0} trên {arg1} vần!",
+  "@rhymeMasterMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "vigilanceTaskMessage": "Số lần trúng: {arg0}, Số lần bỏ lỡ: {arg1}\\nBáo động giả: {arg2}",
+  "@vigilanceTaskMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "silhouetteMatchOrthoMessage": "Bạn có kỹ năng căn chỉnh chính hình hoàn hảo!",
+  "silhouetteMatchOrthoText": "ĐÃ HIỂU",
+  "silhouetteMatchOrthoText1": "Phép chiếu phối cảnh không chính xác! Chạm vào Đặt lại để thử lại.",
+  "fibonacciMergeMessage": "{arg0}: {arg1}",
+  "@fibonacciMergeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "factorFinderMessage": "Bạn đã ghi được {arg0} điểm bằng cách tìm tất cả các ước số!",
+  "@factorFinderMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "logicalSyllogismsMessage": "Bạn đã giải đúng {arg0} tam đoạn luận!",
+  "@logicalSyllogismsMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "rotatingMazeMessage": "Bạn đã vượt qua mê cung xoay động thành công!",
+  "rotatingMazeText": "ĐÃ HIỂU",
+  "rotatingMazeText1": "🌀 Mê cung đã xoay 90°! Lưới đã thay đổi!",
+  "mathPathMessage": "You found the path that adds up to the target!",
+  "bridgesMessage": "You successfully connected all the islands!",
+  "compoundConnectMessage": "The compound word is {arg0}{arg1}.",
+  "@compoundConnectMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "pangramSprintMessage": "You built a sentence using all 26 letters.",
+  "mirrorImageMessage": "You perfectly identified the reflection.",
+  "mirrorImageText": "MIRROR IMAGE",
+  "reverseStroopMessage": "You scored {arg0} points! Keep your eye on the instructions.",
+  "@reverseStroopMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "verbalAnalogiesMessage": "You have a sharp mind for relationships.",
+  "corsiBlocksMessage1": "You recalled {arg1} sequences! Your spatial memory span reached {arg0}.",
+  "@corsiBlocksMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "wordLadderMessage": "You successfully connected {arg0} to {arg1} in {arg2} steps.",
+  "@wordLadderMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "d2AttentionMessage": "Incredible selective scanning! Final score: {arg0}.",
+  "@d2AttentionMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "d2AttentionText": "HOW TO PLAY",
+  "d2AttentionText1": "GOT IT",
+  "tangleFixMessage": "All lines are clear and smooth.",
+  "distractorMatrixMessage": "Incredible! You recalled patterns despite cognitive math distractors!",
+  "distractorMatrixMessage1": "The distractors got you! Retrain your working memory.",
+  "sentenceUnscrambleMessage": "You unscrambled a score of {arg0}!",
+  "@sentenceUnscrambleMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "kakuroMessage": "Incredible! You matched all sum segments perfectly.",
+  "symbolicFlankerMessage": "You got {arg0} correct out of {arg1}!",
+  "@symbolicFlankerMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "stroopTestMessage": "You scored {arg0} correctly! Focus on the color of the ink, not the word.",
+  "@stroopTestMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wisconsinCardSortingMessage": "You correctly sorted {arg0} cards!",
+  "@wisconsinCardSortingMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "nBackMessage": "You achieved {arg0} 2-back matches! Your working memory is vital for multitasking.",
+  "@nBackMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "rhythmMasterMessage": "You got {arg0} perfect hits and {arg1} points!",
+  "@rhythmMasterMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "groceryListMessage": "You scored {arg0} points in Grocery List!",
+  "@groceryListMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "groceryListText": "I\\",
+  "mirrorTracingMessage": "Your brain successfully rewired its coordination.",
+  "moduloClockMessage": "Excellent modular mental math coordination! Score: {arg0}",
+  "@moduloClockMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "moduloClockMessage1": "You managed {arg0} of {arg1} modular clock solutions. Score: {arg2}",
+  "@moduloClockMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "crownMessage": "All crowns placed successfully with perfect logic.",
+  "dualCodingMessage": "Fantastic dual-task performance! Your working memory score: {arg0}",
+  "@dualCodingMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "inequalityDashMessage": "You scored {arg0} points matching inequalities!",
+  "@inequalityDashMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sourceMonitoringMessage": "You scored {arg0} out of {arg1}!",
+  "@sourceMonitoringMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "sourceMonitoringText": "START RECALL",
+  "memoryPalaceText": "AVAILABLE WORDS",
+  "target10Message": "You scored {arg0} points matching numbers to 10!",
+  "@target10Message": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "paperFoldingMessage": "You can see the patterns in your mind.",
+  "topologyText": "{arg0}{arg1} / 10",
+  "@topologyText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "waterSortMessage": "You sorted all the colors perfectly!",
+  "anagramDefinitionMessage": "The word was indeed \"{arg0}\".",
+  "@anagramDefinitionMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "game2048Message": "{arg0}: {arg1}\\n{arg2}",
+  "@game2048Message": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      },
+      "arg2": {
+        "type": "String"
+      }
+    }
+  },
+  "game2048Message1": "{arg0}: {arg1}",
+  "@game2048Message1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "numericalEstimationMessage": "You made {arg0} correct estimations.",
+  "@numericalEstimationMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "grammarSortMessage": "You sorted {arg0} words correctly!",
+  "@grammarSortMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "vowelReconstructMessage": "You reconstructed a score of {arg0}!",
+  "@vowelReconstructMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spatialConflictMessage": "You achieved a score of {arg0} with {arg1} errors!",
+  "@spatialConflictMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "spatialConflictText": "HOW TO PLAY",
+  "spatialConflictText1": "GOT IT",
+  "tracePathMessage": "Your accuracy was {arg0}%!",
+  "@tracePathMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "ruleSwitcherMessage": "You scored {arg0} correct out of {arg1}!",
+  "@ruleSwitcherMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "collatzMessage": "You took {arg0} steps. Min possible was {arg1}.",
+  "@collatzMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "collatzText": "/ 2",
+  "collatzText1": "+ 1",
+  "collatzText2": "3n + 1",
+  "divisibilityDashMessage": "You solved {arg0} numbers!",
+  "@divisibilityDashMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "switchTaskMessage": "You scored {arg0} correctly! Fast switching is key to mental flexibility.",
+  "@switchTaskMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sequenceSleuthMessage": "You solved {arg0} sequences!",
+  "@sequenceSleuthMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "changeBlindnessMessage": "You found {arg0} changes!",
+  "@changeBlindnessMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "mentalRotationMessage": "You rotated {arg0} shapes correctly!",
+  "@mentalRotationMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wordMastermindMessage": "You mastered the code!\\nThe word was: {arg0}",
+  "@wordMastermindMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wordMastermindMessage1": "The hidden word was: {arg0}",
+  "@wordMastermindMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "wordMastermindText": "{arg0}",
+  "@wordMastermindText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "simonSequenceMessage": "You memorized all 10 tiles!",
+  "simonSequenceMessage1": "Try again to master the sequence.",
+  "oxymoronHuntMessage": "You found {arg0} oxymorons!",
+  "@oxymoronHuntMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spotlightTrackMessage": "Incredible spatial tracking! You scored {arg0} points.",
+  "@spotlightTrackMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "spotlightTrackText": "HOW TO PLAY",
+  "spotlightTrackText1": "GOT IT",
+  "spotlightTrackText2": "START ROUND",
+  "vennNumbersMessage": "You categorized {arg0} numbers!",
+  "@vennNumbersMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "vennNumbersText": "NEITHER",
+  "vennNumbersText1": "BOTH",
+  "silhouetteMatchMessage": "Your brain is excellent at 3D to 2D translation.",
+  "sumSnakeMessage": "Target {arg0} reached with perfect precision!",
+  "@sumSnakeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sumSnakeText": "CLEAR PATH",
+  "percentagePeakMessage": "You solved {arg0} percentage problems!",
+  "@percentagePeakMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "trailMakingMessage": "You completed {arg0} trails! This test measures your visual search speed and mental flexibility.",
+  "@trailMakingMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "matrixReasoningMessage": "You completed {arg0} matrices correctly!",
+  "@matrixReasoningMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "tentsAndTreesMessage": "You have successfully placed all the tents.",
+  "klotskiMessage": "Sensational sliding! You freed the Hero block in {arg0} moves.",
+  "@klotskiMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "sumPyramidMessage": "You solved {arg0} sum pyramids successfully!",
+  "@sumPyramidMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "simonCommandMessage": "Excellent selective response and focus! Total Score: {arg0}",
+  "@simonCommandMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "simonCommandMessage1": "You scored {arg0} but did not reach {arg1} matches in time.",
+  "@simonCommandMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "syllableStackMessage": "You stacked up a score of {arg0}!",
+  "@syllableStackMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "slitherlinkMessage": "Awesome! You successfully completed the loop puzzle.",
+  "quickMathMessage": "You solved {arg0} problems!",
+  "@quickMathMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "commonDenominatorMessage": "You solved {arg0} GCD/LCM problems!",
+  "@commonDenominatorMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "chainReactionMessage": "Your final score is {arg0}. You built a chain of {arg1} words.",
+  "@chainReactionMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "chainReactionText": "{arg0}",
+  "@chainReactionText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "associativePairsMessage": "Brilliant! You associated visual traits flawlessly.",
+  "associativePairsMessage1": "Wrong association! Sharpen your link memory and try again.",
+  "portmanteauSplitMessage": "You split {arg0} portmanteaus!",
+  "@portmanteauSplitMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "magicSquaresText": "CLEAR",
+  "alphabetSudokuText": "Error: {arg0}",
+  "@alphabetSudokuText": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "pipesMessage": "You connected all the pipes and filled the grid.",
+  "dualMirrorMessage": "You navigated both icons to their targets!",
+  "binaryCodeMessage": "Sensational rapid decimal translation! Final Score: {arg0}",
+  "@binaryCodeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "binaryCodeMessage1": "You correctly converted {arg0} binary numbers. Score: {arg1}",
+  "@binaryCodeMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      },
+      "arg1": {
+        "type": "String"
+      }
+    }
+  },
+  "oddOneOutMessage": "You found 50 odd ones! Final score: {arg0}",
+  "@oddOneOutMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "oddOneOutMessage1": "Your score: {arg0}",
+  "@oddOneOutMessage1": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "letterBridgeMessage": "You found the bridge letter: {arg0}",
+  "@letterBridgeMessage": {
+    "placeholders": {
+      "arg0": {
+        "type": "String"
+      }
+    }
+  },
+  "imReady": "TÔI ĐÃ SẴN SÀNG"
 }

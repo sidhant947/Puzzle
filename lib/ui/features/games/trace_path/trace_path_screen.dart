@@ -26,7 +26,6 @@ class _TracePathScreenState extends ConsumerState<TracePathScreen> {
   }
 
   void _showGameOverDialog(int score, double accuracy) {
-    final l10n = AppLocalizations.of(context)!;
     bool won = accuracy >= 0.7;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('trace_path');

@@ -1,4 +1,3 @@
-import "package:puzzle/l10n/app_localizations.dart";
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -23,7 +22,6 @@ class _CognateCatchScreenState extends ConsumerState<CognateCatchScreen> {
   }
 
   void _showCompletionDialog() {
-    final l10n = AppLocalizations.of(context)!;
     final state = ref.read(cognateCatchNotifierProvider);
     ref.read(gameStreakNotifierProvider.notifier).completeGame('cognate_catch');
     showDialog(
@@ -46,7 +44,6 @@ class _CognateCatchScreenState extends ConsumerState<CognateCatchScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(cognateCatchNotifierProvider);
     final notifier = ref.read(cognateCatchNotifierProvider.notifier);

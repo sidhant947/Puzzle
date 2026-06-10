@@ -170,8 +170,16 @@ class BinaryPuzzleEngine {
     for (int i = 0; i < size; i++) {
       int row0 = 0, row1 = 0, col0 = 0, col1 = 0;
       for (int j = 0; j < size; j++) {
-        if (fullGrid[i][j] == 0) row0++; else row1++;
-        if (fullGrid[j][i] == 0) col0++; else col1++;
+        if (fullGrid[i][j] == 0) {
+          row0++;
+        } else {
+          row1++;
+        }
+        if (fullGrid[j][i] == 0) {
+          col0++;
+        } else {
+          col1++;
+        }
       }
       if (row0 != half || row1 != half) return false;
       if (col0 != half || col1 != half) return false;

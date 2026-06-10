@@ -26,7 +26,6 @@ class _WordSurgeScreenState extends ConsumerState<WordSurgeScreen> {
   }
 
   void _showCompletionDialog(bool isVictory) {
-    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,

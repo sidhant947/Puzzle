@@ -100,7 +100,6 @@ class MemoryPalaceScreen extends ConsumerWidget {
       ),
       itemCount: 9,
       itemBuilder: (context, index) {
-        final isAssigned = state.assignments.containsKey(index);
         final recalledWord = state.userRecall[index];
         final isSelected = state.selectedPosition == index;
         

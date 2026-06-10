@@ -255,7 +255,6 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
   }
 
   void _showVictoryDialog(BuildContext context, WidgetRef ref) async {
-    final l10n = AppLocalizations.of(context)!;
     await ref.read(gameStreakNotifierProvider.notifier).completeGame('word_search');
 
     if (!context.mounted) return;

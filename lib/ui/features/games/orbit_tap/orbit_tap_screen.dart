@@ -43,7 +43,6 @@ class _OrbitTapScreenState extends ConsumerState<OrbitTapScreen> with SingleTick
   }
 
   void _showGameOverDialog(int score) {
-    final l10n = AppLocalizations.of(context)!;
     bool won = score >= 10;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('orbit_tap');

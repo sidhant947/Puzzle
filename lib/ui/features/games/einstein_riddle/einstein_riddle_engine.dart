@@ -207,7 +207,7 @@ class EinsteinRiddleEngine {
 
   String _propertyDesc(String cat, String val) {
     if (cat == 'Color') return "$val house";
-    if (cat == 'Nationality') return "$val";
+    if (cat == 'Nationality') return val;
     if (cat == 'Drink') return "person who drinks $val";
     if (cat == 'Cigar') return "person who smokes $val";
     if (cat == 'Pet') return "person who keeps $val";

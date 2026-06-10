@@ -23,7 +23,6 @@ class _PangramSprintScreenState extends ConsumerState<PangramSprintScreen> {
   }
 
   void _showCompletionDialog() {
-    final state = ref.read(pangramSprintNotifierProvider);
     ref.read(gameStreakNotifierProvider.notifier).completeGame('pangram_sprint');
     showDialog(
       context: context,
@@ -45,8 +44,8 @@ class _PangramSprintScreenState extends ConsumerState<PangramSprintScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(pangramSprintNotifierProvider);
+    final colorScheme = Theme.of(context).colorScheme;
     final notifier = ref.read(pangramSprintNotifierProvider.notifier);
 
     ref.listen(pangramSprintNotifierProvider, (previous, next) {

@@ -24,7 +24,6 @@ class _OddRotationScreenState extends ConsumerState<OddRotationScreen> {
   }
 
   void _showGameOverDialog(bool won) {
-    final l10n = AppLocalizations.of(context)!;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('odd_rotation');
       HapticFeedbackUtil.victory();

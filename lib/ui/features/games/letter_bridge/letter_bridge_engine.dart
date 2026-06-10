@@ -1,22 +1,6 @@
 import 'dart:math';
 
 class LetterBridgeEngine {
-  static const List<Map<String, String>> _bridgeData = [
-    {'prefix': 'PI', 'suffix': 'NO', 'bridge': 'A'}, // PI-A, A-NO (no, PI-A is not necessarily a word, it connects them)
-    // Wait, usually Letter Bridge means: Prefix + Letter = Word1, Letter + Suffix = Word2.
-    // Example: PI (A) NO -> PI-A (not a word), A-NO (not a word).
-    // Let's re-read: "Find letter that connects two words."
-    // Maybe: Word1 + [?] = Word3 AND [?] + Word2 = Word4.
-    // Or: [Word1] + ? + [Word2] forms a longer word?
-    // Let's look at common "Letter Bridge" puzzles.
-    // Usually it's: Word1 ending with ? and Word2 starting with ?
-    // Example: HAND (L) AMP -> HANDL(E) (no), HAND (Y) (no)
-    // Actually, "Find letter that connects two words" often means:
-    // Word1 + ? is a word, and ? + Word2 is a word.
-    // Example: SUN (D) AY -> SUN-D (no), D-AY (yes).
-    // Let's try: HEAR (T) ABLE -> HEART (word), TABLE (word). BRIDGE is 'T'.
-  ];
-
   // Better bridge data: Word1 + BridgeLetter = NewWord1, BridgeLetter + Word2 = NewWord2
   // Or just Word1 + BridgeLetter and BridgeLetter + Word2.
   static const List<Map<String, dynamic>> _puzzles = [

@@ -27,7 +27,6 @@ class _VigilanceTaskScreenState extends ConsumerState<VigilanceTaskScreen> {
   }
 
   void _showCompletionDialog(bool isVictory, int hits, int misses, int falseAlarms) {
-    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,

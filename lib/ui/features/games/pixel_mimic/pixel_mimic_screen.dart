@@ -32,7 +32,6 @@ class _PixelMimicScreenState extends ConsumerState<PixelMimicScreen> {
   }
 
   void _showGameOverDialog(bool won) {
-    final l10n = AppLocalizations.of(context)!;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('pixel_mimic');
       HapticFeedbackUtil.victory();

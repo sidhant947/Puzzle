@@ -36,7 +36,6 @@ class NonogramState {
 
 @riverpod
 class NonogramNotifier extends _$NonogramNotifier {
-  final _engine = NonogramEngine();
   static const int defaultSize = 8; // Increased for more challenge
 
   @override

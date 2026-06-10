@@ -51,7 +51,6 @@ class _RhythmMasterScreenState extends ConsumerState<RhythmMasterScreen> with Si
   }
 
   void _showGameOverDialog(int score, int perfect) {
-    final l10n = AppLocalizations.of(context)!;
     bool won = perfect >= 10;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('rhythm_master');

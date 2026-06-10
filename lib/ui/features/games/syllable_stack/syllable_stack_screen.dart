@@ -50,7 +50,6 @@ class _SyllableStackScreenState extends ConsumerState<SyllableStackScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(syllableStackNotifierProvider);
     final notifier = ref.read(syllableStackNotifierProvider.notifier);
@@ -115,7 +114,6 @@ class _SyllableStackScreenState extends ConsumerState<SyllableStackScreen> {
                   ),
                 ...List.generate(state.currentStack.length, (index) {
                   final syllable = state.currentStack[index];
-                  final isLast = index == state.currentStack.length - 1;
                   Color? bgColor;
                   if (state.lastCheck == true) bgColor = DesignSystem.gameGreen;
                   if (state.lastCheck == false) bgColor = DesignSystem.error;

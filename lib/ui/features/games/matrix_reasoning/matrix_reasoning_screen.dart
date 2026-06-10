@@ -27,7 +27,6 @@ class _MatrixReasoningScreenState extends ConsumerState<MatrixReasoningScreen> {
   }
 
   void _showCompletionDialog() {
-    final l10n = AppLocalizations.of(context)!;
     final state = ref.read(matrixReasoningNotifierProvider);
     showDialog(
       context: context,

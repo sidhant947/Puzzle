@@ -41,7 +41,6 @@ class SudokuState {
 
 @riverpod
 class SudokuNotifier extends _$SudokuNotifier {
-  final _engine = SudokuEngine();
   static const int boardSize = 9;
 
   @override

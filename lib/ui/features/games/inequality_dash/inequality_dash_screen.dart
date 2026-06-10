@@ -6,7 +6,6 @@ import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../core/juice/game_scaffold.dart';
-import 'inequality_dash_engine.dart';
 import 'inequality_dash_provider.dart';
 
 class InequalityDashScreen extends ConsumerStatefulWidget {

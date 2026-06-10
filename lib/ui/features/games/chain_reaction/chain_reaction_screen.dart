@@ -58,7 +58,6 @@ class _ChainReactionScreenState extends ConsumerState<ChainReactionScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(chainReactionNotifierProvider);
     final notifier = ref.read(chainReactionNotifierProvider.notifier);

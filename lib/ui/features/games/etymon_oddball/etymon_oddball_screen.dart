@@ -46,7 +46,6 @@ class _EtymonOddballScreenState extends ConsumerState<EtymonOddballScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(etymonOddballNotifierProvider);
     final notifier = ref.read(etymonOddballNotifierProvider.notifier);

@@ -26,7 +26,6 @@ class _MentalRotationScreenState extends ConsumerState<MentalRotationScreen> {
   }
 
   void _showCompletionDialog() {
-    final l10n = AppLocalizations.of(context)!;
     final state = ref.read(mentalRotationNotifierProvider);
     showDialog(
       context: context,

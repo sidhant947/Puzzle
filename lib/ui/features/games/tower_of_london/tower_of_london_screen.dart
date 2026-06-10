@@ -25,7 +25,6 @@ class _TowerOfLondonScreenState extends ConsumerState<TowerOfLondonScreen> {
   }
 
   void _showCompletionDialog(bool isVictory, bool isOutOfMoves) {
-    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
