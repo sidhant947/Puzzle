@@ -83,6 +83,16 @@ import '../ui/features/games/flanker_test/flanker_test_screen.dart';
 import '../ui/features/games/switch_task/switch_task_screen.dart';
 import '../ui/features/games/n_back/n_back_screen.dart';
 import '../ui/features/games/corsi_blocks/corsi_blocks_screen.dart';
+import '../ui/features/games/sopt/sopt_screen.dart';
+import '../ui/features/games/continuous_recognition/continuous_recognition_screen.dart';
+import '../ui/features/games/dnms/dnms_screen.dart';
+import '../ui/features/games/symmetry_span/symmetry_span_screen.dart';
+import '../ui/features/games/reading_span/reading_span_screen.dart';
+import '../ui/features/games/counting_span/counting_span_screen.dart';
+import '../ui/features/games/object_displacement/object_displacement_screen.dart';
+import '../ui/features/games/mandala_recall/mandala_recall_screen.dart';
+import '../ui/features/games/running_memory_span/running_memory_span_screen.dart';
+import '../ui/features/games/spatial_cabinet_memory/spatial_cabinet_memory_screen.dart';
 import '../ui/features/games/sdmt/sdmt_screen.dart';
 import '../ui/features/games/trail_making/trail_making_screen.dart';
 import '../ui/features/games/stop_signal/stop_signal_screen.dart';
@@ -911,6 +921,86 @@ class GameData {
       'icon': Icons.grid_view_rounded,
       'color': DesignSystem.gameIndigo,
       'builder': (context) => const CorsiBlocksScreen(),
+    },
+    {
+      'title': 'Self-Ordered Pointing',
+      'id': 'sopt',
+      'category': 'MEMORY',
+      'icon': Icons.shuffle_rounded,
+      'color': DesignSystem.gameBlue,
+      'builder': (context) => const SoptScreen(),
+    },
+    {
+      'title': 'Continuous Recognition',
+      'id': 'continuous_recognition',
+      'category': 'MEMORY',
+      'icon': Icons.flaky_rounded,
+      'color': DesignSystem.gameEmerald,
+      'builder': (context) => const ContinuousRecognitionScreen(),
+    },
+    {
+      'title': 'Non-Matching Memory',
+      'id': 'dnms',
+      'category': 'MEMORY',
+      'icon': Icons.difference_rounded,
+      'color': DesignSystem.gameRose,
+      'builder': (context) => const DnmsScreen(),
+    },
+    {
+      'title': 'Symmetry Span',
+      'id': 'symmetry_span',
+      'category': 'MEMORY',
+      'icon': Icons.compare_rounded,
+      'color': DesignSystem.gamePurple,
+      'builder': (context) => const SymmetrySpanScreen(),
+    },
+    {
+      'title': 'Reading Span',
+      'id': 'reading_span',
+      'category': 'MEMORY',
+      'icon': Icons.auto_stories_rounded,
+      'color': DesignSystem.gameOrange,
+      'builder': (context) => const ReadingSpanScreen(),
+    },
+    {
+      'title': 'Counting Span',
+      'id': 'counting_span',
+      'category': 'MEMORY',
+      'icon': Icons.format_list_numbered_rounded,
+      'color': DesignSystem.gamePink,
+      'builder': (context) => const CountingSpanScreen(),
+    },
+    {
+      'title': 'Object Displacement',
+      'id': 'object_displacement',
+      'category': 'MEMORY',
+      'icon': Icons.open_with_rounded,
+      'color': DesignSystem.gameTeal,
+      'builder': (context) => const ObjectDisplacementScreen(),
+    },
+    {
+      'title': 'Mandala Recall',
+      'id': 'mandala_recall',
+      'category': 'MEMORY',
+      'icon': Icons.pattern_rounded,
+      'color': DesignSystem.gameAmber,
+      'builder': (context) => const MandalaRecallScreen(),
+    },
+    {
+      'title': 'Running Span',
+      'id': 'running_memory_span',
+      'category': 'MEMORY',
+      'icon': Icons.fast_forward_rounded,
+      'color': DesignSystem.gameViolet,
+      'builder': (context) => const RunningMemorySpanScreen(),
+    },
+    {
+      'title': 'Spatial Cabinets',
+      'id': 'spatial_cabinet_memory',
+      'category': 'MEMORY',
+      'icon': Icons.door_sliding_rounded,
+      'color': DesignSystem.gameCyan,
+      'builder': (context) => const SpatialCabinetMemoryScreen(),
     },
     {
       'title': 'SDMT Test',

@@ -1,4 +1,3 @@
-// ignore_for_file: deprecated_member_use
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'game_providers.dart';
@@ -7,7 +6,7 @@ part of 'game_providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$filteredGamesHash() => r'373ec2e724d5642b0556146587e57becf290fa2f';
+String _$filteredGamesHash() => r'63cf891ffe5626e76911516e5c67d72b80a1f4bd';
 
 /// Copied from Dart SDK
 class _SystemHash {
