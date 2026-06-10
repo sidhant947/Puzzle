@@ -1,9 +1,9 @@
-# PUZZLE: 190+ Free Brain Games & Logic Puzzles
+# PUZZLE: 187 Free Brain Games & Logic Puzzles
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Platform](https://img.shields.io/badge/platform-Android%20%7C%20Linux%20%7C%20Web%20%7C%20Windows-blue.svg)](#-downloads)
 
-The ultimate collection of **puzzle challenge games** available for Android , Linux and Windows. A professional suite of minimalist **free brain games** built with Flutter. Master over 190 unique puzzles in this essential **logic puzzle** library, featuring the best **offline games** including **Minesweeper**, **2048**, **Sudoku**, and more. 
+The ultimate collection of **puzzle challenge games** available for Android , Linux and Windows. A professional suite of minimalist **free brain games** built with Flutter. Master over 187 unique puzzles in this essential **logic puzzle** library, featuring the best **offline games** including **Minesweeper**, **2048**, **Sudoku**, and more. 
 
 ---
 
@@ -16,7 +16,7 @@ PUZZLE is engineered for performance and mental stimulation. Whether you are loo
 *   **Memory Games:** Sharpen your recall with N-Back, Memory Palace, and Chimp Test.
 *   **Word Puzzles:** Expand your vocabulary with **typing games**, Crosswords, and Word Search.
 *   **Minesweeper:** Ready to **play Minesweeper**? Enjoy it fully offline with no ads.
-*   **Brain Training:** 190+ minimalist experiences designed to sharpen your focus and attention.
+*   **Brain Training:** 187 minimalist experiences designed to sharpen your focus and attention.
 
 ---
 
@@ -44,11 +44,11 @@ Get the full suite of **puzzle games** for your Windows.
 
 ---
 
-## 🎮 Included Games (190 Total)
+## 🎮 Included Games (187 Total)
 
 <details>
-<summary><b>🧠 Attention & Focus (31) - Elite Brain Training</b></summary>
-Attentional Blink, Change Blindness, Choice Reaction, Color Match, Conjunction Search, Counting Sheep, d2 Attention, Divided Focus, Dual-Mirror Navigation, Flanker Test, Go / No-Go, Letter Cancel, Object Tracking, Odd One Out, Orbit Tap, Reflex Tap, Reverse Stroop, Rhythm Master, Rule Switcher, Schulte Table, SDMT Test, Simon Command, Spatial Conflict, Spotlight Track, Stop Signal, Stroop Test, Switch Task, Symbolic Flanker, Trail Making, Vigilance Task, Visual Search.
+<summary><b>🧠 Attention & Focus (32) - Elite Brain Training</b></summary>
+Attentional Blink, Change Blindness, Choice Reaction, Color Match, Conjunction Search, Counting Sheep, d2 Attention, Divided Focus, Dual-Mirror Navigation, Flanker Test, Go / No-Go, Letter Cancel, Multiple Object Tracking, Odd One Out, Orbit Tap, Reflex Tap, Reverse Stroop, Rhythm Master, Rule Switcher, Schulte Table, SDMT Test, Simon Command, Spatial Conflict, Spotlight Track, Stop Signal, Stroop Test, Switch Task, Symbolic Flanker, Trail Making, Vigilance Task, Visual Search, Visual Statistical Learning.
 </details>
 
 <details>
@@ -57,23 +57,23 @@ Akari, Alphabet Sudoku, Binary Puzzle, Block Escape, Bridges, Color Flood, Crown
 </details>
 
 <details>
-<summary><b>🔢 Math & Numbers (35) - Free Math Puzzle Games</b></summary>
-2048, Angle Finder, Balance Scale, Base Shift Blitz, Binary Speed, Calc Sprint, Chain Calc, Collatz Path, Common Denominator, Divisibility Dash, Factor Finder, Fibonacci Merge, Fraction Match, Fraction Matcher, Inequality Dash, KenKen, Magic Square, Math Guess, Math Path, Mental Abacus, Mental Calendar, Modulo Clock, Numerical Estimation, Operator Mix, Percentage Peak, Prime Hunter, Quick Math, Radical Roots, Roman Arithmetic, Sequence Sleuth, Sum Pyramid, **Sum Snake (Snake Game variant)**, Target 10, Target 24, Venn Numbers.
+<summary><b>🔢 Math & Numbers (34) - Free Math Puzzle Games</b></summary>
+2048, Angle Finder, Balance Scale, Base Shift Blitz, Binary Code, Calculation Sprint, Chain Calc, Collatz Path, Common Denominator, Divisibility Dash, Factor Finder, Fibonacci Merge, Fraction Match, Fraction Matcher, Inequality Dash, KenKen, Magic Square, Math Guess, Math Path, Mental Abacus, Mental Calendar, Missing Operator, Modulo Clock, Numerical Estimation, Percentage Peak, Prime Hunter, Quick Math, Radical Roots, Roman Arithmetic, Sequence Sleuth, Sum Pyramid, **Sum Snake (Snake Game variant)**, Target 10, Target Number, Venn Numbers.
 </details>
 
 <details>
-<summary><b>💾 Memory Training (25) - Brain Games for Adults</b></summary>
-Associative Pairs, Chimp Test, Corsi Blocks, Distractor Matrix, Double N-Back, Dual Coding, Face-Name, Face-Trait, Fact Binder, Grocery List, Memory Matrix, Memory Palace, N-Back Test, Object Shuffle, Operation Span, Path Recall, Pixel Mimic, Relational Memory, Reverse Span, Sequence, Source Monitoring, Staircase Memory, Sternberg Task, Temporal Order, Visual Learning.
+<summary><b>💾 Memory Training (26) - Brain Games for Adults</b></summary>
+Associative Pairs, Chimp Test, Corsi Blocks, Distractor Matrix, Double N-Back, Dual Coding, Face-Name, Face-Trait, Fact Binder, Grocery List, Memory Matrix, Memory Palace, N-Back Test, Object Shuffle, Operation Span, Path Recall, Pixel Mimic, Relational Memory, Reverse Span, Simon Sequence, Source Monitoring, Staircase Memory, Sternberg Task, Temporal Order, Visual Learning, Wisconsin Card Sort.
 </details>
 
 <details>
 <summary><b>📐 Spatial Awareness (20) - 3D & Rotation Challenges</b></summary>
-3D Block Count, Box Completion, Classic Maze, Cube Net Fold, Hue Sort, Klotski Escape, Mental Mapping, Mental Rotation, Mirror Image, Mirror Tracing, Odd Rotation, Paper Folding, Perspective, Rotating Maze, Silhouette Match, Silhouette Match (Ortho), Slide Puzzle, Symmetry, Topological Equivalence, Trace Path.
+3D Block Count, Box Completion, Classic Maze, Cube Net Fold, Hue Sort, Klotski, Mental Mapping, Mental Rotation, Mirror Image, Mirror Tracing, Odd Rotation, Paper Folding, Perspective, Rotating Maze, Silhouette Match, Silhouette Match (Ortho), Slide Puzzle, Symmetry, Topology, Trace Path.
 </details>
 
 <details>
-<summary><b>📝 Word & Language (46) - Word Puzzle Games Online</b></summary>
-Affix Factory, Alphabetical Sort, Anagram Definition, Category Fluency, Chain Reaction, Cognate Catch, Compound Connect, Consonant Reconstruct, Context Clues, Crossword, Cryptogram, Definition Dash, Etymon Oddball, Etymology Origin, Find Word, Grammar Police, Grammar Sort, Homophone Hunt, Lexical Intersection, Letter Bridge, Letter Frequency Scan, Missing Link, Missing Vowels, One-Letter Shift, Oxymoron Hunt, Palindrome Builder, Pangram Sprint, Phonetic Guess, Portmanteau Split, Rhyme Master, Semantic Distance, Semantic Link, Sentence Unscramble, Silent Letter Search, Spelling Sprint, Spoonerism Solver, Syllable Stack, **Typing Games**, Verbal Analogies, Vocabulary, Vowel Reconstruct, Word Ladder, Word Mastermind, Word Scramble, Word Search, Word Surge.
+<summary><b>📝 Word & Language (42) - Word Puzzle Games Online</b></summary>
+Affix Factory, Anagram Definition, Category Fluency, Chain Reaction, Cognate Catch, Compound Connect, Consonant Reconstruct, Context Clues, Crossword, Cryptogram, Definition Dash, Etymology Origin, Etymon Oddball, Find Word, Grammar Police, Grammar Sort, Homophone Hunt, Letter Bridge, Letter Frequency Scan, Missing Vowels, One-Letter Shift, Oxymoron Hunt, Palindrome Builder, Pangram Sprint, Phonetic Guess, Portmanteau Split, Rhyme Master, Semantic Distance, Semantic Link, Sentence Unscramble, Silent Letter Search, Spelling Sprint, Spoonerism Solver, Syllable Stack, **Typing Games**, Verbal Analogies, Vocabulary, Vowel Reconstruct, Word Ladder, Word Mastermind, Word Scramble, Word Search, Word Surge.
 </details>
 
 

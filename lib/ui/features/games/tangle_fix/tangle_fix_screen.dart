@@ -1,8 +1,8 @@
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../providers/user_providers.dart';
-import '../../../../../utils/haptic_feedback.dart';
+import '../../../../providers/user_providers.dart';
+import '../../../../utils/haptic_feedback.dart';
 import '../../../core/juice/game_scaffold.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../utils/design_system.dart';
@@ -17,16 +17,7 @@ class TangleFixScreen extends ConsumerStatefulWidget {
 }
 
 class _TangleFixScreenState extends ConsumerState<TangleFixScreen> {
-  @override
-  void initState() {
-    super.initState();
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      final size = MediaQuery.of(context).size;
-      ref.read(tangleFixNotifierProvider.notifier).initGame(
-        Size(size.width - 40, size.height * 0.6),
-      );
-    });
-  }
+  bool _initialized = false;
 
   void _showCompletionDialog() {
     final l10n = AppLocalizations.of(context)!;
@@ -35,7 +26,7 @@ class _TangleFixScreenState extends ConsumerState<TangleFixScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.tangleFixTitle.toUpperCase(),
-        message: AppLocalizations.of(context)!.tangleFixMessage,
+        message: l10n.tangleFixMessage,
         isVictory: true,
         onHome: () {
           Navigator.of(context).pop();
@@ -43,10 +34,8 @@ class _TangleFixScreenState extends ConsumerState<TangleFixScreen> {
         },
         onPlayAgain: () {
           Navigator.of(context).pop();
-          final size = MediaQuery.of(context).size;
-          ref.read(tangleFixNotifierProvider.notifier).initGame(
-            Size(size.width - 40, size.height * 0.6),
-          );
+          _initialized = false;
+          setState(() {});
         },
       ),
     );
@@ -59,8 +48,7 @@ class _TangleFixScreenState extends ConsumerState<TangleFixScreen> {
     final notifier = ref.read(tangleFixNotifierProvider.notifier);
 
     ref.listen(tangleFixNotifierProvider, (previous, next) async {
-      if (next.isSolved && !previous!.isSolved) {
-        HapticFeedbackUtil.victory();
+      if (next.gameCompleted && !(previous?.gameCompleted ?? false)) {
         await ref.read(gameStreakNotifierProvider.notifier).completeGame('tangle_fix');
         if (!context.mounted) return;
         _showCompletionDialog();
@@ -68,27 +56,43 @@ class _TangleFixScreenState extends ConsumerState<TangleFixScreen> {
     });
 
     return GameScaffold(
-      title: 'Tangle Fix',
+      title: l10n.tangleFixTitle,
       subtitle: l10n.tangleFixSubtitle,
+      onReset: () {
+        _initialized = false;
+        setState(() {});
+      },
       body: LayoutBuilder(
         builder: (context, constraints) {
           final bounds = Size(constraints.maxWidth, constraints.maxHeight);
+          
+          if (!_initialized && bounds.width > 0 && bounds.height > 0) {
+            _initialized = true;
+            WidgetsBinding.instance.addPostFrameCallback((_) {
+              notifier.initGame(bounds);
+            });
+          }
+
+          if (state.nodes.isEmpty) {
+            return const Center(child: CircularProgressIndicator());
+          }
+
           return GestureDetector(
+            behavior: HitTestBehavior.opaque,
             onPanStart: (details) => notifier.onDragStart(details.localPosition),
             onPanUpdate: (details) => notifier.onDragUpdate(details.localPosition, bounds),
             onPanEnd: (_) => notifier.onDragEnd(),
-            child: Container(
-              color: Colors.transparent,
-              child: CustomPaint(
-                painter: TanglePainter(
-                  nodes: state.nodes,
-                  edges: state.edges,
-                  draggingNodeId: state.draggingNodeId,
-                  isSolved: state.isSolved,
-                  onSurfaceColor: Theme.of(context).colorScheme.onSurface,
-                ),
-                size: Size.infinite,
+            onPanCancel: () => notifier.onDragEnd(),
+            child: CustomPaint(
+              painter: TanglePainter(
+                nodes: state.nodes,
+                edges: state.edges,
+                intersectingEdgeIndices: state.intersectingEdgeIndices,
+                draggingNodeId: state.draggingNodeId,
+                isSolved: state.isSolved,
+                onSurfaceColor: Theme.of(context).colorScheme.onSurface,
               ),
+              size: Size.infinite,
             ),
           );
         },
@@ -100,6 +104,7 @@ class _TangleFixScreenState extends ConsumerState<TangleFixScreen> {
 class TanglePainter extends CustomPainter {
   final List<TangleNode> nodes;
   final List<TangleEdge> edges;
+  final Set<int> intersectingEdgeIndices;
   final String? draggingNodeId;
   final bool isSolved;
   final Color onSurfaceColor;
@@ -107,6 +112,7 @@ class TanglePainter extends CustomPainter {
   TanglePainter({
     required this.nodes,
     required this.edges,
+    required this.intersectingEdgeIndices,
     this.draggingNodeId,
     required this.isSolved,
     required this.onSurfaceColor,
@@ -115,19 +121,28 @@ class TanglePainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final edgePaint = Paint()
-      ..strokeWidth = 3.0
+      ..strokeWidth = 3.5
       ..strokeCap = StrokeCap.round;
 
     final nodePaint = Paint()..style = PaintingStyle.fill;
 
     // Draw Edges
-    for (var edge in edges) {
+    for (int i = 0; i < edges.length; i++) {
+      final edge = edges[i];
       final start = nodes.firstWhere((n) => n.id == edge.startNodeId).position;
       final end = nodes.firstWhere((n) => n.id == edge.endNodeId).position;
       
-      edgePaint.color = isSolved 
-          ? DesignSystem.success 
-          : DesignSystem.primary.withValues(alpha: 0.6);
+      final isIntersecting = intersectingEdgeIndices.contains(i);
+      
+      if (isSolved) {
+        edgePaint.color = DesignSystem.success;
+      } else if (isIntersecting) {
+        edgePaint.color = DesignSystem.error.withValues(alpha: 0.8);
+        edgePaint.strokeWidth = 4.5;
+      } else {
+        edgePaint.color = DesignSystem.primary.withValues(alpha: 0.4);
+        edgePaint.strokeWidth = 3.5;
+      }
       
       canvas.drawLine(start, end, edgePaint);
     }
@@ -136,26 +151,30 @@ class TanglePainter extends CustomPainter {
     for (var node in nodes) {
       final isDragging = node.id == draggingNodeId;
       
-      nodePaint.color = isDragging 
-          ? DesignSystem.accentAmber 
-          : (isSolved ? DesignSystem.success : onSurfaceColor.withValues(alpha: 0.7));
+      if (isSolved) {
+        nodePaint.color = DesignSystem.success;
+      } else if (isDragging) {
+        nodePaint.color = DesignSystem.accentAmber;
+      } else {
+        nodePaint.color = onSurfaceColor.withValues(alpha: 0.9);
+      }
       
       // Draw Shadow
       canvas.drawCircle(
-        node.position + const Offset(0, 3), 
-        isDragging ? 18 : 12, 
-        Paint()..color = Colors.black.withValues(alpha: 0.1),
+        node.position + const Offset(0, 4), 
+        isDragging ? 22 : 14, 
+        Paint()..color = Colors.black.withValues(alpha: 0.15),
       );
       
       // Draw Node
-      canvas.drawCircle(node.position, isDragging ? 16 : 10, nodePaint);
+      canvas.drawCircle(node.position, isDragging ? 20 : 12, nodePaint);
       
       // Highlight for dragging
       if (isDragging) {
         canvas.drawCircle(
           node.position, 
-          16, 
-          Paint()..color = Colors.white.withValues(alpha: 0.3)..style = PaintingStyle.stroke..strokeWidth = 2,
+          20, 
+          Paint()..color = Colors.white.withValues(alpha: 0.5)..style = PaintingStyle.stroke..strokeWidth = 3,
         );
       }
     }

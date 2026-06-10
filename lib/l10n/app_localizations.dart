@@ -4344,7 +4344,7 @@ abstract class AppLocalizations {
   ///
   /// In en, this message translates to:
   /// **'You scored {arg0} points in Grocery List!'**
-  String groceryListMessage(String arg0);
+  String groceryListMessage(String arg0, Object score);
 
   /// No description provided for @groceryListText.
   ///

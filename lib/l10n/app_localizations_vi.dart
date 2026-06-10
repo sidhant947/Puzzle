@@ -42,10 +42,10 @@ class AppLocalizationsVi extends AppLocalizations {
   String get timeUp => 'Hết giờ!';
 
   @override
-  String get victory => 'Victory!';
+  String get victory => 'Chiến thắng!';
 
   @override
-  String get gameWin => 'WELL DONE!';
+  String get gameWin => 'LÀM TỐT LẮM!';
 
   @override
   String get completed => 'Hoàn thành!';
@@ -1966,223 +1966,220 @@ class AppLocalizationsVi extends AppLocalizations {
   String get topologyScore => 'ĐIỂM: ';
 
   @override
-  String get semanticDistanceTitle => 'Semantic Distance';
+  String get semanticDistanceTitle => 'Khoảng cách Ngữ nghĩa';
 
   @override
   String get semanticDistanceSubtitle =>
-      'Measure the conceptual distance between words';
+      'Đo lường khoảng cách khái niệm giữa các từ';
 
   @override
-  String get oxymoronHuntTitle => 'Oxymoron Hunt';
+  String get oxymoronHuntTitle => 'Săn tìm Nghịch hợp';
 
   @override
-  String get oxymoronHuntSubtitle => 'Pair contradictory words in the grid';
+  String get oxymoronHuntSubtitle => 'Ghép các cặp từ mâu thuẫn trong lưới';
 
   @override
-  String get portmanteauSplitTitle => 'Portmanteau Split';
+  String get portmanteauSplitTitle => 'Phân tách Từ ghép lai';
 
   @override
   String get portmanteauSplitSubtitle =>
-      'Identify the source words of a portmanteau';
+      'Xác định các từ gốc của một từ ghép lai';
 
   @override
-  String get chainReactionTitle => 'Chain Reaction';
+  String get chainReactionTitle => 'Phản ứng Chuỗi';
 
   @override
-  String get chainReactionSubtitle => 'Connect words using overlapping letters';
+  String get chainReactionSubtitle => 'Kết nối các từ bằng các chữ cái lặp lại';
 
   @override
-  String get rhymeMasterTitle => 'Rhyme Master';
+  String get rhymeMasterTitle => 'Bậc thầy Gieo vần';
 
   @override
-  String get rhymeMasterSubtitle => 'Identify words that rhyme with the target';
+  String get rhymeMasterSubtitle => 'Xác định các từ vần với từ mục tiêu';
 
   @override
-  String get definitionDashTitle => 'Definition Dash';
+  String get definitionDashTitle => 'Chạy đua Định nghĩa';
 
   @override
-  String get definitionDashSubtitle =>
-      'Match the correct word to its definition';
+  String get definitionDashSubtitle => 'Nối từ đúng với định nghĩa của nó';
 
   @override
-  String get syllableStackTitle => 'Syllable Stack';
+  String get syllableStackTitle => 'Xếp chồng Âm tiết';
 
   @override
-  String get syllableStackSubtitle => 'Stack syllables to form complete words';
+  String get syllableStackSubtitle =>
+      'Xếp các âm tiết để tạo thành từ hoàn chỉnh';
 
   @override
-  String get sentenceUnscrambleTitle => 'Sentence Unscramble';
+  String get sentenceUnscrambleTitle => 'Sắp xếp Câu';
 
   @override
   String get sentenceUnscrambleSubtitle =>
-      'Reorder words to form a valid sentence';
+      'Sắp xếp lại các từ để tạo thành một câu có nghĩa';
 
   @override
-  String get grammarSortTitle => 'Grammar Sort';
+  String get grammarSortTitle => 'Phân loại Ngữ pháp';
 
   @override
-  String get grammarSortSubtitle => 'Categorize words by their part of speech';
+  String get grammarSortSubtitle => 'Phân loại từ theo từ loại';
 
   @override
-  String get vowelReconstructTitle => 'Vowel Reconstruct';
+  String get vowelReconstructTitle => 'Khôi phục Nguyên âm';
 
   @override
-  String get vowelReconstructSubtitle =>
-      'Fill in the missing vowels in the sentence';
+  String get vowelReconstructSubtitle => 'Điền các nguyên âm còn thiếu vào câu';
 
   @override
-  String get consonantReconstructTitle => 'Consonant Reconstruct';
+  String get consonantReconstructTitle => 'Khôi phục Phụ âm';
 
   @override
   String get consonantReconstructSubtitle =>
-      'Fill in the missing consonants in the sentence';
+      'Điền các phụ âm còn thiếu vào câu';
 
   @override
-  String get homophoneHuntTitle => 'Homophone Hunt';
+  String get homophoneHuntTitle => 'Săn tìm Từ đồng âm';
 
   @override
-  String get homophone_huntSubtitle => 'Choose the correctly spelled homophone';
+  String get homophone_huntSubtitle => 'Chọn từ đồng âm có cách viết đúng';
 
   @override
-  String get silentLetterSearchTitle => 'Silent Letter Search';
+  String get silentLetterSearchTitle => 'Tìm chữ cái câm';
 
   @override
   String get silentLetterSearchSubtitle =>
-      'Identify silent letters in the given words';
+      'Xác định các chữ cái không phát âm trong từ';
 
   @override
-  String get palindromeBuilderTitle => 'Palindrome Builder';
+  String get palindromeBuilderTitle => 'Tạo từ Đối xứng';
 
   @override
   String get palindromeBuilderSubtitle =>
-      'Create a palindrome by adding minimal letters';
+      'Tạo một từ đối xứng bằng cách thêm ít chữ cái nhất';
 
   @override
-  String get phoneticGuessTitle => 'Phonetic Guess';
+  String get phoneticGuessTitle => 'Đoán theo Phiên âm';
 
   @override
   String get phoneticGuessSubtitle =>
-      'Identify the word from its phonetic spelling';
+      'Xác định từ dựa trên cách phiên âm của nó';
 
   @override
-  String get spoonerismSolverTitle => 'Spoonerism Solver';
+  String get spoonerismSolverTitle => 'Giải mã Nói lái';
 
   @override
   String get spoonerismSolverSubtitle =>
-      'Identify the correct spoonerism for the phrase';
+      'Xác định cách nói lái đúng cho cụm từ';
 
   @override
-  String get etymonOddballTitle => 'Etymon Oddball';
+  String get etymonOddballTitle => 'Tìm gốc từ khác biệt';
 
   @override
   String get etymonOddballSubtitle =>
-      'Find the word that does not share the same root';
+      'Tìm từ không có chung gốc từ với các từ còn lại';
 
   @override
-  String get etymologyOriginTitle => 'Etymology Origin';
+  String get etymologyOriginTitle => 'Nguồn gốc Từ nguyên';
 
   @override
-  String get etymologyOriginSubtitle =>
-      'Guess the origin language of the loanword';
+  String get etymologyOriginSubtitle => 'Đoán ngôn ngữ gốc của từ mượn';
 
   @override
-  String get affixFactoryTitle => 'Affix Factory';
+  String get affixFactoryTitle => 'Xưởng Phụ tố';
 
   @override
   String get affixFactorySubtitle =>
-      'Create valid words using prefixes and suffixes';
+      'Tạo các từ có nghĩa bằng tiền tố và hậu tố';
 
   @override
-  String get cognateCatchTitle => 'Cognate Catch';
+  String get cognateCatchTitle => 'Tìm Từ đồng gốc';
 
   @override
   String get cognateCatchSubtitle =>
-      'Distinguish between true cognates and false friends';
+      'Phân biệt giữa từ đồng gốc thật và từ giả đồng gốc';
 
   @override
-  String get compoundConnectTitle => 'Compound Connect';
+  String get compoundConnectTitle => 'Kết nối Từ ghép';
 
   @override
   String get compoundConnectSubtitle =>
-      'Combine two words to form a compound word';
+      'Kết hợp hai từ để tạo thành một từ ghép';
 
   @override
-  String get pangramSprintTitle => 'Pangram Sprint';
+  String get pangramSprintTitle => 'Chạy đua Pangram';
 
   @override
   String get pangramSprintSubtitle =>
-      'Build a sentence using every letter of the alphabet';
+      'Xây dựng một câu sử dụng mọi chữ cái trong bảng chữ cái';
 
   @override
-  String get anagramDefinitionTitle => 'Anagram Definition';
+  String get anagramDefinitionTitle => 'Định nghĩa Từ đảo chữ';
 
   @override
   String get anagramDefinitionSubtitle =>
-      'Solve the anagram based on its definition';
+      'Giải từ đảo chữ dựa trên định nghĩa của nó';
 
   @override
-  String get letterBridgeTitle => 'Letter Bridge';
+  String get letterBridgeTitle => 'Cầu nối Chữ cái';
 
   @override
-  String get letterBridgeSubtitle =>
-      'Find the missing letter that bridges two words';
+  String get letterBridgeSubtitle => 'Tìm chữ cái còn thiếu để nối hai từ';
 
   @override
-  String get letterFrequencyScanTitle => 'Letter Frequency Scan';
+  String get letterFrequencyScanTitle => 'Quét tần suất Chữ cái';
 
   @override
   String get letterFrequencyScanSubtitle =>
-      'Count how many times a letter appears in the text';
+      'Đếm số lần một chữ cái xuất hiện trong văn bản';
 
   @override
-  String get oneLetterShiftTitle => 'One-Letter Shift';
+  String get oneLetterShiftTitle => 'Dịch chuyển một chữ cái';
 
   @override
   String get oneLetterShiftSubtitle =>
-      'Transform one word into another with one letter change';
+      'Biến đổi một từ thành từ khác bằng cách thay đổi một chữ cái';
 
   @override
   String vocabularyBuilderMessage(String arg0) {
-    return 'Great job! Your vocabulary is impressive. Score: $arg0';
+    return 'Làm tốt lắm! Vốn từ vựng của bạn rất ấn tượng. Điểm: $arg0';
   }
 
   @override
   String get symmetryMessage =>
-      'You mirrored the pattern perfectly with surgical precision.';
+      'Bạn đã đối xứng hóa mẫu hình một cách hoàn hảo với độ chính xác tuyệt đối.';
 
   @override
   String get temporalOrderMessage =>
-      'Incredible! Your temporal sequence memory is high-fidelity.';
+      'Đáng kinh ngạc! Trí nhớ trình tự thời gian của bạn rất chuẩn xác.';
 
   @override
   String get temporalOrderMessage1 =>
-      'Incorrect sequence memory. Practice makes perfect!';
+      'Trí nhớ trình tự không chính xác. Có công mài sắt có ngày nên kim!';
 
   @override
   String get wordSearchMessage =>
-      'All words found successfully with keen observation.';
+      'Đã tìm thấy tất cả các từ với khả năng quan sát tinh tường.';
 
   @override
   String colorMatchMessage(String arg0) {
-    return 'Your accuracy: $arg0%';
+    return 'Độ chính xác của bạn: $arg0%';
   }
 
   @override
   String semanticLinkMessage(String arg0) {
-    return 'You scored $arg0 points!';
+    return 'Bạn đã ghi được $arg0 điểm!';
   }
 
   @override
   String reflexTapMessage(String arg0) {
-    return 'You tapped $arg0 targets!';
+    return 'Bạn đã chạm vào $arg0 mục tiêu!';
   }
 
   @override
-  String get angleFinderMessage => 'Your geometric intuition is perfect!';
+  String get angleFinderMessage => 'Trực giác hình học của bạn thật hoàn hảo!';
 
   @override
   String angleFinderMessage1(String arg0) {
-    return 'The correct answer was $arg0°';
+    return 'Câu trả lời đúng là $arg0°';
   }
 
   @override
@@ -2192,132 +2189,133 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String visualStatisticalLearningMessage(String arg0) {
-    return 'You scored $arg0 correct patterns!';
+    return 'Bạn đã ghi được $arg0 mẫu hình đúng!';
   }
 
   @override
   String nonogramText(String arg0) {
-    return 'Error: $arg0';
+    return 'Lỗi: $arg0';
   }
 
   @override
   String mentalCalendarMessage(String arg0) {
-    return 'You got $arg0 correct out of 10!';
+    return 'Bạn đã làm đúng $arg0 trên 10!';
   }
 
   @override
   String orbitTapMessage(String arg0) {
-    return 'You successfully tapped $arg0 times!';
+    return 'Bạn đã chạm thành công $arg0 lần!';
   }
 
   @override
   String schulteTableMessage(String arg0) {
-    return 'You completed the table in $arg0.\\nKeep practicing to expand your peripheral vision!';
+    return 'Bạn đã hoàn thành bảng trong $arg0.\\nHãy tiếp tục luyện tập để mở rộng tầm nhìn ngoại vi!';
   }
 
   @override
-  String get schulteTableText => 'START TEST';
+  String get schulteTableText => 'BẮT ĐẦU KIỂM TRA';
 
   @override
   String get relationalMemoryMessage =>
-      'Fabulous spatial relational memory accuracy!';
+      'Độ chính xác trí nhớ quan hệ không gian thật tuyệt vời!';
 
   @override
   String sudokuText(String arg0) {
-    return 'Error: $arg0';
+    return 'Lỗi: $arg0';
   }
 
   @override
   String sdmtMessage(String arg0) {
-    return 'You matched $arg0 symbols! This test measures your scanning speed and visual attention.';
+    return 'Bạn đã khớp được $arg0 biểu tượng! Bài kiểm tra này đo tốc độ quét và sự chú ý thị giác của bạn.';
   }
 
   @override
   String get futoshikiMessage =>
-      'Incredible! You solved the Futoshiki Latin Square.';
+      'Đáng kinh ngạc! Bạn đã giải được ô số Futoshiki.';
 
   @override
   String letterFrequencyScanMessage(String arg0, String arg1) {
-    return 'You correctly counted $arg0 occurrences of \"$arg1\".';
+    return 'Bạn đã đếm đúng $arg0 lần xuất hiện của \"$arg1\".';
   }
 
   @override
   String letterFrequencyScanText(String arg0) {
-    return 'Incorrect. The count was $arg0.';
+    return 'Không chính xác. Số lượng là $arg0.';
   }
 
   @override
   String get memoryMatrixMessage =>
-      'Impressive! Your working memory is sharp. Daily goal complete!';
+      'Ấn tượng! Trí nhớ ngắn hạn của bạn rất nhạy bén. Mục tiêu hàng ngày đã hoàn thành!';
 
   @override
   String get memoryMatrixMessage1 =>
-      'Focus and try again to improve your memory score.';
+      'Hãy tập trung và thử lại để cải thiện điểm trí nhớ của bạn.';
 
   @override
   String get contextCluesMessage =>
-      'Exceptional! Your vocabulary and contextual analysis are top notch.';
+      'Xuất sắc! Vốn từ vựng và khả năng phân tích ngữ cảnh của bạn thật tuyệt vời.';
 
   @override
   String get contextCluesMessage1 =>
-      'Wrong word selected! Train your verbal context reasoning and try again.';
+      'Đã chọn sai từ! Hãy rèn luyện tư duy ngữ cảnh ngôn ngữ và thử lại.';
 
   @override
   String oneLetterShiftMessage(String arg0, String arg1) {
-    return 'You correctly shifted $arg0 to $arg1.';
+    return 'Bạn đã chuyển đổi chính xác $arg0 thành $arg1.';
   }
 
   @override
-  String get mentalAbacusMessage => 'Your mental arithmetic is top-tier.';
+  String get mentalAbacusMessage =>
+      'Khả năng tính nhẩm của bạn thuộc hàng đẳng cấp.';
 
   @override
   String fractionMatcherMessage(String arg0) {
-    return 'You scored $arg0 points matching representations!';
+    return 'Bạn đã ghi được $arg0 điểm khi ghép các biểu thức!';
   }
 
   @override
-  String get spellingSprintMessage => 'You spelled all 10 words correctly!';
+  String get spellingSprintMessage => 'Bạn đã đánh vần đúng cả 10 từ!';
 
   @override
   String spellingSprintMessage1(String arg0) {
-    return 'You spelled $arg0 words.';
+    return 'Bạn đã đánh vần được $arg0 từ.';
   }
 
   @override
   String stopSignalMessage(String arg0) {
-    return 'You achieved $arg0 correct responses! This test measures your ability to inhibit a planned action.';
+    return 'Bạn đã đạt được $arg0 phản hồi chính xác! Bài kiểm tra này đo khả năng kiềm chế một hành động đã dự định.';
   }
 
   @override
   String grammarPoliceMessage(String arg0) {
-    return 'Game Over! You maintained order in the world of grammar. Score: $arg0';
+    return 'Trò chơi kết thúc! Bạn đã duy trì trật tự trong thế giới ngữ pháp. Điểm: $arg0';
   }
 
   @override
   String consonantReconstructMessage(String arg0) {
-    return 'You reconstructed a score of $arg0!';
+    return 'Bạn đã khôi phục thành công với số điểm $arg0!';
   }
 
   @override
   String rhymeMasterMessage(String arg0, String arg1) {
-    return 'You found $arg0 out of $arg1 rhymes!';
+    return 'Bạn đã tìm được $arg0 trên $arg1 vần!';
   }
 
   @override
   String vigilanceTaskMessage(String arg0, String arg1, String arg2) {
-    return 'Hits: $arg0, Misses: $arg1\\nFalse Alarms: $arg2';
+    return 'Số lần trúng: $arg0, Số lần bỏ lỡ: $arg1\\nBáo động giả: $arg2';
   }
 
   @override
   String get silhouetteMatchOrthoMessage =>
-      'You have flawless orthographic alignment skills!';
+      'Bạn có kỹ năng căn chỉnh chính hình hoàn hảo!';
 
   @override
-  String get silhouetteMatchOrthoText => 'GOT IT';
+  String get silhouetteMatchOrthoText => 'ĐÃ HIỂU';
 
   @override
   String get silhouetteMatchOrthoText1 =>
-      'Incorrect perspective projection! Tap Reset to try again.';
+      'Phép chiếu phối cảnh không chính xác! Chạm vào Đặt lại để thử lại.';
 
   @override
   String fibonacciMergeMessage(String arg0, String arg1) {
@@ -2326,23 +2324,23 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String factorFinderMessage(String arg0) {
-    return 'You scored $arg0 points by finding all factors!';
+    return 'Bạn đã ghi được $arg0 điểm bằng cách tìm tất cả các ước số!';
   }
 
   @override
   String logicalSyllogismsMessage(String arg0) {
-    return 'You solved $arg0 syllogisms correctly!';
+    return 'Bạn đã giải đúng $arg0 tam đoạn luận!';
   }
 
   @override
   String get rotatingMazeMessage =>
-      'You successfully navigated the kinetic rotating maze!';
+      'Bạn đã vượt qua mê cung xoay động thành công!';
 
   @override
-  String get rotatingMazeText => 'GOT IT';
+  String get rotatingMazeText => 'ĐÃ HIỂU';
 
   @override
-  String get rotatingMazeText1 => '🌀 Maze rotated 90°! Grid shifted!';
+  String get rotatingMazeText1 => '🌀 Mê cung đã xoay 90°! Lưới đã thay đổi!';
 
   @override
   String get mathPathMessage =>
@@ -2442,7 +2440,7 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String groceryListMessage(String arg0) {
+  String groceryListMessage(String arg0, Object score) {
     return 'You scored $arg0 points in Grocery List!';
   }
 
@@ -2778,5 +2776,5 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get imReady => 'I\'M READY';
+  String get imReady => 'TÔI ĐÃ SẴN SÀNG';
 }

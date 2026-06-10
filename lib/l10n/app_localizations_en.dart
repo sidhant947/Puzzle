@@ -2426,7 +2426,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String groceryListMessage(String arg0) {
+  String groceryListMessage(String arg0, Object score) {
     return 'You scored $arg0 points in Grocery List!';
   }
 

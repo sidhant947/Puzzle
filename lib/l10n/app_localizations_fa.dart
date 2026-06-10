@@ -42,10 +42,10 @@ class AppLocalizationsFa extends AppLocalizations {
   String get timeUp => 'زمان تمام شد!';
 
   @override
-  String get victory => 'Victory!';
+  String get victory => 'پیروزی!';
 
   @override
-  String get gameWin => 'WELL DONE!';
+  String get gameWin => 'آفرین!';
 
   @override
   String get completed => 'کامل شد!';
@@ -1947,358 +1947,347 @@ class AppLocalizationsFa extends AppLocalizations {
   String get topologyScore => 'امتیاز: ';
 
   @override
-  String get semanticDistanceTitle => 'Semantic Distance';
+  String get semanticDistanceTitle => 'فاصله معنایی';
 
   @override
-  String get semanticDistanceSubtitle =>
-      'Measure the conceptual distance between words';
+  String get semanticDistanceSubtitle => 'سنجش فاصله مفهومی بین کلمات';
 
   @override
-  String get oxymoronHuntTitle => 'Oxymoron Hunt';
+  String get oxymoronHuntTitle => 'شکار متناقض‌نما';
 
   @override
-  String get oxymoronHuntSubtitle => 'Pair contradictory words in the grid';
+  String get oxymoronHuntSubtitle => 'جفت کردن کلمات متضاد در جدول';
 
   @override
-  String get portmanteauSplitTitle => 'Portmanteau Split';
+  String get portmanteauSplitTitle => 'تجزیه واژه‌های آمیخته';
 
   @override
-  String get portmanteauSplitSubtitle =>
-      'Identify the source words of a portmanteau';
+  String get portmanteauSplitSubtitle => 'شناسایی کلمات سازنده یک واژه مرکب';
 
   @override
-  String get chainReactionTitle => 'Chain Reaction';
+  String get chainReactionTitle => 'واکنش زنجیره‌ای';
 
   @override
-  String get chainReactionSubtitle => 'Connect words using overlapping letters';
+  String get chainReactionSubtitle => 'اتصال کلمات با استفاده از حروف مشترک';
 
   @override
-  String get rhymeMasterTitle => 'Rhyme Master';
+  String get rhymeMasterTitle => 'استاد قافیه';
 
   @override
-  String get rhymeMasterSubtitle => 'Identify words that rhyme with the target';
+  String get rhymeMasterSubtitle =>
+      'شناسایی کلماتی که با کلمه هدف هم‌قافیه هستند';
 
   @override
-  String get definitionDashTitle => 'Definition Dash';
+  String get definitionDashTitle => 'جورچین تعاریف';
 
   @override
-  String get definitionDashSubtitle =>
-      'Match the correct word to its definition';
+  String get definitionDashSubtitle => 'تطبیق کلمه صحیح با تعریف آن';
 
   @override
-  String get syllableStackTitle => 'Syllable Stack';
+  String get syllableStackTitle => 'چیدمان هجاها';
 
   @override
-  String get syllableStackSubtitle => 'Stack syllables to form complete words';
+  String get syllableStackSubtitle => 'چیدن هجاها برای ساخت کلمات کامل';
 
   @override
-  String get sentenceUnscrambleTitle => 'Sentence Unscramble';
+  String get sentenceUnscrambleTitle => 'مرتب‌سازی جمله';
 
   @override
   String get sentenceUnscrambleSubtitle =>
-      'Reorder words to form a valid sentence';
+      'مرتب کردن کلمات برای ساخت یک جمله صحیح';
 
   @override
-  String get grammarSortTitle => 'Grammar Sort';
+  String get grammarSortTitle => 'دسته‌بندی دستوری';
 
   @override
-  String get grammarSortSubtitle => 'Categorize words by their part of speech';
+  String get grammarSortSubtitle => 'دسته‌بندی کلمات بر اساس نقش دستوری آن‌ها';
 
   @override
-  String get vowelReconstructTitle => 'Vowel Reconstruct';
+  String get vowelReconstructTitle => 'بازسازی حروف صدادار';
 
   @override
-  String get vowelReconstructSubtitle =>
-      'Fill in the missing vowels in the sentence';
+  String get vowelReconstructSubtitle => 'پر کردن حروف صدادار حذف شده در جمله';
 
   @override
-  String get consonantReconstructTitle => 'Consonant Reconstruct';
+  String get consonantReconstructTitle => 'بازسازی حروف بی‌صدا';
 
   @override
   String get consonantReconstructSubtitle =>
-      'Fill in the missing consonants in the sentence';
+      'پر کردن حروف بی‌صدای حذف شده در جمله';
 
   @override
-  String get homophoneHuntTitle => 'Homophone Hunt';
+  String get homophoneHuntTitle => 'شکار واژگان هم‌آوا';
 
   @override
-  String get homophone_huntSubtitle => 'Choose the correctly spelled homophone';
+  String get homophone_huntSubtitle => 'انتخاب واژه هم‌آوا با املای درست';
 
   @override
-  String get silentLetterSearchTitle => 'Silent Letter Search';
+  String get silentLetterSearchTitle => 'جستجوی حروف ناخوانا';
 
   @override
   String get silentLetterSearchSubtitle =>
-      'Identify silent letters in the given words';
+      'شناسایی حروف ناخوانا در کلمات داده شده';
 
   @override
-  String get palindromeBuilderTitle => 'Palindrome Builder';
+  String get palindromeBuilderTitle => 'سازنده پالیندروم';
 
   @override
   String get palindromeBuilderSubtitle =>
-      'Create a palindrome by adding minimal letters';
+      'ساخت یک پالیندروم با اضافه کردن کمترین حروف';
 
   @override
-  String get phoneticGuessTitle => 'Phonetic Guess';
+  String get phoneticGuessTitle => 'حدس آوایی';
 
   @override
-  String get phoneticGuessSubtitle =>
-      'Identify the word from its phonetic spelling';
+  String get phoneticGuessSubtitle => 'شناسایی کلمه از روی املای آوایی آن';
 
   @override
-  String get spoonerismSolverTitle => 'Spoonerism Solver';
+  String get spoonerismSolverTitle => 'حل‌کننده اسپنریسم';
 
   @override
-  String get spoonerismSolverSubtitle =>
-      'Identify the correct spoonerism for the phrase';
+  String get spoonerismSolverSubtitle => 'شناسایی اسپنریسم صحیح برای عبارت';
 
   @override
-  String get etymonOddballTitle => 'Etymon Oddball';
+  String get etymonOddballTitle => 'ریشه ناهماهنگ';
 
   @override
-  String get etymonOddballSubtitle =>
-      'Find the word that does not share the same root';
+  String get etymonOddballSubtitle => 'یافتن کلمه‌ای که ریشه مشترک ندارد';
 
   @override
-  String get etymologyOriginTitle => 'Etymology Origin';
+  String get etymologyOriginTitle => 'منشا واژه‌شناسی';
 
   @override
-  String get etymologyOriginSubtitle =>
-      'Guess the origin language of the loanword';
+  String get etymologyOriginSubtitle => 'حدس زدن زبان مبدأ کلمه دخیل';
 
   @override
-  String get affixFactoryTitle => 'Affix Factory';
+  String get affixFactoryTitle => 'کارخانه وندها';
 
   @override
   String get affixFactorySubtitle =>
-      'Create valid words using prefixes and suffixes';
+      'ساخت کلمات معتبر با استفاده از پیشوندها و پسوندها';
 
   @override
-  String get cognateCatchTitle => 'Cognate Catch';
+  String get cognateCatchTitle => 'شکار کلمات هم‌ریشه';
 
   @override
   String get cognateCatchSubtitle =>
-      'Distinguish between true cognates and false friends';
+      'تشخیص بین کلمات واقعاً هم‌ریشه و کلمات مشابه کاذب';
 
   @override
-  String get compoundConnectTitle => 'Compound Connect';
+  String get compoundConnectTitle => 'اتصال کلمات مرکب';
 
   @override
-  String get compoundConnectSubtitle =>
-      'Combine two words to form a compound word';
+  String get compoundConnectSubtitle => 'ترکیب دو کلمه برای ساخت یک کلمه مرکب';
 
   @override
-  String get pangramSprintTitle => 'Pangram Sprint';
+  String get pangramSprintTitle => 'دوی پانگرام';
 
   @override
   String get pangramSprintSubtitle =>
-      'Build a sentence using every letter of the alphabet';
+      'ساخت جمله‌ای که شامل تمام حروف الفبا باشد';
 
   @override
-  String get anagramDefinitionTitle => 'Anagram Definition';
+  String get anagramDefinitionTitle => 'تعریف آنارام';
 
   @override
-  String get anagramDefinitionSubtitle =>
-      'Solve the anagram based on its definition';
+  String get anagramDefinitionSubtitle => 'حل آنارام بر اساس تعریف آن';
 
   @override
-  String get letterBridgeTitle => 'Letter Bridge';
+  String get letterBridgeTitle => 'پل حروفی';
 
   @override
   String get letterBridgeSubtitle =>
-      'Find the missing letter that bridges two words';
+      'یافتن حرف گم‌شده‌ای که دو کلمه را به هم وصل می‌کند';
 
   @override
-  String get letterFrequencyScanTitle => 'Letter Frequency Scan';
+  String get letterFrequencyScanTitle => 'اسکن تکرار حروف';
 
   @override
-  String get letterFrequencyScanSubtitle =>
-      'Count how many times a letter appears in the text';
+  String get letterFrequencyScanSubtitle => 'شمارش دفعات تکرار یک حرف در متن';
 
   @override
-  String get oneLetterShiftTitle => 'One-Letter Shift';
+  String get oneLetterShiftTitle => 'تغییر تک‌حرفی';
 
   @override
   String get oneLetterShiftSubtitle =>
-      'Transform one word into another with one letter change';
+      'تبدیل یک کلمه به کلمه دیگر با تغییر یک حرف';
 
   @override
   String vocabularyBuilderMessage(String arg0) {
-    return 'Great job! Your vocabulary is impressive. Score: $arg0';
+    return 'آفرین! دایره لغات شما تحسین‌برانگیز است. امتیاز: $arg0';
   }
 
   @override
   String get symmetryMessage =>
-      'You mirrored the pattern perfectly with surgical precision.';
+      'شما الگو را با دقت جراحی به طور کامل قرینه کردید.';
 
   @override
   String get temporalOrderMessage =>
-      'Incredible! Your temporal sequence memory is high-fidelity.';
+      'فوق‌العاده است! حافظه توالی زمانی شما بسیار دقیق است.';
 
   @override
   String get temporalOrderMessage1 =>
-      'Incorrect sequence memory. Practice makes perfect!';
+      'حافظه توالی نادرست. تمرین باعث پیشرفت می‌شود!';
 
   @override
-  String get wordSearchMessage =>
-      'All words found successfully with keen observation.';
+  String get wordSearchMessage => 'تمام کلمات با دقت و مشاهده قوی پیدا شدند.';
 
   @override
   String colorMatchMessage(String arg0) {
-    return 'Your accuracy: $arg0%';
+    return 'دقت شما: $arg0٪';
   }
 
   @override
   String semanticLinkMessage(String arg0) {
-    return 'You scored $arg0 points!';
+    return 'شما $arg0 امتیاز کسب کردید!';
   }
 
   @override
   String reflexTapMessage(String arg0) {
-    return 'You tapped $arg0 targets!';
+    return 'شما روی $arg0 هدف ضربه زدید!';
   }
 
   @override
-  String get angleFinderMessage => 'Your geometric intuition is perfect!';
+  String get angleFinderMessage => 'درک هندسی شما عالی است!';
 
   @override
   String angleFinderMessage1(String arg0) {
-    return 'The correct answer was $arg0°';
+    return 'پاسخ صحیح $arg0 درجه بود';
   }
 
   @override
   String angleFinderText(String arg0) {
-    return '$arg0°';
+    return '$arg0 درجه';
   }
 
   @override
   String visualStatisticalLearningMessage(String arg0) {
-    return 'You scored $arg0 correct patterns!';
+    return 'شما $arg0 الگوی صحیح را تشخیص دادید!';
   }
 
   @override
   String nonogramText(String arg0) {
-    return 'Error: $arg0';
+    return 'خطا: $arg0';
   }
 
   @override
   String mentalCalendarMessage(String arg0) {
-    return 'You got $arg0 correct out of 10!';
+    return 'شما $arg0 مورد از ۱۰ مورد را درست جواب دادید!';
   }
 
   @override
   String orbitTapMessage(String arg0) {
-    return 'You successfully tapped $arg0 times!';
+    return 'شما با موفقیت $arg0 بار ضربه زدید!';
   }
 
   @override
   String schulteTableMessage(String arg0) {
-    return 'You completed the table in $arg0.\\nKeep practicing to expand your peripheral vision!';
+    return 'شما جدول را در $arg0 تمام کردید.\\nبه تمرین ادامه دهید تا دید محیطی خود را تقویت کنید!';
   }
 
   @override
-  String get schulteTableText => 'START TEST';
+  String get schulteTableText => 'شروع تست';
 
   @override
   String get relationalMemoryMessage =>
-      'Fabulous spatial relational memory accuracy!';
+      'دقت حافظه رابطه‌ای فضایی شما عالی است!';
 
   @override
   String sudokuText(String arg0) {
-    return 'Error: $arg0';
+    return 'خطا: $arg0';
   }
 
   @override
   String sdmtMessage(String arg0) {
-    return 'You matched $arg0 symbols! This test measures your scanning speed and visual attention.';
+    return 'شما $arg0 نماد را مطابقت دادید! این تست سرعت اسکن و توجه بصری شما را می‌سنجد.';
   }
 
   @override
   String get futoshikiMessage =>
-      'Incredible! You solved the Futoshiki Latin Square.';
+      'فوق‌العاده است! شما مربع لاتین فوتوشیکی را حل کردید.';
 
   @override
   String letterFrequencyScanMessage(String arg0, String arg1) {
-    return 'You correctly counted $arg0 occurrences of \"$arg1\".';
+    return 'شما به درستی $arg0 بار تکرار «$arg1» را شمردید.';
   }
 
   @override
   String letterFrequencyScanText(String arg0) {
-    return 'Incorrect. The count was $arg0.';
+    return 'نادرست. تعداد $arg0 بود.';
   }
 
   @override
   String get memoryMatrixMessage =>
-      'Impressive! Your working memory is sharp. Daily goal complete!';
+      'تحسین‌برانگیز است! حافظه فعال شما تیز است. هدف روزانه انجام شد!';
 
   @override
   String get memoryMatrixMessage1 =>
-      'Focus and try again to improve your memory score.';
+      'تمرکز کنید و دوباره تلاش کنید تا امتیاز حافظه خود را بهبود ببخشید.';
 
   @override
   String get contextCluesMessage =>
-      'Exceptional! Your vocabulary and contextual analysis are top notch.';
+      'استثنایی! دایره لغات و تحلیل متنی شما درجه یک است.';
 
   @override
   String get contextCluesMessage1 =>
-      'Wrong word selected! Train your verbal context reasoning and try again.';
+      'کلمه اشتباه انتخاب شد! استدلال متنی کلامی خود را تمرین دهید و دوباره تلاش کنید.';
 
   @override
   String oneLetterShiftMessage(String arg0, String arg1) {
-    return 'You correctly shifted $arg0 to $arg1.';
+    return 'شما به درستی $arg0 را به $arg1 تغییر دادید.';
   }
 
   @override
-  String get mentalAbacusMessage => 'Your mental arithmetic is top-tier.';
+  String get mentalAbacusMessage => 'محاسبات ذهنی شما در سطح عالی است.';
 
   @override
   String fractionMatcherMessage(String arg0) {
-    return 'You scored $arg0 points matching representations!';
+    return 'شما با تطبیق نمایش‌ها $arg0 امتیاز کسب کردید!';
   }
 
   @override
-  String get spellingSprintMessage => 'You spelled all 10 words correctly!';
+  String get spellingSprintMessage => 'شما هر ۱۰ کلمه را درست هجی کردید!';
 
   @override
   String spellingSprintMessage1(String arg0) {
-    return 'You spelled $arg0 words.';
+    return 'شما $arg0 کلمه را درست هجی کردید.';
   }
 
   @override
   String stopSignalMessage(String arg0) {
-    return 'You achieved $arg0 correct responses! This test measures your ability to inhibit a planned action.';
+    return 'شما $arg0 پاسخ صحیح ثبت کردید! این تست توانایی شما را در مهار یک عمل برنامه‌ریزی شده می‌سنجد.';
   }
 
   @override
   String grammarPoliceMessage(String arg0) {
-    return 'Game Over! You maintained order in the world of grammar. Score: $arg0';
+    return 'بازی تمام شد! شما نظم را در دنیای دستور زبان حفظ کردید. امتیاز: $arg0';
   }
 
   @override
   String consonantReconstructMessage(String arg0) {
-    return 'You reconstructed a score of $arg0!';
+    return 'شما امتیاز $arg0 را در بازسازی کسب کردید!';
   }
 
   @override
   String rhymeMasterMessage(String arg0, String arg1) {
-    return 'You found $arg0 out of $arg1 rhymes!';
+    return 'شما $arg0 قافیه از $arg1 قافیه را پیدا کردید!';
   }
 
   @override
   String vigilanceTaskMessage(String arg0, String arg1, String arg2) {
-    return 'Hits: $arg0, Misses: $arg1\\nFalse Alarms: $arg2';
+    return 'موفقیت‌ها: $arg0، خطاها: $arg1\\nهشدارهای کاذب: $arg2';
   }
 
   @override
   String get silhouetteMatchOrthoMessage =>
-      'You have flawless orthographic alignment skills!';
+      'شما مهارت‌های تراز ارتوگرافیک بی‌نقصی دارید!';
 
   @override
-  String get silhouetteMatchOrthoText => 'GOT IT';
+  String get silhouetteMatchOrthoText => 'متوجه شدم';
 
   @override
   String get silhouetteMatchOrthoText1 =>
-      'Incorrect perspective projection! Tap Reset to try again.';
+      'تصویرسازی پرسپکتیو نادرست! برای تلاش مجدد روی بازنشانی ضربه بزنید.';
 
   @override
   String fibonacciMergeMessage(String arg0, String arg1) {
@@ -2307,175 +2296,175 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String factorFinderMessage(String arg0) {
-    return 'You scored $arg0 points by finding all factors!';
+    return 'شما با پیدا کردن تمام عوامل $arg0 امتیاز کسب کردید!';
   }
 
   @override
   String logicalSyllogismsMessage(String arg0) {
-    return 'You solved $arg0 syllogisms correctly!';
+    return 'شما $arg0 قیاس منطقی را به درستی حل کردید!';
   }
 
   @override
   String get rotatingMazeMessage =>
-      'You successfully navigated the kinetic rotating maze!';
+      'شما با موفقیت در هزارتوی چرخشی متحرک حرکت کردید!';
 
   @override
-  String get rotatingMazeText => 'GOT IT';
+  String get rotatingMazeText => 'متوجه شدم';
 
   @override
-  String get rotatingMazeText1 => '🌀 Maze rotated 90°! Grid shifted!';
+  String get rotatingMazeText1 => '🌀 هزارتو ۹۰ درجه چرخید! جدول جابجا شد!';
 
   @override
   String get mathPathMessage =>
-      'You found the path that adds up to the target!';
+      'شما مسیری را پیدا کردید که مجموع آن به هدف می‌رسد!';
 
   @override
-  String get bridgesMessage => 'You successfully connected all the islands!';
+  String get bridgesMessage =>
+      'شما با موفقیت تمام جزیره‌ها را به هم متصل کردید!';
 
   @override
   String compoundConnectMessage(String arg0, String arg1) {
-    return 'The compound word is $arg0$arg1.';
+    return 'کلمه مرکب $arg0$arg1 است.';
   }
 
   @override
   String get pangramSprintMessage =>
-      'You built a sentence using all 26 letters.';
+      'شما جمله‌ای با استفاده از تمام 26 حرف ساختید.';
 
   @override
-  String get mirrorImageMessage => 'You perfectly identified the reflection.';
+  String get mirrorImageMessage => 'شما بازتاب را به درستی تشخیص دادید.';
 
   @override
-  String get mirrorImageText => 'MIRROR IMAGE';
+  String get mirrorImageText => 'تصویر آینه‌ای';
 
   @override
   String reverseStroopMessage(String arg0) {
-    return 'You scored $arg0 points! Keep your eye on the instructions.';
+    return 'شما $arg0 امتیاز کسب کردید! چشمانتان را به دستورالعمل‌ها بدوزید.';
   }
 
   @override
-  String get verbalAnalogiesMessage =>
-      'You have a sharp mind for relationships.';
+  String get verbalAnalogiesMessage => 'شما ذهن تیزی در تشخیص روابط دارید.';
 
   @override
   String corsiBlocksMessage1(String arg0, String arg1) {
-    return 'You recalled $arg1 sequences! Your spatial memory span reached $arg0.';
+    return 'شما $arg1 توالی را به یاد آوردید! دامنه حافظه فضایی شما به $arg0 رسید.';
   }
 
   @override
   String wordLadderMessage(String arg0, String arg1, String arg2) {
-    return 'You successfully connected $arg0 to $arg1 in $arg2 steps.';
+    return 'شما با موفقیت $arg0 را به $arg1 در $arg2 مرحله متصل کردید.';
   }
 
   @override
   String d2AttentionMessage(String arg0) {
-    return 'Incredible selective scanning! Final score: $arg0.';
+    return 'اسکن انتخابی باورنکردنی! امتیاز نهایی: $arg0.';
   }
 
   @override
-  String get d2AttentionText => 'HOW TO PLAY';
+  String get d2AttentionText => 'نحوه بازی';
 
   @override
-  String get d2AttentionText1 => 'GOT IT';
+  String get d2AttentionText1 => 'فهمیدم';
 
   @override
-  String get tangleFixMessage => 'All lines are clear and smooth.';
+  String get tangleFixMessage => 'تمام خطوط واضح و روان هستند.';
 
   @override
   String get distractorMatrixMessage =>
-      'Incredible! You recalled patterns despite cognitive math distractors!';
+      'باورنکردنی! شما علی‌رغم حواس‌پرت‌کن‌های ریاضی شناختی، الگوها را به یاد آوردید!';
 
   @override
   String get distractorMatrixMessage1 =>
-      'The distractors got you! Retrain your working memory.';
+      'حواس‌پرت‌کن‌ها شما را شکست دادند! حافظه فعال خود را دوباره آموزش دهید.';
 
   @override
   String sentenceUnscrambleMessage(String arg0) {
-    return 'You unscrambled a score of $arg0!';
+    return 'شما با مرتب‌سازی جملات امتیاز $arg0 را کسب کردید!';
   }
 
   @override
   String get kakuroMessage =>
-      'Incredible! You matched all sum segments perfectly.';
+      'باورنکردنی! شما تمام بخش‌های مجموع را به طور کامل مطابقت دادید.';
 
   @override
   String symbolicFlankerMessage(String arg0, String arg1) {
-    return 'You got $arg0 correct out of $arg1!';
+    return 'شما $arg0 مورد صحیح از $arg1 مورد داشتید!';
   }
 
   @override
   String stroopTestMessage(String arg0) {
-    return 'You scored $arg0 correctly! Focus on the color of the ink, not the word.';
+    return 'شما $arg0 مورد را به درستی پاسخ دادید! روی رنگ جوهر تمرکز کنید، نه کلمه.';
   }
 
   @override
   String wisconsinCardSortingMessage(String arg0) {
-    return 'You correctly sorted $arg0 cards!';
+    return 'شما $arg0 کارت را به درستی دسته‌بندی کردید!';
   }
 
   @override
   String nBackMessage(String arg0) {
-    return 'You achieved $arg0 2-back matches! Your working memory is vital for multitasking.';
+    return 'شما $arg0 مورد مطابقت 2-back به دست آوردید! حافظه فعال شما برای انجام همزمان چند کار حیاتی است.';
   }
 
   @override
   String rhythmMasterMessage(String arg0, String arg1) {
-    return 'You got $arg0 perfect hits and $arg1 points!';
+    return 'شما $arg0 ضربه عالی و $arg1 امتیاز کسب کردید!';
   }
 
   @override
-  String groceryListMessage(String arg0) {
-    return 'You scored $arg0 points in Grocery List!';
+  String groceryListMessage(String arg0, Object score) {
+    return 'شما $arg0 امتیاز در لیست خرید کسب کردید!';
   }
 
   @override
-  String get groceryListText => 'I\\';
+  String get groceryListText => 'من';
 
   @override
   String get mirrorTracingMessage =>
-      'Your brain successfully rewired its coordination.';
+      'مغز شما با موفقیت هماهنگی خود را بازسازی کرد.';
 
   @override
   String moduloClockMessage(String arg0) {
-    return 'Excellent modular mental math coordination! Score: $arg0';
+    return 'هماهنگی عالی در محاسبات ذهنی پیمانه‌ای! امتیاز: $arg0';
   }
 
   @override
   String moduloClockMessage1(String arg0, String arg1, String arg2) {
-    return 'You managed $arg0 of $arg1 modular clock solutions. Score: $arg2';
+    return 'شما $arg0 از $arg1 راه حل ساعت پیمانه‌ای را مدیریت کردید. امتیاز: $arg2';
   }
 
   @override
-  String get crownMessage =>
-      'All crowns placed successfully with perfect logic.';
+  String get crownMessage => 'تمام تاج‌ها با منطق عالی با موفقیت قرار گرفتند.';
 
   @override
   String dualCodingMessage(String arg0) {
-    return 'Fantastic dual-task performance! Your working memory score: $arg0';
+    return 'عملکرد فوق‌العاده در انجام دو کار همزمان! امتیاز حافظه فعال شما: $arg0';
   }
 
   @override
   String inequalityDashMessage(String arg0) {
-    return 'You scored $arg0 points matching inequalities!';
+    return 'شما $arg0 امتیاز در مطابقت نابرابری‌ها کسب کردید!';
   }
 
   @override
   String sourceMonitoringMessage(String arg0, String arg1) {
-    return 'You scored $arg0 out of $arg1!';
+    return 'شما $arg0 از $arg1 امتیاز کسب کردید!';
   }
 
   @override
-  String get sourceMonitoringText => 'START RECALL';
+  String get sourceMonitoringText => 'شروع یادآوری';
 
   @override
-  String get memoryPalaceText => 'AVAILABLE WORDS';
+  String get memoryPalaceText => 'کلمات موجود';
 
   @override
   String target10Message(String arg0) {
-    return 'You scored $arg0 points matching numbers to 10!';
+    return 'شما $arg0 امتیاز در مطابقت اعداد با 10 کسب کردید!';
   }
 
   @override
-  String get paperFoldingMessage => 'You can see the patterns in your mind.';
+  String get paperFoldingMessage =>
+      'شما می‌توانید الگوها را در ذهن خود ببینید.';
 
   @override
   String topologyText(String arg0, String arg1) {
@@ -2483,11 +2472,12 @@ class AppLocalizationsFa extends AppLocalizations {
   }
 
   @override
-  String get waterSortMessage => 'You sorted all the colors perfectly!';
+  String get waterSortMessage =>
+      'شما تمام رنگ‌ها را به طور کامل دسته‌بندی کردید!';
 
   @override
   String anagramDefinitionMessage(String arg0) {
-    return 'The word was indeed \"$arg0\".';
+    return 'کلمه واقعاً \"$arg0\" بود.';
   }
 
   @override
@@ -2502,43 +2492,43 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String numericalEstimationMessage(String arg0) {
-    return 'You made $arg0 correct estimations.';
+    return 'شما $arg0 تخمین صحیح زدید.';
   }
 
   @override
   String grammarSortMessage(String arg0) {
-    return 'You sorted $arg0 words correctly!';
+    return 'شما $arg0 کلمه را به درستی دسته‌بندی کردید!';
   }
 
   @override
   String vowelReconstructMessage(String arg0) {
-    return 'You reconstructed a score of $arg0!';
+    return 'شما امتیاز $arg0 را بازسازی کردید!';
   }
 
   @override
   String spatialConflictMessage(String arg0, String arg1) {
-    return 'You achieved a score of $arg0 with $arg1 errors!';
+    return 'شما امتیاز $arg0 را با $arg1 خطا به دست آوردید!';
   }
 
   @override
-  String get spatialConflictText => 'HOW TO PLAY';
+  String get spatialConflictText => 'نحوه بازی';
 
   @override
-  String get spatialConflictText1 => 'GOT IT';
+  String get spatialConflictText1 => 'فهمیدم';
 
   @override
   String tracePathMessage(String arg0) {
-    return 'Your accuracy was $arg0%!';
+    return 'دقت شما $arg0٪ بود!';
   }
 
   @override
   String ruleSwitcherMessage(String arg0, String arg1) {
-    return 'You scored $arg0 correct out of $arg1!';
+    return 'شما $arg0 مورد صحیح از $arg1 مورد داشتید!';
   }
 
   @override
   String collatzMessage(String arg0, String arg1) {
-    return 'You took $arg0 steps. Min possible was $arg1.';
+    return 'شما $arg0 مرحله انجام دادید. حداقل ممکن $arg1 بود.';
   }
 
   @override
@@ -2552,37 +2542,37 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String divisibilityDashMessage(String arg0) {
-    return 'You solved $arg0 numbers!';
+    return 'شما $arg0 عدد را حل کردید!';
   }
 
   @override
   String switchTaskMessage(String arg0) {
-    return 'You scored $arg0 correctly! Fast switching is key to mental flexibility.';
+    return 'شما $arg0 مورد را به درستی پاسخ دادید! تعویض سریع کلید انعطاف‌پذیری ذهنی است.';
   }
 
   @override
   String sequenceSleuthMessage(String arg0) {
-    return 'You solved $arg0 sequences!';
+    return 'شما $arg0 توالی را حل کردید!';
   }
 
   @override
   String changeBlindnessMessage(String arg0) {
-    return 'You found $arg0 changes!';
+    return 'شما $arg0 تغییر را پیدا کردید!';
   }
 
   @override
   String mentalRotationMessage(String arg0) {
-    return 'You rotated $arg0 shapes correctly!';
+    return 'شما $arg0 شکل را به درستی چرخاندید!';
   }
 
   @override
   String wordMastermindMessage(String arg0) {
-    return 'You mastered the code!\\nThe word was: $arg0';
+    return 'شما بر کد مسلط شدید!\\nکلمه این بود: $arg0';
   }
 
   @override
   String wordMastermindMessage1(String arg0) {
-    return 'The hidden word was: $arg0';
+    return 'کلمه مخفی این بود: $arg0';
   }
 
   @override
@@ -2591,114 +2581,114 @@ class AppLocalizationsFa extends AppLocalizations {
   }
 
   @override
-  String get simonSequenceMessage => 'You memorized all 10 tiles!';
+  String get simonSequenceMessage => 'شما تمام 10 کاشی را حفظ کردید!';
 
   @override
-  String get simonSequenceMessage1 => 'Try again to master the sequence.';
+  String get simonSequenceMessage1 =>
+      'دوباره امتحان کنید تا بر توالی مسلط شوید.';
 
   @override
   String oxymoronHuntMessage(String arg0) {
-    return 'You found $arg0 oxymorons!';
+    return 'شما $arg0 متناقض‌نما پیدا کردید!';
   }
 
   @override
   String spotlightTrackMessage(String arg0) {
-    return 'Incredible spatial tracking! You scored $arg0 points.';
+    return 'ردیابی فضایی باورنکردنی! شما $arg0 امتیاز کسب کردید.';
   }
 
   @override
-  String get spotlightTrackText => 'HOW TO PLAY';
+  String get spotlightTrackText => 'نحوه بازی';
 
   @override
-  String get spotlightTrackText1 => 'GOT IT';
+  String get spotlightTrackText1 => 'فهمیدم';
 
   @override
-  String get spotlightTrackText2 => 'START ROUND';
+  String get spotlightTrackText2 => 'شروع مرحله';
 
   @override
   String vennNumbersMessage(String arg0) {
-    return 'You categorized $arg0 numbers!';
+    return 'شما $arg0 عدد را دسته‌بندی کردید!';
   }
 
   @override
-  String get vennNumbersText => 'NEITHER';
+  String get vennNumbersText => 'هیچ‌کدام';
 
   @override
-  String get vennNumbersText1 => 'BOTH';
+  String get vennNumbersText1 => 'هر دو';
 
   @override
   String get silhouetteMatchMessage =>
-      'Your brain is excellent at 3D to 2D translation.';
+      'مغز شما در تبدیل سه‌بعدی به دوبعدی عالی است.';
 
   @override
   String sumSnakeMessage(String arg0) {
-    return 'Target $arg0 reached with perfect precision!';
+    return 'هدف $arg0 با دقت کامل حاصل شد!';
   }
 
   @override
-  String get sumSnakeText => 'CLEAR PATH';
+  String get sumSnakeText => 'پاک کردن مسیر';
 
   @override
   String percentagePeakMessage(String arg0) {
-    return 'You solved $arg0 percentage problems!';
+    return 'شما $arg0 مسئله درصد را حل کردید!';
   }
 
   @override
   String trailMakingMessage(String arg0) {
-    return 'You completed $arg0 trails! This test measures your visual search speed and mental flexibility.';
+    return 'شما $arg0 مسیر را کامل کردید! این تست سرعت جستجوی بصری و انعطاف‌پذیری ذهنی شما را می‌سنجد.';
   }
 
   @override
   String matrixReasoningMessage(String arg0) {
-    return 'You completed $arg0 matrices correctly!';
+    return 'شما $arg0 ماتریس را به درستی کامل کردید!';
   }
 
   @override
-  String get tentsAndTreesMessage =>
-      'You have successfully placed all the tents.';
+  String get tentsAndTreesMessage => 'شما با موفقیت تمام چادرها را قرار دادید.';
 
   @override
   String klotskiMessage(String arg0) {
-    return 'Sensational sliding! You freed the Hero block in $arg0 moves.';
+    return 'لغزش فوق‌العاده! شما بلوک قهرمان را در $arg0 حرکت آزاد کردید.';
   }
 
   @override
   String sumPyramidMessage(String arg0) {
-    return 'You solved $arg0 sum pyramids successfully!';
+    return 'شما $arg0 هرم مجموع را با موفقیت حل کردید!';
   }
 
   @override
   String simonCommandMessage(String arg0) {
-    return 'Excellent selective response and focus! Total Score: $arg0';
+    return 'پاسخ انتخابی و تمرکز عالی! امتیاز کل: $arg0';
   }
 
   @override
   String simonCommandMessage1(String arg0, String arg1) {
-    return 'You scored $arg0 but did not reach $arg1 matches in time.';
+    return 'شما $arg0 امتیاز کسب کردید اما به $arg1 مطابقت در زمان معین نرسیدید.';
   }
 
   @override
   String syllableStackMessage(String arg0) {
-    return 'You stacked up a score of $arg0!';
+    return 'شما امتیاز $arg0 را روی هم جمع کردید!';
   }
 
   @override
   String get slitherlinkMessage =>
-      'Awesome! You successfully completed the loop puzzle.';
+      'عالی بود! شما با موفقیت پازل حلقه را کامل کردید.';
 
   @override
   String quickMathMessage(String arg0) {
-    return 'You solved $arg0 problems!';
+    return 'شما $arg0 مسئله را حل کردید!';
   }
 
   @override
   String commonDenominatorMessage(String arg0) {
-    return 'You solved $arg0 GCD/LCM problems!';
+    return 'شما $arg0 مسئله ب.م.م/ک.م.م را حل کردید!';
   }
 
   @override
   String chainReactionMessage(String arg0, String arg1) {
-    return 'Your final score is $arg0. You built a chain of $arg1 words.';
+    return 'امتیاز نهایی شما $arg0 است. شما زنجیره‌ای از $arg1 کلمه ساختید.';
   }
 
   @override
@@ -2708,56 +2698,57 @@ class AppLocalizationsFa extends AppLocalizations {
 
   @override
   String get associativePairsMessage =>
-      'Brilliant! You associated visual traits flawlessly.';
+      'درخشان! شما ویژگی‌های بصری را بدون نقص به هم مرتبط کردید.';
 
   @override
   String get associativePairsMessage1 =>
-      'Wrong association! Sharpen your link memory and try again.';
+      'ارتباط اشتباه! حافظه پیوندی خود را تقویت کرده و دوباره امتحان کنید.';
 
   @override
   String portmanteauSplitMessage(String arg0) {
-    return 'You split $arg0 portmanteaus!';
+    return 'شما $arg0 کلمه آمیزه را جدا کردید!';
   }
 
   @override
-  String get magicSquaresText => 'CLEAR';
+  String get magicSquaresText => 'پاک کردن';
 
   @override
   String alphabetSudokuText(String arg0) {
-    return 'Error: $arg0';
+    return 'خطا: $arg0';
   }
 
   @override
-  String get pipesMessage => 'You connected all the pipes and filled the grid.';
+  String get pipesMessage =>
+      'شما تمام لوله‌ها را متصل کرده و جدول را پر کردید.';
 
   @override
-  String get dualMirrorMessage => 'You navigated both icons to their targets!';
+  String get dualMirrorMessage => 'شما هر دو آیکون را به اهدافشان هدایت کردید!';
 
   @override
   String binaryCodeMessage(String arg0) {
-    return 'Sensational rapid decimal translation! Final Score: $arg0';
+    return 'ترجمه دهدهی سریع فوق‌العاده! امتیاز نهایی: $arg0';
   }
 
   @override
   String binaryCodeMessage1(String arg0, String arg1) {
-    return 'You correctly converted $arg0 binary numbers. Score: $arg1';
+    return 'شما $arg0 عدد دودویی را به درستی تبدیل کردید. امتیاز: $arg1';
   }
 
   @override
   String oddOneOutMessage(String arg0) {
-    return 'You found 50 odd ones! Final score: $arg0';
+    return 'شما 50 مورد متفاوت را پیدا کردید! امتیاز نهایی: $arg0';
   }
 
   @override
   String oddOneOutMessage1(String arg0) {
-    return 'Your score: $arg0';
+    return 'امتیاز شما: $arg0';
   }
 
   @override
   String letterBridgeMessage(String arg0) {
-    return 'You found the bridge letter: $arg0';
+    return 'شما حرف رابط را پیدا کردید: $arg0';
   }
 
   @override
-  String get imReady => 'I\'M READY';
+  String get imReady => 'من آماده‌ام';
 }

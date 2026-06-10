@@ -1,9 +1,9 @@
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../../providers/user_providers.dart';
-import '../../../../../utils/design_system.dart';
-import '../../../../../utils/haptic_feedback.dart';
+import '../../../../providers/user_providers.dart';
+import '../../../../utils/design_system.dart';
+import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -26,6 +26,7 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
   }
 
   void _showGameOverDialog(int score) {
+    final l10n = AppLocalizations.of(context)!;
     bool won = score >= 50;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('grocery_list');
@@ -34,8 +35,8 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: won ? 'GROCERY GURU!' : 'FORGOT SOMETHING?',
-        message: AppLocalizations.of(context)!.groceryListMessage((score).toString()),
+        title: won ? l10n.groceryListWinTitle : l10n.groceryListLoseTitle,
+        message: l10n.groceryListScoreMessage(score),
         isVictory: won,
         onPlayAgain: () {
           ref.read(groceryListNotifierProvider.notifier).initGame();
@@ -63,14 +64,14 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
     });
 
     if (state.isLoading) {
-      return GameScaffold(title: l10n.groceryListTitle.toUpperCase(), body: Center(child: CircularProgressIndicator()));
+      return GameScaffold(title: l10n.groceryListTitle.toUpperCase(), body: const Center(child: CircularProgressIndicator()));
     }
 
     return GameScaffold(
-      title: 'GROCERY LIST',
+      title: l10n.groceryListTitle.toUpperCase(),
       subtitle: state.phase == GroceryListPhase.memorizing 
-          ? 'Memorize the items and their categories' 
-          : 'Which category did this item belong to?',
+          ? l10n.groceryListSubtitleMemorize 
+          : l10n.groceryListSubtitleTest,
       body: Column(
         children: [
           Padding(
@@ -78,8 +79,8 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                _buildStat('SCORE', '${state.score}', DesignSystem.primary),
-                _buildStat('TRIAL', '${state.trial}/10', DesignSystem.accentBerry),
+                _buildStat(l10n.score.toUpperCase(), '${state.score}', DesignSystem.primary),
+                _buildStat(l10n.trials.toUpperCase(), '${state.trial}/10', DesignSystem.accentBerry),
               ],
             ),
           ),
@@ -97,6 +98,7 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
   }
 
   Widget _buildMemorizationList(BuildContext context, GroceryListState state, GroceryListNotifier notifier) {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -106,7 +108,7 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
           decoration: BoxDecoration(
             color: Theme.of(context).colorScheme.surface,
             borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
-            border: Border.all(color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5).withValues(alpha: 0.2), width: 2),
+            border: Border.all(color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.2), width: 2),
           ),
           child: Column(
             children: state.list.map((item) => Padding(
@@ -114,7 +116,7 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(item['item']!, style: TextStyle(fontSize: 20, fontWeight: FontWeight.w900)),
+                  Text(item['item']!, style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w900)),
                   Text(item['category']!, style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))),
                 ],
               ),
@@ -130,22 +132,23 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
           color: DesignSystem.primary,
           shadowColor: DesignSystem.primaryShadow,
           padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
-          child: Text(AppLocalizations.of(context)!.imReady, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w900)),
+          child: Text(l10n.groceryListReady, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w900)),
         ),
       ],
     );
   }
 
   Widget _buildTestingZone(BuildContext context, GroceryListState state, GroceryListNotifier notifier) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
       child: LayoutBuilder(
         builder: (context, constraints) {
           return Column(
             children: [
-              SizedBox(height: DesignSystem.spaceMD),
+              const SizedBox(height: DesignSystem.spaceMD),
               Text(
-                'WHERE DOES THIS BELONG?',
+                l10n.groceryListWhereBelong,
                 style: TextStyle(
                   fontWeight: FontWeight.w900,
                   color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
@@ -153,7 +156,7 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
                   fontSize: 14,
                 ),
               ),
-              SizedBox(height: DesignSystem.spaceLG),
+              const SizedBox(height: DesignSystem.spaceLG),
               // Test Item Card - Constrained to prevent overflow
               ConstrainedBox(
                 constraints: BoxConstraints(maxHeight: constraints.maxHeight * 0.25),
