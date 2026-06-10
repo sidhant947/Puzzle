@@ -37,7 +37,7 @@ class _SDMTScreenState extends ConsumerState<SDMTScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'SPEED DEMON!' : 'SLOW & STEADY',
-        message: 'You matched $score symbols! This test measures your scanning speed and visual attention.',
+        message: AppLocalizations.of(context)!.sdmtMessage((score).toString()),
         onPlayAgain: () {
           ref.read(sdmtNotifierProvider.notifier).initGame();
           Navigator.pop(context);

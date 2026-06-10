@@ -188,8 +188,8 @@ class _MagicSquaresScreenState extends ConsumerState<MagicSquaresScreen> {
             onTap: notifier.onClear,
             color: DesignSystem.error,
             shadowColor: const Color(0xFFB91C1C),
-            child: const Center(
-              child: Text('CLEAR', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900)),
+            child: Center(
+              child: Text(AppLocalizations.of(context)!.magicSquaresText, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w900)),
             ),
           ),
         ],

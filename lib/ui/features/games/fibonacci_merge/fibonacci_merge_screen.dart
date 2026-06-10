@@ -36,7 +36,7 @@ class _FibonacciMergeScreenState extends ConsumerState<FibonacciMergeScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'FIBONACCI MASTER!' : l10n.gameOver.toUpperCase(),
-        message: '${l10n.score}: ${state.score}',
+        message: AppLocalizations.of(context)!.fibonacciMergeMessage((l10n.score).toString(), (state.score).toString()),
         onPlayAgain: () {
           ref.read(fibonacciMergeNotifierProvider.notifier).initGame();
           Navigator.pop(context);

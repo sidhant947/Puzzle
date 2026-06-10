@@ -30,7 +30,7 @@ class _AnagramDefinitionScreenState extends ConsumerState<AnagramDefinitionScree
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: 'SOLVED!',
-        message: 'The word was indeed "${state.target}".',
+        message: AppLocalizations.of(context)!.anagramDefinitionMessage((state.target).toString()),
         onPlayAgain: () {
           ref.read(anagramDefinitionNotifierProvider.notifier).initGame();
           Navigator.pop(context);

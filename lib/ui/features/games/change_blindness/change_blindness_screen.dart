@@ -31,7 +31,7 @@ class _ChangeBlindnessScreenState extends ConsumerState<ChangeBlindnessScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: 'GAME OVER',
-        message: 'You found ${state.score} changes!',
+        message: AppLocalizations.of(context)!.changeBlindnessMessage((state.score).toString()),
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();

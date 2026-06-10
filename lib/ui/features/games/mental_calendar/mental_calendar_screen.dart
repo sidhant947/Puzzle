@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -157,7 +158,7 @@ class MentalCalendarScreen extends ConsumerWidget {
             ref.read(mentalCalendarNotifierProvider.notifier).resetGame();
           },
           title: 'RESULT',
-          message: 'You got $score correct out of 10!',
+          message: AppLocalizations.of(context)!.mentalCalendarMessage((score).toString()),
         ),
       );
     });

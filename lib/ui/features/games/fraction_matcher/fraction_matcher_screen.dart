@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:math' as math;
@@ -47,7 +48,7 @@ class _FractionMatcherScreenState extends ConsumerState<FractionMatcherScreen> {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: 'TIME\'S UP!',
-            message: 'You scored ${next.score} points matching representations!',
+            message: AppLocalizations.of(context)!.fractionMatcherMessage((next.score).toString()),
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();

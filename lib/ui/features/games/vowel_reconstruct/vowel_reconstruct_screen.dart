@@ -34,7 +34,7 @@ class _VowelReconstructScreenState extends ConsumerState<VowelReconstructScreen>
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.gameOver.toUpperCase(),
-        message: 'You reconstructed a score of ${state.score}!',
+        message: AppLocalizations.of(context)!.vowelReconstructMessage((state.score).toString()),
         isVictory: state.score > 0,
         onHome: () {
           Navigator.of(context).pop();

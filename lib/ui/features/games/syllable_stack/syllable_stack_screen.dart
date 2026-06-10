@@ -34,7 +34,7 @@ class _SyllableStackScreenState extends ConsumerState<SyllableStackScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.gameOver.toUpperCase(),
-        message: 'You stacked up a score of ${state.score}!',
+        message: AppLocalizations.of(context)!.syllableStackMessage((state.score).toString()),
         isVictory: state.score > 0,
         onHome: () {
           Navigator.of(context).pop();

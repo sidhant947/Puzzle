@@ -34,7 +34,7 @@ class _RuleSwitcherScreenState extends ConsumerState<RuleSwitcherScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: state.isTrialMode ? 'COMPLETED!' : 'TIME\'S UP!',
-        message: 'You scored ${state.score} correct out of ${state.totalTrials}!',
+        message: AppLocalizations.of(context)!.ruleSwitcherMessage((state.score).toString(), (state.totalTrials).toString()),
         isVictory: state.isTrialMode ? state.score >= 8 : state.score > 15,
         onHome: () {
           Navigator.of(context).pop();

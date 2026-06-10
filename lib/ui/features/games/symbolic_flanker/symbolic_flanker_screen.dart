@@ -33,7 +33,7 @@ class _SymbolicFlankerScreenState extends ConsumerState<SymbolicFlankerScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.timeUp.toUpperCase(),
-        message: 'You got ${state.score} correct out of ${state.totalTrials}!',
+        message: AppLocalizations.of(context)!.symbolicFlankerMessage((state.score).toString(), (state.totalTrials).toString()),
         isVictory: state.score > 20,
         onHome: () {
           Navigator.of(context).pop();

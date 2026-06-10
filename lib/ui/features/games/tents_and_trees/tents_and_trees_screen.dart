@@ -246,7 +246,7 @@ class TentsAndTreesScreen extends ConsumerWidget {
           Navigator.of(context).pop();
         },
         title: 'WELL DONE',
-        message: 'You have successfully placed all the tents.',
+        message: AppLocalizations.of(context)!.tentsAndTreesMessage,
       ),
     );
   }

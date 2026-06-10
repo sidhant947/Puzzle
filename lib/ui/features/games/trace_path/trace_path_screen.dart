@@ -36,7 +36,7 @@ class _TracePathScreenState extends ConsumerState<TracePathScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'STEADY HANDS!' : 'SHAKY LINE',
-        message: 'Your accuracy was ${(accuracy * 100).toInt()}%!',
+        message: AppLocalizations.of(context)!.tracePathMessage(((accuracy * 100).toInt()).toString()),
         isVictory: won,
         onPlayAgain: () {
           final size = MediaQuery.of(context).size;

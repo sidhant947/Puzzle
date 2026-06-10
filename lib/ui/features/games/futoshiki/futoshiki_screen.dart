@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'futoshiki_provider.dart';
@@ -23,7 +24,7 @@ class FutoshikiScreen extends ConsumerWidget {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: 'PUZZLE SOLVED',
-            message: 'Incredible! You solved the Futoshiki Latin Square.',
+            message: AppLocalizations.of(context)!.futoshikiMessage,
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();

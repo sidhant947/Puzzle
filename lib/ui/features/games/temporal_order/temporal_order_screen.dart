@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
@@ -62,7 +63,7 @@ class TemporalOrderScreen extends ConsumerWidget {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: 'TEMPORAL ORDER COMPLETE',
-            message: 'Incredible! Your temporal sequence memory is high-fidelity.',
+            message: AppLocalizations.of(context)!.temporalOrderMessage,
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
@@ -81,7 +82,7 @@ class TemporalOrderScreen extends ConsumerWidget {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: 'GAME OVER',
-            message: 'Incorrect sequence memory. Practice makes perfect!',
+            message: AppLocalizations.of(context)!.temporalOrderMessage1,
             isVictory: false,
             onHome: () {
               Navigator.of(context).pop();

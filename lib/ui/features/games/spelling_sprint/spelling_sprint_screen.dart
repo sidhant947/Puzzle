@@ -246,7 +246,7 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: 'CONGRATS',
-        message: 'You spelled all 10 words correctly!',
+        message: AppLocalizations.of(context)!.spellingSprintMessage,
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();
@@ -268,7 +268,7 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
       builder: (context) => GameCompletionDialog(
         isVictory: false,
         title: 'TIME UP!',
-        message: 'You spelled ${ref.read(spellingSprintNotifierProvider).score} words.',
+        message: AppLocalizations.of(context)!.spellingSprintMessage1((ref.read(spellingSprintNotifierProvider).score).toString()),
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();

@@ -33,7 +33,7 @@ class _VigilanceTaskScreenState extends ConsumerState<VigilanceTaskScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: isVictory ? 'STAY VIGILANT!' : 'KEEP WATCH!',
-        message: 'Hits: $hits, Misses: $misses\nFalse Alarms: $falseAlarms',
+        message: AppLocalizations.of(context)!.vigilanceTaskMessage((hits).toString(), (misses).toString(), (falseAlarms).toString()),
         isVictory: isVictory,
         onHome: () {
           Navigator.of(context).pop();

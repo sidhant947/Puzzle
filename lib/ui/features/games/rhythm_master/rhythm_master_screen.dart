@@ -61,7 +61,7 @@ class _RhythmMasterScreenState extends ConsumerState<RhythmMasterScreen> with Si
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'RHYTHM GOD!' : 'OFF BEAT',
-        message: 'You got $perfect perfect hits and $score points!',
+        message: AppLocalizations.of(context)!.rhythmMasterMessage((perfect).toString(), (score).toString()),
         isVictory: won,
         onPlayAgain: () {
           ref.read(rhythmMasterNotifierProvider.notifier).initGame();

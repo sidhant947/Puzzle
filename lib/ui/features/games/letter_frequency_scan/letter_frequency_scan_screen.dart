@@ -27,7 +27,7 @@ class LetterFrequencyScanScreen extends ConsumerWidget {
           HapticFeedbackUtil.error();
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('Incorrect. The count was ${next.targetCount}.'),
+              content: Text(AppLocalizations.of(context)!.letterFrequencyScanText((next.targetCount).toString())),
               duration: const Duration(seconds: 2),
             ),
           );
@@ -187,7 +187,7 @@ class LetterFrequencyScanScreen extends ConsumerWidget {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: 'EXCELLENT',
-        message: 'You correctly counted ${state.targetCount} occurrences of "${state.targetLetter}".',
+        message: AppLocalizations.of(context)!.letterFrequencyScanMessage((state.targetCount).toString(), (state.targetLetter).toString()),
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();

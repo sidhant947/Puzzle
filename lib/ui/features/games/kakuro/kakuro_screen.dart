@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,7 +26,7 @@ class KakuroScreen extends ConsumerWidget {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: 'CROSS SUMS MATCHED',
-            message: 'Incredible! You matched all sum segments perfectly.',
+            message: AppLocalizations.of(context)!.kakuroMessage,
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();

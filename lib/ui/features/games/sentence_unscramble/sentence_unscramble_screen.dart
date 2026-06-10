@@ -34,7 +34,7 @@ class _SentenceUnscrambleScreenState extends ConsumerState<SentenceUnscrambleScr
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.gameOver.toUpperCase(),
-        message: 'You unscrambled a score of ${state.score}!',
+        message: AppLocalizations.of(context)!.sentenceUnscrambleMessage((state.score).toString()),
         isVictory: state.score > 0,
         onHome: () {
           Navigator.of(context).pop();

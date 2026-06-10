@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -71,7 +72,7 @@ class AssociativePairsScreen extends ConsumerWidget {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: 'ASSOCIATIVE PAIRS COMPLETE',
-            message: 'Brilliant! You associated visual traits flawlessly.',
+            message: AppLocalizations.of(context)!.associativePairsMessage,
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
@@ -90,7 +91,7 @@ class AssociativePairsScreen extends ConsumerWidget {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: 'GAME OVER',
-            message: 'Wrong association! Sharpen your link memory and try again.',
+            message: AppLocalizations.of(context)!.associativePairsMessage1,
             isVictory: false,
             onHome: () {
               Navigator.of(context).pop();

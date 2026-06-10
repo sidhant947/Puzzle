@@ -34,7 +34,7 @@ class _QuickMathScreenState extends ConsumerState<QuickMathScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'MATH GENIUS!' : 'TIME UP',
-        message: 'You solved $score problems!',
+        message: AppLocalizations.of(context)!.quickMathMessage((score).toString()),
         onPlayAgain: () {
           ref.read(quickMathNotifierProvider.notifier).initGame();
           Navigator.pop(context);

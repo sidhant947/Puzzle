@@ -72,7 +72,7 @@ class _TopologyScreenState extends ConsumerState<TopologyScreen> {
       body: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          Text('${l10n.topologyScore}${state.score} / 10', style: const TextStyle(fontWeight: FontWeight.bold)),
+          Text(AppLocalizations.of(context)!.topologyText((l10n.topologyScore).toString(), (state.score).toString()), style: const TextStyle(fontWeight: FontWeight.bold)),
           const SizedBox(height: DesignSystem.spaceXL),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,

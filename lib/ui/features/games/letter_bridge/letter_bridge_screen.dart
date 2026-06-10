@@ -186,7 +186,7 @@ class LetterBridgeScreen extends ConsumerWidget {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: 'WELL DONE',
-        message: 'You found the bridge letter: ${state.bridge}',
+        message: AppLocalizations.of(context)!.letterBridgeMessage((state.bridge).toString()),
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();

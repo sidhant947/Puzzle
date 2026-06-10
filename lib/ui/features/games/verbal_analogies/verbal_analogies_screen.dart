@@ -31,7 +31,7 @@ class _VerbalAnalogiesScreenState extends ConsumerState<VerbalAnalogiesScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.verbalAnalogiesTitle.toUpperCase(),
-        message: 'You have a sharp mind for relationships.',
+        message: AppLocalizations.of(context)!.verbalAnalogiesMessage,
         isVictory: true,
         onHome: () {
           Navigator.of(context).pop();

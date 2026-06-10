@@ -39,8 +39,7 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'MENTAL GYMNAST!' : 'WIRES CROSSED',
-        message:
-            'You scored $score correctly! Fast switching is key to mental flexibility.',
+        message: AppLocalizations.of(context)!.switchTaskMessage((score).toString()),
         onPlayAgain: () {
           ref.read(switchTaskNotifierProvider.notifier).initGame();
           Navigator.pop(context);

@@ -25,7 +25,7 @@ class MemoryMatrixScreen extends ConsumerWidget {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: l10n.memoryMatrixTitle.toUpperCase(),
-            message: 'Impressive! Your working memory is sharp. Daily goal complete!',
+            message: AppLocalizations.of(context)!.memoryMatrixMessage,
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
@@ -44,7 +44,7 @@ class MemoryMatrixScreen extends ConsumerWidget {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: 'GAME OVER',
-            message: 'Focus and try again to improve your memory score.',
+            message: AppLocalizations.of(context)!.memoryMatrixMessage1,
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();

@@ -197,7 +197,7 @@ class MathPathScreen extends ConsumerWidget {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: 'CONGRATS',
-        message: 'You found the path that adds up to the target!',
+        message: AppLocalizations.of(context)!.mathPathMessage,
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();

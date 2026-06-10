@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../l10n/app_localizations.dart';
@@ -186,7 +187,7 @@ class _VocabularyBuilderScreenState extends ConsumerState<VocabularyBuilderScree
           ref.read(vocabularyBuilderNotifierProvider.notifier).startGame();
           Navigator.of(context).pop();
         },
-        message: 'Great job! Your vocabulary is impressive. Score: $score',
+        message: AppLocalizations.of(context)!.vocabularyBuilderMessage((score).toString()),
       ),
     );
   }

@@ -33,7 +33,7 @@ class _LogicalSyllogismsScreenState extends ConsumerState<LogicalSyllogismsScree
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: state.isTrialMode ? 'COMPLETED!' : 'TIME\'S UP!',
-        message: 'You solved ${state.score} syllogisms correctly!',
+        message: AppLocalizations.of(context)!.logicalSyllogismsMessage((state.score).toString()),
         isVictory: state.isTrialMode ? state.score >= 8 : state.score > 5,
         onHome: () {
           Navigator.of(context).pop();

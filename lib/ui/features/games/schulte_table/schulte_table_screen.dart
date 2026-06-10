@@ -31,7 +31,7 @@ class SchulteTableScreen extends ConsumerWidget {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: l10n.schulteTableTitle.toUpperCase(),
-            message: 'You completed the table in ${_formatDuration(next.elapsedTime)}.\nKeep practicing to expand your peripheral vision!',
+            message: AppLocalizations.of(context)!.schulteTableMessage((_formatDuration(next.elapsedTime)).toString()),
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
@@ -192,7 +192,7 @@ class SchulteTableScreen extends ConsumerWidget {
           HapticFeedbackUtil.selectionClick();
           notifier.startGame();
         },
-        child: const Text('START TEST'),
+        child: Text(AppLocalizations.of(context)!.schulteTableText),
       );
     }
 

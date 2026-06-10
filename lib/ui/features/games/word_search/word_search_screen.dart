@@ -272,7 +272,7 @@ class _WordSearchScreenState extends ConsumerState<WordSearchScreen> {
           ref.read(wordSearchNotifierProvider.notifier).initGame();
           Navigator.of(context).pop();
         },
-        message: 'All words found successfully with keen observation.',
+        message: AppLocalizations.of(context)!.wordSearchMessage,
       ),
     );
   }

@@ -33,7 +33,7 @@ class _PaperFoldingScreenState extends ConsumerState<PaperFoldingScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.paperFoldingTitle.toUpperCase(),
-        message: 'You can see the patterns in your mind.',
+        message: AppLocalizations.of(context)!.paperFoldingMessage,
         isVictory: true,
         onHome: () {
           Navigator.of(context).pop();

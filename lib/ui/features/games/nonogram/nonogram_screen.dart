@@ -67,7 +67,7 @@ class _NonogramScreenState extends ConsumerState<NonogramScreen> {
       ],
       body: state.when(
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (err, stack) => Center(child: Text('Error: $err')),
+        error: (err, stack) => Center(child: Text(AppLocalizations.of(context)!.nonogramText((err).toString()))),
         data: (nonogramState) => LayoutBuilder(
           builder: (context, constraints) {
             return Column(

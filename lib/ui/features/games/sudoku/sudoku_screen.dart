@@ -70,7 +70,7 @@ class _SudokuScreenState extends ConsumerState<SudokuScreen> {
       ],
       body: state.when(
         loading: () => const Center(child: CircularProgressIndicator()),
-        error: (err, stack) => Center(child: Text('Error: $err')),
+        error: (err, stack) => Center(child: Text(AppLocalizations.of(context)!.sudokuText((err).toString()))),
         data: (sudokuState) => LayoutBuilder(
           builder: (context, constraints) {
             return Column(

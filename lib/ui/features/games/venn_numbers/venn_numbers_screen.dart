@@ -35,7 +35,7 @@ class _VennNumbersScreenState extends ConsumerState<VennNumbersScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'VENN MASTER!' : l10n.timeUp.toUpperCase(),
-        message: 'You categorized $score numbers!',
+        message: AppLocalizations.of(context)!.vennNumbersMessage((score).toString()),
         onPlayAgain: () {
           ref.read(vennNumbersNotifierProvider.notifier).initGame();
           Navigator.pop(context);
@@ -189,11 +189,11 @@ class _VennNumbersScreenState extends ConsumerState<VennNumbersScreen> {
                     borderRadius: BorderRadius.circular(16),
                     border: Border.all(color: Theme.of(context).colorScheme.outline, width: 2),
                   ),
-                  child: const Align(
+                  child: Align(
                     alignment: Alignment.bottomRight,
                     child: Padding(
                       padding: EdgeInsets.all(8.0),
-                      child: Text('NEITHER', style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
+                      child: Text(AppLocalizations.of(context)!.vennNumbersText, style: TextStyle(fontSize: 10, fontWeight: FontWeight.bold)),
                     ),
                   ),
                 ),
@@ -229,7 +229,7 @@ class _VennNumbersScreenState extends ConsumerState<VennNumbersScreen> {
                 child: Container(
                   width: circleSize * 0.5,
                   height: circleSize * 0.5,
-                  decoration: const BoxDecoration(
+                  decoration: BoxDecoration(
                     color: Colors.transparent, // Invisible trigger for center
                     shape: BoxShape.circle,
                   ),
@@ -240,7 +240,7 @@ class _VennNumbersScreenState extends ConsumerState<VennNumbersScreen> {
                         color: Colors.white.withValues(alpha: 0.8),
                         borderRadius: BorderRadius.circular(4),
                       ),
-                      child: const Text('BOTH', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black)),
+                      child: Text(AppLocalizations.of(context)!.vennNumbersText1, style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.black)),
                     ),
                   ),
                 ),

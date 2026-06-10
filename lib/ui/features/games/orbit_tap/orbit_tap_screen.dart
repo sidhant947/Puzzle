@@ -53,7 +53,7 @@ class _OrbitTapScreenState extends ConsumerState<OrbitTapScreen> with SingleTick
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'ORBIT MASTER!' : 'OUT OF SYNC',
-        message: 'You successfully tapped $score times!',
+        message: AppLocalizations.of(context)!.orbitTapMessage((score).toString()),
         isVictory: won,
         onPlayAgain: () {
           ref.read(orbitTapNotifierProvider.notifier).initGame();

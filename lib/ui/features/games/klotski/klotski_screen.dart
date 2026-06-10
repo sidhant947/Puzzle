@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -203,7 +204,7 @@ class _KlotskiScreenState extends ConsumerState<KlotskiScreen> {
         barrierDismissible: false,
         builder: (context) => GameCompletionDialog(
           title: "KLOTSKI COMPLETED",
-          message: "Sensational sliding! You freed the Hero block in $_moves moves.",
+          message: AppLocalizations.of(context)!.klotskiMessage((_moves).toString()),
           onHome: () {
             Navigator.pop(context);
             Navigator.pop(context);

@@ -2095,4 +2095,643 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get oneLetterShiftSubtitle =>
       'Transform one word into another with one letter change';
+
+  @override
+  String vocabularyBuilderMessage(String arg0) {
+    return 'Great job! Your vocabulary is impressive. Score: $arg0';
+  }
+
+  @override
+  String get symmetryMessage =>
+      'You mirrored the pattern perfectly with surgical precision.';
+
+  @override
+  String get temporalOrderMessage =>
+      'Incredible! Your temporal sequence memory is high-fidelity.';
+
+  @override
+  String get temporalOrderMessage1 =>
+      'Incorrect sequence memory. Practice makes perfect!';
+
+  @override
+  String get wordSearchMessage =>
+      'All words found successfully with keen observation.';
+
+  @override
+  String colorMatchMessage(String arg0) {
+    return 'Your accuracy: $arg0%';
+  }
+
+  @override
+  String semanticLinkMessage(String arg0) {
+    return 'You scored $arg0 points!';
+  }
+
+  @override
+  String reflexTapMessage(String arg0) {
+    return 'You tapped $arg0 targets!';
+  }
+
+  @override
+  String get angleFinderMessage => 'Your geometric intuition is perfect!';
+
+  @override
+  String angleFinderMessage1(String arg0) {
+    return 'The correct answer was $arg0°';
+  }
+
+  @override
+  String angleFinderText(String arg0) {
+    return '$arg0°';
+  }
+
+  @override
+  String visualStatisticalLearningMessage(String arg0) {
+    return 'You scored $arg0 correct patterns!';
+  }
+
+  @override
+  String nonogramText(String arg0) {
+    return 'Error: $arg0';
+  }
+
+  @override
+  String mentalCalendarMessage(String arg0) {
+    return 'You got $arg0 correct out of 10!';
+  }
+
+  @override
+  String orbitTapMessage(String arg0) {
+    return 'You successfully tapped $arg0 times!';
+  }
+
+  @override
+  String schulteTableMessage(String arg0) {
+    return 'You completed the table in $arg0.\\nKeep practicing to expand your peripheral vision!';
+  }
+
+  @override
+  String get schulteTableText => 'START TEST';
+
+  @override
+  String get relationalMemoryMessage =>
+      'Fabulous spatial relational memory accuracy!';
+
+  @override
+  String sudokuText(String arg0) {
+    return 'Error: $arg0';
+  }
+
+  @override
+  String sdmtMessage(String arg0) {
+    return 'You matched $arg0 symbols! This test measures your scanning speed and visual attention.';
+  }
+
+  @override
+  String get futoshikiMessage =>
+      'Incredible! You solved the Futoshiki Latin Square.';
+
+  @override
+  String letterFrequencyScanMessage(String arg0, String arg1) {
+    return 'You correctly counted $arg0 occurrences of \"$arg1\".';
+  }
+
+  @override
+  String letterFrequencyScanText(String arg0) {
+    return 'Incorrect. The count was $arg0.';
+  }
+
+  @override
+  String get memoryMatrixMessage =>
+      'Impressive! Your working memory is sharp. Daily goal complete!';
+
+  @override
+  String get memoryMatrixMessage1 =>
+      'Focus and try again to improve your memory score.';
+
+  @override
+  String get contextCluesMessage =>
+      'Exceptional! Your vocabulary and contextual analysis are top notch.';
+
+  @override
+  String get contextCluesMessage1 =>
+      'Wrong word selected! Train your verbal context reasoning and try again.';
+
+  @override
+  String oneLetterShiftMessage(String arg0, String arg1) {
+    return 'You correctly shifted $arg0 to $arg1.';
+  }
+
+  @override
+  String get mentalAbacusMessage => 'Your mental arithmetic is top-tier.';
+
+  @override
+  String fractionMatcherMessage(String arg0) {
+    return 'You scored $arg0 points matching representations!';
+  }
+
+  @override
+  String get spellingSprintMessage => 'You spelled all 10 words correctly!';
+
+  @override
+  String spellingSprintMessage1(String arg0) {
+    return 'You spelled $arg0 words.';
+  }
+
+  @override
+  String stopSignalMessage(String arg0) {
+    return 'You achieved $arg0 correct responses! This test measures your ability to inhibit a planned action.';
+  }
+
+  @override
+  String grammarPoliceMessage(String arg0) {
+    return 'Game Over! You maintained order in the world of grammar. Score: $arg0';
+  }
+
+  @override
+  String consonantReconstructMessage(String arg0) {
+    return 'You reconstructed a score of $arg0!';
+  }
+
+  @override
+  String rhymeMasterMessage(String arg0, String arg1) {
+    return 'You found $arg0 out of $arg1 rhymes!';
+  }
+
+  @override
+  String vigilanceTaskMessage(String arg0, String arg1, String arg2) {
+    return 'Hits: $arg0, Misses: $arg1\\nFalse Alarms: $arg2';
+  }
+
+  @override
+  String get silhouetteMatchOrthoMessage =>
+      'You have flawless orthographic alignment skills!';
+
+  @override
+  String get silhouetteMatchOrthoText => 'GOT IT';
+
+  @override
+  String get silhouetteMatchOrthoText1 =>
+      'Incorrect perspective projection! Tap Reset to try again.';
+
+  @override
+  String fibonacciMergeMessage(String arg0, String arg1) {
+    return '$arg0: $arg1';
+  }
+
+  @override
+  String factorFinderMessage(String arg0) {
+    return 'You scored $arg0 points by finding all factors!';
+  }
+
+  @override
+  String logicalSyllogismsMessage(String arg0) {
+    return 'You solved $arg0 syllogisms correctly!';
+  }
+
+  @override
+  String get rotatingMazeMessage =>
+      'You successfully navigated the kinetic rotating maze!';
+
+  @override
+  String get rotatingMazeText => 'GOT IT';
+
+  @override
+  String get rotatingMazeText1 => '🌀 Maze rotated 90°! Grid shifted!';
+
+  @override
+  String get mathPathMessage =>
+      'You found the path that adds up to the target!';
+
+  @override
+  String get bridgesMessage => 'You successfully connected all the islands!';
+
+  @override
+  String compoundConnectMessage(String arg0, String arg1) {
+    return 'The compound word is $arg0$arg1.';
+  }
+
+  @override
+  String get pangramSprintMessage =>
+      'You built a sentence using all 26 letters.';
+
+  @override
+  String get mirrorImageMessage => 'You perfectly identified the reflection.';
+
+  @override
+  String get mirrorImageText => 'MIRROR IMAGE';
+
+  @override
+  String reverseStroopMessage(String arg0) {
+    return 'You scored $arg0 points! Keep your eye on the instructions.';
+  }
+
+  @override
+  String get verbalAnalogiesMessage =>
+      'You have a sharp mind for relationships.';
+
+  @override
+  String corsiBlocksMessage1(String arg0, String arg1) {
+    return 'You recalled $arg1 sequences! Your spatial memory span reached $arg0.';
+  }
+
+  @override
+  String wordLadderMessage(String arg0, String arg1, String arg2) {
+    return 'You successfully connected $arg0 to $arg1 in $arg2 steps.';
+  }
+
+  @override
+  String d2AttentionMessage(String arg0) {
+    return 'Incredible selective scanning! Final score: $arg0.';
+  }
+
+  @override
+  String get d2AttentionText => 'HOW TO PLAY';
+
+  @override
+  String get d2AttentionText1 => 'GOT IT';
+
+  @override
+  String get tangleFixMessage => 'All lines are clear and smooth.';
+
+  @override
+  String get distractorMatrixMessage =>
+      'Incredible! You recalled patterns despite cognitive math distractors!';
+
+  @override
+  String get distractorMatrixMessage1 =>
+      'The distractors got you! Retrain your working memory.';
+
+  @override
+  String sentenceUnscrambleMessage(String arg0) {
+    return 'You unscrambled a score of $arg0!';
+  }
+
+  @override
+  String get kakuroMessage =>
+      'Incredible! You matched all sum segments perfectly.';
+
+  @override
+  String symbolicFlankerMessage(String arg0, String arg1) {
+    return 'You got $arg0 correct out of $arg1!';
+  }
+
+  @override
+  String stroopTestMessage(String arg0) {
+    return 'You scored $arg0 correctly! Focus on the color of the ink, not the word.';
+  }
+
+  @override
+  String wisconsinCardSortingMessage(String arg0) {
+    return 'You correctly sorted $arg0 cards!';
+  }
+
+  @override
+  String nBackMessage(String arg0) {
+    return 'You achieved $arg0 2-back matches! Your working memory is vital for multitasking.';
+  }
+
+  @override
+  String rhythmMasterMessage(String arg0, String arg1) {
+    return 'You got $arg0 perfect hits and $arg1 points!';
+  }
+
+  @override
+  String groceryListMessage(String arg0) {
+    return 'You scored $arg0 points in Grocery List!';
+  }
+
+  @override
+  String get groceryListText => 'I\\';
+
+  @override
+  String get mirrorTracingMessage =>
+      'Your brain successfully rewired its coordination.';
+
+  @override
+  String moduloClockMessage(String arg0) {
+    return 'Excellent modular mental math coordination! Score: $arg0';
+  }
+
+  @override
+  String moduloClockMessage1(String arg0, String arg1, String arg2) {
+    return 'You managed $arg0 of $arg1 modular clock solutions. Score: $arg2';
+  }
+
+  @override
+  String get crownMessage =>
+      'All crowns placed successfully with perfect logic.';
+
+  @override
+  String dualCodingMessage(String arg0) {
+    return 'Fantastic dual-task performance! Your working memory score: $arg0';
+  }
+
+  @override
+  String inequalityDashMessage(String arg0) {
+    return 'You scored $arg0 points matching inequalities!';
+  }
+
+  @override
+  String sourceMonitoringMessage(String arg0, String arg1) {
+    return 'You scored $arg0 out of $arg1!';
+  }
+
+  @override
+  String get sourceMonitoringText => 'START RECALL';
+
+  @override
+  String get memoryPalaceText => 'AVAILABLE WORDS';
+
+  @override
+  String target10Message(String arg0) {
+    return 'You scored $arg0 points matching numbers to 10!';
+  }
+
+  @override
+  String get paperFoldingMessage => 'You can see the patterns in your mind.';
+
+  @override
+  String topologyText(String arg0, String arg1) {
+    return '$arg0$arg1 / 10';
+  }
+
+  @override
+  String get waterSortMessage => 'You sorted all the colors perfectly!';
+
+  @override
+  String anagramDefinitionMessage(String arg0) {
+    return 'The word was indeed \"$arg0\".';
+  }
+
+  @override
+  String game2048Message(String arg0, String arg1, String arg2) {
+    return '$arg0: $arg1\\n$arg2';
+  }
+
+  @override
+  String game2048Message1(String arg0, String arg1) {
+    return '$arg0: $arg1';
+  }
+
+  @override
+  String numericalEstimationMessage(String arg0) {
+    return 'You made $arg0 correct estimations.';
+  }
+
+  @override
+  String grammarSortMessage(String arg0) {
+    return 'You sorted $arg0 words correctly!';
+  }
+
+  @override
+  String vowelReconstructMessage(String arg0) {
+    return 'You reconstructed a score of $arg0!';
+  }
+
+  @override
+  String spatialConflictMessage(String arg0, String arg1) {
+    return 'You achieved a score of $arg0 with $arg1 errors!';
+  }
+
+  @override
+  String get spatialConflictText => 'HOW TO PLAY';
+
+  @override
+  String get spatialConflictText1 => 'GOT IT';
+
+  @override
+  String tracePathMessage(String arg0) {
+    return 'Your accuracy was $arg0%!';
+  }
+
+  @override
+  String ruleSwitcherMessage(String arg0, String arg1) {
+    return 'You scored $arg0 correct out of $arg1!';
+  }
+
+  @override
+  String collatzMessage(String arg0, String arg1) {
+    return 'You took $arg0 steps. Min possible was $arg1.';
+  }
+
+  @override
+  String get collatzText => '/ 2';
+
+  @override
+  String get collatzText1 => '+ 1';
+
+  @override
+  String get collatzText2 => '3n + 1';
+
+  @override
+  String divisibilityDashMessage(String arg0) {
+    return 'You solved $arg0 numbers!';
+  }
+
+  @override
+  String switchTaskMessage(String arg0) {
+    return 'You scored $arg0 correctly! Fast switching is key to mental flexibility.';
+  }
+
+  @override
+  String sequenceSleuthMessage(String arg0) {
+    return 'You solved $arg0 sequences!';
+  }
+
+  @override
+  String changeBlindnessMessage(String arg0) {
+    return 'You found $arg0 changes!';
+  }
+
+  @override
+  String mentalRotationMessage(String arg0) {
+    return 'You rotated $arg0 shapes correctly!';
+  }
+
+  @override
+  String wordMastermindMessage(String arg0) {
+    return 'You mastered the code!\\nThe word was: $arg0';
+  }
+
+  @override
+  String wordMastermindMessage1(String arg0) {
+    return 'The hidden word was: $arg0';
+  }
+
+  @override
+  String wordMastermindText(String arg0) {
+    return '$arg0';
+  }
+
+  @override
+  String get simonSequenceMessage => 'You memorized all 10 tiles!';
+
+  @override
+  String get simonSequenceMessage1 => 'Try again to master the sequence.';
+
+  @override
+  String oxymoronHuntMessage(String arg0) {
+    return 'You found $arg0 oxymorons!';
+  }
+
+  @override
+  String spotlightTrackMessage(String arg0) {
+    return 'Incredible spatial tracking! You scored $arg0 points.';
+  }
+
+  @override
+  String get spotlightTrackText => 'HOW TO PLAY';
+
+  @override
+  String get spotlightTrackText1 => 'GOT IT';
+
+  @override
+  String get spotlightTrackText2 => 'START ROUND';
+
+  @override
+  String vennNumbersMessage(String arg0) {
+    return 'You categorized $arg0 numbers!';
+  }
+
+  @override
+  String get vennNumbersText => 'NEITHER';
+
+  @override
+  String get vennNumbersText1 => 'BOTH';
+
+  @override
+  String get silhouetteMatchMessage =>
+      'Your brain is excellent at 3D to 2D translation.';
+
+  @override
+  String sumSnakeMessage(String arg0) {
+    return 'Target $arg0 reached with perfect precision!';
+  }
+
+  @override
+  String get sumSnakeText => 'CLEAR PATH';
+
+  @override
+  String percentagePeakMessage(String arg0) {
+    return 'You solved $arg0 percentage problems!';
+  }
+
+  @override
+  String trailMakingMessage(String arg0) {
+    return 'You completed $arg0 trails! This test measures your visual search speed and mental flexibility.';
+  }
+
+  @override
+  String matrixReasoningMessage(String arg0) {
+    return 'You completed $arg0 matrices correctly!';
+  }
+
+  @override
+  String get tentsAndTreesMessage =>
+      'You have successfully placed all the tents.';
+
+  @override
+  String klotskiMessage(String arg0) {
+    return 'Sensational sliding! You freed the Hero block in $arg0 moves.';
+  }
+
+  @override
+  String sumPyramidMessage(String arg0) {
+    return 'You solved $arg0 sum pyramids successfully!';
+  }
+
+  @override
+  String simonCommandMessage(String arg0) {
+    return 'Excellent selective response and focus! Total Score: $arg0';
+  }
+
+  @override
+  String simonCommandMessage1(String arg0, String arg1) {
+    return 'You scored $arg0 but did not reach $arg1 matches in time.';
+  }
+
+  @override
+  String syllableStackMessage(String arg0) {
+    return 'You stacked up a score of $arg0!';
+  }
+
+  @override
+  String get slitherlinkMessage =>
+      'Awesome! You successfully completed the loop puzzle.';
+
+  @override
+  String quickMathMessage(String arg0) {
+    return 'You solved $arg0 problems!';
+  }
+
+  @override
+  String commonDenominatorMessage(String arg0) {
+    return 'You solved $arg0 GCD/LCM problems!';
+  }
+
+  @override
+  String chainReactionMessage(String arg0, String arg1) {
+    return 'Your final score is $arg0. You built a chain of $arg1 words.';
+  }
+
+  @override
+  String chainReactionText(String arg0) {
+    return '$arg0';
+  }
+
+  @override
+  String get associativePairsMessage =>
+      'Brilliant! You associated visual traits flawlessly.';
+
+  @override
+  String get associativePairsMessage1 =>
+      'Wrong association! Sharpen your link memory and try again.';
+
+  @override
+  String portmanteauSplitMessage(String arg0) {
+    return 'You split $arg0 portmanteaus!';
+  }
+
+  @override
+  String get magicSquaresText => 'CLEAR';
+
+  @override
+  String alphabetSudokuText(String arg0) {
+    return 'Error: $arg0';
+  }
+
+  @override
+  String get pipesMessage => 'You connected all the pipes and filled the grid.';
+
+  @override
+  String get dualMirrorMessage => 'You navigated both icons to their targets!';
+
+  @override
+  String binaryCodeMessage(String arg0) {
+    return 'Sensational rapid decimal translation! Final Score: $arg0';
+  }
+
+  @override
+  String binaryCodeMessage1(String arg0, String arg1) {
+    return 'You correctly converted $arg0 binary numbers. Score: $arg1';
+  }
+
+  @override
+  String oddOneOutMessage(String arg0) {
+    return 'You found 50 odd ones! Final score: $arg0';
+  }
+
+  @override
+  String oddOneOutMessage1(String arg0) {
+    return 'Your score: $arg0';
+  }
+
+  @override
+  String letterBridgeMessage(String arg0) {
+    return 'You found the bridge letter: $arg0';
+  }
+
+  @override
+  String get imReady => 'I\'M READY';
 }

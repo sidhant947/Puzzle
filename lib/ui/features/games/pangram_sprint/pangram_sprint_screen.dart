@@ -30,7 +30,7 @@ class _PangramSprintScreenState extends ConsumerState<PangramSprintScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: 'PANGRAM COMPLETE!',
-        message: 'You built a sentence using all 26 letters.',
+        message: AppLocalizations.of(context)!.pangramSprintMessage,
         onPlayAgain: () {
           ref.read(pangramSprintNotifierProvider.notifier).initGame();
           Navigator.pop(context);

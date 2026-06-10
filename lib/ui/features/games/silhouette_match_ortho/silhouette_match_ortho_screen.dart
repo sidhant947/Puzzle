@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -58,7 +59,7 @@ class _SilhouetteMatchOrthoScreenState extends ConsumerState<SilhouetteMatchOrth
               const SizedBox(height: DesignSystem.spaceLG),
               TangibleButton(
                 onTap: () => Navigator.of(context).pop(),
-                child: const Text('GOT IT'),
+                child: Text(AppLocalizations.of(context)!.silhouetteMatchOrthoText),
               ),
             ],
           ),
@@ -91,7 +92,7 @@ class _SilhouetteMatchOrthoScreenState extends ConsumerState<SilhouetteMatchOrth
           barrierDismissible: false,
           builder: (dialogCtx) => GameCompletionDialog(
             title: 'AMAZING',
-            message: 'You have flawless orthographic alignment skills!',
+            message: AppLocalizations.of(context)!.silhouetteMatchOrthoMessage,
             onHome: () {
               Navigator.of(dialogCtx).pop();
               Navigator.of(context).pop();
@@ -280,9 +281,9 @@ class _SilhouetteMatchOrthoScreenState extends ConsumerState<SilhouetteMatchOrth
                                   } else {
                                     HapticFeedbackUtil.error();
                                     ScaffoldMessenger.of(context).showSnackBar(
-                                      const SnackBar(
-                                        content: Text('Incorrect perspective projection! Tap Reset to try again.'),
-                                        duration: Duration(seconds: 2),
+                                      SnackBar(
+                                        content: Text(AppLocalizations.of(context)!.silhouetteMatchOrthoText1),
+                                        duration: const Duration(seconds: 2),
                                       ),
                                     );
                                   }

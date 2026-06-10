@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -99,7 +100,7 @@ class _ModuloClockScreenState extends ConsumerState<ModuloClockScreen> {
         barrierDismissible: false,
         builder: (context) => GameCompletionDialog(
           title: "MODULO CLOCK ACED",
-          message: "Excellent modular mental math coordination! Score: $_score",
+          message: AppLocalizations.of(context)!.moduloClockMessage((_score).toString()),
           onHome: () {
             Navigator.pop(context);
             Navigator.pop(context);
@@ -127,7 +128,7 @@ class _ModuloClockScreenState extends ConsumerState<ModuloClockScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: "TIME OUT",
-        message: "You managed $_correctAnswers of $targetAnswers modular clock solutions. Score: $_score",
+        message: AppLocalizations.of(context)!.moduloClockMessage1((_correctAnswers).toString(), (targetAnswers).toString(), (_score).toString()),
         isVictory: false,
         onHome: () {
           Navigator.pop(context);

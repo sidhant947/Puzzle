@@ -229,7 +229,7 @@ class OneLetterShiftScreen extends ConsumerWidget {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: 'BRAVO',
-        message: 'You correctly shifted ${state.startWord} to ${state.endWord}.',
+        message: AppLocalizations.of(context)!.oneLetterShiftMessage((state.startWord).toString(), (state.endWord).toString()),
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();

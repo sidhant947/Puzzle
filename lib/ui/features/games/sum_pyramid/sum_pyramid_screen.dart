@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -189,7 +190,7 @@ class _SumPyramidScreenState extends ConsumerState<SumPyramidScreen> {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: 'GAME OVER',
-            message: 'You solved ${next.score} sum pyramids successfully!',
+            message: AppLocalizations.of(context)!.sumPyramidMessage((next.score).toString()),
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();

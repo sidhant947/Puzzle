@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -57,7 +58,7 @@ class _RotatingMazeScreenState extends ConsumerState<RotatingMazeScreen> {
               const SizedBox(height: DesignSystem.spaceLG),
               TangibleButton(
                 onTap: () => Navigator.of(context).pop(),
-                child: const Text('GOT IT'),
+                child: Text(AppLocalizations.of(context)!.rotatingMazeText),
               ),
             ],
           ),
@@ -113,9 +114,9 @@ class _RotatingMazeScreenState extends ConsumerState<RotatingMazeScreen> {
         HapticFeedbackUtil.heavyImpact();
         notifier.clearRotatedFlag();
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('🌀 Maze rotated 90°! Grid shifted!'),
-            duration: Duration(seconds: 1),
+          SnackBar(
+            content: Text(AppLocalizations.of(context)!.rotatingMazeText1),
+            duration: const Duration(seconds: 1),
             behavior: SnackBarBehavior.floating,
           ),
         );
@@ -140,7 +141,7 @@ class _RotatingMazeScreenState extends ConsumerState<RotatingMazeScreen> {
           barrierDismissible: false,
           builder: (dialogCtx) => GameCompletionDialog(
             title: 'MAZE CLEARED',
-            message: 'You successfully navigated the kinetic rotating maze!',
+            message: AppLocalizations.of(context)!.rotatingMazeMessage,
             onHome: () {
               Navigator.of(dialogCtx).pop();
               Navigator.of(context).pop();

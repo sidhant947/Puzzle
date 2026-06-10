@@ -34,7 +34,7 @@ class _ReflexTapScreenState extends ConsumerState<ReflexTapScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'SHARP REFLEXES!' : 'OUT OF TIME',
-        message: 'You tapped $score targets!',
+        message: AppLocalizations.of(context)!.reflexTapMessage((score).toString()),
         onPlayAgain: () {
           ref.read(reflexTapNotifierProvider.notifier).initGame();
           Navigator.pop(context);

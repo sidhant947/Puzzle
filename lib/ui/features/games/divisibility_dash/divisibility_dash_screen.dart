@@ -35,7 +35,7 @@ class _DivisibilityDashScreenState extends ConsumerState<DivisibilityDashScreen>
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'DIVISIBILITY WHIZ!' : l10n.timeUp.toUpperCase(),
-        message: 'You solved $score numbers!',
+        message: AppLocalizations.of(context)!.divisibilityDashMessage((score).toString()),
         onPlayAgain: () {
           ref.read(divisibilityDashNotifierProvider.notifier).initGame();
           Navigator.pop(context);

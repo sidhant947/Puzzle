@@ -21,7 +21,7 @@ final userRepositoryProvider = Provider<UserRepository>.internal(
 );
 
 typedef UserRepositoryRef = ProviderRef<UserRepository>;
-String _$userDataNotifierHash() => r'e296964a329b7d74e20eb237138f9c98bad314a6';
+String _$userDataNotifierHash() => r'5a3d94a5abf4f508011a5f951d93278768b3e461';
 
 /// See also [UserDataNotifier].
 @ProviderFor(UserDataNotifier)

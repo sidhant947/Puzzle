@@ -34,7 +34,7 @@ class _MatrixReasoningScreenState extends ConsumerState<MatrixReasoningScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: state.isTrialMode ? 'COMPLETED!' : 'TIME\'S UP!',
-        message: 'You completed ${state.score} matrices correctly!',
+        message: AppLocalizations.of(context)!.matrixReasoningMessage((state.score).toString()),
         isVictory: state.isTrialMode ? state.score >= 8 : state.score > 5,
         onHome: () {
           Navigator.of(context).pop();

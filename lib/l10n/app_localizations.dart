@@ -3925,6 +3925,888 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Transform one word into another with one letter change'**
   String get oneLetterShiftSubtitle;
+
+  /// No description provided for @vocabularyBuilderMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Great job! Your vocabulary is impressive. Score: {arg0}'**
+  String vocabularyBuilderMessage(String arg0);
+
+  /// No description provided for @symmetryMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You mirrored the pattern perfectly with surgical precision.'**
+  String get symmetryMessage;
+
+  /// No description provided for @temporalOrderMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Incredible! Your temporal sequence memory is high-fidelity.'**
+  String get temporalOrderMessage;
+
+  /// No description provided for @temporalOrderMessage1.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect sequence memory. Practice makes perfect!'**
+  String get temporalOrderMessage1;
+
+  /// No description provided for @wordSearchMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'All words found successfully with keen observation.'**
+  String get wordSearchMessage;
+
+  /// No description provided for @colorMatchMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your accuracy: {arg0}%'**
+  String colorMatchMessage(String arg0);
+
+  /// No description provided for @semanticLinkMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {arg0} points!'**
+  String semanticLinkMessage(String arg0);
+
+  /// No description provided for @reflexTapMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You tapped {arg0} targets!'**
+  String reflexTapMessage(String arg0);
+
+  /// No description provided for @angleFinderMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your geometric intuition is perfect!'**
+  String get angleFinderMessage;
+
+  /// No description provided for @angleFinderMessage1.
+  ///
+  /// In en, this message translates to:
+  /// **'The correct answer was {arg0}°'**
+  String angleFinderMessage1(String arg0);
+
+  /// No description provided for @angleFinderText.
+  ///
+  /// In en, this message translates to:
+  /// **'{arg0}°'**
+  String angleFinderText(String arg0);
+
+  /// No description provided for @visualStatisticalLearningMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {arg0} correct patterns!'**
+  String visualStatisticalLearningMessage(String arg0);
+
+  /// No description provided for @nonogramText.
+  ///
+  /// In en, this message translates to:
+  /// **'Error: {arg0}'**
+  String nonogramText(String arg0);
+
+  /// No description provided for @mentalCalendarMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You got {arg0} correct out of 10!'**
+  String mentalCalendarMessage(String arg0);
+
+  /// No description provided for @orbitTapMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You successfully tapped {arg0} times!'**
+  String orbitTapMessage(String arg0);
+
+  /// No description provided for @schulteTableMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You completed the table in {arg0}.\\nKeep practicing to expand your peripheral vision!'**
+  String schulteTableMessage(String arg0);
+
+  /// No description provided for @schulteTableText.
+  ///
+  /// In en, this message translates to:
+  /// **'START TEST'**
+  String get schulteTableText;
+
+  /// No description provided for @relationalMemoryMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Fabulous spatial relational memory accuracy!'**
+  String get relationalMemoryMessage;
+
+  /// No description provided for @sudokuText.
+  ///
+  /// In en, this message translates to:
+  /// **'Error: {arg0}'**
+  String sudokuText(String arg0);
+
+  /// No description provided for @sdmtMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You matched {arg0} symbols! This test measures your scanning speed and visual attention.'**
+  String sdmtMessage(String arg0);
+
+  /// No description provided for @futoshikiMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Incredible! You solved the Futoshiki Latin Square.'**
+  String get futoshikiMessage;
+
+  /// No description provided for @letterFrequencyScanMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You correctly counted {arg0} occurrences of \"{arg1}\".'**
+  String letterFrequencyScanMessage(String arg0, String arg1);
+
+  /// No description provided for @letterFrequencyScanText.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect. The count was {arg0}.'**
+  String letterFrequencyScanText(String arg0);
+
+  /// No description provided for @memoryMatrixMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Impressive! Your working memory is sharp. Daily goal complete!'**
+  String get memoryMatrixMessage;
+
+  /// No description provided for @memoryMatrixMessage1.
+  ///
+  /// In en, this message translates to:
+  /// **'Focus and try again to improve your memory score.'**
+  String get memoryMatrixMessage1;
+
+  /// No description provided for @contextCluesMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Exceptional! Your vocabulary and contextual analysis are top notch.'**
+  String get contextCluesMessage;
+
+  /// No description provided for @contextCluesMessage1.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong word selected! Train your verbal context reasoning and try again.'**
+  String get contextCluesMessage1;
+
+  /// No description provided for @oneLetterShiftMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You correctly shifted {arg0} to {arg1}.'**
+  String oneLetterShiftMessage(String arg0, String arg1);
+
+  /// No description provided for @mentalAbacusMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your mental arithmetic is top-tier.'**
+  String get mentalAbacusMessage;
+
+  /// No description provided for @fractionMatcherMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {arg0} points matching representations!'**
+  String fractionMatcherMessage(String arg0);
+
+  /// No description provided for @spellingSprintMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You spelled all 10 words correctly!'**
+  String get spellingSprintMessage;
+
+  /// No description provided for @spellingSprintMessage1.
+  ///
+  /// In en, this message translates to:
+  /// **'You spelled {arg0} words.'**
+  String spellingSprintMessage1(String arg0);
+
+  /// No description provided for @stopSignalMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You achieved {arg0} correct responses! This test measures your ability to inhibit a planned action.'**
+  String stopSignalMessage(String arg0);
+
+  /// No description provided for @grammarPoliceMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Game Over! You maintained order in the world of grammar. Score: {arg0}'**
+  String grammarPoliceMessage(String arg0);
+
+  /// No description provided for @consonantReconstructMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You reconstructed a score of {arg0}!'**
+  String consonantReconstructMessage(String arg0);
+
+  /// No description provided for @rhymeMasterMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You found {arg0} out of {arg1} rhymes!'**
+  String rhymeMasterMessage(String arg0, String arg1);
+
+  /// No description provided for @vigilanceTaskMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Hits: {arg0}, Misses: {arg1}\\nFalse Alarms: {arg2}'**
+  String vigilanceTaskMessage(String arg0, String arg1, String arg2);
+
+  /// No description provided for @silhouetteMatchOrthoMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You have flawless orthographic alignment skills!'**
+  String get silhouetteMatchOrthoMessage;
+
+  /// No description provided for @silhouetteMatchOrthoText.
+  ///
+  /// In en, this message translates to:
+  /// **'GOT IT'**
+  String get silhouetteMatchOrthoText;
+
+  /// No description provided for @silhouetteMatchOrthoText1.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect perspective projection! Tap Reset to try again.'**
+  String get silhouetteMatchOrthoText1;
+
+  /// No description provided for @fibonacciMergeMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'{arg0}: {arg1}'**
+  String fibonacciMergeMessage(String arg0, String arg1);
+
+  /// No description provided for @factorFinderMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {arg0} points by finding all factors!'**
+  String factorFinderMessage(String arg0);
+
+  /// No description provided for @logicalSyllogismsMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You solved {arg0} syllogisms correctly!'**
+  String logicalSyllogismsMessage(String arg0);
+
+  /// No description provided for @rotatingMazeMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You successfully navigated the kinetic rotating maze!'**
+  String get rotatingMazeMessage;
+
+  /// No description provided for @rotatingMazeText.
+  ///
+  /// In en, this message translates to:
+  /// **'GOT IT'**
+  String get rotatingMazeText;
+
+  /// No description provided for @rotatingMazeText1.
+  ///
+  /// In en, this message translates to:
+  /// **'🌀 Maze rotated 90°! Grid shifted!'**
+  String get rotatingMazeText1;
+
+  /// No description provided for @mathPathMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You found the path that adds up to the target!'**
+  String get mathPathMessage;
+
+  /// No description provided for @bridgesMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You successfully connected all the islands!'**
+  String get bridgesMessage;
+
+  /// No description provided for @compoundConnectMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'The compound word is {arg0}{arg1}.'**
+  String compoundConnectMessage(String arg0, String arg1);
+
+  /// No description provided for @pangramSprintMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You built a sentence using all 26 letters.'**
+  String get pangramSprintMessage;
+
+  /// No description provided for @mirrorImageMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You perfectly identified the reflection.'**
+  String get mirrorImageMessage;
+
+  /// No description provided for @mirrorImageText.
+  ///
+  /// In en, this message translates to:
+  /// **'MIRROR IMAGE'**
+  String get mirrorImageText;
+
+  /// No description provided for @reverseStroopMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {arg0} points! Keep your eye on the instructions.'**
+  String reverseStroopMessage(String arg0);
+
+  /// No description provided for @verbalAnalogiesMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You have a sharp mind for relationships.'**
+  String get verbalAnalogiesMessage;
+
+  /// No description provided for @corsiBlocksMessage1.
+  ///
+  /// In en, this message translates to:
+  /// **'You recalled {arg1} sequences! Your spatial memory span reached {arg0}.'**
+  String corsiBlocksMessage1(String arg0, String arg1);
+
+  /// No description provided for @wordLadderMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You successfully connected {arg0} to {arg1} in {arg2} steps.'**
+  String wordLadderMessage(String arg0, String arg1, String arg2);
+
+  /// No description provided for @d2AttentionMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Incredible selective scanning! Final score: {arg0}.'**
+  String d2AttentionMessage(String arg0);
+
+  /// No description provided for @d2AttentionText.
+  ///
+  /// In en, this message translates to:
+  /// **'HOW TO PLAY'**
+  String get d2AttentionText;
+
+  /// No description provided for @d2AttentionText1.
+  ///
+  /// In en, this message translates to:
+  /// **'GOT IT'**
+  String get d2AttentionText1;
+
+  /// No description provided for @tangleFixMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'All lines are clear and smooth.'**
+  String get tangleFixMessage;
+
+  /// No description provided for @distractorMatrixMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Incredible! You recalled patterns despite cognitive math distractors!'**
+  String get distractorMatrixMessage;
+
+  /// No description provided for @distractorMatrixMessage1.
+  ///
+  /// In en, this message translates to:
+  /// **'The distractors got you! Retrain your working memory.'**
+  String get distractorMatrixMessage1;
+
+  /// No description provided for @sentenceUnscrambleMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You unscrambled a score of {arg0}!'**
+  String sentenceUnscrambleMessage(String arg0);
+
+  /// No description provided for @kakuroMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Incredible! You matched all sum segments perfectly.'**
+  String get kakuroMessage;
+
+  /// No description provided for @symbolicFlankerMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You got {arg0} correct out of {arg1}!'**
+  String symbolicFlankerMessage(String arg0, String arg1);
+
+  /// No description provided for @stroopTestMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {arg0} correctly! Focus on the color of the ink, not the word.'**
+  String stroopTestMessage(String arg0);
+
+  /// No description provided for @wisconsinCardSortingMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You correctly sorted {arg0} cards!'**
+  String wisconsinCardSortingMessage(String arg0);
+
+  /// No description provided for @nBackMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You achieved {arg0} 2-back matches! Your working memory is vital for multitasking.'**
+  String nBackMessage(String arg0);
+
+  /// No description provided for @rhythmMasterMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You got {arg0} perfect hits and {arg1} points!'**
+  String rhythmMasterMessage(String arg0, String arg1);
+
+  /// No description provided for @groceryListMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {arg0} points in Grocery List!'**
+  String groceryListMessage(String arg0);
+
+  /// No description provided for @groceryListText.
+  ///
+  /// In en, this message translates to:
+  /// **'I\\'**
+  String get groceryListText;
+
+  /// No description provided for @mirrorTracingMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your brain successfully rewired its coordination.'**
+  String get mirrorTracingMessage;
+
+  /// No description provided for @moduloClockMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent modular mental math coordination! Score: {arg0}'**
+  String moduloClockMessage(String arg0);
+
+  /// No description provided for @moduloClockMessage1.
+  ///
+  /// In en, this message translates to:
+  /// **'You managed {arg0} of {arg1} modular clock solutions. Score: {arg2}'**
+  String moduloClockMessage1(String arg0, String arg1, String arg2);
+
+  /// No description provided for @crownMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'All crowns placed successfully with perfect logic.'**
+  String get crownMessage;
+
+  /// No description provided for @dualCodingMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Fantastic dual-task performance! Your working memory score: {arg0}'**
+  String dualCodingMessage(String arg0);
+
+  /// No description provided for @inequalityDashMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {arg0} points matching inequalities!'**
+  String inequalityDashMessage(String arg0);
+
+  /// No description provided for @sourceMonitoringMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {arg0} out of {arg1}!'**
+  String sourceMonitoringMessage(String arg0, String arg1);
+
+  /// No description provided for @sourceMonitoringText.
+  ///
+  /// In en, this message translates to:
+  /// **'START RECALL'**
+  String get sourceMonitoringText;
+
+  /// No description provided for @memoryPalaceText.
+  ///
+  /// In en, this message translates to:
+  /// **'AVAILABLE WORDS'**
+  String get memoryPalaceText;
+
+  /// No description provided for @target10Message.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {arg0} points matching numbers to 10!'**
+  String target10Message(String arg0);
+
+  /// No description provided for @paperFoldingMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You can see the patterns in your mind.'**
+  String get paperFoldingMessage;
+
+  /// No description provided for @topologyText.
+  ///
+  /// In en, this message translates to:
+  /// **'{arg0}{arg1} / 10'**
+  String topologyText(String arg0, String arg1);
+
+  /// No description provided for @waterSortMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You sorted all the colors perfectly!'**
+  String get waterSortMessage;
+
+  /// No description provided for @anagramDefinitionMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'The word was indeed \"{arg0}\".'**
+  String anagramDefinitionMessage(String arg0);
+
+  /// No description provided for @game2048Message.
+  ///
+  /// In en, this message translates to:
+  /// **'{arg0}: {arg1}\\n{arg2}'**
+  String game2048Message(String arg0, String arg1, String arg2);
+
+  /// No description provided for @game2048Message1.
+  ///
+  /// In en, this message translates to:
+  /// **'{arg0}: {arg1}'**
+  String game2048Message1(String arg0, String arg1);
+
+  /// No description provided for @numericalEstimationMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You made {arg0} correct estimations.'**
+  String numericalEstimationMessage(String arg0);
+
+  /// No description provided for @grammarSortMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You sorted {arg0} words correctly!'**
+  String grammarSortMessage(String arg0);
+
+  /// No description provided for @vowelReconstructMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You reconstructed a score of {arg0}!'**
+  String vowelReconstructMessage(String arg0);
+
+  /// No description provided for @spatialConflictMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You achieved a score of {arg0} with {arg1} errors!'**
+  String spatialConflictMessage(String arg0, String arg1);
+
+  /// No description provided for @spatialConflictText.
+  ///
+  /// In en, this message translates to:
+  /// **'HOW TO PLAY'**
+  String get spatialConflictText;
+
+  /// No description provided for @spatialConflictText1.
+  ///
+  /// In en, this message translates to:
+  /// **'GOT IT'**
+  String get spatialConflictText1;
+
+  /// No description provided for @tracePathMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your accuracy was {arg0}%!'**
+  String tracePathMessage(String arg0);
+
+  /// No description provided for @ruleSwitcherMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {arg0} correct out of {arg1}!'**
+  String ruleSwitcherMessage(String arg0, String arg1);
+
+  /// No description provided for @collatzMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You took {arg0} steps. Min possible was {arg1}.'**
+  String collatzMessage(String arg0, String arg1);
+
+  /// No description provided for @collatzText.
+  ///
+  /// In en, this message translates to:
+  /// **'/ 2'**
+  String get collatzText;
+
+  /// No description provided for @collatzText1.
+  ///
+  /// In en, this message translates to:
+  /// **'+ 1'**
+  String get collatzText1;
+
+  /// No description provided for @collatzText2.
+  ///
+  /// In en, this message translates to:
+  /// **'3n + 1'**
+  String get collatzText2;
+
+  /// No description provided for @divisibilityDashMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You solved {arg0} numbers!'**
+  String divisibilityDashMessage(String arg0);
+
+  /// No description provided for @switchTaskMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {arg0} correctly! Fast switching is key to mental flexibility.'**
+  String switchTaskMessage(String arg0);
+
+  /// No description provided for @sequenceSleuthMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You solved {arg0} sequences!'**
+  String sequenceSleuthMessage(String arg0);
+
+  /// No description provided for @changeBlindnessMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You found {arg0} changes!'**
+  String changeBlindnessMessage(String arg0);
+
+  /// No description provided for @mentalRotationMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You rotated {arg0} shapes correctly!'**
+  String mentalRotationMessage(String arg0);
+
+  /// No description provided for @wordMastermindMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You mastered the code!\\nThe word was: {arg0}'**
+  String wordMastermindMessage(String arg0);
+
+  /// No description provided for @wordMastermindMessage1.
+  ///
+  /// In en, this message translates to:
+  /// **'The hidden word was: {arg0}'**
+  String wordMastermindMessage1(String arg0);
+
+  /// No description provided for @wordMastermindText.
+  ///
+  /// In en, this message translates to:
+  /// **'{arg0}'**
+  String wordMastermindText(String arg0);
+
+  /// No description provided for @simonSequenceMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You memorized all 10 tiles!'**
+  String get simonSequenceMessage;
+
+  /// No description provided for @simonSequenceMessage1.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again to master the sequence.'**
+  String get simonSequenceMessage1;
+
+  /// No description provided for @oxymoronHuntMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You found {arg0} oxymorons!'**
+  String oxymoronHuntMessage(String arg0);
+
+  /// No description provided for @spotlightTrackMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Incredible spatial tracking! You scored {arg0} points.'**
+  String spotlightTrackMessage(String arg0);
+
+  /// No description provided for @spotlightTrackText.
+  ///
+  /// In en, this message translates to:
+  /// **'HOW TO PLAY'**
+  String get spotlightTrackText;
+
+  /// No description provided for @spotlightTrackText1.
+  ///
+  /// In en, this message translates to:
+  /// **'GOT IT'**
+  String get spotlightTrackText1;
+
+  /// No description provided for @spotlightTrackText2.
+  ///
+  /// In en, this message translates to:
+  /// **'START ROUND'**
+  String get spotlightTrackText2;
+
+  /// No description provided for @vennNumbersMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You categorized {arg0} numbers!'**
+  String vennNumbersMessage(String arg0);
+
+  /// No description provided for @vennNumbersText.
+  ///
+  /// In en, this message translates to:
+  /// **'NEITHER'**
+  String get vennNumbersText;
+
+  /// No description provided for @vennNumbersText1.
+  ///
+  /// In en, this message translates to:
+  /// **'BOTH'**
+  String get vennNumbersText1;
+
+  /// No description provided for @silhouetteMatchMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your brain is excellent at 3D to 2D translation.'**
+  String get silhouetteMatchMessage;
+
+  /// No description provided for @sumSnakeMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Target {arg0} reached with perfect precision!'**
+  String sumSnakeMessage(String arg0);
+
+  /// No description provided for @sumSnakeText.
+  ///
+  /// In en, this message translates to:
+  /// **'CLEAR PATH'**
+  String get sumSnakeText;
+
+  /// No description provided for @percentagePeakMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You solved {arg0} percentage problems!'**
+  String percentagePeakMessage(String arg0);
+
+  /// No description provided for @trailMakingMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You completed {arg0} trails! This test measures your visual search speed and mental flexibility.'**
+  String trailMakingMessage(String arg0);
+
+  /// No description provided for @matrixReasoningMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You completed {arg0} matrices correctly!'**
+  String matrixReasoningMessage(String arg0);
+
+  /// No description provided for @tentsAndTreesMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You have successfully placed all the tents.'**
+  String get tentsAndTreesMessage;
+
+  /// No description provided for @klotskiMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Sensational sliding! You freed the Hero block in {arg0} moves.'**
+  String klotskiMessage(String arg0);
+
+  /// No description provided for @sumPyramidMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You solved {arg0} sum pyramids successfully!'**
+  String sumPyramidMessage(String arg0);
+
+  /// No description provided for @simonCommandMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent selective response and focus! Total Score: {arg0}'**
+  String simonCommandMessage(String arg0);
+
+  /// No description provided for @simonCommandMessage1.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {arg0} but did not reach {arg1} matches in time.'**
+  String simonCommandMessage1(String arg0, String arg1);
+
+  /// No description provided for @syllableStackMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You stacked up a score of {arg0}!'**
+  String syllableStackMessage(String arg0);
+
+  /// No description provided for @slitherlinkMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Awesome! You successfully completed the loop puzzle.'**
+  String get slitherlinkMessage;
+
+  /// No description provided for @quickMathMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You solved {arg0} problems!'**
+  String quickMathMessage(String arg0);
+
+  /// No description provided for @commonDenominatorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You solved {arg0} GCD/LCM problems!'**
+  String commonDenominatorMessage(String arg0);
+
+  /// No description provided for @chainReactionMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your final score is {arg0}. You built a chain of {arg1} words.'**
+  String chainReactionMessage(String arg0, String arg1);
+
+  /// No description provided for @chainReactionText.
+  ///
+  /// In en, this message translates to:
+  /// **'{arg0}'**
+  String chainReactionText(String arg0);
+
+  /// No description provided for @associativePairsMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Brilliant! You associated visual traits flawlessly.'**
+  String get associativePairsMessage;
+
+  /// No description provided for @associativePairsMessage1.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong association! Sharpen your link memory and try again.'**
+  String get associativePairsMessage1;
+
+  /// No description provided for @portmanteauSplitMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You split {arg0} portmanteaus!'**
+  String portmanteauSplitMessage(String arg0);
+
+  /// No description provided for @magicSquaresText.
+  ///
+  /// In en, this message translates to:
+  /// **'CLEAR'**
+  String get magicSquaresText;
+
+  /// No description provided for @alphabetSudokuText.
+  ///
+  /// In en, this message translates to:
+  /// **'Error: {arg0}'**
+  String alphabetSudokuText(String arg0);
+
+  /// No description provided for @pipesMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You connected all the pipes and filled the grid.'**
+  String get pipesMessage;
+
+  /// No description provided for @dualMirrorMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You navigated both icons to their targets!'**
+  String get dualMirrorMessage;
+
+  /// No description provided for @binaryCodeMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Sensational rapid decimal translation! Final Score: {arg0}'**
+  String binaryCodeMessage(String arg0);
+
+  /// No description provided for @binaryCodeMessage1.
+  ///
+  /// In en, this message translates to:
+  /// **'You correctly converted {arg0} binary numbers. Score: {arg1}'**
+  String binaryCodeMessage1(String arg0, String arg1);
+
+  /// No description provided for @oddOneOutMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You found 50 odd ones! Final score: {arg0}'**
+  String oddOneOutMessage(String arg0);
+
+  /// No description provided for @oddOneOutMessage1.
+  ///
+  /// In en, this message translates to:
+  /// **'Your score: {arg0}'**
+  String oddOneOutMessage1(String arg0);
+
+  /// No description provided for @letterBridgeMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You found the bridge letter: {arg0}'**
+  String letterBridgeMessage(String arg0);
+
+  /// No description provided for @imReady.
+  ///
+  /// In en, this message translates to:
+  /// **'I\'M READY'**
+  String get imReady;
 }
 
 class _AppLocalizationsDelegate

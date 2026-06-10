@@ -37,7 +37,7 @@ class _CorsiBlocksScreenState extends ConsumerState<CorsiBlocksScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'SPATIAL MASTER!' : 'LOST IN SPACE',
-        message: 'You recalled $score sequences! Your spatial memory span reached ${ref.read(corsiBlocksNotifierProvider).currentLength}.',
+        message: AppLocalizations.of(context)!.corsiBlocksMessage1((ref.read(corsiBlocksNotifierProvider).currentLength).toString(), (score).toString()),
         onPlayAgain: () {
           ref.read(corsiBlocksNotifierProvider.notifier).initGame();
           Navigator.pop(context);

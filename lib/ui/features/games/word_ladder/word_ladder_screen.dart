@@ -271,7 +271,7 @@ class WordLadderScreen extends ConsumerWidget {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: 'CONGRATS',
-        message: 'You successfully connected ${state.startWord} to ${state.endWord} in ${state.ladder.length} steps.',
+        message: AppLocalizations.of(context)!.wordLadderMessage((state.startWord).toString(), (state.endWord).toString(), (state.ladder.length).toString()),
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();

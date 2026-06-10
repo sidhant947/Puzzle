@@ -169,7 +169,7 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: 'CROWNED!',
-        message: 'All crowns placed successfully with perfect logic.',
+        message: AppLocalizations.of(context)!.crownMessage,
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();

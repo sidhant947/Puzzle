@@ -36,7 +36,7 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'GROCERY GURU!' : 'FORGOT SOMETHING?',
-        message: 'You scored $score points in Grocery List!',
+        message: AppLocalizations.of(context)!.groceryListMessage((score).toString()),
         isVictory: won,
         onPlayAgain: () {
           ref.read(groceryListNotifierProvider.notifier).initGame();
@@ -131,7 +131,7 @@ class _GroceryListScreenState extends ConsumerState<GroceryListScreen> {
           color: DesignSystem.primary,
           shadowColor: DesignSystem.primaryShadow,
           padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
-          child: const Text('I\'M READY', style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900)),
+          child: Text(AppLocalizations.of(context)!.imReady, style: const TextStyle(color: Colors.white, fontWeight: FontWeight.w900)),
         ),
       ],
     );

@@ -32,7 +32,7 @@ class _SilhouetteMatchScreenState extends ConsumerState<SilhouetteMatchScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.silhouetteMatchTitle.toUpperCase(),
-        message: 'Your brain is excellent at 3D to 2D translation.',
+        message: AppLocalizations.of(context)!.silhouetteMatchMessage,
         isVictory: true,
         onHome: () {
           Navigator.of(context).pop();

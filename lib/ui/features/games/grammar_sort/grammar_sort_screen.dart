@@ -35,7 +35,7 @@ class _GrammarSortScreenState extends ConsumerState<GrammarSortScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.gameOver.toUpperCase(),
-        message: 'You sorted ${state.score / 10} words correctly!',
+        message: AppLocalizations.of(context)!.grammarSortMessage((state.score / 10).toString()),
         isVictory: state.score > 0,
         onHome: () {
           Navigator.of(context).pop();

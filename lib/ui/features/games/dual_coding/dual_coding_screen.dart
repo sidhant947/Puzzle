@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
@@ -46,7 +47,7 @@ class _DualCodingScreenState extends ConsumerState<DualCodingScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: 'DUAL CODING COMPLETE',
-        message: 'Fantastic dual-task performance! Your working memory score: ${state.score}',
+        message: AppLocalizations.of(context)!.dualCodingMessage((state.score).toString()),
         isVictory: state.score >= 12,
         onHome: () {
           Navigator.of(context).pop();

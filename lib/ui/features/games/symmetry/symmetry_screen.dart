@@ -173,7 +173,7 @@ class _SymmetryScreenState extends ConsumerState<SymmetryScreen> {
           ref.read(symmetryNotifierProvider.notifier).reset();
           Navigator.of(context).pop();
         },
-        message: 'You mirrored the pattern perfectly with surgical precision.',
+        message: AppLocalizations.of(context)!.symmetryMessage,
       ),
     );
   }

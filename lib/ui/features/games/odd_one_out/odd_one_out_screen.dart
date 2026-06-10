@@ -219,7 +219,7 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
           Navigator.of(context).pop();
         },
         title: 'CONGRATS',
-        message: 'You found 50 odd ones! Final score: ${ref.read(oddOneOutNotifierProvider).score}',
+        message: AppLocalizations.of(context)!.oddOneOutMessage((ref.read(oddOneOutNotifierProvider).score).toString()),
       ),
     );
   }
@@ -241,7 +241,7 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
           Navigator.of(context).pop();
         },
         title: 'TIME IS UP!',
-        message: 'Your score: ${ref.read(oddOneOutNotifierProvider).score}',
+        message: AppLocalizations.of(context)!.oddOneOutMessage1((ref.read(oddOneOutNotifierProvider).score).toString()),
       ),
     );
   }

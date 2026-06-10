@@ -34,7 +34,7 @@ class _CommonDenominatorScreenState extends ConsumerState<CommonDenominatorScree
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'MATH WIZARD!' : l10n.timeUp.toUpperCase(),
-        message: 'You solved $score GCD/LCM problems!',
+        message: AppLocalizations.of(context)!.commonDenominatorMessage((score).toString()),
         onPlayAgain: () {
           ref.read(commonDenominatorNotifierProvider.notifier).initGame();
           Navigator.pop(context);

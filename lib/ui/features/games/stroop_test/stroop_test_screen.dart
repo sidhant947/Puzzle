@@ -37,7 +37,7 @@ class _StroopTestScreenState extends ConsumerState<StroopTestScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'NEURO-MASTER!' : 'BRAIN FOG',
-        message: 'You scored $score correctly! Focus on the color of the ink, not the word.',
+        message: AppLocalizations.of(context)!.stroopTestMessage((score).toString()),
         onPlayAgain: () {
           ref.read(stroopTestNotifierProvider.notifier).initGame();
           Navigator.pop(context);

@@ -166,7 +166,7 @@ class PipesScreen extends ConsumerWidget {
           Navigator.of(context).pop();
         },
         title: 'CONGRATS',
-        message: 'You connected all the pipes and filled the grid.',
+        message: AppLocalizations.of(context)!.pipesMessage,
       ),
     );
   }

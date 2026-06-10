@@ -38,7 +38,7 @@ class _ReverseStroopScreenState extends ConsumerState<ReverseStroopScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'FOCUS MASTER!' : 'CONCENTRATION BROKEN',
-        message: 'You scored $score points! Keep your eye on the instructions.',
+        message: AppLocalizations.of(context)!.reverseStroopMessage((score).toString()),
         onPlayAgain: () {
           ref.read(reverseStroopNotifierProvider.notifier).startGame();
           Navigator.pop(context);

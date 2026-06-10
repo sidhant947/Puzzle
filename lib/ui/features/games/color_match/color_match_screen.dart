@@ -159,7 +159,7 @@ class ColorMatchScreen extends ConsumerWidget {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: 'MATCH RESULT',
-        message: 'Your accuracy: ${state.score.toStringAsFixed(1)}%',
+        message: AppLocalizations.of(context)!.colorMatchMessage((state.score.toStringAsFixed(1)).toString()),
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();

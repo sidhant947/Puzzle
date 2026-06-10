@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'slitherlink_provider.dart';
@@ -23,7 +24,7 @@ class SlitherlinkScreen extends ConsumerWidget {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: 'LOOP COMPLETED',
-            message: 'Awesome! You successfully completed the loop puzzle.',
+            message: AppLocalizations.of(context)!.slitherlinkMessage,
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();

@@ -37,7 +37,7 @@ class _StopSignalScreenState extends ConsumerState<StopSignalScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'TOTAL CONTROL!' : 'INHIBITION FAIL',
-        message: 'You achieved $score correct responses! This test measures your ability to inhibit a planned action.',
+        message: AppLocalizations.of(context)!.stopSignalMessage((score).toString()),
         onPlayAgain: () {
           ref.read(stopSignalNotifierProvider.notifier).initGame();
           Navigator.pop(context);

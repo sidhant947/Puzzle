@@ -40,7 +40,7 @@ class _AngleFinderScreenState extends ConsumerState<AngleFinderScreen> {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: l10n.angleFinderTitle.toUpperCase(),
-            message: "Your geometric intuition is perfect!",
+            message: AppLocalizations.of(context)!.angleFinderMessage,
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
@@ -58,7 +58,7 @@ class _AngleFinderScreenState extends ConsumerState<AngleFinderScreen> {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: l10n.gameOver.toUpperCase(),
-            message: "The correct answer was ${state.currentProblem?.answer}°",
+            message: AppLocalizations.of(context)!.angleFinderMessage1((state.currentProblem?.answer).toString()),
             isVictory: false,
             onHome: () {
               Navigator.of(context).pop();
@@ -148,7 +148,7 @@ class _AngleFinderScreenState extends ConsumerState<AngleFinderScreen> {
             HapticFeedbackUtil.selectionClick();
             notifier.selectOption(opt);
           },
-          child: Text("$opt°"),
+          child: Text(AppLocalizations.of(context)!.angleFinderText((opt).toString())),
         );
       }).toList(),
     );

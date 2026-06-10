@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -87,7 +88,7 @@ class _SimonCommandScreenState extends ConsumerState<SimonCommandScreen> {
         barrierDismissible: false,
         builder: (context) => GameCompletionDialog(
           title: "COMMAND ACCOMPLISHED",
-          message: "Excellent selective response and focus! Total Score: $_score",
+          message: AppLocalizations.of(context)!.simonCommandMessage((_score).toString()),
           onHome: () {
             Navigator.pop(context);
             Navigator.pop(context);
@@ -115,7 +116,7 @@ class _SimonCommandScreenState extends ConsumerState<SimonCommandScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: "TIME'S UP!",
-        message: "You scored $_score but did not reach $targetScore matches in time.",
+        message: AppLocalizations.of(context)!.simonCommandMessage1((_score).toString(), (targetScore).toString()),
         isVictory: false,
         onHome: () {
           Navigator.pop(context);

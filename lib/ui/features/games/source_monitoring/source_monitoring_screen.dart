@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -36,7 +37,7 @@ class _SourceMonitoringScreenState extends ConsumerState<SourceMonitoringScreen>
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: 'MEMORY MASTER!',
-            message: 'You scored ${next.score} out of ${next.currentLevel?.questions.length}!',
+            message: AppLocalizations.of(context)!.sourceMonitoringMessage((next.score).toString(), (next.currentLevel?.questions.length).toString()),
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
@@ -93,7 +94,7 @@ class _SourceMonitoringScreenState extends ConsumerState<SourceMonitoringScreen>
               child: TangibleButton(
                 onTap: () => ref.read(sourceMonitoringNotifierProvider.notifier).startRecall(),
                 color: colorScheme.primary,
-                child: const Text('START RECALL', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                child: Text(AppLocalizations.of(context)!.sourceMonitoringText, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
               ),
             ),
           ],

@@ -35,7 +35,7 @@ class _TangleFixScreenState extends ConsumerState<TangleFixScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.tangleFixTitle.toUpperCase(),
-        message: 'All lines are clear and smooth.',
+        message: AppLocalizations.of(context)!.tangleFixMessage,
         isVictory: true,
         onHome: () {
           Navigator.of(context).pop();

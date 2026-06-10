@@ -153,7 +153,7 @@ class MemoryPalaceScreen extends ConsumerWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const Text('AVAILABLE WORDS', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, letterSpacing: 1.2)),
+        Text(AppLocalizations.of(context)!.memoryPalaceText, style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, letterSpacing: 1.2)),
         const SizedBox(height: 12),
         Wrap(
           spacing: 8,

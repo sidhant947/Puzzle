@@ -192,7 +192,7 @@ class BridgesScreen extends ConsumerWidget {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: 'CONNECTED!',
-        message: 'You successfully connected all the islands!',
+        message: AppLocalizations.of(context)!.bridgesMessage,
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();

@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'd2_attention_engine.dart';
@@ -25,7 +26,7 @@ class D2AttentionScreen extends ConsumerWidget {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: 'VICTORY',
-            message: 'Incredible selective scanning! Final score: ${next.score}.',
+            message: AppLocalizations.of(context)!.d2AttentionMessage((next.score).toString()),
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
@@ -50,7 +51,7 @@ class D2AttentionScreen extends ConsumerWidget {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text('HOW TO PLAY'),
+            title: Text(AppLocalizations.of(context)!.d2AttentionText),
             content: const Text(
               'You will see rows of letters "d" and "p" with small dashes above and/or below them.\n\n'
               'Select ONLY the letters "d" that have EXACTLY two dashes in total (e.g. 1 above and 1 below, or 2 above, or 2 below).\n\n'
@@ -59,7 +60,7 @@ class D2AttentionScreen extends ConsumerWidget {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('GOT IT'),
+                child: Text(AppLocalizations.of(context)!.d2AttentionText1),
               ),
             ],
           ),

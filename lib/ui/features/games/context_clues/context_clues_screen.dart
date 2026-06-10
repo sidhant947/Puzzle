@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -24,7 +25,7 @@ class ContextCluesScreen extends ConsumerWidget {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: 'CONTEXT CLUES COMPLETE',
-            message: 'Exceptional! Your vocabulary and contextual analysis are top notch.',
+            message: AppLocalizations.of(context)!.contextCluesMessage,
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
@@ -43,7 +44,7 @@ class ContextCluesScreen extends ConsumerWidget {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: 'GAME OVER',
-            message: 'Wrong word selected! Train your verbal context reasoning and try again.',
+            message: AppLocalizations.of(context)!.contextCluesMessage1,
             isVictory: false,
             onHome: () {
               Navigator.of(context).pop();

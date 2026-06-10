@@ -33,7 +33,7 @@ class _MentalRotationScreenState extends ConsumerState<MentalRotationScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: state.isTrialMode ? 'COMPLETED!' : 'TIME\'S UP!',
-        message: 'You rotated ${state.score} shapes correctly!',
+        message: AppLocalizations.of(context)!.mentalRotationMessage((state.score).toString()),
         isVictory: state.isTrialMode ? state.score >= 8 : state.score > 5,
         onHome: () {
           Navigator.of(context).pop();

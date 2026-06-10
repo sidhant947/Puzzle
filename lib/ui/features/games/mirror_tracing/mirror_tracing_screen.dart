@@ -24,7 +24,7 @@ class _MirrorTracingScreenState extends ConsumerState<MirrorTracingScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: 'Mirror Tracing'.toUpperCase(),
-        message: 'Your brain successfully rewired its coordination.',
+        message: AppLocalizations.of(context)!.mirrorTracingMessage,
         isVictory: true,
         onHome: () {
           Navigator.of(context).pop();

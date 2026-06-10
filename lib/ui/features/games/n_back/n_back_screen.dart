@@ -37,7 +37,7 @@ class _NBackScreenState extends ConsumerState<NBackScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'MEMORY MASTER!' : 'FADING ECHO',
-        message: 'You achieved $score 2-back matches! Your working memory is vital for multitasking.',
+        message: AppLocalizations.of(context)!.nBackMessage((score).toString()),
         onPlayAgain: () {
           ref.read(nBackNotifierProvider.notifier).initGame();
           Navigator.pop(context);

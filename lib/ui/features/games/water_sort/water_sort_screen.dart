@@ -37,7 +37,7 @@ class WaterSortScreen extends ConsumerWidget {
                   Navigator.of(context).pop();
                 },
                 title: l10n.waterSortTitle.toUpperCase(),
-                message: 'You sorted all the colors perfectly!',
+                message: AppLocalizations.of(context)!.waterSortMessage,
               ),
             );
           }

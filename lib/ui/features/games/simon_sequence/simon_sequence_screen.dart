@@ -166,7 +166,7 @@ class _SimonSequenceScreenState extends ConsumerState<SimonSequenceScreen> {
             Navigator.of(context).pop();
           },
           title: 'CONGRATS',
-          message: 'You memorized all 10 tiles!',
+          message: AppLocalizations.of(context)!.simonSequenceMessage,
         ),
       );
       return;
@@ -177,7 +177,7 @@ class _SimonSequenceScreenState extends ConsumerState<SimonSequenceScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: 'WRONG SEQUENCE',
-        message: 'Try again to master the sequence.',
+        message: AppLocalizations.of(context)!.simonSequenceMessage1,
         onPlayAgain: () {
           Navigator.pop(context);
           ref.read(simonSequenceNotifierProvider.notifier).reset();

@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -45,7 +46,7 @@ class _FactorFinderScreenState extends ConsumerState<FactorFinderScreen> {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: 'TIME\'S UP!',
-            message: 'You scored ${next.score} points by finding all factors!',
+            message: AppLocalizations.of(context)!.factorFinderMessage((next.score).toString()),
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();

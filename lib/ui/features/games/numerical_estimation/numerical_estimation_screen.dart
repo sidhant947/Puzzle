@@ -33,7 +33,7 @@ class _NumericalEstimationScreenState extends ConsumerState<NumericalEstimationS
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: state.isTrialMode ? l10n.completed.toUpperCase() : l10n.timeUp.toUpperCase(),
-        message: 'You made ${state.score} correct estimations.',
+        message: AppLocalizations.of(context)!.numericalEstimationMessage((state.score).toString()),
         isVictory: state.isTrialMode ? state.score >= 10 : state.score > 5,
         onHome: () {
           Navigator.of(context).pop();

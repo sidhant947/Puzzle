@@ -34,7 +34,7 @@ class _PercentagePeakScreenState extends ConsumerState<PercentagePeakScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'PERCENTAGE PRO!' : l10n.timeUp.toUpperCase(),
-        message: 'You solved $score percentage problems!',
+        message: AppLocalizations.of(context)!.percentagePeakMessage((score).toString()),
         onPlayAgain: () {
           ref.read(percentagePeakNotifierProvider.notifier).initGame();
           Navigator.pop(context);

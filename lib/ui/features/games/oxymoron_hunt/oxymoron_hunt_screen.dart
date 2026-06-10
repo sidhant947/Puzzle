@@ -33,7 +33,7 @@ class _OxymoronHuntScreenState extends ConsumerState<OxymoronHuntScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.timeUp.toUpperCase(),
-        message: 'You found $score oxymorons!',
+        message: AppLocalizations.of(context)!.oxymoronHuntMessage((score).toString()),
         isVictory: score > 3,
         onHome: () {
           Navigator.of(context).pop();

@@ -120,7 +120,7 @@ class WordMastermindScreen extends ConsumerWidget {
       ),
       child: Row(
         children: [
-          Text('$count', style: TextStyle(fontWeight: FontWeight.w900, color: color, fontSize: 12)),
+          Text(AppLocalizations.of(context)!.wordMastermindText((count).toString()), style: TextStyle(fontWeight: FontWeight.w900, color: color, fontSize: 12)),
           SizedBox(width: 2),
           Text(label, style: TextStyle(fontSize: 9, fontWeight: FontWeight.w900, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7))),
         ],
@@ -251,7 +251,7 @@ class WordMastermindScreen extends ConsumerWidget {
             Navigator.of(context).pop();
           },
           title: 'SOLVED!',
-          message: 'You mastered the code!\nThe word was: ${state.targetWord}',
+          message: AppLocalizations.of(context)!.wordMastermindMessage((state.targetWord).toString()),
         ),
       );
       return;
@@ -273,7 +273,7 @@ class WordMastermindScreen extends ConsumerWidget {
           Navigator.of(context).pop();
         },
         title: 'OUT OF TRIES',
-        message: 'The hidden word was: ${state.targetWord.toUpperCase()}',
+        message: AppLocalizations.of(context)!.wordMastermindMessage1((state.targetWord.toUpperCase()).toString()),
       ),
     );
   }

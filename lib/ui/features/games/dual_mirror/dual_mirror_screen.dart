@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -36,7 +37,7 @@ class _DualMirrorScreenState extends ConsumerState<DualMirrorScreen> {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: 'MAZE MASTERED!',
-            message: 'You navigated both icons to their targets!',
+            message: AppLocalizations.of(context)!.dualMirrorMessage,
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();

@@ -31,7 +31,7 @@ class _VisualStatisticalLearningScreenState extends ConsumerState<VisualStatisti
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.visualStatisticalLearningTitle.toUpperCase(),
-        message: 'You scored ${state.score} correct patterns!',
+        message: AppLocalizations.of(context)!.visualStatisticalLearningMessage((state.score).toString()),
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();

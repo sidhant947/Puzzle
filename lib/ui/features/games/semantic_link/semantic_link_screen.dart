@@ -33,7 +33,7 @@ class _SemanticLinkScreenState extends ConsumerState<SemanticLinkScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.timeUp.toUpperCase(),
-        message: 'You scored $score points!',
+        message: AppLocalizations.of(context)!.semanticLinkMessage((score).toString()),
         isVictory: score > 5,
         onHome: () {
           Navigator.of(context).pop();

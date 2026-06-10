@@ -32,7 +32,7 @@ class _MentalAbacusScreenState extends ConsumerState<MentalAbacusScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.mentalAbacusTitle.toUpperCase(),
-        message: 'Your mental arithmetic is top-tier.',
+        message: AppLocalizations.of(context)!.mentalAbacusMessage,
         isVictory: true,
         onHome: () {
           Navigator.of(context).pop();

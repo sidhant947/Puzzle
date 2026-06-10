@@ -32,7 +32,7 @@ class _WisconsinCardSortingScreenState extends ConsumerState<WisconsinCardSortin
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.wisconsinCardSortingTitle.toUpperCase(),
-        message: 'You correctly sorted ${state.score} cards!',
+        message: AppLocalizations.of(context)!.wisconsinCardSortingMessage((state.score).toString()),
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();

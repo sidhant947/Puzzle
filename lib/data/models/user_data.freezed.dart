@@ -34,10 +34,6 @@ mixin _$UserData {
   List<String>? get favoriteGameIds => throw _privateConstructorUsedError;
   @HiveField(6)
   bool? get isTrialModeEnabled => throw _privateConstructorUsedError;
-  @HiveField(7)
-  String? get name => throw _privateConstructorUsedError;
-  @HiveField(8)
-  bool? get isOnboarded => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -57,9 +53,7 @@ abstract class $UserDataCopyWith<$Res> {
       @HiveField(3) DateTime? lastSuperStreakDate,
       @HiveField(4) int? totalSolved,
       @HiveField(5) List<String>? favoriteGameIds,
-      @HiveField(6) bool? isTrialModeEnabled,
-      @HiveField(7) String? name,
-      @HiveField(8) bool? isOnboarded});
+      @HiveField(6) bool? isTrialModeEnabled});
 }
 
 /// @nodoc
@@ -82,8 +76,6 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
     Object? totalSolved = freezed,
     Object? favoriteGameIds = freezed,
     Object? isTrialModeEnabled = freezed,
-    Object? name = freezed,
-    Object? isOnboarded = freezed,
   }) {
     return _then(_value.copyWith(
       xp: null == xp
@@ -114,14 +106,6 @@ class _$UserDataCopyWithImpl<$Res, $Val extends UserData>
           ? _value.isTrialModeEnabled
           : isTrialModeEnabled // ignore: cast_nullable_to_non_nullable
               as bool?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isOnboarded: freezed == isOnboarded
-          ? _value.isOnboarded
-          : isOnboarded // ignore: cast_nullable_to_non_nullable
-              as bool?,
     ) as $Val);
   }
 }
@@ -141,9 +125,7 @@ abstract class _$$UserDataImplCopyWith<$Res>
       @HiveField(3) DateTime? lastSuperStreakDate,
       @HiveField(4) int? totalSolved,
       @HiveField(5) List<String>? favoriteGameIds,
-      @HiveField(6) bool? isTrialModeEnabled,
-      @HiveField(7) String? name,
-      @HiveField(8) bool? isOnboarded});
+      @HiveField(6) bool? isTrialModeEnabled});
 }
 
 /// @nodoc
@@ -164,8 +146,6 @@ class __$$UserDataImplCopyWithImpl<$Res>
     Object? totalSolved = freezed,
     Object? favoriteGameIds = freezed,
     Object? isTrialModeEnabled = freezed,
-    Object? name = freezed,
-    Object? isOnboarded = freezed,
   }) {
     return _then(_$UserDataImpl(
       xp: null == xp
@@ -196,14 +176,6 @@ class __$$UserDataImplCopyWithImpl<$Res>
           ? _value.isTrialModeEnabled
           : isTrialModeEnabled // ignore: cast_nullable_to_non_nullable
               as bool?,
-      name: freezed == name
-          ? _value.name
-          : name // ignore: cast_nullable_to_non_nullable
-              as String?,
-      isOnboarded: freezed == isOnboarded
-          ? _value.isOnboarded
-          : isOnboarded // ignore: cast_nullable_to_non_nullable
-              as bool?,
     ));
   }
 }
@@ -219,9 +191,7 @@ class _$UserDataImpl implements _UserData {
       @HiveField(3) this.lastSuperStreakDate,
       @HiveField(4) this.totalSolved,
       @HiveField(5) final List<String>? favoriteGameIds,
-      @HiveField(6) this.isTrialModeEnabled,
-      @HiveField(7) this.name,
-      @HiveField(8) this.isOnboarded})
+      @HiveField(6) this.isTrialModeEnabled})
       : _favoriteGameIds = favoriteGameIds;
 
   factory _$UserDataImpl.fromJson(Map<String, dynamic> json) =>
@@ -256,16 +226,10 @@ class _$UserDataImpl implements _UserData {
   @override
   @HiveField(6)
   final bool? isTrialModeEnabled;
-  @override
-  @HiveField(7)
-  final String? name;
-  @override
-  @HiveField(8)
-  final bool? isOnboarded;
 
   @override
   String toString() {
-    return 'UserData(xp: $xp, level: $level, superStreak: $superStreak, lastSuperStreakDate: $lastSuperStreakDate, totalSolved: $totalSolved, favoriteGameIds: $favoriteGameIds, isTrialModeEnabled: $isTrialModeEnabled, name: $name, isOnboarded: $isOnboarded)';
+    return 'UserData(xp: $xp, level: $level, superStreak: $superStreak, lastSuperStreakDate: $lastSuperStreakDate, totalSolved: $totalSolved, favoriteGameIds: $favoriteGameIds, isTrialModeEnabled: $isTrialModeEnabled)';
   }
 
   @override
@@ -284,10 +248,7 @@ class _$UserDataImpl implements _UserData {
             const DeepCollectionEquality()
                 .equals(other._favoriteGameIds, _favoriteGameIds) &&
             (identical(other.isTrialModeEnabled, isTrialModeEnabled) ||
-                other.isTrialModeEnabled == isTrialModeEnabled) &&
-            (identical(other.name, name) || other.name == name) &&
-            (identical(other.isOnboarded, isOnboarded) ||
-                other.isOnboarded == isOnboarded));
+                other.isTrialModeEnabled == isTrialModeEnabled));
   }
 
   @JsonKey(ignore: true)
@@ -300,9 +261,7 @@ class _$UserDataImpl implements _UserData {
       lastSuperStreakDate,
       totalSolved,
       const DeepCollectionEquality().hash(_favoriteGameIds),
-      isTrialModeEnabled,
-      name,
-      isOnboarded);
+      isTrialModeEnabled);
 
   @JsonKey(ignore: true)
   @override
@@ -326,9 +285,7 @@ abstract class _UserData implements UserData {
       @HiveField(3) final DateTime? lastSuperStreakDate,
       @HiveField(4) final int? totalSolved,
       @HiveField(5) final List<String>? favoriteGameIds,
-      @HiveField(6) final bool? isTrialModeEnabled,
-      @HiveField(7) final String? name,
-      @HiveField(8) final bool? isOnboarded}) = _$UserDataImpl;
+      @HiveField(6) final bool? isTrialModeEnabled}) = _$UserDataImpl;
 
   factory _UserData.fromJson(Map<String, dynamic> json) =
       _$UserDataImpl.fromJson;
@@ -354,12 +311,6 @@ abstract class _UserData implements UserData {
   @override
   @HiveField(6)
   bool? get isTrialModeEnabled;
-  @override
-  @HiveField(7)
-  String? get name;
-  @override
-  @HiveField(8)
-  bool? get isOnboarded;
   @override
   @JsonKey(ignore: true)
   _$$UserDataImplCopyWith<_$UserDataImpl> get copyWith =>

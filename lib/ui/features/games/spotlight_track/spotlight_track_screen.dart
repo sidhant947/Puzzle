@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'spotlight_track_engine.dart';
@@ -25,7 +26,7 @@ class SpotlightTrackScreen extends ConsumerWidget {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: 'VICTORY',
-            message: 'Incredible spatial tracking! You scored ${next.score} points.',
+            message: AppLocalizations.of(context)!.spotlightTrackMessage((next.score).toString()),
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
@@ -54,7 +55,7 @@ class SpotlightTrackScreen extends ConsumerWidget {
         showDialog(
           context: context,
           builder: (context) => AlertDialog(
-            title: const Text('HOW TO PLAY'),
+            title: Text(AppLocalizations.of(context)!.spotlightTrackText),
             content: const Text(
               'A bright cyan target will move along a path. The screen will be dark except for a sweeping spotlight.\n\n'
               'The target is ONLY visible when the spotlight shines on it.\n\n'
@@ -63,7 +64,7 @@ class SpotlightTrackScreen extends ConsumerWidget {
             actions: [
               TextButton(
                 onPressed: () => Navigator.pop(context),
-                child: const Text('GOT IT'),
+                child: Text(AppLocalizations.of(context)!.spotlightTrackText1),
               ),
             ],
           ),
@@ -250,7 +251,7 @@ class _SpotlightTrackingBoardState extends State<_SpotlightTrackingBoard> with S
               },
               color: DesignSystem.gameCyan,
               shadowColor: const Color(0xFF0891B2),
-              child: const Text('START ROUND'),
+              child: Text(AppLocalizations.of(context)!.spotlightTrackText2),
             ),
           ],
         ),

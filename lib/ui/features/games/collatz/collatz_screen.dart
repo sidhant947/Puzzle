@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -36,7 +37,7 @@ class _CollatzScreenState extends ConsumerState<CollatzScreen> {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: 'REACHED ONE!',
-            message: 'You took ${next.stepsTaken} steps. Min possible was ${next.currentLevel?.minSteps}.',
+            message: AppLocalizations.of(context)!.collatzMessage((next.stepsTaken).toString(), (next.currentLevel?.minSteps).toString()),
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
@@ -108,7 +109,7 @@ class _CollatzScreenState extends ConsumerState<CollatzScreen> {
                             ref.read(collatzNotifierProvider.notifier).makeMove(0);
                           } : null,
                           color: isEven ? colorScheme.primary : colorScheme.surfaceContainerHighest,
-                          child: const Text('/ 2', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24)),
+                          child: Text(AppLocalizations.of(context)!.collatzText, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24)),
                         ),
                       ),
                       const SizedBox(width: DesignSystem.spaceMD),
@@ -119,7 +120,7 @@ class _CollatzScreenState extends ConsumerState<CollatzScreen> {
                             ref.read(collatzNotifierProvider.notifier).makeMove(2);
                           },
                           color: DesignSystem.accentEmerald,
-                          child: const Text('+ 1', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24)),
+                          child: Text(AppLocalizations.of(context)!.collatzText1, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24)),
                         ),
                       ),
                     ],
@@ -131,7 +132,7 @@ class _CollatzScreenState extends ConsumerState<CollatzScreen> {
                       ref.read(collatzNotifierProvider.notifier).makeMove(1);
                     },
                     color: colorScheme.secondary,
-                    child: const Text('3n + 1', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24)),
+                    child: Text(AppLocalizations.of(context)!.collatzText2, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, fontSize: 24)),
                   ),
                 ],
               ),

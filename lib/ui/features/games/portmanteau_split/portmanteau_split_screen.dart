@@ -33,7 +33,7 @@ class _PortmanteauSplitScreenState extends ConsumerState<PortmanteauSplitScreen>
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.timeUp.toUpperCase(),
-        message: 'You split $score portmanteaus!',
+        message: AppLocalizations.of(context)!.portmanteauSplitMessage((score).toString()),
         isVictory: score > 5,
         onHome: () {
           Navigator.of(context).pop();

@@ -30,7 +30,7 @@ class _CompoundConnectScreenState extends ConsumerState<CompoundConnectScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: state.isGameWon ? 'CORRECT!' : 'WRONG',
-        message: 'The compound word is ${state.prefix}${state.correctSuffix}.',
+        message: AppLocalizations.of(context)!.compoundConnectMessage((state.prefix).toString(), (state.correctSuffix).toString()),
         onPlayAgain: () {
           ref.read(compoundConnectNotifierProvider.notifier).initGame();
           Navigator.pop(context);

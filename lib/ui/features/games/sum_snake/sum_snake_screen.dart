@@ -42,7 +42,7 @@ class _SumSnakeScreenState extends ConsumerState<SumSnakeScreen> {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: l10n.sumSnakeTitle.toUpperCase(),
-            message: "Target ${state.targetSum} reached with perfect precision!",
+            message: AppLocalizations.of(context)!.sumSnakeMessage((state.targetSum).toString()),
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
@@ -159,7 +159,7 @@ class _SumSnakeScreenState extends ConsumerState<SumSnakeScreen> {
         notifier.clearPath();
       },
       color: DesignSystem.error.withValues(alpha: 0.1),
-      child: const Text("CLEAR PATH", style: TextStyle(color: DesignSystem.error, fontSize: 14)),
+      child: Text(AppLocalizations.of(context)!.sumSnakeText, style: TextStyle(color: DesignSystem.error, fontSize: 14)),
     );
   }
 }

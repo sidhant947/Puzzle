@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -94,7 +95,7 @@ class _BinaryCodeScreenState extends ConsumerState<BinaryCodeScreen> {
         barrierDismissible: false,
         builder: (context) => GameCompletionDialog(
           title: "BINARY CODE MASTERED",
-          message: "Sensational rapid decimal translation! Final Score: $_score",
+          message: AppLocalizations.of(context)!.binaryCodeMessage((_score).toString()),
           onHome: () {
             Navigator.pop(context);
             Navigator.pop(context);
@@ -122,7 +123,7 @@ class _BinaryCodeScreenState extends ConsumerState<BinaryCodeScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: "TIME EXPIRED",
-        message: "You correctly converted $_correctAnswers binary numbers. Score: $_score",
+        message: AppLocalizations.of(context)!.binaryCodeMessage1((_correctAnswers).toString(), (_score).toString()),
         isVictory: false,
         onHome: () {
           Navigator.pop(context);

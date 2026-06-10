@@ -43,7 +43,7 @@ class _RhymeMasterScreenState extends ConsumerState<RhymeMasterScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: isVictory ? l10n.congrats.toUpperCase() : l10n.timeUp.toUpperCase(),
-        message: 'You found ${state.foundRhymes.length} out of ${state.puzzle?.allRhymes.length} rhymes!',
+        message: AppLocalizations.of(context)!.rhymeMasterMessage((state.foundRhymes.length).toString(), (state.puzzle?.allRhymes.length).toString()),
         isVictory: isVictory,
         onHome: () {
           Navigator.of(context).pop();

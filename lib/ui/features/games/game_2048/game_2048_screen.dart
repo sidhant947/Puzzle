@@ -216,7 +216,7 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
             Navigator.of(context).pop();
           },
           title: l10n.congrats.toUpperCase(),
-          message: '${l10n.score}: ${state.score}\n${l10n.completed}',
+          message: AppLocalizations.of(context)!.game2048Message((l10n.score).toString(), (state.score).toString(), (l10n.completed).toString()),
         ),
       );
       return;
@@ -238,7 +238,7 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
           Navigator.of(context).pop();
         },
         title: l10n.gameOver.toUpperCase(),
-        message: '${l10n.score}: ${state.score}',
+        message: AppLocalizations.of(context)!.game2048Message1((l10n.score).toString(), (state.score).toString()),
       ),
     );
   }

@@ -151,18 +151,6 @@ class UserDataNotifier extends _$UserDataNotifier {
     state = newState;
     await ref.read(userRepositoryProvider).saveUserData(newState);
   }
-
-  Future<void> updateOnboarding(String name) async {
-    final newState = state.copyWith(name: name, isOnboarded: true);
-    state = newState;
-    await ref.read(userRepositoryProvider).saveUserData(newState);
-  }
-
-  Future<void> updateName(String name) async {
-    final newState = state.copyWith(name: name);
-    state = newState;
-    await ref.read(userRepositoryProvider).saveUserData(newState);
-  }
 }
 
 @riverpod

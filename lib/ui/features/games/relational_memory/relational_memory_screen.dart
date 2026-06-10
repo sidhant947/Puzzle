@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -145,7 +146,7 @@ class _RelationalMemoryScreenState extends ConsumerState<RelationalMemoryScreen>
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: "LOCATION BIND ACED",
-            message: "Fabulous spatial relational memory accuracy!",
+            message: AppLocalizations.of(context)!.relationalMemoryMessage,
             onHome: () {
               Navigator.pop(context);
               Navigator.pop(context);

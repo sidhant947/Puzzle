@@ -37,7 +37,7 @@ class _TrailMakingScreenState extends ConsumerState<TrailMakingScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'TRACKER PRO!' : 'LOST TRAIL',
-        message: 'You completed $score trails! This test measures your visual search speed and mental flexibility.',
+        message: AppLocalizations.of(context)!.trailMakingMessage((score).toString()),
         onPlayAgain: () {
           ref.read(trailMakingNotifierProvider.notifier).initGame();
           Navigator.pop(context);

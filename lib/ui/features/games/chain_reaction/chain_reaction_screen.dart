@@ -42,7 +42,7 @@ class _ChainReactionScreenState extends ConsumerState<ChainReactionScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.timeUp.toUpperCase(),
-        message: 'Your final score is ${state.score}. You built a chain of ${state.chain.length} words.',
+        message: AppLocalizations.of(context)!.chainReactionMessage((state.score).toString(), (state.chain.length).toString()),
         isVictory: state.score > 0,
         onHome: () {
           Navigator.of(context).pop();
@@ -125,7 +125,7 @@ class _ChainReactionScreenState extends ConsumerState<ChainReactionScreen> {
                       CircleAvatar(
                         radius: 12,
                         backgroundColor: isLast ? DesignSystem.gameGreen : DesignSystem.gameBlue,
-                        child: Text('${index + 1}', style: const TextStyle(fontSize: 10, color: Colors.white)),
+                        child: Text(AppLocalizations.of(context)!.chainReactionText((index + 1).toString()), style: const TextStyle(fontSize: 10, color: Colors.white)),
                       ),
                       const SizedBox(width: 12),
                       Expanded(

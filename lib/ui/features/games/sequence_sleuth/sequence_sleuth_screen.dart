@@ -35,7 +35,7 @@ class _SequenceSleuthScreenState extends ConsumerState<SequenceSleuthScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: won ? 'SLEUTH MASTER!' : l10n.timeUp.toUpperCase(),
-        message: 'You solved $score sequences!',
+        message: AppLocalizations.of(context)!.sequenceSleuthMessage((score).toString()),
         onPlayAgain: () {
           ref.read(sequenceSleuthNotifierProvider.notifier).initGame();
           Navigator.pop(context);

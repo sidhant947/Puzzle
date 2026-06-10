@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -52,7 +53,7 @@ class _InequalityDashScreenState extends ConsumerState<InequalityDashScreen> {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: 'TIME\'S UP!',
-            message: 'You scored ${next.score} points matching inequalities!',
+            message: AppLocalizations.of(context)!.inequalityDashMessage((next.score).toString()),
             onHome: () {
               Navigator.of(context).pop(); // Dismiss dialog
               Navigator.of(context).pop(); // Back to home

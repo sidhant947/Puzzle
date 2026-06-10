@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
@@ -25,7 +26,7 @@ class DistractorMatrixScreen extends ConsumerWidget {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: 'DISTRACTOR MATRIX COMPLETE',
-            message: 'Incredible! You recalled patterns despite cognitive math distractors!',
+            message: AppLocalizations.of(context)!.distractorMatrixMessage,
             onHome: () {
               Navigator.of(context).pop();
               Navigator.of(context).pop();
@@ -44,7 +45,7 @@ class DistractorMatrixScreen extends ConsumerWidget {
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
             title: 'GAME OVER',
-            message: 'The distractors got you! Retrain your working memory.',
+            message: AppLocalizations.of(context)!.distractorMatrixMessage1,
             isVictory: false,
             onHome: () {
               Navigator.of(context).pop();
