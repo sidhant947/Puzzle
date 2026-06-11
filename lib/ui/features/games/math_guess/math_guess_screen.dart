@@ -1,3 +1,5 @@
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -124,7 +126,7 @@ class _MathGuessScreenState extends ConsumerState<MathGuessScreen> {
     });
 
     return GameScaffold(
-      title: 'MATH GUESS',
+      title: L10nGameHelpers.getGameTitle(context, 'math_guess'),
       onHowToPlay: _showHelpDialog,
       body: LayoutBuilder(
         builder: (context, constraints) {

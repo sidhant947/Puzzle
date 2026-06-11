@@ -1,3 +1,6 @@
+import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -23,6 +26,7 @@ class _RunningMemorySpanScreenState extends ConsumerState<RunningMemorySpanScree
   }
 
   void _showGameOverDialog(int score) {
+    final l10n = AppLocalizations.of(context)!;
     bool won = score >= 12;
     if (won) {
       HapticFeedbackUtil.victory();
@@ -34,8 +38,8 @@ class _RunningMemorySpanScreenState extends ConsumerState<RunningMemorySpanScree
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: won ? 'BUFFER MASTER!' : 'GAME OVER',
-        message: 'You scored $score points in Running Memory Span!',
+        title: won ? l10n.runningSpanWinTitle : l10n.gameOver,
+        message: l10n.runningSpanGameOverMessage(score),
         isVictory: won,
         onPlayAgain: () {
           ref.read(runningMemorySpanNotifierProvider.notifier).initGame();
@@ -53,6 +57,7 @@ class _RunningMemorySpanScreenState extends ConsumerState<RunningMemorySpanScree
   Widget build(BuildContext context) {
     final state = ref.watch(runningMemorySpanNotifierProvider);
     final notifier = ref.read(runningMemorySpanNotifierProvider.notifier);
+    final l10n = AppLocalizations.of(context)!;
 
     ref.listen(runningMemorySpanNotifierProvider, (previous, next) {
       if (previous != null && !previous.isGameOver && next.isGameOver) {
@@ -61,8 +66,8 @@ class _RunningMemorySpanScreenState extends ConsumerState<RunningMemorySpanScree
     });
 
     return GameScaffold(
-      title: 'RUNNING SPAN',
-      subtitle: 'WATCH THE LETTERS. WHEN THEY STOP, INPUT THE LAST N LETTERS IN ORDER.',
+      title: L10nGameHelpers.getGameTitle(context, 'running_memory_span'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'running_memory_span'),
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(
@@ -73,14 +78,14 @@ class _RunningMemorySpanScreenState extends ConsumerState<RunningMemorySpanScree
                   return Column(
                     children: [
                       SizedBox(height: isSmall ? 8 : 16),
-                      _buildStats(state, isSmall),
+                      _buildStats(state, isSmall, l10n),
                       const Spacer(),
-                      _buildPhaseIndicator(state),
+                      _buildPhaseIndicator(state, l10n),
                       const SizedBox(height: 20),
                       Expanded(
                         flex: 6,
                         child: Center(
-                          child: _buildMainLayout(state, constraints.maxWidth, notifier),
+                          child: _buildMainLayout(state, constraints.maxWidth, notifier, l10n),
                         ),
                       ),
                       const Spacer(),
@@ -97,25 +102,25 @@ class _RunningMemorySpanScreenState extends ConsumerState<RunningMemorySpanScree
     );
   }
 
-  Widget _buildPhaseIndicator(RunningMemorySpanState state) {
+  Widget _buildPhaseIndicator(RunningMemorySpanState state, AppLocalizations l10n) {
     String text = '';
     Color color = DesignSystem.primary;
     if (state.phase == RunningSpanPhase.instruction) {
-      text = 'PREPARE TO RECALL LAST ${state.recallCount} LETTERS';
+      text = l10n.runningSpanPrepareRecall(state.recallCount);
       color = DesignSystem.accentAmber;
     } else if (state.phase == RunningSpanPhase.showingStream) {
-      text = 'WATCH CAREFULLY...';
+      text = l10n.runningSpanWatchCarefully;
       color = DesignSystem.error;
     } else if (state.phase == RunningSpanPhase.recalling) {
-      text = 'ENTER LAST ${state.recallCount} LETTERS';
+      text = l10n.runningSpanEnterLast(state.recallCount);
       color = DesignSystem.gameIndigo;
     } else {
-      text = state.lastRoundCorrect == true ? 'GREAT JOB!' : 'INCORRECT BUFFER!';
+      text = state.lastRoundCorrect == true ? l10n.runningSpanGreatJob : l10n.runningSpanIncorrectBuffer;
       color = state.lastRoundCorrect == true ? DesignSystem.success : DesignSystem.error;
     }
 
     return Text(
-      text,
+      text.toUpperCase(),
       style: TextStyle(
         letterSpacing: 1.5,
         fontWeight: FontWeight.w800,
@@ -125,7 +130,7 @@ class _RunningMemorySpanScreenState extends ConsumerState<RunningMemorySpanScree
     );
   }
 
-  Widget _buildMainLayout(RunningMemorySpanState state, double maxWidth, RunningMemorySpanNotifier notifier) {
+  Widget _buildMainLayout(RunningMemorySpanState state, double maxWidth, RunningMemorySpanNotifier notifier, AppLocalizations l10n) {
     if (state.phase == RunningSpanPhase.instruction) {
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -133,11 +138,11 @@ class _RunningMemorySpanScreenState extends ConsumerState<RunningMemorySpanScree
           const Icon(Icons.timer_rounded, size: 72, color: DesignSystem.accentAmber),
           const SizedBox(height: 16),
           Text(
-            'RECALL LAST ${state.recallCount}',
+            l10n.runningSpanRecallLast(state.recallCount),
             style: const TextStyle(fontSize: 28, fontWeight: FontWeight.bold),
           ),
           const SizedBox(height: 8),
-          const Text('The stream stops randomly!', style: TextStyle(fontSize: 16, color: Colors.grey)),
+          Text(l10n.runningSpanStopsRandomly, style: const TextStyle(fontSize: 16, color: Colors.grey)),
         ],
       );
     } else if (state.phase == RunningSpanPhase.showingStream) {
@@ -197,7 +202,7 @@ class _RunningMemorySpanScreenState extends ConsumerState<RunningMemorySpanScree
               const SizedBox(height: 16),
               if (state.userSequence.isNotEmpty)
                 Text(
-                  'ENTERED: ${state.userSequence.join(" ")}',
+                  l10n.runningSpanEntered(state.userSequence.join(" ")),
                   style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: DesignSystem.gameIndigo),
                 ),
             ],
@@ -216,15 +221,15 @@ class _RunningMemorySpanScreenState extends ConsumerState<RunningMemorySpanScree
     );
   }
 
-  Widget _buildStats(RunningMemorySpanState state, bool isSmall) {
+  Widget _buildStats(RunningMemorySpanState state, bool isSmall, AppLocalizations l10n) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildStat('TIME', '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
-          _buildStat('N-ITEMS', '${state.recallCount}', DesignSystem.accentAmber, isSmall),
-          _buildStat('SCORE', '${state.score}', DesignSystem.success, isSmall),
+          _buildStat(l10n.timeLeft.toUpperCase(), '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
+          _buildStat(l10n.runningSpanNItems.toUpperCase(), '${state.recallCount}', DesignSystem.accentAmber, isSmall),
+          _buildStat(l10n.score.toUpperCase(), '${state.score}', DesignSystem.success, isSmall),
         ],
       ),
     );

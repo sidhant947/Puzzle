@@ -2,6 +2,8 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'bridges_engine.dart';
 import 'bridges_provider.dart';
 import '../../../../providers/user_providers.dart';
@@ -190,7 +192,7 @@ class BridgesScreen extends ConsumerWidget {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'CONNECTED!',
+        title: L10nGameHelpers.getGameTitle(context, 'bridges'),
         message: AppLocalizations.of(context)!.bridgesMessage,
         onHome: () {
           Navigator.of(context).pop();

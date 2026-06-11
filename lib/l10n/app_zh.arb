@@ -1796,5 +1796,350 @@
       }
     }
   },
-  "imReady": "我准备好了"
+  "imReady": "我准备好了",
+  "soptTitle": "自订指向",
+  "soptSubtitle": "每次点击不同的卡。位置洗牌！",
+  "soptWinTitle": "序列大师！",
+  "soptGameOverMessage": "通过成功追踪洗牌，您获得了 {score} 分！",
+  "soptChooseNovel": "点按一张新卡",
+  "soptGreatJob": "干得好！",
+  "soptAlreadyTapped": "已经点击了！",
+  "soptGrid": "网格",
+  "contRecogTitle": "持续识别",
+  "contRecogSubtitle": "您之前在本次会议中见过这张卡片吗？",
+  "contRecogWinTitle": "公认的天才！",
+  "contRecogGameOverMessage": "您获得了 {score} 正确认可！",
+  "contRecogCorrect": "正确的！",
+  "contRecogWrong": "错误的！",
+  "contRecogOldOrNew": "这是旧的还是新的？",
+  "contRecogNew": "新的",
+  "contRecogOld": "老的",
+  "contRecogSeenPool": "所见泳池",
+  "dnmsTitle": "内存不匹配",
+  "dnmsSubtitle": "点击不在记忆样本中的卡片。",
+  "dnmsWinTitle": "不匹配的专家！",
+  "dnmsGameOverMessage": "您在延迟不匹配中获得了 {score} 正确答案！",
+  "dnmsChooseNovel": "点击新卡",
+  "dnmsMemorizeSample": "记住这张卡",
+  "dnmsWaitForIt": "等等吧...",
+  "dnmsExcellent": "出色的！",
+  "dnmsSampleTapped": "这就是样本！",
+  "dnmsCards": "牌",
+  "symSpanTitle": "对称跨度",
+  "symSpanSubtitle": "回忆细胞模式，同时识别垂直对称性。",
+  "symSpanWinTitle": "对称大师！",
+  "symSpanGameOverMessage": "通过回忆布局和识别对称性，您获得了 {score} 分！",
+  "symSpanMemorizeRed": "记住红细胞位置",
+  "symSpanIsSymmetric": "图案是否对称？",
+  "symSpanRecallSequence": "按正确顺序回忆序列",
+  "symSpanGreatJob": "干得好！",
+  "symSpanTryAgain": "再试一次！",
+  "symSpanLength": "长度",
+  "readingSpanTitle": "阅读广度",
+  "readingSpanSubtitle": "在记住字母序列的同时验证句子。",
+  "readingSpanWinTitle": "阅读专家！",
+  "readingSpanGameOverMessage": "您在阅读广度记忆挑战中获得了 {score} 分！",
+  "readingSpanTrueFalse": "这个说法是真是假？",
+  "readingSpanMemorizeLetter": "记住这封信",
+  "readingSpanRecallLetters": "按顺序回忆字母",
+  "readingSpanGreatJob": "干得好！",
+  "readingSpanTryAgain": "再试一次！",
+  "readingSpanYourSequence": "您的序列： {sequence}",
+  "readingSpanLength": "长度",
+  "readingSpanSentence1": "太阳从东方升起。",
+  "readingSpanSentence2": "冰正在沸腾。",
+  "readingSpanSentence3": "鱼可以在水下呼吸。",
+  "readingSpanSentence4": "狗有翅膀，可以飞。",
+  "readingSpanSentence5": "水在 0 摄氏度时结冰。",
+  "readingSpanSentence6": "猫像小狗一样吠叫。",
+  "readingSpanSentence7": "夏天树有绿叶。",
+  "readingSpanSentence8": "雨从地面向上落下。",
+  "readingSpanSentence9": "三角形有四个相等的边。",
+  "readingSpanSentence10": "苹果是一种甜水果。",
+  "readingSpanSentence11": "月亮是用切达干酪制成的。",
+  "readingSpanSentence12": "汽车有轮子可以滚动。",
+  "readingSpanSentence13": "火是冰冷的。",
+  "readingSpanSentence14": "纸是由经过加工的木材制成的。",
+  "readingSpanSentence15": "鸟类有羽毛来帮助它们飞翔。",
+  "readingSpanSentence16": "香蕉长在松树上。",
+  "readingSpanSentence17": "大象比蚂蚁小。",
+  "readingSpanSentence18": "书籍包含印刷的文本页。",
+  "countingSpanTitle": "计数跨度",
+  "countingSpanSubtitle": "仅计算蓝色圆圈。然后回忆计数的顺序。",
+  "countingSpanWinTitle": "算天才！",
+  "countingSpanGameOverMessage": "您在计算跨度记忆挑战中获得了 {score} 分！",
+  "countingSpanCountCircles": "仅计算蓝色圆圈",
+  "countingSpanRecallCounts": "按正确顺序回忆计数",
+  "countingSpanGreatJob": "干得好！",
+  "countingSpanTryAgain": "再试一次！",
+  "countingSpanYourSequence": "您的序列： {sequence}",
+  "countingSpanLength": "长度",
+  "objDispTitle": "物体位移",
+  "objDispSubtitle": "记住布局。找到并点击移动位置的一个对象。",
+  "objDispWinTitle": "空间天才！",
+  "objDispGameOverMessage": "您正确识别了 {score} 位移物体！",
+  "objDispMemorizeAll": "记住所有位置",
+  "objDispWaitingShift": "等待布局转换...",
+  "objDispTapMoved": "点击移动的物体",
+  "objDispExcellent": "出色的！",
+  "objDispWrongObject": "对象错误！",
+  "objDispItems": "项目",
+  "mandalaTitle": "曼陀罗回忆",
+  "mandalaSubtitle": "记住颜色配置。选择颜色并重新粉刷瓷砖。",
+  "mandalaWinTitle": "曼陀罗艺术家！",
+  "mandalaGameOverMessage": "通过重新创建彩色几何布局，您获得了 {score} 分！",
+  "mandalaMemorizeColors": "记住瓷砖颜色",
+  "mandalaPaintCells": "绘制单元格以匹配原始单元格",
+  "mandalaExcellent": "出色的！",
+  "mandalaIncorrectMatch": "匹配错误！",
+  "mandalaSubmitRepaint": "提交重绘",
+  "mandalaTiles": "瓷砖",
+  "runningSpanTitle": "运行跨度",
+  "runningSpanSubtitle": "注意字母。当他们停止时，按顺序输入最后 N 个字母。",
+  "runningSpanWinTitle": "缓冲大师！",
+  "runningSpanGameOverMessage": "您在跑步记忆广度中获得了 {score} 分！",
+  "runningSpanPrepareRecall": "准备回忆最后 {count} 个字母",
+  "runningSpanWatchCarefully": "仔细观察...",
+  "runningSpanEnterLast": "输入最后 {count} 个字母",
+  "runningSpanGreatJob": "干得好！",
+  "runningSpanIncorrectBuffer": "缓冲区不正确！",
+  "runningSpanRecallLast": "回想最后 {count} 个",
+  "runningSpanStopsRandomly": "流随机停止！",
+  "runningSpanEntered": "输入： {sequence}",
+  "runningSpanNItems": "N 项",
+  "spatialCabinetTitle": "空间柜",
+  "spatialCabinetSubtitle": "记住哪个柜子抽屉里有哪个物品。",
+  "spatialCabinetWinTitle": "橱柜专家！",
+  "spatialCabinetGameOverMessage": "您在空间柜记忆中获得了 {score} 分！",
+  "spatialCabinetMemorize": "记住物品位置",
+  "spatialCabinetWhereIs": "{itemName} 在哪里？",
+  "spatialCabinetCorrect": "正确的！",
+  "spatialCabinetWrongDrawer": "抽屉放错了！",
+  "spatialCabinetItems": "项目",
+  "cabinetItemKey": "钥匙",
+  "cabinetItemApple": "苹果",
+  "cabinetItemDiamond": "钻石",
+  "cabinetItemBook": "书",
+  "cabinetItemUmbrella": "伞",
+  "cabinetItemCoffee": "咖啡",
+  "cabinetItemLock": "锁",
+  "cabinetItemPet": "宠物",
+  "cabinetItemCar": "车",
+  "@soptGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@contRecogGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@dnmsGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@symSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@countingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@countingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@objDispGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@mandalaGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanPrepareRecall": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEnterLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanRecallLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEntered": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@spatialCabinetGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@spatialCabinetWhereIs": {
+    "placeholders": {
+      "itemName": {
+        "type": "String"
+      }
+    }
+  },
+  "gamesTitleLabel": "游戏",
+  "yourFavorites": "你的最爱",
+  "readyForWorkout": "准备好进行每日锻炼了吗？",
+  "greatStartKeepGoing": "良好的开端！继续保持。",
+  "onFireToday": "你今天状态火热！",
+  "incredibleSolvingToday": "今天表现惊人！",
+  "newGameLabel": "新",
+  "slitherlinkTitle": "数连 (Slitherlink)",
+  "slitherlinkSubtitle": "使用数字线索连接点网格。",
+  "futoshikiTitle": "不等式 (Futoshiki)",
+  "futoshikiSubtitle": "使用大于/小于线索填充网格。",
+  "kakuroTitle": "数和 (Kakuro)",
+  "kakuroSubtitle": "使用数字和总和解决交叉谜题。",
+  "inequalityDashTitle": "不等式冲刺",
+  "inequalityDashSubtitle": "在时间压力下解决不等式。",
+  "factorFinderTitle": "因数寻找者",
+  "factorFinderSubtitle": "识别目标数字的所有因数。",
+  "collatzTitle": "考拉兹路径",
+  "collatzSubtitle": "导航 3N+1 序列。",
+  "sumPyramidTitle": "总和金字塔",
+  "sumPyramidSubtitle": "使用总和数学线索填充金字塔单元格。",
+  "target10Title": "目标 10",
+  "target10Subtitle": "合并数字磁贴以获得十个总和。",
+  "fractionMatcherTitle": "分数匹配",
+  "fractionMatcherSubtitle": "视觉上匹配等值分数。",
+  "dualCodingTitle": "双重编码",
+  "dualCodingSubtitle": "同时匹配字母和符号。",
+  "distractorMatrixTitle": "干扰矩阵",
+  "distractorMatrixSubtitle": "在干扰因素中寻找目标形状。",
+  "temporalOrderTitle": "时间顺序",
+  "temporalOrderSubtitle": "回忆时间序列。",
+  "associativePairsTitle": "联想对",
+  "associativePairsSubtitle": "配对并匹配相应的符号。",
+  "blockCount3dTitle": "3D 方块计数",
+  "blockCount3dSubtitle": "在三维空间中清点方块。",
+  "rotatingMazeTitle": "旋转迷宫",
+  "rotatingMazeSubtitle": "旋转迷宫以引导球到达出口。",
+  "silhouetteMatchOrthoTitle": "剪影匹配（正交）",
+  "silhouetteMatchOrthoSubtitle": "将 3D 物体与正交阴影匹配。",
+  "spatialConflictTitle": "空间冲突",
+  "spatialConflictSubtitle": "解决文本和方向之间的差异。",
+  "spotlightTrackTitle": "聚光灯追踪",
+  "spotlightTrackSubtitle": "在移动的阴影中追踪闪烁的项目。",
+  "d2AttentionTitle": "d2 注意力",
+  "d2AttentionSubtitle": "按照严格标准点击目标符号。",
+  "dualMirrorTitle": "双镜导航",
+  "dualMirrorSubtitle": "同时导航两个迷宫。",
+  "contextCluesTitle": "语境线索",
+  "contextCluesSubtitle": "从语境暗示中推断隐藏的单词。",
+  "digitSpanReverseSubtitle": "以相反顺序回忆数字位数。",
+  "faceNameAssociationSubtitle": "回忆所展示的不同脸孔的名字。",
+  "staircaseMemorySubtitle": "按阶梯顺序记忆方块。",
+  "choiceReactionTimeSubtitle": "快速点击与线索匹配的特定按钮。",
+  "attentionalBlinkSubtitle": "捕捉在流中闪烁的快速目标。",
+  "visualStatisticalLearningSubtitle": "视觉学习时间形状模式。",
+  "sternbergTaskSubtitle": "回忆符号是否在记忆集中。",
+  "operationSpanSubtitle": "解决数学题并回忆字母串。",
+  "continuousRecognitionTitle": "连续识别",
+  "continuousRecognitionSubtitle": "识别所展示的卡片是旧的还是新的。",
+  "symmetrySpanTitle": "对称跨度",
+  "symmetrySpanSubtitle": "在垂直对称决策中回忆单元格坐标。",
+  "objectDisplacementTitle": "物体位移",
+  "objectDisplacementSubtitle": "研究摆放位置并点击唯一移动的物体。",
+  "mandalaRecallTitle": "曼陀罗回忆",
+  "mandalaRecallSubtitle": "记忆彩色磁贴并从调色板重新绘制曼陀罗。",
+  "runningMemorySpanTitle": "运行跨度",
+  "runningMemorySpanSubtitle": "监控运行的字母并回忆最后 N 个项目。",
+  "spatialCabinetMemoryTitle": "空间柜子",
+  "spatialCabinetMemorySubtitle": "记忆并定位柜门后的项目。",
+  "pathRecallSubtitle": "记忆并重复路径选择。",
+  "objectShuffleSubtitle": "追踪深杯下洗牌的项目。",
+  "groceryListSubtitle": "记忆并勾选清单上的项目。",
+  "quickMathSubtitle": "以最高速度解决算术问题。",
+  "mathGuessTitle": "数学猜猜看",
+  "mathGuessSubtitle": "在 15 次机会内猜出隐藏的数字。",
+  "reflexTapSubtitle": "以人类极限速度点击刺激。",
+  "pixelMimicSubtitle": "在像素网格上模仿设计图案。",
+  "simonSequenceSubtitle": "从记忆中重复形状序列。",
+  "slidePuzzleSubtitle": "重新排列正方形滑动网格磁贴。",
+  "findWordTitle": "找单词",
+  "schulteTableSubtitle": "按顺序点击数字 1 到 25。",
+  "simonCommandTitle": "西蒙命令",
+  "simonCommandSubtitle": "快速执行语音指令。",
+  "binaryCodeTitle": "二进制速度",
+  "binaryCodeSubtitle": "将二进制代码转换为十进制。",
+  "moduloClockTitle": "同余时钟",
+  "moduloClockSubtitle": "使用时钟计算数学方程式。",
+  "chimpTestTitle": "黑猩猩测试",
+  "chimpTestSubtitle": "按升序点击随机数字。",
+  "relationalMemoryTitle": "关系记忆",
+  "relationalMemorySubtitle": "回忆准确的网格项目位置。",
+  "factBinderTitle": "事实活页夹",
+  "factBinderSubtitle": "连接符号并回忆陈述。",
+  "sourceMonitoringTitle": "来源监控",
+  "sourceMonitoringSubtitle": "记住语境。",
+  "klotskiTitle": "华容道 (Klotski Escape)",
+  "klotskiSubtitle": "滑动方块以到达出口。",
+  "homophoneHuntSubtitle": "选择正确的拼写。"
 }

@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -24,7 +26,7 @@ class ContextCluesScreen extends ConsumerWidget {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'CONTEXT CLUES COMPLETE',
+            title: L10nGameHelpers.getGameTitle(context, 'context_clues'),
             message: AppLocalizations.of(context)!.contextCluesMessage,
             onHome: () {
               Navigator.of(context).pop();
@@ -43,7 +45,7 @@ class ContextCluesScreen extends ConsumerWidget {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'GAME OVER',
+            title: L10nGameHelpers.getGameTitle(context, 'context_clues'),
             message: AppLocalizations.of(context)!.contextCluesMessage1,
             isVictory: false,
             onHome: () {
@@ -63,8 +65,8 @@ class ContextCluesScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'CONTEXT CLUES',
-      subtitle: 'Deduce words from context and definition clues',
+      title: L10nGameHelpers.getGameTitle(context, 'context_clues'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'context_clues'),
       actions: [
         TangibleButton(
           color: colorScheme.surface,

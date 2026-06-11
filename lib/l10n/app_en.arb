@@ -1796,5 +1796,350 @@
       }
     }
   },
-  "imReady": "I'M READY"
-}
+  "imReady": "I'M READY",
+  "soptTitle": "Self-Ordered Pointing",
+  "soptSubtitle": "Tap a different card each time. The positions shuffle!",
+  "soptWinTitle": "Sequence Master!",
+  "soptGameOverMessage": "You scored {score} points by successfully tracking shuffled cards!",
+  "soptChooseNovel": "Tap a new card",
+  "soptGreatJob": "Great job!",
+  "soptAlreadyTapped": "Already tapped!",
+  "soptGrid": "Grid",
+  "contRecogTitle": "Continuous Recognition",
+  "contRecogSubtitle": "Have you seen this card before in this session?",
+  "contRecogWinTitle": "Recognition Genius!",
+  "contRecogGameOverMessage": "You scored {score} correct recognitions!",
+  "contRecogCorrect": "Correct!",
+  "contRecogWrong": "Wrong!",
+  "contRecogOldOrNew": "Is this old or new?",
+  "contRecogNew": "New",
+  "contRecogOld": "Old",
+  "contRecogSeenPool": "Seen Pool",
+  "dnmsTitle": "Non-Matching Memory",
+  "dnmsSubtitle": "Tap the card that was not in the memorized sample.",
+  "dnmsWinTitle": "Non-Matching Expert!",
+  "dnmsGameOverMessage": "You scored {score} correct answers in Delayed Non-Matching!",
+  "dnmsChooseNovel": "Tap the new card",
+  "dnmsMemorizeSample": "Memorize this card",
+  "dnmsWaitForIt": "Wait for it...",
+  "dnmsExcellent": "Excellent!",
+  "dnmsSampleTapped": "That was the sample!",
+  "dnmsCards": "Cards",
+  "symSpanTitle": "Symmetry Span",
+  "symSpanSubtitle": "Recall cell patterns while identifying vertical symmetry.",
+  "symSpanWinTitle": "Symmetry Master!",
+  "symSpanGameOverMessage": "You scored {score} points by recalling layouts and identifying symmetry!",
+  "symSpanMemorizeRed": "Memorize red cell location",
+  "symSpanIsSymmetric": "Is the pattern symmetrical?",
+  "symSpanRecallSequence": "Recall sequence in correct order",
+  "symSpanGreatJob": "Great job!",
+  "symSpanTryAgain": "Try again!",
+  "symSpanLength": "Length",
+  "readingSpanTitle": "Reading Span",
+  "readingSpanSubtitle": "Verify sentences while remembering a sequence of letters.",
+  "readingSpanWinTitle": "Reading Expert!",
+  "readingSpanGameOverMessage": "You scored {score} points in the Reading Span memory challenge!",
+  "readingSpanTrueFalse": "Is this statement true or false?",
+  "readingSpanMemorizeLetter": "Memorize this letter",
+  "readingSpanRecallLetters": "Recall letters in sequence",
+  "readingSpanGreatJob": "Great job!",
+  "readingSpanTryAgain": "Try again!",
+  "readingSpanYourSequence": "Your sequence: {sequence}",
+  "readingSpanLength": "Length",
+  "readingSpanSentence1": "The sun rises in the east.",
+  "readingSpanSentence2": "Ice is boiling hot.",
+  "readingSpanSentence3": "Fish can breathe underwater.",
+  "readingSpanSentence4": "Dogs have wings and can fly.",
+  "readingSpanSentence5": "Water freezes at 0 degrees Celsius.",
+  "readingSpanSentence6": "Cats bark like small dogs.",
+  "readingSpanSentence7": "Trees have green leaves in summer.",
+  "readingSpanSentence8": "Rain falls upwards from the ground.",
+  "readingSpanSentence9": "A triangle has four equal sides.",
+  "readingSpanSentence10": "Apples are a type of sweet fruit.",
+  "readingSpanSentence11": "The moon is made of cheddar cheese.",
+  "readingSpanSentence12": "Automobiles have wheels to roll.",
+  "readingSpanSentence13": "Fire is freezing cold.",
+  "readingSpanSentence14": "Paper is made from processed wood.",
+  "readingSpanSentence15": "Birds have feathers to help them fly.",
+  "readingSpanSentence16": "Bananas grow on pine trees.",
+  "readingSpanSentence17": "An elephant is smaller than an ant.",
+  "readingSpanSentence18": "Books contain printed pages of text.",
+  "countingSpanTitle": "Counting Span",
+  "countingSpanSubtitle": "Count blue circles only. Then recall the sequence of counts.",
+  "countingSpanWinTitle": "Counting Genius!",
+  "countingSpanGameOverMessage": "You scored {score} points in the Counting Span memory challenge!",
+  "countingSpanCountCircles": "Count only blue circles",
+  "countingSpanRecallCounts": "Recall counts in correct order",
+  "countingSpanGreatJob": "Great job!",
+  "countingSpanTryAgain": "Try again!",
+  "countingSpanYourSequence": "Your sequence: {sequence}",
+  "countingSpanLength": "Length",
+  "objDispTitle": "Object Displacement",
+  "objDispSubtitle": "Memorize layout. Find and tap the one object that shifts position.",
+  "objDispWinTitle": "Spatial Genius!",
+  "objDispGameOverMessage": "You correctly identified {score} displaced objects!",
+  "objDispMemorizeAll": "Memorize all placements",
+  "objDispWaitingShift": "Waiting for layout shift...",
+  "objDispTapMoved": "Tap the object that moved",
+  "objDispExcellent": "Excellent!",
+  "objDispWrongObject": "Wrong object!",
+  "objDispItems": "Items",
+  "mandalaTitle": "Mandala Recall",
+  "mandalaSubtitle": "Memorize color configuration. Pick colors and repaint the tiles.",
+  "mandalaWinTitle": "Mandala Artist!",
+  "mandalaGameOverMessage": "You scored {score} points by recreating colored geometric layouts!",
+  "mandalaMemorizeColors": "Memorize tile colors",
+  "mandalaPaintCells": "Paint cells to match original",
+  "mandalaExcellent": "Excellent!",
+  "mandalaIncorrectMatch": "Incorrect match!",
+  "mandalaSubmitRepaint": "Submit Repaint",
+  "mandalaTiles": "Tiles",
+  "runningSpanTitle": "Running Span",
+  "runningSpanSubtitle": "Watch the letters. When they stop, input the last N letters in order.",
+  "runningSpanWinTitle": "Buffer Master!",
+  "runningSpanGameOverMessage": "You scored {score} points in Running Memory Span!",
+  "runningSpanPrepareRecall": "Prepare to recall last {count} letters",
+  "runningSpanWatchCarefully": "Watch carefully...",
+  "runningSpanEnterLast": "Enter last {count} letters",
+  "runningSpanGreatJob": "Great job!",
+  "runningSpanIncorrectBuffer": "Incorrect buffer!",
+  "runningSpanRecallLast": "Recall last {count}",
+  "runningSpanStopsRandomly": "The stream stops randomly!",
+  "runningSpanEntered": "Entered: {sequence}",
+  "runningSpanNItems": "N-Items",
+  "spatialCabinetTitle": "Spatial Cabinets",
+  "spatialCabinetSubtitle": "Memorize which cabinet drawer contains which object.",
+  "spatialCabinetWinTitle": "Cabinet Expert!",
+  "spatialCabinetGameOverMessage": "You scored {score} points in Spatial Cabinet Memory!",
+  "spatialCabinetMemorize": "Memorize item locations",
+  "spatialCabinetWhereIs": "Where is the {itemName}?",
+  "spatialCabinetCorrect": "Correct!",
+  "spatialCabinetWrongDrawer": "Wrong drawer!",
+  "spatialCabinetItems": "Items",
+  "cabinetItemKey": "Key",
+  "cabinetItemApple": "Apple",
+  "cabinetItemDiamond": "Diamond",
+  "cabinetItemBook": "Book",
+  "cabinetItemUmbrella": "Umbrella",
+  "cabinetItemCoffee": "Coffee",
+  "cabinetItemLock": "Lock",
+  "cabinetItemPet": "Pet",
+  "cabinetItemCar": "Car",
+  "@soptGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@contRecogGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@dnmsGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@symSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@countingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@countingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@objDispGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@mandalaGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanPrepareRecall": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEnterLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanRecallLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEntered": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@spatialCabinetGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@spatialCabinetWhereIs": {
+    "placeholders": {
+      "itemName": {
+        "type": "String"
+      }
+    }
+  },
+  "gamesTitleLabel": "GAMES",
+  "yourFavorites": "YOUR FAVORITES",
+  "readyForWorkout": "READY FOR YOUR DAILY WORKOUT?",
+  "greatStartKeepGoing": "GREAT START! KEEP GOING.",
+  "onFireToday": "YOU'RE ON FIRE TODAY!",
+  "incredibleSolvingToday": "INCREDIBLE SOLVING TODAY!",
+  "newGameLabel": "NEW",
+  "slitherlinkTitle": "Slitherlink",
+  "slitherlinkSubtitle": "LOOP THE PIN GRID USING NUMBER CLUES.",
+  "futoshikiTitle": "Futoshiki",
+  "futoshikiSubtitle": "FILL GRIDS WITH GREATER-THAN CLUES.",
+  "kakuroTitle": "Kakuro",
+  "kakuroSubtitle": "SOLVE CROSSWORDS WITH NUMBERS AND SUMS.",
+  "inequalityDashTitle": "Inequality Dash",
+  "inequalityDashSubtitle": "SOLVE INEQUALITIES UNDER TIME PRESSURE.",
+  "factorFinderTitle": "Factor Finder",
+  "factorFinderSubtitle": "IDENTIFY ALL FACTORS OF TARGET NUMBERS.",
+  "collatzTitle": "Collatz Path",
+  "collatzSubtitle": "NAVIGATE THE 3N+1 SEQUENCE.",
+  "sumPyramidTitle": "Sum Pyramid",
+  "sumPyramidSubtitle": "FILL PYRAMID CELLS WITH SUM MATH CLUES.",
+  "target10Title": "Target 10",
+  "target10Subtitle": "COMBINE NUMBER TILES TO REAP TEN SUMS.",
+  "fractionMatcherTitle": "Fraction Matcher",
+  "fractionMatcherSubtitle": "MATCH EQUIVALENT FRACTIONS VISUALLY.",
+  "dualCodingTitle": "Dual Coding",
+  "dualCodingSubtitle": "MATCH LETTERS AND SYMBOLS CONCURRENTLY.",
+  "distractorMatrixTitle": "Distractor Matrix",
+  "distractorMatrixSubtitle": "FIND TARGET SHAPES AMID DISTRACTORS.",
+  "temporalOrderTitle": "Temporal Order",
+  "temporalOrderSubtitle": "RECALL THE CHRONOLOGICAL SEQUENCE.",
+  "associativePairsTitle": "Associative Pairs",
+  "associativePairsSubtitle": "PAIR AND MATCH CORRESPONDING SYMBOLS.",
+  "blockCount3dTitle": "3D Block Count",
+  "blockCount3dSubtitle": "COUNT BLOCKS IN THREE-DIMENSIONAL SPACE.",
+  "rotatingMazeTitle": "Rotating Maze",
+  "rotatingMazeSubtitle": "ROTATE MAZES TO GUIDE BALLS TO THE EXIT.",
+  "silhouetteMatchOrthoTitle": "Silhouette Match (Ortho)",
+  "silhouetteMatchOrthoSubtitle": "MATCH 3D OBJECTS WITH ORTHO SHADOWS.",
+  "spatialConflictTitle": "Spatial Conflict",
+  "spatialConflictSubtitle": "RESOLVE TEXT AND DIRECTION DISCREPANCIES.",
+  "spotlightTrackTitle": "Spotlight Track",
+  "spotlightTrackSubtitle": "TRACK BLINKING ITEMS IN MOVING SHADOWS.",
+  "d2AttentionTitle": "d2 Attention",
+  "d2AttentionSubtitle": "TAP TARGET SYMBOLS WITH STRICT CRITERIA.",
+  "dualMirrorTitle": "Dual-Mirror Navigation",
+  "dualMirrorSubtitle": "NAVIGATE TWO MAZES AT ONCE.",
+  "contextCluesTitle": "Context Clues",
+  "contextCluesSubtitle": "INFER HIDDEN WORDS FROM CONTEXT HINTS.",
+  "digitSpanReverseSubtitle": "RECALL NUMBER DIGITS IN REVERSE ORDER.",
+  "faceNameAssociationSubtitle": "RECALL NAMES FOR DIVERSE PRESENTED FACES.",
+  "staircaseMemorySubtitle": "MEMORIZE BLOCKS IN STEPWISE SEQUENCE.",
+  "choiceReactionTimeSubtitle": "TAP SPECIFIC BUTTONS MATCHING CUES FAST.",
+  "attentionalBlinkSubtitle": "SPARK RAPID TARGETS FLASHING IN STREAMS.",
+  "visualStatisticalLearningSubtitle": "LEARN TEMPORAL SHAPE PATTERNS VISUALLY.",
+  "sternbergTaskSubtitle": "RECALL IF SYMBOL WAS IN THE MEMORY SET.",
+  "operationSpanSubtitle": "SOLVE MATH AND RECALL ALPHABET STRINGS.",
+  "continuousRecognitionTitle": "Continuous Recognition",
+  "continuousRecognitionSubtitle": "IDENTIFY IF THE CARD PRESENTED IS OLD OR NEW.",
+  "symmetrySpanTitle": "Symmetry Span",
+  "symmetrySpanSubtitle": "RECALL CELL COORDINATES AMID VERTICAL SYMMETRY DECISIONS.",
+  "objectDisplacementTitle": "Object Displacement",
+  "objectDisplacementSubtitle": "STUDY PLACEMENTS AND TAP THE SINGLE OBJECT THAT MOVED.",
+  "mandalaRecallTitle": "Mandala Recall",
+  "mandalaRecallSubtitle": "MEMORIZE COLOR TILES AND REPAINT MANDALAS FROM PALETTE.",
+  "runningMemorySpanTitle": "Running Span",
+  "runningMemorySpanSubtitle": "MONITOR RUNNING LETTERS AND RECALL THE LAST N ITEMS.",
+  "spatialCabinetMemoryTitle": "Spatial Cabinets",
+  "spatialCabinetMemorySubtitle": "MEMORIZE AND LOCATE ITEMS BEHIND CABINET DOORS.",
+  "pathRecallSubtitle": "MEMORIZE AND REPEAT PATHWAY SELECTIONS.",
+  "objectShuffleSubtitle": "TRACK ITEMS SHUFFLED UNDER DEEP CUPS.",
+  "groceryListSubtitle": "MEMORIZE AND CHECK OFF ITEMS ON THE LIST.",
+  "quickMathSubtitle": "SOLVE ARITHMETIC QUESTIONS AT TOP SPEED.",
+  "mathGuessTitle": "Math Guess",
+  "mathGuessSubtitle": "GUESS THE HIDDEN NUMBER WITHIN 15 CHANCES.",
+  "reflexTapSubtitle": "TAP STIMULI AS FAST AS HUMANLY POSSIBLE.",
+  "pixelMimicSubtitle": "MIMIC DESIGN PATTERNS ON PIXEL GRIDS.",
+  "simonSequenceSubtitle": "REPEAT SHAPE SEQUENCES FROM MEMORY.",
+  "slidePuzzleSubtitle": "REARRANGE SQUARE SLIDING GRID TILES.",
+  "findWordTitle": "Find Word",
+  "schulteTableSubtitle": "TAP NUMBERS FROM ONE TO TWENTY-FIVE.",
+  "simonCommandTitle": "Simon Command",
+  "simonCommandSubtitle": "PERFORM VOICE INSTRUCTIONS QUICKLY.",
+  "binaryCodeTitle": "Binary Speed",
+  "binaryCodeSubtitle": "TRANSLATE BINARY CODES INTO DECIMAL.",
+  "moduloClockTitle": "Modulo Clock",
+  "moduloClockSubtitle": "CALCULATE MATH EQUATIONS USING CLOCKS.",
+  "chimpTestTitle": "Chimp Test",
+  "chimpTestSubtitle": "TAP RANDOM NUMBERS IN ASCENDING ORDER.",
+  "relationalMemoryTitle": "Relational Memory",
+  "relationalMemorySubtitle": "RECALL THE EXACT GRID ITEM POSITIONS.",
+  "factBinderTitle": "Fact Binder",
+  "factBinderSubtitle": "CONNECT SYMBOLS AND RECALL STATEMENTS.",
+  "sourceMonitoringTitle": "Source Monitoring",
+  "sourceMonitoringSubtitle": "REMEMBER THE CONTEXT.",
+  "klotskiTitle": "Klotski Escape",
+  "klotskiSubtitle": "SLIDE BLOCKS TO REACH THE EXITS.",
+  "homophoneHuntSubtitle": "CHOOSE THE CORRECT SPELLING."
+  }

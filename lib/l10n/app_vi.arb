@@ -1796,5 +1796,350 @@
       }
     }
   },
-  "imReady": "TÔI ĐÃ SẴN SÀNG"
+  "imReady": "TÔI ĐÃ SẴN SÀNG",
+  "soptTitle": "Tự trỏ chỉ",
+  "soptSubtitle": "Nhấn vào một thẻ khác nhau mỗi lần. Các vị trí xáo trộn!",
+  "soptWinTitle": "Trình tự chủ nhân!",
+  "soptGameOverMessage": "Bạn đã ghi được {score} điểm bằng cách theo dõi thành công các lá bài được xáo trộn!",
+  "soptChooseNovel": "Nhấn vào một thẻ mới",
+  "soptGreatJob": "Làm tốt lắm!",
+  "soptAlreadyTapped": "Đã khai thác rồi!",
+  "soptGrid": "Lưới",
+  "contRecogTitle": "Nhận dạng liên tục",
+  "contRecogSubtitle": "Bạn đã nhìn thấy thẻ này trước đây trong phiên này chưa?",
+  "contRecogWinTitle": "Công nhận thiên tài!",
+  "contRecogGameOverMessage": "Bạn đã ghi được {score} công nhận chính xác!",
+  "contRecogCorrect": "Chính xác!",
+  "contRecogWrong": "Sai!",
+  "contRecogOldOrNew": "Cái này cũ hay mới?",
+  "contRecogNew": "Mới",
+  "contRecogOld": "Cũ",
+  "contRecogSeenPool": "Nhìn thấy hồ bơi",
+  "dnmsTitle": "Bộ nhớ không khớp",
+  "dnmsSubtitle": "Nhấn vào thẻ không có trong mẫu đã ghi nhớ.",
+  "dnmsWinTitle": "Chuyên gia không phù hợp!",
+  "dnmsGameOverMessage": "Bạn đã ghi được {score} câu trả lời đúng trong phần Trì hoãn không khớp!",
+  "dnmsChooseNovel": "Nhấn vào thẻ mới",
+  "dnmsMemorizeSample": "Ghi nhớ thẻ này",
+  "dnmsWaitForIt": "Đợi nó...",
+  "dnmsExcellent": "Xuất sắc!",
+  "dnmsSampleTapped": "Đó là mẫu!",
+  "dnmsCards": "Thẻ",
+  "symSpanTitle": "Khoảng đối xứng",
+  "symSpanSubtitle": "Nhớ lại các mẫu tế bào trong khi xác định tính đối xứng dọc.",
+  "symSpanWinTitle": "Bậc thầy đối xứng!",
+  "symSpanGameOverMessage": "Bạn đã ghi được {score} điểm bằng cách nhớ lại bố cục và xác định tính đối xứng!",
+  "symSpanMemorizeRed": "Ghi nhớ vị trí tế bào màu đỏ",
+  "symSpanIsSymmetric": "Mô hình có đối xứng không?",
+  "symSpanRecallSequence": "Nhớ lại trình tự đúng thứ tự",
+  "symSpanGreatJob": "Làm tốt lắm!",
+  "symSpanTryAgain": "Hãy thử lại!",
+  "symSpanLength": "Chiều dài",
+  "readingSpanTitle": "Khoảng đọc",
+  "readingSpanSubtitle": "Xác minh câu trong khi ghi nhớ một chuỗi các chữ cái.",
+  "readingSpanWinTitle": "Chuyên gia đọc sách!",
+  "readingSpanGameOverMessage": "Bạn đã ghi được {score} điểm trong thử thách trí nhớ Reading Span!",
+  "readingSpanTrueFalse": "Tuyên bố này đúng hay sai?",
+  "readingSpanMemorizeLetter": "Hãy ghi nhớ lá thư này",
+  "readingSpanRecallLetters": "Nhớ lại các chữ cái theo thứ tự",
+  "readingSpanGreatJob": "Làm tốt lắm!",
+  "readingSpanTryAgain": "Hãy thử lại!",
+  "readingSpanYourSequence": "Trình tự của bạn: {sequence}",
+  "readingSpanLength": "Chiều dài",
+  "readingSpanSentence1": "Mặt trời mọc ở phía đông.",
+  "readingSpanSentence2": "Nước đá đang sôi sùng sục.",
+  "readingSpanSentence3": "Cá có thể thở dưới nước.",
+  "readingSpanSentence4": "Chó có cánh và có thể bay.",
+  "readingSpanSentence5": "Nước đóng băng ở 0 độ C.",
+  "readingSpanSentence6": "Mèo sủa như chó nhỏ.",
+  "readingSpanSentence7": "Cây có lá xanh vào mùa hè.",
+  "readingSpanSentence8": "Mưa rơi từ mặt đất lên.",
+  "readingSpanSentence9": "Một tam giác có bốn cạnh bằng nhau.",
+  "readingSpanSentence10": "Táo là một loại trái cây ngọt ngào.",
+  "readingSpanSentence11": "Mặt trăng được làm từ phô mai cheddar.",
+  "readingSpanSentence12": "Ô tô có bánh xe để lăn.",
+  "readingSpanSentence13": "Lửa lạnh cóng.",
+  "readingSpanSentence14": "Giấy được làm từ gỗ đã qua chế biến.",
+  "readingSpanSentence15": "Chim có lông để giúp chúng bay.",
+  "readingSpanSentence16": "Chuối mọc trên cây thông.",
+  "readingSpanSentence17": "Con voi nhỏ hơn con kiến.",
+  "readingSpanSentence18": "Sách chứa các trang in văn bản.",
+  "countingSpanTitle": "Khoảng đếm",
+  "countingSpanSubtitle": "Chỉ đếm vòng tròn màu xanh. Sau đó nhớ lại thứ tự đếm.",
+  "countingSpanWinTitle": "Đếm thiên tài!",
+  "countingSpanGameOverMessage": "Bạn đã ghi được {score} điểm trong thử thách trí nhớ Đếm khoảng thời gian!",
+  "countingSpanCountCircles": "Chỉ đếm vòng tròn màu xanh",
+  "countingSpanRecallCounts": "Nhớ lại số đếm theo đúng thứ tự",
+  "countingSpanGreatJob": "Làm tốt lắm!",
+  "countingSpanTryAgain": "Hãy thử lại!",
+  "countingSpanYourSequence": "Trình tự của bạn: {sequence}",
+  "countingSpanLength": "Chiều dài",
+  "objDispTitle": "Độ dịch chuyển của vật thể",
+  "objDispSubtitle": "Ghi nhớ bố cục. Tìm và chạm vào một đối tượng có thể thay đổi vị trí.",
+  "objDispWinTitle": "Thiên tài không gian!",
+  "objDispGameOverMessage": "Bạn đã xác định chính xác {score} đối tượng bị dịch chuyển!",
+  "objDispMemorizeAll": "Ghi nhớ tất cả các vị trí",
+  "objDispWaitingShift": "Đang chờ thay đổi bố cục...",
+  "objDispTapMoved": "Nhấn vào đối tượng đã di chuyển",
+  "objDispExcellent": "Xuất sắc!",
+  "objDispWrongObject": "Sai đối tượng!",
+  "objDispItems": "Mặt hàng",
+  "mandalaTitle": "Thu hồi Mandala",
+  "mandalaSubtitle": "Ghi nhớ cấu hình màu. Chọn màu sắc và sơn lại gạch.",
+  "mandalaWinTitle": "Nghệ sĩ Mandala!",
+  "mandalaGameOverMessage": "Bạn đã ghi được {score} điểm bằng cách tạo lại các bố cục hình học đầy màu sắc!",
+  "mandalaMemorizeColors": "Ghi nhớ màu gạch",
+  "mandalaPaintCells": "Sơn các ô để phù hợp với bản gốc",
+  "mandalaExcellent": "Xuất sắc!",
+  "mandalaIncorrectMatch": "Trận đấu không chính xác!",
+  "mandalaSubmitRepaint": "Gửi sơn lại",
+  "mandalaTiles": "Gạch lát",
+  "runningSpanTitle": "Khoảng chạy",
+  "runningSpanSubtitle": "Xem các chữ cái. Khi chúng dừng lại, hãy nhập N chữ cái cuối cùng theo thứ tự.",
+  "runningSpanWinTitle": "Bậc thầy đệm!",
+  "runningSpanGameOverMessage": "Bạn đã ghi được {score} điểm trong Chạy bộ nhớ kéo dài!",
+  "runningSpanPrepareRecall": "Chuẩn bị nhớ lại {count} chữ cái cuối cùng",
+  "runningSpanWatchCarefully": "Hãy để ý cẩn thận...",
+  "runningSpanEnterLast": "Nhập {count} chữ cái cuối cùng",
+  "runningSpanGreatJob": "Làm tốt lắm!",
+  "runningSpanIncorrectBuffer": "Bộ đệm không chính xác!",
+  "runningSpanRecallLast": "Nhớ lại {count} lần cuối",
+  "runningSpanStopsRandomly": "Luồng dừng ngẫu nhiên!",
+  "runningSpanEntered": "Đã nhập: {sequence}",
+  "runningSpanNItems": "Vật phẩm N",
+  "spatialCabinetTitle": "Tủ không gian",
+  "spatialCabinetSubtitle": "Ghi nhớ ngăn tủ nào chứa đồ vật nào.",
+  "spatialCabinetWinTitle": "Chuyên gia nội các!",
+  "spatialCabinetGameOverMessage": "Bạn đã ghi được {score} điểm trong Bộ nhớ tủ không gian!",
+  "spatialCabinetMemorize": "Ghi nhớ vị trí vật phẩm",
+  "spatialCabinetWhereIs": "{itemName} ở đâu?",
+  "spatialCabinetCorrect": "Chính xác!",
+  "spatialCabinetWrongDrawer": "Ngăn kéo sai!",
+  "spatialCabinetItems": "Mặt hàng",
+  "cabinetItemKey": "Chìa khóa",
+  "cabinetItemApple": "Quả táo",
+  "cabinetItemDiamond": "Kim cương",
+  "cabinetItemBook": "Sách",
+  "cabinetItemUmbrella": "Chiếc ô",
+  "cabinetItemCoffee": "Cà phê",
+  "cabinetItemLock": "Khóa",
+  "cabinetItemPet": "Thú cưng",
+  "cabinetItemCar": "Xe hơi",
+  "@soptGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@contRecogGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@dnmsGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@symSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@countingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@countingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@objDispGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@mandalaGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanPrepareRecall": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEnterLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanRecallLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEntered": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@spatialCabinetGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@spatialCabinetWhereIs": {
+    "placeholders": {
+      "itemName": {
+        "type": "String"
+      }
+    }
+  },
+  "gamesTitleLabel": "TRÒ CHƠI",
+  "yourFavorites": "YÊU THÍCH CỦA BẠN",
+  "readyForWorkout": "SẴN SÀNG CHO BÀI TẬP HÀNG NGÀY CỦA BẠN?",
+  "greatStartKeepGoing": "KHỞI ĐẦU TUYỆT VỜI! HÃY TIẾP TỤC.",
+  "onFireToday": "HÔM NAY BẠN ĐANG RẤT SUNG SỨC!",
+  "incredibleSolvingToday": "GIẢI QUYẾT ĐÁNG KINH NGẠC HÔM NAY!",
+  "newGameLabel": "MỚI",
+  "slitherlinkTitle": "Slitherlink",
+  "slitherlinkSubtitle": "VÂY QUANH LƯỚI PIN BẰNG CÁC GỢI Ý SỐ.",
+  "futoshikiTitle": "Futoshiki",
+  "futoshikiSubtitle": "ĐIỀN VÀO LƯỚI BẰNG CÁC GỢI Ý LỚN HƠN.",
+  "kakuroTitle": "Kakuro",
+  "kakuroSubtitle": "GIẢI CÁC Ô CHỮ VỚI CÁC CON SỐ VÀ TỔNG.",
+  "inequalityDashTitle": "Đua Bất Đẳng Thức",
+  "inequalityDashSubtitle": "GIẢI CÁC BẤT ĐẲNG THỨC DƯỚI ÁP LỰC THỜI GIAN.",
+  "factorFinderTitle": "Tìm Ước Số",
+  "factorFinderSubtitle": "XÁC ĐỊNH TẤT CẢ CÁC ƯỚC SỐ CỦA CÁC SỐ MỤC TIÊU.",
+  "collatzTitle": "Đường dẫn Collatz",
+  "collatzSubtitle": "ĐIỀU HƯỚNG DÃY SỐ 3N+1.",
+  "sumPyramidTitle": "Kim Tự Tháp Tổng",
+  "sumPyramidSubtitle": "ĐIỀN VÀO CÁC Ô KIM TỰ THÁP VỚI CÁC GỢI Ý TOÁN HỌC VỀ TỔNG.",
+  "target10Title": "Mục Tiêu 10",
+  "target10Subtitle": "KẾT HỢP CÁC Ô SỐ ĐỂ CÓ ĐƯỢC MƯỜI TỔNG.",
+  "fractionMatcherTitle": "Ghép Phân Số",
+  "fractionMatcherSubtitle": "GHÉP CÁC PHÂN SỐ TƯƠNG ĐƯƠNG BẰNG TRỰC QUAN.",
+  "dualCodingTitle": "Mã Hóa Kép",
+  "dualCodingSubtitle": "GHÉP CÁC CHỮ CÁI VÀ BIỂU TƯỢNG ĐỒNG THỜI.",
+  "distractorMatrixTitle": "Ma Trận Gây Nhiễu",
+  "distractorMatrixSubtitle": "TÌM CÁC HÌNH DẠNG MỤC TIÊU GIỮA CÁC YẾU TỐ GÂY NHIỄU.",
+  "temporalOrderTitle": "Thứ Tự Thời Gian",
+  "temporalOrderSubtitle": "NHỚ LẠI TRÌNH TỰ THỜI GIAN.",
+  "associativePairsTitle": "Cặp Liên Kết",
+  "associativePairsSubtitle": "GHÉP ĐÔI VÀ KHỚP CÁC BIỂU TƯỢNG TƯƠNG ỨNG.",
+  "blockCount3dTitle": "Đếm Khối 3D",
+  "blockCount3dSubtitle": "ĐẾM CÁC KHỐI TRONG KHÔNG GIAN BA CHIỀU.",
+  "rotatingMazeTitle": "Mê Cung Xoay",
+  "rotatingMazeSubtitle": "XOAY MÊ CUNG ĐỂ DẪN BÓNG ĐẾN LỐI THOÁT.",
+  "silhouetteMatchOrthoTitle": "Khớp Hình Chiếu (Ortho)",
+  "silhouetteMatchOrthoSubtitle": "KHỚP CÁC ĐỐI TƯỢNG 3D VỚI CÁC BÓNG CHIẾU THẲNG GÓC.",
+  "spatialConflictTitle": "Xung Đột Không Gian",
+  "spatialConflictSubtitle": "GIẢI QUYẾT SỰ KHÁC BIỆT GIỮA VĂN BẢN VÀ HƯỚNG.",
+  "spotlightTrackTitle": "Theo Dấu Đèn Chiếu",
+  "spotlightTrackSubtitle": "THEO DÕI CÁC MỤC NHẤP NHÁY TRONG CÁC BÓNG DI CHUYỂN.",
+  "d2AttentionTitle": "Chú Ý d2",
+  "d2AttentionSubtitle": "CHẠM VÀO CÁC BIỂU TƯỢNG MỤC TIÊU VỚI CÁC TIÊU CHÍ NGHIÊM NGẶT.",
+  "dualMirrorTitle": "Điều Hướng Gương Kép",
+  "dualMirrorSubtitle": "ĐIỀU HƯỚNG HAI MÊ CUNG CÙNG MỘT LÚC.",
+  "contextCluesTitle": "Gợi Ý Ngữ Cảnh",
+  "contextCluesSubtitle": "SUY LUẬN TỪ ẨN TỪ CÁC GỢI Ý NGỮ CẢNH.",
+  "digitSpanReverseSubtitle": "NHỚ LẠI CÁC CHỮ SỐ THEO THỨ TỰ NGƯỢC LẠI.",
+  "faceNameAssociationSubtitle": "NHỚ LẠI TÊN CHO CÁC KHUÔN MẶT ĐA DẠNG ĐƯỢC TRÌNH BÀY.",
+  "staircaseMemorySubtitle": "GHI NHỚ CÁC KHỐI THEO TRÌNH TỰ TỪNG BƯỚC.",
+  "choiceReactionTimeSubtitle": "CHẠM NHANH VÀO CÁC NÚT CỤ THỂ KHỚP VỚI CÁC GỢI Ý.",
+  "attentionalBlinkSubtitle": "PHÁT HIỆN CÁC MỤC TIÊU NHANH NHẤP NHÁY TRONG DÒNG CHẢY.",
+  "visualStatisticalLearningSubtitle": "HỌC CÁC MẪU HÌNH DẠNG THỜI GIAN BẰNG TRỰC QUAN.",
+  "sternbergTaskSubtitle": "NHỚ LẠI XEM BIỂU TƯỢNG CÓ TRONG BỘ NHỚ HAY KHÔNG.",
+  "operationSpanSubtitle": "GIẢI TOÁN VÀ NHỚ LẠI CÁC CHUỖI CHỮ CÁI.",
+  "continuousRecognitionTitle": "Nhận Biết Liên Tục",
+  "continuousRecognitionSubtitle": "XÁC ĐỊNH XEM THẺ ĐƯỢC TRÌNH BÀY LÀ CŨ HAY MỚI.",
+  "symmetrySpanTitle": "Khoảng Đối Xứng",
+  "symmetrySpanSubtitle": "NHỚ LẠI TỌA ĐỘ Ô GIỮA CÁC QUYẾT ĐỊNH ĐỐI XỨNG DỌC.",
+  "objectDisplacementTitle": "Sự Dịch Chuyển Vật Thể",
+  "objectDisplacementSubtitle": "NGHIÊN CỨU CÁC VỊ TRÍ VÀ CHẠM VÀO VẬT THỂ DUY NHẤT ĐÃ DI CHUYỂN.",
+  "mandalaRecallTitle": "Nhớ Lại Mandala",
+  "mandalaRecallSubtitle": "GHI NHỚ CÁC Ô MÀU VÀ VẼ LẠI MANDALA TỪ BẢNG MÀU.",
+  "runningMemorySpanTitle": "Khoảng Nhớ Chạy",
+  "runningMemorySpanSubtitle": "THEO DÕI CÁC CHỮ CÁI ĐANG CHẠY VÀ NHỚ LẠI N MỤC CUỐI CÙNG.",
+  "spatialCabinetMemoryTitle": "Tủ Không Gian",
+  "spatialCabinetMemorySubtitle": "GHI NHỚ VÀ XÁC ĐỊNH VỊ TRÍ CÁC MỤC SAU CỬA TỦ.",
+  "pathRecallSubtitle": "GHI NHỚ VÀ LẶP LẠI CÁC LỰA CHỌN ĐƯỜNG DẪN.",
+  "objectShuffleSubtitle": "THEO DÕI CÁC MỤC ĐÃ ĐƯỢC TRÁO ĐỔI DƯỚI CÁC CHIẾC CỐC SÂU.",
+  "groceryListSubtitle": "GHI NHỚ VÀ ĐÁNH DẤU CÁC MỤC TRÊN DANH SÁCH.",
+  "quickMathSubtitle": "GIẢI CÁC CÂU HỎI SỐ HỌC VỚI TỐC ĐỘ TỐI ĐA.",
+  "mathGuessTitle": "Đoán Toán Học",
+  "mathGuessSubtitle": "ĐOÁN SỐ ẨN TRONG VÒNG 15 LẦN THỬ.",
+  "reflexTapSubtitle": "CHẠM VÀO CÁC KÍCH THÍCH NHANH NHẤT CÓ THỂ.",
+  "pixelMimicSubtitle": "BẮT CHƯỚC CÁC MẪU THIẾT KẾ TRÊN LƯỚI PIXEL.",
+  "simonSequenceSubtitle": "LẶP LẠI CÁC TRÌNH TỰ HÌNH DẠNG TỪ BỘ NHỚ.",
+  "slidePuzzleSubtitle": "SẮP XẾP LẠI CÁC Ô LƯỚI TRƯỢT HÌNH VUÔNG.",
+  "findWordTitle": "Tìm Từ",
+  "schulteTableSubtitle": "CHẠM VÀO CÁC SỐ TỪ MỘT ĐẾN HAI MƯƠI LĂM.",
+  "simonCommandTitle": "Lệnh Simon",
+  "simonCommandSubtitle": "THỰC HIỆN CÁC HƯỚNG DẪN BẰNG GIỌNG NÓI NHANH CHÓNG.",
+  "binaryCodeTitle": "Tốc Độ Nhị Phân",
+  "binaryCodeSubtitle": "DỊCH CÁC MÃ NHỊ PHÂN SANG THẬP PHÂN.",
+  "moduloClockTitle": "Đồng Hồ Modulo",
+  "moduloClockSubtitle": "TÍNH TOÁN CÁC PHƯƠNG TRÌNH TOÁN HỌC BẰNG CÁCH SỬ DỤNG ĐỒNG HỒ.",
+  "chimpTestTitle": "Bài Kiểm Tra Tinh Tinh",
+  "chimpTestSubtitle": "CHẠM VÀO CÁC SỐ NGẪU NHIÊN THEO THỨ TỰ TĂNG DẦN.",
+  "relationalMemoryTitle": "Bộ Nhớ Quan Hệ",
+  "relationalMemorySubtitle": "NHỚ LẠI VỊ TRÍ CHÍNH XÁC CỦA CÁC MỤC TRONG LƯỚI.",
+  "factBinderTitle": "Ràng Buộc Sự Thật",
+  "factBinderSubtitle": "KẾT NỐI CÁC BIỂU TƯỢNG VÀ NHỚ LẠI CÁC TUYÊN BỐ.",
+  "sourceMonitoringTitle": "Theo Dõi Nguồn",
+  "sourceMonitoringSubtitle": "NHỚ LẠI NGỮ CẢNH.",
+  "klotskiTitle": "Thoát Khỏi Klotski",
+  "klotskiSubtitle": "TRƯỢT CÁC KHỐI ĐỂ ĐẾN ĐƯỢC LỐI RA.",
+  "homophoneHuntSubtitle": "CHỌN CÁCH PHÁT ÂM ĐÚNG."
 }

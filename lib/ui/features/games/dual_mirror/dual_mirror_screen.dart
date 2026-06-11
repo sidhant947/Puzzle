@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -36,7 +38,7 @@ class _DualMirrorScreenState extends ConsumerState<DualMirrorScreen> {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'MAZE MASTERED!',
+            title: L10nGameHelpers.getGameTitle(context, 'dual_mirror'),
             message: AppLocalizations.of(context)!.dualMirrorMessage,
             onHome: () {
               Navigator.of(context).pop();
@@ -53,15 +55,15 @@ class _DualMirrorScreenState extends ConsumerState<DualMirrorScreen> {
 
     if (state.isLoading || state.currentLevel == null) {
       return GameScaffold(
-        title: 'DUAL-MIRROR',
-        subtitle: 'Navigate two mazes at once',
+        title: L10nGameHelpers.getGameTitle(context, 'dual_mirror'),
+        subtitle: L10nGameHelpers.getGameTitle(context, 'dual_mirror'),
         body: const Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
-      title: 'DUAL-MIRROR',
-      subtitle: 'Control both icons. Blue follows, Red mirrors.',
+      title: L10nGameHelpers.getGameTitle(context, 'dual_mirror'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'dual_mirror'),
       onReset: () {
         HapticFeedbackUtil.mediumImpact();
         ref.read(dualMirrorNotifierProvider.notifier).reset();

@@ -4807,6 +4807,1362 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'I\'M READY'**
   String get imReady;
+
+  /// No description provided for @soptTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Self-Ordered Pointing'**
+  String get soptTitle;
+
+  /// No description provided for @soptSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap a different card each time. The positions shuffle!'**
+  String get soptSubtitle;
+
+  /// No description provided for @soptWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sequence Master!'**
+  String get soptWinTitle;
+
+  /// No description provided for @soptGameOverMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {score} points by successfully tracking shuffled cards!'**
+  String soptGameOverMessage(int score);
+
+  /// No description provided for @soptChooseNovel.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap a new card'**
+  String get soptChooseNovel;
+
+  /// No description provided for @soptGreatJob.
+  ///
+  /// In en, this message translates to:
+  /// **'Great job!'**
+  String get soptGreatJob;
+
+  /// No description provided for @soptAlreadyTapped.
+  ///
+  /// In en, this message translates to:
+  /// **'Already tapped!'**
+  String get soptAlreadyTapped;
+
+  /// No description provided for @soptGrid.
+  ///
+  /// In en, this message translates to:
+  /// **'Grid'**
+  String get soptGrid;
+
+  /// No description provided for @contRecogTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Continuous Recognition'**
+  String get contRecogTitle;
+
+  /// No description provided for @contRecogSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Have you seen this card before in this session?'**
+  String get contRecogSubtitle;
+
+  /// No description provided for @contRecogWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Recognition Genius!'**
+  String get contRecogWinTitle;
+
+  /// No description provided for @contRecogGameOverMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {score} correct recognitions!'**
+  String contRecogGameOverMessage(int score);
+
+  /// No description provided for @contRecogCorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct!'**
+  String get contRecogCorrect;
+
+  /// No description provided for @contRecogWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong!'**
+  String get contRecogWrong;
+
+  /// No description provided for @contRecogOldOrNew.
+  ///
+  /// In en, this message translates to:
+  /// **'Is this old or new?'**
+  String get contRecogOldOrNew;
+
+  /// No description provided for @contRecogNew.
+  ///
+  /// In en, this message translates to:
+  /// **'New'**
+  String get contRecogNew;
+
+  /// No description provided for @contRecogOld.
+  ///
+  /// In en, this message translates to:
+  /// **'Old'**
+  String get contRecogOld;
+
+  /// No description provided for @contRecogSeenPool.
+  ///
+  /// In en, this message translates to:
+  /// **'Seen Pool'**
+  String get contRecogSeenPool;
+
+  /// No description provided for @dnmsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Non-Matching Memory'**
+  String get dnmsTitle;
+
+  /// No description provided for @dnmsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the card that was not in the memorized sample.'**
+  String get dnmsSubtitle;
+
+  /// No description provided for @dnmsWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Non-Matching Expert!'**
+  String get dnmsWinTitle;
+
+  /// No description provided for @dnmsGameOverMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {score} correct answers in Delayed Non-Matching!'**
+  String dnmsGameOverMessage(int score);
+
+  /// No description provided for @dnmsChooseNovel.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the new card'**
+  String get dnmsChooseNovel;
+
+  /// No description provided for @dnmsMemorizeSample.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize this card'**
+  String get dnmsMemorizeSample;
+
+  /// No description provided for @dnmsWaitForIt.
+  ///
+  /// In en, this message translates to:
+  /// **'Wait for it...'**
+  String get dnmsWaitForIt;
+
+  /// No description provided for @dnmsExcellent.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent!'**
+  String get dnmsExcellent;
+
+  /// No description provided for @dnmsSampleTapped.
+  ///
+  /// In en, this message translates to:
+  /// **'That was the sample!'**
+  String get dnmsSampleTapped;
+
+  /// No description provided for @dnmsCards.
+  ///
+  /// In en, this message translates to:
+  /// **'Cards'**
+  String get dnmsCards;
+
+  /// No description provided for @symSpanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Symmetry Span'**
+  String get symSpanTitle;
+
+  /// No description provided for @symSpanSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Recall cell patterns while identifying vertical symmetry.'**
+  String get symSpanSubtitle;
+
+  /// No description provided for @symSpanWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Symmetry Master!'**
+  String get symSpanWinTitle;
+
+  /// No description provided for @symSpanGameOverMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {score} points by recalling layouts and identifying symmetry!'**
+  String symSpanGameOverMessage(int score);
+
+  /// No description provided for @symSpanMemorizeRed.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize red cell location'**
+  String get symSpanMemorizeRed;
+
+  /// No description provided for @symSpanIsSymmetric.
+  ///
+  /// In en, this message translates to:
+  /// **'Is the pattern symmetrical?'**
+  String get symSpanIsSymmetric;
+
+  /// No description provided for @symSpanRecallSequence.
+  ///
+  /// In en, this message translates to:
+  /// **'Recall sequence in correct order'**
+  String get symSpanRecallSequence;
+
+  /// No description provided for @symSpanGreatJob.
+  ///
+  /// In en, this message translates to:
+  /// **'Great job!'**
+  String get symSpanGreatJob;
+
+  /// No description provided for @symSpanTryAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again!'**
+  String get symSpanTryAgain;
+
+  /// No description provided for @symSpanLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Length'**
+  String get symSpanLength;
+
+  /// No description provided for @readingSpanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading Span'**
+  String get readingSpanTitle;
+
+  /// No description provided for @readingSpanSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Verify sentences while remembering a sequence of letters.'**
+  String get readingSpanSubtitle;
+
+  /// No description provided for @readingSpanWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading Expert!'**
+  String get readingSpanWinTitle;
+
+  /// No description provided for @readingSpanGameOverMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {score} points in the Reading Span memory challenge!'**
+  String readingSpanGameOverMessage(int score);
+
+  /// No description provided for @readingSpanTrueFalse.
+  ///
+  /// In en, this message translates to:
+  /// **'Is this statement true or false?'**
+  String get readingSpanTrueFalse;
+
+  /// No description provided for @readingSpanMemorizeLetter.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize this letter'**
+  String get readingSpanMemorizeLetter;
+
+  /// No description provided for @readingSpanRecallLetters.
+  ///
+  /// In en, this message translates to:
+  /// **'Recall letters in sequence'**
+  String get readingSpanRecallLetters;
+
+  /// No description provided for @readingSpanGreatJob.
+  ///
+  /// In en, this message translates to:
+  /// **'Great job!'**
+  String get readingSpanGreatJob;
+
+  /// No description provided for @readingSpanTryAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again!'**
+  String get readingSpanTryAgain;
+
+  /// No description provided for @readingSpanYourSequence.
+  ///
+  /// In en, this message translates to:
+  /// **'Your sequence: {sequence}'**
+  String readingSpanYourSequence(String sequence);
+
+  /// No description provided for @readingSpanLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Length'**
+  String get readingSpanLength;
+
+  /// No description provided for @readingSpanSentence1.
+  ///
+  /// In en, this message translates to:
+  /// **'The sun rises in the east.'**
+  String get readingSpanSentence1;
+
+  /// No description provided for @readingSpanSentence2.
+  ///
+  /// In en, this message translates to:
+  /// **'Ice is boiling hot.'**
+  String get readingSpanSentence2;
+
+  /// No description provided for @readingSpanSentence3.
+  ///
+  /// In en, this message translates to:
+  /// **'Fish can breathe underwater.'**
+  String get readingSpanSentence3;
+
+  /// No description provided for @readingSpanSentence4.
+  ///
+  /// In en, this message translates to:
+  /// **'Dogs have wings and can fly.'**
+  String get readingSpanSentence4;
+
+  /// No description provided for @readingSpanSentence5.
+  ///
+  /// In en, this message translates to:
+  /// **'Water freezes at 0 degrees Celsius.'**
+  String get readingSpanSentence5;
+
+  /// No description provided for @readingSpanSentence6.
+  ///
+  /// In en, this message translates to:
+  /// **'Cats bark like small dogs.'**
+  String get readingSpanSentence6;
+
+  /// No description provided for @readingSpanSentence7.
+  ///
+  /// In en, this message translates to:
+  /// **'Trees have green leaves in summer.'**
+  String get readingSpanSentence7;
+
+  /// No description provided for @readingSpanSentence8.
+  ///
+  /// In en, this message translates to:
+  /// **'Rain falls upwards from the ground.'**
+  String get readingSpanSentence8;
+
+  /// No description provided for @readingSpanSentence9.
+  ///
+  /// In en, this message translates to:
+  /// **'A triangle has four equal sides.'**
+  String get readingSpanSentence9;
+
+  /// No description provided for @readingSpanSentence10.
+  ///
+  /// In en, this message translates to:
+  /// **'Apples are a type of sweet fruit.'**
+  String get readingSpanSentence10;
+
+  /// No description provided for @readingSpanSentence11.
+  ///
+  /// In en, this message translates to:
+  /// **'The moon is made of cheddar cheese.'**
+  String get readingSpanSentence11;
+
+  /// No description provided for @readingSpanSentence12.
+  ///
+  /// In en, this message translates to:
+  /// **'Automobiles have wheels to roll.'**
+  String get readingSpanSentence12;
+
+  /// No description provided for @readingSpanSentence13.
+  ///
+  /// In en, this message translates to:
+  /// **'Fire is freezing cold.'**
+  String get readingSpanSentence13;
+
+  /// No description provided for @readingSpanSentence14.
+  ///
+  /// In en, this message translates to:
+  /// **'Paper is made from processed wood.'**
+  String get readingSpanSentence14;
+
+  /// No description provided for @readingSpanSentence15.
+  ///
+  /// In en, this message translates to:
+  /// **'Birds have feathers to help them fly.'**
+  String get readingSpanSentence15;
+
+  /// No description provided for @readingSpanSentence16.
+  ///
+  /// In en, this message translates to:
+  /// **'Bananas grow on pine trees.'**
+  String get readingSpanSentence16;
+
+  /// No description provided for @readingSpanSentence17.
+  ///
+  /// In en, this message translates to:
+  /// **'An elephant is smaller than an ant.'**
+  String get readingSpanSentence17;
+
+  /// No description provided for @readingSpanSentence18.
+  ///
+  /// In en, this message translates to:
+  /// **'Books contain printed pages of text.'**
+  String get readingSpanSentence18;
+
+  /// No description provided for @countingSpanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Counting Span'**
+  String get countingSpanTitle;
+
+  /// No description provided for @countingSpanSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Count blue circles only. Then recall the sequence of counts.'**
+  String get countingSpanSubtitle;
+
+  /// No description provided for @countingSpanWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Counting Genius!'**
+  String get countingSpanWinTitle;
+
+  /// No description provided for @countingSpanGameOverMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {score} points in the Counting Span memory challenge!'**
+  String countingSpanGameOverMessage(int score);
+
+  /// No description provided for @countingSpanCountCircles.
+  ///
+  /// In en, this message translates to:
+  /// **'Count only blue circles'**
+  String get countingSpanCountCircles;
+
+  /// No description provided for @countingSpanRecallCounts.
+  ///
+  /// In en, this message translates to:
+  /// **'Recall counts in correct order'**
+  String get countingSpanRecallCounts;
+
+  /// No description provided for @countingSpanGreatJob.
+  ///
+  /// In en, this message translates to:
+  /// **'Great job!'**
+  String get countingSpanGreatJob;
+
+  /// No description provided for @countingSpanTryAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again!'**
+  String get countingSpanTryAgain;
+
+  /// No description provided for @countingSpanYourSequence.
+  ///
+  /// In en, this message translates to:
+  /// **'Your sequence: {sequence}'**
+  String countingSpanYourSequence(String sequence);
+
+  /// No description provided for @countingSpanLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Length'**
+  String get countingSpanLength;
+
+  /// No description provided for @objDispTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Object Displacement'**
+  String get objDispTitle;
+
+  /// No description provided for @objDispSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize layout. Find and tap the one object that shifts position.'**
+  String get objDispSubtitle;
+
+  /// No description provided for @objDispWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Spatial Genius!'**
+  String get objDispWinTitle;
+
+  /// No description provided for @objDispGameOverMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You correctly identified {score} displaced objects!'**
+  String objDispGameOverMessage(int score);
+
+  /// No description provided for @objDispMemorizeAll.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize all placements'**
+  String get objDispMemorizeAll;
+
+  /// No description provided for @objDispWaitingShift.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for layout shift...'**
+  String get objDispWaitingShift;
+
+  /// No description provided for @objDispTapMoved.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the object that moved'**
+  String get objDispTapMoved;
+
+  /// No description provided for @objDispExcellent.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent!'**
+  String get objDispExcellent;
+
+  /// No description provided for @objDispWrongObject.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong object!'**
+  String get objDispWrongObject;
+
+  /// No description provided for @objDispItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Items'**
+  String get objDispItems;
+
+  /// No description provided for @mandalaTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mandala Recall'**
+  String get mandalaTitle;
+
+  /// No description provided for @mandalaSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize color configuration. Pick colors and repaint the tiles.'**
+  String get mandalaSubtitle;
+
+  /// No description provided for @mandalaWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mandala Artist!'**
+  String get mandalaWinTitle;
+
+  /// No description provided for @mandalaGameOverMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {score} points by recreating colored geometric layouts!'**
+  String mandalaGameOverMessage(int score);
+
+  /// No description provided for @mandalaMemorizeColors.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize tile colors'**
+  String get mandalaMemorizeColors;
+
+  /// No description provided for @mandalaPaintCells.
+  ///
+  /// In en, this message translates to:
+  /// **'Paint cells to match original'**
+  String get mandalaPaintCells;
+
+  /// No description provided for @mandalaExcellent.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent!'**
+  String get mandalaExcellent;
+
+  /// No description provided for @mandalaIncorrectMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect match!'**
+  String get mandalaIncorrectMatch;
+
+  /// No description provided for @mandalaSubmitRepaint.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit Repaint'**
+  String get mandalaSubmitRepaint;
+
+  /// No description provided for @mandalaTiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Tiles'**
+  String get mandalaTiles;
+
+  /// No description provided for @runningSpanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Running Span'**
+  String get runningSpanTitle;
+
+  /// No description provided for @runningSpanSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Watch the letters. When they stop, input the last N letters in order.'**
+  String get runningSpanSubtitle;
+
+  /// No description provided for @runningSpanWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Buffer Master!'**
+  String get runningSpanWinTitle;
+
+  /// No description provided for @runningSpanGameOverMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {score} points in Running Memory Span!'**
+  String runningSpanGameOverMessage(int score);
+
+  /// No description provided for @runningSpanPrepareRecall.
+  ///
+  /// In en, this message translates to:
+  /// **'Prepare to recall last {count} letters'**
+  String runningSpanPrepareRecall(int count);
+
+  /// No description provided for @runningSpanWatchCarefully.
+  ///
+  /// In en, this message translates to:
+  /// **'Watch carefully...'**
+  String get runningSpanWatchCarefully;
+
+  /// No description provided for @runningSpanEnterLast.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter last {count} letters'**
+  String runningSpanEnterLast(int count);
+
+  /// No description provided for @runningSpanGreatJob.
+  ///
+  /// In en, this message translates to:
+  /// **'Great job!'**
+  String get runningSpanGreatJob;
+
+  /// No description provided for @runningSpanIncorrectBuffer.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect buffer!'**
+  String get runningSpanIncorrectBuffer;
+
+  /// No description provided for @runningSpanRecallLast.
+  ///
+  /// In en, this message translates to:
+  /// **'Recall last {count}'**
+  String runningSpanRecallLast(int count);
+
+  /// No description provided for @runningSpanStopsRandomly.
+  ///
+  /// In en, this message translates to:
+  /// **'The stream stops randomly!'**
+  String get runningSpanStopsRandomly;
+
+  /// No description provided for @runningSpanEntered.
+  ///
+  /// In en, this message translates to:
+  /// **'Entered: {sequence}'**
+  String runningSpanEntered(String sequence);
+
+  /// No description provided for @runningSpanNItems.
+  ///
+  /// In en, this message translates to:
+  /// **'N-Items'**
+  String get runningSpanNItems;
+
+  /// No description provided for @spatialCabinetTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Spatial Cabinets'**
+  String get spatialCabinetTitle;
+
+  /// No description provided for @spatialCabinetSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize which cabinet drawer contains which object.'**
+  String get spatialCabinetSubtitle;
+
+  /// No description provided for @spatialCabinetWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cabinet Expert!'**
+  String get spatialCabinetWinTitle;
+
+  /// No description provided for @spatialCabinetGameOverMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You scored {score} points in Spatial Cabinet Memory!'**
+  String spatialCabinetGameOverMessage(int score);
+
+  /// No description provided for @spatialCabinetMemorize.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize item locations'**
+  String get spatialCabinetMemorize;
+
+  /// No description provided for @spatialCabinetWhereIs.
+  ///
+  /// In en, this message translates to:
+  /// **'Where is the {itemName}?'**
+  String spatialCabinetWhereIs(String itemName);
+
+  /// No description provided for @spatialCabinetCorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct!'**
+  String get spatialCabinetCorrect;
+
+  /// No description provided for @spatialCabinetWrongDrawer.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong drawer!'**
+  String get spatialCabinetWrongDrawer;
+
+  /// No description provided for @spatialCabinetItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Items'**
+  String get spatialCabinetItems;
+
+  /// No description provided for @cabinetItemKey.
+  ///
+  /// In en, this message translates to:
+  /// **'Key'**
+  String get cabinetItemKey;
+
+  /// No description provided for @cabinetItemApple.
+  ///
+  /// In en, this message translates to:
+  /// **'Apple'**
+  String get cabinetItemApple;
+
+  /// No description provided for @cabinetItemDiamond.
+  ///
+  /// In en, this message translates to:
+  /// **'Diamond'**
+  String get cabinetItemDiamond;
+
+  /// No description provided for @cabinetItemBook.
+  ///
+  /// In en, this message translates to:
+  /// **'Book'**
+  String get cabinetItemBook;
+
+  /// No description provided for @cabinetItemUmbrella.
+  ///
+  /// In en, this message translates to:
+  /// **'Umbrella'**
+  String get cabinetItemUmbrella;
+
+  /// No description provided for @cabinetItemCoffee.
+  ///
+  /// In en, this message translates to:
+  /// **'Coffee'**
+  String get cabinetItemCoffee;
+
+  /// No description provided for @cabinetItemLock.
+  ///
+  /// In en, this message translates to:
+  /// **'Lock'**
+  String get cabinetItemLock;
+
+  /// No description provided for @cabinetItemPet.
+  ///
+  /// In en, this message translates to:
+  /// **'Pet'**
+  String get cabinetItemPet;
+
+  /// No description provided for @cabinetItemCar.
+  ///
+  /// In en, this message translates to:
+  /// **'Car'**
+  String get cabinetItemCar;
+
+  /// No description provided for @gamesTitleLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'GAMES'**
+  String get gamesTitleLabel;
+
+  /// No description provided for @yourFavorites.
+  ///
+  /// In en, this message translates to:
+  /// **'YOUR FAVORITES'**
+  String get yourFavorites;
+
+  /// No description provided for @readyForWorkout.
+  ///
+  /// In en, this message translates to:
+  /// **'READY FOR YOUR DAILY WORKOUT?'**
+  String get readyForWorkout;
+
+  /// No description provided for @greatStartKeepGoing.
+  ///
+  /// In en, this message translates to:
+  /// **'GREAT START! KEEP GOING.'**
+  String get greatStartKeepGoing;
+
+  /// No description provided for @onFireToday.
+  ///
+  /// In en, this message translates to:
+  /// **'YOU\'RE ON FIRE TODAY!'**
+  String get onFireToday;
+
+  /// No description provided for @incredibleSolvingToday.
+  ///
+  /// In en, this message translates to:
+  /// **'INCREDIBLE SOLVING TODAY!'**
+  String get incredibleSolvingToday;
+
+  /// No description provided for @newGameLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'NEW'**
+  String get newGameLabel;
+
+  /// No description provided for @slitherlinkTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Slitherlink'**
+  String get slitherlinkTitle;
+
+  /// No description provided for @slitherlinkSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'LOOP THE PIN GRID USING NUMBER CLUES.'**
+  String get slitherlinkSubtitle;
+
+  /// No description provided for @futoshikiTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Futoshiki'**
+  String get futoshikiTitle;
+
+  /// No description provided for @futoshikiSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'FILL GRIDS WITH GREATER-THAN CLUES.'**
+  String get futoshikiSubtitle;
+
+  /// No description provided for @kakuroTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Kakuro'**
+  String get kakuroTitle;
+
+  /// No description provided for @kakuroSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SOLVE CROSSWORDS WITH NUMBERS AND SUMS.'**
+  String get kakuroSubtitle;
+
+  /// No description provided for @inequalityDashTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Inequality Dash'**
+  String get inequalityDashTitle;
+
+  /// No description provided for @inequalityDashSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SOLVE INEQUALITIES UNDER TIME PRESSURE.'**
+  String get inequalityDashSubtitle;
+
+  /// No description provided for @factorFinderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Factor Finder'**
+  String get factorFinderTitle;
+
+  /// No description provided for @factorFinderSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'IDENTIFY ALL FACTORS OF TARGET NUMBERS.'**
+  String get factorFinderSubtitle;
+
+  /// No description provided for @collatzTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Collatz Path'**
+  String get collatzTitle;
+
+  /// No description provided for @collatzSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'NAVIGATE THE 3N+1 SEQUENCE.'**
+  String get collatzSubtitle;
+
+  /// No description provided for @sumPyramidTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sum Pyramid'**
+  String get sumPyramidTitle;
+
+  /// No description provided for @sumPyramidSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'FILL PYRAMID CELLS WITH SUM MATH CLUES.'**
+  String get sumPyramidSubtitle;
+
+  /// No description provided for @target10Title.
+  ///
+  /// In en, this message translates to:
+  /// **'Target 10'**
+  String get target10Title;
+
+  /// No description provided for @target10Subtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'COMBINE NUMBER TILES TO REAP TEN SUMS.'**
+  String get target10Subtitle;
+
+  /// No description provided for @fractionMatcherTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Fraction Matcher'**
+  String get fractionMatcherTitle;
+
+  /// No description provided for @fractionMatcherSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MATCH EQUIVALENT FRACTIONS VISUALLY.'**
+  String get fractionMatcherSubtitle;
+
+  /// No description provided for @dualCodingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Dual Coding'**
+  String get dualCodingTitle;
+
+  /// No description provided for @dualCodingSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MATCH LETTERS AND SYMBOLS CONCURRENTLY.'**
+  String get dualCodingSubtitle;
+
+  /// No description provided for @distractorMatrixTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Distractor Matrix'**
+  String get distractorMatrixTitle;
+
+  /// No description provided for @distractorMatrixSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'FIND TARGET SHAPES AMID DISTRACTORS.'**
+  String get distractorMatrixSubtitle;
+
+  /// No description provided for @temporalOrderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Temporal Order'**
+  String get temporalOrderTitle;
+
+  /// No description provided for @temporalOrderSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'RECALL THE CHRONOLOGICAL SEQUENCE.'**
+  String get temporalOrderSubtitle;
+
+  /// No description provided for @associativePairsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Associative Pairs'**
+  String get associativePairsTitle;
+
+  /// No description provided for @associativePairsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'PAIR AND MATCH CORRESPONDING SYMBOLS.'**
+  String get associativePairsSubtitle;
+
+  /// No description provided for @blockCount3dTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'3D Block Count'**
+  String get blockCount3dTitle;
+
+  /// No description provided for @blockCount3dSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'COUNT BLOCKS IN THREE-DIMENSIONAL SPACE.'**
+  String get blockCount3dSubtitle;
+
+  /// No description provided for @rotatingMazeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rotating Maze'**
+  String get rotatingMazeTitle;
+
+  /// No description provided for @rotatingMazeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'ROTATE MAZES TO GUIDE BALLS TO THE EXIT.'**
+  String get rotatingMazeSubtitle;
+
+  /// No description provided for @silhouetteMatchOrthoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Silhouette Match (Ortho)'**
+  String get silhouetteMatchOrthoTitle;
+
+  /// No description provided for @silhouetteMatchOrthoSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MATCH 3D OBJECTS WITH ORTHO SHADOWS.'**
+  String get silhouetteMatchOrthoSubtitle;
+
+  /// No description provided for @spatialConflictTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Spatial Conflict'**
+  String get spatialConflictTitle;
+
+  /// No description provided for @spatialConflictSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'RESOLVE TEXT AND DIRECTION DISCREPANCIES.'**
+  String get spatialConflictSubtitle;
+
+  /// No description provided for @spotlightTrackTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Spotlight Track'**
+  String get spotlightTrackTitle;
+
+  /// No description provided for @spotlightTrackSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'TRACK BLINKING ITEMS IN MOVING SHADOWS.'**
+  String get spotlightTrackSubtitle;
+
+  /// No description provided for @d2AttentionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'d2 Attention'**
+  String get d2AttentionTitle;
+
+  /// No description provided for @d2AttentionSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'TAP TARGET SYMBOLS WITH STRICT CRITERIA.'**
+  String get d2AttentionSubtitle;
+
+  /// No description provided for @dualMirrorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Dual-Mirror Navigation'**
+  String get dualMirrorTitle;
+
+  /// No description provided for @dualMirrorSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'NAVIGATE TWO MAZES AT ONCE.'**
+  String get dualMirrorSubtitle;
+
+  /// No description provided for @contextCluesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Context Clues'**
+  String get contextCluesTitle;
+
+  /// No description provided for @contextCluesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'INFER HIDDEN WORDS FROM CONTEXT HINTS.'**
+  String get contextCluesSubtitle;
+
+  /// No description provided for @digitSpanReverseSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'RECALL NUMBER DIGITS IN REVERSE ORDER.'**
+  String get digitSpanReverseSubtitle;
+
+  /// No description provided for @faceNameAssociationSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'RECALL NAMES FOR DIVERSE PRESENTED FACES.'**
+  String get faceNameAssociationSubtitle;
+
+  /// No description provided for @staircaseMemorySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MEMORIZE BLOCKS IN STEPWISE SEQUENCE.'**
+  String get staircaseMemorySubtitle;
+
+  /// No description provided for @choiceReactionTimeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'TAP SPECIFIC BUTTONS MATCHING CUES FAST.'**
+  String get choiceReactionTimeSubtitle;
+
+  /// No description provided for @attentionalBlinkSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SPARK RAPID TARGETS FLASHING IN STREAMS.'**
+  String get attentionalBlinkSubtitle;
+
+  /// No description provided for @visualStatisticalLearningSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'LEARN TEMPORAL SHAPE PATTERNS VISUALLY.'**
+  String get visualStatisticalLearningSubtitle;
+
+  /// No description provided for @sternbergTaskSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'RECALL IF SYMBOL WAS IN THE MEMORY SET.'**
+  String get sternbergTaskSubtitle;
+
+  /// No description provided for @operationSpanSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SOLVE MATH AND RECALL ALPHABET STRINGS.'**
+  String get operationSpanSubtitle;
+
+  /// No description provided for @continuousRecognitionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Continuous Recognition'**
+  String get continuousRecognitionTitle;
+
+  /// No description provided for @continuousRecognitionSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'IDENTIFY IF THE CARD PRESENTED IS OLD OR NEW.'**
+  String get continuousRecognitionSubtitle;
+
+  /// No description provided for @symmetrySpanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Symmetry Span'**
+  String get symmetrySpanTitle;
+
+  /// No description provided for @symmetrySpanSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'RECALL CELL COORDINATES AMID VERTICAL SYMMETRY DECISIONS.'**
+  String get symmetrySpanSubtitle;
+
+  /// No description provided for @objectDisplacementTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Object Displacement'**
+  String get objectDisplacementTitle;
+
+  /// No description provided for @objectDisplacementSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'STUDY PLACEMENTS AND TAP THE SINGLE OBJECT THAT MOVED.'**
+  String get objectDisplacementSubtitle;
+
+  /// No description provided for @mandalaRecallTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mandala Recall'**
+  String get mandalaRecallTitle;
+
+  /// No description provided for @mandalaRecallSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MEMORIZE COLOR TILES AND REPAINT MANDALAS FROM PALETTE.'**
+  String get mandalaRecallSubtitle;
+
+  /// No description provided for @runningMemorySpanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Running Span'**
+  String get runningMemorySpanTitle;
+
+  /// No description provided for @runningMemorySpanSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MONITOR RUNNING LETTERS AND RECALL THE LAST N ITEMS.'**
+  String get runningMemorySpanSubtitle;
+
+  /// No description provided for @spatialCabinetMemoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Spatial Cabinets'**
+  String get spatialCabinetMemoryTitle;
+
+  /// No description provided for @spatialCabinetMemorySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MEMORIZE AND LOCATE ITEMS BEHIND CABINET DOORS.'**
+  String get spatialCabinetMemorySubtitle;
+
+  /// No description provided for @pathRecallSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MEMORIZE AND REPEAT PATHWAY SELECTIONS.'**
+  String get pathRecallSubtitle;
+
+  /// No description provided for @objectShuffleSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'TRACK ITEMS SHUFFLED UNDER DEEP CUPS.'**
+  String get objectShuffleSubtitle;
+
+  /// No description provided for @groceryListSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MEMORIZE AND CHECK OFF ITEMS ON THE LIST.'**
+  String get groceryListSubtitle;
+
+  /// No description provided for @quickMathSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SOLVE ARITHMETIC QUESTIONS AT TOP SPEED.'**
+  String get quickMathSubtitle;
+
+  /// No description provided for @mathGuessTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Math Guess'**
+  String get mathGuessTitle;
+
+  /// No description provided for @mathGuessSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'GUESS THE HIDDEN NUMBER WITHIN 15 CHANCES.'**
+  String get mathGuessSubtitle;
+
+  /// No description provided for @reflexTapSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'TAP STIMULI AS FAST AS HUMANLY POSSIBLE.'**
+  String get reflexTapSubtitle;
+
+  /// No description provided for @pixelMimicSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MIMIC DESIGN PATTERNS ON PIXEL GRIDS.'**
+  String get pixelMimicSubtitle;
+
+  /// No description provided for @simonSequenceSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'REPEAT SHAPE SEQUENCES FROM MEMORY.'**
+  String get simonSequenceSubtitle;
+
+  /// No description provided for @slidePuzzleSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'REARRANGE SQUARE SLIDING GRID TILES.'**
+  String get slidePuzzleSubtitle;
+
+  /// No description provided for @findWordTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find Word'**
+  String get findWordTitle;
+
+  /// No description provided for @schulteTableSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'TAP NUMBERS FROM ONE TO TWENTY-FIVE.'**
+  String get schulteTableSubtitle;
+
+  /// No description provided for @simonCommandTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Simon Command'**
+  String get simonCommandTitle;
+
+  /// No description provided for @simonCommandSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'PERFORM VOICE INSTRUCTIONS QUICKLY.'**
+  String get simonCommandSubtitle;
+
+  /// No description provided for @binaryCodeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Binary Speed'**
+  String get binaryCodeTitle;
+
+  /// No description provided for @binaryCodeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'TRANSLATE BINARY CODES INTO DECIMAL.'**
+  String get binaryCodeSubtitle;
+
+  /// No description provided for @moduloClockTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Modulo Clock'**
+  String get moduloClockTitle;
+
+  /// No description provided for @moduloClockSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'CALCULATE MATH EQUATIONS USING CLOCKS.'**
+  String get moduloClockSubtitle;
+
+  /// No description provided for @chimpTestTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Chimp Test'**
+  String get chimpTestTitle;
+
+  /// No description provided for @chimpTestSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'TAP RANDOM NUMBERS IN ASCENDING ORDER.'**
+  String get chimpTestSubtitle;
+
+  /// No description provided for @relationalMemoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Relational Memory'**
+  String get relationalMemoryTitle;
+
+  /// No description provided for @relationalMemorySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'RECALL THE EXACT GRID ITEM POSITIONS.'**
+  String get relationalMemorySubtitle;
+
+  /// No description provided for @factBinderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Fact Binder'**
+  String get factBinderTitle;
+
+  /// No description provided for @factBinderSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'CONNECT SYMBOLS AND RECALL STATEMENTS.'**
+  String get factBinderSubtitle;
+
+  /// No description provided for @sourceMonitoringTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Source Monitoring'**
+  String get sourceMonitoringTitle;
+
+  /// No description provided for @sourceMonitoringSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'REMEMBER THE CONTEXT.'**
+  String get sourceMonitoringSubtitle;
+
+  /// No description provided for @klotskiTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Klotski Escape'**
+  String get klotskiTitle;
+
+  /// No description provided for @klotskiSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SLIDE BLOCKS TO REACH THE EXITS.'**
+  String get klotskiSubtitle;
+
+  /// No description provided for @homophoneHuntSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'CHOOSE THE CORRECT SPELLING.'**
+  String get homophoneHuntSubtitle;
 }
 
 class _AppLocalizationsDelegate

@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -71,7 +73,7 @@ class AssociativePairsScreen extends ConsumerWidget {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'ASSOCIATIVE PAIRS COMPLETE',
+            title: L10nGameHelpers.getGameTitle(context, 'associative_pairs'),
             message: AppLocalizations.of(context)!.associativePairsMessage,
             onHome: () {
               Navigator.of(context).pop();
@@ -90,7 +92,7 @@ class AssociativePairsScreen extends ConsumerWidget {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'GAME OVER',
+            title: L10nGameHelpers.getGameTitle(context, 'associative_pairs'),
             message: AppLocalizations.of(context)!.associativePairsMessage1,
             isVictory: false,
             onHome: () {
@@ -110,8 +112,8 @@ class AssociativePairsScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'ASSOCIATIVE PAIRS',
-      subtitle: 'Memorize and link colors to shapes',
+      title: L10nGameHelpers.getGameTitle(context, 'associative_pairs'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'associative_pairs'),
       actions: [
         TangibleButton(
           color: colorScheme.surface,

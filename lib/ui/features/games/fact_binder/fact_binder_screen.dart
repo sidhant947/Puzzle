@@ -1,3 +1,5 @@
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -196,7 +198,7 @@ class _FactBinderScreenState extends ConsumerState<FactBinderScreen> {
     final colorScheme = theme.colorScheme;
 
     return GameScaffold(
-      title: "FACT BINDER",
+      title: L10nGameHelpers.getGameTitle(context, 'fact_binder'),
       subtitle: _isQuizPhase
           ? "ANSWER THE QUIZ QUESTIONS BASED ON THE MEMORIZED PROFILES!"
           : "MEMORIZE THE AVATAR PROFILE INFORMATION BEFORE THEY CHANGE!",

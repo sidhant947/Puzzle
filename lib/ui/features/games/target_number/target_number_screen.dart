@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -74,7 +76,7 @@ class _TargetNumberScreenState extends ConsumerState<TargetNumberScreen> {
     }
 
     return GameScaffold(
-      title: 'Target 24',
+      title: L10nGameHelpers.getGameTitle(context, 'target_number'),
       subtitle: l10n.targetNumberSubtitle(state.target),
       body: LayoutBuilder(
         builder: (context, constraints) {

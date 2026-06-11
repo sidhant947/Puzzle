@@ -1,3 +1,5 @@
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
@@ -70,8 +72,8 @@ class _DefinitionDashScreenState extends ConsumerState<DefinitionDashScreen> {
     if (state.puzzle == null) return const Scaffold(body: Center(child: CircularProgressIndicator()));
 
     return GameScaffold(
-      title: 'Definition Dash',
-      subtitle: 'Select the correct definition for the word',
+      title: L10nGameHelpers.getGameTitle(context, 'definition_dash'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'definition_dash'),
       body: LayoutBuilder(
         builder: (context, constraints) {
           return SingleChildScrollView(

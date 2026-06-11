@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -203,7 +205,7 @@ class _KlotskiScreenState extends ConsumerState<KlotskiScreen> {
         context: context,
         barrierDismissible: false,
         builder: (context) => GameCompletionDialog(
-          title: "KLOTSKI COMPLETED",
+          title: L10nGameHelpers.getGameTitle(context, 'klotski'),
           message: AppLocalizations.of(context)!.klotskiMessage((_moves).toString()),
           onHome: () {
             Navigator.pop(context);
@@ -224,8 +226,8 @@ class _KlotskiScreenState extends ConsumerState<KlotskiScreen> {
     final colorScheme = theme.colorScheme;
 
     return GameScaffold(
-      title: "KLOTSKI ESCAPE",
-      subtitle: "SLIDE THE LARGE RED HERO (2X2) TO THE BOTTOM-MIDDLE DOOR TO ESCAPE. SWIPE A BLOCK OR SELECT TO TAP ARROWS.",
+      title: L10nGameHelpers.getGameTitle(context, 'klotski'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'klotski'),
       onReset: _resetGame,
       body: LayoutBuilder(
         builder: (context, constraints) {

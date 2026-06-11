@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -91,7 +93,7 @@ class _SilhouetteMatchOrthoScreenState extends ConsumerState<SilhouetteMatchOrth
           context: context,
           barrierDismissible: false,
           builder: (dialogCtx) => GameCompletionDialog(
-            title: 'AMAZING',
+            title: L10nGameHelpers.getGameTitle(context, 'silhouette_match_ortho'),
             message: AppLocalizations.of(context)!.silhouetteMatchOrthoMessage,
             onHome: () {
               Navigator.of(dialogCtx).pop();
@@ -107,8 +109,8 @@ class _SilhouetteMatchOrthoScreenState extends ConsumerState<SilhouetteMatchOrth
     }
 
     return GameScaffold(
-      title: 'Silhouette Match',
-      subtitle: 'MATCH 3D BLOCK FIGURE TO 2D PERSPECTIVE',
+      title: L10nGameHelpers.getGameTitle(context, 'silhouette_match_ortho'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'silhouette_match_ortho'),
       onHowToPlay: _showHowToPlay,
       onReset: notifier.reset,
       body: state.isLoading

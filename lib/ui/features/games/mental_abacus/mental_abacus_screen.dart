@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -63,13 +65,13 @@ class _MentalAbacusScreenState extends ConsumerState<MentalAbacusScreen> {
 
     if (state.isLoading) {
       return GameScaffold(
-        title: 'Mental Abacus',
+        title: L10nGameHelpers.getGameTitle(context, 'mental_abacus'),
         body: Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
-      title: 'Mental Abacus',
+      title: L10nGameHelpers.getGameTitle(context, 'mental_abacus'),
       subtitle: l10n.mentalAbacusSubtitle,
       body: LayoutBuilder(
         builder: (context, constraints) {

@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'spotlight_track_engine.dart';
@@ -25,7 +27,7 @@ class SpotlightTrackScreen extends ConsumerWidget {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'VICTORY',
+            title: L10nGameHelpers.getGameTitle(context, 'spotlight_track'),
             message: AppLocalizations.of(context)!.spotlightTrackMessage((next.score).toString()),
             onHome: () {
               Navigator.of(context).pop();
@@ -45,8 +47,8 @@ class SpotlightTrackScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'Spotlight Track',
-      subtitle: 'Track the Object in the Dark - Tap its Ending Spot',
+      title: L10nGameHelpers.getGameTitle(context, 'spotlight_track'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'spotlight_track'),
       onReset: () {
         HapticFeedbackUtil.mediumImpact();
         notifier.reset();

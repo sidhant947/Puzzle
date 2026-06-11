@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
+import '../../../../utils/l10n_game_helpers.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../providers/game_providers.dart';
 import '../../../../providers/game_session_provider.dart';
@@ -88,7 +89,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             ),
             leadingWidth: 72,
             title: Text(
-              'GAMES',
+              l10n.gamesTitleLabel.toUpperCase(),
               style: theme.textTheme.displaySmall?.copyWith(
                 letterSpacing: 2.0,
               ),
@@ -135,13 +136,13 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
                   String encouragement;
                   if (solvedToday == 0) {
-                    encouragement = 'READY FOR YOUR DAILY WORKOUT?';
+                    encouragement = l10n.readyForWorkout;
                   } else if (solvedToday < 3) {
-                    encouragement = 'GREAT START! KEEP GOING.';
+                    encouragement = l10n.greatStartKeepGoing;
                   } else if (solvedToday < 7) {
-                    encouragement = "YOU'RE ON FIRE TODAY!";
+                    encouragement = l10n.onFireToday;
                   } else {
-                    encouragement = 'INCREDIBLE SOLVING TODAY!';
+                    encouragement = l10n.incredibleSolvingToday;
                   }
 
                   final displayColor = solvedToday > 0
@@ -190,7 +191,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                               ),
                               const SizedBox(height: 4.0),
                               Text(
-                                encouragement,
+                                encouragement.toUpperCase(),
                                 style: theme.textTheme.headlineSmall?.copyWith(
                                   fontSize: 18.0,
                                   letterSpacing: 0.5,
@@ -361,7 +362,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                               .contains(gameId)));
 
                                   return GameTile(
-                                    title: game['title'],
+                                    title: L10nGameHelpers.getGameTitle(context, gameId),
                                     gameId: gameId,
                                     category: game['category'],
                                     icon: game['icon'],
@@ -416,7 +417,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                                                 .contains(gameId)));
 
                                     return GameTile(
-                                      title: game['title'],
+                                      title: L10nGameHelpers.getGameTitle(context, gameId),
                                       gameId: gameId,
                                       category: game['category'],
                                       icon: game['icon'],
@@ -469,13 +470,15 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         .where((game) => favoriteIds.contains(game['id']))
         .toList();
 
+    final l10n = AppLocalizations.of(context)!;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
           padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
           child: Text(
-            'YOUR FAVORITES',
+            l10n.yourFavorites.toUpperCase(),
             style: TextStyle(
               fontFamily: 'Bebas Neue',
               fontSize: DesignSystem.fontSizeMD,
@@ -497,7 +500,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
             itemBuilder: (context, index) {
               final game = favoriteGames[index];
               return CompactFavoriteTile(
-                title: game['title'],
+                title: L10nGameHelpers.getGameTitle(context, game['id']),
                 gameId: game['id'],
                 icon: game['icon'],
                 accentColor: game['color'],
@@ -712,209 +715,6 @@ class GameTile extends StatefulWidget {
 }
 
 class _GameTileState extends State<GameTile> {
-  String _getGameDescription(String gameId) {
-    final descriptions = {
-      'slitherlink': 'LOOP THE PIN GRID USING NUMBER CLUES.',
-      'futoshiki': 'FILL GRIDS WITH GREATER-THAN CLUES.',
-      'kakuro': 'SOLVE CROSSWORDS WITH NUMBERS AND SUMS.',
-      'inequality_dash': 'SOLVE INEQUALITIES UNDER TIME PRESSURE.',
-      'factor_finder': 'IDENTIFY ALL FACTORS OF TARGET NUMBERS.',
-      'sum_pyramid': 'FILL PYRAMID CELLS WITH SUM MATH CLUES.',
-      'target_10': 'COMBINE NUMBER TILES TO REAP TEN SUMS.',
-      'fraction_matcher': 'MATCH EQUIVALENT FRACTIONS VISUALLY.',
-      'dual_coding': 'MATCH LETTERS AND SYMBOLS CONCURRENTLY.',
-      'distractor_matrix': 'FIND TARGET SHAPES AMID DISTRACTORS.',
-      'temporal_order': 'RECALL THE CHRONOLOGICAL SEQUENCE.',
-      'associative_pairs': 'PAIR AND MATCH CORRESPONDING SYMBOLS.',
-      'block_count_3d': 'COUNT BLOCKS IN THREE-DIMENSIONAL SPACE.',
-      'cube_net_fold': 'VISUALIZE 3D CUBES FROM FLAT NETS.',
-      'rotating_maze': 'ROTATE MAZES TO GUIDE BALLS TO THE EXIT.',
-      'classic_maze': 'NAVIGATE PATHWAYS TO REVEAL THE OUTLET.',
-      'silhouette_match_ortho': 'MATCH 3D OBJECTS WITH ORTHO SHADOWS.',
-      'conjunction_search': 'SEARCH AND FOCUS ON MULTI-FEATURE TILES.',
-      'spatial_conflict': 'RESOLVE TEXT AND DIRECTION DISCREPANCIES.',
-      'spotlight_track': 'TRACK BLINKING ITEMS IN MOVING SHADOWS.',
-      'd2_attention': 'TAP TARGET SYMBOLS WITH STRICT CRITERIA.',
-      'context_clues': 'INFER HIDDEN WORDS FROM CONTEXT HINTS.',
-      'vocabulary_builder': 'EXPAND VOCABULARY BY CORRELATING WORDS.',
-      'grammar_police': 'IDENTIFY AND CORRECT GRAMMATICAL ERRORS.',
-      'reverse_stroop': 'RESOLVE REVERSED COLOR AND WORD CLUES.',
-      'mental_calendar': 'CALCULATE WEEKDAYS FOR ANY RANDOM DATE.',
-      'face_trait_association': 'ASSOCIATE FACES WITH THEIR UNIQUE TRAITS.',
-      'memory_palace': 'RECALL ITEMS USING SPATIAL ROOM MAPS.',
-      'counting_sheep': 'COUNT MOVING SHEEP RAPIDLY AND ACCURATELY.',
-      'mental_mapping': 'NAVIGATE SPATIAL COORDINATES IN MIND.',
-      'mirror_image': 'IDENTIFY PERFECT MIRROR REFLECTIONS.',
-      'einstein_riddle': 'SOLVE COMPLEX LOGIC RIDDLES WITH CLUES.',
-      'lock_pattern': 'FIND THE HIDDEN LOCK PATTERN COMBINATION.',
-      'multiple_object_tracking': 'TRACK SEVERAL MOVING BALLS DYNAMICLY.',
-      'vigilance_task': 'MAINTAIN FOCUS AND TAP RARE TARGETS.',
-      'mental_rotation': 'ROTATE 3D SHAPES IN YOUR MIND TO MATCH.',
-      'semantic_link': 'LINK RELATED WORDS IN SEMANTIC CHAIN.',
-      'logical_syllogisms': 'EVALUATE IF DEDUCTIVE STATEMENTS ARE TRUE.',
-      'matrix_reasoning': 'FIND PATTERNS AND COMPLETE MATRIX GRIDS.',
-      'numerical_estimation': 'ESTIMATE QUANTITIES OF ITEMS RAPIDLY.',
-      'digit_span_reverse': 'RECALL NUMBER DIGITS IN REVERSE ORDER.',
-      'face_name_association': 'RECALL NAMES FOR DIVERSE PRESENTED FACES.',
-      'staircase_memory': 'MEMORIZE BLOCKS IN STEPWISE SEQUENCE.',
-      'akari': 'LIGHT UP THE GRIDS WITH BULB PLACEMENTS.',
-      'perspective_taking': 'DETERMINE VIEWS FROM OTHER ANGLES.',
-      'paper_folding': 'FOLD AND UNFOLD PAPER SHEETS TO MATCH.',
-      'mirror_tracing': 'TRACE COMPLEX PATHS IN REVERSED VIEWS.',
-      'silhouette_match': 'MATCH OBJECTS WITH THEIR SHADOW OUTLINES.',
-      'verbal_analogies': 'SOLVE ANALOGIES BETWEEN RELATED WORDS.',
-      'category_fluency': 'ENTER ITEMS CORRESPONDING TO CATEGORY.',
-      'word_surge': 'SEARCH AND DISCOVER MANY HIDDEN WORDS.',
-      'mental_abacus': 'DO COMPLICATED MATH ON MENTAL ABACUS.',
-      'missing_operator': 'FILL IN MISSING ARITHMETIC OPERATORS.',
-      'tower_of_london': 'MOVE PEG DISCS TO MATCH PLAN TARGETS.',
-      'symbolic_flanker': 'RESOLVE DIRECTION FLANKERS WITH SYMBOLS.',
-      'rule_switcher': 'ADAPT RAPIDLY TO CONSTANTLY CHANGING RULES.',
-      'box_completion': 'COMPLETE SQUARES IN CLASSIC DOT GRIDS.',
-      'letter_cancellation': 'CROSS OUT TARGET LETTERS UNDER CLOCK.',
-      'choice_reaction_time': 'TAP SPECIFIC BUTTONS MATCHING CUES FAST.',
-      'wisconsin_card_sorting': 'SORT CARDS ACCORDING TO HIDDEN RULES.',
-      'attentional_blink': 'SPARK RAPID TARGETS FLASHING IN STREAMS.',
-      'change_blindness': 'SPOT DIFFERENCES BETWEEN ROTATING IMAGES.',
-      'visual_statistical_learning': 'LEARN TEMPORAL SHAPE PATTERNS VISUALLY.',
-      'sternberg_task': 'RECALL IF SYMBOL WAS IN THE MEMORY SET.',
-      'double_n_back': 'TRACK SOUNDS AND SHAPES AT N-STEPS BACK.',
-      'operation_span': 'SOLVE MATH AND RECALL ALPHABET STRINGS.',
-      'n_back': 'REMEMBER ITEMS PRESENTED N-STEPS AGO.',
-      'corsi_blocks': 'TAP BLOCK SEQUENCES IN PERFECT ORDER.',
-      'sopt': 'CHOOSE A DIFFERENT CARD EACH TIME AS THEY SHUFFLE.',
-      'continuous_recognition': 'IDENTIFY IF THE CARD PRESENTED IS OLD OR NEW.',
-      'dnms': 'SELECT THE BRAND NEW CARD IN CONTRAST TO THE MEMORIZED SAMPLE.',
-      'symmetry_span': 'RECALL CELL COORDINATES AMID VERTICAL SYMMETRY DECISIONS.',
-      'reading_span': 'VERIFY SENTENCES AND MEMORIZE A SEQUENCE OF LETTERS.',
-      'counting_span': 'COUNT BLUE CIRCLES AND RECALL THE SEQUENCE OF COUNTS.',
-      'object_displacement': 'STUDY PLACEMENTS AND TAP THE SINGLE OBJECT THAT MOVED.',
-      'mandala_recall': 'MEMORIZE COLOR TILES AND REPAINT MANDALAS FROM PALETTE.',
-      'running_memory_span': 'MONITOR RUNNING LETTERS AND RECALL THE LAST N ITEMS.',
-      'spatial_cabinet_memory': 'MEMORIZE AND LOCATE ITEMS BEHIND CABINET DOORS.',
-      'sdmt': 'MATCH NUMBERS WITH SYMBOLS USING KEYS.',
-      'trail_making': 'CONNECT NUMBERS AND LETTERS IN SEQUENCE.',
-      'stop_signal': 'REACT RAPIDLY BUT HALT ON STOP SOUNDS.',
-      'visual_search': 'FIND THE SINGLE TARGET AMONG DISTRACTORS.',
-      'go_no_go': 'REACT ON GO CUES BUT RESIST NO-GO CUES.',
-      'divided_attention': 'TRACK MULTIPLE SIMULTANEOUS STIMULI FAST.',
-      'prime_hunter': 'TAP PRIME NUMBERS IN FALLING BUBBLES.',
-      'fraction_match': 'PAIR EQUIVALENT ARITHMETIC FRACTIONS.',
-      'path_recall': 'MEMORIZE AND REPEAT PATHWAY SELECTIONS.',
-      'object_shuffle': 'TRACK ITEMS SHUFFLED UNDER DEEP CUPS.',
-      'grocery_list': 'MEMORIZE AND CHECK OFF ITEMS ON THE LIST.',
-      'orbit_tap': 'TAP BUBBLES ROTATING IN DYNAMIC ORBITS.',
-      'rhythm_master': 'TAP RHYTHM BEATS TO MATCH MUSIC TIMINGS.',
-      'trace_path': 'TRACE CONTINUOUS SEGMENTS ALONG PIN GRIDS.',
-      'target_number': 'REACH TARGET VALUES USING BASIC MATH.',
-      'arithmetic_chain': 'SOLVE A CHAIN OF SEQUENTIAL OPERATIONS.',
-      'magic_squares': 'ARRANGE GRIDS SO SUMS MATCH EVERYWHERE.',
-      'kenken': 'SOLVE MATH GRIDS WITH ARITHMETIC CAGES.',
-      'typing_speed': 'TYPE SENTENCES ACCURATELY AGAINST CLOCK.',
-      'quick_math': 'SOLVE ARITHMETIC QUESTIONS AT TOP SPEED.',
-      'math_guess': 'GUESS THE HIDDEN NUMBER WITHIN 15 CHANCES.',
-      'reflex_tap': 'TAP STIMULI AS FAST AS HUMANLY POSSIBLE.',
-      'stroop_test': 'RESOLVE CONFLICT BETWEEN WORDS AND COLORS.',
-      'flanker_test': 'TAP DIRECTIONS MATCHING CENTER ARROWS FAST.',
-      'switch_task': 'SWITCH FLUIDLY BETWEEN NUMBER AND LETTER RULES.',
-      'cryptogram': 'DECRYPT ENCODED QUOTES USING ALPHABETS.',
-      'balance_scale': 'BALANCE SCALES USING NUMBER WEIGHT LOGIC.',
-      'symbol_logic': 'EVALUATE SYMBOL VALUE STATEMENTS RAPIDLY.',
-      'pixel_mimic': 'MIMIC DESIGN PATTERNS ON PIXEL GRIDS.',
-      'odd_rotation': 'FIND THE SINGLE SHAPE ROTATED ODDLY.',
-      'word_scramble': 'UNSCRAMBLE LETTERS TO REVEAL KEY WORDS.',
-      'missing_vowels': 'FILL IN VOWELS TO REVEAL HIDDEN PHRASES.',
-      'water_sort': 'SORT COLOR WATER TILES INTO SINGLE TUBES.',
-      'lights_out': 'SWITCH OFF ALL LIGHTS ON CLOCK GRIDS.',
-      'hue_sort': 'ARRANGE COLOR HUES IN SEAMLESS GRADIENTS.',
-      'math_path': 'NAVIGATE NUMBERS TO CREATE AN EQUATION.',
-      'spelling_sprint': 'SPELL COMPLEX PHRASES RAPIDLY ON THE FLY.',
-      'odd_one_out': 'IDENTIFY THE SINGLE SHAPE THAT DIFFERS.',
-      'bridges': 'CONNECT GRIDS WITH SINGLE OR DOUBLE BRIDGES.',
-      'binary_puzzle': 'FILL GRID CELLS WITH ZEROES AND ONES.',
-      'color_match': 'IDENTIFY IF COLOR AND WORD MEANINGS MATCH.',
-      'path_finder': 'TRACE THE OPTIMAL PATH ACROSS GRIDS.',
-      'simon_sequence': 'REPEAT SHAPE SEQUENCES FROM MEMORY.',
-      'symmetry': 'REFLECT MIRROR SHAPES ACROSS GRIDS.',
-      'sudoku': 'CLASSIC NINE-BY-NINE NUMBER PUZZLES.',
-      'alphabet_sudoku': 'FILL SUDOKU GRIDS WITH NOVEL LETTERS.',
-      'word_mastermind': 'SOLVE CODED WORD SCRAMBLES WITH CLUES.',
-      'word_ladder': 'TRANSFORM WORDS ONE LETTER AT A TIME.',
-      'slide_puzzle': 'REARRANGE SQUARE SLIDING GRID TILES.',
-      'pipes': 'CONNECT MATCHING DOTS WITH FLUID PIPES.',
-      'block_escape': 'SLIDE BLOCKS TO LET THE RED SHAPE OUT.',
-      'tents_and_trees': 'PLACE LOGICAL TENTS DIRECTLY BY TREES.',
-      'find_word': 'DISCOVER HIDDEN WORDS INSIDE SCRAMBLES.',
-      'crossword': 'COMPLETE INTERSECTING WORD PUZZLES.',
-      'word_search': 'LOCATE HIDDEN WORD SEQUENCES IN GRIDS.',
-      'game_2048': 'MERGE NUMBER TILES TO CREATE THE 2048.',
-      'crown': 'PLACE CROWNS WITHOUT ANY SHIELD THREATS.',
-      'minesweeper': 'EXPOSE MINES WITHOUT DETONATING THEM.',
-      'memory_matrix': 'RECALL HIGHLIGHTED GRID TILES QUICKLY.',
-      'nonogram': 'REVEAL HIDDEN PIXEL ART USING LOGIC.',
-      'schulte_table': 'TAP NUMBERS FROM ONE TO TWENTY-FIVE.',
-      'calculation_sprint': 'SOLVE SPEED MATH EQUATIONS RAPIDLY.',
-      'color_flood': 'FILL SCRAMBLED COLOR GRIDS IN FEW TAPS.',
-      'tangle_fix': 'UNTANGLE NODES AND LINES WITH SPEED.',
-      'simon_command': 'PERFORM VOICE INSTRUCTIONS QUICKLY.',
-      'binary_code': 'TRANSLATE BINARY CODES INTO DECIMAL.',
-      'modulo_clock': 'CALCULATE MATH EQUATIONS USING CLOCKS.',
-      'chimp_test': 'TAP RANDOM NUMBERS IN ASCENDING ORDER.',
-      'relational_memory': 'RECALL THE EXACT GRID ITEM POSITIONS.',
-      'fact_binder': 'CONNECT SYMBOLS AND RECALL STATEMENTS.',
-      'klotski': 'SLIDE BLOCKS TO REACH THE EXITS.',
-      'collatz': 'NAVIGATE THE 3N+1 SEQUENCE.',
-      'base_shift': 'SOLVE IN DECIMAL.',
-      'fibonacci_merge': 'MERGE CONSECUTIVE FIBONACCI NUMBERS (1, 1, 2, 3, 5, 8, 13...).',
-      'sequence_sleuth': 'FIND THE MISSING NUMBER IN THE MATHEMATICAL SEQUENCE.',
-      'divisibility_dash': 'TAP ALL SINGLE-DIGIT DIVISORS (2-9) FOR THE GIVEN NUMBER.',
-      'percentage_peak': 'SOLVE MENTAL PERCENTAGE CALCULATIONS QUICKLY.',
-      'venn_numbers': 'CATEGORIZE NUMBERS INTO THE CORRECT VENN DIAGRAM REGIONS.',
-      'common_denominator': 'FIND THE GREATEST COMMON DIVISOR OR LEAST COMMON MULTIPLE.',
-      'radical_roots': 'FIND THE SQUARE OR CUBE ROOT OF THE GIVEN NUMBER. ROUND TO THE NEAREST INTEGER IF NECESSARY.',
-      'roman_arithmetic': 'SOLVE ADDITION AND SUBTRACTION PROBLEMS USING ROMAN NUMERALS.',
-      'angle_finder': 'CALCULATE THE MISSING ANGLE IN THE GEOMETRIC PROBLEM.',
-      'sum_snake': 'CONNECT ADJACENT NUMBERS TO REACH THE TARGET SUM.',
-      'topology': 'ARE THESE SHAPES TOPOLOGICALLY EQUIVALENT? (CAN ONE BE DEFORMED INTO THE OTHER WITHOUT CUTTING OR GLUING?).',
-      'dual_mirror': 'NAVIGATE TWO MAZES AT ONCE.',
-      'hitori': 'SHADE DUPLICATE NUMBERS IN EACH ROW AND COLUMN.',
-      'fillomino': 'DIVIDE THE GRID INTO POLYOMINOES OF THE SPECIFIED SIZES.',
-      'nurikabe': 'FORM A CONNECTED SEA AND SEPARATE ISLANDS.',
-      'skyscrapers': 'FILL THE GRID WITH BUILDING HEIGHTS.',
-      'dominosa': 'FIND ALL THE HIDDEN DOMINOES IN THE GRID.',
-      'lighthouses': 'PLACE SHIPS BASED ON LIGHTHOUSE CLUES.',
-      'magnets': 'PLACE MAGNETS IN THE GRID BASED ON POLE COUNTS.',
-      'source_monitoring': 'REMEMBER THE CONTEXT.',
-      'semantic_distance': 'GUESS THE SECRET WORD.',
-      'oxymoron_hunt': 'PAIR CONTRADICTORY WORDS.',
-      'portmanteau_split': 'IDENTIFY SOURCE WORDS.',
-      'chain_reaction': 'LAST 2 LETTERS OF WORD MUST BE FIRST 2 LETTERS OF NEXT.',
-      'rhyme_master': 'FIND ALL WORDS THAT RHYME WITH..',
-      'definition_dash': 'SELECT THE CORRECT DEFINITION FOR THE WORD.',
-      'syllable_stack': 'STACK SYLLABLES TO FORM WORDS.',
-      'sentence_unscramble': 'REORDER WORDS TO FORM A SENTENCE.',
-      'grammar_sort': 'CATEGORIZE THE WORDS.',
-      'vowel_reconstruct': 'FILL IN THE MISSING VOWELS.',
-      'consonant_reconstruct': 'FILL IN THE MISSING CONSONANTS.',
-      'homophone_hunt': 'CHOOSE THE CORRECT SPELLING.',
-      'silent_letter_search': 'IDENTIFY SILENT LETTERS IN THE GIVEN WORDS.',
-      'palindrome_builder': 'CREATE A PALINDROME BY ADDING MINIMAL LETTERS.',
-      'phonetic_guess': 'IDENTIFY THE WORD FROM ITS PHONETIC SPELLING.',
-      'spoonerism_solver': 'IDENTIFY THE CORRECT SPOONERISM FOR THE PHRASE.',
-      'etymon_oddball': 'IDENTIFY THE WORD WITH A DIFFERENT ROOT.',
-      'etymology_origin': 'GUESS THE ORIGINAL LANGUAGE OF THE WORD.',
-      'affix_factory': 'SELECT ALL AFFIXES THAT CAN BE ADDED TO THE ROOT.',
-      'cognate_catch': 'DISTINGUISH COGNATES FROM FALSE FRIENDS.',
-      'compound_connect': 'MERGE WORDS TO FORM COMPOUNDS.',
-      'pangram_sprint': 'BUILD A SENTENCE USING EVERY LETTER.',
-      'anagram_definition': 'SOLVE USING THE HINT.',
-      'letter_bridge': 'FIND THE MISSING LETTER THAT BRIDGES TWO WORDS.',
-      'letter_frequency_scan': 'COUNT HOW MANY TIMES A LETTER APPEARS IN THE TEXT.',
-      'one_letter_shift': 'TRANSFORM ONE WORD INTO ANOTHER WITH ONE LETTER CHANGE.',
-    };
-    return descriptions[gameId] ?? 'CHALLENGE AND TRAIN YOUR COGNITIVE SKILLS.';
-  }
-
   @override
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
@@ -922,7 +722,8 @@ class _GameTileState extends State<GameTile> {
     final streakCount = widget.streak?.currentStreak ?? 0;
     final isNew = widget.streak == null;
 
-    final description = _getGameDescription(widget.gameId);
+    final description = L10nGameHelpers.getGameSubtitle(context, widget.gameId);
+    final l10n = AppLocalizations.of(context)!;
 
     return TangibleContainer(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
@@ -964,9 +765,9 @@ class _GameTileState extends State<GameTile> {
                         color: DesignSystem.gameBlue,
                         borderRadius: BorderRadius.circular(6.0),
                       ),
-                      child: const Text(
-                        "NEW",
-                        style: TextStyle(
+                      child: Text(
+                        l10n.newGameLabel.toUpperCase(),
+                        style: const TextStyle(
                           fontFamily: 'Geist',
                           fontSize: 9.0,
                           fontWeight: FontWeight.w900,
@@ -1162,4 +963,3 @@ class _CompactFavoriteTileState extends State<CompactFavoriteTile> {
     );
   }
 }
-

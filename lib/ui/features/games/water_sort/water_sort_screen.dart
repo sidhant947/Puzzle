@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'water_sort_provider.dart';
@@ -46,7 +48,7 @@ class WaterSortScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'WATER SORT',
+      title: L10nGameHelpers.getGameTitle(context, 'water_sort'),
       subtitle: l10n.waterSortSubtitle,
       actions: [
         TangibleButton(

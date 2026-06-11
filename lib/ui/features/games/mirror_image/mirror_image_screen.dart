@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import '../../../core/juice/game_scaffold.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../../utils/design_system.dart';
@@ -139,7 +141,7 @@ class MirrorImageScreen extends ConsumerWidget {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'MIRROR MASTER!',
+        title: L10nGameHelpers.getGameTitle(context, 'mirror_image'),
         message: AppLocalizations.of(context)!.mirrorImageMessage,
         onHome: () {
           Navigator.of(context).pop();

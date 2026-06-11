@@ -1,4 +1,6 @@
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import "package:puzzle/l10n/app_localizations.dart";
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -57,8 +59,8 @@ class _AffixFactoryScreenState extends ConsumerState<AffixFactoryScreen> {
     });
 
     return GameScaffold(
-      title: 'AFFIX FACTORY',
-      subtitle: 'Select all affixes that can be added to the root',
+      title: L10nGameHelpers.getGameTitle(context, 'affix_factory'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'affix_factory'),
       actions: [
         TangibleButton(
           color: colorScheme.surface,

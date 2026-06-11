@@ -1384,7 +1384,7 @@ class GameData {
       'category': 'WORD',
       'icon': Icons.format_list_numbered_rounded,
       'color': DesignSystem.gameViolet,
-      'builder': (context) => const WordLadderScreen(),
+      'builder': (context) => WordLadderScreen(),
     },
     {
       'title': 'Slide Puzzle',

@@ -1796,5 +1796,350 @@
       }
     }
   },
-  "imReady": "準備完了"
+  "imReady": "準備完了",
+  "soptTitle": "自己順序指差し",
+  "soptSubtitle": "毎回異なるカードをタップします。ポジションがシャッフルされる！",
+  "soptWinTitle": "シーケンスマスター！",
+  "soptGameOverMessage": "シャッフルされたカードを追跡することに成功して、 {score} ポイントを獲得しました!",
+  "soptChooseNovel": "新しいカードをタップします",
+  "soptGreatJob": "素晴らしい仕事だ！",
+  "soptAlreadyTapped": "すでにタップされています！",
+  "soptGrid": "グリッド",
+  "contRecogTitle": "継続的な認識",
+  "contRecogSubtitle": "このセッションでこのカードを見たことがありますか?",
+  "contRecogWinTitle": "認識の天才！",
+  "contRecogGameOverMessage": "あなたは {score} の正しい認識を獲得しました!",
+  "contRecogCorrect": "正しい！",
+  "contRecogWrong": "間違っている！",
+  "contRecogOldOrNew": "これは古いですか、それとも新しいですか?",
+  "contRecogNew": "新しい",
+  "contRecogOld": "古い",
+  "contRecogSeenPool": "見たプール",
+  "dnmsTitle": "不一致のメモリ",
+  "dnmsSubtitle": "記憶したサンプルに含まれていないカードをタップします。",
+  "dnmsWinTitle": "不一致の専門家!",
+  "dnmsGameOverMessage": "遅延非マッチングで {score} 個の正解を獲得しました。",
+  "dnmsChooseNovel": "新しいカードをタップします",
+  "dnmsMemorizeSample": "このカードを暗記してください",
+  "dnmsWaitForIt": "待ってください...",
+  "dnmsExcellent": "素晴らしい！",
+  "dnmsSampleTapped": "それがサンプルでした！",
+  "dnmsCards": "カード",
+  "symSpanTitle": "対称スパン",
+  "symSpanSubtitle": "垂直方向の対称性を識別しながら、細胞のパターンを思い出します。",
+  "symSpanWinTitle": "シンメトリーマスター！",
+  "symSpanGameOverMessage": "レイアウトを思い出し、対称性を特定することで、 {score} ポイントを獲得しました。",
+  "symSpanMemorizeRed": "赤血球の位置を記憶する",
+  "symSpanIsSymmetric": "模様は左右対称ですか？",
+  "symSpanRecallSequence": "シーケンスを正しい順序で呼び出します",
+  "symSpanGreatJob": "素晴らしい仕事だ！",
+  "symSpanTryAgain": "もう一度やり直してください！",
+  "symSpanLength": "長さ",
+  "readingSpanTitle": "読み取りスパン",
+  "readingSpanSubtitle": "一連の文字を思い出しながら文章を確認します。",
+  "readingSpanWinTitle": "読書の達人！",
+  "readingSpanGameOverMessage": "Reading Span の記憶力チャレンジで {score} ポイントを獲得しました!",
+  "readingSpanTrueFalse": "この発言は本当ですか、それとも嘘ですか?",
+  "readingSpanMemorizeLetter": "この手紙を覚えておいてください",
+  "readingSpanRecallLetters": "文字を順番に思い出す",
+  "readingSpanGreatJob": "素晴らしい仕事だ！",
+  "readingSpanTryAgain": "もう一度やり直してください！",
+  "readingSpanYourSequence": "あなたのシーケンス: {sequence}",
+  "readingSpanLength": "長さ",
+  "readingSpanSentence1": "太陽は東から昇ります。",
+  "readingSpanSentence2": "氷が沸騰して熱くなっています。",
+  "readingSpanSentence3": "魚は水中でも呼吸ができます。",
+  "readingSpanSentence4": "犬には翼があり空を飛ぶことができます。",
+  "readingSpanSentence5": "水は摂氏0度で凍ります。",
+  "readingSpanSentence6": "猫は小型犬のように吠えます。",
+  "readingSpanSentence7": "夏には木々が緑の葉を茂らせます。",
+  "readingSpanSentence8": "雨は地面から上に降り注ぎます。",
+  "readingSpanSentence9": "三角形には 4 つの等しい辺があります。",
+  "readingSpanSentence10": "リンゴは甘い果物の一種です。",
+  "readingSpanSentence11": "月はチェダーチーズでできています。",
+  "readingSpanSentence12": "自動車には転がるための車輪があります。",
+  "readingSpanSentence13": "火は凍てつくほど冷たい。",
+  "readingSpanSentence14": "紙は木材を加工して作られます。",
+  "readingSpanSentence15": "鳥には飛ぶために羽があります。",
+  "readingSpanSentence16": "バナナは松の木に生えています。",
+  "readingSpanSentence17": "ゾウはアリよりも小さいです。",
+  "readingSpanSentence18": "本には印刷されたテキストのページが含まれています。",
+  "countingSpanTitle": "カウンティングスパン",
+  "countingSpanSubtitle": "青い丸だけを数えます。次に、一連のカウントを思い出してください。",
+  "countingSpanWinTitle": "カウンティングの天才!",
+  "countingSpanGameOverMessage": "カウンティング スパン メモリ チャレンジで {score} ポイントを獲得しました!",
+  "countingSpanCountCircles": "青い丸だけを数える",
+  "countingSpanRecallCounts": "正しい順序でカウントを呼び出す",
+  "countingSpanGreatJob": "素晴らしい仕事だ！",
+  "countingSpanTryAgain": "もう一度やり直してください！",
+  "countingSpanYourSequence": "あなたのシーケンス: {sequence}",
+  "countingSpanLength": "長さ",
+  "objDispTitle": "オブジェクトの変位",
+  "objDispSubtitle": "レイアウトを覚える。位置を移動する 1 つのオブジェクトを見つけてタップします。",
+  "objDispWinTitle": "空間の天才！",
+  "objDispGameOverMessage": "{score} 個の移動オブジェクトを正しく特定しました。",
+  "objDispMemorizeAll": "すべての配置を記憶する",
+  "objDispWaitingShift": "レイアウト変更を待っています...",
+  "objDispTapMoved": "動いたオブジェクトをタップ",
+  "objDispExcellent": "素晴らしい！",
+  "objDispWrongObject": "オブジェクトが間違っています!",
+  "objDispItems": "アイテム",
+  "mandalaTitle": "マンダラリコール",
+  "mandalaSubtitle": "カラー構成を記憶します。色を選択してタイルを再ペイントします。",
+  "mandalaWinTitle": "マンダラアーティスト！",
+  "mandalaGameOverMessage": "色付きの幾何学的なレイアウトを再作成して、 {score} ポイントを獲得しました。",
+  "mandalaMemorizeColors": "タイルの色を記憶する",
+  "mandalaPaintCells": "オリジナルに合わせてセルをペイントする",
+  "mandalaExcellent": "素晴らしい！",
+  "mandalaIncorrectMatch": "間違った一致です!",
+  "mandalaSubmitRepaint": "リペイントを送信する",
+  "mandalaTiles": "タイル",
+  "runningSpanTitle": "ランニングスパン",
+  "runningSpanSubtitle": "手紙に注目してください。停止したら、最後の N 文字を順番に入力します。",
+  "runningSpanWinTitle": "バッファーマスター！",
+  "runningSpanGameOverMessage": "ランニング メモリ スパンで {score} ポイントを獲得しました!",
+  "runningSpanPrepareRecall": "最後の {count} 文字を思い出す準備をしてください",
+  "runningSpanWatchCarefully": "注意深く見てください...",
+  "runningSpanEnterLast": "最後の {count} 文字を入力してください",
+  "runningSpanGreatJob": "素晴らしい仕事だ！",
+  "runningSpanIncorrectBuffer": "バッファが間違っています!",
+  "runningSpanRecallLast": "最後の {count} を思い出してください",
+  "runningSpanStopsRandomly": "ストリームがランダムに停止します。",
+  "runningSpanEntered": "入力: {sequence}",
+  "runningSpanNItems": "N アイテム",
+  "spatialCabinetTitle": "空間キャビネット",
+  "spatialCabinetSubtitle": "どのキャビネットの引き出しにどのオブジェクトが入っているかを記憶します。",
+  "spatialCabinetWinTitle": "内閣の専門家！",
+  "spatialCabinetGameOverMessage": "Spatial Cabinet Memory で {score} ポイントを獲得しました!",
+  "spatialCabinetMemorize": "アイテムの場所を記憶する",
+  "spatialCabinetWhereIs": "{itemName} はどこですか?",
+  "spatialCabinetCorrect": "正しい！",
+  "spatialCabinetWrongDrawer": "引き出しが間違っています!",
+  "spatialCabinetItems": "アイテム",
+  "cabinetItemKey": "鍵",
+  "cabinetItemApple": "りんご",
+  "cabinetItemDiamond": "ダイヤモンド",
+  "cabinetItemBook": "本",
+  "cabinetItemUmbrella": "傘",
+  "cabinetItemCoffee": "コーヒー",
+  "cabinetItemLock": "ロック",
+  "cabinetItemPet": "ペット",
+  "cabinetItemCar": "車",
+  "@soptGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@contRecogGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@dnmsGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@symSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@countingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@countingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@objDispGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@mandalaGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanPrepareRecall": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEnterLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanRecallLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEntered": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@spatialCabinetGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@spatialCabinetWhereIs": {
+    "placeholders": {
+      "itemName": {
+        "type": "String"
+      }
+    }
+  },
+  "gamesTitleLabel": "ゲーム",
+  "yourFavorites": "お気に入り",
+  "readyForWorkout": "毎日の脳トレの準備はいいですか？",
+  "greatStartKeepGoing": "素晴らしいスタートです！その調子で続けましょう。",
+  "onFireToday": "今日は絶好調ですね！",
+  "incredibleSolvingToday": "今日は驚異的な解答数です！",
+  "newGameLabel": "新規",
+  "slitherlinkTitle": "スリザーリンク",
+  "slitherlinkSubtitle": "数字のヒントを使ってピンのグリッドをループで囲みます。",
+  "futoshikiTitle": "不等式パズル",
+  "futoshikiSubtitle": "不等号のヒントに従ってグリッドを埋めます。",
+  "kakuroTitle": "カックロ",
+  "kakuroSubtitle": "数字と合計を使ってクロスワードを解きます。",
+  "inequalityDashTitle": "不等式ダッシュ",
+  "inequalityDashSubtitle": "時間制限内に不等式を解きます。",
+  "factorFinderTitle": "因数探し",
+  "factorFinderSubtitle": "ターゲット数字のすべての因数を特定します。",
+  "collatzTitle": "コラッツの道",
+  "collatzSubtitle": "3N+1の数列を進みます。",
+  "sumPyramidTitle": "合計ピラミッド",
+  "sumPyramidSubtitle": "合計値のヒントを使ってピラミッドのセルを埋めます。",
+  "target10Title": "ターゲット10",
+  "target10Subtitle": "数字タイルを組み合わせて合計10を作ります。",
+  "fractionMatcherTitle": "分数マッチング",
+  "fractionMatcherSubtitle": "視覚的に等しい分数を一致させます。",
+  "dualCodingTitle": "デュアルコーディング",
+  "dualCodingSubtitle": "文字と記号を同時に一致させます。",
+  "distractorMatrixTitle": "妨害要素マトリックス",
+  "distractorMatrixSubtitle": "妨害要素の中からターゲットの形を見つけます。",
+  "temporalOrderTitle": "時系列順",
+  "temporalOrderSubtitle": "時系列の順序を思い出します。",
+  "associativePairsTitle": "連想ペア",
+  "associativePairsSubtitle": "対応する記号をペアにして一致させます。",
+  "blockCount3dTitle": "3Dブロック計算",
+  "blockCount3dSubtitle": "3次元空間内のブロックを数えます。",
+  "rotatingMazeTitle": "回転迷路",
+  "rotatingMazeSubtitle": "迷路を回転させてボールを出口に導きます。",
+  "silhouetteMatchOrthoTitle": "シルエットマッチ（正投影）",
+  "silhouetteMatchOrthoSubtitle": "3Dオブジェクトと正投影の影を一致させます。",
+  "spatialConflictTitle": "空間的葛藤",
+  "spatialConflictSubtitle": "文字と方向の不一致を解決します。",
+  "spotlightTrackTitle": "スポットライト追跡",
+  "spotlightTrackSubtitle": "動く影の中で点滅するアイテムを追跡します。",
+  "d2AttentionTitle": "d2注意テスト",
+  "d2AttentionSubtitle": "厳格な基準に従ってターゲット記号をタップします。",
+  "dualMirrorTitle": "デュアルミラー・ナビゲーション",
+  "dualMirrorSubtitle": "2つの迷路を同時に進みます。",
+  "contextCluesTitle": "文脈ヒント",
+  "contextCluesSubtitle": "文脈のヒントから隠された単語を推測します。",
+  "digitSpanReverseSubtitle": "数字を逆順に思い出します。",
+  "faceNameAssociationSubtitle": "提示された様々な顔の名前を思い出します。",
+  "staircaseMemorySubtitle": "階段状の順序でブロックを記憶します。",
+  "choiceReactionTimeSubtitle": "ヒントに一致する特定のボタンを素早くタップします。",
+  "attentionalBlinkSubtitle": "ストリーム内で素早く点滅するターゲットを捉えます。",
+  "visualStatisticalLearningSubtitle": "時系列の図形パターンを視覚的に学習します。",
+  "sternbergTaskSubtitle": "記号が記憶セットの中にあったか思い出します。",
+  "operationSpanSubtitle": "計算を解きながらアルファベットの文字列を思い出します。",
+  "continuousRecognitionTitle": "連続認識",
+  "continuousRecognitionSubtitle": "提示されたカードが以前のものか新しいものか識別します。",
+  "symmetrySpanTitle": "対称性スパン",
+  "symmetrySpanSubtitle": "垂直対称の判定を行いながらセルの座標を思い出します。",
+  "objectDisplacementTitle": "物体移動",
+  "objectDisplacementSubtitle": "配置を学習し、移動した1つの物体をタップします。",
+  "mandalaRecallTitle": "マンダラ想起",
+  "mandalaRecallSubtitle": "色のタイルの配置を記憶し、パレットからマンダラを塗り直します。",
+  "runningMemorySpanTitle": "ランニングスパン",
+  "runningMemorySpanSubtitle": "流れる文字を監視し、最後のN個のアイテムを思い出します。",
+  "spatialCabinetMemoryTitle": "空間キャビネット",
+  "spatialCabinetMemorySubtitle": "キャビネットの扉の裏にあるアイテムを記憶し、場所を特定します。",
+  "pathRecallSubtitle": "経路の選択を記憶し、繰り返します。",
+  "objectShuffleSubtitle": "深いカップの下でシャッフルされるアイテムを追跡します。",
+  "groceryListSubtitle": "リストにあるアイテムを記憶し、チェックを入れます。",
+  "quickMathSubtitle": "計算問題を最高速度で解きます。",
+  "mathGuessTitle": "数字当て",
+  "mathGuessSubtitle": "15回以内に隠された数字を当てます。",
+  "reflexTapSubtitle": "刺激を人間ができる限り素早くタップします。",
+  "pixelMimicSubtitle": "ピクセルグリッド上のデザインパターンを模倣します。",
+  "simonSequenceSubtitle": "記憶から図形の順序を繰り返します。",
+  "slidePuzzleSubtitle": "正方形のスライディンググリッドタイルを並べ替えます。",
+  "findWordTitle": "単語探し",
+  "schulteTableSubtitle": "1から25までの数字をタップします。",
+  "simonCommandTitle": "サイモンコマンド",
+  "simonCommandSubtitle": "音声の指示に従って素早く動作します。",
+  "binaryCodeTitle": "バイナリスピード",
+  "binaryCodeSubtitle": "バイナリコードを10進数に変換します。",
+  "moduloClockTitle": "剰余時計",
+  "moduloClockSubtitle": "時計を使って数学の方程式を計算します。",
+  "chimpTestTitle": "チンパンジーテスト",
+  "chimpTestSubtitle": "ランダムな数字を昇順にタップします。",
+  "relationalMemoryTitle": "関係記憶",
+  "relationalMemorySubtitle": "グリッドアイテムの正確な位置を思い出します。",
+  "factBinderTitle": "ファクトバインダー",
+  "factBinderSubtitle": "記号を結びつけ、発言内容を思い出します。",
+  "sourceMonitoringTitle": "ソースモニタリング",
+  "sourceMonitoringSubtitle": "文脈を思い出します。",
+  "klotskiTitle": "箱入り娘（クロツキ）",
+  "klotskiSubtitle": "ブロックをスライドさせて出口に到達させます。",
+  "homophoneHuntSubtitle": "正しい綴りを選択します。"
 }

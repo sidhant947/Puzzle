@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -195,7 +197,7 @@ class MathPathScreen extends ConsumerWidget {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'CONGRATS',
+        title: L10nGameHelpers.getGameTitle(context, 'math_path'),
         message: AppLocalizations.of(context)!.mathPathMessage,
         onHome: () {
           Navigator.of(context).pop();

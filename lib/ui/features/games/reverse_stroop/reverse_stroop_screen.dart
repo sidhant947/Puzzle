@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -64,8 +66,8 @@ class _ReverseStroopScreenState extends ConsumerState<ReverseStroopScreen> {
     });
 
     if (state.currentStimulus == null) {
-      return const GameScaffold(
-        title: 'REVERSE STROOP',
+      return GameScaffold(
+        title: L10nGameHelpers.getGameTitle(context, 'reverse_stroop'),
         body: Center(child: CircularProgressIndicator()),
       );
     }

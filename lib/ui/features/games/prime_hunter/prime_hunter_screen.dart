@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -77,7 +79,7 @@ class _PrimeHunterScreenState extends ConsumerState<PrimeHunterScreen> {
     }
 
     return GameScaffold(
-      title: 'Prime Hunter',
+      title: L10nGameHelpers.getGameTitle(context, 'prime_hunter'),
       subtitle: l10n.primeHunterSubtitle,
       body: Column(
         children: [

@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'letter_frequency_scan_provider.dart';
@@ -186,7 +188,7 @@ class LetterFrequencyScanScreen extends ConsumerWidget {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'EXCELLENT',
+        title: L10nGameHelpers.getGameTitle(context, 'letter_frequency_scan'),
         message: AppLocalizations.of(context)!.letterFrequencyScanMessage((state.targetCount).toString(), (state.targetLetter).toString()),
         onHome: () {
           Navigator.of(context).pop();

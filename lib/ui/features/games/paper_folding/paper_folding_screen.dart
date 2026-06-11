@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -64,13 +66,13 @@ class _PaperFoldingScreenState extends ConsumerState<PaperFoldingScreen> {
 
     if (state.isLoading) {
       return GameScaffold(
-        title: 'Paper Folding',
+        title: L10nGameHelpers.getGameTitle(context, 'paper_folding'),
         body: Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
-      title: 'Paper Folding',
+      title: L10nGameHelpers.getGameTitle(context, 'paper_folding'),
       subtitle: l10n.paperFoldingSubtitle,
       body: SingleChildScrollView(
         child: Padding(

@@ -1,3 +1,5 @@
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -60,8 +62,8 @@ class _SoptScreenState extends ConsumerState<SoptScreen> {
     });
 
     return GameScaffold(
-      title: 'SELF-ORDERED POINTING',
-      subtitle: 'TAP A DIFFERENT CARD EACH TIME. THE POSITIONS SHUFFLE!',
+      title: L10nGameHelpers.getGameTitle(context, 'sopt'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'sopt'),
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(

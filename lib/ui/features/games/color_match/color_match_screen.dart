@@ -1,4 +1,6 @@
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import "package:puzzle/l10n/app_localizations.dart";
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'color_match_provider.dart';
@@ -157,7 +159,7 @@ class ColorMatchScreen extends ConsumerWidget {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'MATCH RESULT',
+        title: L10nGameHelpers.getGameTitle(context, 'color_match'),
         message: AppLocalizations.of(context)!.colorMatchMessage((state.score.toStringAsFixed(1)).toString()),
         onHome: () {
           Navigator.of(context).pop();

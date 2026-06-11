@@ -2777,4 +2777,756 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get imReady => 'TÔI ĐÃ SẴN SÀNG';
+
+  @override
+  String get soptTitle => 'Tự trỏ chỉ';
+
+  @override
+  String get soptSubtitle =>
+      'Nhấn vào một thẻ khác nhau mỗi lần. Các vị trí xáo trộn!';
+
+  @override
+  String get soptWinTitle => 'Trình tự chủ nhân!';
+
+  @override
+  String soptGameOverMessage(int score) {
+    return 'Bạn đã ghi được $score điểm bằng cách theo dõi thành công các lá bài được xáo trộn!';
+  }
+
+  @override
+  String get soptChooseNovel => 'Nhấn vào một thẻ mới';
+
+  @override
+  String get soptGreatJob => 'Làm tốt lắm!';
+
+  @override
+  String get soptAlreadyTapped => 'Đã khai thác rồi!';
+
+  @override
+  String get soptGrid => 'Lưới';
+
+  @override
+  String get contRecogTitle => 'Nhận dạng liên tục';
+
+  @override
+  String get contRecogSubtitle =>
+      'Bạn đã nhìn thấy thẻ này trước đây trong phiên này chưa?';
+
+  @override
+  String get contRecogWinTitle => 'Công nhận thiên tài!';
+
+  @override
+  String contRecogGameOverMessage(int score) {
+    return 'Bạn đã ghi được $score công nhận chính xác!';
+  }
+
+  @override
+  String get contRecogCorrect => 'Chính xác!';
+
+  @override
+  String get contRecogWrong => 'Sai!';
+
+  @override
+  String get contRecogOldOrNew => 'Cái này cũ hay mới?';
+
+  @override
+  String get contRecogNew => 'Mới';
+
+  @override
+  String get contRecogOld => 'Cũ';
+
+  @override
+  String get contRecogSeenPool => 'Nhìn thấy hồ bơi';
+
+  @override
+  String get dnmsTitle => 'Bộ nhớ không khớp';
+
+  @override
+  String get dnmsSubtitle => 'Nhấn vào thẻ không có trong mẫu đã ghi nhớ.';
+
+  @override
+  String get dnmsWinTitle => 'Chuyên gia không phù hợp!';
+
+  @override
+  String dnmsGameOverMessage(int score) {
+    return 'Bạn đã ghi được $score câu trả lời đúng trong phần Trì hoãn không khớp!';
+  }
+
+  @override
+  String get dnmsChooseNovel => 'Nhấn vào thẻ mới';
+
+  @override
+  String get dnmsMemorizeSample => 'Ghi nhớ thẻ này';
+
+  @override
+  String get dnmsWaitForIt => 'Đợi nó...';
+
+  @override
+  String get dnmsExcellent => 'Xuất sắc!';
+
+  @override
+  String get dnmsSampleTapped => 'Đó là mẫu!';
+
+  @override
+  String get dnmsCards => 'Thẻ';
+
+  @override
+  String get symSpanTitle => 'Khoảng đối xứng';
+
+  @override
+  String get symSpanSubtitle =>
+      'Nhớ lại các mẫu tế bào trong khi xác định tính đối xứng dọc.';
+
+  @override
+  String get symSpanWinTitle => 'Bậc thầy đối xứng!';
+
+  @override
+  String symSpanGameOverMessage(int score) {
+    return 'Bạn đã ghi được $score điểm bằng cách nhớ lại bố cục và xác định tính đối xứng!';
+  }
+
+  @override
+  String get symSpanMemorizeRed => 'Ghi nhớ vị trí tế bào màu đỏ';
+
+  @override
+  String get symSpanIsSymmetric => 'Mô hình có đối xứng không?';
+
+  @override
+  String get symSpanRecallSequence => 'Nhớ lại trình tự đúng thứ tự';
+
+  @override
+  String get symSpanGreatJob => 'Làm tốt lắm!';
+
+  @override
+  String get symSpanTryAgain => 'Hãy thử lại!';
+
+  @override
+  String get symSpanLength => 'Chiều dài';
+
+  @override
+  String get readingSpanTitle => 'Khoảng đọc';
+
+  @override
+  String get readingSpanSubtitle =>
+      'Xác minh câu trong khi ghi nhớ một chuỗi các chữ cái.';
+
+  @override
+  String get readingSpanWinTitle => 'Chuyên gia đọc sách!';
+
+  @override
+  String readingSpanGameOverMessage(int score) {
+    return 'Bạn đã ghi được $score điểm trong thử thách trí nhớ Reading Span!';
+  }
+
+  @override
+  String get readingSpanTrueFalse => 'Tuyên bố này đúng hay sai?';
+
+  @override
+  String get readingSpanMemorizeLetter => 'Hãy ghi nhớ lá thư này';
+
+  @override
+  String get readingSpanRecallLetters => 'Nhớ lại các chữ cái theo thứ tự';
+
+  @override
+  String get readingSpanGreatJob => 'Làm tốt lắm!';
+
+  @override
+  String get readingSpanTryAgain => 'Hãy thử lại!';
+
+  @override
+  String readingSpanYourSequence(String sequence) {
+    return 'Trình tự của bạn: $sequence';
+  }
+
+  @override
+  String get readingSpanLength => 'Chiều dài';
+
+  @override
+  String get readingSpanSentence1 => 'Mặt trời mọc ở phía đông.';
+
+  @override
+  String get readingSpanSentence2 => 'Nước đá đang sôi sùng sục.';
+
+  @override
+  String get readingSpanSentence3 => 'Cá có thể thở dưới nước.';
+
+  @override
+  String get readingSpanSentence4 => 'Chó có cánh và có thể bay.';
+
+  @override
+  String get readingSpanSentence5 => 'Nước đóng băng ở 0 độ C.';
+
+  @override
+  String get readingSpanSentence6 => 'Mèo sủa như chó nhỏ.';
+
+  @override
+  String get readingSpanSentence7 => 'Cây có lá xanh vào mùa hè.';
+
+  @override
+  String get readingSpanSentence8 => 'Mưa rơi từ mặt đất lên.';
+
+  @override
+  String get readingSpanSentence9 => 'Một tam giác có bốn cạnh bằng nhau.';
+
+  @override
+  String get readingSpanSentence10 => 'Táo là một loại trái cây ngọt ngào.';
+
+  @override
+  String get readingSpanSentence11 => 'Mặt trăng được làm từ phô mai cheddar.';
+
+  @override
+  String get readingSpanSentence12 => 'Ô tô có bánh xe để lăn.';
+
+  @override
+  String get readingSpanSentence13 => 'Lửa lạnh cóng.';
+
+  @override
+  String get readingSpanSentence14 => 'Giấy được làm từ gỗ đã qua chế biến.';
+
+  @override
+  String get readingSpanSentence15 => 'Chim có lông để giúp chúng bay.';
+
+  @override
+  String get readingSpanSentence16 => 'Chuối mọc trên cây thông.';
+
+  @override
+  String get readingSpanSentence17 => 'Con voi nhỏ hơn con kiến.';
+
+  @override
+  String get readingSpanSentence18 => 'Sách chứa các trang in văn bản.';
+
+  @override
+  String get countingSpanTitle => 'Khoảng đếm';
+
+  @override
+  String get countingSpanSubtitle =>
+      'Chỉ đếm vòng tròn màu xanh. Sau đó nhớ lại thứ tự đếm.';
+
+  @override
+  String get countingSpanWinTitle => 'Đếm thiên tài!';
+
+  @override
+  String countingSpanGameOverMessage(int score) {
+    return 'Bạn đã ghi được $score điểm trong thử thách trí nhớ Đếm khoảng thời gian!';
+  }
+
+  @override
+  String get countingSpanCountCircles => 'Chỉ đếm vòng tròn màu xanh';
+
+  @override
+  String get countingSpanRecallCounts => 'Nhớ lại số đếm theo đúng thứ tự';
+
+  @override
+  String get countingSpanGreatJob => 'Làm tốt lắm!';
+
+  @override
+  String get countingSpanTryAgain => 'Hãy thử lại!';
+
+  @override
+  String countingSpanYourSequence(String sequence) {
+    return 'Trình tự của bạn: $sequence';
+  }
+
+  @override
+  String get countingSpanLength => 'Chiều dài';
+
+  @override
+  String get objDispTitle => 'Độ dịch chuyển của vật thể';
+
+  @override
+  String get objDispSubtitle =>
+      'Ghi nhớ bố cục. Tìm và chạm vào một đối tượng có thể thay đổi vị trí.';
+
+  @override
+  String get objDispWinTitle => 'Thiên tài không gian!';
+
+  @override
+  String objDispGameOverMessage(int score) {
+    return 'Bạn đã xác định chính xác $score đối tượng bị dịch chuyển!';
+  }
+
+  @override
+  String get objDispMemorizeAll => 'Ghi nhớ tất cả các vị trí';
+
+  @override
+  String get objDispWaitingShift => 'Đang chờ thay đổi bố cục...';
+
+  @override
+  String get objDispTapMoved => 'Nhấn vào đối tượng đã di chuyển';
+
+  @override
+  String get objDispExcellent => 'Xuất sắc!';
+
+  @override
+  String get objDispWrongObject => 'Sai đối tượng!';
+
+  @override
+  String get objDispItems => 'Mặt hàng';
+
+  @override
+  String get mandalaTitle => 'Thu hồi Mandala';
+
+  @override
+  String get mandalaSubtitle =>
+      'Ghi nhớ cấu hình màu. Chọn màu sắc và sơn lại gạch.';
+
+  @override
+  String get mandalaWinTitle => 'Nghệ sĩ Mandala!';
+
+  @override
+  String mandalaGameOverMessage(int score) {
+    return 'Bạn đã ghi được $score điểm bằng cách tạo lại các bố cục hình học đầy màu sắc!';
+  }
+
+  @override
+  String get mandalaMemorizeColors => 'Ghi nhớ màu gạch';
+
+  @override
+  String get mandalaPaintCells => 'Sơn các ô để phù hợp với bản gốc';
+
+  @override
+  String get mandalaExcellent => 'Xuất sắc!';
+
+  @override
+  String get mandalaIncorrectMatch => 'Trận đấu không chính xác!';
+
+  @override
+  String get mandalaSubmitRepaint => 'Gửi sơn lại';
+
+  @override
+  String get mandalaTiles => 'Gạch lát';
+
+  @override
+  String get runningSpanTitle => 'Khoảng chạy';
+
+  @override
+  String get runningSpanSubtitle =>
+      'Xem các chữ cái. Khi chúng dừng lại, hãy nhập N chữ cái cuối cùng theo thứ tự.';
+
+  @override
+  String get runningSpanWinTitle => 'Bậc thầy đệm!';
+
+  @override
+  String runningSpanGameOverMessage(int score) {
+    return 'Bạn đã ghi được $score điểm trong Chạy bộ nhớ kéo dài!';
+  }
+
+  @override
+  String runningSpanPrepareRecall(int count) {
+    return 'Chuẩn bị nhớ lại $count chữ cái cuối cùng';
+  }
+
+  @override
+  String get runningSpanWatchCarefully => 'Hãy để ý cẩn thận...';
+
+  @override
+  String runningSpanEnterLast(int count) {
+    return 'Nhập $count chữ cái cuối cùng';
+  }
+
+  @override
+  String get runningSpanGreatJob => 'Làm tốt lắm!';
+
+  @override
+  String get runningSpanIncorrectBuffer => 'Bộ đệm không chính xác!';
+
+  @override
+  String runningSpanRecallLast(int count) {
+    return 'Nhớ lại $count lần cuối';
+  }
+
+  @override
+  String get runningSpanStopsRandomly => 'Luồng dừng ngẫu nhiên!';
+
+  @override
+  String runningSpanEntered(String sequence) {
+    return 'Đã nhập: $sequence';
+  }
+
+  @override
+  String get runningSpanNItems => 'Vật phẩm N';
+
+  @override
+  String get spatialCabinetTitle => 'Tủ không gian';
+
+  @override
+  String get spatialCabinetSubtitle => 'Ghi nhớ ngăn tủ nào chứa đồ vật nào.';
+
+  @override
+  String get spatialCabinetWinTitle => 'Chuyên gia nội các!';
+
+  @override
+  String spatialCabinetGameOverMessage(int score) {
+    return 'Bạn đã ghi được $score điểm trong Bộ nhớ tủ không gian!';
+  }
+
+  @override
+  String get spatialCabinetMemorize => 'Ghi nhớ vị trí vật phẩm';
+
+  @override
+  String spatialCabinetWhereIs(String itemName) {
+    return '$itemName ở đâu?';
+  }
+
+  @override
+  String get spatialCabinetCorrect => 'Chính xác!';
+
+  @override
+  String get spatialCabinetWrongDrawer => 'Ngăn kéo sai!';
+
+  @override
+  String get spatialCabinetItems => 'Mặt hàng';
+
+  @override
+  String get cabinetItemKey => 'Chìa khóa';
+
+  @override
+  String get cabinetItemApple => 'Quả táo';
+
+  @override
+  String get cabinetItemDiamond => 'Kim cương';
+
+  @override
+  String get cabinetItemBook => 'Sách';
+
+  @override
+  String get cabinetItemUmbrella => 'Chiếc ô';
+
+  @override
+  String get cabinetItemCoffee => 'Cà phê';
+
+  @override
+  String get cabinetItemLock => 'Khóa';
+
+  @override
+  String get cabinetItemPet => 'Thú cưng';
+
+  @override
+  String get cabinetItemCar => 'Xe hơi';
+
+  @override
+  String get gamesTitleLabel => 'TRÒ CHƠI';
+
+  @override
+  String get yourFavorites => 'YÊU THÍCH CỦA BẠN';
+
+  @override
+  String get readyForWorkout => 'SẴN SÀNG CHO BÀI TẬP HÀNG NGÀY CỦA BẠN?';
+
+  @override
+  String get greatStartKeepGoing => 'KHỞI ĐẦU TUYỆT VỜI! HÃY TIẾP TỤC.';
+
+  @override
+  String get onFireToday => 'HÔM NAY BẠN ĐANG RẤT SUNG SỨC!';
+
+  @override
+  String get incredibleSolvingToday => 'GIẢI QUYẾT ĐÁNG KINH NGẠC HÔM NAY!';
+
+  @override
+  String get newGameLabel => 'MỚI';
+
+  @override
+  String get slitherlinkTitle => 'Slitherlink';
+
+  @override
+  String get slitherlinkSubtitle => 'VÂY QUANH LƯỚI PIN BẰNG CÁC GỢI Ý SỐ.';
+
+  @override
+  String get futoshikiTitle => 'Futoshiki';
+
+  @override
+  String get futoshikiSubtitle => 'ĐIỀN VÀO LƯỚI BẰNG CÁC GỢI Ý LỚN HƠN.';
+
+  @override
+  String get kakuroTitle => 'Kakuro';
+
+  @override
+  String get kakuroSubtitle => 'GIẢI CÁC Ô CHỮ VỚI CÁC CON SỐ VÀ TỔNG.';
+
+  @override
+  String get inequalityDashTitle => 'Đua Bất Đẳng Thức';
+
+  @override
+  String get inequalityDashSubtitle =>
+      'GIẢI CÁC BẤT ĐẲNG THỨC DƯỚI ÁP LỰC THỜI GIAN.';
+
+  @override
+  String get factorFinderTitle => 'Tìm Ước Số';
+
+  @override
+  String get factorFinderSubtitle =>
+      'XÁC ĐỊNH TẤT CẢ CÁC ƯỚC SỐ CỦA CÁC SỐ MỤC TIÊU.';
+
+  @override
+  String get collatzTitle => 'Đường dẫn Collatz';
+
+  @override
+  String get collatzSubtitle => 'ĐIỀU HƯỚNG DÃY SỐ 3N+1.';
+
+  @override
+  String get sumPyramidTitle => 'Kim Tự Tháp Tổng';
+
+  @override
+  String get sumPyramidSubtitle =>
+      'ĐIỀN VÀO CÁC Ô KIM TỰ THÁP VỚI CÁC GỢI Ý TOÁN HỌC VỀ TỔNG.';
+
+  @override
+  String get target10Title => 'Mục Tiêu 10';
+
+  @override
+  String get target10Subtitle => 'KẾT HỢP CÁC Ô SỐ ĐỂ CÓ ĐƯỢC MƯỜI TỔNG.';
+
+  @override
+  String get fractionMatcherTitle => 'Ghép Phân Số';
+
+  @override
+  String get fractionMatcherSubtitle =>
+      'GHÉP CÁC PHÂN SỐ TƯƠNG ĐƯƠNG BẰNG TRỰC QUAN.';
+
+  @override
+  String get dualCodingTitle => 'Mã Hóa Kép';
+
+  @override
+  String get dualCodingSubtitle => 'GHÉP CÁC CHỮ CÁI VÀ BIỂU TƯỢNG ĐỒNG THỜI.';
+
+  @override
+  String get distractorMatrixTitle => 'Ma Trận Gây Nhiễu';
+
+  @override
+  String get distractorMatrixSubtitle =>
+      'TÌM CÁC HÌNH DẠNG MỤC TIÊU GIỮA CÁC YẾU TỐ GÂY NHIỄU.';
+
+  @override
+  String get temporalOrderTitle => 'Thứ Tự Thời Gian';
+
+  @override
+  String get temporalOrderSubtitle => 'NHỚ LẠI TRÌNH TỰ THỜI GIAN.';
+
+  @override
+  String get associativePairsTitle => 'Cặp Liên Kết';
+
+  @override
+  String get associativePairsSubtitle =>
+      'GHÉP ĐÔI VÀ KHỚP CÁC BIỂU TƯỢNG TƯƠNG ỨNG.';
+
+  @override
+  String get blockCount3dTitle => 'Đếm Khối 3D';
+
+  @override
+  String get blockCount3dSubtitle => 'ĐẾM CÁC KHỐI TRONG KHÔNG GIAN BA CHIỀU.';
+
+  @override
+  String get rotatingMazeTitle => 'Mê Cung Xoay';
+
+  @override
+  String get rotatingMazeSubtitle => 'XOAY MÊ CUNG ĐỂ DẪN BÓNG ĐẾN LỐI THOÁT.';
+
+  @override
+  String get silhouetteMatchOrthoTitle => 'Khớp Hình Chiếu (Ortho)';
+
+  @override
+  String get silhouetteMatchOrthoSubtitle =>
+      'KHỚP CÁC ĐỐI TƯỢNG 3D VỚI CÁC BÓNG CHIẾU THẲNG GÓC.';
+
+  @override
+  String get spatialConflictTitle => 'Xung Đột Không Gian';
+
+  @override
+  String get spatialConflictSubtitle =>
+      'GIẢI QUYẾT SỰ KHÁC BIỆT GIỮA VĂN BẢN VÀ HƯỚNG.';
+
+  @override
+  String get spotlightTrackTitle => 'Theo Dấu Đèn Chiếu';
+
+  @override
+  String get spotlightTrackSubtitle =>
+      'THEO DÕI CÁC MỤC NHẤP NHÁY TRONG CÁC BÓNG DI CHUYỂN.';
+
+  @override
+  String get d2AttentionTitle => 'Chú Ý d2';
+
+  @override
+  String get d2AttentionSubtitle =>
+      'CHẠM VÀO CÁC BIỂU TƯỢNG MỤC TIÊU VỚI CÁC TIÊU CHÍ NGHIÊM NGẶT.';
+
+  @override
+  String get dualMirrorTitle => 'Điều Hướng Gương Kép';
+
+  @override
+  String get dualMirrorSubtitle => 'ĐIỀU HƯỚNG HAI MÊ CUNG CÙNG MỘT LÚC.';
+
+  @override
+  String get contextCluesTitle => 'Gợi Ý Ngữ Cảnh';
+
+  @override
+  String get contextCluesSubtitle => 'SUY LUẬN TỪ ẨN TỪ CÁC GỢI Ý NGỮ CẢNH.';
+
+  @override
+  String get digitSpanReverseSubtitle =>
+      'NHỚ LẠI CÁC CHỮ SỐ THEO THỨ TỰ NGƯỢC LẠI.';
+
+  @override
+  String get faceNameAssociationSubtitle =>
+      'NHỚ LẠI TÊN CHO CÁC KHUÔN MẶT ĐA DẠNG ĐƯỢC TRÌNH BÀY.';
+
+  @override
+  String get staircaseMemorySubtitle =>
+      'GHI NHỚ CÁC KHỐI THEO TRÌNH TỰ TỪNG BƯỚC.';
+
+  @override
+  String get choiceReactionTimeSubtitle =>
+      'CHẠM NHANH VÀO CÁC NÚT CỤ THỂ KHỚP VỚI CÁC GỢI Ý.';
+
+  @override
+  String get attentionalBlinkSubtitle =>
+      'PHÁT HIỆN CÁC MỤC TIÊU NHANH NHẤP NHÁY TRONG DÒNG CHẢY.';
+
+  @override
+  String get visualStatisticalLearningSubtitle =>
+      'HỌC CÁC MẪU HÌNH DẠNG THỜI GIAN BẰNG TRỰC QUAN.';
+
+  @override
+  String get sternbergTaskSubtitle =>
+      'NHỚ LẠI XEM BIỂU TƯỢNG CÓ TRONG BỘ NHỚ HAY KHÔNG.';
+
+  @override
+  String get operationSpanSubtitle => 'GIẢI TOÁN VÀ NHỚ LẠI CÁC CHUỖI CHỮ CÁI.';
+
+  @override
+  String get continuousRecognitionTitle => 'Nhận Biết Liên Tục';
+
+  @override
+  String get continuousRecognitionSubtitle =>
+      'XÁC ĐỊNH XEM THẺ ĐƯỢC TRÌNH BÀY LÀ CŨ HAY MỚI.';
+
+  @override
+  String get symmetrySpanTitle => 'Khoảng Đối Xứng';
+
+  @override
+  String get symmetrySpanSubtitle =>
+      'NHỚ LẠI TỌA ĐỘ Ô GIỮA CÁC QUYẾT ĐỊNH ĐỐI XỨNG DỌC.';
+
+  @override
+  String get objectDisplacementTitle => 'Sự Dịch Chuyển Vật Thể';
+
+  @override
+  String get objectDisplacementSubtitle =>
+      'NGHIÊN CỨU CÁC VỊ TRÍ VÀ CHẠM VÀO VẬT THỂ DUY NHẤT ĐÃ DI CHUYỂN.';
+
+  @override
+  String get mandalaRecallTitle => 'Nhớ Lại Mandala';
+
+  @override
+  String get mandalaRecallSubtitle =>
+      'GHI NHỚ CÁC Ô MÀU VÀ VẼ LẠI MANDALA TỪ BẢNG MÀU.';
+
+  @override
+  String get runningMemorySpanTitle => 'Khoảng Nhớ Chạy';
+
+  @override
+  String get runningMemorySpanSubtitle =>
+      'THEO DÕI CÁC CHỮ CÁI ĐANG CHẠY VÀ NHỚ LẠI N MỤC CUỐI CÙNG.';
+
+  @override
+  String get spatialCabinetMemoryTitle => 'Tủ Không Gian';
+
+  @override
+  String get spatialCabinetMemorySubtitle =>
+      'GHI NHỚ VÀ XÁC ĐỊNH VỊ TRÍ CÁC MỤC SAU CỬA TỦ.';
+
+  @override
+  String get pathRecallSubtitle => 'GHI NHỚ VÀ LẶP LẠI CÁC LỰA CHỌN ĐƯỜNG DẪN.';
+
+  @override
+  String get objectShuffleSubtitle =>
+      'THEO DÕI CÁC MỤC ĐÃ ĐƯỢC TRÁO ĐỔI DƯỚI CÁC CHIẾC CỐC SÂU.';
+
+  @override
+  String get groceryListSubtitle =>
+      'GHI NHỚ VÀ ĐÁNH DẤU CÁC MỤC TRÊN DANH SÁCH.';
+
+  @override
+  String get quickMathSubtitle => 'GIẢI CÁC CÂU HỎI SỐ HỌC VỚI TỐC ĐỘ TỐI ĐA.';
+
+  @override
+  String get mathGuessTitle => 'Đoán Toán Học';
+
+  @override
+  String get mathGuessSubtitle => 'ĐOÁN SỐ ẨN TRONG VÒNG 15 LẦN THỬ.';
+
+  @override
+  String get reflexTapSubtitle => 'CHẠM VÀO CÁC KÍCH THÍCH NHANH NHẤT CÓ THỂ.';
+
+  @override
+  String get pixelMimicSubtitle =>
+      'BẮT CHƯỚC CÁC MẪU THIẾT KẾ TRÊN LƯỚI PIXEL.';
+
+  @override
+  String get simonSequenceSubtitle =>
+      'LẶP LẠI CÁC TRÌNH TỰ HÌNH DẠNG TỪ BỘ NHỚ.';
+
+  @override
+  String get slidePuzzleSubtitle => 'SẮP XẾP LẠI CÁC Ô LƯỚI TRƯỢT HÌNH VUÔNG.';
+
+  @override
+  String get findWordTitle => 'Tìm Từ';
+
+  @override
+  String get schulteTableSubtitle => 'CHẠM VÀO CÁC SỐ TỪ MỘT ĐẾN HAI MƯƠI LĂM.';
+
+  @override
+  String get simonCommandTitle => 'Lệnh Simon';
+
+  @override
+  String get simonCommandSubtitle =>
+      'THỰC HIỆN CÁC HƯỚNG DẪN BẰNG GIỌNG NÓI NHANH CHÓNG.';
+
+  @override
+  String get binaryCodeTitle => 'Tốc Độ Nhị Phân';
+
+  @override
+  String get binaryCodeSubtitle => 'DỊCH CÁC MÃ NHỊ PHÂN SANG THẬP PHÂN.';
+
+  @override
+  String get moduloClockTitle => 'Đồng Hồ Modulo';
+
+  @override
+  String get moduloClockSubtitle =>
+      'TÍNH TOÁN CÁC PHƯƠNG TRÌNH TOÁN HỌC BẰNG CÁCH SỬ DỤNG ĐỒNG HỒ.';
+
+  @override
+  String get chimpTestTitle => 'Bài Kiểm Tra Tinh Tinh';
+
+  @override
+  String get chimpTestSubtitle =>
+      'CHẠM VÀO CÁC SỐ NGẪU NHIÊN THEO THỨ TỰ TĂNG DẦN.';
+
+  @override
+  String get relationalMemoryTitle => 'Bộ Nhớ Quan Hệ';
+
+  @override
+  String get relationalMemorySubtitle =>
+      'NHỚ LẠI VỊ TRÍ CHÍNH XÁC CỦA CÁC MỤC TRONG LƯỚI.';
+
+  @override
+  String get factBinderTitle => 'Ràng Buộc Sự Thật';
+
+  @override
+  String get factBinderSubtitle =>
+      'KẾT NỐI CÁC BIỂU TƯỢNG VÀ NHỚ LẠI CÁC TUYÊN BỐ.';
+
+  @override
+  String get sourceMonitoringTitle => 'Theo Dõi Nguồn';
+
+  @override
+  String get sourceMonitoringSubtitle => 'NHỚ LẠI NGỮ CẢNH.';
+
+  @override
+  String get klotskiTitle => 'Thoát Khỏi Klotski';
+
+  @override
+  String get klotskiSubtitle => 'TRƯỢT CÁC KHỐI ĐỂ ĐẾN ĐƯỢC LỐI RA.';
+
+  @override
+  String get homophoneHuntSubtitle => 'CHỌN CÁCH PHÁT ÂM ĐÚNG.';
 }

@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -244,7 +246,7 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'CONGRATS',
+        title: L10nGameHelpers.getGameTitle(context, 'spelling_sprint'),
         message: AppLocalizations.of(context)!.spellingSprintMessage,
         onHome: () {
           Navigator.of(context).pop();
@@ -265,7 +267,7 @@ class _SpellingSprintScreenState extends ConsumerState<SpellingSprintScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         isVictory: false,
-        title: 'TIME UP!',
+        title: L10nGameHelpers.getGameTitle(context, 'spelling_sprint'),
         message: AppLocalizations.of(context)!.spellingSprintMessage1((ref.read(spellingSprintNotifierProvider).score).toString()),
         onHome: () {
           Navigator.of(context).pop();

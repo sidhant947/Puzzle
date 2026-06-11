@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
@@ -81,8 +83,8 @@ class _ChainReactionScreenState extends ConsumerState<ChainReactionScreen> {
     });
 
     return GameScaffold(
-      title: 'Chain Reaction',
-      subtitle: 'Last 2 letters of word must be first 2 letters of next',
+      title: L10nGameHelpers.getGameTitle(context, 'chain_reaction'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'chain_reaction'),
       body: Column(
         children: [
           Padding(

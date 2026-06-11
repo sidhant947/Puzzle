@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -56,7 +58,7 @@ class _VisualStatisticalLearningScreenState extends ConsumerState<VisualStatisti
     });
 
     return GameScaffold(
-      title: 'Statistical Learning',
+      title: L10nGameHelpers.getGameTitle(context, 'visual_statistical_learning'),
       subtitle: state.phase == VSLPhase.learning
           ? 'WATCH THE SEQUENCE CAREFULLY'
           : 'WHICH PATTERN DID YOU SEE?',

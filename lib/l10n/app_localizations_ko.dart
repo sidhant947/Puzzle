@@ -2637,4 +2637,716 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String get imReady => '준비 완료';
+
+  @override
+  String get soptTitle => '자기 주문 포인팅';
+
+  @override
+  String get soptSubtitle => '매번 다른 카드를 탭하세요. 포지션이 뒤바뀐다!';
+
+  @override
+  String get soptWinTitle => '시퀀스 마스터!';
+
+  @override
+  String soptGameOverMessage(int score) {
+    return '섞인 카드를 성공적으로 추적하여 $score 점을 획득하셨습니다!';
+  }
+
+  @override
+  String get soptChooseNovel => '새 카드를 탭하세요.';
+
+  @override
+  String get soptGreatJob => '정말 잘했어요!';
+
+  @override
+  String get soptAlreadyTapped => '이미 탭했습니다!';
+
+  @override
+  String get soptGrid => '그리드';
+
+  @override
+  String get contRecogTitle => '지속적인 인식';
+
+  @override
+  String get contRecogSubtitle => '이 세션에서 이전에 이 카드를 본 적이 있나요?';
+
+  @override
+  String get contRecogWinTitle => '인정 천재!';
+
+  @override
+  String contRecogGameOverMessage(int score) {
+    return '$score 점의 정답을 획득하셨습니다!';
+  }
+
+  @override
+  String get contRecogCorrect => '옳은!';
+
+  @override
+  String get contRecogWrong => '잘못된!';
+
+  @override
+  String get contRecogOldOrNew => '이것은 오래된 것입니까, 새로운 것입니까?';
+
+  @override
+  String get contRecogNew => '새로운';
+
+  @override
+  String get contRecogOld => '오래된';
+
+  @override
+  String get contRecogSeenPool => '본 풀';
+
+  @override
+  String get dnmsTitle => '일치하지 않는 메모리';
+
+  @override
+  String get dnmsSubtitle => '기억된 샘플에 없는 카드를 탭하세요.';
+
+  @override
+  String get dnmsWinTitle => '비매칭 전문가!';
+
+  @override
+  String dnmsGameOverMessage(int score) {
+    return '지연된 비매칭에서 $score 정답을 획득하셨습니다!';
+  }
+
+  @override
+  String get dnmsChooseNovel => '새 카드를 탭하세요.';
+
+  @override
+  String get dnmsMemorizeSample => '이 카드를 기억해두세요';
+
+  @override
+  String get dnmsWaitForIt => '기다려 보세요...';
+
+  @override
+  String get dnmsExcellent => '훌륭한!';
+
+  @override
+  String get dnmsSampleTapped => '그게 바로 샘플이었어요!';
+
+  @override
+  String get dnmsCards => '카드';
+
+  @override
+  String get symSpanTitle => '대칭 범위';
+
+  @override
+  String get symSpanSubtitle => '수직 대칭을 식별하면서 세포 패턴을 기억해 보세요.';
+
+  @override
+  String get symSpanWinTitle => '대칭 마스터!';
+
+  @override
+  String symSpanGameOverMessage(int score) {
+    return '레이아웃을 기억하고 대칭성을 식별하여 $score 점을 획득하셨습니다!';
+  }
+
+  @override
+  String get symSpanMemorizeRed => '적혈구 위치 기억하기';
+
+  @override
+  String get symSpanIsSymmetric => '패턴이 대칭인가요?';
+
+  @override
+  String get symSpanRecallSequence => '올바른 순서로 순서를 불러오세요';
+
+  @override
+  String get symSpanGreatJob => '정말 잘했어요!';
+
+  @override
+  String get symSpanTryAgain => '다시 시도해 보세요!';
+
+  @override
+  String get symSpanLength => '길이';
+
+  @override
+  String get readingSpanTitle => '독서 범위';
+
+  @override
+  String get readingSpanSubtitle => '일련의 글자를 기억하면서 문장을 확인해보세요.';
+
+  @override
+  String get readingSpanWinTitle => '독서 전문가!';
+
+  @override
+  String readingSpanGameOverMessage(int score) {
+    return '읽기 범위 기억력 챌린지에서 $score 점을 획득하셨습니다!';
+  }
+
+  @override
+  String get readingSpanTrueFalse => '이 진술은 사실인가, 거짓인가?';
+
+  @override
+  String get readingSpanMemorizeLetter => '이 편지를 기억해 두세요';
+
+  @override
+  String get readingSpanRecallLetters => '순서대로 편지를 불러오세요';
+
+  @override
+  String get readingSpanGreatJob => '정말 잘했어요!';
+
+  @override
+  String get readingSpanTryAgain => '다시 시도해 보세요!';
+
+  @override
+  String readingSpanYourSequence(String sequence) {
+    return '귀하의 시퀀스: $sequence';
+  }
+
+  @override
+  String get readingSpanLength => '길이';
+
+  @override
+  String get readingSpanSentence1 => '태양은 동쪽에서 뜬다.';
+
+  @override
+  String get readingSpanSentence2 => '얼음이 끓고 있습니다.';
+
+  @override
+  String get readingSpanSentence3 => '물고기는 물속에서 숨을 쉴 수 있습니다.';
+
+  @override
+  String get readingSpanSentence4 => '개는 날개가 있어서 날 수 있어요.';
+
+  @override
+  String get readingSpanSentence5 => '물은 섭씨 0도에서 언다.';
+
+  @override
+  String get readingSpanSentence6 => '고양이는 작은 개처럼 짖습니다.';
+
+  @override
+  String get readingSpanSentence7 => '나무는 여름에 푸른 잎을 가지고 있습니다.';
+
+  @override
+  String get readingSpanSentence8 => '비는 땅에서 위로 내립니다.';
+
+  @override
+  String get readingSpanSentence9 => '삼각형은 네 개의 동일한 변을 가지고 있습니다.';
+
+  @override
+  String get readingSpanSentence10 => '사과는 달콤한 과일의 일종입니다.';
+
+  @override
+  String get readingSpanSentence11 => '달은 체다 치즈로 만들어졌습니다.';
+
+  @override
+  String get readingSpanSentence12 => '자동차에는 굴러가는 바퀴가 있습니다.';
+
+  @override
+  String get readingSpanSentence13 => '불은 얼어붙을 정도로 차갑습니다.';
+
+  @override
+  String get readingSpanSentence14 => '종이는 가공된 목재로 만들어집니다.';
+
+  @override
+  String get readingSpanSentence15 => '새는 날 수 있도록 깃털을 가지고 있습니다.';
+
+  @override
+  String get readingSpanSentence16 => '바나나는 소나무에서 자랍니다.';
+
+  @override
+  String get readingSpanSentence17 => '코끼리는 개미보다 작습니다.';
+
+  @override
+  String get readingSpanSentence18 => '책에는 인쇄된 텍스트 페이지가 포함되어 있습니다.';
+
+  @override
+  String get countingSpanTitle => '계산 범위';
+
+  @override
+  String get countingSpanSubtitle => '파란색 원만 계산합니다. 그런 다음 카운트 순서를 기억해 보세요.';
+
+  @override
+  String get countingSpanWinTitle => '계산 천재!';
+
+  @override
+  String countingSpanGameOverMessage(int score) {
+    return 'Counting Span 메모리 챌린지에서 $score 점을 획득하셨습니다!';
+  }
+
+  @override
+  String get countingSpanCountCircles => '파란색 원만 계산';
+
+  @override
+  String get countingSpanRecallCounts => '올바른 순서로 회수 횟수를 기억하세요';
+
+  @override
+  String get countingSpanGreatJob => '정말 잘했어요!';
+
+  @override
+  String get countingSpanTryAgain => '다시 시도해 보세요!';
+
+  @override
+  String countingSpanYourSequence(String sequence) {
+    return '귀하의 시퀀스: $sequence';
+  }
+
+  @override
+  String get countingSpanLength => '길이';
+
+  @override
+  String get objDispTitle => '객체 변위';
+
+  @override
+  String get objDispSubtitle => '레이아웃을 기억하세요. 위치가 바뀌는 하나의 개체를 찾아 탭하세요.';
+
+  @override
+  String get objDispWinTitle => '공간 천재!';
+
+  @override
+  String objDispGameOverMessage(int score) {
+    return '$score 개의 대체된 개체를 올바르게 식별했습니다!';
+  }
+
+  @override
+  String get objDispMemorizeAll => '모든 배치를 기억하세요';
+
+  @override
+  String get objDispWaitingShift => '레이아웃 변경을 기다리는 중...';
+
+  @override
+  String get objDispTapMoved => '이동한 개체를 탭하세요.';
+
+  @override
+  String get objDispExcellent => '훌륭한!';
+
+  @override
+  String get objDispWrongObject => '잘못된 개체입니다!';
+
+  @override
+  String get objDispItems => '품목';
+
+  @override
+  String get mandalaTitle => '만다라 리콜';
+
+  @override
+  String get mandalaSubtitle => '색상 구성을 기억하세요. 색상을 선택하고 타일을 다시 칠하세요.';
+
+  @override
+  String get mandalaWinTitle => '만다라 아티스트!';
+
+  @override
+  String mandalaGameOverMessage(int score) {
+    return '색상이 있는 기하학적 레이아웃을 재현하여 $score 점을 획득하셨습니다!';
+  }
+
+  @override
+  String get mandalaMemorizeColors => '타일 ​​색상을 기억하세요';
+
+  @override
+  String get mandalaPaintCells => '원본과 일치하도록 셀 페인트';
+
+  @override
+  String get mandalaExcellent => '훌륭한!';
+
+  @override
+  String get mandalaIncorrectMatch => '일치하지 않습니다!';
+
+  @override
+  String get mandalaSubmitRepaint => '다시 그리기 제출';
+
+  @override
+  String get mandalaTiles => '타일';
+
+  @override
+  String get runningSpanTitle => '러닝 스팬';
+
+  @override
+  String get runningSpanSubtitle => '편지를 조심하세요. 멈추면 마지막 N자를 순서대로 입력하세요.';
+
+  @override
+  String get runningSpanWinTitle => '버퍼 마스터!';
+
+  @override
+  String runningSpanGameOverMessage(int score) {
+    return '실행 메모리 범위에서 $score 점을 획득하셨습니다!';
+  }
+
+  @override
+  String runningSpanPrepareRecall(int count) {
+    return '마지막 $count 글자를 기억할 준비를 하세요.';
+  }
+
+  @override
+  String get runningSpanWatchCarefully => '조심히 보세요...';
+
+  @override
+  String runningSpanEnterLast(int count) {
+    return '마지막 $count 자를 입력하세요.';
+  }
+
+  @override
+  String get runningSpanGreatJob => '정말 잘했어요!';
+
+  @override
+  String get runningSpanIncorrectBuffer => '버퍼가 잘못되었습니다!';
+
+  @override
+  String runningSpanRecallLast(int count) {
+    return '지난 $count 회기';
+  }
+
+  @override
+  String get runningSpanStopsRandomly => '스트림이 무작위로 중지됩니다!';
+
+  @override
+  String runningSpanEntered(String sequence) {
+    return '입력됨: $sequence';
+  }
+
+  @override
+  String get runningSpanNItems => 'N-항목';
+
+  @override
+  String get spatialCabinetTitle => '공간 캐비닛';
+
+  @override
+  String get spatialCabinetSubtitle => '어떤 캐비닛 서랍에 어떤 물건이 들어 있는지 기억하세요.';
+
+  @override
+  String get spatialCabinetWinTitle => '캐비닛 전문가!';
+
+  @override
+  String spatialCabinetGameOverMessage(int score) {
+    return '공간 캐비닛 메모리에서 $score 점을 획득하셨습니다!';
+  }
+
+  @override
+  String get spatialCabinetMemorize => '물건 위치 기억하기';
+
+  @override
+  String spatialCabinetWhereIs(String itemName) {
+    return '$itemName 은 어디에 있나요?';
+  }
+
+  @override
+  String get spatialCabinetCorrect => '옳은!';
+
+  @override
+  String get spatialCabinetWrongDrawer => '서랍이 틀렸어요!';
+
+  @override
+  String get spatialCabinetItems => '품목';
+
+  @override
+  String get cabinetItemKey => '열쇠';
+
+  @override
+  String get cabinetItemApple => '사과';
+
+  @override
+  String get cabinetItemDiamond => '다이아몬드';
+
+  @override
+  String get cabinetItemBook => '책';
+
+  @override
+  String get cabinetItemUmbrella => '우산';
+
+  @override
+  String get cabinetItemCoffee => '커피';
+
+  @override
+  String get cabinetItemLock => '잠그다';
+
+  @override
+  String get cabinetItemPet => '애완 동물';
+
+  @override
+  String get cabinetItemCar => '자동차';
+
+  @override
+  String get gamesTitleLabel => '게임';
+
+  @override
+  String get yourFavorites => '즐겨찾기';
+
+  @override
+  String get readyForWorkout => '일일 두뇌 운동 준비가 되셨나요?';
+
+  @override
+  String get greatStartKeepGoing => '좋은 시작입니다! 계속 진행하세요.';
+
+  @override
+  String get onFireToday => '오늘 컨디션이 최고네요!';
+
+  @override
+  String get incredibleSolvingToday => '오늘 놀라운 해결 능력입니다!';
+
+  @override
+  String get newGameLabel => '신규';
+
+  @override
+  String get slitherlinkTitle => '슬리더링크';
+
+  @override
+  String get slitherlinkSubtitle => '숫자 힌트를 사용하여 핀 그리드를 루프로 연결하세요.';
+
+  @override
+  String get futoshikiTitle => '후토시키';
+
+  @override
+  String get futoshikiSubtitle => '부등호 힌트로 그리드를 채우세요.';
+
+  @override
+  String get kakuroTitle => '카쿠로';
+
+  @override
+  String get kakuroSubtitle => '숫자와 합계를 사용하여 크로스워드를 푸세요.';
+
+  @override
+  String get inequalityDashTitle => '부등식 대시';
+
+  @override
+  String get inequalityDashSubtitle => '시간 압박 속에서 부등식을 푸세요.';
+
+  @override
+  String get factorFinderTitle => '인수 찾기';
+
+  @override
+  String get factorFinderSubtitle => '목표 숫자의 모든 인수를 찾으세요.';
+
+  @override
+  String get collatzTitle => '콜라츠 경로';
+
+  @override
+  String get collatzSubtitle => '3N+1 수열을 탐색하세요.';
+
+  @override
+  String get sumPyramidTitle => '합계 피라미드';
+
+  @override
+  String get sumPyramidSubtitle => '합계 수학 힌트로 피라미드 셀을 채우세요.';
+
+  @override
+  String get target10Title => '타겟 10';
+
+  @override
+  String get target10Subtitle => '숫자 타일을 조합하여 합계 10을 만드세요.';
+
+  @override
+  String get fractionMatcherTitle => '분수 매칭';
+
+  @override
+  String get fractionMatcherSubtitle => '시각적으로 같은 분수를 일치시키세요.';
+
+  @override
+  String get dualCodingTitle => '이중 코딩';
+
+  @override
+  String get dualCodingSubtitle => '글자와 기호를 동시에 일치시키세요.';
+
+  @override
+  String get distractorMatrixTitle => '방해 요소 매트릭스';
+
+  @override
+  String get distractorMatrixSubtitle => '방해 요소 중에서 목표 모양을 찾으세요.';
+
+  @override
+  String get temporalOrderTitle => '시간적 순서';
+
+  @override
+  String get temporalOrderSubtitle => '시간순 수열을 기억해내세요.';
+
+  @override
+  String get associativePairsTitle => '연상 쌍';
+
+  @override
+  String get associativePairsSubtitle => '대응하는 기호를 쌍으로 묶어 일치시키세요.';
+
+  @override
+  String get blockCount3dTitle => '3D 블록 계산';
+
+  @override
+  String get blockCount3dSubtitle => '3차원 공간의 블록 개수를 세세요.';
+
+  @override
+  String get rotatingMazeTitle => '회전 미로';
+
+  @override
+  String get rotatingMazeSubtitle => '미로를 회전시켜 공을 출구로 인도하세요.';
+
+  @override
+  String get silhouetteMatchOrthoTitle => '실루엣 매칭 (정투영)';
+
+  @override
+  String get silhouetteMatchOrthoSubtitle => '3D 물체와 정투영 그림자를 일치시키세요.';
+
+  @override
+  String get spatialConflictTitle => '공간적 갈등';
+
+  @override
+  String get spatialConflictSubtitle => '텍스트와 방향의 불일치를 해결하세요.';
+
+  @override
+  String get spotlightTrackTitle => '스포트라이트 추적';
+
+  @override
+  String get spotlightTrackSubtitle => '움직이는 그림자 속에서 깜박이는 아이템을 추적하세요.';
+
+  @override
+  String get d2AttentionTitle => 'd2 주의력 테스트';
+
+  @override
+  String get d2AttentionSubtitle => '엄격한 기준에 따라 목표 기호를 탭하세요.';
+
+  @override
+  String get dualMirrorTitle => '듀얼 미러 내비게이션';
+
+  @override
+  String get dualMirrorSubtitle => '두 개의 미로를 동시에 통과하세요.';
+
+  @override
+  String get contextCluesTitle => '문맥 힌트';
+
+  @override
+  String get contextCluesSubtitle => '문맥 힌트로부터 숨겨진 단어를 추론하세요.';
+
+  @override
+  String get digitSpanReverseSubtitle => '숫자를 역순으로 기억해내세요.';
+
+  @override
+  String get faceNameAssociationSubtitle => '제시된 다양한 얼굴의 이름을 기억해내세요.';
+
+  @override
+  String get staircaseMemorySubtitle => '단계별 순서로 블록을 암기하세요.';
+
+  @override
+  String get choiceReactionTimeSubtitle => '힌트와 일치하는 특정 버튼을 빠르게 탭하세요.';
+
+  @override
+  String get attentionalBlinkSubtitle => '스트림 속에서 빠르게 깜박이는 목표를 포착하세요.';
+
+  @override
+  String get visualStatisticalLearningSubtitle => '시각적으로 시간적 도형 패턴을 학습하세요.';
+
+  @override
+  String get sternbergTaskSubtitle => '기호가 기억 세트에 있었는지 기억해내세요.';
+
+  @override
+  String get operationSpanSubtitle => '계산을 풀면서 알파벳 문자열을 기억해내세요.';
+
+  @override
+  String get continuousRecognitionTitle => '연속 인식';
+
+  @override
+  String get continuousRecognitionSubtitle => '제시된 카드가 이전 것인지 새로운 것인지 식별하세요.';
+
+  @override
+  String get symmetrySpanTitle => '대칭 범위';
+
+  @override
+  String get symmetrySpanSubtitle => '수직 대칭 결정을 내리면서 셀 좌표를 기억해내세요.';
+
+  @override
+  String get objectDisplacementTitle => '물체 이동';
+
+  @override
+  String get objectDisplacementSubtitle => '배치를 학습하고 이동한 단 하나의 물체를 탭하세요.';
+
+  @override
+  String get mandalaRecallTitle => '만다라 회상';
+
+  @override
+  String get mandalaRecallSubtitle => '색상 타일을 암기하고 팔레트에서 만다라를 다시 칠하세요.';
+
+  @override
+  String get runningMemorySpanTitle => '러닝 스팬';
+
+  @override
+  String get runningMemorySpanSubtitle => '흐르는 글자를 모니터링하고 마지막 N개 아이템을 기억해내세요.';
+
+  @override
+  String get spatialCabinetMemoryTitle => '공간 캐비닛';
+
+  @override
+  String get spatialCabinetMemorySubtitle => '캐비닛 문 뒤의 아이템을 암기하고 위치를 찾으세요.';
+
+  @override
+  String get pathRecallSubtitle => '경로 선택을 암기하고 반복하세요.';
+
+  @override
+  String get objectShuffleSubtitle => '깊은 컵 아래에서 섞이는 아이템을 추적하세요.';
+
+  @override
+  String get groceryListSubtitle => '리스트의 아이템을 암기하고 체크하세요.';
+
+  @override
+  String get quickMathSubtitle => '최고 속도로 산수 문제를 푸세요.';
+
+  @override
+  String get mathGuessTitle => '숫자 맞히기';
+
+  @override
+  String get mathGuessSubtitle => '15번의 기회 내에 숨겨진 숫자를 맞히세요.';
+
+  @override
+  String get reflexTapSubtitle => '자극을 인간이 가능한 한 가장 빠르게 탭하세요.';
+
+  @override
+  String get pixelMimicSubtitle => '픽셀 그리드 위의 디자인 패턴을 모방하세요.';
+
+  @override
+  String get simonSequenceSubtitle => '기억으로부터 도형 순서를 반복하세요.';
+
+  @override
+  String get slidePuzzleSubtitle => '정사각형 슬라이딩 그리드 타일을 재배치하세요.';
+
+  @override
+  String get findWordTitle => '단어 찾기';
+
+  @override
+  String get schulteTableSubtitle => '1부터 25까지의 숫자를 탭하세요.';
+
+  @override
+  String get simonCommandTitle => '사이먼 명령';
+
+  @override
+  String get simonCommandSubtitle => '음성 지시를 빠르게 수행하세요.';
+
+  @override
+  String get binaryCodeTitle => '이진수 스피드';
+
+  @override
+  String get binaryCodeSubtitle => '이진수 코드를 십진수로 변환하세요.';
+
+  @override
+  String get moduloClockTitle => '나머지 시계';
+
+  @override
+  String get moduloClockSubtitle => '시계를 사용하여 수학 방정식을 계산하세요.';
+
+  @override
+  String get chimpTestTitle => '침팬지 테스트';
+
+  @override
+  String get chimpTestSubtitle => '무작위 숫자를 오름차순으로 탭하세요.';
+
+  @override
+  String get relationalMemoryTitle => '관계 기억';
+
+  @override
+  String get relationalMemorySubtitle => '정확한 그리드 아이템 위치를 기억해내세요.';
+
+  @override
+  String get factBinderTitle => '팩트 바인더';
+
+  @override
+  String get factBinderSubtitle => '기호를 연결하고 진술 내용을 기억해내세요.';
+
+  @override
+  String get sourceMonitoringTitle => '소스 모니터링';
+
+  @override
+  String get sourceMonitoringSubtitle => '문맥을 기억하세요.';
+
+  @override
+  String get klotskiTitle => '클로츠키 탈출';
+
+  @override
+  String get klotskiSubtitle => '블록을 슬라이드하여 출구에 도달하세요.';
+
+  @override
+  String get homophoneHuntSubtitle => '올바른 철자를 선택하세요.';
 }

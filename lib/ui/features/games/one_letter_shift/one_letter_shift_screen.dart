@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'one_letter_shift_provider.dart';
@@ -228,7 +230,7 @@ class OneLetterShiftScreen extends ConsumerWidget {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'BRAVO',
+        title: L10nGameHelpers.getGameTitle(context, 'one_letter_shift'),
         message: AppLocalizations.of(context)!.oneLetterShiftMessage((state.startWord).toString(), (state.endWord).toString()),
         onHome: () {
           Navigator.of(context).pop();

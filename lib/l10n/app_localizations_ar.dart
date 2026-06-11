@@ -2709,4 +2709,740 @@ class AppLocalizationsAr extends AppLocalizations {
 
   @override
   String get imReady => 'أنا مستعد';
+
+  @override
+  String get soptTitle => 'التأشير الذاتي';
+
+  @override
+  String get soptSubtitle => 'اضغط على بطاقة مختلفة في كل مرة. تتضارب المواقف!';
+
+  @override
+  String get soptWinTitle => 'سيد التسلسل!';
+
+  @override
+  String soptGameOverMessage(int score) {
+    return 'لقد سجلت $score نقطة من خلال تتبع البطاقات التي تم خلطها بنجاح!';
+  }
+
+  @override
+  String get soptChooseNovel => 'اضغط على بطاقة جديدة';
+
+  @override
+  String get soptGreatJob => 'عمل عظيم!';
+
+  @override
+  String get soptAlreadyTapped => 'استغلالها بالفعل!';
+
+  @override
+  String get soptGrid => 'شبكة';
+
+  @override
+  String get contRecogTitle => 'الاعتراف المستمر';
+
+  @override
+  String get contRecogSubtitle => 'هل رأيت هذه البطاقة من قبل في هذه الجلسة؟';
+
+  @override
+  String get contRecogWinTitle => 'عبقرية الاعتراف!';
+
+  @override
+  String contRecogGameOverMessage(int score) {
+    return 'لقد سجلت $score تقديرًا صحيحًا!';
+  }
+
+  @override
+  String get contRecogCorrect => 'صحيح!';
+
+  @override
+  String get contRecogWrong => 'خطأ!';
+
+  @override
+  String get contRecogOldOrNew => 'هل هذا قديم أم جديد؟';
+
+  @override
+  String get contRecogNew => 'جديد';
+
+  @override
+  String get contRecogOld => 'قديم';
+
+  @override
+  String get contRecogSeenPool => 'بركة المشاهدة';
+
+  @override
+  String get dnmsTitle => 'الذاكرة غير المطابقة';
+
+  @override
+  String get dnmsSubtitle => 'اضغط على البطاقة التي لم تكن في العينة المحفوظة.';
+
+  @override
+  String get dnmsWinTitle => 'خبير غير مطابق!';
+
+  @override
+  String dnmsGameOverMessage(int score) {
+    return 'لقد حصلت على $score إجابات صحيحة في عدم المطابقة المتأخرة!';
+  }
+
+  @override
+  String get dnmsChooseNovel => 'اضغط على البطاقة الجديدة';
+
+  @override
+  String get dnmsMemorizeSample => 'احفظ هذه البطاقة';
+
+  @override
+  String get dnmsWaitForIt => 'انتظرها...';
+
+  @override
+  String get dnmsExcellent => 'ممتاز!';
+
+  @override
+  String get dnmsSampleTapped => 'وكانت تلك العينة!';
+
+  @override
+  String get dnmsCards => 'بطاقات';
+
+  @override
+  String get symSpanTitle => 'مدى التماثل';
+
+  @override
+  String get symSpanSubtitle =>
+      'استدعاء أنماط الخلايا أثناء تحديد التماثل الرأسي.';
+
+  @override
+  String get symSpanWinTitle => 'سيد التماثل!';
+
+  @override
+  String symSpanGameOverMessage(int score) {
+    return 'لقد سجلت $score نقطة من خلال تذكر المخططات وتحديد التماثل!';
+  }
+
+  @override
+  String get symSpanMemorizeRed => 'حفظ موقع الخلية الحمراء';
+
+  @override
+  String get symSpanIsSymmetric => 'هل النمط متماثل؟';
+
+  @override
+  String get symSpanRecallSequence => 'أذكر التسلسل بالترتيب الصحيح';
+
+  @override
+  String get symSpanGreatJob => 'عمل عظيم!';
+
+  @override
+  String get symSpanTryAgain => 'حاول ثانية!';
+
+  @override
+  String get symSpanLength => 'طول';
+
+  @override
+  String get readingSpanTitle => 'نطاق القراءة';
+
+  @override
+  String get readingSpanSubtitle =>
+      'التحقق من الجمل أثناء تذكر سلسلة من الحروف.';
+
+  @override
+  String get readingSpanWinTitle => 'خبير القراءة!';
+
+  @override
+  String readingSpanGameOverMessage(int score) {
+    return 'لقد سجلت $score نقطة في تحدي الذاكرة Reading Span!';
+  }
+
+  @override
+  String get readingSpanTrueFalse => 'هل هذا البيان صحيح أم خطأ؟';
+
+  @override
+  String get readingSpanMemorizeLetter => 'احفظ هذه الرسالة';
+
+  @override
+  String get readingSpanRecallLetters => 'أذكر الحروف بالتسلسل';
+
+  @override
+  String get readingSpanGreatJob => 'عمل عظيم!';
+
+  @override
+  String get readingSpanTryAgain => 'حاول ثانية!';
+
+  @override
+  String readingSpanYourSequence(String sequence) {
+    return 'التسلسل الخاص بك: $sequence';
+  }
+
+  @override
+  String get readingSpanLength => 'طول';
+
+  @override
+  String get readingSpanSentence1 => 'تشرق الشمس في الشرق.';
+
+  @override
+  String get readingSpanSentence2 => 'الجليد يغلي ساخنًا.';
+
+  @override
+  String get readingSpanSentence3 => 'يمكن للأسماك أن تتنفس تحت الماء.';
+
+  @override
+  String get readingSpanSentence4 => 'الكلاب لها أجنحة وتستطيع الطيران.';
+
+  @override
+  String get readingSpanSentence5 => 'يتجمد الماء عند 0 درجة مئوية.';
+
+  @override
+  String get readingSpanSentence6 => 'تنبح القطط مثل الكلاب الصغيرة.';
+
+  @override
+  String get readingSpanSentence7 => 'الأشجار لها أوراق خضراء في الصيف.';
+
+  @override
+  String get readingSpanSentence8 => 'يسقط المطر إلى أعلى من الأرض.';
+
+  @override
+  String get readingSpanSentence9 => 'المثلث له أربعة أضلاع متساوية.';
+
+  @override
+  String get readingSpanSentence10 => 'التفاح هو نوع من الفاكهة الحلوة.';
+
+  @override
+  String get readingSpanSentence11 => 'القمر مصنوع من جبنة الشيدر.';
+
+  @override
+  String get readingSpanSentence12 => 'السيارات لديها عجلات للتدحرج.';
+
+  @override
+  String get readingSpanSentence13 => 'النار شديدة البرودة.';
+
+  @override
+  String get readingSpanSentence14 => 'الورق مصنوع من الخشب المعالج.';
+
+  @override
+  String get readingSpanSentence15 => 'الطيور لديها ريش يساعدها على الطيران.';
+
+  @override
+  String get readingSpanSentence16 => 'ينمو الموز على أشجار الصنوبر.';
+
+  @override
+  String get readingSpanSentence17 => 'الفيل أصغر من النملة.';
+
+  @override
+  String get readingSpanSentence18 => 'تحتوي الكتب على صفحات مطبوعة من النص.';
+
+  @override
+  String get countingSpanTitle => 'نطاق العد';
+
+  @override
+  String get countingSpanSubtitle =>
+      'عد الدوائر الزرقاء فقط. ثم تذكر تسلسل التهم.';
+
+  @override
+  String get countingSpanWinTitle => 'عد عبقرية!';
+
+  @override
+  String countingSpanGameOverMessage(int score) {
+    return 'لقد سجلت $score نقطة في تحدي الذاكرة Counting Span!';
+  }
+
+  @override
+  String get countingSpanCountCircles => 'عد الدوائر الزرقاء فقط';
+
+  @override
+  String get countingSpanRecallCounts => 'أذكر التهم بالترتيب الصحيح';
+
+  @override
+  String get countingSpanGreatJob => 'عمل عظيم!';
+
+  @override
+  String get countingSpanTryAgain => 'حاول ثانية!';
+
+  @override
+  String countingSpanYourSequence(String sequence) {
+    return 'التسلسل الخاص بك: $sequence';
+  }
+
+  @override
+  String get countingSpanLength => 'طول';
+
+  @override
+  String get objDispTitle => 'إزاحة الكائن';
+
+  @override
+  String get objDispSubtitle =>
+      'حفظ التخطيط. ابحث عن الكائن الوحيد الذي يغير موضعه وانقر عليه.';
+
+  @override
+  String get objDispWinTitle => 'العبقرية المكانية!';
+
+  @override
+  String objDispGameOverMessage(int score) {
+    return 'لقد حددت بشكل صحيح $score كائنات نازحة!';
+  }
+
+  @override
+  String get objDispMemorizeAll => 'حفظ جميع المواضع';
+
+  @override
+  String get objDispWaitingShift => 'في انتظار تغيير التخطيط...';
+
+  @override
+  String get objDispTapMoved => 'اضغط على الكائن الذي تم نقله';
+
+  @override
+  String get objDispExcellent => 'ممتاز!';
+
+  @override
+  String get objDispWrongObject => 'كائن خاطئ!';
+
+  @override
+  String get objDispItems => 'أغراض';
+
+  @override
+  String get mandalaTitle => 'ماندالا أذكر';
+
+  @override
+  String get mandalaSubtitle =>
+      'حفظ تكوين اللون. اختيار الألوان وإعادة طلاء البلاط.';
+
+  @override
+  String get mandalaWinTitle => 'فنان ماندالا!';
+
+  @override
+  String mandalaGameOverMessage(int score) {
+    return 'لقد سجلت $score نقطة من خلال إعادة إنشاء تخطيطات هندسية ملونة!';
+  }
+
+  @override
+  String get mandalaMemorizeColors => 'حفظ ألوان البلاط';
+
+  @override
+  String get mandalaPaintCells => 'طلاء الخلايا لتتناسب مع الأصل';
+
+  @override
+  String get mandalaExcellent => 'ممتاز!';
+
+  @override
+  String get mandalaIncorrectMatch => 'مباراة غير صحيحة!';
+
+  @override
+  String get mandalaSubmitRepaint => 'إرسال إعادة رسم';
+
+  @override
+  String get mandalaTiles => 'البلاط';
+
+  @override
+  String get runningSpanTitle => 'تشغيل المدى';
+
+  @override
+  String get runningSpanSubtitle =>
+      'مشاهدة الحروف. عندما يتوقفون، أدخل آخر أحرف N بالترتيب.';
+
+  @override
+  String get runningSpanWinTitle => 'سيد العازلة!';
+
+  @override
+  String runningSpanGameOverMessage(int score) {
+    return 'لقد سجلت $score نقطة في Running Memory Span!';
+  }
+
+  @override
+  String runningSpanPrepareRecall(int count) {
+    return 'الاستعداد لاستدعاء آخر $count حرف';
+  }
+
+  @override
+  String get runningSpanWatchCarefully => 'انتبه جيدا...';
+
+  @override
+  String runningSpanEnterLast(int count) {
+    return 'أدخل آخر $count حرف';
+  }
+
+  @override
+  String get runningSpanGreatJob => 'عمل عظيم!';
+
+  @override
+  String get runningSpanIncorrectBuffer => 'المخزن المؤقت غير صحيح!';
+
+  @override
+  String runningSpanRecallLast(int count) {
+    return 'أذكر الأخير $count';
+  }
+
+  @override
+  String get runningSpanStopsRandomly => 'يتوقف الدفق بشكل عشوائي!';
+
+  @override
+  String runningSpanEntered(String sequence) {
+    return 'تم الإدخال: $sequence';
+  }
+
+  @override
+  String get runningSpanNItems => 'عناصر N';
+
+  @override
+  String get spatialCabinetTitle => 'الخزانات المكانية';
+
+  @override
+  String get spatialCabinetSubtitle =>
+      'احفظ درج الخزانة الذي يحتوي على أي كائن.';
+
+  @override
+  String get spatialCabinetWinTitle => 'خبير مجلس الوزراء!';
+
+  @override
+  String spatialCabinetGameOverMessage(int score) {
+    return 'لقد سجلت $score نقطة في ذاكرة الخزانة المكانية!';
+  }
+
+  @override
+  String get spatialCabinetMemorize => 'حفظ مواقع العناصر';
+
+  @override
+  String spatialCabinetWhereIs(String itemName) {
+    return 'أين $itemName ؟';
+  }
+
+  @override
+  String get spatialCabinetCorrect => 'صحيح!';
+
+  @override
+  String get spatialCabinetWrongDrawer => 'درج خاطئ!';
+
+  @override
+  String get spatialCabinetItems => 'أغراض';
+
+  @override
+  String get cabinetItemKey => 'مفتاح';
+
+  @override
+  String get cabinetItemApple => 'تفاحة';
+
+  @override
+  String get cabinetItemDiamond => 'الماس';
+
+  @override
+  String get cabinetItemBook => 'كتاب';
+
+  @override
+  String get cabinetItemUmbrella => 'مظلة';
+
+  @override
+  String get cabinetItemCoffee => 'قهوة';
+
+  @override
+  String get cabinetItemLock => 'قفل';
+
+  @override
+  String get cabinetItemPet => 'حيوان أليف';
+
+  @override
+  String get cabinetItemCar => 'سيارة';
+
+  @override
+  String get gamesTitleLabel => 'الألعاب';
+
+  @override
+  String get yourFavorites => 'مفضلاتك';
+
+  @override
+  String get readyForWorkout => 'هل أنت مستعد لتمرينك اليومي؟';
+
+  @override
+  String get greatStartKeepGoing => 'بداية رائعة! استمر في التقدم.';
+
+  @override
+  String get onFireToday => 'أنت متألق اليوم!';
+
+  @override
+  String get incredibleSolvingToday => 'حلول مذهلة اليوم!';
+
+  @override
+  String get newGameLabel => 'جديد';
+
+  @override
+  String get slitherlinkTitle => 'سليذرلينك';
+
+  @override
+  String get slitherlinkSubtitle =>
+      'قم بتطويق شبكة المسامير باستخدام أدلة الأرقام.';
+
+  @override
+  String get futoshikiTitle => 'فوتوشيكي';
+
+  @override
+  String get futoshikiSubtitle => 'املأ الشبكات باستخدام أدلة أكبر من.';
+
+  @override
+  String get kakuroTitle => 'كاكورو';
+
+  @override
+  String get kakuroSubtitle => 'حل الكلمات المتقاطعة بالأرقام والمجاميع.';
+
+  @override
+  String get inequalityDashTitle => 'سباق المتباينات';
+
+  @override
+  String get inequalityDashSubtitle => 'حل المتباينات تحت ضغط الوقت.';
+
+  @override
+  String get factorFinderTitle => 'مكتشف العوامل';
+
+  @override
+  String get factorFinderSubtitle => 'حدد جميع عوامل الأرقام المستهدفة.';
+
+  @override
+  String get collatzTitle => 'مسار كولاتز';
+
+  @override
+  String get collatzSubtitle => 'تنقل في تسلسل 3N+1.';
+
+  @override
+  String get sumPyramidTitle => 'هرم المجموع';
+
+  @override
+  String get sumPyramidSubtitle => 'املأ خلايا الهرم بأدلة حساب المجموع.';
+
+  @override
+  String get target10Title => 'الهدف 10';
+
+  @override
+  String get target10Subtitle =>
+      'اجمع بين مربعات الأرقام للحصول على عشرة مجاميع.';
+
+  @override
+  String get fractionMatcherTitle => 'مطابق الكسور';
+
+  @override
+  String get fractionMatcherSubtitle => 'طابق الكسور المتكافئة بصرياً.';
+
+  @override
+  String get dualCodingTitle => 'التشفير المزدوج';
+
+  @override
+  String get dualCodingSubtitle => 'طابق الحروف والرموز في آن واحد.';
+
+  @override
+  String get distractorMatrixTitle => 'مصفوفة المشتتات';
+
+  @override
+  String get distractorMatrixSubtitle =>
+      'ابحث عن الأشكال المستهدفة وسط المشتتات.';
+
+  @override
+  String get temporalOrderTitle => 'الترتيب الزمني';
+
+  @override
+  String get temporalOrderSubtitle => 'تذكر التسلسل الزمني.';
+
+  @override
+  String get associativePairsTitle => 'الأزواج المترابطة';
+
+  @override
+  String get associativePairsSubtitle => 'زاوج وطابق الرموز المتناظرة.';
+
+  @override
+  String get blockCount3dTitle => 'عد الكتل ثلاثي الأبعاد';
+
+  @override
+  String get blockCount3dSubtitle => 'عد الكتل في فضاء ثلاثي الأبعاد.';
+
+  @override
+  String get rotatingMazeTitle => 'المتاهة الدوارة';
+
+  @override
+  String get rotatingMazeSubtitle => 'دور المتاهات لتوجيه الكرات إلى المخرج.';
+
+  @override
+  String get silhouetteMatchOrthoTitle => 'مطابقة الصورة الظلية (متعامد)';
+
+  @override
+  String get silhouetteMatchOrthoSubtitle =>
+      'طابق الأجسام ثلاثية الأبعاد مع الظلال المتعامدة.';
+
+  @override
+  String get spatialConflictTitle => 'الصراع المكاني';
+
+  @override
+  String get spatialConflictSubtitle => 'حل التناقضات بين النص والاتجاه.';
+
+  @override
+  String get spotlightTrackTitle => 'تتبع الضوء';
+
+  @override
+  String get spotlightTrackSubtitle =>
+      'تتبع العناصر الوامضة في الظلال المتحركة.';
+
+  @override
+  String get d2AttentionTitle => 'انتباه d2';
+
+  @override
+  String get d2AttentionSubtitle => 'اضغط على الرموز المستهدفة بمعايير صارمة.';
+
+  @override
+  String get dualMirrorTitle => 'ملاحة المرآة المزدوجة';
+
+  @override
+  String get dualMirrorSubtitle => 'تنقل في متاهتين في وقت واحد.';
+
+  @override
+  String get contextCluesTitle => 'أدلة السياق';
+
+  @override
+  String get contextCluesSubtitle =>
+      'استنتج الكلمات المخفية من تلميحات السياق.';
+
+  @override
+  String get digitSpanReverseSubtitle => 'تذكر أرقام الأعداد بترتيب عكسي.';
+
+  @override
+  String get faceNameAssociationSubtitle =>
+      'تذكر أسماء الوجوه المتنوعة المعروضة.';
+
+  @override
+  String get staircaseMemorySubtitle => 'احفظ الكتل في تسلسل تدريجي.';
+
+  @override
+  String get choiceReactionTimeSubtitle =>
+      'اضغط على أزرار محددة تطابق الإشارات بسرعة.';
+
+  @override
+  String get attentionalBlinkSubtitle => 'أشعل أهدافاً سريعة تومض في تدفقات.';
+
+  @override
+  String get visualStatisticalLearningSubtitle =>
+      'تعلم أنماط الأشكال الزمنية بصرياً.';
+
+  @override
+  String get sternbergTaskSubtitle =>
+      'تذكر ما إذا كان الرمز موجوداً في مجموعة الذاكرة.';
+
+  @override
+  String get operationSpanSubtitle => 'حل الرياضيات وتذكر سلاسل الأبجدية.';
+
+  @override
+  String get continuousRecognitionTitle => 'الاعتراف المستمر';
+
+  @override
+  String get continuousRecognitionSubtitle =>
+      'حدد ما إذا كانت البطاقة المعروضة قديمة أم جديدة.';
+
+  @override
+  String get symmetrySpanTitle => 'نطاق التماثل';
+
+  @override
+  String get symmetrySpanSubtitle =>
+      'تذكر إحداثيات الخلايا وسط قرارات التماثل الرأسي.';
+
+  @override
+  String get objectDisplacementTitle => 'إزاحة الأشياء';
+
+  @override
+  String get objectDisplacementSubtitle =>
+      'ادرس المواقع واضغط على الشيء الوحيد الذي تحرك.';
+
+  @override
+  String get mandalaRecallTitle => 'استذكار الماندالا';
+
+  @override
+  String get mandalaRecallSubtitle =>
+      'احفظ مربعات الألوان وأعد طلاء الماندالا من اللوحة.';
+
+  @override
+  String get runningMemorySpanTitle => 'نطاق الذاكرة الجارية';
+
+  @override
+  String get runningMemorySpanSubtitle =>
+      'راقب الحروف الجارية وتذكر آخر N من العناصر.';
+
+  @override
+  String get spatialCabinetMemoryTitle => 'الخزانات المكانية';
+
+  @override
+  String get spatialCabinetMemorySubtitle =>
+      'احفظ وحدد مواقع العناصر خلف أبواب الخزانات.';
+
+  @override
+  String get pathRecallSubtitle => 'احفظ وكرر اختيارات المسار.';
+
+  @override
+  String get objectShuffleSubtitle => 'تتبع العناصر المخلوطة تحت أكواب عميقة.';
+
+  @override
+  String get groceryListSubtitle => 'احفظ وتحقق من العناصر في القائمة.';
+
+  @override
+  String get quickMathSubtitle => 'حل أسئلة الحساب بأقصى سرعة.';
+
+  @override
+  String get mathGuessTitle => 'تخمين الرياضيات';
+
+  @override
+  String get mathGuessSubtitle => 'خمن الرقم المخفي في غضون 15 فرصة.';
+
+  @override
+  String get reflexTapSubtitle => 'اضغط على المثيرات بأسرع ما يمكن بشرياً.';
+
+  @override
+  String get pixelMimicSubtitle => 'حاكي أنماط التصميم على شبكات البكسل.';
+
+  @override
+  String get simonSequenceSubtitle => 'كرر تسلسلات الأشكال من الذاكرة.';
+
+  @override
+  String get slidePuzzleSubtitle => 'أعد ترتيب مربعات شبكة الانزلاق.';
+
+  @override
+  String get findWordTitle => 'ابحث عن الكلمة';
+
+  @override
+  String get schulteTableSubtitle =>
+      'اضغط على الأرقام من واحد إلى خمسة وعشرين.';
+
+  @override
+  String get simonCommandTitle => 'أمر سايمون';
+
+  @override
+  String get simonCommandSubtitle => 'نفذ التعليمات الصوتية بسرعة.';
+
+  @override
+  String get binaryCodeTitle => 'السرعة الثنائية';
+
+  @override
+  String get binaryCodeSubtitle => 'ترجم الأكواد الثنائية إلى عشرية.';
+
+  @override
+  String get moduloClockTitle => 'ساعة القياس';
+
+  @override
+  String get moduloClockSubtitle => 'احسب المعادلات الرياضية باستخدام الساعات.';
+
+  @override
+  String get chimpTestTitle => 'اختبار الشمبانزي';
+
+  @override
+  String get chimpTestSubtitle => 'اضغط على الأرقام العشوائية بترتيب تصاعدي.';
+
+  @override
+  String get relationalMemoryTitle => 'الذاكرة العلاقية';
+
+  @override
+  String get relationalMemorySubtitle => 'تذكر مواقع عناصر الشبكة بالضبط.';
+
+  @override
+  String get factBinderTitle => 'رابط الحقائق';
+
+  @override
+  String get factBinderSubtitle => 'ربط الرموز وتذكر العبارات.';
+
+  @override
+  String get sourceMonitoringTitle => 'مراقبة المصدر';
+
+  @override
+  String get sourceMonitoringSubtitle => 'تذكر السياق.';
+
+  @override
+  String get klotskiTitle => 'هروب كلوتسكي';
+
+  @override
+  String get klotskiSubtitle => 'حرك الكتل للوصول إلى المخارج.';
+
+  @override
+  String get homophoneHuntSubtitle => 'اختر الهجاء الصحيح.';
 }

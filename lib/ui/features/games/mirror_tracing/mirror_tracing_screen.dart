@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -23,7 +25,7 @@ class _MirrorTracingScreenState extends ConsumerState<MirrorTracingScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'Mirror Tracing'.toUpperCase(),
+        title: L10nGameHelpers.getGameTitle(context, 'mirror_tracing').toUpperCase(),
         message: AppLocalizations.of(context)!.mirrorTracingMessage,
         isVictory: true,
         onHome: () {
@@ -55,7 +57,7 @@ class _MirrorTracingScreenState extends ConsumerState<MirrorTracingScreen> {
     });
 
     return GameScaffold(
-      title: 'Mirror Tracing',
+      title: L10nGameHelpers.getGameTitle(context, 'mirror_tracing'),
       subtitle: l10n.mirrorTracingSubtitle,
       body: LayoutBuilder(
         builder: (context, constraints) {

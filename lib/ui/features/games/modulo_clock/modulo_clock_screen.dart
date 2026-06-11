@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -99,7 +101,7 @@ class _ModuloClockScreenState extends ConsumerState<ModuloClockScreen> {
         context: context,
         barrierDismissible: false,
         builder: (context) => GameCompletionDialog(
-          title: "MODULO CLOCK ACED",
+          title: L10nGameHelpers.getGameTitle(context, 'modulo_clock'),
           message: AppLocalizations.of(context)!.moduloClockMessage((_score).toString()),
           onHome: () {
             Navigator.pop(context);
@@ -127,7 +129,7 @@ class _ModuloClockScreenState extends ConsumerState<ModuloClockScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: "TIME OUT",
+        title: L10nGameHelpers.getGameTitle(context, 'modulo_clock'),
         message: AppLocalizations.of(context)!.moduloClockMessage1((_correctAnswers).toString(), (targetAnswers).toString(), (_score).toString()),
         isVictory: false,
         onHome: () {
@@ -154,8 +156,8 @@ class _ModuloClockScreenState extends ConsumerState<ModuloClockScreen> {
     final colorScheme = theme.colorScheme;
 
     return GameScaffold(
-      title: "MODULO CLOCK",
-      subtitle: "CALCULATE THE RESULTING TIME AFTER THE SHOWN HOURS PASS!",
+      title: L10nGameHelpers.getGameTitle(context, 'modulo_clock'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'modulo_clock'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
         child: Column(

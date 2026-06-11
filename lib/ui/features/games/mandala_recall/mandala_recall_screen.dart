@@ -1,3 +1,5 @@
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -63,8 +65,8 @@ class _MandalaRecallScreenState extends ConsumerState<MandalaRecallScreen> {
     });
 
     return GameScaffold(
-      title: 'MANDALA RECALL',
-      subtitle: 'MEMORIZE COLOR CONFIGURATION. PICK COLORS AND REPAINT THE TILES.',
+      title: L10nGameHelpers.getGameTitle(context, 'mandala_recall'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'mandala_recall'),
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(

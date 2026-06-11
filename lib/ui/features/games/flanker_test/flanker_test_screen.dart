@@ -6,7 +6,7 @@ import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../../providers/user_providers.dart';
-import '../../../../l10n/app_localizations.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'flanker_test_provider.dart';
 
 class FlankerTestScreen extends ConsumerStatefulWidget {

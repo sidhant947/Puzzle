@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
@@ -81,8 +83,8 @@ class _RhymeMasterScreenState extends ConsumerState<RhymeMasterScreen> {
     if (state.puzzle == null) return const Scaffold(body: Center(child: CircularProgressIndicator()));
 
     return GameScaffold(
-      title: 'Rhyme Master',
-      subtitle: 'Find all words that rhyme with...',
+      title: L10nGameHelpers.getGameTitle(context, 'rhyme_master'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'rhyme_master'),
       body: Column(
         children: [
           Padding(

@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -62,13 +64,13 @@ class _VerbalAnalogiesScreenState extends ConsumerState<VerbalAnalogiesScreen> {
 
     if (state.isLoading) {
       return GameScaffold(
-        title: 'Verbal Analogies',
+        title: L10nGameHelpers.getGameTitle(context, 'verbal_analogies'),
         body: Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
-      title: 'Verbal Analogies',
+      title: L10nGameHelpers.getGameTitle(context, 'verbal_analogies'),
       subtitle: l10n.verbalAnalogiesSubtitle,
       body: Padding(
         padding: const EdgeInsets.all(DesignSystem.spaceLG),

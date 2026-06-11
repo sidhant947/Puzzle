@@ -1,3 +1,5 @@
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -61,8 +63,8 @@ class _SpatialCabinetMemoryScreenState extends ConsumerState<SpatialCabinetMemor
     });
 
     return GameScaffold(
-      title: 'SPATIAL CABINETS',
-      subtitle: 'MEMORIZE WHICH CABINET DRAWER CONTAINS WHICH OBJECT.',
+      title: L10nGameHelpers.getGameTitle(context, 'spatial_cabinet_memory'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'spatial_cabinet_memory'),
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(

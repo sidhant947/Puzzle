@@ -1796,5 +1796,350 @@
       }
     }
   },
-  "imReady": "من آماده‌ام"
+  "imReady": "من آماده‌ام",
+  "soptTitle": "اشاره به خود سفارشی",
+  "soptSubtitle": "هر بار روی کارت دیگری ضربه بزنید. موقعیت ها به هم می ریزند!",
+  "soptWinTitle": "استاد سکانس!",
+  "soptGameOverMessage": "شما {score} امتیاز را با ردیابی موفق کارت های به هم ریخته به دست آوردید!",
+  "soptChooseNovel": "روی کارت جدید ضربه بزنید",
+  "soptGreatJob": "کار عالی!",
+  "soptAlreadyTapped": "قبلاً شنود شده است!",
+  "soptGrid": "شبکه",
+  "contRecogTitle": "شناسایی مداوم",
+  "contRecogSubtitle": "آیا قبلاً این کارت را در این جلسه دیده اید؟",
+  "contRecogWinTitle": "نابغه شناخت!",
+  "contRecogGameOverMessage": "شما {score} تشخیص درست را به ثمر رساندید!",
+  "contRecogCorrect": "درسته!",
+  "contRecogWrong": "اشتباه!",
+  "contRecogOldOrNew": "این قدیمیه یا جدید؟",
+  "contRecogNew": "جدید",
+  "contRecogOld": "قدیمی",
+  "contRecogSeenPool": "استخر دیده می شود",
+  "dnmsTitle": "حافظه غیر منطبق",
+  "dnmsSubtitle": "روی کارتی که در نمونه حفظ شده نیست ضربه بزنید.",
+  "dnmsWinTitle": "کارشناس غیر همسان!",
+  "dnmsGameOverMessage": "شما {score} پاسخ صحیح را در عدم تطابق با تأخیر به ثمر رساندید!",
+  "dnmsChooseNovel": "روی کارت جدید ضربه بزنید",
+  "dnmsMemorizeSample": "این کارت را حفظ کنید",
+  "dnmsWaitForIt": "منتظرش باش...",
+  "dnmsExcellent": "عالی!",
+  "dnmsSampleTapped": "نمونه اش همین بود!",
+  "dnmsCards": "کارت ها",
+  "symSpanTitle": "دهانه تقارن",
+  "symSpanSubtitle": "الگوهای سلولی را با شناسایی تقارن عمودی به یاد بیاورید.",
+  "symSpanWinTitle": "استاد تقارن!",
+  "symSpanGameOverMessage": "شما با یادآوری طرح‌بندی‌ها و شناسایی تقارن {score} امتیاز کسب کردید!",
+  "symSpanMemorizeRed": "مکان گلبول قرمز را به خاطر بسپارید",
+  "symSpanIsSymmetric": "آیا الگوی متقارن است؟",
+  "symSpanRecallSequence": "دنباله را به ترتیب صحیح به یاد بیاورید",
+  "symSpanGreatJob": "کار عالی!",
+  "symSpanTryAgain": "دوباره امتحان کنید!",
+  "symSpanLength": "طول",
+  "readingSpanTitle": "بازه خواندن",
+  "readingSpanSubtitle": "هنگام به خاطر سپردن دنباله ای از حروف، جملات را تأیید کنید.",
+  "readingSpanWinTitle": "کارشناس خواندن!",
+  "readingSpanGameOverMessage": "شما {score} امتیاز در چالش حافظه Reading Span کسب کردید!",
+  "readingSpanTrueFalse": "آیا این گفته درست است یا نادرست؟",
+  "readingSpanMemorizeLetter": "این نامه را حفظ کنید",
+  "readingSpanRecallLetters": "حروف را به ترتیب به یاد بیاورید",
+  "readingSpanGreatJob": "کار عالی!",
+  "readingSpanTryAgain": "دوباره امتحان کنید!",
+  "readingSpanYourSequence": "دنباله شما: {sequence}",
+  "readingSpanLength": "طول",
+  "readingSpanSentence1": "خورشید از مشرق طلوع می کند.",
+  "readingSpanSentence2": "یخ داغ در حال جوشیدن است.",
+  "readingSpanSentence3": "ماهی ها می توانند زیر آب نفس بکشند.",
+  "readingSpanSentence4": "سگ ها بال دارند و می توانند پرواز کنند.",
+  "readingSpanSentence5": "آب در دمای 0 درجه سانتیگراد یخ می زند.",
+  "readingSpanSentence6": "گربه ها مانند سگ های کوچک پارس می کنند.",
+  "readingSpanSentence7": "درختان در تابستان دارای برگهای سبز هستند.",
+  "readingSpanSentence8": "باران از زمین به سمت بالا می بارد.",
+  "readingSpanSentence9": "یک مثلث دارای چهار ضلع مساوی است.",
+  "readingSpanSentence10": "سیب نوعی میوه شیرین است.",
+  "readingSpanSentence11": "ماه از پنیر چدار ساخته شده است.",
+  "readingSpanSentence12": "خودروها دارای چرخ هایی برای چرخاندن هستند.",
+  "readingSpanSentence13": "آتش به شدت سرد است.",
+  "readingSpanSentence14": "کاغذ از چوب فرآوری شده ساخته شده است.",
+  "readingSpanSentence15": "پرندگان برای کمک به پرواز، پر دارند.",
+  "readingSpanSentence16": "موز روی درختان کاج رشد می کند.",
+  "readingSpanSentence17": "فیل از مورچه کوچکتر است.",
+  "readingSpanSentence18": "کتاب ها حاوی صفحات چاپ شده متن هستند.",
+  "countingSpanTitle": "فاصله شمارش",
+  "countingSpanSubtitle": "فقط دایره های آبی را بشمارید. سپس ترتیب شمارش ها را به خاطر بیاورید.",
+  "countingSpanWinTitle": "نابغه شمارش!",
+  "countingSpanGameOverMessage": "شما {score} امتیاز را در چالش حافظه شمارش به دست آوردید!",
+  "countingSpanCountCircles": "فقط دایره های آبی را بشمارید",
+  "countingSpanRecallCounts": "شمارش فراخوان به ترتیب صحیح",
+  "countingSpanGreatJob": "کار عالی!",
+  "countingSpanTryAgain": "دوباره امتحان کنید!",
+  "countingSpanYourSequence": "دنباله شما: {sequence}",
+  "countingSpanLength": "طول",
+  "objDispTitle": "جابجایی شی",
+  "objDispSubtitle": "طرح بندی را به خاطر بسپارید. شیئی را که موقعیت را تغییر می دهد پیدا کنید و روی آن ضربه بزنید.",
+  "objDispWinTitle": "نابغه فضایی!",
+  "objDispGameOverMessage": "شما {score} اشیاء جابجا شده را به درستی شناسایی کردید!",
+  "objDispMemorizeAll": "همه مکان ها را به خاطر بسپارید",
+  "objDispWaitingShift": "در انتظار تغییر چیدمان...",
+  "objDispTapMoved": "روی جسمی که حرکت کرد ضربه بزنید",
+  "objDispExcellent": "عالی!",
+  "objDispWrongObject": "شی اشتباه!",
+  "objDispItems": "موارد",
+  "mandalaTitle": "یادآوری ماندالا",
+  "mandalaSubtitle": "پیکربندی رنگ را به خاطر بسپارید. رنگ ها را انتخاب کنید و کاشی ها را دوباره رنگ کنید.",
+  "mandalaWinTitle": "هنرمند ماندالا!",
+  "mandalaGameOverMessage": "شما با بازسازی طرح‌بندی‌های هندسی رنگی {score} امتیاز کسب کردید!",
+  "mandalaMemorizeColors": "رنگ های کاشی را به خاطر بسپارید",
+  "mandalaPaintCells": "سلول ها را برای مطابقت با اصلی رنگ کنید",
+  "mandalaExcellent": "عالی!",
+  "mandalaIncorrectMatch": "تطابق نادرست!",
+  "mandalaSubmitRepaint": "ارسال مجدد رنگ",
+  "mandalaTiles": "کاشی",
+  "runningSpanTitle": "در حال اجرا",
+  "runningSpanSubtitle": "مراقب نامه ها باشید وقتی متوقف شدند، آخرین N حرف را به ترتیب وارد کنید.",
+  "runningSpanWinTitle": "استاد بافر!",
+  "runningSpanGameOverMessage": "شما {score} امتیاز در Running Memory Span کسب کردید!",
+  "runningSpanPrepareRecall": "برای یادآوری آخرین حروف {count} آماده شوید",
+  "runningSpanWatchCarefully": "با دقت تماشا کن...",
+  "runningSpanEnterLast": "آخرین حروف {count} را وارد کنید",
+  "runningSpanGreatJob": "کار عالی!",
+  "runningSpanIncorrectBuffer": "بافر نادرست!",
+  "runningSpanRecallLast": "یادآوری آخرین {count}",
+  "runningSpanStopsRandomly": "جریان به طور تصادفی متوقف می شود!",
+  "runningSpanEntered": "وارد شده: {sequence}",
+  "runningSpanNItems": "N-اقلام",
+  "spatialCabinetTitle": "کابینت های فضایی",
+  "spatialCabinetSubtitle": "به خاطر بسپارید که کدام کشوی کابینت حاوی کدام شی است.",
+  "spatialCabinetWinTitle": "کارشناس کابینه!",
+  "spatialCabinetGameOverMessage": "شما {score} امتیاز در حافظه کابینت فضایی کسب کردید!",
+  "spatialCabinetMemorize": "مکان اقلام را به خاطر بسپارید",
+  "spatialCabinetWhereIs": "{itemName} کجاست؟",
+  "spatialCabinetCorrect": "درسته!",
+  "spatialCabinetWrongDrawer": "کشو اشتباه!",
+  "spatialCabinetItems": "موارد",
+  "cabinetItemKey": "کلید",
+  "cabinetItemApple": "اپل",
+  "cabinetItemDiamond": "الماس",
+  "cabinetItemBook": "کتاب",
+  "cabinetItemUmbrella": "چتر",
+  "cabinetItemCoffee": "قهوه",
+  "cabinetItemLock": "قفل کنید",
+  "cabinetItemPet": "حیوان خانگی",
+  "cabinetItemCar": "ماشین",
+  "@soptGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@contRecogGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@dnmsGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@symSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@countingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@countingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@objDispGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@mandalaGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanPrepareRecall": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEnterLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanRecallLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEntered": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@spatialCabinetGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@spatialCabinetWhereIs": {
+    "placeholders": {
+      "itemName": {
+        "type": "String"
+      }
+    }
+  },
+  "gamesTitleLabel": "بازی‌ها",
+  "yourFavorites": "علاقه‌مندی‌های شما",
+  "readyForWorkout": "برای تمرین روزانه خود آماده‌اید؟",
+  "greatStartKeepGoing": "شروع عالی! ادامه دهید.",
+  "onFireToday": "امروز فوق‌العاده هستید!",
+  "incredibleSolvingToday": "حل مسائل باورنکردنی امروز!",
+  "newGameLabel": "جدید",
+  "slitherlinkTitle": "اسلایدرلینک",
+  "slitherlinkSubtitle": "با استفاده از راهنماهای عددی، شبکه پین را دور بزنید.",
+  "futoshikiTitle": "فوتوشیکی",
+  "futoshikiSubtitle": "شبکه‌ها را با راهنماهای بزرگتر از پر کنید.",
+  "kakuroTitle": "کاکورو",
+  "kakuroSubtitle": "جدول کلمات متقاطع را با اعداد و جمع‌ها حل کنید.",
+  "inequalityDashTitle": "سرعت نابرابری",
+  "inequalityDashSubtitle": "نابرابری‌ها را تحت فشار زمان حل کنید.",
+  "factorFinderTitle": "عامل‌یاب",
+  "factorFinderSubtitle": "همه عوامل اعداد هدف را شناسایی کنید.",
+  "collatzTitle": "مسیر کلاتز",
+  "collatzSubtitle": "در دنباله 3N+1 حرکت کنید.",
+  "sumPyramidTitle": "هرم جمع",
+  "sumPyramidSubtitle": "سلول‌های هرم را با راهنماهای ریاضی جمع پر کنید.",
+  "target10Title": "هدف ۱۰",
+  "target10Subtitle": "کاشی‌های اعداد را برای رسیدن به جمع ده ترکیب کنید.",
+  "fractionMatcherTitle": "تطبیق‌دهنده کسر",
+  "fractionMatcherSubtitle": "کسرهای معادل را به صورت بصری تطبیق دهید.",
+  "dualCodingTitle": "کدگذاری دوگانه",
+  "dualCodingSubtitle": "حروف و نمادها را به طور همزمان تطبیق دهید.",
+  "distractorMatrixTitle": "ماتریس حواس‌پرت‌کن",
+  "distractorMatrixSubtitle": "شکل‌های هدف را در میان حواس‌پرت‌کن‌ها پیدا کنید.",
+  "temporalOrderTitle": "ترتیب زمانی",
+  "temporalOrderSubtitle": "ترتیب زمانی را به یاد آورید.",
+  "associativePairsTitle": "جفت‌های انجمنی",
+  "associativePairsSubtitle": "نمادهای مربوطه را جفت و تطبیق دهید.",
+  "blockCount3dTitle": "شمارش بلوک سه بعدی",
+  "blockCount3dSubtitle": "بلوک‌ها را در فضای سه بعدی بشمارید.",
+  "rotatingMazeTitle": "ماز چرخان",
+  "rotatingMazeSubtitle": "مازها را بچرخانید تا توپ‌ها را به سمت خروجی هدایت کنید.",
+  "silhouetteMatchOrthoTitle": "تطبیق سایه (ارتو)",
+  "silhouetteMatchOrthoSubtitle": "اشیاء سه بعدی را با سایه‌های ارتو تطبیق دهید.",
+  "spatialConflictTitle": "تضاد فضایی",
+  "spatialConflictSubtitle": "اختلافات بین متن و جهت را حل کنید.",
+  "spotlightTrackTitle": "ردیابی نورافکن",
+  "spotlightTrackSubtitle": "موارد چشمک‌زن را در سایه‌های متحرک ردیابی کنید.",
+  "d2AttentionTitle": "توجه d2",
+  "d2AttentionSubtitle": "نمادهای هدف را با معیارهای سخت‌گیرانه لمس کنید.",
+  "dualMirrorTitle": "ناوبری آینه دوگانه",
+  "dualMirrorSubtitle": "دو ماز را به طور همزمان هدایت کنید.",
+  "contextCluesTitle": "نشانه‌های متنی",
+  "contextCluesSubtitle": "کلمات پنهان را از نشانه‌های متنی حدس بزنید.",
+  "digitSpanReverseSubtitle": "ارقام اعداد را به ترتیب معکوس به یاد آورید.",
+  "faceNameAssociationSubtitle": "نام‌های چهره‌های مختلف ارائه شده را به یاد آورید.",
+  "staircaseMemorySubtitle": "بلوک‌ها را در دنباله پله‌ای حفظ کنید.",
+  "choiceReactionTimeSubtitle": "دکمه‌های خاص را با توجه به نشانه‌ها سریع لمس کنید.",
+  "attentionalBlinkSubtitle": "اهداف سریع را که در جریان‌ها چشمک می‌زنند شناسایی کنید.",
+  "visualStatisticalLearningSubtitle": "الگوهای شکل زمانی را به صورت بصری یاد بگیرید.",
+  "sternbergTaskSubtitle": "به یاد آورید که آیا نماد در مجموعه حافظه بود یا خیر.",
+  "operationSpanSubtitle": "ریاضی حل کنید و رشته‌های الفبا را به یاد آورید.",
+  "continuousRecognitionTitle": "تشخیص مداوم",
+  "continuousRecognitionSubtitle": "تشخیص دهید که آیا کارت ارائه شده قدیمی است یا جدید.",
+  "symmetrySpanTitle": "گستره تقارن",
+  "symmetrySpanSubtitle": "مختصات سلول را در میان تصمیمات تقارن عمودی به یاد آورید.",
+  "objectDisplacementTitle": "جابجایی اشیاء",
+  "objectDisplacementSubtitle": "مکان‌ها را بررسی کنید و تنها شیئی را که حرکت کرده لمس کنید.",
+  "mandalaRecallTitle": "یادآوری ماندالا",
+  "mandalaRecallSubtitle": "کاشی‌های رنگی را حفظ کنید و ماندالاها را از پالت دوباره رنگ کنید.",
+  "runningMemorySpanTitle": "گستره حافظه جاری",
+  "runningMemorySpanSubtitle": "حروف جاری را نظارت کنید و N مورد آخر را به یاد آورید.",
+  "spatialCabinetMemoryTitle": "کابینت‌های فضایی",
+  "spatialCabinetMemorySubtitle": "مکان اشیاء پشت درهای کابینت را حفظ و پیدا کنید.",
+  "pathRecallSubtitle": "انتخاب‌های مسیر را حفظ و تکرار کنید.",
+  "objectShuffleSubtitle": "اشیاء مخلوط شده در زیر فنجان‌های عمیق را ردیابی کنید.",
+  "groceryListSubtitle": "موارد موجود در لیست را حفظ و علامت‌گذاری کنید.",
+  "quickMathSubtitle": "سوالات ریاضی را با بیشترین سرعت حل کنید.",
+  "mathGuessTitle": "حدس ریاضی",
+  "mathGuessSubtitle": "عدد پنهان را در ۱۵ فرصت حدس بزنید.",
+  "reflexTapSubtitle": "محرک‌ها را با بیشترین سرعت ممکن لمس کنید.",
+  "pixelMimicSubtitle": "الگوهای طراحی را روی شبکه‌های پیکسلی تقلید کنید.",
+  "simonSequenceSubtitle": "دنباله‌های شکل را از حافظه تکرار کنید.",
+  "slidePuzzleSubtitle": "کاشی‌های شبکه کشویی مربعی را دوباره مرتب کنید.",
+  "findWordTitle": "پیدا کردن کلمه",
+  "schulteTableSubtitle": "اعداد یک تا بیست و پنج را لمس کنید.",
+  "simonCommandTitle": "فرمان سایمون",
+  "simonCommandSubtitle": "دستورالعمل‌های صوتی را به سرعت اجرا کنید.",
+  "binaryCodeTitle": "سرعت باینری",
+  "binaryCodeSubtitle": "کدهای باینری را به اعشار ترجمه کنید.",
+  "moduloClockTitle": "ساعت مدولو",
+  "moduloClockSubtitle": "معادلات ریاضی را با استفاده از ساعت‌ها محاسبه کنید.",
+  "chimpTestTitle": "تست شامپانزه",
+  "chimpTestSubtitle": "اعداد تصادفی را به ترتیب صعودی لمس کنید.",
+  "relationalMemoryTitle": "حافظه رابطه‌ای",
+  "relationalMemorySubtitle": "مکان دقیق موارد شبکه را به یاد آورید.",
+  "factBinderTitle": "پیوند دهنده حقایق",
+  "factBinderSubtitle": "نمادها را متصل کنید و جملات را به یاد آورید.",
+  "sourceMonitoringTitle": "نظارت بر منبع",
+  "sourceMonitoringSubtitle": "متن را به یاد آورید.",
+  "klotskiTitle": "فرار کلوتسکی",
+  "klotskiSubtitle": "بلوک‌ها را برای رسیدن به خروجی‌ها حرکت دهید.",
+  "homophoneHuntSubtitle": "املای صحیح را انتخاب کنید."
 }

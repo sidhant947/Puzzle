@@ -1796,5 +1796,350 @@
       }
     }
   },
-  "imReady": "JE SUIS PRÊT"
+  "imReady": "JE SUIS PRÊT",
+  "soptTitle": "Pointage auto-commandé",
+  "soptSubtitle": "Appuyez sur une carte différente à chaque fois. Les positions bougent !",
+  "soptWinTitle": "Maître de séquence !",
+  "soptGameOverMessage": "Vous avez marqué {score} points en suivant avec succès les cartes mélangées !",
+  "soptChooseNovel": "Appuyez sur une nouvelle carte",
+  "soptGreatJob": "Super travail !",
+  "soptAlreadyTapped": "Déjà exploité !",
+  "soptGrid": "Grille",
+  "contRecogTitle": "Reconnaissance continue",
+  "contRecogSubtitle": "Avez-vous déjà vu cette carte lors de cette session ?",
+  "contRecogWinTitle": "Génie de la reconnaissance !",
+  "contRecogGameOverMessage": "Vous avez obtenu {score} reconnaissances correctes !",
+  "contRecogCorrect": "Correct!",
+  "contRecogWrong": "Faux!",
+  "contRecogOldOrNew": "Est-ce ancien ou nouveau ?",
+  "contRecogNew": "Nouveau",
+  "contRecogOld": "Vieux",
+  "contRecogSeenPool": "Piscine vue",
+  "dnmsTitle": "Mémoire non correspondante",
+  "dnmsSubtitle": "Appuyez sur la carte qui ne figurait pas dans l'échantillon mémorisé.",
+  "dnmsWinTitle": "Expert sans correspondance !",
+  "dnmsGameOverMessage": "Vous avez obtenu {score} bonnes réponses en cas de non-correspondance différée !",
+  "dnmsChooseNovel": "Appuyez sur la nouvelle carte",
+  "dnmsMemorizeSample": "Mémorisez cette carte",
+  "dnmsWaitForIt": "Attends...",
+  "dnmsExcellent": "Excellent!",
+  "dnmsSampleTapped": "C'était l'échantillon !",
+  "dnmsCards": "Cartes",
+  "symSpanTitle": "Portée de symétrie",
+  "symSpanSubtitle": "Rappelez-vous les modèles de cellules tout en identifiant la symétrie verticale.",
+  "symSpanWinTitle": "Maître de la symétrie !",
+  "symSpanGameOverMessage": "Vous avez marqué {score} points en rappelant les dispositions et en identifiant la symétrie !",
+  "symSpanMemorizeRed": "Mémoriser l'emplacement des globules rouges",
+  "symSpanIsSymmetric": "Le motif est-il symétrique ?",
+  "symSpanRecallSequence": "Séquence de rappel dans le bon ordre",
+  "symSpanGreatJob": "Super travail !",
+  "symSpanTryAgain": "Essayer à nouveau!",
+  "symSpanLength": "Longueur",
+  "readingSpanTitle": "Durée de lecture",
+  "readingSpanSubtitle": "Vérifiez les phrases tout en mémorisant une séquence de lettres.",
+  "readingSpanWinTitle": "Expert en lecture !",
+  "readingSpanGameOverMessage": "Vous avez marqué {score} points dans le défi de mémoire Reading Span !",
+  "readingSpanTrueFalse": "Cette affirmation est-elle vraie ou fausse ?",
+  "readingSpanMemorizeLetter": "Mémorisez cette lettre",
+  "readingSpanRecallLetters": "Rappeler les lettres dans l'ordre",
+  "readingSpanGreatJob": "Super travail !",
+  "readingSpanTryAgain": "Essayer à nouveau!",
+  "readingSpanYourSequence": "Votre séquence : {sequence}",
+  "readingSpanLength": "Longueur",
+  "readingSpanSentence1": "Le soleil se lève à l'est.",
+  "readingSpanSentence2": "La glace est bouillante.",
+  "readingSpanSentence3": "Les poissons peuvent respirer sous l'eau.",
+  "readingSpanSentence4": "Les chiens ont des ailes et peuvent voler.",
+  "readingSpanSentence5": "L'eau gèle à 0 degré Celsius.",
+  "readingSpanSentence6": "Les chats aboient comme des petits chiens.",
+  "readingSpanSentence7": "Les arbres ont des feuilles vertes en été.",
+  "readingSpanSentence8": "La pluie tombe du sol vers le haut.",
+  "readingSpanSentence9": "Un triangle a quatre côtés égaux.",
+  "readingSpanSentence10": "Les pommes sont un type de fruit sucré.",
+  "readingSpanSentence11": "La lune est faite de fromage cheddar.",
+  "readingSpanSentence12": "Les automobiles ont des roues pour rouler.",
+  "readingSpanSentence13": "Le feu est glacial.",
+  "readingSpanSentence14": "Le papier est fabriqué à partir de bois transformé.",
+  "readingSpanSentence15": "Les oiseaux ont des plumes pour les aider à voler.",
+  "readingSpanSentence16": "Les bananes poussent sur les pins.",
+  "readingSpanSentence17": "Un éléphant est plus petit qu'une fourmi.",
+  "readingSpanSentence18": "Les livres contiennent des pages de texte imprimées.",
+  "countingSpanTitle": "Durée de comptage",
+  "countingSpanSubtitle": "Comptez uniquement les cercles bleus. Rappelez-vous ensuite la séquence des comptes.",
+  "countingSpanWinTitle": "Génie du comptage !",
+  "countingSpanGameOverMessage": "Vous avez marqué {score} points dans le défi de mémoire Counting Span !",
+  "countingSpanCountCircles": "Comptez uniquement les cercles bleus",
+  "countingSpanRecallCounts": "Les rappels comptent dans le bon ordre",
+  "countingSpanGreatJob": "Super travail !",
+  "countingSpanTryAgain": "Essayer à nouveau!",
+  "countingSpanYourSequence": "Votre séquence : {sequence}",
+  "countingSpanLength": "Longueur",
+  "objDispTitle": "Déplacement d'objet",
+  "objDispSubtitle": "Mémorisez la mise en page. Recherchez et appuyez sur le seul objet qui change de position.",
+  "objDispWinTitle": "Génie spatial !",
+  "objDispGameOverMessage": "Vous avez correctement identifié les objets déplacés {score} !",
+  "objDispMemorizeAll": "Mémorisez tous les emplacements",
+  "objDispWaitingShift": "En attente du changement de disposition...",
+  "objDispTapMoved": "Appuyez sur l'objet qui a bougé",
+  "objDispExcellent": "Excellent!",
+  "objDispWrongObject": "Mauvais objet !",
+  "objDispItems": "Articles",
+  "mandalaTitle": "Rappel de mandalas",
+  "mandalaSubtitle": "Mémorisez la configuration des couleurs. Choisissez les couleurs et repeignez les carreaux.",
+  "mandalaWinTitle": "Artiste Mandala!",
+  "mandalaGameOverMessage": "Vous avez marqué {score} points en recréant des dispositions géométriques colorées !",
+  "mandalaMemorizeColors": "Mémoriser les couleurs des carreaux",
+  "mandalaPaintCells": "Peindre les cellules pour qu'elles correspondent à l'original",
+  "mandalaExcellent": "Excellent!",
+  "mandalaIncorrectMatch": "Correspondance incorrecte !",
+  "mandalaSubmitRepaint": "Repeindre",
+  "mandalaTiles": "Carrelage",
+  "runningSpanTitle": "Durée de fonctionnement",
+  "runningSpanSubtitle": "Regardez les lettres. Lorsqu'ils s'arrêtent, saisissez les N dernières lettres dans l'ordre.",
+  "runningSpanWinTitle": "Maître tampon !",
+  "runningSpanGameOverMessage": "Vous avez marqué {score} points dans Running Memory Span !",
+  "runningSpanPrepareRecall": "Préparez-vous à rappeler les {count} dernières lettres",
+  "runningSpanWatchCarefully": "Regardez attentivement...",
+  "runningSpanEnterLast": "Saisissez les {count} dernières lettres",
+  "runningSpanGreatJob": "Super travail !",
+  "runningSpanIncorrectBuffer": "Tampon incorrect !",
+  "runningSpanRecallLast": "Rappeler le dernier {count}",
+  "runningSpanStopsRandomly": "Le flux s'arrête de manière aléatoire !",
+  "runningSpanEntered": "Entré : {sequence}",
+  "runningSpanNItems": "N-articles",
+  "spatialCabinetTitle": "Armoires spatiales",
+  "spatialCabinetSubtitle": "Mémorisez quel tiroir d’armoire contient quel objet.",
+  "spatialCabinetWinTitle": "Expert en cabinet !",
+  "spatialCabinetGameOverMessage": "Vous avez marqué {score} points dans la mémoire de l'armoire spatiale !",
+  "spatialCabinetMemorize": "Mémoriser les emplacements des articles",
+  "spatialCabinetWhereIs": "Où est le {itemName} ?",
+  "spatialCabinetCorrect": "Correct!",
+  "spatialCabinetWrongDrawer": "Mauvais tiroir !",
+  "spatialCabinetItems": "Articles",
+  "cabinetItemKey": "Clé",
+  "cabinetItemApple": "Pomme",
+  "cabinetItemDiamond": "Diamant",
+  "cabinetItemBook": "Livre",
+  "cabinetItemUmbrella": "Parapluie",
+  "cabinetItemCoffee": "Café",
+  "cabinetItemLock": "Verrouillage",
+  "cabinetItemPet": "Animal de compagnie",
+  "cabinetItemCar": "Voiture",
+  "@soptGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@contRecogGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@dnmsGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@symSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@countingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@countingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@objDispGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@mandalaGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanPrepareRecall": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEnterLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanRecallLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEntered": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@spatialCabinetGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@spatialCabinetWhereIs": {
+    "placeholders": {
+      "itemName": {
+        "type": "String"
+      }
+    }
+  },
+  "gamesTitleLabel": "JEUX",
+  "yourFavorites": "VOS FAVORIS",
+  "readyForWorkout": "PRÊT POUR VOTRE ENTRAÎNEMENT QUOTIDIEN ?",
+  "greatStartKeepGoing": "BON DÉBUT ! CONTINUEZ AINSI.",
+  "onFireToday": "VOUS ÊTES EN FORME AUJOURD'HUI !",
+  "incredibleSolvingToday": "RÉSOLUTIONS INCROYABLES AUJOURD'HUI !",
+  "newGameLabel": "NOUVEAU",
+  "slitherlinkTitle": "Slitherlink",
+  "slitherlinkSubtitle": "BOUCLEZ LA GRILLE DE PINS EN UTILISANT LES INDICES NUMÉRIQUES.",
+  "futoshikiTitle": "Futoshiki",
+  "futoshikiSubtitle": "REMPLISSEZ LES GRILLES AVEC DES INDICES PLUS GRAND QUE.",
+  "kakuroTitle": "Kakuro",
+  "kakuroSubtitle": "RÉSOLVEZ DES MOTS CROISÉS AVEC DES CHIFFRES ET DES SOMMES.",
+  "inequalityDashTitle": "Sprint d'Inégalités",
+  "inequalityDashSubtitle": "RÉSOLVEZ DES INÉGALITÉS SOUS LA PRESSION DU TEMPS.",
+  "factorFinderTitle": "Chercheur de Facteurs",
+  "factorFinderSubtitle": "IDENTIFIEZ TOUS LES FACTEURS DES NOMBRES CIBLES.",
+  "collatzTitle": "Chemin de Collatz",
+  "collatzSubtitle": "NAVIGUEZ DANS LA SÉQUENCE 3N+1.",
+  "sumPyramidTitle": "Pyramide de Sommes",
+  "sumPyramidSubtitle": "REMPLISSEZ LES CELLULES DE LA PYRAMIDE AVEC DES INDICES MATHÉMATIQUES DE SOMME.",
+  "target10Title": "Cible 10",
+  "target10Subtitle": "COMBINEZ LES TUILES NUMÉRIQUES POUR OBTENIR DES SOMMES DE DIX.",
+  "fractionMatcherTitle": "Correspondance de Fractions",
+  "fractionMatcherSubtitle": "FAITES CORRESPONDRE LES FRACTIONS ÉQUIVALENTES VISUELLEMENT.",
+  "dualCodingTitle": "Double Codage",
+  "dualCodingSubtitle": "FAITES CORRESPONDRE LES LETTRES ET LES SYMBOLES SIMULTANÉMENT.",
+  "distractorMatrixTitle": "Matrice de Distracteurs",
+  "distractorMatrixSubtitle": "TROUVEZ LES FORMES CIBLES PARMI LES DISTRACTEURS.",
+  "temporalOrderTitle": "Ordre Temporel",
+  "temporalOrderSubtitle": "RAPPELEZ-VOUS LA SÉQUENCE CHRONOLOGIQUE.",
+  "associativePairsTitle": "Paires Associatives",
+  "associativePairsSubtitle": "ASSOCIEZ ET FAITES CORRESPONDRE LES SYMBOLES CORRESPONDANTS.",
+  "blockCount3dTitle": "Comptage de Blocs 3D",
+  "blockCount3dSubtitle": "COMPTEZ LES BLOCS DANS UN ESPACE TRIDIMENSIONNEL.",
+  "rotatingMazeTitle": "Labyrinthe Rotatif",
+  "rotatingMazeSubtitle": "FAITES PIVOTER LES LABYRINTHES POUR GUIDER LES BALLES VERS LA SORTIE.",
+  "silhouetteMatchOrthoTitle": "Correspondance de Silhouettes (Ortho)",
+  "silhouetteMatchOrthoSubtitle": "FAITES CORRESPONDRE LES OBJETS 3D AVEC LES OMBRES ORTHO.",
+  "spatialConflictTitle": "Conflit Spatial",
+  "spatialConflictSubtitle": "RÉSOLVEZ LES DISCRÉPANCES ENTRE LE TEXTE ET LA DIRECTION.",
+  "spotlightTrackTitle": "Poursuite de Projecteur",
+  "spotlightTrackSubtitle": "SUIVEZ LES ÉLÉMENTS CLIGNOTANTS DANS LES OMBRES EN MOUVEMENT.",
+  "d2AttentionTitle": "Attention d2",
+  "d2AttentionSubtitle": "APPUYEZ SUR LES SYMBOLES CIBLES AVEC DES CRITÈRES STRICTS.",
+  "dualMirrorTitle": "Navigation Miroir Double",
+  "dualMirrorSubtitle": "NAVIGUEZ DANS DEUX LABYRINTHES À LA FOIS.",
+  "contextCluesTitle": "Indices de Contexte",
+  "contextCluesSubtitle": "DÉDUISEZ LES MOTS CACHÉS À PARTIR D'INDICES CONTEXTUELS.",
+  "digitSpanReverseSubtitle": "RAPPELEZ-VOUS LES CHIFFRES DANS L'ORDRE INVERSE.",
+  "faceNameAssociationSubtitle": "RAPPELEZ-VOUS LES NOMS POUR DIVERS VISAGES PRÉSENTÉS.",
+  "staircaseMemorySubtitle": "MÉMORISEZ LES BLOCS DANS UNE SÉQUENCE GRADUELLE.",
+  "choiceReactionTimeSubtitle": "APPUYEZ RAPIDEMENT SUR LES BOUTONS SPÉCIFIQUES CORRESPONDANT AUX INDICES.",
+  "attentionalBlinkSubtitle": "DÉTECTEZ LES CIBLES RAPIDES CLIGNOTANT DANS LES FLUX.",
+  "visualStatisticalLearningSubtitle": "APPRENEZ LES MODÈLES DE FORMES TEMPORELLES VISUELLEMENT.",
+  "sternbergTaskSubtitle": "RAPPELEZ-VOUS SI LE SYMBOLE ÉTAIT DANS L'ENSEMBLE DE MÉMOIRE.",
+  "operationSpanSubtitle": "RÉSOLVEZ LES MATHS ET RAPPELEZ-VOUS LES CHAÎNES ALPHABÉTIQUES.",
+  "continuousRecognitionTitle": "Reconnaissance Continue",
+  "continuousRecognitionSubtitle": "IDENTIFIEZ SI LA CARTE PRÉSENTÉE EST ANCIENNE OU NOUVELLE.",
+  "symmetrySpanTitle": "Amplitude de Symétrie",
+  "symmetrySpanSubtitle": "RAPPELEZ-VOUS LES COORDONNÉES DES CELLULES PARMI LES DÉCISIONS DE SYMÉTRIE VERTICALE.",
+  "objectDisplacementTitle": "Déplacement d'Objets",
+  "objectDisplacementSubtitle": "ÉTUDIEZ LES PLACEMENTS ET APPUYEZ SUR LE SEUL OBJET QUI A BOUGÉ.",
+  "mandalaRecallTitle": "Mémoire de Mandala",
+  "mandalaRecallSubtitle": "MÉMORISEZ LES TUILES DE COULEUR ET REPEIGNEZ LES MANDALAS DEPUIS LA PALETTE.",
+  "runningMemorySpanTitle": "Amplitude de Mémoire Courante",
+  "runningMemorySpanSubtitle": "SURVEILLEZ LES LETTRES COURANTES ET RAPPELEZ-VOUS LES N DERNIERS ÉLÉMENTS.",
+  "spatialCabinetMemoryTitle": "Cabinets Spatiaux",
+  "spatialCabinetMemorySubtitle": "MÉMORISEZ ET LOCALISEZ LES ÉLÉMENTS DERRIÈRE LES PORTES DES CABINETS.",
+  "pathRecallSubtitle": "MÉMORISEZ ET RÉPÉTEZ LES SÉLECTIONS DE CHEMINS.",
+  "objectShuffleSubtitle": "SUIVEZ LES ÉLÉMENTS MÉLANGÉS SOUS DES COUPES PROFONDES.",
+  "groceryListSubtitle": "MÉMORISEZ ET COCHEZ LES ÉLÉMENTS SUR LA LISTE.",
+  "quickMathSubtitle": "RÉSOLVEZ DES QUESTIONS D'ARITHMÉTIQUE À VITESSE MAXIMALE.",
+  "mathGuessTitle": "Devinette Mathématique",
+  "mathGuessSubtitle": "DEVINEZ LE NOMBRE CACHÉ EN 15 CHANCES.",
+  "reflexTapSubtitle": "APPUYEZ SUR LES STIMULI AUSSI VITE QUE HUMAINEMENT POSSIBLE.",
+  "pixelMimicSubtitle": "IMITEZ LES MODÈLES DE CONCEPTION SUR DES GRILLES DE PIXELS.",
+  "simonSequenceSubtitle": "RÉPÉTEZ LES SÉQUENCES DE FORMES DE MÉMOIRE.",
+  "slidePuzzleSubtitle": "RÉARRANGEZ LES TUILES DE LA GRILLE COULISSANTE CARRÉE.",
+  "findWordTitle": "Trouver le Mot",
+  "schulteTableSubtitle": "APPUYEZ SUR LES CHIFFRES DE UN À VINGT-CINQ.",
+  "simonCommandTitle": "Commande de Simon",
+  "simonCommandSubtitle": "EFFECTUEZ LES INSTRUCTIONS VOCALES RAPIDEMENT.",
+  "binaryCodeTitle": "Vitesse Binaire",
+  "binaryCodeSubtitle": "TRADUISEZ LES CODES BINAIRES EN DÉCIMAL.",
+  "moduloClockTitle": "Horloge Modulo",
+  "moduloClockSubtitle": "CALCULEZ DES ÉQUATIONS MATHÉMATIQUES À L'AIDE D'HORLOGES.",
+  "chimpTestTitle": "Test du Chimpanzé",
+  "chimpTestSubtitle": "APPUYEZ SUR DES CHIFFRES ALÉATOIRES DANS L'ORDRE CROISSANT.",
+  "relationalMemoryTitle": "Mémoire Relationnelle",
+  "relationalMemorySubtitle": "RAPPELEZ-VOUS LES POSITIONS EXACTES DES ÉLÉMENTS DE LA GRILLE.",
+  "factBinderTitle": "Classeur de Faits",
+  "factBinderSubtitle": "CONNECTEZ LES SYMBOLES ET RAPPELEZ-VOUS LES ÉNONCÉS.",
+  "sourceMonitoringTitle": "Surveillance de Source",
+  "sourceMonitoringSubtitle": "RAPPELEZ-VOUS LE CONTEXTE.",
+  "klotskiTitle": "Évasion de Klotski",
+  "klotskiSubtitle": "FAITES GLISSER LES BLOCS POUR ATTEINDRE LES SORTIES.",
+  "homophoneHuntSubtitle": "CHOISISSEZ L'ORTHOGRAPHE CORRECTE."
 }

@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -73,7 +75,7 @@ class _TracePathScreenState extends ConsumerState<TracePathScreen> {
     }
 
     return GameScaffold(
-      title: 'TRACE PATH',
+      title: L10nGameHelpers.getGameTitle(context, 'trace_path'),
       subtitle: l10n.tracePathSubtitle,
       body: Column(
         children: [

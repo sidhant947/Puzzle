@@ -1796,5 +1796,350 @@
       }
     }
   },
-  "imReady": "أنا مستعد"
+  "imReady": "أنا مستعد",
+  "soptTitle": "التأشير الذاتي",
+  "soptSubtitle": "اضغط على بطاقة مختلفة في كل مرة. تتضارب المواقف!",
+  "soptWinTitle": "سيد التسلسل!",
+  "soptGameOverMessage": "لقد سجلت {score} نقطة من خلال تتبع البطاقات التي تم خلطها بنجاح!",
+  "soptChooseNovel": "اضغط على بطاقة جديدة",
+  "soptGreatJob": "عمل عظيم!",
+  "soptAlreadyTapped": "استغلالها بالفعل!",
+  "soptGrid": "شبكة",
+  "contRecogTitle": "الاعتراف المستمر",
+  "contRecogSubtitle": "هل رأيت هذه البطاقة من قبل في هذه الجلسة؟",
+  "contRecogWinTitle": "عبقرية الاعتراف!",
+  "contRecogGameOverMessage": "لقد سجلت {score} تقديرًا صحيحًا!",
+  "contRecogCorrect": "صحيح!",
+  "contRecogWrong": "خطأ!",
+  "contRecogOldOrNew": "هل هذا قديم أم جديد؟",
+  "contRecogNew": "جديد",
+  "contRecogOld": "قديم",
+  "contRecogSeenPool": "بركة المشاهدة",
+  "dnmsTitle": "الذاكرة غير المطابقة",
+  "dnmsSubtitle": "اضغط على البطاقة التي لم تكن في العينة المحفوظة.",
+  "dnmsWinTitle": "خبير غير مطابق!",
+  "dnmsGameOverMessage": "لقد حصلت على {score} إجابات صحيحة في عدم المطابقة المتأخرة!",
+  "dnmsChooseNovel": "اضغط على البطاقة الجديدة",
+  "dnmsMemorizeSample": "احفظ هذه البطاقة",
+  "dnmsWaitForIt": "انتظرها...",
+  "dnmsExcellent": "ممتاز!",
+  "dnmsSampleTapped": "وكانت تلك العينة!",
+  "dnmsCards": "بطاقات",
+  "symSpanTitle": "مدى التماثل",
+  "symSpanSubtitle": "استدعاء أنماط الخلايا أثناء تحديد التماثل الرأسي.",
+  "symSpanWinTitle": "سيد التماثل!",
+  "symSpanGameOverMessage": "لقد سجلت {score} نقطة من خلال تذكر المخططات وتحديد التماثل!",
+  "symSpanMemorizeRed": "حفظ موقع الخلية الحمراء",
+  "symSpanIsSymmetric": "هل النمط متماثل؟",
+  "symSpanRecallSequence": "أذكر التسلسل بالترتيب الصحيح",
+  "symSpanGreatJob": "عمل عظيم!",
+  "symSpanTryAgain": "حاول ثانية!",
+  "symSpanLength": "طول",
+  "readingSpanTitle": "نطاق القراءة",
+  "readingSpanSubtitle": "التحقق من الجمل أثناء تذكر سلسلة من الحروف.",
+  "readingSpanWinTitle": "خبير القراءة!",
+  "readingSpanGameOverMessage": "لقد سجلت {score} نقطة في تحدي الذاكرة Reading Span!",
+  "readingSpanTrueFalse": "هل هذا البيان صحيح أم خطأ؟",
+  "readingSpanMemorizeLetter": "احفظ هذه الرسالة",
+  "readingSpanRecallLetters": "أذكر الحروف بالتسلسل",
+  "readingSpanGreatJob": "عمل عظيم!",
+  "readingSpanTryAgain": "حاول ثانية!",
+  "readingSpanYourSequence": "التسلسل الخاص بك: {sequence}",
+  "readingSpanLength": "طول",
+  "readingSpanSentence1": "تشرق الشمس في الشرق.",
+  "readingSpanSentence2": "الجليد يغلي ساخنًا.",
+  "readingSpanSentence3": "يمكن للأسماك أن تتنفس تحت الماء.",
+  "readingSpanSentence4": "الكلاب لها أجنحة وتستطيع الطيران.",
+  "readingSpanSentence5": "يتجمد الماء عند 0 درجة مئوية.",
+  "readingSpanSentence6": "تنبح القطط مثل الكلاب الصغيرة.",
+  "readingSpanSentence7": "الأشجار لها أوراق خضراء في الصيف.",
+  "readingSpanSentence8": "يسقط المطر إلى أعلى من الأرض.",
+  "readingSpanSentence9": "المثلث له أربعة أضلاع متساوية.",
+  "readingSpanSentence10": "التفاح هو نوع من الفاكهة الحلوة.",
+  "readingSpanSentence11": "القمر مصنوع من جبنة الشيدر.",
+  "readingSpanSentence12": "السيارات لديها عجلات للتدحرج.",
+  "readingSpanSentence13": "النار شديدة البرودة.",
+  "readingSpanSentence14": "الورق مصنوع من الخشب المعالج.",
+  "readingSpanSentence15": "الطيور لديها ريش يساعدها على الطيران.",
+  "readingSpanSentence16": "ينمو الموز على أشجار الصنوبر.",
+  "readingSpanSentence17": "الفيل أصغر من النملة.",
+  "readingSpanSentence18": "تحتوي الكتب على صفحات مطبوعة من النص.",
+  "countingSpanTitle": "نطاق العد",
+  "countingSpanSubtitle": "عد الدوائر الزرقاء فقط. ثم تذكر تسلسل التهم.",
+  "countingSpanWinTitle": "عد عبقرية!",
+  "countingSpanGameOverMessage": "لقد سجلت {score} نقطة في تحدي الذاكرة Counting Span!",
+  "countingSpanCountCircles": "عد الدوائر الزرقاء فقط",
+  "countingSpanRecallCounts": "أذكر التهم بالترتيب الصحيح",
+  "countingSpanGreatJob": "عمل عظيم!",
+  "countingSpanTryAgain": "حاول ثانية!",
+  "countingSpanYourSequence": "التسلسل الخاص بك: {sequence}",
+  "countingSpanLength": "طول",
+  "objDispTitle": "إزاحة الكائن",
+  "objDispSubtitle": "حفظ التخطيط. ابحث عن الكائن الوحيد الذي يغير موضعه وانقر عليه.",
+  "objDispWinTitle": "العبقرية المكانية!",
+  "objDispGameOverMessage": "لقد حددت بشكل صحيح {score} كائنات نازحة!",
+  "objDispMemorizeAll": "حفظ جميع المواضع",
+  "objDispWaitingShift": "في انتظار تغيير التخطيط...",
+  "objDispTapMoved": "اضغط على الكائن الذي تم نقله",
+  "objDispExcellent": "ممتاز!",
+  "objDispWrongObject": "كائن خاطئ!",
+  "objDispItems": "أغراض",
+  "mandalaTitle": "ماندالا أذكر",
+  "mandalaSubtitle": "حفظ تكوين اللون. اختيار الألوان وإعادة طلاء البلاط.",
+  "mandalaWinTitle": "فنان ماندالا!",
+  "mandalaGameOverMessage": "لقد سجلت {score} نقطة من خلال إعادة إنشاء تخطيطات هندسية ملونة!",
+  "mandalaMemorizeColors": "حفظ ألوان البلاط",
+  "mandalaPaintCells": "طلاء الخلايا لتتناسب مع الأصل",
+  "mandalaExcellent": "ممتاز!",
+  "mandalaIncorrectMatch": "مباراة غير صحيحة!",
+  "mandalaSubmitRepaint": "إرسال إعادة رسم",
+  "mandalaTiles": "البلاط",
+  "runningSpanTitle": "تشغيل المدى",
+  "runningSpanSubtitle": "مشاهدة الحروف. عندما يتوقفون، أدخل آخر أحرف N بالترتيب.",
+  "runningSpanWinTitle": "سيد العازلة!",
+  "runningSpanGameOverMessage": "لقد سجلت {score} نقطة في Running Memory Span!",
+  "runningSpanPrepareRecall": "الاستعداد لاستدعاء آخر {count} حرف",
+  "runningSpanWatchCarefully": "انتبه جيدا...",
+  "runningSpanEnterLast": "أدخل آخر {count} حرف",
+  "runningSpanGreatJob": "عمل عظيم!",
+  "runningSpanIncorrectBuffer": "المخزن المؤقت غير صحيح!",
+  "runningSpanRecallLast": "أذكر الأخير {count}",
+  "runningSpanStopsRandomly": "يتوقف الدفق بشكل عشوائي!",
+  "runningSpanEntered": "تم الإدخال: {sequence}",
+  "runningSpanNItems": "عناصر N",
+  "spatialCabinetTitle": "الخزانات المكانية",
+  "spatialCabinetSubtitle": "احفظ درج الخزانة الذي يحتوي على أي كائن.",
+  "spatialCabinetWinTitle": "خبير مجلس الوزراء!",
+  "spatialCabinetGameOverMessage": "لقد سجلت {score} نقطة في ذاكرة الخزانة المكانية!",
+  "spatialCabinetMemorize": "حفظ مواقع العناصر",
+  "spatialCabinetWhereIs": "أين {itemName} ؟",
+  "spatialCabinetCorrect": "صحيح!",
+  "spatialCabinetWrongDrawer": "درج خاطئ!",
+  "spatialCabinetItems": "أغراض",
+  "cabinetItemKey": "مفتاح",
+  "cabinetItemApple": "تفاحة",
+  "cabinetItemDiamond": "الماس",
+  "cabinetItemBook": "كتاب",
+  "cabinetItemUmbrella": "مظلة",
+  "cabinetItemCoffee": "قهوة",
+  "cabinetItemLock": "قفل",
+  "cabinetItemPet": "حيوان أليف",
+  "cabinetItemCar": "سيارة",
+  "@soptGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@contRecogGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@dnmsGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@symSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@countingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@countingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@objDispGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@mandalaGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanPrepareRecall": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEnterLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanRecallLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEntered": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@spatialCabinetGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@spatialCabinetWhereIs": {
+    "placeholders": {
+      "itemName": {
+        "type": "String"
+      }
+    }
+  },
+  "gamesTitleLabel": "الألعاب",
+  "yourFavorites": "مفضلاتك",
+  "readyForWorkout": "هل أنت مستعد لتمرينك اليومي؟",
+  "greatStartKeepGoing": "بداية رائعة! استمر في التقدم.",
+  "onFireToday": "أنت متألق اليوم!",
+  "incredibleSolvingToday": "حلول مذهلة اليوم!",
+  "newGameLabel": "جديد",
+  "slitherlinkTitle": "سليذرلينك",
+  "slitherlinkSubtitle": "قم بتطويق شبكة المسامير باستخدام أدلة الأرقام.",
+  "futoshikiTitle": "فوتوشيكي",
+  "futoshikiSubtitle": "املأ الشبكات باستخدام أدلة أكبر من.",
+  "kakuroTitle": "كاكورو",
+  "kakuroSubtitle": "حل الكلمات المتقاطعة بالأرقام والمجاميع.",
+  "inequalityDashTitle": "سباق المتباينات",
+  "inequalityDashSubtitle": "حل المتباينات تحت ضغط الوقت.",
+  "factorFinderTitle": "مكتشف العوامل",
+  "factorFinderSubtitle": "حدد جميع عوامل الأرقام المستهدفة.",
+  "collatzTitle": "مسار كولاتز",
+  "collatzSubtitle": "تنقل في تسلسل 3N+1.",
+  "sumPyramidTitle": "هرم المجموع",
+  "sumPyramidSubtitle": "املأ خلايا الهرم بأدلة حساب المجموع.",
+  "target10Title": "الهدف 10",
+  "target10Subtitle": "اجمع بين مربعات الأرقام للحصول على عشرة مجاميع.",
+  "fractionMatcherTitle": "مطابق الكسور",
+  "fractionMatcherSubtitle": "طابق الكسور المتكافئة بصرياً.",
+  "dualCodingTitle": "التشفير المزدوج",
+  "dualCodingSubtitle": "طابق الحروف والرموز في آن واحد.",
+  "distractorMatrixTitle": "مصفوفة المشتتات",
+  "distractorMatrixSubtitle": "ابحث عن الأشكال المستهدفة وسط المشتتات.",
+  "temporalOrderTitle": "الترتيب الزمني",
+  "temporalOrderSubtitle": "تذكر التسلسل الزمني.",
+  "associativePairsTitle": "الأزواج المترابطة",
+  "associativePairsSubtitle": "زاوج وطابق الرموز المتناظرة.",
+  "blockCount3dTitle": "عد الكتل ثلاثي الأبعاد",
+  "blockCount3dSubtitle": "عد الكتل في فضاء ثلاثي الأبعاد.",
+  "rotatingMazeTitle": "المتاهة الدوارة",
+  "rotatingMazeSubtitle": "دور المتاهات لتوجيه الكرات إلى المخرج.",
+  "silhouetteMatchOrthoTitle": "مطابقة الصورة الظلية (متعامد)",
+  "silhouetteMatchOrthoSubtitle": "طابق الأجسام ثلاثية الأبعاد مع الظلال المتعامدة.",
+  "spatialConflictTitle": "الصراع المكاني",
+  "spatialConflictSubtitle": "حل التناقضات بين النص والاتجاه.",
+  "spotlightTrackTitle": "تتبع الضوء",
+  "spotlightTrackSubtitle": "تتبع العناصر الوامضة في الظلال المتحركة.",
+  "d2AttentionTitle": "انتباه d2",
+  "d2AttentionSubtitle": "اضغط على الرموز المستهدفة بمعايير صارمة.",
+  "dualMirrorTitle": "ملاحة المرآة المزدوجة",
+  "dualMirrorSubtitle": "تنقل في متاهتين في وقت واحد.",
+  "contextCluesTitle": "أدلة السياق",
+  "contextCluesSubtitle": "استنتج الكلمات المخفية من تلميحات السياق.",
+  "digitSpanReverseSubtitle": "تذكر أرقام الأعداد بترتيب عكسي.",
+  "faceNameAssociationSubtitle": "تذكر أسماء الوجوه المتنوعة المعروضة.",
+  "staircaseMemorySubtitle": "احفظ الكتل في تسلسل تدريجي.",
+  "choiceReactionTimeSubtitle": "اضغط على أزرار محددة تطابق الإشارات بسرعة.",
+  "attentionalBlinkSubtitle": "أشعل أهدافاً سريعة تومض في تدفقات.",
+  "visualStatisticalLearningSubtitle": "تعلم أنماط الأشكال الزمنية بصرياً.",
+  "sternbergTaskSubtitle": "تذكر ما إذا كان الرمز موجوداً في مجموعة الذاكرة.",
+  "operationSpanSubtitle": "حل الرياضيات وتذكر سلاسل الأبجدية.",
+  "continuousRecognitionTitle": "الاعتراف المستمر",
+  "continuousRecognitionSubtitle": "حدد ما إذا كانت البطاقة المعروضة قديمة أم جديدة.",
+  "symmetrySpanTitle": "نطاق التماثل",
+  "symmetrySpanSubtitle": "تذكر إحداثيات الخلايا وسط قرارات التماثل الرأسي.",
+  "objectDisplacementTitle": "إزاحة الأشياء",
+  "objectDisplacementSubtitle": "ادرس المواقع واضغط على الشيء الوحيد الذي تحرك.",
+  "mandalaRecallTitle": "استذكار الماندالا",
+  "mandalaRecallSubtitle": "احفظ مربعات الألوان وأعد طلاء الماندالا من اللوحة.",
+  "runningMemorySpanTitle": "نطاق الذاكرة الجارية",
+  "runningMemorySpanSubtitle": "راقب الحروف الجارية وتذكر آخر N من العناصر.",
+  "spatialCabinetMemoryTitle": "الخزانات المكانية",
+  "spatialCabinetMemorySubtitle": "احفظ وحدد مواقع العناصر خلف أبواب الخزانات.",
+  "pathRecallSubtitle": "احفظ وكرر اختيارات المسار.",
+  "objectShuffleSubtitle": "تتبع العناصر المخلوطة تحت أكواب عميقة.",
+  "groceryListSubtitle": "احفظ وتحقق من العناصر في القائمة.",
+  "quickMathSubtitle": "حل أسئلة الحساب بأقصى سرعة.",
+  "mathGuessTitle": "تخمين الرياضيات",
+  "mathGuessSubtitle": "خمن الرقم المخفي في غضون 15 فرصة.",
+  "reflexTapSubtitle": "اضغط على المثيرات بأسرع ما يمكن بشرياً.",
+  "pixelMimicSubtitle": "حاكي أنماط التصميم على شبكات البكسل.",
+  "simonSequenceSubtitle": "كرر تسلسلات الأشكال من الذاكرة.",
+  "slidePuzzleSubtitle": "أعد ترتيب مربعات شبكة الانزلاق.",
+  "findWordTitle": "ابحث عن الكلمة",
+  "schulteTableSubtitle": "اضغط على الأرقام من واحد إلى خمسة وعشرين.",
+  "simonCommandTitle": "أمر سايمون",
+  "simonCommandSubtitle": "نفذ التعليمات الصوتية بسرعة.",
+  "binaryCodeTitle": "السرعة الثنائية",
+  "binaryCodeSubtitle": "ترجم الأكواد الثنائية إلى عشرية.",
+  "moduloClockTitle": "ساعة القياس",
+  "moduloClockSubtitle": "احسب المعادلات الرياضية باستخدام الساعات.",
+  "chimpTestTitle": "اختبار الشمبانزي",
+  "chimpTestSubtitle": "اضغط على الأرقام العشوائية بترتيب تصاعدي.",
+  "relationalMemoryTitle": "الذاكرة العلاقية",
+  "relationalMemorySubtitle": "تذكر مواقع عناصر الشبكة بالضبط.",
+  "factBinderTitle": "رابط الحقائق",
+  "factBinderSubtitle": "ربط الرموز وتذكر العبارات.",
+  "sourceMonitoringTitle": "مراقبة المصدر",
+  "sourceMonitoringSubtitle": "تذكر السياق.",
+  "klotskiTitle": "هروب كلوتسكي",
+  "klotskiSubtitle": "حرك الكتل للوصول إلى المخارج.",
+  "homophoneHuntSubtitle": "اختر الهجاء الصحيح."
 }

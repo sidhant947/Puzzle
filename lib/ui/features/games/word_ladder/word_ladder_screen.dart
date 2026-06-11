@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'word_ladder_provider.dart';
@@ -270,7 +272,7 @@ class WordLadderScreen extends ConsumerWidget {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'CONGRATS',
+        title: L10nGameHelpers.getGameTitle(context, 'word_ladder'),
         message: AppLocalizations.of(context)!.wordLadderMessage((state.startWord).toString(), (state.endWord).toString(), (state.ladder.length).toString()),
         onHome: () {
           Navigator.of(context).pop();

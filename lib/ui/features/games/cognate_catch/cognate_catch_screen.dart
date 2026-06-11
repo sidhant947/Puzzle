@@ -1,3 +1,5 @@
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -55,8 +57,8 @@ class _CognateCatchScreenState extends ConsumerState<CognateCatchScreen> {
     });
 
     return GameScaffold(
-      title: 'COGNATE CATCH',
-      subtitle: 'Distinguish cognates from false friends',
+      title: L10nGameHelpers.getGameTitle(context, 'cognate_catch'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'cognate_catch'),
       actions: [
         TangibleButton(
           color: colorScheme.surface,

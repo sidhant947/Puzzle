@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -94,7 +96,7 @@ class _BinaryCodeScreenState extends ConsumerState<BinaryCodeScreen> {
         context: context,
         barrierDismissible: false,
         builder: (context) => GameCompletionDialog(
-          title: "BINARY CODE MASTERED",
+          title: L10nGameHelpers.getGameTitle(context, 'binary_code'),
           message: AppLocalizations.of(context)!.binaryCodeMessage((_score).toString()),
           onHome: () {
             Navigator.pop(context);
@@ -122,7 +124,7 @@ class _BinaryCodeScreenState extends ConsumerState<BinaryCodeScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: "TIME EXPIRED",
+        title: L10nGameHelpers.getGameTitle(context, 'binary_code'),
         message: AppLocalizations.of(context)!.binaryCodeMessage1((_correctAnswers).toString(), (_score).toString()),
         isVictory: false,
         onHome: () {
@@ -149,8 +151,8 @@ class _BinaryCodeScreenState extends ConsumerState<BinaryCodeScreen> {
     final colorScheme = theme.colorScheme;
 
     return GameScaffold(
-      title: "BINARY CODE",
-      subtitle: "CONVERT THE 4-BIT BINARY NUMBER TO DECIMAL BEFORE TIME RUNS OUT!",
+      title: L10nGameHelpers.getGameTitle(context, 'binary_code'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'binary_code'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
         child: Column(

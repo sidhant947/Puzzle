@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -145,7 +147,7 @@ class _RelationalMemoryScreenState extends ConsumerState<RelationalMemoryScreen>
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: "LOCATION BIND ACED",
+            title: L10nGameHelpers.getGameTitle(context, 'relational_memory'),
             message: AppLocalizations.of(context)!.relationalMemoryMessage,
             onHome: () {
               Navigator.pop(context);
@@ -171,7 +173,7 @@ class _RelationalMemoryScreenState extends ConsumerState<RelationalMemoryScreen>
     final count = _itemsCount[_round - 1];
 
     return GameScaffold(
-      title: "RELATIONAL BIND",
+      title: L10nGameHelpers.getGameTitle(context, 'relational_memory'),
       subtitle: _isMemorizationPhase 
           ? "MEMORIZE THE LOCATION OF EACH COLORFUL ICON!" 
           : "PLACE THE ICONS FROM THE TRAY TO THEIR CORRECT SLOTS IN THE GRID",

@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
@@ -65,8 +67,8 @@ class _PortmanteauSplitScreenState extends ConsumerState<PortmanteauSplitScreen>
     });
 
     return GameScaffold(
-      title: 'Portmanteau Split',
-      subtitle: 'Identify source words',
+      title: L10nGameHelpers.getGameTitle(context, 'portmanteau_split'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'portmanteau_split'),
       body: Column(
         children: [
           Padding(

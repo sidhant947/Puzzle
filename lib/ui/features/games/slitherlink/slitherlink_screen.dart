@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'slitherlink_provider.dart';
@@ -23,7 +25,7 @@ class SlitherlinkScreen extends ConsumerWidget {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'LOOP COMPLETED',
+            title: L10nGameHelpers.getGameTitle(context, 'slitherlink'),
             message: AppLocalizations.of(context)!.slitherlinkMessage,
             onHome: () {
               Navigator.of(context).pop();
@@ -39,8 +41,8 @@ class SlitherlinkScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'Slitherlink',
-      subtitle: 'Tap edges to form a single continuous loop matching cell numbers.',
+      title: L10nGameHelpers.getGameTitle(context, 'slitherlink'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'slitherlink'),
       actions: [
         TangibleButton(
           color: Theme.of(context).colorScheme.surface,

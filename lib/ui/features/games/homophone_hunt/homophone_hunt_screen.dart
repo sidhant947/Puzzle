@@ -1,3 +1,5 @@
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
@@ -69,8 +71,8 @@ class _HomophoneHuntScreenState extends ConsumerState<HomophoneHuntScreen> {
     if (state.puzzle == null) return const Scaffold(body: Center(child: CircularProgressIndicator()));
 
     return GameScaffold(
-      title: 'Homophone Hunt',
-      subtitle: 'Choose the correct spelling',
+      title: L10nGameHelpers.getGameTitle(context, 'homophone_hunt'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'homophone_hunt'),
       body: Column(
         children: [
           const Spacer(),

@@ -2814,4 +2814,791 @@ class AppLocalizationsFr extends AppLocalizations {
 
   @override
   String get imReady => 'JE SUIS PRÊT';
+
+  @override
+  String get soptTitle => 'Pointage auto-commandé';
+
+  @override
+  String get soptSubtitle =>
+      'Appuyez sur une carte différente à chaque fois. Les positions bougent !';
+
+  @override
+  String get soptWinTitle => 'Maître de séquence !';
+
+  @override
+  String soptGameOverMessage(int score) {
+    return 'Vous avez marqué $score points en suivant avec succès les cartes mélangées !';
+  }
+
+  @override
+  String get soptChooseNovel => 'Appuyez sur une nouvelle carte';
+
+  @override
+  String get soptGreatJob => 'Super travail !';
+
+  @override
+  String get soptAlreadyTapped => 'Déjà exploité !';
+
+  @override
+  String get soptGrid => 'Grille';
+
+  @override
+  String get contRecogTitle => 'Reconnaissance continue';
+
+  @override
+  String get contRecogSubtitle =>
+      'Avez-vous déjà vu cette carte lors de cette session ?';
+
+  @override
+  String get contRecogWinTitle => 'Génie de la reconnaissance !';
+
+  @override
+  String contRecogGameOverMessage(int score) {
+    return 'Vous avez obtenu $score reconnaissances correctes !';
+  }
+
+  @override
+  String get contRecogCorrect => 'Correct!';
+
+  @override
+  String get contRecogWrong => 'Faux!';
+
+  @override
+  String get contRecogOldOrNew => 'Est-ce ancien ou nouveau ?';
+
+  @override
+  String get contRecogNew => 'Nouveau';
+
+  @override
+  String get contRecogOld => 'Vieux';
+
+  @override
+  String get contRecogSeenPool => 'Piscine vue';
+
+  @override
+  String get dnmsTitle => 'Mémoire non correspondante';
+
+  @override
+  String get dnmsSubtitle =>
+      'Appuyez sur la carte qui ne figurait pas dans l\'échantillon mémorisé.';
+
+  @override
+  String get dnmsWinTitle => 'Expert sans correspondance !';
+
+  @override
+  String dnmsGameOverMessage(int score) {
+    return 'Vous avez obtenu $score bonnes réponses en cas de non-correspondance différée !';
+  }
+
+  @override
+  String get dnmsChooseNovel => 'Appuyez sur la nouvelle carte';
+
+  @override
+  String get dnmsMemorizeSample => 'Mémorisez cette carte';
+
+  @override
+  String get dnmsWaitForIt => 'Attends...';
+
+  @override
+  String get dnmsExcellent => 'Excellent!';
+
+  @override
+  String get dnmsSampleTapped => 'C\'était l\'échantillon !';
+
+  @override
+  String get dnmsCards => 'Cartes';
+
+  @override
+  String get symSpanTitle => 'Portée de symétrie';
+
+  @override
+  String get symSpanSubtitle =>
+      'Rappelez-vous les modèles de cellules tout en identifiant la symétrie verticale.';
+
+  @override
+  String get symSpanWinTitle => 'Maître de la symétrie !';
+
+  @override
+  String symSpanGameOverMessage(int score) {
+    return 'Vous avez marqué $score points en rappelant les dispositions et en identifiant la symétrie !';
+  }
+
+  @override
+  String get symSpanMemorizeRed =>
+      'Mémoriser l\'emplacement des globules rouges';
+
+  @override
+  String get symSpanIsSymmetric => 'Le motif est-il symétrique ?';
+
+  @override
+  String get symSpanRecallSequence => 'Séquence de rappel dans le bon ordre';
+
+  @override
+  String get symSpanGreatJob => 'Super travail !';
+
+  @override
+  String get symSpanTryAgain => 'Essayer à nouveau!';
+
+  @override
+  String get symSpanLength => 'Longueur';
+
+  @override
+  String get readingSpanTitle => 'Durée de lecture';
+
+  @override
+  String get readingSpanSubtitle =>
+      'Vérifiez les phrases tout en mémorisant une séquence de lettres.';
+
+  @override
+  String get readingSpanWinTitle => 'Expert en lecture !';
+
+  @override
+  String readingSpanGameOverMessage(int score) {
+    return 'Vous avez marqué $score points dans le défi de mémoire Reading Span !';
+  }
+
+  @override
+  String get readingSpanTrueFalse =>
+      'Cette affirmation est-elle vraie ou fausse ?';
+
+  @override
+  String get readingSpanMemorizeLetter => 'Mémorisez cette lettre';
+
+  @override
+  String get readingSpanRecallLetters => 'Rappeler les lettres dans l\'ordre';
+
+  @override
+  String get readingSpanGreatJob => 'Super travail !';
+
+  @override
+  String get readingSpanTryAgain => 'Essayer à nouveau!';
+
+  @override
+  String readingSpanYourSequence(String sequence) {
+    return 'Votre séquence : $sequence';
+  }
+
+  @override
+  String get readingSpanLength => 'Longueur';
+
+  @override
+  String get readingSpanSentence1 => 'Le soleil se lève à l\'est.';
+
+  @override
+  String get readingSpanSentence2 => 'La glace est bouillante.';
+
+  @override
+  String get readingSpanSentence3 =>
+      'Les poissons peuvent respirer sous l\'eau.';
+
+  @override
+  String get readingSpanSentence4 =>
+      'Les chiens ont des ailes et peuvent voler.';
+
+  @override
+  String get readingSpanSentence5 => 'L\'eau gèle à 0 degré Celsius.';
+
+  @override
+  String get readingSpanSentence6 =>
+      'Les chats aboient comme des petits chiens.';
+
+  @override
+  String get readingSpanSentence7 =>
+      'Les arbres ont des feuilles vertes en été.';
+
+  @override
+  String get readingSpanSentence8 => 'La pluie tombe du sol vers le haut.';
+
+  @override
+  String get readingSpanSentence9 => 'Un triangle a quatre côtés égaux.';
+
+  @override
+  String get readingSpanSentence10 => 'Les pommes sont un type de fruit sucré.';
+
+  @override
+  String get readingSpanSentence11 => 'La lune est faite de fromage cheddar.';
+
+  @override
+  String get readingSpanSentence12 =>
+      'Les automobiles ont des roues pour rouler.';
+
+  @override
+  String get readingSpanSentence13 => 'Le feu est glacial.';
+
+  @override
+  String get readingSpanSentence14 =>
+      'Le papier est fabriqué à partir de bois transformé.';
+
+  @override
+  String get readingSpanSentence15 =>
+      'Les oiseaux ont des plumes pour les aider à voler.';
+
+  @override
+  String get readingSpanSentence16 => 'Les bananes poussent sur les pins.';
+
+  @override
+  String get readingSpanSentence17 =>
+      'Un éléphant est plus petit qu\'une fourmi.';
+
+  @override
+  String get readingSpanSentence18 =>
+      'Les livres contiennent des pages de texte imprimées.';
+
+  @override
+  String get countingSpanTitle => 'Durée de comptage';
+
+  @override
+  String get countingSpanSubtitle =>
+      'Comptez uniquement les cercles bleus. Rappelez-vous ensuite la séquence des comptes.';
+
+  @override
+  String get countingSpanWinTitle => 'Génie du comptage !';
+
+  @override
+  String countingSpanGameOverMessage(int score) {
+    return 'Vous avez marqué $score points dans le défi de mémoire Counting Span !';
+  }
+
+  @override
+  String get countingSpanCountCircles => 'Comptez uniquement les cercles bleus';
+
+  @override
+  String get countingSpanRecallCounts =>
+      'Les rappels comptent dans le bon ordre';
+
+  @override
+  String get countingSpanGreatJob => 'Super travail !';
+
+  @override
+  String get countingSpanTryAgain => 'Essayer à nouveau!';
+
+  @override
+  String countingSpanYourSequence(String sequence) {
+    return 'Votre séquence : $sequence';
+  }
+
+  @override
+  String get countingSpanLength => 'Longueur';
+
+  @override
+  String get objDispTitle => 'Déplacement d\'objet';
+
+  @override
+  String get objDispSubtitle =>
+      'Mémorisez la mise en page. Recherchez et appuyez sur le seul objet qui change de position.';
+
+  @override
+  String get objDispWinTitle => 'Génie spatial !';
+
+  @override
+  String objDispGameOverMessage(int score) {
+    return 'Vous avez correctement identifié les objets déplacés $score !';
+  }
+
+  @override
+  String get objDispMemorizeAll => 'Mémorisez tous les emplacements';
+
+  @override
+  String get objDispWaitingShift =>
+      'En attente du changement de disposition...';
+
+  @override
+  String get objDispTapMoved => 'Appuyez sur l\'objet qui a bougé';
+
+  @override
+  String get objDispExcellent => 'Excellent!';
+
+  @override
+  String get objDispWrongObject => 'Mauvais objet !';
+
+  @override
+  String get objDispItems => 'Articles';
+
+  @override
+  String get mandalaTitle => 'Rappel de mandalas';
+
+  @override
+  String get mandalaSubtitle =>
+      'Mémorisez la configuration des couleurs. Choisissez les couleurs et repeignez les carreaux.';
+
+  @override
+  String get mandalaWinTitle => 'Artiste Mandala!';
+
+  @override
+  String mandalaGameOverMessage(int score) {
+    return 'Vous avez marqué $score points en recréant des dispositions géométriques colorées !';
+  }
+
+  @override
+  String get mandalaMemorizeColors => 'Mémoriser les couleurs des carreaux';
+
+  @override
+  String get mandalaPaintCells =>
+      'Peindre les cellules pour qu\'elles correspondent à l\'original';
+
+  @override
+  String get mandalaExcellent => 'Excellent!';
+
+  @override
+  String get mandalaIncorrectMatch => 'Correspondance incorrecte !';
+
+  @override
+  String get mandalaSubmitRepaint => 'Repeindre';
+
+  @override
+  String get mandalaTiles => 'Carrelage';
+
+  @override
+  String get runningSpanTitle => 'Durée de fonctionnement';
+
+  @override
+  String get runningSpanSubtitle =>
+      'Regardez les lettres. Lorsqu\'ils s\'arrêtent, saisissez les N dernières lettres dans l\'ordre.';
+
+  @override
+  String get runningSpanWinTitle => 'Maître tampon !';
+
+  @override
+  String runningSpanGameOverMessage(int score) {
+    return 'Vous avez marqué $score points dans Running Memory Span !';
+  }
+
+  @override
+  String runningSpanPrepareRecall(int count) {
+    return 'Préparez-vous à rappeler les $count dernières lettres';
+  }
+
+  @override
+  String get runningSpanWatchCarefully => 'Regardez attentivement...';
+
+  @override
+  String runningSpanEnterLast(int count) {
+    return 'Saisissez les $count dernières lettres';
+  }
+
+  @override
+  String get runningSpanGreatJob => 'Super travail !';
+
+  @override
+  String get runningSpanIncorrectBuffer => 'Tampon incorrect !';
+
+  @override
+  String runningSpanRecallLast(int count) {
+    return 'Rappeler le dernier $count';
+  }
+
+  @override
+  String get runningSpanStopsRandomly =>
+      'Le flux s\'arrête de manière aléatoire !';
+
+  @override
+  String runningSpanEntered(String sequence) {
+    return 'Entré : $sequence';
+  }
+
+  @override
+  String get runningSpanNItems => 'N-articles';
+
+  @override
+  String get spatialCabinetTitle => 'Armoires spatiales';
+
+  @override
+  String get spatialCabinetSubtitle =>
+      'Mémorisez quel tiroir d’armoire contient quel objet.';
+
+  @override
+  String get spatialCabinetWinTitle => 'Expert en cabinet !';
+
+  @override
+  String spatialCabinetGameOverMessage(int score) {
+    return 'Vous avez marqué $score points dans la mémoire de l\'armoire spatiale !';
+  }
+
+  @override
+  String get spatialCabinetMemorize =>
+      'Mémoriser les emplacements des articles';
+
+  @override
+  String spatialCabinetWhereIs(String itemName) {
+    return 'Où est le $itemName ?';
+  }
+
+  @override
+  String get spatialCabinetCorrect => 'Correct!';
+
+  @override
+  String get spatialCabinetWrongDrawer => 'Mauvais tiroir !';
+
+  @override
+  String get spatialCabinetItems => 'Articles';
+
+  @override
+  String get cabinetItemKey => 'Clé';
+
+  @override
+  String get cabinetItemApple => 'Pomme';
+
+  @override
+  String get cabinetItemDiamond => 'Diamant';
+
+  @override
+  String get cabinetItemBook => 'Livre';
+
+  @override
+  String get cabinetItemUmbrella => 'Parapluie';
+
+  @override
+  String get cabinetItemCoffee => 'Café';
+
+  @override
+  String get cabinetItemLock => 'Verrouillage';
+
+  @override
+  String get cabinetItemPet => 'Animal de compagnie';
+
+  @override
+  String get cabinetItemCar => 'Voiture';
+
+  @override
+  String get gamesTitleLabel => 'JEUX';
+
+  @override
+  String get yourFavorites => 'VOS FAVORIS';
+
+  @override
+  String get readyForWorkout => 'PRÊT POUR VOTRE ENTRAÎNEMENT QUOTIDIEN ?';
+
+  @override
+  String get greatStartKeepGoing => 'BON DÉBUT ! CONTINUEZ AINSI.';
+
+  @override
+  String get onFireToday => 'VOUS ÊTES EN FORME AUJOURD\'HUI !';
+
+  @override
+  String get incredibleSolvingToday => 'RÉSOLUTIONS INCROYABLES AUJOURD\'HUI !';
+
+  @override
+  String get newGameLabel => 'NOUVEAU';
+
+  @override
+  String get slitherlinkTitle => 'Slitherlink';
+
+  @override
+  String get slitherlinkSubtitle =>
+      'BOUCLEZ LA GRILLE DE PINS EN UTILISANT LES INDICES NUMÉRIQUES.';
+
+  @override
+  String get futoshikiTitle => 'Futoshiki';
+
+  @override
+  String get futoshikiSubtitle =>
+      'REMPLISSEZ LES GRILLES AVEC DES INDICES PLUS GRAND QUE.';
+
+  @override
+  String get kakuroTitle => 'Kakuro';
+
+  @override
+  String get kakuroSubtitle =>
+      'RÉSOLVEZ DES MOTS CROISÉS AVEC DES CHIFFRES ET DES SOMMES.';
+
+  @override
+  String get inequalityDashTitle => 'Sprint d\'Inégalités';
+
+  @override
+  String get inequalityDashSubtitle =>
+      'RÉSOLVEZ DES INÉGALITÉS SOUS LA PRESSION DU TEMPS.';
+
+  @override
+  String get factorFinderTitle => 'Chercheur de Facteurs';
+
+  @override
+  String get factorFinderSubtitle =>
+      'IDENTIFIEZ TOUS LES FACTEURS DES NOMBRES CIBLES.';
+
+  @override
+  String get collatzTitle => 'Chemin de Collatz';
+
+  @override
+  String get collatzSubtitle => 'NAVIGUEZ DANS LA SÉQUENCE 3N+1.';
+
+  @override
+  String get sumPyramidTitle => 'Pyramide de Sommes';
+
+  @override
+  String get sumPyramidSubtitle =>
+      'REMPLISSEZ LES CELLULES DE LA PYRAMIDE AVEC DES INDICES MATHÉMATIQUES DE SOMME.';
+
+  @override
+  String get target10Title => 'Cible 10';
+
+  @override
+  String get target10Subtitle =>
+      'COMBINEZ LES TUILES NUMÉRIQUES POUR OBTENIR DES SOMMES DE DIX.';
+
+  @override
+  String get fractionMatcherTitle => 'Correspondance de Fractions';
+
+  @override
+  String get fractionMatcherSubtitle =>
+      'FAITES CORRESPONDRE LES FRACTIONS ÉQUIVALENTES VISUELLEMENT.';
+
+  @override
+  String get dualCodingTitle => 'Double Codage';
+
+  @override
+  String get dualCodingSubtitle =>
+      'FAITES CORRESPONDRE LES LETTRES ET LES SYMBOLES SIMULTANÉMENT.';
+
+  @override
+  String get distractorMatrixTitle => 'Matrice de Distracteurs';
+
+  @override
+  String get distractorMatrixSubtitle =>
+      'TROUVEZ LES FORMES CIBLES PARMI LES DISTRACTEURS.';
+
+  @override
+  String get temporalOrderTitle => 'Ordre Temporel';
+
+  @override
+  String get temporalOrderSubtitle =>
+      'RAPPELEZ-VOUS LA SÉQUENCE CHRONOLOGIQUE.';
+
+  @override
+  String get associativePairsTitle => 'Paires Associatives';
+
+  @override
+  String get associativePairsSubtitle =>
+      'ASSOCIEZ ET FAITES CORRESPONDRE LES SYMBOLES CORRESPONDANTS.';
+
+  @override
+  String get blockCount3dTitle => 'Comptage de Blocs 3D';
+
+  @override
+  String get blockCount3dSubtitle =>
+      'COMPTEZ LES BLOCS DANS UN ESPACE TRIDIMENSIONNEL.';
+
+  @override
+  String get rotatingMazeTitle => 'Labyrinthe Rotatif';
+
+  @override
+  String get rotatingMazeSubtitle =>
+      'FAITES PIVOTER LES LABYRINTHES POUR GUIDER LES BALLES VERS LA SORTIE.';
+
+  @override
+  String get silhouetteMatchOrthoTitle =>
+      'Correspondance de Silhouettes (Ortho)';
+
+  @override
+  String get silhouetteMatchOrthoSubtitle =>
+      'FAITES CORRESPONDRE LES OBJETS 3D AVEC LES OMBRES ORTHO.';
+
+  @override
+  String get spatialConflictTitle => 'Conflit Spatial';
+
+  @override
+  String get spatialConflictSubtitle =>
+      'RÉSOLVEZ LES DISCRÉPANCES ENTRE LE TEXTE ET LA DIRECTION.';
+
+  @override
+  String get spotlightTrackTitle => 'Poursuite de Projecteur';
+
+  @override
+  String get spotlightTrackSubtitle =>
+      'SUIVEZ LES ÉLÉMENTS CLIGNOTANTS DANS LES OMBRES EN MOUVEMENT.';
+
+  @override
+  String get d2AttentionTitle => 'Attention d2';
+
+  @override
+  String get d2AttentionSubtitle =>
+      'APPUYEZ SUR LES SYMBOLES CIBLES AVEC DES CRITÈRES STRICTS.';
+
+  @override
+  String get dualMirrorTitle => 'Navigation Miroir Double';
+
+  @override
+  String get dualMirrorSubtitle => 'NAVIGUEZ DANS DEUX LABYRINTHES À LA FOIS.';
+
+  @override
+  String get contextCluesTitle => 'Indices de Contexte';
+
+  @override
+  String get contextCluesSubtitle =>
+      'DÉDUISEZ LES MOTS CACHÉS À PARTIR D\'INDICES CONTEXTUELS.';
+
+  @override
+  String get digitSpanReverseSubtitle =>
+      'RAPPELEZ-VOUS LES CHIFFRES DANS L\'ORDRE INVERSE.';
+
+  @override
+  String get faceNameAssociationSubtitle =>
+      'RAPPELEZ-VOUS LES NOMS POUR DIVERS VISAGES PRÉSENTÉS.';
+
+  @override
+  String get staircaseMemorySubtitle =>
+      'MÉMORISEZ LES BLOCS DANS UNE SÉQUENCE GRADUELLE.';
+
+  @override
+  String get choiceReactionTimeSubtitle =>
+      'APPUYEZ RAPIDEMENT SUR LES BOUTONS SPÉCIFIQUES CORRESPONDANT AUX INDICES.';
+
+  @override
+  String get attentionalBlinkSubtitle =>
+      'DÉTECTEZ LES CIBLES RAPIDES CLIGNOTANT DANS LES FLUX.';
+
+  @override
+  String get visualStatisticalLearningSubtitle =>
+      'APPRENEZ LES MODÈLES DE FORMES TEMPORELLES VISUELLEMENT.';
+
+  @override
+  String get sternbergTaskSubtitle =>
+      'RAPPELEZ-VOUS SI LE SYMBOLE ÉTAIT DANS L\'ENSEMBLE DE MÉMOIRE.';
+
+  @override
+  String get operationSpanSubtitle =>
+      'RÉSOLVEZ LES MATHS ET RAPPELEZ-VOUS LES CHAÎNES ALPHABÉTIQUES.';
+
+  @override
+  String get continuousRecognitionTitle => 'Reconnaissance Continue';
+
+  @override
+  String get continuousRecognitionSubtitle =>
+      'IDENTIFIEZ SI LA CARTE PRÉSENTÉE EST ANCIENNE OU NOUVELLE.';
+
+  @override
+  String get symmetrySpanTitle => 'Amplitude de Symétrie';
+
+  @override
+  String get symmetrySpanSubtitle =>
+      'RAPPELEZ-VOUS LES COORDONNÉES DES CELLULES PARMI LES DÉCISIONS DE SYMÉTRIE VERTICALE.';
+
+  @override
+  String get objectDisplacementTitle => 'Déplacement d\'Objets';
+
+  @override
+  String get objectDisplacementSubtitle =>
+      'ÉTUDIEZ LES PLACEMENTS ET APPUYEZ SUR LE SEUL OBJET QUI A BOUGÉ.';
+
+  @override
+  String get mandalaRecallTitle => 'Mémoire de Mandala';
+
+  @override
+  String get mandalaRecallSubtitle =>
+      'MÉMORISEZ LES TUILES DE COULEUR ET REPEIGNEZ LES MANDALAS DEPUIS LA PALETTE.';
+
+  @override
+  String get runningMemorySpanTitle => 'Amplitude de Mémoire Courante';
+
+  @override
+  String get runningMemorySpanSubtitle =>
+      'SURVEILLEZ LES LETTRES COURANTES ET RAPPELEZ-VOUS LES N DERNIERS ÉLÉMENTS.';
+
+  @override
+  String get spatialCabinetMemoryTitle => 'Cabinets Spatiaux';
+
+  @override
+  String get spatialCabinetMemorySubtitle =>
+      'MÉMORISEZ ET LOCALISEZ LES ÉLÉMENTS DERRIÈRE LES PORTES DES CABINETS.';
+
+  @override
+  String get pathRecallSubtitle =>
+      'MÉMORISEZ ET RÉPÉTEZ LES SÉLECTIONS DE CHEMINS.';
+
+  @override
+  String get objectShuffleSubtitle =>
+      'SUIVEZ LES ÉLÉMENTS MÉLANGÉS SOUS DES COUPES PROFONDES.';
+
+  @override
+  String get groceryListSubtitle =>
+      'MÉMORISEZ ET COCHEZ LES ÉLÉMENTS SUR LA LISTE.';
+
+  @override
+  String get quickMathSubtitle =>
+      'RÉSOLVEZ DES QUESTIONS D\'ARITHMÉTIQUE À VITESSE MAXIMALE.';
+
+  @override
+  String get mathGuessTitle => 'Devinette Mathématique';
+
+  @override
+  String get mathGuessSubtitle => 'DEVINEZ LE NOMBRE CACHÉ EN 15 CHANCES.';
+
+  @override
+  String get reflexTapSubtitle =>
+      'APPUYEZ SUR LES STIMULI AUSSI VITE QUE HUMAINEMENT POSSIBLE.';
+
+  @override
+  String get pixelMimicSubtitle =>
+      'IMITEZ LES MODÈLES DE CONCEPTION SUR DES GRILLES DE PIXELS.';
+
+  @override
+  String get simonSequenceSubtitle =>
+      'RÉPÉTEZ LES SÉQUENCES DE FORMES DE MÉMOIRE.';
+
+  @override
+  String get slidePuzzleSubtitle =>
+      'RÉARRANGEZ LES TUILES DE LA GRILLE COULISSANTE CARRÉE.';
+
+  @override
+  String get findWordTitle => 'Trouver le Mot';
+
+  @override
+  String get schulteTableSubtitle =>
+      'APPUYEZ SUR LES CHIFFRES DE UN À VINGT-CINQ.';
+
+  @override
+  String get simonCommandTitle => 'Commande de Simon';
+
+  @override
+  String get simonCommandSubtitle =>
+      'EFFECTUEZ LES INSTRUCTIONS VOCALES RAPIDEMENT.';
+
+  @override
+  String get binaryCodeTitle => 'Vitesse Binaire';
+
+  @override
+  String get binaryCodeSubtitle => 'TRADUISEZ LES CODES BINAIRES EN DÉCIMAL.';
+
+  @override
+  String get moduloClockTitle => 'Horloge Modulo';
+
+  @override
+  String get moduloClockSubtitle =>
+      'CALCULEZ DES ÉQUATIONS MATHÉMATIQUES À L\'AIDE D\'HORLOGES.';
+
+  @override
+  String get chimpTestTitle => 'Test du Chimpanzé';
+
+  @override
+  String get chimpTestSubtitle =>
+      'APPUYEZ SUR DES CHIFFRES ALÉATOIRES DANS L\'ORDRE CROISSANT.';
+
+  @override
+  String get relationalMemoryTitle => 'Mémoire Relationnelle';
+
+  @override
+  String get relationalMemorySubtitle =>
+      'RAPPELEZ-VOUS LES POSITIONS EXACTES DES ÉLÉMENTS DE LA GRILLE.';
+
+  @override
+  String get factBinderTitle => 'Classeur de Faits';
+
+  @override
+  String get factBinderSubtitle =>
+      'CONNECTEZ LES SYMBOLES ET RAPPELEZ-VOUS LES ÉNONCÉS.';
+
+  @override
+  String get sourceMonitoringTitle => 'Surveillance de Source';
+
+  @override
+  String get sourceMonitoringSubtitle => 'RAPPELEZ-VOUS LE CONTEXTE.';
+
+  @override
+  String get klotskiTitle => 'Évasion de Klotski';
+
+  @override
+  String get klotskiSubtitle =>
+      'FAITES GLISSER LES BLOCS POUR ATTEINDRE LES SORTIES.';
+
+  @override
+  String get homophoneHuntSubtitle => 'CHOISISSEZ L\'ORTHOGRAPHE CORRECTE.';
 }

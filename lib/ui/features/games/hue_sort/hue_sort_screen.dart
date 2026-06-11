@@ -7,7 +7,7 @@ import '../../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../core/juice/game_scaffold.dart';
-import '../../../../l10n/app_localizations.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 
 class HueSortScreen extends ConsumerWidget {
   const HueSortScreen({super.key});

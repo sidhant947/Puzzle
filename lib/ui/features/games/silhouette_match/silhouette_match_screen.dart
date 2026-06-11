@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -63,13 +65,13 @@ class _SilhouetteMatchScreenState extends ConsumerState<SilhouetteMatchScreen> {
 
     if (state.isLoading) {
       return GameScaffold(
-        title: 'Silhouette Match',
+        title: L10nGameHelpers.getGameTitle(context, 'silhouette_match'),
         body: Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
-      title: 'Silhouette Match',
+      title: L10nGameHelpers.getGameTitle(context, 'silhouette_match'),
       subtitle: l10n.silhouetteMatchSubtitle,
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(DesignSystem.spaceLG),

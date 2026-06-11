@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'word_mastermind_provider.dart';
@@ -250,7 +252,7 @@ class WordMastermindScreen extends ConsumerWidget {
             ref.read(wordMastermindNotifierProvider.notifier).reset();
             Navigator.of(context).pop();
           },
-          title: 'SOLVED!',
+          title: L10nGameHelpers.getGameTitle(context, 'word_mastermind'),
           message: AppLocalizations.of(context)!.wordMastermindMessage((state.targetWord).toString()),
         ),
       );
@@ -272,7 +274,7 @@ class WordMastermindScreen extends ConsumerWidget {
           ref.read(wordMastermindNotifierProvider.notifier).reset();
           Navigator.of(context).pop();
         },
-        title: 'OUT OF TRIES',
+        title: L10nGameHelpers.getGameTitle(context, 'word_mastermind'),
         message: AppLocalizations.of(context)!.wordMastermindMessage1((state.targetWord.toUpperCase()).toString()),
       ),
     );

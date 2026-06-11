@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
@@ -69,8 +71,8 @@ class _GrammarSortScreenState extends ConsumerState<GrammarSortScreen> {
     });
 
     return GameScaffold(
-      title: 'Grammar Sort',
-      subtitle: 'Categorize the words',
+      title: L10nGameHelpers.getGameTitle(context, 'grammar_sort'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'grammar_sort'),
       body: Column(
         children: [
           Padding(

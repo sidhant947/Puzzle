@@ -1796,5 +1796,350 @@
         "type": "String"
       }
     }
-  }
+  },
+  "soptTitle": "स्व-आदेशित पॉइंटिंग",
+  "soptSubtitle": "प्रत्येक वेळी वेगळ्या कार्डावर टॅप करा. पोझिशन्स फेरफार!",
+  "soptWinTitle": "सिक्वेन्स मास्टर!",
+  "soptGameOverMessage": "शफल केलेल्या कार्डांचा यशस्वीपणे मागोवा घेऊन तुम्ही {score} गुण मिळवले!",
+  "soptChooseNovel": "नवीन कार्ड टॅप करा",
+  "soptGreatJob": "छान काम!",
+  "soptAlreadyTapped": "आधीच टॅप केले!",
+  "soptGrid": "ग्रिड",
+  "contRecogTitle": "सतत ओळख",
+  "contRecogSubtitle": "या सत्रात तुम्ही हे कार्ड आधी पाहिले आहे का?",
+  "contRecogWinTitle": "ओळख अलौकिक बुद्धिमत्ता!",
+  "contRecogGameOverMessage": "तुम्ही {score} योग्य ओळख मिळवल्या!",
+  "contRecogCorrect": "बरोबर!",
+  "contRecogWrong": "चुकीचे!",
+  "contRecogOldOrNew": "हे जुने की नवीन?",
+  "contRecogNew": "नवीन",
+  "contRecogOld": "जुने",
+  "contRecogSeenPool": "पूल पाहिला",
+  "dnmsTitle": "न जुळणारी मेमरी",
+  "dnmsSubtitle": "लक्षात ठेवलेल्या नमुन्यात नसलेले कार्ड टॅप करा.",
+  "dnmsWinTitle": "न जुळणारे तज्ञ!",
+  "dnmsGameOverMessage": "तुम्ही विलंबित नॉन-मॅचिंगमध्ये {score} योग्य उत्तरे मिळवली आहेत!",
+  "dnmsChooseNovel": "नवीन कार्डावर टॅप करा",
+  "dnmsMemorizeSample": "हे कार्ड लक्षात ठेवा",
+  "dnmsWaitForIt": "त्याची वाट पहा...",
+  "dnmsExcellent": "उत्कृष्ट!",
+  "dnmsSampleTapped": "तो नमुना होता!",
+  "dnmsCards": "कार्ड्स",
+  "symSpanTitle": "सममिती स्पॅन",
+  "symSpanSubtitle": "अनुलंब सममिती ओळखताना सेल नमुने आठवा.",
+  "symSpanWinTitle": "सममिती मास्टर!",
+  "symSpanGameOverMessage": "लेआउट्स आठवून आणि सममिती ओळखून तुम्ही {score} गुण मिळवले!",
+  "symSpanMemorizeRed": "लाल पेशींचे स्थान लक्षात ठेवा",
+  "symSpanIsSymmetric": "नमुना सममितीय आहे का?",
+  "symSpanRecallSequence": "क्रम योग्य क्रमाने आठवा",
+  "symSpanGreatJob": "छान काम!",
+  "symSpanTryAgain": "पुन्हा प्रयत्न करा!",
+  "symSpanLength": "लांबी",
+  "readingSpanTitle": "वाचन कालावधी",
+  "readingSpanSubtitle": "अक्षरांचा क्रम लक्षात ठेवताना वाक्यांची पडताळणी करा.",
+  "readingSpanWinTitle": "वाचन तज्ञ!",
+  "readingSpanGameOverMessage": "तुम्ही रीडिंग स्पॅन मेमरी चॅलेंजमध्ये {score} गुण मिळवले आहेत!",
+  "readingSpanTrueFalse": "हे विधान खरे की खोटे?",
+  "readingSpanMemorizeLetter": "हे पत्र लक्षात ठेवा",
+  "readingSpanRecallLetters": "क्रमाने अक्षरे आठवा",
+  "readingSpanGreatJob": "छान काम!",
+  "readingSpanTryAgain": "पुन्हा प्रयत्न करा!",
+  "readingSpanYourSequence": "तुमचा क्रम: {sequence}",
+  "readingSpanLength": "लांबी",
+  "readingSpanSentence1": "सूर्य पूर्वेला उगवतो.",
+  "readingSpanSentence2": "बर्फ गरम उकळत आहे.",
+  "readingSpanSentence3": "मासे पाण्याखाली श्वास घेऊ शकतात.",
+  "readingSpanSentence4": "कुत्र्यांना पंख असतात आणि ते उडू शकतात.",
+  "readingSpanSentence5": "० अंश सेल्सिअस तापमानावर पाणी गोठते.",
+  "readingSpanSentence6": "मांजरी लहान कुत्र्यांप्रमाणे भुंकतात.",
+  "readingSpanSentence7": "उन्हाळ्यात झाडांना हिरवी पाने असतात.",
+  "readingSpanSentence8": "पाऊस जमिनीवरून वरच्या दिशेने पडतो.",
+  "readingSpanSentence9": "त्रिकोणाला चार समान बाजू असतात.",
+  "readingSpanSentence10": "सफरचंद हे एक प्रकारचे गोड फळ आहे.",
+  "readingSpanSentence11": "चंद्र चेडर चीज बनलेला आहे.",
+  "readingSpanSentence12": "ऑटोमोबाईलला फिरण्यासाठी चाके असतात.",
+  "readingSpanSentence13": "आग गोठवणारी थंड आहे.",
+  "readingSpanSentence14": "प्रक्रिया केलेल्या लाकडापासून कागद तयार केला जातो.",
+  "readingSpanSentence15": "पक्ष्यांना उडण्यास मदत करण्यासाठी पंख असतात.",
+  "readingSpanSentence16": "केळी पाइनच्या झाडांवर वाढतात.",
+  "readingSpanSentence17": "हत्ती मुंगीपेक्षा लहान असतो.",
+  "readingSpanSentence18": "पुस्तकांमध्ये मजकूराची मुद्रित पृष्ठे असतात.",
+  "countingSpanTitle": "मोजणीचा कालावधी",
+  "countingSpanSubtitle": "फक्त निळी मंडळे मोजा. मग मोजणीचा क्रम आठवा.",
+  "countingSpanWinTitle": "अलौकिक बुद्धिमत्ता मोजत आहे!",
+  "countingSpanGameOverMessage": "तुम्ही काउंटिंग स्पॅन मेमरी चॅलेंजमध्ये {score} गुण मिळवले!",
+  "countingSpanCountCircles": "फक्त निळी मंडळे मोजा",
+  "countingSpanRecallCounts": "योग्य क्रमाने संख्या आठवा",
+  "countingSpanGreatJob": "छान काम!",
+  "countingSpanTryAgain": "पुन्हा प्रयत्न करा!",
+  "countingSpanYourSequence": "तुमचा क्रम: {sequence}",
+  "countingSpanLength": "लांबी",
+  "objDispTitle": "ऑब्जेक्ट विस्थापन",
+  "objDispSubtitle": "लेआउट लक्षात ठेवा. स्थान बदलणारी एक वस्तू शोधा आणि टॅप करा.",
+  "objDispWinTitle": "अवकाशीय अलौकिक बुद्धिमत्ता!",
+  "objDispGameOverMessage": "तुम्ही {score} विस्थापित वस्तू योग्यरित्या ओळखल्या आहेत!",
+  "objDispMemorizeAll": "सर्व प्लेसमेंट लक्षात ठेवा",
+  "objDispWaitingShift": "लेआउट शिफ्टची प्रतीक्षा करत आहे...",
+  "objDispTapMoved": "हलवलेल्या ऑब्जेक्टवर टॅप करा",
+  "objDispExcellent": "उत्कृष्ट!",
+  "objDispWrongObject": "चुकीचा आक्षेप!",
+  "objDispItems": "वस्तू",
+  "mandalaTitle": "मांडला आठवण",
+  "mandalaSubtitle": "रंग कॉन्फिगरेशन लक्षात ठेवा. रंग निवडा आणि टाइल पुन्हा रंगवा.",
+  "mandalaWinTitle": "मांडला कलाकार!",
+  "mandalaGameOverMessage": "रंगीत भौमितिक मांडणी पुन्हा तयार करून तुम्ही {score} गुण मिळवले!",
+  "mandalaMemorizeColors": "टाइलचे रंग लक्षात ठेवा",
+  "mandalaPaintCells": "मूळ जुळण्यासाठी पेशी रंगवा",
+  "mandalaExcellent": "उत्कृष्ट!",
+  "mandalaIncorrectMatch": "अयोग्य जुळणी!",
+  "mandalaSubmitRepaint": "पुन्हा पेंट सबमिट करा",
+  "mandalaTiles": "फरशा",
+  "runningSpanTitle": "रनिंग स्पॅन",
+  "runningSpanSubtitle": "अक्षरे पहा. जेव्हा ते थांबतात, तेव्हा शेवटचे N अक्षरे क्रमाने इनपुट करा.",
+  "runningSpanWinTitle": "बफर मास्टर!",
+  "runningSpanGameOverMessage": "रनिंग मेमरी स्पॅनमध्ये तुम्ही {score} गुण मिळवले!",
+  "runningSpanPrepareRecall": "शेवटची {count} अक्षरे आठवण्याची तयारी करा",
+  "runningSpanWatchCarefully": "काळजीपूर्वक पहा...",
+  "runningSpanEnterLast": "शेवटची {count} अक्षरे प्रविष्ट करा",
+  "runningSpanGreatJob": "छान काम!",
+  "runningSpanIncorrectBuffer": "चुकीचा बफर!",
+  "runningSpanRecallLast": "शेवटचे {count} आठवा",
+  "runningSpanStopsRandomly": "प्रवाह यादृच्छिकपणे थांबतो!",
+  "runningSpanEntered": "प्रविष्ट केले: {sequence}",
+  "runningSpanNItems": "एन-आयटम्स",
+  "spatialCabinetTitle": "अवकाशीय कॅबिनेट",
+  "spatialCabinetSubtitle": "कोणत्या कॅबिनेट ड्रॉवरमध्ये कोणती वस्तू आहे ते लक्षात ठेवा.",
+  "spatialCabinetWinTitle": "कॅबिनेट तज्ञ!",
+  "spatialCabinetGameOverMessage": "तुम्ही स्पेशियल कॅबिनेट मेमरीमध्ये {score} गुण मिळवले आहेत!",
+  "spatialCabinetMemorize": "आयटम स्थाने लक्षात ठेवा",
+  "spatialCabinetWhereIs": "{itemName} कुठे आहे?",
+  "spatialCabinetCorrect": "बरोबर!",
+  "spatialCabinetWrongDrawer": "चुकीचा ड्रॉवर!",
+  "spatialCabinetItems": "वस्तू",
+  "cabinetItemKey": "की",
+  "cabinetItemApple": "सफरचंद",
+  "cabinetItemDiamond": "हिरा",
+  "cabinetItemBook": "पुस्तक",
+  "cabinetItemUmbrella": "छत्री",
+  "cabinetItemCoffee": "कॉफी",
+  "cabinetItemLock": "कुलूप",
+  "cabinetItemPet": "पाळीव प्राणी",
+  "cabinetItemCar": "कार",
+  "@soptGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@contRecogGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@dnmsGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@symSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@countingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@countingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@objDispGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@mandalaGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanPrepareRecall": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEnterLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanRecallLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEntered": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@spatialCabinetGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@spatialCabinetWhereIs": {
+    "placeholders": {
+      "itemName": {
+        "type": "String"
+      }
+    }
+  },
+  "gamesTitleLabel": "खेळ",
+  "yourFavorites": "तुमचे आवडते",
+  "readyForWorkout": "तुमच्या दैनंदिन व्यायामासाठी तयार आहात का?",
+  "greatStartKeepGoing": "उत्तम सुरुवात! चालू ठेवा.",
+  "onFireToday": "आज तुम्ही जोरात आहात!",
+  "incredibleSolvingToday": "आज अविश्वसनीय सोडवणूक!",
+  "newGameLabel": "नवीन",
+  "slitherlinkTitle": "स्लिदरलिंक",
+  "slitherlinkSubtitle": "संख्या संकेतांचा वापर करून पिन ग्रिड लूप करा.",
+  "futoshikiTitle": "फुतोशिकी",
+  "futoshikiSubtitle": "ग्रेटर-दॅन संकेतांसह ग्रिड भरा.",
+  "kakuroTitle": "काकुरो",
+  "kakuroSubtitle": "संख्या आणि बेरजेसह क्रॉसवर्ड सोडवा.",
+  "inequalityDashTitle": "असमानता डॅश",
+  "inequalityDashSubtitle": "वेळेच्या दबावाखाली असमानता सोडवा.",
+  "factorFinderTitle": "विभाजक शोधक",
+  "factorFinderSubtitle": "लक्ष्य संख्यांचे सर्व विभाजक ओळखा.",
+  "collatzTitle": "कोलात्झ मार्ग",
+  "collatzSubtitle": "3N+1 क्रमामध्ये नेव्हिगेट करा.",
+  "sumPyramidTitle": "बेरीज पिरॅमिड",
+  "sumPyramidSubtitle": "बेरीज गणित संकेतांसह पिरॅमिडचे कप्पे भरा.",
+  "target10Title": "लक्ष्य १०",
+  "target10Subtitle": "दहा बेरीज मिळविण्यासाठी संख्यांच्या फरशा एकत्र करा.",
+  "fractionMatcherTitle": "अपूर्णांक जुळवणी",
+  "fractionMatcherSubtitle": "समान अपूर्णांक दृश्यमानपणे जुळवा.",
+  "dualCodingTitle": "दुहेरी कोडिंग",
+  "dualCodingSubtitle": "एकाच वेळी अक्षरे आणि चिन्हे जुळवा.",
+  "distractorMatrixTitle": "विक्षेपक मॅट्रिक्स",
+  "distractorMatrixSubtitle": "विक्षेपकांमधून लक्ष्य आकार शोधा.",
+  "temporalOrderTitle": "कालिक क्रम",
+  "temporalOrderSubtitle": "कालानुक्रमिक क्रम आठवा.",
+  "associativePairsTitle": "सहयोगी जोड्या",
+  "associativePairsSubtitle": "संबंधित चिन्हांच्या जोड्या लावा आणि जुळवा.",
+  "blockCount3dTitle": "3D ठोकळे मोजणे",
+  "blockCount3dSubtitle": "त्रिमितीय जागेतील ठोकळे मोजा.",
+  "rotatingMazeTitle": "फिरणारी भूलभुलैया",
+  "rotatingMazeSubtitle": "चेंडूंना बाहेर जाण्याच्या मार्गापर्यंत नेण्यासाठी भूलभुलैया फिरवा.",
+  "silhouetteMatchOrthoTitle": "सिल्हूट जुळवणी (ऑर्थो)",
+  "silhouetteMatchOrthoSubtitle": "3D वस्तूंना ऑर्थो सावल्यांशी जुळवा.",
+  "spatialConflictTitle": "स्थानिक संघर्ष",
+  "spatialConflictSubtitle": "मजकूर आणि दिशा विसंगती सोडवा.",
+  "spotlightTrackTitle": "स्पॉटलाईट ट्रॅक",
+  "spotlightTrackSubtitle": "फिरणाऱ्या सावल्यांमधील चमकणाऱ्या वस्तूंचा मागोवा घ्या.",
+  "d2AttentionTitle": "d2 लक्ष चाचणी",
+  "d2AttentionSubtitle": "कडक निकषांसह लक्ष्य चिन्हांना टॅप करा.",
+  "dualMirrorTitle": "दुहेरी आरसा नेव्हिगेशन",
+  "dualMirrorSubtitle": "एकाच वेळी दोन भूलभुलैयांमधून मार्ग काढा.",
+  "contextCluesTitle": "संदर्भ संकेत",
+  "contextCluesSubtitle": "संदर्भ संकेतांवरून लपलेले शब्द ओळखा.",
+  "digitSpanReverseSubtitle": "संख्यांचे अंक उलट क्रमाने आठवा.",
+  "faceNameAssociationSubtitle": "सादर केलेल्या विविध चेहऱ्यांची नावे आठवा.",
+  "staircaseMemorySubtitle": "टप्प्याटप्प्याने ठोकळ्यांचा क्रम लक्षात ठेवा.",
+  "choiceReactionTimeSubtitle": "संकेतांशी जुळणारे विशिष्ट बटण वेगाने टॅप करा.",
+  "attentionalBlinkSubtitle": "प्रवाहामध्ये चमकणारे वेगवान लक्ष्य ओळखा.",
+  "visualStatisticalLearningSubtitle": "आकारांचे कालिक नमुने दृश्यमानपणे शिका.",
+  "sternbergTaskSubtitle": "चिन्ह मेमरी सेटमध्ये होते का ते आठवा.",
+  "operationSpanSubtitle": "गणित सोडवा आणि मुळाक्षरांची मालिका आठवा.",
+  "continuousRecognitionTitle": "सतत ओळख",
+  "continuousRecognitionSubtitle": "सादर केलेले कार्ड जुने आहे की नवीन ते ओळखा.",
+  "symmetrySpanTitle": "सममिती कालावधी",
+  "symmetrySpanSubtitle": "उभ्या सममिती निर्णयांदरम्यान सेलचे सहनिर्देशांक आठवा.",
+  "objectDisplacementTitle": "वस्तू विस्थापन",
+  "objectDisplacementSubtitle": "जागा अभ्यासा आणि हललेल्या एका वस्तूवर टॅप करा.",
+  "mandalaRecallTitle": "मंडला आठवणे",
+  "mandalaRecallSubtitle": "रंगीत फरशा लक्षात ठेवा आणि पॅलेटमधून मंडला पुन्हा रंगवा.",
+  "runningMemorySpanTitle": "रनिंग मेमरी स्पॅन",
+  "runningMemorySpanSubtitle": "वाहणाऱ्या अक्षरांचे निरीक्षण करा आणि शेवटच्या N वस्तू आठवा.",
+  "spatialCabinetMemoryTitle": "स्थानिक कपाट",
+  "spatialCabinetMemorySubtitle": "कपाटाच्या खणांमागील वस्तू लक्षात ठेवा आणि शोधा.",
+  "pathRecallSubtitle": "मार्गाची निवड लक्षात ठेवा आणि पुन्हा करा.",
+  "objectShuffleSubtitle": "खोल कपांखालील वस्तूंच्या अदलाबदलीचा मागोवा घ्या.",
+  "groceryListSubtitle": "यादीतील वस्तू लक्षात ठेवा आणि त्यावर खुणा करा.",
+  "quickMathSubtitle": "गणिती प्रश्न वेगाने सोडवा.",
+  "mathGuessTitle": "गणिती अंदाज",
+  "mathGuessSubtitle": "१५ संधींमध्ये लपलेली संख्या ओळखा.",
+  "reflexTapSubtitle": "जितक्या वेगाने शक्य असेल तितक्या वेगाने टॅप करा.",
+  "pixelMimicSubtitle": "पिक्सेल ग्रिडवर डिझाइन नमुन्यांची नक्कल करा.",
+  "simonSequenceSubtitle": "स्मृतीतून आकारांचा क्रम पुन्हा करा.",
+  "slidePuzzleSubtitle": "चौकोनी सरकत्या फरशा पुन्हा व्यवस्थित लावा.",
+  "findWordTitle": "शब्द शोधा",
+  "schulteTableSubtitle": "एक ते पंचवीस पर्यंतचे अंक टॅप करा.",
+  "simonCommandTitle": "सायमन कमांड",
+  "simonCommandSubtitle": "आवाज सूचनांचे वेगाने पालन करा.",
+  "binaryCodeTitle": "बायनरी स्पीड",
+  "binaryCodeSubtitle": "बायनरी कोडचे दशांश संख्येत रूपांतर करा.",
+  "moduloClockTitle": "मॉड्यूलो घड्याळ",
+  "moduloClockSubtitle": "घड्याळांचा वापर करून गणिती समीकरणे सोडवा.",
+  "chimpTestTitle": "चिपांझी चाचणी",
+  "chimpTestSubtitle": "यादृच्छिक अंक चढत्या क्रमाने टॅप करा.",
+  "relationalMemoryTitle": "संबंधात्मक स्मृती",
+  "relationalMemorySubtitle": "ग्रिड वस्तूंच्या अचूक जागा आठवा.",
+  "factBinderTitle": "फॅक्ट बाइंडर",
+  "factBinderSubtitle": "चिन्हे जोडा आणि विधाने आठवा.",
+  "sourceMonitoringTitle": "स्रोत देखरेख",
+  "sourceMonitoringSubtitle": "संदर्भ लक्षात ठेवा.",
+  "klotskiTitle": "क्लोतस्की एस्केप",
+  "klotskiSubtitle": "बाहेर पडण्याच्या मार्गापर्यंत पोहोचण्यासाठी ठोकळे सरकवा.",
+  "homophoneHuntSubtitle": "योग्य स्पेलिंग निवडा."
 }

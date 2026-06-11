@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
@@ -157,7 +159,7 @@ class MentalCalendarScreen extends ConsumerWidget {
             Navigator.of(context).pop();
             ref.read(mentalCalendarNotifierProvider.notifier).resetGame();
           },
-          title: 'RESULT',
+          title: L10nGameHelpers.getGameTitle(context, 'mental_calendar'),
           message: AppLocalizations.of(context)!.mentalCalendarMessage((score).toString()),
         ),
       );

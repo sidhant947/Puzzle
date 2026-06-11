@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -70,7 +72,7 @@ class _RuleSwitcherScreenState extends ConsumerState<RuleSwitcherScreen> {
     }
 
     return GameScaffold(
-      title: 'Rule Switcher',
+      title: L10nGameHelpers.getGameTitle(context, 'rule_switcher'),
       subtitle: l10n.ruleSwitcherSubtitle,
       body: Column(
         children: [

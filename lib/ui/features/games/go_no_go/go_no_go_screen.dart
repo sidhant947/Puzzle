@@ -6,7 +6,7 @@ import '../../../core/juice/game_scaffold.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../../utils/design_system.dart';
-import '../../../../l10n/app_localizations.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'go_no_go_provider.dart';
 import 'go_no_go_engine.dart';
 

@@ -1,3 +1,5 @@
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -61,8 +63,8 @@ class _ReadingSpanScreenState extends ConsumerState<ReadingSpanScreen> {
     });
 
     return GameScaffold(
-      title: 'READING SPAN',
-      subtitle: 'VERIFY SENTENCES WHILE REMEMBERING A SEQUENCE OF LETTERS.',
+      title: L10nGameHelpers.getGameTitle(context, 'reading_span'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'reading_span'),
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(

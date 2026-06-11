@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -140,7 +142,7 @@ class _RotatingMazeScreenState extends ConsumerState<RotatingMazeScreen> {
           context: context,
           barrierDismissible: false,
           builder: (dialogCtx) => GameCompletionDialog(
-            title: 'MAZE CLEARED',
+            title: L10nGameHelpers.getGameTitle(context, 'rotating_maze'),
             message: AppLocalizations.of(context)!.rotatingMazeMessage,
             onHome: () {
               Navigator.of(dialogCtx).pop();
@@ -156,8 +158,8 @@ class _RotatingMazeScreenState extends ConsumerState<RotatingMazeScreen> {
     }
 
     return GameScaffold(
-      title: 'Rotating Maze',
-      subtitle: 'GUIDE MARBLE • MAZE ROTATES REGULARLY',
+      title: L10nGameHelpers.getGameTitle(context, 'rotating_maze'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'rotating_maze'),
       onHowToPlay: _showHowToPlay,
       onReset: notifier.reset,
       body: state.isLoading

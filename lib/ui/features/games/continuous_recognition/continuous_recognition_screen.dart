@@ -1,3 +1,5 @@
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -61,8 +63,8 @@ class _ContinuousRecognitionScreenState extends ConsumerState<ContinuousRecognit
     });
 
     return GameScaffold(
-      title: 'CONTINUOUS RECOGNITION',
-      subtitle: 'HAVE YOU SEEN THIS CARD BEFORE IN THIS SESSION?',
+      title: L10nGameHelpers.getGameTitle(context, 'continuous_recognition'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'continuous_recognition'),
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(

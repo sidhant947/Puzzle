@@ -2623,4 +2623,716 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String get imReady => '我准备好了';
+
+  @override
+  String get soptTitle => '自订指向';
+
+  @override
+  String get soptSubtitle => '每次点击不同的卡。位置洗牌！';
+
+  @override
+  String get soptWinTitle => '序列大师！';
+
+  @override
+  String soptGameOverMessage(int score) {
+    return '通过成功追踪洗牌，您获得了 $score 分！';
+  }
+
+  @override
+  String get soptChooseNovel => '点按一张新卡';
+
+  @override
+  String get soptGreatJob => '干得好！';
+
+  @override
+  String get soptAlreadyTapped => '已经点击了！';
+
+  @override
+  String get soptGrid => '网格';
+
+  @override
+  String get contRecogTitle => '持续识别';
+
+  @override
+  String get contRecogSubtitle => '您之前在本次会议中见过这张卡片吗？';
+
+  @override
+  String get contRecogWinTitle => '公认的天才！';
+
+  @override
+  String contRecogGameOverMessage(int score) {
+    return '您获得了 $score 正确认可！';
+  }
+
+  @override
+  String get contRecogCorrect => '正确的！';
+
+  @override
+  String get contRecogWrong => '错误的！';
+
+  @override
+  String get contRecogOldOrNew => '这是旧的还是新的？';
+
+  @override
+  String get contRecogNew => '新的';
+
+  @override
+  String get contRecogOld => '老的';
+
+  @override
+  String get contRecogSeenPool => '所见泳池';
+
+  @override
+  String get dnmsTitle => '内存不匹配';
+
+  @override
+  String get dnmsSubtitle => '点击不在记忆样本中的卡片。';
+
+  @override
+  String get dnmsWinTitle => '不匹配的专家！';
+
+  @override
+  String dnmsGameOverMessage(int score) {
+    return '您在延迟不匹配中获得了 $score 正确答案！';
+  }
+
+  @override
+  String get dnmsChooseNovel => '点击新卡';
+
+  @override
+  String get dnmsMemorizeSample => '记住这张卡';
+
+  @override
+  String get dnmsWaitForIt => '等等吧...';
+
+  @override
+  String get dnmsExcellent => '出色的！';
+
+  @override
+  String get dnmsSampleTapped => '这就是样本！';
+
+  @override
+  String get dnmsCards => '牌';
+
+  @override
+  String get symSpanTitle => '对称跨度';
+
+  @override
+  String get symSpanSubtitle => '回忆细胞模式，同时识别垂直对称性。';
+
+  @override
+  String get symSpanWinTitle => '对称大师！';
+
+  @override
+  String symSpanGameOverMessage(int score) {
+    return '通过回忆布局和识别对称性，您获得了 $score 分！';
+  }
+
+  @override
+  String get symSpanMemorizeRed => '记住红细胞位置';
+
+  @override
+  String get symSpanIsSymmetric => '图案是否对称？';
+
+  @override
+  String get symSpanRecallSequence => '按正确顺序回忆序列';
+
+  @override
+  String get symSpanGreatJob => '干得好！';
+
+  @override
+  String get symSpanTryAgain => '再试一次！';
+
+  @override
+  String get symSpanLength => '长度';
+
+  @override
+  String get readingSpanTitle => '阅读广度';
+
+  @override
+  String get readingSpanSubtitle => '在记住字母序列的同时验证句子。';
+
+  @override
+  String get readingSpanWinTitle => '阅读专家！';
+
+  @override
+  String readingSpanGameOverMessage(int score) {
+    return '您在阅读广度记忆挑战中获得了 $score 分！';
+  }
+
+  @override
+  String get readingSpanTrueFalse => '这个说法是真是假？';
+
+  @override
+  String get readingSpanMemorizeLetter => '记住这封信';
+
+  @override
+  String get readingSpanRecallLetters => '按顺序回忆字母';
+
+  @override
+  String get readingSpanGreatJob => '干得好！';
+
+  @override
+  String get readingSpanTryAgain => '再试一次！';
+
+  @override
+  String readingSpanYourSequence(String sequence) {
+    return '您的序列： $sequence';
+  }
+
+  @override
+  String get readingSpanLength => '长度';
+
+  @override
+  String get readingSpanSentence1 => '太阳从东方升起。';
+
+  @override
+  String get readingSpanSentence2 => '冰正在沸腾。';
+
+  @override
+  String get readingSpanSentence3 => '鱼可以在水下呼吸。';
+
+  @override
+  String get readingSpanSentence4 => '狗有翅膀，可以飞。';
+
+  @override
+  String get readingSpanSentence5 => '水在 0 摄氏度时结冰。';
+
+  @override
+  String get readingSpanSentence6 => '猫像小狗一样吠叫。';
+
+  @override
+  String get readingSpanSentence7 => '夏天树有绿叶。';
+
+  @override
+  String get readingSpanSentence8 => '雨从地面向上落下。';
+
+  @override
+  String get readingSpanSentence9 => '三角形有四个相等的边。';
+
+  @override
+  String get readingSpanSentence10 => '苹果是一种甜水果。';
+
+  @override
+  String get readingSpanSentence11 => '月亮是用切达干酪制成的。';
+
+  @override
+  String get readingSpanSentence12 => '汽车有轮子可以滚动。';
+
+  @override
+  String get readingSpanSentence13 => '火是冰冷的。';
+
+  @override
+  String get readingSpanSentence14 => '纸是由经过加工的木材制成的。';
+
+  @override
+  String get readingSpanSentence15 => '鸟类有羽毛来帮助它们飞翔。';
+
+  @override
+  String get readingSpanSentence16 => '香蕉长在松树上。';
+
+  @override
+  String get readingSpanSentence17 => '大象比蚂蚁小。';
+
+  @override
+  String get readingSpanSentence18 => '书籍包含印刷的文本页。';
+
+  @override
+  String get countingSpanTitle => '计数跨度';
+
+  @override
+  String get countingSpanSubtitle => '仅计算蓝色圆圈。然后回忆计数的顺序。';
+
+  @override
+  String get countingSpanWinTitle => '算天才！';
+
+  @override
+  String countingSpanGameOverMessage(int score) {
+    return '您在计算跨度记忆挑战中获得了 $score 分！';
+  }
+
+  @override
+  String get countingSpanCountCircles => '仅计算蓝色圆圈';
+
+  @override
+  String get countingSpanRecallCounts => '按正确顺序回忆计数';
+
+  @override
+  String get countingSpanGreatJob => '干得好！';
+
+  @override
+  String get countingSpanTryAgain => '再试一次！';
+
+  @override
+  String countingSpanYourSequence(String sequence) {
+    return '您的序列： $sequence';
+  }
+
+  @override
+  String get countingSpanLength => '长度';
+
+  @override
+  String get objDispTitle => '物体位移';
+
+  @override
+  String get objDispSubtitle => '记住布局。找到并点击移动位置的一个对象。';
+
+  @override
+  String get objDispWinTitle => '空间天才！';
+
+  @override
+  String objDispGameOverMessage(int score) {
+    return '您正确识别了 $score 位移物体！';
+  }
+
+  @override
+  String get objDispMemorizeAll => '记住所有位置';
+
+  @override
+  String get objDispWaitingShift => '等待布局转换...';
+
+  @override
+  String get objDispTapMoved => '点击移动的物体';
+
+  @override
+  String get objDispExcellent => '出色的！';
+
+  @override
+  String get objDispWrongObject => '对象错误！';
+
+  @override
+  String get objDispItems => '项目';
+
+  @override
+  String get mandalaTitle => '曼陀罗回忆';
+
+  @override
+  String get mandalaSubtitle => '记住颜色配置。选择颜色并重新粉刷瓷砖。';
+
+  @override
+  String get mandalaWinTitle => '曼陀罗艺术家！';
+
+  @override
+  String mandalaGameOverMessage(int score) {
+    return '通过重新创建彩色几何布局，您获得了 $score 分！';
+  }
+
+  @override
+  String get mandalaMemorizeColors => '记住瓷砖颜色';
+
+  @override
+  String get mandalaPaintCells => '绘制单元格以匹配原始单元格';
+
+  @override
+  String get mandalaExcellent => '出色的！';
+
+  @override
+  String get mandalaIncorrectMatch => '匹配错误！';
+
+  @override
+  String get mandalaSubmitRepaint => '提交重绘';
+
+  @override
+  String get mandalaTiles => '瓷砖';
+
+  @override
+  String get runningSpanTitle => '运行跨度';
+
+  @override
+  String get runningSpanSubtitle => '注意字母。当他们停止时，按顺序输入最后 N 个字母。';
+
+  @override
+  String get runningSpanWinTitle => '缓冲大师！';
+
+  @override
+  String runningSpanGameOverMessage(int score) {
+    return '您在跑步记忆广度中获得了 $score 分！';
+  }
+
+  @override
+  String runningSpanPrepareRecall(int count) {
+    return '准备回忆最后 $count 个字母';
+  }
+
+  @override
+  String get runningSpanWatchCarefully => '仔细观察...';
+
+  @override
+  String runningSpanEnterLast(int count) {
+    return '输入最后 $count 个字母';
+  }
+
+  @override
+  String get runningSpanGreatJob => '干得好！';
+
+  @override
+  String get runningSpanIncorrectBuffer => '缓冲区不正确！';
+
+  @override
+  String runningSpanRecallLast(int count) {
+    return '回想最后 $count 个';
+  }
+
+  @override
+  String get runningSpanStopsRandomly => '流随机停止！';
+
+  @override
+  String runningSpanEntered(String sequence) {
+    return '输入： $sequence';
+  }
+
+  @override
+  String get runningSpanNItems => 'N 项';
+
+  @override
+  String get spatialCabinetTitle => '空间柜';
+
+  @override
+  String get spatialCabinetSubtitle => '记住哪个柜子抽屉里有哪个物品。';
+
+  @override
+  String get spatialCabinetWinTitle => '橱柜专家！';
+
+  @override
+  String spatialCabinetGameOverMessage(int score) {
+    return '您在空间柜记忆中获得了 $score 分！';
+  }
+
+  @override
+  String get spatialCabinetMemorize => '记住物品位置';
+
+  @override
+  String spatialCabinetWhereIs(String itemName) {
+    return '$itemName 在哪里？';
+  }
+
+  @override
+  String get spatialCabinetCorrect => '正确的！';
+
+  @override
+  String get spatialCabinetWrongDrawer => '抽屉放错了！';
+
+  @override
+  String get spatialCabinetItems => '项目';
+
+  @override
+  String get cabinetItemKey => '钥匙';
+
+  @override
+  String get cabinetItemApple => '苹果';
+
+  @override
+  String get cabinetItemDiamond => '钻石';
+
+  @override
+  String get cabinetItemBook => '书';
+
+  @override
+  String get cabinetItemUmbrella => '伞';
+
+  @override
+  String get cabinetItemCoffee => '咖啡';
+
+  @override
+  String get cabinetItemLock => '锁';
+
+  @override
+  String get cabinetItemPet => '宠物';
+
+  @override
+  String get cabinetItemCar => '车';
+
+  @override
+  String get gamesTitleLabel => '游戏';
+
+  @override
+  String get yourFavorites => '你的最爱';
+
+  @override
+  String get readyForWorkout => '准备好进行每日锻炼了吗？';
+
+  @override
+  String get greatStartKeepGoing => '良好的开端！继续保持。';
+
+  @override
+  String get onFireToday => '你今天状态火热！';
+
+  @override
+  String get incredibleSolvingToday => '今天表现惊人！';
+
+  @override
+  String get newGameLabel => '新';
+
+  @override
+  String get slitherlinkTitle => '数连 (Slitherlink)';
+
+  @override
+  String get slitherlinkSubtitle => '使用数字线索连接点网格。';
+
+  @override
+  String get futoshikiTitle => '不等式 (Futoshiki)';
+
+  @override
+  String get futoshikiSubtitle => '使用大于/小于线索填充网格。';
+
+  @override
+  String get kakuroTitle => '数和 (Kakuro)';
+
+  @override
+  String get kakuroSubtitle => '使用数字和总和解决交叉谜题。';
+
+  @override
+  String get inequalityDashTitle => '不等式冲刺';
+
+  @override
+  String get inequalityDashSubtitle => '在时间压力下解决不等式。';
+
+  @override
+  String get factorFinderTitle => '因数寻找者';
+
+  @override
+  String get factorFinderSubtitle => '识别目标数字的所有因数。';
+
+  @override
+  String get collatzTitle => '考拉兹路径';
+
+  @override
+  String get collatzSubtitle => '导航 3N+1 序列。';
+
+  @override
+  String get sumPyramidTitle => '总和金字塔';
+
+  @override
+  String get sumPyramidSubtitle => '使用总和数学线索填充金字塔单元格。';
+
+  @override
+  String get target10Title => '目标 10';
+
+  @override
+  String get target10Subtitle => '合并数字磁贴以获得十个总和。';
+
+  @override
+  String get fractionMatcherTitle => '分数匹配';
+
+  @override
+  String get fractionMatcherSubtitle => '视觉上匹配等值分数。';
+
+  @override
+  String get dualCodingTitle => '双重编码';
+
+  @override
+  String get dualCodingSubtitle => '同时匹配字母和符号。';
+
+  @override
+  String get distractorMatrixTitle => '干扰矩阵';
+
+  @override
+  String get distractorMatrixSubtitle => '在干扰因素中寻找目标形状。';
+
+  @override
+  String get temporalOrderTitle => '时间顺序';
+
+  @override
+  String get temporalOrderSubtitle => '回忆时间序列。';
+
+  @override
+  String get associativePairsTitle => '联想对';
+
+  @override
+  String get associativePairsSubtitle => '配对并匹配相应的符号。';
+
+  @override
+  String get blockCount3dTitle => '3D 方块计数';
+
+  @override
+  String get blockCount3dSubtitle => '在三维空间中清点方块。';
+
+  @override
+  String get rotatingMazeTitle => '旋转迷宫';
+
+  @override
+  String get rotatingMazeSubtitle => '旋转迷宫以引导球到达出口。';
+
+  @override
+  String get silhouetteMatchOrthoTitle => '剪影匹配（正交）';
+
+  @override
+  String get silhouetteMatchOrthoSubtitle => '将 3D 物体与正交阴影匹配。';
+
+  @override
+  String get spatialConflictTitle => '空间冲突';
+
+  @override
+  String get spatialConflictSubtitle => '解决文本和方向之间的差异。';
+
+  @override
+  String get spotlightTrackTitle => '聚光灯追踪';
+
+  @override
+  String get spotlightTrackSubtitle => '在移动的阴影中追踪闪烁的项目。';
+
+  @override
+  String get d2AttentionTitle => 'd2 注意力';
+
+  @override
+  String get d2AttentionSubtitle => '按照严格标准点击目标符号。';
+
+  @override
+  String get dualMirrorTitle => '双镜导航';
+
+  @override
+  String get dualMirrorSubtitle => '同时导航两个迷宫。';
+
+  @override
+  String get contextCluesTitle => '语境线索';
+
+  @override
+  String get contextCluesSubtitle => '从语境暗示中推断隐藏的单词。';
+
+  @override
+  String get digitSpanReverseSubtitle => '以相反顺序回忆数字位数。';
+
+  @override
+  String get faceNameAssociationSubtitle => '回忆所展示的不同脸孔的名字。';
+
+  @override
+  String get staircaseMemorySubtitle => '按阶梯顺序记忆方块。';
+
+  @override
+  String get choiceReactionTimeSubtitle => '快速点击与线索匹配的特定按钮。';
+
+  @override
+  String get attentionalBlinkSubtitle => '捕捉在流中闪烁的快速目标。';
+
+  @override
+  String get visualStatisticalLearningSubtitle => '视觉学习时间形状模式。';
+
+  @override
+  String get sternbergTaskSubtitle => '回忆符号是否在记忆集中。';
+
+  @override
+  String get operationSpanSubtitle => '解决数学题并回忆字母串。';
+
+  @override
+  String get continuousRecognitionTitle => '连续识别';
+
+  @override
+  String get continuousRecognitionSubtitle => '识别所展示的卡片是旧的还是新的。';
+
+  @override
+  String get symmetrySpanTitle => '对称跨度';
+
+  @override
+  String get symmetrySpanSubtitle => '在垂直对称决策中回忆单元格坐标。';
+
+  @override
+  String get objectDisplacementTitle => '物体位移';
+
+  @override
+  String get objectDisplacementSubtitle => '研究摆放位置并点击唯一移动的物体。';
+
+  @override
+  String get mandalaRecallTitle => '曼陀罗回忆';
+
+  @override
+  String get mandalaRecallSubtitle => '记忆彩色磁贴并从调色板重新绘制曼陀罗。';
+
+  @override
+  String get runningMemorySpanTitle => '运行跨度';
+
+  @override
+  String get runningMemorySpanSubtitle => '监控运行的字母并回忆最后 N 个项目。';
+
+  @override
+  String get spatialCabinetMemoryTitle => '空间柜子';
+
+  @override
+  String get spatialCabinetMemorySubtitle => '记忆并定位柜门后的项目。';
+
+  @override
+  String get pathRecallSubtitle => '记忆并重复路径选择。';
+
+  @override
+  String get objectShuffleSubtitle => '追踪深杯下洗牌的项目。';
+
+  @override
+  String get groceryListSubtitle => '记忆并勾选清单上的项目。';
+
+  @override
+  String get quickMathSubtitle => '以最高速度解决算术问题。';
+
+  @override
+  String get mathGuessTitle => '数学猜猜看';
+
+  @override
+  String get mathGuessSubtitle => '在 15 次机会内猜出隐藏的数字。';
+
+  @override
+  String get reflexTapSubtitle => '以人类极限速度点击刺激。';
+
+  @override
+  String get pixelMimicSubtitle => '在像素网格上模仿设计图案。';
+
+  @override
+  String get simonSequenceSubtitle => '从记忆中重复形状序列。';
+
+  @override
+  String get slidePuzzleSubtitle => '重新排列正方形滑动网格磁贴。';
+
+  @override
+  String get findWordTitle => '找单词';
+
+  @override
+  String get schulteTableSubtitle => '按顺序点击数字 1 到 25。';
+
+  @override
+  String get simonCommandTitle => '西蒙命令';
+
+  @override
+  String get simonCommandSubtitle => '快速执行语音指令。';
+
+  @override
+  String get binaryCodeTitle => '二进制速度';
+
+  @override
+  String get binaryCodeSubtitle => '将二进制代码转换为十进制。';
+
+  @override
+  String get moduloClockTitle => '同余时钟';
+
+  @override
+  String get moduloClockSubtitle => '使用时钟计算数学方程式。';
+
+  @override
+  String get chimpTestTitle => '黑猩猩测试';
+
+  @override
+  String get chimpTestSubtitle => '按升序点击随机数字。';
+
+  @override
+  String get relationalMemoryTitle => '关系记忆';
+
+  @override
+  String get relationalMemorySubtitle => '回忆准确的网格项目位置。';
+
+  @override
+  String get factBinderTitle => '事实活页夹';
+
+  @override
+  String get factBinderSubtitle => '连接符号并回忆陈述。';
+
+  @override
+  String get sourceMonitoringTitle => '来源监控';
+
+  @override
+  String get sourceMonitoringSubtitle => '记住语境。';
+
+  @override
+  String get klotskiTitle => '华容道 (Klotski Escape)';
+
+  @override
+  String get klotskiSubtitle => '滑动方块以到达出口。';
+
+  @override
+  String get homophoneHuntSubtitle => '选择正确的拼写。';
 }

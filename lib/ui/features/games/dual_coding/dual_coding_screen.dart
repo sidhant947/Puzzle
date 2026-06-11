@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -45,7 +47,7 @@ class _DualCodingScreenState extends ConsumerState<DualCodingScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'DUAL CODING COMPLETE',
+        title: L10nGameHelpers.getGameTitle(context, 'dual_coding'),
         message: AppLocalizations.of(context)!.dualCodingMessage((state.score).toString()),
         isVictory: state.score >= 12,
         onHome: () {
@@ -79,8 +81,8 @@ class _DualCodingScreenState extends ConsumerState<DualCodingScreen> {
     });
 
     if (state.isLoading) {
-      return const GameScaffold(
-        title: 'DUAL CODING',
+      return GameScaffold(
+        title: L10nGameHelpers.getGameTitle(context, 'dual_coding'),
         body: Center(child: CircularProgressIndicator()),
       );
     }
@@ -88,8 +90,8 @@ class _DualCodingScreenState extends ConsumerState<DualCodingScreen> {
     final currentStim = state.history.isNotEmpty ? state.history.last : null;
 
     return GameScaffold(
-      title: 'DUAL CODING',
-      subtitle: 'Match Pitch and Card with 2-steps ago',
+      title: L10nGameHelpers.getGameTitle(context, 'dual_coding'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'dual_coding'),
       actions: [
         _buildTimer(state.timeLeft),
       ],

@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'pipes_engine.dart';
@@ -164,7 +166,7 @@ class PipesScreen extends ConsumerWidget {
           ref.read(pipesNotifierProvider.notifier).newGame();
           Navigator.of(context).pop();
         },
-        title: 'CONGRATS',
+        title: L10nGameHelpers.getGameTitle(context, 'pipes'),
         message: AppLocalizations.of(context)!.pipesMessage,
       ),
     );

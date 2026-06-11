@@ -1,3 +1,5 @@
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -60,8 +62,8 @@ class _DnmsScreenState extends ConsumerState<DnmsScreen> {
     });
 
     return GameScaffold(
-      title: 'NON-MATCHING MEMORY',
-      subtitle: 'TAP THE CARD THAT WAS NOT IN THE MEMORIZED SAMPLE.',
+      title: L10nGameHelpers.getGameTitle(context, 'dnms'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'dnms'),
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(

@@ -1,3 +1,5 @@
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -136,8 +138,8 @@ class _ChimpTestScreenState extends ConsumerState<ChimpTestScreen> {
     final colorScheme = theme.colorScheme;
 
     return GameScaffold(
-      title: "CHIMP TEST",
-      subtitle: "MEMORIZE THE NUMBERS. TAPPING '1' COVERS THE TILES. SELECT IN ASCENDING ORDER.",
+      title: L10nGameHelpers.getGameTitle(context, 'chimp_test'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'chimp_test'),
       body: LayoutBuilder(
         builder: (context, constraints) {
           final boardSize = min(constraints.maxWidth, constraints.maxHeight) * 0.85;

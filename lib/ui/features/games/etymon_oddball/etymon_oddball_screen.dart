@@ -1,4 +1,6 @@
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import "package:puzzle/l10n/app_localizations.dart";
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -57,8 +59,8 @@ class _EtymonOddballScreenState extends ConsumerState<EtymonOddballScreen> {
     });
 
     return GameScaffold(
-      title: 'ETYMON ODDBALL',
-      subtitle: 'Identify the word with a different root',
+      title: L10nGameHelpers.getGameTitle(context, 'etymon_oddball'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'etymon_oddball'),
       actions: [
         TangibleButton(
           color: colorScheme.surface,

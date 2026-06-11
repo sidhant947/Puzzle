@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -74,7 +76,7 @@ class _MagicSquaresScreenState extends ConsumerState<MagicSquaresScreen> {
     }
 
     return GameScaffold(
-      title: 'Magic Square',
+      title: L10nGameHelpers.getGameTitle(context, 'magic_squares'),
       subtitle: l10n.magicSquaresSubtitle(state.targetSum),
       body: LayoutBuilder(
         builder: (context, constraints) {

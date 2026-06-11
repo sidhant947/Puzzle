@@ -1796,5 +1796,350 @@
         "type": "String"
       }
     }
-  }
+  },
+  "soptTitle": "Kendi Kendine Sıralanan İşaretleme",
+  "soptSubtitle": "Her seferinde farklı bir karta dokunun. Pozisyonlar değişiyor!",
+  "soptWinTitle": "Sıra Ustası!",
+  "soptGameOverMessage": "Karıştırılan kartları başarıyla takip ederek {score} puan kazandınız!",
+  "soptChooseNovel": "Yeni bir karta dokunun",
+  "soptGreatJob": "Harika iş!",
+  "soptAlreadyTapped": "Zaten dokunuldu!",
+  "soptGrid": "Izgara",
+  "contRecogTitle": "Sürekli Tanıma",
+  "contRecogSubtitle": "Bu kartı daha önce bu oturumda gördünüz mü?",
+  "contRecogWinTitle": "Tanıma Dahisi!",
+  "contRecogGameOverMessage": "{score} doğru tanıma yaptınız!",
+  "contRecogCorrect": "Doğru!",
+  "contRecogWrong": "Yanlış!",
+  "contRecogOldOrNew": "Bu eski mi yeni mi?",
+  "contRecogNew": "Yeni",
+  "contRecogOld": "Eskimiş",
+  "contRecogSeenPool": "Görülmüş Havuz",
+  "dnmsTitle": "Eşleşmeyen Bellek",
+  "dnmsSubtitle": "Ezberlenen örnekte olmayan karta dokunun.",
+  "dnmsWinTitle": "Eşleşmeyen Uzman!",
+  "dnmsGameOverMessage": "Gecikmeli Eşleşmeyen bölümünde {score} doğru yanıt aldınız!",
+  "dnmsChooseNovel": "Yeni karta dokunun",
+  "dnmsMemorizeSample": "Bu kartı ezberleyin",
+  "dnmsWaitForIt": "Bekle...",
+  "dnmsExcellent": "Harika!",
+  "dnmsSampleTapped": "Örnek buydu!",
+  "dnmsCards": "Kartlar",
+  "symSpanTitle": "Simetri Açıklığı",
+  "symSpanSubtitle": "Dikey simetriyi tanımlarken hücre desenlerini hatırlayın.",
+  "symSpanWinTitle": "Simetri Ustası!",
+  "symSpanGameOverMessage": "Düzenleri hatırlayarak ve simetriyi tanımlayarak {score} puan kazandınız!",
+  "symSpanMemorizeRed": "Kırmızı hücre konumunu ezberle",
+  "symSpanIsSymmetric": "Desen simetrik mi?",
+  "symSpanRecallSequence": "Sırayı doğru sırayla hatırlayın",
+  "symSpanGreatJob": "Harika iş!",
+  "symSpanTryAgain": "Tekrar deneyin!",
+  "symSpanLength": "Uzunluk",
+  "readingSpanTitle": "Okuma Aralığı",
+  "readingSpanSubtitle": "Bir harf dizisini hatırlayarak cümleleri doğrulayın.",
+  "readingSpanWinTitle": "Okuma Uzmanı!",
+  "readingSpanGameOverMessage": "Okuma Alanı hafıza mücadelesinde {score} puan kazandınız!",
+  "readingSpanTrueFalse": "Bu ifade doğru mu, yanlış mı?",
+  "readingSpanMemorizeLetter": "Bu mektubu ezberleyin",
+  "readingSpanRecallLetters": "Harfleri sırayla hatırlama",
+  "readingSpanGreatJob": "Harika iş!",
+  "readingSpanTryAgain": "Tekrar deneyin!",
+  "readingSpanYourSequence": "Sıranız: {sequence}",
+  "readingSpanLength": "Uzunluk",
+  "readingSpanSentence1": "Güneş doğudan doğar.",
+  "readingSpanSentence2": "Buz sıcak kaynıyor.",
+  "readingSpanSentence3": "Balıklar su altında nefes alabilir.",
+  "readingSpanSentence4": "Köpeklerin kanatları vardır ve uçabilirler.",
+  "readingSpanSentence5": "Su 0 santigrat derecede donar.",
+  "readingSpanSentence6": "Kediler küçük köpekler gibi havlarlar.",
+  "readingSpanSentence7": "Ağaçlar yaz aylarında yeşil yapraklara sahiptir.",
+  "readingSpanSentence8": "Yağmur yerden yukarıya doğru yağar.",
+  "readingSpanSentence9": "Bir üçgenin dört eşit kenarı vardır.",
+  "readingSpanSentence10": "Elma tatlı bir meyve türüdür.",
+  "readingSpanSentence11": "Ay kaşar peynirinden yapılır.",
+  "readingSpanSentence12": "Otomobillerin yuvarlanacak tekerlekleri vardır.",
+  "readingSpanSentence13": "Ateş donuyor.",
+  "readingSpanSentence14": "Kağıt işlenmiş ağaçtan yapılır.",
+  "readingSpanSentence15": "Kuşların uçmalarına yardımcı olan tüyleri vardır.",
+  "readingSpanSentence16": "Muz çam ağaçlarında yetişir.",
+  "readingSpanSentence17": "Fil, karıncadan daha küçüktür.",
+  "readingSpanSentence18": "Kitaplar basılı metin sayfaları içerir.",
+  "countingSpanTitle": "Sayma Aralığı",
+  "countingSpanSubtitle": "Yalnızca mavi daireleri sayın. Daha sonra sayım sırasını hatırlayın.",
+  "countingSpanWinTitle": "Sayma Dahi!",
+  "countingSpanGameOverMessage": "Sayma Açıklığı hafıza mücadelesinde {score} puan kazandınız!",
+  "countingSpanCountCircles": "Yalnızca mavi daireleri say",
+  "countingSpanRecallCounts": "Sayımları doğru sırayla geri çağırma",
+  "countingSpanGreatJob": "Harika iş!",
+  "countingSpanTryAgain": "Tekrar deneyin!",
+  "countingSpanYourSequence": "Sıranız: {sequence}",
+  "countingSpanLength": "Uzunluk",
+  "objDispTitle": "Nesne Yer Değiştirme",
+  "objDispSubtitle": "Düzeni ezberleyin. Konumu değiştiren tek nesneyi bulun ve dokunun.",
+  "objDispWinTitle": "Uzay Dahisi!",
+  "objDispGameOverMessage": "{score} yeri değiştirilmiş nesneyi doğru bir şekilde tanımladınız!",
+  "objDispMemorizeAll": "Tüm yerleşimleri ezberle",
+  "objDispWaitingShift": "Düzen değişikliği bekleniyor...",
+  "objDispTapMoved": "Taşınan nesneye dokunun",
+  "objDispExcellent": "Harika!",
+  "objDispWrongObject": "Yanlış nesne!",
+  "objDispItems": "Öğeler",
+  "mandalaTitle": "Mandala Hatırlama",
+  "mandalaSubtitle": "Renk yapılandırmasını ezberleyin. Renkleri seçin ve döşemeleri yeniden boyayın.",
+  "mandalaWinTitle": "Mandala Sanatçısı!",
+  "mandalaGameOverMessage": "Renkli geometrik düzenleri yeniden oluşturarak {score} puan kazandınız!",
+  "mandalaMemorizeColors": "Döşeme renklerini ezberleyin",
+  "mandalaPaintCells": "Hücreleri orijinale uyacak şekilde boyayın",
+  "mandalaExcellent": "Harika!",
+  "mandalaIncorrectMatch": "Yanlış eşleşme!",
+  "mandalaSubmitRepaint": "Yeniden Boyamayı Gönder",
+  "mandalaTiles": "Fayans",
+  "runningSpanTitle": "Koşu Aralığı",
+  "runningSpanSubtitle": "Harflere dikkat edin. Durduklarında son N harfini sırayla girin.",
+  "runningSpanWinTitle": "Tampon Ustası!",
+  "runningSpanGameOverMessage": "Koşu Hafıza Alanında {score} puan kazandınız!",
+  "runningSpanPrepareRecall": "Son {count} harfi hatırlamaya hazırlanın",
+  "runningSpanWatchCarefully": "Dikkatlice izleyin...",
+  "runningSpanEnterLast": "Son {count} harfi girin",
+  "runningSpanGreatJob": "Harika iş!",
+  "runningSpanIncorrectBuffer": "Yanlış tampon!",
+  "runningSpanRecallLast": "Sonuncuyu hatırla {count}",
+  "runningSpanStopsRandomly": "Akış rastgele duruyor!",
+  "runningSpanEntered": "Girildi: {sequence}",
+  "runningSpanNItems": "N-Öğeler",
+  "spatialCabinetTitle": "Mekansal Dolaplar",
+  "spatialCabinetSubtitle": "Hangi dolap çekmecesinin hangi nesneyi içerdiğini ezberleyin.",
+  "spatialCabinetWinTitle": "Kabine Uzmanı!",
+  "spatialCabinetGameOverMessage": "Uzamsal Dolap Hafızasında {score} puan kazandınız!",
+  "spatialCabinetMemorize": "Öğe konumlarını ezberleyin",
+  "spatialCabinetWhereIs": "{itemName} nerede?",
+  "spatialCabinetCorrect": "Doğru!",
+  "spatialCabinetWrongDrawer": "Yanlış çekmece!",
+  "spatialCabinetItems": "Öğeler",
+  "cabinetItemKey": "Anahtar",
+  "cabinetItemApple": "Elma",
+  "cabinetItemDiamond": "Elmas",
+  "cabinetItemBook": "Kitap",
+  "cabinetItemUmbrella": "Şemsiye",
+  "cabinetItemCoffee": "Kahve",
+  "cabinetItemLock": "Kilit",
+  "cabinetItemPet": "Evcil Hayvan",
+  "cabinetItemCar": "Araba",
+  "@soptGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@contRecogGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@dnmsGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@symSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@countingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@countingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@objDispGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@mandalaGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanPrepareRecall": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEnterLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanRecallLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEntered": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@spatialCabinetGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@spatialCabinetWhereIs": {
+    "placeholders": {
+      "itemName": {
+        "type": "String"
+      }
+    }
+  },
+  "gamesTitleLabel": "OYUNLAR",
+  "yourFavorites": "FAVORİLERİNİZ",
+  "readyForWorkout": "GÜNLÜK ANTRENMANINIZ İÇİN HAZIR MISINIZ?",
+  "greatStartKeepGoing": "HARİKA BAŞLANGIÇ! DEVAM EDİN.",
+  "onFireToday": "BUGÜN FORMUNUZDASINIZ!",
+  "incredibleSolvingToday": "BUGÜN İNANILMAZ ÇÖZÜMLER!",
+  "newGameLabel": "YENİ",
+  "slitherlinkTitle": "Slitherlink",
+  "slitherlinkSubtitle": "SAYI İPUÇLARINI KULLANARAK NOKTA IZGARASINI ÇEMBERE ALIN.",
+  "futoshikiTitle": "Futoshiki",
+  "futoshikiSubtitle": "IZGARALARI BÜYÜKTÜR İPUÇLARIYLA DOLDURUN.",
+  "kakuroTitle": "Kakuro",
+  "kakuroSubtitle": "BULMACALARI SAYILAR VE TOPLAMLARLA ÇÖZÜN.",
+  "inequalityDashTitle": "Eşitsizlik Koşusu",
+  "inequalityDashSubtitle": "ZAMAN BASKISI ALTINDA EŞİTSİZLİKLERİ ÇÖZÜN.",
+  "factorFinderTitle": "Çarpan Bulucu",
+  "factorFinderSubtitle": "HEDEF SAYILARIN TÜM ÇARPANLARINI BELİRLEYİN.",
+  "collatzTitle": "Collatz Yolu",
+  "collatzSubtitle": "3N+1 DİZİSİNDE GEZİNİN.",
+  "sumPyramidTitle": "Toplam Piramidi",
+  "sumPyramidSubtitle": "PİRAMİT HÜCRELERİNİ TOPLAMA MATEMATİK İPUÇLARIYLA DOLDURUN.",
+  "target10Title": "Hedef 10",
+  "target10Subtitle": "ON TOPLAMINA ULAŞMAK İÇİN SAYI KAROLARINI BİRLEŞTİRİN.",
+  "fractionMatcherTitle": "Kesir Eşleştirici",
+  "fractionMatcherSubtitle": "DENK KESİRLERİ GÖRSEL OLARAK EŞLEŞTİRİN.",
+  "dualCodingTitle": "İkili Kodlama",
+  "dualCodingSubtitle": "HARFLERİ VE SEMBOLLERİ AYNI ANDA EŞLEŞTİRİN.",
+  "distractorMatrixTitle": "Çeldirici Matrisi",
+  "distractorMatrixSubtitle": "ÇELDİRİCİLER ARASINDA HEDEF ŞEKİLLERİ BULUN.",
+  "temporalOrderTitle": "Zaman Düzeni",
+  "temporalOrderSubtitle": "KRONOLOJİK DİZİYİ HATIRLAYIN.",
+  "associativePairsTitle": "Çağrışımsal Çiftler",
+  "associativePairsSubtitle": "İLGİLİ SEMBOLLERİ EŞLEŞTİRİN VE BAĞLAYIN.",
+  "blockCount3dTitle": "3D Blok Sayma",
+  "blockCount3dSubtitle": "ÜÇ BOYUTLU ALANDAKİ BLOKLARI SAYIN.",
+  "rotatingMazeTitle": "Dönen Labirent",
+  "rotatingMazeSubtitle": "TOPLARI ÇIKIŞA YÖNLENDİRMEK İÇİN LABİRENTLERİ DÖNDÜRÜN.",
+  "silhouetteMatchOrthoTitle": "Siluet Eşleştirme (Orto)",
+  "silhouetteMatchOrthoSubtitle": "3D NESNELERİ ORTO GÖLGELERLE EŞLEŞTİRİN.",
+  "spatialConflictTitle": "Uzamsal Çatışma",
+  "spatialConflictSubtitle": "METİN VE YÖN ARASINDAKİ ÇELİŞKİLERİ ÇÖZÜN.",
+  "spotlightTrackTitle": "Spotlight Takibi",
+  "spotlightTrackSubtitle": "HAREKETLİ GÖLGELERDEKİ YANIP SÖNEN ÖGELERİ TAKİP EDİN.",
+  "d2AttentionTitle": "d2 Dikkat",
+  "d2AttentionSubtitle": "HEDEF SEMBOLLERİ KATI KRİTERLERLE SEÇİN.",
+  "dualMirrorTitle": "Çift Aynalı Navigasyon",
+  "dualMirrorSubtitle": "AYNI ANDA İKİ LABİRENTTE GEZİNİN.",
+  "contextCluesTitle": "Bağlam İpuçları",
+  "contextCluesSubtitle": "BAĞLAM İPUÇLARINDAN GİZLİ KELİMELERİ ÇIKARIN.",
+  "digitSpanReverseSubtitle": "SAYILARI TERS SIRADA HATIRLAYIN.",
+  "faceNameAssociationSubtitle": "SUNULAN ÇEŞİTLİ YÜZLERİN İSİMLERİNİ HATIRLAYIN.",
+  "staircaseMemorySubtitle": "BLOKLARI BASAMAKLI BİR SIRAYLA EZBERLEYİN.",
+  "choiceReactionTimeSubtitle": "İPUÇLARIYLA EŞLEŞEN BELİRLİ DÜĞMELERE HIZLICA BASIN.",
+  "attentionalBlinkSubtitle": "AKIŞLARDA HIZLICA YANIP SÖNEN HEDEFLERİ YAKALAYIN.",
+  "visualStatisticalLearningSubtitle": "ZAMANSAL ŞEKİL KALIPLARINI GÖRSEL OLARAK ÖĞRENİN.",
+  "sternbergTaskSubtitle": "SEMBOLÜN BELLEK SETİNDE OLUP OLMADIĞINI HATIRLAYIN.",
+  "operationSpanSubtitle": "MATEMATİK ÇÖZÜN VE ALFABE DİZİLERİNİ HATIRLAYIN.",
+  "continuousRecognitionTitle": "Sürekli Tanıma",
+  "continuousRecognitionSubtitle": "SUNULAN KARTIN ESKİ Mİ YENİ Mİ OLDUĞUNU BELİRLEYİN.",
+  "symmetrySpanTitle": "Simetri Aralığı",
+  "symmetrySpanSubtitle": "DİKEY SİMETRİ KARARLARI ARASINDA HÜCRE KOORDİNATLARINI HATIRLAYIN.",
+  "objectDisplacementTitle": "Nesne Yer Değiştirme",
+  "objectDisplacementSubtitle": "YERLEŞİMLERİ İNCELEYİN VE HAREKET EDEN TEK NESNEYE DOKUNUN.",
+  "mandalaRecallTitle": "Mandala Hatırlama",
+  "mandalaRecallSubtitle": "RENK KAROLARINI EZBERLEYİN VE MANDALALARI PALETTEN YENİDEN BOYAYIN.",
+  "runningMemorySpanTitle": "Çalışan Bellek Aralığı",
+  "runningMemorySpanSubtitle": "AKAN HARFLERİ İZLEYİN VE SON N ÖGEYİ HATIRLAYIN.",
+  "spatialCabinetMemoryTitle": "Uzamsal Dolaplar",
+  "spatialCabinetMemorySubtitle": "DOLAP KAPAKLARININ ARKASINDAKİ ÖGELERİ EZBERLEYİN VE BULUN.",
+  "pathRecallSubtitle": "YOL SEÇİMLERİNİ EZBERLEYİN VE TEKRARLAYIN.",
+  "objectShuffleSubtitle": "DERİN BARDAKLARIN ALTINDA KARIŞTIRILAN ÖGELERİ TAKİP EDİN.",
+  "groceryListSubtitle": "LİSTEDEKİ ÖGELERİ EZBERLEYİN VE İŞARETLEYİN.",
+  "quickMathSubtitle": "ARİTMETİK SORULARINI EN YÜKSEK HIZDA ÇÖZÜN.",
+  "mathGuessTitle": "Matematik Tahmini",
+  "mathGuessSubtitle": "GİZLİ SAYIYI 15 HAK İÇİNDE TAHMİN EDİN.",
+  "reflexTapSubtitle": "UYARANLARA İNSANIN YAPABİLECEĞİ EN HIZLI ŞEKİLDE DOKUNUN.",
+  "pixelMimicSubtitle": "PİKSEL IZGARALARI ÜZERİNDEKİ TASARIM KALIPLARINI TAKLİT EDİN.",
+  "simonSequenceSubtitle": "ŞEKİL DİZİLERİNİ BELLEKTEN TEKRARLAYIN.",
+  "slidePuzzleSubtitle": "KARE KAYDIRMA IZGARA KAROLARINI YENİDEN DÜZENLEYİN.",
+  "findWordTitle": "Kelime Bul",
+  "schulteTableSubtitle": "BİRDEN YİRMİ BEŞE KADAR SAYILARA DOKUNUN.",
+  "simonCommandTitle": "Simon Komutu",
+  "simonCommandSubtitle": "SESLİ TALİMATLARI HIZLICA YERİNE GETİRİN.",
+  "binaryCodeTitle": "İkili Hız",
+  "binaryCodeSubtitle": "İKİLİ KODLARI ONDALIK SAYILARA DÖNÜŞTÜRÜN.",
+  "moduloClockTitle": "Modülo Saat",
+  "moduloClockSubtitle": "SAATLERİ KULLANARAK MATEMATİK DENKLEMLERİNİ HESAPLAYIN.",
+  "chimpTestTitle": "Şempanze Testi",
+  "chimpTestSubtitle": "RASTGELE SAYILARA ARTAN SIRADA DOKUNUN.",
+  "relationalMemoryTitle": "İlişkisel Bellek",
+  "relationalMemorySubtitle": "TAM IZGARA ÖGESİ KONUMLARINI HATIRLAYIN.",
+  "factBinderTitle": "Gerçek Bağlayıcı",
+  "factBinderSubtitle": "SEMBOLLERİ BAĞLAYIN VE İFADELERİ HATIRLAYIN.",
+  "sourceMonitoringTitle": "Kaynak İzleme",
+  "sourceMonitoringSubtitle": "BAĞLAMI HATIRLAYIN.",
+  "klotskiTitle": "Klotski Kaçışı",
+  "klotskiSubtitle": "ÇIKIŞLARA ULAŞMAK İÇİN BLOKLARI KAYDIRIN.",
+  "homophoneHuntSubtitle": "DOĞRU YAZIMI SEÇİN."
 }

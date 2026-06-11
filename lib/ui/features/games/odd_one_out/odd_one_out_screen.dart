@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'dart:async';
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
@@ -217,7 +219,7 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
           _startTimer();
           Navigator.of(context).pop();
         },
-        title: 'CONGRATS',
+        title: L10nGameHelpers.getGameTitle(context, 'odd_one_out'),
         message: AppLocalizations.of(context)!.oddOneOutMessage((ref.read(oddOneOutNotifierProvider).score).toString()),
       ),
     );
@@ -238,7 +240,7 @@ class _OddOneOutScreenState extends ConsumerState<OddOneOutScreen> {
           _startTimer();
           Navigator.of(context).pop();
         },
-        title: 'TIME IS UP!',
+        title: L10nGameHelpers.getGameTitle(context, 'odd_one_out'),
         message: AppLocalizations.of(context)!.oddOneOutMessage1((ref.read(oddOneOutNotifierProvider).score).toString()),
       ),
     );

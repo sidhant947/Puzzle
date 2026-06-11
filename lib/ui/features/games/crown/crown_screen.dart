@@ -1,4 +1,6 @@
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import "package:puzzle/l10n/app_localizations.dart";
+
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -167,7 +169,7 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'CROWNED!',
+        title: L10nGameHelpers.getGameTitle(context, 'crown'),
         message: AppLocalizations.of(context)!.crownMessage,
         onHome: () {
           Navigator.of(context).pop();

@@ -1796,5 +1796,350 @@
       }
     }
   },
-  "imReady": "నేను సిద్ధంగా ఉన్నాను"
+  "imReady": "నేను సిద్ధంగా ఉన్నాను",
+  "soptTitle": "స్వీయ-ఆర్డర్ చేసిన పాయింటింగ్",
+  "soptSubtitle": "ప్రతిసారీ వేరే కార్డ్‌ని ట్యాప్ చేయండి. స్థానాలు షఫుల్!",
+  "soptWinTitle": "సీక్వెన్స్ మాస్టర్!",
+  "soptGameOverMessage": "షఫుల్ చేసిన కార్డ్‌లను విజయవంతంగా ట్రాక్ చేయడం ద్వారా మీరు {score} పాయింట్‌లను సాధించారు!",
+  "soptChooseNovel": "కొత్త కార్డ్‌ని నొక్కండి",
+  "soptGreatJob": "గొప్ప పని!",
+  "soptAlreadyTapped": "ఇప్పటికే ట్యాప్ చేయబడింది!",
+  "soptGrid": "గ్రిడ్",
+  "contRecogTitle": "నిరంతర గుర్తింపు",
+  "contRecogSubtitle": "మీరు ఈ సెషన్‌లో ఇంతకు ముందు ఈ కార్డ్‌ని చూసారా?",
+  "contRecogWinTitle": "గుర్తింపు మేధావి!",
+  "contRecogGameOverMessage": "మీరు సరైన గుర్తింపులను {score} స్కోర్ చేసారు!",
+  "contRecogCorrect": "కరెక్ట్!",
+  "contRecogWrong": "తప్పు!",
+  "contRecogOldOrNew": "ఇది పాతదా కొత్తదా?",
+  "contRecogNew": "కొత్తది",
+  "contRecogOld": "పాతది",
+  "contRecogSeenPool": "పూల్ చూసింది",
+  "dnmsTitle": "సరిపోలని మెమరీ",
+  "dnmsSubtitle": "గుర్తుంచుకోబడిన నమూనాలో లేని కార్డ్‌ను నొక్కండి.",
+  "dnmsWinTitle": "సరిపోలని నిపుణుడు!",
+  "dnmsGameOverMessage": "ఆలస్యమైన నాన్-మ్యాచింగ్‌లో మీరు {score} సరైన సమాధానాలను స్కోర్ చేసారు!",
+  "dnmsChooseNovel": "కొత్త కార్డ్‌ని నొక్కండి",
+  "dnmsMemorizeSample": "ఈ కార్డును గుర్తుంచుకోండి",
+  "dnmsWaitForIt": "దాని కోసం వేచి ఉండండి ...",
+  "dnmsExcellent": "అద్భుతమైన!",
+  "dnmsSampleTapped": "అది నమూనా!",
+  "dnmsCards": "కార్డులు",
+  "symSpanTitle": "సిమెట్రీ స్పాన్",
+  "symSpanSubtitle": "నిలువు సమరూపతను గుర్తించేటప్పుడు సెల్ నమూనాలను గుర్తుకు తెచ్చుకోండి.",
+  "symSpanWinTitle": "సమరూపత మాస్టారు!",
+  "symSpanGameOverMessage": "మీరు లేఅవుట్‌లను రీకాల్ చేయడం మరియు సమరూపతను గుర్తించడం ద్వారా {score} పాయింట్‌లను సాధించారు!",
+  "symSpanMemorizeRed": "రెడ్ సెల్ స్థానాన్ని గుర్తుంచుకోండి",
+  "symSpanIsSymmetric": "నమూనా సుష్టంగా ఉందా?",
+  "symSpanRecallSequence": "సరైన క్రమంలో రీకాల్ సీక్వెన్స్",
+  "symSpanGreatJob": "గొప్ప పని!",
+  "symSpanTryAgain": "మళ్లీ ప్రయత్నించండి!",
+  "symSpanLength": "పొడవు",
+  "readingSpanTitle": "రీడింగ్ స్పాన్",
+  "readingSpanSubtitle": "అక్షరాల క్రమాన్ని గుర్తుంచుకునేటప్పుడు వాక్యాలను ధృవీకరించండి.",
+  "readingSpanWinTitle": "పఠన నిపుణుడు!",
+  "readingSpanGameOverMessage": "రీడింగ్ స్పాన్ మెమరీ ఛాలెంజ్‌లో మీరు {score} పాయింట్‌లు సాధించారు!",
+  "readingSpanTrueFalse": "ఈ ప్రకటన నిజమా అబద్ధమా?",
+  "readingSpanMemorizeLetter": "ఈ లేఖను గుర్తుంచుకోండి",
+  "readingSpanRecallLetters": "వరుసక్రమంలో అక్షరాలను గుర్తుకు తెచ్చుకోండి",
+  "readingSpanGreatJob": "గొప్ప పని!",
+  "readingSpanTryAgain": "మళ్లీ ప్రయత్నించండి!",
+  "readingSpanYourSequence": "మీ క్రమం: {sequence}",
+  "readingSpanLength": "పొడవు",
+  "readingSpanSentence1": "సూర్యుడు తూర్పున ఉదయిస్తాడు.",
+  "readingSpanSentence2": "మంచు వేడిగా ఉడుకుతోంది.",
+  "readingSpanSentence3": "చేపలు నీటి అడుగున శ్వాస తీసుకోగలవు.",
+  "readingSpanSentence4": "కుక్కలకు రెక్కలు ఉన్నాయి మరియు ఎగరగలవు.",
+  "readingSpanSentence5": "నీరు 0 డిగ్రీల సెల్సియస్ వద్ద ఘనీభవిస్తుంది.",
+  "readingSpanSentence6": "పిల్లులు చిన్న కుక్కల్లా మొరుగుతాయి.",
+  "readingSpanSentence7": "వేసవిలో చెట్లకు పచ్చని ఆకులు ఉంటాయి.",
+  "readingSpanSentence8": "వర్షం భూమి నుండి పైకి కురుస్తుంది.",
+  "readingSpanSentence9": "ఒక త్రిభుజానికి నాలుగు సమాన భుజాలు ఉంటాయి.",
+  "readingSpanSentence10": "యాపిల్స్ ఒక రకమైన తీపి పండు.",
+  "readingSpanSentence11": "చంద్రుడు చెడ్డార్ జున్నుతో తయారు చేయబడింది.",
+  "readingSpanSentence12": "ఆటోమొబైల్‌లకు రోల్ చేయడానికి చక్రాలు ఉంటాయి.",
+  "readingSpanSentence13": "అగ్ని గడ్డకట్టే చల్లగా ఉంది.",
+  "readingSpanSentence14": "కాగితం ప్రాసెస్ చేయబడిన చెక్కతో తయారు చేయబడింది.",
+  "readingSpanSentence15": "పక్షులకు ఎగరడానికి ఈకలు ఉంటాయి.",
+  "readingSpanSentence16": "అరటిపండ్లు పైన్ చెట్లపై పెరుగుతాయి.",
+  "readingSpanSentence17": "చీమల కంటే ఏనుగు చిన్నది.",
+  "readingSpanSentence18": "పుస్తకాలలో టెక్స్ట్ యొక్క ముద్రిత పేజీలు ఉంటాయి.",
+  "countingSpanTitle": "కౌంటింగ్ స్పాన్",
+  "countingSpanSubtitle": "నీలం వృత్తాలను మాత్రమే లెక్కించండి. అప్పుడు గణనల క్రమాన్ని గుర్తుకు తెచ్చుకోండి.",
+  "countingSpanWinTitle": "మేధావి లెక్క!",
+  "countingSpanGameOverMessage": "మీరు కౌంటింగ్ స్పాన్ మెమరీ ఛాలెంజ్‌లో {score} పాయింట్లు సాధించారు!",
+  "countingSpanCountCircles": "నీలిరంగు సర్కిల్‌లను మాత్రమే లెక్కించండి",
+  "countingSpanRecallCounts": "సరైన క్రమంలో రీకాల్ గణనలు",
+  "countingSpanGreatJob": "గొప్ప పని!",
+  "countingSpanTryAgain": "మళ్లీ ప్రయత్నించండి!",
+  "countingSpanYourSequence": "మీ క్రమం: {sequence}",
+  "countingSpanLength": "పొడవు",
+  "objDispTitle": "వస్తువు స్థానభ్రంశం",
+  "objDispSubtitle": "లేఅవుట్‌ను గుర్తుంచుకోండి. స్థానం మార్చే ఒక వస్తువును కనుగొని, నొక్కండి.",
+  "objDispWinTitle": "ప్రాదేశిక మేధావి!",
+  "objDispGameOverMessage": "మీరు {score} స్థానభ్రంశం చెందిన వస్తువులను సరిగ్గా గుర్తించారు!",
+  "objDispMemorizeAll": "అన్ని నియామకాలను గుర్తుంచుకోండి",
+  "objDispWaitingShift": "లేఅవుట్ మార్పు కోసం వేచి ఉంది...",
+  "objDispTapMoved": "తరలించిన వస్తువును నొక్కండి",
+  "objDispExcellent": "అద్భుతమైన!",
+  "objDispWrongObject": "తప్పు వస్తువు!",
+  "objDispItems": "వస్తువులు",
+  "mandalaTitle": "మండల రీకాల్",
+  "mandalaSubtitle": "రంగు కాన్ఫిగరేషన్‌ను గుర్తుంచుకోండి. రంగులు ఎంచుకొని టైల్స్‌కు మళ్లీ పెయింట్ చేయండి.",
+  "mandalaWinTitle": "మండల కళాకారిణి!",
+  "mandalaGameOverMessage": "మీరు రంగుల రేఖాగణిత లేఅవుట్‌లను పునఃసృష్టించడం ద్వారా {score} పాయింట్‌లను సాధించారు!",
+  "mandalaMemorizeColors": "టైల్ రంగులను గుర్తుంచుకోండి",
+  "mandalaPaintCells": "ఒరిజినల్‌కు సరిపోయేలా సెల్‌లను పెయింట్ చేయండి",
+  "mandalaExcellent": "అద్భుతమైన!",
+  "mandalaIncorrectMatch": "సరికాని మ్యాచ్!",
+  "mandalaSubmitRepaint": "తిరిగి పెయింట్ సమర్పించండి",
+  "mandalaTiles": "టైల్స్",
+  "runningSpanTitle": "రన్నింగ్ స్పాన్",
+  "runningSpanSubtitle": "అక్షరాలను గమనించండి. అవి ఆగిపోయినప్పుడు, చివరి N అక్షరాలను క్రమంలో ఇన్‌పుట్ చేయండి.",
+  "runningSpanWinTitle": "బఫర్ మాస్టర్!",
+  "runningSpanGameOverMessage": "మీరు రన్నింగ్ మెమరీ స్పాన్‌లో {score} పాయింట్‌లు సాధించారు!",
+  "runningSpanPrepareRecall": "చివరి {count} అక్షరాలను రీకాల్ చేయడానికి సిద్ధం చేయండి",
+  "runningSpanWatchCarefully": "జాగ్రత్తగా గమనించండి...",
+  "runningSpanEnterLast": "చివరి {count} అక్షరాలను నమోదు చేయండి",
+  "runningSpanGreatJob": "గొప్ప పని!",
+  "runningSpanIncorrectBuffer": "సరికాని బఫర్!",
+  "runningSpanRecallLast": "చివరిగా గుర్తుచేసుకోండి {count}",
+  "runningSpanStopsRandomly": "స్ట్రీమ్ యాదృచ్ఛికంగా ఆగిపోతుంది!",
+  "runningSpanEntered": "ప్రవేశించినది: {sequence}",
+  "runningSpanNItems": "N-అంశాలు",
+  "spatialCabinetTitle": "ప్రాదేశిక క్యాబినెట్‌లు",
+  "spatialCabinetSubtitle": "ఏ క్యాబినెట్ డ్రాయర్‌లో ఏ వస్తువు ఉందో గుర్తుంచుకోండి.",
+  "spatialCabinetWinTitle": "క్యాబినెట్ నిపుణుడు!",
+  "spatialCabinetGameOverMessage": "మీరు స్పేషియల్ క్యాబినెట్ మెమరీలో {score} పాయింట్లు సాధించారు!",
+  "spatialCabinetMemorize": "అంశం స్థానాలను గుర్తుంచుకోండి",
+  "spatialCabinetWhereIs": "{itemName} ఎక్కడ ఉంది?",
+  "spatialCabinetCorrect": "కరెక్ట్!",
+  "spatialCabinetWrongDrawer": "తప్పు డ్రాయర్!",
+  "spatialCabinetItems": "వస్తువులు",
+  "cabinetItemKey": "కీ",
+  "cabinetItemApple": "ఆపిల్",
+  "cabinetItemDiamond": "డైమండ్",
+  "cabinetItemBook": "పుస్తకం",
+  "cabinetItemUmbrella": "గొడుగు",
+  "cabinetItemCoffee": "కాఫీ",
+  "cabinetItemLock": "తాళం వేయండి",
+  "cabinetItemPet": "పెంపుడు జంతువు",
+  "cabinetItemCar": "కారు",
+  "@soptGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@contRecogGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@dnmsGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@symSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@countingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@countingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@objDispGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@mandalaGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanPrepareRecall": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEnterLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanRecallLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEntered": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@spatialCabinetGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@spatialCabinetWhereIs": {
+    "placeholders": {
+      "itemName": {
+        "type": "String"
+      }
+    }
+  },
+  "gamesTitleLabel": "ఆటలు",
+  "yourFavorites": "మీ ఇష్టమైనవి",
+  "readyForWorkout": "మీ రోజువారీ వ్యాయామం కోసం సిద్ధంగా ఉన్నారా?",
+  "greatStartKeepGoing": "గొప్ప ప్రారంభం! కొనసాగించండి.",
+  "onFireToday": "ఈ రోజు మీరు అద్భుతంగా ఆడుతున్నారు!",
+  "incredibleSolvingToday": "ఈ రోజు అద్భుతమైన పరిష్కారాలు!",
+  "newGameLabel": "కొత్తది",
+  "slitherlinkTitle": "స్లిథర్ లింక్",
+  "slitherlinkSubtitle": "సంఖ్యల ఆధారంగా పిన్ గ్రిడ్‌ను లూప్ చేయండి.",
+  "futoshikiTitle": "ఫుతోషికి",
+  "futoshikiSubtitle": "గ్రేటర్-దాన్ క్లూస్‌తో గ్రిడ్‌లను పూరించండి.",
+  "kakuroTitle": "కాకురో",
+  "kakuroSubtitle": "సంఖ్యలు మరియు మొత్తాలతో క్రాస్‌వర్డ్‌లను పరిష్కరించండి.",
+  "inequalityDashTitle": "అసమానత డ్యాష్",
+  "inequalityDashSubtitle": "సమయ ఒత్తిడిలో అసమానతలను పరిష్కరించండి.",
+  "factorFinderTitle": "కారణాంక అన్వేషి",
+  "factorFinderSubtitle": "లక్ష్య సంఖ్యల అన్ని కారణాంకాలను గుర్తించండి.",
+  "collatzTitle": "కొలాట్జ్ మార్గం",
+  "collatzSubtitle": "3N+1 క్రమంలో ప్రయాణించండి.",
+  "sumPyramidTitle": "మొత్తాల పిరమిడ్",
+  "sumPyramidSubtitle": "మొత్తాల గణిత క్లూస్‌తో పిరమిడ్ సెల్‌లను పూరించండి.",
+  "target10Title": "టార్గెట్ 10",
+  "target10Subtitle": "పది మొత్తం రావడానికి సంఖ్య టైల్స్‌ను కలపండి.",
+  "fractionMatcherTitle": "భిన్నాల జతకట్టడం",
+  "fractionMatcherSubtitle": "సమానమైన భిన్నాలను దృశ్యమానంగా జత చేయండి.",
+  "dualCodingTitle": "ద్వంద్వ కోడింగ్",
+  "dualCodingSubtitle": "అక్షరాలు మరియు చిహ్నాలను ఒకేసారి జత చేయండి.",
+  "distractorMatrixTitle": "డిస్ట్రాక్టర్ మ్యాట్రిక్స్",
+  "distractorMatrixSubtitle": "డిస్ట్రాక్టర్ల మధ్య లక్ష్య ఆకృతులను కనుగొనండి.",
+  "temporalOrderTitle": "కాలక్రమం",
+  "temporalOrderSubtitle": "కాలక్రమానుసార క్రమాన్ని గుర్తుకు తెచ్చుకోండి.",
+  "associativePairsTitle": "అనుబంధ జతలు",
+  "associativePairsSubtitle": "సంబంధిత చిహ్నాలను జత చేయండి మరియు సరిపోల్చండి.",
+  "blockCount3dTitle": "3D బ్లాక్ లెక్కింపు",
+  "blockCount3dSubtitle": "త్రిమితీయ ప్రదేశంలో బ్లాక్‌లను లెక్కించండి.",
+  "rotatingMazeTitle": "తిరిగే మేజ్",
+  "rotatingMazeSubtitle": "బంతులను నిష్క్రమణ వైపు నడిపించడానికి మేజ్‌లను తిప్పండి.",
+  "silhouetteMatchOrthoTitle": "సిల్హౌట్ మ్యాచ్ (ఆర్థో)",
+  "silhouetteMatchOrthoSubtitle": "3D వస్తువులను ఆర్థో నీడలతో సరిపోల్చండి.",
+  "spatialConflictTitle": "ప్రాదేశిక సంఘర్షణ",
+  "spatialConflictSubtitle": "టెక్స్ట్ మరియు దిశ మధ్య వ్యత్యాసాలను పరిష్కరించండి.",
+  "spotlightTrackTitle": "స్పాట్‌లైట్ ట్రాక్",
+  "spotlightTrackSubtitle": "కదిలే నీడలలో మెరుస్తున్న వస్తువులను ట్రాక్ చేయండి.",
+  "d2AttentionTitle": "d2 ఏకాగ్రత",
+  "d2AttentionSubtitle": "కఠినమైన ప్రమాణాలతో లక్ష్య చిహ్నాలను ట్యాప్ చేయండి.",
+  "dualMirrorTitle": "ద్వంద్వ దర్పణ నావిగేషన్",
+  "dualMirrorSubtitle": "ఒకేసారి రెండు మేజ్‌లను నావిగేట్ చేయండి.",
+  "contextCluesTitle": "సందర్భోచిత క్లూస్",
+  "contextCluesSubtitle": "సందర్భోచిత సూచనల నుండి దాగి ఉన్న పదాలను ఊహించండి.",
+  "digitSpanReverseSubtitle": "సంఖ్య అంకెలను రివర్స్ క్రమంలో గుర్తుకు తెచ్చుకోండి.",
+  "faceNameAssociationSubtitle": "ప్రదర్శించబడిన వివిధ ముఖాల పేర్లను గుర్తుకు తెచ్చుకోండి.",
+  "staircaseMemorySubtitle": "భ్లాక్‌లను మెట్ల క్రమంలో గుర్తుంచుకోండి.",
+  "choiceReactionTimeSubtitle": "క్లూస్‌కు సరిపోయే నిర్దిష్ట బటన్‌లను వేగంగా ట్యాప్ చేయండి.",
+  "attentionalBlinkSubtitle": "స్ట్రీమ్స్‌లో వేగంగా మెరుస్తున్న లక్ష్యాలను గుర్తించండి.",
+  "visualStatisticalLearningSubtitle": "ఆకృతుల కాలక్రమానుసార నమూనాలను దృశ్యమానంగా నేర్చుకోండి.",
+  "sternbergTaskSubtitle": "చిహ్నం మెమరీ సెట్‌లో ఉందో లేదో గుర్తుకు తెచ్చుకోండి.",
+  "operationSpanSubtitle": "గణితాన్ని పరిష్కరించండి మరియు వర్ణమాల స్ట్రింగ్స్‌ను గుర్తుకు తెచ్చుకోండి.",
+  "continuousRecognitionTitle": "నిరంతర గుర్తింపు",
+  "continuousRecognitionSubtitle": "ప్రదర్శించబడిన కార్డ్ పాతదా లేదా కొత్తదా అని గుర్తించండి.",
+  "symmetrySpanTitle": "సమరూపత వ్యవధి",
+  "symmetrySpanSubtitle": "నిలువు సమరూపత నిర్ణయాల మధ్య సెల్ కోఆర్డినేట్‌లను గుర్తుకు తెచ్చుకోండి.",
+  "objectDisplacementTitle": "వస్తువు స్థానభ్రంశం",
+  "objectDisplacementSubtitle": "స్థానాలను అధ్యయనం చేయండి మరియు కదిలిన వస్తువును ట్యాప్ చేయండి.",
+  "mandalaRecallTitle": "మండలా రీకాల్",
+  "mandalaRecallSubtitle": "రంగు టైల్స్‌ను గుర్తుంచుకోండి మరియు ప్యాలెట్ నుండి మండలాను తిరిగి పెయింట్ చేయండి.",
+  "runningMemorySpanTitle": "రన్నింగ్ స్పాన్",
+  "runningMemorySpanSubtitle": "ప్రవహించే అక్షరాలను పర్యవేక్షించండి మరియు చివరి N వస్తువులను గుర్తుకు తెచ్చుకోండి.",
+  "spatialCabinetMemoryTitle": "ప్రాదేశిక క్యాబినెట్లు",
+  "spatialCabinetMemorySubtitle": "క్యాబినెట్ తలుపుల వెనుక ఉన్న వస్తువులను గుర్తుంచుకోండి మరియు కనుగొనండి.",
+  "pathRecallSubtitle": "మార్గ ఎంపికలను గుర్తుంచుకోండి మరియు పునరావృతం చేయండి.",
+  "objectShuffleSubtitle": "లోతైన కప్పుల క్రింద మార్చబడిన వస్తువులను ట్రాక్ చేయండి.",
+  "groceryListSubtitle": "జాబితాలోని వస్తువులను గుర్తుంచుకోండి మరియు టిక్ చేయండి.",
+  "quickMathSubtitle": "అంకగణిత ప్రశ్నలను అత్యంత వేగంగా పరిష్కరించండి.",
+  "mathGuessTitle": "గణిత అంచనా",
+  "mathGuessSubtitle": "దాగి ఉన్న సంఖ్యను 15 అవకాశాలలో ఊహించండి.",
+  "reflexTapSubtitle": "ఉద్దీపనలను మానవ పరిమితి మేరకు వేగంగా ట్యాప్ చేయండి.",
+  "pixelMimicSubtitle": "పిక్సెల్ గ్రిడ్‌లపై డిజైన్ నమూనాలను అనుకరించండి.",
+  "simonSequenceSubtitle": "మెమరీ నుండి ఆకృతుల క్రమాన్ని పునరావృతం చేయండి.",
+  "slidePuzzleSubtitle": "చదరపు స్లైడింగ్ గ్రిడ్ టైల్స్‌ను మళ్ళీ అమర్చండి.",
+  "findWordTitle": "పదాన్ని కనుగొనండి",
+  "schulteTableSubtitle": "ఒకటి నుండి ఇరవై ఐదు వరకు సంఖ్యలను ట్యాప్ చేయండి.",
+  "simonCommandTitle": "సైమన్ కమాండ్",
+  "simonCommandSubtitle": "వాయిస్ సూచనలను వేగంగా అమలు చేయండి.",
+  "binaryCodeTitle": "బైనరీ వేగం",
+  "binaryCodeSubtitle": "బైనరీ కోడ్‌లను డెసిమల్‌లోకి అనువదించండి.",
+  "moduloClockTitle": "మోడ్యులో గడియారం",
+  "moduloClockSubtitle": "గడియారాలను ఉపయోగించి గణిత సమీకరణాలను లెక్కించండి.",
+  "chimpTestTitle": "చింపాంజీ పరీక్ష",
+  "chimpTestSubtitle": "యాదృచ్ఛిక సంఖ్యలను ఆరోహణ క్రమంలో ట్యాప్ చేయండి.",
+  "relationalMemoryTitle": "సంబంధిత జ్ఞాపకశక్తి",
+  "relationalMemorySubtitle": "ఖచ్చితమైన గ్రిడ్ ఐటెమ్ స్థానాలను గుర్తుకు తెచ్చుకోండి.",
+  "factBinderTitle": "ఫ్యాక్ట్ బైండర్",
+  "factBinderSubtitle": "చిహ్నాలను కనెక్ట్ చేయండి మరియు ప్రకటనలను గుర్తుకు తెచ్చుకోండి.",
+  "sourceMonitoringTitle": "మూల పర్యవేక్షణ",
+  "sourceMonitoringSubtitle": "సందర్భాన్ని గుర్తుంచుకోండి.",
+  "klotskiTitle": "క్లోట్స్కీ ఎస్కేప్",
+  "klotskiSubtitle": "నిష్క్రమణను చేరుకోవడానికి బ్లాక్‌లను స్లైడ్ చేయండి.",
+  "homophoneHuntSubtitle": "సరైన స్పెల్లింగ్‌ను ఎంచుకోండి."
 }

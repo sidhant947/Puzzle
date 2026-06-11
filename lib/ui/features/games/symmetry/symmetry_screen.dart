@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'symmetry_provider.dart';
@@ -163,7 +165,7 @@ class _SymmetryScreenState extends ConsumerState<SymmetryScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'PERFECT MIRROR!',
+        title: L10nGameHelpers.getGameTitle(context, 'symmetry'),
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();

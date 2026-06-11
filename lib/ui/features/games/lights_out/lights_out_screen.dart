@@ -7,7 +7,7 @@ import '../../../../widgets/tangible.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
 import '../../../core/juice/game_scaffold.dart';
-import '../../../../l10n/app_localizations.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 
 class LightsOutScreen extends ConsumerWidget {
   const LightsOutScreen({super.key});

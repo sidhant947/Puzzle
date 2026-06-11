@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
@@ -68,8 +70,8 @@ class _SyllableStackScreenState extends ConsumerState<SyllableStackScreen> {
     });
 
     return GameScaffold(
-      title: 'Syllable Stack',
-      subtitle: 'Stack syllables to form words',
+      title: L10nGameHelpers.getGameTitle(context, 'syllable_stack'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'syllable_stack'),
       body: Column(
         children: [
           Padding(

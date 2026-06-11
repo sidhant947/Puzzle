@@ -1796,5 +1796,350 @@
         "type": "String"
       }
     }
-  }
+  },
+  "soptTitle": "স্ব-অর্ডারড পয়েন্টিং",
+  "soptSubtitle": "প্রতিবার আলাদা কার্ডে ট্যাপ করুন। পদ পরিবর্তন!",
+  "soptWinTitle": "সিকোয়েন্স মাস্টার!",
+  "soptGameOverMessage": "আপনি সফলভাবে এলোমেলো কার্ড ট্র্যাক করে {score} পয়েন্ট স্কোর করেছেন!",
+  "soptChooseNovel": "একটি নতুন কার্ড আলতো চাপুন",
+  "soptGreatJob": "দারুণ কাজ!",
+  "soptAlreadyTapped": "ইতিমধ্যে ট্যাপ!",
+  "soptGrid": "গ্রিড",
+  "contRecogTitle": "ক্রমাগত স্বীকৃতি",
+  "contRecogSubtitle": "আপনি কি এই সেশনে আগে এই কার্ড দেখেছেন?",
+  "contRecogWinTitle": "স্বীকৃতি জিনিয়াস!",
+  "contRecogGameOverMessage": "আপনি {score} সঠিক স্বীকৃতি স্কোর করেছেন!",
+  "contRecogCorrect": "সঠিক!",
+  "contRecogWrong": "ভুল!",
+  "contRecogOldOrNew": "এটা কি পুরাতন নাকি নতুন?",
+  "contRecogNew": "নতুন",
+  "contRecogOld": "পুরাতন",
+  "contRecogSeenPool": "পুল দেখা গেছে",
+  "dnmsTitle": "নন-ম্যাচিং মেমরি",
+  "dnmsSubtitle": "যে কার্ডটি মুখস্থ নমুনায় ছিল না তা আলতো চাপুন।",
+  "dnmsWinTitle": "অ-ম্যাচিং বিশেষজ্ঞ!",
+  "dnmsGameOverMessage": "আপনি বিলম্বিত নন-ম্যাচিং-এ {score} সঠিক উত্তর স্কোর করেছেন!",
+  "dnmsChooseNovel": "নতুন কার্ডে ট্যাপ করুন",
+  "dnmsMemorizeSample": "এই কার্ড মুখস্থ",
+  "dnmsWaitForIt": "এর জন্য অপেক্ষা করুন...",
+  "dnmsExcellent": "চমৎকার!",
+  "dnmsSampleTapped": "যে নমুনা ছিল!",
+  "dnmsCards": "কার্ড",
+  "symSpanTitle": "প্রতিসাম্য স্প্যান",
+  "symSpanSubtitle": "উল্লম্ব প্রতিসাম্য সনাক্ত করার সময় কোষের নিদর্শনগুলি স্মরণ করুন।",
+  "symSpanWinTitle": "সিমেট্রি মাস্টার!",
+  "symSpanGameOverMessage": "আপনি লেআউটগুলি স্মরণ করে এবং প্রতিসাম্য সনাক্ত করে {score} পয়েন্ট অর্জন করেছেন!",
+  "symSpanMemorizeRed": "লাল কোষের অবস্থান মনে রাখুন",
+  "symSpanIsSymmetric": "প্যাটার্ন কি প্রতিসম?",
+  "symSpanRecallSequence": "সঠিক ক্রমে অনুক্রম স্মরণ করুন",
+  "symSpanGreatJob": "দারুণ কাজ!",
+  "symSpanTryAgain": "আবার চেষ্টা করুন!",
+  "symSpanLength": "দৈর্ঘ্য",
+  "readingSpanTitle": "রিডিং স্প্যান",
+  "readingSpanSubtitle": "বর্ণের ক্রম মনে রাখার সময় বাক্য যাচাই করুন।",
+  "readingSpanWinTitle": "রিডিং এক্সপার্ট!",
+  "readingSpanGameOverMessage": "রিডিং স্প্যান মেমরি চ্যালেঞ্জে আপনি {score} পয়েন্ট স্কোর করেছেন!",
+  "readingSpanTrueFalse": "এই বিবৃতি সত্য না মিথ্যা?",
+  "readingSpanMemorizeLetter": "এই চিঠি মুখস্থ",
+  "readingSpanRecallLetters": "ক্রমানুসারে চিঠিগুলি স্মরণ করুন",
+  "readingSpanGreatJob": "দারুণ কাজ!",
+  "readingSpanTryAgain": "আবার চেষ্টা করুন!",
+  "readingSpanYourSequence": "আপনার ক্রম: {sequence}",
+  "readingSpanLength": "দৈর্ঘ্য",
+  "readingSpanSentence1": "সূর্য পূর্ব দিকে উদিত হয়।",
+  "readingSpanSentence2": "বরফ গরম হয়ে ফুটছে।",
+  "readingSpanSentence3": "মাছ পানির নিচে শ্বাস নিতে পারে।",
+  "readingSpanSentence4": "কুকুরের ডানা আছে এবং উড়তে পারে।",
+  "readingSpanSentence5": "0 ডিগ্রি সেলসিয়াসে জল জমে যায়।",
+  "readingSpanSentence6": "বিড়াল ছোট কুকুরের মত ঘেউ ঘেউ করে।",
+  "readingSpanSentence7": "গ্রীষ্মকালে গাছে সবুজ পাতা থাকে।",
+  "readingSpanSentence8": "মাটি থেকে ওপরের দিকে বৃষ্টি পড়ছে।",
+  "readingSpanSentence9": "একটি ত্রিভুজের চারটি সমান বাহু রয়েছে।",
+  "readingSpanSentence10": "আপেল এক ধরনের মিষ্টি ফল।",
+  "readingSpanSentence11": "চাঁদ চেডার পনির দিয়ে তৈরি।",
+  "readingSpanSentence12": "অটোমোবাইল রোল করার জন্য চাকা আছে.",
+  "readingSpanSentence13": "আগুন জমে ঠাণ্ডা।",
+  "readingSpanSentence14": "কাগজ প্রক্রিয়াজাত কাঠ থেকে তৈরি করা হয়।",
+  "readingSpanSentence15": "পাখিদের উড়তে সাহায্য করার জন্য পালক থাকে।",
+  "readingSpanSentence16": "পাইন গাছে কলা জন্মে।",
+  "readingSpanSentence17": "একটি হাতি একটি পিঁপড়ার চেয়ে ছোট।",
+  "readingSpanSentence18": "বইগুলোতে লেখার ছাপা পাতা থাকে।",
+  "countingSpanTitle": "স্প্যান গণনা",
+  "countingSpanSubtitle": "শুধুমাত্র নীল বৃত্ত গণনা. তারপর গণনার ক্রম স্মরণ করুন।",
+  "countingSpanWinTitle": "কাউন্টিং জিনিয়াস!",
+  "countingSpanGameOverMessage": "আপনি কাউন্টিং স্প্যান মেমরি চ্যালেঞ্জে {score} পয়েন্ট স্কোর করেছেন!",
+  "countingSpanCountCircles": "শুধুমাত্র নীল বৃত্ত গণনা",
+  "countingSpanRecallCounts": "সঠিক ক্রমে গণনা প্রত্যাহার করুন",
+  "countingSpanGreatJob": "দারুণ কাজ!",
+  "countingSpanTryAgain": "আবার চেষ্টা করুন!",
+  "countingSpanYourSequence": "আপনার ক্রম: {sequence}",
+  "countingSpanLength": "দৈর্ঘ্য",
+  "objDispTitle": "বস্তুর স্থানচ্যুতি",
+  "objDispSubtitle": "লেআউট মনে রাখুন। অবস্থান পরিবর্তন করে এমন একটি বস্তু খুঁজুন এবং আলতো চাপুন।",
+  "objDispWinTitle": "স্থানিক প্রতিভা!",
+  "objDispGameOverMessage": "আপনি সঠিকভাবে {score} স্থানচ্যুত বস্তু সনাক্ত করেছেন!",
+  "objDispMemorizeAll": "সব স্থাপনা মুখস্থ",
+  "objDispWaitingShift": "লেআউট শিফটের জন্য অপেক্ষা করা হচ্ছে...",
+  "objDispTapMoved": "সরানো বস্তুটি আলতো চাপুন",
+  "objDispExcellent": "চমৎকার!",
+  "objDispWrongObject": "ভুল বস্তু!",
+  "objDispItems": "আইটেম",
+  "mandalaTitle": "Mandala রিকল",
+  "mandalaSubtitle": "রঙ কনফিগারেশন মুখস্থ. রং বাছাই এবং টাইলস পুনরায় রং.",
+  "mandalaWinTitle": "মন্ডলা শিল্পী!",
+  "mandalaGameOverMessage": "আপনি রঙিন জ্যামিতিক বিন্যাস পুনরায় তৈরি করে {score} পয়েন্ট অর্জন করেছেন!",
+  "mandalaMemorizeColors": "টাইল রং মনে রাখুন",
+  "mandalaPaintCells": "আসল মেলে ঘর পেইন্ট করুন",
+  "mandalaExcellent": "চমৎকার!",
+  "mandalaIncorrectMatch": "ভুল মিল!",
+  "mandalaSubmitRepaint": "পুনরায় রং জমা দিন",
+  "mandalaTiles": "টাইলস",
+  "runningSpanTitle": "চলমান স্প্যান",
+  "runningSpanSubtitle": "চিঠিগুলো দেখুন। যখন তারা থামবে, শেষ এন অক্ষরগুলি ক্রমানুসারে ইনপুট করুন।",
+  "runningSpanWinTitle": "বাফার মাস্টার!",
+  "runningSpanGameOverMessage": "আপনি রানিং মেমরি স্প্যানে {score} পয়েন্ট স্কোর করেছেন!",
+  "runningSpanPrepareRecall": "শেষ {count} অক্ষর স্মরণ করার জন্য প্রস্তুত হন",
+  "runningSpanWatchCarefully": "সাবধানে দেখুন...",
+  "runningSpanEnterLast": "শেষ {count} অক্ষর লিখুন",
+  "runningSpanGreatJob": "দারুণ কাজ!",
+  "runningSpanIncorrectBuffer": "ভুল বাফার!",
+  "runningSpanRecallLast": "শেষ {count} স্মরণ করুন",
+  "runningSpanStopsRandomly": "স্রোত এলোমেলোভাবে থেমে যায়!",
+  "runningSpanEntered": "প্রবেশ করান: {sequence}",
+  "runningSpanNItems": "এন-আইটেম",
+  "spatialCabinetTitle": "স্থানিক ক্যাবিনেট",
+  "spatialCabinetSubtitle": "ক্যাবিনেটের ড্রয়ারে কোন বস্তুটি রয়েছে তা মুখস্থ করুন।",
+  "spatialCabinetWinTitle": "কেবিনেট এক্সপার্ট!",
+  "spatialCabinetGameOverMessage": "আপনি স্থানিক ক্যাবিনেট মেমরিতে {score} পয়েন্ট স্কোর করেছেন!",
+  "spatialCabinetMemorize": "আইটেম অবস্থানগুলি মনে রাখবেন",
+  "spatialCabinetWhereIs": "{itemName} টি কোথায়?",
+  "spatialCabinetCorrect": "সঠিক!",
+  "spatialCabinetWrongDrawer": "ভুল ড্রয়ার!",
+  "spatialCabinetItems": "আইটেম",
+  "cabinetItemKey": "চাবি",
+  "cabinetItemApple": "আপেল",
+  "cabinetItemDiamond": "হীরা",
+  "cabinetItemBook": "বই",
+  "cabinetItemUmbrella": "ছাতা",
+  "cabinetItemCoffee": "কফি",
+  "cabinetItemLock": "তালা",
+  "cabinetItemPet": "পোষা প্রাণী",
+  "cabinetItemCar": "গাড়ি",
+  "@soptGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@contRecogGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@dnmsGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@symSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@countingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@countingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@objDispGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@mandalaGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanPrepareRecall": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEnterLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanRecallLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEntered": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@spatialCabinetGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@spatialCabinetWhereIs": {
+    "placeholders": {
+      "itemName": {
+        "type": "String"
+      }
+    }
+  },
+  "gamesTitleLabel": "গেমস",
+  "yourFavorites": "আপনার প্রিয়",
+  "readyForWorkout": "আপনার দৈনন্দিন ওয়ার্কআউটের জন্য প্রস্তুত?",
+  "greatStartKeepGoing": "দারুণ শুরু! চালিয়ে যান।",
+  "onFireToday": "আপনি আজ ফর্মে আছেন!",
+  "incredibleSolvingToday": "আজ অবিশ্বাস্য সমাধান!",
+  "newGameLabel": "নতুন",
+  "slitherlinkTitle": "স্লিদারলিঙ্ক",
+  "slitherlinkSubtitle": "সংখ্যার ক্লু ব্যবহার করে পিন গ্রিড লুপ করুন।",
+  "futoshikiTitle": "ফুটোশিকি",
+  "futoshikiSubtitle": "গ্রেটার-দ্যান ক্লু দিয়ে গ্রিড পূরণ করুন।",
+  "kakuroTitle": "কাকুরু",
+  "kakuroSubtitle": "সংখ্যা এবং যোগফল দিয়ে ক্রসওয়ার্ড সমাধান করুন।",
+  "inequalityDashTitle": "অসমতা ড্যাশ",
+  "inequalityDashSubtitle": "সময়ের চাপে অসমতা সমাধান করুন।",
+  "factorFinderTitle": "ফ্যাক্টর ফাইন্ডার",
+  "factorFinderSubtitle": "টার্গেট সংখ্যার সমস্ত ফ্যাক্টর চিহ্নিত করুন।",
+  "collatzTitle": "কোলাটজ পথ",
+  "collatzSubtitle": "৩এন+১ সিকোয়েন্স নেভিগেট করুন।",
+  "sumPyramidTitle": "যোগফল পিরামিড",
+  "sumPyramidSubtitle": "যোগফল গণিত ক্লু দিয়ে পিরামিড সেল পূরণ করুন।",
+  "target10Title": "টার্গেট ১০",
+  "target10Subtitle": "দশটি যোগফল পেতে সংখ্যার টাইলস একত্রিত করুন।",
+  "fractionMatcherTitle": "ভগ্নাংশ ম্যাচার",
+  "fractionMatcherSubtitle": "দৃশ্যত সমতুল্য ভগ্নাংশ মিলান।",
+  "dualCodingTitle": "দ্বৈত কোডিং",
+  "dualCodingSubtitle": "একই সাথে অক্ষর এবং চিহ্ন মিলান।",
+  "distractorMatrixTitle": "ডিস্ট্রাক্টর ম্যাট্রিক্স",
+  "distractorMatrixSubtitle": "বিক্ষোভকারীর মধ্যে টার্গেট আকার খুঁজুন।",
+  "temporalOrderTitle": "কালানুক্রমিক বিন্যাস",
+  "temporalOrderSubtitle": "কালানুক্রমিক ক্রম মনে করুন।",
+  "associativePairsTitle": "সহযোগী জোড়া",
+  "associativePairsSubtitle": "সংশ্লিষ্ট চিহ্নগুলি জোড়া এবং মিলান।",
+  "blockCount3dTitle": "৩ডি ব্লক গণনা",
+  "blockCount3dSubtitle": "ত্রিমাত্রিক স্থানে ব্লক গণনা করুন।",
+  "rotatingMazeTitle": "ঘূর্ণায়মান গোলকধাঁধা",
+  "rotatingMazeSubtitle": "বলগুলিকে প্রস্থান পথে নিয়ে যেতে গোলকধাঁধা ঘোরান।",
+  "silhouetteMatchOrthoTitle": "সিলুয়েট ম্যাচ (অর্থো)",
+  "silhouetteMatchOrthoSubtitle": "অর্থো ছায়ার সাথে ৩ডি অবজেক্ট মিলান।",
+  "spatialConflictTitle": "স্থানিক দ্বন্দ্ব",
+  "spatialConflictSubtitle": "টেক্সট এবং দিকনির্দেশক অসঙ্গতি সমাধান করুন।",
+  "spotlightTrackTitle": "স্পটলাইট ট্র্যাক",
+  "spotlightTrackSubtitle": "চলন্ত ছায়ায় জ্বলজ্বল করা আইটেমগুলি ট্র্যাক করুন।",
+  "d2AttentionTitle": "d2 মনোযোগ",
+  "d2AttentionSubtitle": "কঠোর মানদণ্ডের সাথে টার্গেট চিহ্নগুলি আলতো চাপুন।",
+  "dualMirrorTitle": "দ্বৈত-মিরর নেভিগেশন",
+  "dualMirrorSubtitle": "একসাথে দুটি গোলকধাঁধা নেভিগেট করুন।",
+  "contextCluesTitle": "প্রাসঙ্গিক ক্লু",
+  "contextCluesSubtitle": "প্রাসঙ্গিক ইঙ্গিত থেকে লুকানো শব্দ অনুমান করুন।",
+  "digitSpanReverseSubtitle": "বিপরীত ক্রমে সংখ্যাগুলি মনে করুন।",
+  "faceNameAssociationSubtitle": "উপস্থাপিত বিভিন্ন মুখমন্ডলের নাম মনে করুন।",
+  "staircaseMemorySubtitle": "ধাপে ধাপে ব্লকের ক্রম মুখস্থ করুন।",
+  "choiceReactionTimeSubtitle": "দ্রুত ক্লুগুলির সাথে মিল রেখে নির্দিষ্ট বোতাম টিপুন।",
+  "attentionalBlinkSubtitle": "স্ট্রীমে দ্রুত টার্গেট ফ্ল্যাশিং স্পার্ক করুন।",
+  "visualStatisticalLearningSubtitle": "দৃশ্যত টেম্পোরাল শেপ প্যাটার্ন শিখুন।",
+  "sternbergTaskSubtitle": "চিহ্নটি মেমরি সেটে ছিল কিনা তা মনে করুন।",
+  "operationSpanSubtitle": "গণিত সমাধান করুন এবং বর্ণমালার স্ট্রিং মনে করুন।",
+  "continuousRecognitionTitle": "নিরবচ্ছিন্ন স্বীকৃতি",
+  "continuousRecognitionSubtitle": "উপস্থাপিত কার্ডটি পুরানো না নতুন তা চিহ্নিত করুন।",
+  "symmetrySpanTitle": "প্রতিসাম্য স্প্যান",
+  "symmetrySpanSubtitle": "উল্লম্ব প্রতিসাম্য সিদ্ধান্তের মধ্যে সেল স্থানাঙ্ক মনে করুন।",
+  "objectDisplacementTitle": "বস্তু বিচ্যুতি",
+  "objectDisplacementSubtitle": "অবস্থানগুলি অধ্যয়ন করুন এবং সরানো একটি মাত্র বস্তুটি আলতো চাপুন।",
+  "mandalaRecallTitle": "মন্ডলা রিকল",
+  "mandalaRecallSubtitle": "রঙের টাইলস মুখস্থ করুন এবং প্যালেট থেকে মন্ডলা পুনরায় রং করুন।",
+  "runningMemorySpanTitle": "রানিং স্প্যান",
+  "runningMemorySpanSubtitle": "চলমান অক্ষরগুলি পর্যবেক্ষণ করুন এবং শেষ N আইটেমগুলি মনে করুন।",
+  "spatialCabinetMemoryTitle": "স্থানিক ক্যাবিনেট",
+  "spatialCabinetMemorySubtitle": "ক্যাবিনেটের দরজার পিছনে আইটেমগুলি মুখস্থ করুন এবং সন্ধান করুন।",
+  "pathRecallSubtitle": "পাথওয়ে নির্বাচন মুখস্থ করুন এবং পুনরাবৃত্তি করুন।",
+  "objectShuffleSubtitle": "গভীর কাপের নিচে এলোমেলো আইটেম ট্র্যাক করুন।",
+  "groceryListSubtitle": "তালিকায় থাকা আইটেমগুলি মুখস্থ করুন এবং চেক অফ করুন।",
+  "quickMathSubtitle": "দ্রুত গতিতে গাণিতিক প্রশ্নের সমাধান করুন।",
+  "mathGuessTitle": "গণিত অনুমান",
+  "mathGuessSubtitle": "১৫টি সুযোগের মধ্যে লুকানো সংখ্যাটি অনুমান করুন।",
+  "reflexTapSubtitle": "মানুষের পক্ষে যতটা সম্ভব দ্রুত উদ্দীপকগুলিকে ট্যাপ করুন।",
+  "pixelMimicSubtitle": "পিক্সেল গ্রিডে ডিজাইনের প্যাটার্ন অনুকরণ করুন।",
+  "simonSequenceSubtitle": "স্মৃতি থেকে আকারের ক্রম পুনরাবৃত্তি করুন।",
+  "slidePuzzleSubtitle": "বর্গাকার স্লাইডিং গ্রিড টাইলস পুনর্বিন্যাস করুন।",
+  "findWordTitle": "শব্দ খুঁজুন",
+  "schulteTableSubtitle": "এক থেকে পঁচিশ পর্যন্ত সংখ্যা ট্যাপ করুন।",
+  "simonCommandTitle": "সাইমন কমান্ড",
+  "simonCommandSubtitle": "দ্রুত ভয়েস নির্দেশাবলী সম্পাদন করুন।",
+  "binaryCodeTitle": "বাইনারি গতি",
+  "binaryCodeSubtitle": "বাইনারি কোডগুলিকে দশমিকে রূপান্তর করুন।",
+  "moduloClockTitle": "মডুলো ক্লক",
+  "moduloClockSubtitle": "ঘড়ি ব্যবহার করে গাণিতিক সমীকরণ গণনা করুন।",
+  "chimpTestTitle": "শিম্পাঞ্জি পরীক্ষা",
+  "chimpTestSubtitle": "আরোহী ক্রমে এলোমেলো সংখ্যা ট্যাপ করুন।",
+  "relationalMemoryTitle": "সম্পর্কীয় স্মৃতি",
+  "relationalMemorySubtitle": "সঠিক গ্রিড আইটেম অবস্থান মনে করুন।",
+  "factBinderTitle": "ফ্যাক্ট বাইন্ডার",
+  "factBinderSubtitle": "চিহ্নগুলি সংযুক্ত করুন এবং বিবৃতিগুলি মনে করুন।",
+  "sourceMonitoringTitle": "উৎস পর্যবেক্ষণ",
+  "sourceMonitoringSubtitle": "প্রসঙ্গটি মনে রাখুন।",
+  "klotskiTitle": "ক্লোটস্কি এস্কেপ",
+  "klotskiSubtitle": "প্রস্থান পথে পৌঁছানোর জন্য ব্লকগুলি স্লাইড করুন।",
+  "homophoneHuntSubtitle": "সঠিক বানানটি চয়ন করুন।"
 }

@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'd2_attention_engine.dart';
@@ -25,7 +27,7 @@ class D2AttentionScreen extends ConsumerWidget {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'VICTORY',
+            title: L10nGameHelpers.getGameTitle(context, 'd2_attention'),
             message: AppLocalizations.of(context)!.d2AttentionMessage((next.score).toString()),
             onHome: () {
               Navigator.of(context).pop();
@@ -41,8 +43,8 @@ class D2AttentionScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'd2 Attention',
-      subtitle: 'Tap ONLY letter "d" that has EXACTLY 2 dashes',
+      title: L10nGameHelpers.getGameTitle(context, 'd2_attention'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'd2_attention'),
       onReset: () {
         HapticFeedbackUtil.mediumImpact();
         notifier.reset();

@@ -1,4 +1,6 @@
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import "package:puzzle/l10n/app_localizations.dart";
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -29,7 +31,7 @@ class _AnagramDefinitionScreenState extends ConsumerState<AnagramDefinitionScree
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'SOLVED!',
+        title: L10nGameHelpers.getGameTitle(context, 'anagram_definition'),
         message: AppLocalizations.of(context)!.anagramDefinitionMessage((state.target).toString()),
         onPlayAgain: () {
           ref.read(anagramDefinitionNotifierProvider.notifier).initGame();
@@ -58,8 +60,8 @@ class _AnagramDefinitionScreenState extends ConsumerState<AnagramDefinitionScree
     final targetLength = state.target.replaceAll(' ', '').length;
 
     return GameScaffold(
-      title: 'ANAGRAM DEFINITION',
-      subtitle: 'Solve using the hint',
+      title: L10nGameHelpers.getGameTitle(context, 'anagram_definition'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'anagram_definition'),
       actions: [
         TangibleButton(
           color: colorScheme.surface,

@@ -1796,5 +1796,350 @@
       }
     }
   },
-  "imReady": "Я ГОТОВ"
+  "imReady": "Я ГОТОВ",
+  "soptTitle": "Самостоятельное наведение",
+  "soptSubtitle": "Каждый раз нажимайте на другую карту. Позиции перетасовываются!",
+  "soptWinTitle": "Мастер последовательности!",
+  "soptGameOverMessage": "Вы набрали {score} очков, успешно отслеживая перетасованные карты!",
+  "soptChooseNovel": "Нажмите на новую карту",
+  "soptGreatJob": "Отличная работа!",
+  "soptAlreadyTapped": "Уже постучал!",
+  "soptGrid": "Сетка",
+  "contRecogTitle": "Непрерывное признание",
+  "contRecogSubtitle": "Видели ли вы эту карточку раньше на этом сеансе?",
+  "contRecogWinTitle": "Признанный гений!",
+  "contRecogGameOverMessage": "Вы набрали {score} правильных распознаваний!",
+  "contRecogCorrect": "Правильный!",
+  "contRecogWrong": "Неправильный!",
+  "contRecogOldOrNew": "Это старое или новое?",
+  "contRecogNew": "Новый",
+  "contRecogOld": "Старый",
+  "contRecogSeenPool": "Виден бассейн",
+  "dnmsTitle": "Несовпадающая память",
+  "dnmsSubtitle": "Коснитесь карты, которой не было в запомненном образце.",
+  "dnmsWinTitle": "Несоответствующий эксперт!",
+  "dnmsGameOverMessage": "Вы набрали {score} правильных ответов в разделе «Отложенное несовпадение»!",
+  "dnmsChooseNovel": "Нажмите на новую карту",
+  "dnmsMemorizeSample": "Запомни эту карту",
+  "dnmsWaitForIt": "Подожди...",
+  "dnmsExcellent": "Отличный!",
+  "dnmsSampleTapped": "Это был образец!",
+  "dnmsCards": "Карты",
+  "symSpanTitle": "Симметрия",
+  "symSpanSubtitle": "Вспомните структуру клеток, определяя вертикальную симметрию.",
+  "symSpanWinTitle": "Мастер симметрии!",
+  "symSpanGameOverMessage": "Вы набрали {score} баллов, вспомнив макеты и определив симметрию!",
+  "symSpanMemorizeRed": "Запомните расположение эритроцитов",
+  "symSpanIsSymmetric": "Симметричен ли узор?",
+  "symSpanRecallSequence": "Вспомните последовательность действий в правильном порядке.",
+  "symSpanGreatJob": "Отличная работа!",
+  "symSpanTryAgain": "Попробуйте еще раз!",
+  "symSpanLength": "Длина",
+  "readingSpanTitle": "Продолжительность чтения",
+  "readingSpanSubtitle": "Проверьте предложения, запоминая последовательность букв.",
+  "readingSpanWinTitle": "Эксперт по чтению!",
+  "readingSpanGameOverMessage": "Вы набрали {score} очков в испытании на запоминание «Объем чтения»!",
+  "readingSpanTrueFalse": "Верно или ложно это утверждение?",
+  "readingSpanMemorizeLetter": "Запомни это письмо",
+  "readingSpanRecallLetters": "Вспоминайте буквы по порядку.",
+  "readingSpanGreatJob": "Отличная работа!",
+  "readingSpanTryAgain": "Попробуйте еще раз!",
+  "readingSpanYourSequence": "Ваша последовательность: {sequence}",
+  "readingSpanLength": "Длина",
+  "readingSpanSentence1": "Солнце восходит на востоке.",
+  "readingSpanSentence2": "Лед кипит.",
+  "readingSpanSentence3": "Рыбы могут дышать под водой.",
+  "readingSpanSentence4": "У собак есть крылья и они умеют летать.",
+  "readingSpanSentence5": "Вода замерзает при температуре 0 градусов Цельсия.",
+  "readingSpanSentence6": "Кошки лают, как маленькие собаки.",
+  "readingSpanSentence7": "Летом деревья имеют зеленые листья.",
+  "readingSpanSentence8": "Дождь падает вверх от земли.",
+  "readingSpanSentence9": "Треугольник имеет четыре равные стороны.",
+  "readingSpanSentence10": "Яблоки – это разновидность сладких фруктов.",
+  "readingSpanSentence11": "Луна сделана из сыра чеддер.",
+  "readingSpanSentence12": "У автомобилей есть колеса, которые они могут катить.",
+  "readingSpanSentence13": "Огонь очень холодный.",
+  "readingSpanSentence14": "Бумага изготавливается из обработанной древесины.",
+  "readingSpanSentence15": "У птиц есть перья, которые помогают им летать.",
+  "readingSpanSentence16": "Бананы растут на соснах.",
+  "readingSpanSentence17": "Слон меньше муравья.",
+  "readingSpanSentence18": "Книги содержат печатные страницы текста.",
+  "countingSpanTitle": "Подсчет интервала",
+  "countingSpanSubtitle": "Считайте только синие круги. Затем вспомните последовательность отсчетов.",
+  "countingSpanWinTitle": "Считаем гения!",
+  "countingSpanGameOverMessage": "Вы набрали {score} очков в испытании на память «Счетный интервал»!",
+  "countingSpanCountCircles": "Считай только синие круги",
+  "countingSpanRecallCounts": "Напоминание считается в правильном порядке",
+  "countingSpanGreatJob": "Отличная работа!",
+  "countingSpanTryAgain": "Попробуйте еще раз!",
+  "countingSpanYourSequence": "Ваша последовательность: {sequence}",
+  "countingSpanLength": "Длина",
+  "objDispTitle": "Смещение объекта",
+  "objDispSubtitle": "Запомните макет. Найдите и коснитесь одного объекта, который меняет положение.",
+  "objDispWinTitle": "Пространственный гений!",
+  "objDispGameOverMessage": "Вы правильно определили {score} смещенных объектов!",
+  "objDispMemorizeAll": "Запомните все места размещения",
+  "objDispWaitingShift": "Ждем смены макета...",
+  "objDispTapMoved": "Коснитесь объекта, который переместился",
+  "objDispExcellent": "Отличный!",
+  "objDispWrongObject": "Неправильный объект!",
+  "objDispItems": "Предметы",
+  "mandalaTitle": "Мандала Напоминание",
+  "mandalaSubtitle": "Запомните цветовую конфигурацию. Выбирайте цвета и перекрашивайте плитки.",
+  "mandalaWinTitle": "Художник мандалы!",
+  "mandalaGameOverMessage": "Вы набрали {score} баллов, воссоздав цветные геометрические макеты!",
+  "mandalaMemorizeColors": "Запомните цвета плитки",
+  "mandalaPaintCells": "Раскрасьте ячейки в соответствии с оригиналом",
+  "mandalaExcellent": "Отличный!",
+  "mandalaIncorrectMatch": "Неверное совпадение!",
+  "mandalaSubmitRepaint": "Отправить перекраску",
+  "mandalaTiles": "Плитка",
+  "runningSpanTitle": "Беговой интервал",
+  "runningSpanSubtitle": "Следите за буквами. Когда они остановятся, введите последние N букв по порядку.",
+  "runningSpanWinTitle": "Буферный мастер!",
+  "runningSpanGameOverMessage": "Вы набрали {score} очков в тесте «Быстрая память»!",
+  "runningSpanPrepareRecall": "Приготовьтесь вспомнить последние {count} буквы.",
+  "runningSpanWatchCarefully": "Смотрите внимательно...",
+  "runningSpanEnterLast": "Введите последние {count} буквы",
+  "runningSpanGreatJob": "Отличная работа!",
+  "runningSpanIncorrectBuffer": "Неправильный буфер!",
+  "runningSpanRecallLast": "Вспомнить последнее {count}",
+  "runningSpanStopsRandomly": "Поток останавливается случайным образом!",
+  "runningSpanEntered": "Введено: {sequence}",
+  "runningSpanNItems": "N-предметов",
+  "spatialCabinetTitle": "Пространственные шкафы",
+  "spatialCabinetSubtitle": "Запомните, в каком ящике шкафа какой предмет находится.",
+  "spatialCabinetWinTitle": "Кабинетный эксперт!",
+  "spatialCabinetGameOverMessage": "Вы набрали {score} очков в пространственной памяти кабинета!",
+  "spatialCabinetMemorize": "Запомните расположение предметов",
+  "spatialCabinetWhereIs": "Где {itemName} ?",
+  "spatialCabinetCorrect": "Правильный!",
+  "spatialCabinetWrongDrawer": "Неправильный ящик!",
+  "spatialCabinetItems": "Предметы",
+  "cabinetItemKey": "Ключ",
+  "cabinetItemApple": "Яблоко",
+  "cabinetItemDiamond": "Алмаз",
+  "cabinetItemBook": "Книга",
+  "cabinetItemUmbrella": "Зонтик",
+  "cabinetItemCoffee": "Кофе",
+  "cabinetItemLock": "Замок",
+  "cabinetItemPet": "Домашний питомец",
+  "cabinetItemCar": "Машина",
+  "@soptGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@contRecogGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@dnmsGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@symSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@countingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@countingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@objDispGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@mandalaGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanPrepareRecall": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEnterLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanRecallLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEntered": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@spatialCabinetGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@spatialCabinetWhereIs": {
+    "placeholders": {
+      "itemName": {
+        "type": "String"
+      }
+    }
+  },
+  "gamesTitleLabel": "ИГРЫ",
+  "yourFavorites": "ВАШИ ЛЮБИМЫЕ",
+  "readyForWorkout": "ГОТОВЫ К ЕЖЕДНЕВНОЙ ТРЕНИРОВКЕ?",
+  "greatStartKeepGoing": "ОТЛИЧНОЕ НАЧАЛО! ПРОДОЛЖАЙТЕ В ТОМ ЖЕ ДУХЕ.",
+  "onFireToday": "ВЫ СЕГОДНЯ В УДАРЕ!",
+  "incredibleSolvingToday": "НЕВЕРОЯТНЫЕ РЕШЕНИЯ СЕГОДНЯ!",
+  "newGameLabel": "НОВАЯ",
+  "slitherlinkTitle": "Слизерлинк",
+  "slitherlinkSubtitle": "ОКОЛЬЦУЙТЕ СЕТКУ ИЗ ШТИФТОВ, ИСПОЛЬЗУЯ ЧИСЛОВЫЕ ПОДСКАЗКИ.",
+  "futoshikiTitle": "Футошики",
+  "futoshikiSubtitle": "ЗАПОЛНЯЙТЕ СЕТКИ, ИСПОЛЬЗУЯ ПОДСКАЗКИ \"БОЛЬШЕ ЧЕМ\".",
+  "kakuroTitle": "Какуро",
+  "kakuroSubtitle": "РЕШАЙТЕ КРОССВОРДЫ С ЧИСЛАМИ И СУММАМИ.",
+  "inequalityDashTitle": "Спринт Неравенств",
+  "inequalityDashSubtitle": "РЕШАЙТЕ НЕРАВЕНСТВА ПОД ДАВЛЕНИЕМ ВРЕМЕНИ.",
+  "factorFinderTitle": "Поиск Множителей",
+  "factorFinderSubtitle": "ОПРЕДЕЛИТЕ ВСЕ МНОЖИТЕЛИ ЦЕЛЕВЫХ ЧИСЕЛ.",
+  "collatzTitle": "Путь Коллатца",
+  "collatzSubtitle": "ПЕРЕМЕЩАЙТЕСЬ ПО ПОСЛЕДОВАТЕЛЬНОСТИ 3N+1.",
+  "sumPyramidTitle": "Пирамида Сумм",
+  "sumPyramidSubtitle": "ЗАПОЛНЯЙТЕ ЯЧЕЙКИ ПИРАМИДЫ МАТЕМАТИЧЕСКИМИ ПОДСКАЗКАМИ О СУММАХ.",
+  "target10Title": "Цель 10",
+  "target10Subtitle": "КОМБИНИРУЙТЕ ПЛИТКИ С ЧИСЛАМИ, ЧТОБЫ ПОЛУЧИТЬ ДЕСЯТЬ СУММ. ",
+  "fractionMatcherTitle": "Сопоставление Дробей",
+  "fractionMatcherSubtitle": "СОПОСТАВЛЯЙТЕ ЭКВИВАЛЕНТНЫЕ ДРОБИ ВИЗУАЛЬНО.",
+  "dualCodingTitle": "Двойное Кодирование",
+  "dualCodingSubtitle": "СОПОСТАВЛЯЙТЕ БУКВЫ И СИМВОЛЫ ОДНОВРЕМЕННО.",
+  "distractorMatrixTitle": "Матрица Дистракторов",
+  "distractorMatrixSubtitle": "НАХОДИТЕ ЦЕЛЕВЫЕ ФИГУРЫ СРЕДИ ДИСТРАКТОРОВ.",
+  "temporalOrderTitle": "Временной Порядок",
+  "temporalOrderSubtitle": "ВСПОМНИТЕ ХРОНОЛОГИЧЕСКУЮ ПОСЛЕДОВАТЕЛЬНОСТЬ.",
+  "associativePairsTitle": "Ассоциативные Пары",
+  "associativePairsSubtitle": "СОЕДИНЯЙТЕ И СОПОСТАВЛЯЙТЕ СООТВЕТСТВУЮЩИЕ СИМВОЛЫ.",
+  "blockCount3dTitle": "Подсчет Блоков 3D",
+  "blockCount3dSubtitle": "СЧИТАЙТЕ БЛОКИ В ТРЕХМЕРНОМ ПРОСТРАНСТВЕ.",
+  "rotatingMazeTitle": "Вращающийся Лабиринт",
+  "rotatingMazeSubtitle": "ВРАЩАЙТЕ ЛАБИРИНТЫ, ЧТОБЫ ПРОВЕСТИ ШАРИКИ К ВЫХОДУ.",
+  "silhouetteMatchOrthoTitle": "Сопоставление Силуэтов (Орто)",
+  "silhouetteMatchOrthoSubtitle": "СОПОСТАВЛЯЙТЕ 3D-ОБЪЕКТЫ С ОРТОГОНАЛЬНЫМИ ТЕНЯМИ.",
+  "spatialConflictTitle": "Пространственный Конфликт",
+  "spatialConflictSubtitle": "РЕШАЙТЕ РАСХОЖДЕНИЯ МЕЖДУ ТЕКСТОМ И НАПРАВЛЕНИЕМ.",
+  "spotlightTrackTitle": "Слежение Прожектором",
+  "spotlightTrackSubtitle": "ОТСЛЕЖИВАЙТЕ МИГАЮЩИЕ ПРЕДМЕТЫ В ДВИЖУЩИХСЯ ТЕНЯХ.",
+  "d2AttentionTitle": "Внимание d2",
+  "d2AttentionSubtitle": "НАЖИМАЙТЕ НА ЦЕЛЕВЫЕ СИМВОЛЫ В СООТВЕТСТВИИ СО СТРОГИМИ КРИТЕРИЯМИ.",
+  "dualMirrorTitle": "Двойная Зеркальная Навигация",
+  "dualMirrorSubtitle": "ПЕРЕМЕЩАЙТЕСЬ ПО ДВУМ ЛАБИРИНТАМ ОДНОВРЕМЕННО.",
+  "contextCluesTitle": "Контекстные Подсказки",
+  "contextCluesSubtitle": "УГАДЫВАЙТЕ СКРЫТЫЕ СЛОВА ПО КОНТЕКСТНЫМ ПОДСКАЗКАМ.",
+  "digitSpanReverseSubtitle": "ВСПОМНИТЕ ЦИФРЫ ЧИСЕЛ В ОБРАТНОМ ПОРЯДКЕ.",
+  "faceNameAssociationSubtitle": "ВСПОМНИТЕ ИМЕНА ДЛЯ РАЗЛИЧНЫХ ПРЕДСТАВЛЕННЫХ ЛИЦ.",
+  "staircaseMemorySubtitle": "ЗАПОМИНАЙТЕ БЛОКИ В СТУПЕНЧАТОЙ ПОСЛЕДОВАТЕЛЬНОСТИ.",
+  "choiceReactionTimeSubtitle": "БЫСТРО НАЖИМАЙТЕ НА ОПРЕДЕЛЕННЫЕ КНОПКИ, СООТВЕТСТВУЮЩИЕ ПОДСКАЗКАМ.",
+  "attentionalBlinkSubtitle": "УЛАВЛИВАЙТЕ БЫСТРЫЕ ЦЕЛИ, МЕЛЬКАЮЩИЕ В ПОТОКАХ.",
+  "visualStatisticalLearningSubtitle": "ИЗУЧАЙТЕ ВРЕМЕННЫЕ ПАТТЕРНЫ ФИГУР ВИЗУАЛЬНО.",
+  "sternbergTaskSubtitle": "ВСПОМНИТЕ, БЫЛ ЛИ СИМВОЛ В НАБОРЕ ПАМЯТИ.",
+  "operationSpanSubtitle": "РЕШАЙТЕ ЗАДАЧИ И ВСПОМИНАЙТЕ АЛФАВИТНЫЕ СТРОКИ.",
+  "continuousRecognitionTitle": "Непрерывное Распознавание",
+  "continuousRecognitionSubtitle": "ОПРЕДЕЛИТЕ, ЯВЛЯЕТСЯ ЛИ ПРЕДСТАВЛЕННАЯ КАРТОЧКА СТАРОЙ ИЛИ НОВОЙ.",
+  "symmetrySpanTitle": "Объем Симметрии",
+  "symmetrySpanSubtitle": "ВСПОМНИТЕ КООРДИНАТЫ ЯЧЕЕК ПРИ ПРИНЯТИИ РЕШЕНИЙ О ВЕРТИКАЛЬНОЙ СИММЕТРИИ.",
+  "objectDisplacementTitle": "Смещение Объекта",
+  "objectDisplacementSubtitle": "ИЗУЧИТЕ РАСПОЛОЖЕНИЕ И НАЖМИТЕ НА ЕДИНСТВЕННЫЙ ПРЕДМЕТ, КОТОРЫЙ ПЕРЕМЕСТИЛСЯ.",
+  "mandalaRecallTitle": "Воспроизведение Мандалы",
+  "mandalaRecallSubtitle": "ЗАПОМИНАЙТЕ ЦВЕТНЫЕ ПЛИТКИ И ПЕРЕКРАШИВАЙТЕ МАНДАЛЫ С ПАЛИТРЫ.",
+  "runningMemorySpanTitle": "Текущий Объем Памяти",
+  "runningMemorySpanSubtitle": "СЛЕДИТЕ ЗА ТЕКУЩИМИ БУКВАМИ И ВСПОМИНАЙТЕ ПОСЛЕДНИЕ N ЭЛЕМЕНТОВ.",
+  "spatialCabinetMemoryTitle": "Пространственные Шкафы",
+  "spatialCabinetMemorySubtitle": "ЗАПОМИНАЙТЕ И НАХОДИТЕ ПРЕДМЕТЫ ЗА ДВЕРЦАМИ ШКАФОВ.",
+  "pathRecallSubtitle": "ЗАПОМИНАЙТЕ И ПОВТОРЯЙТЕ ВЫБОР ПУТИ.",
+  "objectShuffleSubtitle": "ОТСЛЕЖИВАЙТЕ ПРЕДМЕТЫ, ПЕРЕМЕШАННЫЕ ПОД ГЛУБОКИМИ ЧАШКАМИ.",
+  "groceryListSubtitle": "ЗАПОМИНАЙТЕ И ОТМЕЧАЙТЕ ПУНКТЫ В СПИСКЕ.",
+  "quickMathSubtitle": "РЕШАЙТЕ АРИФМЕТИЧЕСКИЕ ЗАДАЧИ НА МАКСИМАЛЬНОЙ СКОРОСТИ.",
+  "mathGuessTitle": "Математическая Угадайка",
+  "mathGuessSubtitle": "УГАДАЙТЕ СКРЫТОЕ ЧИСЛО ЗА 15 ПОПЫТОК.",
+  "reflexTapSubtitle": "НАЖИМАЙТЕ НА СТИМУЛЫ ТАК БЫСТРО, КАК ТОЛЬКО ВОЗМОЖНО.",
+  "pixelMimicSubtitle": "КОПИРУЙТЕ ДИЗАЙНЕРСКИЕ ПАТТЕРНЫ НА ПИКСЕЛЬНЫХ СЕТКАХ.",
+  "simonSequenceSubtitle": "ПОВТОРЯЙТЕ ПОСЛЕДОВАТЕЛЬНОСТИ ФИГУР ПО ПАМЯТИ.",
+  "slidePuzzleSubtitle": "ПЕРЕСТАВЛЯЙТЕ КВАДРАТНЫЕ ПЛИТКИ СКОЛЬЗЯЩЕЙ СЕТКИ.",
+  "findWordTitle": "Поиск Слова",
+  "schulteTableSubtitle": "НАЖИМАЙТЕ НА ЧИСЛА ОТ ОДНОГО ДО ДВАДЦАТИ ПЯТИ.",
+  "simonCommandTitle": "Команда Саймона",
+  "simonCommandSubtitle": "БЫСТРО ВЫПОЛНЯЙТЕ ГОЛОСОВЫЕ ИНСТРУКЦИИ.",
+  "binaryCodeTitle": "Бинарная Скорость",
+  "binaryCodeSubtitle": "ПЕРЕВОДИТЕ БИНАРНЫЕ КОДЫ В ДЕСЯТИЧНЫЕ.",
+  "moduloClockTitle": "Часы Модуло",
+  "moduloClockSubtitle": "ВЫЧИСЛЯЙТЕ МАТЕМАТИЧЕСКИЕ УРАВНЕНИЯ, ИСПОЛЬЗУЯ ЧАСЫ.",
+  "chimpTestTitle": "Тест Шимпанзе",
+  "chimpTestSubtitle": "НАЖИМАЙТЕ НА СЛУЧАЙНЫЕ ЧИСЛА В ПОРЯДКЕ ВОЗРАСТАНИЯ.",
+  "relationalMemoryTitle": "Реляционная Память",
+  "relationalMemorySubtitle": "ВСПОМНИТЕ ТОЧНОЕ РАСПОЛОЖЕНИЕ ЭЛЕМЕНТОВ СЕТКИ.",
+  "factBinderTitle": "Связыватель Фактов",
+  "factBinderSubtitle": "СОЕДИНЯЙТЕ СИМВОЛЫ И ВСПОМИНАЙТЕ УТВЕРЖДЕНИЯ.",
+  "sourceMonitoringTitle": "Мониторинг Источника",
+  "sourceMonitoringSubtitle": "ЗАПОМИНАЙТЕ КОНТЕКСТ.",
+  "klotskiTitle": "Побег Клотски",
+  "klotskiSubtitle": "ПЕРЕДВИГАЙТЕ БЛОКИ, ЧТОБЫ ДОБРАТЬСЯ ДО ВЫХОДОВ.",
+  "homophoneHuntSubtitle": "ВЫБЕРИТЕ ПРАВИЛЬНОЕ НАПИСАНИЕ."
 }

@@ -1796,5 +1796,350 @@
       }
     }
   },
-  "imReady": "SAYA SIAP"
+  "imReady": "SAYA SIAP",
+  "soptTitle": "Penunjukan Pesanan Sendiri",
+  "soptSubtitle": "Ketuk kartu yang berbeda setiap kali. Posisinya acak!",
+  "soptWinTitle": "Urutan Master!",
+  "soptGameOverMessage": "Anda mencetak {score} poin dengan berhasil melacak kartu yang dikocok!",
+  "soptChooseNovel": "Ketuk kartu baru",
+  "soptGreatJob": "Kerja bagus!",
+  "soptAlreadyTapped": "Sudah disadap!",
+  "soptGrid": "jaringan",
+  "contRecogTitle": "Pengakuan Berkelanjutan",
+  "contRecogSubtitle": "Pernahkah Anda melihat kartu ini sebelumnya di sesi ini?",
+  "contRecogWinTitle": "Pengakuan Jenius!",
+  "contRecogGameOverMessage": "Anda mendapat {score} pengakuan yang benar!",
+  "contRecogCorrect": "Benar!",
+  "contRecogWrong": "Salah!",
+  "contRecogOldOrNew": "Apakah ini lama atau baru?",
+  "contRecogNew": "Baru",
+  "contRecogOld": "Tua",
+  "contRecogSeenPool": "Terlihat Kolam Renang",
+  "dnmsTitle": "Memori Tidak Cocok",
+  "dnmsSubtitle": "Ketuk kartu yang tidak ada dalam sampel yang diingat.",
+  "dnmsWinTitle": "Pakar yang Tidak Cocok!",
+  "dnmsGameOverMessage": "Anda mendapat skor {score} jawaban yang benar pada Non-Matching Tertunda!",
+  "dnmsChooseNovel": "Ketuk kartu baru",
+  "dnmsMemorizeSample": "Hafalkan kartu ini",
+  "dnmsWaitForIt": "Tunggu itu...",
+  "dnmsExcellent": "Bagus sekali!",
+  "dnmsSampleTapped": "Itu adalah contohnya!",
+  "dnmsCards": "Kartu-kartu",
+  "symSpanTitle": "Rentang Simetri",
+  "symSpanSubtitle": "Ingat pola sel sambil mengidentifikasi simetri vertikal.",
+  "symSpanWinTitle": "Master Simetri!",
+  "symSpanGameOverMessage": "Anda mencetak {score} poin dengan mengingat tata letak dan mengidentifikasi simetri!",
+  "symSpanMemorizeRed": "Hafalkan lokasi sel darah merah",
+  "symSpanIsSymmetric": "Apakah polanya simetris?",
+  "symSpanRecallSequence": "Ingat urutan dalam urutan yang benar",
+  "symSpanGreatJob": "Kerja bagus!",
+  "symSpanTryAgain": "Coba lagi!",
+  "symSpanLength": "Panjang",
+  "readingSpanTitle": "Rentang Membaca",
+  "readingSpanSubtitle": "Verifikasi kalimat sambil mengingat urutan huruf.",
+  "readingSpanWinTitle": "Ahli Membaca!",
+  "readingSpanGameOverMessage": "Anda mencetak {score} poin dalam tantangan memori Reading Span!",
+  "readingSpanTrueFalse": "Apakah pernyataan ini benar atau salah?",
+  "readingSpanMemorizeLetter": "Hafalkan surat ini",
+  "readingSpanRecallLetters": "Mengingat kembali huruf-huruf secara berurutan",
+  "readingSpanGreatJob": "Kerja bagus!",
+  "readingSpanTryAgain": "Coba lagi!",
+  "readingSpanYourSequence": "Urutan Anda: {sequence}",
+  "readingSpanLength": "Panjang",
+  "readingSpanSentence1": "Matahari terbit di timur.",
+  "readingSpanSentence2": "Es mendidih panas.",
+  "readingSpanSentence3": "Ikan bisa bernapas di bawah air.",
+  "readingSpanSentence4": "Anjing mempunyai sayap dan bisa terbang.",
+  "readingSpanSentence5": "Air membeku pada suhu 0 derajat Celsius.",
+  "readingSpanSentence6": "Kucing menggonggong seperti anjing kecil.",
+  "readingSpanSentence7": "Pepohonan memiliki daun hijau di musim panas.",
+  "readingSpanSentence8": "Hujan turun ke atas dari permukaan tanah.",
+  "readingSpanSentence9": "Sebuah segitiga mempunyai empat sisi yang sama panjang.",
+  "readingSpanSentence10": "Apel merupakan salah satu jenis buah yang manis.",
+  "readingSpanSentence11": "Bulan terbuat dari keju cheddar.",
+  "readingSpanSentence12": "Mobil mempunyai roda untuk berputar.",
+  "readingSpanSentence13": "Api sangat dingin.",
+  "readingSpanSentence14": "Kertas terbuat dari kayu olahan.",
+  "readingSpanSentence15": "Burung mempunyai bulu untuk membantunya terbang.",
+  "readingSpanSentence16": "Pisang tumbuh di pohon pinus.",
+  "readingSpanSentence17": "Gajah lebih kecil dari semut.",
+  "readingSpanSentence18": "Buku berisi halaman teks yang dicetak.",
+  "countingSpanTitle": "Menghitung Rentang",
+  "countingSpanSubtitle": "Hitung lingkaran biru saja. Kemudian ingat kembali urutan penghitungannya.",
+  "countingSpanWinTitle": "Menghitung Jenius!",
+  "countingSpanGameOverMessage": "Anda mencetak {score} poin dalam tantangan memori Counting Span!",
+  "countingSpanCountCircles": "Hitung hanya lingkaran biru",
+  "countingSpanRecallCounts": "Penarikan kembali dihitung dalam urutan yang benar",
+  "countingSpanGreatJob": "Kerja bagus!",
+  "countingSpanTryAgain": "Coba lagi!",
+  "countingSpanYourSequence": "Urutan Anda: {sequence}",
+  "countingSpanLength": "Panjang",
+  "objDispTitle": "Perpindahan Benda",
+  "objDispSubtitle": "Hafalkan tata letak. Temukan dan ketuk satu objek yang berpindah posisi.",
+  "objDispWinTitle": "Jenius Spasial!",
+  "objDispGameOverMessage": "Anda mengidentifikasi {score} objek yang dipindahkan dengan benar!",
+  "objDispMemorizeAll": "Hafalkan semua penempatan",
+  "objDispWaitingShift": "Menunggu perubahan tata letak...",
+  "objDispTapMoved": "Ketuk objek yang dipindahkan",
+  "objDispExcellent": "Bagus sekali!",
+  "objDispWrongObject": "Objek yang salah!",
+  "objDispItems": "Barang",
+  "mandalaTitle": "Penarikan Mandala",
+  "mandalaSubtitle": "Hafalkan konfigurasi warna. Pilih warna dan cat ulang ubinnya.",
+  "mandalaWinTitle": "Artis Mandala!",
+  "mandalaGameOverMessage": "Anda mencetak {score} poin dengan membuat ulang tata letak geometris berwarna!",
+  "mandalaMemorizeColors": "Hafalkan warna ubin",
+  "mandalaPaintCells": "Warnai sel agar sesuai dengan aslinya",
+  "mandalaExcellent": "Bagus sekali!",
+  "mandalaIncorrectMatch": "Pertandingan yang salah!",
+  "mandalaSubmitRepaint": "Kirim Pengecatan Ulang",
+  "mandalaTiles": "Ubin",
+  "runningSpanTitle": "Rentang Berjalan",
+  "runningSpanSubtitle": "Perhatikan huruf-hurufnya. Jika berhenti, masukkan N huruf terakhir secara berurutan.",
+  "runningSpanWinTitle": "Tuan Penyangga!",
+  "runningSpanGameOverMessage": "Anda mencetak {score} poin dalam Running Memory Span!",
+  "runningSpanPrepareRecall": "Bersiaplah untuk mengingat {count} huruf terakhir",
+  "runningSpanWatchCarefully": "Perhatikan baik-baik...",
+  "runningSpanEnterLast": "Masukkan {count} huruf terakhir",
+  "runningSpanGreatJob": "Kerja bagus!",
+  "runningSpanIncorrectBuffer": "Penyangga salah!",
+  "runningSpanRecallLast": "Ingat {count} terakhir",
+  "runningSpanStopsRandomly": "Alirannya berhenti secara acak!",
+  "runningSpanEntered": "Dimasukkan: {sequence}",
+  "runningSpanNItems": "N-Item",
+  "spatialCabinetTitle": "Lemari Tata Ruang",
+  "spatialCabinetSubtitle": "Hafalkan laci lemari mana yang berisi benda apa.",
+  "spatialCabinetWinTitle": "Pakar Kabinet!",
+  "spatialCabinetGameOverMessage": "Anda mencetak {score} poin dalam Memori Kabinet Spasial!",
+  "spatialCabinetMemorize": "Hafalkan lokasi item",
+  "spatialCabinetWhereIs": "Dimana __NAMAITEM__ ?",
+  "spatialCabinetCorrect": "Benar!",
+  "spatialCabinetWrongDrawer": "Laci yang salah!",
+  "spatialCabinetItems": "Barang",
+  "cabinetItemKey": "Kunci",
+  "cabinetItemApple": "Apel",
+  "cabinetItemDiamond": "Berlian",
+  "cabinetItemBook": "Buku",
+  "cabinetItemUmbrella": "Payung",
+  "cabinetItemCoffee": "Kopi",
+  "cabinetItemLock": "Kunci",
+  "cabinetItemPet": "Peliharaan",
+  "cabinetItemCar": "Mobil",
+  "@soptGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@contRecogGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@dnmsGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@symSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@countingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@countingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@objDispGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@mandalaGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanPrepareRecall": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEnterLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanRecallLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEntered": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@spatialCabinetGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@spatialCabinetWhereIs": {
+    "placeholders": {
+      "itemName": {
+        "type": "String"
+      }
+    }
+  },
+  "gamesTitleLabel": "PERMAINAN",
+  "yourFavorites": "FAVORIT ANDA",
+  "readyForWorkout": "SIAP UNTUK LATIHAN HARIAN ANDA?",
+  "greatStartKeepGoing": "AWAL YANG BAGUS! TERUSKAN.",
+  "onFireToday": "ANDA SANGAT BERSEMANGAT HARI INI!",
+  "incredibleSolvingToday": "PENYELESAIAN LUAR BIASA HARI INI!",
+  "newGameLabel": "BARU",
+  "slitherlinkTitle": "Slitherlink",
+  "slitherlinkSubtitle": "LINGKARI GRID PIN MENGGUNAKAN PETUNJUK ANGKA.",
+  "futoshikiTitle": "Futoshiki",
+  "futoshikiSubtitle": "ISI GRID DENGAN PETUNJUK LEBIH BESAR DARI.",
+  "kakuroTitle": "Kakuro",
+  "kakuroSubtitle": "SELESAIKAN TEKA-TEKI SILANG DENGAN ANGKA DAN JUMLAH.",
+  "inequalityDashTitle": "Inequality Dash",
+  "inequalityDashSubtitle": "SELESAIKAN PERTIDAKSAMAAN DI BAWAH TEKANAN WAKTU.",
+  "factorFinderTitle": "Pencari Faktor",
+  "factorFinderSubtitle": "IDENTIFIKASI SEMUA FAKTOR DARI ANGKA TARGET.",
+  "collatzTitle": "Jalur Collatz",
+  "collatzSubtitle": "NAVIGASI URUTAN 3N+1.",
+  "sumPyramidTitle": "Piramida Jumlah",
+  "sumPyramidSubtitle": "ISI SEL PIRAMIDA DENGAN PETUNJUK MATEMATIKA JUMLAH.",
+  "target10Title": "Target 10",
+  "target10Subtitle": "GABUNGKAN UBIN ANGKA UNTUK MENDAPATKAN JUMLAH SEPULUH.",
+  "fractionMatcherTitle": "Pencocok Pecahan",
+  "fractionMatcherSubtitle": "COCOKKAN PECAHAN YANG SETARA SECARA VISUAL.",
+  "dualCodingTitle": "Pengkodean Ganda",
+  "dualCodingSubtitle": "COCOKKAN HURUF DAN SIMBOL SECARA BERSAMAAN.",
+  "distractorMatrixTitle": "Matriks Distraktor",
+  "distractorMatrixSubtitle": "TEMUKAN BENTUK TARGET DI ANTARA DISTRAKTOR.",
+  "temporalOrderTitle": "Urutan Temporal",
+  "temporalOrderSubtitle": "INGAT URUTAN KRONOLOGIS.",
+  "associativePairsTitle": "Pasangan Asosiatif",
+  "associativePairsSubtitle": "PASANGKAN DAN COCOKKAN SIMBOL YANG SESUAI.",
+  "blockCount3dTitle": "Hitung Blok 3D",
+  "blockCount3dSubtitle": "HITUNG BLOK DALAM RUANG TIGA DIMENSI.",
+  "rotatingMazeTitle": "Labirin Berputar",
+  "rotatingMazeSubtitle": "PUTAR LABIRIN UNTUK MEMANDU BOLA KE PINTU KELUAR.",
+  "silhouetteMatchOrthoTitle": "Pencocokan Siluet (Ortho)",
+  "silhouetteMatchOrthoSubtitle": "COCOKKAN OBJEK 3D DENGAN BAYANGAN ORTHO.",
+  "spatialConflictTitle": "Konflik Spasial",
+  "spatialConflictSubtitle": "SELESAIKAN DISKREPANSI ANTARA TEKS DAN ARAH.",
+  "spotlightTrackTitle": "Jalur Sorotan",
+  "spotlightTrackSubtitle": "LACAK ITEM YANG BERKEDIP DALAM BAYANGAN YANG BERGERAK.",
+  "d2AttentionTitle": "Perhatian d2",
+  "d2AttentionSubtitle": "KETUK SIMBOL TARGET DENGAN KRITERIA KETAT.",
+  "dualMirrorTitle": "Navigasi Cermin Ganda",
+  "dualMirrorSubtitle": "NAVIGASI DUA LABIRIN SEKALIGUS.",
+  "contextCluesTitle": "Petunjuk Konteks",
+  "contextCluesSubtitle": "SIMPULKAN KATA YANG TERSEMBUNYI DARI PETUNJUK KONTEKS.",
+  "digitSpanReverseSubtitle": "INGAT DIGIT ANGKA DALAM URUTAN TERBALIK.",
+  "faceNameAssociationSubtitle": "INGAT NAMA UNTUK BERBAGAI WAJAH YANG DISAJIKAN.",
+  "staircaseMemorySubtitle": "HAFALKAN BLOK DALAM URUTAN BERTINGKAT.",
+  "choiceReactionTimeSubtitle": "KETUK TOMBOL TERTENTU YANG SESUAI DENGAN PETUNJUK DENGAN CEPAT.",
+  "attentionalBlinkSubtitle": "TEMUKAN TARGET CEPAT YANG BERKEDIP DALAM ALIRAN.",
+  "visualStatisticalLearningSubtitle": "PELAJARI POLA BENTUK TEMPORAL SECARA VISUAL.",
+  "sternbergTaskSubtitle": "INGAT APAKAH SIMBOL ADA DALAM SET MEMORI.",
+  "operationSpanSubtitle": "SELESAIKAN MATEMATIKA DAN INGAT STRING ALFABET.",
+  "continuousRecognitionTitle": "Pengenalan Berkelanjutan",
+  "continuousRecognitionSubtitle": "IDENTIFIKASI APAKAH KARTU YANG DISAJIKAN LAMA ATAU BARU.",
+  "symmetrySpanTitle": "Rentang Simetri",
+  "symmetrySpanSubtitle": "INGAT KOORDINAT SEL DI ANTARA KEPUTUSAN SIMETRI VERTIKAL.",
+  "objectDisplacementTitle": "Perpindahan Objek",
+  "objectDisplacementSubtitle": "PELAJARI PENEMPATAN DAN KETUK SATU OBJEK YANG BERPINDAH.",
+  "mandalaRecallTitle": "Mengingat Mandala",
+  "mandalaRecallSubtitle": "HAFALKAN UBIN WARNA DAN CAT ULANG MANDALA DARI PALET.",
+  "runningMemorySpanTitle": "Rentang Memori Berjalan",
+  "runningMemorySpanSubtitle": "PANTAU HURUF YANG BERJALAN DAN INGAT N ITEM TERAKHIR.",
+  "spatialCabinetMemoryTitle": "Kabinet Spasial",
+  "spatialCabinetMemorySubtitle": "HAFALKAN DAN TEMUKAN ITEM DI BALIK PINTU KABINET.",
+  "pathRecallSubtitle": "HAFALKAN DAN ULANGI PILIHAN JALUR.",
+  "objectShuffleSubtitle": "LACAK ITEM YANG DIACAK DI BAWAH CANGKIR DALAM.",
+  "groceryListSubtitle": "HAFALKAN DAN CENTANG ITEM DALAM DAFTAR.",
+  "quickMathSubtitle": "SELESAIKAN PERTANYAAN ARITMATIKA DENGAN KECEPATAN TINGGI.",
+  "mathGuessTitle": "Tebak Matematika",
+  "mathGuessSubtitle": "TEBAK ANGKA YANG TERSEMBUNYI DALAM 15 KESEMPATAN.",
+  "reflexTapSubtitle": "KETUK STIMULUS SECEPAT MUNGKIN.",
+  "pixelMimicSubtitle": "TIRU POLA DESAIN PADA GRID PIXEL.",
+  "simonSequenceSubtitle": "ULANGI URUTAN BENTUK DARI MEMORI.",
+  "slidePuzzleSubtitle": "SUSUN ULANG UBIN GRID GESER PERSEGI.",
+  "findWordTitle": "Cari Kata",
+  "schulteTableSubtitle": "KETUK ANGKA DARI SATU SAMPAI DUA PULUH LIMA.",
+  "simonCommandTitle": "Simon Command",
+  "simonCommandSubtitle": "LAKUKAN INSTRUKSI SUARA DENGAN CEPAT.",
+  "binaryCodeTitle": "Kecepatan Biner",
+  "binaryCodeSubtitle": "TERJEMAHKAN KODE BINER MENJADI DESIMAL.",
+  "moduloClockTitle": "Jam Modulo",
+  "moduloClockSubtitle": "HITUNG PERSAMAAN MATEMATIKA MENGGUNAKAN JAM.",
+  "chimpTestTitle": "Tes Simpanse",
+  "chimpTestSubtitle": "KETUK ANGKA ACAK DALAM URUTAN MENAIK.",
+  "relationalMemoryTitle": "Memori Relasional",
+  "relationalMemorySubtitle": "INGAT POSISI ITEM GRID YANG TEPAT.",
+  "factBinderTitle": "Pengikat Fakta",
+  "factBinderSubtitle": "HUBUNGKAN SIMBOL AND INGAT PERNYATAAN.",
+  "sourceMonitoringTitle": "Pemantauan Sumber",
+  "sourceMonitoringSubtitle": "INGAT KONTEKSNYA.",
+  "klotskiTitle": "Pelarian Klotski",
+  "klotskiSubtitle": "GESER BLOK UNTUK MENCAPAI PINTU KELUAR.",
+  "homophoneHuntSubtitle": "PILIH EJAAN YANG BENAR."
 }

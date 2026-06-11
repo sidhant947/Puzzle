@@ -2776,4 +2776,759 @@ class AppLocalizationsBn extends AppLocalizations {
 
   @override
   String get imReady => 'আমি প্রস্তুত';
+
+  @override
+  String get soptTitle => 'স্ব-অর্ডারড পয়েন্টিং';
+
+  @override
+  String get soptSubtitle => 'প্রতিবার আলাদা কার্ডে ট্যাপ করুন। পদ পরিবর্তন!';
+
+  @override
+  String get soptWinTitle => 'সিকোয়েন্স মাস্টার!';
+
+  @override
+  String soptGameOverMessage(int score) {
+    return 'আপনি সফলভাবে এলোমেলো কার্ড ট্র্যাক করে $score পয়েন্ট স্কোর করেছেন!';
+  }
+
+  @override
+  String get soptChooseNovel => 'একটি নতুন কার্ড আলতো চাপুন';
+
+  @override
+  String get soptGreatJob => 'দারুণ কাজ!';
+
+  @override
+  String get soptAlreadyTapped => 'ইতিমধ্যে ট্যাপ!';
+
+  @override
+  String get soptGrid => 'গ্রিড';
+
+  @override
+  String get contRecogTitle => 'ক্রমাগত স্বীকৃতি';
+
+  @override
+  String get contRecogSubtitle => 'আপনি কি এই সেশনে আগে এই কার্ড দেখেছেন?';
+
+  @override
+  String get contRecogWinTitle => 'স্বীকৃতি জিনিয়াস!';
+
+  @override
+  String contRecogGameOverMessage(int score) {
+    return 'আপনি $score সঠিক স্বীকৃতি স্কোর করেছেন!';
+  }
+
+  @override
+  String get contRecogCorrect => 'সঠিক!';
+
+  @override
+  String get contRecogWrong => 'ভুল!';
+
+  @override
+  String get contRecogOldOrNew => 'এটা কি পুরাতন নাকি নতুন?';
+
+  @override
+  String get contRecogNew => 'নতুন';
+
+  @override
+  String get contRecogOld => 'পুরাতন';
+
+  @override
+  String get contRecogSeenPool => 'পুল দেখা গেছে';
+
+  @override
+  String get dnmsTitle => 'নন-ম্যাচিং মেমরি';
+
+  @override
+  String get dnmsSubtitle => 'যে কার্ডটি মুখস্থ নমুনায় ছিল না তা আলতো চাপুন।';
+
+  @override
+  String get dnmsWinTitle => 'অ-ম্যাচিং বিশেষজ্ঞ!';
+
+  @override
+  String dnmsGameOverMessage(int score) {
+    return 'আপনি বিলম্বিত নন-ম্যাচিং-এ $score সঠিক উত্তর স্কোর করেছেন!';
+  }
+
+  @override
+  String get dnmsChooseNovel => 'নতুন কার্ডে ট্যাপ করুন';
+
+  @override
+  String get dnmsMemorizeSample => 'এই কার্ড মুখস্থ';
+
+  @override
+  String get dnmsWaitForIt => 'এর জন্য অপেক্ষা করুন...';
+
+  @override
+  String get dnmsExcellent => 'চমৎকার!';
+
+  @override
+  String get dnmsSampleTapped => 'যে নমুনা ছিল!';
+
+  @override
+  String get dnmsCards => 'কার্ড';
+
+  @override
+  String get symSpanTitle => 'প্রতিসাম্য স্প্যান';
+
+  @override
+  String get symSpanSubtitle =>
+      'উল্লম্ব প্রতিসাম্য সনাক্ত করার সময় কোষের নিদর্শনগুলি স্মরণ করুন।';
+
+  @override
+  String get symSpanWinTitle => 'সিমেট্রি মাস্টার!';
+
+  @override
+  String symSpanGameOverMessage(int score) {
+    return 'আপনি লেআউটগুলি স্মরণ করে এবং প্রতিসাম্য সনাক্ত করে $score পয়েন্ট অর্জন করেছেন!';
+  }
+
+  @override
+  String get symSpanMemorizeRed => 'লাল কোষের অবস্থান মনে রাখুন';
+
+  @override
+  String get symSpanIsSymmetric => 'প্যাটার্ন কি প্রতিসম?';
+
+  @override
+  String get symSpanRecallSequence => 'সঠিক ক্রমে অনুক্রম স্মরণ করুন';
+
+  @override
+  String get symSpanGreatJob => 'দারুণ কাজ!';
+
+  @override
+  String get symSpanTryAgain => 'আবার চেষ্টা করুন!';
+
+  @override
+  String get symSpanLength => 'দৈর্ঘ্য';
+
+  @override
+  String get readingSpanTitle => 'রিডিং স্প্যান';
+
+  @override
+  String get readingSpanSubtitle =>
+      'বর্ণের ক্রম মনে রাখার সময় বাক্য যাচাই করুন।';
+
+  @override
+  String get readingSpanWinTitle => 'রিডিং এক্সপার্ট!';
+
+  @override
+  String readingSpanGameOverMessage(int score) {
+    return 'রিডিং স্প্যান মেমরি চ্যালেঞ্জে আপনি $score পয়েন্ট স্কোর করেছেন!';
+  }
+
+  @override
+  String get readingSpanTrueFalse => 'এই বিবৃতি সত্য না মিথ্যা?';
+
+  @override
+  String get readingSpanMemorizeLetter => 'এই চিঠি মুখস্থ';
+
+  @override
+  String get readingSpanRecallLetters => 'ক্রমানুসারে চিঠিগুলি স্মরণ করুন';
+
+  @override
+  String get readingSpanGreatJob => 'দারুণ কাজ!';
+
+  @override
+  String get readingSpanTryAgain => 'আবার চেষ্টা করুন!';
+
+  @override
+  String readingSpanYourSequence(String sequence) {
+    return 'আপনার ক্রম: $sequence';
+  }
+
+  @override
+  String get readingSpanLength => 'দৈর্ঘ্য';
+
+  @override
+  String get readingSpanSentence1 => 'সূর্য পূর্ব দিকে উদিত হয়।';
+
+  @override
+  String get readingSpanSentence2 => 'বরফ গরম হয়ে ফুটছে।';
+
+  @override
+  String get readingSpanSentence3 => 'মাছ পানির নিচে শ্বাস নিতে পারে।';
+
+  @override
+  String get readingSpanSentence4 => 'কুকুরের ডানা আছে এবং উড়তে পারে।';
+
+  @override
+  String get readingSpanSentence5 => '0 ডিগ্রি সেলসিয়াসে জল জমে যায়।';
+
+  @override
+  String get readingSpanSentence6 => 'বিড়াল ছোট কুকুরের মত ঘেউ ঘেউ করে।';
+
+  @override
+  String get readingSpanSentence7 => 'গ্রীষ্মকালে গাছে সবুজ পাতা থাকে।';
+
+  @override
+  String get readingSpanSentence8 => 'মাটি থেকে ওপরের দিকে বৃষ্টি পড়ছে।';
+
+  @override
+  String get readingSpanSentence9 => 'একটি ত্রিভুজের চারটি সমান বাহু রয়েছে।';
+
+  @override
+  String get readingSpanSentence10 => 'আপেল এক ধরনের মিষ্টি ফল।';
+
+  @override
+  String get readingSpanSentence11 => 'চাঁদ চেডার পনির দিয়ে তৈরি।';
+
+  @override
+  String get readingSpanSentence12 => 'অটোমোবাইল রোল করার জন্য চাকা আছে.';
+
+  @override
+  String get readingSpanSentence13 => 'আগুন জমে ঠাণ্ডা।';
+
+  @override
+  String get readingSpanSentence14 =>
+      'কাগজ প্রক্রিয়াজাত কাঠ থেকে তৈরি করা হয়।';
+
+  @override
+  String get readingSpanSentence15 =>
+      'পাখিদের উড়তে সাহায্য করার জন্য পালক থাকে।';
+
+  @override
+  String get readingSpanSentence16 => 'পাইন গাছে কলা জন্মে।';
+
+  @override
+  String get readingSpanSentence17 => 'একটি হাতি একটি পিঁপড়ার চেয়ে ছোট।';
+
+  @override
+  String get readingSpanSentence18 => 'বইগুলোতে লেখার ছাপা পাতা থাকে।';
+
+  @override
+  String get countingSpanTitle => 'স্প্যান গণনা';
+
+  @override
+  String get countingSpanSubtitle =>
+      'শুধুমাত্র নীল বৃত্ত গণনা. তারপর গণনার ক্রম স্মরণ করুন।';
+
+  @override
+  String get countingSpanWinTitle => 'কাউন্টিং জিনিয়াস!';
+
+  @override
+  String countingSpanGameOverMessage(int score) {
+    return 'আপনি কাউন্টিং স্প্যান মেমরি চ্যালেঞ্জে $score পয়েন্ট স্কোর করেছেন!';
+  }
+
+  @override
+  String get countingSpanCountCircles => 'শুধুমাত্র নীল বৃত্ত গণনা';
+
+  @override
+  String get countingSpanRecallCounts => 'সঠিক ক্রমে গণনা প্রত্যাহার করুন';
+
+  @override
+  String get countingSpanGreatJob => 'দারুণ কাজ!';
+
+  @override
+  String get countingSpanTryAgain => 'আবার চেষ্টা করুন!';
+
+  @override
+  String countingSpanYourSequence(String sequence) {
+    return 'আপনার ক্রম: $sequence';
+  }
+
+  @override
+  String get countingSpanLength => 'দৈর্ঘ্য';
+
+  @override
+  String get objDispTitle => 'বস্তুর স্থানচ্যুতি';
+
+  @override
+  String get objDispSubtitle =>
+      'লেআউট মনে রাখুন। অবস্থান পরিবর্তন করে এমন একটি বস্তু খুঁজুন এবং আলতো চাপুন।';
+
+  @override
+  String get objDispWinTitle => 'স্থানিক প্রতিভা!';
+
+  @override
+  String objDispGameOverMessage(int score) {
+    return 'আপনি সঠিকভাবে $score স্থানচ্যুত বস্তু সনাক্ত করেছেন!';
+  }
+
+  @override
+  String get objDispMemorizeAll => 'সব স্থাপনা মুখস্থ';
+
+  @override
+  String get objDispWaitingShift => 'লেআউট শিফটের জন্য অপেক্ষা করা হচ্ছে...';
+
+  @override
+  String get objDispTapMoved => 'সরানো বস্তুটি আলতো চাপুন';
+
+  @override
+  String get objDispExcellent => 'চমৎকার!';
+
+  @override
+  String get objDispWrongObject => 'ভুল বস্তু!';
+
+  @override
+  String get objDispItems => 'আইটেম';
+
+  @override
+  String get mandalaTitle => 'Mandala রিকল';
+
+  @override
+  String get mandalaSubtitle =>
+      'রঙ কনফিগারেশন মুখস্থ. রং বাছাই এবং টাইলস পুনরায় রং.';
+
+  @override
+  String get mandalaWinTitle => 'মন্ডলা শিল্পী!';
+
+  @override
+  String mandalaGameOverMessage(int score) {
+    return 'আপনি রঙিন জ্যামিতিক বিন্যাস পুনরায় তৈরি করে $score পয়েন্ট অর্জন করেছেন!';
+  }
+
+  @override
+  String get mandalaMemorizeColors => 'টাইল রং মনে রাখুন';
+
+  @override
+  String get mandalaPaintCells => 'আসল মেলে ঘর পেইন্ট করুন';
+
+  @override
+  String get mandalaExcellent => 'চমৎকার!';
+
+  @override
+  String get mandalaIncorrectMatch => 'ভুল মিল!';
+
+  @override
+  String get mandalaSubmitRepaint => 'পুনরায় রং জমা দিন';
+
+  @override
+  String get mandalaTiles => 'টাইলস';
+
+  @override
+  String get runningSpanTitle => 'চলমান স্প্যান';
+
+  @override
+  String get runningSpanSubtitle =>
+      'চিঠিগুলো দেখুন। যখন তারা থামবে, শেষ এন অক্ষরগুলি ক্রমানুসারে ইনপুট করুন।';
+
+  @override
+  String get runningSpanWinTitle => 'বাফার মাস্টার!';
+
+  @override
+  String runningSpanGameOverMessage(int score) {
+    return 'আপনি রানিং মেমরি স্প্যানে $score পয়েন্ট স্কোর করেছেন!';
+  }
+
+  @override
+  String runningSpanPrepareRecall(int count) {
+    return 'শেষ $count অক্ষর স্মরণ করার জন্য প্রস্তুত হন';
+  }
+
+  @override
+  String get runningSpanWatchCarefully => 'সাবধানে দেখুন...';
+
+  @override
+  String runningSpanEnterLast(int count) {
+    return 'শেষ $count অক্ষর লিখুন';
+  }
+
+  @override
+  String get runningSpanGreatJob => 'দারুণ কাজ!';
+
+  @override
+  String get runningSpanIncorrectBuffer => 'ভুল বাফার!';
+
+  @override
+  String runningSpanRecallLast(int count) {
+    return 'শেষ $count স্মরণ করুন';
+  }
+
+  @override
+  String get runningSpanStopsRandomly => 'স্রোত এলোমেলোভাবে থেমে যায়!';
+
+  @override
+  String runningSpanEntered(String sequence) {
+    return 'প্রবেশ করান: $sequence';
+  }
+
+  @override
+  String get runningSpanNItems => 'এন-আইটেম';
+
+  @override
+  String get spatialCabinetTitle => 'স্থানিক ক্যাবিনেট';
+
+  @override
+  String get spatialCabinetSubtitle =>
+      'ক্যাবিনেটের ড্রয়ারে কোন বস্তুটি রয়েছে তা মুখস্থ করুন।';
+
+  @override
+  String get spatialCabinetWinTitle => 'কেবিনেট এক্সপার্ট!';
+
+  @override
+  String spatialCabinetGameOverMessage(int score) {
+    return 'আপনি স্থানিক ক্যাবিনেট মেমরিতে $score পয়েন্ট স্কোর করেছেন!';
+  }
+
+  @override
+  String get spatialCabinetMemorize => 'আইটেম অবস্থানগুলি মনে রাখবেন';
+
+  @override
+  String spatialCabinetWhereIs(String itemName) {
+    return '$itemName টি কোথায়?';
+  }
+
+  @override
+  String get spatialCabinetCorrect => 'সঠিক!';
+
+  @override
+  String get spatialCabinetWrongDrawer => 'ভুল ড্রয়ার!';
+
+  @override
+  String get spatialCabinetItems => 'আইটেম';
+
+  @override
+  String get cabinetItemKey => 'চাবি';
+
+  @override
+  String get cabinetItemApple => 'আপেল';
+
+  @override
+  String get cabinetItemDiamond => 'হীরা';
+
+  @override
+  String get cabinetItemBook => 'বই';
+
+  @override
+  String get cabinetItemUmbrella => 'ছাতা';
+
+  @override
+  String get cabinetItemCoffee => 'কফি';
+
+  @override
+  String get cabinetItemLock => 'তালা';
+
+  @override
+  String get cabinetItemPet => 'পোষা প্রাণী';
+
+  @override
+  String get cabinetItemCar => 'গাড়ি';
+
+  @override
+  String get gamesTitleLabel => 'গেমস';
+
+  @override
+  String get yourFavorites => 'আপনার প্রিয়';
+
+  @override
+  String get readyForWorkout => 'আপনার দৈনন্দিন ওয়ার্কআউটের জন্য প্রস্তুত?';
+
+  @override
+  String get greatStartKeepGoing => 'দারুণ শুরু! চালিয়ে যান।';
+
+  @override
+  String get onFireToday => 'আপনি আজ ফর্মে আছেন!';
+
+  @override
+  String get incredibleSolvingToday => 'আজ অবিশ্বাস্য সমাধান!';
+
+  @override
+  String get newGameLabel => 'নতুন';
+
+  @override
+  String get slitherlinkTitle => 'স্লিদারলিঙ্ক';
+
+  @override
+  String get slitherlinkSubtitle =>
+      'সংখ্যার ক্লু ব্যবহার করে পিন গ্রিড লুপ করুন।';
+
+  @override
+  String get futoshikiTitle => 'ফুটোশিকি';
+
+  @override
+  String get futoshikiSubtitle => 'গ্রেটার-দ্যান ক্লু দিয়ে গ্রিড পূরণ করুন।';
+
+  @override
+  String get kakuroTitle => 'কাকুরু';
+
+  @override
+  String get kakuroSubtitle =>
+      'সংখ্যা এবং যোগফল দিয়ে ক্রসওয়ার্ড সমাধান করুন।';
+
+  @override
+  String get inequalityDashTitle => 'অসমতা ড্যাশ';
+
+  @override
+  String get inequalityDashSubtitle => 'সময়ের চাপে অসমতা সমাধান করুন।';
+
+  @override
+  String get factorFinderTitle => 'ফ্যাক্টর ফাইন্ডার';
+
+  @override
+  String get factorFinderSubtitle =>
+      'টার্গেট সংখ্যার সমস্ত ফ্যাক্টর চিহ্নিত করুন।';
+
+  @override
+  String get collatzTitle => 'কোলাটজ পথ';
+
+  @override
+  String get collatzSubtitle => '৩এন+১ সিকোয়েন্স নেভিগেট করুন।';
+
+  @override
+  String get sumPyramidTitle => 'যোগফল পিরামিড';
+
+  @override
+  String get sumPyramidSubtitle =>
+      'যোগফল গণিত ক্লু দিয়ে পিরামিড সেল পূরণ করুন।';
+
+  @override
+  String get target10Title => 'টার্গেট ১০';
+
+  @override
+  String get target10Subtitle => 'দশটি যোগফল পেতে সংখ্যার টাইলস একত্রিত করুন।';
+
+  @override
+  String get fractionMatcherTitle => 'ভগ্নাংশ ম্যাচার';
+
+  @override
+  String get fractionMatcherSubtitle => 'দৃশ্যত সমতুল্য ভগ্নাংশ মিলান।';
+
+  @override
+  String get dualCodingTitle => 'দ্বৈত কোডিং';
+
+  @override
+  String get dualCodingSubtitle => 'একই সাথে অক্ষর এবং চিহ্ন মিলান।';
+
+  @override
+  String get distractorMatrixTitle => 'ডিস্ট্রাক্টর ম্যাট্রিক্স';
+
+  @override
+  String get distractorMatrixSubtitle =>
+      'বিক্ষোভকারীর মধ্যে টার্গেট আকার খুঁজুন।';
+
+  @override
+  String get temporalOrderTitle => 'কালানুক্রমিক বিন্যাস';
+
+  @override
+  String get temporalOrderSubtitle => 'কালানুক্রমিক ক্রম মনে করুন।';
+
+  @override
+  String get associativePairsTitle => 'সহযোগী জোড়া';
+
+  @override
+  String get associativePairsSubtitle => 'সংশ্লিষ্ট চিহ্নগুলি জোড়া এবং মিলান।';
+
+  @override
+  String get blockCount3dTitle => '৩ডি ব্লক গণনা';
+
+  @override
+  String get blockCount3dSubtitle => 'ত্রিমাত্রিক স্থানে ব্লক গণনা করুন।';
+
+  @override
+  String get rotatingMazeTitle => 'ঘূর্ণায়মান গোলকধাঁধা';
+
+  @override
+  String get rotatingMazeSubtitle =>
+      'বলগুলিকে প্রস্থান পথে নিয়ে যেতে গোলকধাঁধা ঘোরান।';
+
+  @override
+  String get silhouetteMatchOrthoTitle => 'সিলুয়েট ম্যাচ (অর্থো)';
+
+  @override
+  String get silhouetteMatchOrthoSubtitle =>
+      'অর্থো ছায়ার সাথে ৩ডি অবজেক্ট মিলান।';
+
+  @override
+  String get spatialConflictTitle => 'স্থানিক দ্বন্দ্ব';
+
+  @override
+  String get spatialConflictSubtitle =>
+      'টেক্সট এবং দিকনির্দেশক অসঙ্গতি সমাধান করুন।';
+
+  @override
+  String get spotlightTrackTitle => 'স্পটলাইট ট্র্যাক';
+
+  @override
+  String get spotlightTrackSubtitle =>
+      'চলন্ত ছায়ায় জ্বলজ্বল করা আইটেমগুলি ট্র্যাক করুন।';
+
+  @override
+  String get d2AttentionTitle => 'd2 মনোযোগ';
+
+  @override
+  String get d2AttentionSubtitle =>
+      'কঠোর মানদণ্ডের সাথে টার্গেট চিহ্নগুলি আলতো চাপুন।';
+
+  @override
+  String get dualMirrorTitle => 'দ্বৈত-মিরর নেভিগেশন';
+
+  @override
+  String get dualMirrorSubtitle => 'একসাথে দুটি গোলকধাঁধা নেভিগেট করুন।';
+
+  @override
+  String get contextCluesTitle => 'প্রাসঙ্গিক ক্লু';
+
+  @override
+  String get contextCluesSubtitle =>
+      'প্রাসঙ্গিক ইঙ্গিত থেকে লুকানো শব্দ অনুমান করুন।';
+
+  @override
+  String get digitSpanReverseSubtitle => 'বিপরীত ক্রমে সংখ্যাগুলি মনে করুন।';
+
+  @override
+  String get faceNameAssociationSubtitle =>
+      'উপস্থাপিত বিভিন্ন মুখমন্ডলের নাম মনে করুন।';
+
+  @override
+  String get staircaseMemorySubtitle => 'ধাপে ধাপে ব্লকের ক্রম মুখস্থ করুন।';
+
+  @override
+  String get choiceReactionTimeSubtitle =>
+      'দ্রুত ক্লুগুলির সাথে মিল রেখে নির্দিষ্ট বোতাম টিপুন।';
+
+  @override
+  String get attentionalBlinkSubtitle =>
+      'স্ট্রীমে দ্রুত টার্গেট ফ্ল্যাশিং স্পার্ক করুন।';
+
+  @override
+  String get visualStatisticalLearningSubtitle =>
+      'দৃশ্যত টেম্পোরাল শেপ প্যাটার্ন শিখুন।';
+
+  @override
+  String get sternbergTaskSubtitle =>
+      'চিহ্নটি মেমরি সেটে ছিল কিনা তা মনে করুন।';
+
+  @override
+  String get operationSpanSubtitle =>
+      'গণিত সমাধান করুন এবং বর্ণমালার স্ট্রিং মনে করুন।';
+
+  @override
+  String get continuousRecognitionTitle => 'নিরবচ্ছিন্ন স্বীকৃতি';
+
+  @override
+  String get continuousRecognitionSubtitle =>
+      'উপস্থাপিত কার্ডটি পুরানো না নতুন তা চিহ্নিত করুন।';
+
+  @override
+  String get symmetrySpanTitle => 'প্রতিসাম্য স্প্যান';
+
+  @override
+  String get symmetrySpanSubtitle =>
+      'উল্লম্ব প্রতিসাম্য সিদ্ধান্তের মধ্যে সেল স্থানাঙ্ক মনে করুন।';
+
+  @override
+  String get objectDisplacementTitle => 'বস্তু বিচ্যুতি';
+
+  @override
+  String get objectDisplacementSubtitle =>
+      'অবস্থানগুলি অধ্যয়ন করুন এবং সরানো একটি মাত্র বস্তুটি আলতো চাপুন।';
+
+  @override
+  String get mandalaRecallTitle => 'মন্ডলা রিকল';
+
+  @override
+  String get mandalaRecallSubtitle =>
+      'রঙের টাইলস মুখস্থ করুন এবং প্যালেট থেকে মন্ডলা পুনরায় রং করুন।';
+
+  @override
+  String get runningMemorySpanTitle => 'রানিং স্প্যান';
+
+  @override
+  String get runningMemorySpanSubtitle =>
+      'চলমান অক্ষরগুলি পর্যবেক্ষণ করুন এবং শেষ N আইটেমগুলি মনে করুন।';
+
+  @override
+  String get spatialCabinetMemoryTitle => 'স্থানিক ক্যাবিনেট';
+
+  @override
+  String get spatialCabinetMemorySubtitle =>
+      'ক্যাবিনেটের দরজার পিছনে আইটেমগুলি মুখস্থ করুন এবং সন্ধান করুন।';
+
+  @override
+  String get pathRecallSubtitle =>
+      'পাথওয়ে নির্বাচন মুখস্থ করুন এবং পুনরাবৃত্তি করুন।';
+
+  @override
+  String get objectShuffleSubtitle =>
+      'গভীর কাপের নিচে এলোমেলো আইটেম ট্র্যাক করুন।';
+
+  @override
+  String get groceryListSubtitle =>
+      'তালিকায় থাকা আইটেমগুলি মুখস্থ করুন এবং চেক অফ করুন।';
+
+  @override
+  String get quickMathSubtitle => 'দ্রুত গতিতে গাণিতিক প্রশ্নের সমাধান করুন।';
+
+  @override
+  String get mathGuessTitle => 'গণিত অনুমান';
+
+  @override
+  String get mathGuessSubtitle =>
+      '১৫টি সুযোগের মধ্যে লুকানো সংখ্যাটি অনুমান করুন।';
+
+  @override
+  String get reflexTapSubtitle =>
+      'মানুষের পক্ষে যতটা সম্ভব দ্রুত উদ্দীপকগুলিকে ট্যাপ করুন।';
+
+  @override
+  String get pixelMimicSubtitle =>
+      'পিক্সেল গ্রিডে ডিজাইনের প্যাটার্ন অনুকরণ করুন।';
+
+  @override
+  String get simonSequenceSubtitle =>
+      'স্মৃতি থেকে আকারের ক্রম পুনরাবৃত্তি করুন।';
+
+  @override
+  String get slidePuzzleSubtitle =>
+      'বর্গাকার স্লাইডিং গ্রিড টাইলস পুনর্বিন্যাস করুন।';
+
+  @override
+  String get findWordTitle => 'শব্দ খুঁজুন';
+
+  @override
+  String get schulteTableSubtitle => 'এক থেকে পঁচিশ পর্যন্ত সংখ্যা ট্যাপ করুন।';
+
+  @override
+  String get simonCommandTitle => 'সাইমন কমান্ড';
+
+  @override
+  String get simonCommandSubtitle => 'দ্রুত ভয়েস নির্দেশাবলী সম্পাদন করুন।';
+
+  @override
+  String get binaryCodeTitle => 'বাইনারি গতি';
+
+  @override
+  String get binaryCodeSubtitle => 'বাইনারি কোডগুলিকে দশমিকে রূপান্তর করুন।';
+
+  @override
+  String get moduloClockTitle => 'মডুলো ক্লক';
+
+  @override
+  String get moduloClockSubtitle =>
+      'ঘড়ি ব্যবহার করে গাণিতিক সমীকরণ গণনা করুন।';
+
+  @override
+  String get chimpTestTitle => 'শিম্পাঞ্জি পরীক্ষা';
+
+  @override
+  String get chimpTestSubtitle => 'আরোহী ক্রমে এলোমেলো সংখ্যা ট্যাপ করুন।';
+
+  @override
+  String get relationalMemoryTitle => 'সম্পর্কীয় স্মৃতি';
+
+  @override
+  String get relationalMemorySubtitle => 'সঠিক গ্রিড আইটেম অবস্থান মনে করুন।';
+
+  @override
+  String get factBinderTitle => 'ফ্যাক্ট বাইন্ডার';
+
+  @override
+  String get factBinderSubtitle =>
+      'চিহ্নগুলি সংযুক্ত করুন এবং বিবৃতিগুলি মনে করুন।';
+
+  @override
+  String get sourceMonitoringTitle => 'উৎস পর্যবেক্ষণ';
+
+  @override
+  String get sourceMonitoringSubtitle => 'প্রসঙ্গটি মনে রাখুন।';
+
+  @override
+  String get klotskiTitle => 'ক্লোটস্কি এস্কেপ';
+
+  @override
+  String get klotskiSubtitle =>
+      'প্রস্থান পথে পৌঁছানোর জন্য ব্লকগুলি স্লাইড করুন।';
+
+  @override
+  String get homophoneHuntSubtitle => 'সঠিক বানানটি চয়ন করুন।';
 }

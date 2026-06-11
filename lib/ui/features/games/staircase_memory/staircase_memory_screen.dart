@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -77,7 +79,7 @@ class _StaircaseMemoryScreenState extends ConsumerState<StaircaseMemoryScreen> {
     }
 
     return GameScaffold(
-      title: 'Staircase Memory',
+      title: L10nGameHelpers.getGameTitle(context, 'staircase_memory'),
       subtitle: state.phase == StaircasePhase.sequence 
           ? 'Memorize the icons' 
           : 'What was shown ${state.n} steps ago?',

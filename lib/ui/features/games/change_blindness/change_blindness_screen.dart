@@ -1,4 +1,6 @@
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import "package:puzzle/l10n/app_localizations.dart";
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -29,7 +31,7 @@ class _ChangeBlindnessScreenState extends ConsumerState<ChangeBlindnessScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'GAME OVER',
+        title: L10nGameHelpers.getGameTitle(context, 'change_blindness'),
         message: AppLocalizations.of(context)!.changeBlindnessMessage((state.score).toString()),
         onHome: () {
           Navigator.of(context).pop();

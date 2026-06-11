@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -63,7 +65,7 @@ class _NumericalEstimationScreenState extends ConsumerState<NumericalEstimationS
     });
 
     return GameScaffold(
-      title: 'Quick Estimate',
+      title: L10nGameHelpers.getGameTitle(context, 'numerical_estimation'),
       subtitle: l10n.numericalEstimationSubtitle,
       body: Column(
         children: [

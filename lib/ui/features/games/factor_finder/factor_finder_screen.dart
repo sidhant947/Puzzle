@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -35,6 +37,7 @@ class _FactorFinderScreenState extends ConsumerState<FactorFinderScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(factorFinderNotifierProvider);
     final colorScheme = Theme.of(context).colorScheme;
 
@@ -45,7 +48,8 @@ class _FactorFinderScreenState extends ConsumerState<FactorFinderScreen> {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'TIME\'S UP!',
+
+            title: l10n.timeUp,
             message: AppLocalizations.of(context)!.factorFinderMessage((next.score).toString()),
             onHome: () {
               Navigator.of(context).pop();
@@ -62,8 +66,8 @@ class _FactorFinderScreenState extends ConsumerState<FactorFinderScreen> {
 
     if (state.isLoading || state.currentLevel == null) {
       return GameScaffold(
-        title: 'FACTOR FINDER',
-        subtitle: 'Tap all factors of the target number',
+        title: L10nGameHelpers.getGameTitle(context, 'factor_finder'),
+        subtitle: L10nGameHelpers.getGameTitle(context, 'factor_finder'),
         body: const Center(
           child: CircularProgressIndicator(),
         ),
@@ -73,8 +77,8 @@ class _FactorFinderScreenState extends ConsumerState<FactorFinderScreen> {
     final level = state.currentLevel!;
 
     return GameScaffold(
-      title: 'FACTOR FINDER',
-      subtitle: 'Tap all numbers that divide the target without remainder',
+      title: L10nGameHelpers.getGameTitle(context, 'factor_finder'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'factor_finder'),
       onReset: () {
         HapticFeedbackUtil.mediumImpact();
         ref.read(factorFinderNotifierProvider.notifier).reset();

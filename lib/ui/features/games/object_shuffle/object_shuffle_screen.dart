@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -76,7 +78,7 @@ class _ObjectShuffleScreenState extends ConsumerState<ObjectShuffleScreen> {
     }
 
     return GameScaffold(
-      title: 'OBJECT SHUFFLE',
+      title: L10nGameHelpers.getGameTitle(context, 'object_shuffle'),
       subtitle: state.phase == ObjectShufflePhase.showing 
           ? 'Watch the target object...' 
           : (state.phase == ObjectShufflePhase.shuffling ? 'Keep your eyes on it!' : 'Where is the target object?'),

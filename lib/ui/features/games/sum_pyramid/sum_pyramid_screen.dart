@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -189,7 +191,7 @@ class _SumPyramidScreenState extends ConsumerState<SumPyramidScreen> {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'GAME OVER',
+            title: L10nGameHelpers.getGameTitle(context, 'sum_pyramid'),
             message: AppLocalizations.of(context)!.sumPyramidMessage((next.score).toString()),
             onHome: () {
               Navigator.of(context).pop();
@@ -206,8 +208,8 @@ class _SumPyramidScreenState extends ConsumerState<SumPyramidScreen> {
 
     if (state.isLoading || state.currentLevel == null) {
       return GameScaffold(
-        title: 'SUM PYRAMID',
-        subtitle: 'Fill in the sum pyramid',
+        title: L10nGameHelpers.getGameTitle(context, 'sum_pyramid'),
+        subtitle: L10nGameHelpers.getGameTitle(context, 'sum_pyramid'),
         body: const Center(
           child: CircularProgressIndicator(),
         ),
@@ -215,8 +217,8 @@ class _SumPyramidScreenState extends ConsumerState<SumPyramidScreen> {
     }
 
     return GameScaffold(
-      title: 'SUM PYRAMID',
-      subtitle: 'Each block is the sum of the two blocks directly below it.',
+      title: L10nGameHelpers.getGameTitle(context, 'sum_pyramid'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'sum_pyramid'),
       onReset: () {
         HapticFeedbackUtil.mediumImpact();
         ref.read(sumPyramidNotifierProvider.notifier).reset();

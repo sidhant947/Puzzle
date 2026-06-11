@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -46,7 +48,7 @@ class SchulteTableScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'SCHULTE TABLE',
+      title: L10nGameHelpers.getGameTitle(context, 'schulte_table'),
       body: SafeArea(
         child: LayoutBuilder(
           builder: (context, constraints) {

@@ -1796,5 +1796,350 @@
       }
     }
   },
-  "imReady": "ฉันพร้อมแล้ว"
+  "imReady": "ฉันพร้อมแล้ว",
+  "soptTitle": "การชี้คำสั่งด้วยตนเอง",
+  "soptSubtitle": "แตะการ์ดอื่นในแต่ละครั้ง สลับตำแหน่ง!",
+  "soptWinTitle": "ลำดับมาสเตอร์!",
+  "soptGameOverMessage": "คุณได้ {score} คะแนนจากการติดตามไพ่ที่สับสำเร็จ!",
+  "soptChooseNovel": "แตะบัตรใหม่",
+  "soptGreatJob": "เยี่ยมมาก!",
+  "soptAlreadyTapped": "แตะแล้ว!",
+  "soptGrid": "กริด",
+  "contRecogTitle": "การรับรู้อย่างต่อเนื่อง",
+  "contRecogSubtitle": "คุณเคยเห็นการ์ดใบนี้มาก่อนในเซสชันนี้หรือไม่",
+  "contRecogWinTitle": "อัจฉริยะแห่งการรับรู้!",
+  "contRecogGameOverMessage": "คุณได้คะแนน {score} การยกย่องที่ถูกต้อง!",
+  "contRecogCorrect": "ถูกต้อง!",
+  "contRecogWrong": "ผิด!",
+  "contRecogOldOrNew": "นี่เก่าหรือใหม่?",
+  "contRecogNew": "ใหม่",
+  "contRecogOld": "เก่า",
+  "contRecogSeenPool": "เห็นสระน้ำ",
+  "dnmsTitle": "หน่วยความจำไม่ตรงกัน",
+  "dnmsSubtitle": "แตะการ์ดที่ไม่ได้อยู่ในตัวอย่างที่บันทึกไว้",
+  "dnmsWinTitle": "ผู้เชี่ยวชาญไม่ตรงกัน!",
+  "dnmsGameOverMessage": "คุณได้คะแนน {score} คำตอบที่ถูกต้องในความล่าช้าที่ไม่ตรงกัน!",
+  "dnmsChooseNovel": "แตะบัตรใหม่",
+  "dnmsMemorizeSample": "จำการ์ดใบนี้ไว้",
+  "dnmsWaitForIt": "รอก่อน...",
+  "dnmsExcellent": "ยอดเยี่ยม!",
+  "dnmsSampleTapped": "นั่นคือตัวอย่าง!",
+  "dnmsCards": "การ์ด",
+  "symSpanTitle": "ช่วงสมมาตร",
+  "symSpanSubtitle": "จดจำรูปแบบของเซลล์พร้อมระบุความสมมาตรในแนวตั้ง",
+  "symSpanWinTitle": "ปรมาจารย์ด้านสมมาตร!",
+  "symSpanGameOverMessage": "คุณได้ {score} คะแนนจากการจำเค้าโครงและระบุความสมมาตร!",
+  "symSpanMemorizeRed": "จดจำตำแหน่งเซลล์เม็ดเลือดแดง",
+  "symSpanIsSymmetric": "รูปแบบมีความสมมาตรหรือไม่?",
+  "symSpanRecallSequence": "เรียกคืนลำดับตามลำดับที่ถูกต้อง",
+  "symSpanGreatJob": "เยี่ยมมาก!",
+  "symSpanTryAgain": "ลองอีกครั้ง!",
+  "symSpanLength": "ความยาว",
+  "readingSpanTitle": "ช่วงการอ่าน",
+  "readingSpanSubtitle": "ตรวจสอบประโยคพร้อมทั้งจดจำลำดับตัวอักษร",
+  "readingSpanWinTitle": "ผู้เชี่ยวชาญด้านการอ่าน!",
+  "readingSpanGameOverMessage": "คุณได้ {score} คะแนนในการแข่งขันหน่วยความจำช่วงการอ่าน!",
+  "readingSpanTrueFalse": "ข้อความนี้เป็นจริงหรือเท็จ?",
+  "readingSpanMemorizeLetter": "จดจำจดหมายฉบับนี้",
+  "readingSpanRecallLetters": "จำตัวอักษรตามลำดับ",
+  "readingSpanGreatJob": "เยี่ยมมาก!",
+  "readingSpanTryAgain": "ลองอีกครั้ง!",
+  "readingSpanYourSequence": "ลำดับของคุณ: {sequence}",
+  "readingSpanLength": "ความยาว",
+  "readingSpanSentence1": "พระอาทิตย์ขึ้นทางทิศตะวันออก",
+  "readingSpanSentence2": "น้ำแข็งกำลังร้อนจัด",
+  "readingSpanSentence3": "ปลาสามารถหายใจใต้น้ำได้",
+  "readingSpanSentence4": "สุนัขมีปีกและบินได้",
+  "readingSpanSentence5": "น้ำจะแข็งตัวที่อุณหภูมิ 0 องศาเซลเซียส",
+  "readingSpanSentence6": "แมวเห่าเหมือนสุนัขตัวเล็ก",
+  "readingSpanSentence7": "ต้นไม้มีใบสีเขียวในฤดูร้อน",
+  "readingSpanSentence8": "ฝนตกลงมาจากพื้นดิน",
+  "readingSpanSentence9": "สามเหลี่ยมมีด้านเท่ากันสี่ด้าน",
+  "readingSpanSentence10": "แอปเปิ้ลเป็นผลไม้รสหวานชนิดหนึ่ง",
+  "readingSpanSentence11": "พระจันทร์ทำจากเชดดาร์ชีส",
+  "readingSpanSentence12": "รถยนต์มีล้อให้หมุน",
+  "readingSpanSentence13": "ไฟมันเย็นเยือก",
+  "readingSpanSentence14": "กระดาษทำจากไม้แปรรูป",
+  "readingSpanSentence15": "นกมีขนช่วยให้บินได้",
+  "readingSpanSentence16": "กล้วยเติบโตบนต้นสน",
+  "readingSpanSentence17": "ช้างมีขนาดเล็กกว่ามด",
+  "readingSpanSentence18": "หนังสือมีหน้าข้อความที่พิมพ์",
+  "countingSpanTitle": "การนับช่วง",
+  "countingSpanSubtitle": "นับวงกลมสีน้ำเงินเท่านั้น แล้วจำลำดับการนับได้",
+  "countingSpanWinTitle": "นับอัจฉริยะ!",
+  "countingSpanGameOverMessage": "คุณได้ {score} คะแนนในการท้าทายความจำการนับช่วง!",
+  "countingSpanCountCircles": "นับเฉพาะวงกลมสีน้ำเงิน",
+  "countingSpanRecallCounts": "เรียกคืนการนับตามลำดับที่ถูกต้อง",
+  "countingSpanGreatJob": "เยี่ยมมาก!",
+  "countingSpanTryAgain": "ลองอีกครั้ง!",
+  "countingSpanYourSequence": "ลำดับของคุณ: {sequence}",
+  "countingSpanLength": "ความยาว",
+  "objDispTitle": "การกระจัดของวัตถุ",
+  "objDispSubtitle": "จดจำเค้าโครง ค้นหาและแตะวัตถุหนึ่งชิ้นที่เลื่อนตำแหน่ง",
+  "objDispWinTitle": "อัจฉริยะเชิงพื้นที่!",
+  "objDispGameOverMessage": "คุณระบุวัตถุที่ถูกแทนที่ {score} ได้อย่างถูกต้อง!",
+  "objDispMemorizeAll": "จดจำตำแหน่งทั้งหมด",
+  "objDispWaitingShift": "กำลังรอการเปลี่ยนเค้าโครง...",
+  "objDispTapMoved": "แตะวัตถุที่เคลื่อนไหว",
+  "objDispExcellent": "ยอดเยี่ยม!",
+  "objDispWrongObject": "วัตถุผิด!",
+  "objDispItems": "รายการ",
+  "mandalaTitle": "มันดาลารีคอล",
+  "mandalaSubtitle": "จดจำการกำหนดค่าสี เลือกสีและทาสีกระเบื้องใหม่",
+  "mandalaWinTitle": "ศิลปินมันดาลา!",
+  "mandalaGameOverMessage": "คุณได้ {score} คะแนนจากการสร้างเลย์เอาต์เรขาคณิตแบบมีสีขึ้นมาใหม่!",
+  "mandalaMemorizeColors": "จดจำสีกระเบื้อง",
+  "mandalaPaintCells": "ทาสีเซลล์ให้ตรงกับต้นฉบับ",
+  "mandalaExcellent": "ยอดเยี่ยม!",
+  "mandalaIncorrectMatch": "จับคู่ไม่ถูกต้อง!",
+  "mandalaSubmitRepaint": "ส่งทาสีใหม่",
+  "mandalaTiles": "กระเบื้อง",
+  "runningSpanTitle": "วิ่งช่วง",
+  "runningSpanSubtitle": "ดูตัวอักษร. เมื่อหยุด ให้ป้อนตัวอักษร N สุดท้ายตามลำดับ",
+  "runningSpanWinTitle": "บัฟเฟอร์มาสเตอร์!",
+  "runningSpanGameOverMessage": "คุณได้ {score} คะแนนในการรัน Memory Span!",
+  "runningSpanPrepareRecall": "เตรียมเรียกคืนตัวอักษร {count} ตัวสุดท้าย",
+  "runningSpanWatchCarefully": "ระวังให้ดี...",
+  "runningSpanEnterLast": "ป้อน {count} ตัวอักษรสุดท้าย",
+  "runningSpanGreatJob": "เยี่ยมมาก!",
+  "runningSpanIncorrectBuffer": "บัฟเฟอร์ไม่ถูกต้อง!",
+  "runningSpanRecallLast": "เรียกคืน {count} ล่าสุด",
+  "runningSpanStopsRandomly": "สตรีมหยุดแบบสุ่ม!",
+  "runningSpanEntered": "เข้ามา: {sequence}",
+  "runningSpanNItems": "N-รายการ",
+  "spatialCabinetTitle": "ตู้เชิงพื้นที่",
+  "spatialCabinetSubtitle": "จดจำว่าลิ้นชักตู้ใดมีวัตถุใด",
+  "spatialCabinetWinTitle": "ผู้เชี่ยวชาญคณะรัฐมนตรี!",
+  "spatialCabinetGameOverMessage": "คุณได้ {score} คะแนนในหน่วยความจำ Spatial Cabinet!",
+  "spatialCabinetMemorize": "จดจำตำแหน่งของรายการ",
+  "spatialCabinetWhereIs": "{itemName} อยู่ที่ไหน",
+  "spatialCabinetCorrect": "ถูกต้อง!",
+  "spatialCabinetWrongDrawer": "ลิ้นชักผิด!",
+  "spatialCabinetItems": "รายการ",
+  "cabinetItemKey": "สำคัญ",
+  "cabinetItemApple": "แอปเปิล",
+  "cabinetItemDiamond": "เพชร",
+  "cabinetItemBook": "หนังสือ",
+  "cabinetItemUmbrella": "ร่ม",
+  "cabinetItemCoffee": "กาแฟ",
+  "cabinetItemLock": "ล็อค",
+  "cabinetItemPet": "สัตว์เลี้ยง",
+  "cabinetItemCar": "รถ",
+  "@soptGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@contRecogGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@dnmsGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@symSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@countingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@countingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@objDispGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@mandalaGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanPrepareRecall": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEnterLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanRecallLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEntered": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@spatialCabinetGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@spatialCabinetWhereIs": {
+    "placeholders": {
+      "itemName": {
+        "type": "String"
+      }
+    }
+  },
+  "gamesTitleLabel": "เกม",
+  "yourFavorites": "รายการโปรดของคุณ",
+  "readyForWorkout": "พร้อมสำหรับการฝึกสมองประจำวันของคุณหรือยัง?",
+  "greatStartKeepGoing": "เริ่มต้นได้ดี! ทำต่อไป",
+  "onFireToday": "วันนี้คุณเครื่องร้อนมาก!",
+  "incredibleSolvingToday": "วันนี้แก้ปัญหาได้ยอดเยี่ยมมาก!",
+  "newGameLabel": "ใหม่",
+  "slitherlinkTitle": "สลิเธอร์ลิงก์",
+  "slitherlinkSubtitle": "ลากเส้นล้อมรอบจุดตามคำใบ้ตัวเลข",
+  "futoshikiTitle": "ฟูโตชิกิ",
+  "futoshikiSubtitle": "เติมตัวเลขในตารางตามคำใบ้เครื่องหมายมากกว่า-น้อยกว่า",
+  "kakuroTitle": "คาคุโระ",
+  "kakuroSubtitle": "ไขปริศนาอักษรไขว้ด้วยตัวเลขและผลรวม",
+  "inequalityDashTitle": "วิ่งแข่งอสมการ",
+  "inequalityDashSubtitle": "แก้อสมการภายใต้ความกดดันของเวลา",
+  "factorFinderTitle": "ค้นหาตัวประกอบ",
+  "factorFinderSubtitle": "หาตัวประกอบทั้งหมดของตัวเลขเป้าหมาย",
+  "collatzTitle": "เส้นทางคอลลาตซ์",
+  "collatzSubtitle": "เดินทางผ่านลำดับ 3N+1",
+  "sumPyramidTitle": "พีระมิดผลรวม",
+  "sumPyramidSubtitle": "เติมช่องในพีระมิดด้วยคำใบ้การบวกเลข",
+  "target10Title": "เป้าหมาย 10",
+  "target10Subtitle": "รวมแผ่นตัวเลขเพื่อให้ได้ผลรวมเท่ากับสิบ",
+  "fractionMatcherTitle": "จับคู่เศษส่วน",
+  "fractionMatcherSubtitle": "จับคู่เศษส่วนที่มีค่าเท่ากันด้วยสายตา",
+  "dualCodingTitle": "การเข้ารหัสคู่",
+  "dualCodingSubtitle": "จับคู่ตัวอักษรและสัญลักษณ์ไปพร้อมกัน",
+  "distractorMatrixTitle": "เมทริกซ์ตัวลวง",
+  "distractorMatrixSubtitle": "ค้นหา รูปทรงเป้าหมายท่ามกลางตัวลวง",
+  "temporalOrderTitle": "ลำดับเวลา",
+  "temporalOrderSubtitle": "จดจำลำดับเหตุการณ์ตามเวลา",
+  "associativePairsTitle": "คู่ความสัมพันธ์",
+  "associativePairsSubtitle": "จับคู่สัญลักษณ์ที่มีความเกี่ยวข้องกัน",
+  "blockCount3dTitle": "นับบล็อก 3 มิติ",
+  "blockCount3dSubtitle": "นับจำนวนบล็อกในพื้นที่สามมิติ",
+  "rotatingMazeTitle": "เขาวงกตหมุน",
+  "rotatingMazeSubtitle": "หมุนเขาวงกตเพื่อนำลูกบอลไปที่ทางออก",
+  "silhouetteMatchOrthoTitle": "จับคู่เงา (ออร์โธ)",
+  "silhouetteMatchOrthoSubtitle": "จับคู่ วัตถุ 3 มิติกับเงาด้านประชิด",
+  "spatialConflictTitle": "ความขัดแย้งของมิติ",
+  "spatialConflictSubtitle": "แก้ไขความไม่สอดคล้องระหว่างข้อความและทิศทาง",
+  "spotlightTrackTitle": "ติดตามสปอตไลต์",
+  "spotlightTrackSubtitle": "ติดตามไอเท็มที่กะพริบในเงาที่กำลังเคลื่อนที่",
+  "d2AttentionTitle": "สมาธิ d2",
+  "d2AttentionSubtitle": "แตะสัญลักษณ์เป้าหมายตามเกณฑ์ที่เข้มงวด",
+  "dualMirrorTitle": "เขาวงกตกระจกคู่",
+  "dualMirrorSubtitle": "เดินทางผ่านเขาวงกตสองแห่งพร้อมกัน",
+  "contextCluesTitle": "คำใบ้จากบริบท",
+  "contextCluesSubtitle": "เดาคำที่ซ่อนอยู่จากคำใบ้รอบข้าง",
+  "digitSpanReverseSubtitle": "จดจำตัวเลขแบบย้อนกลับ",
+  "faceNameAssociationSubtitle": "จดจำชื่อของใบหน้าต่างๆ ที่ปรากฏ",
+  "staircaseMemorySubtitle": "จดจำบล็อกในลำดับขั้นบันได",
+  "choiceReactionTimeSubtitle": "แตะปุ่มที่ตรงกับคำใบ้ให้เร็วที่สุด",
+  "attentionalBlinkSubtitle": "จับเป้าหมายที่ปรากฏขึ้นอย่างรวดเร็ว",
+  "visualStatisticalLearningSubtitle": "เรียนรู้รูปแบบรูปทรงตามลำดับเวลาด้วยสายตา",
+  "sternbergTaskSubtitle": "จำให้ได้ว่าสัญลักษณ์นั้นอยู่ในชุดความจำหรือไม่",
+  "operationSpanSubtitle": "แก้โจทย์เลขและจดจำชุดตัวอักษร",
+  "continuousRecognitionTitle": "การจดจำต่อเนื่อง",
+  "continuousRecognitionSubtitle": "ระบุว่าการ์ดที่ปรากฏเป็นของเก่าหรือของใหม่",
+  "symmetrySpanTitle": "ช่วงสมมาตร",
+  "symmetrySpanSubtitle": "จดจำตำแหน่งของช่องท่ามกลางการตัดสินใจเรื่องความสมมาตรแนวตั้ง",
+  "objectDisplacementTitle": "การย้ายที่ของวัตถุ",
+  "objectDisplacementSubtitle": "ศึกษาการวางตำแหน่งและแตะวัตถุเพียงชิ้นเดียวที่เคลื่อนที่",
+  "mandalaRecallTitle": "ระลึกภาพมณฑล",
+  "mandalaRecallSubtitle": "จดจำแผ่นสีและระบายสีมณฑลใหม่ตามแบบจากจานสี",
+  "runningMemorySpanTitle": "ช่วงความจำต่อเนื่อง",
+  "runningMemorySpanSubtitle": "ตรวจสอบตัวอักษรที่ผ่านไปและจดจำไอเท็ม N ลำดับสุดท้าย",
+  "spatialCabinetMemoryTitle": "ตู้เก็บของมิติ",
+  "spatialCabinetMemorySubtitle": "จดจำและหาตำแหน่งของไอเท็มหลังบานตู้",
+  "pathRecallSubtitle": "จดจำและทำซ้ำเส้นทางที่เลือก",
+  "objectShuffleSubtitle": "ติดตามไอเท็มที่สลับไปมาภายใต้อุ้งมือ",
+  "groceryListSubtitle": "จดจำและทำเครื่องหมายรายการของชำ",
+  "quickMathSubtitle": "แก้โจทย์คณิตศาสตร์ด้วยความเร็วสูงสุด",
+  "mathGuessTitle": "เดาเลขคณิต",
+  "mathGuessSubtitle": "เดาตัวเลขที่ซ่อนอยู่ภายใน 15 ครั้ง",
+  "reflexTapSubtitle": "แตะสิ่งที่ปรากฏให้เร็วที่สุดเท่าที่จะทำได้",
+  "pixelMimicSubtitle": "เลียนแบบรูปแบบดีไซน์บนตารางพิกเซล",
+  "simonSequenceSubtitle": "ทำซ้ำลำดับรูปทรงจากความจำ",
+  "slidePuzzleSubtitle": "จัดเรียงแผ่นตารางเลื่อนสี่เหลี่ยมใหม่",
+  "findWordTitle": "ค้นหาคำ",
+  "schulteTableSubtitle": "แตะตัวเลขตั้งแต่หนึ่งถึงยี่สิบห้า",
+  "simonCommandTitle": "ไซมอนสั่ง",
+  "simonCommandSubtitle": "ปฏิบัติตามคำสั่งเสียงอย่างรวดเร็ว",
+  "binaryCodeTitle": "ความเร็วฐานสอง",
+  "binaryCodeSubtitle": "แปลรหัสฐานสองเป็นเลขฐานสิบ",
+  "moduloClockTitle": "นาฬิกามอดูโล",
+  "moduloClockSubtitle": "คำนวณสมการคณิตศาสตร์โดยใช้หน้าปัดนาฬิกา",
+  "chimpTestTitle": "แบบทดสอบชิมแปนซี",
+  "chimpTestSubtitle": "แตะตัวเลขที่สุ่มขึ้นมาตามลำดับจากน้อยไปมาก",
+  "relationalMemoryTitle": "ความจำเชิงสัมพันธ์",
+  "relationalMemorySubtitle": "จดจำตำแหน่งที่แน่นอนของไอเท็มในตาราง",
+  "factBinderTitle": "เชื่อมโยงข้อเท็จจริง",
+  "factBinderSubtitle": "เชื่อมต่อสัญลักษณ์และจดจำข้อความ",
+  "sourceMonitoringTitle": "การตรวจสอบที่มา",
+  "sourceMonitoringSubtitle": "จดจำบริบท",
+  "klotskiTitle": "หลบหนีคลอตสกี้",
+  "klotskiSubtitle": "เลื่อนบล็อกเพื่อไปให้ถึงทางออก",
+  "homophoneHuntSubtitle": "เลือกตัวสะกดที่ถูกต้อง"
 }

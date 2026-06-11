@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
@@ -68,8 +70,8 @@ class _VowelReconstructScreenState extends ConsumerState<VowelReconstructScreen>
     });
 
     return GameScaffold(
-      title: 'Vowel Reconstruct',
-      subtitle: 'Fill in the missing vowels',
+      title: L10nGameHelpers.getGameTitle(context, 'vowel_reconstruct'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'vowel_reconstruct'),
       body: Column(
         children: [
           Padding(

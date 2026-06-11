@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
@@ -87,7 +89,7 @@ class _SimonCommandScreenState extends ConsumerState<SimonCommandScreen> {
         context: context,
         barrierDismissible: false,
         builder: (context) => GameCompletionDialog(
-          title: "COMMAND ACCOMPLISHED",
+          title: L10nGameHelpers.getGameTitle(context, 'simon_command'),
           message: AppLocalizations.of(context)!.simonCommandMessage((_score).toString()),
           onHome: () {
             Navigator.pop(context);
@@ -115,7 +117,7 @@ class _SimonCommandScreenState extends ConsumerState<SimonCommandScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: "TIME'S UP!",
+        title: L10nGameHelpers.getGameTitle(context, 'simon_command'),
         message: AppLocalizations.of(context)!.simonCommandMessage1((_score).toString(), (targetScore).toString()),
         isVictory: false,
         onHome: () {
@@ -149,8 +151,8 @@ class _SimonCommandScreenState extends ConsumerState<SimonCommandScreen> {
     final rightButtonType = _swapButtonPositions ? 0 : 1;
 
     return GameScaffold(
-      title: "SIMON COMMAND",
-      subtitle: "TAP THE BUTTON MATCHING THE SHAPE'S COLOR (IGNORE SIDE)",
+      title: L10nGameHelpers.getGameTitle(context, 'simon_command'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'simon_command'),
       body: Padding(
         padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
         child: Column(

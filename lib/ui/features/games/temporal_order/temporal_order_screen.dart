@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -61,7 +63,7 @@ class TemporalOrderScreen extends ConsumerWidget {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'TEMPORAL ORDER COMPLETE',
+            title: L10nGameHelpers.getGameTitle(context, 'temporal_order'),
             message: AppLocalizations.of(context)!.temporalOrderMessage,
             onHome: () {
               Navigator.of(context).pop();
@@ -80,7 +82,7 @@ class TemporalOrderScreen extends ConsumerWidget {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'GAME OVER',
+            title: L10nGameHelpers.getGameTitle(context, 'temporal_order'),
             message: AppLocalizations.of(context)!.temporalOrderMessage1,
             isVictory: false,
             onHome: () {
@@ -100,8 +102,8 @@ class TemporalOrderScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'TEMPORAL ORDER',
-      subtitle: 'Track the sequential timeline of icons',
+      title: L10nGameHelpers.getGameTitle(context, 'temporal_order'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'temporal_order'),
       actions: [
         TangibleButton(
           color: colorScheme.surface,

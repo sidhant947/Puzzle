@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -24,7 +26,7 @@ class DistractorMatrixScreen extends ConsumerWidget {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'DISTRACTOR MATRIX COMPLETE',
+            title: L10nGameHelpers.getGameTitle(context, 'distractor_matrix'),
             message: AppLocalizations.of(context)!.distractorMatrixMessage,
             onHome: () {
               Navigator.of(context).pop();
@@ -43,7 +45,7 @@ class DistractorMatrixScreen extends ConsumerWidget {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'GAME OVER',
+            title: L10nGameHelpers.getGameTitle(context, 'distractor_matrix'),
             message: AppLocalizations.of(context)!.distractorMatrixMessage1,
             isVictory: false,
             onHome: () {
@@ -69,8 +71,8 @@ class DistractorMatrixScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'DISTRACTOR MATRIX',
-      subtitle: 'Recall cells after solving the math distraction',
+      title: L10nGameHelpers.getGameTitle(context, 'distractor_matrix'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'distractor_matrix'),
       actions: [
         TangibleButton(
           color: colorScheme.surface,

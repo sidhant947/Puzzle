@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -58,7 +60,7 @@ class _WisconsinCardSortingScreenState extends ConsumerState<WisconsinCardSortin
     });
 
     return GameScaffold(
-      title: 'Card Sorting',
+      title: L10nGameHelpers.getGameTitle(context, 'wisconsin_card_sorting'),
       subtitle: l10n.wisconsinCardSortingSubtitle,
       actions: [
         TangibleContainer(

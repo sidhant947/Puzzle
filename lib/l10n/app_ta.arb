@@ -1796,5 +1796,350 @@
         "type": "String"
       }
     }
-  }
+  },
+  "soptTitle": "சுய-வரிசைப்படுத்தப்பட்ட சுட்டி",
+  "soptSubtitle": "ஒவ்வொரு முறையும் வெவ்வேறு கார்டைத் தட்டவும். பதவிகள் மாறுகின்றன!",
+  "soptWinTitle": "சீக்வென்ஸ் மாஸ்டர்!",
+  "soptGameOverMessage": "மாற்றப்பட்ட கார்டுகளை வெற்றிகரமாகக் கண்காணிப்பதன் மூலம் {score} புள்ளிகளைப் பெற்றுள்ளீர்கள்!",
+  "soptChooseNovel": "புதிய அட்டையைத் தட்டவும்",
+  "soptGreatJob": "பெரிய வேலை!",
+  "soptAlreadyTapped": "ஏற்கனவே தட்டப்பட்டது!",
+  "soptGrid": "கட்டம்",
+  "contRecogTitle": "தொடர்ச்சியான அங்கீகாரம்",
+  "contRecogSubtitle": "இந்த அமர்வில் இந்தக் கார்டை இதற்கு முன் பார்த்திருக்கிறீர்களா?",
+  "contRecogWinTitle": "அங்கீகாரம் மேதை!",
+  "contRecogGameOverMessage": "நீங்கள் {score} சரியான அங்கீகாரங்களைப் பெற்றுள்ளீர்கள்!",
+  "contRecogCorrect": "சரி!",
+  "contRecogWrong": "தவறு!",
+  "contRecogOldOrNew": "இது பழையதா அல்லது புதியதா?",
+  "contRecogNew": "புதியது",
+  "contRecogOld": "பழையது",
+  "contRecogSeenPool": "பார்த்தது குளம்",
+  "dnmsTitle": "பொருந்தாத நினைவகம்",
+  "dnmsSubtitle": "மனப்பாடம் செய்யப்பட்ட மாதிரியில் இல்லாத கார்டைத் தட்டவும்.",
+  "dnmsWinTitle": "பொருந்தாத நிபுணர்!",
+  "dnmsGameOverMessage": "தாமதமான பொருத்தமற்றதில் {score} சரியான விடைகளைப் பெற்றுள்ளீர்கள்!",
+  "dnmsChooseNovel": "புதிய அட்டையைத் தட்டவும்",
+  "dnmsMemorizeSample": "இந்த அட்டையை மனப்பாடம் செய்யுங்கள்",
+  "dnmsWaitForIt": "காத்திருங்கள்...",
+  "dnmsExcellent": "சிறப்பானது!",
+  "dnmsSampleTapped": "அது மாதிரி இருந்தது!",
+  "dnmsCards": "அட்டைகள்",
+  "symSpanTitle": "சமச்சீர் இடைவெளி",
+  "symSpanSubtitle": "செங்குத்து சமச்சீர் அடையாளம் காணும் போது செல் வடிவங்களை நினைவுபடுத்தவும்.",
+  "symSpanWinTitle": "சமச்சீர் மாஸ்டர்!",
+  "symSpanGameOverMessage": "தளவமைப்புகளை நினைவுபடுத்துவதன் மூலமும் சமச்சீர்வை அடையாளம் காண்பதன் மூலமும் {score} புள்ளிகளைப் பெற்றுள்ளீர்கள்!",
+  "symSpanMemorizeRed": "சிவப்பு செல் இருப்பிடத்தை நினைவில் கொள்ளுங்கள்",
+  "symSpanIsSymmetric": "முறை சமச்சீராக உள்ளதா?",
+  "symSpanRecallSequence": "வரிசையை சரியான வரிசையில் நினைவுபடுத்தவும்",
+  "symSpanGreatJob": "பெரிய வேலை!",
+  "symSpanTryAgain": "மீண்டும் முயற்சிக்கவும்!",
+  "symSpanLength": "நீளம்",
+  "readingSpanTitle": "வாசிப்பு இடைவெளி",
+  "readingSpanSubtitle": "எழுத்துக்களின் வரிசையை நினைவில் வைத்துக்கொண்டு வாக்கியங்களைச் சரிபார்க்கவும்.",
+  "readingSpanWinTitle": "வாசிப்பு நிபுணரே!",
+  "readingSpanGameOverMessage": "ரீடிங் ஸ்பான் நினைவக சவாலில் {score} புள்ளிகளைப் பெற்றுள்ளீர்கள்!",
+  "readingSpanTrueFalse": "இந்தக் கூற்று உண்மையா பொய்யா?",
+  "readingSpanMemorizeLetter": "இந்த கடிதத்தை மனப்பாடம் செய்யுங்கள்",
+  "readingSpanRecallLetters": "கடிதங்களை வரிசையாக நினைவு கூருங்கள்",
+  "readingSpanGreatJob": "பெரிய வேலை!",
+  "readingSpanTryAgain": "மீண்டும் முயற்சிக்கவும்!",
+  "readingSpanYourSequence": "உங்கள் வரிசை: {sequence}",
+  "readingSpanLength": "நீளம்",
+  "readingSpanSentence1": "சூரியன் கிழக்கில் உதிக்கிறான்.",
+  "readingSpanSentence2": "பனி சூடாகக் கொதித்துக் கொண்டிருக்கிறது.",
+  "readingSpanSentence3": "மீன்கள் நீருக்கடியில் சுவாசிக்க முடியும்.",
+  "readingSpanSentence4": "நாய்களுக்கு இறக்கைகள் உள்ளன, பறக்கக் கூடியவை.",
+  "readingSpanSentence5": "நீர் 0 டிகிரி செல்சியஸில் உறைகிறது.",
+  "readingSpanSentence6": "பூனைகள் சிறிய நாய்களைப் போல குரைக்கின்றன.",
+  "readingSpanSentence7": "கோடையில் மரங்களில் பச்சை இலைகள் இருக்கும்.",
+  "readingSpanSentence8": "மழை தரையில் இருந்து மேல் நோக்கி விழுகிறது.",
+  "readingSpanSentence9": "ஒரு முக்கோணம் நான்கு சம பக்கங்களைக் கொண்டது.",
+  "readingSpanSentence10": "ஆப்பிள் ஒரு வகையான இனிப்பு பழம்.",
+  "readingSpanSentence11": "சந்திரன் செடார் பாலாடைக்கட்டியால் ஆனது.",
+  "readingSpanSentence12": "ஆட்டோமொபைல்களில் உருட்ட சக்கரங்கள் உள்ளன.",
+  "readingSpanSentence13": "நெருப்பு குளிர்ச்சியாக இருக்கிறது.",
+  "readingSpanSentence14": "காகிதம் பதப்படுத்தப்பட்ட மரத்திலிருந்து தயாரிக்கப்படுகிறது.",
+  "readingSpanSentence15": "பறவைகளுக்கு பறக்க உதவும் இறகுகள் உள்ளன.",
+  "readingSpanSentence16": "வாழைப்பழங்கள் பைன் மரங்களில் வளரும்.",
+  "readingSpanSentence17": "யானை எறும்பை விட சிறியது.",
+  "readingSpanSentence18": "புத்தகங்களில் உரை அச்சிடப்பட்ட பக்கங்கள் உள்ளன.",
+  "countingSpanTitle": "எண்ணும் இடைவெளி",
+  "countingSpanSubtitle": "நீல வட்டங்களை மட்டும் எண்ணுங்கள். பின்னர் எண்ணிக்கைகளின் வரிசையை நினைவுபடுத்துங்கள்.",
+  "countingSpanWinTitle": "எண்ணும் மேதை!",
+  "countingSpanGameOverMessage": "கவுண்டிங் ஸ்பான் நினைவக சவாலில் {score} புள்ளிகளைப் பெற்றுள்ளீர்கள்!",
+  "countingSpanCountCircles": "நீல வட்டங்களை மட்டும் எண்ணுங்கள்",
+  "countingSpanRecallCounts": "ரீகால் எண்ணிக்கைகள் சரியான வரிசையில்",
+  "countingSpanGreatJob": "பெரிய வேலை!",
+  "countingSpanTryAgain": "மீண்டும் முயற்சிக்கவும்!",
+  "countingSpanYourSequence": "உங்கள் வரிசை: {sequence}",
+  "countingSpanLength": "நீளம்",
+  "objDispTitle": "பொருள் இடப்பெயர்ச்சி",
+  "objDispSubtitle": "அமைப்பை மனப்பாடம் செய்யுங்கள். நிலையை மாற்றும் ஒரு பொருளைக் கண்டுபிடித்து தட்டவும்.",
+  "objDispWinTitle": "இடஞ்சார்ந்த மேதை!",
+  "objDispGameOverMessage": "நீங்கள் {score} இடம்பெயர்ந்த பொருட்களை சரியாக அடையாளம் கண்டுள்ளீர்கள்!",
+  "objDispMemorizeAll": "எல்லா இடங்களையும் மனப்பாடம் செய்யுங்கள்",
+  "objDispWaitingShift": "தளவமைப்பு மாற்றத்திற்காக காத்திருக்கிறது...",
+  "objDispTapMoved": "நகர்த்திய பொருளைத் தட்டவும்",
+  "objDispExcellent": "சிறப்பானது!",
+  "objDispWrongObject": "தவறான பொருள்!",
+  "objDispItems": "பொருட்கள்",
+  "mandalaTitle": "மண்டலா நினைவு",
+  "mandalaSubtitle": "வண்ண உள்ளமைவை நினைவில் கொள்க. வண்ணங்களைத் தேர்ந்தெடுத்து ஓடுகளை மீண்டும் பூசவும்.",
+  "mandalaWinTitle": "மண்டலக் கலைஞர்!",
+  "mandalaGameOverMessage": "வண்ண வடிவியல் தளவமைப்புகளை மீண்டும் உருவாக்குவதன் மூலம் {score} புள்ளிகளைப் பெற்றுள்ளீர்கள்!",
+  "mandalaMemorizeColors": "ஓடு வண்ணங்களை நினைவில் கொள்ளுங்கள்",
+  "mandalaPaintCells": "அசலைப் பொருத்த கலங்களை பெயிண்ட் செய்யவும்",
+  "mandalaExcellent": "சிறப்பானது!",
+  "mandalaIncorrectMatch": "தவறான பொருத்தம்!",
+  "mandalaSubmitRepaint": "மீண்டும் பெயின்ட் சமர்ப்பிக்கவும்",
+  "mandalaTiles": "ஓடுகள்",
+  "runningSpanTitle": "ரன்னிங் ஸ்பான்",
+  "runningSpanSubtitle": "கடிதங்களைப் பாருங்கள். அவை நிறுத்தப்பட்டதும், கடைசி N எழுத்துக்களை வரிசையாக உள்ளிடவும்.",
+  "runningSpanWinTitle": "தாங்கல் மாஸ்டர்!",
+  "runningSpanGameOverMessage": "ரன்னிங் மெமரி ஸ்பானில் {score} புள்ளிகளைப் பெற்றுள்ளீர்கள்!",
+  "runningSpanPrepareRecall": "கடைசி {count} கடிதங்களை நினைவுகூரத் தயாராகுங்கள்",
+  "runningSpanWatchCarefully": "கவனமாக பாருங்கள்...",
+  "runningSpanEnterLast": "கடைசி {count} எழுத்துக்களை உள்ளிடவும்",
+  "runningSpanGreatJob": "பெரிய வேலை!",
+  "runningSpanIncorrectBuffer": "தவறான தாங்கல்!",
+  "runningSpanRecallLast": "கடந்த {count} ஐ நினைவுபடுத்து",
+  "runningSpanStopsRandomly": "தாரை தாரையாக நிற்கிறது!",
+  "runningSpanEntered": "உள்ளிடப்பட்டது: {sequence}",
+  "runningSpanNItems": "N-உருப்படிகள்",
+  "spatialCabinetTitle": "இடஞ்சார்ந்த அலமாரிகள்",
+  "spatialCabinetSubtitle": "எந்த கேபினட் டிராயரில் எந்த பொருள் உள்ளது என்பதை நினைவில் கொள்ளுங்கள்.",
+  "spatialCabinetWinTitle": "அமைச்சரவை நிபுணரே!",
+  "spatialCabinetGameOverMessage": "ஸ்பேஷியல் கேபினட் நினைவகத்தில் {score} புள்ளிகளைப் பெற்றுள்ளீர்கள்!",
+  "spatialCabinetMemorize": "உருப்படிகளின் இருப்பிடங்களை நினைவில் கொள்க",
+  "spatialCabinetWhereIs": "{itemName} எங்கே உள்ளது?",
+  "spatialCabinetCorrect": "சரி!",
+  "spatialCabinetWrongDrawer": "தவறான டிராயர்!",
+  "spatialCabinetItems": "பொருட்கள்",
+  "cabinetItemKey": "முக்கிய",
+  "cabinetItemApple": "ஆப்பிள்",
+  "cabinetItemDiamond": "வைரம்",
+  "cabinetItemBook": "புத்தகம்",
+  "cabinetItemUmbrella": "குடை",
+  "cabinetItemCoffee": "காபி",
+  "cabinetItemLock": "பூட்டு",
+  "cabinetItemPet": "செல்லப்பிராணி",
+  "cabinetItemCar": "கார்",
+  "@soptGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@contRecogGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@dnmsGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@symSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@readingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@countingSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@countingSpanYourSequence": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@objDispGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@mandalaGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanPrepareRecall": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEnterLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanRecallLast": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "@runningSpanEntered": {
+    "placeholders": {
+      "sequence": {
+        "type": "String"
+      }
+    }
+  },
+  "@spatialCabinetGameOverMessage": {
+    "placeholders": {
+      "score": {
+        "type": "int"
+      }
+    }
+  },
+  "@spatialCabinetWhereIs": {
+    "placeholders": {
+      "itemName": {
+        "type": "String"
+      }
+    }
+  },
+  "gamesTitleLabel": "விளையாட்டுகள்",
+  "yourFavorites": "உங்கள் விருப்பமானவை",
+  "readyForWorkout": "உங்கள் தினசரி பயிற்சிக்காக தயாரா?",
+  "greatStartKeepGoing": "சிறந்த தொடக்கம்! தொடர்ந்து முன்னேறுங்கள்.",
+  "onFireToday": "இன்று நீங்கள் மிகச்சிறப்பாக செயல்படுகிறீர்கள்!",
+  "incredibleSolvingToday": "இன்று வியக்கத்தக்க தீர்வுகள்!",
+  "newGameLabel": "புதியது",
+  "slitherlinkTitle": "ஸ்லிதர்லிங்க்",
+  "slitherlinkSubtitle": "எண் குறிப்புகளைப் பயன்படுத்தி பின் கிரிடை லூப் செய்யவும்.",
+  "futoshikiTitle": "புடோஷிகி",
+  "futoshikiSubtitle": "பெரியது-சிறியது குறிப்புகளைக் கொண்டு கிரிட்களை நிரப்பவும்.",
+  "kakuroTitle": "காகுரோ",
+  "kakuroSubtitle": "எண்கள் மற்றும் கூட்டல்களைக் கொண்டு குறுக்கெழுத்து புதிர்களைத் தீர்க்கவும்.",
+  "inequalityDashTitle": "சமனின்மை டேஷ்",
+  "inequalityDashSubtitle": "கால அழுத்தத்தில் சமனின்மைகளைத் தீர்க்கவும்.",
+  "factorFinderTitle": "காரணி கண்டுபிடிப்பான்",
+  "factorFinderSubtitle": "இலக்கு எண்களின் அனைத்து காரணிகளையும் கண்டறியவும்.",
+  "collatzTitle": "கோலாட்ஸ் பாதை",
+  "collatzSubtitle": "3N+1 வரிசையில் பயணிக்கவும்.",
+  "sumPyramidTitle": "கூட்டல் பிரமிடு",
+  "sumPyramidSubtitle": "கூட்டல் கணக்கு குறிப்புகளைக் கொண்டு பிரமிடு கட்டங்களை நிரப்பவும்.",
+  "target10Title": "இலக்கு 10",
+  "target10Subtitle": "பத்து கூட்டலைப் பெற எண் கட்டங்களை இணைக்கவும்.",
+  "fractionMatcherTitle": "பின்னப் பொருத்தம்",
+  "fractionMatcherSubtitle": "சமமான பின்னங்களை காட்சி ரீதியாகப் பொருத்தவும்.",
+  "dualCodingTitle": "இரட்டைக் குறியீட்டு முறை",
+  "dualCodingSubtitle": "எழுத்துக்களையும் குறியீடுகளையும் ஒரே நேரத்தில் பொருத்தவும்.",
+  "distractorMatrixTitle": "கவனச்சிதறல் மேட்ரிக்ஸ்",
+  "distractorMatrixSubtitle": "கவனச்சிதறல்களுக்கு மத்தியில் இலக்கு வடிவங்களைக் கண்டறியவும்.",
+  "temporalOrderTitle": "கால வரிசை",
+  "temporalOrderSubtitle": "கால வரிசை முறையை நினைவுபடுத்தவும்.",
+  "associativePairsTitle": "தொடர்புடைய ஜோடிகள்",
+  "associativePairsSubtitle": "தொடர்புடைய குறியீடுகளை ஜோடி சேர்த்து பொருத்தவும்.",
+  "blockCount3dTitle": "3D பிளாக் எண்ணிக்கை",
+  "blockCount3dSubtitle": "முப்பரிமாண வெளியில் பிளாக்குகளை எண்ணவும்.",
+  "rotatingMazeTitle": "சுழலும் பிரமை",
+  "rotatingMazeSubtitle": "பந்துகளை வெளியேறும் வழிக்கு கொண்டு செல்ல பிரமைகளைச் சுழற்றவும்.",
+  "silhouetteMatchOrthoTitle": "நிழற்படப் பொருத்தம் (ஆர்த்தோ)",
+  "silhouetteMatchOrthoSubtitle": "3D பொருள்களை ஆர்த்தோ நிழல்களுடன் பொருத்தவும்.",
+  "spatialConflictTitle": "இடஞ்சார்ந்த மோதல்",
+  "spatialConflictSubtitle": "உரை மற்றும் திசை முரண்பாடுகளைத் தீர்க்கவும்.",
+  "spotlightTrackTitle": "ஸ்பாட்லைட் டிராக்",
+  "spotlightTrackSubtitle": "நகரும் நிழல்களில் மின்னும் பொருட்களைப் பின்தொடரவும்.",
+  "d2AttentionTitle": "d2 கவனிப்பு",
+  "d2AttentionSubtitle": "கடுமையான அளவுகோல்களுடன் இலக்கு குறியீடுகளைத் தட்டவும்.",
+  "dualMirrorTitle": "இரட்டை கண்ணாடி வழிசெலுத்தல்",
+  "dualMirrorSubtitle": "ஒரே நேரத்தில் இரண்டு பிரமைகளில் பயணிக்கவும்.",
+  "contextCluesTitle": "சூழல் குறிப்புகள்",
+  "contextCluesSubtitle": "சூழல் குறிப்புகளிலிருந்து மறைந்திருக்கும் சொற்களை யூகிக்கவும்.",
+  "digitSpanReverseSubtitle": "எண்களை தலைகீழ் வரிசையில் நினைவுபடுத்தவும்.",
+  "faceNameAssociationSubtitle": "காட்டப்பட்ட பல்வேறு முகங்களின் பெயர்களை நினைவுபடுத்தவும்.",
+  "staircaseMemorySubtitle": "பிளாக்குகளை படிப்படியான வரிசையில் மனப்பாடம் செய்யவும்.",
+  "choiceReactionTimeSubtitle": "குறிப்புகளுக்குப் பொருத்தமான குறிப்பிட்ட பொத்தான்களை வேகமாகத் தட்டவும்.",
+  "attentionalBlinkSubtitle": "வேகமாக மின்னும் இலக்குகளைக் கண்டறியவும்.",
+  "visualStatisticalLearningSubtitle": "வடிவங்களின் கால வரிசை முறைகளை காட்சி ரீதியாகக் கற்கவும்.",
+  "sternbergTaskSubtitle": "குறியீடு மெமரி செட்டில் இருந்ததா என்று நினைவுபடுத்தவும்.",
+  "operationSpanSubtitle": "கணக்குகளைத் தீர்த்து அகரவரிசைத் தொடர்களை நினைவுபடுத்தவும்.",
+  "continuousRecognitionTitle": "தொடர் அங்கீகாரம்",
+  "continuousRecognitionSubtitle": "காட்டப்பட்ட கார்டு பழையதா அல்லது புதியதா என அடையாளம் காணவும்.",
+  "symmetrySpanTitle": "சமச்சீர் அளவு",
+  "symmetrySpanSubtitle": "செங்குத்து சமச்சீர் முடிவுகளுக்கு மத்தியில் கட்டங்களின் ஆயத்தொலைவுகளை நினைவுபடுத்தவும்.",
+  "objectDisplacementTitle": "பொருள் இடமாற்றம்",
+  "objectDisplacementSubtitle": "இடங்களைப் படித்து, நகர்ந்த ஒரு பொருளை மட்டும் தட்டவும்.",
+  "mandalaRecallTitle": "மண்டலா நினைவு",
+  "mandalaRecallSubtitle": "வண்ணக் கட்டங்களை மனப்பாடம் செய்து, தட்டிலிருந்து மண்டலாவிற்கு மீண்டும் வண்ணம் தீட்டவும்.",
+  "runningMemorySpanTitle": "ரன்னிங் ஸ்பான்",
+  "runningMemorySpanSubtitle": "ஓடும் எழுத்துக்களைக் கண்காணித்து, கடைசி N பொருட்களை நினைவுபடுத்தவும்.",
+  "spatialCabinetMemoryTitle": "இடஞ்சார்ந்த அலமாரிகள்",
+  "spatialCabinetMemorySubtitle": "அலமாரி கதவுகளுக்குப் பின்னால் உள்ள பொருட்களை மனப்பாடம் செய்து கண்டறியவும்.",
+  "pathRecallSubtitle": "பாதை தேர்வுகளை மனப்பாடம் செய்து மீண்டும் செய்யவும்.",
+  "objectShuffleSubtitle": "ஆழமான கோப்பைகளுக்கு அடியில் மாற்றப்படும் பொருட்களைப் பின்தொடரவும்.",
+  "groceryListSubtitle": "பட்டியலில் உள்ள பொருட்களை மனப்பாடம் செய்து டிக் செய்யவும்.",
+  "quickMathSubtitle": "கணக்கு கேள்விகளை அதிவேகமாகத் தீர்க்கவும்.",
+  "mathGuessTitle": "கணக்கு யூகங்கள்",
+  "mathGuessSubtitle": "மறைந்திருக்கும் எண்ணை 15 வாய்ப்புகளுக்குள் யூகிக்கவும்.",
+  "reflexTapSubtitle": "தூண்டுதல்களை மனித சக்தியால் இயன்ற அளவு வேகமாகத் தட்டவும்.",
+  "pixelMimicSubtitle": "பிக்சல் கிரிட்களில் வடிவமைப்பு முறைகளை அப்படியே செய்யவும்.",
+  "simonSequenceSubtitle": "வடிவ வரிசைகளை நினைவகத்திலிருந்து மீண்டும் செய்யவும்.",
+  "slidePuzzleSubtitle": "சதுர ஸ்லைடிங் கிரிட் கட்டங்களை வரிசைப்படுத்தவும்.",
+  "findWordTitle": "சொல்லைக் கண்டுபிடி",
+  "schulteTableSubtitle": "ஒன்றிலிருந்து இருபத்தைந்து வரையிலான எண்களைத் தட்டவும்.",
+  "simonCommandTitle": "சைமன் கட்டளை",
+  "simonCommandSubtitle": "குரல் வழிமுறைகளை வேகமாகச் செய்யவும்.",
+  "binaryCodeTitle": "பைனரி வேகம்",
+  "binaryCodeSubtitle": "பைனரி குறியீடுகளை தசம எண்களாக மாற்றவும்.",
+  "moduloClockTitle": "மாடுலோ கடிகாரம்",
+  "moduloClockSubtitle": "கடிகாரங்களைப் பயன்படுத்தி கணக்கு சமன்பாடுகளைக் கணக்கிடவும்.",
+  "chimpTestTitle": "சிம்பன்சி சோதனை",
+  "chimpTestSubtitle": "சீரற்ற எண்களை ஏறுவரிசையில் தட்டவும்.",
+  "relationalMemoryTitle": "உறவுமுறை நினைவு",
+  "relationalMemorySubtitle": "கிரிட் பொருட்களின் சரியான இடங்களை நினைவுபடுத்தவும்.",
+  "factBinderTitle": "தகவல் பிணைப்பான்",
+  "factBinderSubtitle": "குறியீடுகளை இணைத்து கூற்றுகளை நினைவுபடுத்தவும்.",
+  "sourceMonitoringTitle": "மூலக் கண்காணிப்பு",
+  "sourceMonitoringSubtitle": "சூழலை நினைவில் கொள்க.",
+  "klotskiTitle": "கிளாட்ஸ்கி தப்பித்தல்",
+  "klotskiSubtitle": "வெளியேறும் வழியை அடைய பிளாக்குகளை நகர்த்தவும்.",
+  "homophoneHuntSubtitle": "சரியான எழுத்துப்பிழையைத் தேர்ந்தெடுக்கவும்."
 }

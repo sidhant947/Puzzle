@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -25,7 +27,7 @@ class KakuroScreen extends ConsumerWidget {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'CROSS SUMS MATCHED',
+            title: L10nGameHelpers.getGameTitle(context, 'kakuro'),
             message: AppLocalizations.of(context)!.kakuroMessage,
             onHome: () {
               Navigator.of(context).pop();
@@ -41,8 +43,8 @@ class KakuroScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: 'Kakuro',
-      subtitle: 'Fill digits 1-9 in empty cells. Segment sums must equal their clues without duplicates.',
+      title: L10nGameHelpers.getGameTitle(context, 'kakuro'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'kakuro'),
       actions: [
         TangibleButton(
           color: Theme.of(context).colorScheme.surface,

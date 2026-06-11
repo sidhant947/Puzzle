@@ -5,7 +5,7 @@ import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../core/juice/game_scaffold.dart';
-import '../../../../l10n/app_localizations.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'letter_cancellation_provider.dart';
 
 class LetterCancellationScreen extends ConsumerStatefulWidget {

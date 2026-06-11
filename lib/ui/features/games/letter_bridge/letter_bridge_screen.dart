@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'letter_bridge_provider.dart';
@@ -185,7 +187,7 @@ class LetterBridgeScreen extends ConsumerWidget {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: 'WELL DONE',
+        title: L10nGameHelpers.getGameTitle(context, 'letter_bridge'),
         message: AppLocalizations.of(context)!.letterBridgeMessage((state.bridge).toString()),
         onHome: () {
           Navigator.of(context).pop();

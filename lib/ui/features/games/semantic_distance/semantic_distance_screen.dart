@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
@@ -78,8 +80,8 @@ class _SemanticDistanceScreenState extends ConsumerState<SemanticDistanceScreen>
     });
 
     return GameScaffold(
-      title: 'Semantic Distance',
-      subtitle: 'Guess the secret word',
+      title: L10nGameHelpers.getGameTitle(context, 'semantic_distance'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'semantic_distance'),
       body: Column(
         children: [
           Padding(

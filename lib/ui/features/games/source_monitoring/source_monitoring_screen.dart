@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../utils/design_system.dart';
@@ -36,7 +38,7 @@ class _SourceMonitoringScreenState extends ConsumerState<SourceMonitoringScreen>
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'MEMORY MASTER!',
+            title: L10nGameHelpers.getGameTitle(context, 'source_monitoring'),
             message: AppLocalizations.of(context)!.sourceMonitoringMessage((next.score).toString(), (next.currentLevel?.questions.length).toString()),
             onHome: () {
               Navigator.of(context).pop();
@@ -53,16 +55,16 @@ class _SourceMonitoringScreenState extends ConsumerState<SourceMonitoringScreen>
 
     if (state.isLoading || state.currentLevel == null) {
       return GameScaffold(
-        title: 'SOURCE MONITORING',
-        subtitle: 'Remember the context',
+        title: L10nGameHelpers.getGameTitle(context, 'source_monitoring'),
+        subtitle: L10nGameHelpers.getGameTitle(context, 'source_monitoring'),
         body: const Center(child: CircularProgressIndicator()),
       );
     }
 
     if (state.phase == SourceMonitoringPhase.memo) {
       return GameScaffold(
-        title: 'MEMORIZE',
-        subtitle: 'Remember which box each word is in.',
+        title: L10nGameHelpers.getGameTitle(context, 'source_monitoring'),
+        subtitle: L10nGameHelpers.getGameTitle(context, 'source_monitoring'),
         body: Column(
           children: [
             Expanded(
@@ -105,8 +107,8 @@ class _SourceMonitoringScreenState extends ConsumerState<SourceMonitoringScreen>
     final question = state.currentLevel!.questions[state.currentQuestionIndex];
 
     return GameScaffold(
-      title: 'RECALL',
-      subtitle: 'Which box was this word in?',
+      title: L10nGameHelpers.getGameTitle(context, 'source_monitoring'),
+      subtitle: L10nGameHelpers.getGameTitle(context, 'source_monitoring'),
       body: Padding(
         padding: const EdgeInsets.all(DesignSystem.spaceLG),
         child: Column(

@@ -2748,4 +2748,781 @@ class AppLocalizationsRu extends AppLocalizations {
 
   @override
   String get imReady => 'Я ГОТОВ';
+
+  @override
+  String get soptTitle => 'Самостоятельное наведение';
+
+  @override
+  String get soptSubtitle =>
+      'Каждый раз нажимайте на другую карту. Позиции перетасовываются!';
+
+  @override
+  String get soptWinTitle => 'Мастер последовательности!';
+
+  @override
+  String soptGameOverMessage(int score) {
+    return 'Вы набрали $score очков, успешно отслеживая перетасованные карты!';
+  }
+
+  @override
+  String get soptChooseNovel => 'Нажмите на новую карту';
+
+  @override
+  String get soptGreatJob => 'Отличная работа!';
+
+  @override
+  String get soptAlreadyTapped => 'Уже постучал!';
+
+  @override
+  String get soptGrid => 'Сетка';
+
+  @override
+  String get contRecogTitle => 'Непрерывное признание';
+
+  @override
+  String get contRecogSubtitle =>
+      'Видели ли вы эту карточку раньше на этом сеансе?';
+
+  @override
+  String get contRecogWinTitle => 'Признанный гений!';
+
+  @override
+  String contRecogGameOverMessage(int score) {
+    return 'Вы набрали $score правильных распознаваний!';
+  }
+
+  @override
+  String get contRecogCorrect => 'Правильный!';
+
+  @override
+  String get contRecogWrong => 'Неправильный!';
+
+  @override
+  String get contRecogOldOrNew => 'Это старое или новое?';
+
+  @override
+  String get contRecogNew => 'Новый';
+
+  @override
+  String get contRecogOld => 'Старый';
+
+  @override
+  String get contRecogSeenPool => 'Виден бассейн';
+
+  @override
+  String get dnmsTitle => 'Несовпадающая память';
+
+  @override
+  String get dnmsSubtitle =>
+      'Коснитесь карты, которой не было в запомненном образце.';
+
+  @override
+  String get dnmsWinTitle => 'Несоответствующий эксперт!';
+
+  @override
+  String dnmsGameOverMessage(int score) {
+    return 'Вы набрали $score правильных ответов в разделе «Отложенное несовпадение»!';
+  }
+
+  @override
+  String get dnmsChooseNovel => 'Нажмите на новую карту';
+
+  @override
+  String get dnmsMemorizeSample => 'Запомни эту карту';
+
+  @override
+  String get dnmsWaitForIt => 'Подожди...';
+
+  @override
+  String get dnmsExcellent => 'Отличный!';
+
+  @override
+  String get dnmsSampleTapped => 'Это был образец!';
+
+  @override
+  String get dnmsCards => 'Карты';
+
+  @override
+  String get symSpanTitle => 'Симметрия';
+
+  @override
+  String get symSpanSubtitle =>
+      'Вспомните структуру клеток, определяя вертикальную симметрию.';
+
+  @override
+  String get symSpanWinTitle => 'Мастер симметрии!';
+
+  @override
+  String symSpanGameOverMessage(int score) {
+    return 'Вы набрали $score баллов, вспомнив макеты и определив симметрию!';
+  }
+
+  @override
+  String get symSpanMemorizeRed => 'Запомните расположение эритроцитов';
+
+  @override
+  String get symSpanIsSymmetric => 'Симметричен ли узор?';
+
+  @override
+  String get symSpanRecallSequence =>
+      'Вспомните последовательность действий в правильном порядке.';
+
+  @override
+  String get symSpanGreatJob => 'Отличная работа!';
+
+  @override
+  String get symSpanTryAgain => 'Попробуйте еще раз!';
+
+  @override
+  String get symSpanLength => 'Длина';
+
+  @override
+  String get readingSpanTitle => 'Продолжительность чтения';
+
+  @override
+  String get readingSpanSubtitle =>
+      'Проверьте предложения, запоминая последовательность букв.';
+
+  @override
+  String get readingSpanWinTitle => 'Эксперт по чтению!';
+
+  @override
+  String readingSpanGameOverMessage(int score) {
+    return 'Вы набрали $score очков в испытании на запоминание «Объем чтения»!';
+  }
+
+  @override
+  String get readingSpanTrueFalse => 'Верно или ложно это утверждение?';
+
+  @override
+  String get readingSpanMemorizeLetter => 'Запомни это письмо';
+
+  @override
+  String get readingSpanRecallLetters => 'Вспоминайте буквы по порядку.';
+
+  @override
+  String get readingSpanGreatJob => 'Отличная работа!';
+
+  @override
+  String get readingSpanTryAgain => 'Попробуйте еще раз!';
+
+  @override
+  String readingSpanYourSequence(String sequence) {
+    return 'Ваша последовательность: $sequence';
+  }
+
+  @override
+  String get readingSpanLength => 'Длина';
+
+  @override
+  String get readingSpanSentence1 => 'Солнце восходит на востоке.';
+
+  @override
+  String get readingSpanSentence2 => 'Лед кипит.';
+
+  @override
+  String get readingSpanSentence3 => 'Рыбы могут дышать под водой.';
+
+  @override
+  String get readingSpanSentence4 => 'У собак есть крылья и они умеют летать.';
+
+  @override
+  String get readingSpanSentence5 =>
+      'Вода замерзает при температуре 0 градусов Цельсия.';
+
+  @override
+  String get readingSpanSentence6 => 'Кошки лают, как маленькие собаки.';
+
+  @override
+  String get readingSpanSentence7 => 'Летом деревья имеют зеленые листья.';
+
+  @override
+  String get readingSpanSentence8 => 'Дождь падает вверх от земли.';
+
+  @override
+  String get readingSpanSentence9 => 'Треугольник имеет четыре равные стороны.';
+
+  @override
+  String get readingSpanSentence10 =>
+      'Яблоки – это разновидность сладких фруктов.';
+
+  @override
+  String get readingSpanSentence11 => 'Луна сделана из сыра чеддер.';
+
+  @override
+  String get readingSpanSentence12 =>
+      'У автомобилей есть колеса, которые они могут катить.';
+
+  @override
+  String get readingSpanSentence13 => 'Огонь очень холодный.';
+
+  @override
+  String get readingSpanSentence14 =>
+      'Бумага изготавливается из обработанной древесины.';
+
+  @override
+  String get readingSpanSentence15 =>
+      'У птиц есть перья, которые помогают им летать.';
+
+  @override
+  String get readingSpanSentence16 => 'Бананы растут на соснах.';
+
+  @override
+  String get readingSpanSentence17 => 'Слон меньше муравья.';
+
+  @override
+  String get readingSpanSentence18 =>
+      'Книги содержат печатные страницы текста.';
+
+  @override
+  String get countingSpanTitle => 'Подсчет интервала';
+
+  @override
+  String get countingSpanSubtitle =>
+      'Считайте только синие круги. Затем вспомните последовательность отсчетов.';
+
+  @override
+  String get countingSpanWinTitle => 'Считаем гения!';
+
+  @override
+  String countingSpanGameOverMessage(int score) {
+    return 'Вы набрали $score очков в испытании на память «Счетный интервал»!';
+  }
+
+  @override
+  String get countingSpanCountCircles => 'Считай только синие круги';
+
+  @override
+  String get countingSpanRecallCounts =>
+      'Напоминание считается в правильном порядке';
+
+  @override
+  String get countingSpanGreatJob => 'Отличная работа!';
+
+  @override
+  String get countingSpanTryAgain => 'Попробуйте еще раз!';
+
+  @override
+  String countingSpanYourSequence(String sequence) {
+    return 'Ваша последовательность: $sequence';
+  }
+
+  @override
+  String get countingSpanLength => 'Длина';
+
+  @override
+  String get objDispTitle => 'Смещение объекта';
+
+  @override
+  String get objDispSubtitle =>
+      'Запомните макет. Найдите и коснитесь одного объекта, который меняет положение.';
+
+  @override
+  String get objDispWinTitle => 'Пространственный гений!';
+
+  @override
+  String objDispGameOverMessage(int score) {
+    return 'Вы правильно определили $score смещенных объектов!';
+  }
+
+  @override
+  String get objDispMemorizeAll => 'Запомните все места размещения';
+
+  @override
+  String get objDispWaitingShift => 'Ждем смены макета...';
+
+  @override
+  String get objDispTapMoved => 'Коснитесь объекта, который переместился';
+
+  @override
+  String get objDispExcellent => 'Отличный!';
+
+  @override
+  String get objDispWrongObject => 'Неправильный объект!';
+
+  @override
+  String get objDispItems => 'Предметы';
+
+  @override
+  String get mandalaTitle => 'Мандала Напоминание';
+
+  @override
+  String get mandalaSubtitle =>
+      'Запомните цветовую конфигурацию. Выбирайте цвета и перекрашивайте плитки.';
+
+  @override
+  String get mandalaWinTitle => 'Художник мандалы!';
+
+  @override
+  String mandalaGameOverMessage(int score) {
+    return 'Вы набрали $score баллов, воссоздав цветные геометрические макеты!';
+  }
+
+  @override
+  String get mandalaMemorizeColors => 'Запомните цвета плитки';
+
+  @override
+  String get mandalaPaintCells =>
+      'Раскрасьте ячейки в соответствии с оригиналом';
+
+  @override
+  String get mandalaExcellent => 'Отличный!';
+
+  @override
+  String get mandalaIncorrectMatch => 'Неверное совпадение!';
+
+  @override
+  String get mandalaSubmitRepaint => 'Отправить перекраску';
+
+  @override
+  String get mandalaTiles => 'Плитка';
+
+  @override
+  String get runningSpanTitle => 'Беговой интервал';
+
+  @override
+  String get runningSpanSubtitle =>
+      'Следите за буквами. Когда они остановятся, введите последние N букв по порядку.';
+
+  @override
+  String get runningSpanWinTitle => 'Буферный мастер!';
+
+  @override
+  String runningSpanGameOverMessage(int score) {
+    return 'Вы набрали $score очков в тесте «Быстрая память»!';
+  }
+
+  @override
+  String runningSpanPrepareRecall(int count) {
+    return 'Приготовьтесь вспомнить последние $count буквы.';
+  }
+
+  @override
+  String get runningSpanWatchCarefully => 'Смотрите внимательно...';
+
+  @override
+  String runningSpanEnterLast(int count) {
+    return 'Введите последние $count буквы';
+  }
+
+  @override
+  String get runningSpanGreatJob => 'Отличная работа!';
+
+  @override
+  String get runningSpanIncorrectBuffer => 'Неправильный буфер!';
+
+  @override
+  String runningSpanRecallLast(int count) {
+    return 'Вспомнить последнее $count';
+  }
+
+  @override
+  String get runningSpanStopsRandomly =>
+      'Поток останавливается случайным образом!';
+
+  @override
+  String runningSpanEntered(String sequence) {
+    return 'Введено: $sequence';
+  }
+
+  @override
+  String get runningSpanNItems => 'N-предметов';
+
+  @override
+  String get spatialCabinetTitle => 'Пространственные шкафы';
+
+  @override
+  String get spatialCabinetSubtitle =>
+      'Запомните, в каком ящике шкафа какой предмет находится.';
+
+  @override
+  String get spatialCabinetWinTitle => 'Кабинетный эксперт!';
+
+  @override
+  String spatialCabinetGameOverMessage(int score) {
+    return 'Вы набрали $score очков в пространственной памяти кабинета!';
+  }
+
+  @override
+  String get spatialCabinetMemorize => 'Запомните расположение предметов';
+
+  @override
+  String spatialCabinetWhereIs(String itemName) {
+    return 'Где $itemName ?';
+  }
+
+  @override
+  String get spatialCabinetCorrect => 'Правильный!';
+
+  @override
+  String get spatialCabinetWrongDrawer => 'Неправильный ящик!';
+
+  @override
+  String get spatialCabinetItems => 'Предметы';
+
+  @override
+  String get cabinetItemKey => 'Ключ';
+
+  @override
+  String get cabinetItemApple => 'Яблоко';
+
+  @override
+  String get cabinetItemDiamond => 'Алмаз';
+
+  @override
+  String get cabinetItemBook => 'Книга';
+
+  @override
+  String get cabinetItemUmbrella => 'Зонтик';
+
+  @override
+  String get cabinetItemCoffee => 'Кофе';
+
+  @override
+  String get cabinetItemLock => 'Замок';
+
+  @override
+  String get cabinetItemPet => 'Домашний питомец';
+
+  @override
+  String get cabinetItemCar => 'Машина';
+
+  @override
+  String get gamesTitleLabel => 'ИГРЫ';
+
+  @override
+  String get yourFavorites => 'ВАШИ ЛЮБИМЫЕ';
+
+  @override
+  String get readyForWorkout => 'ГОТОВЫ К ЕЖЕДНЕВНОЙ ТРЕНИРОВКЕ?';
+
+  @override
+  String get greatStartKeepGoing =>
+      'ОТЛИЧНОЕ НАЧАЛО! ПРОДОЛЖАЙТЕ В ТОМ ЖЕ ДУХЕ.';
+
+  @override
+  String get onFireToday => 'ВЫ СЕГОДНЯ В УДАРЕ!';
+
+  @override
+  String get incredibleSolvingToday => 'НЕВЕРОЯТНЫЕ РЕШЕНИЯ СЕГОДНЯ!';
+
+  @override
+  String get newGameLabel => 'НОВАЯ';
+
+  @override
+  String get slitherlinkTitle => 'Слизерлинк';
+
+  @override
+  String get slitherlinkSubtitle =>
+      'ОКОЛЬЦУЙТЕ СЕТКУ ИЗ ШТИФТОВ, ИСПОЛЬЗУЯ ЧИСЛОВЫЕ ПОДСКАЗКИ.';
+
+  @override
+  String get futoshikiTitle => 'Футошики';
+
+  @override
+  String get futoshikiSubtitle =>
+      'ЗАПОЛНЯЙТЕ СЕТКИ, ИСПОЛЬЗУЯ ПОДСКАЗКИ \"БОЛЬШЕ ЧЕМ\".';
+
+  @override
+  String get kakuroTitle => 'Какуро';
+
+  @override
+  String get kakuroSubtitle => 'РЕШАЙТЕ КРОССВОРДЫ С ЧИСЛАМИ И СУММАМИ.';
+
+  @override
+  String get inequalityDashTitle => 'Спринт Неравенств';
+
+  @override
+  String get inequalityDashSubtitle =>
+      'РЕШАЙТЕ НЕРАВЕНСТВА ПОД ДАВЛЕНИЕМ ВРЕМЕНИ.';
+
+  @override
+  String get factorFinderTitle => 'Поиск Множителей';
+
+  @override
+  String get factorFinderSubtitle => 'ОПРЕДЕЛИТЕ ВСЕ МНОЖИТЕЛИ ЦЕЛЕВЫХ ЧИСЕЛ.';
+
+  @override
+  String get collatzTitle => 'Путь Коллатца';
+
+  @override
+  String get collatzSubtitle => 'ПЕРЕМЕЩАЙТЕСЬ ПО ПОСЛЕДОВАТЕЛЬНОСТИ 3N+1.';
+
+  @override
+  String get sumPyramidTitle => 'Пирамида Сумм';
+
+  @override
+  String get sumPyramidSubtitle =>
+      'ЗАПОЛНЯЙТЕ ЯЧЕЙКИ ПИРАМИДЫ МАТЕМАТИЧЕСКИМИ ПОДСКАЗКАМИ О СУММАХ.';
+
+  @override
+  String get target10Title => 'Цель 10';
+
+  @override
+  String get target10Subtitle =>
+      'КОМБИНИРУЙТЕ ПЛИТКИ С ЧИСЛАМИ, ЧТОБЫ ПОЛУЧИТЬ ДЕСЯТЬ СУММ. ';
+
+  @override
+  String get fractionMatcherTitle => 'Сопоставление Дробей';
+
+  @override
+  String get fractionMatcherSubtitle =>
+      'СОПОСТАВЛЯЙТЕ ЭКВИВАЛЕНТНЫЕ ДРОБИ ВИЗУАЛЬНО.';
+
+  @override
+  String get dualCodingTitle => 'Двойное Кодирование';
+
+  @override
+  String get dualCodingSubtitle =>
+      'СОПОСТАВЛЯЙТЕ БУКВЫ И СИМВОЛЫ ОДНОВРЕМЕННО.';
+
+  @override
+  String get distractorMatrixTitle => 'Матрица Дистракторов';
+
+  @override
+  String get distractorMatrixSubtitle =>
+      'НАХОДИТЕ ЦЕЛЕВЫЕ ФИГУРЫ СРЕДИ ДИСТРАКТОРОВ.';
+
+  @override
+  String get temporalOrderTitle => 'Временной Порядок';
+
+  @override
+  String get temporalOrderSubtitle =>
+      'ВСПОМНИТЕ ХРОНОЛОГИЧЕСКУЮ ПОСЛЕДОВАТЕЛЬНОСТЬ.';
+
+  @override
+  String get associativePairsTitle => 'Ассоциативные Пары';
+
+  @override
+  String get associativePairsSubtitle =>
+      'СОЕДИНЯЙТЕ И СОПОСТАВЛЯЙТЕ СООТВЕТСТВУЮЩИЕ СИМВОЛЫ.';
+
+  @override
+  String get blockCount3dTitle => 'Подсчет Блоков 3D';
+
+  @override
+  String get blockCount3dSubtitle =>
+      'СЧИТАЙТЕ БЛОКИ В ТРЕХМЕРНОМ ПРОСТРАНСТВЕ.';
+
+  @override
+  String get rotatingMazeTitle => 'Вращающийся Лабиринт';
+
+  @override
+  String get rotatingMazeSubtitle =>
+      'ВРАЩАЙТЕ ЛАБИРИНТЫ, ЧТОБЫ ПРОВЕСТИ ШАРИКИ К ВЫХОДУ.';
+
+  @override
+  String get silhouetteMatchOrthoTitle => 'Сопоставление Силуэтов (Орто)';
+
+  @override
+  String get silhouetteMatchOrthoSubtitle =>
+      'СОПОСТАВЛЯЙТЕ 3D-ОБЪЕКТЫ С ОРТОГОНАЛЬНЫМИ ТЕНЯМИ.';
+
+  @override
+  String get spatialConflictTitle => 'Пространственный Конфликт';
+
+  @override
+  String get spatialConflictSubtitle =>
+      'РЕШАЙТЕ РАСХОЖДЕНИЯ МЕЖДУ ТЕКСТОМ И НАПРАВЛЕНИЕМ.';
+
+  @override
+  String get spotlightTrackTitle => 'Слежение Прожектором';
+
+  @override
+  String get spotlightTrackSubtitle =>
+      'ОТСЛЕЖИВАЙТЕ МИГАЮЩИЕ ПРЕДМЕТЫ В ДВИЖУЩИХСЯ ТЕНЯХ.';
+
+  @override
+  String get d2AttentionTitle => 'Внимание d2';
+
+  @override
+  String get d2AttentionSubtitle =>
+      'НАЖИМАЙТЕ НА ЦЕЛЕВЫЕ СИМВОЛЫ В СООТВЕТСТВИИ СО СТРОГИМИ КРИТЕРИЯМИ.';
+
+  @override
+  String get dualMirrorTitle => 'Двойная Зеркальная Навигация';
+
+  @override
+  String get dualMirrorSubtitle =>
+      'ПЕРЕМЕЩАЙТЕСЬ ПО ДВУМ ЛАБИРИНТАМ ОДНОВРЕМЕННО.';
+
+  @override
+  String get contextCluesTitle => 'Контекстные Подсказки';
+
+  @override
+  String get contextCluesSubtitle =>
+      'УГАДЫВАЙТЕ СКРЫТЫЕ СЛОВА ПО КОНТЕКСТНЫМ ПОДСКАЗКАМ.';
+
+  @override
+  String get digitSpanReverseSubtitle =>
+      'ВСПОМНИТЕ ЦИФРЫ ЧИСЕЛ В ОБРАТНОМ ПОРЯДКЕ.';
+
+  @override
+  String get faceNameAssociationSubtitle =>
+      'ВСПОМНИТЕ ИМЕНА ДЛЯ РАЗЛИЧНЫХ ПРЕДСТАВЛЕННЫХ ЛИЦ.';
+
+  @override
+  String get staircaseMemorySubtitle =>
+      'ЗАПОМИНАЙТЕ БЛОКИ В СТУПЕНЧАТОЙ ПОСЛЕДОВАТЕЛЬНОСТИ.';
+
+  @override
+  String get choiceReactionTimeSubtitle =>
+      'БЫСТРО НАЖИМАЙТЕ НА ОПРЕДЕЛЕННЫЕ КНОПКИ, СООТВЕТСТВУЮЩИЕ ПОДСКАЗКАМ.';
+
+  @override
+  String get attentionalBlinkSubtitle =>
+      'УЛАВЛИВАЙТЕ БЫСТРЫЕ ЦЕЛИ, МЕЛЬКАЮЩИЕ В ПОТОКАХ.';
+
+  @override
+  String get visualStatisticalLearningSubtitle =>
+      'ИЗУЧАЙТЕ ВРЕМЕННЫЕ ПАТТЕРНЫ ФИГУР ВИЗУАЛЬНО.';
+
+  @override
+  String get sternbergTaskSubtitle =>
+      'ВСПОМНИТЕ, БЫЛ ЛИ СИМВОЛ В НАБОРЕ ПАМЯТИ.';
+
+  @override
+  String get operationSpanSubtitle =>
+      'РЕШАЙТЕ ЗАДАЧИ И ВСПОМИНАЙТЕ АЛФАВИТНЫЕ СТРОКИ.';
+
+  @override
+  String get continuousRecognitionTitle => 'Непрерывное Распознавание';
+
+  @override
+  String get continuousRecognitionSubtitle =>
+      'ОПРЕДЕЛИТЕ, ЯВЛЯЕТСЯ ЛИ ПРЕДСТАВЛЕННАЯ КАРТОЧКА СТАРОЙ ИЛИ НОВОЙ.';
+
+  @override
+  String get symmetrySpanTitle => 'Объем Симметрии';
+
+  @override
+  String get symmetrySpanSubtitle =>
+      'ВСПОМНИТЕ КООРДИНАТЫ ЯЧЕЕК ПРИ ПРИНЯТИИ РЕШЕНИЙ О ВЕРТИКАЛЬНОЙ СИММЕТРИИ.';
+
+  @override
+  String get objectDisplacementTitle => 'Смещение Объекта';
+
+  @override
+  String get objectDisplacementSubtitle =>
+      'ИЗУЧИТЕ РАСПОЛОЖЕНИЕ И НАЖМИТЕ НА ЕДИНСТВЕННЫЙ ПРЕДМЕТ, КОТОРЫЙ ПЕРЕМЕСТИЛСЯ.';
+
+  @override
+  String get mandalaRecallTitle => 'Воспроизведение Мандалы';
+
+  @override
+  String get mandalaRecallSubtitle =>
+      'ЗАПОМИНАЙТЕ ЦВЕТНЫЕ ПЛИТКИ И ПЕРЕКРАШИВАЙТЕ МАНДАЛЫ С ПАЛИТРЫ.';
+
+  @override
+  String get runningMemorySpanTitle => 'Текущий Объем Памяти';
+
+  @override
+  String get runningMemorySpanSubtitle =>
+      'СЛЕДИТЕ ЗА ТЕКУЩИМИ БУКВАМИ И ВСПОМИНАЙТЕ ПОСЛЕДНИЕ N ЭЛЕМЕНТОВ.';
+
+  @override
+  String get spatialCabinetMemoryTitle => 'Пространственные Шкафы';
+
+  @override
+  String get spatialCabinetMemorySubtitle =>
+      'ЗАПОМИНАЙТЕ И НАХОДИТЕ ПРЕДМЕТЫ ЗА ДВЕРЦАМИ ШКАФОВ.';
+
+  @override
+  String get pathRecallSubtitle => 'ЗАПОМИНАЙТЕ И ПОВТОРЯЙТЕ ВЫБОР ПУТИ.';
+
+  @override
+  String get objectShuffleSubtitle =>
+      'ОТСЛЕЖИВАЙТЕ ПРЕДМЕТЫ, ПЕРЕМЕШАННЫЕ ПОД ГЛУБОКИМИ ЧАШКАМИ.';
+
+  @override
+  String get groceryListSubtitle => 'ЗАПОМИНАЙТЕ И ОТМЕЧАЙТЕ ПУНКТЫ В СПИСКЕ.';
+
+  @override
+  String get quickMathSubtitle =>
+      'РЕШАЙТЕ АРИФМЕТИЧЕСКИЕ ЗАДАЧИ НА МАКСИМАЛЬНОЙ СКОРОСТИ.';
+
+  @override
+  String get mathGuessTitle => 'Математическая Угадайка';
+
+  @override
+  String get mathGuessSubtitle => 'УГАДАЙТЕ СКРЫТОЕ ЧИСЛО ЗА 15 ПОПЫТОК.';
+
+  @override
+  String get reflexTapSubtitle =>
+      'НАЖИМАЙТЕ НА СТИМУЛЫ ТАК БЫСТРО, КАК ТОЛЬКО ВОЗМОЖНО.';
+
+  @override
+  String get pixelMimicSubtitle =>
+      'КОПИРУЙТЕ ДИЗАЙНЕРСКИЕ ПАТТЕРНЫ НА ПИКСЕЛЬНЫХ СЕТКАХ.';
+
+  @override
+  String get simonSequenceSubtitle =>
+      'ПОВТОРЯЙТЕ ПОСЛЕДОВАТЕЛЬНОСТИ ФИГУР ПО ПАМЯТИ.';
+
+  @override
+  String get slidePuzzleSubtitle =>
+      'ПЕРЕСТАВЛЯЙТЕ КВАДРАТНЫЕ ПЛИТКИ СКОЛЬЗЯЩЕЙ СЕТКИ.';
+
+  @override
+  String get findWordTitle => 'Поиск Слова';
+
+  @override
+  String get schulteTableSubtitle =>
+      'НАЖИМАЙТЕ НА ЧИСЛА ОТ ОДНОГО ДО ДВАДЦАТИ ПЯТИ.';
+
+  @override
+  String get simonCommandTitle => 'Команда Саймона';
+
+  @override
+  String get simonCommandSubtitle => 'БЫСТРО ВЫПОЛНЯЙТЕ ГОЛОСОВЫЕ ИНСТРУКЦИИ.';
+
+  @override
+  String get binaryCodeTitle => 'Бинарная Скорость';
+
+  @override
+  String get binaryCodeSubtitle => 'ПЕРЕВОДИТЕ БИНАРНЫЕ КОДЫ В ДЕСЯТИЧНЫЕ.';
+
+  @override
+  String get moduloClockTitle => 'Часы Модуло';
+
+  @override
+  String get moduloClockSubtitle =>
+      'ВЫЧИСЛЯЙТЕ МАТЕМАТИЧЕСКИЕ УРАВНЕНИЯ, ИСПОЛЬЗУЯ ЧАСЫ.';
+
+  @override
+  String get chimpTestTitle => 'Тест Шимпанзе';
+
+  @override
+  String get chimpTestSubtitle =>
+      'НАЖИМАЙТЕ НА СЛУЧАЙНЫЕ ЧИСЛА В ПОРЯДКЕ ВОЗРАСТАНИЯ.';
+
+  @override
+  String get relationalMemoryTitle => 'Реляционная Память';
+
+  @override
+  String get relationalMemorySubtitle =>
+      'ВСПОМНИТЕ ТОЧНОЕ РАСПОЛОЖЕНИЕ ЭЛЕМЕНТОВ СЕТКИ.';
+
+  @override
+  String get factBinderTitle => 'Связыватель Фактов';
+
+  @override
+  String get factBinderSubtitle =>
+      'СОЕДИНЯЙТЕ СИМВОЛЫ И ВСПОМИНАЙТЕ УТВЕРЖДЕНИЯ.';
+
+  @override
+  String get sourceMonitoringTitle => 'Мониторинг Источника';
+
+  @override
+  String get sourceMonitoringSubtitle => 'ЗАПОМИНАЙТЕ КОНТЕКСТ.';
+
+  @override
+  String get klotskiTitle => 'Побег Клотски';
+
+  @override
+  String get klotskiSubtitle =>
+      'ПЕРЕДВИГАЙТЕ БЛОКИ, ЧТОБЫ ДОБРАТЬСЯ ДО ВЫХОДОВ.';
+
+  @override
+  String get homophoneHuntSubtitle => 'ВЫБЕРИТЕ ПРАВИЛЬНОЕ НАПИСАНИЕ.';
 }

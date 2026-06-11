@@ -1,4 +1,6 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../../providers/user_providers.dart';
@@ -75,7 +77,7 @@ class _WordSurgeScreenState extends ConsumerState<WordSurgeScreen> {
     }
 
     return GameScaffold(
-      title: 'Word Surge',
+      title: L10nGameHelpers.getGameTitle(context, 'word_surge'),
       subtitle: l10n.wordSurgeSubtitle,
       body: Padding(
         padding: const EdgeInsets.all(DesignSystem.spaceLG),
