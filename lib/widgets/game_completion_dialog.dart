@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:url_launcher/url_launcher.dart';
+import '../data/game_metadata.dart';
 import '../utils/design_system.dart';
 import '../utils/haptic_feedback.dart';
 import '../utils/navigation_utils.dart';
@@ -61,14 +62,14 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
       selectedCategory: session.selectedCategory,
     ));
 
-    Map<String, dynamic>? nextGame;
+    GameMetadata? nextGame;
     bool isSameGame = true;
     if (session.lastGameId != null && filteredGamesList.isNotEmpty) {
-      final currentIndex = filteredGamesList.indexWhere((g) => g['id'] == session.lastGameId);
+      final currentIndex = filteredGamesList.indexWhere((g) => g.id == session.lastGameId);
       if (currentIndex != -1) {
         final nextIndex = (currentIndex + 1) % filteredGamesList.length;
         nextGame = filteredGamesList[nextIndex];
-        isSameGame = nextGame['id'] == session.lastGameId;
+        isSameGame = nextGame.id == session.lastGameId;
       }
     }
 
@@ -125,7 +126,7 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
                       child: TangibleButton(
                         onTap: () {
                           ref.read(gameSessionNotifierProvider.notifier).setSession(
-                            gameId: nextGame!['id'],
+                            gameId: nextGame!.id,
                             category: session.selectedCategory,
                             query: session.searchQuery,
                           );
@@ -133,7 +134,7 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
                           Navigator.of(context).pop();
                           Navigator.push(
                             context,
-                            CustomPageRoute(page: (nextGame['builder'] as WidgetBuilder)(context)),
+                            CustomPageRoute(page: nextGame.builder(context)),
                           );
                         },
                         color: DesignSystem.primary,

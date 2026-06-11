@@ -1,17 +1,19 @@
 import 'package:flutter/material.dart';
 import '../utils/design_system.dart';
+import '../utils/error_handler.dart';
 
-/// A widget that catches and displays errors gracefully
 class ErrorBoundary extends StatefulWidget {
   final Widget child;
   final String? errorMessage;
   final VoidCallback? onRetry;
+  final Widget Function(String error)? errorBuilder;
 
   const ErrorBoundary({
     super.key,
     required this.child,
     this.errorMessage,
     this.onRetry,
+    this.errorBuilder,
   });
 
   @override
@@ -24,9 +26,16 @@ class _ErrorBoundaryState extends State<ErrorBoundary> {
   @override
   void initState() {
     super.initState();
-    // Set up error handling for this boundary
     FlutterError.onError = (details) {
       if (mounted) {
+        final error = AppError(
+          message: details.exception.toString(),
+          severity: ErrorSeverity.high,
+          originalError: details.exception,
+          stackTrace: details.stack,
+        );
+        ErrorHandler().report(error);
+
         setState(() {
           _error = details.exception.toString();
         });
@@ -36,15 +45,16 @@ class _ErrorBoundaryState extends State<ErrorBoundary> {
 
   void _clearError() {
     if (mounted) {
-      setState(() {
-        _error = null;
-      });
+      setState(() => _error = null);
     }
   }
 
   @override
   Widget build(BuildContext context) {
     if (_error != null) {
+      if (widget.errorBuilder != null) {
+        return widget.errorBuilder!(_error!);
+      }
       return _buildErrorWidget();
     }
     return widget.child;
@@ -103,7 +113,6 @@ class _ErrorBoundaryState extends State<ErrorBoundary> {
   }
 }
 
-/// A reusable loading indicator widget
 class LoadingIndicator extends StatelessWidget {
   final String? message;
   final double size;
@@ -142,7 +151,6 @@ class LoadingIndicator extends StatelessWidget {
   }
 }
 
-/// A widget that shows a placeholder when content is loading
 class LoadingShimmer extends StatelessWidget {
   final double width;
   final double height;

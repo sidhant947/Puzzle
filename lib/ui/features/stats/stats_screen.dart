@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../widgets/tangible.dart';
-import '../../../data/game_data.dart';
+import '../../../data/game_registry.dart';
 
 class Achievement {
   final String title;
@@ -419,13 +419,13 @@ class StatsScreen extends ConsumerWidget {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-    final allGames = GameData.allGamesList;
+    final allGames = allGamesMetadata;
     final Map<String, int> totalPerCategory = {};
     final Map<String, int> solvedPerCategory = {};
 
     for (final game in allGames) {
-      final category = game['category'] as String;
-      final id = game['id'] as String;
+      final category = game.category;
+      final id = game.id;
 
       totalPerCategory[category] = (totalPerCategory[category] ?? 0) + 1;
       if (streaks.containsKey(id)) {

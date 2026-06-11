@@ -31,3 +31,23 @@ class UserData with _$UserData {
   factory UserData.fromJson(Map<String, dynamic> json) =>
       _$UserDataFromJson(json);
 }
+
+extension UserDataValidation on UserData {
+  bool get isValid {
+    if (xp < 0) return false;
+    if (level < 1 || level > 100) return false;
+    if ((superStreak ?? 0) < 0) return false;
+    if ((totalSolved ?? 0) < 0) return false;
+    return true;
+  }
+
+  UserData sanitized() {
+    return copyWith(
+      xp: xp < 0 ? 0 : xp,
+      level: level < 1 ? 1 : (level > 100 ? 100 : level),
+      superStreak: (superStreak ?? 0) < 0 ? 0 : superStreak,
+      totalSolved: (totalSolved ?? 0) < 0 ? 0 : totalSolved,
+      favoriteGameIds: favoriteGameIds ?? [],
+    );
+  }
+}

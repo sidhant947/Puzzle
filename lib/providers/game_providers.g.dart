@@ -6,7 +6,7 @@ part of 'game_providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$filteredGamesHash() => r'63cf891ffe5626e76911516e5c67d72b80a1f4bd';
+String _$filteredGamesHash() => r'b03fecf962a11f5f8953fce3ff86d2c7c2054230';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -34,7 +34,7 @@ class _SystemHash {
 const filteredGamesProvider = FilteredGamesFamily();
 
 /// See also [filteredGames].
-class FilteredGamesFamily extends Family<List<Map<String, dynamic>>> {
+class FilteredGamesFamily extends Family<List<GameMetadata>> {
   /// See also [filteredGames].
   const FilteredGamesFamily();
 
@@ -75,8 +75,7 @@ class FilteredGamesFamily extends Family<List<Map<String, dynamic>>> {
 }
 
 /// See also [filteredGames].
-class FilteredGamesProvider
-    extends AutoDisposeProvider<List<Map<String, dynamic>>> {
+class FilteredGamesProvider extends AutoDisposeProvider<List<GameMetadata>> {
   /// See also [filteredGames].
   FilteredGamesProvider({
     required String searchQuery,
@@ -116,7 +115,7 @@ class FilteredGamesProvider
 
   @override
   Override overrideWith(
-    List<Map<String, dynamic>> Function(FilteredGamesRef provider) create,
+    List<GameMetadata> Function(FilteredGamesRef provider) create,
   ) {
     return ProviderOverride(
       origin: this,
@@ -134,7 +133,7 @@ class FilteredGamesProvider
   }
 
   @override
-  AutoDisposeProviderElement<List<Map<String, dynamic>>> createElement() {
+  AutoDisposeProviderElement<List<GameMetadata>> createElement() {
     return _FilteredGamesProviderElement(this);
   }
 
@@ -155,7 +154,7 @@ class FilteredGamesProvider
   }
 }
 
-mixin FilteredGamesRef on AutoDisposeProviderRef<List<Map<String, dynamic>>> {
+mixin FilteredGamesRef on AutoDisposeProviderRef<List<GameMetadata>> {
   /// The parameter `searchQuery` of this provider.
   String get searchQuery;
 
@@ -164,7 +163,7 @@ mixin FilteredGamesRef on AutoDisposeProviderRef<List<Map<String, dynamic>>> {
 }
 
 class _FilteredGamesProviderElement
-    extends AutoDisposeProviderElement<List<Map<String, dynamic>>>
+    extends AutoDisposeProviderElement<List<GameMetadata>>
     with FilteredGamesRef {
   _FilteredGamesProviderElement(super.provider);
 

@@ -7,14 +7,15 @@ class TangibleContainer extends StatelessWidget {
   final Widget child;
   final Color? color;
   final Color? shadowColor;
-  final double depth; // Ignored for flat minimalist design
+  final double depth;
   final double radius;
   final EdgeInsetsGeometry? padding;
   final double? width;
   final double? height;
   final VoidCallback? onTap;
   final VoidCallback? onLongPress;
-  final bool drawBorder; // Optional borders for clean headers/tabs
+  final bool drawBorder;
+  final String? semanticsLabel;
 
   const TangibleContainer({
     super.key,
@@ -22,13 +23,14 @@ class TangibleContainer extends StatelessWidget {
     this.color,
     this.shadowColor,
     this.depth = 6.0,
-    this.radius = DesignSystem.radiusMD, // Upgraded to modern medium radius
+    this.radius = DesignSystem.radiusMD,
     this.padding,
     this.width,
     this.height,
     this.onTap,
     this.onLongPress,
     this.drawBorder = true,
+    this.semanticsLabel,
   });
 
   @override
@@ -62,15 +64,22 @@ class TangibleContainer extends StatelessWidget {
     );
 
     if (onTap != null || onLongPress != null) {
-      return GestureDetector(
-        onTap: onTap,
-        onLongPress: onLongPress,
-        behavior: HitTestBehavior.opaque,
-        child: content,
+      return Semantics(
+        button: true,
+        label: semanticsLabel,
+        child: GestureDetector(
+          onTap: onTap,
+          onLongPress: onLongPress,
+          behavior: HitTestBehavior.opaque,
+          child: content,
+        ),
       );
     }
 
-    return content;
+    return Semantics(
+      label: semanticsLabel,
+      child: content,
+    );
   }
 }
 
@@ -81,13 +90,14 @@ class TangibleButton extends StatefulWidget {
   final VoidCallback? onTap;
   final VoidCallback? onLongPress;
   final Color? color;
-  final Color? shadowColor; // Ignored for flat design
+  final Color? shadowColor;
   final EdgeInsetsGeometry? padding;
   final double? width;
   final double? height;
-  final double depth; // Ignored for flat design
+  final double depth;
   final double radius;
-  final bool drawBorder; // Optional borders
+  final bool drawBorder;
+  final String? semanticsLabel;
 
   const TangibleButton({
     super.key,
@@ -100,8 +110,9 @@ class TangibleButton extends StatefulWidget {
     this.width,
     this.height,
     this.depth = 6.0,
-    this.radius = DesignSystem.radiusMD, // Modern radius SM/MD
+    this.radius = DesignSystem.radiusMD,
     this.drawBorder = true,
+    this.semanticsLabel,
   });
 
   @override
@@ -118,34 +129,38 @@ class _TangibleButtonState extends State<TangibleButton> {
     final resolvedColor = widget.color ?? colorScheme.primary;
     final isEnabled = widget.onTap != null || widget.onLongPress != null;
 
-    return GestureDetector(
-      onTap: widget.onTap,
-      onLongPress: widget.onLongPress,
-      behavior: HitTestBehavior.opaque,
-      child: RepaintBoundary(
-        child: TangibleContainer(
-          color: isEnabled ? resolvedColor : colorScheme.surface.withValues(alpha: 0.5),
-          radius: widget.radius,
-          drawBorder: widget.drawBorder,
-          width: widget.width,
-          height: widget.height,
-          padding: widget.padding ?? const EdgeInsets.symmetric(
-            horizontal: DesignSystem.spaceLG,
-            vertical: DesignSystem.spaceMD,
-          ),
-          child: DefaultTextStyle(
-            style: TextStyle(
-              fontFamily: 'Geist',
-              color: isEnabled
-                  ? (resolvedColor == colorScheme.surface || resolvedColor == Colors.transparent
-                      ? colorScheme.onSurface
-                      : Colors.white)
-                  : colorScheme.onSurface.withValues(alpha: 0.3),
-              fontSize: DesignSystem.fontSizeLG,
-              fontWeight: FontWeight.w700,
-              letterSpacing: 0.5,
+    return Semantics(
+      button: true,
+      label: widget.semanticsLabel,
+      child: GestureDetector(
+        onTap: widget.onTap,
+        onLongPress: widget.onLongPress,
+        behavior: HitTestBehavior.opaque,
+        child: RepaintBoundary(
+          child: TangibleContainer(
+            color: isEnabled ? resolvedColor : colorScheme.surface.withValues(alpha: 0.5),
+            radius: widget.radius,
+            drawBorder: widget.drawBorder,
+            width: widget.width,
+            height: widget.height,
+            padding: widget.padding ?? const EdgeInsets.symmetric(
+              horizontal: DesignSystem.spaceLG,
+              vertical: DesignSystem.spaceMD,
             ),
-            child: widget.child,
+            child: DefaultTextStyle(
+              style: TextStyle(
+                fontFamily: 'Geist',
+                color: isEnabled
+                    ? (resolvedColor == colorScheme.surface || resolvedColor == Colors.transparent
+                        ? colorScheme.onSurface
+                        : Colors.white)
+                    : colorScheme.onSurface.withValues(alpha: 0.3),
+                fontSize: DesignSystem.fontSizeLG,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.5,
+              ),
+              child: widget.child,
+            ),
           ),
         ),
       ),
