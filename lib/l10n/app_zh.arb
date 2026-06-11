@@ -644,13 +644,13 @@
       }
     }
   },
-  "verbalAnalogiesTitle": "类比大师！",
+  "verbalAnalogiesTitle": "言语类比",
   "verbalAnalogiesSubtitle": "完成关系",
   "typingSpeedTitle": "打字速度",
   "typingSpeedSubtitle": "尽快准确地打出所示的短语！",
   "wordLadderTitle": "单词阶梯",
   "wordLadderSubtitle": "通过一次改变一个字母来连接单词。",
-  "tangleFixTitle": "解开乱麻！",
+  "tangleFixTitle": "纠缠解开",
   "tangleFixSubtitle": "整理线条，使其互不交叉",
   "oddRotationTitle": "异常旋转",
   "oddRotationSubtitle": "其中一个是镜像的。你能找到它吗？",
@@ -944,7 +944,6 @@
   "consonantReconstructTitle": "辅音重构",
   "consonantReconstructSubtitle": "填补句子中缺失的辅音",
   "homophoneHuntTitle": "同音词狩猎",
-  "homophone_huntSubtitle": "选择拼写正确的同音词",
   "silentLetterSearchTitle": "静音字母搜索",
   "silentLetterSearchSubtitle": "识别给定单词中的静音字母",
   "palindromeBuilderTitle": "回文构建器",
@@ -2141,5 +2140,5 @@
   "sourceMonitoringSubtitle": "记住语境。",
   "klotskiTitle": "华容道 (Klotski Escape)",
   "klotskiSubtitle": "滑动方块以到达出口。",
-  "homophoneHuntSubtitle": "选择正确的拼写。"
+  "homophoneHuntSubtitle": "选择拼写正确的同音词"
 }

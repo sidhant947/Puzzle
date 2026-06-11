@@ -944,7 +944,6 @@
   "consonantReconstructTitle": "자음 재구성",
   "consonantReconstructSubtitle": "문장에서 빠진 자음을 채우세요",
   "homophoneHuntTitle": "동음이의어 찾기",
-  "homophone_huntSubtitle": "철자가 올바른 동음이의어를 선택하세요",
   "silentLetterSearchTitle": "묵음 찾기",
   "silentLetterSearchSubtitle": "주어진 단어에서 묵음을 식별하세요",
   "palindromeBuilderTitle": "회문 만들기",
@@ -2141,5 +2140,5 @@
   "sourceMonitoringSubtitle": "문맥을 기억하세요.",
   "klotskiTitle": "클로츠키 탈출",
   "klotskiSubtitle": "블록을 슬라이드하여 출구에 도달하세요.",
-  "homophoneHuntSubtitle": "올바른 철자를 선택하세요."
+  "homophoneHuntSubtitle": "철자가 올바른 동음이의어를 선택하세요"
 }

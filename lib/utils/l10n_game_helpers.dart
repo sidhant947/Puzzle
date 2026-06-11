@@ -202,6 +202,14 @@ class L10nGameHelpers {
       case 'letter_bridge': return l10n.letterBridgeTitle;
       case 'letter_frequency_scan': return l10n.letterFrequencyScanTitle;
       case 'one_letter_shift': return l10n.oneLetterShiftTitle;
+      case 'shadow_pivot': return l10n.shadowPivotTitle;
+      case 'laser_link': return l10n.laserLinkTitle;
+      case 'cross_section_slice': return l10n.crossSectionSliceTitle;
+      case 'interlock_puzzle': return l10n.interlockPuzzleTitle;
+      case 'path_intersect': return l10n.pathIntersectTitle;
+      case 'negative_space_detection': return l10n.negativeSpaceDetectionTitle;
+      case 'compass_maze': return l10n.compassMazeTitle;
+      case 'complex_folding_nets': return l10n.complexFoldingNetsTitle;
       default: return gameId;
     }
   }
@@ -406,6 +414,14 @@ class L10nGameHelpers {
       case 'letter_bridge': return l10n.letterBridgeSubtitle;
       case 'letter_frequency_scan': return l10n.letterFrequencyScanSubtitle;
       case 'one_letter_shift': return l10n.oneLetterShiftSubtitle;
+      case 'shadow_pivot': return l10n.shadowPivotSubtitle;
+      case 'laser_link': return l10n.laserLinkSubtitle;
+      case 'cross_section_slice': return l10n.crossSectionSliceSubtitle;
+      case 'interlock_puzzle': return l10n.interlockPuzzleSubtitle;
+      case 'path_intersect': return l10n.pathIntersectSubtitle;
+      case 'negative_space_detection': return l10n.negativeSpaceDetectionSubtitle;
+      case 'compass_maze': return l10n.compassMazeSubtitle;
+      case 'complex_folding_nets': return l10n.complexFoldingNetsSubtitle;
       default: return 'CHALLENGE AND TRAIN YOUR COGNITIVE SKILLS.';
     }
   }

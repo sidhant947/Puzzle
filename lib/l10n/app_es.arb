@@ -944,7 +944,6 @@
   "consonantReconstructTitle": "Reconstrucción de consonantes",
   "consonantReconstructSubtitle": "Rellena las consonantes que faltan en la frase",
   "homophoneHuntTitle": "Caza de homófonos",
-  "homophone_huntSubtitle": "Elige el homófono escrito correctamente",
   "silentLetterSearchTitle": "Búsqueda de letras mudas",
   "silentLetterSearchSubtitle": "Identifica las letras mudas en las palabras dadas",
   "palindromeBuilderTitle": "Constructor de palíndromos",
@@ -2141,5 +2140,5 @@
   "sourceMonitoringSubtitle": "RECUERDA EL CONTEXTO.",
   "klotskiTitle": "Escape de Klotski",
   "klotskiSubtitle": "DESLIZA BLOQUES PARA LLEGAR A LAS SALIDAS.",
-  "homophoneHuntSubtitle": "ELIGE LA ORTOGRAFÍA CORRECTA."
+  "homophoneHuntSubtitle": "Elige el homófono escrito correctamente"
 }

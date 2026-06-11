@@ -944,7 +944,6 @@
   "consonantReconstructTitle": "Восстановление согласных",
   "consonantReconstructSubtitle": "Вставьте пропущенные согласные в предложении",
   "homophoneHuntTitle": "Охота за омофонами",
-  "homophone_huntSubtitle": "Выберите правильное написание омофона",
   "silentLetterSearchTitle": "Поиск непроизносимых букв",
   "silentLetterSearchSubtitle": "Найдите непроизносимые буквы в словах",
   "palindromeBuilderTitle": "Создатель палиндромов",
@@ -2141,5 +2140,5 @@
   "sourceMonitoringSubtitle": "ЗАПОМИНАЙТЕ КОНТЕКСТ.",
   "klotskiTitle": "Побег Клотски",
   "klotskiSubtitle": "ПЕРЕДВИГАЙТЕ БЛОКИ, ЧТОБЫ ДОБРАТЬСЯ ДО ВЫХОДОВ.",
-  "homophoneHuntSubtitle": "ВЫБЕРИТЕ ПРАВИЛЬНОЕ НАПИСАНИЕ."
+  "homophoneHuntSubtitle": "Выберите правильное написание омофона"
 }

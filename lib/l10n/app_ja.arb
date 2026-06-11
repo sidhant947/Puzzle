@@ -644,7 +644,7 @@
       }
     }
   },
-  "verbalAnalogiesTitle": "類推マスター！",
+  "verbalAnalogiesTitle": "言語類推",
   "verbalAnalogiesSubtitle": "関係性を完成させてください",
   "typingSpeedTitle": "タイピング速度",
   "typingSpeedSubtitle": "表示されたフレーズをできるだけ早く正確に入力してください！",
@@ -944,7 +944,6 @@
   "consonantReconstructTitle": "子音再構成",
   "consonantReconstructSubtitle": "文章の中の欠けている子音を埋めます",
   "homophoneHuntTitle": "同音異義語探し",
-  "homophone_huntSubtitle": "正しく綴られた同音異義語を選択します",
   "silentLetterSearchTitle": "黙字検索",
   "silentLetterSearchSubtitle": "与えられた単語の中の読まない文字を特定します",
   "palindromeBuilderTitle": "回文ビルダー",
@@ -2141,5 +2140,5 @@
   "sourceMonitoringSubtitle": "文脈を思い出します。",
   "klotskiTitle": "箱入り娘（クロツキ）",
   "klotskiSubtitle": "ブロックをスライドさせて出口に到達させます。",
-  "homophoneHuntSubtitle": "正しい綴りを選択します。"
+  "homophoneHuntSubtitle": "正しく綴られた同音異義語を選択します"
 }

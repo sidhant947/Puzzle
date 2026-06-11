@@ -644,13 +644,13 @@
       }
     }
   },
-  "verbalAnalogiesTitle": "Analogie-Meister!",
+  "verbalAnalogiesTitle": "Verbale Analogien",
   "verbalAnalogiesSubtitle": "Vervollständige die Beziehung",
   "typingSpeedTitle": "Tippgeschwindigkeit",
   "typingSpeedSubtitle": "Tippe den Satz so schnell wie möglich exakt wie gezeigt!",
   "wordLadderTitle": "Wortleiter",
   "wordLadderSubtitle": "Verbinde die Wörter, indem du immer nur einen Buchstaben änderst.",
-  "tangleFixTitle": "Entwirrt!",
+  "tangleFixTitle": "Gewirr auflösen",
   "tangleFixSubtitle": "Entwirre die Linien, sodass sich keine überschneiden",
   "oddRotationTitle": "Abweichende Rotation",
   "oddRotationSubtitle": "Eines davon ist gespiegelt. Kannst du es finden?",
@@ -676,7 +676,7 @@
       }
     }
   },
-  "mirrorTracingTitle": "Perfekt nachgezeichnet!",
+  "mirrorTracingTitle": "Spiegelzeichnen",
   "mirrorTracingSubtitle": "Zeichne den Stern nach! Die Steuerung ist GESPIEGELT.",
   "wordSurgeTitle": "Word Surge",
   "wordSurgeSubtitle": "Synonyme & Antonyme",
@@ -692,7 +692,7 @@
       }
     }
   },
-  "paperFoldingTitle": "Perfekt entfaltet!",
+  "paperFoldingTitle": "Papierfalten",
   "paperFoldingSubtitle": "Wie wird es entfaltet aussehen?",
   "waterSortTitle": "Water Sort",
   "waterSortSubtitle": "Sortiere die Farben, sodass jedes Reagenzglas nur eine Farbe enthält.",
@@ -944,7 +944,6 @@
   "consonantReconstructTitle": "Konsonanten-Rekonstruktion",
   "consonantReconstructSubtitle": "Füllen Sie die fehlenden Konsonanten im Satz aus",
   "homophoneHuntTitle": "Homophon-Jagd",
-  "homophone_huntSubtitle": "Wählen Sie das korrekt geschriebene Homophon",
   "silentLetterSearchTitle": "Suche nach stummen Buchstaben",
   "silentLetterSearchSubtitle": "Identifizieren Sie stumme Buchstaben in den angegebenen Wörtern",
   "palindromeBuilderTitle": "Palindrom-Ersteller",
@@ -2141,5 +2140,5 @@
   "sourceMonitoringSubtitle": "ERINNERE DICH AN DEN KONTEXT.",
   "klotskiTitle": "Klotski-Flucht",
   "klotskiSubtitle": "VERSCHIEBE BLÖCKE, UM DEN AUSGANG ZU ERREICHEN.",
-  "homophoneHuntSubtitle": "WÄHLE DIE RICHTIGE SCHREIBWEISE."
+  "homophoneHuntSubtitle": "Wählen Sie das korrekt geschriebene Homophon"
 }

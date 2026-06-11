@@ -155,6 +155,14 @@ import '../ui/features/games/rotating_maze/rotating_maze_screen.dart';
 import '../ui/features/games/classic_maze/classic_maze_screen.dart';
 import '../ui/features/games/silhouette_match_ortho/silhouette_match_ortho_screen.dart';
 import '../ui/features/games/topology/topology_screen.dart';
+import '../ui/features/games/laser_link/laser_link_screen.dart';
+import '../ui/features/games/cross_section_slice/cross_section_slice_screen.dart';
+import '../ui/features/games/shadow_pivot/shadow_pivot_screen.dart';
+import '../ui/features/games/interlock_puzzle/interlock_puzzle_screen.dart';
+import '../ui/features/games/path_intersect/path_intersect_screen.dart';
+import '../ui/features/games/negative_space_detection/negative_space_detection_screen.dart';
+import '../ui/features/games/compass_maze/compass_maze_screen.dart';
+import '../ui/features/games/complex_folding_nets/complex_folding_nets_screen.dart';
 import '../ui/features/games/conjunction_search/conjunction_search_screen.dart';
 import '../ui/features/games/spatial_conflict/spatial_conflict_screen.dart';
 import '../ui/features/games/spotlight_track/spotlight_track_screen.dart';
@@ -397,7 +405,7 @@ class GameData {
       'color': DesignSystem.gamePurple,
       'builder': (context) => const AssociativePairsScreen(),
     },
-    // --- Spatial Games (5) ---
+    // --- Spatial Games (14) ---
     {
       'title': '3D Block Count',
       'id': 'block_count_3d',
@@ -445,6 +453,70 @@ class GameData {
       'icon': Icons.category_rounded,
       'color': DesignSystem.gameIndigo,
       'builder': (context) => const TopologyScreen(),
+    },
+    {
+      'title': 'Laser Link',
+      'id': 'laser_link',
+      'category': 'SPATIAL',
+      'icon': Icons.vignette_rounded,
+      'color': DesignSystem.gameRose,
+      'builder': (context) => const LaserLinkScreen(),
+    },
+    {
+      'title': 'Cross-Section Slice',
+      'id': 'cross_section_slice',
+      'category': 'SPATIAL',
+      'icon': Icons.layers_rounded,
+      'color': DesignSystem.gameAmber,
+      'builder': (context) => const CrossSectionSliceScreen(),
+    },
+    {
+      'title': 'Shadow Pivot',
+      'id': 'shadow_pivot',
+      'category': 'SPATIAL',
+      'icon': Icons.brightness_6_rounded,
+      'color': DesignSystem.gameTeal,
+      'builder': (context) => const ShadowPivotScreen(),
+    },
+    {
+      'title': 'Interlock Puzzle',
+      'id': 'interlock_puzzle',
+      'category': 'SPATIAL',
+      'icon': Icons.extension_rounded,
+      'color': DesignSystem.gameBlue,
+      'builder': (context) => const InterlockPuzzleScreen(),
+    },
+    {
+      'title': 'Path Intersect',
+      'id': 'path_intersect',
+      'category': 'SPATIAL',
+      'icon': Icons.alt_route_rounded,
+      'color': DesignSystem.gameOrange,
+      'builder': (context) => const PathIntersectScreen(),
+    },
+    {
+      'title': 'Negative Space',
+      'id': 'negative_space_detection',
+      'category': 'SPATIAL',
+      'icon': Icons.filter_center_focus_rounded,
+      'color': DesignSystem.gamePurple,
+      'builder': (context) => const NegativeSpaceDetectionScreen(),
+    },
+    {
+      'title': 'Compass Maze',
+      'id': 'compass_maze',
+      'category': 'SPATIAL',
+      'icon': Icons.explore_rounded,
+      'color': DesignSystem.gameGreen,
+      'builder': (context) => const CompassMazeScreen(),
+    },
+    {
+      'title': 'Complex Folding Nets',
+      'id': 'complex_folding_nets',
+      'category': 'SPATIAL',
+      'icon': Icons.unfold_more_double_rounded,
+      'color': DesignSystem.gameRose,
+      'builder': (context) => const ComplexFoldingNetsScreen(),
     },
 
     // --- Attention Games (5) ---

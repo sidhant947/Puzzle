@@ -1144,7 +1144,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get reflexTapTitle => 'रिफ्लेक्स टैप';
 
   @override
-  String get visualStatisticalLearningTitle => 'खेल समाप्त';
+  String get visualStatisticalLearningTitle => 'विजुअल स्टैटिस्टिकल लर्निंग';
 
   @override
   String get orbitTapTitle => 'ऑर्बिट टैप';
@@ -1153,7 +1153,7 @@ class AppLocalizationsHi extends AppLocalizations {
   String get orbitTapSubtitle => 'जब गेंदें गेट के साथ संरेखित हों तब टैप करें';
 
   @override
-  String get schulteTableTitle => 'शानदार फोकस!';
+  String get schulteTableTitle => 'शल्टे टेबल';
 
   @override
   String get multipleObjectTrackingTitle => 'ऑब्जेक्ट ट्रैकर';
@@ -1170,13 +1170,13 @@ class AppLocalizationsHi extends AppLocalizations {
       'उपयोग करें दिखाएँ प्रतीक के लिए अंक खोजने के लिए ऊपर दी गई कुंजी का।';
 
   @override
-  String get memoryMatrixTitle => 'लक्ष्य पूरा हुआ!';
+  String get memoryMatrixTitle => 'मेमोरी मैट्रिक्स';
 
   @override
   String get memoryMatrixSubtitle => 'पैटर्न याद रखें और टाइल्स पर टैप करें।';
 
   @override
-  String get mentalAbacusTitle => 'अबेकस मास्टर!';
+  String get mentalAbacusTitle => 'मानसिक अबेकस';
 
   @override
   String get mentalAbacusSubtitle => 'सोरोबन का उपयोग करके हल करें';
@@ -1233,7 +1233,7 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get verbalAnalogiesTitle => 'एनालॉजी मास्टर!';
+  String get verbalAnalogiesTitle => 'शाब्दिक समरूपता';
 
   @override
   String get verbalAnalogiesSubtitle => 'संबंध को पूरा करें';
@@ -1253,7 +1253,7 @@ class AppLocalizationsHi extends AppLocalizations {
       'एक बार में एक अक्षर बदलकर शब्दों को जोड़ें।';
 
   @override
-  String get tangleFixTitle => 'सुलझ गया!';
+  String get tangleFixTitle => 'उलझन सुलझाना';
 
   @override
   String get tangleFixSubtitle =>
@@ -1286,7 +1286,7 @@ class AppLocalizationsHi extends AppLocalizations {
       'दिखाए गए शब्द की स्याही के रंग को पहचानें। शब्द के वास्तविक अर्थ को अनदेखा करें!';
 
   @override
-  String get wisconsinCardSortingTitle => 'खेल समाप्त';
+  String get wisconsinCardSortingTitle => 'विस्कॉन्सिन कार्ड सॉर्ट';
 
   @override
   String get wisconsinCardSortingSubtitle =>
@@ -1317,7 +1317,7 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get mirrorTracingTitle => 'सही ट्रेसिंग!';
+  String get mirrorTracingTitle => 'दर्पण अनुरेखण';
 
   @override
   String get mirrorTracingSubtitle =>
@@ -1348,13 +1348,13 @@ class AppLocalizationsHi extends AppLocalizations {
   }
 
   @override
-  String get paperFoldingTitle => 'अनफोल्डेड परफेक्शन!';
+  String get paperFoldingTitle => 'कागज मोड़ना';
 
   @override
   String get paperFoldingSubtitle => 'खोलने पर यह कैसा दिखेगा?';
 
   @override
-  String get waterSortTitle => 'बहुत बढ़िया!';
+  String get waterSortTitle => 'वॉटर सॉर्ट';
 
   @override
   String get waterSortSubtitle =>
@@ -1437,7 +1437,7 @@ class AppLocalizationsHi extends AppLocalizations {
       'प्रत्येक प्रतीक का मान ज्ञात करने के लिए दृश्य समीकरणों को हल करें। अंतिम समीकरण का परिणाम क्या है?';
 
   @override
-  String get silhouetteMatchTitle => 'मैच हुआ!';
+  String get silhouetteMatchTitle => 'सिलुएशन मिलान';
 
   @override
   String get silhouetteMatchSubtitle =>
@@ -1869,6 +1869,15 @@ class AppLocalizationsHi extends AppLocalizations {
   String get shapeStar => 'तारा (STAR)';
 
   @override
+  String get shapeRectangle => 'RECTANGLE';
+
+  @override
+  String get shapeEllipse => 'ELLIPSE';
+
+  @override
+  String get shapeTrapezoid => 'TRAPEZOID';
+
+  @override
   String get colorRedLabel => 'लाल (RED)';
 
   @override
@@ -2030,9 +2039,6 @@ class AppLocalizationsHi extends AppLocalizations {
 
   @override
   String get homophoneHuntTitle => 'होमोफोन हंट';
-
-  @override
-  String get homophone_huntSubtitle => 'सही वर्तनी वाले होमोफोन का चयन करें';
 
   @override
   String get silentLetterSearchTitle => 'मूक अक्षर खोज';
@@ -3533,5 +3539,100 @@ class AppLocalizationsHi extends AppLocalizations {
       'निकास तक पहुँचने के लिए ब्लॉकों को स्लाइड करें।';
 
   @override
-  String get homophoneHuntSubtitle => 'सही वर्तनी चुनें।';
+  String get homophoneHuntSubtitle => 'सही वर्तनी वाले होमोफोन का चयन करें';
+
+  @override
+  String get laserLinkTitle => 'Laser Link';
+
+  @override
+  String get laserLinkSubtitle =>
+      'Rotate mirrors to reflect lasers and power up all the targets.';
+
+  @override
+  String get laserLinkCongrats =>
+      'Precision reflection! You\'ve successfully powered the entire grid.';
+
+  @override
+  String get crossSectionSliceTitle => 'Cross-Section Slice';
+
+  @override
+  String get crossSectionSliceSubtitle =>
+      'Identify the correct 2D cross-section of a 3D object from a specific angle.';
+
+  @override
+  String get crossSectionSliceCongrats =>
+      'Incredible 3D visualization! You saw right through that shape.';
+
+  @override
+  String get shadowPivotTitle => 'Shadow Pivot';
+
+  @override
+  String get shadowPivotCongrats =>
+      'Dynamic spatial reasoning! You mastered the light and shadow.';
+
+  @override
+  String get shadowPivotSubtitle =>
+      'Predict the shadow cast by a 3D object as it rotates on different axes.';
+
+  @override
+  String get interlockPuzzleTitle => 'Interlock Puzzle';
+
+  @override
+  String get interlockPuzzleSubtitle =>
+      'Disassemble or assemble complex interlocking blocks in the correct sequence.';
+
+  @override
+  String get interlockPuzzleCongrats =>
+      'Logical deconstruction! You\'ve unraveled the puzzle perfectly.';
+
+  @override
+  String get pathIntersectTitle => 'Path Intersect';
+
+  @override
+  String get pathIntersectSubtitle =>
+      'Navigate multiple paths simultaneously to reach their respective targets without collision.';
+
+  @override
+  String get pathIntersectCongrats =>
+      'Synchronized navigation! You\'ve reached all targets flawlessly.';
+
+  @override
+  String get negativeSpaceDetectionTitle => 'Negative Space';
+
+  @override
+  String get negativeSpaceDetectionSubtitle =>
+      'Identify the shape formed by the empty space between objects.';
+
+  @override
+  String get negativeSpaceDetectionCongrats =>
+      'Keen perception! You\'ve mastered the art of seeing what\'s not there.';
+
+  @override
+  String get compassMazeTitle => 'Compass Maze';
+
+  @override
+  String get compassMazeSubtitle =>
+      'Navigate a maze where movement directions change based on your compass orientation.';
+
+  @override
+  String get compassMazeCongrats =>
+      'Expert navigation! You\'ve found the exit through the shifting directions.';
+
+  @override
+  String get complexFoldingNetsTitle => 'Folding Nets';
+
+  @override
+  String get complexFoldingNetsSubtitle =>
+      'Determine which complex 3D shape will be formed by folding a non-standard 2D net.';
+
+  @override
+  String get complexFoldingNetsCongrats =>
+      'Advanced folding logic! You\'ve successfully visualized the 3D form.';
+
+  @override
+  String get compassMazeMessage => 'Navigate the maze using the compass.';
+
+  @override
+  String get negativeSpaceDetectionMessage =>
+      'Identify the hidden object in the space.';
 }

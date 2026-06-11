@@ -1,9 +1,9 @@
-# PUZZLE: 197 Free Brain Games & Logic Puzzles
+# PUZZLE: 205 Free Brain Games & Logic Puzzles
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Platform](https://img.shields.io/badge/platform-Android%20%7C%20Linux%20%7C%20Web%20%7C%20Windows-blue.svg)](#-downloads)
 
-The ultimate collection of **puzzle challenge games** available for Android , Linux and Windows. A professional suite of minimalist **free brain games** built with Flutter. Master over 197 unique puzzles in this essential **logic puzzle** library, featuring the best **offline games** including **Minesweeper**, **2048**, **Sudoku**, and more. 
+The ultimate collection of **puzzle challenge games** available for Android , Linux and Windows. A professional suite of minimalist **free brain games** built with Flutter. Master over 205 unique puzzles in this essential **logic puzzle** library, featuring the best **offline games** including **Minesweeper**, **2048**, **Sudoku**, and more. 
 
 ---
 
@@ -16,7 +16,7 @@ PUZZLE is engineered for performance and mental stimulation. Whether you are loo
 *   **Memory Games:** Sharpen your recall with N-Back, Memory Palace, and Chimp Test.
 *   **Word Puzzles:** Expand your vocabulary with **typing games**, Crosswords, and Word Search.
 *   **Minesweeper:** Ready to **play Minesweeper**? Enjoy it fully offline with no ads.
-*   **Brain Training:** 197 minimalist experiences designed to sharpen your focus and attention.
+*   **Brain Training:** 205 minimalist experiences designed to sharpen your focus and attention.
 
 ---
 
@@ -44,7 +44,7 @@ Get the full suite of **puzzle games** for your Windows.
 
 ---
 
-## 🎮 Included Games (197 Total)
+## 🎮 Included Games (205 Total)
 
 <details>
 <summary><b>🧠 Attention & Focus (31) - Elite Brain Training</b></summary>
@@ -67,8 +67,8 @@ Associative Pairs, Chimp Test, Continuous Recognition, Corsi Blocks, Counting Sp
 </details>
 
 <details>
-<summary><b>📐 Spatial Awareness (20) - 3D & Rotation Challenges</b></summary>
-3D Block Count, Box Completion, Classic Maze, Cube Net Fold, Hue Sort, Klotski Escape, Mental Mapping, Mental Rotation, Mirror Image, Mirror Tracing, Odd Rotation, Paper Folding, Perspective, Rotating Maze, Silhouette Match, Silhouette Match (Ortho), Slide Puzzle, Symmetry, Topological Equivalence, Trace Path.
+<summary><b>📐 Spatial Awareness (28) - 3D & Rotation Challenges</b></summary>
+3D Block Count, Box Completion, Classic Maze, Compass Maze, Complex Folding Nets, Cross-Section Slice, Cube Net Fold, Hue Sort, Interlock Puzzle, Klotski Escape, Laser Link, Mental Mapping, Mental Rotation, Mirror Image, Mirror Tracing, Negative Space, Odd Rotation, Paper Folding, Path Intersect, Perspective, Rotating Maze, Shadow Pivot, Silhouette Match, Silhouette Match (Ortho), Slide Puzzle, Symmetry, Topological Equivalence, Trace Path.
 </details>
 
 <details>

@@ -644,13 +644,13 @@
       }
     }
   },
-  "verbalAnalogiesTitle": "Maître des Analogies !",
+  "verbalAnalogiesTitle": "Analogies verbales",
   "verbalAnalogiesSubtitle": "Complétez la relation",
   "typingSpeedTitle": "Vitesse de Frappe",
   "typingSpeedSubtitle": "Tapez la phrase exactement comme indiqué aussi vite que possible !",
   "wordLadderTitle": "Échelle de Mots",
   "wordLadderSubtitle": "Reliez les mots en changeant une lettre à la fois.",
-  "tangleFixTitle": "Démêlé !",
+  "tangleFixTitle": "Démêlage",
   "tangleFixSubtitle": "Démêlez les lignes pour qu'aucune ne s'entrecroise",
   "oddRotationTitle": "Rotation Intruse",
   "oddRotationSubtitle": "L'un d'eux est en miroir. Pouvez-vous le trouver ?",
@@ -676,7 +676,7 @@
       }
     }
   },
-  "mirrorTracingTitle": "Tracé Parfait !",
+  "mirrorTracingTitle": "Dessin en miroir",
   "mirrorTracingSubtitle": "Tracez l'étoile ! Les commandes sont INVERSÉES.",
   "wordSurgeTitle": "Word Surge",
   "wordSurgeSubtitle": "Synonymes & Antonymes",
@@ -692,7 +692,7 @@
       }
     }
   },
-  "paperFoldingTitle": "Pliage Parfait !",
+  "paperFoldingTitle": "Pliage de papier",
   "paperFoldingSubtitle": "À quoi cela ressemblera-t-il une fois déplié ?",
   "waterSortTitle": "Water Sort",
   "waterSortSubtitle": "Triez les couleurs pour que chaque tube ne contienne qu'une seule couleur.",
@@ -944,7 +944,6 @@
   "consonantReconstructTitle": "Reconstruction de consonnes",
   "consonantReconstructSubtitle": "Remplissez les consonnes manquantes dans la phrase",
   "homophoneHuntTitle": "Chasse aux homophones",
-  "homophone_huntSubtitle": "Choisissez l'homophone correctement orthographié",
   "silentLetterSearchTitle": "Recherche de lettres muettes",
   "silentLetterSearchSubtitle": "Identifiez les lettres muettes dans les mots donnés",
   "palindromeBuilderTitle": "Constructeur de palindromes",
@@ -2141,5 +2140,5 @@
   "sourceMonitoringSubtitle": "RAPPELEZ-VOUS LE CONTEXTE.",
   "klotskiTitle": "Évasion de Klotski",
   "klotskiSubtitle": "FAITES GLISSER LES BLOCS POUR ATTEINDRE LES SORTIES.",
-  "homophoneHuntSubtitle": "CHOISISSEZ L'ORTHOGRAPHE CORRECTE."
+  "homophoneHuntSubtitle": "Choisissez l'homophone correctement orthographié"
 }

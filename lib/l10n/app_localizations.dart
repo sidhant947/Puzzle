@@ -2147,7 +2147,7 @@ abstract class AppLocalizations {
   /// No description provided for @semanticLinkTitle.
   ///
   /// In en, this message translates to:
-  /// **'Time\\'**
+  /// **'Semantic Link'**
   String get semanticLinkTitle;
 
   /// No description provided for @semanticLinkSubtitle.
@@ -2165,7 +2165,7 @@ abstract class AppLocalizations {
   /// No description provided for @visualStatisticalLearningTitle.
   ///
   /// In en, this message translates to:
-  /// **'Game Over'**
+  /// **'Visual Stats Learning'**
   String get visualStatisticalLearningTitle;
 
   /// No description provided for @orbitTapTitle.
@@ -2183,7 +2183,7 @@ abstract class AppLocalizations {
   /// No description provided for @schulteTableTitle.
   ///
   /// In en, this message translates to:
-  /// **'Great Focus!'**
+  /// **'Schulte Table'**
   String get schulteTableTitle;
 
   /// No description provided for @multipleObjectTrackingTitle.
@@ -2213,7 +2213,7 @@ abstract class AppLocalizations {
   /// No description provided for @memoryMatrixTitle.
   ///
   /// In en, this message translates to:
-  /// **'Goal Reached!'**
+  /// **'Memory Matrix'**
   String get memoryMatrixTitle;
 
   /// No description provided for @memoryMatrixSubtitle.
@@ -2225,7 +2225,7 @@ abstract class AppLocalizations {
   /// No description provided for @mentalAbacusTitle.
   ///
   /// In en, this message translates to:
-  /// **'Abacus Master!'**
+  /// **'Mental Abacus'**
   String get mentalAbacusTitle;
 
   /// No description provided for @mentalAbacusSubtitle.
@@ -2327,7 +2327,7 @@ abstract class AppLocalizations {
   /// No description provided for @verbalAnalogiesTitle.
   ///
   /// In en, this message translates to:
-  /// **'Analogy Master!'**
+  /// **'Verbal Analogies'**
   String get verbalAnalogiesTitle;
 
   /// No description provided for @verbalAnalogiesSubtitle.
@@ -2363,7 +2363,7 @@ abstract class AppLocalizations {
   /// No description provided for @tangleFixTitle.
   ///
   /// In en, this message translates to:
-  /// **'Untangled!'**
+  /// **'Tangle Fix'**
   String get tangleFixTitle;
 
   /// No description provided for @tangleFixSubtitle.
@@ -2399,7 +2399,7 @@ abstract class AppLocalizations {
   /// No description provided for @symbolicFlankerTitle.
   ///
   /// In en, this message translates to:
-  /// **'Time\\'**
+  /// **'Symbolic Flanker'**
   String get symbolicFlankerTitle;
 
   /// No description provided for @symbolicFlankerSubtitle.
@@ -2423,7 +2423,7 @@ abstract class AppLocalizations {
   /// No description provided for @wisconsinCardSortingTitle.
   ///
   /// In en, this message translates to:
-  /// **'Game Over'**
+  /// **'Wisconsin Card Sort'**
   String get wisconsinCardSortingTitle;
 
   /// No description provided for @wisconsinCardSortingSubtitle.
@@ -2477,7 +2477,7 @@ abstract class AppLocalizations {
   /// No description provided for @mirrorTracingTitle.
   ///
   /// In en, this message translates to:
-  /// **'Traced To Perfection!'**
+  /// **'Mirror Tracing'**
   String get mirrorTracingTitle;
 
   /// No description provided for @mirrorTracingSubtitle.
@@ -2531,7 +2531,7 @@ abstract class AppLocalizations {
   /// No description provided for @paperFoldingTitle.
   ///
   /// In en, this message translates to:
-  /// **'Unfolded Perfection!'**
+  /// **'Paper Folding'**
   String get paperFoldingTitle;
 
   /// No description provided for @paperFoldingSubtitle.
@@ -2543,7 +2543,7 @@ abstract class AppLocalizations {
   /// No description provided for @waterSortTitle.
   ///
   /// In en, this message translates to:
-  /// **'Well Done!'**
+  /// **'Water Sort'**
   String get waterSortTitle;
 
   /// No description provided for @waterSortSubtitle.
@@ -2555,7 +2555,7 @@ abstract class AppLocalizations {
   /// No description provided for @numericalEstimationTitle.
   ///
   /// In en, this message translates to:
-  /// **'Time\\'**
+  /// **'Numerical Estimation'**
   String get numericalEstimationTitle;
 
   /// No description provided for @numericalEstimationSubtitle.
@@ -2615,7 +2615,7 @@ abstract class AppLocalizations {
   /// No description provided for @choiceReactionTimeTitle.
   ///
   /// In en, this message translates to:
-  /// **'Time\\'**
+  /// **'Choice Reaction Time'**
   String get choiceReactionTimeTitle;
 
   /// No description provided for @pathRecallTitle.
@@ -2693,7 +2693,7 @@ abstract class AppLocalizations {
   /// No description provided for @silhouetteMatchTitle.
   ///
   /// In en, this message translates to:
-  /// **'Matched!'**
+  /// **'Silhouette Match'**
   String get silhouetteMatchTitle;
 
   /// No description provided for @silhouetteMatchSubtitle.
@@ -3458,6 +3458,24 @@ abstract class AppLocalizations {
   /// **'STAR'**
   String get shapeStar;
 
+  /// No description provided for @shapeRectangle.
+  ///
+  /// In en, this message translates to:
+  /// **'RECTANGLE'**
+  String get shapeRectangle;
+
+  /// No description provided for @shapeEllipse.
+  ///
+  /// In en, this message translates to:
+  /// **'ELLIPSE'**
+  String get shapeEllipse;
+
+  /// No description provided for @shapeTrapezoid.
+  ///
+  /// In en, this message translates to:
+  /// **'TRAPEZOID'**
+  String get shapeTrapezoid;
+
   /// No description provided for @colorRedLabel.
   ///
   /// In en, this message translates to:
@@ -3751,12 +3769,6 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Homophone Hunt'**
   String get homophoneHuntTitle;
-
-  /// No description provided for @homophone_huntSubtitle.
-  ///
-  /// In en, this message translates to:
-  /// **'Choose the correctly spelled homophone'**
-  String get homophone_huntSubtitle;
 
   /// No description provided for @silentLetterSearchTitle.
   ///
@@ -5801,7 +5813,7 @@ abstract class AppLocalizations {
   /// No description provided for @silhouetteMatchOrthoTitle.
   ///
   /// In en, this message translates to:
-  /// **'Silhouette Match (Ortho)'**
+  /// **'Silhouette Match'**
   String get silhouetteMatchOrthoTitle;
 
   /// No description provided for @silhouetteMatchOrthoSubtitle.
@@ -5849,7 +5861,7 @@ abstract class AppLocalizations {
   /// No description provided for @dualMirrorTitle.
   ///
   /// In en, this message translates to:
-  /// **'Dual-Mirror Navigation'**
+  /// **'Dual Mirror Nav'**
   String get dualMirrorTitle;
 
   /// No description provided for @dualMirrorSubtitle.
@@ -5921,7 +5933,7 @@ abstract class AppLocalizations {
   /// No description provided for @continuousRecognitionTitle.
   ///
   /// In en, this message translates to:
-  /// **'Continuous Recognition'**
+  /// **'Continuous Recog'**
   String get continuousRecognitionTitle;
 
   /// No description provided for @continuousRecognitionSubtitle.
@@ -6161,8 +6173,164 @@ abstract class AppLocalizations {
   /// No description provided for @homophoneHuntSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'CHOOSE THE CORRECT SPELLING.'**
+  /// **'Choose the correctly spelled homophone'**
   String get homophoneHuntSubtitle;
+
+  /// No description provided for @laserLinkTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Laser Link'**
+  String get laserLinkTitle;
+
+  /// No description provided for @laserLinkSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rotate mirrors to reflect lasers and power up all the targets.'**
+  String get laserLinkSubtitle;
+
+  /// No description provided for @laserLinkCongrats.
+  ///
+  /// In en, this message translates to:
+  /// **'Precision reflection! You\'ve successfully powered the entire grid.'**
+  String get laserLinkCongrats;
+
+  /// No description provided for @crossSectionSliceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cross-Section Slice'**
+  String get crossSectionSliceTitle;
+
+  /// No description provided for @crossSectionSliceSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify the correct 2D cross-section of a 3D object from a specific angle.'**
+  String get crossSectionSliceSubtitle;
+
+  /// No description provided for @crossSectionSliceCongrats.
+  ///
+  /// In en, this message translates to:
+  /// **'Incredible 3D visualization! You saw right through that shape.'**
+  String get crossSectionSliceCongrats;
+
+  /// No description provided for @shadowPivotTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Shadow Pivot'**
+  String get shadowPivotTitle;
+
+  /// No description provided for @shadowPivotCongrats.
+  ///
+  /// In en, this message translates to:
+  /// **'Dynamic spatial reasoning! You mastered the light and shadow.'**
+  String get shadowPivotCongrats;
+
+  /// No description provided for @shadowPivotSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Predict the shadow cast by a 3D object as it rotates on different axes.'**
+  String get shadowPivotSubtitle;
+
+  /// No description provided for @interlockPuzzleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Interlock Puzzle'**
+  String get interlockPuzzleTitle;
+
+  /// No description provided for @interlockPuzzleSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Disassemble or assemble complex interlocking blocks in the correct sequence.'**
+  String get interlockPuzzleSubtitle;
+
+  /// No description provided for @interlockPuzzleCongrats.
+  ///
+  /// In en, this message translates to:
+  /// **'Logical deconstruction! You\'ve unraveled the puzzle perfectly.'**
+  String get interlockPuzzleCongrats;
+
+  /// No description provided for @pathIntersectTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Path Intersect'**
+  String get pathIntersectTitle;
+
+  /// No description provided for @pathIntersectSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Navigate multiple paths simultaneously to reach their respective targets without collision.'**
+  String get pathIntersectSubtitle;
+
+  /// No description provided for @pathIntersectCongrats.
+  ///
+  /// In en, this message translates to:
+  /// **'Synchronized navigation! You\'ve reached all targets flawlessly.'**
+  String get pathIntersectCongrats;
+
+  /// No description provided for @negativeSpaceDetectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Negative Space'**
+  String get negativeSpaceDetectionTitle;
+
+  /// No description provided for @negativeSpaceDetectionSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify the shape formed by the empty space between objects.'**
+  String get negativeSpaceDetectionSubtitle;
+
+  /// No description provided for @negativeSpaceDetectionCongrats.
+  ///
+  /// In en, this message translates to:
+  /// **'Keen perception! You\'ve mastered the art of seeing what\'s not there.'**
+  String get negativeSpaceDetectionCongrats;
+
+  /// No description provided for @compassMazeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Compass Maze'**
+  String get compassMazeTitle;
+
+  /// No description provided for @compassMazeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Navigate a maze where movement directions change based on your compass orientation.'**
+  String get compassMazeSubtitle;
+
+  /// No description provided for @compassMazeCongrats.
+  ///
+  /// In en, this message translates to:
+  /// **'Expert navigation! You\'ve found the exit through the shifting directions.'**
+  String get compassMazeCongrats;
+
+  /// No description provided for @complexFoldingNetsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Folding Nets'**
+  String get complexFoldingNetsTitle;
+
+  /// No description provided for @complexFoldingNetsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Determine which complex 3D shape will be formed by folding a non-standard 2D net.'**
+  String get complexFoldingNetsSubtitle;
+
+  /// No description provided for @complexFoldingNetsCongrats.
+  ///
+  /// In en, this message translates to:
+  /// **'Advanced folding logic! You\'ve successfully visualized the 3D form.'**
+  String get complexFoldingNetsCongrats;
+
+  /// No description provided for @compassMazeMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Navigate the maze using the compass.'**
+  String get compassMazeMessage;
+
+  /// No description provided for @negativeSpaceDetectionMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify the hidden object in the space.'**
+  String get negativeSpaceDetectionMessage;
 }
 
 class _AppLocalizationsDelegate

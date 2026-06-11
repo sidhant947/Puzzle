@@ -644,13 +644,13 @@
       }
     }
   },
-  "verbalAnalogiesTitle": "Maestro di Analogie!",
+  "verbalAnalogiesTitle": "Analogie verbali",
   "verbalAnalogiesSubtitle": "Completa la relazione",
   "typingSpeedTitle": "Velocità di Scrittura",
   "typingSpeedSubtitle": "Digita la frase esattamente come mostrata il più velocemente possibile!",
   "wordLadderTitle": "Scala di Parole",
   "wordLadderSubtitle": "Collega le parole cambiando una lettera alla volta.",
-  "tangleFixTitle": "Groviglio Risolto!",
+  "tangleFixTitle": "Districa grovigli",
   "tangleFixSubtitle": "Districa le linee in modo che nessuna si intersechi",
   "oddRotationTitle": "Rotazione Anomala",
   "oddRotationSubtitle": "Una di queste è specchiata. Riesci a trovarla?",
@@ -944,7 +944,6 @@
   "consonantReconstructTitle": "Ricostruzione consonanti",
   "consonantReconstructSubtitle": "Inserisci le consonanti mancanti nella frase",
   "homophoneHuntTitle": "Caccia agli omofoni",
-  "homophone_huntSubtitle": "Scegli l'omofono scritto correttamente",
   "silentLetterSearchTitle": "Ricerca lettere mute",
   "silentLetterSearchSubtitle": "Identifica le lettere mute nelle parole date",
   "palindromeBuilderTitle": "Costruttore di palindromi",
@@ -2141,5 +2140,5 @@
   "sourceMonitoringSubtitle": "RICORDA IL CONTEXT.",
   "klotskiTitle": "Fuga Klotski",
   "klotskiSubtitle": "FÀ SCORRERE I BLOCCHI PER RAGGIUNGERE LE USCITE.",
-  "homophoneHuntSubtitle": "SCEGLI L'ORTOGRAFIA CORRECTA."
+  "homophoneHuntSubtitle": "Scegli l'omofono scritto correttamente"
 }
