@@ -6,7 +6,9 @@ class WeightEquation {
   final Map<IconData, int> right;
   final bool isQuestion;
 
-  WeightEquation({required this.left, required this.right, this.isQuestion = false});
+  WeightEquation({required Map<IconData, int> left, required Map<IconData, int> right, this.isQuestion = false})
+      : left = Map.from(left),
+        right = Map.from(right);
 }
 
 class BalanceScaleEngine {

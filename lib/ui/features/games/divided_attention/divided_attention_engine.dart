@@ -19,9 +19,10 @@ class DividedAttentionItem {
 
 class DividedAttentionEngine {
   final Random _random = Random();
+  int _idCounter = 0;
 
   DividedAttentionItem generateItem(bool isLeftSide) {
-    final id = DateTime.now().millisecondsSinceEpoch.toString() + _random.nextInt(1000).toString();
+    final id = (_idCounter++).toString();
     
     if (isLeftSide) {
       // Left side: Shapes (Star is target)
