@@ -1,3 +1,4 @@
+import 'dart:math';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:flutter/foundation.dart';
 import 'crossword_engine.dart';
@@ -47,13 +48,15 @@ class CrosswordNotifier extends _$CrosswordNotifier {
   @override
   CrosswordState build() {
     return CrosswordState(
-      userGrid: List.generate(CrosswordEngine.boardSize, (_) => List.filled(CrosswordEngine.boardSize, ' ')),
+      userGrid: List.generate(CrosswordEngine.defaultBoardSize, (_) => List.filled(CrosswordEngine.defaultBoardSize, ' ')),
     );
   }
 
   Future<void> initGame() async {
     final allData = await _engine.loadData();
-    final board = await compute(CrosswordEngine.generateBoard, allData);
+    // Randomize board size between 7 and 10
+    final size = Random().nextInt(4) + 7;
+    final board = await compute(CrosswordEngine.generateBoard, [allData, size]);
     
     state = CrosswordState(
       board: board,

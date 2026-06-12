@@ -33,7 +33,7 @@ class CrosswordBoard {
 }
 
 class CrosswordEngine {
-  static const int boardSize = 5;
+  static const int defaultBoardSize = 8;
 
   static List<Map<String, String>> _parseJson(String response) {
     final data = json.decode(response) as List<dynamic>;
@@ -57,66 +57,67 @@ class CrosswordEngine {
     }
   }
 
-  static CrosswordBoard generateBoard(List<Map<String, String>> allWords) {
-    // Filter words that actually fit on the board
-    final validWords = allWords.where((w) => w['word']!.length <= boardSize).toList();
-    
+  static CrosswordBoard generateBoard(List<dynamic> args) {
+    final List<Map<String, String>> allWords = (args[0] as List).map((item) {
+      final map = item as Map;
+      return {
+        "word": map['word'].toString().toUpperCase(),
+        "clue": map['clue'].toString(),
+      };
+    }).toList();
+    final int size = args[1] as int;
+
+    final validWords = allWords.where((w) => w['word']!.length <= size).toList();
+
     if (validWords.isEmpty) {
       return CrosswordBoard(
-        size: boardSize, 
-        grid: List.generate(boardSize, (_) => List.filled(boardSize, ' ')), 
+        size: size,
+        grid: List.generate(size, (_) => List.filled(size, ' ')),
         words: []
       );
     }
 
-    List<List<String>> bestGrid = List.generate(boardSize, (_) => List.filled(boardSize, ' '));
+    List<List<String>> bestGrid = List.generate(size, (_) => List.filled(size, ' '));
     List<CrosswordWord> bestPlacedWords = [];
 
-    // Attempt generation multiple times to get a good one
-    for (int attempt = 0; attempt < 100; attempt++) {
+    for (int attempt = 0; attempt < 200; attempt++) {
       validWords.shuffle();
-      List<List<String>> grid = List.generate(boardSize, (_) => List.filled(boardSize, ' '));
+      List<List<String>> grid = List.generate(size, (_) => List.filled(size, ' '));
       List<CrosswordWord> placedWords = [];
 
-      // Start with a random 4 or 5 letter word
-      var seedList = validWords.where((w) => w['word']!.length == boardSize || w['word']!.length == boardSize - 1).toList();
+      var seedList = validWords.where((w) => w['word']!.length >= size - 2 && w['word']!.length <= size).toList();
       var seed = seedList.isNotEmpty ? seedList[0] : validWords[0];
-      
+
       var first = CrosswordWord(word: seed['word']!, clue: seed['clue']!);
-      first.x = (boardSize - first.word.length) ~/ 2;
-      first.y = boardSize ~/ 2;
+      first.x = (size - first.word.length) ~/ 2;
+      first.y = size ~/ 2;
       first.isHorizontal = true;
-      
+
       _place(grid, first);
       placedWords.add(first);
 
-      // Try to add more words through intersections
-      for (int i = 0; i < validWords.length && placedWords.length < 12; i++) {
+      for (int i = 0; i < validWords.length && placedWords.length < 15; i++) {
         if (placedWords.any((pw) => pw.word == validWords[i]['word'])) continue;
-        
+
         var candidate = CrosswordWord(word: validWords[i]['word']!, clue: validWords[i]['clue']!);
-        _tryPlaceCandidate(grid, candidate, placedWords);
+        _tryPlaceCandidate(grid, candidate, placedWords, size);
       }
 
       if (placedWords.length > bestPlacedWords.length) {
         bestPlacedWords = List.from(placedWords);
-        bestGrid = List.generate(boardSize, (y) => List<String>.from(grid[y]));
+        bestGrid = List.generate(size, (y) => List<String>.from(grid[y]));
       }
 
-      // NYT Mini usually has at least 8-10 words
-      if (placedWords.length >= 8) {
-        break;
-      }
+      if (placedWords.length >= 10) break;
     }
 
     _assignNumbers(bestPlacedWords);
-    return CrosswordBoard(size: boardSize, grid: bestGrid, words: bestPlacedWords);
+    return CrosswordBoard(size: size, grid: bestGrid, words: bestPlacedWords);
   }
 
-  static void _tryPlaceCandidate(List<List<String>> grid, CrosswordWord candidate, List<CrosswordWord> placedWords) {
-    // Try random placed words to intersect with
+  static void _tryPlaceCandidate(List<List<String>> grid, CrosswordWord candidate, List<CrosswordWord> placedWords, int size) {
     var targets = List.from(placedWords)..shuffle();
-    
+
     for (var target in targets) {
       for (int tIdx = 0; tIdx < target.word.length; tIdx++) {
         for (int cIdx = 0; cIdx < candidate.word.length; cIdx++) {
@@ -130,7 +131,7 @@ class CrosswordEngine {
               candidate.y = (target.isHorizontal ? target.y : target.y + tIdx) - cIdx;
             }
 
-            if (_canPlaceSafely(grid, candidate)) {
+            if (_canPlaceSafely(grid, candidate, placedWords, size)) {
               _place(grid, candidate);
               placedWords.add(candidate);
               return;
@@ -141,42 +142,66 @@ class CrosswordEngine {
     }
   }
 
-  static bool _canPlaceSafely(List<List<String>> grid, CrosswordWord w) {
+  static bool _canPlaceSafely(List<List<String>> grid, CrosswordWord w, List<CrosswordWord> placedWords, int size) {
     if (w.x < 0 || w.y < 0) return false;
-    if (w.isHorizontal && w.x + w.word.length > boardSize) return false;
-    if (!w.isHorizontal && w.y + w.word.length > boardSize) return false;
+    if (w.isHorizontal && w.x + w.word.length > size) return false;
+    if (!w.isHorizontal && w.y + w.word.length > size) return false;
+
+    int intersectionCount = 0;
 
     for (int i = 0; i < w.word.length; i++) {
       int cx = w.isHorizontal ? w.x + i : w.x;
       int cy = w.isHorizontal ? w.y : w.y + i;
 
-      // Rule 1: Must match existing letter or be empty
       if (grid[cy][cx] != ' ' && grid[cy][cx] != w.word[i]) return false;
-      
-      // Rule 2: No parallel touching or adjacency that creates new words
-      // Check neighbors perpendicular to the word's direction
-      if (w.isHorizontal) {
-        // Check top/bottom unless it's an intersection
-        if (grid[cy][cx] == ' ') {
-           if (cy > 0 && grid[cy-1][cx] != ' ') return false;
-           if (cy < boardSize - 1 && grid[cy+1][cx] != ' ') return false;
-        }
-      } else {
-        // Check left/right unless it's an intersection
-        if (grid[cy][cx] == ' ') {
-           if (cx > 0 && grid[cy][cx-1] != ' ') return false;
-           if (cx < boardSize - 1 && grid[cy][cx+1] != ' ') return false;
+
+      if (grid[cy][cx] == w.word[i]) intersectionCount++;
+
+      if (grid[cy][cx] == ' ') {
+        if (w.isHorizontal) {
+          if (cy > 0 && grid[cy - 1][cx] != ' ') return false;
+          if (cy < size - 1 && grid[cy + 1][cx] != ' ') return false;
+        } else {
+          if (cx > 0 && grid[cy][cx - 1] != ' ') return false;
+          if (cx < size - 1 && grid[cy][cx + 1] != ' ') return false;
         }
       }
     }
 
-    // Check caps (cells before and after the word)
+    if (intersectionCount < 1) return false;
+
+    for (var existing in placedWords) {
+      if (existing.isHorizontal == w.isHorizontal) {
+        if (w.isHorizontal && existing.y == w.y) {
+          if (!(w.x + w.word.length <= existing.x || existing.x + existing.word.length <= w.x)) return false;
+        } else if (!w.isHorizontal && existing.x == w.x) {
+          if (!(w.y + w.word.length <= existing.y || existing.y + existing.word.length <= w.y)) return false;
+        }
+      } else {
+        int sharedCells = 0;
+        for (int i = 0; i < w.word.length; i++) {
+          int cx = w.isHorizontal ? w.x + i : w.x;
+          int cy = w.isHorizontal ? w.y : w.y + i;
+
+          for (int j = 0; j < existing.word.length; j++) {
+            int ex = existing.isHorizontal ? existing.x + j : existing.x;
+            int ey = existing.isHorizontal ? existing.y : existing.y + j;
+
+            if (cx == ex && cy == ey) {
+              sharedCells++;
+            }
+          }
+        }
+        if (sharedCells > 1) return false;
+      }
+    }
+
     if (w.isHorizontal) {
       if (w.x > 0 && grid[w.y][w.x - 1] != ' ') return false;
-      if (w.x + w.word.length < boardSize && grid[w.y][w.x + w.word.length] != ' ') return false;
+      if (w.x + w.word.length < size && grid[w.y][w.x + w.word.length] != ' ') return false;
     } else {
       if (w.y > 0 && grid[w.y - 1][w.x] != ' ') return false;
-      if (w.y + w.word.length < boardSize && grid[w.y + w.word.length][w.x] != ' ') return false;
+      if (w.y + w.word.length < size && grid[w.y + w.word.length][w.x] != ' ') return false;
     }
 
     return true;
@@ -191,7 +216,6 @@ class CrosswordEngine {
   }
 
   static void _assignNumbers(List<CrosswordWord> words) {
-    // Sort primarily by y (row), then by x (column)
     words.sort((a, b) {
       if (a.y != b.y) return a.y.compareTo(b.y);
       return a.x.compareTo(b.x);
