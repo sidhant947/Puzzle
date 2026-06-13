@@ -6,9 +6,9 @@ class GroceryListEngine {
   final Map<String, List<String>> categories = {
     'FRUITS': ['Apple', 'Banana', 'Orange', 'Grape', 'Kiwi', 'Mango'],
     'VEGGIES': ['Carrot', 'Broccoli', 'Tomato', 'Potato', 'Spinach', 'Onion'],
-    'DAIRY': ['Milk', 'Cheese', 'Butter', 'Yogurt', 'Cream', 'Eggs'],
+    'DAIRY': ['Milk', 'Cheese', 'Butter', 'Yogurt', 'Cream', 'Sour Cream'],
     'BAKERY': ['Bread', 'Bagel', 'Muffin', 'Croissant', 'Cake', 'Cookie'],
-    'MEAT': ['Chicken', 'Beef', 'Pork', 'Fish', 'Turkey', 'Bacon'],
+    'PROTEIN': ['Eggs', 'Chicken', 'Beef', 'Pork', 'Fish', 'Turkey'],
   };
 
   /// Generates a list of random items and their categories.
