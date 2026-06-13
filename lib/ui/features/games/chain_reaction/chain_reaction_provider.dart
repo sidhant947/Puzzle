@@ -61,6 +61,9 @@ class ChainReactionNotifier extends _$ChainReactionNotifier {
       isGameOver: false,
       timeLeft: 90,
     );
+    // Load the dictionary in the background so the first submission does not
+    // block the UI; submitWord awaits the same future when needed.
+    unawaited(_engine.ensureLoaded());
     _startTimer();
   }
 
@@ -75,9 +78,9 @@ class ChainReactionNotifier extends _$ChainReactionNotifier {
     });
   }
 
-  void submitWord(String word) {
+  Future<void> submitWord(String word) async {
     if (state.isGameOver || word.isEmpty) return;
-    
+
     final normalizedWord = word.toUpperCase().trim();
     final lastWord = state.chain.last;
 
@@ -86,8 +89,16 @@ class ChainReactionNotifier extends _$ChainReactionNotifier {
       return;
     }
 
+    // Make sure the dictionary is loaded before we reject a word. If the
+    // asset failed to load we surface that distinctly.
+    final loaded = await _engine.ensureLoaded();
+    if (!loaded) {
+      state = state.copyWith(error: 'Word list unavailable, try again.');
+      return;
+    }
+
     if (!_engine.isRealWord(normalizedWord)) {
-      state = state.copyWith(error: 'Word too short!');
+      state = state.copyWith(error: 'Not a valid word!');
       return;
     }
 
@@ -98,7 +109,7 @@ class ChainReactionNotifier extends _$ChainReactionNotifier {
         score: state.score + 10,
         error: null,
       );
-      
+
       if (newChain.length >= state.puzzle!.targetChainLength + 1) {
         // Bonus for long chain? Or just keep going.
       }
