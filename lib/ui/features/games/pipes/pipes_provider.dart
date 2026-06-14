@@ -100,6 +100,13 @@ class PipesNotifier extends _$PipesNotifier {
     final dx = (last.x - point.x).abs();
     final dy = (last.y - point.y).abs();
     if ((dx == 1 && dy == 0) || (dx == 0 && dy == 1)) {
+      // Check if point is a terminal dot of a different color
+      for (int i = 0; i < state.level.pairs.length; i++) {
+        if (i != colorIndex && state.level.pairs[i].contains(point)) {
+          return;
+        }
+      }
+
       int? existingColor;
       for (int i = 0; i < state.paths.length; i++) {
         if (state.paths[i].contains(point)) {
