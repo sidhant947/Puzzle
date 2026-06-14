@@ -4,47 +4,71 @@ class FillominoEngine {
   final Random _random = Random();
 
   Map<String, dynamic> generateLevel({int size = 5}) {
-    // 1. Generate a complete Fillomino board (tiling with polyominoes)
-    // 2. Remove some numbers to create the puzzle.
-    
     List<List<int>> solution = List.generate(size, (_) => List.filled(size, 0));
-    
-    // Simple tiling: fill with random small polyominoes (1-4)
-    // For simplicity, let's use a greedy approach to fill the grid.
-    for (int r = 0; r < size; r++) {
-      for (int c = 0; c < size; c++) {
-        if (solution[r][c] != 0) continue;
-        
-        // Pick a size (1-4)
-        int n = _random.nextInt(4) + 1;
-        
-        // Try to place a polyomino of size n
-        List<List<int>> cells = [[r, c]];
-        solution[r][c] = n;
-        
-        for (int i = 1; i < n; i++) {
-          // Find adjacent empty cells
-          List<List<int>> candidates = [];
-          for (var cell in cells) {
-            int cr = cell[0], cc = cell[1];
-            final neighbors = [[cr-1, cc], [cr+1, cc], [cr, cc-1], [cr, cc+1]];
-            for (var neighbor in neighbors) {
-              int nr = neighbor[0], nc = neighbor[1];
-              if (nr >= 0 && nr < size && nc >= 0 && nc < size && solution[nr][nc] == 0) {
-                candidates.add(neighbor);
+    bool success = false;
+
+    while (!success) {
+      solution = List.generate(size, (_) => List.filled(size, 0));
+      success = true;
+
+      outerLoop:
+      for (int r = 0; r < size; r++) {
+        for (int c = 0; c < size; c++) {
+          if (solution[r][c] != 0) continue;
+
+          List<int> possibleSizes = [1, 2, 3, 4, 5];
+          possibleSizes.shuffle(_random);
+
+          bool placed = false;
+          for (int targetN in possibleSizes) {
+            List<List<int>> cells = [[r, c]];
+            Set<String> cellsSet = {'$r,$c'};
+            
+            for (int i = 1; i < targetN; i++) {
+              List<List<int>> candidates = [];
+              for (var cell in cells) {
+                for (var neighbor in [[cell[0]-1, cell[1]], [cell[0]+1, cell[1]], [cell[0], cell[1]-1], [cell[0], cell[1]+1]]) {
+                  int nr = neighbor[0], nc = neighbor[1];
+                  if (nr >= 0 && nr < size && nc >= 0 && nc < size && 
+                      solution[nr][nc] == 0 && !cellsSet.contains('$nr,$nc')) {
+                    candidates.add(neighbor);
+                  }
+                }
               }
+              if (candidates.isEmpty) break;
+              var next = candidates[_random.nextInt(candidates.length)];
+              cells.add(next);
+              cellsSet.add('${next[0]},${next[1]}');
+            }
+
+            if (cells.length != targetN) continue;
+
+            bool hasConflict = false;
+            for (var cell in cells) {
+              for (var neighbor in [[cell[0]-1, cell[1]], [cell[0]+1, cell[1]], [cell[0], cell[1]-1], [cell[0], cell[1]+1]]) {
+                int nr = neighbor[0], nc = neighbor[1];
+                if (nr >= 0 && nr < size && nc >= 0 && nc < size && 
+                    solution[nr][nc] == targetN && !cellsSet.contains('$nr,$nc')) {
+                  hasConflict = true;
+                  break;
+                }
+              }
+              if (hasConflict) break;
+            }
+
+            if (!hasConflict) {
+              for (var cell in cells) {
+                solution[cell[0]][cell[1]] = targetN;
+              }
+              placed = true;
+              break; 
             }
           }
-          if (candidates.isEmpty) break;
-          var next = candidates[_random.nextInt(candidates.length)];
-          solution[next[0]][next[1]] = n;
-          cells.add(next);
-        }
-        
-        // If we couldn't reach size n, update all cells to the actual size achieved
-        int actualSize = cells.length;
-        for (var cell in cells) {
-          solution[cell[0]][cell[1]] = actualSize;
+
+          if (!placed) {
+            success = false;
+            break outerLoop;
+          }
         }
       }
     }
