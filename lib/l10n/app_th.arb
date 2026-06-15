@@ -1057,7 +1057,7 @@
       }
     }
   },
-  "schulteTableMessage": "คุณทำตารางเสร็จในเวลา {arg0}\\nฝึกฝนต่อไปเพื่อขยายการมองเห็นรอบข้างของคุณ!",
+  "schulteTableMessage": "คุณทำตารางเสร็จในเวลา {arg0}\nฝึกฝนต่อไปเพื่อขยายการมองเห็นรอบข้างของคุณ!",
   "@schulteTableMessage": {
     "placeholders": {
       "arg0": {
@@ -1171,7 +1171,7 @@
       }
     }
   },
-  "vigilanceTaskMessage": "สำเร็จ: {arg0}, พลาด: {arg1}\\nแจ้งเตือนผิดพลาด: {arg2}",
+  "vigilanceTaskMessage": "สำเร็จ: {arg0}, พลาด: {arg1}\nแจ้งเตือนผิดพลาด: {arg2}",
   "@vigilanceTaskMessage": {
     "placeholders": {
       "arg0": {
@@ -1427,7 +1427,7 @@
       }
     }
   },
-  "game2048Message": "{arg0}: {arg1}\\n{arg2}",
+  "game2048Message": "{arg0}: {arg1}\n{arg2}",
   "@game2048Message": {
     "placeholders": {
       "arg0": {
@@ -1562,7 +1562,7 @@
       }
     }
   },
-  "wordMastermindMessage": "คุณถอดรหัสได้แล้ว!\\nคำนั้นคือ: {arg0}",
+  "wordMastermindMessage": "คุณถอดรหัสได้แล้ว!\nคำนั้นคือ: {arg0}",
   "@wordMastermindMessage": {
     "placeholders": {
       "arg0": {

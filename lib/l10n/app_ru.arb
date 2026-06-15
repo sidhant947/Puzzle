@@ -1057,7 +1057,7 @@
       }
     }
   },
-  "schulteTableMessage": "Вы заполнили таблицу за {arg0}.\\nПродолжайте практиковаться, чтобы расширить периферическое зрение!",
+  "schulteTableMessage": "Вы заполнили таблицу за {arg0}.\nПродолжайте практиковаться, чтобы расширить периферическое зрение!",
   "@schulteTableMessage": {
     "placeholders": {
       "arg0": {
@@ -1171,7 +1171,7 @@
       }
     }
   },
-  "vigilanceTaskMessage": "Попадания: {arg0}, Промахи: {arg1}\\nЛожные срабатывания: {arg2}",
+  "vigilanceTaskMessage": "Попадания: {arg0}, Промахи: {arg1}\nЛожные срабатывания: {arg2}",
   "@vigilanceTaskMessage": {
     "placeholders": {
       "arg0": {
@@ -1427,7 +1427,7 @@
       }
     }
   },
-  "game2048Message": "{arg0}: {arg1}\\n{arg2}",
+  "game2048Message": "{arg0}: {arg1}\n{arg2}",
   "@game2048Message": {
     "placeholders": {
       "arg0": {
@@ -1562,7 +1562,7 @@
       }
     }
   },
-  "wordMastermindMessage": "Вы разгадали код!\\nЗагаданное слово: {arg0}",
+  "wordMastermindMessage": "Вы разгадали код!\nЗагаданное слово: {arg0}",
   "@wordMastermindMessage": {
     "placeholders": {
       "arg0": {

@@ -65,27 +65,25 @@ class MinesweeperNotifier extends _$MinesweeperNotifier {
 
     List<List<MinesweeperCell>> newBoard = List.generate(
       rows,
-      (i) => List.generate(cols, (j) => state.board[i][j].copyWith()),
+      (i) => List.generate(cols, (j) => state.board[i][j]),
     );
 
     if (state.firstMove) {
-      // Regenerate board to ensure first click is never a mine and has 0 neighbors if possible
       newBoard = _engine.generateBoard(startRow: r, startCol: c);
       state = state.copyWith(firstMove: false);
     }
 
     if (newBoard[r][c].isMine) {
-      // Game Over
       for (var row in newBoard) {
-        for (var cell in row) {
-          if (cell.isMine) cell.state = CellState.revealed;
+        for (int ci = 0; ci < row.length; ci++) {
+          if (row[ci].isMine) row[ci] = row[ci].copyWith(state: CellState.revealed);
         }
       }
       state = state.copyWith(board: newBoard, isGameOver: true);
       return;
     }
 
-    _engine.revealEmptyCells(newBoard, r, c);
+    newBoard = _engine.revealEmptyCells(newBoard, r, c);
     
     final isWon = _engine.checkWin(newBoard);
     state = state.copyWith(board: newBoard, isWon: isWon);
@@ -101,17 +99,17 @@ class MinesweeperNotifier extends _$MinesweeperNotifier {
 
     final newBoard = List.generate(
       rows,
-      (i) => List.generate(cols, (j) => state.board[i][j].copyWith()),
+      (i) => List.generate(cols, (j) => state.board[i][j]),
     );
 
     final currentCell = newBoard[r][c];
     int mineAdjustment = 0;
 
     if (currentCell.state == CellState.hidden) {
-      currentCell.state = CellState.flagged;
+      newBoard[r][c] = currentCell.copyWith(state: CellState.flagged);
       mineAdjustment = -1;
     } else if (currentCell.state == CellState.flagged) {
-      currentCell.state = CellState.hidden;
+      newBoard[r][c] = currentCell.copyWith(state: CellState.hidden);
       mineAdjustment = 1;
     }
 

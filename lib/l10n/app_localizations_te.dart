@@ -2217,7 +2217,7 @@ class AppLocalizationsTe extends AppLocalizations {
 
   @override
   String schulteTableMessage(String arg0) {
-    return 'మీరు $arg0లో పట్టికను పూర్తి చేశారు.\\nమీ పెరిఫెరల్ విజన్‌ను పెంచుకోవడానికి సాధన చేస్తూ ఉండండి!';
+    return 'మీరు $arg0లో పట్టికను పూర్తి చేశారు.\nమీ పెరిఫెరల్ విజన్‌ను పెంచుకోవడానికి సాధన చేస్తూ ఉండండి!';
   }
 
   @override
@@ -2312,7 +2312,7 @@ class AppLocalizationsTe extends AppLocalizations {
 
   @override
   String vigilanceTaskMessage(String arg0, String arg1, String arg2) {
-    return 'హిట్‌లు: $arg0, మిస్సులు: $arg1\\nతప్పుడు అలారాలు: $arg2';
+    return 'హిట్‌లు: $arg0, మిస్సులు: $arg1\nతప్పుడు అలారాలు: $arg2';
   }
 
   @override
@@ -2518,7 +2518,7 @@ class AppLocalizationsTe extends AppLocalizations {
 
   @override
   String game2048Message(String arg0, String arg1, String arg2) {
-    return '$arg0: $arg1\\n$arg2';
+    return '$arg0: $arg1\n$arg2';
   }
 
   @override
@@ -2603,7 +2603,7 @@ class AppLocalizationsTe extends AppLocalizations {
 
   @override
   String wordMastermindMessage(String arg0) {
-    return 'మీరు కోడ్‌ను ఛేదించారు!\\nఆ పదం: $arg0';
+    return 'మీరు కోడ్‌ను ఛేదించారు!\nఆ పదం: $arg0';
   }
 
   @override

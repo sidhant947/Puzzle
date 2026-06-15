@@ -6,16 +6,24 @@ import '../models/game_streak.dart';
 class UserRepository {
   static const String userDataBoxName = 'user_data';
   static const String gameStreakBoxName = 'game_streaks';
+  static const String _metaBoxName = 'app_meta';
+  static const String _versionKey = 'schema_version';
+  static const int _currentSchemaVersion = 1;
 
   Future<void> init() async {
     try {
       final userBox = await Hive.openBox<UserData>(userDataBoxName);
       final streakBox = await Hive.openBox<GameStreak>(gameStreakBoxName);
+      final metaBox = await Hive.openBox(_metaBoxName);
 
       await userBox.compact();
       await streakBox.compact();
 
-      _validateExistingData(userBox, streakBox);
+      final version = metaBox.get(_versionKey, defaultValue: 0) as int;
+      if (version < _currentSchemaVersion) {
+        _validateExistingData(userBox, streakBox);
+        await metaBox.put(_versionKey, _currentSchemaVersion);
+      }
     } catch (e) {
       debugPrint('UserRepository init error: $e');
       rethrow;
@@ -95,6 +103,20 @@ class UserRepository {
       await box.putAll(streakMap);
     } catch (e) {
       debugPrint('saveAllGameStreaks error: $e');
+      rethrow;
+    }
+  }
+
+  Future<void> saveGameCompletion(UserData userData, GameStreak streak) async {
+    try {
+      final userBox = Hive.box<UserData>(userDataBoxName);
+      final streakBox = Hive.box<GameStreak>(gameStreakBoxName);
+      await Future.wait([
+        userBox.put('current', userData.isValid ? userData : userData.sanitized()),
+        streakBox.put(streak.gameId, streak.isValid ? streak : streak.sanitized()),
+      ]);
+    } catch (e) {
+      debugPrint('saveGameCompletion error: $e');
       rethrow;
     }
   }

@@ -1057,7 +1057,7 @@
       }
     }
   },
-  "schulteTableMessage": "Sie haben die Tabelle in {arg0} abgeschlossen.\\nÜben Sie weiter, um Ihr peripheres Sehen zu erweitern!",
+  "schulteTableMessage": "Sie haben die Tabelle in {arg0} abgeschlossen.\nÜben Sie weiter, um Ihr peripheres Sehen zu erweitern!",
   "@schulteTableMessage": {
     "placeholders": {
       "arg0": {
@@ -1171,7 +1171,7 @@
       }
     }
   },
-  "vigilanceTaskMessage": "Treffer: {arg0}, Fehler: {arg1}\\nFehlalarme: {arg2}",
+  "vigilanceTaskMessage": "Treffer: {arg0}, Fehler: {arg1}\nFehlalarme: {arg2}",
   "@vigilanceTaskMessage": {
     "placeholders": {
       "arg0": {
@@ -1427,7 +1427,7 @@
       }
     }
   },
-  "game2048Message": "{arg0}: {arg1}\\n{arg2}",
+  "game2048Message": "{arg0}: {arg1}\n{arg2}",
   "@game2048Message": {
     "placeholders": {
       "arg0": {
@@ -1562,7 +1562,7 @@
       }
     }
   },
-  "wordMastermindMessage": "Sie haben den Code gemeistert!\\nDas Wort war: {arg0}",
+  "wordMastermindMessage": "Sie haben den Code gemeistert!\nDas Wort war: {arg0}",
   "@wordMastermindMessage": {
     "placeholders": {
       "arg0": {

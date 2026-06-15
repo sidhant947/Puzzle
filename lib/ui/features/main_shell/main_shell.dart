@@ -16,12 +16,18 @@ class MainShell extends ConsumerStatefulWidget {
 class _MainShellState extends ConsumerState<MainShell>
     with WidgetsBindingObserver {
   int _selectedIndex = 1;
+  final Map<int, Widget> _screenCache = {};
 
-  final List<Widget> _screens = [
-    const StatsScreen(),
-    const HomeScreen(),
-    const SettingsScreen(),
-  ];
+  Widget _getScreen(int index) {
+    return _screenCache.putIfAbsent(index, () {
+      switch (index) {
+        case 0: return const StatsScreen();
+        case 1: return const HomeScreen();
+        case 2: return const SettingsScreen();
+        default: return const HomeScreen();
+      }
+    });
+  }
 
   @override
   void initState() {
@@ -46,7 +52,7 @@ class _MainShellState extends ConsumerState<MainShell>
   Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    final isMobile = MediaQuery.of(context).size.width <= 600;
+    final isMobile = MediaQuery.sizeOf(context).width <= 600;
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -57,18 +63,12 @@ class _MainShellState extends ConsumerState<MainShell>
               children: [
                 _buildSideNav(context),
                 Expanded(
-                  child: IndexedStack(
-                    index: _selectedIndex,
-                    children: _screens,
-                  ),
+                  child: _getScreen(_selectedIndex),
                 ),
               ],
             );
           } else {
-            return IndexedStack(
-              index: _selectedIndex,
-              children: _screens,
-            );
+            return _getScreen(_selectedIndex);
           }
         },
       ),

@@ -2097,7 +2097,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String schulteTableMessage(String arg0) {
-    return '테이블을 $arg0만에 완료하셨습니다.\\n주변시 확장을 위해 계속 연습하세요!';
+    return '테이블을 $arg0만에 완료하셨습니다.\n주변시 확장을 위해 계속 연습하세요!';
   }
 
   @override
@@ -2185,7 +2185,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String vigilanceTaskMessage(String arg0, String arg1, String arg2) {
-    return '적중: $arg0, 놓침: $arg1\\n오경보: $arg2';
+    return '적중: $arg0, 놓침: $arg1\n오경보: $arg2';
   }
 
   @override
@@ -2380,7 +2380,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String game2048Message(String arg0, String arg1, String arg2) {
-    return '$arg0: $arg1\\n$arg2';
+    return '$arg0: $arg1\n$arg2';
   }
 
   @override
@@ -2465,7 +2465,7 @@ class AppLocalizationsKo extends AppLocalizations {
 
   @override
   String wordMastermindMessage(String arg0) {
-    return '암호를 풀었습니다!\\n단어는 $arg0였습니다.';
+    return '암호를 풀었습니다!\n단어는 $arg0였습니다.';
   }
 
   @override

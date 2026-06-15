@@ -1057,7 +1057,7 @@
       }
     }
   },
-  "schulteTableMessage": "테이블을 {arg0}만에 완료하셨습니다.\\n주변시 확장을 위해 계속 연습하세요!",
+  "schulteTableMessage": "테이블을 {arg0}만에 완료하셨습니다.\n주변시 확장을 위해 계속 연습하세요!",
   "@schulteTableMessage": {
     "placeholders": {
       "arg0": {
@@ -1171,7 +1171,7 @@
       }
     }
   },
-  "vigilanceTaskMessage": "적중: {arg0}, 놓침: {arg1}\\n오경보: {arg2}",
+  "vigilanceTaskMessage": "적중: {arg0}, 놓침: {arg1}\n오경보: {arg2}",
   "@vigilanceTaskMessage": {
     "placeholders": {
       "arg0": {
@@ -1427,7 +1427,7 @@
       }
     }
   },
-  "game2048Message": "{arg0}: {arg1}\\n{arg2}",
+  "game2048Message": "{arg0}: {arg1}\n{arg2}",
   "@game2048Message": {
     "placeholders": {
       "arg0": {
@@ -1562,7 +1562,7 @@
       }
     }
   },
-  "wordMastermindMessage": "암호를 풀었습니다!\\n단어는 {arg0}였습니다.",
+  "wordMastermindMessage": "암호를 풀었습니다!\n단어는 {arg0}였습니다.",
   "@wordMastermindMessage": {
     "placeholders": {
       "arg0": {

@@ -1057,7 +1057,7 @@
       }
     }
   },
-  "schulteTableMessage": "Bạn đã hoàn thành bảng trong {arg0}.\\nHãy tiếp tục luyện tập để mở rộng tầm nhìn ngoại vi!",
+  "schulteTableMessage": "Bạn đã hoàn thành bảng trong {arg0}.\nHãy tiếp tục luyện tập để mở rộng tầm nhìn ngoại vi!",
   "@schulteTableMessage": {
     "placeholders": {
       "arg0": {
@@ -1171,7 +1171,7 @@
       }
     }
   },
-  "vigilanceTaskMessage": "Số lần trúng: {arg0}, Số lần bỏ lỡ: {arg1}\\nBáo động giả: {arg2}",
+  "vigilanceTaskMessage": "Số lần trúng: {arg0}, Số lần bỏ lỡ: {arg1}\nBáo động giả: {arg2}",
   "@vigilanceTaskMessage": {
     "placeholders": {
       "arg0": {
@@ -1427,7 +1427,7 @@
       }
     }
   },
-  "game2048Message": "{arg0}: {arg1}\\n{arg2}",
+  "game2048Message": "{arg0}: {arg1}\n{arg2}",
   "@game2048Message": {
     "placeholders": {
       "arg0": {
@@ -1562,7 +1562,7 @@
       }
     }
   },
-  "wordMastermindMessage": "You mastered the code!\\nThe word was: {arg0}",
+  "wordMastermindMessage": "You mastered the code!\nThe word was: {arg0}",
   "@wordMastermindMessage": {
     "placeholders": {
       "arg0": {

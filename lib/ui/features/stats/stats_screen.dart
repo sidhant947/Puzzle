@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../../../../providers/user_providers.dart';
-import '../../../../utils/design_system.dart';
-import '../../../../widgets/tangible.dart';
-import '../../../data/game_registry.dart';
+import 'package:puzzle/providers/game_providers.dart';
+import 'package:puzzle/providers/user_providers.dart';
+import 'package:puzzle/utils/design_system.dart';
+import 'package:puzzle/widgets/tangible.dart';
 
 class Achievement {
   final String title;
@@ -87,8 +87,6 @@ class StatsScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userData = ref.watch(userDataNotifierProvider);
-    final streaks = ref.watch(gameStreakNotifierProvider);
     final theme = Theme.of(context);
 
     return Scaffold(
@@ -122,42 +120,29 @@ class StatsScreen extends ConsumerWidget {
                     140,
                   ),
                   sliver: SliverList(
-                    delegate: SliverChildListDelegate([
-                      _buildUserStats(
-                        context,
-                        userData.level,
-                        userData.xp,
-                        userData.totalSolved ?? 0,
-                        userData.superStreak ?? 0,
-                        userData.lastSuperStreakDate,
-                        ref,
-                      ),
-                      const SizedBox(height: DesignSystem.spaceXL),
-                      _buildCognitiveProfile(context, streaks),
-                      const SizedBox(height: DesignSystem.spaceXL),
-                      Text(
-                        'ACHIEVEMENTS',
-                        style: theme.textTheme.displaySmall?.copyWith(
-                          fontSize: DesignSystem.fontSizeLG,
-                          color: theme.colorScheme.primary,
-                          letterSpacing: 1.5,
-                        ),
-                      ),
-                      const SizedBox(height: DesignSystem.spaceMD),
-                      ...List.generate(
-                        achievements.length,
-                        (index) => Padding(
-                          padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
-                          child: _buildAchievementCard(
-                            context,
-                            achievements[index],
-                            userData.totalSolved ?? 0,
-                            userData.level,
-                            userData.xp,
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) {
+                        if (index == 0) return const _UserStatsCard();
+                        if (index == 1) return const SizedBox(height: DesignSystem.spaceXL);
+                        if (index == 2) return const _CognitiveProfileCard();
+                        if (index == 3) return const SizedBox(height: DesignSystem.spaceXL);
+                        if (index == 4) return Text(
+                          'ACHIEVEMENTS',
+                          style: theme.textTheme.displaySmall?.copyWith(
+                            fontSize: DesignSystem.fontSizeLG,
+                            color: theme.colorScheme.primary,
+                            letterSpacing: 1.5,
                           ),
-                        ),
-                      ),
-                    ]),
+                        );
+                        if (index == 5) return const SizedBox(height: DesignSystem.spaceMD);
+                        final achievementIndex = index - 6;
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
+                          child: _AchievementCard(achievement: achievements[achievementIndex]),
+                        );
+                      },
+                      childCount: 6 + achievements.length,
+                    ),
                   ),
                 ),
               ],
@@ -167,18 +152,19 @@ class StatsScreen extends ConsumerWidget {
       ),
     );
   }
+}
 
-  Widget _buildUserStats(
-    BuildContext context,
-    int level,
-    int xp,
-    int totalSolved,
-    int superStreak,
-    DateTime? lastDate,
-    WidgetRef ref,
-  ) {
+class _UserStatsCard extends ConsumerWidget {
+  const _UserStatsCard();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
+    final userData = ref.watch(userDataNotifierProvider);
     final notifier = ref.read(userDataNotifierProvider.notifier);
+    
+    final level = userData.level;
+    final xp = userData.xp;
     final currentLevelXp = notifier.xpForLevel(level);
     final nextLevelXp = notifier.xpForLevel(level + 1);
 
@@ -187,7 +173,7 @@ class StatsScreen extends ConsumerWidget {
 
     return Column(
       children: [
-        _buildStreakTracker(context, superStreak, lastDate),
+        const _StreakTracker(),
         const SizedBox(height: DesignSystem.spaceMD),
         TangibleContainer(
           color: DesignSystem.primary,
@@ -279,22 +265,20 @@ class StatsScreen extends ConsumerWidget {
         Row(
           children: [
             Expanded(
-              child: _buildSmallStatCard(
-                context,
-                'TOTAL XP',
-                '$xp',
-                Icons.bolt_rounded,
-                DesignSystem.accentAmber,
+              child: _SmallStatCard(
+                label: 'TOTAL XP',
+                value: '$xp',
+                icon: Icons.bolt_rounded,
+                color: DesignSystem.accentAmber,
               ),
             ),
             const SizedBox(width: DesignSystem.spaceMD),
             Expanded(
-              child: _buildSmallStatCard(
-                context,
-                'SOLVED',
-                '$totalSolved',
-                Icons.extension_rounded,
-                DesignSystem.success,
+              child: _SmallStatCard(
+                label: 'SOLVED',
+                value: '${userData.totalSolved ?? 0}',
+                icon: Icons.extension_rounded,
+                color: DesignSystem.success,
               ),
             ),
           ],
@@ -302,14 +286,21 @@ class StatsScreen extends ConsumerWidget {
       ],
     );
   }
+}
 
-  Widget _buildStreakTracker(
-      BuildContext context, int superStreak, DateTime? lastDate) {
+class _StreakTracker extends ConsumerWidget {
+  const _StreakTracker();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
+    final userData = ref.watch(userDataNotifierProvider);
+    final superStreak = userData.superStreak ?? 0;
+    final lastDate = userData.lastSuperStreakDate;
+    
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
-
     final currentWeekday = now.weekday;
     final mondayOfThisWeek = today.subtract(Duration(days: currentWeekday - 1));
 
@@ -413,27 +404,20 @@ class StatsScreen extends ConsumerWidget {
       ),
     );
   }
+}
 
-  Widget _buildCognitiveProfile(
-      BuildContext context, Map<String, dynamic> streaks) {
+class _CognitiveProfileCard extends ConsumerWidget {
+  const _CognitiveProfileCard();
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
-    final allGames = allGamesMetadata;
-    final Map<String, int> totalPerCategory = {};
-    final Map<String, int> solvedPerCategory = {};
-
-    for (final game in allGames) {
-      final category = game.category;
-      final id = game.id;
-
-      totalPerCategory[category] = (totalPerCategory[category] ?? 0) + 1;
-      if (streaks.containsKey(id)) {
-        solvedPerCategory[category] = (solvedPerCategory[category] ?? 0) + 1;
-      }
-    }
-
-    final categories = totalPerCategory.keys.toList()..sort();
+    final totalStats = ref.watch(categoryStatsProvider);
+    final solvedStatsMap = ref.watch(solvedStatsProvider);
+    
+    final categories = totalStats.keys.where((k) => k != 'ALL').toList()..sort();
 
     final categoryColors = {
       'LOGIC': DesignSystem.gameTeal,
@@ -460,14 +444,18 @@ class StatsScreen extends ConsumerWidget {
           padding: const EdgeInsets.all(DesignSystem.spaceMD),
           child: Column(
             children: categories.map((cat) {
-              final solved = solvedPerCategory[cat] ?? 0;
-              final total = totalPerCategory[cat] ?? 1;
+              final solved = solvedStatsMap[cat] ?? 0;
+              final total = totalStats[cat] ?? 1;
               final color = categoryColors[cat] ?? DesignSystem.primary;
 
               return Padding(
                 padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
-                child:
-                    _buildCategoryProgress(context, cat, solved, total, color),
+                child: _CategoryProgressItem(
+                  category: cat,
+                  solved: solved,
+                  total: total,
+                  color: color,
+                ),
               );
             }).toList(),
           ),
@@ -475,9 +463,23 @@ class StatsScreen extends ConsumerWidget {
       ],
     );
   }
+}
 
-  Widget _buildCategoryProgress(BuildContext context, String category,
-      int solved, int total, Color color) {
+class _CategoryProgressItem extends StatelessWidget {
+  final String category;
+  final int solved;
+  final int total;
+  final Color color;
+
+  const _CategoryProgressItem({
+    required this.category,
+    required this.solved,
+    required this.total,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final progress = (solved / total).clamp(0.0, 1.0);
@@ -532,14 +534,23 @@ class StatsScreen extends ConsumerWidget {
       ],
     );
   }
+}
 
-  Widget _buildSmallStatCard(
-    BuildContext context,
-    String label,
-    String value,
-    IconData icon,
-    Color color,
-  ) {
+class _SmallStatCard extends StatelessWidget {
+  final String label;
+  final String value;
+  final IconData icon;
+  final Color color;
+
+  const _SmallStatCard({
+    required this.label,
+    required this.value,
+    required this.icon,
+    required this.color,
+  });
+
+  @override
+  Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
@@ -575,9 +586,16 @@ class StatsScreen extends ConsumerWidget {
       ),
     );
   }
+}
 
-  Widget _buildAchievementCard(BuildContext context, Achievement achievement,
-      int totalSolved, int level, int xp) {
+class _AchievementCard extends ConsumerWidget {
+  final Achievement achievement;
+
+  const _AchievementCard({required this.achievement});
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final xp = ref.watch(userDataNotifierProvider.select((d) => d.xp));
     final isUnlocked = xp >= achievement.requiredXp;
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
@@ -667,5 +685,3 @@ class StatsScreen extends ConsumerWidget {
     );
   }
 }
-
-

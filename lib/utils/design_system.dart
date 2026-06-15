@@ -90,9 +90,9 @@ class DesignSystem {
   static const double minTouchTarget = 48.0;
   static const double recommendedTouchTarget = 56.0;
 
-  // --- Theme Building ---
-  static ThemeData get lightTheme => _buildTheme(Brightness.light);
-  static ThemeData get darkTheme => _buildTheme(Brightness.dark);
+  // --- Theme Building (cached) ---
+  static final ThemeData lightTheme = _buildTheme(Brightness.light);
+  static final ThemeData darkTheme = _buildTheme(Brightness.dark);
 
   static ThemeData _buildTheme(Brightness brightness) {
     final bool isDark = brightness == Brightness.dark;

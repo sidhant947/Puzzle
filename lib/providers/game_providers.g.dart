@@ -173,5 +173,50 @@ class _FilteredGamesProviderElement
   String get selectedCategory =>
       (origin as FilteredGamesProvider).selectedCategory;
 }
+
+String _$categoryStatsHash() => r'915b141f1fff412001a17066a1c94c04e62ceb50';
+
+/// See also [categoryStats].
+@ProviderFor(categoryStats)
+final categoryStatsProvider = AutoDisposeProvider<Map<String, int>>.internal(
+  categoryStats,
+  name: r'categoryStatsProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$categoryStatsHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef CategoryStatsRef = AutoDisposeProviderRef<Map<String, int>>;
+String _$solvedStatsHash() => r'3a0964f8255b59990f7ee043cae23182a9376f68';
+
+/// See also [solvedStats].
+@ProviderFor(solvedStats)
+final solvedStatsProvider = AutoDisposeProvider<Map<String, int>>.internal(
+  solvedStats,
+  name: r'solvedStatsProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$solvedStatsHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef SolvedStatsRef = AutoDisposeProviderRef<Map<String, int>>;
+String _$solvedTodayCountHash() => r'23f255d11a91c9da2a313aec31210ba998e8d4a0';
+
+/// See also [solvedTodayCount].
+@ProviderFor(solvedTodayCount)
+final solvedTodayCountProvider = AutoDisposeProvider<int>.internal(
+  solvedTodayCount,
+  name: r'solvedTodayCountProvider',
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$solvedTodayCountHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
+
+typedef SolvedTodayCountRef = AutoDisposeProviderRef<int>;
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member

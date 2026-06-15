@@ -2227,7 +2227,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String schulteTableMessage(String arg0) {
-    return 'Anda menyelesaikan tabel dalam $arg0.\\nTeruslah berlatih untuk memperluas penglihatan tepi Anda!';
+    return 'Anda menyelesaikan tabel dalam $arg0.\nTeruslah berlatih untuk memperluas penglihatan tepi Anda!';
   }
 
   @override
@@ -2321,7 +2321,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String vigilanceTaskMessage(String arg0, String arg1, String arg2) {
-    return 'Tepat: $arg0, Meleset: $arg1\\nAlarm Palsu: $arg2';
+    return 'Tepat: $arg0, Meleset: $arg1\nAlarm Palsu: $arg2';
   }
 
   @override
@@ -2529,7 +2529,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String game2048Message(String arg0, String arg1, String arg2) {
-    return '$arg0: $arg1\\n$arg2';
+    return '$arg0: $arg1\n$arg2';
   }
 
   @override
@@ -2614,7 +2614,7 @@ class AppLocalizationsId extends AppLocalizations {
 
   @override
   String wordMastermindMessage(String arg0) {
-    return 'Anda menguasai kodenya!\\nKatanya adalah: $arg0';
+    return 'Anda menguasai kodenya!\nKatanya adalah: $arg0';
   }
 
   @override

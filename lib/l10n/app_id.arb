@@ -1057,7 +1057,7 @@
       }
     }
   },
-  "schulteTableMessage": "Anda menyelesaikan tabel dalam {arg0}.\\nTeruslah berlatih untuk memperluas penglihatan tepi Anda!",
+  "schulteTableMessage": "Anda menyelesaikan tabel dalam {arg0}.\nTeruslah berlatih untuk memperluas penglihatan tepi Anda!",
   "@schulteTableMessage": {
     "placeholders": {
       "arg0": {
@@ -1171,7 +1171,7 @@
       }
     }
   },
-  "vigilanceTaskMessage": "Tepat: {arg0}, Meleset: {arg1}\\nAlarm Palsu: {arg2}",
+  "vigilanceTaskMessage": "Tepat: {arg0}, Meleset: {arg1}\nAlarm Palsu: {arg2}",
   "@vigilanceTaskMessage": {
     "placeholders": {
       "arg0": {
@@ -1427,7 +1427,7 @@
       }
     }
   },
-  "game2048Message": "{arg0}: {arg1}\\n{arg2}",
+  "game2048Message": "{arg0}: {arg1}\n{arg2}",
   "@game2048Message": {
     "placeholders": {
       "arg0": {
@@ -1562,7 +1562,7 @@
       }
     }
   },
-  "wordMastermindMessage": "Anda menguasai kodenya!\\nKatanya adalah: {arg0}",
+  "wordMastermindMessage": "Anda menguasai kodenya!\nKatanya adalah: {arg0}",
   "@wordMastermindMessage": {
     "placeholders": {
       "arg0": {

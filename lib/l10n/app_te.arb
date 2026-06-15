@@ -1057,7 +1057,7 @@
       }
     }
   },
-  "schulteTableMessage": "మీరు {arg0}లో పట్టికను పూర్తి చేశారు.\\nమీ పెరిఫెరల్ విజన్‌ను పెంచుకోవడానికి సాధన చేస్తూ ఉండండి!",
+  "schulteTableMessage": "మీరు {arg0}లో పట్టికను పూర్తి చేశారు.\nమీ పెరిఫెరల్ విజన్‌ను పెంచుకోవడానికి సాధన చేస్తూ ఉండండి!",
   "@schulteTableMessage": {
     "placeholders": {
       "arg0": {
@@ -1171,7 +1171,7 @@
       }
     }
   },
-  "vigilanceTaskMessage": "హిట్‌లు: {arg0}, మిస్సులు: {arg1}\\nతప్పుడు అలారాలు: {arg2}",
+  "vigilanceTaskMessage": "హిట్‌లు: {arg0}, మిస్సులు: {arg1}\nతప్పుడు అలారాలు: {arg2}",
   "@vigilanceTaskMessage": {
     "placeholders": {
       "arg0": {
@@ -1427,7 +1427,7 @@
       }
     }
   },
-  "game2048Message": "{arg0}: {arg1}\\n{arg2}",
+  "game2048Message": "{arg0}: {arg1}\n{arg2}",
   "@game2048Message": {
     "placeholders": {
       "arg0": {
@@ -1562,7 +1562,7 @@
       }
     }
   },
-  "wordMastermindMessage": "మీరు కోడ్‌ను ఛేదించారు!\\nఆ పదం: {arg0}",
+  "wordMastermindMessage": "మీరు కోడ్‌ను ఛేదించారు!\nఆ పదం: {arg0}",
   "@wordMastermindMessage": {
     "placeholders": {
       "arg0": {

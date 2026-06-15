@@ -126,32 +126,29 @@ class GameStreakNotifier extends _$GameStreakNotifier {
     final List<GameStreak> toSave = [];
     final Map<String, GameStreak> updated = Map.from(state);
 
-    updated.forEach((gameId, streak) {
+    for (final entry in updated.entries) {
+      final gameId = entry.key;
+      final streak = entry.value;
+
+      if (!streak.solvedToday) continue;
+
       final lastNormalized = DateTime(
         streak.lastSolvedDate.year,
         streak.lastSolvedDate.month,
         streak.lastSolvedDate.day,
       );
 
+      if (lastNormalized == today) continue;
+
+      final changed = streak.copyWith(solvedToday: false);
       final daysSince = today.difference(lastNormalized).inDays;
-      GameStreak changed = streak;
-      bool modified = false;
+      final finalStreak = daysSince > 1 && changed.currentStreak > 0
+          ? changed.copyWith(currentStreak: 0)
+          : changed;
 
-      if (lastNormalized != today && streak.solvedToday) {
-        changed = changed.copyWith(solvedToday: false);
-        modified = true;
-      }
-
-      if (daysSince > 1 && streak.currentStreak > 0) {
-        changed = changed.copyWith(currentStreak: 0);
-        modified = true;
-      }
-
-      if (modified) {
-        updated[gameId] = changed;
-        toSave.add(changed);
-      }
-    });
+      updated[gameId] = finalStreak;
+      toSave.add(finalStreak);
+    }
 
     if (toSave.isNotEmpty) {
       ref.read(userRepositoryProvider).saveAllGameStreaks(toSave);
@@ -164,13 +161,10 @@ class GameStreakNotifier extends _$GameStreakNotifier {
   }
 
   Future<bool> completeGame(String gameId, {int xpAmount = 20}) async {
-    await ref.read(userDataNotifierProvider.notifier).addXp(xpAmount);
-    await ref.read(userDataNotifierProvider.notifier).incrementTotalSolved();
-
-    final currentStreak = getStreak(gameId);
     final now = DateTime.now();
     final today = DateTime(now.year, now.month, now.day);
 
+    final currentStreak = getStreak(gameId);
     final lastNormalized = DateTime(
       currentStreak.lastSolvedDate.year,
       currentStreak.lastSolvedDate.month,
@@ -196,8 +190,20 @@ class GameStreakNotifier extends _$GameStreakNotifier {
       solvedToday: true,
     );
 
+    // Batch user data updates
+    final newXp = ref.read(userDataNotifierProvider).xp + xpAmount;
+    final newLevel = ref.read(userDataNotifierProvider.notifier).calculateLevel(newXp);
+    final newUserData = ref.read(userDataNotifierProvider).copyWith(
+      xp: newXp,
+      level: newLevel,
+      totalSolved: (ref.read(userDataNotifierProvider).totalSolved ?? 0) + 1,
+    );
+
     state = {...state, gameId: newStreak};
-    await ref.read(userRepositoryProvider).saveGameStreak(newStreak);
+
+    // Single batched save
+    await ref.read(userRepositoryProvider).saveGameCompletion(newUserData, newStreak);
+    ref.read(userDataNotifierProvider.notifier).state = newUserData;
 
     await ref.read(userDataNotifierProvider.notifier).updateSuperStreak(state);
 

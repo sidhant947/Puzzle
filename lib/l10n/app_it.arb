@@ -1057,7 +1057,7 @@
       }
     }
   },
-  "schulteTableMessage": "Hai completato la tabella in {arg0}.\\nContinua ad allenarti per espandere la tua visione periferica!",
+  "schulteTableMessage": "Hai completato la tabella in {arg0}.\nContinua ad allenarti per espandere la tua visione periferica!",
   "@schulteTableMessage": {
     "placeholders": {
       "arg0": {
@@ -1171,7 +1171,7 @@
       }
     }
   },
-  "vigilanceTaskMessage": "Successi: {arg0}, Errori: {arg1}\\nFalsi allarmi: {arg2}",
+  "vigilanceTaskMessage": "Successi: {arg0}, Errori: {arg1}\nFalsi allarmi: {arg2}",
   "@vigilanceTaskMessage": {
     "placeholders": {
       "arg0": {
@@ -1427,7 +1427,7 @@
       }
     }
   },
-  "game2048Message": "{arg0}: {arg1}\\n{arg2}",
+  "game2048Message": "{arg0}: {arg1}\n{arg2}",
   "@game2048Message": {
     "placeholders": {
       "arg0": {
@@ -1562,7 +1562,7 @@
       }
     }
   },
-  "wordMastermindMessage": "Hai dominato il codice!\\nLa parola era: {arg0}",
+  "wordMastermindMessage": "Hai dominato il codice!\nLa parola era: {arg0}",
   "@wordMastermindMessage": {
     "placeholders": {
       "arg0": {

@@ -66,11 +66,8 @@ class HapticFeedbackUtil {
 
   /// Victory pattern for game completion
   static void victory() {
-    // Triple impact for victory celebration
     heavyImpact();
-    Future.delayed(const Duration(milliseconds: 100), () {
-      mediumImpact();
-      Future.delayed(const Duration(milliseconds: 100), () => lightImpact());
-    });
+    Future.delayed(const Duration(milliseconds: 100), () => mediumImpact());
+    Future.delayed(const Duration(milliseconds: 200), () => lightImpact());
   }
 }

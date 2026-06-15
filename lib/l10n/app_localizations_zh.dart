@@ -2084,7 +2084,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String schulteTableMessage(String arg0) {
-    return '你完成了表格，用时 $arg0。\\n继续练习以扩大你的外围视野！';
+    return '你完成了表格，用时 $arg0。\n继续练习以扩大你的外围视野！';
   }
 
   @override
@@ -2171,7 +2171,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String vigilanceTaskMessage(String arg0, String arg1, String arg2) {
-    return '命中：$arg0，漏掉：$arg1\\n误报：$arg2';
+    return '命中：$arg0，漏掉：$arg1\n误报：$arg2';
   }
 
   @override
@@ -2366,7 +2366,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String game2048Message(String arg0, String arg1, String arg2) {
-    return '$arg0：$arg1\\n$arg2';
+    return '$arg0：$arg1\n$arg2';
   }
 
   @override
@@ -2451,7 +2451,7 @@ class AppLocalizationsZh extends AppLocalizations {
 
   @override
   String wordMastermindMessage(String arg0) {
-    return '你掌握了代码！\\n单词是：$arg0';
+    return '你掌握了代码！\n单词是：$arg0';
   }
 
   @override

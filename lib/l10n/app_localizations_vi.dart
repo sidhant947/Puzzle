@@ -2215,7 +2215,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String schulteTableMessage(String arg0) {
-    return 'Bạn đã hoàn thành bảng trong $arg0.\\nHãy tiếp tục luyện tập để mở rộng tầm nhìn ngoại vi!';
+    return 'Bạn đã hoàn thành bảng trong $arg0.\nHãy tiếp tục luyện tập để mở rộng tầm nhìn ngoại vi!';
   }
 
   @override
@@ -2309,7 +2309,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String vigilanceTaskMessage(String arg0, String arg1, String arg2) {
-    return 'Số lần trúng: $arg0, Số lần bỏ lỡ: $arg1\\nBáo động giả: $arg2';
+    return 'Số lần trúng: $arg0, Số lần bỏ lỡ: $arg1\nBáo động giả: $arg2';
   }
 
   @override
@@ -2515,7 +2515,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String game2048Message(String arg0, String arg1, String arg2) {
-    return '$arg0: $arg1\\n$arg2';
+    return '$arg0: $arg1\n$arg2';
   }
 
   @override
@@ -2600,7 +2600,7 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String wordMastermindMessage(String arg0) {
-    return 'You mastered the code!\\nThe word was: $arg0';
+    return 'You mastered the code!\nThe word was: $arg0';
   }
 
   @override

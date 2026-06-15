@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
-import 'package:puzzle/providers/user_providers.dart';
+import 'package:puzzle/providers/game_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/widgets/tangible.dart';
 
@@ -12,8 +12,7 @@ class DailyProgressBanner extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
     final l10n = AppLocalizations.of(context)!;
-    final streaks = ref.watch(gameStreakNotifierProvider);
-    final solvedToday = streaks.values.where((s) => s.solvedToday).length;
+    final solvedToday = ref.watch(solvedTodayCountProvider);
 
     final encouragement = switch (solvedToday) {
       0 => l10n.readyForWorkout,

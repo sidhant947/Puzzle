@@ -156,7 +156,9 @@ class _MinesweeperScreenState extends ConsumerState<MinesweeperScreen> {
                 itemBuilder: (context, index) {
                   final r = index ~/ MinesweeperNotifier.cols;
                   final c = index % MinesweeperNotifier.cols;
-                  return MinesweeperCellWidget(row: r, col: c, isFlagMode: _isFlagMode);
+                  return RepaintBoundary(
+                    child: MinesweeperCellWidget(row: r, col: c, isFlagMode: _isFlagMode),
+                  );
                 },
               ),
             ),
@@ -302,8 +304,7 @@ class MinesweeperCellWidget extends ConsumerWidget {
         HapticFeedbackUtil.mediumImpact();
         notifier.toggleFlag(row, col);
       },
-      child: AnimatedContainer(
-        duration: const Duration(milliseconds: 150),
+      child: Container(
         decoration: BoxDecoration(
           color: isRevealed 
               ? (cell.isMine ? DesignSystem.error.withValues(alpha: 0.2) : Theme.of(context).colorScheme.surface)

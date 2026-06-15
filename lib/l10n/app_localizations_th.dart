@@ -2163,7 +2163,7 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String schulteTableMessage(String arg0) {
-    return 'คุณทำตารางเสร็จในเวลา $arg0\\nฝึกฝนต่อไปเพื่อขยายการมองเห็นรอบข้างของคุณ!';
+    return 'คุณทำตารางเสร็จในเวลา $arg0\nฝึกฝนต่อไปเพื่อขยายการมองเห็นรอบข้างของคุณ!';
   }
 
   @override
@@ -2256,7 +2256,7 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String vigilanceTaskMessage(String arg0, String arg1, String arg2) {
-    return 'สำเร็จ: $arg0, พลาด: $arg1\\nแจ้งเตือนผิดพลาด: $arg2';
+    return 'สำเร็จ: $arg0, พลาด: $arg1\nแจ้งเตือนผิดพลาด: $arg2';
   }
 
   @override
@@ -2459,7 +2459,7 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String game2048Message(String arg0, String arg1, String arg2) {
-    return '$arg0: $arg1\\n$arg2';
+    return '$arg0: $arg1\n$arg2';
   }
 
   @override
@@ -2544,7 +2544,7 @@ class AppLocalizationsTh extends AppLocalizations {
 
   @override
   String wordMastermindMessage(String arg0) {
-    return 'คุณถอดรหัสได้แล้ว!\\nคำนั้นคือ: $arg0';
+    return 'คุณถอดรหัสได้แล้ว!\nคำนั้นคือ: $arg0';
   }
 
   @override

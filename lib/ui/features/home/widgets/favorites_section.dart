@@ -22,8 +22,7 @@ class FavoritesSection extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final userData = ref.watch(userDataNotifierProvider);
-    final favoriteIds = userData.favoriteGameIds ?? [];
+    final favoriteIds = ref.watch(userDataNotifierProvider.select((d) => d.favoriteGameIds ?? []));
     if (favoriteIds.isEmpty) return const SizedBox.shrink();
 
     final favoriteGames = allGamesMetadata

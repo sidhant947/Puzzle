@@ -33,3 +33,36 @@ List<GameMetadata> filteredGames(FilteredGamesRef ref, {required String searchQu
 
   return filtered;
 }
+
+@riverpod
+Map<String, int> categoryStats(CategoryStatsRef ref) {
+  final allGames = allGamesMetadata;
+  final Map<String, int> stats = {};
+  for (final game in allGames) {
+    stats[game.category] = (stats[game.category] ?? 0) + 1;
+  }
+  stats['ALL'] = allGames.length;
+  return stats;
+}
+
+@riverpod
+Map<String, int> solvedStats(SolvedStatsRef ref) {
+  final streaks = ref.watch(gameStreakNotifierProvider);
+  final allGames = allGamesMetadata;
+  final Map<String, int> stats = {};
+  
+  for (final game in allGames) {
+    if (streaks.containsKey(game.id)) {
+      stats[game.category] = (stats[game.category] ?? 0) + 1;
+    }
+  }
+  stats['ALL'] = streaks.length;
+  return stats;
+}
+
+@riverpod
+int solvedTodayCount(SolvedTodayCountRef ref) {
+  return ref.watch(gameStreakNotifierProvider.select(
+    (streaks) => streaks.values.where((s) => s.solvedToday).length,
+  ));
+}

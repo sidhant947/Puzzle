@@ -7,9 +7,9 @@ class MinesweeperCell {
   final int col;
   final bool isMine;
   final int neighborMines;
-  CellState state;
+  final CellState state;
 
-  MinesweeperCell({
+  const MinesweeperCell({
     required this.row,
     required this.col,
     required this.isMine,
@@ -28,6 +28,19 @@ class MinesweeperCell {
       state: state ?? this.state,
     );
   }
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is MinesweeperCell &&
+          row == other.row &&
+          col == other.col &&
+          isMine == other.isMine &&
+          neighborMines == other.neighborMines &&
+          state == other.state;
+
+  @override
+  int get hashCode => Object.hash(row, col, isMine, neighborMines, state);
 }
 
 class MinesweeperEngine {
@@ -86,11 +99,11 @@ class MinesweeperEngine {
     return board;
   }
 
-  void revealEmptyCells(List<List<MinesweeperCell>> board, int r, int c) {
-    if (r < 0 || r >= rows || c < 0 || c >= cols) return;
-    if (board[r][c].state != CellState.hidden || board[r][c].isMine) return;
+  List<List<MinesweeperCell>> revealEmptyCells(List<List<MinesweeperCell>> board, int r, int c) {
+    if (r < 0 || r >= rows || c < 0 || c >= cols) return board;
+    if (board[r][c].state != CellState.hidden || board[r][c].isMine) return board;
 
-    board[r][c].state = CellState.revealed;
+    board[r][c] = board[r][c].copyWith(state: CellState.revealed);
 
     if (board[r][c].neighborMines == 0) {
       for (int i = -1; i <= 1; i++) {
@@ -99,6 +112,7 @@ class MinesweeperEngine {
         }
       }
     }
+    return board;
   }
 
   bool checkWin(List<List<MinesweeperCell>> board) {

@@ -127,10 +127,11 @@ class MyApp extends ConsumerWidget {
 
 Future<void> _preCacheAssets() async {
   try {
-    // These calls fill the rootBundle cache
-    await rootBundle.loadString('assets/find_word_words.txt');
-    await rootBundle.loadString('assets/chain_words.txt');
-    await rootBundle.loadString('assets/crossword_data.json');
+    await Future.wait([
+      rootBundle.loadString('assets/find_word_words.txt'),
+      rootBundle.loadString('assets/chain_words.txt'),
+      rootBundle.loadString('assets/crossword_data.json'),
+    ]);
   } catch (e) {
     debugPrint('Error pre-caching assets: $e');
   }

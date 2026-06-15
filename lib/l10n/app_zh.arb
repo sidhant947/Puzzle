@@ -1057,7 +1057,7 @@
       }
     }
   },
-  "schulteTableMessage": "你完成了表格，用时 {arg0}。\\n继续练习以扩大你的外围视野！",
+  "schulteTableMessage": "你完成了表格，用时 {arg0}。\n继续练习以扩大你的外围视野！",
   "@schulteTableMessage": {
     "placeholders": {
       "arg0": {
@@ -1171,7 +1171,7 @@
       }
     }
   },
-  "vigilanceTaskMessage": "命中：{arg0}，漏掉：{arg1}\\n误报：{arg2}",
+  "vigilanceTaskMessage": "命中：{arg0}，漏掉：{arg1}\n误报：{arg2}",
   "@vigilanceTaskMessage": {
     "placeholders": {
       "arg0": {
@@ -1427,7 +1427,7 @@
       }
     }
   },
-  "game2048Message": "{arg0}：{arg1}\\n{arg2}",
+  "game2048Message": "{arg0}：{arg1}\n{arg2}",
   "@game2048Message": {
     "placeholders": {
       "arg0": {
@@ -1562,7 +1562,7 @@
       }
     }
   },
-  "wordMastermindMessage": "你掌握了代码！\\n单词是：{arg0}",
+  "wordMastermindMessage": "你掌握了代码！\n单词是：{arg0}",
   "@wordMastermindMessage": {
     "placeholders": {
       "arg0": {

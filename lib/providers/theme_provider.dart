@@ -14,6 +14,13 @@ enum AppThemeMode {
 class ThemeNotifier extends _$ThemeNotifier {
   static const String _themeBoxName = 'theme_settings';
   static const String _themeKey = 'theme_mode';
+  static Box? _cachedBox;
+
+  static Future<Box> _getBox() async {
+    if (_cachedBox != null && _cachedBox!.isOpen) return _cachedBox!;
+    _cachedBox = await Hive.openBox(_themeBoxName);
+    return _cachedBox!;
+  }
 
   @override
   AppThemeMode build() {
@@ -23,7 +30,7 @@ class ThemeNotifier extends _$ThemeNotifier {
 
   Future<void> _loadThemeMode() async {
     try {
-      final box = await Hive.openBox(_themeBoxName);
+      final box = await _getBox();
       final savedTheme = box.get(_themeKey, defaultValue: 'system');
 
       final loaded = switch (savedTheme) {
@@ -35,19 +42,15 @@ class ThemeNotifier extends _$ThemeNotifier {
       if (state != loaded) {
         state = loaded;
       }
-    } catch (_) {
-      // Default to system on error
-    }
+    } catch (_) {}
   }
 
   Future<void> setThemeMode(AppThemeMode themeMode) async {
     try {
-      final box = await Hive.openBox(_themeBoxName);
+      final box = await _getBox();
       await box.put(_themeKey, themeMode.name);
       state = themeMode;
-    } catch (_) {
-      // Keep current state on error
-    }
+    } catch (_) {}
   }
 
   void toggleTheme() {

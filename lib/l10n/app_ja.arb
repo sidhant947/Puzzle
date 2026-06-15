@@ -1057,7 +1057,7 @@
       }
     }
   },
-  "schulteTableMessage": "テーブルを {arg0} で完成させました。\\n周辺視野を広げるために練習を続けましょう！",
+  "schulteTableMessage": "テーブルを {arg0} で完成させました。\n周辺視野を広げるために練習を続けましょう！",
   "@schulteTableMessage": {
     "placeholders": {
       "arg0": {
@@ -1171,7 +1171,7 @@
       }
     }
   },
-  "vigilanceTaskMessage": "ヒット：{arg0}、ミス：{arg1}\\n誤警報：{arg2}",
+  "vigilanceTaskMessage": "ヒット：{arg0}、ミス：{arg1}\n誤警報：{arg2}",
   "@vigilanceTaskMessage": {
     "placeholders": {
       "arg0": {
@@ -1427,7 +1427,7 @@
       }
     }
   },
-  "game2048Message": "{arg0}：{arg1}\\n{arg2}",
+  "game2048Message": "{arg0}：{arg1}\n{arg2}",
   "@game2048Message": {
     "placeholders": {
       "arg0": {
@@ -1562,7 +1562,7 @@
       }
     }
   },
-  "wordMastermindMessage": "コードをマスターしました！\\n単語は「{arg0}」でした。",
+  "wordMastermindMessage": "コードをマスターしました！\n単語は「{arg0}」でした。",
   "@wordMastermindMessage": {
     "placeholders": {
       "arg0": {

@@ -35,7 +35,7 @@ class GameTile extends ConsumerWidget {
     final streakCount = streak?.currentStreak ?? 0;
     final isNew = streak == null;
     final l10n = AppLocalizations.of(context)!;
-    final isMobile = MediaQuery.of(context).size.width < 600;
+    final isMobile = MediaQuery.sizeOf(context).width < 600;
 
     return TangibleContainer(
       padding:
@@ -243,7 +243,6 @@ class GameTile extends ConsumerWidget {
     );
   }
 }
-
 Widget buildGameTile(
   BuildContext context,
   WidgetRef ref,
@@ -251,16 +250,39 @@ Widget buildGameTile(
   String selectedCategory,
   String searchQuery,
 ) {
-  final streak =
-      ref.watch(gameStreakNotifierProvider.select((s) => s[game.id]));
-  final isFavorite = ref.watch(userDataNotifierProvider
-      .select((d) => (d.favoriteGameIds ?? []).contains(game.id)));
-
-  return GameTile(
+  return GameTileWrapper(
     game: game,
-    streak: streak,
-    isFavorite: isFavorite,
     selectedCategory: selectedCategory,
     searchQuery: searchQuery,
   );
+}
+
+class GameTileWrapper extends ConsumerWidget {
+  final GameMetadata game;
+  final String selectedCategory;
+  final String searchQuery;
+
+  const GameTileWrapper({
+    super.key,
+    required this.game,
+    required this.selectedCategory,
+    required this.searchQuery,
+  });
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final streak = ref.watch(
+        gameStreakNotifierProvider.select((s) => s[game.id]));
+    final isFavorite = ref.watch(
+        userDataNotifierProvider.select(
+            (d) => (d.favoriteGameIds ?? []).contains(game.id)));
+
+    return GameTile(
+      game: game,
+      streak: streak,
+      isFavorite: isFavorite,
+      selectedCategory: selectedCategory,
+      searchQuery: searchQuery,
+    );
+  }
 }

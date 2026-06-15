@@ -6,7 +6,7 @@ part of 'pipes_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$pipesNotifierHash() => r'ad6648daff462c5342a17b0d3d7852f6205945ba';
+String _$pipesNotifierHash() => r'13e6e0cc2e3fa576cc26652b8d82ae3bb4b5833d';
 
 /// See also [PipesNotifier].
 @ProviderFor(PipesNotifier)

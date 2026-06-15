@@ -49,87 +49,41 @@ class SettingsScreen extends ConsumerWidget {
                     140,
                   ),
                   sliver: SliverList(
-                    delegate: SliverChildListDelegate([
-                      _buildSupportBanner(context),
-                      const SizedBox(height: DesignSystem.spaceXL),
-                      _buildSectionTitle(
-                          context, l10n.appearance.toUpperCase()),
-                      const SizedBox(height: DesignSystem.spaceMD),
-                      _buildThemeSelector(context, ref, themeMode, l10n),
-                      const SizedBox(height: DesignSystem.spaceXL),
-                      _buildSectionTitle(context, l10n.gameplay.toUpperCase()),
-                      const SizedBox(height: DesignSystem.spaceMD),
-                      _buildTrialModeToggle(
-                          context, ref, isTrialModeEnabled, l10n),
-                      const SizedBox(height: DesignSystem.spaceXL),
-                      _buildSectionTitle(context, l10n.supportUs.toUpperCase()),
-                      const SizedBox(height: DesignSystem.spaceMD),
-                      _buildSettingsItem(
-                        context,
-                        l10n.starOnGithub,
-                        Icons.star_rounded,
-                        () =>
-                            _launchUrl('https://github.com/sidhant947/Puzzle'),
-                        iconColor: Colors.amber,
-                      ),
-                      const SizedBox(height: DesignSystem.spaceSM),
-                      _buildSettingsItem(
-                        context,
-                        l10n.sponsorOnGithub,
-                        Icons.favorite_rounded,
-                        () => _launchUrl(
-                            'https://github.com/sponsors/sidhant947'),
-                        iconColor: Colors.pink,
-                      ),
-                      const SizedBox(height: DesignSystem.spaceSM),
-                      _buildSettingsItem(
-                        context,
-                        'Leave a Review',
-                        Icons.rate_review_rounded,
-                        () => _launchUrl(
-                            'https://play.google.com/store/apps/details?id=com.sidhant.puzzle'),
-                        iconColor: Colors.teal,
-                      ),
-                      const SizedBox(height: DesignSystem.spaceSM),
-                      _buildSettingsItem(
-                        context,
-                        'Report an Error',
-                        Icons.bug_report_rounded,
-                        () => _launchUrl(
-                            'https://github.com/sidhant947/Puzzle/issues'),
-                        iconColor: Colors.redAccent,
-                      ),
-                      const SizedBox(height: DesignSystem.spaceXL),
-                      _buildSectionTitle(
-                          context, l10n.systemLegal.toUpperCase()),
-                      const SizedBox(height: DesignSystem.spaceMD),
-                      _buildSettingsItem(
-                        context,
-                        l10n.privacyPolicy,
-                        Icons.privacy_tip_rounded,
-                        () => _launchUrl(
-                            'https://sites.google.com/view/puzzlebysidhant/home'),
-                      ),
-                      const SizedBox(height: DesignSystem.spaceSM),
-                      _buildSettingsItem(
-                        context,
-                        l10n.termsOfService,
-                        Icons.description_rounded,
-                        () => _launchUrl(
-                            'https://sites.google.com/view/puzzlebysidhant/home'),
-                      ),
-                      const SizedBox(height: DesignSystem.spaceSM),
-                      _buildSettingsItem(
-                        context,
-                        l10n.licenses,
-                        Icons.code_rounded,
-                        () => showLicensePage(
-                          context: context,
-                          applicationName: l10n.appTitle.toUpperCase(),
-                          applicationVersion: 'Latest',
-                        ),
-                      ),
-                    ]),
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) {
+                        switch (index) {
+                          case 0: return _buildSupportBanner(context);
+                          case 1: return const SizedBox(height: DesignSystem.spaceXL);
+                          case 2: return _buildSectionTitle(context, l10n.appearance.toUpperCase());
+                          case 3: return const SizedBox(height: DesignSystem.spaceMD);
+                          case 4: return _buildThemeSelector(context, ref, themeMode, l10n);
+                          case 5: return const SizedBox(height: DesignSystem.spaceXL);
+                          case 6: return _buildSectionTitle(context, l10n.gameplay.toUpperCase());
+                          case 7: return const SizedBox(height: DesignSystem.spaceMD);
+                          case 8: return _buildTrialModeToggle(context, ref, isTrialModeEnabled, l10n);
+                          case 9: return const SizedBox(height: DesignSystem.spaceXL);
+                          case 10: return _buildSectionTitle(context, l10n.supportUs.toUpperCase());
+                          case 11: return const SizedBox(height: DesignSystem.spaceMD);
+                          case 12: return _buildSettingsItem(context, l10n.starOnGithub, Icons.star_rounded, () => _launchUrl('https://github.com/sidhant947/Puzzle'), iconColor: Colors.amber);
+                          case 13: return const SizedBox(height: DesignSystem.spaceSM);
+                          case 14: return _buildSettingsItem(context, l10n.sponsorOnGithub, Icons.favorite_rounded, () => _launchUrl('https://github.com/sponsors/sidhant947'), iconColor: Colors.pink);
+                          case 15: return const SizedBox(height: DesignSystem.spaceSM);
+                          case 16: return _buildSettingsItem(context, 'Leave a Review', Icons.rate_review_rounded, () => _launchUrl('https://play.google.com/store/apps/details?id=com.sidhant.puzzle'), iconColor: Colors.teal);
+                          case 17: return const SizedBox(height: DesignSystem.spaceSM);
+                          case 18: return _buildSettingsItem(context, 'Report an Error', Icons.bug_report_rounded, () => _launchUrl('https://github.com/sidhant947/Puzzle/issues'), iconColor: Colors.redAccent);
+                          case 19: return const SizedBox(height: DesignSystem.spaceXL);
+                          case 20: return _buildSectionTitle(context, l10n.systemLegal.toUpperCase());
+                          case 21: return const SizedBox(height: DesignSystem.spaceMD);
+                          case 22: return _buildSettingsItem(context, l10n.privacyPolicy, Icons.privacy_tip_rounded, () => _launchUrl('https://sites.google.com/view/puzzlebysidhant/home'));
+                          case 23: return const SizedBox(height: DesignSystem.spaceSM);
+                          case 24: return _buildSettingsItem(context, l10n.termsOfService, Icons.description_rounded, () => _launchUrl('https://sites.google.com/view/puzzlebysidhant/home'));
+                          case 25: return const SizedBox(height: DesignSystem.spaceSM);
+                          case 26: return _buildSettingsItem(context, l10n.licenses, Icons.code_rounded, () => showLicensePage(context: context, applicationName: l10n.appTitle.toUpperCase(), applicationVersion: 'Latest'));
+                          default: return null;
+                        }
+                      },
+                      childCount: 27,
+                    ),
                   ),
                 ),
               ],

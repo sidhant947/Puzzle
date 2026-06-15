@@ -1060,7 +1060,7 @@
       }
     }
   },
-  "schulteTableMessage": "You completed the table in {arg0}.\\nKeep practicing to expand your peripheral vision!",
+  "schulteTableMessage": "You completed the table in {arg0}.\nKeep practicing to expand your peripheral vision!",
   "@schulteTableMessage": {
     "placeholders": {
       "arg0": {
@@ -1174,7 +1174,7 @@
       }
     }
   },
-  "vigilanceTaskMessage": "Hits: {arg0}, Misses: {arg1}\\nFalse Alarms: {arg2}",
+  "vigilanceTaskMessage": "Hits: {arg0}, Misses: {arg1}\nFalse Alarms: {arg2}",
   "@vigilanceTaskMessage": {
     "placeholders": {
       "arg0": {
@@ -1430,7 +1430,7 @@
       }
     }
   },
-  "game2048Message": "{arg0}: {arg1}\\n{arg2}",
+  "game2048Message": "{arg0}: {arg1}\n{arg2}",
   "@game2048Message": {
     "placeholders": {
       "arg0": {
@@ -1565,7 +1565,7 @@
       }
     }
   },
-  "wordMastermindMessage": "You mastered the code!\\nThe word was: {arg0}",
+  "wordMastermindMessage": "You mastered the code!\nThe word was: {arg0}",
   "@wordMastermindMessage": {
     "placeholders": {
       "arg0": {

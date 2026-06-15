@@ -1057,7 +1057,7 @@
       }
     }
   },
-  "schulteTableMessage": "لقد أكملت الجدول في {arg0}.\\nاستمر في التدريب لتوسيع رؤيتك المحيطية!",
+  "schulteTableMessage": "لقد أكملت الجدول في {arg0}.\nاستمر في التدريب لتوسيع رؤيتك المحيطية!",
   "@schulteTableMessage": {
     "placeholders": {
       "arg0": {
@@ -1171,7 +1171,7 @@
       }
     }
   },
-  "vigilanceTaskMessage": "إصابات: {arg0}، إخفاقات: {arg1}\\nإنذارات كاذبة: {arg2}",
+  "vigilanceTaskMessage": "إصابات: {arg0}، إخفاقات: {arg1}\nإنذارات كاذبة: {arg2}",
   "@vigilanceTaskMessage": {
     "placeholders": {
       "arg0": {
@@ -1427,7 +1427,7 @@
       }
     }
   },
-  "game2048Message": "{arg0}: {arg1}\\n{arg2}",
+  "game2048Message": "{arg0}: {arg1}\n{arg2}",
   "@game2048Message": {
     "placeholders": {
       "arg0": {
@@ -1562,7 +1562,7 @@
       }
     }
   },
-  "wordMastermindMessage": "لقد أتقنت الكود!\\nالكلمة كانت: {arg0}",
+  "wordMastermindMessage": "لقد أتقنت الكود!\nالكلمة كانت: {arg0}",
   "@wordMastermindMessage": {
     "placeholders": {
       "arg0": {

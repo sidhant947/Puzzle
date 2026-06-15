@@ -7,7 +7,7 @@ part of 'chain_reaction_provider.dart';
 // **************************************************************************
 
 String _$chainReactionNotifierHash() =>
-    r'53b544bf8dbfe1ce8707e6514381c1e96e2696c6';
+    r'02e8e2f68c418997d1b8580877e7fe085b1ab879';
 
 /// See also [ChainReactionNotifier].
 @ProviderFor(ChainReactionNotifier)

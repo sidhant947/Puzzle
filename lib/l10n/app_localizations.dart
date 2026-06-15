@@ -4031,7 +4031,7 @@ abstract class AppLocalizations {
   /// No description provided for @schulteTableMessage.
   ///
   /// In en, this message translates to:
-  /// **'You completed the table in {arg0}.\\nKeep practicing to expand your peripheral vision!'**
+  /// **'You completed the table in {arg0}.\nKeep practicing to expand your peripheral vision!'**
   String schulteTableMessage(String arg0);
 
   /// No description provided for @schulteTableText.
@@ -4157,7 +4157,7 @@ abstract class AppLocalizations {
   /// No description provided for @vigilanceTaskMessage.
   ///
   /// In en, this message translates to:
-  /// **'Hits: {arg0}, Misses: {arg1}\\nFalse Alarms: {arg2}'**
+  /// **'Hits: {arg0}, Misses: {arg1}\nFalse Alarms: {arg2}'**
   String vigilanceTaskMessage(String arg0, String arg1, String arg2);
 
   /// No description provided for @silhouetteMatchOrthoMessage.
@@ -4451,7 +4451,7 @@ abstract class AppLocalizations {
   /// No description provided for @game2048Message.
   ///
   /// In en, this message translates to:
-  /// **'{arg0}: {arg1}\\n{arg2}'**
+  /// **'{arg0}: {arg1}\n{arg2}'**
   String game2048Message(String arg0, String arg1, String arg2);
 
   /// No description provided for @game2048Message1.
@@ -4565,7 +4565,7 @@ abstract class AppLocalizations {
   /// No description provided for @wordMastermindMessage.
   ///
   /// In en, this message translates to:
-  /// **'You mastered the code!\\nThe word was: {arg0}'**
+  /// **'You mastered the code!\nThe word was: {arg0}'**
   String wordMastermindMessage(String arg0);
 
   /// No description provided for @wordMastermindMessage1.
