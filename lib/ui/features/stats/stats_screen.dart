@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/providers/game_providers.dart';
 import 'package:puzzle/providers/user_providers.dart';
+import 'package:puzzle/ui/features/home/widgets/daily_progress_banner.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/widgets/tangible.dart';
 
@@ -174,6 +175,8 @@ class _UserStatsCard extends ConsumerWidget {
     return Column(
       children: [
         const _StreakTracker(),
+        const SizedBox(height: DesignSystem.spaceMD),
+        const DailyProgressBanner(),
         const SizedBox(height: DesignSystem.spaceMD),
         TangibleContainer(
           color: DesignSystem.primary,

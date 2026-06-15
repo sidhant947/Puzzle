@@ -12,7 +12,7 @@ final fillominoMetadata = GameMetadata(
   builder: (context) => FillominoScreen(),
   titleGetter: _title,
   subtitleGetter: _subtitle,
-  popularity: Popularity.default_,
+  popularity: Popularity.low,
 );
 
 String _title(BuildContext context) => AppLocalizations.of(context)!.fillominoTitle;

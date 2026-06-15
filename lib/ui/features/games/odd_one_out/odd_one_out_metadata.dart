@@ -12,7 +12,7 @@ final oddOneOutMetadata = GameMetadata(
   builder: (context) => OddOneOutScreen(),
   titleGetter: _title,
   subtitleGetter: _subtitle,
-  popularity: Popularity.default_,
+  popularity: Popularity.high,
 );
 
 String _title(BuildContext context) => AppLocalizations.of(context)!.oddOneOutTitle;

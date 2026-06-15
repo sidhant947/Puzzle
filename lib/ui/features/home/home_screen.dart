@@ -7,7 +7,7 @@ import 'package:puzzle/providers/game_providers.dart';
 import 'package:puzzle/widgets/super_streak_action.dart';
 import 'package:puzzle/widgets/tangible.dart';
 import 'package:puzzle/utils/design_system.dart';
-import 'widgets/daily_progress_banner.dart';
+
 import 'widgets/favorites_section.dart';
 import 'widgets/category_button.dart';
 import 'widgets/search_bar.dart' as custom;
@@ -58,17 +58,6 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
         physics: const BouncingScrollPhysics(),
         slivers: [
           _buildAppBar(theme, colorScheme, l10n),
-          SliverToBoxAdapter(
-            child: Padding(
-              padding: const EdgeInsets.fromLTRB(
-                DesignSystem.spaceLG,
-                DesignSystem.spaceSM,
-                DesignSystem.spaceLG,
-                DesignSystem.spaceLG,
-              ),
-              child: const DailyProgressBanner(),
-            ),
-          ),
           SliverToBoxAdapter(
             child: FavoritesSection(
               selectedCategory: _selectedCategory,
