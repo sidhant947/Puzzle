@@ -3,7 +3,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/data/game_registry.dart';
 import 'package:puzzle/providers/game_providers.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/widgets/super_streak_action.dart';
 import 'package:puzzle/widgets/tangible.dart';
 import 'package:puzzle/utils/design_system.dart';
@@ -47,9 +49,14 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final colorScheme = theme.colorScheme;
     final l10n = AppLocalizations.of(context)!;
 
+    final localizedTitles = {
+      for (final game in allGamesMetadata)
+        game.id: L10nGameHelpers.getGameTitle(context, game.id),
+    };
+
     final filteredGames = ref.watch(
         filteredGamesProvider(
-            searchQuery: _searchQuery, selectedCategory: _selectedCategory));
+            searchQuery: _searchQuery, selectedCategory: _selectedCategory, localizedTitles: localizedTitles));
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,

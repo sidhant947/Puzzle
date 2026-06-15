@@ -6,7 +6,7 @@ part of 'game_providers.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$filteredGamesHash() => r'b03fecf962a11f5f8953fce3ff86d2c7c2054230';
+String _$filteredGamesHash() => r'b7890e01fb13600c19711fface1f3c0a2cd2bc36';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -42,10 +42,12 @@ class FilteredGamesFamily extends Family<List<GameMetadata>> {
   FilteredGamesProvider call({
     required String searchQuery,
     required String selectedCategory,
+    required Map<String, String> localizedTitles,
   }) {
     return FilteredGamesProvider(
       searchQuery: searchQuery,
       selectedCategory: selectedCategory,
+      localizedTitles: localizedTitles,
     );
   }
 
@@ -56,6 +58,7 @@ class FilteredGamesFamily extends Family<List<GameMetadata>> {
     return call(
       searchQuery: provider.searchQuery,
       selectedCategory: provider.selectedCategory,
+      localizedTitles: provider.localizedTitles,
     );
   }
 
@@ -80,11 +83,13 @@ class FilteredGamesProvider extends AutoDisposeProvider<List<GameMetadata>> {
   FilteredGamesProvider({
     required String searchQuery,
     required String selectedCategory,
+    required Map<String, String> localizedTitles,
   }) : this._internal(
           (ref) => filteredGames(
             ref as FilteredGamesRef,
             searchQuery: searchQuery,
             selectedCategory: selectedCategory,
+            localizedTitles: localizedTitles,
           ),
           from: filteredGamesProvider,
           name: r'filteredGamesProvider',
@@ -97,6 +102,7 @@ class FilteredGamesProvider extends AutoDisposeProvider<List<GameMetadata>> {
               FilteredGamesFamily._allTransitiveDependencies,
           searchQuery: searchQuery,
           selectedCategory: selectedCategory,
+          localizedTitles: localizedTitles,
         );
 
   FilteredGamesProvider._internal(
@@ -108,10 +114,12 @@ class FilteredGamesProvider extends AutoDisposeProvider<List<GameMetadata>> {
     required super.from,
     required this.searchQuery,
     required this.selectedCategory,
+    required this.localizedTitles,
   }) : super.internal();
 
   final String searchQuery;
   final String selectedCategory;
+  final Map<String, String> localizedTitles;
 
   @override
   Override overrideWith(
@@ -128,6 +136,7 @@ class FilteredGamesProvider extends AutoDisposeProvider<List<GameMetadata>> {
         debugGetCreateSourceHash: null,
         searchQuery: searchQuery,
         selectedCategory: selectedCategory,
+        localizedTitles: localizedTitles,
       ),
     );
   }
@@ -141,7 +150,8 @@ class FilteredGamesProvider extends AutoDisposeProvider<List<GameMetadata>> {
   bool operator ==(Object other) {
     return other is FilteredGamesProvider &&
         other.searchQuery == searchQuery &&
-        other.selectedCategory == selectedCategory;
+        other.selectedCategory == selectedCategory &&
+        other.localizedTitles == localizedTitles;
   }
 
   @override
@@ -149,6 +159,7 @@ class FilteredGamesProvider extends AutoDisposeProvider<List<GameMetadata>> {
     var hash = _SystemHash.combine(0, runtimeType.hashCode);
     hash = _SystemHash.combine(hash, searchQuery.hashCode);
     hash = _SystemHash.combine(hash, selectedCategory.hashCode);
+    hash = _SystemHash.combine(hash, localizedTitles.hashCode);
 
     return _SystemHash.finish(hash);
   }
@@ -160,6 +171,9 @@ mixin FilteredGamesRef on AutoDisposeProviderRef<List<GameMetadata>> {
 
   /// The parameter `selectedCategory` of this provider.
   String get selectedCategory;
+
+  /// The parameter `localizedTitles` of this provider.
+  Map<String, String> get localizedTitles;
 }
 
 class _FilteredGamesProviderElement
@@ -172,6 +186,9 @@ class _FilteredGamesProviderElement
   @override
   String get selectedCategory =>
       (origin as FilteredGamesProvider).selectedCategory;
+  @override
+  Map<String, String> get localizedTitles =>
+      (origin as FilteredGamesProvider).localizedTitles;
 }
 
 String _$categoryStatsHash() => r'915b141f1fff412001a17066a1c94c04e62ceb50';

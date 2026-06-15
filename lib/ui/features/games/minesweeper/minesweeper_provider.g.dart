@@ -7,7 +7,7 @@ part of 'minesweeper_provider.dart';
 // **************************************************************************
 
 String _$minesweeperNotifierHash() =>
-    r'675cc7fa4a933386bb2788e3cb9f788ad01572ec';
+    r'733ecdec859525d64cf5be9eb9a03126c2b4ec7c';
 
 /// See also [MinesweeperNotifier].
 @ProviderFor(MinesweeperNotifier)

@@ -6,17 +6,16 @@ import '../providers/user_providers.dart';
 part 'game_providers.g.dart';
 
 @riverpod
-List<GameMetadata> filteredGames(FilteredGamesRef ref, {required String searchQuery, required String selectedCategory}) {
+List<GameMetadata> filteredGames(FilteredGamesRef ref, {required String searchQuery, required String selectedCategory, required Map<String, String> localizedTitles}) {
   final allGames = allGamesMetadata;
   final favoriteIds = ref.watch(userDataNotifierProvider.select((d) => d.favoriteGameIds ?? []));
+  final query = searchQuery.toLowerCase();
 
   final filtered = allGames.where((game) {
-    final matchesSearch = game.id
-            .toLowerCase()
-            .contains(searchQuery.toLowerCase()) ||
-        game.category
-            .toLowerCase()
-            .contains(searchQuery.toLowerCase());
+    final title = localizedTitles[game.id]?.toLowerCase() ?? '';
+    final matchesSearch = game.id.toLowerCase().contains(query) ||
+        title.contains(query) ||
+        game.category.toLowerCase().contains(query);
     final matchesCategory =
         selectedCategory == 'ALL' || game.category == selectedCategory;
     return matchesSearch && matchesCategory;
