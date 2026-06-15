@@ -265,34 +265,54 @@ class SolidPainter extends CustomPainter {
         break;
 
       case SolidType.cube:
-        final p1 = center + const Offset(-0.7, -0.7) * r;
-        final p2 = center + const Offset(0.3, -0.7) * r;
-        final p3 = center + const Offset(0.7, -0.3) * r;
-        final p4 = center + const Offset(0.7, 0.7) * r;
-        final p5 = center + const Offset(-0.3, 0.7) * r;
-        final p6 = center + const Offset(-0.7, 0.3) * r;
-        final p7 = center + const Offset(-0.3, -0.3) * r; // Hidden back top
-        final p8 = center + const Offset(0.3, 0.3) * r; // Front center-ish
+        final top = center + Offset(0, -r);
+        final topRight = center + Offset(r * 0.866, -r * 0.5);
+        final bottomRight = center + Offset(r * 0.866, r * 0.5);
+        final bottom = center + Offset(0, r);
+        final bottomLeft = center + Offset(-r * 0.866, r * 0.5);
+        final topLeft = center + Offset(-r * 0.866, -r * 0.5);
 
-        final path = Path()
-          ..moveTo(p1.dx, p1.dy)
-          ..lineTo(p2.dx, p2.dy)
-          ..lineTo(p3.dx, p3.dy)
-          ..lineTo(p4.dx, p4.dy)
-          ..lineTo(p5.dx, p5.dy)
-          ..lineTo(p6.dx, p6.dy)
+        final hexPath = Path()
+          ..moveTo(top.dx, top.dy)
+          ..lineTo(topRight.dx, topRight.dy)
+          ..lineTo(bottomRight.dx, bottomRight.dy)
+          ..lineTo(bottom.dx, bottom.dy)
+          ..lineTo(bottomLeft.dx, bottomLeft.dy)
+          ..lineTo(topLeft.dx, topLeft.dy)
           ..close();
-        canvas.drawPath(path, fill);
-        canvas.drawPath(path, stroke);
+        canvas.drawPath(hexPath, fill);
+        canvas.drawPath(hexPath, stroke);
 
-        // Inner lines
-        canvas.drawLine(p2, p7, stroke..color = stroke.color.withValues(alpha: 0.2));
-        canvas.drawLine(p1, p7, stroke..color = stroke.color.withValues(alpha: 0.2));
-        canvas.drawLine(p7, p5, stroke..color = stroke.color.withValues(alpha: 0.2));
-        
-        canvas.drawLine(p6, p8, stroke..color = stroke.color.withValues(alpha: 1.0));
-        canvas.drawLine(p2, p8, stroke);
-        canvas.drawLine(p5, p8, stroke);
+        final topFace = Path()
+          ..moveTo(center.dx, center.dy)
+          ..lineTo(top.dx, top.dy)
+          ..lineTo(topRight.dx, topRight.dy)
+          ..lineTo(bottomRight.dx, bottomRight.dy)
+          ..close();
+        canvas.drawPath(topFace, fill);
+        canvas.drawPath(topFace, stroke);
+
+        final rightFace = Path()
+          ..moveTo(center.dx, center.dy)
+          ..lineTo(bottomRight.dx, bottomRight.dy)
+          ..lineTo(bottom.dx, bottom.dy)
+          ..lineTo(bottomLeft.dx, bottomLeft.dy)
+          ..close();
+        canvas.drawPath(rightFace, fill);
+        canvas.drawPath(rightFace, stroke);
+
+        final leftFace = Path()
+          ..moveTo(center.dx, center.dy)
+          ..lineTo(topLeft.dx, topLeft.dy)
+          ..lineTo(top.dx, top.dy)
+          ..lineTo(bottomLeft.dx, bottomLeft.dy)
+          ..close();
+        canvas.drawPath(leftFace, fill);
+        canvas.drawPath(leftFace, stroke);
+
+        canvas.drawLine(center, top, stroke);
+        canvas.drawLine(center, bottomRight, stroke);
+        canvas.drawLine(center, bottomLeft, stroke);
         break;
 
       case SolidType.cylinder:
