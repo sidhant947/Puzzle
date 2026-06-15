@@ -34,17 +34,18 @@ class GameTile extends ConsumerWidget {
     final isSolvedToday = streak?.solvedToday ?? false;
     final streakCount = streak?.currentStreak ?? 0;
     final isNew = streak == null;
-    final description = L10nGameHelpers.getGameSubtitle(context, gameId);
     final l10n = AppLocalizations.of(context)!;
+    final isMobile = MediaQuery.of(context).size.width < 600;
 
     return TangibleContainer(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+      padding:
+          EdgeInsets.zero, // Handle padding in Stack to allow background bleed
       onTap: () {
         ref.read(gameSessionNotifierProvider.notifier).setSession(
-          gameId: gameId,
-          category: selectedCategory,
-          query: searchQuery,
-        );
+              gameId: gameId,
+              category: selectedCategory,
+              query: searchQuery,
+            );
         Navigator.push(
           context,
           CustomPageRoute(page: game.builder(context)),
@@ -54,13 +55,59 @@ class GameTile extends ConsumerWidget {
         HapticFeedbackUtil.mediumImpact();
         ref.read(userDataNotifierProvider.notifier).toggleFavorite(gameId);
       },
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          _buildHeader(theme, l10n, isSolvedToday, streakCount, isNew),
-          const SizedBox(height: 12.0),
-          _buildBody(context, theme, description, isSolvedToday),
-        ],
+      child: ClipRRect(
+        borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
+        child: Stack(
+          children: [
+            // Decorative Background Gradient
+            Positioned(
+              right: isMobile ? -20 : -10,
+              bottom: isMobile ? -20 : -10,
+              child: Container(
+                width: isMobile ? 120 : 180,
+                height: isMobile ? 120 : 180,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                  gradient: RadialGradient(
+                    colors: [
+                      game.color.withValues(alpha: 0.15),
+                      game.color.withValues(alpha: 0.0),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            // Watermark Icon
+            Positioned(
+              right: isMobile ? -30 : -20,
+              bottom: isMobile ? -40 : -30,
+              child: Transform.rotate(
+                angle: isMobile ? 0 : -0.2, // Tilted left for big screens
+                child: Icon(
+                  game.icon,
+                  size: isMobile ? 180 : 240,
+                  color: game.color.withValues(alpha: 0.06),
+                ),
+              ),
+            ),
+            // Content
+            Padding(
+              padding:
+                  const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: isMobile
+                    ? MainAxisAlignment.start
+                    : MainAxisAlignment.spaceBetween,
+                children: [
+                  _buildHeader(theme, l10n, isSolvedToday, streakCount, isNew),
+                  if (isMobile) const SizedBox(height: 12.0),
+                  _buildBody(context, theme, isSolvedToday, isMobile),
+                ],
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -154,34 +201,25 @@ class GameTile extends ConsumerWidget {
     );
   }
 
-  Widget _buildBody(BuildContext context, ThemeData theme, String description, bool isSolvedToday) {
+  Widget _buildBody(BuildContext context, ThemeData theme, bool isSolvedToday,
+      bool isMobile) {
     return Row(
+      crossAxisAlignment:
+          isMobile ? CrossAxisAlignment.center : CrossAxisAlignment.end,
       children: [
         Expanded(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.end,
             children: [
               Text(
                 L10nGameHelpers.getGameTitle(context, game.id).toUpperCase(),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
                 style: theme.textTheme.headlineMedium?.copyWith(
-                  fontSize: 26.0,
+                  fontSize: isMobile ? 26.0 : 32.0,
                   letterSpacing: 0.5,
                   height: 1.0,
-                ),
-              ),
-              const SizedBox(height: 6.0),
-              Text(
-                description.toUpperCase(),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: theme.textTheme.bodySmall?.copyWith(
-                  fontSize: 11.0,
-                  fontWeight: FontWeight.w700,
-                  color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
-                  letterSpacing: 0.5,
-                  height: 1.2,
                 ),
               ),
             ],
@@ -191,15 +229,14 @@ class GameTile extends ConsumerWidget {
         Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
-            color: isSolvedToday
-                ? game.color
-                : game.color.withValues(alpha: 0.1),
+            color:
+                isSolvedToday ? game.color : game.color.withValues(alpha: 0.1),
             shape: BoxShape.circle,
           ),
           child: Icon(
             isSolvedToday ? Icons.check_rounded : Icons.play_arrow_rounded,
             color: isSolvedToday ? Colors.white : game.color,
-            size: 20,
+            size: isMobile ? 20 : 28,
           ),
         ),
       ],
@@ -214,11 +251,10 @@ Widget buildGameTile(
   String selectedCategory,
   String searchQuery,
 ) {
-  final streak = ref.watch(
-      gameStreakNotifierProvider.select((s) => s[game.id]));
-  final isFavorite = ref.watch(
-      userDataNotifierProvider.select(
-          (d) => (d.favoriteGameIds ?? []).contains(game.id)));
+  final streak =
+      ref.watch(gameStreakNotifierProvider.select((s) => s[game.id]));
+  final isFavorite = ref.watch(userDataNotifierProvider
+      .select((d) => (d.favoriteGameIds ?? []).contains(game.id)));
 
   return GameTile(
     game: game,
