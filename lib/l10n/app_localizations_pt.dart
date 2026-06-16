@@ -1881,13 +1881,13 @@ class AppLocalizationsPt extends AppLocalizations {
   String get shapeStar => 'ESTRELA';
 
   @override
-  String get shapeRectangle => 'RECTANGLE';
+  String get shapeRectangle => 'RETÂNGULO';
 
   @override
-  String get shapeEllipse => 'ELLIPSE';
+  String get shapeEllipse => 'ELIPSE';
 
   @override
-  String get shapeTrapezoid => 'TRAPEZOID';
+  String get shapeTrapezoid => 'TRAPÉZIO';
 
   @override
   String get colorRedLabel => 'VERMELHO';
@@ -3559,97 +3559,97 @@ class AppLocalizationsPt extends AppLocalizations {
   String get homophoneHuntSubtitle => 'Escolha o homófono grafado corretamente';
 
   @override
-  String get laserLinkTitle => 'Laser Link';
+  String get laserLinkTitle => 'Ligação Laser';
 
   @override
   String get laserLinkSubtitle =>
-      'Rotate mirrors to reflect lasers and power up all the targets.';
+      'Roda os espelhos para refletir lasers e alimentar todos os alvos.';
 
   @override
   String get laserLinkCongrats =>
-      'Precision reflection! You\'ve successfully powered the entire grid.';
+      'Reflexão de precision! Alimentaste com sucesso toda a rede.';
 
   @override
-  String get crossSectionSliceTitle => 'Cross-Section Slice';
+  String get crossSectionSliceTitle => 'Corte Transversal';
 
   @override
   String get crossSectionSliceSubtitle =>
-      'Identify the correct 2D cross-section of a 3D object from a specific angle.';
+      'Identifica a secção transversal 2D correta de um objeto 3D a partir de um ângulo específico.';
 
   @override
   String get crossSectionSliceCongrats =>
-      'Incredible 3D visualization! You saw right through that shape.';
+      'Incrível visualização 3D! Viste através dessa forma.';
 
   @override
-  String get shadowPivotTitle => 'Shadow Pivot';
+  String get shadowPivotTitle => 'Pivô de Sombra';
 
   @override
   String get shadowPivotCongrats =>
-      'Dynamic spatial reasoning! You mastered the light and shadow.';
+      'Raciocínio espacial dinâmico! Dominaste a luz e a sombra.';
 
   @override
   String get shadowPivotSubtitle =>
-      'Predict the shadow cast by a 3D object as it rotates on different axes.';
+      'Preveja a sombra projetada por um objeto 3D enquanto ele gira em diferentes eixos.';
 
   @override
-  String get interlockPuzzleTitle => 'Interlock Puzzle';
+  String get interlockPuzzleTitle => 'Puzzle de Entrelaçamento';
 
   @override
   String get interlockPuzzleSubtitle =>
-      'Disassemble or assemble complex interlocking blocks in the correct sequence.';
+      'Desmonta ou monta blocos entrelaçados complexos na sequência correta.';
 
   @override
   String get interlockPuzzleCongrats =>
-      'Logical deconstruction! You\'ve unraveled the puzzle perfectly.';
+      'Desconstrução lógica! Desvendaste o puzzle perfeitamente.';
 
   @override
-  String get pathIntersectTitle => 'Path Intersect';
+  String get pathIntersectTitle => 'Interseção de Caminhos';
 
   @override
   String get pathIntersectSubtitle =>
-      'Navigate multiple paths simultaneously to reach their respective targets without collision.';
+      'Navega por vários caminhos simultaneamente para alcançar os respetivos alvos sem colisão.';
 
   @override
   String get pathIntersectCongrats =>
-      'Synchronized navigation! You\'ve reached all targets flawlessly.';
+      'Navegação sincronizada! Alcançaste todos os alvos sem falhas.';
 
   @override
-  String get negativeSpaceDetectionTitle => 'Negative Space';
+  String get negativeSpaceDetectionTitle => 'Espaço Negativo';
 
   @override
   String get negativeSpaceDetectionSubtitle =>
-      'Identify the shape formed by the empty space between objects.';
+      'Identifica a forma formada pelo espaço vazio entre os objetos.';
 
   @override
   String get negativeSpaceDetectionCongrats =>
-      'Keen perception! You\'ve mastered the art of seeing what\'s not there.';
+      'Perceção aguçada! Dominaste a arte de ver o que não está lá.';
 
   @override
-  String get compassMazeTitle => 'Compass Maze';
+  String get compassMazeTitle => 'Labirinto de Bússola';
 
   @override
   String get compassMazeSubtitle =>
-      'Navigate a maze where movement directions change based on your compass orientation.';
+      'Navega num labirinto onde as direções de movimento chamam-se com base na orientação da tua bússola.';
 
   @override
   String get compassMazeCongrats =>
-      'Expert navigation! You\'ve found the exit through the shifting directions.';
+      'Navegação especializada! Encontraste a saída através das direções mutáveis.';
 
   @override
-  String get complexFoldingNetsTitle => 'Folding Nets';
+  String get complexFoldingNetsTitle => 'Redes de Dobragem';
 
   @override
   String get complexFoldingNetsSubtitle =>
-      'Determine which complex 3D shape will be formed by folding a non-standard 2D net.';
+      'Determina qual forma 3D complexa será formada ao dobrar uma rede 2D não padrão.';
 
   @override
   String get complexFoldingNetsCongrats =>
-      'Advanced folding logic! You\'ve successfully visualized the 3D form.';
+      'Lógica de dobragem avançada! Visualizaste com sucesso a forma 3D.';
 
   @override
-  String get compassMazeMessage => 'Navigate the maze using the compass.';
+  String get compassMazeMessage => 'Navega no labirinto usando a bússola.';
 
   @override
   String get negativeSpaceDetectionMessage =>
-      'Identify the hidden object in the space.';
+      'Identifica o objeto oculto no espaço.';
 }

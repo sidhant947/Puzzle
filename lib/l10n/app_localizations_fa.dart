@@ -1860,13 +1860,13 @@ class AppLocalizationsFa extends AppLocalizations {
   String get shapeStar => 'ستاره';
 
   @override
-  String get shapeRectangle => 'RECTANGLE';
+  String get shapeRectangle => 'مستطیل';
 
   @override
-  String get shapeEllipse => 'ELLIPSE';
+  String get shapeEllipse => 'بیضی';
 
   @override
-  String get shapeTrapezoid => 'TRAPEZOID';
+  String get shapeTrapezoid => 'ذوزنقه';
 
   @override
   String get colorRedLabel => 'قرمز';
@@ -3513,97 +3513,98 @@ class AppLocalizationsFa extends AppLocalizations {
   String get homophoneHuntSubtitle => 'انتخاب واژه هم‌آوا با املای درست';
 
   @override
-  String get laserLinkTitle => 'Laser Link';
+  String get laserLinkTitle => 'لینک لیزر';
 
   @override
   String get laserLinkSubtitle =>
-      'Rotate mirrors to reflect lasers and power up all the targets.';
+      'آینه‌ها را بچرخانید تا لیزرها را منعکس کرده و تمام اهداف را روشن کنید.';
 
   @override
   String get laserLinkCongrats =>
-      'Precision reflection! You\'ve successfully powered the entire grid.';
+      'انعکاس دقیق! شما با موفقیت کل شبکه را برق‌رسانی کردید.';
 
   @override
-  String get crossSectionSliceTitle => 'Cross-Section Slice';
+  String get crossSectionSliceTitle => 'برش مقطع';
 
   @override
   String get crossSectionSliceSubtitle =>
-      'Identify the correct 2D cross-section of a 3D object from a specific angle.';
+      'مقطع دوبعدی صحیح یک شیء سه‌بعدی را از یک زاویه خاص شناسایی کنید.';
 
   @override
   String get crossSectionSliceCongrats =>
-      'Incredible 3D visualization! You saw right through that shape.';
+      'تجسم سه‌بعدی باورنکردنی! شما درست از میان آن شکل دیدید.';
 
   @override
-  String get shadowPivotTitle => 'Shadow Pivot';
+  String get shadowPivotTitle => 'محور سایه';
 
   @override
   String get shadowPivotCongrats =>
-      'Dynamic spatial reasoning! You mastered the light and shadow.';
+      'استدلال فضایی پویا! شما بر نور و سایه مسلط شدید.';
 
   @override
   String get shadowPivotSubtitle =>
-      'Predict the shadow cast by a 3D object as it rotates on different axes.';
+      'سایه ایجاد شده توسط یک شیء سه‌بعدی را هنگام چرخش در محورهای مختلف پیش‌بینی کنید.';
 
   @override
-  String get interlockPuzzleTitle => 'Interlock Puzzle';
+  String get interlockPuzzleTitle => 'پازل در هم تنیده';
 
   @override
   String get interlockPuzzleSubtitle =>
-      'Disassemble or assemble complex interlocking blocks in the correct sequence.';
+      'بلوک‌های در هم تنیده پیچیده را با ترتیب صحیح باز یا بسته کنید.';
 
   @override
   String get interlockPuzzleCongrats =>
-      'Logical deconstruction! You\'ve unraveled the puzzle perfectly.';
+      'ساختارشکنی منطقی! شما پازل را به شکلی عالی از هم باز کردید.';
 
   @override
-  String get pathIntersectTitle => 'Path Intersect';
+  String get pathIntersectTitle => 'تقاطع مسیر';
 
   @override
   String get pathIntersectSubtitle =>
-      'Navigate multiple paths simultaneously to reach their respective targets without collision.';
+      'چندین مسیر را به طور همزمان ناوبری کنید تا بدون برخورد به اهداف مربوطه برسید.';
 
   @override
   String get pathIntersectCongrats =>
-      'Synchronized navigation! You\'ve reached all targets flawlessly.';
+      'ناوبری همگام‌سازی شده! شما بدون نقص به تمام اهداف رسیدید.';
 
   @override
-  String get negativeSpaceDetectionTitle => 'Negative Space';
+  String get negativeSpaceDetectionTitle => 'فضای منفی';
 
   @override
   String get negativeSpaceDetectionSubtitle =>
-      'Identify the shape formed by the empty space between objects.';
+      'شکلی که توسط فضای خالی بین اشیاء ایجاد می‌شود را شناسایی کنید.';
 
   @override
   String get negativeSpaceDetectionCongrats =>
-      'Keen perception! You\'ve mastered the art of seeing what\'s not there.';
+      'ادراک تیز! شما در هنر دیدن آنچه وجود ندارد استاد شده‌اید.';
 
   @override
-  String get compassMazeTitle => 'Compass Maze';
+  String get compassMazeTitle => 'هزارتوی قطب‌نما';
 
   @override
   String get compassMazeSubtitle =>
-      'Navigate a maze where movement directions change based on your compass orientation.';
+      'در هزارتویی ناوبری کنید که در آن جهت‌های حرکت بر اساس جهت‌گیری قطب‌نمای شما تغییر می‌کند.';
 
   @override
   String get compassMazeCongrats =>
-      'Expert navigation! You\'ve found the exit through the shifting directions.';
+      'ناوبری خبره! شما راه خروج را از طریق جهت‌های متغیر پیدا کردید.';
 
   @override
-  String get complexFoldingNetsTitle => 'Folding Nets';
+  String get complexFoldingNetsTitle => 'شبکه‌های تاشو';
 
   @override
   String get complexFoldingNetsSubtitle =>
-      'Determine which complex 3D shape will be formed by folding a non-standard 2D net.';
+      'تعیین کنید که با تا کردن یک شبکه دوبعدی غیر استاندارد، کدام شکل سه‌بعدی پیچیده تشکیل می‌شود.';
 
   @override
   String get complexFoldingNetsCongrats =>
-      'Advanced folding logic! You\'ve successfully visualized the 3D form.';
+      'منطق تاشوی پیشرفته! شما با موفقیت شکل سه‌بعدی را تجسم کردید.';
 
   @override
-  String get compassMazeMessage => 'Navigate the maze using the compass.';
+  String get compassMazeMessage =>
+      'با استفاده از قطب‌نما در هزارتو ناوبری کنید.';
 
   @override
   String get negativeSpaceDetectionMessage =>
-      'Identify the hidden object in the space.';
+      'شیء پنهان در فضا را شناسایی کنید.';
 }

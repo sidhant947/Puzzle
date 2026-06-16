@@ -1885,13 +1885,13 @@ class AppLocalizationsId extends AppLocalizations {
   String get shapeStar => 'BINTANG';
 
   @override
-  String get shapeRectangle => 'RECTANGLE';
+  String get shapeRectangle => 'PERSEGI PANJANG';
 
   @override
-  String get shapeEllipse => 'ELLIPSE';
+  String get shapeEllipse => 'ELIPS';
 
   @override
-  String get shapeTrapezoid => 'TRAPEZOID';
+  String get shapeTrapezoid => 'TRAPESIUM';
 
   @override
   String get colorRedLabel => 'MERAH';
@@ -3563,97 +3563,97 @@ class AppLocalizationsId extends AppLocalizations {
   String get homophoneHuntSubtitle => 'Pilih homofon dengan ejaan yang benar';
 
   @override
-  String get laserLinkTitle => 'Laser Link';
+  String get laserLinkTitle => 'Tautan Laser';
 
   @override
   String get laserLinkSubtitle =>
-      'Rotate mirrors to reflect lasers and power up all the targets.';
+      'Putar cermin untuk memantulkan laser dan menyalakan semua target.';
 
   @override
   String get laserLinkCongrats =>
-      'Precision reflection! You\'ve successfully powered the entire grid.';
+      'Refleksi presisi! Anda telah berhasil menyalakan seluruh kisi.';
 
   @override
-  String get crossSectionSliceTitle => 'Cross-Section Slice';
+  String get crossSectionSliceTitle => 'Irisan Penampang';
 
   @override
   String get crossSectionSliceSubtitle =>
-      'Identify the correct 2D cross-section of a 3D object from a specific angle.';
+      'Identifikasi penampang 2D yang benar dari objek 3D dari sudut tertentu.';
 
   @override
   String get crossSectionSliceCongrats =>
-      'Incredible 3D visualization! You saw right through that shape.';
+      'Visualisasi 3D yang luar biasa! Anda melihat menembus bentuk itu.';
 
   @override
-  String get shadowPivotTitle => 'Shadow Pivot';
+  String get shadowPivotTitle => 'Pivot Bayangan';
 
   @override
   String get shadowPivotCongrats =>
-      'Dynamic spatial reasoning! You mastered the light and shadow.';
+      'Penalaran spasial dinamis! Anda menguasai cahaya dan bayangan.';
 
   @override
   String get shadowPivotSubtitle =>
-      'Predict the shadow cast by a 3D object as it rotates on different axes.';
+      'Prediksi bayangan yang dilemparkan oleh objek 3D saat berputar pada sumbu yang berbeda.';
 
   @override
-  String get interlockPuzzleTitle => 'Interlock Puzzle';
+  String get interlockPuzzleTitle => 'Teka-teki Saling Mengunci';
 
   @override
   String get interlockPuzzleSubtitle =>
-      'Disassemble or assemble complex interlocking blocks in the correct sequence.';
+      'Bongkar atau pasang balok-balok yang saling mengunci dalam urutan yang benar.';
 
   @override
   String get interlockPuzzleCongrats =>
-      'Logical deconstruction! You\'ve unraveled the puzzle perfectly.';
+      'Dekonstruksi logis! Anda telah mengurai teka-teki dengan sempurna.';
 
   @override
-  String get pathIntersectTitle => 'Path Intersect';
+  String get pathIntersectTitle => 'Persimpangan Jalur';
 
   @override
   String get pathIntersectSubtitle =>
-      'Navigate multiple paths simultaneously to reach their respective targets without collision.';
+      'Navigasi beberapa jalur secara bersamaan untuk mencapai target masing-masing tanpa tabrakan.';
 
   @override
   String get pathIntersectCongrats =>
-      'Synchronized navigation! You\'ve reached all targets flawlessly.';
+      'Navigasi tersinkronisasi! Anda telah mencapai semua target tanpa cela.';
 
   @override
-  String get negativeSpaceDetectionTitle => 'Negative Space';
+  String get negativeSpaceDetectionTitle => 'Ruang Negatif';
 
   @override
   String get negativeSpaceDetectionSubtitle =>
-      'Identify the shape formed by the empty space between objects.';
+      'Identifikasi bentuk yang dibentuk oleh ruang kosong di antara objek.';
 
   @override
   String get negativeSpaceDetectionCongrats =>
-      'Keen perception! You\'ve mastered the art of seeing what\'s not there.';
+      'Persepsi tajam! Anda telah menguasai seni melihat apa yang tidak ada di sana.';
 
   @override
-  String get compassMazeTitle => 'Compass Maze';
+  String get compassMazeTitle => 'Labirin Kompas';
 
   @override
   String get compassMazeSubtitle =>
-      'Navigate a maze where movement directions change based on your compass orientation.';
+      'Navigasi labirin di mana arah gerakan berubah berdasarkan orientasi kompas Anda.';
 
   @override
   String get compassMazeCongrats =>
-      'Expert navigation! You\'ve found the exit through the shifting directions.';
+      'Navigasi ahli! Anda telah menemukan jalan keluar melalui arah yang berubah-ubah.';
 
   @override
-  String get complexFoldingNetsTitle => 'Folding Nets';
+  String get complexFoldingNetsTitle => 'Jaring Lipat';
 
   @override
   String get complexFoldingNetsSubtitle =>
-      'Determine which complex 3D shape will be formed by folding a non-standard 2D net.';
+      'Tentukan bentuk 3D kompleks mana yang akan terbentuk dengan melipat jaring 2D non-standar.';
 
   @override
   String get complexFoldingNetsCongrats =>
-      'Advanced folding logic! You\'ve successfully visualized the 3D form.';
+      'Logika lipat tingkat lanjut! Anda telah berhasil memvisualisasikan bentuk 3D.';
 
   @override
-  String get compassMazeMessage => 'Navigate the maze using the compass.';
+  String get compassMazeMessage => 'Navigasi labirin menggunakan kompas.';
 
   @override
   String get negativeSpaceDetectionMessage =>
-      'Identify the hidden object in the space.';
+      'Identifikasi objek tersembunyi di ruang tersebut.';
 }

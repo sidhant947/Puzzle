@@ -1880,13 +1880,13 @@ class AppLocalizationsVi extends AppLocalizations {
   String get shapeStar => 'HÌNH NGÔI SAO';
 
   @override
-  String get shapeRectangle => 'RECTANGLE';
+  String get shapeRectangle => 'HÌNH CHỮ NHẬT';
 
   @override
-  String get shapeEllipse => 'ELLIPSE';
+  String get shapeEllipse => 'HÌNH ELIP';
 
   @override
-  String get shapeTrapezoid => 'TRAPEZOID';
+  String get shapeTrapezoid => 'HÌNH THANG';
 
   @override
   String get colorRedLabel => 'ĐỎ';
@@ -3537,97 +3537,97 @@ class AppLocalizationsVi extends AppLocalizations {
   String get homophoneHuntSubtitle => 'Chọn từ đồng âm có cách viết đúng';
 
   @override
-  String get laserLinkTitle => 'Laser Link';
+  String get laserLinkTitle => 'Liên kết Laser';
 
   @override
   String get laserLinkSubtitle =>
-      'Rotate mirrors to reflect lasers and power up all the targets.';
+      'Xoay gương để phản xạ tia laser và cung cấp năng lượng cho tất cả các mục tiêu.';
 
   @override
   String get laserLinkCongrats =>
-      'Precision reflection! You\'ve successfully powered the entire grid.';
+      'Phản xạ chính xác! Bạn đã cấp nguồn thành công cho toàn bộ lưới.';
 
   @override
-  String get crossSectionSliceTitle => 'Cross-Section Slice';
+  String get crossSectionSliceTitle => 'Lát cắt ngang';
 
   @override
   String get crossSectionSliceSubtitle =>
-      'Identify the correct 2D cross-section of a 3D object from a specific angle.';
+      'Xác định mặt cắt 2D chính xác của một đối tượng 3D từ một góc cụ thể.';
 
   @override
   String get crossSectionSliceCongrats =>
-      'Incredible 3D visualization! You saw right through that shape.';
+      'Hình dung 3D đáng kinh ngạc! Bạn đã nhìn thấu suốt hình dạng đó.';
 
   @override
-  String get shadowPivotTitle => 'Shadow Pivot';
+  String get shadowPivotTitle => 'Trục bóng';
 
   @override
   String get shadowPivotCongrats =>
-      'Dynamic spatial reasoning! You mastered the light and shadow.';
+      'Lập luận không gian năng động! Bạn đã làm chủ ánh sáng và bóng tối.';
 
   @override
   String get shadowPivotSubtitle =>
-      'Predict the shadow cast by a 3D object as it rotates on different axes.';
+      'Dự đoán bóng của một đối tượng 3D khi nó quay trên các trục khác nhau.';
 
   @override
-  String get interlockPuzzleTitle => 'Interlock Puzzle';
+  String get interlockPuzzleTitle => 'Câu đố lồng nhau';
 
   @override
   String get interlockPuzzleSubtitle =>
-      'Disassemble or assemble complex interlocking blocks in the correct sequence.';
+      'Tháo rời hoặc lắp ráp các khối lồng vào nhau phức tạp theo trình tự chính xác.';
 
   @override
   String get interlockPuzzleCongrats =>
-      'Logical deconstruction! You\'ve unraveled the puzzle perfectly.';
+      'Giải mã logic! Bạn đã tháo gỡ câu đố một cách hoàn hảo.';
 
   @override
-  String get pathIntersectTitle => 'Path Intersect';
+  String get pathIntersectTitle => 'Giao lộ đường dẫn';
 
   @override
   String get pathIntersectSubtitle =>
-      'Navigate multiple paths simultaneously to reach their respective targets without collision.';
+      'Điều hướng nhiều con đường cùng lúc để đạt được các mục tiêu tương ứng mà không bị va chạm.';
 
   @override
   String get pathIntersectCongrats =>
-      'Synchronized navigation! You\'ve reached all targets flawlessly.';
+      'Điều hướng đồng bộ! Bạn đã đạt được tất cả các mục tiêu một cách hoàn hảo.';
 
   @override
-  String get negativeSpaceDetectionTitle => 'Negative Space';
+  String get negativeSpaceDetectionTitle => 'Không gian âm';
 
   @override
   String get negativeSpaceDetectionSubtitle =>
-      'Identify the shape formed by the empty space between objects.';
+      'Xác định hình dạng được tạo bởi không gian trống giữa các vật thể.';
 
   @override
   String get negativeSpaceDetectionCongrats =>
-      'Keen perception! You\'ve mastered the art of seeing what\'s not there.';
+      'Nhận thức sắc bén! Bạn đã thành thạo nghệ thuật nhìn thấy những gì không có ở đó.';
 
   @override
-  String get compassMazeTitle => 'Compass Maze';
+  String get compassMazeTitle => 'Mê cung La bàn';
 
   @override
   String get compassMazeSubtitle =>
-      'Navigate a maze where movement directions change based on your compass orientation.';
+      'Điều hướng một mê cung nơi các hướng di chuyển thay đổi dựa trên hướng la bàn của bạn.';
 
   @override
   String get compassMazeCongrats =>
-      'Expert navigation! You\'ve found the exit through the shifting directions.';
+      'Điều hướng điêu luyện! Bạn đã tìm thấy lối thoát qua các hướng thay đổi liên tục.';
 
   @override
-  String get complexFoldingNetsTitle => 'Folding Nets';
+  String get complexFoldingNetsTitle => 'Lưới gấp';
 
   @override
   String get complexFoldingNetsSubtitle =>
-      'Determine which complex 3D shape will be formed by folding a non-standard 2D net.';
+      'Xác định hình dạng 3D phức tạp nào sẽ được tạo thành bằng cách gấp một lưới 2D không chuẩn.';
 
   @override
   String get complexFoldingNetsCongrats =>
-      'Advanced folding logic! You\'ve successfully visualized the 3D form.';
+      'Logic gấp nâng cao! Bạn đã hình dung thành công hình dạng 3D.';
 
   @override
-  String get compassMazeMessage => 'Navigate the maze using the compass.';
+  String get compassMazeMessage => 'Điều hướng mê cung bằng la bàn.';
 
   @override
   String get negativeSpaceDetectionMessage =>
-      'Identify the hidden object in the space.';
+      'Xác định vật thể ẩn trong không gian.';
 }

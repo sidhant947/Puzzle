@@ -1773,13 +1773,13 @@ class AppLocalizationsZh extends AppLocalizations {
   String get shapeStar => '星星';
 
   @override
-  String get shapeRectangle => 'RECTANGLE';
+  String get shapeRectangle => '矩形';
 
   @override
-  String get shapeEllipse => 'ELLIPSE';
+  String get shapeEllipse => '椭圆形';
 
   @override
-  String get shapeTrapezoid => 'TRAPEZOID';
+  String get shapeTrapezoid => '梯形';
 
   @override
   String get colorRedLabel => '红色';
@@ -3343,97 +3343,80 @@ class AppLocalizationsZh extends AppLocalizations {
   String get homophoneHuntSubtitle => '选择拼写正确的同音词';
 
   @override
-  String get laserLinkTitle => 'Laser Link';
+  String get laserLinkTitle => '激光链接';
 
   @override
-  String get laserLinkSubtitle =>
-      'Rotate mirrors to reflect lasers and power up all the targets.';
+  String get laserLinkSubtitle => '旋转镜子以反射激光并激活所有目标。';
 
   @override
-  String get laserLinkCongrats =>
-      'Precision reflection! You\'ve successfully powered the entire grid.';
+  String get laserLinkCongrats => '精准反射！你已成功为整个网格供电。';
 
   @override
-  String get crossSectionSliceTitle => 'Cross-Section Slice';
+  String get crossSectionSliceTitle => '横截面切片';
 
   @override
-  String get crossSectionSliceSubtitle =>
-      'Identify the correct 2D cross-section of a 3D object from a specific angle.';
+  String get crossSectionSliceSubtitle => '从特定角度识别 3D 物体正确的 2D 横截面。';
 
   @override
-  String get crossSectionSliceCongrats =>
-      'Incredible 3D visualization! You saw right through that shape.';
+  String get crossSectionSliceCongrats => '惊人的 3D 空间想象力！你一眼就看穿了那个形状。';
 
   @override
-  String get shadowPivotTitle => 'Shadow Pivot';
+  String get shadowPivotTitle => '影子旋转';
 
   @override
-  String get shadowPivotCongrats =>
-      'Dynamic spatial reasoning! You mastered the light and shadow.';
+  String get shadowPivotCongrats => '动态空间推理！你掌握了光与影的奥秘。';
 
   @override
-  String get shadowPivotSubtitle =>
-      'Predict the shadow cast by a 3D object as it rotates on different axes.';
+  String get shadowPivotSubtitle => '预测 3D 物体在不同轴上旋转时投射的阴影。';
 
   @override
-  String get interlockPuzzleTitle => 'Interlock Puzzle';
+  String get interlockPuzzleTitle => '互锁挑战';
 
   @override
-  String get interlockPuzzleSubtitle =>
-      'Disassemble or assemble complex interlocking blocks in the correct sequence.';
+  String get interlockPuzzleSubtitle => '按正确的顺序拆卸或组装复杂的互锁块。';
 
   @override
-  String get interlockPuzzleCongrats =>
-      'Logical deconstruction! You\'ve unraveled the puzzle perfectly.';
+  String get interlockPuzzleCongrats => '逻辑拆解！你完美地解开了这个谜题。';
 
   @override
-  String get pathIntersectTitle => 'Path Intersect';
+  String get pathIntersectTitle => '路径交汇';
 
   @override
-  String get pathIntersectSubtitle =>
-      'Navigate multiple paths simultaneously to reach their respective targets without collision.';
+  String get pathIntersectSubtitle => '同时导航多条路径，以到达各自的目标且不发生碰撞。';
 
   @override
-  String get pathIntersectCongrats =>
-      'Synchronized navigation! You\'ve reached all targets flawlessly.';
+  String get pathIntersectCongrats => '同步导航！你完美无瑕地到达了所有目标。';
 
   @override
-  String get negativeSpaceDetectionTitle => 'Negative Space';
+  String get negativeSpaceDetectionTitle => '负空间';
 
   @override
-  String get negativeSpaceDetectionSubtitle =>
-      'Identify the shape formed by the empty space between objects.';
+  String get negativeSpaceDetectionSubtitle => '识别由物体之间的空白区域形成的形状。';
 
   @override
-  String get negativeSpaceDetectionCongrats =>
-      'Keen perception! You\'ve mastered the art of seeing what\'s not there.';
+  String get negativeSpaceDetectionCongrats => '敏锐的洞察力！你已掌握了观察虚空间的艺术。';
 
   @override
-  String get compassMazeTitle => 'Compass Maze';
+  String get compassMazeTitle => '指南针迷宫';
 
   @override
-  String get compassMazeSubtitle =>
-      'Navigate a maze where movement directions change based on your compass orientation.';
+  String get compassMazeSubtitle => '在移动方向随指南针方向变化的迷宫中导航。';
 
   @override
-  String get compassMazeCongrats =>
-      'Expert navigation! You\'ve found the exit through the shifting directions.';
+  String get compassMazeCongrats => '专家级导航！你已在不断变化的方向中找到了出口。';
 
   @override
-  String get complexFoldingNetsTitle => 'Folding Nets';
+  String get complexFoldingNetsTitle => '展开图折叠';
 
   @override
-  String get complexFoldingNetsSubtitle =>
-      'Determine which complex 3D shape will be formed by folding a non-standard 2D net.';
+  String get complexFoldingNetsSubtitle => '确定折叠非标准 2D 展开图后将形成哪种复杂的 3D 形状。';
 
   @override
-  String get complexFoldingNetsCongrats =>
-      'Advanced folding logic! You\'ve successfully visualized the 3D form.';
+  String get complexFoldingNetsCongrats => '高级折叠逻辑！你已成功构思出 3D 形状。';
 
   @override
-  String get compassMazeMessage => 'Navigate the maze using the compass.';
+  String get compassMazeMessage => '使用指南针在迷宫中导航。';
 
   @override
-  String get negativeSpaceDetectionMessage =>
-      'Identify the hidden object in the space.';
+  String get negativeSpaceDetectionMessage => '识别空间中隐藏的物体。';
 }

@@ -1879,13 +1879,13 @@ class AppLocalizationsTe extends AppLocalizations {
   String get shapeStar => 'నక్షత్రం';
 
   @override
-  String get shapeRectangle => 'RECTANGLE';
+  String get shapeRectangle => 'దీర్ఘచతురస్రం';
 
   @override
-  String get shapeEllipse => 'ELLIPSE';
+  String get shapeEllipse => 'దీర్ఘవృత్తం';
 
   @override
-  String get shapeTrapezoid => 'TRAPEZOID';
+  String get shapeTrapezoid => 'ట్రాపెజాయిడ్';
 
   @override
   String get colorRedLabel => 'ఎరుపు';
@@ -3565,97 +3565,98 @@ class AppLocalizationsTe extends AppLocalizations {
       'సరైన స్పెల్లింగ్ ఉన్న హోమోఫోన్‌ను ఎంచుకోండి';
 
   @override
-  String get laserLinkTitle => 'Laser Link';
+  String get laserLinkTitle => 'లేజర్ లింక్';
 
   @override
   String get laserLinkSubtitle =>
-      'Rotate mirrors to reflect lasers and power up all the targets.';
+      'లేజర్‌లను ప్రతిబింబించేలా అద్దాలను తిప్పండి మరియు అన్ని లక్ష్యాలను శక్తివంతం చేయండి.';
 
   @override
   String get laserLinkCongrats =>
-      'Precision reflection! You\'ve successfully powered the entire grid.';
+      'ఖచ్చితమైన ప్రతిబింబం! మీరు మొత్తం గ్రిడ్‌ను విజయవంతంగా శక్తివంతం చేశారు.';
 
   @override
-  String get crossSectionSliceTitle => 'Cross-Section Slice';
+  String get crossSectionSliceTitle => 'క్రాస్-సెక్షన్ స్లైస్';
 
   @override
   String get crossSectionSliceSubtitle =>
-      'Identify the correct 2D cross-section of a 3D object from a specific angle.';
+      'నిర్దిష్ట కోణం నుండి 3D వస్తువు యొక్క సరైన 2D క్రాస్-సెక్షన్‌ను గుర్తించండి.';
 
   @override
   String get crossSectionSliceCongrats =>
-      'Incredible 3D visualization! You saw right through that shape.';
+      'అద్భుతమైన 3D విజువలైజేషన్! మీరు ఆ ఆకారం గుండా సరిగ్గా చూశారు.';
 
   @override
-  String get shadowPivotTitle => 'Shadow Pivot';
+  String get shadowPivotTitle => 'షాడో పివట్';
 
   @override
   String get shadowPivotCongrats =>
-      'Dynamic spatial reasoning! You mastered the light and shadow.';
+      'డైనమిక్ స్పేషియల్ రీజనింగ్! మీరు కాంతి మరియు నీడపై పట్టు సాధించారు.';
 
   @override
   String get shadowPivotSubtitle =>
-      'Predict the shadow cast by a 3D object as it rotates on different axes.';
+      'విభిన్న అక్షాలపై తిరుగుతున్నప్పుడు 3D వస్తువు ద్వారా పడే నీడను అంచనా వేయండి.';
 
   @override
-  String get interlockPuzzleTitle => 'Interlock Puzzle';
+  String get interlockPuzzleTitle => 'ఇంటర్‌లాక్ పజిల్';
 
   @override
   String get interlockPuzzleSubtitle =>
-      'Disassemble or assemble complex interlocking blocks in the correct sequence.';
+      'సంక్లిష్టమైన ఇంటర్‌లాకింగ్ బ్లాక్‌లను సరైన క్రమంలో విడదీయండి లేదా సమీకరించండి.';
 
   @override
   String get interlockPuzzleCongrats =>
-      'Logical deconstruction! You\'ve unraveled the puzzle perfectly.';
+      'లాజికల్ డికన్స్ట్రక్షన్! మీరు పజిల్‌ను ఖచ్చితంగా విప్పారు.';
 
   @override
-  String get pathIntersectTitle => 'Path Intersect';
+  String get pathIntersectTitle => 'పాత్ ఇంటర్సెక్ట్';
 
   @override
   String get pathIntersectSubtitle =>
-      'Navigate multiple paths simultaneously to reach their respective targets without collision.';
+      'ఢీకొనకుండా వాటి లక్ష్యాలను చేరుకోవడానికి ఒకేసారి బహుళ మార్గాలను నావిగేట్ చేయండి.';
 
   @override
   String get pathIntersectCongrats =>
-      'Synchronized navigation! You\'ve reached all targets flawlessly.';
+      'సింక్రొనైజ్డ్ నావిగేషన్! మీరు అన్ని లక్ష్యాలను దోషరహితంగా చేరుకున్నారు.';
 
   @override
-  String get negativeSpaceDetectionTitle => 'Negative Space';
+  String get negativeSpaceDetectionTitle => 'నెగటివ్ స్పేస్';
 
   @override
   String get negativeSpaceDetectionSubtitle =>
-      'Identify the shape formed by the empty space between objects.';
+      'వస్తువుల మధ్య ఖాళీ స్థలం ద్వారా ఏర్పడిన ఆకారాన్ని గుర్తించండి.';
 
   @override
   String get negativeSpaceDetectionCongrats =>
-      'Keen perception! You\'ve mastered the art of seeing what\'s not there.';
+      'తీక్షణమైన అవగాహన! అక్కడ లేని వాటిని చూసే కళలో మీరు ప్రావీణ్యం సంపాదించారు.';
 
   @override
-  String get compassMazeTitle => 'Compass Maze';
+  String get compassMazeTitle => 'దిక్సూచి చిట్టడవి';
 
   @override
   String get compassMazeSubtitle =>
-      'Navigate a maze where movement directions change based on your compass orientation.';
+      'మీ దిక్సూచి విన్యాసం ఆధారంగా కదలిక దిశలు మారే చిట్టడవిని నావిగేట్ చేయండి.';
 
   @override
   String get compassMazeCongrats =>
-      'Expert navigation! You\'ve found the exit through the shifting directions.';
+      'నిపుణుల నావిగేషన్! మారుతున్న దిశల ద్వారా మీరు నిష్క్రమణను కనుగొన్నారు.';
 
   @override
-  String get complexFoldingNetsTitle => 'Folding Nets';
+  String get complexFoldingNetsTitle => 'ఫోల్డింగ్ నెట్స్';
 
   @override
   String get complexFoldingNetsSubtitle =>
-      'Determine which complex 3D shape will be formed by folding a non-standard 2D net.';
+      'ప్రామాణికం కాని 2D నెట్‌ను మడతపెట్టడం ద్వారా ఏ సంక్లిష్టమైన 3D ఆకృతి ఏర్పడుతుందో నిర్ణయించండి.';
 
   @override
   String get complexFoldingNetsCongrats =>
-      'Advanced folding logic! You\'ve successfully visualized the 3D form.';
+      'అధునాతన ఫోల్డింగ్ లాజిక్! మీరు 3D రూపాన్ని విజయవంతంగా ఊహించారు.';
 
   @override
-  String get compassMazeMessage => 'Navigate the maze using the compass.';
+  String get compassMazeMessage =>
+      'దిక్సూచిని ఉపయోగించి చిట్టడవిని నావిగేట్ చేయండి.';
 
   @override
   String get negativeSpaceDetectionMessage =>
-      'Identify the hidden object in the space.';
+      'అంతరాళంలో దాగి ఉన్న వస్తువును గుర్తించండి.';
 }
