@@ -9,7 +9,7 @@ class AppLocalizationsMr extends AppLocalizations {
   AppLocalizationsMr([String locale = 'mr']) : super(locale);
 
   @override
-  String get appTitle => 'पझल हब';
+  String get appTitle => 'पझल गेम्स';
 
   @override
   String get home => 'होम';

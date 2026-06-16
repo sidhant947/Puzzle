@@ -9,7 +9,7 @@ class AppLocalizationsPl extends AppLocalizations {
   AppLocalizationsPl([String locale = 'pl']) : super(locale);
 
   @override
-  String get appTitle => 'Puzzle Hub';
+  String get appTitle => 'Gry Puzzle';
 
   @override
   String get home => 'Główna';

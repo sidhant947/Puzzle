@@ -1,0 +1,49 @@
+name: macOS Build Test
+
+on:
+  workflow_dispatch:
+
+
+permissions:
+  contents: write
+
+jobs:
+  build-macos:
+    name: Build macOS DMG
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'latest'
+
+      - name: Install appdmg
+        run: npm install -g appdmg
+
+      - name: Get Dependencies
+        run: flutter pub get
+
+      - name: Build macOS
+        run: flutter build macos --release
+
+      - name: Create DMG
+        run: |
+          # Ensure the output directory exists
+          mkdir -p build/macos/dmg
+          # Run appdmg from the installer directory
+          appdmg macos/installer/appdmg.json build/macos/dmg/puzzle-games-macos.dmg
+
+      - name: Upload macOS Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-dmg
+          path: build/macos/dmg/puzzle-games-macos.dmg
