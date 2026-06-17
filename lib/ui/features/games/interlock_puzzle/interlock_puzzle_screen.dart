@@ -17,6 +17,9 @@ class InterlockPuzzleScreen extends ConsumerStatefulWidget {
 }
 
 class _InterlockPuzzleScreenState extends ConsumerState<InterlockPuzzleScreen> {
+  double _rotationX = -0.5; // Initial tilt
+  double _rotationY = 0.5;
+
   @override
   void initState() {
     super.initState();
@@ -64,7 +67,13 @@ class _InterlockPuzzleScreenState extends ConsumerState<InterlockPuzzleScreen> {
 
     return GameScaffold(
       title: l10n.interlockPuzzleTitle,
-      onReset: () => ref.read(interlockPuzzleNotifierProvider.notifier).initGame(),
+      onReset: () {
+        setState(() {
+          _rotationX = -0.5;
+          _rotationY = 0.5;
+        });
+        ref.read(interlockPuzzleNotifierProvider.notifier).initGame();
+      },
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : Column(
@@ -72,27 +81,33 @@ class _InterlockPuzzleScreenState extends ConsumerState<InterlockPuzzleScreen> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    'Do these two shapes fit together perfectly to form a solid cube?',
+                    'Drag to rotate and see if they fit perfectly!',
                     style: TextStyle(
                         color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                         fontSize: DesignSystem.fontSizeSM),
                     textAlign: TextAlign.center,
                   ),
                 ),
-                const SizedBox(height: 20),
                 Expanded(
-                  child: Row(
-                    children: [
-                      Expanded(
-                        child: _buildShapeView(context, 'Shape A', state.shapeA.toList()),
-                      ),
-                      Expanded(
-                        child: _buildShapeView(context, 'Shape B', state.shapeB.toList()),
-                      ),
-                    ],
+                  child: GestureDetector(
+                    onPanUpdate: (details) {
+                      setState(() {
+                        _rotationY += details.delta.dx * 0.01;
+                        _rotationX += details.delta.dy * 0.01;
+                      });
+                    },
+                    child: Row(
+                      children: [
+                        Expanded(
+                          child: _buildShapeView(context, 'Shape A', state.shapeA.toList(), Colors.indigo),
+                        ),
+                        Expanded(
+                          child: _buildShapeView(context, 'Shape B', state.shapeB.toList(), Colors.teal),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
-                const SizedBox(height: 20),
                 if (!state.isSolved)
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 40),
@@ -129,7 +144,7 @@ class _InterlockPuzzleScreenState extends ConsumerState<InterlockPuzzleScreen> {
     );
   }
 
-  Widget _buildShapeView(BuildContext context, String title, List<int> shape) {
+  Widget _buildShapeView(BuildContext context, String title, List<int> shape, Color color) {
     return Column(
       children: [
         Text(title, style: Theme.of(context).textTheme.titleMedium),
@@ -137,7 +152,7 @@ class _InterlockPuzzleScreenState extends ConsumerState<InterlockPuzzleScreen> {
         Expanded(
           child: CustomPaint(
             size: Size.infinite,
-            painter: IsometricPainter(context, shape),
+            painter: IsometricPainter(context, shape, color, _rotationX, _rotationY),
           ),
         ),
       ],
@@ -148,73 +163,171 @@ class _InterlockPuzzleScreenState extends ConsumerState<InterlockPuzzleScreen> {
 class IsometricPainter extends CustomPainter {
   final BuildContext context;
   final List<int> shape;
+  final Color baseColor;
+  final double rotX;
+  final double rotY;
   static const int size = 3;
 
-  IsometricPainter(this.context, this.shape);
+  IsometricPainter(this.context, this.shape, this.baseColor, this.rotX, this.rotY);
 
   @override
   void paint(Canvas canvas, Size canvasSize) {
     final center = Offset(canvasSize.width / 2, canvasSize.height / 2);
-    final cubeSize = min(canvasSize.width, canvasSize.height) / 6;
+    final cubeSize = min(canvasSize.width, canvasSize.height) / 8;
 
-    // Draw from back to front
+    List<_CubeData> cubes = [];
     for (int z = 0; z < size; z++) {
       for (int y = 0; y < size; y++) {
         for (int x = 0; x < size; x++) {
           int idx = z * size * size + y * size + x;
           if (shape[idx] == 1) {
-            _drawCube(canvas, center, x, y, z, cubeSize);
+            double cx = x - (size - 1) / 2.0;
+            double cy = y - (size - 1) / 2.0;
+            double cz = z - (size - 1) / 2.0;
+
+            // Rotation around Y then X
+            // Yaw (Y-axis)
+            double r1x = cx * cos(rotY) + cz * sin(rotY);
+            double r1y = cy;
+            double r1z = -cx * sin(rotY) + cz * cos(rotY);
+
+            // Pitch (X-axis)
+            double r2x = r1x;
+            double r2y = r1y * cos(rotX) - r1z * sin(rotX);
+            double r2z = r1y * sin(rotX) + r1z * cos(rotX);
+
+            cubes.add(_CubeData(r2x, r2y, r2z, r2z)); // depth is r2z
           }
         }
       }
     }
+
+    // Sort by depth (farthest first)
+    cubes.sort((a, b) => a.depth.compareTo(b.depth));
+
+    _drawBoundary(canvas, center, cubeSize);
+
+    for (var cube in cubes) {
+      _drawCube(canvas, center, cube.rx, cube.ry, cube.rz, cubeSize);
+    }
   }
 
-  void _drawCube(Canvas canvas, Offset center, int x, int y, int z, double s) {
-    // Isometric projection
-    // isoX = (x - y) * cos(30)
-    // isoY = (x + y) * sin(30) - z
-    double dx = (x - y) * s * 0.866;
-    double dy = (x + y) * s * 0.5 - z * s;
-    Offset pos = center + Offset(dx, dy);
+  void _drawBoundary(Canvas canvas, Offset center, double s) {
+    final paint = Paint()
+      ..color = Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1;
 
-    final primaryColor = Theme.of(context).colorScheme.primary;
-    final topPaint = Paint()..color = primaryColor.withValues(alpha: 0.8);
-    final leftPaint = Paint()..color = primaryColor.withValues(alpha: 0.6);
-    final rightPaint = Paint()..color = primaryColor.withValues(alpha: 0.4);
-    final borderPaint = Paint()..color = Colors.white.withValues(alpha: 0.5)..style = PaintingStyle.stroke..strokeWidth = 1;
+    Offset project(double cx, double cy, double cz) {
+      double r1x = cx * cos(rotY) + cz * sin(rotY);
+      double r1y = cy;
+      double r1z = -cx * sin(rotY) + cz * cos(rotY);
 
-    // Top face
-    final top = Path()
-      ..moveTo(pos.dx, pos.dy - s)
-      ..lineTo(pos.dx + s * 0.866, pos.dy - s * 0.5)
-      ..lineTo(pos.dx, pos.dy)
-      ..lineTo(pos.dx - s * 0.866, pos.dy - s * 0.5)
-      ..close();
-    canvas.drawPath(top, topPaint);
-    canvas.drawPath(top, borderPaint);
+      double r2x = r1x;
+      double r2y = r1y * cos(rotX) - r1z * sin(rotX);
+      
+      return center + Offset(r2x * s * 1.5, r2y * s * 1.5);
+    }
 
-    // Left face
-    final left = Path()
-      ..moveTo(pos.dx - s * 0.866, pos.dy - s * 0.5)
-      ..lineTo(pos.dx, pos.dy)
-      ..lineTo(pos.dx, pos.dy + s)
-      ..lineTo(pos.dx - s * 0.866, pos.dy + s * 0.5)
-      ..close();
-    canvas.drawPath(left, leftPaint);
-    canvas.drawPath(left, borderPaint);
+    const double limit = 1.5;
+    final v = [
+      [-limit, -limit, -limit], [limit, -limit, -limit],
+      [limit, limit, -limit], [-limit, limit, -limit],
+      [-limit, -limit, limit], [limit, -limit, limit],
+      [limit, limit, limit], [-limit, limit, limit],
+    ];
 
-    // Right face
-    final right = Path()
-      ..moveTo(pos.dx + s * 0.866, pos.dy - s * 0.5)
-      ..lineTo(pos.dx, pos.dy)
-      ..lineTo(pos.dx, pos.dy + s)
-      ..lineTo(pos.dx + s * 0.866, pos.dy + s * 0.5)
-      ..close();
-    canvas.drawPath(right, rightPaint);
-    canvas.drawPath(right, borderPaint);
+    void line(int a, int b) {
+      canvas.drawLine(project(v[a][0], v[a][1], v[a][2]), project(v[b][0], v[b][1], v[b][2]), paint);
+    }
+
+    line(0, 1); line(1, 2); line(2, 3); line(3, 0);
+    line(4, 5); line(5, 6); line(6, 7); line(7, 4);
+    line(0, 4); line(1, 5); line(2, 6); line(3, 7);
+  }
+
+  void _drawCube(Canvas canvas, Offset center, double rx, double ry, double rz, double s) {
+    Offset p(double vx, double vy) => center + Offset(vx * s * 1.5, vy * s * 1.5);
+
+    // Simplified projection for the cube faces based on current rotation
+    // We use the transformed coordinates to draw the 6 faces, but only 3 are usually visible.
+    // To keep it efficient and solid, we'll draw based on the normals or just standard 3D cube.
+    
+    // Vertices in "projected" 2D space
+    // Since rx, ry are already rotated, we just need the local offsets
+    // This is a bit tricky with raw CustomPaint without a full 3D engine.
+    // Let's use a simpler approach: 8 vertices and draw the faces that are "forward".
+    
+    List<Offset> v = [];
+    for(int i=0; i<8; i++) {
+      double lx = (i & 1) == 0 ? -0.5 : 0.5;
+      double ly = (i & 2) == 0 ? -0.5 : 0.5;
+      double lz = (i & 4) == 0 ? -0.5 : 0.5;
+
+      // Local rotation for the cube itself (same as the center rotation)
+      // Actually, since rx, ry, rz are already the rotated CENTER of the cube,
+      // and the cube is small, we can just project the 8 corners.
+      
+      double cx = rx + lx;
+      double cy = ry + ly;
+      double cz = rz + lz;
+
+      // Note: rx, ry, rz are ALREADY rotated. But lx, ly, lz are NOT.
+      // We need to rotate lx, ly, lz by the same rotX, rotY.
+      
+      double r1x = lx * cos(rotY) + lz * sin(rotY);
+      double r1y = ly;
+      double r1z = -lx * sin(rotY) + lz * cos(rotY);
+
+      double r2x = r1x;
+      double r2y = r1y * cos(rotX) - r1z * sin(rotX);
+      
+      v.add(center + Offset((rx + r2x) * s * 1.5, (ry + r2y) * s * 1.5));
+    }
+
+    void drawFace(List<int> indices, Color color) {
+      final path = Path()..moveTo(v[indices[0]].dx, v[indices[0]].dy);
+      for(int i=1; i<indices.length; i++) path.lineTo(v[indices[i]].dx, v[indices[i]].dy);
+      path.close();
+      canvas.drawPath(path, Paint()..color = color);
+      canvas.drawPath(path, Paint()..color = Colors.black.withValues(alpha: 0.1)..style = PaintingStyle.stroke..strokeWidth = 0.5);
+    }
+
+    // Faces (approximate visibility)
+    // Front (lz=0.5), Back (lz=-0.5), Top (ly=-0.5), Bottom (ly=0.5), Left (lx=-0.5), Right (lx=0.5)
+    // Depending on rotation, we draw different ones.
+    // For a solid look, we can just draw all 6 in a specific order or use a simple normal check.
+    
+    // Standard indices for 6 faces:
+    final faces = [
+      [0, 1, 3, 2], // Back
+      [4, 5, 7, 6], // Front
+      [0, 1, 5, 4], // Bottom
+      [2, 3, 7, 6], // Top
+      [0, 2, 6, 4], // Left
+      [1, 3, 7, 5], // Right
+    ];
+    
+    final colors = [
+      Color.lerp(baseColor, Colors.black, 0.4)!,
+      baseColor,
+      Color.lerp(baseColor, Colors.black, 0.5)!,
+      Color.lerp(baseColor, Colors.white, 0.2)!,
+      Color.lerp(baseColor, Colors.black, 0.2)!,
+      Color.lerp(baseColor, Colors.black, 0.3)!,
+    ];
+
+    for(int i=0; i<6; i++) {
+      drawFace(faces[i], colors[i]);
+    }
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
+  bool shouldRepaint(covariant IsometricPainter oldDelegate) => 
+    oldDelegate.rotX != rotX || oldDelegate.rotY != rotY || oldDelegate.shape != shape;
+}
+
+class _CubeData {
+  final double rx, ry, rz, depth;
+  _CubeData(this.rx, this.ry, this.rz, this.depth);
 }
