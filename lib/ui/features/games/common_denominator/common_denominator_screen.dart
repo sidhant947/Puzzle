@@ -70,7 +70,7 @@ class _CommonDenominatorScreenState extends ConsumerState<CommonDenominatorScree
           }
 
           return SafeArea(
-            child: Padding(
+            child: SingleChildScrollView(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               child: Column(
                 children: [
@@ -81,7 +81,7 @@ class _CommonDenominatorScreenState extends ConsumerState<CommonDenominatorScree
                       _buildStat(l10n.score.toUpperCase(), '${state.score}', DesignSystem.accentEmerald),
                     ],
                   ),
-                  const Spacer(),
+                  const SizedBox(height: 12),
                   TangibleContainer(
                     depth: 4.0,
                     color: colorScheme.onSurface,
@@ -115,7 +115,7 @@ class _CommonDenominatorScreenState extends ConsumerState<CommonDenominatorScree
                       ],
                     ),
                   ),
-                  const Spacer(),
+                  const SizedBox(height: 12),
                   _buildNumberPad(notifier, constraints),
                   const SizedBox(height: 20),
                 ],
@@ -156,6 +156,8 @@ class _CommonDenominatorScreenState extends ConsumerState<CommonDenominatorScree
   }
 
   Widget _buildNumberPad(CommonDenominatorNotifier notifier, BoxConstraints constraints) {
+    final buttonWidth = (constraints.maxWidth - 64) / 3;
+
     return Column(
       children: [
         for (var row in [[1, 2, 3], [4, 5, 6], [7, 8, 9]])
@@ -168,7 +170,7 @@ class _CommonDenominatorScreenState extends ConsumerState<CommonDenominatorScree
                 child: _PadKey(
                   label: n.toString(),
                   onTap: () => notifier.onNumberPressed(n.toString()),
-                  width: (constraints.maxWidth - 64) / 3,
+                  width: buttonWidth,
                 ),
               )).toList(),
             ),
@@ -182,7 +184,7 @@ class _CommonDenominatorScreenState extends ConsumerState<CommonDenominatorScree
                 label: 'C',
                 onTap: notifier.clearInput,
                 color: DesignSystem.accentBerry,
-                width: (constraints.maxWidth - 64) / 3,
+                width: buttonWidth,
               ),
             ),
             Padding(
@@ -190,7 +192,7 @@ class _CommonDenominatorScreenState extends ConsumerState<CommonDenominatorScree
               child: _PadKey(
                 label: '0',
                 onTap: () => notifier.onNumberPressed('0'),
-                width: (constraints.maxWidth - 64) / 3,
+                width: buttonWidth,
               ),
             ),
             Padding(
@@ -199,7 +201,7 @@ class _CommonDenominatorScreenState extends ConsumerState<CommonDenominatorScree
                 label: '⌫',
                 onTap: notifier.onBackspace,
                 color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5),
-                width: (constraints.maxWidth - 64) / 3,
+                width: buttonWidth,
               ),
             ),
           ],
@@ -233,14 +235,16 @@ class _PadKey extends StatelessWidget {
         shadowColor: color?.withValues(alpha: 0.2) ?? Theme.of(context).colorScheme.outline,
         padding: EdgeInsets.zero,
         child: Center(
-          child: Text(
-            label,
-            style: TextStyle(
-              fontSize: 20,
-              fontWeight: FontWeight.bold,
-              color: color != null && color != Theme.of(context).colorScheme.surface
-                  ? Colors.white
-                  : Theme.of(context).colorScheme.onSurface,
+          child: FittedBox(
+            child: Text(
+              label,
+              style: TextStyle(
+                fontSize: 20,
+                fontWeight: FontWeight.bold,
+                color: color != null && color != Theme.of(context).colorScheme.surface
+                    ? Colors.white
+                    : Theme.of(context).colorScheme.onSurface,
+              ),
             ),
           ),
         ),
