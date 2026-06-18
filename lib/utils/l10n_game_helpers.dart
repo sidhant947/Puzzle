@@ -208,6 +208,11 @@ class L10nGameHelpers {
     'negative_space_detection': (l) => l.negativeSpaceDetectionTitle,
     'compass_maze': (l) => l.compassMazeTitle,
     'complex_folding_nets': (l) => l.complexFoldingNetsTitle,
+    'shikaku': (l) => l.shikakuTitle,
+    'countdown_math': (l) => l.countdownMathTitle,
+    'narrative_recall': (l) => l.narrativeRecallTitle,
+    'shell_game': (l) => l.shellGameTitle,
+    'typoglycemia_decoder': (l) => l.typoglycemiaDecoderTitle,
   };
 
   static final Map<String, String Function(AppLocalizations)> _subtitleMap = {
@@ -416,6 +421,11 @@ class L10nGameHelpers {
     'negative_space_detection': (l) => l.negativeSpaceDetectionSubtitle,
     'compass_maze': (l) => l.compassMazeSubtitle,
     'complex_folding_nets': (l) => l.complexFoldingNetsSubtitle,
+    'shikaku': (l) => l.shikakuSubtitle,
+    'countdown_math': (l) => l.countdownMathSubtitle,
+    'narrative_recall': (l) => l.narrativeRecallSubtitle,
+    'shell_game': (l) => l.shellGameSubtitle,
+    'typoglycemia_decoder': (l) => l.typoglycemiaDecoderSubtitle,
   };
 
   static String getGameTitle(BuildContext context, String gameId) {

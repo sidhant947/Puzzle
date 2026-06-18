@@ -3624,4 +3624,39 @@ class AppLocalizationsTr extends AppLocalizations {
   @override
   String get negativeSpaceDetectionMessage =>
       'Boşluktaki gizli nesneyi tanımlayın.';
+
+  @override
+  String get shikakuTitle => 'Shikaku';
+
+  @override
+  String get shikakuSubtitle =>
+      'DIVIDE THE GRID INTO SQUARES AND RECTANGLES MATCHING THE NUMBERS.';
+
+  @override
+  String get countdownMathTitle => 'Countdown Math';
+
+  @override
+  String get countdownMathSubtitle =>
+      'COMBINE RANDOM NUMBERS TO CALCULATE THE THREE-DIGIT TARGET.';
+
+  @override
+  String get narrativeRecallTitle => 'Narrative Recall';
+
+  @override
+  String get narrativeRecallSubtitle =>
+      'READ A STORY AND RECALL SPECIFIC QUANTITATIVE AND FACTUAL DETAILS.';
+
+  @override
+  String get shellGameTitle => 'Shell Game';
+
+  @override
+  String get shellGameSubtitle =>
+      'TRACK A HIDDEN BALL AS THE SHUFFLING CUPS SWAP PLACES.';
+
+  @override
+  String get typoglycemiaDecoderTitle => 'Typoglycemia Decoder';
+
+  @override
+  String get typoglycemiaDecoderSubtitle =>
+      'UNSCRAMBLE AND READ JUMBLED SENTENCES SPEEDILY.';
 }

@@ -138,32 +138,6 @@ class GameScaffold extends StatelessWidget {
               size: 22,
             ),
           ),
-          if (onReset != null) ...[
-            const SizedBox(width: DesignSystem.spaceSM),
-            TangibleButton(
-              color: Colors.transparent,
-              drawBorder: false,
-              onTap: onReset!,
-              padding: const EdgeInsets.all(12),
-              child: Icon(
-                Icons.refresh_rounded,
-                color: colorScheme.onSurface,
-                size: 22,
-              ),
-            ),
-          ],
-          if (actions != null) ...[
-            const SizedBox(width: DesignSystem.spaceSM),
-            ...actions!.map((action) {
-              if (action is TangibleButton) {
-                return Padding(
-                  padding: const EdgeInsets.only(left: 8),
-                  child: action,
-                );
-              }
-              return action;
-            }),
-          ],
         ],
       ),
     );

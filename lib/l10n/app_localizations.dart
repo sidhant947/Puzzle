@@ -6331,6 +6331,66 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Identify the hidden object in the space.'**
   String get negativeSpaceDetectionMessage;
+
+  /// No description provided for @shikakuTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Shikaku'**
+  String get shikakuTitle;
+
+  /// No description provided for @shikakuSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'DIVIDE THE GRID INTO SQUARES AND RECTANGLES MATCHING THE NUMBERS.'**
+  String get shikakuSubtitle;
+
+  /// No description provided for @countdownMathTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Countdown Math'**
+  String get countdownMathTitle;
+
+  /// No description provided for @countdownMathSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'COMBINE RANDOM NUMBERS TO CALCULATE THE THREE-DIGIT TARGET.'**
+  String get countdownMathSubtitle;
+
+  /// No description provided for @narrativeRecallTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Narrative Recall'**
+  String get narrativeRecallTitle;
+
+  /// No description provided for @narrativeRecallSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'READ A STORY AND RECALL SPECIFIC QUANTITATIVE AND FACTUAL DETAILS.'**
+  String get narrativeRecallSubtitle;
+
+  /// No description provided for @shellGameTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Shell Game'**
+  String get shellGameTitle;
+
+  /// No description provided for @shellGameSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'TRACK A HIDDEN BALL AS THE SHUFFLING CUPS SWAP PLACES.'**
+  String get shellGameSubtitle;
+
+  /// No description provided for @typoglycemiaDecoderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Typoglycemia Decoder'**
+  String get typoglycemiaDecoderTitle;
+
+  /// No description provided for @typoglycemiaDecoderSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'UNSCRAMBLE AND READ JUMBLED SENTENCES SPEEDILY.'**
+  String get typoglycemiaDecoderSubtitle;
 }
 
 class _AppLocalizationsDelegate

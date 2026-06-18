@@ -1,5 +1,11 @@
 import 'game_metadata.dart';
 
+import '../ui/features/games/shikaku/shikaku_metadata.dart';
+import '../ui/features/games/countdown_math/countdown_math_metadata.dart';
+import '../ui/features/games/narrative_recall/narrative_recall_metadata.dart';
+import '../ui/features/games/shell_game/shell_game_metadata.dart';
+import '../ui/features/games/typoglycemia_decoder/typoglycemia_decoder_metadata.dart';
+
 import '../ui/features/games/slitherlink/slitherlink_metadata.dart';
 import '../ui/features/games/futoshiki/futoshiki_metadata.dart';
 import '../ui/features/games/kakuro/kakuro_metadata.dart';
@@ -417,5 +423,10 @@ List<GameMetadata> _buildGameList() {
     letterBridgeMetadata,
     letterFrequencyScanMetadata,
     oneLetterShiftMetadata,
+    shikakuMetadata,
+    countdownMathMetadata,
+    narrativeRecallMetadata,
+    shellGameMetadata,
+    typoglycemiaDecoderMetadata,
   ];
 }
