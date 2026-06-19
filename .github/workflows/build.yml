@@ -99,9 +99,54 @@ jobs:
           path: |
             build/windows/x64/runner/release/puzzle-games-windows-portable.zip
 
+  build-macos:
+    name: Build macOS
+    runs-on: macos-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Flutter
+        uses: subosito/flutter-action@v2
+        with:
+          channel: 'stable'
+          cache: true
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 'latest'
+
+      - name: Install appdmg
+        run: npm install -g appdmg
+
+      - name: Get Dependencies
+        run: flutter pub get
+
+      - name: Build macOS
+        run: flutter build macos --release
+
+      - name: Create DMG
+        run: |
+          mkdir -p build/macos/dmg
+          appdmg macos/installer/appdmg.json build/macos/dmg/puzzle-games-macos.dmg
+
+      - name: Create Portable Zip
+        run: |
+          cd build/macos/Build/Products/Release
+          zip -r puzzle-games-macos-portable.zip puzzle-games.app
+
+      - name: Upload macOS Artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: macos-artifacts
+          path: |
+            build/macos/dmg/puzzle-games-macos.dmg
+            build/macos/Build/Products/Release/puzzle-games-macos-portable.zip
+
   release:
     name: Create Unified Release
-    needs: [build-ubuntu, build-windows]
+    needs: [build-ubuntu, build-windows, build-macos]
     runs-on: ubuntu-latest
     steps:
       - name: Download Ubuntu Artifacts
@@ -114,6 +159,12 @@ jobs:
         uses: actions/download-artifact@v4
         with:
           name: windows-artifacts
+          path: release-artifacts
+
+      - name: Download macOS Artifacts
+        uses: actions/download-artifact@v4
+        with:
+          name: macos-artifacts
           path: release-artifacts
 
       - name: Create Release

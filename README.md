@@ -1,9 +1,9 @@
 # PUZZLE: 210 Free Brain Games & Logic Puzzles
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![Platform](https://img.shields.io/badge/platform-Android%20%7C%20Linux%20%7C%20Web%20%7C%20Windows-blue.svg)](#-downloads)
+[![Platform](https://img.shields.io/badge/platform-Android%20%7C%20Linux%20%7C%20macOS%20%7C%20Web%20%7C%20Windows-blue.svg)](#-downloads)
 
-The ultimate collection of **puzzle challenge games** available for Android , Linux and Windows. A professional suite of minimalist **free brain games** built with Flutter. Master over 210 unique puzzles in this essential **logic puzzle** library, featuring the best **offline games** including **Minesweeper**, **2048**, **Sudoku**, and more. 
+The ultimate collection of **puzzle challenge games** available for Android , Linux, macOS, Web, and Windows. A professional suite of minimalist **free brain games** built with Flutter. Master over 210 unique puzzles in this essential **logic puzzle** library, featuring the best **offline games** including **Minesweeper**, **2048**, **Sudoku**, and more. 
 
 ---
 
@@ -34,6 +34,13 @@ Get the full suite of **puzzle games** for your linux.
 | **Snap Store** | **Github** |
 | :---: | :---: |
 | <a href="https://snapcraft.io/puzzle-games"><img src="https://snapcraft.io/static/images/badges/en/snap-store-black.svg" height="60"></a> | [<img  height="80" alt="image" src="https://github.com/user-attachments/assets/22dac90e-9807-4ce6-ba7c-d6829a083358" />](https://github.com/sidhant947/Puzzle/releases/latest/) |
+
+### 🍎 macOS
+Get the full suite of **puzzle games** for your Mac.
+
+| **Github** |
+| :---: |
+| [<img  height="80" alt="image" src="https://github.com/user-attachments/assets/22dac90e-9807-4ce6-ba7c-d6829a083358" />](https://github.com/sidhant947/Puzzle/releases/latest/) |
 
 ### Windows
 Get the full suite of **puzzle games** for your Windows.
