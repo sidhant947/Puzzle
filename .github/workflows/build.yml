@@ -134,7 +134,7 @@ jobs:
       - name: Create Portable Zip
         run: |
           cd build/macos/Build/Products/Release
-          zip -r puzzle-games-macos-portable.zip puzzle-games.app
+          zip -r puzzle-games-macos-portable.zip puzzle.app
 
       - name: Upload macOS Artifacts
         uses: actions/upload-artifact@v4
