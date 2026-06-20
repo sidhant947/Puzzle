@@ -73,72 +73,93 @@ class _ColorFloodScreenState extends ConsumerState<ColorFloodScreen> {
       subtitle: l10n.colorFloodSubtitle(state.moves, state.maxMoves),
       body: state.grid.isEmpty 
           ? const Center(child: CircularProgressIndicator())
-          : Column(
-              children: [
-                const SizedBox(height: DesignSystem.spaceXL),
-                // Grid Area
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
-                  child: AspectRatio(
-                    aspectRatio: 1,
-                    child: TangibleContainer(
-                      padding: const EdgeInsets.all(4),
-                      radius: DesignSystem.radiusMD,
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
-                        child: GridView.builder(
-                          physics: const NeverScrollableScrollPhysics(),
-                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                            crossAxisCount: ColorFloodNotifier.gridSize,
-                          ),
-                          itemCount: ColorFloodNotifier.gridSize * ColorFloodNotifier.gridSize,
-                          itemBuilder: (context, index) {
-                            final r = index ~/ ColorFloodNotifier.gridSize;
-                            final c = index % ColorFloodNotifier.gridSize;
-                            final colorIndex = state.grid[r][c];
-                            return AnimatedContainer(
-                              duration: const Duration(milliseconds: 300),
-                              curve: Curves.easeInOut,
-                              color: ColorFloodEngine.colors[colorIndex],
-                            );
-                          },
-                        ),
-                      ),
-                    ),
-                  ),
-                ),
-                const Spacer(),
-                // Controls Area
-                Padding(
-                  padding: const EdgeInsets.all(DesignSystem.spaceLG),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: List.generate(ColorFloodEngine.colors.length, (index) {
-                      return GestureDetector(
-                        onTap: () {
-                          HapticFeedbackUtil.lightImpact();
-                          notifier.changeColor(index);
-                        },
-                        child: AnimatedScale(
-                          scale: state.grid.isNotEmpty && state.grid[0][0] == index ? 1.2 : 1.0,
-                          duration: const Duration(milliseconds: 200),
-                          child: SizedBox(
-                            width: 50,
-                            height: 50,
-                            child: TangibleContainer(
-                              radius: DesignSystem.radiusFull,
-                              color: ColorFloodEngine.colors[index],
-                              depth: 4,
-                              child: const SizedBox.shrink(),
+          : LayoutBuilder(
+              builder: (context, constraints) {
+                // Ensure the grid container is big enough but fits the screen height
+                final maxGridHeight = constraints.maxHeight * 0.6;
+                return Column(
+                  children: [
+                    const Spacer(),
+                    // Grid Area
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+                      child: ConstrainedBox(
+                        constraints: BoxConstraints(maxHeight: maxGridHeight),
+                        child: AspectRatio(
+                          aspectRatio: 1,
+                          child: TangibleContainer(
+                            padding: const EdgeInsets.all(4),
+                            radius: DesignSystem.radiusMD,
+                            child: ClipRRect(
+                              borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
+                              child: GridView.builder(
+                                physics: const NeverScrollableScrollPhysics(),
+                                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                                  crossAxisCount: ColorFloodNotifier.gridSize,
+                                ),
+                                itemCount: ColorFloodNotifier.gridSize * ColorFloodNotifier.gridSize,
+                                itemBuilder: (context, index) {
+                                  final r = index ~/ ColorFloodNotifier.gridSize;
+                                  final c = index % ColorFloodNotifier.gridSize;
+                                  final colorIndex = state.grid[r][c];
+                                  return AnimatedContainer(
+                                    duration: const Duration(milliseconds: 300),
+                                    curve: Curves.easeInOut,
+                                    color: ColorFloodEngine.colors[colorIndex],
+                                  );
+                                },
+                              ),
                             ),
                           ),
                         ),
-                      );
-                    }),
-                  ),
-                ),
-                const SizedBox(height: DesignSystem.space2XL),
-              ],
+                      ),
+                    ),
+                    const Spacer(),
+                    // Controls Area - Single Row of Responsive Buttons
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: List.generate(ColorFloodEngine.colors.length, (index) {
+                          return Expanded(
+                            child: GestureDetector(
+                              onTap: () {
+                                HapticFeedbackUtil.lightImpact();
+                                notifier.changeColor(index);
+                              },
+                              child: AnimatedScale(
+                                scale: state.grid.isNotEmpty && state.grid[0][0] == index ? 1.15 : 1.0,
+                                duration: const Duration(milliseconds: 200),
+                                child: Padding(
+                                  padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceXS),
+                                  child: Center(
+                                    child: ConstrainedBox(
+                                      constraints: const BoxConstraints(
+                                        maxWidth: 52,
+                                        maxHeight: 52,
+                                      ),
+                                      child: AspectRatio(
+                                        aspectRatio: 1,
+                                        child: TangibleContainer(
+                                          radius: DesignSystem.radiusFull,
+                                          color: ColorFloodEngine.colors[index],
+                                          depth: 4,
+                                          child: const SizedBox.shrink(),
+                                        ),
+                                      ),
+                                    ),
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                        }),
+                      ),
+                    ),
+                    const SizedBox(height: DesignSystem.space2XL),
+                  ],
+                );
+              },
             ),
     );
   }

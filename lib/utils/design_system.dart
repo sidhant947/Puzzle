@@ -42,7 +42,7 @@ class DesignSystem {
 
   // --- Light Theme Colors ---
   static const Color background = Color(0xFFF8FAFC);
-  static const Color surface = Colors.white;
+  static const Color surface = Color(0xFFFCFBF4);
   static const Color ink = Color(0xFF0F172A);
   static const Color inkSlate = Color(0xFF334155);
   static const Color outline = Color(0xFFE2E8F0);
