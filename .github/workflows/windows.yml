@@ -1,10 +1,7 @@
-name: Windows Build & Release
+name: Windows Build
 
 on:
   workflow_dispatch:
-
-permissions:
-  contents: write
 
 jobs:
   build:
@@ -26,7 +23,8 @@ jobs:
       - name: Build Windows
         run: flutter build windows --release
 
-     
+      - name: Build MSIX
+        run: dart run msix:create
 
       - name: Create Portable Zip
         run: |
@@ -38,3 +36,9 @@ jobs:
         with:
           name: puzzle-games-windows-portable
           path: build/windows/x64/runner/release/puzzle-games-windows-portable.zip
+
+      - name: Upload MSIX Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: puzzle-games-windows-msix
+          path: build/windows/x64/runner/Release/*.msix

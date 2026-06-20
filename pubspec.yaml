@@ -61,6 +61,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^6.0.0
+  msix: ^3.16.8
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec
@@ -100,4 +101,13 @@ flutter:
           weight: 600
         - asset: assets/fonts/Geist/static/Geist-Bold.ttf
           weight: 700
+
+msix_config:
+  display_name: "Puzzle Games By Sidhant"
+  publisher_display_name: "Sidhant."
+  identity_name: "Sidhant.PuzzleGamesbySidhant"
+  publisher: "CN=59036E01-83DD-497F-A168-24C657E9EC1A"
+  store: true
+  logo_path: web/icon-512.png
+  install_certificate: false
 
