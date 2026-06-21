@@ -11,6 +11,7 @@ import 'data/models/game_streak.dart';
 import 'data/repositories/user_repository.dart';
 import 'providers/user_providers.dart';
 import 'providers/theme_provider.dart';
+import 'providers/locale_provider.dart';
 import 'ui/features/main_shell/main_shell.dart';
 import 'utils/design_system.dart';
 import 'widgets/error_boundary.dart';
@@ -78,6 +79,7 @@ class MyApp extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final appThemeMode = ref.watch(themeNotifierProvider);
+    final appLocale = ref.watch(localeNotifierProvider);
 
     ThemeMode themeMode;
     switch (appThemeMode) {
@@ -104,6 +106,7 @@ class MyApp extends ConsumerWidget {
         GlobalWidgetsLocalizations.delegate,
         GlobalCupertinoLocalizations.delegate,
       ],
+      locale: appLocale,
       supportedLocales: [
         const Locale('en'),
         ...AppLocalizations.supportedLocales.where((l) => l.languageCode != 'en'),

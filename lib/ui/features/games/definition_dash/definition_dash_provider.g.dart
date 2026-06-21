@@ -7,7 +7,7 @@ part of 'definition_dash_provider.dart';
 // **************************************************************************
 
 String _$definitionDashNotifierHash() =>
-    r'40a52c32b2d5855f5506f8aff2a7290b00c828e4';
+    r'4f23b7771a165c692385aa3dc03c0c1c72922663';
 
 /// See also [DefinitionDashNotifier].
 @ProviderFor(DefinitionDashNotifier)

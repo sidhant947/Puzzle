@@ -7,7 +7,7 @@ part of 'homophone_hunt_provider.dart';
 // **************************************************************************
 
 String _$homophoneHuntNotifierHash() =>
-    r'2310bc8e39b59a6bac0595661d6b239f0411069c';
+    r'272e621408feb3c08bce830b710f92cd09822fd7';
 
 /// See also [HomophoneHuntNotifier].
 @ProviderFor(HomophoneHuntNotifier)
