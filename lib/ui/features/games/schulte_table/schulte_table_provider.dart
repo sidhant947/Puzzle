@@ -47,6 +47,7 @@ class SchulteTableNotifier extends _$SchulteTableNotifier {
 
   @override
   SchulteTableState build() {
+    ref.onDispose(() => _timer?.cancel());
     return SchulteTableState(grid: _engine.generateGrid());
   }
 

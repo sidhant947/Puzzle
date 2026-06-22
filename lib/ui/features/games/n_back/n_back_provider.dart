@@ -56,6 +56,10 @@ class NBackNotifier extends _$NBackNotifier {
 
   @override
   NBackState build() {
+    ref.onDispose(() {
+      _gameTimer?.cancel();
+      _symbolTimer?.cancel();
+    });
     return NBackState(history: [], currentSymbol: '');
   }
 

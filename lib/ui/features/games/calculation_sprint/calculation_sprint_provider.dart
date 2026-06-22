@@ -50,6 +50,7 @@ class CalculationSprintNotifier extends _$CalculationSprintNotifier {
 
   @override
   CalculationSprintState build() {
+    ref.onDispose(() => _timer?.cancel());
     return CalculationSprintState();
   }
 

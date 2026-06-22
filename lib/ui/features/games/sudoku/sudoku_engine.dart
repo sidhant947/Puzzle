@@ -39,7 +39,7 @@ class SudokuEngine {
     return true;
   }
 
-  bool isValid(dynamic board, int row, int col, int num) {
+  static bool isValid(dynamic board, int row, int col, int num) {
     // Check row
     for (int i = 0; i < size; i++) {
       if (i != col && board[row][i] == num) return false;
@@ -62,7 +62,7 @@ class SudokuEngine {
   }
 
   bool _isValid(dynamic board, int row, int col, int num) {
-    return isValid(board, row, col, num);
+    return SudokuEngine.isValid(board, row, col, num);
   }
 
   List<List<int>> createPuzzle(List<List<int>> solvedBoard, int clues) {

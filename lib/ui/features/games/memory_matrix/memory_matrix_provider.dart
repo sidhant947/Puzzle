@@ -50,6 +50,7 @@ class MemoryMatrixNotifier extends _$MemoryMatrixNotifier {
 
   @override
   MemoryMatrixState build() {
+    ref.onDispose(() => _timer?.cancel());
     // Start first level automatically
     Future.microtask(() => startLevel(1));
     return MemoryMatrixState();

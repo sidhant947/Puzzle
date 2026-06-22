@@ -264,7 +264,7 @@ class SudokuCell extends ConsumerWidget {
     final board = ref.read(sudokuNotifierProvider).value?.currentBoard;
     bool hasConflict = false;
     if (value != 0 && !isInitial && board != null) {
-      hasConflict = !SudokuEngine().isValid(board, row, col, value);
+      hasConflict = !SudokuEngine.isValid(board, row, col, value);
     }
 
     // Thick borders for 3x3 boxes

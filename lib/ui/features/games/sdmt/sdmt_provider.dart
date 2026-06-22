@@ -48,6 +48,7 @@ class SdmtNotifier extends _$SdmtNotifier {
 
   @override
   SdmtState build() {
+    ref.onDispose(() => _timer?.cancel());
     return SdmtState(symbolKey: {}, currentSymbol: Icons.help);
   }
 

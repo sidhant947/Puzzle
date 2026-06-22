@@ -52,6 +52,7 @@ class StroopTestNotifier extends _$StroopTestNotifier {
 
   @override
   StroopTestState build() {
+    ref.onDispose(() => _timer?.cancel());
     return StroopTestState(
       currentItem: StroopItem(text: '', color: Colors.black, colorName: ''),
       allColorNames: [],

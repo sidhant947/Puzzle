@@ -45,6 +45,7 @@ class CountingSheepNotifier extends _$CountingSheepNotifier {
 
   @override
   CountingSheepState build() {
+    ref.onDispose(() => _gameTimer?.cancel());
     return CountingSheepState(sheep: []);
   }
 

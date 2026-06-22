@@ -59,7 +59,9 @@ class WisconsinCardSortingNotifier extends _$WisconsinCardSortingNotifier {
 
   @override
   WCSState build() {
-    ref.onDispose(cleanUp);
+    ref.onDispose(() {
+      _timer?.cancel();
+    });
     return WCSState();
   }
 

@@ -49,6 +49,7 @@ class DigitSpanReverseNotifier extends _$DigitSpanReverseNotifier {
 
   @override
   DigitSpanState build() {
+    ref.onDispose(() => _timer?.cancel());
     return DigitSpanState(sequence: []);
   }
 

@@ -11,6 +11,7 @@ class GrammarSortState {
   final bool isGameOver;
   final int timeLeft;
   final bool? lastCorrect;
+  final bool _updateLastCorrect;
 
   GrammarSortState({
     this.currentWord,
@@ -19,7 +20,8 @@ class GrammarSortState {
     this.isGameOver = false,
     this.timeLeft = 60,
     this.lastCorrect,
-  });
+    bool updateLastCorrect = false,
+  }) : _updateLastCorrect = updateLastCorrect;
 
   GrammarSortState copyWith({
     GrammarWord? currentWord,
@@ -28,6 +30,7 @@ class GrammarSortState {
     bool? isGameOver,
     int? timeLeft,
     bool? lastCorrect,
+    bool updateLastCorrect = false,
   }) {
     return GrammarSortState(
       currentWord: currentWord ?? this.currentWord,
@@ -35,7 +38,8 @@ class GrammarSortState {
       totalAnswered: totalAnswered ?? this.totalAnswered,
       isGameOver: isGameOver ?? this.isGameOver,
       timeLeft: timeLeft ?? this.timeLeft,
-      lastCorrect: lastCorrect ?? this.lastCorrect,
+      lastCorrect: updateLastCorrect ? lastCorrect : this.lastCorrect,
+      updateLastCorrect: updateLastCorrect,
     );
   }
 }
@@ -83,6 +87,7 @@ class GrammarSortNotifier extends _$GrammarSortNotifier {
       score: isCorrect ? state.score + 10 : state.score,
       totalAnswered: state.totalAnswered + 1,
       lastCorrect: isCorrect,
+      updateLastCorrect: true,
     );
 
     Future.delayed(const Duration(milliseconds: 300), () {
@@ -90,6 +95,7 @@ class GrammarSortNotifier extends _$GrammarSortNotifier {
       state = state.copyWith(
         currentWord: _engine.nextWord(),
         lastCorrect: null,
+        updateLastCorrect: true,
       );
     });
   }

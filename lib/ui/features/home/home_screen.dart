@@ -29,6 +29,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
   bool _isSearchVisible = false;
   late final TextEditingController _searchController;
   Timer? _debounce;
+  Map<String, String>? _localizedTitlesCache;
+  Locale? _lastLocale;
 
   @override
   void initState() {
@@ -49,14 +51,20 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     final colorScheme = theme.colorScheme;
     final l10n = AppLocalizations.of(context)!;
 
-    final localizedTitles = {
-      for (final game in allGamesMetadata)
-        game.id: L10nGameHelpers.getGameTitle(context, game.id),
-    };
+    final currentLocale = Localizations.localeOf(context);
+    if (_localizedTitlesCache == null || _lastLocale != currentLocale) {
+      _localizedTitlesCache = {
+        for (final game in allGamesMetadata)
+          game.id: L10nGameHelpers.getGameTitle(context, game.id),
+      };
+      _lastLocale = currentLocale;
+    }
+    final localizedTitles = _localizedTitlesCache!;
 
-    final filteredGames = ref.watch(
-        filteredGamesProvider(
-            searchQuery: _searchQuery, selectedCategory: _selectedCategory, localizedTitles: localizedTitles));
+    final filteredGames = ref.watch(filteredGamesProvider(
+        searchQuery: _searchQuery,
+        selectedCategory: _selectedCategory,
+        localizedTitles: localizedTitles));
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -87,7 +95,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
                 _searchController.clear();
                 setState(() => _searchQuery = "");
               },
-              onCategorySelected: (value) => setState(() => _selectedCategory = value),
+              onCategorySelected: (value) =>
+                  setState(() => _selectedCategory = value),
             ),
           ),
           filteredGames.isEmpty
@@ -101,7 +110,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  Widget _buildAppBar(ThemeData theme, ColorScheme colorScheme, AppLocalizations l10n) {
+  Widget _buildAppBar(
+      ThemeData theme, ColorScheme colorScheme, AppLocalizations l10n) {
     return SliverAppBar(
       floating: true,
       pinned: false,
@@ -252,18 +262,30 @@ class _HomeFilterSection extends ConsumerWidget {
                 children: [
                   _buildCategoryBtn(l10n.categoryAll, 'ALL',
                       solvedStatsMap['ALL'] ?? 0, totalStatsMap['ALL'] ?? 1),
-                  _buildCategoryBtn(l10n.categoryAttention, 'ATTENTION',
-                      solvedStatsMap['ATTENTION'] ?? 0, totalStatsMap['ATTENTION'] ?? 1),
-                  _buildCategoryBtn(l10n.categoryLogic, 'LOGIC',
-                      solvedStatsMap['LOGIC'] ?? 0, totalStatsMap['LOGIC'] ?? 1),
+                  _buildCategoryBtn(
+                      l10n.categoryAttention,
+                      'ATTENTION',
+                      solvedStatsMap['ATTENTION'] ?? 0,
+                      totalStatsMap['ATTENTION'] ?? 1),
+                  _buildCategoryBtn(
+                      l10n.categoryLogic,
+                      'LOGIC',
+                      solvedStatsMap['LOGIC'] ?? 0,
+                      totalStatsMap['LOGIC'] ?? 1),
                   _buildCategoryBtn(l10n.categoryMath, 'MATH',
                       solvedStatsMap['MATH'] ?? 0, totalStatsMap['MATH'] ?? 1),
                   _buildCategoryBtn(l10n.categoryWord, 'WORD',
                       solvedStatsMap['WORD'] ?? 0, totalStatsMap['WORD'] ?? 1),
-                  _buildCategoryBtn(l10n.categoryMemory, 'MEMORY',
-                      solvedStatsMap['MEMORY'] ?? 0, totalStatsMap['MEMORY'] ?? 1),
-                  _buildCategoryBtn(l10n.categorySpatial, 'SPATIAL',
-                      solvedStatsMap['SPATIAL'] ?? 0, totalStatsMap['SPATIAL'] ?? 1),
+                  _buildCategoryBtn(
+                      l10n.categoryMemory,
+                      'MEMORY',
+                      solvedStatsMap['MEMORY'] ?? 0,
+                      totalStatsMap['MEMORY'] ?? 1),
+                  _buildCategoryBtn(
+                      l10n.categorySpatial,
+                      'SPATIAL',
+                      solvedStatsMap['SPATIAL'] ?? 0,
+                      totalStatsMap['SPATIAL'] ?? 1),
                 ],
               ),
             ),

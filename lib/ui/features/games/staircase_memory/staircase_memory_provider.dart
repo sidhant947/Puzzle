@@ -58,6 +58,7 @@ class StaircaseMemoryNotifier extends _$StaircaseMemoryNotifier {
 
   @override
   StaircaseState build() {
+    ref.onDispose(() => _timer?.cancel());
     return StaircaseState(sequence: []);
   }
 

@@ -52,6 +52,7 @@ class ReflexTapNotifier extends _$ReflexTapNotifier {
 
   @override
   ReflexTapState build() {
+    ref.onDispose(() => _timer?.cancel());
     return ReflexTapState(targetPosition: const Point(0.5, 0.5), targetSize: 80);
   }
 
