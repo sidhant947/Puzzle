@@ -45,9 +45,11 @@ Get the full suite of **puzzle games** for your Mac.
 ### Windows
 Get the full suite of **puzzle games** for your Windows.
 
-| **Github** |
-| :---: |
-| [<img  height="80" alt="image" src="https://github.com/user-attachments/assets/22dac90e-9807-4ce6-ba7c-d6829a083358" />](https://github.com/sidhant947/Puzzle/releases/latest/) |
+| **Github** | **Microsoft Store** |
+| :---: | :---: |
+| [<img  height="80" alt="image" src="https://github.com/user-attachments/assets/22dac90e-9807-4ce6-ba7c-d6829a083358" />](https://github.com/sidhant947/Puzzle/releases/latest/) | [<img src="https://get.microsoft.com/images/en-us%20light.svg" width="200"/>](https://apps.microsoft.com/detail/9nnzhw197lgf) |
+
+
 
 ---
 
