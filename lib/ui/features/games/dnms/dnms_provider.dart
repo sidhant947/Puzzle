@@ -139,11 +139,16 @@ class DnmsNotifier extends _$DnmsNotifier {
       color: _colors[_random.nextInt(_colors.length)],
     );
 
-    state = state.copyWith(
+    state = DnmsState(
       phase: DnmsPhase.memorize,
       sampleCard: sample,
-      options: [],
+      options: const [],
       lastRoundCorrect: null,
+      isLoading: false,
+      score: state.score,
+      timeLeft: state.timeLeft,
+      isGameOver: state.isGameOver,
+      currentDifficulty: state.currentDifficulty,
     );
 
     // After 2 seconds, transition to delay
@@ -152,22 +157,7 @@ class DnmsNotifier extends _$DnmsNotifier {
       
       // Delay phase for 1.5 seconds, then choice phase
       _phaseTimer = Timer(const Duration(milliseconds: 1500), () {
-        // Generate options (1 is sample, rest are novel)
-        List<DnmsCard> options = [sample];
-        
-        while (options.length < state.currentDifficulty) {
-          final candidate = DnmsCard(
-            id: options.length,
-            icon: _icons[_random.nextInt(_icons.length)],
-            color: _colors[_random.nextInt(_colors.length)],
-          );
-          
-          // Ensure it's not identical to the sample or existing options in look
-          final exists = options.any((o) => o.icon == candidate.icon && o.color == candidate.color);
-          if (!exists) {
-            options.add(candidate);
-          }
-        }
+        final options = _generateOptions(sample, state.currentDifficulty);
 
         options.shuffle(_random);
 
@@ -177,6 +167,68 @@ class DnmsNotifier extends _$DnmsNotifier {
         );
       });
     });
+  }
+
+  List<DnmsCard> _generateOptions(DnmsCard sample, int count) {
+    final options = <DnmsCard>[sample];
+    final usedIcons = {sample.icon};
+    final usedColors = {sample.color};
+
+    Color pickDifferentColor() {
+      final available = _colors.where((c) => c != sample.color).toList();
+      return available[_random.nextInt(available.length)];
+    }
+
+    IconData pickDifferentIcon() {
+      final available = _icons.where((i) => i != sample.icon).toList();
+      return available[_random.nextInt(available.length)];
+    }
+
+    IconData pickAnyIcon() {
+      final available = _icons.where((i) => !usedIcons.contains(i)).toList();
+      if (available.isEmpty) return _icons[_random.nextInt(_icons.length)];
+      return available[_random.nextInt(available.length)];
+    }
+
+    Color pickAnyColor() {
+      final available = _colors.where((c) => !usedColors.contains(c)).toList();
+      if (available.isEmpty) return _colors[_random.nextInt(_colors.length)];
+      return available[_random.nextInt(available.length)];
+    }
+
+    // First novel: same icon, different color
+    if (options.length < count) {
+      final card = DnmsCard(
+        id: options.length,
+        icon: sample.icon,
+        color: pickDifferentColor(),
+      );
+      options.add(card);
+      usedColors.add(card.color);
+    }
+
+    // Second novel: same color, different icon
+    if (options.length < count) {
+      final card = DnmsCard(
+        id: options.length,
+        icon: pickDifferentIcon(),
+        color: sample.color,
+      );
+      options.add(card);
+      usedIcons.add(card.icon);
+    }
+
+    // Third novel (difficulty 4): completely different
+    if (options.length < count) {
+      final card = DnmsCard(
+        id: options.length,
+        icon: pickAnyIcon(),
+        color: pickAnyColor(),
+      );
+      options.add(card);
+    }
+
+    return options;
   }
 
   void onSelectCard(DnmsCard card) {
