@@ -47,32 +47,32 @@ void main() {
     group('isValid', () {
       test('returns true for valid placement on empty board', () {
         final board = List.generate(9, (_) => List.filled(9, 0));
-        expect(engine.isValid(board, 0, 0, 1), isTrue);
+        expect(SudokuEngine.isValid(board, 0, 0, 1), isTrue);
       });
 
       test('returns false for duplicate in row', () {
         final board = List.generate(9, (_) => List.filled(9, 0));
         board[0][1] = 5;
-        expect(engine.isValid(board, 0, 0, 5), isFalse);
+        expect(SudokuEngine.isValid(board, 0, 0, 5), isFalse);
       });
 
       test('returns false for duplicate in column', () {
         final board = List.generate(9, (_) => List.filled(9, 0));
         board[1][0] = 5;
-        expect(engine.isValid(board, 0, 0, 5), isFalse);
+        expect(SudokuEngine.isValid(board, 0, 0, 5), isFalse);
       });
 
       test('returns false for duplicate in 3x3 box', () {
         final board = List.generate(9, (_) => List.filled(9, 0));
         board[1][1] = 5;
-        expect(engine.isValid(board, 0, 0, 5), isFalse);
+        expect(SudokuEngine.isValid(board, 0, 0, 5), isFalse);
       });
 
       test('returns true for different numbers in same row', () {
         final board = List.generate(9, (_) => List.filled(9, 0));
         board[0][1] = 1;
         board[0][2] = 2;
-        expect(engine.isValid(board, 0, 0, 3), isTrue);
+        expect(SudokuEngine.isValid(board, 0, 0, 3), isTrue);
       });
     });
 

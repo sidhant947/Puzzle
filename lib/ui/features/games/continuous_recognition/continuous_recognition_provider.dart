@@ -88,6 +88,38 @@ class ContinuousRecognitionNotifier extends _$ContinuousRecognitionNotifier {
     Icons.lock_rounded,
     Icons.music_note_rounded,
     Icons.emoji_events_rounded,
+    Icons.bolt_rounded,
+    Icons.diamond_rounded,
+    Icons.local_florist_rounded,
+    Icons.local_fire_department_rounded,
+    Icons.water_drop_rounded,
+    Icons.compass_calibration_rounded,
+    Icons.palette_rounded,
+    Icons.brush_rounded,
+    Icons.camera_alt_rounded,
+    Icons.headphones_rounded,
+    Icons.watch_rounded,
+    Icons.chair_rounded,
+    Icons.coffee_rounded,
+    Icons.brunch_dining_rounded,
+    Icons.flight_rounded,
+    Icons.sailing_rounded,
+    Icons.hiking_rounded,
+    Icons.bike_scooter_rounded,
+    Icons.sports_esports_rounded,
+    Icons.school_rounded,
+    Icons.science_rounded,
+    Icons.build_rounded,
+    Icons.healing_rounded,
+    Icons.nature_rounded,
+    Icons.eco_rounded,
+    Icons.energy_savings_leaf_rounded,
+    Icons.park_rounded,
+    Icons.pool_rounded,
+    Icons.wind_power_rounded,
+    Icons.ac_unit_rounded,
+    Icons.water_rounded,
+    Icons.waves_rounded,
   ];
 
   static const List<Color> _colors = [
@@ -103,9 +135,12 @@ class ContinuousRecognitionNotifier extends _$ContinuousRecognitionNotifier {
     DesignSystem.gameOrange,
     DesignSystem.gamePurple,
     DesignSystem.gamePink,
+    DesignSystem.gameRose,
+    DesignSystem.gameViolet,
+    DesignSystem.gameCyan,
+    DesignSystem.gameEmerald,
   ];
 
-  // List of all 100 possible unique cards
   final List<RecognitionCard> _cardPool = [];
 
   @override
@@ -147,22 +182,38 @@ class ContinuousRecognitionNotifier extends _$ContinuousRecognitionNotifier {
       return;
     }
 
+    final previousIcon = state.currentCard?.icon;
     RecognitionCard card;
-    // 50% chance of picking a seen card if we have seen cards
+
     if (state.seenCards.isNotEmpty && _random.nextBool()) {
-      card = state.seenCards[_random.nextInt(state.seenCards.length)];
-    } else {
-      // Pick a new card from pool
-      final unseenPool = _cardPool.where((c) => !state.seenCards.contains(c)).toList();
-      if (unseenPool.isEmpty) {
-        _endGame();
-        return;
+      final eligible = state.seenCards.where((c) => c.icon != previousIcon).toList();
+      if (eligible.isNotEmpty) {
+        card = eligible[_random.nextInt(eligible.length)];
+      } else {
+        card = state.seenCards[_random.nextInt(state.seenCards.length)];
       }
-      card = unseenPool[_random.nextInt(unseenPool.length)];
+    } else {
+      final unseenPool = _cardPool.where((c) =>
+          !state.seenCards.contains(c) && c.icon != previousIcon).toList();
+      if (unseenPool.isEmpty) {
+        final anyUnseen = _cardPool.where((c) => !state.seenCards.contains(c)).toList();
+        if (anyUnseen.isEmpty) {
+          _endGame();
+          return;
+        }
+        card = anyUnseen[_random.nextInt(anyUnseen.length)];
+      } else {
+        card = unseenPool[_random.nextInt(unseenPool.length)];
+      }
     }
 
-    state = state.copyWith(
+    state = ContinuousRecognitionState(
       currentCard: card,
+      seenCards: state.seenCards,
+      score: state.score,
+      timeLeft: state.timeLeft,
+      isGameOver: false,
+      isLoading: false,
       lastAnswerCorrect: null,
     );
   }

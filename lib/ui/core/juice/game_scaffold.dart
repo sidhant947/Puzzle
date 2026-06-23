@@ -48,19 +48,6 @@ class GameScaffold extends StatelessWidget {
             child: Column(
               children: [
                 _buildAppBar(context),
-                if (subtitle != null)
-                  Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG, vertical: DesignSystem.spaceXS),
-                    child: Text(
-                      subtitle!,
-                      textAlign: TextAlign.center,
-                      style: TextStyle(
-                        color: colorScheme.onSurface.withValues(alpha: 0.7),
-                        fontWeight: FontWeight.w500, // Balanced weight
-                        fontSize: DesignSystem.fontSizeSM, // Legible size
-                      ),
-                    ),
-                  ),
                 Expanded(child: body),
               ],
             ),
