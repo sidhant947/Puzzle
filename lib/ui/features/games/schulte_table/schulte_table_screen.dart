@@ -113,7 +113,7 @@ class SchulteTableScreen extends ConsumerWidget {
             style: TextStyle(
               fontSize: isSmall ? 10 : 12,
               fontWeight: FontWeight.w900,
-              color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5),
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.6),
               letterSpacing: 1.2,
             ),
           ),

@@ -87,6 +87,9 @@ jobs:
       - name: Build Windows
         run: flutter build windows --release
 
+      - name: Build MSIX
+        run: dart run msix:create
+
       - name: Create Portable Zip
         run: |
           powershell Compress-Archive -Path build/windows/x64/runner/release/* -DestinationPath build/windows/x64/runner/release/puzzle-games-windows-portable.zip
@@ -98,6 +101,7 @@ jobs:
           name: windows-artifacts
           path: |
             build/windows/x64/runner/release/puzzle-games-windows-portable.zip
+            build/windows/x64/runner/Release/*.msix
 
   build-macos:
     name: Build macOS
