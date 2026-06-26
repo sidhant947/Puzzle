@@ -182,6 +182,7 @@ class DesignSystem {
   static const EdgeInsets padding2XL = EdgeInsets.all(32.0);
 
   // --- Game Accents ---
+  static const Color gameRed = Color(0xFFEF4444);
   static const Color gameBlue = Color(0xFF3B82F6);
   static const Color gameGreen = Color(0xFF22C55E);
   static const Color gamePurple = Color(0xFFA855F7);

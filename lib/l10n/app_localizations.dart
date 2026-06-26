@@ -6607,6 +6607,1230 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Group 16 words into four categories of four.'**
   String get wordGridConnectionSubtitle;
+
+  /// No description provided for @shapeShifterPeripheralTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Peripheral Shapes'**
+  String get shapeShifterPeripheralTitle;
+
+  /// No description provided for @shapeShifterPeripheralSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Track peripheral shape changes while matching central values.'**
+  String get shapeShifterPeripheralSubtitle;
+
+  /// No description provided for @soundWaveMatchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sound Wave Match'**
+  String get soundWaveMatchTitle;
+
+  /// No description provided for @soundWaveMatchSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap when the visual wave frequency aligns with pitch changes.'**
+  String get soundWaveMatchSubtitle;
+
+  /// No description provided for @multiTrackCounterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Multi-Track Counter'**
+  String get multiTrackCounterTitle;
+
+  /// No description provided for @multiTrackCounterSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap when any counter increments to a target multiplier.'**
+  String get multiTrackCounterSubtitle;
+
+  /// No description provided for @colorWordMatchUpTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Color Match-Up'**
+  String get colorWordMatchUpTitle;
+
+  /// No description provided for @colorWordMatchUpSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Determine if two colored words match based on changing rules.'**
+  String get colorWordMatchUpSubtitle;
+
+  /// No description provided for @signalAndNoiseTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Signal & Noise'**
+  String get signalAndNoiseTitle;
+
+  /// No description provided for @signalAndNoiseSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Locate target alphanumeric characters hidden in static noise.'**
+  String get signalAndNoiseSubtitle;
+
+  /// No description provided for @focusTunnelTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Focus Tunnel'**
+  String get focusTunnelTitle;
+
+  /// No description provided for @focusTunnelSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify matching symbols appearing on moving tunnel walls.'**
+  String get focusTunnelSubtitle;
+
+  /// No description provided for @targetPursuerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Target Pursuer'**
+  String get targetPursuerTitle;
+
+  /// No description provided for @targetPursuerSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Track multiple overlapping circles and select the original target.'**
+  String get targetPursuerSubtitle;
+
+  /// No description provided for @gridGazeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Grid Gaze'**
+  String get gridGazeTitle;
+
+  /// No description provided for @gridGazeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify which grid cell flashed with a different duration.'**
+  String get gridGazeSubtitle;
+
+  /// No description provided for @doubleTroubleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Double Trouble'**
+  String get doubleTroubleTitle;
+
+  /// No description provided for @doubleTroubleSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Play two separate simple games simultaneously on split-screen.'**
+  String get doubleTroubleSubtitle;
+
+  /// No description provided for @syncRhythmTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sync Rhythm'**
+  String get syncRhythmTitle;
+
+  /// No description provided for @syncRhythmSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap when visual metronome sweep matches syncopated beat.'**
+  String get syncRhythmSubtitle;
+
+  /// No description provided for @ghostTapTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ghost Tap'**
+  String get ghostTapTitle;
+
+  /// No description provided for @ghostTapSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap when the invisible pulse reaches its maximum height.'**
+  String get ghostTapSubtitle;
+
+  /// No description provided for @attentionalRsvpTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Attentional RSVP'**
+  String get attentionalRsvpTitle;
+
+  /// No description provided for @attentionalRsvpSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify digits appearing in rapid serial letter flash.'**
+  String get attentionalRsvpSubtitle;
+
+  /// No description provided for @colorMazeNavTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Color Maze Nav'**
+  String get colorMazeNavTitle;
+
+  /// No description provided for @colorMazeNavSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Navigate maze tiles matching dynamic permission colors.'**
+  String get colorMazeNavSubtitle;
+
+  /// No description provided for @dynamicSalienceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Dynamic Salience'**
+  String get dynamicSalienceTitle;
+
+  /// No description provided for @dynamicSalienceSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find the shape moving with slightly different dynamics.'**
+  String get dynamicSalienceSubtitle;
+
+  /// No description provided for @chalkAndTalkTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Chalk & Talk'**
+  String get chalkAndTalkTitle;
+
+  /// No description provided for @chalkAndTalkSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Type words heard in audio while ignoring visual distractors.'**
+  String get chalkAndTalkSubtitle;
+
+  /// No description provided for @blinkDetectorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Blink Detector'**
+  String get blinkDetectorTitle;
+
+  /// No description provided for @blinkDetectorSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the grid face that blinks twice in rapid succession.'**
+  String get blinkDetectorSubtitle;
+
+  /// No description provided for @frequencyTapTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Frequency Tap'**
+  String get frequencyTapTitle;
+
+  /// No description provided for @frequencyTapSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the button matching the target light pulse frequency.'**
+  String get frequencyTapSubtitle;
+
+  /// No description provided for @yajilinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Yajilin Loop'**
+  String get yajilinTitle;
+
+  /// No description provided for @yajilinSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Place black cells and draw a single loop matching clues.'**
+  String get yajilinSubtitle;
+
+  /// No description provided for @heyawakeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Heyawake Grid'**
+  String get heyawakeTitle;
+
+  /// No description provided for @heyawakeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Shade grid rooms without adjacent black cells.'**
+  String get heyawakeSubtitle;
+
+  /// No description provided for @gokigenVariantTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Gokigen Variant'**
+  String get gokigenVariantTitle;
+
+  /// No description provided for @gokigenVariantSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw loop-free diagonals meeting vertex counts.'**
+  String get gokigenVariantSubtitle;
+
+  /// No description provided for @sheepAndWolvesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sheep & Wolves'**
+  String get sheepAndWolvesTitle;
+
+  /// No description provided for @sheepAndWolvesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw a loop separating sheep from wolves.'**
+  String get sheepAndWolvesSubtitle;
+
+  /// No description provided for @islandNurikabeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Island Nurikabe'**
+  String get islandNurikabeTitle;
+
+  /// No description provided for @islandNurikabeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Form islands matching numerical size constraints.'**
+  String get islandNurikabeSubtitle;
+
+  /// No description provided for @shakashakaTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Shakashaka Rects'**
+  String get shakashakaTitle;
+
+  /// No description provided for @shakashakaSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Place triangular tiles to form rectangular white areas.'**
+  String get shakashakaSubtitle;
+
+  /// No description provided for @litsTetrisTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'LITS Tetromino'**
+  String get litsTetrisTitle;
+
+  /// No description provided for @litsTetrisSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Place tetrominoes in rooms with no adjacent duplicates.'**
+  String get litsTetrisSubtitle;
+
+  /// No description provided for @tapaWallTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tapa Wall'**
+  String get tapaWallTitle;
+
+  /// No description provided for @tapaWallSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Shade cells to form a continuous black wall pattern.'**
+  String get tapaWallSubtitle;
+
+  /// No description provided for @triangularBridgesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Triangular Bridges'**
+  String get triangularBridgesTitle;
+
+  /// No description provided for @triangularBridgesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect islands in 3 directions meeting requirements.'**
+  String get triangularBridgesSubtitle;
+
+  /// No description provided for @rippleEffectTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Ripple Effect'**
+  String get rippleEffectTitle;
+
+  /// No description provided for @rippleEffectSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill numbers in rooms respecting spacing distance constraints.'**
+  String get rippleEffectSubtitle;
+
+  /// No description provided for @suguruTectonicTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Suguru Grid'**
+  String get suguruTectonicTitle;
+
+  /// No description provided for @suguruTectonicSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill room blocks with numbers 1 to K with no neighbors equal.'**
+  String get suguruTectonicSubtitle;
+
+  /// No description provided for @tennerGridTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tenner Grid'**
+  String get tennerGridTitle;
+
+  /// No description provided for @tennerGridSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill rows with digits 0-9 matching column totals.'**
+  String get tennerGridSubtitle;
+
+  /// No description provided for @kakurasuSumsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Kakurasu Sums'**
+  String get kakurasuSumsTitle;
+
+  /// No description provided for @kakurasuSumsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Shade cells to meet weighted row/col index sums.'**
+  String get kakurasuSumsSubtitle;
+
+  /// No description provided for @corralLoopTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Corral Loop'**
+  String get corralLoopTitle;
+
+  /// No description provided for @corralLoopSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw a single loop enclosing numbers matching visibility.'**
+  String get corralLoopSubtitle;
+
+  /// No description provided for @stostoneTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Stostone Gravity'**
+  String get stostoneTitle;
+
+  /// No description provided for @stostoneSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Shade cells that drop down to fill bottom rows perfectly.'**
+  String get stostoneSubtitle;
+
+  /// No description provided for @tripletsLogicTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Triplets Trio'**
+  String get tripletsLogicTitle;
+
+  /// No description provided for @tripletsLogicSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Fill grid with three shapes avoiding three-in-a-row.'**
+  String get tripletsLogicSubtitle;
+
+  /// No description provided for @galaxiesSymTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Galaxies Symmetry'**
+  String get galaxiesSymTitle;
+
+  /// No description provided for @galaxiesSymSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Divide grid into rotationally symmetric galaxy shapes.'**
+  String get galaxiesSymSubtitle;
+
+  /// No description provided for @matrixMultiplierMatchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Matrix Matcher'**
+  String get matrixMultiplierMatchTitle;
+
+  /// No description provided for @matrixMultiplierMatchSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Multiply row and column values to match target dot product.'**
+  String get matrixMultiplierMatchSubtitle;
+
+  /// No description provided for @primeFactorTreesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Prime Factor Trees'**
+  String get primeFactorTreesTitle;
+
+  /// No description provided for @primeFactorTreesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Decompose composite numbers into prime leaf factor pairs.'**
+  String get primeFactorTreesSubtitle;
+
+  /// No description provided for @vektorVectorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Vector Vector'**
+  String get vektorVectorTitle;
+
+  /// No description provided for @vektorVectorSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Scale vectors to make their sum land on the target.'**
+  String get vektorVectorSubtitle;
+
+  /// No description provided for @binomialMatchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Binomial Match'**
+  String get binomialMatchTitle;
+
+  /// No description provided for @binomialMatchSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Match quadratic formulas with factored binomial values.'**
+  String get binomialMatchSubtitle;
+
+  /// No description provided for @percentageShoppingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Percentage Shopping'**
+  String get percentageShoppingTitle;
+
+  /// No description provided for @percentageShoppingSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate discount percentages and final checkout totals.'**
+  String get percentageShoppingSubtitle;
+
+  /// No description provided for @cryptoArithmeticTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Crypto-Arithmetic'**
+  String get cryptoArithmeticTitle;
+
+  /// No description provided for @cryptoArithmeticSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Crack character-digit substitution cipher math problems.'**
+  String get cryptoArithmeticSubtitle;
+
+  /// No description provided for @fractionalPizzaTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Fractional Pizza'**
+  String get fractionalPizzaTitle;
+
+  /// No description provided for @fractionalPizzaSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Partition pizza slices to match target sum fractions.'**
+  String get fractionalPizzaSubtitle;
+
+  /// No description provided for @numberBondsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Number Bonds'**
+  String get numberBondsTitle;
+
+  /// No description provided for @numberBondsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Link node values to equal a target connection sum.'**
+  String get numberBondsSubtitle;
+
+  /// No description provided for @gridSumLineTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Grid Sum Line'**
+  String get gridSumLineTitle;
+
+  /// No description provided for @gridSumLineSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw a path whose values evaluate exactly to the target.'**
+  String get gridSumLineSubtitle;
+
+  /// No description provided for @binaryScaleBalanceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Binary Scale Balance'**
+  String get binaryScaleBalanceTitle;
+
+  /// No description provided for @binaryScaleBalanceSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Balance decimal weight using power-of-two blocks.'**
+  String get binaryScaleBalanceSubtitle;
+
+  /// No description provided for @moduloPathTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Modulo Path'**
+  String get moduloPathTitle;
+
+  /// No description provided for @moduloPathSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Traverse grid cells matching modulo remainder values.'**
+  String get moduloPathSubtitle;
+
+  /// No description provided for @digitSwapEqTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Digit Swap Equations'**
+  String get digitSwapEqTitle;
+
+  /// No description provided for @digitSwapEqSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Swap single digits between equations to correct both.'**
+  String get digitSwapEqSubtitle;
+
+  /// No description provided for @areaPerimeterMatchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Area & Perimeter'**
+  String get areaPerimeterMatchTitle;
+
+  /// No description provided for @areaPerimeterMatchSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw rectangles matching target area and perimeter values.'**
+  String get areaPerimeterMatchSubtitle;
+
+  /// No description provided for @inequalityBalanceOpsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Inequality Balance'**
+  String get inequalityBalanceOpsTitle;
+
+  /// No description provided for @inequalityBalanceOpsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Place inequality symbols between complex math terms.'**
+  String get inequalityBalanceOpsSubtitle;
+
+  /// No description provided for @graphCoordinatePlotTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Graph Plotter'**
+  String get graphCoordinatePlotTitle;
+
+  /// No description provided for @graphCoordinatePlotSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Plot grid coordinates matching linear/quadratic curves.'**
+  String get graphCoordinatePlotSubtitle;
+
+  /// No description provided for @baseConversionRunTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Base Conversion'**
+  String get baseConversionRunTitle;
+
+  /// No description provided for @baseConversionRunSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Convert values between binary, decimal, hex, and octal.'**
+  String get baseConversionRunSubtitle;
+
+  /// No description provided for @unitConverterProTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Unit Converter'**
+  String get unitConverterProTitle;
+
+  /// No description provided for @unitConverterProSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer quick unit conversions under time limits.'**
+  String get unitConverterProSubtitle;
+
+  /// No description provided for @auditoryNBackTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Auditory N-Back'**
+  String get auditoryNBackTitle;
+
+  /// No description provided for @auditoryNBackSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Match spoken letters heard N steps back from memory.'**
+  String get auditoryNBackSubtitle;
+
+  /// No description provided for @abstractPatternRecallTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pattern Layering'**
+  String get abstractPatternRecallTitle;
+
+  /// No description provided for @abstractPatternRecallSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reconstruct layered colorful shapes from memory study.'**
+  String get abstractPatternRecallSubtitle;
+
+  /// No description provided for @roomInspectorTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Room Inspector'**
+  String get roomInspectorTitle;
+
+  /// No description provided for @roomInspectorSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify furniture modifications made while screen was blank.'**
+  String get roomInspectorSubtitle;
+
+  /// No description provided for @voiceToFaceMatchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Voice-Face Match'**
+  String get voiceToFaceMatchTitle;
+
+  /// No description provided for @voiceToFaceMatchSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select correct face associated with spoken audio voice clip.'**
+  String get voiceToFaceMatchSubtitle;
+
+  /// No description provided for @spatialGridMemory3DTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'3D Spatial Memory'**
+  String get spatialGridMemory3DTitle;
+
+  /// No description provided for @spatialGridMemory3DSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Recall flashed blocks in a rotated 3D cube grid structure.'**
+  String get spatialGridMemory3DSubtitle;
+
+  /// No description provided for @sequenceStackTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sequence Stack'**
+  String get sequenceStackTitle;
+
+  /// No description provided for @sequenceStackSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reconstruct plate stack additions and removals in order.'**
+  String get sequenceStackSubtitle;
+
+  /// No description provided for @semanticCategoryRecallTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Category Recall'**
+  String get semanticCategoryRecallTitle;
+
+  /// No description provided for @semanticCategoryRecallSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify study words matching requested category targets.'**
+  String get semanticCategoryRecallSubtitle;
+
+  /// No description provided for @gridDisplacementTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Grid Displacement'**
+  String get gridDisplacementTitle;
+
+  /// No description provided for @gridDisplacementSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify shifted icons comparing layout to original.'**
+  String get gridDisplacementSubtitle;
+
+  /// No description provided for @soundSequenceMatchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Sound Sequence Match'**
+  String get soundSequenceMatchTitle;
+
+  /// No description provided for @soundSequenceMatchSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat note sequences played on a virtual keyboard.'**
+  String get soundSequenceMatchSubtitle;
+
+  /// No description provided for @cardCountingMemoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Card Counter'**
+  String get cardCountingMemoryTitle;
+
+  /// No description provided for @cardCountingMemorySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify cards already dealt in continuous card deal runs.'**
+  String get cardCountingMemorySubtitle;
+
+  /// No description provided for @directionsRecallTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Directions Recall'**
+  String get directionsRecallTitle;
+
+  /// No description provided for @directionsRecallSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Navigate grid maps matching path directions from memory.'**
+  String get directionsRecallSubtitle;
+
+  /// No description provided for @eventTimelineMemoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Event Timeline'**
+  String get eventTimelineMemoryTitle;
+
+  /// No description provided for @eventTimelineMemorySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrange historical/fictional event cards chronologically.'**
+  String get eventTimelineMemorySubtitle;
+
+  /// No description provided for @featureMatrixRecallTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Feature Matrix'**
+  String get featureMatrixRecallTitle;
+
+  /// No description provided for @featureMatrixRecallSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Answer query prompts about cell shape-color attributes.'**
+  String get featureMatrixRecallSubtitle;
+
+  /// No description provided for @delayedMatchSampleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Delayed Match'**
+  String get delayedMatchSampleTitle;
+
+  /// No description provided for @delayedMatchSampleSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Match target symbol after solving math distractors.'**
+  String get delayedMatchSampleSubtitle;
+
+  /// No description provided for @symbolDigitAssocTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Symbol-Digit Assoc'**
+  String get symbolDigitAssocTitle;
+
+  /// No description provided for @symbolDigitAssocSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Solve symbol translation sheets matching digit keys.'**
+  String get symbolDigitAssocSubtitle;
+
+  /// No description provided for @dualTaskMemoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Dual-Task Memory'**
+  String get dualTaskMemoryTitle;
+
+  /// No description provided for @dualTaskMemorySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize word sets while resolving quick arithmetic tasks.'**
+  String get dualTaskMemorySubtitle;
+
+  /// No description provided for @actionSequenceRecallTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Action Recall'**
+  String get actionSequenceRecallTitle;
+
+  /// No description provided for @actionSequenceRecallSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat character gesture animation sequences in order.'**
+  String get actionSequenceRecallSubtitle;
+
+  /// No description provided for @tangramPolygonTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tangram Fit'**
+  String get tangramPolygonTitle;
+
+  /// No description provided for @tangramPolygonSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrange polygon shapes to fill silhouette outlines.'**
+  String get tangramPolygonSubtitle;
+
+  /// No description provided for @mazeNav3DTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'3D Maze Nav'**
+  String get mazeNav3DTitle;
+
+  /// No description provided for @mazeNav3DSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Navigate 3D isometric maze routes from first-person view.'**
+  String get mazeNav3DSubtitle;
+
+  /// No description provided for @isometricProjectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Isometric Projector'**
+  String get isometricProjectionTitle;
+
+  /// No description provided for @isometricProjectionSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Match 3D block figures to orthographic 2D top/front views.'**
+  String get isometricProjectionSubtitle;
+
+  /// No description provided for @polyominoPackingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Polyomino Packing'**
+  String get polyominoPackingTitle;
+
+  /// No description provided for @polyominoPackingSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pack random polyomino block pieces into target areas.'**
+  String get polyominoPackingSubtitle;
+
+  /// No description provided for @spatialGridRotationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Spatial Grid Rotation'**
+  String get spatialGridRotationTitle;
+
+  /// No description provided for @spatialGridRotationSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Match 3D block arrangements rotated along axis coordinates.'**
+  String get spatialGridRotationSubtitle;
+
+  /// No description provided for @wireLoopGameTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Wire Loop'**
+  String get wireLoopGameTitle;
+
+  /// No description provided for @wireLoopGameSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Drag metal rings along wire splines without contact.'**
+  String get wireLoopGameSubtitle;
+
+  /// No description provided for @origamiUnfoldTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Origami Unfold'**
+  String get origamiUnfoldTitle;
+
+  /// No description provided for @origamiUnfoldSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify hole punch patterns after unfolding folded sheets.'**
+  String get origamiUnfoldSubtitle;
+
+  /// No description provided for @ropeTangleSolverTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rope Untangler'**
+  String get ropeTangleSolverTitle;
+
+  /// No description provided for @ropeTangleSolverSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Drag nodes to layout planar graphs with zero line crosses.'**
+  String get ropeTangleSolverSubtitle;
+
+  /// No description provided for @gridFitTetrisTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Grid Fit Solver'**
+  String get gridFitTetrisTitle;
+
+  /// No description provided for @gridFitTetrisSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrange static irregular blocks to fit container bounds.'**
+  String get gridFitTetrisSubtitle;
+
+  /// No description provided for @vectorGridAlignmentTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Vector Alignment'**
+  String get vectorGridAlignmentTitle;
+
+  /// No description provided for @vectorGridAlignmentSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Scale and rotate shapes to match shadow template targets.'**
+  String get vectorGridAlignmentSubtitle;
+
+  /// No description provided for @blockStackingPhysicsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Block Stacking'**
+  String get blockStackingPhysicsTitle;
+
+  /// No description provided for @blockStackingPhysicsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Stack irregular block panels balancing gravity weight.'**
+  String get blockStackingPhysicsSubtitle;
+
+  /// No description provided for @crossSectionMatch3DTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'3D Cross Section'**
+  String get crossSectionMatch3DTitle;
+
+  /// No description provided for @crossSectionMatch3DSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify 2D slice geometries cut from 3D shapes.'**
+  String get crossSectionMatch3DSubtitle;
+
+  /// No description provided for @symmetryPaintTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Symmetry Paint'**
+  String get symmetryPaintTitle;
+
+  /// No description provided for @symmetryPaintSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw mirror image segments reflecting across symmetry axes.'**
+  String get symmetryPaintSubtitle;
+
+  /// No description provided for @rollingBlockBloxTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rolling Block'**
+  String get rollingBlockBloxTitle;
+
+  /// No description provided for @rollingBlockBloxSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Roll block pieces to land vertically in target slots.'**
+  String get rollingBlockBloxSubtitle;
+
+  /// No description provided for @perspectiveShiftViewTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Perspective Shift'**
+  String get perspectiveShiftViewTitle;
+
+  /// No description provided for @perspectiveShiftViewSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rotate block clusters until they spell letters/words.'**
+  String get perspectiveShiftViewSubtitle;
+
+  /// No description provided for @networkFlowSphericalTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Network Flow'**
+  String get networkFlowSphericalTitle;
+
+  /// No description provided for @networkFlowSphericalSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Connect grid flows on wrapping cylindrical coordinates.'**
+  String get networkFlowSphericalSubtitle;
+
+  /// No description provided for @layeredSilhouetteBlendTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Silhouette Blend'**
+  String get layeredSilhouetteBlendTitle;
+
+  /// No description provided for @layeredSilhouetteBlendSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Stack colored layers to match target translucent shapes.'**
+  String get layeredSilhouetteBlendSubtitle;
+
+  /// No description provided for @wordWheelPangramTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Word Anagrams'**
+  String get wordWheelPangramTitle;
+
+  /// No description provided for @wordWheelPangramSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Construct words containing central target letters from wheels.'**
+  String get wordWheelPangramSubtitle;
+
+  /// No description provided for @letterGridSwapperTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Letter Swapper'**
+  String get letterGridSwapperTitle;
+
+  /// No description provided for @letterGridSwapperSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Swap adjacent letter tiles to complete row and col words.'**
+  String get letterGridSwapperSubtitle;
+
+  /// No description provided for @synonymMatchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Synonym Match'**
+  String get synonymMatchTitle;
+
+  /// No description provided for @synonymMatchSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Match falling word targets with synonyms or antonyms.'**
+  String get synonymMatchSubtitle;
+
+  /// No description provided for @vowelDropTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Vowel Drop'**
+  String get vowelDropTitle;
+
+  /// No description provided for @vowelDropSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Drop vowels into coordinate grids completing words.'**
+  String get vowelDropSubtitle;
+
+  /// No description provided for @letterBalanceScaleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Word Balance Scale'**
+  String get letterBalanceScaleTitle;
+
+  /// No description provided for @letterBalanceScaleSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Spell words whose letter values balance weights.'**
+  String get letterBalanceScaleSubtitle;
+
+  /// No description provided for @wordChainShiritoriTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Word Chain'**
+  String get wordChainShiritoriTitle;
+
+  /// No description provided for @wordChainShiritoriSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Link word loops starting with preceding letter outputs.'**
+  String get wordChainShiritoriSubtitle;
+
+  /// No description provided for @affixBuilderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Affix Builder'**
+  String get affixBuilderTitle;
+
+  /// No description provided for @affixBuilderSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Combine prefixes/suffixes to construct target vocabularies.'**
+  String get affixBuilderSubtitle;
+
+  /// No description provided for @decipherCrypticCluesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Cryptic Decipher'**
+  String get decipherCrypticCluesTitle;
+
+  /// No description provided for @decipherCrypticCluesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Solve word-play puzzles and decrypt spelling riddles.'**
+  String get decipherCrypticCluesSubtitle;
+
+  /// No description provided for @boggleWordSearchTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Boggle Connect'**
+  String get boggleWordSearchTitle;
+
+  /// No description provided for @boggleWordSearchSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Trace adjacent connected paths to find hidden words.'**
+  String get boggleWordSearchSubtitle;
+
+  /// No description provided for @idiomUnscrambleTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Idiom Unscramble'**
+  String get idiomUnscrambleTitle;
+
+  /// No description provided for @idiomUnscrambleSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrange scrambled word arrays to match idiom meanings.'**
+  String get idiomUnscrambleSubtitle;
+
+  /// No description provided for @letterPyramidsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Letter Pyramids'**
+  String get letterPyramidsTitle;
+
+  /// No description provided for @letterPyramidsSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Build word towers adding single anagram letters per tier.'**
+  String get letterPyramidsSubtitle;
+
+  /// No description provided for @soundAlikeHomophonesTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Homophone Matches'**
+  String get soundAlikeHomophonesTitle;
+
+  /// No description provided for @soundAlikeHomophonesSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify correct homophone spellings for sentences.'**
+  String get soundAlikeHomophonesSubtitle;
+
+  /// No description provided for @wordGridSudokuTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Word Sudoku'**
+  String get wordGridSudokuTitle;
+
+  /// No description provided for @wordGridSudokuSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tesselate letters in grid rows forming words.'**
+  String get wordGridSudokuSubtitle;
+
+  /// No description provided for @portmanteauFactoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Portmanteau Factory'**
+  String get portmanteauFactoryTitle;
+
+  /// No description provided for @portmanteauFactorySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Merge semantic components creating compound words.'**
+  String get portmanteauFactorySubtitle;
+
+  /// No description provided for @codedCrosswordsCodeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Codewords Crossword'**
+  String get codedCrosswordsCodeTitle;
+
+  /// No description provided for @codedCrosswordsCodeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Solve grid crosswords matching number-to-letter codes.'**
+  String get codedCrosswordsCodeSubtitle;
+
+  /// No description provided for @wordSnakeTrailTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Word Snake'**
+  String get wordSnakeTrailTitle;
+
+  /// No description provided for @wordSnakeTrailSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Trace snake-like letter trails spelling thematic words.'**
+  String get wordSnakeTrailSubtitle;
+
+  /// No description provided for @typingRhythmSpeedTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Typing Flow'**
+  String get typingRhythmSpeedTitle;
+
+  /// No description provided for @typingRhythmSpeedSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Type vocabularies matching metronome rhythm beats.'**
+  String get typingRhythmSpeedSubtitle;
 }
 
 class _AppLocalizationsDelegate

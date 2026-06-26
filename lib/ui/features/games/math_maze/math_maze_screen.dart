@@ -26,36 +26,6 @@ class _MathMazeScreenState extends ConsumerState<MathMazeScreen> {
   final Random _random = Random();
   final int _gridSize = 3;
 
-  final List<MathMazePuzzle> _puzzles = [
-    // Puzzle 1: (3 + 4) * 2 - 6 = 8
-    MathMazePuzzle(
-      grid: [
-        ['3', '+', '4'],
-        ['*', '2', '+'],
-        ['5', '-', '6'],
-      ],
-      target: 8,
-    ),
-    // Puzzle 2: (4 * 3) + 2 + 1 = 15
-    MathMazePuzzle(
-      grid: [
-        ['4', '*', '3'],
-        ['+', '2', '-'],
-        ['5', '+', '1'],
-      ],
-      target: 15,
-    ),
-    // Puzzle 3: (2 + 5) * 3 + 3 = 24
-    MathMazePuzzle(
-      grid: [
-        ['2', '+', '5'],
-        ['*', '3', '-'],
-        ['4', '+', '3'],
-      ],
-      target: 24,
-    ),
-  ];
-
   late MathMazePuzzle _currentPuzzle;
   List<Point<int>> _userPath = [];
   int _runningTotal = 0;
@@ -71,9 +41,70 @@ class _MathMazeScreenState extends ConsumerState<MathMazeScreen> {
   }
 
   void _generatePuzzle() {
-    _currentPuzzle = _puzzles[_random.nextInt(_puzzles.length)];
-    _userPath = [const Point(0, 0)]; // Start cell
-    _runningTotal = int.parse(_currentPuzzle.grid[0][0]);
+    final grid = List.generate(_gridSize, (r) => List.generate(_gridSize, (c) {
+      if ((r + c) % 2 == 0) {
+        return (1 + _random.nextInt(9)).toString();
+      } else {
+        const ops = ['+', '-', '*'];
+        return ops[_random.nextInt(ops.length)];
+      }
+    }));
+
+    List<Point<int>> findRandomPath() {
+      final path = <Point<int>>[const Point(0, 0)];
+      final visited = <Point<int>>{const Point(0, 0)};
+
+      bool dfs(Point<int> current) {
+        if (current.x == _gridSize - 1 && current.y == _gridSize - 1) {
+          return true;
+        }
+
+        final neighbors = <Point<int>>[];
+        final dx = [0, 0, 1, -1];
+        final dy = [1, -1, 0, 0];
+        for (int i = 0; i < 4; i++) {
+          final nx = current.x + dx[i];
+          final ny = current.y + dy[i];
+          if (nx >= 0 && nx < _gridSize && ny >= 0 && ny < _gridSize) {
+            final p = Point(nx, ny);
+            if (!visited.contains(p)) {
+              neighbors.add(p);
+            }
+          }
+        }
+
+        neighbors.shuffle(_random);
+        for (final next in neighbors) {
+          visited.add(next);
+          path.add(next);
+          if (dfs(next)) return true;
+          path.removeLast();
+          visited.remove(next);
+        }
+        return false;
+      }
+
+      dfs(const Point(0, 0));
+      return path;
+    }
+
+    final path = findRandomPath();
+    int targetVal = int.parse(grid[0][0]);
+    for (int i = 2; i < path.length; i += 2) {
+      final op = grid[path[i - 1].x][path[i - 1].y];
+      final val = int.parse(grid[path[i].x][path[i].y]);
+      if (op == '+') {
+        targetVal += val;
+      } else if (op == '-') {
+        targetVal -= val;
+      } else if (op == '*') {
+        targetVal *= val;
+      }
+    }
+
+    _currentPuzzle = MathMazePuzzle(grid: grid, target: targetVal);
+    _userPath = [const Point(0, 0)];
+    _runningTotal = int.parse(grid[0][0]);
   }
 
   void _onCellTapped(int r, int c) {

@@ -233,6 +233,53 @@ import '../ui/features/games/letter_bridge/letter_bridge_metadata.dart';
 import '../ui/features/games/letter_frequency_scan/letter_frequency_scan_metadata.dart';
 import '../ui/features/games/one_letter_shift/one_letter_shift_metadata.dart';
 
+import '../ui/features/games/action_sequence_recall/action_sequence_recall_metadata.dart';
+import '../ui/features/games/area_perimeter_match/area_perimeter_match_metadata.dart';
+import '../ui/features/games/base_conversion_run/base_conversion_run_metadata.dart';
+import '../ui/features/games/binary_scale_balance/binary_scale_balance_metadata.dart';
+import '../ui/features/games/binomial_match/binomial_match_metadata.dart';
+import '../ui/features/games/blink_detector/blink_detector_metadata.dart';
+import '../ui/features/games/block_stacking_physics/block_stacking_physics_metadata.dart';
+import '../ui/features/games/card_counting_memory/card_counting_memory_metadata.dart';
+import '../ui/features/games/chalk_and_talk/chalk_and_talk_metadata.dart';
+import '../ui/features/games/color_maze_nav/color_maze_nav_metadata.dart';
+import '../ui/features/games/color_word_match_up/color_word_match_up_metadata.dart';
+import '../ui/features/games/crypto_arithmetic/crypto_arithmetic_metadata.dart';
+import '../ui/features/games/delayed_match_sample/delayed_match_sample_metadata.dart';
+import '../ui/features/games/digit_swap_eq/digit_swap_eq_metadata.dart';
+import '../ui/features/games/directions_recall/directions_recall_metadata.dart';
+import '../ui/features/games/double_trouble/double_trouble_metadata.dart';
+import '../ui/features/games/dual_task_memory/dual_task_memory_metadata.dart';
+import '../ui/features/games/dynamic_salience/dynamic_salience_metadata.dart';
+import '../ui/features/games/event_timeline_memory/event_timeline_memory_metadata.dart';
+import '../ui/features/games/feature_matrix_recall/feature_matrix_recall_metadata.dart';
+import '../ui/features/games/focus_tunnel/focus_tunnel_metadata.dart';
+import '../ui/features/games/fractional_pizza/fractional_pizza_metadata.dart';
+import '../ui/features/games/frequency_tap/frequency_tap_metadata.dart';
+import '../ui/features/games/ghost_tap/ghost_tap_metadata.dart';
+import '../ui/features/games/graph_coordinate_plot/graph_coordinate_plot_metadata.dart';
+import '../ui/features/games/grid_displacement/grid_displacement_metadata.dart';
+import '../ui/features/games/inequality_balance_ops/inequality_balance_ops_metadata.dart';
+import '../ui/features/games/kakurasu_sums/kakurasu_sums_metadata.dart';
+import '../ui/features/games/letter_grid_swapper/letter_grid_swapper_metadata.dart';
+import '../ui/features/games/matrix_multiplier_match/matrix_multiplier_match_metadata.dart';
+import '../ui/features/games/maze_nav_3d/maze_nav_3d_metadata.dart';
+import '../ui/features/games/modulo_path/modulo_path_metadata.dart';
+import '../ui/features/games/multi_track_counter/multi_track_counter_metadata.dart';
+import '../ui/features/games/number_bonds/number_bonds_metadata.dart';
+import '../ui/features/games/percentage_shopping/percentage_shopping_metadata.dart';
+import '../ui/features/games/perspective_shift_view/perspective_shift_view_metadata.dart';
+import '../ui/features/games/prime_factor_trees/prime_factor_trees_metadata.dart';
+import '../ui/features/games/room_inspector/room_inspector_metadata.dart';
+import '../ui/features/games/sequence_stack/sequence_stack_metadata.dart';
+import '../ui/features/games/symbol_digit_assoc/symbol_digit_assoc_metadata.dart';
+import '../ui/features/games/tenner_grid/tenner_grid_metadata.dart';
+import '../ui/features/games/triplets_logic/triplets_logic_metadata.dart';
+import '../ui/features/games/unit_converter_pro/unit_converter_pro_metadata.dart';
+import '../ui/features/games/vector_grid_alignment/vector_grid_alignment_metadata.dart';
+import '../ui/features/games/vektor_vector/vektor_vector_metadata.dart';
+import '../ui/features/games/word_snake_trail/word_snake_trail_metadata.dart';
+
 List<GameMetadata>? _cachedGames;
 
 List<GameMetadata> get allGamesMetadata => _cachedGames ??= _buildGameList();
@@ -467,5 +514,51 @@ List<GameMetadata> _buildGameList() {
     storyBuilderMetadata,
     mirrorMazeMetadata,
     wordGridConnectionMetadata,
+    multiTrackCounterMetadata,
+    colorWordMatchUpMetadata,
+    focusTunnelMetadata,
+    doubleTroubleMetadata,
+    ghostTapMetadata,
+    colorMazeNavMetadata,
+    dynamicSalienceMetadata,
+    chalkAndTalkMetadata,
+    blinkDetectorMetadata,
+    frequencyTapMetadata,
+    tennerGridMetadata,
+    kakurasuSumsMetadata,
+    tripletsLogicMetadata,
+    matrixMultiplierMatchMetadata,
+    primeFactorTreesMetadata,
+    vektorVectorMetadata,
+    binomialMatchMetadata,
+    percentageShoppingMetadata,
+    cryptoArithmeticMetadata,
+    fractionalPizzaMetadata,
+    numberBondsMetadata,
+    binaryScaleBalanceMetadata,
+    moduloPathMetadata,
+    digitSwapEqMetadata,
+    areaPerimeterMatchMetadata,
+    inequalityBalanceOpsMetadata,
+    graphCoordinatePlotMetadata,
+    baseConversionRunMetadata,
+    unitConverterProMetadata,
+    roomInspectorMetadata,
+    sequenceStackMetadata,
+    gridDisplacementMetadata,
+    cardCountingMemoryMetadata,
+    directionsRecallMetadata,
+    eventTimelineMemoryMetadata,
+    featureMatrixRecallMetadata,
+    delayedMatchSampleMetadata,
+    symbolDigitAssocMetadata,
+    dualTaskMemoryMetadata,
+    actionSequenceRecallMetadata,
+    mazeNav3DMetadata,
+    vectorGridAlignmentMetadata,
+    blockStackingPhysicsMetadata,
+    perspectiveShiftViewMetadata,
+    letterGridSwapperMetadata,
+    wordSnakeTrailMetadata,
   ];
 }

@@ -65,9 +65,11 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
       if (currentIndex != -1) {
         final nextIndex = (currentIndex + 1) % allGamesMetadata.length;
         nextGame = allGamesMetadata[nextIndex];
-        isSameGame = nextGame!.id == session.lastGameId;
+        isSameGame = nextGame.id == session.lastGameId;
       }
     }
+
+    final next = nextGame;
 
     return Dialog(
       backgroundColor: Colors.transparent,
@@ -100,7 +102,7 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
                 ),
               ),
               const SizedBox(height: DesignSystem.spaceLG),
-              if (nextGame != null && !isSameGame)
+              if (next != null && !isSameGame)
                 Row(
                   children: [
                     Expanded(
@@ -122,13 +124,13 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
                       child: TangibleButton(
                         onTap: () {
                           ref.read(gameSessionNotifierProvider.notifier).setSession(
-                            gameId: nextGame!.id,
+                            gameId: next.id,
                             category: session.selectedCategory,
                             query: session.searchQuery,
                           );
                           Navigator.of(context).pop();
                           Navigator.of(context).pushReplacement(
-                            CustomPageRoute(page: nextGame!.builder(context)),
+                            CustomPageRoute(page: next.builder(context)),
                           );
                         },
                         color: DesignSystem.primary,
