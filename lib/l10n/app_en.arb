@@ -2179,5 +2179,17 @@
   "shellGameTitle": "Shell Game",
   "shellGameSubtitle": "TRACK A HIDDEN BALL AS THE SHUFFLING CUPS SWAP PLACES.",
   "typoglycemiaDecoderTitle": "Typoglycemia Decoder",
-  "typoglycemiaDecoderSubtitle": "UNSCRAMBLE AND READ JUMBLED SENTENCES SPEEDILY."
+  "typoglycemiaDecoderSubtitle": "UNSCRAMBLE AND READ JUMBLED SENTENCES SPEEDILY.",
+  "shapeShifterTitle": "Shape Shifter",
+  "shapeShifterSubtitle": "Tap the target shape-color combination.",
+  "gokigenNanameTitle": "Gokigen Naname",
+  "gokigenNanameSubtitle": "Draw diagonals to connect points without loops.",
+  "matrixMultiplierTitle": "Matrix Multiplier",
+  "matrixMultiplierSubtitle": "Select a row and column to multiply to the target.",
+  "wordAssociationRecallTitle": "Word Association",
+  "wordAssociationRecallSubtitle": "Recall paired word associations from memory.",
+  "gearRotationTitle": "Gear Rotation",
+  "gearRotationSubtitle": "Predict the rotation direction of the last gear.",
+  "wordWheelTitle": "Word Wheel",
+  "wordWheelSubtitle": "Make words using letters on the wheel, including the center letter."
 }

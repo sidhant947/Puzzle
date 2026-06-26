@@ -3580,4 +3580,45 @@ class AppLocalizationsAr extends AppLocalizations {
   @override
   String get typoglycemiaDecoderSubtitle =>
       'UNSCRAMBLE AND READ JUMBLED SENTENCES SPEEDILY.';
+
+  @override
+  String get shapeShifterTitle => 'Shape Shifter';
+
+  @override
+  String get shapeShifterSubtitle => 'Tap the target shape-color combination.';
+
+  @override
+  String get gokigenNanameTitle => 'Gokigen Naname';
+
+  @override
+  String get gokigenNanameSubtitle =>
+      'Draw diagonals to connect points without loops.';
+
+  @override
+  String get matrixMultiplierTitle => 'Matrix Multiplier';
+
+  @override
+  String get matrixMultiplierSubtitle =>
+      'Select a row and column to multiply to the target.';
+
+  @override
+  String get wordAssociationRecallTitle => 'Word Association';
+
+  @override
+  String get wordAssociationRecallSubtitle =>
+      'Recall paired word associations from memory.';
+
+  @override
+  String get gearRotationTitle => 'Gear Rotation';
+
+  @override
+  String get gearRotationSubtitle =>
+      'Predict the rotation direction of the last gear.';
+
+  @override
+  String get wordWheelTitle => 'Word Wheel';
+
+  @override
+  String get wordWheelSubtitle =>
+      'Make words using letters on the wheel, including the center letter.';
 }

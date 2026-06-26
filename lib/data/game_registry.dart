@@ -6,6 +6,13 @@ import '../ui/features/games/narrative_recall/narrative_recall_metadata.dart';
 import '../ui/features/games/shell_game/shell_game_metadata.dart';
 import '../ui/features/games/typoglycemia_decoder/typoglycemia_decoder_metadata.dart';
 
+import '../ui/features/games/shape_shifter/shape_shifter_metadata.dart';
+import '../ui/features/games/gokigen_naname/gokigen_naname_metadata.dart';
+import '../ui/features/games/matrix_multiplier/matrix_multiplier_metadata.dart';
+import '../ui/features/games/word_association_recall/word_association_recall_metadata.dart';
+import '../ui/features/games/gear_rotation/gear_rotation_metadata.dart';
+import '../ui/features/games/word_wheel/word_wheel_metadata.dart';
+
 import '../ui/features/games/slitherlink/slitherlink_metadata.dart';
 import '../ui/features/games/futoshiki/futoshiki_metadata.dart';
 import '../ui/features/games/kakuro/kakuro_metadata.dart';
@@ -428,5 +435,11 @@ List<GameMetadata> _buildGameList() {
     narrativeRecallMetadata,
     shellGameMetadata,
     typoglycemiaDecoderMetadata,
+    shapeShifterMetadata,
+    gokigenNanameMetadata,
+    matrixMultiplierMetadata,
+    wordAssociationRecallMetadata,
+    gearRotationMetadata,
+    wordWheelMetadata,
   ];
 }

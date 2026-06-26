@@ -6391,6 +6391,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'UNSCRAMBLE AND READ JUMBLED SENTENCES SPEEDILY.'**
   String get typoglycemiaDecoderSubtitle;
+
+  /// No description provided for @shapeShifterTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Shape Shifter'**
+  String get shapeShifterTitle;
+
+  /// No description provided for @shapeShifterSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the target shape-color combination.'**
+  String get shapeShifterSubtitle;
+
+  /// No description provided for @gokigenNanameTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Gokigen Naname'**
+  String get gokigenNanameTitle;
+
+  /// No description provided for @gokigenNanameSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw diagonals to connect points without loops.'**
+  String get gokigenNanameSubtitle;
+
+  /// No description provided for @matrixMultiplierTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Matrix Multiplier'**
+  String get matrixMultiplierTitle;
+
+  /// No description provided for @matrixMultiplierSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a row and column to multiply to the target.'**
+  String get matrixMultiplierSubtitle;
+
+  /// No description provided for @wordAssociationRecallTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Word Association'**
+  String get wordAssociationRecallTitle;
+
+  /// No description provided for @wordAssociationRecallSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Recall paired word associations from memory.'**
+  String get wordAssociationRecallSubtitle;
+
+  /// No description provided for @gearRotationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Gear Rotation'**
+  String get gearRotationTitle;
+
+  /// No description provided for @gearRotationSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Predict the rotation direction of the last gear.'**
+  String get gearRotationSubtitle;
+
+  /// No description provided for @wordWheelTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Word Wheel'**
+  String get wordWheelTitle;
+
+  /// No description provided for @wordWheelSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Make words using letters on the wheel, including the center letter.'**
+  String get wordWheelSubtitle;
 }
 
 class _AppLocalizationsDelegate
