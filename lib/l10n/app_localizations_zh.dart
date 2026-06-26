@@ -3495,4 +3495,46 @@ class AppLocalizationsZh extends AppLocalizations {
   @override
   String get wordWheelSubtitle =>
       'Make words using letters on the wheel, including the center letter.';
+
+  @override
+  String get oddEvenFlashTitle => 'Odd-Even Flash';
+
+  @override
+  String get oddEvenFlashSubtitle =>
+      'Quickly match the number parity with the color rule.';
+
+  @override
+  String get norinoriTitle => 'Norinori';
+
+  @override
+  String get norinoriSubtitle =>
+      'Shade exactly two connected cells in each room.';
+
+  @override
+  String get algebraicBalanceTitle => 'Algebraic Balance';
+
+  @override
+  String get algebraicBalanceSubtitle =>
+      'Solve the equations to find the target sum.';
+
+  @override
+  String get patternSequenceDrawTitle => 'Pattern Recall';
+
+  @override
+  String get patternSequenceDrawSubtitle =>
+      'Repeat the animated path sequence on the grid.';
+
+  @override
+  String get tangramTitle => 'Tangram Puzzle';
+
+  @override
+  String get tangramSubtitle =>
+      'Arrange the shapes to fill the target silhouette.';
+
+  @override
+  String get semanticAssociationTitle => 'Association Word';
+
+  @override
+  String get semanticAssociationSubtitle =>
+      'Find the word connecting all three clues.';
 }

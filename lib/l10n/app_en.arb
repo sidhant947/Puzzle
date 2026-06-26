@@ -2191,5 +2191,17 @@
   "gearRotationTitle": "Gear Rotation",
   "gearRotationSubtitle": "Predict the rotation direction of the last gear.",
   "wordWheelTitle": "Word Wheel",
-  "wordWheelSubtitle": "Make words using letters on the wheel, including the center letter."
+  "wordWheelSubtitle": "Make words using letters on the wheel, including the center letter.",
+  "oddEvenFlashTitle": "Odd-Even Flash",
+  "oddEvenFlashSubtitle": "Quickly match the number parity with the color rule.",
+  "norinoriTitle": "Norinori",
+  "norinoriSubtitle": "Shade exactly two connected cells in each room.",
+  "algebraicBalanceTitle": "Algebraic Balance",
+  "algebraicBalanceSubtitle": "Solve the equations to find the target sum.",
+  "patternSequenceDrawTitle": "Pattern Recall",
+  "patternSequenceDrawSubtitle": "Repeat the animated path sequence on the grid.",
+  "tangramTitle": "Tangram Puzzle",
+  "tangramSubtitle": "Arrange the shapes to fill the target silhouette.",
+  "semanticAssociationTitle": "Association Word",
+  "semanticAssociationSubtitle": "Find the word connecting all three clues."
 }

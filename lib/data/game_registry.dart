@@ -13,6 +13,13 @@ import '../ui/features/games/word_association_recall/word_association_recall_met
 import '../ui/features/games/gear_rotation/gear_rotation_metadata.dart';
 import '../ui/features/games/word_wheel/word_wheel_metadata.dart';
 
+import '../ui/features/games/odd_even_flash/odd_even_flash_metadata.dart';
+import '../ui/features/games/norinori/norinori_metadata.dart';
+import '../ui/features/games/algebraic_balance/algebraic_balance_metadata.dart';
+import '../ui/features/games/pattern_sequence_draw/pattern_sequence_draw_metadata.dart';
+import '../ui/features/games/tangram/tangram_metadata.dart';
+import '../ui/features/games/semantic_association/semantic_association_metadata.dart';
+
 import '../ui/features/games/slitherlink/slitherlink_metadata.dart';
 import '../ui/features/games/futoshiki/futoshiki_metadata.dart';
 import '../ui/features/games/kakuro/kakuro_metadata.dart';
@@ -441,5 +448,11 @@ List<GameMetadata> _buildGameList() {
     wordAssociationRecallMetadata,
     gearRotationMetadata,
     wordWheelMetadata,
+    oddEvenFlashMetadata,
+    norinoriMetadata,
+    algebraicBalanceMetadata,
+    patternSequenceDrawMetadata,
+    tangramMetadata,
+    semanticAssociationMetadata,
   ];
 }

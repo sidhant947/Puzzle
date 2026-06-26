@@ -6463,6 +6463,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Make words using letters on the wheel, including the center letter.'**
   String get wordWheelSubtitle;
+
+  /// No description provided for @oddEvenFlashTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Odd-Even Flash'**
+  String get oddEvenFlashTitle;
+
+  /// No description provided for @oddEvenFlashSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Quickly match the number parity with the color rule.'**
+  String get oddEvenFlashSubtitle;
+
+  /// No description provided for @norinoriTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Norinori'**
+  String get norinoriTitle;
+
+  /// No description provided for @norinoriSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Shade exactly two connected cells in each room.'**
+  String get norinoriSubtitle;
+
+  /// No description provided for @algebraicBalanceTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Algebraic Balance'**
+  String get algebraicBalanceTitle;
+
+  /// No description provided for @algebraicBalanceSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Solve the equations to find the target sum.'**
+  String get algebraicBalanceSubtitle;
+
+  /// No description provided for @patternSequenceDrawTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pattern Recall'**
+  String get patternSequenceDrawTitle;
+
+  /// No description provided for @patternSequenceDrawSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat the animated path sequence on the grid.'**
+  String get patternSequenceDrawSubtitle;
+
+  /// No description provided for @tangramTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tangram Puzzle'**
+  String get tangramTitle;
+
+  /// No description provided for @tangramSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Arrange the shapes to fill the target silhouette.'**
+  String get tangramSubtitle;
+
+  /// No description provided for @semanticAssociationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Association Word'**
+  String get semanticAssociationTitle;
+
+  /// No description provided for @semanticAssociationSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find the word connecting all three clues.'**
+  String get semanticAssociationSubtitle;
 }
 
 class _AppLocalizationsDelegate
