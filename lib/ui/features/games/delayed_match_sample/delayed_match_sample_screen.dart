@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -108,8 +109,9 @@ class _DelayedMatchSampleScreenState extends ConsumerState<DelayedMatchSampleScr
     } else {
       HapticFeedbackUtil.error();
       // Restart math step
+      final l10n = AppLocalizations.of(context)!;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Incorrect sum! Try another one.')),
+        SnackBar(content: Text(l10n.snackbarIncorrectSum)),
       );
       setState(() {
         _generateDistractorQuestion();
@@ -170,9 +172,10 @@ class _DelayedMatchSampleScreenState extends ConsumerState<DelayedMatchSampleScr
         _isGameOver = true;
         _onGameComplete();
       } else {
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Correct match!'),
+          SnackBar(
+            content: Text(l10n.snackbarCorrectMatch),
             backgroundColor: DesignSystem.gameGreen,
             duration: Duration(seconds: 1),
           ),
@@ -183,9 +186,10 @@ class _DelayedMatchSampleScreenState extends ConsumerState<DelayedMatchSampleScr
       }
     } else {
       HapticFeedbackUtil.error();
+      final l10n = AppLocalizations.of(context)!;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Wrong match! Study a new shape.'),
+        SnackBar(
+          content: Text(l10n.snackbarWrongMatch),
           backgroundColor: DesignSystem.gameRed,
           duration: Duration(seconds: 2),
         ),
@@ -227,12 +231,12 @@ class _DelayedMatchSampleScreenState extends ConsumerState<DelayedMatchSampleScr
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'DELAYED MATCH',
+      title: L10nGameHelpers.getGameTitle(context, 'delayed_match_sample'),
       subtitle: _gamePhase == 1
-          ? 'Memorize the target shape, color, and rotation angle.'
+          ? AppLocalizations.of(context)!.phaseMemorizeDetails
           : (_gamePhase == 2
-              ? 'Solve subtraction/addition to unlock matching selection.'
-              : 'Choose the exact target symbol from the original study phase.'),
+              ? AppLocalizations.of(context)!.phaseSolveDistractor
+              : L10nGameHelpers.getGameSubtitle(context, 'delayed_match_sample')),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -258,7 +262,7 @@ class _DelayedMatchSampleScreenState extends ConsumerState<DelayedMatchSampleScr
                 borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
               ),
               child: Text(
-                'Score: $_score / $_targetScore',
+                '${AppLocalizations.of(context)!.statScore}: $_score / $_targetScore',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       color: DesignSystem.primary,
                       fontWeight: FontWeight.bold,
@@ -282,7 +286,7 @@ class _DelayedMatchSampleScreenState extends ConsumerState<DelayedMatchSampleScr
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
+          Text(
             'STUDY TARGET',
             style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, letterSpacing: 1.2),
           ),
@@ -327,7 +331,7 @@ class _DelayedMatchSampleScreenState extends ConsumerState<DelayedMatchSampleScr
                   borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
                 ),
               ),
-              child: const Text(
+              child: Text(
                 'I\'VE MEMORIZED IT',
                 style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
               ),
@@ -339,7 +343,7 @@ class _DelayedMatchSampleScreenState extends ConsumerState<DelayedMatchSampleScr
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
+          Text(
             'DISTRACTION STAGE',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Colors.orange),
           ),
@@ -403,7 +407,7 @@ class _DelayedMatchSampleScreenState extends ConsumerState<DelayedMatchSampleScr
       return Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
+          Text(
             'CHOOSE THE TARGET SYMBOL',
             style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
           ),

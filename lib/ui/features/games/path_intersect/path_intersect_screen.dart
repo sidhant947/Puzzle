@@ -6,6 +6,7 @@ import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'path_intersect_provider.dart';
 
 class PathIntersectScreen extends ConsumerStatefulWidget {
@@ -28,8 +29,8 @@ class _PathIntersectScreenState extends ConsumerState<PathIntersectScreen> {
       context: context,
       barrierDismissible: false,
       builder: (dialogCtx) => GameCompletionDialog(
-        title: isVictory ? l10n.pathIntersectTitle : 'GAME OVER',
-        message: isVictory ? l10n.pathIntersectCongrats : 'Try again!',
+        title: isVictory ? l10n.pathIntersectTitle : AppLocalizations.of(context)!.gameOver,
+        message: isVictory ? l10n.pathIntersectCongrats : AppLocalizations.of(context)!.loseTryAgainSolution,
         isVictory: isVictory,
         onHome: () {
           Navigator.of(dialogCtx).pop();
@@ -46,7 +47,6 @@ class _PathIntersectScreenState extends ConsumerState<PathIntersectScreen> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(pathIntersectNotifierProvider);
-    final l10n = AppLocalizations.of(context)!;
 
     ref.listen(pathIntersectNotifierProvider, (prev, next) {
       if (next.isVictory && !(prev?.isVictory ?? false)) {
@@ -63,7 +63,7 @@ class _PathIntersectScreenState extends ConsumerState<PathIntersectScreen> {
     });
 
     return GameScaffold(
-      title: l10n.pathIntersectTitle,
+      title: L10nGameHelpers.getGameTitle(context, 'path_intersect'),
       onReset: () => ref.read(pathIntersectNotifierProvider.notifier).initGame(),
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
@@ -72,7 +72,7 @@ class _PathIntersectScreenState extends ConsumerState<PathIntersectScreen> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    'Find the coordinate where the two paths cross!',
+                    AppLocalizations.of(context)!.phaseFindTheTarget,
                     style: TextStyle(
                         color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
                         fontSize: DesignSystem.fontSizeSM),

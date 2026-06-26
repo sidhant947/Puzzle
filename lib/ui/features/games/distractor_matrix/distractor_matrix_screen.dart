@@ -325,7 +325,7 @@ class DistractorMatrixScreen extends ConsumerWidget {
         color = DesignSystem.accentEmerald;
         break;
       case DistractorMatrixStatus.failure:
-        text = 'WRONG!';
+        text = AppLocalizations.of(context)!.phaseWrongExcl;
         color = DesignSystem.error;
         break;
     }

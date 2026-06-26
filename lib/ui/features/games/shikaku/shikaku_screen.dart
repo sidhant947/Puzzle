@@ -1,12 +1,14 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import 'package:puzzle/widgets/tangible.dart';
 import '../../../core/juice/game_scaffold.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 
 class ShikakuScreen extends ConsumerStatefulWidget {
   const ShikakuScreen({super.key});
@@ -147,28 +149,33 @@ class _ShikakuScreenState extends ConsumerState<ShikakuScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => GameCompletionDialog(
-        title: 'GRID COMPLETED!',
-        message: 'You successfully solved the Shikaku puzzle.',
-        onPlayAgain: () {
-          setState(() {
-            _generatePuzzle();
-          });
-          Navigator.pop(context);
-        },
-        onHome: () {
-          Navigator.pop(context);
-          Navigator.pop(context);
-        },
-      ),
+      builder: (context) {
+        final l10n = AppLocalizations.of(context)!;
+        return GameCompletionDialog(
+          title: l10n.gameWin,
+          message: l10n.completed,
+          onPlayAgain: () {
+            setState(() {
+              _generatePuzzle();
+            });
+            Navigator.pop(context);
+          },
+          onHome: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+        );
+      },
     );
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     return GameScaffold(
-      title: 'SHIKAKU',
+      title: L10nGameHelpers.getGameTitle(context, 'shikaku'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'shikaku'),
       body: SafeArea(
         child: Column(
           children: [
@@ -177,7 +184,7 @@ class _ShikakuScreenState extends ConsumerState<ShikakuScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Solve the grid', style: Theme.of(context).textTheme.titleMedium),
+                  Text(l10n.phaseSolveTheGrid, style: Theme.of(context).textTheme.titleMedium),
                   Row(
                     children: [
                       IconButton(

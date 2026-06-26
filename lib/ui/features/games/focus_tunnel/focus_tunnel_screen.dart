@@ -6,6 +6,7 @@ import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
 
@@ -185,8 +186,8 @@ class _FocusTunnelScreenState extends ConsumerState<FocusTunnelScreen> with Sing
     _activeSymbols.removeWhere((s) => s.scale >= 2.5);
 
     return GameScaffold(
-      title: 'FOCUS TUNNEL',
-      subtitle: 'Tap incoming shapes ONLY if they match the symbol seen 2 steps ago (2-Back).',
+      title: L10nGameHelpers.getGameTitle(context, 'focus_tunnel'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'focus_tunnel'),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),

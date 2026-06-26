@@ -27,11 +27,12 @@ class _VigilanceTaskScreenState extends ConsumerState<VigilanceTaskScreen> {
   }
 
   void _showCompletionDialog(bool isVictory, int hits, int misses, int falseAlarms) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: isVictory ? 'STAY VIGILANT!' : 'KEEP WATCH!',
+        title: isVictory ? l10n.winStayVigilant : l10n.loseKeepWatch,
         message: AppLocalizations.of(context)!.vigilanceTaskMessage((hits).toString(), (misses).toString(), (falseAlarms).toString()),
         isVictory: isVictory,
         onHome: () {

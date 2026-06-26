@@ -25,6 +25,7 @@ class _SDMTScreenState extends ConsumerState<SDMTScreen> {
 
   void _showGameOverDialog(int score) {
     bool won = score >= 30;
+    final l10n = AppLocalizations.of(context)!;
     if (won) {
       HapticFeedbackUtil.victory();
       ref.read(gameStreakNotifierProvider.notifier).completeGame('sdmt');
@@ -35,7 +36,7 @@ class _SDMTScreenState extends ConsumerState<SDMTScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: won ? 'SPEED DEMON!' : 'SLOW & STEADY',
+        title: won ? l10n.winSpeedDemon : l10n.loseSlowSteady,
         message: AppLocalizations.of(context)!.sdmtMessage((score).toString()),
         onPlayAgain: () {
           ref.read(sdmtNotifierProvider.notifier).initGame();
@@ -180,13 +181,14 @@ class _SDMTScreenState extends ConsumerState<SDMTScreen> {
   }
 
   Widget _buildStats(SdmtState state, bool isSmall) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildStat('TIME', '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
-          _buildStat('SCORE', '${state.score}', DesignSystem.success, isSmall),
+          _buildStat(l10n.statTime, '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
+          _buildStat(l10n.statScore, '${state.score}', DesignSystem.success, isSmall),
         ],
       ),
     );

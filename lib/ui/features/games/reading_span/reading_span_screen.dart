@@ -1,4 +1,5 @@
 import 'package:puzzle/utils/l10n_game_helpers.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -35,19 +36,22 @@ class _ReadingSpanScreenState extends ConsumerState<ReadingSpanScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => GameCompletionDialog(
-        title: won ? 'READING EXPERT!' : 'GAME OVER',
-        message: 'You scored $score points in the Reading Span memory challenge!',
-        isVictory: won,
-        onPlayAgain: () {
-          ref.read(readingSpanNotifierProvider.notifier).initGame();
-          Navigator.pop(context);
-        },
-        onHome: () {
-          Navigator.pop(context);
-          Navigator.pop(context);
-        },
-      ),
+      builder: (context) {
+        final l10n = AppLocalizations.of(context)!;
+        return GameCompletionDialog(
+          title: won ? l10n.readingSpanWinTitle : l10n.gameOver,
+          message: l10n.readingSpanGameOverMessage(score),
+          isVictory: won,
+          onPlayAgain: () {
+            ref.read(readingSpanNotifierProvider.notifier).initGame();
+            Navigator.pop(context);
+          },
+          onHome: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+        );
+      },
     );
   }
 
@@ -64,7 +68,7 @@ class _ReadingSpanScreenState extends ConsumerState<ReadingSpanScreen> {
 
     return GameScaffold(
       title: L10nGameHelpers.getGameTitle(context, 'reading_span'),
-      subtitle: L10nGameHelpers.getGameTitle(context, 'reading_span'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'reading_span'),
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(
@@ -100,19 +104,20 @@ class _ReadingSpanScreenState extends ConsumerState<ReadingSpanScreen> {
   }
 
   Widget _buildPhaseIndicator(ReadingSpanState state) {
+    final l10n = AppLocalizations.of(context)!;
     String text = '';
     Color color = DesignSystem.primary;
     if (state.phase == ReadingSpanPhase.showingSentence) {
-      text = 'IS THIS STATEMENT TRUE OR FALSE?';
+      text = l10n.readingSpanTrueFalse;
       color = DesignSystem.accentAmber;
     } else if (state.phase == ReadingSpanPhase.showingLetter) {
-      text = 'MEMORIZE THIS LETTER';
+      text = l10n.readingSpanMemorizeLetter;
       color = DesignSystem.error;
     } else if (state.phase == ReadingSpanPhase.recalling) {
-      text = 'RECALL LETTERS IN SEQUENCE';
+      text = l10n.readingSpanRecallLetters;
       color = DesignSystem.gameIndigo;
     } else {
-      text = state.lastRoundCorrect == true ? 'GREAT JOB!' : 'TRY AGAIN!';
+      text = state.lastRoundCorrect == true ? l10n.readingSpanGreatJob : l10n.readingSpanTryAgain;
       color = state.lastRoundCorrect == true ? DesignSystem.success : DesignSystem.error;
     }
 
@@ -128,6 +133,7 @@ class _ReadingSpanScreenState extends ConsumerState<ReadingSpanScreen> {
   }
 
   Widget _buildMainLayout(ReadingSpanState state, double maxWidth, ReadingSpanNotifier notifier) {
+    final l10n = AppLocalizations.of(context)!;
     if (state.phase == ReadingSpanPhase.showingSentence && state.currentSentence != null) {
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -242,7 +248,7 @@ class _ReadingSpanScreenState extends ConsumerState<ReadingSpanScreen> {
             const SizedBox(height: 16),
             if (state.userSequence.isNotEmpty)
               Text(
-                'YOUR SEQUENCE: ${state.userSequence.join(" ")}',
+                l10n.readingSpanYourSequence(state.userSequence.join(" ")),
                 style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16, color: DesignSystem.gameIndigo),
               ),
           ],
@@ -261,14 +267,15 @@ class _ReadingSpanScreenState extends ConsumerState<ReadingSpanScreen> {
   }
 
   Widget _buildStats(ReadingSpanState state, bool isSmall) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildStat('TIME', '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
-          _buildStat('LENGTH', '${state.currentLength}', DesignSystem.accentAmber, isSmall),
-          _buildStat('SCORE', '${state.score}', DesignSystem.success, isSmall),
+          _buildStat(l10n.statTime, '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
+          _buildStat(l10n.readingSpanLength, '${state.currentLength}', DesignSystem.accentAmber, isSmall),
+          _buildStat(l10n.statScore, '${state.score}', DesignSystem.success, isSmall),
         ],
       ),
     );

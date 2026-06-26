@@ -32,6 +32,7 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
   }
 
   void _showGameOverDialog(bool won, double wpm) {
+    final l10n = AppLocalizations.of(context)!;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('typing_speed');
       HapticFeedbackUtil.victory();
@@ -42,10 +43,10 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: won ? 'SPEED DEMON!' : 'TIME EXPIRED',
+        title: won ? l10n.winSpeedDemon : l10n.loseTimeExpired,
         message: won 
-            ? 'You typed at ${wpm.toStringAsFixed(1)} WPM!' 
-            : 'Try to be faster next time.',
+            ? l10n.snackbarAllCorrect 
+            : l10n.loseTimeExpired,
         onPlayAgain: () {
           _controller.clear();
           ref.read(typingSpeedNotifierProvider.notifier).initGame();
@@ -104,7 +105,7 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
                       Row(
                         children: [
                           Expanded(
-                            child: _buildStatCard('TIME LEFT', '${state.timeLeft}s', DesignSystem.accentBerry),
+                            child: _buildStatCard(l10n.statTime, '${state.timeLeft}s', DesignSystem.accentBerry),
                           ),
                           SizedBox(width: DesignSystem.spaceMD),
                           Expanded(
@@ -151,7 +152,7 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
                             notifier.onInputChange(val);
                           },
                           decoration: InputDecoration(
-                            hintText: 'START TYPING...',
+                            hintText: l10n.btnStartGame.toUpperCase(),
                             hintStyle: TextStyle(
                               color: colorScheme.outline,
                               fontWeight: FontWeight.w900,
@@ -176,7 +177,7 @@ class _TypingSpeedScreenState extends ConsumerState<TypingSpeedScreen> {
                       ),
                       const Spacer(),
                       Text(
-                        'PRECISION IS KEY',
+                        l10n.statPerfect,
                         style: TextStyle(
                           color: colorScheme.onSurface.withValues(alpha: 0.7),
                           fontWeight: FontWeight.w900,

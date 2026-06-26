@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -124,10 +125,11 @@ class _PercentageShoppingScreenState extends ConsumerState<PercentageShoppingScr
       }
     } else {
       HapticFeedbackUtil.error();
+      final l10n = AppLocalizations.of(context)!;
       final correctStr = _taskType == 0 ? '\$${_correctAnswer.toInt()}' : '${_correctAnswer.toInt()}%';
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Incorrect! The correct answer was $correctStr'),
+          content: Text(l10n.snackbarIncorrectCorrectValue(correctStr)),
           duration: const Duration(milliseconds: 1500),
           backgroundColor: Colors.redAccent,
         ),
@@ -169,8 +171,8 @@ class _PercentageShoppingScreenState extends ConsumerState<PercentageShoppingScr
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'PERCENTAGE SHOPPING',
-      subtitle: 'Calculate discount percentages and final checkout totals.',
+      title: L10nGameHelpers.getGameTitle(context, 'percentage_shopping'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'percentage_shopping'),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -197,7 +199,7 @@ class _PercentageShoppingScreenState extends ConsumerState<PercentageShoppingScr
                   borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                 ),
                 child: Text(
-                  'Score: $_score / $_targetScore',
+                  '${AppLocalizations.of(context)!.statScore}: $_score / $_targetScore',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         color: DesignSystem.primary,
                         fontWeight: FontWeight.bold,

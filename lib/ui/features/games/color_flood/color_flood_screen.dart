@@ -27,14 +27,15 @@ class _ColorFloodScreenState extends ConsumerState<ColorFloodScreen> {
   }
 
   void _showCompletionDialog(bool isVictory) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: isVictory ? 'FLOOD SUCCESS!' : 'DRY LAND...',
+        title: isVictory ? l10n.winFloodSuccess : l10n.loseDryLand,
         message: isVictory 
-            ? 'You saturated the entire grid with color!' 
-            : 'You ran out of moves. Try again!',
+            ? l10n.winFloodSuccess 
+            : l10n.loseDryLand,
         isVictory: isVictory,
         onHome: () {
           Navigator.of(context).pop();

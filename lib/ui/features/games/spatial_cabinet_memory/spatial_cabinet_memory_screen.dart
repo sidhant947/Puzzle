@@ -1,4 +1,5 @@
 import 'package:puzzle/utils/l10n_game_helpers.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -35,19 +36,22 @@ class _SpatialCabinetMemoryScreenState extends ConsumerState<SpatialCabinetMemor
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => GameCompletionDialog(
-        title: won ? 'CABINET EXPERT!' : 'GAME OVER',
-        message: 'You scored $score points in Spatial Cabinet Memory!',
-        isVictory: won,
-        onPlayAgain: () {
-          ref.read(spatialCabinetMemoryNotifierProvider.notifier).initGame();
-          Navigator.pop(context);
-        },
-        onHome: () {
-          Navigator.pop(context);
-          Navigator.pop(context);
-        },
-      ),
+      builder: (context) {
+        final l10n = AppLocalizations.of(context)!;
+        return GameCompletionDialog(
+          title: won ? l10n.gameWin : l10n.gameOver,
+          message: '$score points in Spatial Cabinet Memory!',
+          isVictory: won,
+          onPlayAgain: () {
+            ref.read(spatialCabinetMemoryNotifierProvider.notifier).initGame();
+            Navigator.pop(context);
+          },
+          onHome: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+        );
+      },
     );
   }
 
@@ -64,7 +68,7 @@ class _SpatialCabinetMemoryScreenState extends ConsumerState<SpatialCabinetMemor
 
     return GameScaffold(
       title: L10nGameHelpers.getGameTitle(context, 'spatial_cabinet_memory'),
-      subtitle: L10nGameHelpers.getGameTitle(context, 'spatial_cabinet_memory'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'spatial_cabinet_memory'),
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(
@@ -95,10 +99,11 @@ class _SpatialCabinetMemoryScreenState extends ConsumerState<SpatialCabinetMemor
   }
 
   Widget _buildPhaseIndicator(SpatialCabinetMemoryState state) {
+    final l10n = AppLocalizations.of(context)!;
     if (state.phase == CabinetPhase.showingCabinet) {
-      return const Text(
-        'MEMORIZE ITEM LOCATIONS',
-        style: TextStyle(
+      return Text(
+        l10n.phaseMemorizeDetails,
+        style: const TextStyle(
           letterSpacing: 1.5,
           fontWeight: FontWeight.w800,
           color: DesignSystem.accentAmber,
@@ -110,7 +115,7 @@ class _SpatialCabinetMemoryScreenState extends ConsumerState<SpatialCabinetMemor
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
           Text(
-            'WHERE IS THE ${state.targetItem!.name}?',
+            l10n.phaseWhereIsTarget,
             style: const TextStyle(
               letterSpacing: 1.5,
               fontWeight: FontWeight.w900,
@@ -123,7 +128,7 @@ class _SpatialCabinetMemoryScreenState extends ConsumerState<SpatialCabinetMemor
         ],
       );
     } else {
-      final text = state.lastRoundCorrect == true ? 'CORRECT!' : 'WRONG DRAWER!';
+      final text = state.lastRoundCorrect == true ? l10n.phasePerfectRecall : l10n.phaseWrongExcl;
       final color = state.lastRoundCorrect == true ? DesignSystem.success : DesignSystem.error;
       return Text(
         text,
@@ -222,14 +227,15 @@ class _SpatialCabinetMemoryScreenState extends ConsumerState<SpatialCabinetMemor
   }
 
   Widget _buildStats(SpatialCabinetMemoryState state, bool isSmall) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildStat('TIME', '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
-          _buildStat('ITEMS', '${state.itemsToMemorize}', DesignSystem.accentAmber, isSmall),
-          _buildStat('SCORE', '${state.score}', DesignSystem.success, isSmall),
+          _buildStat(l10n.statTime, '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
+          _buildStat(l10n.statItems, '${state.itemsToMemorize}', DesignSystem.accentAmber, isSmall),
+          _buildStat(l10n.statScore, '${state.score}', DesignSystem.success, isSmall),
         ],
       ),
     );

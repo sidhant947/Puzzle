@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -158,8 +159,8 @@ class _KakurasuSumsScreenState extends ConsumerState<KakurasuSumsScreen> {
     // Right labels: target row sums
     // Bottom labels: target col sums
     return GameScaffold(
-      title: 'KAKURASU SUMS',
-      subtitle: 'Shade cells. The sum of shaded row/col index weights must equal target numbers.',
+      title: L10nGameHelpers.getGameTitle(context, 'kakurasu_sums'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'kakurasu_sums'),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -180,7 +181,7 @@ class _KakurasuSumsScreenState extends ConsumerState<KakurasuSumsScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
+                Text(
                   'Goal: Match sum targets',
                   style: TextStyle(fontWeight: FontWeight.w500, fontSize: 13),
                 ),
@@ -191,7 +192,7 @@ class _KakurasuSumsScreenState extends ConsumerState<KakurasuSumsScreen> {
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
-                    'Score: $_score / $_targetScore',
+                    '${AppLocalizations.of(context)!.statScore}: $_score / $_targetScore',
                     style: TextStyle(fontWeight: FontWeight.bold, color: DesignSystem.primary),
                   ),
                 ),

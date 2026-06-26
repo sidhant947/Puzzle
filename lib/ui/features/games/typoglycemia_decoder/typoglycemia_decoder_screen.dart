@@ -5,6 +5,7 @@ import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import 'package:puzzle/widgets/tangible.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -104,8 +105,8 @@ class _TypoglycemiaDecoderScreenState extends ConsumerState<TypoglycemiaDecoderS
         context: context,
         barrierDismissible: false,
         builder: (context) => GameCompletionDialog(
-          title: 'DECODED CORRECTLY!',
-          message: 'Your brain successfully read the jumbled text!',
+          title: AppLocalizations.of(context)!.winDecodedCorrectly,
+          message: AppLocalizations.of(context)!.winDecodedMessage,
           onPlayAgain: () {
             setState(() {
               _generatePuzzle();
@@ -121,8 +122,8 @@ class _TypoglycemiaDecoderScreenState extends ConsumerState<TypoglycemiaDecoderS
     } else {
       HapticFeedbackUtil.error();
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Incorrect reading. Look closely at the words!'),
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.snackbarIncorrectLookClose),
           duration: Duration(milliseconds: 1500),
         ),
       );
@@ -135,7 +136,7 @@ class _TypoglycemiaDecoderScreenState extends ConsumerState<TypoglycemiaDecoderS
     final List<String> options = _currentOptions;
 
     return GameScaffold(
-      title: 'TYPOGLYCEMIA DECODER',
+      title: L10nGameHelpers.getGameTitle(context, 'typoglycemia_decoder'),
       body: SafeArea(
         child: Column(
           children: [
@@ -144,7 +145,7 @@ class _TypoglycemiaDecoderScreenState extends ConsumerState<TypoglycemiaDecoderS
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Decode the sentence', style: Theme.of(context).textTheme.titleMedium),
+                  Text(AppLocalizations.of(context)!.phaseDecodeTheSentence, style: Theme.of(context).textTheme.titleMedium),
                 ],
               ),
             ),
@@ -159,8 +160,8 @@ class _TypoglycemiaDecoderScreenState extends ConsumerState<TypoglycemiaDecoderS
                   padding: const EdgeInsets.all(20.0),
                   child: Column(
                     children: [
-                      const Text(
-                        'DECODE THIS SENTENCE',
+                      Text(
+                        AppLocalizations.of(context)!.phaseDecodeTheSentence.toUpperCase(),
                         style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, letterSpacing: 1.2, fontSize: 13),
                       ),
                       const SizedBox(height: 12),

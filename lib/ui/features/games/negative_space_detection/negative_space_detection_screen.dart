@@ -33,8 +33,8 @@ class _NegativeSpaceDetectionScreenState extends ConsumerState<NegativeSpaceDete
       context: context,
       barrierDismissible: false,
       builder: (dialogCtx) => GameCompletionDialog(
-        title: isVictory ? l10n.negativeSpaceDetectionTitle.toUpperCase() : 'GAME OVER',
-        message: isVictory ? l10n.negativeSpaceDetectionMessage : 'Try again!',
+        title: isVictory ? l10n.negativeSpaceDetectionTitle.toUpperCase() : AppLocalizations.of(context)!.gameOver,
+        message: isVictory ? l10n.negativeSpaceDetectionMessage : AppLocalizations.of(context)!.loseTryAgainSolution,
         isVictory: isVictory,
         onHome: () {
           Navigator.of(dialogCtx).pop();

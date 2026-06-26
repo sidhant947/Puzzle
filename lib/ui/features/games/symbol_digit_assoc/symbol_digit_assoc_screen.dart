@@ -5,6 +5,7 @@ import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
 
@@ -84,8 +85,8 @@ class _SymbolDigitAssocScreenState extends ConsumerState<SymbolDigitAssocScreen>
         _onGameComplete();
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('All associations correct!'),
+          SnackBar(
+            content: Text(AppLocalizations.of(context)!.snackbarAllCorrect),
             backgroundColor: DesignSystem.gameGreen,
             duration: Duration(seconds: 1),
           ),
@@ -97,8 +98,8 @@ class _SymbolDigitAssocScreenState extends ConsumerState<SymbolDigitAssocScreen>
     } else {
       HapticFeedbackUtil.error();
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Incorrect translations! Study the association key again.'),
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.snackbarIncorrectStudyAgain),
           backgroundColor: DesignSystem.gameRed,
           duration: Duration(seconds: 2),
         ),
@@ -142,10 +143,10 @@ class _SymbolDigitAssocScreenState extends ConsumerState<SymbolDigitAssocScreen>
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'SYMBOL-DIGIT ASSOC',
+      title: L10nGameHelpers.getGameTitle(context, 'symbol_digit_assoc'),
       subtitle: _isStudyPhase
-          ? 'Study and memorize the symbol-to-digit translation key.'
-          : 'Translate the symbols using your memorized association sheet.',
+          ? L10nGameHelpers.getGameSubtitle(context, 'symbol_digit_assoc')
+          : L10nGameHelpers.getGameSubtitle(context, 'symbol_digit_assoc'),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -171,7 +172,7 @@ class _SymbolDigitAssocScreenState extends ConsumerState<SymbolDigitAssocScreen>
                 borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
               ),
               child: Text(
-                'Score: $_score / $_targetScore',
+                '${AppLocalizations.of(context)!.statScore}: $_score / $_targetScore',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       color: DesignSystem.primary,
                       fontWeight: FontWeight.bold,
@@ -381,7 +382,7 @@ class _SymbolDigitAssocScreenState extends ConsumerState<SymbolDigitAssocScreen>
                       borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
                     ),
                   ),
-                  child: const Text('CLEAR'),
+                  child: Text(AppLocalizations.of(context)!.btnClear),
                 ),
               ),
             ),
@@ -398,7 +399,10 @@ class _SymbolDigitAssocScreenState extends ConsumerState<SymbolDigitAssocScreen>
                       borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
                     ),
                   ),
-                  child: const Text('SUBMIT', style: TextStyle(fontWeight: FontWeight.bold)),
+                  child: Text(
+                    AppLocalizations.of(context)!.btnSubmit,
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
                 ),
               ),
             ),

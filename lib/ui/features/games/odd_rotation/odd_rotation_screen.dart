@@ -8,6 +8,7 @@ import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../../providers/user_providers.dart';
 import 'odd_rotation_provider.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 
 class OddRotationScreen extends ConsumerStatefulWidget {
   const OddRotationScreen({super.key});
@@ -33,24 +34,26 @@ class _OddRotationScreenState extends ConsumerState<OddRotationScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => GameCompletionDialog(
-        title: won ? 'SHARP EYE!' : 'MISMATCHED',
-        message: won ? 'You spotted the odd rotation!' : 'Look closer next time.',
-        onPlayAgain: () {
-          ref.read(oddRotationNotifierProvider.notifier).initGame();
-          Navigator.pop(context);
-        },
-        onHome: () {
-          Navigator.pop(context);
-          Navigator.pop(context);
-        },
-      ),
+      builder: (context) {
+        final l10n = AppLocalizations.of(context)!;
+        return GameCompletionDialog(
+          title: won ? l10n.oddRotationTitle.toUpperCase() : l10n.gameOver,
+          message: won ? 'You spotted the odd rotation!' : 'Look closer next time.',
+          onPlayAgain: () {
+            ref.read(oddRotationNotifierProvider.notifier).initGame();
+            Navigator.pop(context);
+          },
+          onHome: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+        );
+      },
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(oddRotationNotifierProvider);
     final notifier = ref.read(oddRotationNotifierProvider.notifier);
@@ -62,8 +65,8 @@ class _OddRotationScreenState extends ConsumerState<OddRotationScreen> {
     });
 
     return GameScaffold(
-      title: l10n.oddRotationTitle.toUpperCase(),
-      subtitle: l10n.oddRotationSubtitle,
+      title: L10nGameHelpers.getGameTitle(context, 'odd_rotation'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'odd_rotation'),
       actions: [
         TangibleButton(
           color: colorScheme.surface,

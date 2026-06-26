@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -174,8 +175,8 @@ class _PatternSequenceDrawScreenState extends ConsumerState<PatternSequenceDrawS
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'PATTERN RECALL',
-      subtitle: _isPlayingSequence ? 'Watch the sequence path' : 'Repeat the path sequence',
+      title: L10nGameHelpers.getGameTitle(context, 'pattern_sequence_draw'),
+      subtitle: _isPlayingSequence ? AppLocalizations.of(context)!.phaseWatchPattern : AppLocalizations.of(context)!.phaseRepeatPattern,
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -198,7 +199,7 @@ class _PatternSequenceDrawScreenState extends ConsumerState<PatternSequenceDrawS
               borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
             ),
             child: Text(
-              'Score: $_score / $_targetScore',
+              '${AppLocalizations.of(context)!.statScore}: $_score / $_targetScore',
               style: Theme.of(context).textTheme.titleLarge?.copyWith(
                     color: DesignSystem.primary,
                     fontWeight: FontWeight.bold,

@@ -6,6 +6,7 @@ import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
 
@@ -134,8 +135,8 @@ class _MultiTrackCounterScreenState extends ConsumerState<MultiTrackCounterScree
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'MULTI-TRACK COUNTER',
-      subtitle: 'Tap a lane when its value is a multiple of $_targetMultiplier!',
+      title: L10nGameHelpers.getGameTitle(context, 'multi_track_counter'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'multi_track_counter'),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),

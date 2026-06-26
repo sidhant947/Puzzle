@@ -1,4 +1,5 @@
 import 'package:puzzle/utils/l10n_game_helpers.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -35,19 +36,22 @@ class _DnmsScreenState extends ConsumerState<DnmsScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => GameCompletionDialog(
-        title: won ? 'NON-MATCHING EXPERT!' : 'GAME OVER',
-        message: 'You scored $score correct answers in Delayed Non-Matching!',
-        isVictory: won,
-        onPlayAgain: () {
-          ref.read(dnmsNotifierProvider.notifier).initGame();
-          Navigator.pop(context);
-        },
-        onHome: () {
-          Navigator.pop(context);
-          Navigator.pop(context);
-        },
-      ),
+      builder: (context) {
+        final l10n = AppLocalizations.of(context)!;
+        return GameCompletionDialog(
+          title: won ? l10n.dnmsWinTitle : l10n.gameOver,
+          message: l10n.dnmsGameOverMessage(score),
+          isVictory: won,
+          onPlayAgain: () {
+            ref.read(dnmsNotifierProvider.notifier).initGame();
+            Navigator.pop(context);
+          },
+          onHome: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+        );
+      },
     );
   }
 
@@ -63,7 +67,7 @@ class _DnmsScreenState extends ConsumerState<DnmsScreen> {
 
     return GameScaffold(
       title: L10nGameHelpers.getGameTitle(context, 'dnms'),
-      subtitle: L10nGameHelpers.getGameTitle(context, 'dnms'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'dnms'),
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(
@@ -94,19 +98,20 @@ class _DnmsScreenState extends ConsumerState<DnmsScreen> {
   }
 
   Widget _buildPhaseIndicator(DnmsState state) {
-    String text = 'CHOOSE THE NOVEL CARD';
+    final l10n = AppLocalizations.of(context)!;
+    String text = l10n.dnmsChooseNovel;
     Color color = DesignSystem.primary;
     if (state.phase == DnmsPhase.memorize) {
-      text = 'MEMORIZE THIS CARD';
+      text = l10n.dnmsMemorizeSample;
       color = DesignSystem.accentAmber;
     } else if (state.phase == DnmsPhase.delay) {
-      text = 'WAIT FOR IT...';
+      text = l10n.dnmsWaitForIt;
       color = DesignSystem.gameIndigo;
     } else if (state.lastRoundCorrect == true) {
-      text = 'EXCELLENT!';
+      text = l10n.dnmsExcellent;
       color = DesignSystem.success;
     } else if (state.lastRoundCorrect == false) {
-      text = 'THAT WAS THE SAMPLE!';
+      text = l10n.dnmsSampleTapped;
       color = DesignSystem.error;
     }
 
@@ -187,14 +192,15 @@ class _DnmsScreenState extends ConsumerState<DnmsScreen> {
   }
 
   Widget _buildStats(DnmsState state, bool isSmall) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildStat('TIME', '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
-          _buildStat('CARDS', '${state.currentDifficulty}', DesignSystem.accentAmber, isSmall),
-          _buildStat('SCORE', '${state.score}', DesignSystem.success, isSmall),
+          _buildStat(l10n.statTime, '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
+          _buildStat(l10n.statCards, '${state.currentDifficulty}', DesignSystem.accentAmber, isSmall),
+          _buildStat(l10n.statScore, '${state.score}', DesignSystem.success, isSmall),
         ],
       ),
     );

@@ -108,9 +108,9 @@ class SettingsScreen extends ConsumerWidget {
                           case 17: return const SizedBox(height: DesignSystem.spaceSM);
                           case 18: return _buildSettingsItem(context, l10n.sponsorOnGithub, Icons.favorite_rounded, () => _launchUrl('https://github.com/sponsors/sidhant947'), iconColor: Colors.pink);
                           case 19: return const SizedBox(height: DesignSystem.spaceSM);
-                          case 20: return _buildSettingsItem(context, 'Leave a Review', Icons.rate_review_rounded, () => _launchUrl('https://play.google.com/store/apps/details?id=com.sidhant.puzzle'), iconColor: Colors.teal);
+                          case 20: return _buildSettingsItem(context, l10n.leaveReview, Icons.rate_review_rounded, () => _launchUrl('https://play.google.com/store/apps/details?id=com.sidhant.puzzle'), iconColor: Colors.teal);
                           case 21: return const SizedBox(height: DesignSystem.spaceSM);
-                          case 22: return _buildSettingsItem(context, 'Report an Error', Icons.bug_report_rounded, () => _launchUrl('https://github.com/sidhant947/Puzzle/issues'), iconColor: Colors.redAccent);
+                          case 22: return _buildSettingsItem(context, l10n.reportError, Icons.bug_report_rounded, () => _launchUrl('https://github.com/sidhant947/Puzzle/issues'), iconColor: Colors.redAccent);
                           case 23: return const SizedBox(height: DesignSystem.spaceXL);
                           case 24: return _buildSectionTitle(context, l10n.systemLegal.toUpperCase());
                           case 25: return const SizedBox(height: DesignSystem.spaceMD);

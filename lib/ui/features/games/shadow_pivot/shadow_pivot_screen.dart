@@ -1,4 +1,5 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 
 import 'dart:math' as math;
 import 'package:flutter/material.dart';
@@ -61,7 +62,7 @@ class _ShadowPivotScreenState extends ConsumerState<ShadowPivotScreen> {
               const SizedBox(height: DesignSystem.spaceLG),
               TangibleButton(
                 onTap: () => Navigator.of(context).pop(),
-                child: const Text('GOT IT'),
+                child: Text(AppLocalizations.of(context)!.btnGotIt),
               ),
             ],
           ),
@@ -76,8 +77,8 @@ class _ShadowPivotScreenState extends ConsumerState<ShadowPivotScreen> {
       context: context,
       barrierDismissible: false,
       builder: (dialogCtx) => GameCompletionDialog(
-        title: isVictory ? l10n.shadowPivotTitle : 'GAME OVER',
-        message: isVictory ? l10n.shadowPivotCongrats : 'Try again!',
+        title: isVictory ? l10n.shadowPivotTitle : AppLocalizations.of(context)!.gameOver,
+        message: isVictory ? l10n.shadowPivotCongrats : AppLocalizations.of(context)!.loseTryAgainSolution,
         isVictory: isVictory,
         onHome: () {
           Navigator.of(dialogCtx).pop();
@@ -107,6 +108,7 @@ class _ShadowPivotScreenState extends ConsumerState<ShadowPivotScreen> {
     final state = ref.watch(shadowPivotNotifierProvider);
     final notifier = ref.read(shadowPivotNotifierProvider.notifier);
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
 
     ref.listen(shadowPivotNotifierProvider, (previous, next) {
       if ((next.isVictory && !(previous?.isVictory ?? false)) ||
@@ -121,8 +123,8 @@ class _ShadowPivotScreenState extends ConsumerState<ShadowPivotScreen> {
     });
 
     return GameScaffold(
-      title: AppLocalizations.of(context)!.shadowPivotTitle,
-      subtitle: AppLocalizations.of(context)!.shadowPivotSubtitle,
+      title: L10nGameHelpers.getGameTitle(context, 'shadow_pivot'),
+      subtitle: l10n.shadowPivotSubtitle,
       onHowToPlay: _showHowToPlay,
       onReset: notifier.reset,
       body: state.isLoading
@@ -307,7 +309,7 @@ class _ShadowPivotScreenState extends ConsumerState<ShadowPivotScreen> {
                               : (state.isFailed ? theme.colorScheme.error : const Color(0xFF047857)),
                           child: Center(
                             child: Text(
-                              state.isFailed ? 'FAILED (TAP RESET)' : 'CHECK RESPONSE',
+                              state.isFailed ? AppLocalizations.of(context)!.gameOver : AppLocalizations.of(context)!.btnSubmit,
                               style: const TextStyle(
                                 color: Colors.white,
                                 fontWeight: FontWeight.w900,

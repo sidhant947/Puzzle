@@ -260,7 +260,7 @@ class _InequalityDashScreenState extends ConsumerState<InequalityDashScreen> {
                       Padding(
                         padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
                         child: Text(
-                          state.lastAnswerCorrect! ? 'CORRECT!' : 'WRONG!',
+                          state.lastAnswerCorrect! ? AppLocalizations.of(context)!.correct : AppLocalizations.of(context)!.incorrect,
                           style: TextStyle(
                             fontWeight: FontWeight.w900,
                             fontSize: 16,

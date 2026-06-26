@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -99,8 +100,9 @@ class _StoryBuilderScreenState extends ConsumerState<StoryBuilderScreen> {
       });
     } else {
       HapticFeedbackUtil.error();
+      final l10n = AppLocalizations.of(context)!;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Incorrect sequence! Study the story again.'), duration: Duration(seconds: 2)),
+        SnackBar(content: Text(l10n.snackbarIncorrectStudyStory), duration: Duration(seconds: 2)),
       );
       setState(() {
         _isStudyMode = true;
@@ -140,8 +142,8 @@ class _StoryBuilderScreenState extends ConsumerState<StoryBuilderScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'STORY BUILDER',
-      subtitle: _isStudyMode ? 'Memorize the chronological order of events' : 'Reconstruct the story by tapping sentences in order',
+      title: L10nGameHelpers.getGameTitle(context, 'story_builder'),
+      subtitle: _isStudyMode ? AppLocalizations.of(context)!.phaseMemorizeSequence : L10nGameHelpers.getGameSubtitle(context, 'story_builder'),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -165,7 +167,7 @@ class _StoryBuilderScreenState extends ConsumerState<StoryBuilderScreen> {
                 borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
               ),
               child: Text(
-                'Score: $_score / $_targetScore',
+                '${AppLocalizations.of(context)!.statScore}: $_score / $_targetScore',
                 style: Theme.of(context).textTheme.titleMedium?.copyWith(
                       color: DesignSystem.primary,
                       fontWeight: FontWeight.bold,
@@ -230,7 +232,7 @@ class _StoryBuilderScreenState extends ConsumerState<StoryBuilderScreen> {
               borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
             ),
           ),
-          child: const Text('I\'M READY', style: TextStyle(fontWeight: FontWeight.bold)),
+          child: Text(AppLocalizations.of(context)!.btnImReady, style: TextStyle(fontWeight: FontWeight.bold)),
         ),
       ],
     );

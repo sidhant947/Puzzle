@@ -5,6 +5,7 @@ import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
 
@@ -152,7 +153,7 @@ class _WordGridConnectionScreenState extends ConsumerState<WordGridConnectionScr
         } else {
           ScaffoldMessenger.of(context).showSnackBar(
             SnackBar(
-              content: Text('Incorrect group! $_triesRemaining tries remaining.'),
+              content: Text(AppLocalizations.of(context)!.snackbarIncorrectGroup(_triesRemaining)),
               duration: const Duration(seconds: 1),
             ),
           );
@@ -166,8 +167,8 @@ class _WordGridConnectionScreenState extends ConsumerState<WordGridConnectionScr
       context: context,
       barrierDismissible: false,
       builder: (context) => AlertDialog(
-        title: const Text('GAME OVER'),
-        content: const Text('You ran out of tries! Let\'s try a new game.'),
+        title: Text(AppLocalizations.of(context)!.gameOver),
+        content: Text(AppLocalizations.of(context)!.loseTryAgainSolution),
         actions: [
           TextButton(
             onPressed: () {
@@ -176,7 +177,7 @@ class _WordGridConnectionScreenState extends ConsumerState<WordGridConnectionScr
                 _generatePuzzle();
               });
             },
-            child: const Text('PLAY AGAIN'),
+            child: Text(AppLocalizations.of(context)!.playAgain),
           ),
         ],
       ),
@@ -215,8 +216,8 @@ class _WordGridConnectionScreenState extends ConsumerState<WordGridConnectionScr
     final remainingWords = _scrambledWords.where((w) => !_isSolved(w)).toList();
 
     return GameScaffold(
-      title: 'WORD CONNECTIONS',
-      subtitle: 'Group 16 words into four categories of four',
+      title: L10nGameHelpers.getGameTitle(context, 'word_grid_connection'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'word_grid_connection'),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -343,7 +344,7 @@ class _WordGridConnectionScreenState extends ConsumerState<WordGridConnectionScr
                         borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
                       ),
                     ),
-                    child: const Text('SUBMIT GROUP', style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
+                    child: Text(AppLocalizations.of(context)!.btnSubmitGroup, style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16)),
                   ),
                 ),
               ),

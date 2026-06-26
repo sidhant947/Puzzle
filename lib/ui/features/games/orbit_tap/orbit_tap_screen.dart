@@ -44,6 +44,7 @@ class _OrbitTapScreenState extends ConsumerState<OrbitTapScreen> with SingleTick
 
   void _showGameOverDialog(int score) {
     bool won = score >= 10;
+    final l10n = AppLocalizations.of(context)!;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('orbit_tap');
     }
@@ -51,7 +52,7 @@ class _OrbitTapScreenState extends ConsumerState<OrbitTapScreen> with SingleTick
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: won ? 'ORBIT MASTER!' : 'OUT OF SYNC',
+        title: won ? l10n.winOrbitMaster : l10n.loseOutOfSync,
         message: AppLocalizations.of(context)!.orbitTapMessage((score).toString()),
         isVictory: won,
         onPlayAgain: () {
@@ -102,8 +103,8 @@ class _OrbitTapScreenState extends ConsumerState<OrbitTapScreen> with SingleTick
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _buildStat('LIVES', '❤' * state.lives, DesignSystem.error),
-                    _buildStat('SCORE', '${state.score}', DesignSystem.primary),
+                    _buildStat(l10n.statLives, '❤' * state.lives, DesignSystem.error),
+                    _buildStat(l10n.statScore, '${state.score}', DesignSystem.primary),
                   ],
                 ),
               ),
@@ -148,7 +149,7 @@ class _OrbitTapScreenState extends ConsumerState<OrbitTapScreen> with SingleTick
               Padding(
                 padding: EdgeInsets.all(DesignSystem.spaceXL),
                 child: Text(
-                  'TAP ANYWHERE TO SYNC',
+                  l10n.btnStartGame.toUpperCase(),
                   style: TextStyle(
                     color: colorScheme.onSurface.withValues(alpha: 0.7),
                     fontWeight: FontWeight.w900,

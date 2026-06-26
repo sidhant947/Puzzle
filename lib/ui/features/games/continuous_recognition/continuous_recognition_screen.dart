@@ -1,4 +1,5 @@
 import 'package:puzzle/utils/l10n_game_helpers.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -35,19 +36,22 @@ class _ContinuousRecognitionScreenState extends ConsumerState<ContinuousRecognit
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => GameCompletionDialog(
-        title: won ? 'RECOGNITION GENIUS!' : 'GAME OVER',
-        message: 'You scored $score correct recognitions!',
-        isVictory: won,
-        onPlayAgain: () {
-          ref.read(continuousRecognitionNotifierProvider.notifier).initGame();
-          Navigator.pop(context);
-        },
-        onHome: () {
-          Navigator.pop(context);
-          Navigator.pop(context);
-        },
-      ),
+      builder: (context) {
+        final l10n = AppLocalizations.of(context)!;
+        return GameCompletionDialog(
+          title: won ? l10n.gameWin : l10n.gameOver,
+          message: '$score correct recognitions!',
+          isVictory: won,
+          onPlayAgain: () {
+            ref.read(continuousRecognitionNotifierProvider.notifier).initGame();
+            Navigator.pop(context);
+          },
+          onHome: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+        );
+      },
     );
   }
 
@@ -64,7 +68,7 @@ class _ContinuousRecognitionScreenState extends ConsumerState<ContinuousRecognit
 
     return GameScaffold(
       title: L10nGameHelpers.getGameTitle(context, 'continuous_recognition'),
-      subtitle: L10nGameHelpers.getGameTitle(context, 'continuous_recognition'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'continuous_recognition'),
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(
@@ -200,14 +204,15 @@ class _ContinuousRecognitionScreenState extends ConsumerState<ContinuousRecognit
   }
 
   Widget _buildStats(ContinuousRecognitionState state, bool isSmall) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildStat('TIME', '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
-          _buildStat('SEEN POOL', '${state.seenCards.length}', DesignSystem.gameIndigo, isSmall),
-          _buildStat('SCORE', '${state.score}', DesignSystem.success, isSmall),
+          _buildStat(l10n.statTime, '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
+          _buildStat(l10n.statSeenPool, '${state.seenCards.length}', DesignSystem.gameIndigo, isSmall),
+          _buildStat(l10n.statScore, '${state.score}', DesignSystem.success, isSmall),
         ],
       ),
     );

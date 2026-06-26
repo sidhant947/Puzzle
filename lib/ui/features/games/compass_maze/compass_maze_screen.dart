@@ -34,7 +34,7 @@ class _CompassMazeScreenState extends ConsumerState<CompassMazeScreen> {
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.compassMazeTitle.toUpperCase(),
-        message: isVictory ? l10n.compassMazeMessage : "Not quite! Try again.",
+        message: isVictory ? l10n.compassMazeMessage : AppLocalizations.of(context)!.loseTryAgainSolution,
         isVictory: isVictory,
         onHome: () {
           Navigator.of(context).pop();

@@ -7831,6 +7831,2041 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Type vocabularies matching metronome rhythm beats.'**
   String get typingRhythmSpeedSubtitle;
+
+  /// No description provided for @errorSomethingWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Something went wrong'**
+  String get errorSomethingWrong;
+
+  /// No description provided for @errorUnexpected.
+  ///
+  /// In en, this message translates to:
+  /// **'An unexpected error occurred'**
+  String get errorUnexpected;
+
+  /// No description provided for @errorTryAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Try Again'**
+  String get errorTryAgain;
+
+  /// No description provided for @leaveReview.
+  ///
+  /// In en, this message translates to:
+  /// **'Leave Review'**
+  String get leaveReview;
+
+  /// No description provided for @reportError.
+  ///
+  /// In en, this message translates to:
+  /// **'Report Error'**
+  String get reportError;
+
+  /// No description provided for @statsTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Stats'**
+  String get statsTitle;
+
+  /// No description provided for @statsAchievements.
+  ///
+  /// In en, this message translates to:
+  /// **'Achievements'**
+  String get statsAchievements;
+
+  /// No description provided for @statsWeeklyActivity.
+  ///
+  /// In en, this message translates to:
+  /// **'Weekly Activity'**
+  String get statsWeeklyActivity;
+
+  /// No description provided for @statsDayStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'{days} Day Streak'**
+  String statsDayStreak(int days);
+
+  /// No description provided for @statsTotalXp.
+  ///
+  /// In en, this message translates to:
+  /// **'Total XP'**
+  String get statsTotalXp;
+
+  /// No description provided for @statsSolved.
+  ///
+  /// In en, this message translates to:
+  /// **'Solved'**
+  String get statsSolved;
+
+  /// No description provided for @statsLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'Level {level}'**
+  String statsLevel(int level);
+
+  /// No description provided for @statsMaintainStreak.
+  ///
+  /// In en, this message translates to:
+  /// **'Maintain your streak!'**
+  String get statsMaintainStreak;
+
+  /// No description provided for @statsPercentToLevel.
+  ///
+  /// In en, this message translates to:
+  /// **'{percent}% to Level {level}'**
+  String statsPercentToLevel(int percent, int level);
+
+  /// No description provided for @statsCognitiveProfile.
+  ///
+  /// In en, this message translates to:
+  /// **'Cognitive Profile'**
+  String get statsCognitiveProfile;
+
+  /// No description provided for @statsLocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Locked'**
+  String get statsLocked;
+
+  /// No description provided for @achievementSeeker.
+  ///
+  /// In en, this message translates to:
+  /// **'Seeker'**
+  String get achievementSeeker;
+
+  /// No description provided for @achievementSeekerDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Earn 100 XP'**
+  String get achievementSeekerDesc;
+
+  /// No description provided for @achievementApprentice.
+  ///
+  /// In en, this message translates to:
+  /// **'Apprentice'**
+  String get achievementApprentice;
+
+  /// No description provided for @achievementApprenticeDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Earn 1,000 XP'**
+  String get achievementApprenticeDesc;
+
+  /// No description provided for @achievementStrategist.
+  ///
+  /// In en, this message translates to:
+  /// **'Strategist'**
+  String get achievementStrategist;
+
+  /// No description provided for @achievementStrategistDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Earn 5,000 XP'**
+  String get achievementStrategistDesc;
+
+  /// No description provided for @achievementElite.
+  ///
+  /// In en, this message translates to:
+  /// **'Elite'**
+  String get achievementElite;
+
+  /// No description provided for @achievementEliteDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Earn 10,000 XP'**
+  String get achievementEliteDesc;
+
+  /// No description provided for @achievementVeteran.
+  ///
+  /// In en, this message translates to:
+  /// **'Veteran'**
+  String get achievementVeteran;
+
+  /// No description provided for @achievementVeteranDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Earn 25,000 XP'**
+  String get achievementVeteranDesc;
+
+  /// No description provided for @achievementMaster.
+  ///
+  /// In en, this message translates to:
+  /// **'Master'**
+  String get achievementMaster;
+
+  /// No description provided for @achievementMasterDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Earn 50,000 XP'**
+  String get achievementMasterDesc;
+
+  /// No description provided for @achievementGrandmaster.
+  ///
+  /// In en, this message translates to:
+  /// **'Grandmaster'**
+  String get achievementGrandmaster;
+
+  /// No description provided for @achievementGrandmasterDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Earn 100,000 XP'**
+  String get achievementGrandmasterDesc;
+
+  /// No description provided for @achievementLegend.
+  ///
+  /// In en, this message translates to:
+  /// **'Legend'**
+  String get achievementLegend;
+
+  /// No description provided for @achievementLegendDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Earn 250,000 XP'**
+  String get achievementLegendDesc;
+
+  /// No description provided for @achievementMythic.
+  ///
+  /// In en, this message translates to:
+  /// **'Mythic'**
+  String get achievementMythic;
+
+  /// No description provided for @achievementMythicDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Earn 500,000 XP'**
+  String get achievementMythicDesc;
+
+  /// No description provided for @achievementEternal.
+  ///
+  /// In en, this message translates to:
+  /// **'Eternal'**
+  String get achievementEternal;
+
+  /// No description provided for @achievementEternalDesc.
+  ///
+  /// In en, this message translates to:
+  /// **'Earn 1,000,000 XP'**
+  String get achievementEternalDesc;
+
+  /// No description provided for @winFoundIt.
+  ///
+  /// In en, this message translates to:
+  /// **'Found It!'**
+  String get winFoundIt;
+
+  /// No description provided for @winExcellentTracking.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent tracking speed!'**
+  String get winExcellentTracking;
+
+  /// No description provided for @loseMissedIt.
+  ///
+  /// In en, this message translates to:
+  /// **'Missed It!'**
+  String get loseMissedIt;
+
+  /// No description provided for @loseKeepEyes.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep your eyes on the target.'**
+  String get loseKeepEyes;
+
+  /// No description provided for @winDecodedCorrectly.
+  ///
+  /// In en, this message translates to:
+  /// **'Decoded Correctly!'**
+  String get winDecodedCorrectly;
+
+  /// No description provided for @winDecodedMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your brain successfully read the jumbled text!'**
+  String get winDecodedMessage;
+
+  /// No description provided for @loseTryAgainDecryption.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again to break the encryption.'**
+  String get loseTryAgainDecryption;
+
+  /// No description provided for @winTargetReached.
+  ///
+  /// In en, this message translates to:
+  /// **'Target Reached!'**
+  String get winTargetReached;
+
+  /// No description provided for @winExcellentCalculations.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent calculations!'**
+  String get winExcellentCalculations;
+
+  /// No description provided for @winCodeBroken.
+  ///
+  /// In en, this message translates to:
+  /// **'Code Broken!'**
+  String get winCodeBroken;
+
+  /// No description provided for @winDecodedPerfectly.
+  ///
+  /// In en, this message translates to:
+  /// **'You decoded the message perfectly.'**
+  String get winDecodedPerfectly;
+
+  /// No description provided for @loseEncrypted.
+  ///
+  /// In en, this message translates to:
+  /// **'Encrypted'**
+  String get loseEncrypted;
+
+  /// No description provided for @winAmazing.
+  ///
+  /// In en, this message translates to:
+  /// **'Amazing!'**
+  String get winAmazing;
+
+  /// No description provided for @winReachedTarget.
+  ///
+  /// In en, this message translates to:
+  /// **'You reached the target number!'**
+  String get winReachedTarget;
+
+  /// No description provided for @loseTryAgainSolution.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again to find the solution.'**
+  String get loseTryAgainSolution;
+
+  /// No description provided for @winExcellent.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent!'**
+  String get winExcellent;
+
+  /// No description provided for @winLevelUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Level Up!'**
+  String get winLevelUp;
+
+  /// No description provided for @winPerfect.
+  ///
+  /// In en, this message translates to:
+  /// **'Perfect!'**
+  String get winPerfect;
+
+  /// No description provided for @winFloodSuccess.
+  ///
+  /// In en, this message translates to:
+  /// **'Flood Success!'**
+  String get winFloodSuccess;
+
+  /// No description provided for @loseDryLand.
+  ///
+  /// In en, this message translates to:
+  /// **'Dry Land...'**
+  String get loseDryLand;
+
+  /// No description provided for @winRoundComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Round Complete'**
+  String get winRoundComplete;
+
+  /// No description provided for @winStayVigilant.
+  ///
+  /// In en, this message translates to:
+  /// **'Stay Vigilant!'**
+  String get winStayVigilant;
+
+  /// No description provided for @loseKeepWatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep Watch!'**
+  String get loseKeepWatch;
+
+  /// No description provided for @winFocusMaster.
+  ///
+  /// In en, this message translates to:
+  /// **'Focus Master!'**
+  String get winFocusMaster;
+
+  /// No description provided for @loseConcentrationBroken.
+  ///
+  /// In en, this message translates to:
+  /// **'Concentration Broken'**
+  String get loseConcentrationBroken;
+
+  /// No description provided for @winSpeedDemon.
+  ///
+  /// In en, this message translates to:
+  /// **'Speed Demon!'**
+  String get winSpeedDemon;
+
+  /// No description provided for @loseSlowSteady.
+  ///
+  /// In en, this message translates to:
+  /// **'Slow & Steady'**
+  String get loseSlowSteady;
+
+  /// No description provided for @loseTimeExpired.
+  ///
+  /// In en, this message translates to:
+  /// **'Time Expired'**
+  String get loseTimeExpired;
+
+  /// No description provided for @winSharpEyes.
+  ///
+  /// In en, this message translates to:
+  /// **'Sharp Eyes!'**
+  String get winSharpEyes;
+
+  /// No description provided for @loseLostTrack.
+  ///
+  /// In en, this message translates to:
+  /// **'Lost Track'**
+  String get loseLostTrack;
+
+  /// No description provided for @winOrbitMaster.
+  ///
+  /// In en, this message translates to:
+  /// **'Orbit Master!'**
+  String get winOrbitMaster;
+
+  /// No description provided for @loseOutOfSync.
+  ///
+  /// In en, this message translates to:
+  /// **'Out of Sync'**
+  String get loseOutOfSync;
+
+  /// No description provided for @winSharpReflexes.
+  ///
+  /// In en, this message translates to:
+  /// **'Sharp Reflexes!'**
+  String get winSharpReflexes;
+
+  /// No description provided for @loseOutOfTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Out of Time'**
+  String get loseOutOfTime;
+
+  /// No description provided for @winSurgeComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Surge Complete!'**
+  String get winSurgeComplete;
+
+  /// No description provided for @loseTimeExpiredExcl.
+  ///
+  /// In en, this message translates to:
+  /// **'Time Expired!'**
+  String get loseTimeExpiredExcl;
+
+  /// No description provided for @winMathGenius.
+  ///
+  /// In en, this message translates to:
+  /// **'Math Genius!'**
+  String get winMathGenius;
+
+  /// No description provided for @loseTimeUp.
+  ///
+  /// In en, this message translates to:
+  /// **'Time Up'**
+  String get loseTimeUp;
+
+  /// No description provided for @winPlanningMaster.
+  ///
+  /// In en, this message translates to:
+  /// **'Planning Master!'**
+  String get winPlanningMaster;
+
+  /// No description provided for @loseOutOfMoves.
+  ///
+  /// In en, this message translates to:
+  /// **'Out of Moves'**
+  String get loseOutOfMoves;
+
+  /// No description provided for @winTotalControl.
+  ///
+  /// In en, this message translates to:
+  /// **'Total Control!'**
+  String get winTotalControl;
+
+  /// No description provided for @loseInhibitionFail.
+  ///
+  /// In en, this message translates to:
+  /// **'Inhibition Fail'**
+  String get loseInhibitionFail;
+
+  /// No description provided for @winMimicMaster.
+  ///
+  /// In en, this message translates to:
+  /// **'Mimic Master!'**
+  String get winMimicMaster;
+
+  /// No description provided for @losePatternMismatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Pattern Mismatch'**
+  String get losePatternMismatch;
+
+  /// No description provided for @winMemoryMaster.
+  ///
+  /// In en, this message translates to:
+  /// **'Memory Master!'**
+  String get winMemoryMaster;
+
+  /// No description provided for @loseFadingEcho.
+  ///
+  /// In en, this message translates to:
+  /// **'Fading Echo'**
+  String get loseFadingEcho;
+
+  /// No description provided for @winNeuroMaster.
+  ///
+  /// In en, this message translates to:
+  /// **'Neuro-Master!'**
+  String get winNeuroMaster;
+
+  /// No description provided for @loseBrainFog.
+  ///
+  /// In en, this message translates to:
+  /// **'Brain Fog'**
+  String get loseBrainFog;
+
+  /// No description provided for @winBrainWizard.
+  ///
+  /// In en, this message translates to:
+  /// **'Brain Wizard!'**
+  String get winBrainWizard;
+
+  /// No description provided for @winSpatialMaster.
+  ///
+  /// In en, this message translates to:
+  /// **'Spatial Master!'**
+  String get winSpatialMaster;
+
+  /// No description provided for @loseLostInSpace.
+  ///
+  /// In en, this message translates to:
+  /// **'Lost in Space'**
+  String get loseLostInSpace;
+
+  /// No description provided for @winSequenceMaster.
+  ///
+  /// In en, this message translates to:
+  /// **'Sequence Master!'**
+  String get winSequenceMaster;
+
+  /// No description provided for @winCountingGenius.
+  ///
+  /// In en, this message translates to:
+  /// **'Counting Genius!'**
+  String get winCountingGenius;
+
+  /// No description provided for @winNonMatchingExpert.
+  ///
+  /// In en, this message translates to:
+  /// **'Non-Matching Expert!'**
+  String get winNonMatchingExpert;
+
+  /// No description provided for @winSymmetryMaster.
+  ///
+  /// In en, this message translates to:
+  /// **'Symmetry Master!'**
+  String get winSymmetryMaster;
+
+  /// No description provided for @winCabinetExpert.
+  ///
+  /// In en, this message translates to:
+  /// **'Cabinet Expert!'**
+  String get winCabinetExpert;
+
+  /// No description provided for @winSpatialGenius.
+  ///
+  /// In en, this message translates to:
+  /// **'Spatial Genius!'**
+  String get winSpatialGenius;
+
+  /// No description provided for @winReadingExpert.
+  ///
+  /// In en, this message translates to:
+  /// **'Reading Expert!'**
+  String get winReadingExpert;
+
+  /// No description provided for @winRecognitionGenius.
+  ///
+  /// In en, this message translates to:
+  /// **'Recognition Genius!'**
+  String get winRecognitionGenius;
+
+  /// No description provided for @winMandalaArtist.
+  ///
+  /// In en, this message translates to:
+  /// **'Mandala Artist!'**
+  String get winMandalaArtist;
+
+  /// No description provided for @winTrackerPro.
+  ///
+  /// In en, this message translates to:
+  /// **'Tracker Pro!'**
+  String get winTrackerPro;
+
+  /// No description provided for @loseLostTrail.
+  ///
+  /// In en, this message translates to:
+  /// **'Lost Trail'**
+  String get loseLostTrail;
+
+  /// No description provided for @winLogicMaster.
+  ///
+  /// In en, this message translates to:
+  /// **'Logic Master!'**
+  String get winLogicMaster;
+
+  /// No description provided for @loseWrongAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong Answer'**
+  String get loseWrongAnswer;
+
+  /// No description provided for @winPathfinder.
+  ///
+  /// In en, this message translates to:
+  /// **'Pathfinder!'**
+  String get winPathfinder;
+
+  /// No description provided for @loseLostYourWay.
+  ///
+  /// In en, this message translates to:
+  /// **'Lost Your Way'**
+  String get loseLostYourWay;
+
+  /// No description provided for @winMentalGymnast.
+  ///
+  /// In en, this message translates to:
+  /// **'Mental Gymnast!'**
+  String get winMentalGymnast;
+
+  /// No description provided for @loseWiresCrossed.
+  ///
+  /// In en, this message translates to:
+  /// **'Wires Crossed'**
+  String get loseWiresCrossed;
+
+  /// No description provided for @winCorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct!'**
+  String get winCorrect;
+
+  /// No description provided for @loseWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong'**
+  String get loseWrong;
+
+  /// No description provided for @winRhythmGod.
+  ///
+  /// In en, this message translates to:
+  /// **'Rhythm God!'**
+  String get winRhythmGod;
+
+  /// No description provided for @loseOffBeat.
+  ///
+  /// In en, this message translates to:
+  /// **'Off Beat'**
+  String get loseOffBeat;
+
+  /// No description provided for @winSteadyHands.
+  ///
+  /// In en, this message translates to:
+  /// **'Steady Hands!'**
+  String get winSteadyHands;
+
+  /// No description provided for @loseShakyLine.
+  ///
+  /// In en, this message translates to:
+  /// **'Shaky Line'**
+  String get loseShakyLine;
+
+  /// No description provided for @winEquationSolved.
+  ///
+  /// In en, this message translates to:
+  /// **'Equation Solved!'**
+  String get winEquationSolved;
+
+  /// No description provided for @winMasterHunter.
+  ///
+  /// In en, this message translates to:
+  /// **'Master Hunter!'**
+  String get winMasterHunter;
+
+  /// No description provided for @loseHuntEnded.
+  ///
+  /// In en, this message translates to:
+  /// **'Hunt Ended'**
+  String get loseHuntEnded;
+
+  /// No description provided for @winFluencyExpert.
+  ///
+  /// In en, this message translates to:
+  /// **'Fluency Expert!'**
+  String get winFluencyExpert;
+
+  /// No description provided for @loseTimeUpExcl.
+  ///
+  /// In en, this message translates to:
+  /// **'Time Up!'**
+  String get loseTimeUpExcl;
+
+  /// No description provided for @winSharpEye.
+  ///
+  /// In en, this message translates to:
+  /// **'Sharp Eye!'**
+  String get winSharpEye;
+
+  /// No description provided for @loseMismatched.
+  ///
+  /// In en, this message translates to:
+  /// **'Mismatched'**
+  String get loseMismatched;
+
+  /// No description provided for @winFibonacciMaster.
+  ///
+  /// In en, this message translates to:
+  /// **'Fibonacci Master!'**
+  String get winFibonacciMaster;
+
+  /// No description provided for @winMathWizard.
+  ///
+  /// In en, this message translates to:
+  /// **'Math Wizard!'**
+  String get winMathWizard;
+
+  /// No description provided for @winPercentagePro.
+  ///
+  /// In en, this message translates to:
+  /// **'Percentage Pro!'**
+  String get winPercentagePro;
+
+  /// No description provided for @winSleuthMaster.
+  ///
+  /// In en, this message translates to:
+  /// **'Sleuth Master!'**
+  String get winSleuthMaster;
+
+  /// No description provided for @winDivisibilityWhiz.
+  ///
+  /// In en, this message translates to:
+  /// **'Divisibility Whiz!'**
+  String get winDivisibilityWhiz;
+
+  /// No description provided for @winVennMaster.
+  ///
+  /// In en, this message translates to:
+  /// **'Venn Master!'**
+  String get winVennMaster;
+
+  /// No description provided for @winChimpTestAced.
+  ///
+  /// In en, this message translates to:
+  /// **'Chimp Test Aced'**
+  String get winChimpTestAced;
+
+  /// No description provided for @loseTestFailed.
+  ///
+  /// In en, this message translates to:
+  /// **'Test Failed'**
+  String get loseTestFailed;
+
+  /// No description provided for @winChimpMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Sensational working memory span! You equal chimpanzee levels of cognitive recall.'**
+  String get winChimpMessage;
+
+  /// No description provided for @loseChimpMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You lost all lives. Keep training to scale up your memory grid capacity!'**
+  String get loseChimpMessage;
+
+  /// No description provided for @winPerfectRecall.
+  ///
+  /// In en, this message translates to:
+  /// **'Perfect Recall!'**
+  String get winPerfectRecall;
+
+  /// No description provided for @winRememberedAll.
+  ///
+  /// In en, this message translates to:
+  /// **'You remembered all details correctly!'**
+  String get winRememberedAll;
+
+  /// No description provided for @loseSomeDetailsWrong.
+  ///
+  /// In en, this message translates to:
+  /// **'Some details were remembered incorrectly.'**
+  String get loseSomeDetailsWrong;
+
+  /// No description provided for @winShikakuSolved.
+  ///
+  /// In en, this message translates to:
+  /// **'You successfully solved the Shikaku puzzle.'**
+  String get winShikakuSolved;
+
+  /// No description provided for @snackbarIncorrectSum.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect sum! Try another one.'**
+  String get snackbarIncorrectSum;
+
+  /// No description provided for @snackbarCorrectMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct match!'**
+  String get snackbarCorrectMatch;
+
+  /// No description provided for @snackbarWrongMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong match! Study a new shape.'**
+  String get snackbarWrongMatch;
+
+  /// No description provided for @snackbarAlignedPerfectly.
+  ///
+  /// In en, this message translates to:
+  /// **'Aligned perfectly! Next target...'**
+  String get snackbarAlignedPerfectly;
+
+  /// No description provided for @snackbarNotAligned.
+  ///
+  /// In en, this message translates to:
+  /// **'Not aligned yet! Keep adjusting the rotation, scale, or positions.'**
+  String get snackbarNotAligned;
+
+  /// No description provided for @snackbarWordMustContainCentral.
+  ///
+  /// In en, this message translates to:
+  /// **'Word must contain the central letter \"{letter}\"!'**
+  String snackbarWordMustContainCentral(String letter);
+
+  /// No description provided for @snackbarWordAlreadyFound.
+  ///
+  /// In en, this message translates to:
+  /// **'Word already found!'**
+  String get snackbarWordAlreadyFound;
+
+  /// No description provided for @snackbarNotAValidWord.
+  ///
+  /// In en, this message translates to:
+  /// **'Not a valid word!'**
+  String get snackbarNotAValidWord;
+
+  /// No description provided for @snackbarIncorrectLookClose.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect reading. Look closely at the words!'**
+  String get snackbarIncorrectLookClose;
+
+  /// No description provided for @snackbarIncorrectCorrectAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect! The correct answer was {answer}'**
+  String snackbarIncorrectCorrectAnswer(String answer);
+
+  /// No description provided for @snackbarCorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct!'**
+  String get snackbarCorrect;
+
+  /// No description provided for @snackbarIncorrectTryNew.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect recall! Try a new grid.'**
+  String get snackbarIncorrectTryNew;
+
+  /// No description provided for @snackbarAllCorrect.
+  ///
+  /// In en, this message translates to:
+  /// **'All associations correct!'**
+  String get snackbarAllCorrect;
+
+  /// No description provided for @snackbarIncorrectStudyAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect translations! Study the association key again.'**
+  String get snackbarIncorrectStudyAgain;
+
+  /// No description provided for @snackbarIncorrectArithmetic.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect arithmetic! Try again.'**
+  String get snackbarIncorrectArithmetic;
+
+  /// No description provided for @snackbarCorrectRecall.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct recall!'**
+  String get snackbarCorrectRecall;
+
+  /// No description provided for @snackbarWrongRecall.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong recall selection! Try a new set.'**
+  String get snackbarWrongRecall;
+
+  /// No description provided for @snackbarPieceDoesNotFit.
+  ///
+  /// In en, this message translates to:
+  /// **'Piece does not fit there!'**
+  String get snackbarPieceDoesNotFit;
+
+  /// No description provided for @snackbarInvalidStep.
+  ///
+  /// In en, this message translates to:
+  /// **'Invalid step! {mod} mod {modulus} is not {remainder}.'**
+  String snackbarInvalidStep(int mod, int modulus, int remainder);
+
+  /// No description provided for @snackbarIncorrectGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect group! {tries} tries remaining.'**
+  String snackbarIncorrectGroup(int tries);
+
+  /// No description provided for @snackbarIncorrectSwapped.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect! Swapped items are highlighted in green.'**
+  String get snackbarIncorrectSwapped;
+
+  /// No description provided for @snackbarIncorrectDestination.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect! The final destination was ({x}, {y}).'**
+  String snackbarIncorrectDestination(int x, int y);
+
+  /// No description provided for @snackbarIncorrectCorrectCount.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect! The correct count for {suit} was {count}.'**
+  String snackbarIncorrectCorrectCount(String suit, int count);
+
+  /// No description provided for @snackbarIncorrectSequence.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect sequence! Watch closely again.'**
+  String get snackbarIncorrectSequence;
+
+  /// No description provided for @snackbarSequenceMatched.
+  ///
+  /// In en, this message translates to:
+  /// **'Sequence matched! Increasing length...'**
+  String get snackbarSequenceMatched;
+
+  /// No description provided for @snackbarIncorrectAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect answer! Try again.'**
+  String get snackbarIncorrectAnswer;
+
+  /// No description provided for @snackbarIncorrectCorrectValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect! The correct value was {value}'**
+  String snackbarIncorrectCorrectValue(String value);
+
+  /// No description provided for @snackbarIncorrectSlices.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect! You selected {selected} slices, but need {required}.'**
+  String snackbarIncorrectSlices(int selected, String required);
+
+  /// No description provided for @snackbarReachedEndNoMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Reached end but total does not match target!'**
+  String get snackbarReachedEndNoMatch;
+
+  /// No description provided for @snackbarCorrectOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct chronological order!'**
+  String get snackbarCorrectOrder;
+
+  /// No description provided for @snackbarIncorrectOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect order! Study again.'**
+  String get snackbarIncorrectOrder;
+
+  /// No description provided for @snackbarIncorrectMissingValue.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect! The missing value was {value}'**
+  String snackbarIncorrectMissingValue(String value);
+
+  /// No description provided for @snackbarIncorrectLetterDigit.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect! {letter} = {digit}'**
+  String snackbarIncorrectLetterDigit(String letter, int digit);
+
+  /// No description provided for @snackbarIncorrectCorrectPoint.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect! The correct point was ({x}, {y}).'**
+  String snackbarIncorrectCorrectPoint(int x, int y);
+
+  /// No description provided for @snackbarReachedExit.
+  ///
+  /// In en, this message translates to:
+  /// **'Reached the exit! Generating next maze...'**
+  String get snackbarReachedExit;
+
+  /// No description provided for @snackbarCannotMoveBlocked.
+  ///
+  /// In en, this message translates to:
+  /// **'Cannot move forward: Blocked by wall!'**
+  String get snackbarCannotMoveBlocked;
+
+  /// No description provided for @snackbarIncorrectCorrectStack.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect! The correct final stack was: {stack}'**
+  String snackbarIncorrectCorrectStack(String stack);
+
+  /// No description provided for @snackbarIncorrectStudyStory.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect sequence! Study the story again.'**
+  String get snackbarIncorrectStudyStory;
+
+  /// No description provided for @snackbarScaleNotBalanced.
+  ///
+  /// In en, this message translates to:
+  /// **'Scale is not balanced! Current weight is {current}, Target is {target}.'**
+  String snackbarScaleNotBalanced(int current, int target);
+
+  /// No description provided for @snackbarWordMatchedTracing.
+  ///
+  /// In en, this message translates to:
+  /// **'Word matched! Tracing next word...'**
+  String get snackbarWordMatchedTracing;
+
+  /// No description provided for @snackbarIncorrectTraceFromStart.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect sequence! Try tracing from the start cell.'**
+  String get snackbarIncorrectTraceFromStart;
+
+  /// No description provided for @snackbarIncorrectCorrectForm.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect! The factored form is {form}'**
+  String snackbarIncorrectCorrectForm(String form);
+
+  /// No description provided for @snackbarIncorrectInequality.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect! {left} ({leftVal}) {correct} {right} ({rightVal})'**
+  String snackbarIncorrectInequality(
+      String left, int leftVal, String correct, String right, int rightVal);
+
+  /// No description provided for @snackbarIncorrectBaseConversion.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect! The correct answer was {answer}'**
+  String snackbarIncorrectBaseConversion(String answer);
+
+  /// No description provided for @snackbarIncorrectStudyPairs.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect! Let\'s study the pairs again.'**
+  String get snackbarIncorrectStudyPairs;
+
+  /// No description provided for @snackbarAlignedCorrectly.
+  ///
+  /// In en, this message translates to:
+  /// **'Aligned and correctly identified!'**
+  String get snackbarAlignedCorrectly;
+
+  /// No description provided for @snackbarIncorrectPerspective.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect perspective angle rotation! Try aligning them first.'**
+  String get snackbarIncorrectPerspective;
+
+  /// No description provided for @btnShuffleCups.
+  ///
+  /// In en, this message translates to:
+  /// **'Shuffle Cups'**
+  String get btnShuffleCups;
+
+  /// No description provided for @btnSubmitGroup.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit Group'**
+  String get btnSubmitGroup;
+
+  /// No description provided for @btnYes.
+  ///
+  /// In en, this message translates to:
+  /// **'Yes'**
+  String get btnYes;
+
+  /// No description provided for @btnNo.
+  ///
+  /// In en, this message translates to:
+  /// **'No'**
+  String get btnNo;
+
+  /// No description provided for @btnGotIt.
+  ///
+  /// In en, this message translates to:
+  /// **'Got It'**
+  String get btnGotIt;
+
+  /// No description provided for @btnSubmit.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit'**
+  String get btnSubmit;
+
+  /// No description provided for @btnShowHint.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Hint'**
+  String get btnShowHint;
+
+  /// No description provided for @btnSubmitAlignment.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit Alignment'**
+  String get btnSubmitAlignment;
+
+  /// No description provided for @btnSubmitLocation.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit Location'**
+  String get btnSubmitLocation;
+
+  /// No description provided for @btnStartDealing.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Dealing'**
+  String get btnStartDealing;
+
+  /// No description provided for @btnImReady.
+  ///
+  /// In en, this message translates to:
+  /// **'I\'m Ready'**
+  String get btnImReady;
+
+  /// No description provided for @btnStartGame.
+  ///
+  /// In en, this message translates to:
+  /// **'Start Game'**
+  String get btnStartGame;
+
+  /// No description provided for @btnSubmitStack.
+  ///
+  /// In en, this message translates to:
+  /// **'Submit Stack'**
+  String get btnSubmitStack;
+
+  /// No description provided for @btnImReadyToAnswer.
+  ///
+  /// In en, this message translates to:
+  /// **'I\'m Ready to Answer'**
+  String get btnImReadyToAnswer;
+
+  /// No description provided for @btnNoMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'No Match'**
+  String get btnNoMatch;
+
+  /// No description provided for @btnMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Match'**
+  String get btnMatch;
+
+  /// No description provided for @btnGuess.
+  ///
+  /// In en, this message translates to:
+  /// **'Guess'**
+  String get btnGuess;
+
+  /// No description provided for @btnPlayNow.
+  ///
+  /// In en, this message translates to:
+  /// **'Play Now'**
+  String get btnPlayNow;
+
+  /// No description provided for @btnClear.
+  ///
+  /// In en, this message translates to:
+  /// **'Clear'**
+  String get btnClear;
+
+  /// No description provided for @phaseWatchCarefully.
+  ///
+  /// In en, this message translates to:
+  /// **'Watch carefully...'**
+  String get phaseWatchCarefully;
+
+  /// No description provided for @phaseTapCupWithBall.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the cup with the ball!'**
+  String get phaseTapCupWithBall;
+
+  /// No description provided for @phaseTrackTheBall.
+  ///
+  /// In en, this message translates to:
+  /// **'Track the ball'**
+  String get phaseTrackTheBall;
+
+  /// No description provided for @phaseFindTheBall.
+  ///
+  /// In en, this message translates to:
+  /// **'Find the ball under the yellow cup!'**
+  String get phaseFindTheBall;
+
+  /// No description provided for @phaseBallUnderCup.
+  ///
+  /// In en, this message translates to:
+  /// **'The ball is under the highlighted cup. Remember it!'**
+  String get phaseBallUnderCup;
+
+  /// No description provided for @phaseWrongCup.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong cup! The ball was under the highlighted cup.'**
+  String get phaseWrongCup;
+
+  /// No description provided for @phaseDecodeTheSentence.
+  ///
+  /// In en, this message translates to:
+  /// **'Decode the sentence'**
+  String get phaseDecodeTheSentence;
+
+  /// No description provided for @phaseFindTheTarget.
+  ///
+  /// In en, this message translates to:
+  /// **'Find the target'**
+  String get phaseFindTheTarget;
+
+  /// No description provided for @phaseTargetNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Target Number'**
+  String get phaseTargetNumber;
+
+  /// No description provided for @phaseSelectNumberToBegin.
+  ///
+  /// In en, this message translates to:
+  /// **'Select a number to begin'**
+  String get phaseSelectNumberToBegin;
+
+  /// No description provided for @phaseMemorizeDetails.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize the details'**
+  String get phaseMemorizeDetails;
+
+  /// No description provided for @phaseReadAndMemorize.
+  ///
+  /// In en, this message translates to:
+  /// **'Read and Memorize Details:'**
+  String get phaseReadAndMemorize;
+
+  /// No description provided for @phaseSolveTheGrid.
+  ///
+  /// In en, this message translates to:
+  /// **'Solve the grid'**
+  String get phaseSolveTheGrid;
+
+  /// No description provided for @phaseDirectionsList.
+  ///
+  /// In en, this message translates to:
+  /// **'Directions List:'**
+  String get phaseDirectionsList;
+
+  /// No description provided for @phaseYourStack.
+  ///
+  /// In en, this message translates to:
+  /// **'Your Stack'**
+  String get phaseYourStack;
+
+  /// No description provided for @phaseEmpty.
+  ///
+  /// In en, this message translates to:
+  /// **'Empty'**
+  String get phaseEmpty;
+
+  /// No description provided for @phaseTapToAdd.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap to Add'**
+  String get phaseTapToAdd;
+
+  /// No description provided for @phaseCalculationLabel.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculation:'**
+  String get phaseCalculationLabel;
+
+  /// No description provided for @phaseTimeLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'Time: {time}s'**
+  String phaseTimeLeft(int time);
+
+  /// No description provided for @phaseRemember2Back.
+  ///
+  /// In en, this message translates to:
+  /// **'Remember 2 steps back'**
+  String get phaseRemember2Back;
+
+  /// No description provided for @phaseMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Match'**
+  String get phaseMatch;
+
+  /// No description provided for @hintTypeRhymingWord.
+  ///
+  /// In en, this message translates to:
+  /// **'Type a rhyming word...'**
+  String get hintTypeRhymingWord;
+
+  /// No description provided for @hintStartTyping.
+  ///
+  /// In en, this message translates to:
+  /// **'Start typing...'**
+  String get hintStartTyping;
+
+  /// No description provided for @hintTypeHeardWord.
+  ///
+  /// In en, this message translates to:
+  /// **'Type the heard word'**
+  String get hintTypeHeardWord;
+
+  /// No description provided for @hintTypeGuess.
+  ///
+  /// In en, this message translates to:
+  /// **'Type your guess...'**
+  String get hintTypeGuess;
+
+  /// No description provided for @hintTypeAnswerHere.
+  ///
+  /// In en, this message translates to:
+  /// **'Type answer here'**
+  String get hintTypeAnswerHere;
+
+  /// No description provided for @hintEnterNextWord.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter next word...'**
+  String get hintEnterNextWord;
+
+  /// No description provided for @howToPlayTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'How to Play'**
+  String get howToPlayTitle;
+
+  /// No description provided for @howToPlayStep1.
+  ///
+  /// In en, this message translates to:
+  /// **'1. A secret number is chosen between 1 and 10,000.'**
+  String get howToPlayStep1;
+
+  /// No description provided for @howToPlayStep2.
+  ///
+  /// In en, this message translates to:
+  /// **'2. Type your guess on the number pad and submit it.'**
+  String get howToPlayStep2;
+
+  /// No description provided for @howToPlayStep3.
+  ///
+  /// In en, this message translates to:
+  /// **'3. If wrong, you will get feedback on whether the secret is higher or lower.'**
+  String get howToPlayStep3;
+
+  /// No description provided for @howToPlayStep4.
+  ///
+  /// In en, this message translates to:
+  /// **'4. You have exactly 15 attempts to find the secret number.'**
+  String get howToPlayStep4;
+
+  /// No description provided for @noGuessesYet.
+  ///
+  /// In en, this message translates to:
+  /// **'No Guesses Yet'**
+  String get noGuessesYet;
+
+  /// No description provided for @chancesLeft.
+  ///
+  /// In en, this message translates to:
+  /// **'Chances Left'**
+  String get chancesLeft;
+
+  /// No description provided for @guessesMade.
+  ///
+  /// In en, this message translates to:
+  /// **'Guesses Made'**
+  String get guessesMade;
+
+  /// No description provided for @feedbackFindNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Find the number between 1 and 10,000!'**
+  String get feedbackFindNumber;
+
+  /// No description provided for @feedbackEnterNumber.
+  ///
+  /// In en, this message translates to:
+  /// **'Enter a number between 1 and 10,000!'**
+  String get feedbackEnterNumber;
+
+  /// No description provided for @feedbackCorrectExcl.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct! The number was {number}.'**
+  String feedbackCorrectExcl(int number);
+
+  /// No description provided for @feedbackCorrectEmoji.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct!'**
+  String get feedbackCorrectEmoji;
+
+  /// No description provided for @feedbackTooLow.
+  ///
+  /// In en, this message translates to:
+  /// **'Too Low'**
+  String get feedbackTooLow;
+
+  /// No description provided for @feedbackTooHigh.
+  ///
+  /// In en, this message translates to:
+  /// **'Too High'**
+  String get feedbackTooHigh;
+
+  /// No description provided for @feedbackGameOver.
+  ///
+  /// In en, this message translates to:
+  /// **'Game Over! The number was {number}.'**
+  String feedbackGameOver(int number);
+
+  /// No description provided for @feedbackGuessResult.
+  ///
+  /// In en, this message translates to:
+  /// **'{guess} is {result}!'**
+  String feedbackGuessResult(int guess, String result);
+
+  /// No description provided for @feedbackWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct! You found {number} with {guesses} guesses left!'**
+  String feedbackWinMessage(int number, int guesses);
+
+  /// No description provided for @feedbackLoseMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Out of guesses! The number was {number}.'**
+  String feedbackLoseMessage(int number);
+
+  /// No description provided for @statTime.
+  ///
+  /// In en, this message translates to:
+  /// **'Time'**
+  String get statTime;
+
+  /// No description provided for @statScore.
+  ///
+  /// In en, this message translates to:
+  /// **'Score'**
+  String get statScore;
+
+  /// No description provided for @statGrid.
+  ///
+  /// In en, this message translates to:
+  /// **'Grid'**
+  String get statGrid;
+
+  /// No description provided for @statMatches.
+  ///
+  /// In en, this message translates to:
+  /// **'Matches'**
+  String get statMatches;
+
+  /// No description provided for @statLives.
+  ///
+  /// In en, this message translates to:
+  /// **'Lives'**
+  String get statLives;
+
+  /// No description provided for @statBeats.
+  ///
+  /// In en, this message translates to:
+  /// **'Beats'**
+  String get statBeats;
+
+  /// No description provided for @statPerfect.
+  ///
+  /// In en, this message translates to:
+  /// **'Perfect'**
+  String get statPerfect;
+
+  /// No description provided for @statSeenPool.
+  ///
+  /// In en, this message translates to:
+  /// **'Seen Pool'**
+  String get statSeenPool;
+
+  /// No description provided for @statCards.
+  ///
+  /// In en, this message translates to:
+  /// **'Cards'**
+  String get statCards;
+
+  /// No description provided for @statSpan.
+  ///
+  /// In en, this message translates to:
+  /// **'Span'**
+  String get statSpan;
+
+  /// No description provided for @statLength.
+  ///
+  /// In en, this message translates to:
+  /// **'Length'**
+  String get statLength;
+
+  /// No description provided for @statItems.
+  ///
+  /// In en, this message translates to:
+  /// **'Items'**
+  String get statItems;
+
+  /// No description provided for @statProgress.
+  ///
+  /// In en, this message translates to:
+  /// **'Progress'**
+  String get statProgress;
+
+  /// No description provided for @statTrials.
+  ///
+  /// In en, this message translates to:
+  /// **'Trials'**
+  String get statTrials;
+
+  /// No description provided for @statTrails.
+  ///
+  /// In en, this message translates to:
+  /// **'Trails'**
+  String get statTrails;
+
+  /// No description provided for @statMoves.
+  ///
+  /// In en, this message translates to:
+  /// **'Moves'**
+  String get statMoves;
+
+  /// No description provided for @statFocalSearch.
+  ///
+  /// In en, this message translates to:
+  /// **'Focal search on oscillations'**
+  String get statFocalSearch;
+
+  /// No description provided for @phaseMemorizeSequence.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize the sequence order'**
+  String get phaseMemorizeSequence;
+
+  /// No description provided for @phaseDetermineOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Determine which item came first/last'**
+  String get phaseDetermineOrder;
+
+  /// No description provided for @phaseCorrectOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct order!'**
+  String get phaseCorrectOrder;
+
+  /// No description provided for @phaseWrongTimeline.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong timeline!'**
+  String get phaseWrongTimeline;
+
+  /// No description provided for @phaseWatchPattern.
+  ///
+  /// In en, this message translates to:
+  /// **'Watch the pattern'**
+  String get phaseWatchPattern;
+
+  /// No description provided for @phaseRepeatPattern.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat the pattern'**
+  String get phaseRepeatPattern;
+
+  /// No description provided for @phaseExcellent.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent!'**
+  String get phaseExcellent;
+
+  /// No description provided for @phaseTryAgain.
+  ///
+  /// In en, this message translates to:
+  /// **'Try again!'**
+  String get phaseTryAgain;
+
+  /// No description provided for @phaseChooseWordFit.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the word that fits'**
+  String get phaseChooseWordFit;
+
+  /// No description provided for @phaseExcellentContextual.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent contextual match!'**
+  String get phaseExcellentContextual;
+
+  /// No description provided for @phaseIncorrectMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect match'**
+  String get phaseIncorrectMatch;
+
+  /// No description provided for @phaseMemorizePattern.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize the pattern'**
+  String get phaseMemorizePattern;
+
+  /// No description provided for @phaseSelectTiles.
+  ///
+  /// In en, this message translates to:
+  /// **'Select the tiles'**
+  String get phaseSelectTiles;
+
+  /// No description provided for @phaseWrongTile.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong tile'**
+  String get phaseWrongTile;
+
+  /// No description provided for @phaseMemorizeRedCell.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize red cell location'**
+  String get phaseMemorizeRedCell;
+
+  /// No description provided for @phaseIsSymmetrical.
+  ///
+  /// In en, this message translates to:
+  /// **'Is the pattern symmetrical?'**
+  String get phaseIsSymmetrical;
+
+  /// No description provided for @phaseRecallSequence.
+  ///
+  /// In en, this message translates to:
+  /// **'Recall sequence in correct order'**
+  String get phaseRecallSequence;
+
+  /// No description provided for @phaseGreatJob.
+  ///
+  /// In en, this message translates to:
+  /// **'Great job!'**
+  String get phaseGreatJob;
+
+  /// No description provided for @phaseChooseNovelCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose a novel card'**
+  String get phaseChooseNovelCard;
+
+  /// No description provided for @phaseAlreadyTapped.
+  ///
+  /// In en, this message translates to:
+  /// **'Already tapped!'**
+  String get phaseAlreadyTapped;
+
+  /// No description provided for @phaseCountBlueCircles.
+  ///
+  /// In en, this message translates to:
+  /// **'Count only blue circles'**
+  String get phaseCountBlueCircles;
+
+  /// No description provided for @phaseRecallCountsOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Recall counts in correct order'**
+  String get phaseRecallCountsOrder;
+
+  /// No description provided for @phaseChooseNovel.
+  ///
+  /// In en, this message translates to:
+  /// **'Choose the novel card'**
+  String get phaseChooseNovel;
+
+  /// No description provided for @phaseMemorizeCard.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize this card'**
+  String get phaseMemorizeCard;
+
+  /// No description provided for @phaseWaitForIt.
+  ///
+  /// In en, this message translates to:
+  /// **'Wait for it...'**
+  String get phaseWaitForIt;
+
+  /// No description provided for @phaseThatWasSample.
+  ///
+  /// In en, this message translates to:
+  /// **'That was the sample!'**
+  String get phaseThatWasSample;
+
+  /// No description provided for @phaseSolveDistractor.
+  ///
+  /// In en, this message translates to:
+  /// **'Solve the distractor question!'**
+  String get phaseSolveDistractor;
+
+  /// No description provided for @phaseSelectMemorized.
+  ///
+  /// In en, this message translates to:
+  /// **'Select the memorized cells'**
+  String get phaseSelectMemorized;
+
+  /// No description provided for @phasePerfectRecall.
+  ///
+  /// In en, this message translates to:
+  /// **'Perfect recall!'**
+  String get phasePerfectRecall;
+
+  /// No description provided for @phaseWrongExcl.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong!'**
+  String get phaseWrongExcl;
+
+  /// No description provided for @phaseMemorizePlacements.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize all placements'**
+  String get phaseMemorizePlacements;
+
+  /// No description provided for @phaseWaitingForShift.
+  ///
+  /// In en, this message translates to:
+  /// **'Waiting for layout shift...'**
+  String get phaseWaitingForShift;
+
+  /// No description provided for @phaseTapMovedObject.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the object that moved'**
+  String get phaseTapMovedObject;
+
+  /// No description provided for @phaseWrongObject.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong object!'**
+  String get phaseWrongObject;
+
+  /// No description provided for @phaseStudyColorShape.
+  ///
+  /// In en, this message translates to:
+  /// **'Study the color-shape connections'**
+  String get phaseStudyColorShape;
+
+  /// No description provided for @phaseTapMatchingTrait.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the matching trait'**
+  String get phaseTapMatchingTrait;
+
+  /// No description provided for @phaseGreatRecall.
+  ///
+  /// In en, this message translates to:
+  /// **'Great recall!'**
+  String get phaseGreatRecall;
+
+  /// No description provided for @phaseWrongLink.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong link!'**
+  String get phaseWrongLink;
+
+  /// No description provided for @phaseTrueOrFalse.
+  ///
+  /// In en, this message translates to:
+  /// **'Is this statement true or false?'**
+  String get phaseTrueOrFalse;
+
+  /// No description provided for @phaseMemorizeLetter.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize this letter'**
+  String get phaseMemorizeLetter;
+
+  /// No description provided for @phaseRecallLettersSequence.
+  ///
+  /// In en, this message translates to:
+  /// **'Recall letters in sequence'**
+  String get phaseRecallLettersSequence;
+
+  /// No description provided for @phaseMemorizeTileColors.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize tile colors'**
+  String get phaseMemorizeTileColors;
+
+  /// No description provided for @phasePaintCells.
+  ///
+  /// In en, this message translates to:
+  /// **'Paint cells to match original'**
+  String get phasePaintCells;
+
+  /// No description provided for @phaseIncorrectMatchExcl.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect match!'**
+  String get phaseIncorrectMatchExcl;
+
+  /// No description provided for @phaseKeepYourEyes.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep your eyes on it!'**
+  String get phaseKeepYourEyes;
+
+  /// No description provided for @phaseWhereIsTarget.
+  ///
+  /// In en, this message translates to:
+  /// **'Where is the target object?'**
+  String get phaseWhereIsTarget;
+
+  /// No description provided for @phaseTrackStar.
+  ///
+  /// In en, this message translates to:
+  /// **'Track Star'**
+  String get phaseTrackStar;
+
+  /// No description provided for @dialogIncorrectSequenceStudy.
+  ///
+  /// In en, this message translates to:
+  /// **'Incorrect sequence! Study the story again.'**
+  String get dialogIncorrectSequenceStudy;
+
+  /// No description provided for @dialogStoryReconstruct.
+  ///
+  /// In en, this message translates to:
+  /// **'Reconstruct the story by tapping sentences in order'**
+  String get dialogStoryReconstruct;
+
+  /// No description provided for @dialogMemorizeOrder.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize the chronological order of events'**
+  String get dialogMemorizeOrder;
+
+  /// No description provided for @dialogMemorizeWordPairs.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize these word pairs'**
+  String get dialogMemorizeWordPairs;
+
+  /// No description provided for @dialogWhichWordPaired.
+  ///
+  /// In en, this message translates to:
+  /// **'Which word was paired with the target?'**
+  String get dialogWhichWordPaired;
+
+  /// No description provided for @dialogWatchSequence.
+  ///
+  /// In en, this message translates to:
+  /// **'Watch the sequence path'**
+  String get dialogWatchSequence;
+
+  /// No description provided for @dialogRepeatPath.
+  ///
+  /// In en, this message translates to:
+  /// **'Repeat the path sequence'**
+  String get dialogRepeatPath;
+
+  /// No description provided for @dialogShapeShifterTap.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap shapes that match the active target'**
+  String get dialogShapeShifterTap;
+
+  /// No description provided for @dialogFocusTunnelTap.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap incoming shapes ONLY if they match the symbol seen 2 steps ago (2-Back).'**
+  String get dialogFocusTunnelTap;
+
+  /// No description provided for @dialogSequenceStackBuild.
+  ///
+  /// In en, this message translates to:
+  /// **'Mentally track stack operations, then rebuild the final stack from bottom to top.'**
+  String get dialogSequenceStackBuild;
+
+  /// No description provided for @dialogFactorTreeComplete.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete the factor tree by tapping nodes and matching factors!'**
+  String get dialogFactorTreeComplete;
+
+  /// No description provided for @dialogBinaryScaleBalance.
+  ///
+  /// In en, this message translates to:
+  /// **'Balance the scale by selecting powers of two (binary weights) that sum to the target.'**
+  String get dialogBinaryScaleBalance;
+
+  /// No description provided for @dialogMatrixMultiplierSelect.
+  ///
+  /// In en, this message translates to:
+  /// **'Select one row and one column that multiply to the target'**
+  String get dialogMatrixMultiplierSelect;
+
+  /// No description provided for @dialogOddEvenFlashTap.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap the card when the active rule is satisfied'**
+  String get dialogOddEvenFlashTap;
+
+  /// No description provided for @dialogBaseConversionConvert.
+  ///
+  /// In en, this message translates to:
+  /// **'Convert the value from the source base to the destination base.'**
+  String get dialogBaseConversionConvert;
+
+  /// No description provided for @dialogGhostTapSync.
+  ///
+  /// In en, this message translates to:
+  /// **'Synchronize with the rhythm, then tap when the invisible pulse would reach peak size.'**
+  String get dialogGhostTapSync;
+
+  /// No description provided for @dialogFrequencyTapIdentify.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify which pulsing light matches the requested target frequency.'**
+  String get dialogFrequencyTapIdentify;
+
+  /// No description provided for @dialogLetterGridSwap.
+  ///
+  /// In en, this message translates to:
+  /// **'Swap adjacent letters to form the target words in rows.'**
+  String get dialogLetterGridSwap;
+
+  /// No description provided for @dialogGraphCoordinatePlot.
+  ///
+  /// In en, this message translates to:
+  /// **'Plot the coordinates on the Cartesian plane satisfying the equation.'**
+  String get dialogGraphCoordinatePlot;
+
+  /// No description provided for @dialogDigitSwapEquation.
+  ///
+  /// In en, this message translates to:
+  /// **'Swap one digit from the top equation with one from the bottom equation to make both correct.'**
+  String get dialogDigitSwapEquation;
+
+  /// No description provided for @dialogAreaPerimeterAdjust.
+  ///
+  /// In en, this message translates to:
+  /// **'Adjust the rectangle dimensions to match the target area and perimeter.'**
+  String get dialogAreaPerimeterAdjust;
+
+  /// No description provided for @dialogCrackCipher.
+  ///
+  /// In en, this message translates to:
+  /// **'Crack character-digit substitution cipher math problems.'**
+  String get dialogCrackCipher;
+
+  /// No description provided for @dialogPeripheralFocus.
+  ///
+  /// In en, this message translates to:
+  /// **'Solve math center equations, tap side panels when they flash'**
+  String get dialogPeripheralFocus;
+
+  /// No description provided for @dialogGokigenSatisfy.
+  ///
+  /// In en, this message translates to:
+  /// **'Satisfy vertex clues and avoid closed loops'**
+  String get dialogGokigenSatisfy;
+
+  /// No description provided for @dialogPercentageCalculate.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate discount percentages and final checkout totals.'**
+  String get dialogPercentageCalculate;
+
+  /// No description provided for @dialogBinomialMatch.
+  ///
+  /// In en, this message translates to:
+  /// **'Match quadratic formulas with factored binomial values.'**
+  String get dialogBinomialMatch;
+
+  /// No description provided for @dialogNumberBondsCalculate.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate the missing value in the number bond hierarchy.'**
+  String get dialogNumberBondsCalculate;
+
+  /// No description provided for @correctLowercase.
+  ///
+  /// In en, this message translates to:
+  /// **'correct'**
+  String get correctLowercase;
+
+  /// No description provided for @incorrectLowercase.
+  ///
+  /// In en, this message translates to:
+  /// **'incorrect'**
+  String get incorrectLowercase;
+
+  /// No description provided for @notAValidWord.
+  ///
+  /// In en, this message translates to:
+  /// **'Not a valid word'**
+  String get notAValidWord;
+
+  /// No description provided for @enterNumberRange.
+  ///
+  /// In en, this message translates to:
+  /// **'ENTER A NUMBER BETWEEN 1 AND 10,000!'**
+  String get enterNumberRange;
+
+  /// No description provided for @correctExclEmoji.
+  ///
+  /// In en, this message translates to:
+  /// **'Correct!'**
+  String get correctExclEmoji;
+
+  /// No description provided for @wrongExcl.
+  ///
+  /// In en, this message translates to:
+  /// **'Wrong!'**
+  String get wrongExcl;
 }
 
 class _AppLocalizationsDelegate

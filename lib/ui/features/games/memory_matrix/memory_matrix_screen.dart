@@ -223,7 +223,7 @@ class MemoryMatrixScreen extends ConsumerWidget {
         color = DesignSystem.accentEmerald;
         break;
       case MemoryMatrixStatus.failure:
-        text = 'WRONG TILE';
+        text = AppLocalizations.of(context)!.phaseWrongTile;
         color = DesignSystem.error;
         break;
     }

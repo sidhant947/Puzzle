@@ -5,6 +5,7 @@ import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
 
@@ -94,7 +95,7 @@ class _DualTaskMemoryScreenState extends ConsumerState<DualTaskMemoryScreen> {
     } else {
       HapticFeedbackUtil.error();
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('Incorrect arithmetic! Try again.')),
+        SnackBar(content: Text(AppLocalizations.of(context)!.snackbarIncorrectArithmetic)),
       );
       setState(() {
         _generateMathTask();
@@ -132,8 +133,8 @@ class _DualTaskMemoryScreenState extends ConsumerState<DualTaskMemoryScreen> {
         _onGameComplete();
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Correct recall!'),
+          SnackBar(
+            content: Text(AppLocalizations.of(context)!.snackbarCorrectRecall),
             backgroundColor: DesignSystem.gameGreen,
             duration: Duration(seconds: 1),
           ),
@@ -145,8 +146,8 @@ class _DualTaskMemoryScreenState extends ConsumerState<DualTaskMemoryScreen> {
     } else {
       HapticFeedbackUtil.error();
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Wrong recall selection! Try a new set.'),
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.snackbarWrongRecall),
           backgroundColor: DesignSystem.gameRed,
           duration: Duration(seconds: 2),
         ),
@@ -188,12 +189,12 @@ class _DualTaskMemoryScreenState extends ConsumerState<DualTaskMemoryScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'DUAL-TASK MEMORY',
+      title: L10nGameHelpers.getGameTitle(context, 'dual_task_memory'),
       subtitle: _gamePhase == 1
-          ? 'Memorize the word set below.'
+          ? L10nGameHelpers.getGameSubtitle(context, 'dual_task_memory')
           : (_gamePhase == 2
-              ? 'Complete the math calculations to unlock recall.'
-              : 'Select the 4 original words you studied.'),
+              ? AppLocalizations.of(context)!.phaseCalculationLabel
+              : L10nGameHelpers.getGameSubtitle(context, 'dual_task_memory')),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -219,7 +220,7 @@ class _DualTaskMemoryScreenState extends ConsumerState<DualTaskMemoryScreen> {
                 borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
               ),
               child: Text(
-                'Score: $_score / $_targetScore',
+                '${AppLocalizations.of(context)!.statScore}: $_score / $_targetScore',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       color: DesignSystem.primary,
                       fontWeight: FontWeight.bold,

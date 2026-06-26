@@ -1,4 +1,5 @@
 import 'package:puzzle/utils/l10n_game_helpers.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -35,19 +36,22 @@ class _CountingSpanScreenState extends ConsumerState<CountingSpanScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => GameCompletionDialog(
-        title: won ? 'COUNTING GENIUS!' : 'GAME OVER',
-        message: 'You scored $score points in the Counting Span memory challenge!',
-        isVictory: won,
-        onPlayAgain: () {
-          ref.read(countingSpanNotifierProvider.notifier).initGame();
-          Navigator.pop(context);
-        },
-        onHome: () {
-          Navigator.pop(context);
-          Navigator.pop(context);
-        },
-      ),
+      builder: (context) {
+        final l10n = AppLocalizations.of(context)!;
+        return GameCompletionDialog(
+          title: won ? l10n.countingSpanWinTitle : l10n.gameOver,
+          message: l10n.countingSpanGameOverMessage(score),
+          isVictory: won,
+          onPlayAgain: () {
+            ref.read(countingSpanNotifierProvider.notifier).initGame();
+            Navigator.pop(context);
+          },
+          onHome: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+        );
+      },
     );
   }
 
@@ -64,7 +68,7 @@ class _CountingSpanScreenState extends ConsumerState<CountingSpanScreen> {
 
     return GameScaffold(
       title: L10nGameHelpers.getGameTitle(context, 'counting_span'),
-      subtitle: L10nGameHelpers.getGameTitle(context, 'counting_span'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'counting_span'),
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(
@@ -100,16 +104,17 @@ class _CountingSpanScreenState extends ConsumerState<CountingSpanScreen> {
   }
 
   Widget _buildPhaseIndicator(CountingSpanState state) {
+    final l10n = AppLocalizations.of(context)!;
     String text = '';
     Color color = DesignSystem.primary;
     if (state.phase == CountingSpanPhase.counting) {
-      text = 'COUNT ONLY BLUE CIRCLES';
+      text = l10n.countingSpanCountCircles;
       color = DesignSystem.gameBlue;
     } else if (state.phase == CountingSpanPhase.recalling) {
-      text = 'RECALL COUNTS IN CORRECT ORDER';
+      text = l10n.countingSpanRecallCounts;
       color = DesignSystem.gameIndigo;
     } else {
-      text = state.lastRoundCorrect == true ? 'GREAT JOB!' : 'TRY AGAIN!';
+      text = state.lastRoundCorrect == true ? l10n.countingSpanGreatJob : l10n.countingSpanTryAgain;
       color = state.lastRoundCorrect == true ? DesignSystem.success : DesignSystem.error;
     }
 
@@ -125,6 +130,7 @@ class _CountingSpanScreenState extends ConsumerState<CountingSpanScreen> {
   }
 
   Widget _buildMainLayout(CountingSpanState state, double maxWidth, CountingSpanNotifier notifier) {
+    final l10n = AppLocalizations.of(context)!;
     if (state.phase == CountingSpanPhase.counting) {
       return Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24),
@@ -254,7 +260,7 @@ class _CountingSpanScreenState extends ConsumerState<CountingSpanScreen> {
             const SizedBox(height: 24),
             if (state.userSequence.isNotEmpty)
               Text(
-                'YOUR SEQUENCE: ${state.userSequence.join(" ")}',
+                l10n.countingSpanYourSequence(state.userSequence.join(" ")),
                 style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 18, color: DesignSystem.gameIndigo),
               ),
           ],
@@ -273,14 +279,15 @@ class _CountingSpanScreenState extends ConsumerState<CountingSpanScreen> {
   }
 
   Widget _buildStats(CountingSpanState state, bool isSmall) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildStat('TIME', '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
-          _buildStat('LENGTH', '${state.currentLength}', DesignSystem.accentAmber, isSmall),
-          _buildStat('SCORE', '${state.score}', DesignSystem.success, isSmall),
+          _buildStat(l10n.statTime, '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
+          _buildStat(l10n.countingSpanLength, '${state.currentLength}', DesignSystem.accentAmber, isSmall),
+          _buildStat(l10n.statScore, '${state.score}', DesignSystem.success, isSmall),
         ],
       ),
     );

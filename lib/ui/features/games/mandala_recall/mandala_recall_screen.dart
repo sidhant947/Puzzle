@@ -1,4 +1,5 @@
 import 'package:puzzle/utils/l10n_game_helpers.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -37,19 +38,22 @@ class _MandalaRecallScreenState extends ConsumerState<MandalaRecallScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => GameCompletionDialog(
-        title: won ? 'MANDALA ARTIST!' : 'GAME OVER',
-        message: 'You scored $score points by recreating colored geometric layouts!',
-        isVictory: won,
-        onPlayAgain: () {
-          ref.read(mandalaRecallNotifierProvider.notifier).initGame();
-          Navigator.pop(context);
-        },
-        onHome: () {
-          Navigator.pop(context);
-          Navigator.pop(context);
-        },
-      ),
+      builder: (context) {
+        final l10n = AppLocalizations.of(context)!;
+        return GameCompletionDialog(
+          title: won ? l10n.gameWin : l10n.gameOver,
+          message: '$score points by recreating colored geometric layouts!',
+          isVictory: won,
+          onPlayAgain: () {
+            ref.read(mandalaRecallNotifierProvider.notifier).initGame();
+            Navigator.pop(context);
+          },
+          onHome: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+        );
+      },
     );
   }
 
@@ -66,7 +70,7 @@ class _MandalaRecallScreenState extends ConsumerState<MandalaRecallScreen> {
 
     return GameScaffold(
       title: L10nGameHelpers.getGameTitle(context, 'mandala_recall'),
-      subtitle: L10nGameHelpers.getGameTitle(context, 'mandala_recall'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'mandala_recall'),
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(
@@ -99,16 +103,17 @@ class _MandalaRecallScreenState extends ConsumerState<MandalaRecallScreen> {
   }
 
   Widget _buildPhaseIndicator(MandalaRecallState state) {
+    final l10n = AppLocalizations.of(context)!;
     String text = '';
     Color color = DesignSystem.primary;
     if (state.phase == MandalaPhase.memorize) {
-      text = 'MEMORIZE TILE COLORS';
+      text = l10n.phaseMemorizeTileColors;
       color = DesignSystem.accentAmber;
     } else if (state.phase == MandalaPhase.repaint) {
-      text = 'PAINT CELLS TO MATCH ORIGINAL';
+      text = l10n.phasePaintCells;
       color = DesignSystem.gameIndigo;
     } else {
-      text = state.lastRoundCorrect == true ? 'EXCELLENT!' : 'INCORRECT MATCH!';
+      text = state.lastRoundCorrect == true ? l10n.phaseExcellent : l10n.phaseIncorrectMatchExcl;
       color = state.lastRoundCorrect == true ? DesignSystem.success : DesignSystem.error;
     }
 
@@ -186,6 +191,7 @@ class _MandalaRecallScreenState extends ConsumerState<MandalaRecallScreen> {
   }
 
   Widget _buildPaintingControls(MandalaRecallState state, MandalaRecallNotifier notifier) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Column(
@@ -239,9 +245,9 @@ class _MandalaRecallScreenState extends ConsumerState<MandalaRecallScreen> {
             },
             color: DesignSystem.success,
             padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 48),
-            child: const Center(
+            child: Center(
               child: Text(
-                'SUBMIT REPAINT',
+                l10n.btnSubmit,
                 style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900, fontSize: 16, letterSpacing: 0.5),
               ),
             ),
@@ -260,14 +266,15 @@ class _MandalaRecallScreenState extends ConsumerState<MandalaRecallScreen> {
   }
 
   Widget _buildStats(MandalaRecallState state, bool isSmall) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildStat('TIME', '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
+          _buildStat(l10n.statTime, '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
           _buildStat('TILES', '${state.targetCellCount}', DesignSystem.accentAmber, isSmall),
-          _buildStat('SCORE', '${state.score}', DesignSystem.success, isSmall),
+          _buildStat(l10n.statScore, '${state.score}', DesignSystem.success, isSmall),
         ],
       ),
     );

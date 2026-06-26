@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -141,10 +142,11 @@ class _SequenceStackScreenState extends ConsumerState<SequenceStackScreen> {
       }
     } else {
       HapticFeedbackUtil.error();
+      final l10n = AppLocalizations.of(context)!;
       final correctStr = _correctStack.isEmpty ? 'EMPTY' : _correctStack.join(' -> ');
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Incorrect! The correct final stack was: $correctStr'),
+          content: Text(l10n.snackbarIncorrectCorrectStack(correctStr)),
           duration: const Duration(milliseconds: 2000),
           backgroundColor: Colors.redAccent,
         ),
@@ -194,8 +196,8 @@ class _SequenceStackScreenState extends ConsumerState<SequenceStackScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'SEQUENCE STACK',
-      subtitle: 'Mentally track stack operations, then rebuild the final stack from bottom to top.',
+      title: L10nGameHelpers.getGameTitle(context, 'sequence_stack'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'sequence_stack'),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -224,7 +226,7 @@ class _SequenceStackScreenState extends ConsumerState<SequenceStackScreen> {
                   borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                 ),
                 child: Text(
-                  'Score: $_score / $_targetScore',
+                  '${AppLocalizations.of(context)!.statScore}: $_score / $_targetScore',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         color: DesignSystem.primary,
                         fontWeight: FontWeight.bold,
@@ -243,7 +245,7 @@ class _SequenceStackScreenState extends ConsumerState<SequenceStackScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
                     shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(DesignSystem.radiusMD)),
                   ),
-                  child: const Text('START GAME', style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+                  child: Text(AppLocalizations.of(context)!.btnStartGame, style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
                 ),
               ] else if (_phase == 'playing_ops') ...[
                 // Op animation card
@@ -263,7 +265,7 @@ class _SequenceStackScreenState extends ConsumerState<SequenceStackScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text('YOUR STACK', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey, fontSize: 12)),
+                            Text(AppLocalizations.of(context)!.target, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey, fontSize: 12)),
                             const SizedBox(height: 12),
                             Container(
                               width: 110,
@@ -274,7 +276,7 @@ class _SequenceStackScreenState extends ConsumerState<SequenceStackScreen> {
                                 border: Border.all(color: isDark ? Colors.white24 : Colors.black26),
                               ),
                               child: _userStack.isEmpty
-                                  ? const Center(child: Text('EMPTY', style: TextStyle(color: Colors.grey)))
+                                  ? Center(child: Text(AppLocalizations.of(context)!.target, style: TextStyle(color: Colors.grey)))
                                   : Column(
                                       mainAxisAlignment: MainAxisAlignment.end,
                                       children: _userStack.reversed.map((colorName) {
@@ -302,7 +304,7 @@ class _SequenceStackScreenState extends ConsumerState<SequenceStackScreen> {
                         child: Column(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            const Text('TAP TO ADD', style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey, fontSize: 12)),
+                            Text(AppLocalizations.of(context)!.target, style: TextStyle(fontWeight: FontWeight.bold, color: Colors.grey, fontSize: 12)),
                             const SizedBox(height: 12),
                             ..._colors.map((c) {
                               return Padding(
@@ -344,7 +346,7 @@ class _SequenceStackScreenState extends ConsumerState<SequenceStackScreen> {
                       foregroundColor: Colors.white,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(DesignSystem.radiusMD)),
                     ),
-                    child: const Text('SUBMIT STACK', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                    child: Text(AppLocalizations.of(context)!.btnSubmitStack, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                   ),
                 ),
               ],

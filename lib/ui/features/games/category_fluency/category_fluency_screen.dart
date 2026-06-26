@@ -36,22 +36,25 @@ class _CategoryFluencyScreenState extends ConsumerState<CategoryFluencyScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => GameCompletionDialog(
-        title: isVictory ? 'FLUENCY EXPERT!' : 'TIME UP!',
-        message: isVictory 
-            ? 'You have a vast vocabulary!' 
-            : 'You found ${ref.read(categoryFluencyNotifierProvider).enteredWords.length} words.',
-        isVictory: isVictory,
-        onHome: () {
-          Navigator.of(context).pop();
-          Navigator.of(context).pop();
-        },
-        onPlayAgain: () {
-          Navigator.of(context).pop();
-          ref.read(categoryFluencyNotifierProvider.notifier).initGame();
-          _controller.clear();
-        },
-      ),
+      builder: (context) {
+        final l10n = AppLocalizations.of(context)!;
+        return GameCompletionDialog(
+          title: isVictory ? l10n.categoryFluencyExpert : l10n.categoryFluencyTimeUp,
+          message: isVictory 
+              ? l10n.categoryFluencyWinMessage 
+              : l10n.categoryFluencyFoundMessage(ref.read(categoryFluencyNotifierProvider).enteredWords.length),
+          isVictory: isVictory,
+          onHome: () {
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+          },
+          onPlayAgain: () {
+            Navigator.of(context).pop();
+            ref.read(categoryFluencyNotifierProvider.notifier).initGame();
+            _controller.clear();
+          },
+        );
+      },
     );
   }
 

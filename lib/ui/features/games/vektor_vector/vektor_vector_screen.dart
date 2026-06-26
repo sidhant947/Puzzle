@@ -5,6 +5,7 @@ import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
 
@@ -129,8 +130,8 @@ class _VektorVectorScreenState extends ConsumerState<VektorVectorScreen> {
     );
 
     return GameScaffold(
-      title: 'VECTOR VECTOR',
-      subtitle: 'Scale vectors u and v so their head-to-tail sum reaches the target!',
+      title: L10nGameHelpers.getGameTitle(context, 'vektor_vector'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'vektor_vector'),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -177,7 +178,7 @@ class _VektorVectorScreenState extends ConsumerState<VektorVectorScreen> {
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
-                    'Score: $_score / $_targetScore',
+                    '${AppLocalizations.of(context)!.statScore}: $_score / $_targetScore',
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       color: DesignSystem.primary,

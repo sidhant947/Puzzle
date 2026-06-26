@@ -5,6 +5,7 @@ import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
 
@@ -180,10 +181,9 @@ class _UnitConverterProScreenState extends ConsumerState<UnitConverterProScreen>
       }
     } else {
       HapticFeedbackUtil.error();
-      final correctStr = '${_currentTask.answer.toInt()} ${_currentTask.unit}';
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Incorrect! The correct answer was $correctStr'),
+          content: Text(AppLocalizations.of(context)!.snackbarIncorrectCorrectAnswer('${_currentTask.answer.toInt()} ${_currentTask.unit}')),
           duration: const Duration(milliseconds: 1500),
           backgroundColor: Colors.redAccent,
         ),
@@ -225,8 +225,8 @@ class _UnitConverterProScreenState extends ConsumerState<UnitConverterProScreen>
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'UNIT CONVERTER',
-      subtitle: 'Solve unit conversion challenges across length, time, weight, volume, and temperature.',
+      title: L10nGameHelpers.getGameTitle(context, 'unit_converter_pro'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'unit_converter_pro'),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -253,7 +253,7 @@ class _UnitConverterProScreenState extends ConsumerState<UnitConverterProScreen>
                   borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                 ),
                 child: Text(
-                  'Score: $_score / $_targetScore',
+                  '${AppLocalizations.of(context)!.statScore}: $_score / $_targetScore',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         color: DesignSystem.primary,
                         fontWeight: FontWeight.bold,

@@ -333,11 +333,11 @@ Widget _buildInstruction(TemporalOrderState state, BuildContext context) {
       break;
     case TemporalOrderStatus.success:
     case TemporalOrderStatus.completed:
-      text = 'CORRECT ORDER!';
+      text = AppLocalizations.of(context)!.phaseCorrectOrder;
       color = DesignSystem.accentEmerald;
       break;
     case TemporalOrderStatus.failure:
-      text = 'WRONG TIMELINE!';
+      text = AppLocalizations.of(context)!.phaseWrongTimeline;
       color = DesignSystem.error;
       break;
   }

@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -157,8 +158,8 @@ class _ColorMazeNavScreenState extends ConsumerState<ColorMazeNavScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'COLOR MAZE NAV',
-      subtitle: 'Move to adjacent tiles ONLY if they match the active permission color.',
+      title: L10nGameHelpers.getGameTitle(context, 'color_maze_nav'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'color_maze_nav'),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -189,7 +190,7 @@ class _ColorMazeNavScreenState extends ConsumerState<ColorMazeNavScreen> {
                   ),
                   child: Row(
                     children: [
-                      const Text(
+                      Text(
                         'ALLOW: ',
                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 13),
                       ),
@@ -211,7 +212,7 @@ class _ColorMazeNavScreenState extends ConsumerState<ColorMazeNavScreen> {
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
-                    'Score: $_score / $_targetScore',
+                    '${AppLocalizations.of(context)!.statScore}: $_score / $_targetScore',
                     style: TextStyle(fontWeight: FontWeight.bold, color: DesignSystem.primary),
                   ),
                 ),

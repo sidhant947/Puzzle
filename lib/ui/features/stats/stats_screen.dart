@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/game_providers.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/ui/features/home/widgets/daily_progress_banner.dart';
@@ -23,64 +24,64 @@ class Achievement {
 class StatsScreen extends ConsumerWidget {
   const StatsScreen({super.key});
 
-  static final List<Achievement> achievements = [
+  static List<Achievement> getAchievements(AppLocalizations l10n) => [
     Achievement(
-      title: 'SEEKER',
-      description: 'EARN 100 XP',
+      title: l10n.achievementSeeker,
+      description: l10n.achievementSeekerDesc,
       requiredXp: 100,
       icon: Icons.search_rounded,
     ),
     Achievement(
-      title: 'APPRENTICE',
-      description: 'EARN 1,000 XP',
+      title: l10n.achievementApprentice,
+      description: l10n.achievementApprenticeDesc,
       requiredXp: 1000,
       icon: Icons.school_rounded,
     ),
     Achievement(
-      title: 'STRATEGIST',
-      description: 'EARN 5,000 XP',
+      title: l10n.achievementStrategist,
+      description: l10n.achievementStrategistDesc,
       requiredXp: 5000,
       icon: Icons.psychology_rounded,
     ),
     Achievement(
-      title: 'ELITE',
-      description: 'EARN 10,000 XP',
+      title: l10n.achievementElite,
+      description: l10n.achievementEliteDesc,
       requiredXp: 10000,
       icon: Icons.military_tech_rounded,
     ),
     Achievement(
-      title: 'VETERAN',
-      description: 'EARN 25,000 XP',
+      title: l10n.achievementVeteran,
+      description: l10n.achievementVeteranDesc,
       requiredXp: 25000,
       icon: Icons.shield_rounded,
     ),
     Achievement(
-      title: 'MASTER',
-      description: 'EARN 50,000 XP',
+      title: l10n.achievementMaster,
+      description: l10n.achievementMasterDesc,
       requiredXp: 50000,
       icon: Icons.workspace_premium_rounded,
     ),
     Achievement(
-      title: 'GRANDMASTER',
-      description: 'EARN 100,000 XP',
+      title: l10n.achievementGrandmaster,
+      description: l10n.achievementGrandmasterDesc,
       requiredXp: 100000,
       icon: Icons.diamond_rounded,
     ),
     Achievement(
-      title: 'LEGEND',
-      description: 'EARN 250,000 XP',
+      title: l10n.achievementLegend,
+      description: l10n.achievementLegendDesc,
       requiredXp: 250000,
       icon: Icons.auto_awesome_rounded,
     ),
     Achievement(
-      title: 'MYTHIC',
-      description: 'EARN 500,000 XP',
+      title: l10n.achievementMythic,
+      description: l10n.achievementMythicDesc,
       requiredXp: 500000,
       icon: Icons.vignette_rounded,
     ),
     Achievement(
-      title: 'ETERNAL',
-      description: 'EARN 1,000,000 XP',
+      title: l10n.achievementEternal,
+      description: l10n.achievementEternalDesc,
       requiredXp: 1000000,
       icon: Icons.all_inclusive_rounded,
     ),
@@ -89,6 +90,8 @@ class StatsScreen extends ConsumerWidget {
   @override
   Widget build(BuildContext context, WidgetRef ref) {
     final theme = Theme.of(context);
+    final l10n = AppLocalizations.of(context)!;
+    final achievements = StatsScreen.getAchievements(l10n);
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
@@ -106,12 +109,12 @@ class StatsScreen extends ConsumerWidget {
                   elevation: 0,
                   scrolledUnderElevation: 0,
                   centerTitle: true,
-                  title: Text(
-                    'STATS',
-                    style: theme.textTheme.displaySmall?.copyWith(
-                      letterSpacing: 2.0,
+                    title: Text(
+                      l10n.statsTitle,
+                      style: theme.textTheme.displaySmall?.copyWith(
+                        letterSpacing: 2.0,
+                      ),
                     ),
-                  ),
                 ),
                 SliverPadding(
                   padding: const EdgeInsets.fromLTRB(
@@ -123,12 +126,12 @@ class StatsScreen extends ConsumerWidget {
                   sliver: SliverList(
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
-                        if (index == 0) return const _UserStatsCard();
+                        if (index == 0) return _UserStatsCard(l10n: l10n);
                         if (index == 1) return const SizedBox(height: DesignSystem.spaceXL);
-                        if (index == 2) return const _CognitiveProfileCard();
+                        if (index == 2) return _CognitiveProfileCard(l10n: l10n);
                         if (index == 3) return const SizedBox(height: DesignSystem.spaceXL);
                         if (index == 4) return Text(
-                          'ACHIEVEMENTS',
+                          l10n.statsAchievements,
                           style: theme.textTheme.displaySmall?.copyWith(
                             fontSize: DesignSystem.fontSizeLG,
                             color: theme.colorScheme.primary,
@@ -139,7 +142,7 @@ class StatsScreen extends ConsumerWidget {
                         final achievementIndex = index - 6;
                         return Padding(
                           padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
-                          child: _AchievementCard(achievement: achievements[achievementIndex]),
+                          child: _AchievementCard(achievement: achievements[achievementIndex], l10n: l10n),
                         );
                       },
                       childCount: 6 + achievements.length,
@@ -156,7 +159,8 @@ class StatsScreen extends ConsumerWidget {
 }
 
 class _UserStatsCard extends ConsumerWidget {
-  const _UserStatsCard();
+  final AppLocalizations l10n;
+  const _UserStatsCard({required this.l10n});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -174,7 +178,7 @@ class _UserStatsCard extends ConsumerWidget {
 
     return Column(
       children: [
-        const _StreakTracker(),
+        _StreakTracker(l10n: l10n),
         const SizedBox(height: DesignSystem.spaceMD),
         const DailyProgressBanner(),
         const SizedBox(height: DesignSystem.spaceMD),
@@ -190,7 +194,7 @@ class _UserStatsCard extends ConsumerWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        'LEVEL $level',
+                        l10n.statsLevel(level),
                         style: theme.textTheme.displayLarge?.copyWith(
                           fontSize: 42,
                           color: Colors.white,
@@ -199,7 +203,7 @@ class _UserStatsCard extends ConsumerWidget {
                       ),
                       const SizedBox(height: 4),
                       Text(
-                        'MAINTAIN YOUR STREAK!',
+                        l10n.statsMaintainStreak,
                         style: theme.textTheme.labelMedium?.copyWith(
                           fontWeight: FontWeight.w900,
                           color: Colors.white.withValues(alpha: 0.8),
@@ -251,7 +255,7 @@ class _UserStatsCard extends ConsumerWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                    '${(progress * 100).toInt()}% TO LEVEL ${level + 1}',
+                    l10n.statsPercentToLevel((progress * 100).toInt(), level + 1),
                     style: theme.textTheme.labelLarge?.copyWith(
                       fontFamily: 'Bebas Neue',
                       fontSize: DesignSystem.fontSizeSM,
@@ -269,7 +273,7 @@ class _UserStatsCard extends ConsumerWidget {
           children: [
             Expanded(
               child: _SmallStatCard(
-                label: 'TOTAL XP',
+                label: l10n.statsTotalXp,
                 value: '$xp',
                 icon: Icons.bolt_rounded,
                 color: DesignSystem.accentAmber,
@@ -278,7 +282,7 @@ class _UserStatsCard extends ConsumerWidget {
             const SizedBox(width: DesignSystem.spaceMD),
             Expanded(
               child: _SmallStatCard(
-                label: 'SOLVED',
+                label: l10n.statsSolved,
                 value: '${userData.totalSolved ?? 0}',
                 icon: Icons.extension_rounded,
                 color: DesignSystem.success,
@@ -292,7 +296,8 @@ class _UserStatsCard extends ConsumerWidget {
 }
 
 class _StreakTracker extends ConsumerWidget {
-  const _StreakTracker();
+  final AppLocalizations l10n;
+  const _StreakTracker({required this.l10n});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -316,7 +321,7 @@ class _StreakTracker extends ConsumerWidget {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Text(
-                'WEEKLY ACTIVITY',
+                l10n.statsWeeklyActivity,
                 style: theme.textTheme.displaySmall?.copyWith(
                   fontSize: DesignSystem.fontSizeMD,
                   color: colorScheme.onSurface.withValues(alpha: 0.6),
@@ -329,7 +334,7 @@ class _StreakTracker extends ConsumerWidget {
                       color: DesignSystem.gameOrange, size: 20),
                   const SizedBox(width: 4),
                   Text(
-                    '$superStreak DAY STREAK',
+                    l10n.statsDayStreak(superStreak),
                     style: theme.textTheme.displaySmall?.copyWith(
                       fontSize: DesignSystem.fontSizeMD,
                       color: DesignSystem.gameOrange,
@@ -410,7 +415,8 @@ class _StreakTracker extends ConsumerWidget {
 }
 
 class _CognitiveProfileCard extends ConsumerWidget {
-  const _CognitiveProfileCard();
+  final AppLocalizations l10n;
+  const _CognitiveProfileCard({required this.l10n});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -435,7 +441,7 @@ class _CognitiveProfileCard extends ConsumerWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
-          'COGNITIVE PROFILE',
+          l10n.statsCognitiveProfile,
           style: theme.textTheme.displaySmall?.copyWith(
             fontSize: DesignSystem.fontSizeLG,
             color: colorScheme.primary,
@@ -593,8 +599,9 @@ class _SmallStatCard extends StatelessWidget {
 
 class _AchievementCard extends ConsumerWidget {
   final Achievement achievement;
+  final AppLocalizations l10n;
 
-  const _AchievementCard({required this.achievement});
+  const _AchievementCard({required this.achievement, required this.l10n});
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -673,7 +680,7 @@ class _AchievementCard extends ConsumerWidget {
                 borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
               ),
               child: Text(
-                'LOCKED',
+                l10n.statsLocked,
                 style: TextStyle(
                   fontFamily: 'Geist',
                   fontWeight: FontWeight.w900,

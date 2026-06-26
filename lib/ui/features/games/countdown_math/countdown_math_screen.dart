@@ -5,6 +5,7 @@ import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import 'package:puzzle/widgets/tangible.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -172,8 +173,8 @@ class _CountdownMathScreenState extends ConsumerState<CountdownMathScreen> {
         context: context,
         barrierDismissible: false,
         builder: (context) => GameCompletionDialog(
-          title: 'TARGET REACHED!',
-          message: 'Excellent calculations!',
+          title: AppLocalizations.of(context)!.winTargetReached,
+          message: AppLocalizations.of(context)!.winExcellentCalculations,
           onPlayAgain: () {
             setState(() {
               _generatePuzzle();
@@ -193,7 +194,7 @@ class _CountdownMathScreenState extends ConsumerState<CountdownMathScreen> {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
     return GameScaffold(
-      title: 'COUNTDOWN MATH',
+      title: L10nGameHelpers.getGameTitle(context, 'countdown_math'),
       body: SafeArea(
         child: Column(
           children: [
@@ -202,7 +203,7 @@ class _CountdownMathScreenState extends ConsumerState<CountdownMathScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Find the target', style: Theme.of(context).textTheme.titleMedium),
+                  Text(AppLocalizations.of(context)!.phaseFindTheTarget, style: Theme.of(context).textTheme.titleMedium),
                   IconButton(
                     icon: const Icon(Icons.refresh_rounded),
                     onPressed: () => setState(_generatePuzzle),
@@ -221,8 +222,8 @@ class _CountdownMathScreenState extends ConsumerState<CountdownMathScreen> {
                   padding: const EdgeInsets.symmetric(vertical: 24.0),
                   child: Column(
                     children: [
-                      const Text(
-                        'TARGET NUMBER',
+                      Text(
+                        AppLocalizations.of(context)!.phaseTargetNumber,
                         style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold, letterSpacing: 1.2),
                       ),
                       const SizedBox(height: 8),
@@ -245,7 +246,7 @@ class _CountdownMathScreenState extends ConsumerState<CountdownMathScreen> {
                       '${_numbers[_selectedNumIndex1!]} ${_selectedOperator ?? ""} ${_selectedNumIndex2 != null ? _numbers[_selectedNumIndex2!] : ""}',
                       style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold),
                     )
-                  : const Text('Select a number to begin', style: TextStyle(color: Colors.grey)),
+                  : Text(AppLocalizations.of(context)!.phaseSelectNumberToBegin, style: TextStyle(color: Colors.grey)),
             ),
             const SizedBox(height: 24),
             // Active Numbers Pool

@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -73,9 +74,10 @@ class _GraphCoordinatePlotScreenState extends ConsumerState<GraphCoordinatePlotS
       }
     } else {
       HapticFeedbackUtil.error();
+      final l10n = AppLocalizations.of(context)!;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Incorrect! The correct point was ($_targetX, $_targetY).'),
+          content: Text(l10n.snackbarIncorrectCorrectPoint(_targetX, _targetY)),
           duration: const Duration(milliseconds: 1500),
           backgroundColor: Colors.redAccent,
         ),
@@ -131,8 +133,8 @@ class _GraphCoordinatePlotScreenState extends ConsumerState<GraphCoordinatePlotS
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'GRAPH PLOTTER',
-      subtitle: 'Plot the coordinates on the Cartesian plane satisfying the equation.',
+      title: L10nGameHelpers.getGameTitle(context, 'graph_coordinate_plot'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'graph_coordinate_plot'),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -159,7 +161,7 @@ class _GraphCoordinatePlotScreenState extends ConsumerState<GraphCoordinatePlotS
                   borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                 ),
                 child: Text(
-                  'Score: $_score / $_targetScore',
+                  '${AppLocalizations.of(context)!.statScore}: $_score / $_targetScore',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         color: DesignSystem.primary,
                         fontWeight: FontWeight.bold,
@@ -246,7 +248,7 @@ class _GraphCoordinatePlotScreenState extends ConsumerState<GraphCoordinatePlotS
                       borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
                     ),
                   ),
-                  child: const Text(
+                  child: Text(
                     'SUBMIT POINT',
                     style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold, letterSpacing: 1.2),
                   ),

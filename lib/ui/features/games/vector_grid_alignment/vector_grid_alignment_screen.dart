@@ -81,22 +81,24 @@ class _VectorGridAlignmentScreenState extends ConsumerState<VectorGridAlignmentS
         _isGameOver = true;
         _onGameComplete();
       } else {
-        ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Aligned perfectly! Next target...'),
-            backgroundColor: DesignSystem.gameGreen,
-            duration: Duration(seconds: 1),
-          ),
-        );
+        final l10n = AppLocalizations.of(context)!;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(
+          content: Text(l10n.snackbarAlignedPerfectly),
+          backgroundColor: DesignSystem.gameGreen,
+          duration: Duration(seconds: 1),
+        ),
+      );
         setState(() {
           _generatePuzzle();
         });
       }
     } else {
       HapticFeedbackUtil.error();
+      final l10n = AppLocalizations.of(context)!;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Not aligned yet! Keep adjusting the rotation, scale, or positions.'),
+        SnackBar(
+          content: Text(l10n.snackbarNotAligned),
           backgroundColor: DesignSystem.gameRed,
           duration: Duration(seconds: 1),
         ),
@@ -257,7 +259,7 @@ class _VectorGridAlignmentScreenState extends ConsumerState<VectorGridAlignmentS
                     borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
                   ),
                 ),
-                child: const Text('SUBMIT ALIGNMENT', style: TextStyle(fontWeight: FontWeight.bold)),
+                child: Text(AppLocalizations.of(context)!.btnSubmitAlignment, style: TextStyle(fontWeight: FontWeight.bold)),
               ),
             ),
           ],

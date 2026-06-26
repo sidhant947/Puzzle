@@ -5,6 +5,7 @@ import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
 
@@ -97,8 +98,8 @@ class _AreaPerimeterMatchScreenState extends ConsumerState<AreaPerimeterMatchScr
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'AREA & PERIMETER',
-      subtitle: 'Adjust the rectangle dimensions to match the target area and perimeter.',
+      title: L10nGameHelpers.getGameTitle(context, 'area_perimeter_match'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'area_perimeter_match'),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -131,7 +132,7 @@ class _AreaPerimeterMatchScreenState extends ConsumerState<AreaPerimeterMatchScr
               children: [
                 Column(
                   children: [
-                    const Text('TARGET AREA', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.grey)),
+                    Text(AppLocalizations.of(context)!.target, style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.grey)),
                     const SizedBox(height: 4),
                     Text(
                       '$_targetArea',
@@ -144,7 +145,7 @@ class _AreaPerimeterMatchScreenState extends ConsumerState<AreaPerimeterMatchScr
                 ),
                 Column(
                   children: [
-                    const Text('TARGET PERIMETER', style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.grey)),
+                    Text(AppLocalizations.of(context)!.target, style: TextStyle(fontSize: 11, fontWeight: FontWeight.bold, color: Colors.grey)),
                     const SizedBox(height: 4),
                     Text(
                       '$_targetPerimeter',

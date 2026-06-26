@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/utils/l10n_game_helpers.dart';
 
 import 'package:flutter/material.dart';
@@ -29,15 +30,16 @@ class _DefinitionDashScreenState extends ConsumerState<DefinitionDashScreen> {
   void _showCompletionDialog() {
     final state = ref.read(definitionDashNotifierProvider);
     final isCorrect = state.isCorrect ?? false;
+    final l10n = AppLocalizations.of(context)!;
     
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: isCorrect ? 'EXCELLENT' : 'GAME OVER',
+        title: isCorrect ? l10n.winExcellent : l10n.gameOver,
         message: isCorrect 
-            ? 'You correctly identified the definition of "${state.puzzle?.word}".'
-            : 'The correct definition was: ${state.puzzle?.correctDefinition}',
+            ? l10n.snackbarCorrectRecall
+            : l10n.snackbarIncorrectStudyAgain,
         isVictory: isCorrect,
         onHome: () {
           Navigator.of(context).pop();
@@ -73,7 +75,7 @@ class _DefinitionDashScreenState extends ConsumerState<DefinitionDashScreen> {
 
     return GameScaffold(
       title: L10nGameHelpers.getGameTitle(context, 'definition_dash'),
-      subtitle: L10nGameHelpers.getGameTitle(context, 'definition_dash'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'definition_dash'),
       body: LayoutBuilder(
         builder: (context, constraints) {
           return SingleChildScrollView(

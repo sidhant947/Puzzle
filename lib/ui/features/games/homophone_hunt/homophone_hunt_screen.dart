@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/utils/l10n_game_helpers.dart';
 
 import 'package:flutter/material.dart';
@@ -29,15 +30,16 @@ class _HomophoneHuntScreenState extends ConsumerState<HomophoneHuntScreen> {
   void _showCompletionDialog() {
     final state = ref.read(homophoneHuntNotifierProvider);
     final isCorrect = state.isCorrect ?? false;
+    final l10n = AppLocalizations.of(context)!;
     
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: isCorrect ? 'EXCELLENT' : 'GAME OVER',
+        title: isCorrect ? l10n.winExcellent : l10n.gameOver,
         message: isCorrect 
-            ? 'You selected the correct homophone!'
-            : 'The correct spelling was "${state.puzzle?.correctAnswer}".',
+            ? l10n.snackbarCorrect
+            : l10n.snackbarIncorrectTryNew,
         isVictory: isCorrect,
         onHome: () {
           Navigator.of(context).pop();
@@ -72,7 +74,7 @@ class _HomophoneHuntScreenState extends ConsumerState<HomophoneHuntScreen> {
 
     return GameScaffold(
       title: L10nGameHelpers.getGameTitle(context, 'homophone_hunt'),
-      subtitle: L10nGameHelpers.getGameTitle(context, 'homophone_hunt'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'homophone_hunt'),
       body: Column(
         children: [
           const Spacer(),

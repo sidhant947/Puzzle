@@ -101,7 +101,7 @@ class _WisconsinCardSortingScreenState extends ConsumerState<WisconsinCardSortin
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.w900,
-                            color: state.lastFeedback == 'CORRECT' ? DesignSystem.success : DesignSystem.error,
+                            color: state.lastFeedback == AppLocalizations.of(context)!.correct ? DesignSystem.success : DesignSystem.error,
                           ),
                         ),
                     ],

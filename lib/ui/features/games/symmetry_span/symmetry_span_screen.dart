@@ -1,4 +1,5 @@
 import 'package:puzzle/utils/l10n_game_helpers.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -35,19 +36,22 @@ class _SymmetrySpanScreenState extends ConsumerState<SymmetrySpanScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => GameCompletionDialog(
-        title: won ? 'SYMMETRY MASTER!' : 'GAME OVER',
-        message: 'You scored $score points by recalling layouts and identifying symmetry!',
-        isVictory: won,
-        onPlayAgain: () {
-          ref.read(symmetrySpanNotifierProvider.notifier).initGame();
-          Navigator.pop(context);
-        },
-        onHome: () {
-          Navigator.pop(context);
-          Navigator.pop(context);
-        },
-      ),
+      builder: (context) {
+        final l10n = AppLocalizations.of(context)!;
+        return GameCompletionDialog(
+          title: won ? l10n.gameWin : l10n.gameOver,
+          message: '$score points by recalling layouts and identifying symmetry!',
+          isVictory: won,
+          onPlayAgain: () {
+            ref.read(symmetrySpanNotifierProvider.notifier).initGame();
+            Navigator.pop(context);
+          },
+          onHome: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+        );
+      },
     );
   }
 
@@ -64,7 +68,7 @@ class _SymmetrySpanScreenState extends ConsumerState<SymmetrySpanScreen> {
 
     return GameScaffold(
       title: L10nGameHelpers.getGameTitle(context, 'symmetry_span'),
-      subtitle: L10nGameHelpers.getGameTitle(context, 'symmetry_span'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'symmetry_span'),
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(
@@ -95,19 +99,20 @@ class _SymmetrySpanScreenState extends ConsumerState<SymmetrySpanScreen> {
   }
 
   Widget _buildPhaseIndicator(SymmetrySpanState state) {
+    final l10n = AppLocalizations.of(context)!;
     String text = '';
     Color color = DesignSystem.primary;
     if (state.phase == SymSpanPhase.showingGrid) {
-      text = 'MEMORIZE RED CELL LOCATION';
+      text = l10n.phaseMemorizeRedCell;
       color = DesignSystem.error;
     } else if (state.phase == SymSpanPhase.showingSymmetry) {
-      text = 'IS THE PATTERN SYMMETRICAL?';
+      text = l10n.phaseIsSymmetrical;
       color = DesignSystem.accentAmber;
     } else if (state.phase == SymSpanPhase.recalling) {
-      text = 'RECALL SEQUENCE IN CORRECT ORDER';
+      text = l10n.phaseRecallSequence;
       color = DesignSystem.gameIndigo;
     } else {
-      text = state.lastRoundCorrect == true ? 'GREAT JOB!' : 'TRY AGAIN!';
+      text = state.lastRoundCorrect == true ? l10n.phaseGreatJob : l10n.phaseTryAgain;
       color = state.lastRoundCorrect == true ? DesignSystem.success : DesignSystem.error;
     }
 
@@ -253,14 +258,15 @@ class _SymmetrySpanScreenState extends ConsumerState<SymmetrySpanScreen> {
   }
 
   Widget _buildStats(SymmetrySpanState state, bool isSmall) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildStat('TIME', '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
-          _buildStat('LENGTH', '${state.currentLength}', DesignSystem.accentAmber, isSmall),
-          _buildStat('SCORE', '${state.score}', DesignSystem.success, isSmall),
+          _buildStat(l10n.statTime, '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
+          _buildStat(l10n.statLength, '${state.currentLength}', DesignSystem.accentAmber, isSmall),
+          _buildStat(l10n.statScore, '${state.score}', DesignSystem.success, isSmall),
         ],
       ),
     );

@@ -1,4 +1,5 @@
 import 'package:puzzle/utils/l10n_game_helpers.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -36,8 +37,8 @@ class _SoptScreenState extends ConsumerState<SoptScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: won ? 'SEQUENCE MASTER!' : 'GAME OVER',
-        message: 'You scored $score points by successfully tracking shuffled cards!',
+        title: won ? AppLocalizations.of(context)!.soptWinTitle : AppLocalizations.of(context)!.gameOver,
+        message: AppLocalizations.of(context)!.soptGameOverMessage(score),
         isVictory: won,
         onPlayAgain: () {
           ref.read(soptNotifierProvider.notifier).initGame();
@@ -63,7 +64,7 @@ class _SoptScreenState extends ConsumerState<SoptScreen> {
 
     return GameScaffold(
       title: L10nGameHelpers.getGameTitle(context, 'sopt'),
-      subtitle: L10nGameHelpers.getGameTitle(context, 'sopt'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'sopt'),
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(
@@ -98,13 +99,14 @@ class _SoptScreenState extends ConsumerState<SoptScreen> {
   }
 
   Widget _buildPhaseIndicator(SoptState state) {
-    String text = 'CHOOSE A NOVEL CARD';
+    final l10n = AppLocalizations.of(context)!;
+    String text = l10n.soptChooseNovel;
     Color color = DesignSystem.primary;
     if (state.lastRoundCorrect == true) {
-      text = 'GREAT JOB!';
+      text = l10n.soptGreatJob;
       color = DesignSystem.success;
     } else if (state.lastRoundCorrect == false) {
-      text = 'ALREADY TAPPED!';
+      text = l10n.soptAlreadyTapped;
       color = DesignSystem.error;
     }
 
@@ -164,14 +166,15 @@ class _SoptScreenState extends ConsumerState<SoptScreen> {
   }
 
   Widget _buildStats(SoptState state, bool isSmall) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildStat('TIME', '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
-          _buildStat('GRID', '${state.gridSize}', DesignSystem.accentAmber, isSmall),
-          _buildStat('SCORE', '${state.score}', DesignSystem.success, isSmall),
+          _buildStat(l10n.statTime, '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
+          _buildStat(l10n.statGrid, '${state.gridSize}', DesignSystem.accentAmber, isSmall),
+          _buildStat(l10n.statScore, '${state.score}', DesignSystem.success, isSmall),
         ],
       ),
     );

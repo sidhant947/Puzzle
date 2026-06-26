@@ -5,6 +5,7 @@ import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
 
@@ -98,8 +99,8 @@ class _WordAssociationRecallScreenState extends ConsumerState<WordAssociationRec
       HapticFeedbackUtil.error();
       // Restart study mode to reinforce learning
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Incorrect! Let\'s study the pairs again.'),
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.snackbarIncorrectStudyPairs),
           duration: Duration(seconds: 2),
         ),
       );
@@ -140,8 +141,8 @@ class _WordAssociationRecallScreenState extends ConsumerState<WordAssociationRec
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'WORD ASSOCIATION',
-      subtitle: _isStudyMode ? 'Memorize these word pairs' : 'Which word was paired with the target?',
+      title: L10nGameHelpers.getGameTitle(context, 'word_association_recall'),
+      subtitle: _isStudyMode ? AppLocalizations.of(context)!.phaseMemorizeDetails : L10nGameHelpers.getGameSubtitle(context, 'word_association_recall'),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),

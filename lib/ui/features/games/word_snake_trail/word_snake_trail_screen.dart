@@ -5,6 +5,7 @@ import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
 
@@ -95,8 +96,8 @@ class _WordSnakeTrailScreenState extends ConsumerState<WordSnakeTrailScreen> {
             _onGameComplete();
           } else {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Word matched! Tracing next word...'),
+              SnackBar(
+                content: Text(AppLocalizations.of(context)!.snackbarWordMatchedTracing),
                 backgroundColor: DesignSystem.gameGreen,
                 duration: Duration(seconds: 1),
               ),
@@ -110,8 +111,8 @@ class _WordSnakeTrailScreenState extends ConsumerState<WordSnakeTrailScreen> {
     } else {
       HapticFeedbackUtil.error();
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Incorrect sequence! Try tracing from the start cell.'),
+        SnackBar(
+          content: Text(AppLocalizations.of(context)!.snackbarIncorrectTraceFromStart),
           backgroundColor: DesignSystem.error,
           duration: Duration(milliseconds: 600),
         ),
@@ -153,8 +154,8 @@ class _WordSnakeTrailScreenState extends ConsumerState<WordSnakeTrailScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'WORD SNAKE',
-      subtitle: 'Locate and trace the letters of the target word in a continuous connecting path.',
+      title: L10nGameHelpers.getGameTitle(context, 'word_snake_trail'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'word_snake_trail'),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -188,7 +189,7 @@ class _WordSnakeTrailScreenState extends ConsumerState<WordSnakeTrailScreen> {
                   ),
                 ),
                 Text(
-                  'Score: $_score / $_targetScore',
+                  '${AppLocalizations.of(context)!.statScore}: $_score / $_targetScore',
                   style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
                 ),
               ],

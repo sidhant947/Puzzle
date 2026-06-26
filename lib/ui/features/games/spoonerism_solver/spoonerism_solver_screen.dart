@@ -1,4 +1,5 @@
 import "package:puzzle/l10n/app_localizations.dart";
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -25,6 +26,7 @@ class _SpoonerismSolverScreenState extends ConsumerState<SpoonerismSolverScreen>
 
   void _showCompletionDialog() {
     final state = ref.read(spoonerismSolverNotifierProvider);
+    final l10n = AppLocalizations.of(context)!;
     
     if (state.isGameWon) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('spoonerism_solver');
@@ -34,10 +36,10 @@ class _SpoonerismSolverScreenState extends ConsumerState<SpoonerismSolverScreen>
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: state.isGameWon ? 'EXCELLENT' : 'GAME OVER',
+        title: state.isGameWon ? l10n.winExcellent : l10n.gameOver,
         message: state.isGameWon 
-            ? 'You correctly identified the original phrase!'
-            : 'The correct phrase was "${state.original}".',
+            ? l10n.snackbarCorrectRecall
+            : l10n.snackbarIncorrectStudyAgain,
         isVictory: state.isGameWon,
         onPlayAgain: () {
           ref.read(spoonerismSolverNotifierProvider.notifier).initGame();
@@ -53,7 +55,6 @@ class _SpoonerismSolverScreenState extends ConsumerState<SpoonerismSolverScreen>
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(spoonerismSolverNotifierProvider);
     final notifier = ref.read(spoonerismSolverNotifierProvider.notifier);
@@ -70,8 +71,8 @@ class _SpoonerismSolverScreenState extends ConsumerState<SpoonerismSolverScreen>
     });
 
     return GameScaffold(
-      title: l10n.spoonerismSolverTitle.toUpperCase(),
-      subtitle: l10n.spoonerismSolverSubtitle,
+      title: L10nGameHelpers.getGameTitle(context, 'spoonerism_solver'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'spoonerism_solver'),
       actions: [
         TangibleButton(
           color: colorScheme.surface,

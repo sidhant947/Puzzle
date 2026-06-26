@@ -2,9 +2,11 @@ import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
 
@@ -25,7 +27,7 @@ class _ShellGameScreenState extends ConsumerState<ShellGameScreen> {
 
   bool _isShuffling = false;
   bool _revealed = true;
-  String _statusText = 'Find the ball under the yellow cup!';
+  String _statusText = '';
   int? _tappedCupIndex;
 
   @override
@@ -40,7 +42,7 @@ class _ShellGameScreenState extends ConsumerState<ShellGameScreen> {
       _revealed = true;
       _isShuffling = false;
       _tappedCupIndex = null;
-      _statusText = 'The ball is under the highlighted cup (Left). Remember it!';
+      _statusText = '';
     });
   }
 
@@ -49,7 +51,7 @@ class _ShellGameScreenState extends ConsumerState<ShellGameScreen> {
     setState(() {
       _revealed = false;
       _isShuffling = true;
-      _statusText = 'WATCH CAREFULLY...';
+      _statusText = AppLocalizations.of(context)!.phaseWatchCarefully;
     });
 
     int swapsRemaining = _random.nextInt(7) + 9; // Random 9 to 15 swaps
@@ -76,7 +78,7 @@ class _ShellGameScreenState extends ConsumerState<ShellGameScreen> {
         timer.cancel();
         setState(() {
           _isShuffling = false;
-          _statusText = 'TAP THE CUP WITH THE BALL!';
+          _statusText = AppLocalizations.of(context)!.phaseTapCupWithBall;
         });
       }
     });
@@ -104,8 +106,8 @@ class _ShellGameScreenState extends ConsumerState<ShellGameScreen> {
           context: context,
           barrierDismissible: false,
           builder: (context) => GameCompletionDialog(
-            title: 'FOUND IT!',
-            message: 'Excellent tracking speed!',
+            title: AppLocalizations.of(context)!.winFoundIt,
+            message: AppLocalizations.of(context)!.winExcellentTracking,
             onPlayAgain: () {
               setState(() {
                 _resetGame();
@@ -121,14 +123,14 @@ class _ShellGameScreenState extends ConsumerState<ShellGameScreen> {
     } else {
       HapticFeedbackUtil.error();
       setState(() {
-        _statusText = 'Wrong cup! The ball was under the highlighted cup.';
+        _statusText = AppLocalizations.of(context)!.phaseWrongCup;
       });
       showDialog(
         context: context,
         barrierDismissible: false,
         builder: (context) => GameCompletionDialog(
-          title: 'MISSED IT!',
-          message: 'Keep your eyes on the target.',
+          title: AppLocalizations.of(context)!.loseMissedIt,
+          message: AppLocalizations.of(context)!.loseKeepEyes,
           onPlayAgain: () {
             _resetGame();
             Navigator.pop(context);
@@ -146,8 +148,13 @@ class _ShellGameScreenState extends ConsumerState<ShellGameScreen> {
   Widget build(BuildContext context) {
     final colorScheme = Theme.of(context).colorScheme;
 
+    if (_statusText.isEmpty) {
+      _statusText = AppLocalizations.of(context)!.phaseBallUnderCup;
+    }
+
     return GameScaffold(
-      title: 'SHELL GAME',
+      title: L10nGameHelpers.getGameTitle(context, 'shell_game'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'shell_game'),
       body: SafeArea(
         child: Column(
           children: [
@@ -156,7 +163,7 @@ class _ShellGameScreenState extends ConsumerState<ShellGameScreen> {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Track the ball', style: Theme.of(context).textTheme.titleMedium),
+                  Text(AppLocalizations.of(context)!.phaseTrackTheBall, style: Theme.of(context).textTheme.titleMedium),
                   IconButton(
                     icon: const Icon(Icons.refresh_rounded),
                     onPressed: _resetGame,
@@ -255,7 +262,7 @@ class _ShellGameScreenState extends ConsumerState<ShellGameScreen> {
                     foregroundColor: Colors.black,
                     padding: const EdgeInsets.symmetric(horizontal: 48, vertical: 16),
                   ),
-                  child: const Text('SHUFFLE CUPS', style: TextStyle(fontWeight: FontWeight.bold)),
+                  child: Text(AppLocalizations.of(context)!.btnShuffleCups, style: TextStyle(fontWeight: FontWeight.bold)),
                 ),
               ),
           ],

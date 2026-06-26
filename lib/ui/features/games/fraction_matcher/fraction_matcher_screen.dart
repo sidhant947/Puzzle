@@ -286,7 +286,7 @@ class _FractionMatcherScreenState extends ConsumerState<FractionMatcherScreen> {
                   Padding(
                     padding: const EdgeInsets.only(top: DesignSystem.spaceSM),
                     child: Text(
-                      state.lastAnswerCorrect! ? 'CORRECT!' : 'WRONG!',
+                      state.lastAnswerCorrect! ? AppLocalizations.of(context)!.correct : AppLocalizations.of(context)!.incorrect,
                       style: TextStyle(
                         fontWeight: FontWeight.w900,
                         fontSize: 16,

@@ -9,6 +9,7 @@ import '../../../../widgets/tangible.dart';
 import '../../../../utils/haptic_feedback.dart';
 import 'symbol_logic_provider.dart';
 import 'symbol_logic_engine.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 
 class SymbolLogicScreen extends ConsumerStatefulWidget {
   const SymbolLogicScreen({super.key});
@@ -34,24 +35,26 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => GameCompletionDialog(
-        title: won ? 'LOGIC MASTER!' : 'WRONG ANSWER',
-        message: won ? 'You solved the visual equations! Your deductive reasoning is impressive.' : 'Try again to find the hidden values.',
-        onPlayAgain: () {
-          ref.read(symbolLogicNotifierProvider.notifier).initGame();
-          Navigator.pop(context);
-        },
-        onHome: () {
-          Navigator.pop(context);
-          Navigator.pop(context);
-        },
-      ),
+      builder: (context) {
+        final l10n = AppLocalizations.of(context)!;
+        return GameCompletionDialog(
+          title: won ? l10n.symbolLogicTitle.toUpperCase() : l10n.gameOver,
+          message: won ? 'You solved the visual equations!' : 'Try again to find the hidden values.',
+          onPlayAgain: () {
+            ref.read(symbolLogicNotifierProvider.notifier).initGame();
+            Navigator.pop(context);
+          },
+          onHome: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+        );
+      },
     );
   }
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(symbolLogicNotifierProvider);
     final notifier = ref.read(symbolLogicNotifierProvider.notifier);
@@ -63,8 +66,8 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
     });
 
     return GameScaffold(
-      title: l10n.symbolLogicTitle.toUpperCase(),
-      subtitle: l10n.symbolLogicSubtitle,
+      title: L10nGameHelpers.getGameTitle(context, 'symbol_logic'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'symbol_logic'),
       actions: [
         TangibleButton(
           color: colorScheme.surface,
@@ -182,6 +185,7 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
   }
 
   Widget _buildNumberPad(SymbolLogicNotifier notifier, bool isSmall) {
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       children: [
         for (var row in [[1, 2, 3, 4, 5], [6, 7, 8, 9, 0]])
@@ -228,7 +232,7 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
                       const Icon(Icons.backspace_rounded, color: Colors.white, size: 18),
                       const SizedBox(width: DesignSystem.spaceSM),
                       Text(
-                        'DEL',
+                        l10n.btnClear,
                         style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w900,
@@ -255,7 +259,7 @@ class _SymbolLogicScreenState extends ConsumerState<SymbolLogicScreen> {
                       const Icon(Icons.check_rounded, color: Colors.white, size: 18),
                       const SizedBox(width: DesignSystem.spaceSM),
                       Text(
-                        'SUBMIT',
+                        l10n.btnSubmit,
                         style: const TextStyle(
                           color: Colors.white,
                           fontWeight: FontWeight.w900,

@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -139,9 +140,10 @@ class _DirectionsRecallScreenState extends ConsumerState<DirectionsRecallScreen>
       }
     } else {
       HapticFeedbackUtil.error();
+      final l10n = AppLocalizations.of(context)!;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Incorrect! The final destination was (${_targetX + 1}, ${_targetY + 1}).'),
+          content: Text(l10n.snackbarIncorrectDestination(_targetX + 1, _targetY + 1)),
           duration: const Duration(milliseconds: 1500),
           backgroundColor: Colors.redAccent,
         ),
@@ -191,7 +193,7 @@ class _DirectionsRecallScreenState extends ConsumerState<DirectionsRecallScreen>
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'DIRECTIONS RECALL',
+      title: L10nGameHelpers.getGameTitle(context, 'directions_recall'),
       subtitle: _phase == 'study'
           ? 'Memorize the directions and navigate from the START node in your head!'
           : 'Tapped your guessed final cell on the grid map.',
@@ -225,7 +227,7 @@ class _DirectionsRecallScreenState extends ConsumerState<DirectionsRecallScreen>
                       borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                     ),
                     child: Text(
-                      'Score: $_score / $_targetScore',
+                      '${AppLocalizations.of(context)!.statScore}: $_score / $_targetScore',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                             color: DesignSystem.primary,
                             fontWeight: FontWeight.bold,
@@ -293,11 +295,11 @@ class _DirectionsRecallScreenState extends ConsumerState<DirectionsRecallScreen>
                           ),
                           alignment: Alignment.center,
                           child: isStart
-                              ? const Column(
+                              ? Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Icon(Icons.play_circle_filled_rounded, size: 24, color: Colors.green),
-                                    Text('START', style: TextStyle(fontSize: 8, color: Colors.green, fontWeight: FontWeight.bold)),
+                                    const Icon(Icons.play_circle_filled_rounded, size: 24, color: Colors.green),
+                                    Text(AppLocalizations.of(context)!.btnStartGame, style: TextStyle(fontSize: 8, color: Colors.green, fontWeight: FontWeight.bold)),
                                   ],
                                 )
                               : (isSelected
@@ -354,7 +356,7 @@ class _DirectionsRecallScreenState extends ConsumerState<DirectionsRecallScreen>
                         borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
                       ),
                     ),
-                    child: const Text('SUBMIT LOCATION', style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
+                    child: Text(AppLocalizations.of(context)!.btnSubmitLocation, style: TextStyle(fontSize: 16, fontWeight: FontWeight.bold)),
                   ),
                 ),
               ],

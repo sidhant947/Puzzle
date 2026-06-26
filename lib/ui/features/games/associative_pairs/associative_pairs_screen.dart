@@ -454,7 +454,7 @@ class AssociativePairsScreen extends ConsumerWidget {
         color = DesignSystem.accentEmerald;
         break;
       case AssociativeStatus.failure:
-        text = 'WRONG LINK!';
+        text = AppLocalizations.of(context)!.phaseWrongLink;
         color = DesignSystem.error;
         break;
     }

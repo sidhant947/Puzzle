@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 import '../../../../l10n/app_localizations.dart';
 import '../../../../utils/haptic_feedback.dart';
+import '../../../../utils/l10n_game_helpers.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
 import 'laser_link_provider.dart';
@@ -30,8 +31,8 @@ class _LaserLinkScreenState extends ConsumerState<LaserLinkScreen> {
       barrierDismissible: false,
       builder: (dialogCtx) => GameCompletionDialog(
         isVictory: isVictory,
-        title: isVictory ? l10n.laserLinkTitle.toUpperCase() : 'GAME OVER',
-        message: isVictory ? l10n.laserLinkCongrats : 'Try again!',
+        title: isVictory ? l10n.laserLinkTitle.toUpperCase() : AppLocalizations.of(context)!.gameOver,
+        message: isVictory ? l10n.laserLinkCongrats : AppLocalizations.of(context)!.loseTryAgainSolution,
         onHome: () {
           Navigator.of(dialogCtx).pop();
           Navigator.of(context).pop();
@@ -59,7 +60,7 @@ class _LaserLinkScreenState extends ConsumerState<LaserLinkScreen> {
     });
 
     return GameScaffold(
-      title: 'Laser Link',
+      title: L10nGameHelpers.getGameTitle(context, 'laser_link'),
       onReset: () => ref.read(laserLinkNotifierProvider.notifier).initGame(),
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
@@ -68,7 +69,7 @@ class _LaserLinkScreenState extends ConsumerState<LaserLinkScreen> {
                 Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Text(
-                    'Connect the laser to all targets!',
+                    AppLocalizations.of(context)!.phaseFindTheTarget,
                     style: theme.textTheme.titleMedium,
                     textAlign: TextAlign.center,
                   ),

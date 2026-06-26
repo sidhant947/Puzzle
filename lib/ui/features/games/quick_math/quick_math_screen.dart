@@ -25,6 +25,7 @@ class _QuickMathScreenState extends ConsumerState<QuickMathScreen> {
 
   void _showGameOverDialog(int score) {
     bool won = score >= 5;
+    final l10n = AppLocalizations.of(context)!;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('quick_math');
     }
@@ -32,7 +33,7 @@ class _QuickMathScreenState extends ConsumerState<QuickMathScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: won ? 'MATH GENIUS!' : 'TIME UP',
+        title: won ? l10n.winMathGenius : l10n.loseTimeUp,
         message: AppLocalizations.of(context)!.quickMathMessage((score).toString()),
         onPlayAgain: () {
           ref.read(quickMathNotifierProvider.notifier).initGame();
@@ -75,9 +76,9 @@ class _QuickMathScreenState extends ConsumerState<QuickMathScreen> {
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      _buildStat('TIME', '${state.timeLeft}s',
+                      _buildStat(l10n.statTime, '${state.timeLeft}s',
                           DesignSystem.accentBerry),
-                      _buildStat('SCORE', '${state.score}',
+                      _buildStat(l10n.statScore, '${state.score}',
                           DesignSystem.accentEmerald),
                     ],
                   ),

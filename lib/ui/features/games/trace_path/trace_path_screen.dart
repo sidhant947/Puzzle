@@ -35,20 +35,23 @@ class _TracePathScreenState extends ConsumerState<TracePathScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => GameCompletionDialog(
-        title: won ? 'STEADY HANDS!' : 'SHAKY LINE',
-        message: AppLocalizations.of(context)!.tracePathMessage(((accuracy * 100).toInt()).toString()),
-        isVictory: won,
-        onPlayAgain: () {
-          final size = MediaQuery.of(context).size;
-          ref.read(tracePathNotifierProvider.notifier).initGame(Size(size.width, size.height * 0.6));
-          Navigator.pop(context);
-        },
-        onHome: () {
-          Navigator.pop(context);
-          Navigator.pop(context);
-        },
-      ),
+      builder: (context) {
+        final l10n = AppLocalizations.of(context)!;
+        return GameCompletionDialog(
+          title: won ? l10n.tracePathTitle.toUpperCase() : l10n.gameOver,
+          message: AppLocalizations.of(context)!.tracePathMessage(((accuracy * 100).toInt()).toString()),
+          isVictory: won,
+          onPlayAgain: () {
+            final size = MediaQuery.of(context).size;
+            ref.read(tracePathNotifierProvider.notifier).initGame(Size(size.width, size.height * 0.6));
+            Navigator.pop(context);
+          },
+          onHome: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+        );
+      },
     );
   }
 
@@ -71,12 +74,12 @@ class _TracePathScreenState extends ConsumerState<TracePathScreen> {
     });
 
     if (state.isLoading) {
-      return GameScaffold(title: l10n.tracePathTitle.toUpperCase(), body: Center(child: CircularProgressIndicator()));
+      return GameScaffold(title: L10nGameHelpers.getGameTitle(context, 'trace_path'), body: Center(child: CircularProgressIndicator()));
     }
 
     return GameScaffold(
       title: L10nGameHelpers.getGameTitle(context, 'trace_path'),
-      subtitle: l10n.tracePathSubtitle,
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'trace_path'),
       body: Column(
         children: [
           SizedBox(height: DesignSystem.spaceLG),

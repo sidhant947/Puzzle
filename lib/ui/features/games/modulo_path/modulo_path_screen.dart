@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -147,9 +148,10 @@ class _ModuloPathScreenState extends ConsumerState<ModuloPathScreen> {
         });
       } else {
         HapticFeedbackUtil.error();
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(
-            content: Text('Invalid step! ${_grid[r][c]} mod $_modulus is not $_remainder.'),
+            content: Text(l10n.snackbarInvalidStep(_grid[r][c], _modulus, _remainder)),
             duration: const Duration(milliseconds: 1000),
           ),
         );
@@ -188,8 +190,8 @@ class _ModuloPathScreenState extends ConsumerState<ModuloPathScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'MODULO PATH',
-      subtitle: 'Find a path from top-left to bottom-right stepping only on matching modulo cells.',
+      title: L10nGameHelpers.getGameTitle(context, 'modulo_path'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'modulo_path'),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -223,7 +225,7 @@ class _ModuloPathScreenState extends ConsumerState<ModuloPathScreen> {
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text('PATH RULE:', style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey)),
+                    Text(AppLocalizations.of(context)!.target, style: TextStyle(fontSize: 12, fontWeight: FontWeight.bold, color: Colors.grey)),
                     const SizedBox(height: 6),
                     Text(
                       'Cell value  mod  $_modulus  =  $_remainder',

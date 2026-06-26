@@ -28,14 +28,15 @@ class _MagicSquaresScreenState extends ConsumerState<MagicSquaresScreen> {
   }
 
   void _showCompletionDialog(bool isVictory) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: isVictory ? 'PERFECT!' : 'GAME OVER',
+        title: isVictory ? l10n.winPerfect : l10n.gameOver,
         message: isVictory 
-            ? 'The square is balanced!' 
-            : 'Something is not adding up.',
+            ? l10n.snackbarAlignedPerfectly 
+            : l10n.snackbarIncorrectSum,
         isVictory: isVictory,
         onHome: () {
           Navigator.of(context).pop();

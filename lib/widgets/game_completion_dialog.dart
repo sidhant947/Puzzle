@@ -21,7 +21,7 @@ class GameCompletionDialog extends ConsumerStatefulWidget {
     super.key,
     required this.onHome,
     required this.onPlayAgain,
-    this.title = 'CONGRATS',
+    this.title = '',
     required this.message,
     this.isVictory = true,
   });
@@ -293,7 +293,7 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
                           const SizedBox(width: 4),
                           Flexible(
                             child: Text(
-                              'LEAVE REVIEW',
+                              l10n.leaveReview.toUpperCase(),
                               style: TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w800,
@@ -328,7 +328,7 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
                           const SizedBox(width: 4),
                           Flexible(
                             child: Text(
-                              'REPORT ERROR',
+                              l10n.reportError.toUpperCase(),
                               style: TextStyle(
                                 fontSize: 10,
                                 fontWeight: FontWeight.w800,

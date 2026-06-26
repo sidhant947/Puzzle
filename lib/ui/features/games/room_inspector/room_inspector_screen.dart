@@ -6,6 +6,7 @@ import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
 
@@ -181,7 +182,7 @@ class _RoomInspectorScreenState extends ConsumerState<RoomInspectorScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'ROOM INSPECTOR',
+      title: L10nGameHelpers.getGameTitle(context, 'room_inspector'),
       subtitle: _gamePhase == 'study'
           ? 'Memorize the items in the room grid!'
           : (_gamePhase == 'blink' ? 'Flashed room...' : 'Tap the item that changed!'),

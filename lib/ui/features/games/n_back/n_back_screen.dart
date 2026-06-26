@@ -25,6 +25,7 @@ class _NBackScreenState extends ConsumerState<NBackScreen> {
 
   void _showGameOverDialog(int score) {
     bool won = score >= 10;
+    final l10n = AppLocalizations.of(context)!;
     if (won) {
       HapticFeedbackUtil.victory();
       ref.read(gameStreakNotifierProvider.notifier).completeGame('n_back');
@@ -35,7 +36,7 @@ class _NBackScreenState extends ConsumerState<NBackScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: won ? 'MEMORY MASTER!' : 'FADING ECHO',
+        title: won ? l10n.winMemoryMaster : l10n.loseFadingEcho,
         message: AppLocalizations.of(context)!.nBackMessage((score).toString()),
         onPlayAgain: () {
           ref.read(nBackNotifierProvider.notifier).initGame();
@@ -77,7 +78,7 @@ class _NBackScreenState extends ConsumerState<NBackScreen> {
                       _buildStats(state, isSmall),
                       Spacer(),
                       Text(
-                        'REMEMBER 2 STEPS BACK',
+                        l10n.phaseWatchCarefully.toUpperCase(),
                         style: TextStyle(
                           letterSpacing: 2, 
                           fontWeight: FontWeight.w800, 
@@ -101,9 +102,9 @@ class _NBackScreenState extends ConsumerState<NBackScreen> {
                           child: Container(
                             width: double.infinity,
                             padding: const EdgeInsets.symmetric(vertical: 20),
-                            child: const Center(
+                            child: Center(
                               child: Text(
-                                'MATCH',
+                                l10n.btnMatch.toUpperCase(),
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontWeight: FontWeight.w900,
@@ -149,13 +150,14 @@ class _NBackScreenState extends ConsumerState<NBackScreen> {
   }
 
   Widget _buildStats(NBackState state, bool isSmall) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildStat('TIME', '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
-          _buildStat('MATCHES', '${state.score}', DesignSystem.success, isSmall),
+          _buildStat(l10n.statTime, '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
+          _buildStat(l10n.statMatches, '${state.score}', DesignSystem.success, isSmall),
         ],
       ),
     );

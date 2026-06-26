@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 import '../utils/design_system.dart';
 import '../utils/error_handler.dart';
 
@@ -87,13 +88,13 @@ class _ErrorBoundaryState extends State<ErrorBoundary> {
               ),
               const SizedBox(height: DesignSystem.spaceLG),
               Text(
-                'Something went wrong',
+                AppLocalizations.of(context)!.errorSomethingWrong,
                 style: theme.textTheme.headlineSmall,
                 textAlign: TextAlign.center,
               ),
               const SizedBox(height: DesignSystem.spaceSM),
               Text(
-                _error ?? widget.errorMessage ?? 'An unexpected error occurred',
+                _error ?? widget.errorMessage ?? AppLocalizations.of(context)!.errorUnexpected,
                 style: theme.textTheme.bodyMedium,
                 textAlign: TextAlign.center,
               ),
@@ -104,7 +105,7 @@ class _ErrorBoundaryState extends State<ErrorBoundary> {
                     widget.onRetry!();
                     _clearError();
                   },
-                  child: const Text('Try Again'),
+                  child: Text(AppLocalizations.of(context)!.errorTryAgain),
                 ),
               ],
             ],

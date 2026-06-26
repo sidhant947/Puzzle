@@ -7,6 +7,7 @@ import 'package:puzzle/widgets/tangible.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'interlock_puzzle_provider.dart';
 
 class InterlockPuzzleScreen extends ConsumerStatefulWidget {
@@ -32,8 +33,8 @@ class _InterlockPuzzleScreenState extends ConsumerState<InterlockPuzzleScreen> {
       context: context,
       barrierDismissible: false,
       builder: (dialogCtx) => GameCompletionDialog(
-        title: isVictory ? l10n.interlockPuzzleTitle : 'GAME OVER',
-        message: isVictory ? l10n.interlockPuzzleCongrats : 'Try again!',
+        title: isVictory ? AppLocalizations.of(context)!.winExcellent : AppLocalizations.of(context)!.gameOver,
+        message: isVictory ? l10n.interlockPuzzleCongrats : AppLocalizations.of(context)!.loseTryAgainSolution,
         isVictory: isVictory,
         onHome: () {
           Navigator.of(dialogCtx).pop();
@@ -50,7 +51,6 @@ class _InterlockPuzzleScreenState extends ConsumerState<InterlockPuzzleScreen> {
   @override
   Widget build(BuildContext context) {
     final state = ref.watch(interlockPuzzleNotifierProvider);
-    final l10n = AppLocalizations.of(context)!;
 
     ref.listen(interlockPuzzleNotifierProvider, (prev, next) {
       if (next.isSolved && !(prev?.isSolved ?? false)) {
@@ -66,7 +66,7 @@ class _InterlockPuzzleScreenState extends ConsumerState<InterlockPuzzleScreen> {
     });
 
     return GameScaffold(
-      title: l10n.interlockPuzzleTitle,
+      title: L10nGameHelpers.getGameTitle(context, 'interlock_puzzle'),
       onReset: () {
         setState(() {
           _rotationX = -0.5;
@@ -120,7 +120,7 @@ class _InterlockPuzzleScreenState extends ConsumerState<InterlockPuzzleScreen> {
                               ref.read(interlockPuzzleNotifierProvider.notifier).submitAnswer(true);
                             },
                             color: Colors.green,
-                            child: const Text('YES', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                            child: Text(AppLocalizations.of(context)!.btnYes, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                           ),
                         ),
                         const SizedBox(width: 20),
@@ -131,7 +131,7 @@ class _InterlockPuzzleScreenState extends ConsumerState<InterlockPuzzleScreen> {
                               ref.read(interlockPuzzleNotifierProvider.notifier).submitAnswer(false);
                             },
                             color: Colors.red,
-                            child: const Text('NO', style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+                            child: Text(AppLocalizations.of(context)!.btnNo, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
                           ),
                         ),
                       ],

@@ -25,6 +25,7 @@ class _ReflexTapScreenState extends ConsumerState<ReflexTapScreen> {
 
   void _showGameOverDialog(int score) {
     bool won = score >= 15;
+    final l10n = AppLocalizations.of(context)!;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('reflex_tap');
     }
@@ -32,7 +33,7 @@ class _ReflexTapScreenState extends ConsumerState<ReflexTapScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: won ? 'SHARP REFLEXES!' : 'OUT OF TIME',
+        title: won ? l10n.winSharpReflexes : l10n.loseOutOfTime,
         message: AppLocalizations.of(context)!.reflexTapMessage((score).toString()),
         onPlayAgain: () {
           ref.read(reflexTapNotifierProvider.notifier).initGame();
@@ -76,7 +77,7 @@ class _ReflexTapScreenState extends ConsumerState<ReflexTapScreen> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      _buildStat('TIME', '${state.timeLeft}s',
+                      _buildStat(l10n.statTime, '${state.timeLeft}s',
                           DesignSystem.accentBerry),
                       _buildStat(
                           'TAPS', '${state.score}', DesignSystem.accentAmber),
@@ -139,7 +140,7 @@ class _ReflexTapScreenState extends ConsumerState<ReflexTapScreen> {
                   padding:
                       EdgeInsets.symmetric(horizontal: 24.0, vertical: 12.0),
                   child: Text(
-                    'Tap the targets as fast as you can!',
+                    l10n.phaseWatchCarefully,
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       color: colorScheme.outline.withValues(alpha: 0.5),

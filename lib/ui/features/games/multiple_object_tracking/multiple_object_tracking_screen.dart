@@ -1,4 +1,5 @@
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -14,7 +15,6 @@ class MultipleObjectTrackingScreen extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final l10n = AppLocalizations.of(context)!;
     final state = ref.watch(mOTNotifierProvider);
 
     ref.listen(mOTNotifierProvider, (previous, next) {
@@ -25,8 +25,8 @@ class MultipleObjectTrackingScreen extends ConsumerWidget {
     });
 
     return GameScaffold(
-      title: l10n.multipleObjectTrackingTitle.toUpperCase(),
-      subtitle: l10n.multipleObjectTrackingSubtitle,
+      title: L10nGameHelpers.getGameTitle(context, 'multiple_object_tracking'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'multiple_object_tracking'),
       actions: [
         TangibleButton(
           color: Theme.of(context).colorScheme.surface,
@@ -111,6 +111,7 @@ class MultipleObjectTrackingScreen extends ConsumerWidget {
   }
 
   Widget _buildControls(BuildContext context, WidgetRef ref, MOTState state, Size size) {
+    final l10n = AppLocalizations.of(context)!;
     if (state.phase == MOTPhase.initial) {
       return TangibleButton(
         onTap: () {
@@ -118,8 +119,8 @@ class MultipleObjectTrackingScreen extends ConsumerWidget {
           ref.read(mOTNotifierProvider.notifier).initGame(size);
         },
         color: DesignSystem.primary,
-        child: const Text(
-          'START TRACKING',
+        child: Text(
+          l10n.btnStartGame,
           style: TextStyle(color: Colors.white, fontWeight: FontWeight.w900),
         ),
       );
@@ -127,7 +128,7 @@ class MultipleObjectTrackingScreen extends ConsumerWidget {
 
     if (state.phase == MOTPhase.selection) {
       return Text(
-        'SELECT THE TARGETS',
+        l10n.statMatches,
         style: TextStyle(
           color: DesignSystem.primary,
           fontWeight: FontWeight.w900,
@@ -138,7 +139,7 @@ class MultipleObjectTrackingScreen extends ConsumerWidget {
 
     if (state.phase == MOTPhase.moving) {
       return Text(
-        'TRACKING...',
+        l10n.phaseWatchCarefully,
         style: TextStyle(
           color: DesignSystem.primary.withValues(alpha: 0.7),
           fontWeight: FontWeight.w900,
@@ -155,15 +156,16 @@ class MultipleObjectTrackingScreen extends ConsumerWidget {
     final targetCount = state.balls.where((b) => b.isTarget).length;
     final correctCount = state.balls.where((b) => b.isSelected && b.isTarget).length;
     final isVictory = correctCount == targetCount;
+    final l10n = AppLocalizations.of(context)!;
 
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: isVictory ? 'ROUND COMPLETE' : 'TRY AGAIN',
+        title: isVictory ? l10n.winRoundComplete : l10n.phaseTryAgain,
         message: isVictory 
-          ? 'You found all targets!'
-          : 'You missed some targets. Keep practicing!',
+          ? l10n.snackbarAllCorrect
+          : l10n.snackbarIncorrectTryNew,
         isVictory: isVictory,
         onHome: () => Navigator.of(context).popUntil((route) => route.isFirst),
         onPlayAgain: () {

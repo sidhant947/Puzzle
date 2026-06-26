@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -110,9 +111,10 @@ class _InequalityBalanceOpsScreenState extends ConsumerState<InequalityBalanceOp
       }
     } else {
       HapticFeedbackUtil.error();
+      final l10n = AppLocalizations.of(context)!;
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Incorrect! $_leftExpr ($_leftVal) $_correctSymbol $_rightExpr ($_rightVal)'),
+          content: Text(l10n.snackbarIncorrectInequality(_leftExpr, _leftVal, _correctSymbol, _rightExpr, _rightVal)),
           duration: const Duration(milliseconds: 2000),
           backgroundColor: Colors.redAccent,
         ),
@@ -154,8 +156,8 @@ class _InequalityBalanceOpsScreenState extends ConsumerState<InequalityBalanceOp
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'INEQUALITY BALANCE',
-      subtitle: 'Compare both arithmetic expressions and choose the correct inequality sign.',
+      title: L10nGameHelpers.getGameTitle(context, 'inequality_balance_ops'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'inequality_balance_ops'),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -182,7 +184,7 @@ class _InequalityBalanceOpsScreenState extends ConsumerState<InequalityBalanceOp
                   borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                 ),
                 child: Text(
-                  'Score: $_score / $_targetScore',
+                  '${AppLocalizations.of(context)!.statScore}: $_score / $_targetScore',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         color: DesignSystem.primary,
                         fontWeight: FontWeight.bold,
@@ -211,7 +213,7 @@ class _InequalityBalanceOpsScreenState extends ConsumerState<InequalityBalanceOp
                         ),
                       ),
                       alignment: Alignment.center,
-                      child: const Text(
+                      child: Text(
                         '?',
                         style: TextStyle(fontSize: 28, fontWeight: FontWeight.bold, color: Colors.grey),
                       ),

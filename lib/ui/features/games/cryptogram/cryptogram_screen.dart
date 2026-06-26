@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
 import '../../../../utils/design_system.dart';
 import '../../../../utils/haptic_feedback.dart';
+import '../../../../utils/l10n_game_helpers.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../../providers/user_providers.dart';
@@ -34,8 +35,8 @@ class _CryptogramScreenState extends ConsumerState<CryptogramScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: won ? 'CODE BROKEN!' : 'ENCRYPTED',
-        message: won ? 'You decoded the message perfectly.' : 'Try again to break the encryption.',
+        title: won ? AppLocalizations.of(context)!.winCodeBroken : AppLocalizations.of(context)!.winDecodedPerfectly,
+        message: won ? AppLocalizations.of(context)!.cryptogramSuccess : AppLocalizations.of(context)!.cryptogramTryAgain,
         onPlayAgain: () {
           ref.read(cryptogramNotifierProvider.notifier).initGame();
           Navigator.pop(context);
@@ -62,7 +63,7 @@ class _CryptogramScreenState extends ConsumerState<CryptogramScreen> {
     });
 
     return GameScaffold(
-      title: l10n.cryptogramTitle.toUpperCase(),
+      title: L10nGameHelpers.getGameTitle(context, 'cryptogram'),
       subtitle: l10n.cryptogramSubtitle,
       actions: [
         TangibleButton(

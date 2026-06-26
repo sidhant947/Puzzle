@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -101,9 +102,10 @@ class _MazeNav3DScreenState extends ConsumerState<MazeNav3DScreen> {
             _isGameOver = true;
             _onGameComplete();
           } else {
+            final l10n = AppLocalizations.of(context)!;
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Reached the exit! Generating next maze...'),
+              SnackBar(
+                content: Text(l10n.snackbarReachedExit),
                 backgroundColor: DesignSystem.gameGreen,
                 duration: Duration(seconds: 1),
               ),
@@ -118,9 +120,10 @@ class _MazeNav3DScreenState extends ConsumerState<MazeNav3DScreen> {
     }
 
     HapticFeedbackUtil.error();
+    final l10n = AppLocalizations.of(context)!;
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
-        content: Text('Cannot move forward: Blocked by wall!'),
+      SnackBar(
+        content: Text(l10n.snackbarCannotMoveBlocked),
         backgroundColor: DesignSystem.gameRed,
         duration: Duration(milliseconds: 600),
       ),
@@ -172,8 +175,8 @@ class _MazeNav3DScreenState extends ConsumerState<MazeNav3DScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: '3D MAZE NAV',
-      subtitle: 'Navigate through the perspective viewpoint cells to find the Exit (green cell).',
+      title: L10nGameHelpers.getGameTitle(context, 'maze_nav_3d'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'maze_nav_3d'),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -255,7 +258,7 @@ class _MazeNav3DScreenState extends ConsumerState<MazeNav3DScreen> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text(
+                          Text(
                             'MINIMAP',
                             style: TextStyle(fontWeight: FontWeight.bold, fontSize: 11, color: Colors.grey),
                           ),

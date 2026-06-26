@@ -1,3 +1,4 @@
+import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/utils/l10n_game_helpers.dart';
 
 import 'package:flutter/material.dart';
@@ -26,6 +27,7 @@ class _MathGuessScreenState extends ConsumerState<MathGuessScreen> {
 
   void _showGameOverDialog(MathGuessState state) {
     bool won = state.isGameWon;
+    final l10n = AppLocalizations.of(context)!;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('math_guess');
     }
@@ -33,10 +35,10 @@ class _MathGuessScreenState extends ConsumerState<MathGuessScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: won ? 'BRAIN WIZARD!' : 'GAME OVER',
+        title: won ? l10n.winBrainWizard : l10n.gameOver,
         message: won
-            ? 'Correct! You found ${state.targetNumber} with ${state.guessesLeft} guesses left!'
-            : 'Out of guesses! The number was ${state.targetNumber}.',
+            ? l10n.snackbarCorrect
+            : l10n.snackbarIncorrectTryNew,
         onPlayAgain: () {
           ref.read(mathGuessNotifierProvider.notifier).initGame();
           Navigator.pop(context);
@@ -50,6 +52,7 @@ class _MathGuessScreenState extends ConsumerState<MathGuessScreen> {
   }
 
   void _showHelpDialog() {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       builder: (context) => AlertDialog(
@@ -61,15 +64,15 @@ class _MathGuessScreenState extends ConsumerState<MathGuessScreen> {
             width: 1.5,
           ),
         ),
-        title: const Text(
-          'HOW TO PLAY',
-          style: TextStyle(
+        title: Text(
+          l10n.btnStartGame.toUpperCase(),
+          style: const TextStyle(
             fontFamily: 'Bebas Neue',
             fontSize: 24,
             letterSpacing: 1.2,
           ),
         ),
-        content: const Column(
+        content: Column(
           mainAxisSize: MainAxisSize.min,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -100,8 +103,8 @@ class _MathGuessScreenState extends ConsumerState<MathGuessScreen> {
             color: DesignSystem.primary,
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             radius: DesignSystem.radiusSM,
-            child: const Text(
-              'PLAY NOW',
+            child: Text(
+              l10n.btnStartGame.toUpperCase(),
               style: TextStyle(
                 fontWeight: FontWeight.bold,
                 color: Colors.white,
@@ -115,6 +118,7 @@ class _MathGuessScreenState extends ConsumerState<MathGuessScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(mathGuessNotifierProvider);
     final notifier = ref.read(mathGuessNotifierProvider.notifier);
@@ -145,10 +149,10 @@ class _MathGuessScreenState extends ConsumerState<MathGuessScreen> {
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            _buildStat('CHANCES LEFT', '${state.guessesLeft}',
+                            _buildStat(l10n.statTrials, '${state.guessesLeft}',
                                 DesignSystem.accentBerry),
                             _buildStat(
-                                'GUESSES MADE',
+                                l10n.statProgress,
                                 '${state.guessesHistory.length}',
                                 DesignSystem.accentEmerald),
                           ],
@@ -265,10 +269,11 @@ class _MathGuessScreenState extends ConsumerState<MathGuessScreen> {
   }
 
   Widget _buildHistoryList(MathGuessState state, ColorScheme colorScheme) {
+    final l10n = AppLocalizations.of(context)!;
     if (state.guessesHistory.isEmpty) {
-      return const Center(
+      return Center(
         child: Text(
-          'NO GUESSES YET',
+          l10n.phaseWatchCarefully.toUpperCase(),
           style: TextStyle(
             fontSize: 11,
             fontWeight: FontWeight.bold,
@@ -348,6 +353,7 @@ class _MathGuessScreenState extends ConsumerState<MathGuessScreen> {
 
   Widget _buildKeyboard(MathGuessState state, MathGuessNotifier notifier,
       BoxConstraints constraints) {
+    final l10n = AppLocalizations.of(context)!;
     final double keyWidth = (constraints.maxWidth - 48) / 3;
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -417,8 +423,8 @@ class _MathGuessScreenState extends ConsumerState<MathGuessScreen> {
                 ? Theme.of(context).colorScheme.outline.withValues(alpha: 0.3)
                 : DesignSystem.accentEmerald,
             padding: const EdgeInsets.all(12),
-            child: const Text(
-              'GUESS',
+            child: Text(
+              l10n.btnGuess.toUpperCase(),
               style: TextStyle(
                 fontSize: 14,
                 fontWeight: FontWeight.w700,

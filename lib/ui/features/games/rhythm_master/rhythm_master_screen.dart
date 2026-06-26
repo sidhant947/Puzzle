@@ -8,6 +8,7 @@ import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../core/juice/game_scaffold.dart';
 import 'rhythm_master_provider.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 
 class RhythmMasterScreen extends ConsumerStatefulWidget {
   const RhythmMasterScreen({super.key});
@@ -58,20 +59,23 @@ class _RhythmMasterScreenState extends ConsumerState<RhythmMasterScreen> with Si
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => GameCompletionDialog(
-        title: won ? 'RHYTHM GOD!' : 'OFF BEAT',
-        message: AppLocalizations.of(context)!.rhythmMasterMessage((perfect).toString(), (score).toString()),
-        isVictory: won,
-        onPlayAgain: () {
-          ref.read(rhythmMasterNotifierProvider.notifier).initGame();
-          _controller.forward(from: 0);
-          Navigator.pop(context);
-        },
-        onHome: () {
-          Navigator.pop(context);
-          Navigator.pop(context);
-        },
-      ),
+      builder: (context) {
+        final l10n = AppLocalizations.of(context)!;
+        return GameCompletionDialog(
+          title: won ? l10n.rhythmMasterTitle.toUpperCase() : l10n.gameOver,
+          message: AppLocalizations.of(context)!.rhythmMasterMessage((perfect).toString(), (score).toString()),
+          isVictory: won,
+          onPlayAgain: () {
+            ref.read(rhythmMasterNotifierProvider.notifier).initGame();
+            _controller.forward(from: 0);
+            Navigator.pop(context);
+          },
+          onHome: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+        );
+      },
     );
   }
 
@@ -93,8 +97,8 @@ class _RhythmMasterScreenState extends ConsumerState<RhythmMasterScreen> with Si
     });
 
     return GameScaffold(
-      title: l10n.rhythmMasterTitle.toUpperCase(),
-      subtitle: l10n.rhythmMasterSubtitle,
+      title: L10nGameHelpers.getGameTitle(context, 'rhythm_master'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'rhythm_master'),
       body: GestureDetector(
         onTapDown: (_) {
           final now = DateTime.now().millisecondsSinceEpoch;
@@ -115,8 +119,8 @@ class _RhythmMasterScreenState extends ConsumerState<RhythmMasterScreen> with Si
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    _buildStat('BEATS', '${state.totalBeats}/20', DesignSystem.accentBerry),
-                    _buildStat('PERFECT', '${state.perfectHits}', DesignSystem.success),
+                    _buildStat(l10n.statBeats, '${state.totalBeats}/20', DesignSystem.accentBerry),
+                    _buildStat(l10n.statPerfect, '${state.perfectHits}', DesignSystem.success),
                   ],
                 ),
               ),

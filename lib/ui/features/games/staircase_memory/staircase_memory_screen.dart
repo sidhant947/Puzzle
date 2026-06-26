@@ -29,14 +29,15 @@ class _StaircaseMemoryScreenState extends ConsumerState<StaircaseMemoryScreen> {
   }
 
   void _showCompletionDialog(bool isVictory) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: isVictory ? 'LEVEL UP!' : 'GAME OVER',
+        title: isVictory ? l10n.winLevelUp : l10n.gameOver,
         message: isVictory 
-            ? 'Your working memory is expanding!' 
-            : 'You got ${ref.read(staircaseMemoryNotifierProvider).correctCount} out of ${ref.read(staircaseMemoryNotifierProvider).totalTests} correct.',
+            ? l10n.winExcellent 
+            : l10n.snackbarIncorrectTryNew,
         isVictory: isVictory,
         onHome: () {
           Navigator.of(context).pop();
@@ -81,8 +82,8 @@ class _StaircaseMemoryScreenState extends ConsumerState<StaircaseMemoryScreen> {
     return GameScaffold(
       title: L10nGameHelpers.getGameTitle(context, 'staircase_memory'),
       subtitle: state.phase == StaircasePhase.sequence 
-          ? 'Memorize the icons' 
-          : 'What was shown ${state.n} steps ago?',
+          ? l10n.phaseWatchCarefully 
+          : l10n.phaseTryAgain,
       body: Column(
         children: [
           const SizedBox(height: DesignSystem.spaceXL),
@@ -112,11 +113,12 @@ class _StaircaseMemoryScreenState extends ConsumerState<StaircaseMemoryScreen> {
 
   Widget _buildCurrentItem(StaircaseState state) {
     final icon = state.sequence[state.currentIndex];
+    final l10n = AppLocalizations.of(context)!;
     return Column(
       mainAxisSize: MainAxisSize.min,
       children: [
         Text(
-          'CURRENT ITEM',
+          l10n.statItems,
           style: TextStyle(
             fontSize: 12,
             fontWeight: FontWeight.w900,

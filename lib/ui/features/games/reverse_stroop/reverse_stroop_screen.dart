@@ -28,6 +28,7 @@ class _ReverseStroopScreenState extends ConsumerState<ReverseStroopScreen> {
 
   void _showGameOverDialog(int score) {
     bool won = score >= 50; // Threshold for winning
+    final l10n = AppLocalizations.of(context)!;
     if (won) {
       HapticFeedbackUtil.victory();
       ref.read(gameStreakNotifierProvider.notifier).completeGame('reverse_stroop');
@@ -38,7 +39,7 @@ class _ReverseStroopScreenState extends ConsumerState<ReverseStroopScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: won ? 'FOCUS MASTER!' : 'CONCENTRATION BROKEN',
+        title: won ? l10n.winFocusMaster : l10n.loseConcentrationBroken,
         message: AppLocalizations.of(context)!.reverseStroopMessage((score).toString()),
         onPlayAgain: () {
           ref.read(reverseStroopNotifierProvider.notifier).startGame();
@@ -92,7 +93,7 @@ class _ReverseStroopScreenState extends ConsumerState<ReverseStroopScreen> {
                   depth: 2.0,
                   padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
                   child: Text(
-                    stimulus.rule == StroopRule.text ? 'MATCH TEXT' : 'MATCH COLOR',
+                    stimulus.rule == StroopRule.text ? l10n.btnMatch.toUpperCase() : l10n.btnMatch.toUpperCase(),
                     style: TextStyle(
                       letterSpacing: 2,
                       fontWeight: FontWeight.w900,
@@ -176,13 +177,14 @@ class _ReverseStroopScreenState extends ConsumerState<ReverseStroopScreen> {
   }
 
   Widget _buildStats(ReverseStroopState state, bool isSmall) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildStat('TIME', '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
-          _buildStat('SCORE', '${state.score}', DesignSystem.success, isSmall),
+          _buildStat(l10n.statTime, '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
+          _buildStat(l10n.statScore, '${state.score}', DesignSystem.success, isSmall),
         ],
       ),
     );

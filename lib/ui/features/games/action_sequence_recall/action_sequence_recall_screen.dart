@@ -6,6 +6,7 @@ import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
 
@@ -116,8 +117,8 @@ class _ActionSequenceRecallScreenState extends ConsumerState<ActionSequenceRecal
       if (_userSequence[idx] != _sequence[idx]) {
         HapticFeedbackUtil.error();
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Incorrect sequence! Watch closely again.'),
+          SnackBar(
+            content: Text(AppLocalizations.of(context)!.snackbarIncorrectSequence),
             backgroundColor: DesignSystem.gameRed,
             duration: Duration(seconds: 1),
           ),
@@ -133,8 +134,8 @@ class _ActionSequenceRecallScreenState extends ConsumerState<ActionSequenceRecal
             _onGameComplete();
           } else {
             ScaffoldMessenger.of(context).showSnackBar(
-              const SnackBar(
-                content: Text('Sequence matched! Increasing length...'),
+              SnackBar(
+                content: Text(AppLocalizations.of(context)!.snackbarSequenceMatched),
                 backgroundColor: DesignSystem.gameGreen,
                 duration: Duration(seconds: 1),
               ),
@@ -177,10 +178,10 @@ class _ActionSequenceRecallScreenState extends ConsumerState<ActionSequenceRecal
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'ACTION RECALL',
+      title: L10nGameHelpers.getGameTitle(context, 'action_sequence_recall'),
       subtitle: _isSequencePlaying
-          ? 'Watch the gesture/action animation sequence carefully.'
-          : 'Repeat the actions in the correct chronological order.',
+          ? AppLocalizations.of(context)!.phaseWatchCarefully
+          : AppLocalizations.of(context)!.phaseRepeatPattern,
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -206,7 +207,7 @@ class _ActionSequenceRecallScreenState extends ConsumerState<ActionSequenceRecal
                 borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
               ),
               child: Text(
-                'Score: $_score / $_targetScore',
+                '${AppLocalizations.of(context)!.statScore}: $_score / $_targetScore',
                 style: Theme.of(context).textTheme.titleLarge?.copyWith(
                       color: DesignSystem.primary,
                       fontWeight: FontWeight.bold,
@@ -268,7 +269,7 @@ class _ActionSequenceRecallScreenState extends ConsumerState<ActionSequenceRecal
                     ),
                     const SizedBox(height: 40),
                     if (!_isSequencePlaying) ...[
-                      const Text(
+                      Text(
                         'YOUR TURN',
                         style: TextStyle(fontWeight: FontWeight.bold, fontSize: 16, letterSpacing: 1.2),
                       ),
@@ -313,7 +314,7 @@ class _ActionSequenceRecallScreenState extends ConsumerState<ActionSequenceRecal
                         }).toList(),
                       ),
                     ] else ...[
-                      const Text(
+                      Text(
                         'WATCH SEQUENCE...',
                         style: TextStyle(
                           fontStyle: FontStyle.italic,

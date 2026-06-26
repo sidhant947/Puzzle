@@ -31,21 +31,24 @@ class _VisualSearchScreenState extends ConsumerState<VisualSearchScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => GameCompletionDialog(
-        title: isVictory ? 'AMAZING!' : 'GAME OVER',
-        message: isVictory 
-            ? 'Your visual acuity is top-notch!' 
-            : 'Focus and try again.',
-        isVictory: isVictory,
-        onHome: () {
-          Navigator.of(context).pop();
-          Navigator.of(context).pop();
-        },
-        onPlayAgain: () {
-          Navigator.of(context).pop();
-          ref.read(visualSearchNotifierProvider.notifier).resetGame();
-        },
-      ),
+      builder: (context) {
+        final l10n = AppLocalizations.of(context)!;
+        return GameCompletionDialog(
+          title: isVictory ? l10n.visualSearchTitle.toUpperCase() : l10n.gameOver,
+          message: isVictory 
+              ? 'Your visual acuity is top-notch!' 
+              : 'Focus and try again.',
+          isVictory: isVictory,
+          onHome: () {
+            Navigator.of(context).pop();
+            Navigator.of(context).pop();
+          },
+          onPlayAgain: () {
+            Navigator.of(context).pop();
+            ref.read(visualSearchNotifierProvider.notifier).resetGame();
+          },
+        );
+      },
     );
   }
 
@@ -73,14 +76,14 @@ class _VisualSearchScreenState extends ConsumerState<VisualSearchScreen> {
 
     if (state.isLoading) {
       return GameScaffold(
-        title: l10n.visualSearchTitle.toUpperCase(),
+        title: L10nGameHelpers.getGameTitle(context, 'visual_search'),
         body: Center(child: CircularProgressIndicator()),
       );
     }
 
     return GameScaffold(
       title: L10nGameHelpers.getGameTitle(context, 'visual_search'),
-      subtitle: l10n.visualSearchSubtitle,
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'visual_search'),
       body: Column(
         children: [
           Padding(

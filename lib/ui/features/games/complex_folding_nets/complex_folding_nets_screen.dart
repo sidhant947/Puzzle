@@ -5,6 +5,7 @@ import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
 import 'complex_folding_nets_engine.dart';
@@ -33,7 +34,7 @@ class _ComplexFoldingNetsScreenState extends ConsumerState<ComplexFoldingNetsScr
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.complexFoldingNetsTitle.toUpperCase(),
-        message: isVictory ? l10n.complexFoldingNetsCongrats : "Not quite! That wasn't the correct solid.",
+        message: isVictory ? l10n.complexFoldingNetsCongrats : AppLocalizations.of(context)!.loseTryAgainSolution,
         isVictory: isVictory,
         onHome: () {
           Navigator.of(context).pop();
@@ -74,7 +75,7 @@ class _ComplexFoldingNetsScreenState extends ConsumerState<ComplexFoldingNetsScr
     }
 
     return GameScaffold(
-      title: l10n.complexFoldingNetsTitle.toUpperCase(),
+      title: L10nGameHelpers.getGameTitle(context, 'complex_folding_nets'),
       subtitle: l10n.complexFoldingNetsSubtitle,
       onReset: () => ref.read(complexFoldingNetsNotifierProvider.notifier).reset(),
       body: Column(

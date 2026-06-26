@@ -5,6 +5,7 @@ import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
 
@@ -105,9 +106,10 @@ class _EventTimelineMemoryScreenState extends ConsumerState<EventTimelineMemoryS
         _isGameOver = true;
         _onGameComplete();
       } else {
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Correct chronological order!'),
+          SnackBar(
+            content: Text(l10n.snackbarCorrectOrder),
             backgroundColor: DesignSystem.gameGreen,
             duration: Duration(seconds: 1),
           ),
@@ -118,9 +120,10 @@ class _EventTimelineMemoryScreenState extends ConsumerState<EventTimelineMemoryS
       }
     } else {
       HapticFeedbackUtil.error();
+      final l10n = AppLocalizations.of(context)!;
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(
-          content: Text('Incorrect order! Study again.'),
+        SnackBar(
+          content: Text(l10n.snackbarIncorrectOrder),
           backgroundColor: DesignSystem.gameRed,
           duration: Duration(seconds: 2),
         ),
@@ -163,7 +166,7 @@ class _EventTimelineMemoryScreenState extends ConsumerState<EventTimelineMemoryS
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'EVENT TIMELINE',
+      title: L10nGameHelpers.getGameTitle(context, 'event_timeline_memory'),
       subtitle: _isStudyMode 
           ? 'Memorize the events and their chronological years.' 
           : 'Drag or tap cards to place them in chronological order (earliest to latest).',

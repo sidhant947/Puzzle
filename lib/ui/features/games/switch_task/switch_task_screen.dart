@@ -9,6 +9,7 @@ import '../../../../widgets/tangible.dart';
 import '../../../../utils/haptic_feedback.dart';
 import 'switch_task_provider.dart';
 import 'switch_task_engine.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 
 class SwitchTaskScreen extends ConsumerStatefulWidget {
   const SwitchTaskScreen({super.key});
@@ -36,18 +37,21 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => GameCompletionDialog(
-        title: won ? 'MENTAL GYMNAST!' : 'WIRES CROSSED',
-        message: AppLocalizations.of(context)!.switchTaskMessage((score).toString()),
-        onPlayAgain: () {
-          ref.read(switchTaskNotifierProvider.notifier).initGame();
-          Navigator.pop(context);
-        },
-        onHome: () {
-          Navigator.pop(context);
-          Navigator.pop(context);
-        },
-      ),
+      builder: (context) {
+        final l10n = AppLocalizations.of(context)!;
+        return GameCompletionDialog(
+          title: won ? l10n.switchTaskTitle.toUpperCase() : l10n.gameOver,
+          message: AppLocalizations.of(context)!.switchTaskMessage((score).toString()),
+          onPlayAgain: () {
+            ref.read(switchTaskNotifierProvider.notifier).initGame();
+            Navigator.pop(context);
+          },
+          onHome: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+        );
+      },
     );
   }
 
@@ -66,8 +70,8 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
     });
 
     return GameScaffold(
-      title: l10n.switchTaskTitle.toUpperCase(),
-      subtitle: l10n.switchTaskSubtitle,
+      title: L10nGameHelpers.getGameTitle(context, 'switch_task'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'switch_task'),
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(
@@ -174,17 +178,18 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
   }
 
   Widget _buildStats(SwitchTaskState state, bool isSmall) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           _buildStat(
-              'TIME',
+              l10n.statTime,
               '${state.timeLeft}s',
               state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary,
               isSmall),
-          _buildStat('SCORE', '${state.score}', DesignSystem.success, isSmall),
+          _buildStat(l10n.statScore, '${state.score}', DesignSystem.success, isSmall),
         ],
       ),
     );

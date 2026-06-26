@@ -28,14 +28,15 @@ class _WordSurgeScreenState extends ConsumerState<WordSurgeScreen> {
   }
 
   void _showCompletionDialog(bool isVictory) {
+    final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: isVictory ? 'SURGE COMPLETE!' : 'TIME EXPIRED!',
+        title: isVictory ? l10n.winSurgeComplete : l10n.loseTimeExpiredExcl,
         message: isVictory 
-            ? 'Your linguistic reflexes are incredible.' 
-            : 'You scored ${ref.read(wordSurgeNotifierProvider).score} points.',
+            ? l10n.winFluencyExpert 
+            : l10n.loseTimeExpiredExcl,
         isVictory: isVictory,
         onHome: () {
           Navigator.of(context).pop();

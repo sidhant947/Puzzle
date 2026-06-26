@@ -1,4 +1,5 @@
 import 'package:puzzle/utils/l10n_game_helpers.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -29,18 +30,21 @@ class _CognateCatchScreenState extends ConsumerState<CognateCatchScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => GameCompletionDialog(
-        title: state.isGameWon ? 'CORRECT!' : 'WRONG',
-        message: state.description,
-        onPlayAgain: () {
-          ref.read(cognateCatchNotifierProvider.notifier).initGame();
-          Navigator.pop(context);
-        },
-        onHome: () {
-          Navigator.pop(context);
-          Navigator.pop(context);
-        },
-      ),
+      builder: (context) {
+        final l10n = AppLocalizations.of(context)!;
+        return GameCompletionDialog(
+          title: state.isGameWon ? l10n.btnYes : l10n.btnNo,
+          message: state.description,
+          onPlayAgain: () {
+            ref.read(cognateCatchNotifierProvider.notifier).initGame();
+            Navigator.pop(context);
+          },
+          onHome: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+        );
+      },
     );
   }
 
@@ -58,7 +62,7 @@ class _CognateCatchScreenState extends ConsumerState<CognateCatchScreen> {
 
     return GameScaffold(
       title: L10nGameHelpers.getGameTitle(context, 'cognate_catch'),
-      subtitle: L10nGameHelpers.getGameTitle(context, 'cognate_catch'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'cognate_catch'),
       actions: [
         TangibleButton(
           color: colorScheme.surface,

@@ -32,6 +32,7 @@ class _PixelMimicScreenState extends ConsumerState<PixelMimicScreen> {
   }
 
   void _showGameOverDialog(bool won) {
+    final l10n = AppLocalizations.of(context)!;
     if (won) {
       ref.read(gameStreakNotifierProvider.notifier).completeGame('pixel_mimic');
       HapticFeedbackUtil.victory();
@@ -42,8 +43,8 @@ class _PixelMimicScreenState extends ConsumerState<PixelMimicScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: won ? 'MIMIC MASTER!' : 'PATTERN MISMATCH',
-        message: won ? 'Perfect memory!' : 'Try again.',
+        title: won ? l10n.winMimicMaster : l10n.losePatternMismatch,
+        message: won ? l10n.winPerfectRecall : l10n.losePatternMismatch,
         onPlayAgain: () {
           ref.read(pixelMimicNotifierProvider.notifier).initGame();
           Navigator.pop(context);
@@ -71,7 +72,7 @@ class _PixelMimicScreenState extends ConsumerState<PixelMimicScreen> {
 
     return GameScaffold(
       title: l10n.pixelMimicTitle.toUpperCase(),
-      subtitle: state.isShowingPattern ? 'Memorize this pattern!' : 'Recreate the pattern!',
+      subtitle: state.isShowingPattern ? l10n.phaseWatchCarefully : l10n.phaseTryAgain,
       actions: [
         TangibleButton(
           color: colorScheme.surface,
@@ -112,9 +113,9 @@ class _PixelMimicScreenState extends ConsumerState<PixelMimicScreen> {
                   child: TangibleButton(
                     onTap: notifier.submitMimic,
                     padding: const EdgeInsets.symmetric(vertical: 18),
-                    child: const Center(
+                    child: Center(
                       child: Text(
-                        'SUBMIT',
+                        l10n.btnSubmit.toUpperCase(),
                         style: TextStyle(
                           fontWeight: FontWeight.w900,
                           letterSpacing: 1.2,

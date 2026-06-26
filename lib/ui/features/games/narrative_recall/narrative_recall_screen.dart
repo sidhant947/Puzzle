@@ -9,6 +9,7 @@ import 'package:puzzle/utils/haptic_feedback.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import 'package:puzzle/widgets/tangible.dart';
 import '../../../core/juice/game_scaffold.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 
 class NarrativeRecallScreen extends ConsumerStatefulWidget {
   const NarrativeRecallScreen({super.key});
@@ -153,46 +154,54 @@ class _NarrativeRecallScreenState extends ConsumerState<NarrativeRecallScreen> {
       showDialog(
         context: context,
         barrierDismissible: false,
-        builder: (context) => GameCompletionDialog(
-          title: 'PERFECT RECALL!',
-          message: 'You remembered all details correctly!',
-          onPlayAgain: () {
-            setState(() {
-              _startStoryPhase();
-            });
-            Navigator.pop(context);
-          },
-          onHome: () {
-            Navigator.pop(context);
-            Navigator.pop(context);
-          },
-        ),
+        builder: (context) {
+          final l10n = AppLocalizations.of(context)!;
+          return GameCompletionDialog(
+            title: l10n.phasePerfectRecall,
+            message: l10n.completed,
+            onPlayAgain: () {
+              setState(() {
+                _startStoryPhase();
+              });
+              Navigator.pop(context);
+            },
+            onHome: () {
+              Navigator.pop(context);
+              Navigator.pop(context);
+            },
+          );
+        },
       );
     } else {
       HapticFeedbackUtil.error();
       showDialog(
         context: context,
         barrierDismissible: false,
-        builder: (context) => GameCompletionDialog(
-          title: 'TRY AGAIN',
-          message: 'Some details were remembered incorrectly.',
-          onPlayAgain: () {
-            _startStoryPhase();
-            Navigator.pop(context);
-          },
-          onHome: () {
-            Navigator.pop(context);
-            Navigator.pop(context);
-          },
-        ),
+        builder: (context) {
+          final l10n = AppLocalizations.of(context)!;
+          return GameCompletionDialog(
+            title: l10n.gameOver,
+            message: l10n.completed,
+            onPlayAgain: () {
+              _startStoryPhase();
+              Navigator.pop(context);
+            },
+            onHome: () {
+              Navigator.pop(context);
+              Navigator.pop(context);
+            },
+          );
+        },
       );
     }
   }
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
     return GameScaffold(
-      title: 'NARRATIVE RECALL',
+      title: L10nGameHelpers.getGameTitle(context, 'narrative_recall'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'narrative_recall'),
       body: SafeArea(
         child: Column(
           children: [
@@ -200,10 +209,10 @@ class _NarrativeRecallScreenState extends ConsumerState<NarrativeRecallScreen> {
               padding: const EdgeInsets.all(16.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Text('Memorize the details', style: Theme.of(context).textTheme.titleMedium),
-                  if (_showingStory)
-                    Text('Time: ${_timeLeft}s', style: const TextStyle(fontWeight: FontWeight.bold, color: DesignSystem.gameRose)),
+              children: [
+                Text(l10n.phaseMemorizeDetails, style: Theme.of(context).textTheme.titleMedium),
+                if (_showingStory)
+                  Text(l10n.phaseTimeLeft(_timeLeft), style: const TextStyle(fontWeight: FontWeight.bold, color: DesignSystem.gameRose)),
                 ],
               ),
             ),
@@ -251,7 +260,7 @@ class _NarrativeRecallScreenState extends ConsumerState<NarrativeRecallScreen> {
             foregroundColor: Colors.white,
             padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
           ),
-          child: const Text('I\'M READY TO ANSWER', style: TextStyle(fontWeight: FontWeight.bold)),
+          child: Text(AppLocalizations.of(context)!.btnImReadyToAnswer, style: TextStyle(fontWeight: FontWeight.bold)),
         ),
       ],
     );

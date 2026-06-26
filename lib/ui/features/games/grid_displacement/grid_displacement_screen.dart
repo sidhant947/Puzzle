@@ -5,6 +5,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
@@ -135,9 +136,10 @@ class _GridDisplacementScreenState extends ConsumerState<GridDisplacementScreen>
           }
         } else {
           HapticFeedbackUtil.error();
+          final l10n = AppLocalizations.of(context)!;
           ScaffoldMessenger.of(context).showSnackBar(
-            const SnackBar(
-              content: Text('Incorrect! Swapped items are highlighted in green.'),
+            SnackBar(
+              content: Text(l10n.snackbarIncorrectSwapped),
               duration: Duration(milliseconds: 1500),
             ),
           );
@@ -185,10 +187,10 @@ class _GridDisplacementScreenState extends ConsumerState<GridDisplacementScreen>
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'GRID DISPLACEMENT',
+      title: L10nGameHelpers.getGameTitle(context, 'grid_displacement'),
       subtitle: _phase == 'study'
-          ? 'Memorize the position of each icon on the grid!'
-          : 'Exactly two icons have swapped places. Tap the two swapped cells!',
+          ? AppLocalizations.of(context)!.phaseMemorizePlacements
+          : L10nGameHelpers.getGameSubtitle(context, 'grid_displacement'),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -219,7 +221,7 @@ class _GridDisplacementScreenState extends ConsumerState<GridDisplacementScreen>
                       borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                     ),
                     child: Text(
-                      'Score: $_score / $_targetScore',
+                      '${AppLocalizations.of(context)!.statScore}: $_score / $_targetScore',
                       style: Theme.of(context).textTheme.titleLarge?.copyWith(
                             color: DesignSystem.primary,
                             fontWeight: FontWeight.bold,

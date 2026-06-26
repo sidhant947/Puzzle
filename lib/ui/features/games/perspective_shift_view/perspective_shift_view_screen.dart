@@ -100,9 +100,10 @@ class _PerspectiveShiftViewScreenState extends ConsumerState<PerspectiveShiftVie
         _isGameOver = true;
         _onGameComplete();
       } else {
+        final l10n = AppLocalizations.of(context)!;
         ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(
-            content: Text('Aligned and correctly identified!'),
+          SnackBar(
+            content: Text(l10n.snackbarAlignedCorrectly),
             backgroundColor: DesignSystem.gameGreen,
             duration: Duration(seconds: 1),
           ),
@@ -113,9 +114,10 @@ class _PerspectiveShiftViewScreenState extends ConsumerState<PerspectiveShiftVie
       }
     } else {
       HapticFeedbackUtil.error();
-      String failMsg = 'Incorrect!';
+      final l10n = AppLocalizations.of(context)!;
+      String failMsg = l10n.snackbarIncorrectPerspective;
       if (!isAligned) {
-        failMsg = 'Incorrect perspective angle rotation! Try aligning them first.';
+        failMsg = l10n.snackbarIncorrectPerspective;
       }
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(

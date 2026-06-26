@@ -34,21 +34,24 @@ class _PathRecallScreenState extends ConsumerState<PathRecallScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => GameCompletionDialog(
-        title: won ? 'PATHFINDER!' : 'LOST YOUR WAY',
-        message: won 
-            ? 'You reconstructed the entire 10-step path!' 
-            : 'You missed a step. Try again to master the sequence.',
-        isVictory: won,
-        onPlayAgain: () {
-          ref.read(pathRecallNotifierProvider.notifier).initGame();
-          Navigator.pop(context);
-        },
-        onHome: () {
-          Navigator.pop(context);
-          Navigator.pop(context);
-        },
-      ),
+      builder: (context) {
+        final l10n = AppLocalizations.of(context)!;
+        return GameCompletionDialog(
+          title: won ? l10n.pathRecallTitle.toUpperCase() : l10n.gameOver,
+          message: won 
+              ? 'You reconstructed the entire 10-step path!' 
+              : 'You missed a step. Try again to master the sequence.',
+          isVictory: won,
+          onPlayAgain: () {
+            ref.read(pathRecallNotifierProvider.notifier).initGame();
+            Navigator.pop(context);
+          },
+          onHome: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+        );
+      },
     );
   }
 
@@ -77,9 +80,7 @@ class _PathRecallScreenState extends ConsumerState<PathRecallScreen> {
 
     return GameScaffold(
       title: L10nGameHelpers.getGameTitle(context, 'path_recall'),
-      subtitle: state.phase == PathRecallPhase.playback 
-          ? 'Memorize the sequence...' 
-          : 'Reconstruct the 10-step path!',
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'path_recall'),
       body: Column(
         children: [
           Padding(
@@ -87,7 +88,7 @@ class _PathRecallScreenState extends ConsumerState<PathRecallScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                _buildStat('PROGRESS', '${state.userPath.length}/10', DesignSystem.primary),
+                _buildStat(l10n.statProgress, '${state.userPath.length}/10', DesignSystem.primary),
               ],
             ),
           ),

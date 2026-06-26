@@ -30,18 +30,21 @@ class _CompoundConnectScreenState extends ConsumerState<CompoundConnectScreen> {
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => GameCompletionDialog(
-        title: state.isGameWon ? 'CORRECT!' : 'WRONG',
-        message: AppLocalizations.of(context)!.compoundConnectMessage((state.prefix).toString(), (state.correctSuffix).toString()),
-        onPlayAgain: () {
-          ref.read(compoundConnectNotifierProvider.notifier).initGame();
-          Navigator.pop(context);
-        },
-        onHome: () {
-          Navigator.pop(context);
-          Navigator.pop(context);
-        },
-      ),
+      builder: (context) {
+        final l10n = AppLocalizations.of(context)!;
+        return GameCompletionDialog(
+          title: state.isGameWon ? l10n.compoundConnectTitle : l10n.gameOver,
+          message: AppLocalizations.of(context)!.compoundConnectMessage((state.prefix).toString(), (state.correctSuffix).toString()),
+          onPlayAgain: () {
+            ref.read(compoundConnectNotifierProvider.notifier).initGame();
+            Navigator.pop(context);
+          },
+          onHome: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+        );
+      },
     );
   }
 
@@ -59,7 +62,7 @@ class _CompoundConnectScreenState extends ConsumerState<CompoundConnectScreen> {
 
     return GameScaffold(
       title: L10nGameHelpers.getGameTitle(context, 'compound_connect'),
-      subtitle: L10nGameHelpers.getGameTitle(context, 'compound_connect'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'compound_connect'),
       actions: [
         TangibleButton(
           color: colorScheme.surface,

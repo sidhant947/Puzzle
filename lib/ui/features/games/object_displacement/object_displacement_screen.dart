@@ -1,4 +1,5 @@
 import 'package:puzzle/utils/l10n_game_helpers.dart';
+import 'package:puzzle/l10n/app_localizations.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -35,19 +36,22 @@ class _ObjectDisplacementScreenState extends ConsumerState<ObjectDisplacementScr
     showDialog(
       context: context,
       barrierDismissible: false,
-      builder: (context) => GameCompletionDialog(
-        title: won ? 'SPATIAL GENIUS!' : 'GAME OVER',
-        message: 'You correctly identified $score displaced objects!',
-        isVictory: won,
-        onPlayAgain: () {
-          ref.read(objectDisplacementNotifierProvider.notifier).initGame();
-          Navigator.pop(context);
-        },
-        onHome: () {
-          Navigator.pop(context);
-          Navigator.pop(context);
-        },
-      ),
+      builder: (context) {
+        final l10n = AppLocalizations.of(context)!;
+        return GameCompletionDialog(
+          title: won ? l10n.gameWin : l10n.gameOver,
+          message: '$score displaced objects identified correctly!',
+          isVictory: won,
+          onPlayAgain: () {
+            ref.read(objectDisplacementNotifierProvider.notifier).initGame();
+            Navigator.pop(context);
+          },
+          onHome: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+        );
+      },
     );
   }
 
@@ -64,7 +68,7 @@ class _ObjectDisplacementScreenState extends ConsumerState<ObjectDisplacementScr
 
     return GameScaffold(
       title: L10nGameHelpers.getGameTitle(context, 'object_displacement'),
-      subtitle: L10nGameHelpers.getGameTitle(context, 'object_displacement'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'object_displacement'),
       body: state.isLoading
           ? const Center(child: CircularProgressIndicator())
           : SafeArea(
@@ -100,19 +104,20 @@ class _ObjectDisplacementScreenState extends ConsumerState<ObjectDisplacementScr
   }
 
   Widget _buildPhaseIndicator(ObjectDisplacementState state) {
+    final l10n = AppLocalizations.of(context)!;
     String text = '';
     Color color = DesignSystem.primary;
     if (state.phase == DisplacementPhase.memorize) {
-      text = 'MEMORIZE ALL PLACEMENTS';
+      text = l10n.phaseMemorizePlacements;
       color = DesignSystem.accentAmber;
     } else if (state.phase == DisplacementPhase.delay) {
-      text = 'WAITING FOR LAYOUT SHIFT...';
+      text = l10n.phaseWaitingForShift;
       color = DesignSystem.gameIndigo;
     } else if (state.phase == DisplacementPhase.choice) {
-      text = 'TAP THE OBJECT THAT MOVED';
+      text = l10n.phaseTapMovedObject;
       color = DesignSystem.gameBlue;
     } else {
-      text = state.lastRoundCorrect == true ? 'EXCELLENT!' : 'WRONG OBJECT!';
+      text = state.lastRoundCorrect == true ? l10n.phaseGreatRecall : l10n.phaseWrongObject;
       color = state.lastRoundCorrect == true ? DesignSystem.success : DesignSystem.error;
     }
 
@@ -214,14 +219,15 @@ class _ObjectDisplacementScreenState extends ConsumerState<ObjectDisplacementScr
   }
 
   Widget _buildStats(ObjectDisplacementState state, bool isSmall) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildStat('TIME', '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
-          _buildStat('ITEMS', '${state.itemCount}', DesignSystem.accentAmber, isSmall),
-          _buildStat('SCORE', '${state.score}', DesignSystem.success, isSmall),
+          _buildStat(l10n.statTime, '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
+          _buildStat(l10n.statItems, '${state.itemCount}', DesignSystem.accentAmber, isSmall),
+          _buildStat(l10n.statScore, '${state.score}', DesignSystem.success, isSmall),
         ],
       ),
     );

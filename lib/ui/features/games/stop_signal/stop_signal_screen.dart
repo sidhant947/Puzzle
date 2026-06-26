@@ -25,6 +25,7 @@ class _StopSignalScreenState extends ConsumerState<StopSignalScreen> {
 
   void _showGameOverDialog(int score) {
     bool won = score >= 20;
+    final l10n = AppLocalizations.of(context)!;
     if (won) {
       HapticFeedbackUtil.victory();
       ref.read(gameStreakNotifierProvider.notifier).completeGame('stop_signal');
@@ -35,7 +36,7 @@ class _StopSignalScreenState extends ConsumerState<StopSignalScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: won ? 'TOTAL CONTROL!' : 'INHIBITION FAIL',
+        title: won ? l10n.winTotalControl : l10n.loseInhibitionFail,
         message: AppLocalizations.of(context)!.stopSignalMessage((score).toString()),
         onPlayAgain: () {
           ref.read(stopSignalNotifierProvider.notifier).initGame();
@@ -131,13 +132,14 @@ class _StopSignalScreenState extends ConsumerState<StopSignalScreen> {
   }
 
   Widget _buildStats(StopSignalState state, bool isSmall) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildStat('TIME', '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
-          _buildStat('SCORE', '${state.score}', DesignSystem.success, isSmall),
+          _buildStat(l10n.statTime, '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
+          _buildStat(l10n.statScore, '${state.score}', DesignSystem.success, isSmall),
         ],
       ),
     );

@@ -26,7 +26,7 @@ class MentalCalendarScreen extends ConsumerWidget {
       onHowToPlay: () => _showHowToPlay(context, l10n),
       body: state.phase == MentalCalendarPhase.result
           ? _buildResult(context, ref, state)
-          : _buildGame(ref, state),
+          : _buildGame(context, ref, state),
     );
   }
 
@@ -46,7 +46,7 @@ class MentalCalendarScreen extends ConsumerWidget {
     );
   }
 
-  Widget _buildGame(WidgetRef ref, MentalCalendarState state) {
+  Widget _buildGame(BuildContext context, WidgetRef ref, MentalCalendarState state) {
     final dateStr = DateFormat('MMMM d, yyyy').format(state.currentDate);
     
     final days = List.generate(7, (index) {
@@ -130,7 +130,7 @@ class MentalCalendarScreen extends ConsumerWidget {
               borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
             ),
             child: Text(
-              state.lastResult! ? 'CORRECT!' : 'WRONG',
+              state.lastResult! ? AppLocalizations.of(context)!.phaseCorrectOrder : AppLocalizations.of(context)!.phaseWrongTimeline,
               style: DesignSystem.theme.textTheme.headlineMedium?.copyWith(
                 color: state.lastResult! ? DesignSystem.success : DesignSystem.error,
               ),

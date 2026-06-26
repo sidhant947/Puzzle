@@ -25,6 +25,7 @@ class _StroopTestScreenState extends ConsumerState<StroopTestScreen> {
 
   void _showGameOverDialog(int score) {
     bool won = score >= 10;
+    final l10n = AppLocalizations.of(context)!;
     if (won) {
       HapticFeedbackUtil.victory();
       ref.read(gameStreakNotifierProvider.notifier).completeGame('stroop_test');
@@ -35,7 +36,7 @@ class _StroopTestScreenState extends ConsumerState<StroopTestScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: won ? 'NEURO-MASTER!' : 'BRAIN FOG',
+        title: won ? l10n.winNeuroMaster : l10n.loseBrainFog,
         message: AppLocalizations.of(context)!.stroopTestMessage((score).toString()),
         onPlayAgain: () {
           ref.read(stroopTestNotifierProvider.notifier).initGame();
@@ -77,7 +78,7 @@ class _StroopTestScreenState extends ConsumerState<StroopTestScreen> {
                       _buildStats(state, isSmall),
                       Spacer(),
                       Text(
-                        'IDENTIFY THE COLOR',
+                        l10n.phaseWatchCarefully.toUpperCase(),
                         style: TextStyle(
                           letterSpacing: 2, 
                           fontWeight: FontWeight.w800, 
@@ -158,13 +159,14 @@ class _StroopTestScreenState extends ConsumerState<StroopTestScreen> {
   }
 
   Widget _buildStats(StroopTestState state, bool isSmall) {
+    final l10n = AppLocalizations.of(context)!;
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: isSmall ? 16 : 24),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          _buildStat('TIME', '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
-          _buildStat('SCORE', '${state.score}', DesignSystem.success, isSmall),
+          _buildStat(l10n.statTime, '${state.timeLeft}s', state.timeLeft < 10 ? DesignSystem.error : DesignSystem.primary, isSmall),
+          _buildStat(l10n.statScore, '${state.score}', DesignSystem.success, isSmall),
         ],
       ),
     );

@@ -5,6 +5,7 @@ import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
 
@@ -100,7 +101,7 @@ class _FractionalPizzaScreenState extends ConsumerState<FractionalPizzaScreen> {
       HapticFeedbackUtil.error();
       ScaffoldMessenger.of(context).showSnackBar(
         SnackBar(
-          content: Text('Incorrect! You selected ${_selectedSlices.length} slices, but need $_requiredSlices ($_targetNum/$_targetDen).'),
+          content: Text(AppLocalizations.of(context)!.snackbarIncorrectSlices(_selectedSlices.length, '$_targetNum/$_targetDen')),
           duration: const Duration(milliseconds: 1500),
           backgroundColor: Colors.redAccent,
         ),
@@ -139,8 +140,8 @@ class _FractionalPizzaScreenState extends ConsumerState<FractionalPizzaScreen> {
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'FRACTIONAL PIZZA',
-      subtitle: 'Highlight the exact portion of pizza slices to match the target fraction.',
+      title: L10nGameHelpers.getGameTitle(context, 'fractional_pizza'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'fractional_pizza'),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -167,7 +168,7 @@ class _FractionalPizzaScreenState extends ConsumerState<FractionalPizzaScreen> {
                   borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                 ),
                 child: Text(
-                  'Score: $_score / $_targetScore',
+                  '${AppLocalizations.of(context)!.statScore}: $_score / $_targetScore',
                   style: Theme.of(context).textTheme.titleLarge?.copyWith(
                         color: DesignSystem.primary,
                         fontWeight: FontWeight.bold,
@@ -272,8 +273,8 @@ class _FractionalPizzaScreenState extends ConsumerState<FractionalPizzaScreen> {
                       borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
                     ),
                   ),
-                  child: const Text(
-                    'SUBMIT',
+                  child: Text(
+                    AppLocalizations.of(context)!.btnSubmit,
                     style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold, letterSpacing: 1.2),
                   ),
                 ),

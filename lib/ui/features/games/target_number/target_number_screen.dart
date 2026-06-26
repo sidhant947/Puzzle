@@ -32,10 +32,10 @@ class _TargetNumberScreenState extends ConsumerState<TargetNumberScreen> {
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: isVictory ? 'AMAZING!' : 'GAME OVER',
+        title: isVictory ? AppLocalizations.of(context)!.winAmazing : AppLocalizations.of(context)!.gameOver,
         message: isVictory 
-            ? 'You reached the target number!' 
-            : 'Try again to find the solution.',
+            ? AppLocalizations.of(context)!.winReachedTarget
+            : AppLocalizations.of(context)!.loseTryAgainSolution,
         isVictory: isVictory,
         onHome: () {
           Navigator.of(context).pop(); // Dialog

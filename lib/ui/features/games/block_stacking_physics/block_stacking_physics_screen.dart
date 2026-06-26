@@ -6,6 +6,7 @@ import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/widgets/game_completion_dialog.dart';
 import '../../../core/juice/game_scaffold.dart';
 
@@ -144,8 +145,8 @@ class _BlockStackingPhysicsScreenState extends ConsumerState<BlockStackingPhysic
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
-        title: won ? AppLocalizations.of(context)!.wellDone.toUpperCase() : 'GAME OVER',
-        message: won ? AppLocalizations.of(context)!.completed : 'The tower collapsed! Try again.',
+        title: won ? AppLocalizations.of(context)!.wellDone.toUpperCase() : AppLocalizations.of(context)!.gameOver,
+        message: won ? AppLocalizations.of(context)!.completed : AppLocalizations.of(context)!.playAgain,
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();
@@ -171,8 +172,8 @@ class _BlockStackingPhysicsScreenState extends ConsumerState<BlockStackingPhysic
     final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return GameScaffold(
-      title: 'BLOCK STACKING',
-      subtitle: 'Tap anywhere to drop the block. Stack them perfectly!',
+      title: L10nGameHelpers.getGameTitle(context, 'block_stacking_physics'),
+      subtitle: L10nGameHelpers.getGameSubtitle(context, 'block_stacking_physics'),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
