@@ -2,6 +2,10 @@
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 [![Platform](https://img.shields.io/badge/platform-Android%20%7C%20Linux%20%7C%20macOS%20%7C%20Web%20%7C%20Windows-blue.svg)](#-downloads)
+![Downloads last month](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fgithub.com%2Fkitswas%2Ffdroid-metrics-dashboard%2Fraw%2Frefs%2Fheads%2Fmain%2Fprocessed%2Fmonthly%2Fcom.sidhant.puzzle.json&query=%24.total_downloads&logo=fdroid&label=Downloads%20last%20month)
+![GitHub Downloads](https://img.shields.io/github/downloads/sidhant947/puzzle/total)
+[![X Follow](https://img.shields.io/twitter/follow/vgbhuop)](https://x.com/vgbhuop)
+
 
 The ultimate collection of **puzzle challenge games** available for Android , Linux, macOS, Web, and Windows. A professional suite of minimalist **free brain games** built with Flutter. Master over 210 unique puzzles in this essential **logic puzzle** library, featuring the best **offline games** including **Minesweeper**, **2048**, **Sudoku**, and more. 
 
