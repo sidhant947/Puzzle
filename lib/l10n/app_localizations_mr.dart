@@ -3727,4 +3727,45 @@ class AppLocalizationsMr extends AppLocalizations {
   @override
   String get semanticAssociationSubtitle =>
       'Find the word connecting all three clues.';
+
+  @override
+  String get peripheralFocusTitle => 'Peripheral Focus';
+
+  @override
+  String get peripheralFocusSubtitle =>
+      'React to flashing side panels while solving math.';
+
+  @override
+  String get masyuTitle => 'Masyu Loop';
+
+  @override
+  String get masyuSubtitle => 'Draw a single loop matching Masyu circle rules.';
+
+  @override
+  String get mathMazeTitle => 'Math Maze';
+
+  @override
+  String get mathMazeSubtitle =>
+      'Trace a path that evaluates to the target total.';
+
+  @override
+  String get storyBuilderTitle => 'Story Builder';
+
+  @override
+  String get storyBuilderSubtitle =>
+      'Reconstruct the chronological sequence of the story.';
+
+  @override
+  String get mirrorMazeTitle => 'Mirror Maze';
+
+  @override
+  String get mirrorMazeSubtitle =>
+      'Redirect a laser beam using diagonal mirrors.';
+
+  @override
+  String get wordGridConnectionTitle => 'Word Connections';
+
+  @override
+  String get wordGridConnectionSubtitle =>
+      'Group 16 words into four categories of four.';
 }

@@ -2203,5 +2203,17 @@
   "tangramTitle": "Tangram Puzzle",
   "tangramSubtitle": "Arrange the shapes to fill the target silhouette.",
   "semanticAssociationTitle": "Association Word",
-  "semanticAssociationSubtitle": "Find the word connecting all three clues."
+  "semanticAssociationSubtitle": "Find the word connecting all three clues.",
+  "peripheralFocusTitle": "Peripheral Focus",
+  "peripheralFocusSubtitle": "React to flashing side panels while solving math.",
+  "masyuTitle": "Masyu Loop",
+  "masyuSubtitle": "Draw a single loop matching Masyu circle rules.",
+  "mathMazeTitle": "Math Maze",
+  "mathMazeSubtitle": "Trace a path that evaluates to the target total.",
+  "storyBuilderTitle": "Story Builder",
+  "storyBuilderSubtitle": "Reconstruct the chronological sequence of the story.",
+  "mirrorMazeTitle": "Mirror Maze",
+  "mirrorMazeSubtitle": "Redirect a laser beam using diagonal mirrors.",
+  "wordGridConnectionTitle": "Word Connections",
+  "wordGridConnectionSubtitle": "Group 16 words into four categories of four."
 }

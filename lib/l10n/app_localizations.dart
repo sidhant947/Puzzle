@@ -6535,6 +6535,78 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Find the word connecting all three clues.'**
   String get semanticAssociationSubtitle;
+
+  /// No description provided for @peripheralFocusTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Peripheral Focus'**
+  String get peripheralFocusTitle;
+
+  /// No description provided for @peripheralFocusSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'React to flashing side panels while solving math.'**
+  String get peripheralFocusSubtitle;
+
+  /// No description provided for @masyuTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Masyu Loop'**
+  String get masyuTitle;
+
+  /// No description provided for @masyuSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Draw a single loop matching Masyu circle rules.'**
+  String get masyuSubtitle;
+
+  /// No description provided for @mathMazeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Math Maze'**
+  String get mathMazeTitle;
+
+  /// No description provided for @mathMazeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Trace a path that evaluates to the target total.'**
+  String get mathMazeSubtitle;
+
+  /// No description provided for @storyBuilderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Story Builder'**
+  String get storyBuilderTitle;
+
+  /// No description provided for @storyBuilderSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Reconstruct the chronological sequence of the story.'**
+  String get storyBuilderSubtitle;
+
+  /// No description provided for @mirrorMazeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Mirror Maze'**
+  String get mirrorMazeTitle;
+
+  /// No description provided for @mirrorMazeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Redirect a laser beam using diagonal mirrors.'**
+  String get mirrorMazeSubtitle;
+
+  /// No description provided for @wordGridConnectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Word Connections'**
+  String get wordGridConnectionTitle;
+
+  /// No description provided for @wordGridConnectionSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Group 16 words into four categories of four.'**
+  String get wordGridConnectionSubtitle;
 }
 
 class _AppLocalizationsDelegate

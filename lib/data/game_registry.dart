@@ -20,6 +20,13 @@ import '../ui/features/games/pattern_sequence_draw/pattern_sequence_draw_metadat
 import '../ui/features/games/tangram/tangram_metadata.dart';
 import '../ui/features/games/semantic_association/semantic_association_metadata.dart';
 
+import '../ui/features/games/peripheral_focus/peripheral_focus_metadata.dart';
+import '../ui/features/games/masyu/masyu_metadata.dart';
+import '../ui/features/games/math_maze/math_maze_metadata.dart';
+import '../ui/features/games/story_builder/story_builder_metadata.dart';
+import '../ui/features/games/mirror_maze/mirror_maze_metadata.dart';
+import '../ui/features/games/word_grid_connection/word_grid_connection_metadata.dart';
+
 import '../ui/features/games/slitherlink/slitherlink_metadata.dart';
 import '../ui/features/games/futoshiki/futoshiki_metadata.dart';
 import '../ui/features/games/kakuro/kakuro_metadata.dart';
@@ -454,5 +461,11 @@ List<GameMetadata> _buildGameList() {
     patternSequenceDrawMetadata,
     tangramMetadata,
     semanticAssociationMetadata,
+    peripheralFocusMetadata,
+    masyuMetadata,
+    mathMazeMetadata,
+    storyBuilderMetadata,
+    mirrorMazeMetadata,
+    wordGridConnectionMetadata,
   ];
 }
