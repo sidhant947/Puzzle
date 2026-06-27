@@ -3687,877 +3687,879 @@ class AppLocalizationsEs extends AppLocalizations {
       'Identifica el objeto oculto en el espacio.';
 
   @override
-  String get shikakuTitle => 'Shikaku';
+  String get shikakuTitle => 'shikaku';
 
   @override
   String get shikakuSubtitle =>
-      'DIVIDE THE GRID INTO SQUARES AND RECTANGLES MATCHING THE NUMBERS.';
+      'DIVIDE LA CUADRÍCULA EN CUADRADOS Y RECTÁNGULOS QUE COINCIDRAN CON LOS NÚMEROS.';
 
   @override
-  String get countdownMathTitle => 'Countdown Math';
+  String get countdownMathTitle => 'Matemáticas de cuenta regresiva';
 
   @override
   String get countdownMathSubtitle =>
-      'COMBINE RANDOM NUMBERS TO CALCULATE THE THREE-DIGIT TARGET.';
+      'COMBINE NÚMEROS ALEATORIOS PARA CALCULAR EL OBJETIVO DE TRES DÍGITOS.';
 
   @override
-  String get narrativeRecallTitle => 'Narrative Recall';
+  String get narrativeRecallTitle => 'Recuerdo narrativo';
 
   @override
   String get narrativeRecallSubtitle =>
-      'READ A STORY AND RECALL SPECIFIC QUANTITATIVE AND FACTUAL DETAILS.';
+      'LEA UNA HISTORIA Y RECUERDE DETALLES CUANTITATIVOS Y HECHOS ESPECÍFICOS.';
 
   @override
-  String get shellGameTitle => 'Shell Game';
+  String get shellGameTitle => 'Juego de conchas';
 
   @override
   String get shellGameSubtitle =>
-      'TRACK A HIDDEN BALL AS THE SHUFFLING CUPS SWAP PLACES.';
+      'SEGUIMIENTO DE UNA BOLA OCULTA MIENTRAS LAS COPAS QUE SE BARAJAN INTERCAMBIAN DE LUGAR.';
 
   @override
-  String get typoglycemiaDecoderTitle => 'Typoglycemia Decoder';
+  String get typoglycemiaDecoderTitle => 'Decodificador de tipoglucemia';
 
   @override
   String get typoglycemiaDecoderSubtitle =>
-      'UNSCRAMBLE AND READ JUMBLED SENTENCES SPEEDILY.';
+      'ORDENAR Y LEER ORACIONES CONJUNTAS RÁPIDAMENTE.';
 
   @override
-  String get shapeShifterTitle => 'Shape Shifter';
+  String get shapeShifterTitle => 'Cambiador de forma';
 
   @override
-  String get shapeShifterSubtitle => 'Tap the target shape-color combination.';
+  String get shapeShifterSubtitle =>
+      'Toque la combinación de forma y color de destino.';
 
   @override
-  String get gokigenNanameTitle => 'Gokigen Naname';
+  String get gokigenNanameTitle => 'Naname Gokigen';
 
   @override
   String get gokigenNanameSubtitle =>
-      'Draw diagonals to connect points without loops.';
+      'Dibuja diagonales para conectar puntos sin bucles.';
 
   @override
-  String get matrixMultiplierTitle => 'Matrix Multiplier';
+  String get matrixMultiplierTitle => 'Multiplicador de matriz';
 
   @override
   String get matrixMultiplierSubtitle =>
-      'Select a row and column to multiply to the target.';
+      'Seleccione una fila y una columna para multiplicar hasta el objetivo.';
 
   @override
-  String get wordAssociationRecallTitle => 'Word Association';
+  String get wordAssociationRecallTitle => 'Asociación de palabras';
 
   @override
   String get wordAssociationRecallSubtitle =>
-      'Recall paired word associations from memory.';
+      'Recordar de memoria asociaciones de palabras emparejadas.';
 
   @override
-  String get gearRotationTitle => 'Gear Rotation';
+  String get gearRotationTitle => 'Rotación de engranajes';
 
   @override
   String get gearRotationSubtitle =>
-      'Predict the rotation direction of the last gear.';
+      'Predice la dirección de rotación de la última marcha.';
 
   @override
-  String get wordWheelTitle => 'Word Wheel';
+  String get wordWheelTitle => 'Rueda de palabras';
 
   @override
   String get wordWheelSubtitle =>
-      'Make words using letters on the wheel, including the center letter.';
+      'Forma palabras usando letras en la rueda, incluida la letra central.';
 
   @override
-  String get oddEvenFlashTitle => 'Odd-Even Flash';
+  String get oddEvenFlashTitle => 'Flash par-impar';
 
   @override
   String get oddEvenFlashSubtitle =>
-      'Quickly match the number parity with the color rule.';
+      'Haga coincidir rápidamente la paridad numérica con la regla de color.';
 
   @override
-  String get norinoriTitle => 'Norinori';
+  String get norinoriTitle => 'norinori';
 
   @override
   String get norinoriSubtitle =>
-      'Shade exactly two connected cells in each room.';
+      'Sombrea exactamente dos celdas conectadas en cada habitación.';
 
   @override
-  String get algebraicBalanceTitle => 'Algebraic Balance';
+  String get algebraicBalanceTitle => 'Equilibrio algebraico';
 
   @override
   String get algebraicBalanceSubtitle =>
-      'Solve the equations to find the target sum.';
+      'Resuelve las ecuaciones para encontrar la suma objetivo.';
 
   @override
-  String get patternSequenceDrawTitle => 'Pattern Recall';
+  String get patternSequenceDrawTitle => 'Recuperación de patrones';
 
   @override
   String get patternSequenceDrawSubtitle =>
-      'Repeat the animated path sequence on the grid.';
+      'Repita la secuencia de ruta animada en la cuadrícula.';
 
   @override
-  String get tangramTitle => 'Tangram Puzzle';
+  String get tangramTitle => 'Rompecabezas Tangram';
 
   @override
   String get tangramSubtitle =>
-      'Arrange the shapes to fill the target silhouette.';
+      'Organiza las formas para llenar la silueta objetivo.';
 
   @override
-  String get semanticAssociationTitle => 'Association Word';
+  String get semanticAssociationTitle => 'Palabra de asociación';
 
   @override
   String get semanticAssociationSubtitle =>
-      'Find the word connecting all three clues.';
+      'Encuentra la palabra que conecta las tres pistas.';
 
   @override
-  String get peripheralFocusTitle => 'Peripheral Focus';
+  String get peripheralFocusTitle => 'Enfoque periférico';
 
   @override
   String get peripheralFocusSubtitle =>
-      'React to flashing side panels while solving math.';
+      'Reacciona a los paneles laterales parpadeantes mientras resuelves matemáticas.';
 
   @override
-  String get masyuTitle => 'Masyu Loop';
+  String get masyuTitle => 'Bucle Masyu';
 
   @override
-  String get masyuSubtitle => 'Draw a single loop matching Masyu circle rules.';
+  String get masyuSubtitle =>
+      'Dibuja un bucle único que coincida con las reglas del círculo de Masyu.';
 
   @override
-  String get mathMazeTitle => 'Math Maze';
+  String get mathMazeTitle => 'Laberinto matemático';
 
   @override
   String get mathMazeSubtitle =>
-      'Trace a path that evaluates to the target total.';
+      'Trace una ruta que se evalúe hasta el total objetivo.';
 
   @override
-  String get storyBuilderTitle => 'Story Builder';
+  String get storyBuilderTitle => 'Constructor de historias';
 
   @override
   String get storyBuilderSubtitle =>
-      'Reconstruct the chronological sequence of the story.';
+      'Reconstruir la secuencia cronológica de la historia.';
 
   @override
-  String get mirrorMazeTitle => 'Mirror Maze';
+  String get mirrorMazeTitle => 'Laberinto de espejos';
 
   @override
   String get mirrorMazeSubtitle =>
-      'Redirect a laser beam using diagonal mirrors.';
+      'Redirigir un rayo láser utilizando espejos diagonales.';
 
   @override
-  String get wordGridConnectionTitle => 'Word Connections';
+  String get wordGridConnectionTitle => 'Conexiones de palabras';
 
   @override
   String get wordGridConnectionSubtitle =>
-      'Group 16 words into four categories of four.';
+      'Agrupa 16 palabras en cuatro categorías de cuatro.';
 
   @override
-  String get shapeShifterPeripheralTitle => 'Peripheral Shapes';
+  String get shapeShifterPeripheralTitle => 'Formas periféricas';
 
   @override
   String get shapeShifterPeripheralSubtitle =>
-      'Track peripheral shape changes while matching central values.';
+      'Realice un seguimiento de los cambios de forma periférica mientras hace coincidir los valores centrales.';
 
   @override
-  String get soundWaveMatchTitle => 'Sound Wave Match';
+  String get soundWaveMatchTitle => 'Coincidencia de ondas sonoras';
 
   @override
   String get soundWaveMatchSubtitle =>
-      'Tap when the visual wave frequency aligns with pitch changes.';
+      'Toque cuando la frecuencia de la onda visual se alinee con los cambios de tono.';
 
   @override
-  String get multiTrackCounterTitle => 'Multi-Track Counter';
+  String get multiTrackCounterTitle => 'Contador multipista';
 
   @override
   String get multiTrackCounterSubtitle =>
-      'Tap when any counter increments to a target multiplier.';
+      'Toque cuando cualquier contador aumente hasta un multiplicador objetivo.';
 
   @override
-  String get colorWordMatchUpTitle => 'Color Match-Up';
+  String get colorWordMatchUpTitle => 'Combinación de colores';
 
   @override
   String get colorWordMatchUpSubtitle =>
-      'Determine if two colored words match based on changing rules.';
+      'Determina si dos palabras de colores coinciden según las reglas cambiantes.';
 
   @override
-  String get signalAndNoiseTitle => 'Signal & Noise';
+  String get signalAndNoiseTitle => 'Señal y ruido';
 
   @override
   String get signalAndNoiseSubtitle =>
-      'Locate target alphanumeric characters hidden in static noise.';
+      'Localice los caracteres alfanuméricos de destino ocultos en ruido estático.';
 
   @override
-  String get focusTunnelTitle => 'Focus Tunnel';
+  String get focusTunnelTitle => 'Túnel de enfoque';
 
   @override
   String get focusTunnelSubtitle =>
-      'Identify matching symbols appearing on moving tunnel walls.';
+      'Identifique los símbolos coincidentes que aparecen en las paredes del túnel en movimiento.';
 
   @override
-  String get targetPursuerTitle => 'Target Pursuer';
+  String get targetPursuerTitle => 'Perseguidor objetivo';
 
   @override
   String get targetPursuerSubtitle =>
-      'Track multiple overlapping circles and select the original target.';
+      'Realice un seguimiento de varios círculos superpuestos y seleccione el objetivo original.';
 
   @override
-  String get gridGazeTitle => 'Grid Gaze';
+  String get gridGazeTitle => 'Mirada de cuadrícula';
 
   @override
   String get gridGazeSubtitle =>
-      'Identify which grid cell flashed with a different duration.';
+      'Identifique qué celda de la cuadrícula parpadeó con una duración diferente.';
 
   @override
-  String get doubleTroubleTitle => 'Double Trouble';
+  String get doubleTroubleTitle => 'Doble problema';
 
   @override
   String get doubleTroubleSubtitle =>
-      'Play two separate simple games simultaneously on split-screen.';
+      'Juega dos juegos simples separados simultáneamente en pantalla dividida.';
 
   @override
-  String get syncRhythmTitle => 'Sync Rhythm';
+  String get syncRhythmTitle => 'Ritmo de sincronización';
 
   @override
   String get syncRhythmSubtitle =>
-      'Tap when visual metronome sweep matches syncopated beat.';
+      'Toque cuando el barrido visual del metrónomo coincida con el ritmo sincopado.';
 
   @override
-  String get ghostTapTitle => 'Ghost Tap';
+  String get ghostTapTitle => 'Grifo fantasma';
 
   @override
   String get ghostTapSubtitle =>
-      'Tap when the invisible pulse reaches its maximum height.';
+      'Toque cuando el pulso invisible alcance su altura máxima.';
 
   @override
-  String get attentionalRsvpTitle => 'Attentional RSVP';
+  String get attentionalRsvpTitle => 'Confirmar asistencia atentamente';
 
   @override
   String get attentionalRsvpSubtitle =>
-      'Identify digits appearing in rapid serial letter flash.';
+      'Identifique los dígitos que aparecen en un rápido parpadeo de letras en serie.';
 
   @override
-  String get colorMazeNavTitle => 'Color Maze Nav';
+  String get colorMazeNavTitle => 'Laberinto de colores de navegación';
 
   @override
   String get colorMazeNavSubtitle =>
-      'Navigate maze tiles matching dynamic permission colors.';
+      'Navega por mosaicos de laberintos que coincidan con los colores de permisos dinámicos.';
 
   @override
-  String get dynamicSalienceTitle => 'Dynamic Salience';
+  String get dynamicSalienceTitle => 'Prominencia dinámica';
 
   @override
   String get dynamicSalienceSubtitle =>
-      'Find the shape moving with slightly different dynamics.';
+      'Encuentra la forma que se mueve con una dinámica ligeramente diferente.';
 
   @override
-  String get chalkAndTalkTitle => 'Chalk & Talk';
+  String get chalkAndTalkTitle => 'Tiza y conversación';
 
   @override
   String get chalkAndTalkSubtitle =>
-      'Type words heard in audio while ignoring visual distractors.';
+      'Escriba las palabras que escuche en audio ignorando los distractores visuales.';
 
   @override
-  String get blinkDetectorTitle => 'Blink Detector';
+  String get blinkDetectorTitle => 'Detector de parpadeo';
 
   @override
   String get blinkDetectorSubtitle =>
-      'Tap the grid face that blinks twice in rapid succession.';
+      'Toque la cara de la cuadrícula que parpadea dos veces en rápida sucesión.';
 
   @override
-  String get frequencyTapTitle => 'Frequency Tap';
+  String get frequencyTapTitle => 'Grifo de frecuencia';
 
   @override
   String get frequencyTapSubtitle =>
-      'Tap the button matching the target light pulse frequency.';
+      'Toque el botón que coincida con la frecuencia del pulso de luz objetivo.';
 
   @override
-  String get yajilinTitle => 'Yajilin Loop';
+  String get yajilinTitle => 'Bucle Yajilin';
 
   @override
   String get yajilinSubtitle =>
-      'Place black cells and draw a single loop matching clues.';
+      'Coloque celdas negras y dibuje un solo bucle que combine pistas.';
 
   @override
-  String get heyawakeTitle => 'Heyawake Grid';
+  String get heyawakeTitle => 'Cuadrícula de Heyawake';
 
   @override
   String get heyawakeSubtitle =>
-      'Shade grid rooms without adjacent black cells.';
+      'Salas de rejilla de sombra sin celdas negras adyacentes.';
 
   @override
-  String get gokigenVariantTitle => 'Gokigen Variant';
+  String get gokigenVariantTitle => 'Variante Gokigen';
 
   @override
   String get gokigenVariantSubtitle =>
-      'Draw loop-free diagonals meeting vertex counts.';
+      'Dibuja diagonales sin bucles que cumplan con el número de vértices.';
 
   @override
-  String get sheepAndWolvesTitle => 'Sheep & Wolves';
+  String get sheepAndWolvesTitle => 'Ovejas y lobos';
 
   @override
   String get sheepAndWolvesSubtitle =>
-      'Draw a loop separating sheep from wolves.';
+      'Dibuja un bucle que separe las ovejas de los lobos.';
 
   @override
-  String get islandNurikabeTitle => 'Island Nurikabe';
+  String get islandNurikabeTitle => 'Isla Nurikabe';
 
   @override
   String get islandNurikabeSubtitle =>
-      'Form islands matching numerical size constraints.';
+      'Forme islas que coincidan con restricciones de tamaño numérico.';
 
   @override
-  String get shakashakaTitle => 'Shakashaka Rects';
+  String get shakashakaTitle => 'Rectas Shakashaka';
 
   @override
   String get shakashakaSubtitle =>
-      'Place triangular tiles to form rectangular white areas.';
+      'Coloque baldosas triangulares para formar áreas blancas rectangulares.';
 
   @override
   String get litsTetrisTitle => 'LITS Tetromino';
 
   @override
   String get litsTetrisSubtitle =>
-      'Place tetrominoes in rooms with no adjacent duplicates.';
+      'Coloque los tetrominós en habitaciones sin duplicados adyacentes.';
 
   @override
-  String get tapaWallTitle => 'Tapa Wall';
+  String get tapaWallTitle => 'Muro de Tapas';
 
   @override
   String get tapaWallSubtitle =>
-      'Shade cells to form a continuous black wall pattern.';
+      'Sombree las celdas para formar un patrón de pared negro continuo.';
 
   @override
-  String get triangularBridgesTitle => 'Triangular Bridges';
+  String get triangularBridgesTitle => 'Puentes triangulares';
 
   @override
   String get triangularBridgesSubtitle =>
-      'Connect islands in 3 directions meeting requirements.';
+      'Conecte islas en 3 direcciones cumpliendo con los requisitos.';
 
   @override
-  String get rippleEffectTitle => 'Ripple Effect';
+  String get rippleEffectTitle => 'Efecto dominó';
 
   @override
   String get rippleEffectSubtitle =>
-      'Fill numbers in rooms respecting spacing distance constraints.';
+      'Complete los números en las habitaciones respetando las restricciones de distancia de espaciado.';
 
   @override
-  String get suguruTectonicTitle => 'Suguru Grid';
+  String get suguruTectonicTitle => 'Cuadrícula Suguru';
 
   @override
   String get suguruTectonicSubtitle =>
-      'Fill room blocks with numbers 1 to K with no neighbors equal.';
+      'Llene bloques de habitaciones con números del 1 al K sin vecinos iguales.';
 
   @override
-  String get tennerGridTitle => 'Tenner Grid';
+  String get tennerGridTitle => 'Cuadrícula diez';
 
   @override
   String get tennerGridSubtitle =>
-      'Fill rows with digits 0-9 matching column totals.';
+      'Complete las filas con dígitos del 0 al 9 que coincidan con los totales de las columnas.';
 
   @override
-  String get kakurasuSumsTitle => 'Kakurasu Sums';
+  String get kakurasuSumsTitle => 'Sumas de Kakurasu';
 
   @override
   String get kakurasuSumsSubtitle =>
-      'Shade cells to meet weighted row/col index sums.';
+      'Sombree las celdas para cumplir con las sumas ponderadas del índice de fila/columna.';
 
   @override
-  String get corralLoopTitle => 'Corral Loop';
+  String get corralLoopTitle => 'Bucle de corral';
 
   @override
   String get corralLoopSubtitle =>
-      'Draw a single loop enclosing numbers matching visibility.';
+      'Dibuja un bucle único que incluya números que coincidan con la visibilidad.';
 
   @override
-  String get stostoneTitle => 'Stostone Gravity';
+  String get stostoneTitle => 'Gravedad de piedra estomacal';
 
   @override
   String get stostoneSubtitle =>
-      'Shade cells that drop down to fill bottom rows perfectly.';
+      'Sombrea las celdas que se despliegan para llenar perfectamente las filas inferiores.';
 
   @override
-  String get tripletsLogicTitle => 'Triplets Trio';
+  String get tripletsLogicTitle => 'Trío de trillizos';
 
   @override
   String get tripletsLogicSubtitle =>
-      'Fill grid with three shapes avoiding three-in-a-row.';
+      'Rellena la cuadrícula con tres formas evitando tres en fila.';
 
   @override
-  String get galaxiesSymTitle => 'Galaxies Symmetry';
+  String get galaxiesSymTitle => 'Simetría de galaxias';
 
   @override
   String get galaxiesSymSubtitle =>
-      'Divide grid into rotationally symmetric galaxy shapes.';
+      'Divida la cuadrícula en formas de galaxias rotacionalmente simétricas.';
 
   @override
-  String get matrixMultiplierMatchTitle => 'Matrix Matcher';
+  String get matrixMultiplierMatchTitle => 'Comparador de matrices';
 
   @override
   String get matrixMultiplierMatchSubtitle =>
-      'Multiply row and column values to match target dot product.';
+      'Multiplique los valores de filas y columnas para que coincidan con el producto escalar objetivo.';
 
   @override
-  String get primeFactorTreesTitle => 'Prime Factor Trees';
+  String get primeFactorTreesTitle => 'Árboles de factores primos';
 
   @override
   String get primeFactorTreesSubtitle =>
-      'Decompose composite numbers into prime leaf factor pairs.';
+      'Descomponer números compuestos en pares de factores de hojas primos.';
 
   @override
   String get vektorVectorTitle => 'Vector Vector';
 
   @override
   String get vektorVectorSubtitle =>
-      'Scale vectors to make their sum land on the target.';
+      'Escale los vectores para que su suma aterrice en el objetivo.';
 
   @override
-  String get binomialMatchTitle => 'Binomial Match';
+  String get binomialMatchTitle => 'Coincidencia binomial';
 
   @override
   String get binomialMatchSubtitle =>
-      'Match quadratic formulas with factored binomial values.';
+      'Relaciona fórmulas cuadráticas con valores binomiales factorizados.';
 
   @override
-  String get percentageShoppingTitle => 'Percentage Shopping';
+  String get percentageShoppingTitle => 'Porcentaje de compras';
 
   @override
   String get percentageShoppingSubtitle =>
-      'Calculate discount percentages and final checkout totals.';
+      'Calcule porcentajes de descuento y totales de pago final.';
 
   @override
-  String get cryptoArithmeticTitle => 'Crypto-Arithmetic';
+  String get cryptoArithmeticTitle => 'Criptoaritmética';
 
   @override
   String get cryptoArithmeticSubtitle =>
-      'Crack character-digit substitution cipher math problems.';
+      'Resuelva problemas matemáticos de cifrado de sustitución de caracteres y dígitos.';
 
   @override
-  String get fractionalPizzaTitle => 'Fractional Pizza';
+  String get fractionalPizzaTitle => 'Pizza fraccionada';
 
   @override
   String get fractionalPizzaSubtitle =>
-      'Partition pizza slices to match target sum fractions.';
+      'Divida porciones de pizza para que coincidan con las fracciones de suma objetivo.';
 
   @override
-  String get numberBondsTitle => 'Number Bonds';
+  String get numberBondsTitle => 'Bonos numéricos';
 
   @override
   String get numberBondsSubtitle =>
-      'Link node values to equal a target connection sum.';
+      'Vincula los valores de los nodos para igualar una suma de conexión objetivo.';
 
   @override
-  String get gridSumLineTitle => 'Grid Sum Line';
+  String get gridSumLineTitle => 'Línea de suma de cuadrícula';
 
   @override
   String get gridSumLineSubtitle =>
-      'Draw a path whose values evaluate exactly to the target.';
+      'Dibuja una ruta cuyos valores se evalúen exactamente con el objetivo.';
 
   @override
-  String get binaryScaleBalanceTitle => 'Binary Scale Balance';
+  String get binaryScaleBalanceTitle => 'Balanza de escala binaria';
 
   @override
   String get binaryScaleBalanceSubtitle =>
-      'Balance decimal weight using power-of-two blocks.';
+      'Equilibra el peso decimal usando bloques de potencia de dos.';
 
   @override
-  String get moduloPathTitle => 'Modulo Path';
+  String get moduloPathTitle => 'Ruta del módulo';
 
   @override
   String get moduloPathSubtitle =>
-      'Traverse grid cells matching modulo remainder values.';
+      'Recorra las celdas de la cuadrícula que coincidan con los valores restantes del módulo.';
 
   @override
-  String get digitSwapEqTitle => 'Digit Swap Equations';
+  String get digitSwapEqTitle => 'Ecuaciones de intercambio de dígitos';
 
   @override
   String get digitSwapEqSubtitle =>
-      'Swap single digits between equations to correct both.';
+      'Intercambia dígitos únicos entre ecuaciones para corregir ambas.';
 
   @override
-  String get areaPerimeterMatchTitle => 'Area & Perimeter';
+  String get areaPerimeterMatchTitle => 'Área y perímetro';
 
   @override
   String get areaPerimeterMatchSubtitle =>
-      'Draw rectangles matching target area and perimeter values.';
+      'Dibuja rectángulos que coincidan con los valores del área objetivo y del perímetro.';
 
   @override
-  String get inequalityBalanceOpsTitle => 'Inequality Balance';
+  String get inequalityBalanceOpsTitle => 'Equilibrio de desigualdad';
 
   @override
   String get inequalityBalanceOpsSubtitle =>
-      'Place inequality symbols between complex math terms.';
+      'Coloca símbolos de desigualdad entre términos matemáticos complejos.';
 
   @override
-  String get graphCoordinatePlotTitle => 'Graph Plotter';
+  String get graphCoordinatePlotTitle => 'Trazador gráfico';
 
   @override
   String get graphCoordinatePlotSubtitle =>
-      'Plot grid coordinates matching linear/quadratic curves.';
+      'Trazar coordenadas de cuadrícula que coincidan con curvas lineales/cuadráticas.';
 
   @override
-  String get baseConversionRunTitle => 'Base Conversion';
+  String get baseConversionRunTitle => 'Conversión básica';
 
   @override
   String get baseConversionRunSubtitle =>
-      'Convert values between binary, decimal, hex, and octal.';
+      'Convierte valores entre binario, decimal, hexadecimal y octal.';
 
   @override
-  String get unitConverterProTitle => 'Unit Converter';
+  String get unitConverterProTitle => 'Convertidor de unidades';
 
   @override
   String get unitConverterProSubtitle =>
-      'Answer quick unit conversions under time limits.';
+      'Responda conversiones rápidas de unidades dentro de límites de tiempo.';
 
   @override
-  String get auditoryNBackTitle => 'Auditory N-Back';
+  String get auditoryNBackTitle => 'N-Back auditivo';
 
   @override
   String get auditoryNBackSubtitle =>
-      'Match spoken letters heard N steps back from memory.';
+      'Coincidencia de letras habladas escuchadas N pasos atrás de la memoria.';
 
   @override
-  String get abstractPatternRecallTitle => 'Pattern Layering';
+  String get abstractPatternRecallTitle => 'Capas de patrón';
 
   @override
   String get abstractPatternRecallSubtitle =>
-      'Reconstruct layered colorful shapes from memory study.';
+      'Reconstruya formas coloridas en capas a partir del estudio de la memoria.';
 
   @override
-  String get roomInspectorTitle => 'Room Inspector';
+  String get roomInspectorTitle => 'inspector de habitaciones';
 
   @override
   String get roomInspectorSubtitle =>
-      'Identify furniture modifications made while screen was blank.';
+      'Identifique las modificaciones de muebles realizadas mientras la pantalla estaba en blanco.';
 
   @override
-  String get voiceToFaceMatchTitle => 'Voice-Face Match';
+  String get voiceToFaceMatchTitle => 'Coincidencia voz-cara';
 
   @override
   String get voiceToFaceMatchSubtitle =>
-      'Select correct face associated with spoken audio voice clip.';
+      'Seleccione la cara correcta asociada con el clip de voz de audio hablado.';
 
   @override
-  String get spatialGridMemory3DTitle => '3D Spatial Memory';
+  String get spatialGridMemory3DTitle => 'Memoria espacial 3D';
 
   @override
   String get spatialGridMemory3DSubtitle =>
-      'Recall flashed blocks in a rotated 3D cube grid structure.';
+      'Recuerde los bloques flasheados en una estructura de cuadrícula de cubo 3D rotada.';
 
   @override
-  String get sequenceStackTitle => 'Sequence Stack';
+  String get sequenceStackTitle => 'Pila de secuencia';
 
   @override
   String get sequenceStackSubtitle =>
-      'Reconstruct plate stack additions and removals in order.';
+      'Reconstruya las adiciones y eliminaciones de la pila de placas en orden.';
 
   @override
-  String get semanticCategoryRecallTitle => 'Category Recall';
+  String get semanticCategoryRecallTitle => 'Recuperación de categoría';
 
   @override
   String get semanticCategoryRecallSubtitle =>
-      'Identify study words matching requested category targets.';
+      'Identifique palabras de estudio que coincidan con los objetivos de la categoría solicitada.';
 
   @override
-  String get gridDisplacementTitle => 'Grid Displacement';
+  String get gridDisplacementTitle => 'Desplazamiento de la rejilla';
 
   @override
   String get gridDisplacementSubtitle =>
-      'Identify shifted icons comparing layout to original.';
+      'Identifique íconos desplazados comparando el diseño con el original.';
 
   @override
-  String get soundSequenceMatchTitle => 'Sound Sequence Match';
+  String get soundSequenceMatchTitle => 'Coincidencia de secuencia de sonido';
 
   @override
   String get soundSequenceMatchSubtitle =>
-      'Repeat note sequences played on a virtual keyboard.';
+      'Repita secuencias de notas tocadas en un teclado virtual.';
 
   @override
-  String get cardCountingMemoryTitle => 'Card Counter';
+  String get cardCountingMemoryTitle => 'Contador de cartas';
 
   @override
   String get cardCountingMemorySubtitle =>
-      'Identify cards already dealt in continuous card deal runs.';
+      'Identifique las cartas ya repartidas en ejecuciones continuas de reparto de cartas.';
 
   @override
-  String get directionsRecallTitle => 'Directions Recall';
+  String get directionsRecallTitle => 'Instrucciones para recordar';
 
   @override
   String get directionsRecallSubtitle =>
-      'Navigate grid maps matching path directions from memory.';
+      'Navegue por mapas de cuadrícula que coincidan con las direcciones de ruta de la memoria.';
 
   @override
-  String get eventTimelineMemoryTitle => 'Event Timeline';
+  String get eventTimelineMemoryTitle => 'Cronología del evento';
 
   @override
   String get eventTimelineMemorySubtitle =>
-      'Arrange historical/fictional event cards chronologically.';
+      'Organice las tarjetas de eventos históricos/ficticios cronológicamente.';
 
   @override
-  String get featureMatrixRecallTitle => 'Feature Matrix';
+  String get featureMatrixRecallTitle => 'Matriz de características';
 
   @override
   String get featureMatrixRecallSubtitle =>
-      'Answer query prompts about cell shape-color attributes.';
+      'Responda consultas sobre atributos de forma y color de celda.';
 
   @override
-  String get delayedMatchSampleTitle => 'Delayed Match';
+  String get delayedMatchSampleTitle => 'Partido retrasado';
 
   @override
   String get delayedMatchSampleSubtitle =>
-      'Match target symbol after solving math distractors.';
+      'Haga coincidir el símbolo del objetivo después de resolver los distractores matemáticos.';
 
   @override
-  String get symbolDigitAssocTitle => 'Symbol-Digit Assoc';
+  String get symbolDigitAssocTitle => 'Asociación símbolo-dígito';
 
   @override
   String get symbolDigitAssocSubtitle =>
-      'Solve symbol translation sheets matching digit keys.';
+      'Resuelva hojas de traducción de símbolos que coincidan con claves de dígitos.';
 
   @override
-  String get dualTaskMemoryTitle => 'Dual-Task Memory';
+  String get dualTaskMemoryTitle => 'Memoria de doble tarea';
 
   @override
   String get dualTaskMemorySubtitle =>
-      'Memorize word sets while resolving quick arithmetic tasks.';
+      'Memorice conjuntos de palabras mientras resuelve tareas aritméticas rápidas.';
 
   @override
-  String get actionSequenceRecallTitle => 'Action Recall';
+  String get actionSequenceRecallTitle => 'Recuerdo de acción';
 
   @override
   String get actionSequenceRecallSubtitle =>
-      'Repeat character gesture animation sequences in order.';
+      'Repita las secuencias de animación de gestos de personajes en orden.';
 
   @override
-  String get tangramPolygonTitle => 'Tangram Fit';
+  String get tangramPolygonTitle => 'Ajuste Tangram';
 
   @override
   String get tangramPolygonSubtitle =>
-      'Arrange polygon shapes to fill silhouette outlines.';
+      'Organice formas poligonales para rellenar los contornos de la silueta.';
 
   @override
-  String get mazeNav3DTitle => '3D Maze Nav';
+  String get mazeNav3DTitle => 'Navegación en laberinto 3D';
 
   @override
   String get mazeNav3DSubtitle =>
-      'Navigate 3D isometric maze routes from first-person view.';
+      'Navega por rutas de laberintos isométricos en 3D desde la vista en primera persona.';
 
   @override
-  String get isometricProjectionTitle => 'Isometric Projector';
+  String get isometricProjectionTitle => 'Proyector isométrico';
 
   @override
   String get isometricProjectionSubtitle =>
-      'Match 3D block figures to orthographic 2D top/front views.';
+      'Haga coincidir figuras de bloques 3D con vistas ortográficas superiores/frontales 2D.';
 
   @override
-  String get polyominoPackingTitle => 'Polyomino Packing';
+  String get polyominoPackingTitle => 'Embalaje de poliomino';
 
   @override
   String get polyominoPackingSubtitle =>
-      'Pack random polyomino block pieces into target areas.';
+      'Empaque piezas aleatorias de bloques de poliominó en las áreas objetivo.';
 
   @override
-  String get spatialGridRotationTitle => 'Spatial Grid Rotation';
+  String get spatialGridRotationTitle => 'Rotación de cuadrícula espacial';
 
   @override
   String get spatialGridRotationSubtitle =>
-      'Match 3D block arrangements rotated along axis coordinates.';
+      'Haga coincidir disposiciones de bloques 3D girados a lo largo de las coordenadas del eje.';
 
   @override
-  String get wireLoopGameTitle => 'Wire Loop';
+  String get wireLoopGameTitle => 'Bucle de alambre';
 
   @override
   String get wireLoopGameSubtitle =>
-      'Drag metal rings along wire splines without contact.';
+      'Arrastre anillos de metal a lo largo de las estrías de alambre sin contacto.';
 
   @override
-  String get origamiUnfoldTitle => 'Origami Unfold';
+  String get origamiUnfoldTitle => 'Origami desplegado';
 
   @override
   String get origamiUnfoldSubtitle =>
-      'Identify hole punch patterns after unfolding folded sheets.';
+      'Identifique patrones de perforación después de desplegar hojas plegadas.';
 
   @override
-  String get ropeTangleSolverTitle => 'Rope Untangler';
+  String get ropeTangleSolverTitle => 'Desenredador de cuerdas';
 
   @override
   String get ropeTangleSolverSubtitle =>
-      'Drag nodes to layout planar graphs with zero line crosses.';
+      'Arrastre nodos para diseñar gráficos planos con cruces de líneas cero.';
 
   @override
-  String get gridFitTetrisTitle => 'Grid Fit Solver';
+  String get gridFitTetrisTitle => 'Solucionador de ajuste de cuadrícula';
 
   @override
   String get gridFitTetrisSubtitle =>
-      'Arrange static irregular blocks to fit container bounds.';
+      'Organice bloques estáticos irregulares para que se ajusten a los límites del contenedor.';
 
   @override
-  String get vectorGridAlignmentTitle => 'Vector Alignment';
+  String get vectorGridAlignmentTitle => 'Alineación vectorial';
 
   @override
   String get vectorGridAlignmentSubtitle =>
-      'Scale and rotate shapes to match shadow template targets.';
+      'Escale y rote formas para que coincidan con los objetivos de la plantilla de sombra.';
 
   @override
-  String get blockStackingPhysicsTitle => 'Block Stacking';
+  String get blockStackingPhysicsTitle => 'Apilamiento de bloques';
 
   @override
   String get blockStackingPhysicsSubtitle =>
-      'Stack irregular block panels balancing gravity weight.';
+      'Apile paneles de bloques irregulares equilibrando el peso de la gravedad.';
 
   @override
-  String get crossSectionMatch3DTitle => '3D Cross Section';
+  String get crossSectionMatch3DTitle => 'Sección transversal 3D';
 
   @override
   String get crossSectionMatch3DSubtitle =>
-      'Identify 2D slice geometries cut from 3D shapes.';
+      'Identifique geometrías de corte 2D cortadas a partir de formas 3D.';
 
   @override
-  String get symmetryPaintTitle => 'Symmetry Paint';
+  String get symmetryPaintTitle => 'Pintura de simetría';
 
   @override
   String get symmetryPaintSubtitle =>
-      'Draw mirror image segments reflecting across symmetry axes.';
+      'Dibuja segmentos de imágenes especulares que se reflejen a través de ejes de simetría.';
 
   @override
-  String get rollingBlockBloxTitle => 'Rolling Block';
+  String get rollingBlockBloxTitle => 'Bloque rodante';
 
   @override
   String get rollingBlockBloxSubtitle =>
-      'Roll block pieces to land vertically in target slots.';
+      'Haga rodar las piezas del bloque para aterrizar verticalmente en las ranuras objetivo.';
 
   @override
-  String get perspectiveShiftViewTitle => 'Perspective Shift';
+  String get perspectiveShiftViewTitle => 'Cambio de perspectiva';
 
   @override
   String get perspectiveShiftViewSubtitle =>
-      'Rotate block clusters until they spell letters/words.';
+      'Gire los grupos de bloques hasta que deletreen letras o palabras.';
 
   @override
-  String get networkFlowSphericalTitle => 'Network Flow';
+  String get networkFlowSphericalTitle => 'Flujo de red';
 
   @override
   String get networkFlowSphericalSubtitle =>
-      'Connect grid flows on wrapping cylindrical coordinates.';
+      'Conecte los flujos de cuadrícula en coordenadas cilíndricas envolventes.';
 
   @override
-  String get layeredSilhouetteBlendTitle => 'Silhouette Blend';
+  String get layeredSilhouetteBlendTitle => 'Mezcla de silueta';
 
   @override
   String get layeredSilhouetteBlendSubtitle =>
-      'Stack colored layers to match target translucent shapes.';
+      'Apila capas de colores para que coincidan con las formas translúcidas objetivo.';
 
   @override
-  String get wordWheelPangramTitle => 'Word Anagrams';
+  String get wordWheelPangramTitle => 'Anagramas de palabras';
 
   @override
   String get wordWheelPangramSubtitle =>
-      'Construct words containing central target letters from wheels.';
+      'Construya palabras que contengan letras objetivo centrales a partir de ruedas.';
 
   @override
-  String get letterGridSwapperTitle => 'Letter Swapper';
+  String get letterGridSwapperTitle => 'Intercambiador de letras';
 
   @override
   String get letterGridSwapperSubtitle =>
-      'Swap adjacent letter tiles to complete row and col words.';
+      'Intercambie fichas de letras adyacentes para completar palabras de fila y columna.';
 
   @override
-  String get synonymMatchTitle => 'Synonym Match';
+  String get synonymMatchTitle => 'Coincidencia de sinónimos';
 
   @override
   String get synonymMatchSubtitle =>
-      'Match falling word targets with synonyms or antonyms.';
+      'Haga coincidir los objetivos de palabras que caen con sinónimos o antónimos.';
 
   @override
-  String get vowelDropTitle => 'Vowel Drop';
+  String get vowelDropTitle => 'Caída de vocales';
 
   @override
   String get vowelDropSubtitle =>
-      'Drop vowels into coordinate grids completing words.';
+      'Coloque las vocales en cuadrículas de coordenadas para completar palabras.';
 
   @override
-  String get letterBalanceScaleTitle => 'Word Balance Scale';
+  String get letterBalanceScaleTitle => 'Escala de equilibrio de palabras';
 
   @override
   String get letterBalanceScaleSubtitle =>
-      'Spell words whose letter values balance weights.';
+      'Deletrea palabras cuyos valores de letras equilibran los pesos.';
 
   @override
-  String get wordChainShiritoriTitle => 'Word Chain';
+  String get wordChainShiritoriTitle => 'Cadena de palabras';
 
   @override
   String get wordChainShiritoriSubtitle =>
-      'Link word loops starting with preceding letter outputs.';
+      'Vincula bucles de palabras que comienzan con las letras anteriores.';
 
   @override
-  String get affixBuilderTitle => 'Affix Builder';
+  String get affixBuilderTitle => 'Constructor de afijos';
 
   @override
   String get affixBuilderSubtitle =>
-      'Combine prefixes/suffixes to construct target vocabularies.';
+      'Combine prefijos/sufijos para construir vocabularios de destino.';
 
   @override
-  String get decipherCrypticCluesTitle => 'Cryptic Decipher';
+  String get decipherCrypticCluesTitle => 'Descifrador críptico';
 
   @override
   String get decipherCrypticCluesSubtitle =>
-      'Solve word-play puzzles and decrypt spelling riddles.';
+      'Resuelve acertijos de juegos de palabras y descifra acertijos de ortografía.';
 
   @override
-  String get boggleWordSearchTitle => 'Boggle Connect';
+  String get boggleWordSearchTitle => 'Conectar';
 
   @override
   String get boggleWordSearchSubtitle =>
-      'Trace adjacent connected paths to find hidden words.';
+      'Traza caminos conectados adyacentes para encontrar palabras ocultas.';
 
   @override
-  String get idiomUnscrambleTitle => 'Idiom Unscramble';
+  String get idiomUnscrambleTitle => 'Descifrar modismos';
 
   @override
   String get idiomUnscrambleSubtitle =>
-      'Arrange scrambled word arrays to match idiom meanings.';
+      'Organice conjuntos de palabras codificadas para que coincidan con los significados de los modismos.';
 
   @override
-  String get letterPyramidsTitle => 'Letter Pyramids';
+  String get letterPyramidsTitle => 'Pirámides de letras';
 
   @override
   String get letterPyramidsSubtitle =>
-      'Build word towers adding single anagram letters per tier.';
+      'Construya torres de palabras agregando letras de anagramas individuales por nivel.';
 
   @override
-  String get soundAlikeHomophonesTitle => 'Homophone Matches';
+  String get soundAlikeHomophonesTitle => 'Coincidencias homófonas';
 
   @override
   String get soundAlikeHomophonesSubtitle =>
-      'Identify correct homophone spellings for sentences.';
+      'Identificar la ortografía homófona correcta de oraciones.';
 
   @override
-  String get wordGridSudokuTitle => 'Word Sudoku';
+  String get wordGridSudokuTitle => 'Sudoku de palabras';
 
   @override
   String get wordGridSudokuSubtitle =>
-      'Tesselate letters in grid rows forming words.';
+      'Letras teseladas en filas de cuadrícula que forman palabras.';
 
   @override
-  String get portmanteauFactoryTitle => 'Portmanteau Factory';
+  String get portmanteauFactoryTitle => 'Fábrica de maletas';
 
   @override
   String get portmanteauFactorySubtitle =>
-      'Merge semantic components creating compound words.';
+      'Fusionar componentes semánticos creando palabras compuestas.';
 
   @override
-  String get codedCrosswordsCodeTitle => 'Codewords Crossword';
+  String get codedCrosswordsCodeTitle => 'Crucigrama de palabras clave';
 
   @override
   String get codedCrosswordsCodeSubtitle =>
-      'Solve grid crosswords matching number-to-letter codes.';
+      'Resuelva crucigramas de cuadrícula que combinen códigos de números y letras.';
 
   @override
-  String get wordSnakeTrailTitle => 'Word Snake';
+  String get wordSnakeTrailTitle => 'Serpiente de palabra';
 
   @override
   String get wordSnakeTrailSubtitle =>
-      'Trace snake-like letter trails spelling thematic words.';
+      'Traza rastros de letras en forma de serpiente que deletrean palabras temáticas.';
 
   @override
-  String get typingRhythmSpeedTitle => 'Typing Flow';
+  String get typingRhythmSpeedTitle => 'Flujo de escritura';
 
   @override
   String get typingRhythmSpeedSubtitle =>
-      'Type vocabularies matching metronome rhythm beats.';
+      'Escriba vocabularios que coincidan con los ritmos del metrónomo.';
 
   @override
   String get errorSomethingWrong => 'Something went wrong';

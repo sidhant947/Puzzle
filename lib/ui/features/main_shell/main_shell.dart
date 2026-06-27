@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../providers/user_providers.dart';
@@ -17,6 +18,8 @@ class _MainShellState extends ConsumerState<MainShell>
     with WidgetsBindingObserver {
   int _selectedIndex = 1;
   final Map<int, Widget> _screenCache = {};
+  Timer? _dayCheckTimer;
+  DateTime? _lastCheckedDate;
 
   Widget _getScreen(int index) {
     return _screenCache.putIfAbsent(index, () {
@@ -33,10 +36,25 @@ class _MainShellState extends ConsumerState<MainShell>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
+    ref.read(gameStreakNotifierProvider.notifier).refreshStatus();
+    _lastCheckedDate = DateTime.now();
+    _dayCheckTimer = Timer.periodic(const Duration(minutes: 1), (_) {
+      _checkDayChange();
+    });
+  }
+
+  void _checkDayChange() {
+    final now = DateTime.now();
+    final today = DateTime(now.year, now.month, now.day);
+    if (_lastCheckedDate == null || today != _lastCheckedDate) {
+      _lastCheckedDate = today;
+      ref.read(gameStreakNotifierProvider.notifier).refreshStatus();
+    }
   }
 
   @override
   void dispose() {
+    _dayCheckTimer?.cancel();
     WidgetsBinding.instance.removeObserver(this);
     super.dispose();
   }

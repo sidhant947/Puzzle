@@ -3437,877 +3437,760 @@ class AppLocalizationsKo extends AppLocalizations {
   String get negativeSpaceDetectionMessage => '공간에 숨겨진 물체를 식별하세요.';
 
   @override
-  String get shikakuTitle => 'Shikaku';
+  String get shikakuTitle => '시카쿠';
 
   @override
-  String get shikakuSubtitle =>
-      'DIVIDE THE GRID INTO SQUARES AND RECTANGLES MATCHING THE NUMBERS.';
+  String get shikakuSubtitle => '숫자에 맞게 격자를 정사각형과 직사각형으로 나눕니다.';
 
   @override
-  String get countdownMathTitle => 'Countdown Math';
+  String get countdownMathTitle => '카운트다운 수학';
 
   @override
-  String get countdownMathSubtitle =>
-      'COMBINE RANDOM NUMBERS TO CALCULATE THE THREE-DIGIT TARGET.';
+  String get countdownMathSubtitle => '무작위 숫자를 결합하여 세 자리 목표를 계산하세요.';
 
   @override
-  String get narrativeRecallTitle => 'Narrative Recall';
+  String get narrativeRecallTitle => '내러티브 회상';
 
   @override
-  String get narrativeRecallSubtitle =>
-      'READ A STORY AND RECALL SPECIFIC QUANTITATIVE AND FACTUAL DETAILS.';
+  String get narrativeRecallSubtitle => '이야기를 읽고 구체적인 양적, 사실적 세부 사항을 기억해 보세요.';
 
   @override
-  String get shellGameTitle => 'Shell Game';
+  String get shellGameTitle => '쉘 게임';
 
   @override
-  String get shellGameSubtitle =>
-      'TRACK A HIDDEN BALL AS THE SHUFFLING CUPS SWAP PLACES.';
+  String get shellGameSubtitle => '셔플링 컵이 장소를 바꾸면서 숨겨진 공을 추적하세요.';
 
   @override
-  String get typoglycemiaDecoderTitle => 'Typoglycemia Decoder';
+  String get typoglycemiaDecoderTitle => '혈당증 디코더';
 
   @override
-  String get typoglycemiaDecoderSubtitle =>
-      'UNSCRAMBLE AND READ JUMBLED SENTENCES SPEEDILY.';
+  String get typoglycemiaDecoderSubtitle => '뒤죽박죽된 문장을 빠르게 풀고 읽으세요.';
 
   @override
-  String get shapeShifterTitle => 'Shape Shifter';
+  String get shapeShifterTitle => '형태 변형기';
 
   @override
-  String get shapeShifterSubtitle => 'Tap the target shape-color combination.';
+  String get shapeShifterSubtitle => '대상 모양-색상 조합을 탭합니다.';
 
   @override
-  String get gokigenNanameTitle => 'Gokigen Naname';
+  String get gokigenNanameTitle => '고키겐 나나메';
 
   @override
-  String get gokigenNanameSubtitle =>
-      'Draw diagonals to connect points without loops.';
+  String get gokigenNanameSubtitle => '루프 없이 점을 연결하려면 대각선을 그립니다.';
 
   @override
-  String get matrixMultiplierTitle => 'Matrix Multiplier';
+  String get matrixMultiplierTitle => '매트릭스 승수';
 
   @override
-  String get matrixMultiplierSubtitle =>
-      'Select a row and column to multiply to the target.';
+  String get matrixMultiplierSubtitle => '대상에 곱할 행과 열을 선택합니다.';
 
   @override
-  String get wordAssociationRecallTitle => 'Word Association';
+  String get wordAssociationRecallTitle => '단어 연관';
 
   @override
-  String get wordAssociationRecallSubtitle =>
-      'Recall paired word associations from memory.';
+  String get wordAssociationRecallSubtitle => '쌍을 이루는 단어 연관을 기억에서 불러냅니다.';
 
   @override
-  String get gearRotationTitle => 'Gear Rotation';
+  String get gearRotationTitle => '기어 회전';
 
   @override
-  String get gearRotationSubtitle =>
-      'Predict the rotation direction of the last gear.';
+  String get gearRotationSubtitle => '마지막 기어의 회전 방향을 예측합니다.';
 
   @override
-  String get wordWheelTitle => 'Word Wheel';
+  String get wordWheelTitle => '워드휠';
 
   @override
-  String get wordWheelSubtitle =>
-      'Make words using letters on the wheel, including the center letter.';
+  String get wordWheelSubtitle => '가운데 글자를 포함하여 바퀴에 있는 글자를 사용하여 단어를 만드세요.';
 
   @override
-  String get oddEvenFlashTitle => 'Odd-Even Flash';
+  String get oddEvenFlashTitle => '홀짝 플래시';
 
   @override
-  String get oddEvenFlashSubtitle =>
-      'Quickly match the number parity with the color rule.';
+  String get oddEvenFlashSubtitle => '색상 규칙과 숫자 패리티를 빠르게 일치시킵니다.';
 
   @override
-  String get norinoriTitle => 'Norinori';
+  String get norinoriTitle => '노리노리';
 
   @override
-  String get norinoriSubtitle =>
-      'Shade exactly two connected cells in each room.';
+  String get norinoriSubtitle => '각 방에서 정확히 두 개의 연결된 셀을 가리십시오.';
 
   @override
-  String get algebraicBalanceTitle => 'Algebraic Balance';
+  String get algebraicBalanceTitle => '대수 균형';
 
   @override
-  String get algebraicBalanceSubtitle =>
-      'Solve the equations to find the target sum.';
+  String get algebraicBalanceSubtitle => '방정식을 풀어 목표 합계를 찾습니다.';
 
   @override
-  String get patternSequenceDrawTitle => 'Pattern Recall';
+  String get patternSequenceDrawTitle => '패턴 리콜';
 
   @override
-  String get patternSequenceDrawSubtitle =>
-      'Repeat the animated path sequence on the grid.';
+  String get patternSequenceDrawSubtitle => '그리드에서 애니메이션 경로 시퀀스를 반복합니다.';
 
   @override
-  String get tangramTitle => 'Tangram Puzzle';
+  String get tangramTitle => '탱그램 퍼즐';
 
   @override
-  String get tangramSubtitle =>
-      'Arrange the shapes to fill the target silhouette.';
+  String get tangramSubtitle => '대상 실루엣을 채우기 위해 모양을 정렬합니다.';
 
   @override
-  String get semanticAssociationTitle => 'Association Word';
+  String get semanticAssociationTitle => '협회 단어';
 
   @override
-  String get semanticAssociationSubtitle =>
-      'Find the word connecting all three clues.';
+  String get semanticAssociationSubtitle => '세 가지 단서를 모두 연결하는 단어를 찾으세요.';
 
   @override
-  String get peripheralFocusTitle => 'Peripheral Focus';
+  String get peripheralFocusTitle => '주변 초점';
 
   @override
-  String get peripheralFocusSubtitle =>
-      'React to flashing side panels while solving math.';
+  String get peripheralFocusSubtitle => '수학 문제를 푸는 동안 깜박이는 측면 패널에 반응하세요.';
 
   @override
-  String get masyuTitle => 'Masyu Loop';
+  String get masyuTitle => '마슈 루프';
 
   @override
-  String get masyuSubtitle => 'Draw a single loop matching Masyu circle rules.';
+  String get masyuSubtitle => 'Masyu 원 규칙과 일치하는 단일 루프를 그립니다.';
 
   @override
-  String get mathMazeTitle => 'Math Maze';
+  String get mathMazeTitle => '수학 미로';
 
   @override
-  String get mathMazeSubtitle =>
-      'Trace a path that evaluates to the target total.';
+  String get mathMazeSubtitle => '목표 합계로 평가되는 경로를 추적합니다.';
 
   @override
-  String get storyBuilderTitle => 'Story Builder';
+  String get storyBuilderTitle => '스토리 빌더';
 
   @override
-  String get storyBuilderSubtitle =>
-      'Reconstruct the chronological sequence of the story.';
+  String get storyBuilderSubtitle => '이야기의 연대순 순서를 재구성합니다.';
 
   @override
-  String get mirrorMazeTitle => 'Mirror Maze';
+  String get mirrorMazeTitle => '거울 미로';
 
   @override
-  String get mirrorMazeSubtitle =>
-      'Redirect a laser beam using diagonal mirrors.';
+  String get mirrorMazeSubtitle => '대각선 거울을 사용하여 레이저 빔의 방향을 바꿉니다.';
 
   @override
-  String get wordGridConnectionTitle => 'Word Connections';
+  String get wordGridConnectionTitle => '단어 연결';
 
   @override
-  String get wordGridConnectionSubtitle =>
-      'Group 16 words into four categories of four.';
+  String get wordGridConnectionSubtitle => '16개의 단어를 4개 카테고리로 그룹화합니다.';
 
   @override
-  String get shapeShifterPeripheralTitle => 'Peripheral Shapes';
+  String get shapeShifterPeripheralTitle => '주변 형상';
 
   @override
-  String get shapeShifterPeripheralSubtitle =>
-      'Track peripheral shape changes while matching central values.';
+  String get shapeShifterPeripheralSubtitle => '중앙 값을 일치시키면서 주변 모양 변화를 추적합니다.';
 
   @override
-  String get soundWaveMatchTitle => 'Sound Wave Match';
+  String get soundWaveMatchTitle => '사운드 웨이브 매치';
 
   @override
-  String get soundWaveMatchSubtitle =>
-      'Tap when the visual wave frequency aligns with pitch changes.';
+  String get soundWaveMatchSubtitle => '시각적 파동 주파수가 피치 변화와 일치할 때 탭하세요.';
 
   @override
-  String get multiTrackCounterTitle => 'Multi-Track Counter';
+  String get multiTrackCounterTitle => '다중 트랙 카운터';
 
   @override
-  String get multiTrackCounterSubtitle =>
-      'Tap when any counter increments to a target multiplier.';
+  String get multiTrackCounterSubtitle => '카운터가 목표 배수로 증가할 때 탭하세요.';
 
   @override
-  String get colorWordMatchUpTitle => 'Color Match-Up';
+  String get colorWordMatchUpTitle => '컬러 매치업';
 
   @override
   String get colorWordMatchUpSubtitle =>
-      'Determine if two colored words match based on changing rules.';
+      '변화하는 규칙에 따라 두 가지 색상의 단어가 일치하는지 확인합니다.';
 
   @override
-  String get signalAndNoiseTitle => 'Signal & Noise';
+  String get signalAndNoiseTitle => '신호 및 소음';
 
   @override
-  String get signalAndNoiseSubtitle =>
-      'Locate target alphanumeric characters hidden in static noise.';
+  String get signalAndNoiseSubtitle => '정적 노이즈에 숨겨진 대상 영숫자를 찾습니다.';
 
   @override
-  String get focusTunnelTitle => 'Focus Tunnel';
+  String get focusTunnelTitle => '포커스 터널';
 
   @override
-  String get focusTunnelSubtitle =>
-      'Identify matching symbols appearing on moving tunnel walls.';
+  String get focusTunnelSubtitle => '움직이는 터널 벽에 나타나는 일치하는 기호를 식별합니다.';
 
   @override
-  String get targetPursuerTitle => 'Target Pursuer';
+  String get targetPursuerTitle => '표적 추적자';
 
   @override
-  String get targetPursuerSubtitle =>
-      'Track multiple overlapping circles and select the original target.';
+  String get targetPursuerSubtitle => '여러 개의 겹치는 원을 추적하고 원래 대상을 선택합니다.';
 
   @override
-  String get gridGazeTitle => 'Grid Gaze';
+  String get gridGazeTitle => '그리드 시선';
 
   @override
-  String get gridGazeSubtitle =>
-      'Identify which grid cell flashed with a different duration.';
+  String get gridGazeSubtitle => '다른 지속 시간으로 깜박이는 그리드 셀을 식별합니다.';
 
   @override
-  String get doubleTroubleTitle => 'Double Trouble';
+  String get doubleTroubleTitle => '더블 트러블';
 
   @override
-  String get doubleTroubleSubtitle =>
-      'Play two separate simple games simultaneously on split-screen.';
+  String get doubleTroubleSubtitle => '분할 화면에서 두 가지 간단한 게임을 동시에 플레이하세요.';
 
   @override
-  String get syncRhythmTitle => 'Sync Rhythm';
+  String get syncRhythmTitle => '동기화 리듬';
 
   @override
-  String get syncRhythmSubtitle =>
-      'Tap when visual metronome sweep matches syncopated beat.';
+  String get syncRhythmSubtitle => '시각적 메트로놈 스윕이 당김 비트와 일치할 때 탭하세요.';
 
   @override
-  String get ghostTapTitle => 'Ghost Tap';
+  String get ghostTapTitle => '고스트 탭';
 
   @override
-  String get ghostTapSubtitle =>
-      'Tap when the invisible pulse reaches its maximum height.';
+  String get ghostTapSubtitle => '보이지 않는 펄스가 최대 높이에 도달하면 탭하세요.';
 
   @override
-  String get attentionalRsvpTitle => 'Attentional RSVP';
+  String get attentionalRsvpTitle => '주의 깊게 참석 회신';
 
   @override
-  String get attentionalRsvpSubtitle =>
-      'Identify digits appearing in rapid serial letter flash.';
+  String get attentionalRsvpSubtitle => '빠른 일련 문자 플래시에 나타나는 숫자를 식별합니다.';
 
   @override
-  String get colorMazeNavTitle => 'Color Maze Nav';
+  String get colorMazeNavTitle => '컬러 미로 탐색';
 
   @override
-  String get colorMazeNavSubtitle =>
-      'Navigate maze tiles matching dynamic permission colors.';
+  String get colorMazeNavSubtitle => '동적 권한 색상과 일치하는 미로 타일을 탐색하세요.';
 
   @override
-  String get dynamicSalienceTitle => 'Dynamic Salience';
+  String get dynamicSalienceTitle => '역동적인 돌출성';
 
   @override
-  String get dynamicSalienceSubtitle =>
-      'Find the shape moving with slightly different dynamics.';
+  String get dynamicSalienceSubtitle => '약간 다른 역학으로 움직이는 모양을 찾아보세요.';
 
   @override
-  String get chalkAndTalkTitle => 'Chalk & Talk';
+  String get chalkAndTalkTitle => '분필과 대화';
 
   @override
-  String get chalkAndTalkSubtitle =>
-      'Type words heard in audio while ignoring visual distractors.';
+  String get chalkAndTalkSubtitle => '시각적 방해 요소를 무시하면서 오디오에서 들리는 단어를 입력합니다.';
 
   @override
-  String get blinkDetectorTitle => 'Blink Detector';
+  String get blinkDetectorTitle => '깜박임 감지기';
 
   @override
-  String get blinkDetectorSubtitle =>
-      'Tap the grid face that blinks twice in rapid succession.';
+  String get blinkDetectorSubtitle => '빠르게 두 번 깜박이는 그리드 면을 탭하세요.';
 
   @override
-  String get frequencyTapTitle => 'Frequency Tap';
+  String get frequencyTapTitle => '주파수 탭';
 
   @override
-  String get frequencyTapSubtitle =>
-      'Tap the button matching the target light pulse frequency.';
+  String get frequencyTapSubtitle => '목표 광 펄스 주파수와 일치하는 버튼을 누릅니다.';
 
   @override
-  String get yajilinTitle => 'Yajilin Loop';
+  String get yajilinTitle => '야지린 루프';
 
   @override
-  String get yajilinSubtitle =>
-      'Place black cells and draw a single loop matching clues.';
+  String get yajilinSubtitle => '검은색 셀을 배치하고 단서와 일치하는 단일 루프를 그립니다.';
 
   @override
-  String get heyawakeTitle => 'Heyawake Grid';
+  String get heyawakeTitle => '헤이웨이크 그리드';
 
   @override
-  String get heyawakeSubtitle =>
-      'Shade grid rooms without adjacent black cells.';
+  String get heyawakeSubtitle => '인접한 검은색 셀이 없는 격자형 방을 가리십시오.';
 
   @override
-  String get gokigenVariantTitle => 'Gokigen Variant';
+  String get gokigenVariantTitle => '고키겐 변형';
 
   @override
-  String get gokigenVariantSubtitle =>
-      'Draw loop-free diagonals meeting vertex counts.';
+  String get gokigenVariantSubtitle => '정점 수를 충족하는 루프 없는 대각선을 그립니다.';
 
   @override
-  String get sheepAndWolvesTitle => 'Sheep & Wolves';
+  String get sheepAndWolvesTitle => '양과 늑대';
 
   @override
-  String get sheepAndWolvesSubtitle =>
-      'Draw a loop separating sheep from wolves.';
+  String get sheepAndWolvesSubtitle => '양과 늑대를 분리하는 고리를 그립니다.';
 
   @override
-  String get islandNurikabeTitle => 'Island Nurikabe';
+  String get islandNurikabeTitle => '아일랜드 누리카베';
 
   @override
-  String get islandNurikabeSubtitle =>
-      'Form islands matching numerical size constraints.';
+  String get islandNurikabeSubtitle => '숫자 크기 제약 조건과 일치하는 아일랜드를 형성합니다.';
 
   @override
-  String get shakashakaTitle => 'Shakashaka Rects';
+  String get shakashakaTitle => '샤카샤카 직사각형';
 
   @override
-  String get shakashakaSubtitle =>
-      'Place triangular tiles to form rectangular white areas.';
+  String get shakashakaSubtitle => '삼각형 타일을 배치하여 직사각형 흰색 영역을 형성합니다.';
 
   @override
-  String get litsTetrisTitle => 'LITS Tetromino';
+  String get litsTetrisTitle => 'LITS 테트로미노';
 
   @override
-  String get litsTetrisSubtitle =>
-      'Place tetrominoes in rooms with no adjacent duplicates.';
+  String get litsTetrisSubtitle => '인접한 중복 항목이 없는 방에 테트로미노를 배치하세요.';
 
   @override
-  String get tapaWallTitle => 'Tapa Wall';
+  String get tapaWallTitle => '타파 벽';
 
   @override
-  String get tapaWallSubtitle =>
-      'Shade cells to form a continuous black wall pattern.';
+  String get tapaWallSubtitle => '연속적인 검은색 벽 패턴을 형성하도록 셀에 음영을 지정합니다.';
 
   @override
-  String get triangularBridgesTitle => 'Triangular Bridges';
+  String get triangularBridgesTitle => '삼각형 교량';
 
   @override
-  String get triangularBridgesSubtitle =>
-      'Connect islands in 3 directions meeting requirements.';
+  String get triangularBridgesSubtitle => '요구 사항을 충족하는 3방향으로 섬을 연결합니다.';
 
   @override
-  String get rippleEffectTitle => 'Ripple Effect';
+  String get rippleEffectTitle => '파급효과';
 
   @override
-  String get rippleEffectSubtitle =>
-      'Fill numbers in rooms respecting spacing distance constraints.';
+  String get rippleEffectSubtitle => '간격 거리 제약을 준수하여 방에 숫자를 입력합니다.';
 
   @override
-  String get suguruTectonicTitle => 'Suguru Grid';
+  String get suguruTectonicTitle => '스구루 그리드';
 
   @override
   String get suguruTectonicSubtitle =>
-      'Fill room blocks with numbers 1 to K with no neighbors equal.';
+      '이웃이 동일하지 않은 상태에서 1부터 K까지의 숫자로 방 블록을 채웁니다.';
 
   @override
-  String get tennerGridTitle => 'Tenner Grid';
+  String get tennerGridTitle => '테너 그리드';
 
   @override
-  String get tennerGridSubtitle =>
-      'Fill rows with digits 0-9 matching column totals.';
+  String get tennerGridSubtitle => '열 합계와 일치하는 숫자 0-9로 행을 채웁니다.';
 
   @override
-  String get kakurasuSumsTitle => 'Kakurasu Sums';
+  String get kakurasuSumsTitle => '카쿠라스 합계';
 
   @override
-  String get kakurasuSumsSubtitle =>
-      'Shade cells to meet weighted row/col index sums.';
+  String get kakurasuSumsSubtitle => '가중치가 부여된 행/열 인덱스 합계를 충족하도록 셀을 음영 처리합니다.';
 
   @override
-  String get corralLoopTitle => 'Corral Loop';
+  String get corralLoopTitle => '목장 루프';
 
   @override
-  String get corralLoopSubtitle =>
-      'Draw a single loop enclosing numbers matching visibility.';
+  String get corralLoopSubtitle => '가시성과 일치하는 숫자를 포함하는 단일 루프를 그립니다.';
 
   @override
-  String get stostoneTitle => 'Stostone Gravity';
+  String get stostoneTitle => '스토스톤 중력';
 
   @override
-  String get stostoneSubtitle =>
-      'Shade cells that drop down to fill bottom rows perfectly.';
+  String get stostoneSubtitle => '아래쪽 행을 완벽하게 채우기 위해 아래로 떨어지는 셀을 음영 처리합니다.';
 
   @override
-  String get tripletsLogicTitle => 'Triplets Trio';
+  String get tripletsLogicTitle => '세 쌍둥이 트리오';
 
   @override
-  String get tripletsLogicSubtitle =>
-      'Fill grid with three shapes avoiding three-in-a-row.';
+  String get tripletsLogicSubtitle => '3개가 연속되는 것을 피하고 3개의 도형으로 그리드를 채웁니다.';
 
   @override
-  String get galaxiesSymTitle => 'Galaxies Symmetry';
+  String get galaxiesSymTitle => '은하 대칭';
 
   @override
-  String get galaxiesSymSubtitle =>
-      'Divide grid into rotationally symmetric galaxy shapes.';
+  String get galaxiesSymSubtitle => '그리드를 회전 대칭 은하 모양으로 나눕니다.';
 
   @override
-  String get matrixMultiplierMatchTitle => 'Matrix Matcher';
+  String get matrixMultiplierMatchTitle => '행렬 일치자';
 
   @override
-  String get matrixMultiplierMatchSubtitle =>
-      'Multiply row and column values to match target dot product.';
+  String get matrixMultiplierMatchSubtitle => '행과 열 값을 곱하여 대상 내적과 일치시킵니다.';
 
   @override
-  String get primeFactorTreesTitle => 'Prime Factor Trees';
+  String get primeFactorTreesTitle => '소인수 트리';
 
   @override
-  String get primeFactorTreesSubtitle =>
-      'Decompose composite numbers into prime leaf factor pairs.';
+  String get primeFactorTreesSubtitle => '합성수를 소수 리프 인자 쌍으로 분해합니다.';
 
   @override
-  String get vektorVectorTitle => 'Vector Vector';
+  String get vektorVectorTitle => '벡터 벡터';
 
   @override
-  String get vektorVectorSubtitle =>
-      'Scale vectors to make their sum land on the target.';
+  String get vektorVectorSubtitle => '벡터의 크기를 조절하여 그 합이 목표에 도달하도록 합니다.';
 
   @override
-  String get binomialMatchTitle => 'Binomial Match';
+  String get binomialMatchTitle => '이항 일치';
 
   @override
-  String get binomialMatchSubtitle =>
-      'Match quadratic formulas with factored binomial values.';
+  String get binomialMatchSubtitle => '인수분해된 이항 값과 이차 공식을 일치시킵니다.';
 
   @override
-  String get percentageShoppingTitle => 'Percentage Shopping';
+  String get percentageShoppingTitle => '백분율 쇼핑';
 
   @override
-  String get percentageShoppingSubtitle =>
-      'Calculate discount percentages and final checkout totals.';
+  String get percentageShoppingSubtitle => '할인율과 최종 결제 총액을 계산합니다.';
 
   @override
-  String get cryptoArithmeticTitle => 'Crypto-Arithmetic';
+  String get cryptoArithmeticTitle => '암호화 연산';
 
   @override
-  String get cryptoArithmeticSubtitle =>
-      'Crack character-digit substitution cipher math problems.';
+  String get cryptoArithmeticSubtitle => '문자-숫자 대체 암호 수학 문제를 해결하세요.';
 
   @override
-  String get fractionalPizzaTitle => 'Fractional Pizza';
+  String get fractionalPizzaTitle => '분수 피자';
 
   @override
-  String get fractionalPizzaSubtitle =>
-      'Partition pizza slices to match target sum fractions.';
+  String get fractionalPizzaSubtitle => '목표 합계 분수와 일치하도록 피자 조각을 분할합니다.';
 
   @override
-  String get numberBondsTitle => 'Number Bonds';
+  String get numberBondsTitle => '번호 채권';
 
   @override
-  String get numberBondsSubtitle =>
-      'Link node values to equal a target connection sum.';
+  String get numberBondsSubtitle => '노드 값을 대상 연결 합계와 동일하게 연결합니다.';
 
   @override
-  String get gridSumLineTitle => 'Grid Sum Line';
+  String get gridSumLineTitle => '그리드 합계 라인';
 
   @override
-  String get gridSumLineSubtitle =>
-      'Draw a path whose values evaluate exactly to the target.';
+  String get gridSumLineSubtitle => '값이 대상에 정확하게 평가되는 경로를 그립니다.';
 
   @override
-  String get binaryScaleBalanceTitle => 'Binary Scale Balance';
+  String get binaryScaleBalanceTitle => '바이너리 스케일 밸런스';
 
   @override
-  String get binaryScaleBalanceSubtitle =>
-      'Balance decimal weight using power-of-two blocks.';
+  String get binaryScaleBalanceSubtitle => '2의 거듭제곱 블록을 사용하여 소수점 무게의 균형을 맞춥니다.';
 
   @override
-  String get moduloPathTitle => 'Modulo Path';
+  String get moduloPathTitle => '모듈로 경로';
 
   @override
-  String get moduloPathSubtitle =>
-      'Traverse grid cells matching modulo remainder values.';
+  String get moduloPathSubtitle => '모듈로 나머지 값과 일치하는 그리드 셀을 탐색합니다.';
 
   @override
-  String get digitSwapEqTitle => 'Digit Swap Equations';
+  String get digitSwapEqTitle => '숫자 교환 방정식';
 
   @override
-  String get digitSwapEqSubtitle =>
-      'Swap single digits between equations to correct both.';
+  String get digitSwapEqSubtitle => '두 방정식을 모두 수정하려면 방정식 사이의 한 자리 숫자를 바꾸세요.';
 
   @override
-  String get areaPerimeterMatchTitle => 'Area & Perimeter';
+  String get areaPerimeterMatchTitle => '면적 및 둘레';
 
   @override
-  String get areaPerimeterMatchSubtitle =>
-      'Draw rectangles matching target area and perimeter values.';
+  String get areaPerimeterMatchSubtitle => '대상 영역 및 둘레 값과 일치하는 직사각형을 그립니다.';
 
   @override
-  String get inequalityBalanceOpsTitle => 'Inequality Balance';
+  String get inequalityBalanceOpsTitle => '불평등 균형';
 
   @override
-  String get inequalityBalanceOpsSubtitle =>
-      'Place inequality symbols between complex math terms.';
+  String get inequalityBalanceOpsSubtitle => '복잡한 수학 용어 사이에 부등식 기호를 배치합니다.';
 
   @override
-  String get graphCoordinatePlotTitle => 'Graph Plotter';
+  String get graphCoordinatePlotTitle => '그래프 플로터';
 
   @override
-  String get graphCoordinatePlotSubtitle =>
-      'Plot grid coordinates matching linear/quadratic curves.';
+  String get graphCoordinatePlotSubtitle => '선형/2차 곡선과 일치하는 그리드 좌표를 플롯합니다.';
 
   @override
-  String get baseConversionRunTitle => 'Base Conversion';
+  String get baseConversionRunTitle => '기본 변환';
 
   @override
-  String get baseConversionRunSubtitle =>
-      'Convert values between binary, decimal, hex, and octal.';
+  String get baseConversionRunSubtitle => '2진수, 10진수, 16진수, 8진수 사이의 값을 변환합니다.';
 
   @override
-  String get unitConverterProTitle => 'Unit Converter';
+  String get unitConverterProTitle => '단위 변환기';
 
   @override
-  String get unitConverterProSubtitle =>
-      'Answer quick unit conversions under time limits.';
+  String get unitConverterProSubtitle => '시간 제한 내에서 빠른 단위 변환에 응답합니다.';
 
   @override
-  String get auditoryNBackTitle => 'Auditory N-Back';
+  String get auditoryNBackTitle => '청각 N-백';
 
   @override
-  String get auditoryNBackSubtitle =>
-      'Match spoken letters heard N steps back from memory.';
+  String get auditoryNBackSubtitle => '기억에서 N 단계 뒤로 들리는 음성 문자를 일치시킵니다.';
 
   @override
-  String get abstractPatternRecallTitle => 'Pattern Layering';
+  String get abstractPatternRecallTitle => '패턴 레이어링';
 
   @override
-  String get abstractPatternRecallSubtitle =>
-      'Reconstruct layered colorful shapes from memory study.';
+  String get abstractPatternRecallSubtitle => '기억 연구를 통해 계층화된 다채로운 모양을 재구성합니다.';
 
   @override
-  String get roomInspectorTitle => 'Room Inspector';
+  String get roomInspectorTitle => '룸 인스펙터';
 
   @override
-  String get roomInspectorSubtitle =>
-      'Identify furniture modifications made while screen was blank.';
+  String get roomInspectorSubtitle => '화면이 비어 있는 동안 수정된 가구를 식별합니다.';
 
   @override
-  String get voiceToFaceMatchTitle => 'Voice-Face Match';
+  String get voiceToFaceMatchTitle => '음성-얼굴 일치';
 
   @override
-  String get voiceToFaceMatchSubtitle =>
-      'Select correct face associated with spoken audio voice clip.';
+  String get voiceToFaceMatchSubtitle => '음성 오디오 음성 클립과 연결된 올바른 얼굴을 선택하세요.';
 
   @override
-  String get spatialGridMemory3DTitle => '3D Spatial Memory';
+  String get spatialGridMemory3DTitle => '3차원 공간 기억';
 
   @override
   String get spatialGridMemory3DSubtitle =>
-      'Recall flashed blocks in a rotated 3D cube grid structure.';
+      '회전된 3D 큐브 그리드 구조에서 깜박이는 블록을 떠올려보세요.';
 
   @override
-  String get sequenceStackTitle => 'Sequence Stack';
+  String get sequenceStackTitle => '시퀀스 스택';
 
   @override
-  String get sequenceStackSubtitle =>
-      'Reconstruct plate stack additions and removals in order.';
+  String get sequenceStackSubtitle => '플레이트 스택 추가 및 제거를 순서대로 재구성합니다.';
 
   @override
-  String get semanticCategoryRecallTitle => 'Category Recall';
+  String get semanticCategoryRecallTitle => '카테고리 리콜';
 
   @override
   String get semanticCategoryRecallSubtitle =>
-      'Identify study words matching requested category targets.';
+      '요청된 카테고리 타겟과 일치하는 학습 단어를 식별합니다.';
 
   @override
-  String get gridDisplacementTitle => 'Grid Displacement';
+  String get gridDisplacementTitle => '그리드 변위';
 
   @override
-  String get gridDisplacementSubtitle =>
-      'Identify shifted icons comparing layout to original.';
+  String get gridDisplacementSubtitle => '레이아웃을 원본과 비교하여 이동된 아이콘을 식별합니다.';
 
   @override
-  String get soundSequenceMatchTitle => 'Sound Sequence Match';
+  String get soundSequenceMatchTitle => '사운드 시퀀스 일치';
 
   @override
-  String get soundSequenceMatchSubtitle =>
-      'Repeat note sequences played on a virtual keyboard.';
+  String get soundSequenceMatchSubtitle => '가상 키보드에서 연주되는 음표 시퀀스를 반복합니다.';
 
   @override
-  String get cardCountingMemoryTitle => 'Card Counter';
+  String get cardCountingMemoryTitle => '카드 카운터';
 
   @override
-  String get cardCountingMemorySubtitle =>
-      'Identify cards already dealt in continuous card deal runs.';
+  String get cardCountingMemorySubtitle => '지속적인 카드 거래 실행에서 이미 처리된 카드를 식별합니다.';
 
   @override
-  String get directionsRecallTitle => 'Directions Recall';
+  String get directionsRecallTitle => '길찾기 리콜';
 
   @override
-  String get directionsRecallSubtitle =>
-      'Navigate grid maps matching path directions from memory.';
+  String get directionsRecallSubtitle => '메모리에서 경로 방향과 일치하는 그리드 맵을 탐색합니다.';
 
   @override
-  String get eventTimelineMemoryTitle => 'Event Timeline';
+  String get eventTimelineMemoryTitle => '이벤트 타임라인';
 
   @override
-  String get eventTimelineMemorySubtitle =>
-      'Arrange historical/fictional event cards chronologically.';
+  String get eventTimelineMemorySubtitle => '역사적/허구적 사건 카드를 연대순으로 배열합니다.';
 
   @override
-  String get featureMatrixRecallTitle => 'Feature Matrix';
+  String get featureMatrixRecallTitle => '기능 매트릭스';
 
   @override
-  String get featureMatrixRecallSubtitle =>
-      'Answer query prompts about cell shape-color attributes.';
+  String get featureMatrixRecallSubtitle => '셀 모양-색상 속성에 대한 쿼리 프롬프트에 응답합니다.';
 
   @override
-  String get delayedMatchSampleTitle => 'Delayed Match';
+  String get delayedMatchSampleTitle => '지연된 경기';
 
   @override
-  String get delayedMatchSampleSubtitle =>
-      'Match target symbol after solving math distractors.';
+  String get delayedMatchSampleSubtitle => '수학 방해 요소를 해결한 후 대상 기호를 일치시킵니다.';
 
   @override
-  String get symbolDigitAssocTitle => 'Symbol-Digit Assoc';
+  String get symbolDigitAssocTitle => '기호-숫자 연관';
 
   @override
-  String get symbolDigitAssocSubtitle =>
-      'Solve symbol translation sheets matching digit keys.';
+  String get symbolDigitAssocSubtitle => '숫자 키와 일치하는 기호 번역 시트를 해결합니다.';
 
   @override
-  String get dualTaskMemoryTitle => 'Dual-Task Memory';
+  String get dualTaskMemoryTitle => '이중 작업 메모리';
 
   @override
-  String get dualTaskMemorySubtitle =>
-      'Memorize word sets while resolving quick arithmetic tasks.';
+  String get dualTaskMemorySubtitle => '빠른 산술 작업을 해결하면서 단어 세트를 암기하세요.';
 
   @override
-  String get actionSequenceRecallTitle => 'Action Recall';
+  String get actionSequenceRecallTitle => '액션 리콜';
 
   @override
-  String get actionSequenceRecallSubtitle =>
-      'Repeat character gesture animation sequences in order.';
+  String get actionSequenceRecallSubtitle => '캐릭터 제스처 애니메이션 시퀀스를 순서대로 반복합니다.';
 
   @override
-  String get tangramPolygonTitle => 'Tangram Fit';
+  String get tangramPolygonTitle => '탱그램핏';
 
   @override
-  String get tangramPolygonSubtitle =>
-      'Arrange polygon shapes to fill silhouette outlines.';
+  String get tangramPolygonSubtitle => '다각형 모양을 배열하여 실루엣 윤곽선을 채웁니다.';
 
   @override
-  String get mazeNav3DTitle => '3D Maze Nav';
+  String get mazeNav3DTitle => '3D 미로 탐색';
 
   @override
-  String get mazeNav3DSubtitle =>
-      'Navigate 3D isometric maze routes from first-person view.';
+  String get mazeNav3DSubtitle => '1인칭 시점에서 3D 등각 미로 경로를 탐색합니다.';
 
   @override
-  String get isometricProjectionTitle => 'Isometric Projector';
+  String get isometricProjectionTitle => '아이소메트릭 프로젝터';
 
   @override
-  String get isometricProjectionSubtitle =>
-      'Match 3D block figures to orthographic 2D top/front views.';
+  String get isometricProjectionSubtitle => '3D 블록 그림을 직교 2D 상단/정면 뷰와 일치시킵니다.';
 
   @override
-  String get polyominoPackingTitle => 'Polyomino Packing';
+  String get polyominoPackingTitle => '폴리오미노 포장';
 
   @override
-  String get polyominoPackingSubtitle =>
-      'Pack random polyomino block pieces into target areas.';
+  String get polyominoPackingSubtitle => '무작위 폴리오미노 블록 조각을 대상 영역에 포장합니다.';
 
   @override
-  String get spatialGridRotationTitle => 'Spatial Grid Rotation';
+  String get spatialGridRotationTitle => '공간 그리드 회전';
 
   @override
-  String get spatialGridRotationSubtitle =>
-      'Match 3D block arrangements rotated along axis coordinates.';
+  String get spatialGridRotationSubtitle => '축 좌표를 따라 회전된 3D 블록 배열을 일치시킵니다.';
 
   @override
-  String get wireLoopGameTitle => 'Wire Loop';
+  String get wireLoopGameTitle => '와이어 루프';
 
   @override
-  String get wireLoopGameSubtitle =>
-      'Drag metal rings along wire splines without contact.';
+  String get wireLoopGameSubtitle => '접촉 없이 와이어 스플라인을 따라 금속 링을 드래그합니다.';
 
   @override
-  String get origamiUnfoldTitle => 'Origami Unfold';
+  String get origamiUnfoldTitle => '종이접기 펼치기';
 
   @override
-  String get origamiUnfoldSubtitle =>
-      'Identify hole punch patterns after unfolding folded sheets.';
+  String get origamiUnfoldSubtitle => '접힌 시트를 펼친 후 홀 펀치 패턴을 식별합니다.';
 
   @override
-  String get ropeTangleSolverTitle => 'Rope Untangler';
+  String get ropeTangleSolverTitle => '밧줄 풀기';
 
   @override
-  String get ropeTangleSolverSubtitle =>
-      'Drag nodes to layout planar graphs with zero line crosses.';
+  String get ropeTangleSolverSubtitle => '선 교차가 0인 평면 그래프 레이아웃으로 노드를 드래그합니다.';
 
   @override
-  String get gridFitTetrisTitle => 'Grid Fit Solver';
+  String get gridFitTetrisTitle => '그리드 맞춤 솔버';
 
   @override
-  String get gridFitTetrisSubtitle =>
-      'Arrange static irregular blocks to fit container bounds.';
+  String get gridFitTetrisSubtitle => '컨테이너 경계에 맞게 정적 불규칙 블록을 배열합니다.';
 
   @override
-  String get vectorGridAlignmentTitle => 'Vector Alignment';
+  String get vectorGridAlignmentTitle => '벡터 정렬';
 
   @override
   String get vectorGridAlignmentSubtitle =>
-      'Scale and rotate shapes to match shadow template targets.';
+      '그림자 템플릿 대상과 일치하도록 모양의 크기를 조정하고 회전합니다.';
 
   @override
-  String get blockStackingPhysicsTitle => 'Block Stacking';
+  String get blockStackingPhysicsTitle => '블록 쌓기';
 
   @override
-  String get blockStackingPhysicsSubtitle =>
-      'Stack irregular block panels balancing gravity weight.';
+  String get blockStackingPhysicsSubtitle => '불규칙한 블록 패널을 쌓아 중력 무게의 균형을 맞춥니다.';
 
   @override
-  String get crossSectionMatch3DTitle => '3D Cross Section';
+  String get crossSectionMatch3DTitle => '3D 단면';
 
   @override
-  String get crossSectionMatch3DSubtitle =>
-      'Identify 2D slice geometries cut from 3D shapes.';
+  String get crossSectionMatch3DSubtitle => '3D 모양에서 잘라낸 2D 슬라이스 형상을 식별합니다.';
 
   @override
-  String get symmetryPaintTitle => 'Symmetry Paint';
+  String get symmetryPaintTitle => '대칭 페인트';
 
   @override
-  String get symmetryPaintSubtitle =>
-      'Draw mirror image segments reflecting across symmetry axes.';
+  String get symmetryPaintSubtitle => '대칭 축을 따라 반사되는 거울 이미지 세그먼트를 그립니다.';
 
   @override
-  String get rollingBlockBloxTitle => 'Rolling Block';
+  String get rollingBlockBloxTitle => '롤링 블록';
 
   @override
-  String get rollingBlockBloxSubtitle =>
-      'Roll block pieces to land vertically in target slots.';
+  String get rollingBlockBloxSubtitle => '블록 조각을 굴려 대상 슬롯에 수직으로 착륙시킵니다.';
 
   @override
-  String get perspectiveShiftViewTitle => 'Perspective Shift';
+  String get perspectiveShiftViewTitle => '관점 전환';
 
   @override
   String get perspectiveShiftViewSubtitle =>
-      'Rotate block clusters until they spell letters/words.';
+      '문자/단어의 철자가 나올 때까지 블록 클러스터를 회전합니다.';
 
   @override
-  String get networkFlowSphericalTitle => 'Network Flow';
+  String get networkFlowSphericalTitle => '네트워크 흐름';
 
   @override
-  String get networkFlowSphericalSubtitle =>
-      'Connect grid flows on wrapping cylindrical coordinates.';
+  String get networkFlowSphericalSubtitle => '래핑 원통형 좌표에 그리드 흐름을 연결합니다.';
 
   @override
-  String get layeredSilhouetteBlendTitle => 'Silhouette Blend';
+  String get layeredSilhouetteBlendTitle => '실루엣 블렌드';
 
   @override
-  String get layeredSilhouetteBlendSubtitle =>
-      'Stack colored layers to match target translucent shapes.';
+  String get layeredSilhouetteBlendSubtitle => '대상 반투명 모양과 일치하도록 색상 레이어를 쌓습니다.';
 
   @override
-  String get wordWheelPangramTitle => 'Word Anagrams';
+  String get wordWheelPangramTitle => '단어 철자 바꾸기';
 
   @override
-  String get wordWheelPangramSubtitle =>
-      'Construct words containing central target letters from wheels.';
+  String get wordWheelPangramSubtitle => '바퀴의 중심 대상 문자를 포함하는 단어를 구성합니다.';
 
   @override
-  String get letterGridSwapperTitle => 'Letter Swapper';
+  String get letterGridSwapperTitle => '편지 교환기';
 
   @override
-  String get letterGridSwapperSubtitle =>
-      'Swap adjacent letter tiles to complete row and col words.';
+  String get letterGridSwapperSubtitle => '인접한 문자 타일을 바꿔서 행과 열 단어를 완성하세요.';
 
   @override
-  String get synonymMatchTitle => 'Synonym Match';
+  String get synonymMatchTitle => '동의어 일치';
 
   @override
-  String get synonymMatchSubtitle =>
-      'Match falling word targets with synonyms or antonyms.';
+  String get synonymMatchSubtitle => '떨어지는 단어 대상을 동의어 또는 반의어와 일치시킵니다.';
 
   @override
-  String get vowelDropTitle => 'Vowel Drop';
+  String get vowelDropTitle => '모음 드롭';
 
   @override
-  String get vowelDropSubtitle =>
-      'Drop vowels into coordinate grids completing words.';
+  String get vowelDropSubtitle => '단어를 완성하는 좌표 격자에 모음을 놓습니다.';
 
   @override
-  String get letterBalanceScaleTitle => 'Word Balance Scale';
+  String get letterBalanceScaleTitle => '단어 균형 척도';
 
   @override
-  String get letterBalanceScaleSubtitle =>
-      'Spell words whose letter values balance weights.';
+  String get letterBalanceScaleSubtitle => '문자 값이 가중치의 균형을 이루는 단어를 철자합니다.';
 
   @override
-  String get wordChainShiritoriTitle => 'Word Chain';
+  String get wordChainShiritoriTitle => '워드 체인';
 
   @override
-  String get wordChainShiritoriSubtitle =>
-      'Link word loops starting with preceding letter outputs.';
+  String get wordChainShiritoriSubtitle => '이전 문자 출력으로 시작하는 단어 루프를 연결합니다.';
 
   @override
-  String get affixBuilderTitle => 'Affix Builder';
+  String get affixBuilderTitle => '접사 빌더';
 
   @override
-  String get affixBuilderSubtitle =>
-      'Combine prefixes/suffixes to construct target vocabularies.';
+  String get affixBuilderSubtitle => '접두사/접미사를 결합하여 대상 어휘를 구성합니다.';
 
   @override
-  String get decipherCrypticCluesTitle => 'Cryptic Decipher';
+  String get decipherCrypticCluesTitle => '비밀 해독기';
 
   @override
-  String get decipherCrypticCluesSubtitle =>
-      'Solve word-play puzzles and decrypt spelling riddles.';
+  String get decipherCrypticCluesSubtitle => '단어장난 퍼즐을 풀고 철자 수수께끼를 해독하세요.';
 
   @override
-  String get boggleWordSearchTitle => 'Boggle Connect';
+  String get boggleWordSearchTitle => '보글 커넥트';
 
   @override
-  String get boggleWordSearchSubtitle =>
-      'Trace adjacent connected paths to find hidden words.';
+  String get boggleWordSearchSubtitle => '인접한 연결된 경로를 추적하여 숨겨진 단어를 찾으세요.';
 
   @override
-  String get idiomUnscrambleTitle => 'Idiom Unscramble';
+  String get idiomUnscrambleTitle => '숙어 Unscramble';
 
   @override
-  String get idiomUnscrambleSubtitle =>
-      'Arrange scrambled word arrays to match idiom meanings.';
+  String get idiomUnscrambleSubtitle => '관용어 의미와 일치하도록 뒤섞인 단어 배열을 정렬합니다.';
 
   @override
-  String get letterPyramidsTitle => 'Letter Pyramids';
+  String get letterPyramidsTitle => '편지 피라미드';
 
   @override
-  String get letterPyramidsSubtitle =>
-      'Build word towers adding single anagram letters per tier.';
+  String get letterPyramidsSubtitle => '계층당 단일 철자법 문자를 추가하여 단어 타워를 구축하세요.';
 
   @override
-  String get soundAlikeHomophonesTitle => 'Homophone Matches';
+  String get soundAlikeHomophonesTitle => '동음이의어 일치';
 
   @override
-  String get soundAlikeHomophonesSubtitle =>
-      'Identify correct homophone spellings for sentences.';
+  String get soundAlikeHomophonesSubtitle => '문장의 올바른 동음이의어 철자를 식별합니다.';
 
   @override
-  String get wordGridSudokuTitle => 'Word Sudoku';
+  String get wordGridSudokuTitle => '워드 스도쿠';
 
   @override
-  String get wordGridSudokuSubtitle =>
-      'Tesselate letters in grid rows forming words.';
+  String get wordGridSudokuSubtitle => '단어를 형성하는 그리드 행의 문자를 테셀레이션합니다.';
 
   @override
-  String get portmanteauFactoryTitle => 'Portmanteau Factory';
+  String get portmanteauFactoryTitle => '포트만토 공장';
 
   @override
-  String get portmanteauFactorySubtitle =>
-      'Merge semantic components creating compound words.';
+  String get portmanteauFactorySubtitle => '복합어를 생성하는 의미 구성 요소를 병합합니다.';
 
   @override
-  String get codedCrosswordsCodeTitle => 'Codewords Crossword';
+  String get codedCrosswordsCodeTitle => '코드워드 크로스워드';
 
   @override
-  String get codedCrosswordsCodeSubtitle =>
-      'Solve grid crosswords matching number-to-letter codes.';
+  String get codedCrosswordsCodeSubtitle => '숫자와 문자 코드가 일치하는 그리드 십자말풀이를 풀어보세요.';
 
   @override
-  String get wordSnakeTrailTitle => 'Word Snake';
+  String get wordSnakeTrailTitle => '워드 스네이크';
 
   @override
-  String get wordSnakeTrailSubtitle =>
-      'Trace snake-like letter trails spelling thematic words.';
+  String get wordSnakeTrailSubtitle => '주제별 단어를 철자하는 뱀 모양의 문자 흔적을 추적합니다.';
 
   @override
-  String get typingRhythmSpeedTitle => 'Typing Flow';
+  String get typingRhythmSpeedTitle => '타이핑 흐름';
 
   @override
-  String get typingRhythmSpeedSubtitle =>
-      'Type vocabularies matching metronome rhythm beats.';
+  String get typingRhythmSpeedSubtitle => '메트로놈 리듬 비트와 일치하는 어휘를 입력하세요.';
 
   @override
   String get errorSomethingWrong => 'Something went wrong';

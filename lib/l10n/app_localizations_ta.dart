@@ -3709,877 +3709,876 @@ class AppLocalizationsTa extends AppLocalizations {
       'வெளியில் மறைந்திருக்கும் பொருளை அடையாளம் காணவும்.';
 
   @override
-  String get shikakuTitle => 'Shikaku';
+  String get shikakuTitle => 'ஷிகாகு';
 
   @override
   String get shikakuSubtitle =>
-      'DIVIDE THE GRID INTO SQUARES AND RECTANGLES MATCHING THE NUMBERS.';
+      'எண்களுடன் பொருந்தக்கூடிய சதுரங்கள் மற்றும் செவ்வகங்களாக கட்டத்தை பிரிக்கவும்.';
 
   @override
-  String get countdownMathTitle => 'Countdown Math';
+  String get countdownMathTitle => 'கவுண்டவுன் கணிதம்';
 
   @override
   String get countdownMathSubtitle =>
-      'COMBINE RANDOM NUMBERS TO CALCULATE THE THREE-DIGIT TARGET.';
+      'மூன்று இலக்க இலக்கைக் கணக்கிட, ரேண்டம் எண்களை இணைக்கவும்.';
 
   @override
-  String get narrativeRecallTitle => 'Narrative Recall';
+  String get narrativeRecallTitle => 'கதை நினைவு';
 
   @override
   String get narrativeRecallSubtitle =>
-      'READ A STORY AND RECALL SPECIFIC QUANTITATIVE AND FACTUAL DETAILS.';
+      'ஒரு கதையைப் படித்து, குறிப்பிட்ட அளவு மற்றும் உண்மை விவரங்களை நினைவுபடுத்தவும்.';
 
   @override
-  String get shellGameTitle => 'Shell Game';
+  String get shellGameTitle => 'ஷெல் விளையாட்டு';
 
   @override
   String get shellGameSubtitle =>
-      'TRACK A HIDDEN BALL AS THE SHUFFLING CUPS SWAP PLACES.';
+      'ஒரு மறைக்கப்பட்ட பந்தை மாற்றும் கோப்பைகளை மாற்றும் இடங்களாகக் கண்காணிக்கவும்.';
 
   @override
-  String get typoglycemiaDecoderTitle => 'Typoglycemia Decoder';
+  String get typoglycemiaDecoderTitle => 'டைபோகிளைசீமியா டிகோடர்';
 
   @override
   String get typoglycemiaDecoderSubtitle =>
-      'UNSCRAMBLE AND READ JUMBLED SENTENCES SPEEDILY.';
+      'துண்டித்து, குழப்பமான வாக்கியங்களை விரைவாகப் படியுங்கள்.';
 
   @override
-  String get shapeShifterTitle => 'Shape Shifter';
+  String get shapeShifterTitle => 'வடிவ மாற்றி';
 
   @override
-  String get shapeShifterSubtitle => 'Tap the target shape-color combination.';
+  String get shapeShifterSubtitle => 'இலக்கு வடிவம்-வண்ண கலவையைத் தட்டவும்.';
 
   @override
-  String get gokigenNanameTitle => 'Gokigen Naname';
+  String get gokigenNanameTitle => 'கோகிஜென் நாமே';
 
   @override
   String get gokigenNanameSubtitle =>
-      'Draw diagonals to connect points without loops.';
+      'சுழல்கள் இல்லாமல் புள்ளிகளை இணைக்க மூலைவிட்டங்களை வரையவும்.';
 
   @override
-  String get matrixMultiplierTitle => 'Matrix Multiplier';
+  String get matrixMultiplierTitle => 'மேட்ரிக்ஸ் பெருக்கி';
 
   @override
   String get matrixMultiplierSubtitle =>
-      'Select a row and column to multiply to the target.';
+      'இலக்கைப் பெருக்க ஒரு வரிசை மற்றும் நெடுவரிசையைத் தேர்ந்தெடுக்கவும்.';
 
   @override
-  String get wordAssociationRecallTitle => 'Word Association';
+  String get wordAssociationRecallTitle => 'வார்த்தை சங்கம்';
 
   @override
   String get wordAssociationRecallSubtitle =>
-      'Recall paired word associations from memory.';
+      'நினைவகத்திலிருந்து இணைக்கப்பட்ட வார்த்தை சங்கங்களை நினைவுபடுத்தவும்.';
 
   @override
-  String get gearRotationTitle => 'Gear Rotation';
+  String get gearRotationTitle => 'கியர் சுழற்சி';
 
   @override
-  String get gearRotationSubtitle =>
-      'Predict the rotation direction of the last gear.';
+  String get gearRotationSubtitle => 'கடைசி கியரின் சுழற்சி திசையை கணிக்கவும்.';
 
   @override
-  String get wordWheelTitle => 'Word Wheel';
+  String get wordWheelTitle => 'வார்த்தை சக்கரம்';
 
   @override
   String get wordWheelSubtitle =>
-      'Make words using letters on the wheel, including the center letter.';
+      'மைய எழுத்து உட்பட சக்கரத்தில் உள்ள எழுத்துக்களைப் பயன்படுத்தி வார்த்தைகளை உருவாக்கவும்.';
 
   @override
-  String get oddEvenFlashTitle => 'Odd-Even Flash';
+  String get oddEvenFlashTitle => 'ஒற்றைப்படை-இரட்டை ஃப்ளாஷ்';
 
   @override
   String get oddEvenFlashSubtitle =>
-      'Quickly match the number parity with the color rule.';
+      'வண்ண விதியுடன் எண் சமநிலையை விரைவாகப் பொருத்தவும்.';
 
   @override
-  String get norinoriTitle => 'Norinori';
+  String get norinoriTitle => 'நோரினோரி';
 
   @override
   String get norinoriSubtitle =>
-      'Shade exactly two connected cells in each room.';
+      'ஒவ்வொரு அறையிலும் சரியாக இணைக்கப்பட்ட இரண்டு செல்களை நிழலிடுங்கள்.';
 
   @override
-  String get algebraicBalanceTitle => 'Algebraic Balance';
+  String get algebraicBalanceTitle => 'இயற்கணித சமநிலை';
 
   @override
   String get algebraicBalanceSubtitle =>
-      'Solve the equations to find the target sum.';
+      'இலக்கு தொகையைக் கண்டறிய சமன்பாடுகளைத் தீர்க்கவும்.';
 
   @override
-  String get patternSequenceDrawTitle => 'Pattern Recall';
+  String get patternSequenceDrawTitle => 'பேட்டர்ன் ரீகால்';
 
   @override
   String get patternSequenceDrawSubtitle =>
-      'Repeat the animated path sequence on the grid.';
+      'கட்டத்தின் மீது அனிமேஷன் செய்யப்பட்ட பாதை வரிசையை மீண்டும் செய்யவும்.';
 
   @override
-  String get tangramTitle => 'Tangram Puzzle';
+  String get tangramTitle => 'டாங்கிராம் புதிர்';
 
   @override
   String get tangramSubtitle =>
-      'Arrange the shapes to fill the target silhouette.';
+      'இலக்கு நிழற்படத்தை நிரப்ப வடிவங்களை ஒழுங்கமைக்கவும்.';
 
   @override
-  String get semanticAssociationTitle => 'Association Word';
+  String get semanticAssociationTitle => 'சங்க வார்த்தை';
 
   @override
   String get semanticAssociationSubtitle =>
-      'Find the word connecting all three clues.';
+      'மூன்று தடயங்களையும் இணைக்கும் வார்த்தையைக் கண்டறியவும்.';
 
   @override
-  String get peripheralFocusTitle => 'Peripheral Focus';
+  String get peripheralFocusTitle => 'புற கவனம்';
 
   @override
   String get peripheralFocusSubtitle =>
-      'React to flashing side panels while solving math.';
+      'கணிதத்தை தீர்க்கும் போது பக்கவாட்டு பேனல்கள் ஒளிரும்.';
 
   @override
-  String get masyuTitle => 'Masyu Loop';
+  String get masyuTitle => 'மஸ்யு லூப்';
 
   @override
-  String get masyuSubtitle => 'Draw a single loop matching Masyu circle rules.';
+  String get masyuSubtitle =>
+      'மஸ்யு வட்ட விதிகளுக்குப் பொருந்தும் ஒற்றை வளையத்தை வரையவும்.';
 
   @override
-  String get mathMazeTitle => 'Math Maze';
+  String get mathMazeTitle => 'கணித பிரமை';
 
   @override
   String get mathMazeSubtitle =>
-      'Trace a path that evaluates to the target total.';
+      'இலக்கு மொத்தத்தை மதிப்பிடும் பாதையைக் கண்டறியவும்.';
 
   @override
-  String get storyBuilderTitle => 'Story Builder';
+  String get storyBuilderTitle => 'கதை கட்டுபவர்';
 
   @override
   String get storyBuilderSubtitle =>
-      'Reconstruct the chronological sequence of the story.';
+      'கதையின் காலவரிசை வரிசையை மறுகட்டமைக்கவும்.';
 
   @override
-  String get mirrorMazeTitle => 'Mirror Maze';
+  String get mirrorMazeTitle => 'மிரர் பிரமை';
 
   @override
   String get mirrorMazeSubtitle =>
-      'Redirect a laser beam using diagonal mirrors.';
+      'மூலைவிட்ட கண்ணாடிகளைப் பயன்படுத்தி லேசர் கற்றையைத் திருப்பிவிடவும்.';
 
   @override
-  String get wordGridConnectionTitle => 'Word Connections';
+  String get wordGridConnectionTitle => 'வார்த்தை இணைப்புகள்';
 
   @override
   String get wordGridConnectionSubtitle =>
-      'Group 16 words into four categories of four.';
+      '16 சொற்களை நான்காக நான்கு வகைகளாகத் தொகுக்கவும்.';
 
   @override
-  String get shapeShifterPeripheralTitle => 'Peripheral Shapes';
+  String get shapeShifterPeripheralTitle => 'புற வடிவங்கள்';
 
   @override
   String get shapeShifterPeripheralSubtitle =>
-      'Track peripheral shape changes while matching central values.';
+      'மைய மதிப்புகளைப் பொருத்தும்போது புற வடிவ மாற்றங்களைக் கண்காணிக்கவும்.';
 
   @override
-  String get soundWaveMatchTitle => 'Sound Wave Match';
+  String get soundWaveMatchTitle => 'ஒலி அலை பொருத்தம்';
 
   @override
   String get soundWaveMatchSubtitle =>
-      'Tap when the visual wave frequency aligns with pitch changes.';
+      'காட்சி அலை அதிர்வெண் சுருதி மாற்றங்களுடன் சீரமைக்கும்போது தட்டவும்.';
 
   @override
-  String get multiTrackCounterTitle => 'Multi-Track Counter';
+  String get multiTrackCounterTitle => 'மல்டி-ட்ராக் கவுண்டர்';
 
   @override
   String get multiTrackCounterSubtitle =>
-      'Tap when any counter increments to a target multiplier.';
+      'இலக்கு பெருக்கிக்கு எந்த கவுண்டரும் அதிகரிக்கும் போது தட்டவும்.';
 
   @override
-  String get colorWordMatchUpTitle => 'Color Match-Up';
+  String get colorWordMatchUpTitle => 'வண்ண பொருத்தம்';
 
   @override
   String get colorWordMatchUpSubtitle =>
-      'Determine if two colored words match based on changing rules.';
+      'மாற்றும் விதிகளின் அடிப்படையில் இரண்டு வண்ண வார்த்தைகள் பொருந்துமா என்பதைத் தீர்மானிக்கவும்.';
 
   @override
-  String get signalAndNoiseTitle => 'Signal & Noise';
+  String get signalAndNoiseTitle => 'சிக்னல் & சத்தம்';
 
   @override
   String get signalAndNoiseSubtitle =>
-      'Locate target alphanumeric characters hidden in static noise.';
+      'நிலையான இரைச்சலில் மறைந்திருக்கும் இலக்க எண்ணெழுத்து எழுத்துக்களைக் கண்டறியவும்.';
 
   @override
-  String get focusTunnelTitle => 'Focus Tunnel';
+  String get focusTunnelTitle => 'ஃபோகஸ் டன்னல்';
 
   @override
   String get focusTunnelSubtitle =>
-      'Identify matching symbols appearing on moving tunnel walls.';
+      'நகரும் சுரங்கப்பாதைச் சுவர்களில் தோன்றும் பொருத்தமான சின்னங்களை அடையாளம் காணவும்.';
 
   @override
-  String get targetPursuerTitle => 'Target Pursuer';
+  String get targetPursuerTitle => 'இலக்கு பின்தொடர்பவர்';
 
   @override
   String get targetPursuerSubtitle =>
-      'Track multiple overlapping circles and select the original target.';
+      'பல ஒன்றுடன் ஒன்று வட்டங்களைக் கண்காணித்து அசல் இலக்கைத் தேர்ந்தெடுக்கவும்.';
 
   @override
-  String get gridGazeTitle => 'Grid Gaze';
+  String get gridGazeTitle => 'கட்டம் பார்வை';
 
   @override
   String get gridGazeSubtitle =>
-      'Identify which grid cell flashed with a different duration.';
+      'எந்த கிரிட் செல் வேறு கால இடைவெளியில் ஒளிர்ந்தது என்பதைக் கண்டறியவும்.';
 
   @override
-  String get doubleTroubleTitle => 'Double Trouble';
+  String get doubleTroubleTitle => 'இரட்டை சிக்கல்';
 
   @override
   String get doubleTroubleSubtitle =>
-      'Play two separate simple games simultaneously on split-screen.';
+      'ஸ்பிளிட் ஸ்கிரீனில் இரண்டு தனித்தனி எளிய கேம்களை ஒரே நேரத்தில் விளையாடுங்கள்.';
 
   @override
-  String get syncRhythmTitle => 'Sync Rhythm';
+  String get syncRhythmTitle => 'ஒத்திசைவு ரிதம்';
 
   @override
   String get syncRhythmSubtitle =>
-      'Tap when visual metronome sweep matches syncopated beat.';
+      'காட்சி மெட்ரோனோம் ஸ்வீப் ஒத்திசைக்கப்பட்ட துடிப்புடன் பொருந்தும்போது தட்டவும்.';
 
   @override
-  String get ghostTapTitle => 'Ghost Tap';
+  String get ghostTapTitle => 'பேய் தட்டு';
 
   @override
   String get ghostTapSubtitle =>
-      'Tap when the invisible pulse reaches its maximum height.';
+      'கண்ணுக்கு தெரியாத துடிப்பு அதன் அதிகபட்ச உயரத்தை அடையும் போது தட்டவும்.';
 
   @override
-  String get attentionalRsvpTitle => 'Attentional RSVP';
+  String get attentionalRsvpTitle => 'கவனத்திற்குரிய RSVP';
 
   @override
   String get attentionalRsvpSubtitle =>
-      'Identify digits appearing in rapid serial letter flash.';
+      'ரேபிட் சீரிஸ் லெட்டர் ஃபிளாஷில் தோன்றும் இலக்கங்களை அடையாளம் காணவும்.';
 
   @override
-  String get colorMazeNavTitle => 'Color Maze Nav';
+  String get colorMazeNavTitle => 'கலர் பிரமை நவ்';
 
   @override
   String get colorMazeNavSubtitle =>
-      'Navigate maze tiles matching dynamic permission colors.';
+      'டைனமிக் அனுமதி வண்ணங்களுடன் பொருந்தக்கூடிய பிரமை டைல்களை வழிசெலுத்தவும்.';
 
   @override
-  String get dynamicSalienceTitle => 'Dynamic Salience';
+  String get dynamicSalienceTitle => 'டைனமிக் சாலியன்ஸ்';
 
   @override
   String get dynamicSalienceSubtitle =>
-      'Find the shape moving with slightly different dynamics.';
+      'சற்று மாறுபட்ட இயக்கவியலுடன் நகரும் வடிவத்தைக் கண்டறியவும்.';
 
   @override
-  String get chalkAndTalkTitle => 'Chalk & Talk';
+  String get chalkAndTalkTitle => 'சுண்ணாம்பு & பேச்சு';
 
   @override
   String get chalkAndTalkSubtitle =>
-      'Type words heard in audio while ignoring visual distractors.';
+      'காட்சித் திசைதிருப்பலைப் புறக்கணித்து ஆடியோவில் கேட்கும் வார்த்தைகளைத் தட்டச்சு செய்யவும்.';
 
   @override
-  String get blinkDetectorTitle => 'Blink Detector';
+  String get blinkDetectorTitle => 'பிளிங்க் டிடெக்டர்';
 
   @override
   String get blinkDetectorSubtitle =>
-      'Tap the grid face that blinks twice in rapid succession.';
+      'வேகமாக அடுத்தடுத்து இரண்டு முறை சிமிட்டும் கட்ட முகத்தைத் தட்டவும்.';
 
   @override
-  String get frequencyTapTitle => 'Frequency Tap';
+  String get frequencyTapTitle => 'அதிர்வெண் தட்டு';
 
   @override
   String get frequencyTapSubtitle =>
-      'Tap the button matching the target light pulse frequency.';
+      'இலக்கு ஒளி துடிப்பு அதிர்வெண்ணுடன் பொருந்தும் பொத்தானைத் தட்டவும்.';
 
   @override
-  String get yajilinTitle => 'Yajilin Loop';
+  String get yajilinTitle => 'யாஜிலின் லூப்';
 
   @override
   String get yajilinSubtitle =>
-      'Place black cells and draw a single loop matching clues.';
+      'கருப்பு கலங்களை வைத்து, ஒற்றை வளையத்தில் பொருந்தக்கூடிய தடயங்களை வரையவும்.';
 
   @override
-  String get heyawakeTitle => 'Heyawake Grid';
+  String get heyawakeTitle => 'ஹெயாவேக் கட்டம்';
 
   @override
   String get heyawakeSubtitle =>
-      'Shade grid rooms without adjacent black cells.';
+      'அருகில் கருப்பு செல்கள் இல்லாமல் நிழல் கட்ட அறைகள்.';
 
   @override
-  String get gokigenVariantTitle => 'Gokigen Variant';
+  String get gokigenVariantTitle => 'கோகிஜென் மாறுபாடு';
 
   @override
-  String get gokigenVariantSubtitle =>
-      'Draw loop-free diagonals meeting vertex counts.';
+  String get gokigenVariantSubtitle => 'லூப் இல்லாத மூலைவிட்டங்களை வரையவும்.';
 
   @override
-  String get sheepAndWolvesTitle => 'Sheep & Wolves';
+  String get sheepAndWolvesTitle => 'செம்மறி & ஓநாய்கள்';
 
   @override
   String get sheepAndWolvesSubtitle =>
-      'Draw a loop separating sheep from wolves.';
+      'ஓநாய்களிலிருந்து ஆடுகளை பிரிக்கும் வளையத்தை வரையவும்.';
 
   @override
-  String get islandNurikabeTitle => 'Island Nurikabe';
+  String get islandNurikabeTitle => 'நூரிகாபே தீவு';
 
   @override
   String get islandNurikabeSubtitle =>
-      'Form islands matching numerical size constraints.';
+      'எண் அளவுக் கட்டுப்பாடுகளுக்குப் பொருந்தும் படிவத் தீவுகள்.';
 
   @override
-  String get shakashakaTitle => 'Shakashaka Rects';
+  String get shakashakaTitle => 'ஷகாஷகா ரெக்ட்ஸ்';
 
   @override
   String get shakashakaSubtitle =>
-      'Place triangular tiles to form rectangular white areas.';
+      'செவ்வக வெள்ளை பகுதிகளை உருவாக்க முக்கோண ஓடுகளை வைக்கவும்.';
 
   @override
-  String get litsTetrisTitle => 'LITS Tetromino';
+  String get litsTetrisTitle => 'LITS டெட்ரோமினோ';
 
   @override
   String get litsTetrisSubtitle =>
-      'Place tetrominoes in rooms with no adjacent duplicates.';
+      'டெட்ரோமினோக்களை அருகில் உள்ள நகல்கள் இல்லாத அறைகளில் வைக்கவும்.';
 
   @override
-  String get tapaWallTitle => 'Tapa Wall';
+  String get tapaWallTitle => 'டப்பா சுவர்';
 
   @override
   String get tapaWallSubtitle =>
-      'Shade cells to form a continuous black wall pattern.';
+      'தொடர்ச்சியான கருப்பு சுவர் வடிவத்தை உருவாக்க நிழல் செல்கள்.';
 
   @override
-  String get triangularBridgesTitle => 'Triangular Bridges';
+  String get triangularBridgesTitle => 'முக்கோண பாலங்கள்';
 
   @override
   String get triangularBridgesSubtitle =>
-      'Connect islands in 3 directions meeting requirements.';
+      'தேவைகளை பூர்த்தி செய்யும் தீவுகளை 3 திசைகளில் இணைக்கவும்.';
 
   @override
-  String get rippleEffectTitle => 'Ripple Effect';
+  String get rippleEffectTitle => 'சிற்றலை விளைவு';
 
   @override
   String get rippleEffectSubtitle =>
-      'Fill numbers in rooms respecting spacing distance constraints.';
+      'இடைவெளி தூரக் கட்டுப்பாடுகளைப் பொறுத்து அறைகளில் எண்களை நிரப்பவும்.';
 
   @override
-  String get suguruTectonicTitle => 'Suguru Grid';
+  String get suguruTectonicTitle => 'சுகுரு கட்டம்';
 
   @override
   String get suguruTectonicSubtitle =>
-      'Fill room blocks with numbers 1 to K with no neighbors equal.';
+      'அறைத் தொகுதிகளை 1 முதல் K வரை உள்ள எண்களுடன் அண்டை நாடுகளுக்கு சமமாக நிரப்பவும்.';
 
   @override
-  String get tennerGridTitle => 'Tenner Grid';
+  String get tennerGridTitle => 'டென்னர் கட்டம்';
 
   @override
   String get tennerGridSubtitle =>
-      'Fill rows with digits 0-9 matching column totals.';
+      'நெடுவரிசையின் மொத்த எண்ணிக்கையுடன் 0-9 பொருந்தக்கூடிய இலக்கங்களுடன் வரிசைகளை நிரப்பவும்.';
 
   @override
-  String get kakurasuSumsTitle => 'Kakurasu Sums';
+  String get kakurasuSumsTitle => 'ககுராசு தொகைகள்';
 
   @override
   String get kakurasuSumsSubtitle =>
-      'Shade cells to meet weighted row/col index sums.';
+      'எடையுள்ள வரிசை/கோல் குறியீட்டுத் தொகைகளைச் சந்திக்க நிழல் செல்கள்.';
 
   @override
-  String get corralLoopTitle => 'Corral Loop';
+  String get corralLoopTitle => 'கோரல் லூப்';
 
   @override
   String get corralLoopSubtitle =>
-      'Draw a single loop enclosing numbers matching visibility.';
+      'பார்வைக்கு பொருந்தும் எண்களை இணைக்கும் ஒற்றை வளையத்தை வரையவும்.';
 
   @override
-  String get stostoneTitle => 'Stostone Gravity';
+  String get stostoneTitle => 'ஸ்டோஸ்டோன் ஈர்ப்பு';
 
   @override
   String get stostoneSubtitle =>
-      'Shade cells that drop down to fill bottom rows perfectly.';
+      'கீழ் வரிசைகளை முழுமையாக நிரப்ப கீழே விழும் செல்கள் நிழல்.';
 
   @override
-  String get tripletsLogicTitle => 'Triplets Trio';
+  String get tripletsLogicTitle => 'மும்மூர்த்திகள் மூவர்';
 
   @override
   String get tripletsLogicSubtitle =>
-      'Fill grid with three shapes avoiding three-in-a-row.';
+      'ஒரு வரிசையில் மூன்று வடிவங்களைத் தவிர்த்து, கட்டத்தை நிரப்பவும்.';
 
   @override
   String get galaxiesSymTitle => 'Galaxies Symmetry';
 
   @override
   String get galaxiesSymSubtitle =>
-      'Divide grid into rotationally symmetric galaxy shapes.';
+      'கட்டத்தை சுழற்சி சமச்சீர் விண்மீன் வடிவங்களாக பிரிக்கவும்.';
 
   @override
-  String get matrixMultiplierMatchTitle => 'Matrix Matcher';
+  String get matrixMultiplierMatchTitle => 'மேட்ரிக்ஸ் மேட்சர்';
 
   @override
   String get matrixMultiplierMatchSubtitle =>
-      'Multiply row and column values to match target dot product.';
+      'இலக்கு புள்ளி தயாரிப்புடன் பொருந்த வரிசை மற்றும் நெடுவரிசை மதிப்புகளை பெருக்கவும்.';
 
   @override
-  String get primeFactorTreesTitle => 'Prime Factor Trees';
+  String get primeFactorTreesTitle => 'முதன்மை காரணி மரங்கள்';
 
   @override
   String get primeFactorTreesSubtitle =>
-      'Decompose composite numbers into prime leaf factor pairs.';
+      'கலப்பு எண்களை பிரதான இலை காரணி ஜோடிகளாக சிதைக்கவும்.';
 
   @override
-  String get vektorVectorTitle => 'Vector Vector';
+  String get vektorVectorTitle => 'திசையன் திசையன்';
 
   @override
   String get vektorVectorSubtitle =>
-      'Scale vectors to make their sum land on the target.';
+      'திசையன்களை அவற்றின் தொகை இலக்கை அடைய அளவிடவும்.';
 
   @override
-  String get binomialMatchTitle => 'Binomial Match';
+  String get binomialMatchTitle => 'இருசொற் பொருத்தம்';
 
   @override
   String get binomialMatchSubtitle =>
-      'Match quadratic formulas with factored binomial values.';
+      'காரணியாக்கப்பட்ட பைனோமியல் மதிப்புகளுடன் இருபடி சூத்திரங்களைப் பொருத்தவும்.';
 
   @override
-  String get percentageShoppingTitle => 'Percentage Shopping';
+  String get percentageShoppingTitle => 'சதவீதம் ஷாப்பிங்';
 
   @override
   String get percentageShoppingSubtitle =>
-      'Calculate discount percentages and final checkout totals.';
+      'தள்ளுபடி சதவீதங்கள் மற்றும் இறுதி செக்அவுட் மொத்தங்களைக் கணக்கிடுங்கள்.';
 
   @override
-  String get cryptoArithmeticTitle => 'Crypto-Arithmetic';
+  String get cryptoArithmeticTitle => 'கிரிப்டோ-எண்கணிதம்';
 
   @override
   String get cryptoArithmeticSubtitle =>
-      'Crack character-digit substitution cipher math problems.';
+      'கிராக் எழுத்து-இலக்க மாற்று மறைக்குறியீடு கணித சிக்கல்கள்.';
 
   @override
-  String get fractionalPizzaTitle => 'Fractional Pizza';
+  String get fractionalPizzaTitle => 'பகுதியளவு பீஸ்ஸா';
 
   @override
   String get fractionalPizzaSubtitle =>
-      'Partition pizza slices to match target sum fractions.';
+      'இலக்குத் தொகைப் பின்னங்களைப் பொருத்த பீஸ்ஸா துண்டுகளைப் பிரிக்கவும்.';
 
   @override
-  String get numberBondsTitle => 'Number Bonds';
+  String get numberBondsTitle => 'எண் பத்திரங்கள்';
 
   @override
   String get numberBondsSubtitle =>
-      'Link node values to equal a target connection sum.';
+      'இலக்கு இணைப்புத் தொகைக்கு சமமான இணைப்பு முனை மதிப்புகள்.';
 
   @override
-  String get gridSumLineTitle => 'Grid Sum Line';
+  String get gridSumLineTitle => 'கிரிட் சம் லைன்';
 
   @override
   String get gridSumLineSubtitle =>
-      'Draw a path whose values evaluate exactly to the target.';
+      'இலக்கை சரியாக மதிப்பிடும் ஒரு பாதையை வரையவும்.';
 
   @override
-  String get binaryScaleBalanceTitle => 'Binary Scale Balance';
+  String get binaryScaleBalanceTitle => 'பைனரி ஸ்கேல் பேலன்ஸ்';
 
   @override
   String get binaryScaleBalanceSubtitle =>
-      'Balance decimal weight using power-of-two blocks.';
+      'பவர் ஆஃப் டூ பிளாக்குகளைப் பயன்படுத்தி தசம எடையை சமநிலைப்படுத்தவும்.';
 
   @override
-  String get moduloPathTitle => 'Modulo Path';
+  String get moduloPathTitle => 'மாடுலோ பாதை';
 
   @override
   String get moduloPathSubtitle =>
-      'Traverse grid cells matching modulo remainder values.';
+      'டிராவர்ஸ் கிரிட் செல்கள் மாடுலோ எஞ்சிய மதிப்புகளுடன் பொருந்தும்.';
 
   @override
-  String get digitSwapEqTitle => 'Digit Swap Equations';
+  String get digitSwapEqTitle => 'இலக்க இடமாற்று சமன்பாடுகள்';
 
   @override
   String get digitSwapEqSubtitle =>
-      'Swap single digits between equations to correct both.';
+      'இரண்டையும் சரிசெய்ய சமன்பாடுகளுக்கு இடையில் ஒற்றை இலக்கங்களை மாற்றவும்.';
 
   @override
-  String get areaPerimeterMatchTitle => 'Area & Perimeter';
+  String get areaPerimeterMatchTitle => 'பகுதி & சுற்றளவு';
 
   @override
   String get areaPerimeterMatchSubtitle =>
-      'Draw rectangles matching target area and perimeter values.';
+      'இலக்கு பகுதி மற்றும் சுற்றளவு மதிப்புகளுடன் பொருந்தக்கூடிய செவ்வகங்களை வரையவும்.';
 
   @override
-  String get inequalityBalanceOpsTitle => 'Inequality Balance';
+  String get inequalityBalanceOpsTitle => 'சமத்துவமின்மை சமநிலை';
 
   @override
   String get inequalityBalanceOpsSubtitle =>
-      'Place inequality symbols between complex math terms.';
+      'சிக்கலான கணித சொற்களுக்கு இடையில் சமத்துவமின்மை குறியீடுகளை வைக்கவும்.';
 
   @override
-  String get graphCoordinatePlotTitle => 'Graph Plotter';
+  String get graphCoordinatePlotTitle => 'கிராஃப் ப்ளாட்டர்';
 
   @override
-  String get graphCoordinatePlotSubtitle =>
-      'Plot grid coordinates matching linear/quadratic curves.';
+  String get graphCoordinatePlotSubtitle => 'ப்ளாட் கிரிட் ஒருங்கிணைக்கிறது.';
 
   @override
-  String get baseConversionRunTitle => 'Base Conversion';
+  String get baseConversionRunTitle => 'அடிப்படை மாற்றம்';
 
   @override
   String get baseConversionRunSubtitle =>
-      'Convert values between binary, decimal, hex, and octal.';
+      'பைனரி, தசமம், ஹெக்ஸ் மற்றும் ஆக்டல் இடையே மதிப்புகளை மாற்றவும்.';
 
   @override
-  String get unitConverterProTitle => 'Unit Converter';
+  String get unitConverterProTitle => 'அலகு மாற்றி';
 
   @override
   String get unitConverterProSubtitle =>
-      'Answer quick unit conversions under time limits.';
+      'நேர வரம்புகளின் கீழ் விரைவான அலகு மாற்றங்களுக்கு பதிலளிக்கவும்.';
 
   @override
-  String get auditoryNBackTitle => 'Auditory N-Back';
+  String get auditoryNBackTitle => 'ஆடிட்டரி என்-பேக்';
 
   @override
   String get auditoryNBackSubtitle =>
-      'Match spoken letters heard N steps back from memory.';
+      'N நினைவகத்திலிருந்து பின்வாங்கப்பட்ட N அடிகளைக் கேட்ட பேச்சு எழுத்துக்களைப் பொருத்து.';
 
   @override
-  String get abstractPatternRecallTitle => 'Pattern Layering';
+  String get abstractPatternRecallTitle => 'பேட்டர்ன் லேயரிங்';
 
   @override
   String get abstractPatternRecallSubtitle =>
-      'Reconstruct layered colorful shapes from memory study.';
+      'நினைவக ஆய்வில் இருந்து அடுக்கு வண்ணமயமான வடிவங்களை மறுகட்டமைக்கவும்.';
 
   @override
-  String get roomInspectorTitle => 'Room Inspector';
+  String get roomInspectorTitle => 'அறை ஆய்வாளர்';
 
   @override
   String get roomInspectorSubtitle =>
-      'Identify furniture modifications made while screen was blank.';
+      'திரை காலியாக இருக்கும்போது செய்யப்பட்ட மரச்சாமான்கள் மாற்றங்களை அடையாளம் காணவும்.';
 
   @override
-  String get voiceToFaceMatchTitle => 'Voice-Face Match';
+  String get voiceToFaceMatchTitle => 'குரல்-முகப் பொருத்தம்';
 
   @override
   String get voiceToFaceMatchSubtitle =>
-      'Select correct face associated with spoken audio voice clip.';
+      'பேச்சு ஆடியோ குரல் கிளிப்புடன் தொடர்புடைய சரியான முகத்தைத் தேர்ந்தெடுக்கவும்.';
 
   @override
-  String get spatialGridMemory3DTitle => '3D Spatial Memory';
+  String get spatialGridMemory3DTitle => '3D ஸ்பேஷியல் மெமரி';
 
   @override
   String get spatialGridMemory3DSubtitle =>
-      'Recall flashed blocks in a rotated 3D cube grid structure.';
+      'சுழற்றப்பட்ட 3D கனசதுர கட்ட அமைப்பில் ஃபிளாஷ் செய்யப்பட்ட தொகுதிகளை நினைவுபடுத்தவும்.';
 
   @override
-  String get sequenceStackTitle => 'Sequence Stack';
+  String get sequenceStackTitle => 'வரிசை அடுக்கு';
 
   @override
   String get sequenceStackSubtitle =>
-      'Reconstruct plate stack additions and removals in order.';
+      'தட்டு ஸ்டாக் சேர்த்தல் மற்றும் அகற்றுதல்களை வரிசையாக மறுகட்டமைக்கவும்.';
 
   @override
-  String get semanticCategoryRecallTitle => 'Category Recall';
+  String get semanticCategoryRecallTitle => 'வகை நினைவு';
 
   @override
   String get semanticCategoryRecallSubtitle =>
-      'Identify study words matching requested category targets.';
+      'கோரப்பட்ட வகை இலக்குகளுடன் பொருந்தும் ஆய்வு வார்த்தைகளை அடையாளம் காணவும்.';
 
   @override
-  String get gridDisplacementTitle => 'Grid Displacement';
+  String get gridDisplacementTitle => 'கட்டம் இடமாற்றம்';
 
   @override
   String get gridDisplacementSubtitle =>
-      'Identify shifted icons comparing layout to original.';
+      'அசல் அமைப்பை ஒப்பிட்டு மாற்றப்பட்ட ஐகான்களை அடையாளம் காணவும்.';
 
   @override
-  String get soundSequenceMatchTitle => 'Sound Sequence Match';
+  String get soundSequenceMatchTitle => 'ஒலி வரிசை பொருத்தம்';
 
   @override
   String get soundSequenceMatchSubtitle =>
-      'Repeat note sequences played on a virtual keyboard.';
+      'மெய்நிகர் விசைப்பலகையில் இயக்கப்பட்ட குறிப்பு வரிசைகளை மீண்டும் செய்யவும்.';
 
   @override
-  String get cardCountingMemoryTitle => 'Card Counter';
+  String get cardCountingMemoryTitle => 'அட்டை கவுண்டர்';
 
   @override
   String get cardCountingMemorySubtitle =>
-      'Identify cards already dealt in continuous card deal runs.';
+      'தொடர்ச்சியான கார்டு டீல் ரன்களில் ஏற்கனவே கொடுக்கப்பட்ட கார்டுகளை அடையாளம் காணவும்.';
 
   @override
-  String get directionsRecallTitle => 'Directions Recall';
+  String get directionsRecallTitle => 'திசைகள் நினைவு';
 
   @override
   String get directionsRecallSubtitle =>
-      'Navigate grid maps matching path directions from memory.';
+      'நினைவகத்திலிருந்து பாதை திசைகளுடன் பொருந்தக்கூடிய கட்ட வரைபடங்களுக்கு செல்லவும்.';
 
   @override
-  String get eventTimelineMemoryTitle => 'Event Timeline';
+  String get eventTimelineMemoryTitle => 'நிகழ்வு காலவரிசை';
 
   @override
   String get eventTimelineMemorySubtitle =>
-      'Arrange historical/fictional event cards chronologically.';
+      'வரலாற்று/கற்பனை நிகழ்வு அட்டைகளை காலவரிசைப்படி வரிசைப்படுத்துங்கள்.';
 
   @override
-  String get featureMatrixRecallTitle => 'Feature Matrix';
+  String get featureMatrixRecallTitle => 'அம்சம் மேட்ரிக்ஸ்';
 
   @override
   String get featureMatrixRecallSubtitle =>
-      'Answer query prompts about cell shape-color attributes.';
+      'செல் வடிவம்-வண்ணப் பண்புகளைப் பற்றிய பதில் வினவல் கேட்கிறது.';
 
   @override
-  String get delayedMatchSampleTitle => 'Delayed Match';
+  String get delayedMatchSampleTitle => 'தாமதமான போட்டி';
 
   @override
   String get delayedMatchSampleSubtitle =>
-      'Match target symbol after solving math distractors.';
+      'கணித கவனச்சிதறல்களைத் தீர்த்த பிறகு இலக்கு சின்னத்தைப் பொருத்தவும்.';
 
   @override
-  String get symbolDigitAssocTitle => 'Symbol-Digit Assoc';
+  String get symbolDigitAssocTitle => 'சின்னம்-இலக்க அசோக்';
 
   @override
   String get symbolDigitAssocSubtitle =>
-      'Solve symbol translation sheets matching digit keys.';
+      'இலக்க விசைகளுடன் பொருந்தும் குறியீட்டு மொழிபெயர்ப்புத் தாள்களைத் தீர்க்கவும்.';
 
   @override
-  String get dualTaskMemoryTitle => 'Dual-Task Memory';
+  String get dualTaskMemoryTitle => 'இரட்டை பணி நினைவகம்';
 
   @override
   String get dualTaskMemorySubtitle =>
-      'Memorize word sets while resolving quick arithmetic tasks.';
+      'விரைவான எண்கணித பணிகளை தீர்க்கும் போது வார்த்தை தொகுப்புகளை மனப்பாடம் செய்யுங்கள்.';
 
   @override
-  String get actionSequenceRecallTitle => 'Action Recall';
+  String get actionSequenceRecallTitle => 'அதிரடி ரீகால்';
 
   @override
   String get actionSequenceRecallSubtitle =>
-      'Repeat character gesture animation sequences in order.';
+      'கேரக்டர் சைகை அனிமேஷன் வரிசைகளை வரிசையாக மீண்டும் செய்யவும்.';
 
   @override
-  String get tangramPolygonTitle => 'Tangram Fit';
+  String get tangramPolygonTitle => 'டாங்க்ராம் பொருத்தம்';
 
   @override
   String get tangramPolygonSubtitle =>
-      'Arrange polygon shapes to fill silhouette outlines.';
+      'சில்ஹவுட் அவுட்லைன்களை நிரப்ப பலகோண வடிவங்களை வரிசைப்படுத்தவும்.';
 
   @override
-  String get mazeNav3DTitle => '3D Maze Nav';
+  String get mazeNav3DTitle => '3D பிரமை நவ்';
 
   @override
   String get mazeNav3DSubtitle =>
-      'Navigate 3D isometric maze routes from first-person view.';
+      'முதல் நபர் பார்வையில் இருந்து 3D ஐசோமெட்ரிக் பிரமை வழிகளுக்கு செல்லவும்.';
 
   @override
-  String get isometricProjectionTitle => 'Isometric Projector';
+  String get isometricProjectionTitle => 'ஐசோமெட்ரிக் ப்ரொஜெக்டர்';
 
   @override
   String get isometricProjectionSubtitle =>
-      'Match 3D block figures to orthographic 2D top/front views.';
+      'ஆர்த்தோகிராஃபிக் 2D மேல்/முன் காட்சிகளுடன் 3D பிளாக் புள்ளிவிவரங்களைப் பொருத்தவும்.';
 
   @override
-  String get polyominoPackingTitle => 'Polyomino Packing';
+  String get polyominoPackingTitle => 'பாலியோமினோ பேக்கிங்';
 
   @override
   String get polyominoPackingSubtitle =>
-      'Pack random polyomino block pieces into target areas.';
+      'சீரற்ற பாலியோமினோ தொகுதி துண்டுகளை இலக்கு பகுதிகளில் அடைக்கவும்.';
 
   @override
-  String get spatialGridRotationTitle => 'Spatial Grid Rotation';
+  String get spatialGridRotationTitle => 'ஸ்பேஷியல் கிரிட் சுழற்சி';
 
   @override
   String get spatialGridRotationSubtitle =>
-      'Match 3D block arrangements rotated along axis coordinates.';
+      'அச்சு ஆயத்தொலைவுகளுடன் சுழற்றப்பட்ட 3D தொகுதி ஏற்பாடுகளை பொருத்தவும்.';
 
   @override
-  String get wireLoopGameTitle => 'Wire Loop';
+  String get wireLoopGameTitle => 'கம்பி வளையம்';
 
   @override
   String get wireLoopGameSubtitle =>
-      'Drag metal rings along wire splines without contact.';
+      'தொடர்பு இல்லாமல் கம்பி ஸ்ப்லைன்களுடன் உலோக வளையங்களை இழுக்கவும்.';
 
   @override
-  String get origamiUnfoldTitle => 'Origami Unfold';
+  String get origamiUnfoldTitle => 'ஓரிகமி அன்ஃபோல்ட்';
 
   @override
   String get origamiUnfoldSubtitle =>
-      'Identify hole punch patterns after unfolding folded sheets.';
+      'மடிந்த தாள்களை விரித்த பிறகு துளை பஞ்ச் வடிவங்களை அடையாளம் காணவும்.';
 
   @override
-  String get ropeTangleSolverTitle => 'Rope Untangler';
+  String get ropeTangleSolverTitle => 'கயிறு அவிழ்ப்பான்';
 
   @override
   String get ropeTangleSolverSubtitle =>
-      'Drag nodes to layout planar graphs with zero line crosses.';
+      'பூஜ்ஜிய கோடு குறுக்குகளுடன் பிளானர் வரைபடங்களை அமைக்க முனைகளை இழுக்கவும்.';
 
   @override
-  String get gridFitTetrisTitle => 'Grid Fit Solver';
+  String get gridFitTetrisTitle => 'கிரிட் ஃபிட் தீர்வு';
 
   @override
   String get gridFitTetrisSubtitle =>
-      'Arrange static irregular blocks to fit container bounds.';
+      'கொள்கலன் எல்லைகளை பொருத்த நிலையான ஒழுங்கற்ற தொகுதிகள் ஏற்பாடு.';
 
   @override
-  String get vectorGridAlignmentTitle => 'Vector Alignment';
+  String get vectorGridAlignmentTitle => 'திசையன் சீரமைப்பு';
 
   @override
   String get vectorGridAlignmentSubtitle =>
-      'Scale and rotate shapes to match shadow template targets.';
+      'நிழல் டெம்ப்ளேட் இலக்குகளை பொருத்த வடிவங்களை அளவிடவும் மற்றும் சுழற்றவும்.';
 
   @override
-  String get blockStackingPhysicsTitle => 'Block Stacking';
+  String get blockStackingPhysicsTitle => 'பிளாக் ஸ்டாக்கிங்';
 
   @override
   String get blockStackingPhysicsSubtitle =>
-      'Stack irregular block panels balancing gravity weight.';
+      'ஈர்ப்பு எடையை சமநிலைப்படுத்தும் ஒழுங்கற்ற தொகுதி பேனல்களை அடுக்கி வைக்கவும்.';
 
   @override
-  String get crossSectionMatch3DTitle => '3D Cross Section';
+  String get crossSectionMatch3DTitle => '3D குறுக்குவெட்டு';
 
   @override
   String get crossSectionMatch3DSubtitle =>
-      'Identify 2D slice geometries cut from 3D shapes.';
+      '3D வடிவங்களில் இருந்து வெட்டப்பட்ட 2D ஸ்லைஸ் வடிவவியலைக் கண்டறியவும்.';
 
   @override
-  String get symmetryPaintTitle => 'Symmetry Paint';
+  String get symmetryPaintTitle => 'சமச்சீர் பெயிண்ட்';
 
   @override
   String get symmetryPaintSubtitle =>
-      'Draw mirror image segments reflecting across symmetry axes.';
+      'சமச்சீர் அச்சுகள் முழுவதும் பிரதிபலிக்கும் கண்ணாடி படப் பகுதிகளை வரையவும்.';
 
   @override
-  String get rollingBlockBloxTitle => 'Rolling Block';
+  String get rollingBlockBloxTitle => 'ரோலிங் பிளாக்';
 
   @override
   String get rollingBlockBloxSubtitle =>
-      'Roll block pieces to land vertically in target slots.';
+      'இலக்கு ஸ்லாட்டுகளில் செங்குத்தாக தரையிறங்க பிளாக் துண்டுகளை உருட்டவும்.';
 
   @override
-  String get perspectiveShiftViewTitle => 'Perspective Shift';
+  String get perspectiveShiftViewTitle => 'முன்னோக்கு மாற்றம்';
 
   @override
   String get perspectiveShiftViewSubtitle =>
-      'Rotate block clusters until they spell letters/words.';
+      'எழுத்துகள்/சொற்களை உச்சரிக்கும் வரை தொகுதி கிளஸ்டர்களை சுழற்றுங்கள்.';
 
   @override
-  String get networkFlowSphericalTitle => 'Network Flow';
+  String get networkFlowSphericalTitle => 'நெட்வொர்க் ஓட்டம்';
 
   @override
   String get networkFlowSphericalSubtitle =>
-      'Connect grid flows on wrapping cylindrical coordinates.';
+      'ரேப்பிங் உருளை ஆயங்களில் கிரிட் பாய்களை இணைக்கவும்.';
 
   @override
-  String get layeredSilhouetteBlendTitle => 'Silhouette Blend';
+  String get layeredSilhouetteBlendTitle => 'சில்ஹவுட் கலவை';
 
   @override
   String get layeredSilhouetteBlendSubtitle =>
-      'Stack colored layers to match target translucent shapes.';
+      'இலக்கு ஒளிஊடுருவக்கூடிய வடிவங்களைப் பொருத்த வண்ண அடுக்குகளை அடுக்கி வைக்கவும்.';
 
   @override
-  String get wordWheelPangramTitle => 'Word Anagrams';
+  String get wordWheelPangramTitle => 'வார்த்தை அனகிராம்கள்';
 
   @override
   String get wordWheelPangramSubtitle =>
-      'Construct words containing central target letters from wheels.';
+      'சக்கரங்களிலிருந்து மைய இலக்கு எழுத்துக்களைக் கொண்ட சொற்களை உருவாக்கவும்.';
 
   @override
-  String get letterGridSwapperTitle => 'Letter Swapper';
+  String get letterGridSwapperTitle => 'கடிதம் மாற்றுபவர்';
 
   @override
   String get letterGridSwapperSubtitle =>
-      'Swap adjacent letter tiles to complete row and col words.';
+      'வரிசை மற்றும் கோல் வார்த்தைகளை முடிக்க, அருகிலுள்ள எழுத்து ஓடுகளை மாற்றவும்.';
 
   @override
-  String get synonymMatchTitle => 'Synonym Match';
+  String get synonymMatchTitle => 'ஒத்தப் பொருத்தம்';
 
   @override
   String get synonymMatchSubtitle =>
-      'Match falling word targets with synonyms or antonyms.';
+      'விழும் வார்த்தை இலக்குகளை ஒத்த சொற்கள் அல்லது எதிர்ச்சொற்களுடன் பொருத்தவும்.';
 
   @override
-  String get vowelDropTitle => 'Vowel Drop';
+  String get vowelDropTitle => 'உயிர் துளி';
 
   @override
   String get vowelDropSubtitle =>
-      'Drop vowels into coordinate grids completing words.';
+      'வார்த்தைகளை நிறைவு செய்யும் ஆய கட்டங்களில் உயிரெழுத்துக்களை விடுங்கள்.';
 
   @override
-  String get letterBalanceScaleTitle => 'Word Balance Scale';
+  String get letterBalanceScaleTitle => 'வார்த்தை இருப்பு அளவுகோல்';
 
   @override
   String get letterBalanceScaleSubtitle =>
-      'Spell words whose letter values balance weights.';
+      'சொற்களை உச்சரிக்கவும், அதன் எழுத்து சமநிலை எடைகளை மதிப்பிடுகிறது.';
 
   @override
-  String get wordChainShiritoriTitle => 'Word Chain';
+  String get wordChainShiritoriTitle => 'வார்த்தை சங்கிலி';
 
   @override
   String get wordChainShiritoriSubtitle =>
-      'Link word loops starting with preceding letter outputs.';
+      'முந்தைய எழுத்து வெளியீடுகளுடன் தொடங்கும் வார்த்தை சுழல்களை இணைக்கவும்.';
 
   @override
-  String get affixBuilderTitle => 'Affix Builder';
+  String get affixBuilderTitle => 'இணைப்பு பில்டர்';
 
   @override
   String get affixBuilderSubtitle =>
-      'Combine prefixes/suffixes to construct target vocabularies.';
+      'இலக்கு சொல்லகராதிகளை உருவாக்க முன்னொட்டுகள்/பின்னொட்டுகளை இணைக்கவும்.';
 
   @override
-  String get decipherCrypticCluesTitle => 'Cryptic Decipher';
+  String get decipherCrypticCluesTitle => 'க்ரிப்டிக் டெசிஃபர்';
 
   @override
   String get decipherCrypticCluesSubtitle =>
-      'Solve word-play puzzles and decrypt spelling riddles.';
+      'வார்த்தை விளையாட்டு புதிர்களை தீர்க்கவும் மற்றும் எழுத்துப்பிழை புதிர்களை மறைகுறியாக்கவும்.';
 
   @override
-  String get boggleWordSearchTitle => 'Boggle Connect';
+  String get boggleWordSearchTitle => 'பாக்ல் கனெக்ட்';
 
   @override
   String get boggleWordSearchSubtitle =>
-      'Trace adjacent connected paths to find hidden words.';
+      'மறைக்கப்பட்ட வார்த்தைகளைக் கண்டறிய, இணைக்கப்பட்ட பாதைகளை கண்டறியவும்.';
 
   @override
-  String get idiomUnscrambleTitle => 'Idiom Unscramble';
+  String get idiomUnscrambleTitle => 'இடியோம் அன்சிக்ரம்பிள்';
 
   @override
   String get idiomUnscrambleSubtitle =>
-      'Arrange scrambled word arrays to match idiom meanings.';
+      'சொற்பொருள் அர்த்தங்களுடன் பொருந்த, துருவிய வார்த்தை வரிசைகளை ஒழுங்கமைக்கவும்.';
 
   @override
-  String get letterPyramidsTitle => 'Letter Pyramids';
+  String get letterPyramidsTitle => 'எழுத்து பிரமிடுகள்';
 
   @override
   String get letterPyramidsSubtitle =>
-      'Build word towers adding single anagram letters per tier.';
+      'ஒரு அடுக்குக்கு ஒற்றை அனகிராம் எழுத்துக்களைச் சேர்த்து வார்த்தை கோபுரங்களை உருவாக்கவும்.';
 
   @override
-  String get soundAlikeHomophonesTitle => 'Homophone Matches';
+  String get soundAlikeHomophonesTitle => 'ஹோமோஃபோன் பொருத்தங்கள்';
 
   @override
   String get soundAlikeHomophonesSubtitle =>
-      'Identify correct homophone spellings for sentences.';
+      'வாக்கியங்களுக்கான சரியான ஹோமோஃபோன் எழுத்துப்பிழைகளை அடையாளம் காணவும்.';
 
   @override
-  String get wordGridSudokuTitle => 'Word Sudoku';
+  String get wordGridSudokuTitle => 'வார்த்தை சுடோகு';
 
   @override
   String get wordGridSudokuSubtitle =>
-      'Tesselate letters in grid rows forming words.';
+      'வார்த்தைகளை உருவாக்கும் கட்ட வரிசைகளில் டெஸ்ஸலேட் எழுத்துக்கள்.';
 
   @override
-  String get portmanteauFactoryTitle => 'Portmanteau Factory';
+  String get portmanteauFactoryTitle => 'Portmanteau தொழிற்சாலை';
 
   @override
   String get portmanteauFactorySubtitle =>
-      'Merge semantic components creating compound words.';
+      'கூட்டு சொற்களை உருவாக்கும் சொற்பொருள் கூறுகளை ஒன்றிணைக்கவும்.';
 
   @override
-  String get codedCrosswordsCodeTitle => 'Codewords Crossword';
+  String get codedCrosswordsCodeTitle =>
+      'குறியீட்டு வார்த்தைகள் குறுக்கெழுத்து';
 
   @override
   String get codedCrosswordsCodeSubtitle =>
-      'Solve grid crosswords matching number-to-letter codes.';
+      'எண்-க்கு-எழுத்து குறியீடுகளுடன் பொருந்தக்கூடிய கிரிட் குறுக்கெழுத்துக்களைத் தீர்க்கவும்.';
 
   @override
-  String get wordSnakeTrailTitle => 'Word Snake';
+  String get wordSnakeTrailTitle => 'வார்த்தை பாம்பு';
 
   @override
   String get wordSnakeTrailSubtitle =>
-      'Trace snake-like letter trails spelling thematic words.';
+      'கருப்பொருள் சொற்களை உச்சரிக்கும் பாம்பு போன்ற எழுத்து சுவடுகளைக் கண்டறியவும்.';
 
   @override
-  String get typingRhythmSpeedTitle => 'Typing Flow';
+  String get typingRhythmSpeedTitle => 'தட்டச்சு ஓட்டம்';
 
   @override
   String get typingRhythmSpeedSubtitle =>
-      'Type vocabularies matching metronome rhythm beats.';
+      'மெட்ரோனோம் ரிதம் பீட்களுடன் பொருந்தக்கூடிய சொற்களஞ்சிய வகை.';
 
   @override
   String get errorSomethingWrong => 'Something went wrong';

@@ -3421,877 +3421,754 @@ class AppLocalizationsZh extends AppLocalizations {
   String get negativeSpaceDetectionMessage => '识别空间中隐藏的物体。';
 
   @override
-  String get shikakuTitle => 'Shikaku';
+  String get shikakuTitle => '鹿角';
 
   @override
-  String get shikakuSubtitle =>
-      'DIVIDE THE GRID INTO SQUARES AND RECTANGLES MATCHING THE NUMBERS.';
+  String get shikakuSubtitle => '将网格划分为与数字匹配的正方形和矩形。';
 
   @override
-  String get countdownMathTitle => 'Countdown Math';
+  String get countdownMathTitle => '倒数数学';
 
   @override
-  String get countdownMathSubtitle =>
-      'COMBINE RANDOM NUMBERS TO CALCULATE THE THREE-DIGIT TARGET.';
+  String get countdownMathSubtitle => '组合随机数来计算三位数目标。';
 
   @override
-  String get narrativeRecallTitle => 'Narrative Recall';
+  String get narrativeRecallTitle => '叙事回忆';
 
   @override
-  String get narrativeRecallSubtitle =>
-      'READ A STORY AND RECALL SPECIFIC QUANTITATIVE AND FACTUAL DETAILS.';
+  String get narrativeRecallSubtitle => '阅读一个故事并回忆起具体的定量和事实细节。';
 
   @override
-  String get shellGameTitle => 'Shell Game';
+  String get shellGameTitle => '猜壳游戏';
 
   @override
-  String get shellGameSubtitle =>
-      'TRACK A HIDDEN BALL AS THE SHUFFLING CUPS SWAP PLACES.';
+  String get shellGameSubtitle => '当洗牌的杯子交换位置时，追踪隐藏的球。';
 
   @override
-  String get typoglycemiaDecoderTitle => 'Typoglycemia Decoder';
+  String get typoglycemiaDecoderTitle => '低血糖解码器';
 
   @override
-  String get typoglycemiaDecoderSubtitle =>
-      'UNSCRAMBLE AND READ JUMBLED SENTENCES SPEEDILY.';
+  String get typoglycemiaDecoderSubtitle => '快速理清并阅读混乱的句子。';
 
   @override
-  String get shapeShifterTitle => 'Shape Shifter';
+  String get shapeShifterTitle => '变形者';
 
   @override
-  String get shapeShifterSubtitle => 'Tap the target shape-color combination.';
+  String get shapeShifterSubtitle => '点击目标形状-颜色组合。';
 
   @override
-  String get gokigenNanameTitle => 'Gokigen Naname';
+  String get gokigenNanameTitle => '五鬼源名';
 
   @override
-  String get gokigenNanameSubtitle =>
-      'Draw diagonals to connect points without loops.';
+  String get gokigenNanameSubtitle => '绘制对角线来连接没有环的点。';
 
   @override
-  String get matrixMultiplierTitle => 'Matrix Multiplier';
+  String get matrixMultiplierTitle => '矩阵乘法器';
 
   @override
-  String get matrixMultiplierSubtitle =>
-      'Select a row and column to multiply to the target.';
+  String get matrixMultiplierSubtitle => '选择要乘以目标的行和列。';
 
   @override
-  String get wordAssociationRecallTitle => 'Word Association';
+  String get wordAssociationRecallTitle => '词联想';
 
   @override
-  String get wordAssociationRecallSubtitle =>
-      'Recall paired word associations from memory.';
+  String get wordAssociationRecallSubtitle => '从记忆中回忆成对的单词关联。';
 
   @override
-  String get gearRotationTitle => 'Gear Rotation';
+  String get gearRotationTitle => '齿轮旋转';
 
   @override
-  String get gearRotationSubtitle =>
-      'Predict the rotation direction of the last gear.';
+  String get gearRotationSubtitle => '预测最后一个齿轮的旋转方向。';
 
   @override
-  String get wordWheelTitle => 'Word Wheel';
+  String get wordWheelTitle => '字轮';
 
   @override
-  String get wordWheelSubtitle =>
-      'Make words using letters on the wheel, including the center letter.';
+  String get wordWheelSubtitle => '使用轮盘上的字母（包括中心字母）组成单词。';
 
   @override
-  String get oddEvenFlashTitle => 'Odd-Even Flash';
+  String get oddEvenFlashTitle => '奇偶闪光';
 
   @override
-  String get oddEvenFlashSubtitle =>
-      'Quickly match the number parity with the color rule.';
+  String get oddEvenFlashSubtitle => '快速将数字奇偶性与颜色规则匹配。';
 
   @override
-  String get norinoriTitle => 'Norinori';
+  String get norinoriTitle => '纪则';
 
   @override
-  String get norinoriSubtitle =>
-      'Shade exactly two connected cells in each room.';
+  String get norinoriSubtitle => '准确地遮蔽每个房间中两个相连的单元格。';
 
   @override
-  String get algebraicBalanceTitle => 'Algebraic Balance';
+  String get algebraicBalanceTitle => '代数平衡';
 
   @override
-  String get algebraicBalanceSubtitle =>
-      'Solve the equations to find the target sum.';
+  String get algebraicBalanceSubtitle => '求解方程以找到目标总和。';
 
   @override
-  String get patternSequenceDrawTitle => 'Pattern Recall';
+  String get patternSequenceDrawTitle => '模式回忆';
 
   @override
-  String get patternSequenceDrawSubtitle =>
-      'Repeat the animated path sequence on the grid.';
+  String get patternSequenceDrawSubtitle => '在网格上重复动画路径序列。';
 
   @override
-  String get tangramTitle => 'Tangram Puzzle';
+  String get tangramTitle => '七巧板拼图';
 
   @override
-  String get tangramSubtitle =>
-      'Arrange the shapes to fill the target silhouette.';
+  String get tangramSubtitle => '排列形状以填充目标轮廓。';
 
   @override
-  String get semanticAssociationTitle => 'Association Word';
+  String get semanticAssociationTitle => '联想词';
 
   @override
-  String get semanticAssociationSubtitle =>
-      'Find the word connecting all three clues.';
+  String get semanticAssociationSubtitle => '找到连接所有三个线索的单词。';
 
   @override
-  String get peripheralFocusTitle => 'Peripheral Focus';
+  String get peripheralFocusTitle => '周边焦点';
 
   @override
-  String get peripheralFocusSubtitle =>
-      'React to flashing side panels while solving math.';
+  String get peripheralFocusSubtitle => '在解决数学问题时对闪烁的侧面板做出反应。';
 
   @override
-  String get masyuTitle => 'Masyu Loop';
+  String get masyuTitle => '马斯尤循环';
 
   @override
-  String get masyuSubtitle => 'Draw a single loop matching Masyu circle rules.';
+  String get masyuSubtitle => '绘制符合 Masyu 圆规则的单个循环。';
 
   @override
-  String get mathMazeTitle => 'Math Maze';
+  String get mathMazeTitle => '数学迷宫';
 
   @override
-  String get mathMazeSubtitle =>
-      'Trace a path that evaluates to the target total.';
+  String get mathMazeSubtitle => '跟踪计算结果为目标总数的路径。';
 
   @override
-  String get storyBuilderTitle => 'Story Builder';
+  String get storyBuilderTitle => '故事生成器';
 
   @override
-  String get storyBuilderSubtitle =>
-      'Reconstruct the chronological sequence of the story.';
+  String get storyBuilderSubtitle => '重建故事的时间顺序。';
 
   @override
-  String get mirrorMazeTitle => 'Mirror Maze';
+  String get mirrorMazeTitle => '镜子迷宫';
 
   @override
-  String get mirrorMazeSubtitle =>
-      'Redirect a laser beam using diagonal mirrors.';
+  String get mirrorMazeSubtitle => '使用对角镜重定向激光束。';
 
   @override
-  String get wordGridConnectionTitle => 'Word Connections';
+  String get wordGridConnectionTitle => '单词连接';
 
   @override
-  String get wordGridConnectionSubtitle =>
-      'Group 16 words into four categories of four.';
+  String get wordGridConnectionSubtitle => '将 16 个单词分为四类，每类四类。';
 
   @override
-  String get shapeShifterPeripheralTitle => 'Peripheral Shapes';
+  String get shapeShifterPeripheralTitle => '周边形状';
 
   @override
-  String get shapeShifterPeripheralSubtitle =>
-      'Track peripheral shape changes while matching central values.';
+  String get shapeShifterPeripheralSubtitle => '跟踪外围形状变化，同时匹配中心值。';
 
   @override
-  String get soundWaveMatchTitle => 'Sound Wave Match';
+  String get soundWaveMatchTitle => '声波匹配';
 
   @override
-  String get soundWaveMatchSubtitle =>
-      'Tap when the visual wave frequency aligns with pitch changes.';
+  String get soundWaveMatchSubtitle => '当视觉波频率与音高变化一致时点击。';
 
   @override
-  String get multiTrackCounterTitle => 'Multi-Track Counter';
+  String get multiTrackCounterTitle => '多轨计数器';
 
   @override
-  String get multiTrackCounterSubtitle =>
-      'Tap when any counter increments to a target multiplier.';
+  String get multiTrackCounterSubtitle => '当任何计数器递增到目标乘数时点击。';
 
   @override
-  String get colorWordMatchUpTitle => 'Color Match-Up';
+  String get colorWordMatchUpTitle => '颜色搭配';
 
   @override
-  String get colorWordMatchUpSubtitle =>
-      'Determine if two colored words match based on changing rules.';
+  String get colorWordMatchUpSubtitle => '根据变化的规则确定两个彩色单词是否匹配。';
 
   @override
-  String get signalAndNoiseTitle => 'Signal & Noise';
+  String get signalAndNoiseTitle => '信号与噪声';
 
   @override
-  String get signalAndNoiseSubtitle =>
-      'Locate target alphanumeric characters hidden in static noise.';
+  String get signalAndNoiseSubtitle => '定位隐藏在静态噪声中的目标字母数字字符。';
 
   @override
-  String get focusTunnelTitle => 'Focus Tunnel';
+  String get focusTunnelTitle => '聚焦隧道';
 
   @override
-  String get focusTunnelSubtitle =>
-      'Identify matching symbols appearing on moving tunnel walls.';
+  String get focusTunnelSubtitle => '识别移动隧道墙上出现的匹配符号。';
 
   @override
-  String get targetPursuerTitle => 'Target Pursuer';
+  String get targetPursuerTitle => '目标追击者';
 
   @override
-  String get targetPursuerSubtitle =>
-      'Track multiple overlapping circles and select the original target.';
+  String get targetPursuerSubtitle => '跟踪多个重叠的圆圈并选择原始目标。';
 
   @override
-  String get gridGazeTitle => 'Grid Gaze';
+  String get gridGazeTitle => '网格凝视';
 
   @override
-  String get gridGazeSubtitle =>
-      'Identify which grid cell flashed with a different duration.';
+  String get gridGazeSubtitle => '识别哪个网格单元闪烁了不同的持续时间。';
 
   @override
-  String get doubleTroubleTitle => 'Double Trouble';
+  String get doubleTroubleTitle => '双重麻烦';
 
   @override
-  String get doubleTroubleSubtitle =>
-      'Play two separate simple games simultaneously on split-screen.';
+  String get doubleTroubleSubtitle => '在分屏上同时玩两个单独的简单游戏。';
 
   @override
-  String get syncRhythmTitle => 'Sync Rhythm';
+  String get syncRhythmTitle => '同步节奏';
 
   @override
-  String get syncRhythmSubtitle =>
-      'Tap when visual metronome sweep matches syncopated beat.';
+  String get syncRhythmSubtitle => '当视觉节拍器扫描与切分音节拍匹配时点击。';
 
   @override
-  String get ghostTapTitle => 'Ghost Tap';
+  String get ghostTapTitle => '幽灵水龙头';
 
   @override
-  String get ghostTapSubtitle =>
-      'Tap when the invisible pulse reaches its maximum height.';
+  String get ghostTapSubtitle => '当看不见的脉冲达到最大高度时点击。';
 
   @override
-  String get attentionalRsvpTitle => 'Attentional RSVP';
+  String get attentionalRsvpTitle => '注意回复';
 
   @override
-  String get attentionalRsvpSubtitle =>
-      'Identify digits appearing in rapid serial letter flash.';
+  String get attentionalRsvpSubtitle => '识别快速串行字母闪烁中出现的数字。';
 
   @override
-  String get colorMazeNavTitle => 'Color Maze Nav';
+  String get colorMazeNavTitle => '彩色迷宫导航';
 
   @override
-  String get colorMazeNavSubtitle =>
-      'Navigate maze tiles matching dynamic permission colors.';
+  String get colorMazeNavSubtitle => '导航匹配动态权限颜色的迷宫图块。';
 
   @override
-  String get dynamicSalienceTitle => 'Dynamic Salience';
+  String get dynamicSalienceTitle => '动态显着性';
 
   @override
-  String get dynamicSalienceSubtitle =>
-      'Find the shape moving with slightly different dynamics.';
+  String get dynamicSalienceSubtitle => '找出以稍微不同的动力移动的形状。';
 
   @override
-  String get chalkAndTalkTitle => 'Chalk & Talk';
+  String get chalkAndTalkTitle => '粉笔与谈话';
 
   @override
-  String get chalkAndTalkSubtitle =>
-      'Type words heard in audio while ignoring visual distractors.';
+  String get chalkAndTalkSubtitle => '输入在音频中听到的单词，同时忽略视觉干扰。';
 
   @override
-  String get blinkDetectorTitle => 'Blink Detector';
+  String get blinkDetectorTitle => '眨眼检测器';
 
   @override
-  String get blinkDetectorSubtitle =>
-      'Tap the grid face that blinks twice in rapid succession.';
+  String get blinkDetectorSubtitle => '点击快速连续闪烁两次的网格面。';
 
   @override
-  String get frequencyTapTitle => 'Frequency Tap';
+  String get frequencyTapTitle => '频率抽头';
 
   @override
-  String get frequencyTapSubtitle =>
-      'Tap the button matching the target light pulse frequency.';
+  String get frequencyTapSubtitle => '点击与目标光脉冲频率匹配的按钮。';
 
   @override
-  String get yajilinTitle => 'Yajilin Loop';
+  String get yajilinTitle => '雅吉林环线';
 
   @override
-  String get yajilinSubtitle =>
-      'Place black cells and draw a single loop matching clues.';
+  String get yajilinSubtitle => '放置黑色单元格并绘制匹配线索的单个循环。';
 
   @override
-  String get heyawakeTitle => 'Heyawake Grid';
+  String get heyawakeTitle => '嘿亚醒网格';
 
   @override
-  String get heyawakeSubtitle =>
-      'Shade grid rooms without adjacent black cells.';
+  String get heyawakeSubtitle => '遮蔽没有相邻黑色单元格的网格房间。';
 
   @override
-  String get gokigenVariantTitle => 'Gokigen Variant';
+  String get gokigenVariantTitle => 'Gokigen 变体';
 
   @override
-  String get gokigenVariantSubtitle =>
-      'Draw loop-free diagonals meeting vertex counts.';
+  String get gokigenVariantSubtitle => '绘制符合顶点数的无环对角线。';
 
   @override
-  String get sheepAndWolvesTitle => 'Sheep & Wolves';
+  String get sheepAndWolvesTitle => '羊与狼';
 
   @override
-  String get sheepAndWolvesSubtitle =>
-      'Draw a loop separating sheep from wolves.';
+  String get sheepAndWolvesSubtitle => '画一个圈将羊和狼分开。';
 
   @override
-  String get islandNurikabeTitle => 'Island Nurikabe';
+  String get islandNurikabeTitle => '岛涂壁';
 
   @override
-  String get islandNurikabeSubtitle =>
-      'Form islands matching numerical size constraints.';
+  String get islandNurikabeSubtitle => '形成与数值尺寸限制相匹配的岛屿。';
 
   @override
-  String get shakashakaTitle => 'Shakashaka Rects';
+  String get shakashakaTitle => '沙卡沙卡直肠';
 
   @override
-  String get shakashakaSubtitle =>
-      'Place triangular tiles to form rectangular white areas.';
+  String get shakashakaSubtitle => '放置三角形瓷砖以形成矩形白色区域。';
 
   @override
-  String get litsTetrisTitle => 'LITS Tetromino';
+  String get litsTetrisTitle => '利特四号牌';
 
   @override
-  String get litsTetrisSubtitle =>
-      'Place tetrominoes in rooms with no adjacent duplicates.';
+  String get litsTetrisSubtitle => '将四格骨牌放置在没有相邻重复项的房间中。';
 
   @override
-  String get tapaWallTitle => 'Tapa Wall';
+  String get tapaWallTitle => '塔帕墙';
 
   @override
-  String get tapaWallSubtitle =>
-      'Shade cells to form a continuous black wall pattern.';
+  String get tapaWallSubtitle => '遮光细胞形成连续的黑色墙壁图案。';
 
   @override
-  String get triangularBridgesTitle => 'Triangular Bridges';
+  String get triangularBridgesTitle => '三角桥';
 
   @override
-  String get triangularBridgesSubtitle =>
-      'Connect islands in 3 directions meeting requirements.';
+  String get triangularBridgesSubtitle => '3个方向连接岛屿满足要求。';
 
   @override
-  String get rippleEffectTitle => 'Ripple Effect';
+  String get rippleEffectTitle => '连锁反应';
 
   @override
-  String get rippleEffectSubtitle =>
-      'Fill numbers in rooms respecting spacing distance constraints.';
+  String get rippleEffectSubtitle => '根据间距限制填写房间中的数字。';
 
   @override
-  String get suguruTectonicTitle => 'Suguru Grid';
+  String get suguruTectonicTitle => '苏古鲁网格';
 
   @override
-  String get suguruTectonicSubtitle =>
-      'Fill room blocks with numbers 1 to K with no neighbors equal.';
+  String get suguruTectonicSubtitle => '用数字 1 到 K 填充房间块，没有相同的邻居。';
 
   @override
-  String get tennerGridTitle => 'Tenner Grid';
+  String get tennerGridTitle => '十格网格';
 
   @override
-  String get tennerGridSubtitle =>
-      'Fill rows with digits 0-9 matching column totals.';
+  String get tennerGridSubtitle => '使用与列总计相匹配的数字 0-9 填充行。';
 
   @override
-  String get kakurasuSumsTitle => 'Kakurasu Sums';
+  String get kakurasuSumsTitle => '角罗苏姆';
 
   @override
-  String get kakurasuSumsSubtitle =>
-      'Shade cells to meet weighted row/col index sums.';
+  String get kakurasuSumsSubtitle => '对单元格进行着色以满足加权行/列索引总和。';
 
   @override
-  String get corralLoopTitle => 'Corral Loop';
+  String get corralLoopTitle => '畜栏环路';
 
   @override
-  String get corralLoopSubtitle =>
-      'Draw a single loop enclosing numbers matching visibility.';
+  String get corralLoopSubtitle => '绘制一个包含与可见性相匹配的数字的单个循环。';
 
   @override
-  String get stostoneTitle => 'Stostone Gravity';
+  String get stostoneTitle => '斯托斯通引力';
 
   @override
-  String get stostoneSubtitle =>
-      'Shade cells that drop down to fill bottom rows perfectly.';
+  String get stostoneSubtitle => '对下拉的单元格进行着色以完美填充底部行。';
 
   @override
-  String get tripletsLogicTitle => 'Triplets Trio';
+  String get tripletsLogicTitle => '三胞胎三重奏';
 
   @override
-  String get tripletsLogicSubtitle =>
-      'Fill grid with three shapes avoiding three-in-a-row.';
+  String get tripletsLogicSubtitle => '用三个形状填充网格，避免三个连续。';
 
   @override
-  String get galaxiesSymTitle => 'Galaxies Symmetry';
+  String get galaxiesSymTitle => '星系对称性';
 
   @override
-  String get galaxiesSymSubtitle =>
-      'Divide grid into rotationally symmetric galaxy shapes.';
+  String get galaxiesSymSubtitle => '将网格划分为旋转对称的星系形状。';
 
   @override
-  String get matrixMultiplierMatchTitle => 'Matrix Matcher';
+  String get matrixMultiplierMatchTitle => '矩阵匹配器';
 
   @override
-  String get matrixMultiplierMatchSubtitle =>
-      'Multiply row and column values to match target dot product.';
+  String get matrixMultiplierMatchSubtitle => '将行值和列值相乘以匹配目标点积。';
 
   @override
-  String get primeFactorTreesTitle => 'Prime Factor Trees';
+  String get primeFactorTreesTitle => '素因子树';
 
   @override
-  String get primeFactorTreesSubtitle =>
-      'Decompose composite numbers into prime leaf factor pairs.';
+  String get primeFactorTreesSubtitle => '将合数分解为素叶因子对。';
 
   @override
-  String get vektorVectorTitle => 'Vector Vector';
+  String get vektorVectorTitle => '向量向量';
 
   @override
-  String get vektorVectorSubtitle =>
-      'Scale vectors to make their sum land on the target.';
+  String get vektorVectorSubtitle => '缩放向量以使它们的总和落在目标上。';
 
   @override
-  String get binomialMatchTitle => 'Binomial Match';
+  String get binomialMatchTitle => '二项式匹配';
 
   @override
-  String get binomialMatchSubtitle =>
-      'Match quadratic formulas with factored binomial values.';
+  String get binomialMatchSubtitle => '将二次公式与因式二项式值相匹配。';
 
   @override
-  String get percentageShoppingTitle => 'Percentage Shopping';
+  String get percentageShoppingTitle => '购物百分比';
 
   @override
-  String get percentageShoppingSubtitle =>
-      'Calculate discount percentages and final checkout totals.';
+  String get percentageShoppingSubtitle => '计算折扣百分比和最终结帐总额。';
 
   @override
-  String get cryptoArithmeticTitle => 'Crypto-Arithmetic';
+  String get cryptoArithmeticTitle => '密码算术';
 
   @override
-  String get cryptoArithmeticSubtitle =>
-      'Crack character-digit substitution cipher math problems.';
+  String get cryptoArithmeticSubtitle => '破解字符数字替换密码数学问题。';
 
   @override
-  String get fractionalPizzaTitle => 'Fractional Pizza';
+  String get fractionalPizzaTitle => '分数披萨';
 
   @override
-  String get fractionalPizzaSubtitle =>
-      'Partition pizza slices to match target sum fractions.';
+  String get fractionalPizzaSubtitle => '对披萨片进行分区以匹配目标总和分数。';
 
   @override
-  String get numberBondsTitle => 'Number Bonds';
+  String get numberBondsTitle => '债券数量';
 
   @override
-  String get numberBondsSubtitle =>
-      'Link node values to equal a target connection sum.';
+  String get numberBondsSubtitle => '链接节点值等于目标连接总和。';
 
   @override
-  String get gridSumLineTitle => 'Grid Sum Line';
+  String get gridSumLineTitle => '网格求和线';
 
   @override
-  String get gridSumLineSubtitle =>
-      'Draw a path whose values evaluate exactly to the target.';
+  String get gridSumLineSubtitle => '绘制一条路径，其值精确地等于目标。';
 
   @override
-  String get binaryScaleBalanceTitle => 'Binary Scale Balance';
+  String get binaryScaleBalanceTitle => '二进制天平';
 
   @override
-  String get binaryScaleBalanceSubtitle =>
-      'Balance decimal weight using power-of-two blocks.';
+  String get binaryScaleBalanceSubtitle => '使用二次幂块平衡小数重量。';
 
   @override
-  String get moduloPathTitle => 'Modulo Path';
+  String get moduloPathTitle => '模路径';
 
   @override
-  String get moduloPathSubtitle =>
-      'Traverse grid cells matching modulo remainder values.';
+  String get moduloPathSubtitle => '遍历与模余数匹配的网格单元。';
 
   @override
-  String get digitSwapEqTitle => 'Digit Swap Equations';
+  String get digitSwapEqTitle => '数字交换方程';
 
   @override
-  String get digitSwapEqSubtitle =>
-      'Swap single digits between equations to correct both.';
+  String get digitSwapEqSubtitle => '在方程之间交换个位数即可纠正这两个方程。';
 
   @override
-  String get areaPerimeterMatchTitle => 'Area & Perimeter';
+  String get areaPerimeterMatchTitle => '面积和周长';
 
   @override
-  String get areaPerimeterMatchSubtitle =>
-      'Draw rectangles matching target area and perimeter values.';
+  String get areaPerimeterMatchSubtitle => '绘制与目标面积和周长值匹配的矩形。';
 
   @override
-  String get inequalityBalanceOpsTitle => 'Inequality Balance';
+  String get inequalityBalanceOpsTitle => '不平等平衡';
 
   @override
-  String get inequalityBalanceOpsSubtitle =>
-      'Place inequality symbols between complex math terms.';
+  String get inequalityBalanceOpsSubtitle => '将不等式符号放在复杂的数学术语之间。';
 
   @override
-  String get graphCoordinatePlotTitle => 'Graph Plotter';
+  String get graphCoordinatePlotTitle => '绘图仪';
 
   @override
-  String get graphCoordinatePlotSubtitle =>
-      'Plot grid coordinates matching linear/quadratic curves.';
+  String get graphCoordinatePlotSubtitle => '绘制与线性/二次曲线匹配的网格坐标。';
 
   @override
-  String get baseConversionRunTitle => 'Base Conversion';
+  String get baseConversionRunTitle => '基本转换';
 
   @override
-  String get baseConversionRunSubtitle =>
-      'Convert values between binary, decimal, hex, and octal.';
+  String get baseConversionRunSubtitle => '在二进制、十进制、十六进制和八进制之间转换值。';
 
   @override
-  String get unitConverterProTitle => 'Unit Converter';
+  String get unitConverterProTitle => '单位换算';
 
   @override
-  String get unitConverterProSubtitle =>
-      'Answer quick unit conversions under time limits.';
+  String get unitConverterProSubtitle => '在时间限制内快速回答单位转换问题。';
 
   @override
-  String get auditoryNBackTitle => 'Auditory N-Back';
+  String get auditoryNBackTitle => '听觉 N-Back';
 
   @override
-  String get auditoryNBackSubtitle =>
-      'Match spoken letters heard N steps back from memory.';
+  String get auditoryNBackSubtitle => '从记忆中回溯 N 步，匹配听到的口语字母。';
 
   @override
-  String get abstractPatternRecallTitle => 'Pattern Layering';
+  String get abstractPatternRecallTitle => '图案分层';
 
   @override
-  String get abstractPatternRecallSubtitle =>
-      'Reconstruct layered colorful shapes from memory study.';
+  String get abstractPatternRecallSubtitle => '从记忆研究中重建分层的彩色形状。';
 
   @override
-  String get roomInspectorTitle => 'Room Inspector';
+  String get roomInspectorTitle => '客房督察';
 
   @override
-  String get roomInspectorSubtitle =>
-      'Identify furniture modifications made while screen was blank.';
+  String get roomInspectorSubtitle => '识别屏幕空白时对家具所做的修改。';
 
   @override
-  String get voiceToFaceMatchTitle => 'Voice-Face Match';
+  String get voiceToFaceMatchTitle => '声脸匹配';
 
   @override
-  String get voiceToFaceMatchSubtitle =>
-      'Select correct face associated with spoken audio voice clip.';
+  String get voiceToFaceMatchSubtitle => '选择与口语音频剪辑关联的正确面孔。';
 
   @override
-  String get spatialGridMemory3DTitle => '3D Spatial Memory';
+  String get spatialGridMemory3DTitle => '3D空间记忆';
 
   @override
-  String get spatialGridMemory3DSubtitle =>
-      'Recall flashed blocks in a rotated 3D cube grid structure.';
+  String get spatialGridMemory3DSubtitle => '回想一下旋转 3D 立方体网格结构中闪烁的块。';
 
   @override
-  String get sequenceStackTitle => 'Sequence Stack';
+  String get sequenceStackTitle => '序列栈';
 
   @override
-  String get sequenceStackSubtitle =>
-      'Reconstruct plate stack additions and removals in order.';
+  String get sequenceStackSubtitle => '按顺序重建板堆添加和删除。';
 
   @override
-  String get semanticCategoryRecallTitle => 'Category Recall';
+  String get semanticCategoryRecallTitle => '类别召回';
 
   @override
-  String get semanticCategoryRecallSubtitle =>
-      'Identify study words matching requested category targets.';
+  String get semanticCategoryRecallSubtitle => '识别与请求的类别目标匹配的学习单词。';
 
   @override
-  String get gridDisplacementTitle => 'Grid Displacement';
+  String get gridDisplacementTitle => '网格位移';
 
   @override
-  String get gridDisplacementSubtitle =>
-      'Identify shifted icons comparing layout to original.';
+  String get gridDisplacementSubtitle => '将布局与原始布局进行比较，识别移动的图标。';
 
   @override
-  String get soundSequenceMatchTitle => 'Sound Sequence Match';
+  String get soundSequenceMatchTitle => '声音序列匹配';
 
   @override
-  String get soundSequenceMatchSubtitle =>
-      'Repeat note sequences played on a virtual keyboard.';
+  String get soundSequenceMatchSubtitle => '重复在虚拟键盘上演奏的音符序列。';
 
   @override
-  String get cardCountingMemoryTitle => 'Card Counter';
+  String get cardCountingMemoryTitle => '卡片柜台';
 
   @override
-  String get cardCountingMemorySubtitle =>
-      'Identify cards already dealt in continuous card deal runs.';
+  String get cardCountingMemorySubtitle => '识别连续发牌运行中已发的牌。';
 
   @override
-  String get directionsRecallTitle => 'Directions Recall';
+  String get directionsRecallTitle => '方向回忆';
 
   @override
-  String get directionsRecallSubtitle =>
-      'Navigate grid maps matching path directions from memory.';
+  String get directionsRecallSubtitle => '导航网格地图以匹配内存中的路径方向。';
 
   @override
-  String get eventTimelineMemoryTitle => 'Event Timeline';
+  String get eventTimelineMemoryTitle => '事件时间表';
 
   @override
-  String get eventTimelineMemorySubtitle =>
-      'Arrange historical/fictional event cards chronologically.';
+  String get eventTimelineMemorySubtitle => '按时间顺序排列历史/虚构事件卡。';
 
   @override
-  String get featureMatrixRecallTitle => 'Feature Matrix';
+  String get featureMatrixRecallTitle => '特征矩阵';
 
   @override
-  String get featureMatrixRecallSubtitle =>
-      'Answer query prompts about cell shape-color attributes.';
+  String get featureMatrixRecallSubtitle => '回答有关单元格形状颜色属性的查询提示。';
 
   @override
-  String get delayedMatchSampleTitle => 'Delayed Match';
+  String get delayedMatchSampleTitle => '延迟比赛';
 
   @override
-  String get delayedMatchSampleSubtitle =>
-      'Match target symbol after solving math distractors.';
+  String get delayedMatchSampleSubtitle => '解决数学干扰后匹配目标符号。';
 
   @override
-  String get symbolDigitAssocTitle => 'Symbol-Digit Assoc';
+  String get symbolDigitAssocTitle => '符号-数字关联';
 
   @override
-  String get symbolDigitAssocSubtitle =>
-      'Solve symbol translation sheets matching digit keys.';
+  String get symbolDigitAssocSubtitle => '解决与数字键匹配的符号翻译表。';
 
   @override
-  String get dualTaskMemoryTitle => 'Dual-Task Memory';
+  String get dualTaskMemoryTitle => '双任务内存';
 
   @override
-  String get dualTaskMemorySubtitle =>
-      'Memorize word sets while resolving quick arithmetic tasks.';
+  String get dualTaskMemorySubtitle => '在解决快速算术任务的同时记住单词集。';
 
   @override
-  String get actionSequenceRecallTitle => 'Action Recall';
+  String get actionSequenceRecallTitle => '动作回忆';
 
   @override
-  String get actionSequenceRecallSubtitle =>
-      'Repeat character gesture animation sequences in order.';
+  String get actionSequenceRecallSubtitle => '按顺序重复角色手势动画序列。';
 
   @override
-  String get tangramPolygonTitle => 'Tangram Fit';
+  String get tangramPolygonTitle => '七巧板适合';
 
   @override
-  String get tangramPolygonSubtitle =>
-      'Arrange polygon shapes to fill silhouette outlines.';
+  String get tangramPolygonSubtitle => '排列多边形形状以填充轮廓轮廓。';
 
   @override
-  String get mazeNav3DTitle => '3D Maze Nav';
+  String get mazeNav3DTitle => '3D迷宫导航';
 
   @override
-  String get mazeNav3DSubtitle =>
-      'Navigate 3D isometric maze routes from first-person view.';
+  String get mazeNav3DSubtitle => '从第一人称视角浏览 3D 等距迷宫路线。';
 
   @override
-  String get isometricProjectionTitle => 'Isometric Projector';
+  String get isometricProjectionTitle => '等距投影仪';
 
   @override
-  String get isometricProjectionSubtitle =>
-      'Match 3D block figures to orthographic 2D top/front views.';
+  String get isometricProjectionSubtitle => '将 3D 块图与正交 2D 顶视图/前视图相匹配。';
 
   @override
-  String get polyominoPackingTitle => 'Polyomino Packing';
+  String get polyominoPackingTitle => '多联骨料填料';
 
   @override
-  String get polyominoPackingSubtitle =>
-      'Pack random polyomino block pieces into target areas.';
+  String get polyominoPackingSubtitle => '将随机多联骨牌块装入目标区域。';
 
   @override
-  String get spatialGridRotationTitle => 'Spatial Grid Rotation';
+  String get spatialGridRotationTitle => '空间网格旋转';
 
   @override
-  String get spatialGridRotationSubtitle =>
-      'Match 3D block arrangements rotated along axis coordinates.';
+  String get spatialGridRotationSubtitle => '匹配沿轴坐标旋转的 3D 块排列。';
 
   @override
-  String get wireLoopGameTitle => 'Wire Loop';
+  String get wireLoopGameTitle => '线环';
 
   @override
-  String get wireLoopGameSubtitle =>
-      'Drag metal rings along wire splines without contact.';
+  String get wireLoopGameSubtitle => '沿钢丝花键拖动金属环，无需接触。';
 
   @override
-  String get origamiUnfoldTitle => 'Origami Unfold';
+  String get origamiUnfoldTitle => '折纸展开';
 
   @override
-  String get origamiUnfoldSubtitle =>
-      'Identify hole punch patterns after unfolding folded sheets.';
+  String get origamiUnfoldSubtitle => '展开折叠纸张后识别打孔图案。';
 
   @override
-  String get ropeTangleSolverTitle => 'Rope Untangler';
+  String get ropeTangleSolverTitle => '解绳器';
 
   @override
-  String get ropeTangleSolverSubtitle =>
-      'Drag nodes to layout planar graphs with zero line crosses.';
+  String get ropeTangleSolverSubtitle => '拖动节点以布局具有零线交叉的平面图。';
 
   @override
-  String get gridFitTetrisTitle => 'Grid Fit Solver';
+  String get gridFitTetrisTitle => '网格拟合求解器';
 
   @override
-  String get gridFitTetrisSubtitle =>
-      'Arrange static irregular blocks to fit container bounds.';
+  String get gridFitTetrisSubtitle => '排列静态不规则块以适合容器边界。';
 
   @override
-  String get vectorGridAlignmentTitle => 'Vector Alignment';
+  String get vectorGridAlignmentTitle => '矢量对齐';
 
   @override
-  String get vectorGridAlignmentSubtitle =>
-      'Scale and rotate shapes to match shadow template targets.';
+  String get vectorGridAlignmentSubtitle => '缩放和旋转形状以匹配阴影模板目标。';
 
   @override
-  String get blockStackingPhysicsTitle => 'Block Stacking';
+  String get blockStackingPhysicsTitle => '块堆叠';
 
   @override
-  String get blockStackingPhysicsSubtitle =>
-      'Stack irregular block panels balancing gravity weight.';
+  String get blockStackingPhysicsSubtitle => '堆叠不规则块板平衡重力重量。';
 
   @override
-  String get crossSectionMatch3DTitle => '3D Cross Section';
+  String get crossSectionMatch3DTitle => '3D 横截面';
 
   @override
-  String get crossSectionMatch3DSubtitle =>
-      'Identify 2D slice geometries cut from 3D shapes.';
+  String get crossSectionMatch3DSubtitle => '识别从 3D 形状切下的 2D 切片几何形状。';
 
   @override
-  String get symmetryPaintTitle => 'Symmetry Paint';
+  String get symmetryPaintTitle => '对称涂料';
 
   @override
-  String get symmetryPaintSubtitle =>
-      'Draw mirror image segments reflecting across symmetry axes.';
+  String get symmetryPaintSubtitle => '绘制跨对称轴反射的镜像片段。';
 
   @override
-  String get rollingBlockBloxTitle => 'Rolling Block';
+  String get rollingBlockBloxTitle => '滚动块';
 
   @override
-  String get rollingBlockBloxSubtitle =>
-      'Roll block pieces to land vertically in target slots.';
+  String get rollingBlockBloxSubtitle => '滚动块块以垂直落在目标槽中。';
 
   @override
-  String get perspectiveShiftViewTitle => 'Perspective Shift';
+  String get perspectiveShiftViewTitle => '视角转变';
 
   @override
-  String get perspectiveShiftViewSubtitle =>
-      'Rotate block clusters until they spell letters/words.';
+  String get perspectiveShiftViewSubtitle => '旋转块簇直到它们拼写出字母/单词。';
 
   @override
-  String get networkFlowSphericalTitle => 'Network Flow';
+  String get networkFlowSphericalTitle => '网络流量';
 
   @override
-  String get networkFlowSphericalSubtitle =>
-      'Connect grid flows on wrapping cylindrical coordinates.';
+  String get networkFlowSphericalSubtitle => '在环绕圆柱坐标上连接网格流。';
 
   @override
-  String get layeredSilhouetteBlendTitle => 'Silhouette Blend';
+  String get layeredSilhouetteBlendTitle => '剪影混合';
 
   @override
-  String get layeredSilhouetteBlendSubtitle =>
-      'Stack colored layers to match target translucent shapes.';
+  String get layeredSilhouetteBlendSubtitle => '堆叠彩色图层以匹配目标半透明形状。';
 
   @override
-  String get wordWheelPangramTitle => 'Word Anagrams';
+  String get wordWheelPangramTitle => '字谜';
 
   @override
-  String get wordWheelPangramSubtitle =>
-      'Construct words containing central target letters from wheels.';
+  String get wordWheelPangramSubtitle => '从轮子构建包含中心目标字母的单词。';
 
   @override
-  String get letterGridSwapperTitle => 'Letter Swapper';
+  String get letterGridSwapperTitle => '字母交换器';
 
   @override
-  String get letterGridSwapperSubtitle =>
-      'Swap adjacent letter tiles to complete row and col words.';
+  String get letterGridSwapperSubtitle => '交换相邻的字母块以完成行和列单词。';
 
   @override
-  String get synonymMatchTitle => 'Synonym Match';
+  String get synonymMatchTitle => '同义词匹配';
 
   @override
-  String get synonymMatchSubtitle =>
-      'Match falling word targets with synonyms or antonyms.';
+  String get synonymMatchSubtitle => '将下降的单词目标与同义词或反义词相匹配。';
 
   @override
-  String get vowelDropTitle => 'Vowel Drop';
+  String get vowelDropTitle => '元音下降';
 
   @override
-  String get vowelDropSubtitle =>
-      'Drop vowels into coordinate grids completing words.';
+  String get vowelDropSubtitle => '将元音放入坐标网格中以完成单词。';
 
   @override
-  String get letterBalanceScaleTitle => 'Word Balance Scale';
+  String get letterBalanceScaleTitle => '单词平衡量表';
 
   @override
-  String get letterBalanceScaleSubtitle =>
-      'Spell words whose letter values balance weights.';
+  String get letterBalanceScaleSubtitle => '拼写字母值平衡权重的单词。';
 
   @override
-  String get wordChainShiritoriTitle => 'Word Chain';
+  String get wordChainShiritoriTitle => '字链';
 
   @override
-  String get wordChainShiritoriSubtitle =>
-      'Link word loops starting with preceding letter outputs.';
+  String get wordChainShiritoriSubtitle => '从前面的字母输出开始链接单词循环。';
 
   @override
-  String get affixBuilderTitle => 'Affix Builder';
+  String get affixBuilderTitle => '词缀生成器';
 
   @override
-  String get affixBuilderSubtitle =>
-      'Combine prefixes/suffixes to construct target vocabularies.';
+  String get affixBuilderSubtitle => '组合前缀/后缀来构建目标词汇表。';
 
   @override
-  String get decipherCrypticCluesTitle => 'Cryptic Decipher';
+  String get decipherCrypticCluesTitle => '神秘破译';
 
   @override
-  String get decipherCrypticCluesSubtitle =>
-      'Solve word-play puzzles and decrypt spelling riddles.';
+  String get decipherCrypticCluesSubtitle => '解决文字游戏谜题并解密拼写谜语。';
 
   @override
-  String get boggleWordSearchTitle => 'Boggle Connect';
+  String get boggleWordSearchTitle => '令人惊叹的连接';
 
   @override
-  String get boggleWordSearchSubtitle =>
-      'Trace adjacent connected paths to find hidden words.';
+  String get boggleWordSearchSubtitle => '追踪相邻的连接路径以找到隐藏的单词。';
 
   @override
-  String get idiomUnscrambleTitle => 'Idiom Unscramble';
+  String get idiomUnscrambleTitle => '成语解读';
 
   @override
-  String get idiomUnscrambleSubtitle =>
-      'Arrange scrambled word arrays to match idiom meanings.';
+  String get idiomUnscrambleSubtitle => '排列乱序的单词数组以匹配成语含义。';
 
   @override
-  String get letterPyramidsTitle => 'Letter Pyramids';
+  String get letterPyramidsTitle => '字母金字塔';
 
   @override
-  String get letterPyramidsSubtitle =>
-      'Build word towers adding single anagram letters per tier.';
+  String get letterPyramidsSubtitle => '建造单词塔，每层添加单个字谜字母。';
 
   @override
-  String get soundAlikeHomophonesTitle => 'Homophone Matches';
+  String get soundAlikeHomophonesTitle => '同音字匹配';
 
   @override
-  String get soundAlikeHomophonesSubtitle =>
-      'Identify correct homophone spellings for sentences.';
+  String get soundAlikeHomophonesSubtitle => '识别句子的正确同音拼写。';
 
   @override
-  String get wordGridSudokuTitle => 'Word Sudoku';
+  String get wordGridSudokuTitle => '字数独';
 
   @override
-  String get wordGridSudokuSubtitle =>
-      'Tesselate letters in grid rows forming words.';
+  String get wordGridSudokuSubtitle => '将字母镶嵌在网格行中形成单词。';
 
   @override
-  String get portmanteauFactoryTitle => 'Portmanteau Factory';
+  String get portmanteauFactoryTitle => '波特曼托工厂';
 
   @override
-  String get portmanteauFactorySubtitle =>
-      'Merge semantic components creating compound words.';
+  String get portmanteauFactorySubtitle => '合并语义组件创建复合词。';
 
   @override
-  String get codedCrosswordsCodeTitle => 'Codewords Crossword';
+  String get codedCrosswordsCodeTitle => '代码字填字游戏';
 
   @override
-  String get codedCrosswordsCodeSubtitle =>
-      'Solve grid crosswords matching number-to-letter codes.';
+  String get codedCrosswordsCodeSubtitle => '解决与数字到字母代码匹配的网格填字游戏。';
 
   @override
-  String get wordSnakeTrailTitle => 'Word Snake';
+  String get wordSnakeTrailTitle => '字蛇';
 
   @override
-  String get wordSnakeTrailSubtitle =>
-      'Trace snake-like letter trails spelling thematic words.';
+  String get wordSnakeTrailSubtitle => '追踪蛇状字母轨迹，拼写主题词。';
 
   @override
-  String get typingRhythmSpeedTitle => 'Typing Flow';
+  String get typingRhythmSpeedTitle => '打字流程';
 
   @override
-  String get typingRhythmSpeedSubtitle =>
-      'Type vocabularies matching metronome rhythm beats.';
+  String get typingRhythmSpeedSubtitle => '输入与节拍器节奏相匹配的词汇。';
 
   @override
   String get errorSomethingWrong => 'Something went wrong';

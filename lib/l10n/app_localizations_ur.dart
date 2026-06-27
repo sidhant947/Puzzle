@@ -3631,877 +3631,876 @@ class AppLocalizationsUr extends AppLocalizations {
       'خلا میں چھپی ہوئی چیز کی شناخت کریں۔';
 
   @override
-  String get shikakuTitle => 'Shikaku';
+  String get shikakuTitle => 'شیکاکو';
 
   @override
   String get shikakuSubtitle =>
-      'DIVIDE THE GRID INTO SQUARES AND RECTANGLES MATCHING THE NUMBERS.';
+      'نمبروں سے مماثل چوکوں اور مستطیلوں میں گرڈ کو تقسیم کریں۔';
 
   @override
-  String get countdownMathTitle => 'Countdown Math';
+  String get countdownMathTitle => 'الٹی گنتی ریاضی';
 
   @override
   String get countdownMathSubtitle =>
-      'COMBINE RANDOM NUMBERS TO CALCULATE THE THREE-DIGIT TARGET.';
+      'تین ہندسوں کے ہدف کا حساب لگانے کے لیے بے ترتیب نمبروں کو یکجا کریں۔';
 
   @override
-  String get narrativeRecallTitle => 'Narrative Recall';
+  String get narrativeRecallTitle => 'بیانیہ یاد';
 
   @override
   String get narrativeRecallSubtitle =>
-      'READ A STORY AND RECALL SPECIFIC QUANTITATIVE AND FACTUAL DETAILS.';
+      'ایک کہانی پڑھیں اور مخصوص مقداری اور حقیقت پر مبنی تفصیلات یاد کریں۔';
 
   @override
-  String get shellGameTitle => 'Shell Game';
+  String get shellGameTitle => 'شیل گیم';
 
   @override
   String get shellGameSubtitle =>
-      'TRACK A HIDDEN BALL AS THE SHUFFLING CUPS SWAP PLACES.';
+      'ایک چھپی ہوئی گیند کو بدلتے ہوئے کپوں کی تبدیلی کے مقامات کے طور پر ٹریک کریں۔';
 
   @override
-  String get typoglycemiaDecoderTitle => 'Typoglycemia Decoder';
+  String get typoglycemiaDecoderTitle => 'ٹائپوگلیسیمیا ڈیکوڈر';
 
   @override
   String get typoglycemiaDecoderSubtitle =>
-      'UNSCRAMBLE AND READ JUMBLED SENTENCES SPEEDILY.';
+      'بے ترتیبی اور بے ترتیب جملوں کو تیزی سے پڑھیں۔';
 
   @override
-  String get shapeShifterTitle => 'Shape Shifter';
+  String get shapeShifterTitle => 'شکل بدلنے والا';
 
   @override
-  String get shapeShifterSubtitle => 'Tap the target shape-color combination.';
+  String get shapeShifterSubtitle =>
+      'ہدف کی شکل اور رنگ کے امتزاج کو تھپتھپائیں۔';
 
   @override
-  String get gokigenNanameTitle => 'Gokigen Naname';
+  String get gokigenNanameTitle => 'گوکیگن نام';
 
   @override
   String get gokigenNanameSubtitle =>
-      'Draw diagonals to connect points without loops.';
+      'بغیر لوپس کے پوائنٹس کو جوڑنے کے لیے اخترن کھینچیں۔';
 
   @override
-  String get matrixMultiplierTitle => 'Matrix Multiplier';
+  String get matrixMultiplierTitle => 'میٹرکس ضرب';
 
   @override
   String get matrixMultiplierSubtitle =>
-      'Select a row and column to multiply to the target.';
+      'ہدف تک ضرب کرنے کے لیے ایک قطار اور کالم منتخب کریں۔';
 
   @override
-  String get wordAssociationRecallTitle => 'Word Association';
+  String get wordAssociationRecallTitle => 'لفظ ایسوسی ایشن';
 
   @override
   String get wordAssociationRecallSubtitle =>
-      'Recall paired word associations from memory.';
+      'میموری سے جوڑے ہوئے الفاظ کی انجمنوں کو یاد کریں۔';
 
   @override
-  String get gearRotationTitle => 'Gear Rotation';
+  String get gearRotationTitle => 'گیئر کی گردش';
 
   @override
   String get gearRotationSubtitle =>
-      'Predict the rotation direction of the last gear.';
+      'آخری گیئر کی گردش کی سمت کا اندازہ لگائیں۔';
 
   @override
-  String get wordWheelTitle => 'Word Wheel';
+  String get wordWheelTitle => 'ورڈ وہیل';
 
   @override
   String get wordWheelSubtitle =>
-      'Make words using letters on the wheel, including the center letter.';
+      'وہیل پر حروف کا استعمال کرتے ہوئے الفاظ بنائیں، بشمول مرکزی خط۔';
 
   @override
-  String get oddEvenFlashTitle => 'Odd-Even Flash';
+  String get oddEvenFlashTitle => 'اوڈ ایون فلیش';
 
   @override
   String get oddEvenFlashSubtitle =>
-      'Quickly match the number parity with the color rule.';
+      'رنگ کے اصول کے ساتھ نمبر برابری کو جلدی سے ملا دیں۔';
 
   @override
-  String get norinoriTitle => 'Norinori';
+  String get norinoriTitle => 'نورینوری';
 
   @override
   String get norinoriSubtitle =>
-      'Shade exactly two connected cells in each room.';
+      'ہر کمرے میں بالکل دو جڑے ہوئے خلیوں کو سایہ کریں۔';
 
   @override
-  String get algebraicBalanceTitle => 'Algebraic Balance';
+  String get algebraicBalanceTitle => 'الجبری بیلنس';
 
   @override
   String get algebraicBalanceSubtitle =>
-      'Solve the equations to find the target sum.';
+      'ہدف کی رقم تلاش کرنے کے لیے مساوات کو حل کریں۔';
 
   @override
-  String get patternSequenceDrawTitle => 'Pattern Recall';
+  String get patternSequenceDrawTitle => 'پیٹرن یاد';
 
   @override
   String get patternSequenceDrawSubtitle =>
-      'Repeat the animated path sequence on the grid.';
+      'گرڈ پر متحرک راستے کی ترتیب کو دہرائیں۔';
 
   @override
-  String get tangramTitle => 'Tangram Puzzle';
+  String get tangramTitle => 'تانگرام پہیلی';
 
   @override
-  String get tangramSubtitle =>
-      'Arrange the shapes to fill the target silhouette.';
+  String get tangramSubtitle => 'ٹارگٹ سلہیٹ کو بھرنے کے لیے شکلیں ترتیب دیں۔';
 
   @override
-  String get semanticAssociationTitle => 'Association Word';
+  String get semanticAssociationTitle => 'ایسوسی ایشن لفظ';
 
   @override
   String get semanticAssociationSubtitle =>
-      'Find the word connecting all three clues.';
+      'تینوں سراگوں کو جوڑنے والا لفظ تلاش کریں۔';
 
   @override
-  String get peripheralFocusTitle => 'Peripheral Focus';
+  String get peripheralFocusTitle => 'پیریفرل فوکس';
 
   @override
   String get peripheralFocusSubtitle =>
-      'React to flashing side panels while solving math.';
+      'ریاضی کو حل کرتے وقت چمکتے ہوئے سائیڈ پینلز پر ردعمل ظاہر کریں۔';
 
   @override
-  String get masyuTitle => 'Masyu Loop';
+  String get masyuTitle => 'مسیو لوپ';
 
   @override
-  String get masyuSubtitle => 'Draw a single loop matching Masyu circle rules.';
+  String get masyuSubtitle => 'مسیو دائرے کے قواعد سے مماثل واحد لوپ کھینچیں۔';
 
   @override
-  String get mathMazeTitle => 'Math Maze';
+  String get mathMazeTitle => 'ریاضی کی بھولبلییا';
 
   @override
   String get mathMazeSubtitle =>
-      'Trace a path that evaluates to the target total.';
+      'ایک ایسے راستے کا پتہ لگائیں جو ہدف کے کل کا اندازہ کرتا ہے۔';
 
   @override
-  String get storyBuilderTitle => 'Story Builder';
+  String get storyBuilderTitle => 'کہانی بنانے والا';
 
   @override
   String get storyBuilderSubtitle =>
-      'Reconstruct the chronological sequence of the story.';
+      'کہانی کی تاریخی ترتیب کو دوبارہ ترتیب دیں۔';
 
   @override
-  String get mirrorMazeTitle => 'Mirror Maze';
+  String get mirrorMazeTitle => 'آئینہ بھولبلییا';
 
   @override
   String get mirrorMazeSubtitle =>
-      'Redirect a laser beam using diagonal mirrors.';
+      'اخترن آئینے کا استعمال کرتے ہوئے لیزر بیم کو ری ڈائریکٹ کریں۔';
 
   @override
-  String get wordGridConnectionTitle => 'Word Connections';
+  String get wordGridConnectionTitle => 'الفاظ کے رابطے';
 
   @override
   String get wordGridConnectionSubtitle =>
-      'Group 16 words into four categories of four.';
+      '16 الفاظ کو چار کے چار زمروں میں گروپ کریں۔';
 
   @override
-  String get shapeShifterPeripheralTitle => 'Peripheral Shapes';
+  String get shapeShifterPeripheralTitle => 'پردیی شکلیں';
 
   @override
   String get shapeShifterPeripheralSubtitle =>
-      'Track peripheral shape changes while matching central values.';
+      'مرکزی اقدار سے مماثل ہوتے ہوئے پردیی شکل کی تبدیلیوں کو ٹریک کریں۔';
 
   @override
-  String get soundWaveMatchTitle => 'Sound Wave Match';
+  String get soundWaveMatchTitle => 'صوتی لہر میچ';
 
   @override
   String get soundWaveMatchSubtitle =>
-      'Tap when the visual wave frequency aligns with pitch changes.';
+      'جب بصری لہر کی فریکوئنسی پچ کی تبدیلیوں کے ساتھ سیدھ میں آجائے تو تھپتھپائیں۔';
 
   @override
-  String get multiTrackCounterTitle => 'Multi-Track Counter';
+  String get multiTrackCounterTitle => 'ملٹی ٹریک کاؤنٹر';
 
   @override
   String get multiTrackCounterSubtitle =>
-      'Tap when any counter increments to a target multiplier.';
+      'جب کوئی بھی کاؤنٹر کسی ہدف کے ضرب میں اضافہ کرتا ہے تو تھپتھپائیں۔';
 
   @override
-  String get colorWordMatchUpTitle => 'Color Match-Up';
+  String get colorWordMatchUpTitle => 'رنگین میچ اپ';
 
   @override
   String get colorWordMatchUpSubtitle =>
-      'Determine if two colored words match based on changing rules.';
+      'اس بات کا تعین کریں کہ آیا دو رنگین الفاظ بدلتے ہوئے قواعد کی بنیاد پر ملتے ہیں۔';
 
   @override
-  String get signalAndNoiseTitle => 'Signal & Noise';
+  String get signalAndNoiseTitle => 'سگنل اور شور';
 
   @override
   String get signalAndNoiseSubtitle =>
-      'Locate target alphanumeric characters hidden in static noise.';
+      'جامد شور میں چھپے ہوئے ٹارگٹ حروف نمبری حروف کو تلاش کریں۔';
 
   @override
-  String get focusTunnelTitle => 'Focus Tunnel';
+  String get focusTunnelTitle => 'فوکس ٹنل';
 
   @override
   String get focusTunnelSubtitle =>
-      'Identify matching symbols appearing on moving tunnel walls.';
+      'چلتی ہوئی سرنگ کی دیواروں پر ظاہر ہونے والی مماثل علامتوں کی شناخت کریں۔';
 
   @override
-  String get targetPursuerTitle => 'Target Pursuer';
+  String get targetPursuerTitle => 'ہدف کا تعاقب کرنے والا';
 
   @override
   String get targetPursuerSubtitle =>
-      'Track multiple overlapping circles and select the original target.';
+      'متعدد اوورلیپنگ حلقوں کو ٹریک کریں اور اصل ہدف کو منتخب کریں۔';
 
   @override
-  String get gridGazeTitle => 'Grid Gaze';
+  String get gridGazeTitle => 'گرڈ نگاہ';
 
   @override
   String get gridGazeSubtitle =>
-      'Identify which grid cell flashed with a different duration.';
+      'شناخت کریں کہ کون سا گرڈ سیل مختلف دورانیے کے ساتھ چمکا۔';
 
   @override
-  String get doubleTroubleTitle => 'Double Trouble';
+  String get doubleTroubleTitle => 'ڈبل پریشانی';
 
   @override
   String get doubleTroubleSubtitle =>
-      'Play two separate simple games simultaneously on split-screen.';
+      'اسپلٹ اسکرین پر بیک وقت دو الگ الگ سادہ گیمز کھیلیں۔';
 
   @override
-  String get syncRhythmTitle => 'Sync Rhythm';
+  String get syncRhythmTitle => 'مطابقت پذیری کی تال';
 
   @override
   String get syncRhythmSubtitle =>
-      'Tap when visual metronome sweep matches syncopated beat.';
+      'جب بصری میٹرنوم سویپ مطابقت پذیر بیٹ سے میل کھاتا ہے تو تھپتھپائیں۔';
 
   @override
-  String get ghostTapTitle => 'Ghost Tap';
+  String get ghostTapTitle => 'گھوسٹ ٹیپ';
 
   @override
   String get ghostTapSubtitle =>
-      'Tap when the invisible pulse reaches its maximum height.';
+      'جب پوشیدہ نبض اپنی زیادہ سے زیادہ اونچائی تک پہنچ جائے تو تھپتھپائیں۔';
 
   @override
-  String get attentionalRsvpTitle => 'Attentional RSVP';
+  String get attentionalRsvpTitle => 'دھیان سے آر ایس وی پی';
 
   @override
   String get attentionalRsvpSubtitle =>
-      'Identify digits appearing in rapid serial letter flash.';
+      'تیزی سے سیریل لیٹر فلیش میں ظاہر ہونے والے ہندسوں کی شناخت کریں۔';
 
   @override
-  String get colorMazeNavTitle => 'Color Maze Nav';
+  String get colorMazeNavTitle => 'رنگین بھولبلییا Nav';
 
   @override
   String get colorMazeNavSubtitle =>
-      'Navigate maze tiles matching dynamic permission colors.';
+      'متحرک اجازت کے رنگوں سے مماثل بھولبلییا ٹائل پر جائیں۔';
 
   @override
-  String get dynamicSalienceTitle => 'Dynamic Salience';
+  String get dynamicSalienceTitle => 'متحرک سالینس';
 
   @override
   String get dynamicSalienceSubtitle =>
-      'Find the shape moving with slightly different dynamics.';
+      'قدرے مختلف حرکیات کے ساتھ حرکت پذیر شکل تلاش کریں۔';
 
   @override
-  String get chalkAndTalkTitle => 'Chalk & Talk';
+  String get chalkAndTalkTitle => 'چاک اینڈ ٹاک';
 
   @override
   String get chalkAndTalkSubtitle =>
-      'Type words heard in audio while ignoring visual distractors.';
+      'بصری خلفشار کو نظر انداز کرتے ہوئے آڈیو میں سننے والے الفاظ ٹائپ کریں۔';
 
   @override
-  String get blinkDetectorTitle => 'Blink Detector';
+  String get blinkDetectorTitle => 'پلک جھپکنے کا پتہ لگانے والا';
 
   @override
   String get blinkDetectorSubtitle =>
-      'Tap the grid face that blinks twice in rapid succession.';
+      'اس گرڈ چہرے کو تھپتھپائیں جو تیزی سے یکے بعد دیگرے دو بار جھپکتا ہے۔';
 
   @override
-  String get frequencyTapTitle => 'Frequency Tap';
+  String get frequencyTapTitle => 'فریکوئنسی ٹیپ';
 
   @override
   String get frequencyTapSubtitle =>
-      'Tap the button matching the target light pulse frequency.';
+      'ٹارگٹ لائٹ پلس فریکوئنسی سے مماثل بٹن کو تھپتھپائیں۔';
 
   @override
-  String get yajilinTitle => 'Yajilin Loop';
+  String get yajilinTitle => 'یاجلین لوپ';
 
   @override
   String get yajilinSubtitle =>
-      'Place black cells and draw a single loop matching clues.';
+      'سیاہ خلیات رکھیں اور ایک ہی لوپ سے ملنے والے سراگ کھینچیں۔';
 
   @override
-  String get heyawakeTitle => 'Heyawake Grid';
+  String get heyawakeTitle => 'Heyawake گرڈ';
 
   @override
-  String get heyawakeSubtitle =>
-      'Shade grid rooms without adjacent black cells.';
+  String get heyawakeSubtitle => 'ملحقہ سیاہ خلیوں کے بغیر سایہ دار گرڈ کمرے۔';
 
   @override
-  String get gokigenVariantTitle => 'Gokigen Variant';
+  String get gokigenVariantTitle => 'گوکیگن ویرینٹ';
 
   @override
   String get gokigenVariantSubtitle =>
-      'Draw loop-free diagonals meeting vertex counts.';
+      'لوپ فری ڈائیگنلز میٹنگ کے عمودی شماروں کو ڈرا کریں۔';
 
   @override
-  String get sheepAndWolvesTitle => 'Sheep & Wolves';
+  String get sheepAndWolvesTitle => 'بھیڑ اور بھیڑیے۔';
 
   @override
   String get sheepAndWolvesSubtitle =>
-      'Draw a loop separating sheep from wolves.';
+      'بھیڑ کو بھیڑیوں سے الگ کرنے والا لوپ کھینچیں۔';
 
   @override
-  String get islandNurikabeTitle => 'Island Nurikabe';
+  String get islandNurikabeTitle => 'جزیرہ نوریکابے';
 
   @override
   String get islandNurikabeSubtitle =>
-      'Form islands matching numerical size constraints.';
+      'عددی سائز کی پابندیوں سے مماثل جزیرے بنائیں۔';
 
   @override
-  String get shakashakaTitle => 'Shakashaka Rects';
+  String get shakashakaTitle => 'شاکاشاکا ریکٹس';
 
   @override
   String get shakashakaSubtitle =>
-      'Place triangular tiles to form rectangular white areas.';
+      'مستطیل سفید علاقے بنانے کے لیے تکونی ٹائلیں لگائیں۔';
 
   @override
   String get litsTetrisTitle => 'LITS Tetromino';
 
   @override
   String get litsTetrisSubtitle =>
-      'Place tetrominoes in rooms with no adjacent duplicates.';
+      'ٹیٹرومینوز کو ایسے کمروں میں رکھیں جس میں کوئی ملحقہ نقل نہ ہو۔';
 
   @override
-  String get tapaWallTitle => 'Tapa Wall';
+  String get tapaWallTitle => 'تپہ دیوار';
 
   @override
   String get tapaWallSubtitle =>
-      'Shade cells to form a continuous black wall pattern.';
+      'مسلسل سیاہ دیوار کا نمونہ بنانے کے لیے خلیات کو سایہ کریں۔';
 
   @override
-  String get triangularBridgesTitle => 'Triangular Bridges';
+  String get triangularBridgesTitle => 'سہ رخی پل';
 
   @override
   String get triangularBridgesSubtitle =>
-      'Connect islands in 3 directions meeting requirements.';
+      'جزائر کو 3 سمتوں میں جوڑیں ضروریات کو پورا کریں۔';
 
   @override
-  String get rippleEffectTitle => 'Ripple Effect';
+  String get rippleEffectTitle => 'لہر کا اثر';
 
   @override
   String get rippleEffectSubtitle =>
-      'Fill numbers in rooms respecting spacing distance constraints.';
+      'فاصلہ کی دوری کی پابندیوں کا احترام کرتے ہوئے کمروں میں نمبر بھریں۔';
 
   @override
-  String get suguruTectonicTitle => 'Suguru Grid';
+  String get suguruTectonicTitle => 'سوگورو گرڈ';
 
   @override
   String get suguruTectonicSubtitle =>
-      'Fill room blocks with numbers 1 to K with no neighbors equal.';
+      'کمرے کے بلاکس کو نمبر 1 سے K کے ساتھ بھریں جس کے برابر پڑوسی نہ ہوں۔';
 
   @override
-  String get tennerGridTitle => 'Tenner Grid';
+  String get tennerGridTitle => 'ٹینر گرڈ';
 
   @override
   String get tennerGridSubtitle =>
-      'Fill rows with digits 0-9 matching column totals.';
+      'قطاروں کو ہندسوں سے بھریں 0-9 مماثل کالم ٹوٹل۔';
 
   @override
-  String get kakurasuSumsTitle => 'Kakurasu Sums';
+  String get kakurasuSumsTitle => 'کاکوراسو سمس';
 
   @override
   String get kakurasuSumsSubtitle =>
-      'Shade cells to meet weighted row/col index sums.';
+      'وزنی قطار/کول انڈیکس کی رقم کو پورا کرنے کے لیے سیل کو سایہ کریں۔';
 
   @override
-  String get corralLoopTitle => 'Corral Loop';
+  String get corralLoopTitle => 'کورل لوپ';
 
   @override
   String get corralLoopSubtitle =>
-      'Draw a single loop enclosing numbers matching visibility.';
+      'مرئیت سے مماثل نمبروں کو گھیرے ہوئے ایک واحد لوپ کھینچیں۔';
 
   @override
-  String get stostoneTitle => 'Stostone Gravity';
+  String get stostoneTitle => 'سٹوسٹون کشش ثقل';
 
   @override
   String get stostoneSubtitle =>
-      'Shade cells that drop down to fill bottom rows perfectly.';
+      'شیڈ سیلز جو نیچے کی قطاروں کو مکمل طور پر بھرنے کے لیے نیچے گرتے ہیں۔';
 
   @override
-  String get tripletsLogicTitle => 'Triplets Trio';
+  String get tripletsLogicTitle => 'تینوں تینوں';
 
   @override
   String get tripletsLogicSubtitle =>
-      'Fill grid with three shapes avoiding three-in-a-row.';
+      'ایک قطار میں تین سے گریز کرتے ہوئے گرڈ کو تین شکلوں سے بھریں۔';
 
   @override
   String get galaxiesSymTitle => 'Galaxies Symmetry';
 
   @override
   String get galaxiesSymSubtitle =>
-      'Divide grid into rotationally symmetric galaxy shapes.';
+      'گرڈ کو گردشی توازن والی کہکشاں کی شکلوں میں تقسیم کریں۔';
 
   @override
-  String get matrixMultiplierMatchTitle => 'Matrix Matcher';
+  String get matrixMultiplierMatchTitle => 'میٹرکس میچر';
 
   @override
   String get matrixMultiplierMatchSubtitle =>
-      'Multiply row and column values to match target dot product.';
+      'ٹارگٹ ڈاٹ پروڈکٹ سے ملنے کے لیے قطار اور کالم کی قدروں کو ضرب دیں۔';
 
   @override
-  String get primeFactorTreesTitle => 'Prime Factor Trees';
+  String get primeFactorTreesTitle => 'پرائم فیکٹر درخت';
 
   @override
   String get primeFactorTreesSubtitle =>
-      'Decompose composite numbers into prime leaf factor pairs.';
+      'مرکب نمبروں کو پرائم لیف فیکٹر کے جوڑوں میں تحلیل کریں۔';
 
   @override
-  String get vektorVectorTitle => 'Vector Vector';
+  String get vektorVectorTitle => 'ویکٹر ویکٹر';
 
   @override
   String get vektorVectorSubtitle =>
-      'Scale vectors to make their sum land on the target.';
+      'ویکٹر کو اسکیل کریں تاکہ ان کی زمین کو ہدف پر بنایا جاسکے۔';
 
   @override
-  String get binomialMatchTitle => 'Binomial Match';
+  String get binomialMatchTitle => 'بائنومیل میچ';
 
   @override
   String get binomialMatchSubtitle =>
-      'Match quadratic formulas with factored binomial values.';
+      'فیکٹرڈ binomial اقدار کے ساتھ چوکور فارمولوں کو جوڑیں۔';
 
   @override
-  String get percentageShoppingTitle => 'Percentage Shopping';
+  String get percentageShoppingTitle => 'فی صد خریداری';
 
   @override
   String get percentageShoppingSubtitle =>
-      'Calculate discount percentages and final checkout totals.';
+      'ڈسکاؤنٹ فیصد اور حتمی چیک آؤٹ ٹوٹل کا حساب لگائیں۔';
 
   @override
   String get cryptoArithmeticTitle => 'Crypto-Arithmetic';
 
   @override
   String get cryptoArithmeticSubtitle =>
-      'Crack character-digit substitution cipher math problems.';
+      'کریک کریکٹر ڈیجٹ متبادل سائفر ریاضی کے مسائل۔';
 
   @override
-  String get fractionalPizzaTitle => 'Fractional Pizza';
+  String get fractionalPizzaTitle => 'فریکشنل پیزا';
 
   @override
   String get fractionalPizzaSubtitle =>
-      'Partition pizza slices to match target sum fractions.';
+      'ٹارگٹ سم فریکشنز سے ملنے کے لیے پیزا سلائسز کو تقسیم کریں۔';
 
   @override
-  String get numberBondsTitle => 'Number Bonds';
+  String get numberBondsTitle => 'نمبر بانڈز';
 
   @override
   String get numberBondsSubtitle =>
-      'Link node values to equal a target connection sum.';
+      'ٹارگٹ کنکشن کی رقم کے برابر کرنے کے لیے نوڈ ویلیوز کو لنک کریں۔';
 
   @override
-  String get gridSumLineTitle => 'Grid Sum Line';
+  String get gridSumLineTitle => 'گرڈ سم لائن';
 
   @override
   String get gridSumLineSubtitle =>
-      'Draw a path whose values evaluate exactly to the target.';
+      'ایک ایسا راستہ بنائیں جس کی قدریں ہدف کے عین مطابق ہوں۔';
 
   @override
-  String get binaryScaleBalanceTitle => 'Binary Scale Balance';
+  String get binaryScaleBalanceTitle => 'بائنری اسکیل بیلنس';
 
   @override
   String get binaryScaleBalanceSubtitle =>
-      'Balance decimal weight using power-of-two blocks.';
+      'پاور آف ٹو بلاکس کا استعمال کرتے ہوئے اعشاریہ وزن کو متوازن کریں۔';
 
   @override
-  String get moduloPathTitle => 'Modulo Path';
+  String get moduloPathTitle => 'ماڈیولو پاتھ';
 
   @override
   String get moduloPathSubtitle =>
-      'Traverse grid cells matching modulo remainder values.';
+      'ٹریورس گرڈ سیلز جو ماڈیول کی بقیہ اقدار سے مماثل ہیں۔';
 
   @override
-  String get digitSwapEqTitle => 'Digit Swap Equations';
+  String get digitSwapEqTitle => 'ہندسوں کی تبدیلی کی مساوات';
 
   @override
   String get digitSwapEqSubtitle =>
-      'Swap single digits between equations to correct both.';
+      'دونوں کو درست کرنے کے لیے مساوات کے درمیان واحد ہندسوں کو تبدیل کریں۔';
 
   @override
-  String get areaPerimeterMatchTitle => 'Area & Perimeter';
+  String get areaPerimeterMatchTitle => 'رقبہ اور دائرہ';
 
   @override
   String get areaPerimeterMatchSubtitle =>
-      'Draw rectangles matching target area and perimeter values.';
+      'ٹارگٹ ایریا اور فریمیٹر ویلیوز سے مماثل مستطیل کھینچیں۔';
 
   @override
-  String get inequalityBalanceOpsTitle => 'Inequality Balance';
+  String get inequalityBalanceOpsTitle => 'عدم مساوات کا توازن';
 
   @override
   String get inequalityBalanceOpsSubtitle =>
-      'Place inequality symbols between complex math terms.';
+      'پیچیدہ ریاضی کی اصطلاحات کے درمیان عدم مساوات کی علامتیں رکھیں۔';
 
   @override
-  String get graphCoordinatePlotTitle => 'Graph Plotter';
+  String get graphCoordinatePlotTitle => 'گراف پلاٹر';
 
   @override
   String get graphCoordinatePlotSubtitle =>
-      'Plot grid coordinates matching linear/quadratic curves.';
+      'پلاٹ گرڈ کوآرڈینیٹ ملتے جلتے لکیری / چوکور منحنی خطوط۔';
 
   @override
-  String get baseConversionRunTitle => 'Base Conversion';
+  String get baseConversionRunTitle => 'بیس کنورژن';
 
   @override
   String get baseConversionRunSubtitle =>
-      'Convert values between binary, decimal, hex, and octal.';
+      'بائنری، اعشاریہ، ہیکس اور آکٹل کے درمیان اقدار کو تبدیل کریں۔';
 
   @override
-  String get unitConverterProTitle => 'Unit Converter';
+  String get unitConverterProTitle => 'یونٹ کنورٹر';
 
   @override
   String get unitConverterProSubtitle =>
-      'Answer quick unit conversions under time limits.';
+      'وقت کی حدود کے تحت فوری یونٹ تبادلوں کا جواب دیں۔';
 
   @override
-  String get auditoryNBackTitle => 'Auditory N-Back';
+  String get auditoryNBackTitle => 'سمعی این-بیک';
 
   @override
   String get auditoryNBackSubtitle =>
-      'Match spoken letters heard N steps back from memory.';
+      'مماثل بولے گئے حروف N یادداشت سے پیچھے ہٹتے ہوئے سنے گئے۔';
 
   @override
-  String get abstractPatternRecallTitle => 'Pattern Layering';
+  String get abstractPatternRecallTitle => 'پیٹرن لیئرنگ';
 
   @override
   String get abstractPatternRecallSubtitle =>
-      'Reconstruct layered colorful shapes from memory study.';
+      'میموری اسٹڈی سے پرتوں والی رنگین شکلیں دوبارہ بنائیں۔';
 
   @override
-  String get roomInspectorTitle => 'Room Inspector';
+  String get roomInspectorTitle => 'کمرہ انسپکٹر';
 
   @override
   String get roomInspectorSubtitle =>
-      'Identify furniture modifications made while screen was blank.';
+      'اسکرین خالی ہونے کے دوران فرنیچر میں کی گئی تبدیلیوں کی شناخت کریں۔';
 
   @override
-  String get voiceToFaceMatchTitle => 'Voice-Face Match';
+  String get voiceToFaceMatchTitle => 'وائس فیس میچ';
 
   @override
   String get voiceToFaceMatchSubtitle =>
-      'Select correct face associated with spoken audio voice clip.';
+      'بولے گئے آڈیو وائس کلپ سے وابستہ صحیح چہرہ منتخب کریں۔';
 
   @override
-  String get spatialGridMemory3DTitle => '3D Spatial Memory';
+  String get spatialGridMemory3DTitle => '3D مقامی میموری';
 
   @override
   String get spatialGridMemory3DSubtitle =>
-      'Recall flashed blocks in a rotated 3D cube grid structure.';
+      'گھمائے ہوئے 3D کیوب گرڈ ڈھانچے میں فلیشڈ بلاکس کو یاد کریں۔';
 
   @override
-  String get sequenceStackTitle => 'Sequence Stack';
+  String get sequenceStackTitle => 'تسلسل اسٹیک';
 
   @override
   String get sequenceStackSubtitle =>
-      'Reconstruct plate stack additions and removals in order.';
+      'ترتیب میں پلیٹ اسٹیک کے اضافے اور ہٹانے کو دوبارہ تشکیل دیں۔';
 
   @override
-  String get semanticCategoryRecallTitle => 'Category Recall';
+  String get semanticCategoryRecallTitle => 'زمرہ یاد';
 
   @override
   String get semanticCategoryRecallSubtitle =>
-      'Identify study words matching requested category targets.';
+      'درخواست کردہ زمرہ کے اہداف سے مماثل مطالعاتی الفاظ کی شناخت کریں۔';
 
   @override
-  String get gridDisplacementTitle => 'Grid Displacement';
+  String get gridDisplacementTitle => 'گرڈ کی نقل مکانی';
 
   @override
   String get gridDisplacementSubtitle =>
-      'Identify shifted icons comparing layout to original.';
+      'لے آؤٹ کا اصل سے موازنہ کرتے ہوئے شفٹ شدہ آئیکنز کی شناخت کریں۔';
 
   @override
-  String get soundSequenceMatchTitle => 'Sound Sequence Match';
+  String get soundSequenceMatchTitle => 'صوتی ترتیب میچ';
 
   @override
   String get soundSequenceMatchSubtitle =>
-      'Repeat note sequences played on a virtual keyboard.';
+      'ورچوئل کی بورڈ پر چلائے گئے نوٹ کے سلسلے کو دہرائیں۔';
 
   @override
-  String get cardCountingMemoryTitle => 'Card Counter';
+  String get cardCountingMemoryTitle => 'کارڈ کاؤنٹر';
 
   @override
   String get cardCountingMemorySubtitle =>
-      'Identify cards already dealt in continuous card deal runs.';
+      'کارڈز کی شناخت کریں جو پہلے سے ہی مسلسل کارڈ ڈیل میں نمٹ چکے ہیں۔';
 
   @override
-  String get directionsRecallTitle => 'Directions Recall';
+  String get directionsRecallTitle => 'ہدایات یاد کریں۔';
 
   @override
   String get directionsRecallSubtitle =>
-      'Navigate grid maps matching path directions from memory.';
+      'میموری سے راستے کی سمتوں سے مماثل گرڈ نقشوں کو نیویگیٹ کریں۔';
 
   @override
-  String get eventTimelineMemoryTitle => 'Event Timeline';
+  String get eventTimelineMemoryTitle => 'ایونٹ کی ٹائم لائن';
 
   @override
   String get eventTimelineMemorySubtitle =>
-      'Arrange historical/fictional event cards chronologically.';
+      'تاریخی/ خیالی ایونٹ کارڈز کو تاریخ کے مطابق ترتیب دیں۔';
 
   @override
-  String get featureMatrixRecallTitle => 'Feature Matrix';
+  String get featureMatrixRecallTitle => 'فیچر میٹرکس';
 
   @override
   String get featureMatrixRecallSubtitle =>
-      'Answer query prompts about cell shape-color attributes.';
+      'جوابی سوال سیل کی شکل رنگ کی خصوصیات کے بارے میں اشارہ کرتا ہے۔';
 
   @override
-  String get delayedMatchSampleTitle => 'Delayed Match';
+  String get delayedMatchSampleTitle => 'تاخیر سے میچ';
 
   @override
   String get delayedMatchSampleSubtitle =>
-      'Match target symbol after solving math distractors.';
+      'ریاضی کے خلفشار کو حل کرنے کے بعد ہدف کی علامت سے میچ کریں۔';
 
   @override
-  String get symbolDigitAssocTitle => 'Symbol-Digit Assoc';
+  String get symbolDigitAssocTitle => 'Symbol-digit Assoc';
 
   @override
   String get symbolDigitAssocSubtitle =>
-      'Solve symbol translation sheets matching digit keys.';
+      'ہندسوں کی چابیاں سے مماثل علامتی ترجمہ شیٹس کو حل کریں۔';
 
   @override
-  String get dualTaskMemoryTitle => 'Dual-Task Memory';
+  String get dualTaskMemoryTitle => 'ڈوئل ٹاسک میموری';
 
   @override
   String get dualTaskMemorySubtitle =>
-      'Memorize word sets while resolving quick arithmetic tasks.';
+      'فوری ریاضی کے کاموں کو حل کرتے ہوئے الفاظ کے سیٹ کو یاد رکھیں۔';
 
   @override
-  String get actionSequenceRecallTitle => 'Action Recall';
+  String get actionSequenceRecallTitle => 'ایکشن یاد';
 
   @override
   String get actionSequenceRecallSubtitle =>
-      'Repeat character gesture animation sequences in order.';
+      'کریکٹر اشاروں کی حرکت پذیری کی ترتیب کو ترتیب سے دہرائیں۔';
 
   @override
-  String get tangramPolygonTitle => 'Tangram Fit';
+  String get tangramPolygonTitle => 'تانگرام فٹ';
 
   @override
   String get tangramPolygonSubtitle =>
-      'Arrange polygon shapes to fill silhouette outlines.';
+      'سلہیٹ خاکہ کو بھرنے کے لیے کثیرالاضلاع کی شکلیں ترتیب دیں۔';
 
   @override
   String get mazeNav3DTitle => '3D Maze Nav';
 
   @override
   String get mazeNav3DSubtitle =>
-      'Navigate 3D isometric maze routes from first-person view.';
+      'پہلے شخص کے نظارے سے 3D isometric بھولبلییا کے راستوں پر تشریف لے جائیں۔';
 
   @override
-  String get isometricProjectionTitle => 'Isometric Projector';
+  String get isometricProjectionTitle => 'آئیسومیٹرک پروجیکٹر';
 
   @override
   String get isometricProjectionSubtitle =>
-      'Match 3D block figures to orthographic 2D top/front views.';
+      '3D بلاک کے اعداد و شمار کو آرتھوگرافک 2D ٹاپ/فرنٹ ویوز سے جوڑیں۔';
 
   @override
-  String get polyominoPackingTitle => 'Polyomino Packing';
+  String get polyominoPackingTitle => 'پولیومینو پیکنگ';
 
   @override
   String get polyominoPackingSubtitle =>
-      'Pack random polyomino block pieces into target areas.';
+      'بے ترتیب پولی مینو بلاک کے ٹکڑوں کو ہدف والے علاقوں میں پیک کریں۔';
 
   @override
-  String get spatialGridRotationTitle => 'Spatial Grid Rotation';
+  String get spatialGridRotationTitle => 'مقامی گرڈ کی گردش';
 
   @override
   String get spatialGridRotationSubtitle =>
-      'Match 3D block arrangements rotated along axis coordinates.';
+      '3D بلاک کے انتظامات کو محور کوآرڈینیٹس کے ساتھ گھما کر میچ کریں۔';
 
   @override
-  String get wireLoopGameTitle => 'Wire Loop';
+  String get wireLoopGameTitle => 'وائر لوپ';
 
   @override
   String get wireLoopGameSubtitle =>
-      'Drag metal rings along wire splines without contact.';
+      'دھات کی انگوٹھیوں کو بغیر کسی رابطے کے تار کی پٹیوں کے ساتھ گھسیٹیں۔';
 
   @override
-  String get origamiUnfoldTitle => 'Origami Unfold';
+  String get origamiUnfoldTitle => 'اوریگامی انفولڈ';
 
   @override
   String get origamiUnfoldSubtitle =>
-      'Identify hole punch patterns after unfolding folded sheets.';
+      'تہہ شدہ چادروں کو کھولنے کے بعد سوراخ کے پنچ پیٹرن کی شناخت کریں۔';
 
   @override
-  String get ropeTangleSolverTitle => 'Rope Untangler';
+  String get ropeTangleSolverTitle => 'رسی اُنٹینگلر';
 
   @override
   String get ropeTangleSolverSubtitle =>
-      'Drag nodes to layout planar graphs with zero line crosses.';
+      'نوڈس کو زیرو لائن کراس کے ساتھ پلانر گرافس لے آؤٹ کرنے کے لیے گھسیٹیں۔';
 
   @override
-  String get gridFitTetrisTitle => 'Grid Fit Solver';
+  String get gridFitTetrisTitle => 'گرڈ فٹ سولور';
 
   @override
   String get gridFitTetrisSubtitle =>
-      'Arrange static irregular blocks to fit container bounds.';
+      'کنٹینر کی حدود کو فٹ کرنے کے لیے جامد فاسد بلاکس کا بندوبست کریں۔';
 
   @override
-  String get vectorGridAlignmentTitle => 'Vector Alignment';
+  String get vectorGridAlignmentTitle => 'ویکٹر الائنمنٹ';
 
   @override
   String get vectorGridAlignmentSubtitle =>
-      'Scale and rotate shapes to match shadow template targets.';
+      'شیڈو ٹیمپلیٹ کے اہداف سے ملنے کے لیے شکلیں پیمانہ اور گھمائیں۔';
 
   @override
-  String get blockStackingPhysicsTitle => 'Block Stacking';
+  String get blockStackingPhysicsTitle => 'بلاک اسٹیکنگ';
 
   @override
   String get blockStackingPhysicsSubtitle =>
-      'Stack irregular block panels balancing gravity weight.';
+      'کشش ثقل کے وزن کو متوازن کرنے والے فاسد بلاک پینلز کو اسٹیک کریں۔';
 
   @override
-  String get crossSectionMatch3DTitle => '3D Cross Section';
+  String get crossSectionMatch3DTitle => '3D کراس سیکشن';
 
   @override
   String get crossSectionMatch3DSubtitle =>
-      'Identify 2D slice geometries cut from 3D shapes.';
+      '3D شکلوں سے کٹے ہوئے 2D سلائس جیومیٹریوں کی شناخت کریں۔';
 
   @override
-  String get symmetryPaintTitle => 'Symmetry Paint';
+  String get symmetryPaintTitle => 'ہم آہنگی پینٹ';
 
   @override
   String get symmetryPaintSubtitle =>
-      'Draw mirror image segments reflecting across symmetry axes.';
+      'ہم آہنگی کے محور پر عکاسی کرنے والے آئینے کی تصویر کے حصے بنائیں۔';
 
   @override
-  String get rollingBlockBloxTitle => 'Rolling Block';
+  String get rollingBlockBloxTitle => 'رولنگ بلاک';
 
   @override
   String get rollingBlockBloxSubtitle =>
-      'Roll block pieces to land vertically in target slots.';
+      'ٹارگٹ سلاٹس میں عمودی طور پر اترنے کے لیے بلاک کے ٹکڑوں کو رول کریں۔';
 
   @override
-  String get perspectiveShiftViewTitle => 'Perspective Shift';
+  String get perspectiveShiftViewTitle => 'نقطہ نظر کی شفٹ';
 
   @override
   String get perspectiveShiftViewSubtitle =>
-      'Rotate block clusters until they spell letters/words.';
+      'بلاک کلسٹرز کو اس وقت تک گھمائیں جب تک کہ وہ حروف / الفاظ کے ہجے نہ کریں۔';
 
   @override
-  String get networkFlowSphericalTitle => 'Network Flow';
+  String get networkFlowSphericalTitle => 'نیٹ ورک فلو';
 
   @override
   String get networkFlowSphericalSubtitle =>
-      'Connect grid flows on wrapping cylindrical coordinates.';
+      'ریپنگ سلنڈرکل کوآرڈینیٹس پر گرڈ کے بہاؤ کو مربوط کریں۔';
 
   @override
-  String get layeredSilhouetteBlendTitle => 'Silhouette Blend';
+  String get layeredSilhouetteBlendTitle => 'سلہیٹ بلینڈ';
 
   @override
   String get layeredSilhouetteBlendSubtitle =>
-      'Stack colored layers to match target translucent shapes.';
+      'ہدف کی پارباسی شکلوں سے ملنے کے لیے رنگین تہوں کو اسٹیک کریں۔';
 
   @override
-  String get wordWheelPangramTitle => 'Word Anagrams';
+  String get wordWheelPangramTitle => 'لفظ اناگرامس';
 
   @override
   String get wordWheelPangramSubtitle =>
-      'Construct words containing central target letters from wheels.';
+      'پہیوں سے مرکزی ہدف کے حروف پر مشتمل الفاظ بنائیں۔';
 
   @override
-  String get letterGridSwapperTitle => 'Letter Swapper';
+  String get letterGridSwapperTitle => 'لیٹر سویپر';
 
   @override
   String get letterGridSwapperSubtitle =>
-      'Swap adjacent letter tiles to complete row and col words.';
+      'قطار اور کال الفاظ کو مکمل کرنے کے لیے ملحقہ خط کی ٹائلیں تبدیل کریں۔';
 
   @override
-  String get synonymMatchTitle => 'Synonym Match';
+  String get synonymMatchTitle => 'مترادف میچ';
 
   @override
   String get synonymMatchSubtitle =>
-      'Match falling word targets with synonyms or antonyms.';
+      'گرتے ہوئے الفاظ کے اہداف کو مترادفات یا متضاد الفاظ کے ساتھ جوڑیں۔';
 
   @override
   String get vowelDropTitle => 'Vowel Drop';
 
   @override
   String get vowelDropSubtitle =>
-      'Drop vowels into coordinate grids completing words.';
+      'الفاظ کو مکمل کرنے والے کوآرڈینیٹ گرڈ میں سروں کو چھوڑیں۔';
 
   @override
-  String get letterBalanceScaleTitle => 'Word Balance Scale';
+  String get letterBalanceScaleTitle => 'ورڈ بیلنس اسکیل';
 
   @override
   String get letterBalanceScaleSubtitle =>
-      'Spell words whose letter values balance weights.';
+      'ایسے الفاظ کی ہجے کریں جن کے حرف توازن وزن کی قدر کرتے ہیں۔';
 
   @override
-  String get wordChainShiritoriTitle => 'Word Chain';
+  String get wordChainShiritoriTitle => 'ورڈ چین';
 
   @override
   String get wordChainShiritoriSubtitle =>
-      'Link word loops starting with preceding letter outputs.';
+      'پچھلے حروف کے آؤٹ پٹس سے شروع ہونے والے ورڈ لوپس کو لنک کریں۔';
 
   @override
-  String get affixBuilderTitle => 'Affix Builder';
+  String get affixBuilderTitle => 'ایفکس بلڈر';
 
   @override
   String get affixBuilderSubtitle =>
-      'Combine prefixes/suffixes to construct target vocabularies.';
+      'ٹارگٹ الفاظ کو بنانے کے لیے سابقے/ لاحقے کو یکجا کریں۔';
 
   @override
-  String get decipherCrypticCluesTitle => 'Cryptic Decipher';
+  String get decipherCrypticCluesTitle => 'خفیہ ڈیسیفر';
 
   @override
   String get decipherCrypticCluesSubtitle =>
-      'Solve word-play puzzles and decrypt spelling riddles.';
+      'ورڈ پلے پہیلیاں حل کریں اور ہجے کی پہیلیوں کو ڈکرپٹ کریں۔';
 
   @override
-  String get boggleWordSearchTitle => 'Boggle Connect';
+  String get boggleWordSearchTitle => 'بوگل کنیکٹ';
 
   @override
   String get boggleWordSearchSubtitle =>
-      'Trace adjacent connected paths to find hidden words.';
+      'پوشیدہ الفاظ تلاش کرنے کے لیے ملحقہ جڑے ہوئے راستوں کا سراغ لگائیں۔';
 
   @override
-  String get idiomUnscrambleTitle => 'Idiom Unscramble';
+  String get idiomUnscrambleTitle => 'محاورہ Unscramble';
 
   @override
   String get idiomUnscrambleSubtitle =>
-      'Arrange scrambled word arrays to match idiom meanings.';
+      'محاورے کے معانی سے مماثل الفاظ کی صفوں کو ترتیب دیں۔';
 
   @override
-  String get letterPyramidsTitle => 'Letter Pyramids';
+  String get letterPyramidsTitle => 'خط اہرام';
 
   @override
   String get letterPyramidsSubtitle =>
-      'Build word towers adding single anagram letters per tier.';
+      'ورڈ ٹاورز بنائیں جس میں فی ٹائر واحد ایناگرام حروف شامل ہوں۔';
 
   @override
-  String get soundAlikeHomophonesTitle => 'Homophone Matches';
+  String get soundAlikeHomophonesTitle => 'ہوموفون میچز';
 
   @override
   String get soundAlikeHomophonesSubtitle =>
-      'Identify correct homophone spellings for sentences.';
+      'جملے کے لیے صحیح ہومو فون ہجے کی شناخت کریں۔';
 
   @override
-  String get wordGridSudokuTitle => 'Word Sudoku';
+  String get wordGridSudokuTitle => 'لفظ سوڈوکو';
 
   @override
   String get wordGridSudokuSubtitle =>
-      'Tesselate letters in grid rows forming words.';
+      'گرڈ قطاروں میں ٹیسلیٹ حروف جو الفاظ تشکیل دیتے ہیں۔';
 
   @override
-  String get portmanteauFactoryTitle => 'Portmanteau Factory';
+  String get portmanteauFactoryTitle => 'پورٹ مینٹو فیکٹری';
 
   @override
   String get portmanteauFactorySubtitle =>
-      'Merge semantic components creating compound words.';
+      'مرکب الفاظ بنانے والے سیمنٹک اجزاء کو ضم کریں۔';
 
   @override
-  String get codedCrosswordsCodeTitle => 'Codewords Crossword';
+  String get codedCrosswordsCodeTitle => 'کوڈ ورڈز کراس ورڈ';
 
   @override
   String get codedCrosswordsCodeSubtitle =>
-      'Solve grid crosswords matching number-to-letter codes.';
+      'نمبر سے حرفی کوڈز کے مماثل گرڈ کراس ورڈز کو حل کریں۔';
 
   @override
-  String get wordSnakeTrailTitle => 'Word Snake';
+  String get wordSnakeTrailTitle => 'لفظ سانپ';
 
   @override
   String get wordSnakeTrailSubtitle =>
-      'Trace snake-like letter trails spelling thematic words.';
+      'ٹریس سانپ کی طرح حروف ٹریلس موضوعاتی الفاظ کے ہجے.';
 
   @override
-  String get typingRhythmSpeedTitle => 'Typing Flow';
+  String get typingRhythmSpeedTitle => 'ٹائپنگ فلو';
 
   @override
   String get typingRhythmSpeedSubtitle =>
-      'Type vocabularies matching metronome rhythm beats.';
+      'میٹرنوم تال کی دھڑکنوں سے مماثل الفاظ کی قسم۔';
 
   @override
   String get errorSomethingWrong => 'Something went wrong';
