@@ -158,13 +158,16 @@ class _GhostTapScreenState extends ConsumerState<GhostTapScreen> with SingleTick
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  _isGhostMode ? 'TAP AT PEAK (INVISIBLE)' : 'MEMORIZE THE RHYTHM',
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    color: _isGhostMode ? Colors.orange : DesignSystem.primary,
+                Flexible(
+                  child: Text(
+                    _isGhostMode ? 'TAP AT PEAK (INVISIBLE)' : 'MEMORIZE THE RHYTHM',
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      color: _isGhostMode ? Colors.orange : DesignSystem.primary,
+                    ),
                   ),
                 ),
+                const SizedBox(width: 8),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(

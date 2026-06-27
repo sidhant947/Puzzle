@@ -178,10 +178,13 @@ class _DynamicSalienceScreenState extends ConsumerState<DynamicSalienceScreen> w
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Focal search on oscillations',
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 13),
+                Flexible(
+                  child: Text(
+                    'Focal search on oscillations',
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 13),
+                  ),
                 ),
+                const SizedBox(width: 8),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(

@@ -36,7 +36,9 @@ class _MainShellState extends ConsumerState<MainShell>
   void initState() {
     super.initState();
     WidgetsBinding.instance.addObserver(this);
-    ref.read(gameStreakNotifierProvider.notifier).refreshStatus();
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      ref.read(gameStreakNotifierProvider.notifier).refreshStatus();
+    });
     _lastCheckedDate = DateTime.now();
     _dayCheckTimer = Timer.periodic(const Duration(minutes: 1), (_) {
       _checkDayChange();

@@ -223,10 +223,13 @@ class _TennerGridScreenState extends ConsumerState<TennerGridScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Select a cell and pick a digit',
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 13),
+                Flexible(
+                  child: const Text(
+                    'Select a cell and pick a digit',
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 13),
+                  ),
                 ),
+                const SizedBox(width: 8),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(

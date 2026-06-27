@@ -181,10 +181,13 @@ class _KakurasuSumsScreenState extends ConsumerState<KakurasuSumsScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'Goal: Match sum targets',
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 13),
+                Flexible(
+                  child: Text(
+                    'Goal: Match sum targets',
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 13),
+                  ),
                 ),
+                const SizedBox(width: 8),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(

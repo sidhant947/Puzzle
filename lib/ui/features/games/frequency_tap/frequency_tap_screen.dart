@@ -146,10 +146,13 @@ class _FrequencyTapScreenState extends ConsumerState<FrequencyTapScreen> with Ti
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Compare pulse rates side by side',
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 13),
+                const Flexible(
+                  child: Text(
+                    'Compare pulse rates side by side',
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 13),
+                  ),
                 ),
+                const SizedBox(width: 8),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(

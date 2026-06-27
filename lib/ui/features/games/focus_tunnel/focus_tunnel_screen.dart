@@ -207,10 +207,13 @@ class _FocusTunnelScreenState extends ConsumerState<FocusTunnelScreen> with Sing
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Keep track of the symbol sequence in your mind',
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 13),
+                const Flexible(
+                  child: Text(
+                    'Keep track of the symbol sequence in your mind',
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 13),
+                  ),
                 ),
+                const SizedBox(width: 8),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(

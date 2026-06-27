@@ -182,10 +182,13 @@ class _ColorWordMatchUpScreenState extends ConsumerState<ColorWordMatchUpScreen>
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  'React quickly before the bar drains',
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 13),
+                Flexible(
+                  child: Text(
+                    'React quickly before the bar drains',
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 13),
+                  ),
                 ),
+                const SizedBox(width: 8),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(

@@ -163,10 +163,13 @@ class _BlinkDetectorScreenState extends ConsumerState<BlinkDetectorScreen> {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                const Text(
-                  'Distractors blink once, Target blinks twice',
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 13),
+                Flexible(
+                  child: const Text(
+                    'Distractors blink once, Target blinks twice',
+                    style: TextStyle(fontWeight: FontWeight.w500, fontSize: 13),
+                  ),
                 ),
+                const SizedBox(width: 8),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(

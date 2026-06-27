@@ -207,16 +207,19 @@ class _RoomInspectorScreenState extends ConsumerState<RoomInspectorScreen> {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(
-                  _gamePhase == 'study'
-                      ? 'Studying room: $_countdown s'
-                      : (_gamePhase == 'blink' ? 'Shuffling...' : 'Spot the change!'),
-                  style: TextStyle(
-                    fontWeight: FontWeight.bold,
-                    fontSize: 18,
-                    color: _gamePhase == 'study' ? DesignSystem.gameOrange : DesignSystem.gameGreen,
+                Flexible(
+                  child: Text(
+                    _gamePhase == 'study'
+                        ? 'Studying room: $_countdown s'
+                        : (_gamePhase == 'blink' ? 'Shuffling...' : 'Spot the change!'),
+                    style: TextStyle(
+                      fontWeight: FontWeight.bold,
+                      fontSize: 18,
+                      color: _gamePhase == 'study' ? DesignSystem.gameOrange : DesignSystem.gameGreen,
+                    ),
                   ),
                 ),
+                const SizedBox(width: 8),
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(

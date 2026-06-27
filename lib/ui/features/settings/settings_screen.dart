@@ -406,7 +406,7 @@ class SettingsScreen extends ConsumerWidget {
       child: Row(
         children: [
           const Icon(
-            Icons.apple_rounded,
+            Icons.favorite_rounded,
             size: 32,
             color: Colors.white,
           ),
@@ -416,21 +416,13 @@ class SettingsScreen extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 const Text(
-                  'SUPPORT IOS RELEASE',
+                  'SUPPORT APP',
                   style: TextStyle(
                     fontFamily: 'Bebas Neue',
                     fontWeight: FontWeight.w700,
                     fontSize: DesignSystem.fontSizeLG,
                     letterSpacing: 1.0,
                     color: Colors.white,
-                  ),
-                ),
-                Text(
-                  'HELP US COVER THE APPLE DEVELOPER FEE',
-                  style: theme.textTheme.labelSmall?.copyWith(
-                    fontWeight: FontWeight.w900,
-                    color: Colors.white.withValues(alpha: 0.8),
-                    letterSpacing: 0.5,
                   ),
                 ),
               ],

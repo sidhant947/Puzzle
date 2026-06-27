@@ -197,10 +197,13 @@ class _BlockStackingPhysicsScreenState extends ConsumerState<BlockStackingPhysic
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text(
-                    'Stack Height: ${_stackedBlocks.length - 1} / $_targetStackHeight',
-                    style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                  Flexible(
+                    child: Text(
+                      'Stack Height: ${_stackedBlocks.length - 1} / $_targetStackHeight',
+                      style: const TextStyle(fontWeight: FontWeight.bold, fontSize: 16),
+                    ),
                   ),
+                  const SizedBox(width: 8),
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     decoration: BoxDecoration(
