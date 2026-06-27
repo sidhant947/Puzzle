@@ -243,7 +243,7 @@ class _GokigenNanameScreenState extends ConsumerState<GokigenNanameScreen> {
                           child: Container(
                             decoration: BoxDecoration(
                               border: Border.all(
-                                color: (isDark ? DesignSystem.darkOutline : DesignSystem.outline).withOpacity(0.5),
+                                color: (isDark ? DesignSystem.darkOutline : DesignSystem.outline).withValues(alpha: 0.5),
                                 width: 0.5,
                               ),
                             ),

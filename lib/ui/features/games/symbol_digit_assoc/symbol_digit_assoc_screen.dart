@@ -168,7 +168,7 @@ class _SymbolDigitAssocScreenState extends ConsumerState<SymbolDigitAssocScreen>
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               decoration: BoxDecoration(
-                color: DesignSystem.primary.withOpacity(0.15),
+                color: DesignSystem.primary.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
               ),
               child: Text(
@@ -291,7 +291,7 @@ class _SymbolDigitAssocScreenState extends ConsumerState<SymbolDigitAssocScreen>
                 height: 100,
                 decoration: BoxDecoration(
                   color: active
-                      ? DesignSystem.primary.withOpacity(0.08)
+                      ? DesignSystem.primary.withValues(alpha: 0.08)
                       : (isDark ? DesignSystem.darkSurface : DesignSystem.surface),
                   borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
                   border: Border.all(

@@ -50,7 +50,6 @@ class _FeatureMatrixRecallScreenState extends ConsumerState<FeatureMatrixRecallS
   // Query details
   late int _queryRow;
   late int _queryCol;
-  late String _queryFeatureType; // 'shape', 'color', 'symbol'
   late String _queryText;
   late List<dynamic> _options;
   late dynamic _correctAnswer;
@@ -87,17 +86,14 @@ class _FeatureMatrixRecallScreenState extends ConsumerState<FeatureMatrixRecallS
     final cell = _grid[_queryRow][_queryCol];
 
     if (featureIndex == 0) {
-      _queryFeatureType = 'shape';
       _queryText = 'What was the SHAPE of the $cellName?';
       _correctAnswer = cell.shape;
       _options = List.from(_shapes)..shuffle(_random);
     } else if (featureIndex == 1) {
-      _queryFeatureType = 'color';
       _queryText = 'What was the COLOR of the $cellName?';
       _correctAnswer = cell.color;
       _options = List.from(_colors)..shuffle(_random);
     } else {
-      _queryFeatureType = 'symbol';
       _queryText = 'What was the SYMBOL inside the $cellName?';
       _correctAnswer = cell.symbol;
       _options = List.from(_symbols)..shuffle(_random);
@@ -198,7 +194,7 @@ class _FeatureMatrixRecallScreenState extends ConsumerState<FeatureMatrixRecallS
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               decoration: BoxDecoration(
-                color: DesignSystem.primary.withOpacity(0.15),
+                color: DesignSystem.primary.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
               ),
               child: Text(

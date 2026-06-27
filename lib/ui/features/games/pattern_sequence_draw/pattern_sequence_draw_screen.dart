@@ -21,8 +21,8 @@ class _PatternSequenceDrawScreenState extends ConsumerState<PatternSequenceDrawS
   final int _gridSize = 3; // 3x3 grid
 
   // Game state
-  List<int> _targetSequence = [];
-  List<int> _userSequence = [];
+  final List<int> _targetSequence = [];
+  final List<int> _userSequence = [];
   bool _isPlayingSequence = true;
   int _activeSeqIndex = -1; // dot currently highlighted in play mode
 
@@ -195,7 +195,7 @@ class _PatternSequenceDrawScreenState extends ConsumerState<PatternSequenceDrawS
           Container(
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
             decoration: BoxDecoration(
-              color: DesignSystem.primary.withOpacity(0.1),
+              color: DesignSystem.primary.withValues(alpha: 0.1),
               borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
             ),
             child: Text(
@@ -266,7 +266,7 @@ class _PatternSequenceDrawScreenState extends ConsumerState<PatternSequenceDrawS
                                 ? [
                                     BoxShadow(
                                       color: (isTargetActive ? DesignSystem.primary : DesignSystem.gameGreen)
-                                          .withOpacity(0.4),
+                                          .withValues(alpha: 0.4),
                                       blurRadius: 8,
                                       offset: const Offset(0, 2),
                                     )
@@ -303,7 +303,7 @@ class _SequencePathPainter extends CustomPainter {
     if (sequence.isEmpty) return;
 
     final paint = Paint()
-      ..color = isPlaying ? DesignSystem.primary.withOpacity(0.5) : DesignSystem.gameGreen.withOpacity(0.5)
+      ..color = isPlaying ? DesignSystem.primary.withValues(alpha: 0.5) : DesignSystem.gameGreen.withValues(alpha: 0.5)
       ..strokeWidth = 6.0
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke;

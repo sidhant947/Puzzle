@@ -215,7 +215,7 @@ class _TripletsLogicScreenState extends ConsumerState<TripletsLogicScreen> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.1),
+                    color: DesignSystem.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -276,7 +276,7 @@ class _TripletsLogicScreenState extends ConsumerState<TripletsLogicScreen> {
                         child: Container(
                           decoration: BoxDecoration(
                             color: isFixed
-                                ? (isDark ? Colors.white.withOpacity(0.05) : Colors.black.withOpacity(0.03))
+                                ? (isDark ? Colors.white.withValues(alpha: 0.05) : Colors.black.withValues(alpha: 0.03))
                                 : Colors.transparent,
                             border: Border.all(
                               color: isDark ? Colors.white10 : Colors.black.withValues(alpha: 0.1),

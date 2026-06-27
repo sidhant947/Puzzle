@@ -153,7 +153,7 @@ class _FrequencyTapScreenState extends ConsumerState<FrequencyTapScreen> with Ti
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.1),
+                    color: DesignSystem.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -169,7 +169,7 @@ class _FrequencyTapScreenState extends ConsumerState<FrequencyTapScreen> with Ti
             margin: const EdgeInsets.symmetric(horizontal: 24, vertical: 12),
             padding: const EdgeInsets.all(16),
             decoration: BoxDecoration(
-              color: DesignSystem.gameOrange.withOpacity(0.15),
+              color: DesignSystem.gameOrange.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
               border: Border.all(color: DesignSystem.gameOrange, width: 2),
             ),
@@ -207,11 +207,11 @@ class _FrequencyTapScreenState extends ConsumerState<FrequencyTapScreen> with Ti
                             width: 120 * scale,
                             height: 120 * scale,
                             decoration: BoxDecoration(
-                              color: Colors.blue.withOpacity(0.8 * _pulseControllerA.value),
+                              color: Colors.blue.withValues(alpha: 0.8 * _pulseControllerA.value),
                               shape: BoxShape.circle,
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.blue.withOpacity(0.4),
+                                  color: Colors.blue.withValues(alpha: 0.4),
                                   blurRadius: 15,
                                   spreadRadius: 3,
                                 )
@@ -243,11 +243,11 @@ class _FrequencyTapScreenState extends ConsumerState<FrequencyTapScreen> with Ti
                             width: 120 * scale,
                             height: 120 * scale,
                             decoration: BoxDecoration(
-                              color: Colors.purple.withOpacity(0.8 * _pulseControllerB.value),
+                              color: Colors.purple.withValues(alpha: 0.8 * _pulseControllerB.value),
                               shape: BoxShape.circle,
                               boxShadow: [
                                 BoxShadow(
-                                  color: Colors.purple.withOpacity(0.4),
+                                  color: Colors.purple.withValues(alpha: 0.4),
                                   blurRadius: 15,
                                   spreadRadius: 3,
                                 )

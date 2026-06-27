@@ -254,7 +254,7 @@ class _TangramScreenState extends ConsumerState<TangramScreen> {
                                     color: coveredMap.containsKey(Point(r, c))
                                         ? coveredMap[Point(r, c)]
                                         : (_targetOutline.contains(Point(r, c))
-                                            ? Colors.grey.withOpacity(0.3)
+                                            ? Colors.grey.withValues(alpha: 0.3)
                                             : Colors.transparent),
                                     borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
                                     border: _targetOutline.contains(Point(r, c))
@@ -277,7 +277,7 @@ class _TangramScreenState extends ConsumerState<TangramScreen> {
           // Pieces Dock / Selector
           Container(
             padding: const EdgeInsets.symmetric(vertical: 24),
-            color: isDark ? Colors.black12 : Colors.grey.withOpacity(0.05),
+            color: isDark ? Colors.black12 : Colors.grey.withValues(alpha: 0.05),
             child: Column(
               children: [
                 Text(
@@ -311,7 +311,7 @@ class _TangramScreenState extends ConsumerState<TangramScreen> {
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
                           color: isSelected
-                              ? DesignSystem.primary.withOpacity(0.15)
+                              ? DesignSystem.primary.withValues(alpha: 0.15)
                               : Colors.transparent,
                           borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
                           border: Border.all(
@@ -336,7 +336,7 @@ class _TangramScreenState extends ConsumerState<TangramScreen> {
                                     height: 10,
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        color: piece.color.withOpacity(isPlaced ? 0.4 : 1.0),
+                                        color: piece.color.withValues(alpha: isPlaced ? 0.4 : 1.0),
                                         borderRadius: BorderRadius.circular(2),
                                       ),
                                     ),

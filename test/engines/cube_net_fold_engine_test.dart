@@ -57,8 +57,8 @@ void main() {
       test('generates different levels on multiple calls', () {
         final level1 = engine.generateLevel();
         final level2 = engine.generateLevel();
-        final nets1 = level1.netColors.map((c) => c.value).toList();
-        final nets2 = level2.netColors.map((c) => c.value).toList();
+        final nets1 = level1.netColors.map((c) => c.toARGB32()).toList();
+        final nets2 = level2.netColors.map((c) => c.toARGB32()).toList();
         expect(nets1, isNot(equals(nets2)));
       });
     });

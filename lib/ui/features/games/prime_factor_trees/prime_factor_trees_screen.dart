@@ -255,7 +255,7 @@ class _PrimeFactorTreesScreenState extends ConsumerState<PrimeFactorTreesScreen>
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.1),
+                    color: DesignSystem.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -372,14 +372,14 @@ class _PrimeFactorTreesScreenState extends ConsumerState<PrimeFactorTreesScreen>
             width: 65,
             height: 65,
             decoration: BoxDecoration(
-              color: color.withOpacity(isSelected ? 0.25 : 0.15),
+              color: color.withValues(alpha: isSelected ? 0.25 : 0.15),
               shape: BoxShape.circle,
               border: Border.all(
                 color: color,
                 width: isSelected ? 3.0 : 2.0,
               ),
               boxShadow: isSelected
-                  ? [BoxShadow(color: DesignSystem.gameOrange.withOpacity(0.3), blurRadius: 8, spreadRadius: 1)]
+                  ? [BoxShadow(color: DesignSystem.gameOrange.withValues(alpha: 0.3), blurRadius: 8, spreadRadius: 1)]
                   : null,
             ),
             alignment: Alignment.center,
@@ -417,7 +417,7 @@ class TreeConnectorPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = Colors.grey.withOpacity(0.4)
+      ..color = Colors.grey.withValues(alpha: 0.4)
       ..strokeWidth = 2.0
       ..style = PaintingStyle.stroke;
 

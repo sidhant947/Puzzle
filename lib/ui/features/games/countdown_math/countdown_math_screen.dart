@@ -268,7 +268,7 @@ class _CountdownMathScreenState extends ConsumerState<CountdownMathScreen> {
                         height: 70,
                         decoration: BoxDecoration(
                           shape: BoxShape.circle,
-                          color: (isSelected1 || isSelected2) ? DesignSystem.gameOrange.withOpacity(0.2) : colorScheme.surface,
+                          color: (isSelected1 || isSelected2) ? DesignSystem.gameOrange.withValues(alpha: 0.2) : colorScheme.surface,
                           border: Border.all(
                             color: (isSelected1 || isSelected2) ? DesignSystem.gameOrange : colorScheme.outline,
                             width: 2.5,
@@ -303,7 +303,7 @@ class _CountdownMathScreenState extends ConsumerState<CountdownMathScreen> {
                       width: 55,
                       height: 55,
                       decoration: BoxDecoration(
-                        color: isSelected ? DesignSystem.gameOrange : colorScheme.outline.withOpacity(0.3),
+                        color: isSelected ? DesignSystem.gameOrange : colorScheme.outline.withValues(alpha: 0.3),
                         borderRadius: BorderRadius.circular(12),
                       ),
                       child: Center(

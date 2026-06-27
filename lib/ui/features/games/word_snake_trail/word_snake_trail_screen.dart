@@ -180,7 +180,7 @@ class _WordSnakeTrailScreenState extends ConsumerState<WordSnakeTrailScreen> {
                 Container(
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.15),
+                    color: DesignSystem.primary.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -230,7 +230,7 @@ class _WordSnakeTrailScreenState extends ConsumerState<WordSnakeTrailScreen> {
                           child: Container(
                             decoration: BoxDecoration(
                               color: isTraced
-                                  ? DesignSystem.gameGreen.withOpacity(0.2)
+                                  ? DesignSystem.gameGreen.withValues(alpha: 0.2)
                                   : (isDark ? Colors.white10 : Colors.grey[100]),
                               borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                               border: Border.all(

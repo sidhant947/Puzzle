@@ -194,7 +194,7 @@ class _CryptoArithmeticScreenState extends ConsumerState<CryptoArithmeticScreen>
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.15),
+                    color: DesignSystem.primary.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -253,7 +253,7 @@ class _CryptoArithmeticScreenState extends ConsumerState<CryptoArithmeticScreen>
                   padding: const EdgeInsets.all(16),
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: isDark ? Colors.white10 : Colors.black12.withOpacity(0.04),
+                    color: isDark ? Colors.white10 : Colors.black12.withValues(alpha: 0.04),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
                   ),
                   child: Wrap(

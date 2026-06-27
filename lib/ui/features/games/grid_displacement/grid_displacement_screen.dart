@@ -217,7 +217,7 @@ class _GridDisplacementScreenState extends ConsumerState<GridDisplacementScreen>
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(
-                      color: DesignSystem.primary.withOpacity(0.15),
+                      color: DesignSystem.primary.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                     ),
                     child: Text(
@@ -231,7 +231,7 @@ class _GridDisplacementScreenState extends ConsumerState<GridDisplacementScreen>
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.15),
+                      color: Colors.grey.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                     ),
                     child: Text(
@@ -272,7 +272,7 @@ class _GridDisplacementScreenState extends ConsumerState<GridDisplacementScreen>
                         child: Container(
                           decoration: BoxDecoration(
                             color: isSelected
-                                ? DesignSystem.primary.withOpacity(0.2)
+                                ? DesignSystem.primary.withValues(alpha: 0.2)
                                 : (isDark ? Colors.grey[900] : Colors.grey[100]),
                             borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
                             border: Border.all(

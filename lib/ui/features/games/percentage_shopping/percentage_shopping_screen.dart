@@ -195,7 +195,7 @@ class _PercentageShoppingScreenState extends ConsumerState<PercentageShoppingScr
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 decoration: BoxDecoration(
-                  color: DesignSystem.primary.withOpacity(0.15),
+                  color: DesignSystem.primary.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                 ),
                 child: Text(
@@ -210,7 +210,7 @@ class _PercentageShoppingScreenState extends ConsumerState<PercentageShoppingScr
               // Item icon & details
               CircleAvatar(
                 radius: 40,
-                backgroundColor: DesignSystem.primary.withOpacity(0.1),
+                backgroundColor: DesignSystem.primary.withValues(alpha: 0.1),
                 child: Icon(_itemIcon, size: 40, color: DesignSystem.primary),
               ),
               const SizedBox(height: 16),

@@ -64,7 +64,6 @@ void main() {
       });
 
       test('requires 2 of 3 correct to win', () {
-        const totalQuestions = 3;
         const winThreshold = 2;
         expect(2 >= winThreshold, isTrue);
         expect(1 >= winThreshold, isFalse);

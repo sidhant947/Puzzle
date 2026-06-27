@@ -197,7 +197,7 @@ class _PeripheralFocusScreenState extends ConsumerState<PeripheralFocusScreen> {
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 100),
                 color: _peripheralActive && _peripheralIsLeft
-                    ? _peripheralColor.withOpacity(0.4)
+                    ? _peripheralColor.withValues(alpha: 0.4)
                     : Colors.transparent,
                 child: _peripheralActive && _peripheralIsLeft
                     ? Icon(Icons.warning_amber_rounded, color: _peripheralColor, size: 36)
@@ -217,7 +217,7 @@ class _PeripheralFocusScreenState extends ConsumerState<PeripheralFocusScreen> {
               child: AnimatedContainer(
                 duration: const Duration(milliseconds: 100),
                 color: _peripheralActive && !_peripheralIsLeft
-                    ? _peripheralColor.withOpacity(0.4)
+                    ? _peripheralColor.withValues(alpha: 0.4)
                     : Colors.transparent,
                 child: _peripheralActive && !_peripheralIsLeft
                     ? Icon(Icons.warning_amber_rounded, color: _peripheralColor, size: 36)
@@ -236,7 +236,7 @@ class _PeripheralFocusScreenState extends ConsumerState<PeripheralFocusScreen> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.15),
+                    color: DesignSystem.primary.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(

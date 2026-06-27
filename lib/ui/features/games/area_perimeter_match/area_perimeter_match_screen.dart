@@ -20,7 +20,6 @@ class _AreaPerimeterMatchScreenState extends ConsumerState<AreaPerimeterMatchScr
   final Random _random = Random();
   int _score = 0;
   final int _targetScore = 5;
-  bool _isGameOver = false;
 
   late int _targetW;
   late int _targetH;
@@ -57,7 +56,6 @@ class _AreaPerimeterMatchScreenState extends ConsumerState<AreaPerimeterMatchScr
       _score++;
       HapticFeedbackUtil.success();
       if (_score >= _targetScore) {
-        _isGameOver = true;
         _onGameComplete();
       } else {
         setState(() {
@@ -85,7 +83,6 @@ class _AreaPerimeterMatchScreenState extends ConsumerState<AreaPerimeterMatchScr
           Navigator.of(context).pop();
           setState(() {
             _score = 0;
-            _isGameOver = false;
             _generatePuzzle();
           });
         },
@@ -106,9 +103,8 @@ class _AreaPerimeterMatchScreenState extends ConsumerState<AreaPerimeterMatchScr
           onPressed: () {
             HapticFeedbackUtil.lightImpact();
             setState(() {
-              _score = 0;
-              _isGameOver = false;
-              _generatePuzzle();
+            _score = 0;
+            _generatePuzzle();
             });
           },
         ),
@@ -159,7 +155,7 @@ class _AreaPerimeterMatchScreenState extends ConsumerState<AreaPerimeterMatchScr
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.1),
+                    color: DesignSystem.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -215,7 +211,7 @@ class _AreaPerimeterMatchScreenState extends ConsumerState<AreaPerimeterMatchScr
                           child: AnimatedContainer(
                             duration: const Duration(milliseconds: 150),
                             decoration: BoxDecoration(
-                              color: DesignSystem.primary.withOpacity(0.3),
+                              color: DesignSystem.primary.withValues(alpha: 0.3),
                               border: Border.all(
                                 color: DesignSystem.primary,
                                 width: 3,
@@ -226,7 +222,7 @@ class _AreaPerimeterMatchScreenState extends ConsumerState<AreaPerimeterMatchScr
                             ),
                             alignment: Alignment.center,
                             child: Text(
-                              '${_currentW} × ${_currentH}',
+                              '$_currentW × $_currentH',
                               style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.bold,
@@ -288,7 +284,6 @@ class _AreaPerimeterMatchScreenState extends ConsumerState<AreaPerimeterMatchScr
   }
 
   Widget _buildStepper(String label, int value, ValueChanged<int> onChanged) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
     return Column(
       children: [
         Text(

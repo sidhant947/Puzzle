@@ -47,7 +47,7 @@ class _ShapeShifterScreenState extends ConsumerState<ShapeShifterScreen> {
   late Color _targetColor;
   late String _targetColorName;
 
-  List<FallingShape> _fallingShapes = [];
+  final List<FallingShape> _fallingShapes = [];
   int _score = 0;
   final int _targetScore = 15;
   bool _isGameOver = false;
@@ -104,7 +104,6 @@ class _ShapeShifterScreenState extends ConsumerState<ShapeShifterScreen> {
       }
 
       // Filter out shapes that fell past bottom
-      final initialCount = _fallingShapes.length;
       _fallingShapes.removeWhere((shape) {
         if (shape.y >= 1.0) {
           // If a matching shape fell off without being tapped, deduct score
@@ -272,7 +271,7 @@ class _ShapeShifterScreenState extends ConsumerState<ShapeShifterScreen> {
                     vertical: DesignSystem.spaceSM,
                   ),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.1),
+                    color: DesignSystem.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -304,7 +303,7 @@ class _ShapeShifterScreenState extends ConsumerState<ShapeShifterScreen> {
                             width: 60,
                             height: 60,
                             decoration: BoxDecoration(
-                              color: shape.color.withOpacity(0.2),
+                              color: shape.color.withValues(alpha: 0.2),
                               shape: shape.shape == GameShape.circle ? BoxShape.circle : BoxShape.rectangle,
                               borderRadius: shape.shape == GameShape.circle
                                   ? null

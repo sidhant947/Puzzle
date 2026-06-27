@@ -189,7 +189,7 @@ class _ColorWordMatchUpScreenState extends ConsumerState<ColorWordMatchUpScreen>
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.1),
+                    color: DesignSystem.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -211,8 +211,8 @@ class _ColorWordMatchUpScreenState extends ConsumerState<ColorWordMatchUpScreen>
                     padding: const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
                     decoration: BoxDecoration(
                       color: _matchMeaningRule
-                          ? Colors.blue.withOpacity(0.15)
-                          : Colors.orange.withOpacity(0.15),
+                          ? Colors.blue.withValues(alpha: 0.15)
+                          : Colors.orange.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
                       border: Border.all(
                         color: _matchMeaningRule ? Colors.blue : Colors.orange,

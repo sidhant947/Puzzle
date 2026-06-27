@@ -244,7 +244,7 @@ class _WordGridConnectionScreenState extends ConsumerState<WordGridConnectionScr
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.15),
+                    color: DesignSystem.primary.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -263,7 +263,7 @@ class _WordGridConnectionScreenState extends ConsumerState<WordGridConnectionScr
                   margin: const EdgeInsets.symmetric(vertical: 4),
                   padding: const EdgeInsets.all(12),
                   decoration: BoxDecoration(
-                    color: cat.color.withOpacity(0.2),
+                    color: cat.color.withValues(alpha: 0.2),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                     border: Border.all(color: cat.color, width: 1.5),
                   ),
@@ -303,7 +303,7 @@ class _WordGridConnectionScreenState extends ConsumerState<WordGridConnectionScr
                     child: Container(
                       decoration: BoxDecoration(
                         color: isSelected
-                            ? DesignSystem.primary.withOpacity(0.2)
+                            ? DesignSystem.primary.withValues(alpha: 0.2)
                             : (isDark ? DesignSystem.darkSurface : DesignSystem.surface),
                         borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                         border: Border.all(

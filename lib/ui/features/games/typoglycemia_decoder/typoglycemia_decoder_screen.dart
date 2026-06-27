@@ -87,7 +87,7 @@ class _TypoglycemiaDecoderScreenState extends ConsumerState<TypoglycemiaDecoderS
 
     String d3 = sentence.replaceAll(' the ', ' that ').replaceAll(' to ', ' too ').replaceAll(' is ', ' was ');
     if (d3 == sentence) {
-      d3 = sentence.substring(0, sentence.length - 1) + '?';
+      d3 = '${sentence.substring(0, sentence.length - 1)}?';
     }
 
     final allOptions = [sentence, d1, d2, d3];

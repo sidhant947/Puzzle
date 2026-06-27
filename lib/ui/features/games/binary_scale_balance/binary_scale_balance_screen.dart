@@ -135,7 +135,7 @@ class _BinaryScaleBalanceScreenState extends ConsumerState<BinaryScaleBalanceScr
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 decoration: BoxDecoration(
-                  color: DesignSystem.primary.withOpacity(0.15),
+                  color: DesignSystem.primary.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                 ),
                 child: Text(
@@ -227,7 +227,7 @@ class _BinaryScaleBalanceScreenState extends ConsumerState<BinaryScaleBalanceScr
                         ),
                         boxShadow: [
                           if (isSelected)
-                            BoxShadow(color: DesignSystem.primary.withOpacity(0.4), blurRadius: 8, offset: const Offset(0, 4))
+                            BoxShadow(color: DesignSystem.primary.withValues(alpha: 0.4), blurRadius: 8, offset: const Offset(0, 4))
                         ],
                       ),
                       alignment: Alignment.center,

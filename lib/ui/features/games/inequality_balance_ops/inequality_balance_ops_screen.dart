@@ -180,7 +180,7 @@ class _InequalityBalanceOpsScreenState extends ConsumerState<InequalityBalanceOp
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 decoration: BoxDecoration(
-                  color: DesignSystem.primary.withOpacity(0.15),
+                  color: DesignSystem.primary.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                 ),
                 child: Text(
@@ -205,7 +205,7 @@ class _InequalityBalanceOpsScreenState extends ConsumerState<InequalityBalanceOp
                       width: 60,
                       height: 60,
                       decoration: BoxDecoration(
-                        color: isDark ? Colors.white10 : Colors.black12.withOpacity(0.04),
+                        color: isDark ? Colors.white10 : Colors.black12.withValues(alpha: 0.04),
                         shape: BoxShape.circle,
                         border: Border.all(
                           color: isDark ? DesignSystem.darkOutline : DesignSystem.outline,

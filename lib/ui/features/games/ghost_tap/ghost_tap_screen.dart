@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -18,9 +17,7 @@ class GhostTapScreen extends ConsumerStatefulWidget {
 }
 
 class _GhostTapScreenState extends ConsumerState<GhostTapScreen> with SingleTickerProviderStateMixin {
-  final Random _random = Random();
   late AnimationController _pulseController;
-  late Timer _fadeTimer;
 
   bool _isGhostMode = false; // When true, pulse circle becomes completely invisible
   int _completedCycles = 0;
@@ -140,8 +137,6 @@ class _GhostTapScreenState extends ConsumerState<GhostTapScreen> with SingleTick
 
   @override
   Widget build(BuildContext context) {
-    final isDark = Theme.of(context).brightness == Brightness.dark;
-
     return GameScaffold(
       title: L10nGameHelpers.getGameTitle(context, 'ghost_tap'),
       subtitle: L10nGameHelpers.getGameSubtitle(context, 'ghost_tap'),
@@ -173,7 +168,7 @@ class _GhostTapScreenState extends ConsumerState<GhostTapScreen> with SingleTick
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.1),
+                    color: DesignSystem.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -207,12 +202,12 @@ class _GhostTapScreenState extends ConsumerState<GhostTapScreen> with SingleTick
                           width: 250 * scale,
                           height: 250 * scale,
                           decoration: BoxDecoration(
-                            color: DesignSystem.primary.withOpacity(0.15),
+                            color: DesignSystem.primary.withValues(alpha: 0.15),
                             shape: BoxShape.circle,
                             border: Border.all(color: DesignSystem.primary, width: 4),
                             boxShadow: [
                               BoxShadow(
-                                color: DesignSystem.primary.withOpacity(0.2),
+                                color: DesignSystem.primary.withValues(alpha: 0.2),
                                 blurRadius: 20 * scale,
                                 spreadRadius: 5 * scale,
                               )

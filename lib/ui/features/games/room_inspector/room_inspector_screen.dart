@@ -220,7 +220,7 @@ class _RoomInspectorScreenState extends ConsumerState<RoomInspectorScreen> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.1),
+                    color: DesignSystem.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -268,12 +268,12 @@ class _RoomInspectorScreenState extends ConsumerState<RoomInspectorScreen> {
                                 child: Container(
                                   decoration: BoxDecoration(
                                     color: item != null
-                                        ? item.color.withOpacity(0.15)
+                                        ? item.color.withValues(alpha: 0.15)
                                         : (isDark ? Colors.grey[900] : Colors.grey[100]),
                                     borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
                                     border: Border.all(
                                       color: item != null
-                                          ? item.color.withOpacity(0.5)
+                                          ? item.color.withValues(alpha: 0.5)
                                           : (isDark ? Colors.white10 : Colors.black.withValues(alpha: 0.1)),
                                       width: 1.5,
                                     ),

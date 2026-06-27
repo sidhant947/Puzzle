@@ -20,8 +20,6 @@ class _VektorVectorScreenState extends ConsumerState<VektorVectorScreen> {
   final Random _random = Random();
   int _score = 0;
   final int _targetScore = 3;
-  bool _isGameOver = false;
-
   // Vector vectors & coefficients
   late Point<int> _u;
   late Point<int> _v;
@@ -86,7 +84,6 @@ class _VektorVectorScreenState extends ConsumerState<VektorVectorScreen> {
       setState(() {
         _score++;
         if (_score >= _targetScore) {
-          _isGameOver = true;
           _onGameComplete();
         } else {
           _generatePuzzle();
@@ -113,7 +110,6 @@ class _VektorVectorScreenState extends ConsumerState<VektorVectorScreen> {
           Navigator.of(context).pop();
           setState(() {
             _score = 0;
-            _isGameOver = false;
             _generatePuzzle();
           });
         },
@@ -124,10 +120,6 @@ class _VektorVectorScreenState extends ConsumerState<VektorVectorScreen> {
   @override
   Widget build(BuildContext context) {
     final isDark = Theme.of(context).brightness == Brightness.dark;
-    final currentPoint = Point(
-      _scaleA * _u.x + _scaleB * _v.x,
-      _scaleA * _u.y + _scaleB * _v.y,
-    );
 
     return GameScaffold(
       title: L10nGameHelpers.getGameTitle(context, 'vektor_vector'),
@@ -138,9 +130,8 @@ class _VektorVectorScreenState extends ConsumerState<VektorVectorScreen> {
           onPressed: () {
             HapticFeedbackUtil.lightImpact();
             setState(() {
-              _score = 0;
-              _isGameOver = false;
-              _generatePuzzle();
+            _score = 0;
+            _generatePuzzle();
             });
           },
         ),
@@ -174,7 +165,7 @@ class _VektorVectorScreenState extends ConsumerState<VektorVectorScreen> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.1),
+                    color: DesignSystem.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -353,7 +344,7 @@ class VectorGridPainter extends CustomPainter {
     canvas.drawCircle(targetOffset, 10, targetPaint);
     // Draw target ring
     final targetRingPaint = Paint()
-      ..color = DesignSystem.gameOrange.withOpacity(0.3)
+      ..color = DesignSystem.gameOrange.withValues(alpha: 0.3)
       ..strokeWidth = 3
       ..style = PaintingStyle.stroke;
     canvas.drawCircle(targetOffset, 16, targetRingPaint);

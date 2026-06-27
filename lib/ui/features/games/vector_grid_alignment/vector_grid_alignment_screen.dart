@@ -19,8 +19,6 @@ class _VectorGridAlignmentScreenState extends ConsumerState<VectorGridAlignmentS
   final Random _random = Random();
   int _score = 0;
   final int _targetScore = 3;
-  bool _isGameOver = false;
-
   // Align shape states
   double _userRotation = 0.0; // rotation angle in radians
   double _userScale = 1.0; // scale factor
@@ -78,7 +76,6 @@ class _VectorGridAlignmentScreenState extends ConsumerState<VectorGridAlignmentS
       _score++;
       HapticFeedbackUtil.success();
       if (_score >= _targetScore) {
-        _isGameOver = true;
         _onGameComplete();
       } else {
         final l10n = AppLocalizations.of(context)!;
@@ -124,7 +121,6 @@ class _VectorGridAlignmentScreenState extends ConsumerState<VectorGridAlignmentS
           Navigator.of(context).pop();
           setState(() {
             _score = 0;
-            _isGameOver = false;
             _generatePuzzle();
           });
         },
@@ -145,9 +141,8 @@ class _VectorGridAlignmentScreenState extends ConsumerState<VectorGridAlignmentS
           onPressed: () {
             HapticFeedbackUtil.lightImpact();
             setState(() {
-              _score = 0;
-              _isGameOver = false;
-              _generatePuzzle();
+            _score = 0;
+            _generatePuzzle();
             });
           },
         ),
@@ -160,7 +155,7 @@ class _VectorGridAlignmentScreenState extends ConsumerState<VectorGridAlignmentS
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
               decoration: BoxDecoration(
-                color: DesignSystem.primary.withOpacity(0.15),
+                color: DesignSystem.primary.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
               ),
               child: Text(
@@ -363,7 +358,7 @@ class _VectorAlignmentPainter extends CustomPainter {
     canvas.scale(userScale);
 
     final userPaint = Paint()
-      ..color = DesignSystem.primary.withOpacity(0.4)
+      ..color = DesignSystem.primary.withValues(alpha: 0.4)
       ..style = PaintingStyle.fill;
 
     final userOutlinePaint = Paint()

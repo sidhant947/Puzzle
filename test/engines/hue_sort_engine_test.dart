@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:puzzle/ui/features/games/hue_sort/hue_sort_engine.dart';
 
@@ -56,8 +55,8 @@ void main() {
 
       test('colors list contains same set of colors as solution', () {
         final level = engine.generateLevel(size: 5);
-        final colorValues1 = level.colors.map((c) => c.value).toSet();
-        final colorValues2 = level.solution.map((c) => c.value).toSet();
+        final colorValues1 = level.colors.map((c) => c.toARGB32()).toSet();
+        final colorValues2 = level.solution.map((c) => c.toARGB32()).toSet();
         expect(colorValues1, colorValues2);
       });
     });

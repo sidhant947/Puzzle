@@ -188,7 +188,7 @@ class _KakurasuSumsScreenState extends ConsumerState<KakurasuSumsScreen> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.1),
+                    color: DesignSystem.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -279,7 +279,7 @@ class _KakurasuSumsScreenState extends ConsumerState<KakurasuSumsScreen> {
                                   duration: const Duration(milliseconds: 200),
                                   padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
                                   decoration: BoxDecoration(
-                                    color: isMet ? Colors.green.withOpacity(0.2) : Colors.transparent,
+                                    color: isMet ? Colors.green.withValues(alpha: 0.2) : Colors.transparent,
                                     borderRadius: BorderRadius.circular(4),
                                   ),
                                   child: Text(
@@ -310,7 +310,7 @@ class _KakurasuSumsScreenState extends ConsumerState<KakurasuSumsScreen> {
                                   duration: const Duration(milliseconds: 200),
                                   padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 4),
                                   decoration: BoxDecoration(
-                                    color: isMet ? Colors.green.withOpacity(0.2) : Colors.transparent,
+                                    color: isMet ? Colors.green.withValues(alpha: 0.2) : Colors.transparent,
                                     borderRadius: BorderRadius.circular(4),
                                   ),
                                   child: Text(

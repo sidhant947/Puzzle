@@ -236,7 +236,7 @@ class _ModuloPathScreenState extends ConsumerState<ModuloPathScreen> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.1),
+                    color: DesignSystem.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -274,7 +274,7 @@ class _ModuloPathScreenState extends ConsumerState<ModuloPathScreen> {
                             painter: PathPainter(
                               path: _userPath,
                               cellSize: cellSize,
-                              color: DesignSystem.primary.withOpacity(0.4),
+                              color: DesignSystem.primary.withValues(alpha: 0.4),
                             ),
                           ),
                         // Cells
@@ -291,8 +291,8 @@ class _ModuloPathScreenState extends ConsumerState<ModuloPathScreen> {
                                   margin: const EdgeInsets.all(6),
                                   decoration: BoxDecoration(
                                     color: _userPath.contains(Point(r, c))
-                                        ? DesignSystem.primary.withOpacity(0.2)
-                                        : (isDark ? Colors.white10 : Colors.black12.withOpacity(0.04)),
+                                        ? DesignSystem.primary.withValues(alpha: 0.2)
+                                        : (isDark ? Colors.white10 : Colors.black12.withValues(alpha: 0.04)),
                                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                                     border: Border.all(
                                       color: _userPath.contains(Point(r, c))

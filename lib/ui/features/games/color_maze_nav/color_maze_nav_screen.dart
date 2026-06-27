@@ -184,7 +184,7 @@ class _ColorMazeNavScreenState extends ConsumerState<ColorMazeNavScreen> {
                   duration: const Duration(milliseconds: 250),
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
-                    color: _colors[_activePermissionColor].withOpacity(0.15),
+                    color: _colors[_activePermissionColor].withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                     border: Border.all(color: _colors[_activePermissionColor], width: 2),
                   ),
@@ -208,7 +208,7 @@ class _ColorMazeNavScreenState extends ConsumerState<ColorMazeNavScreen> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.1),
+                    color: DesignSystem.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -249,12 +249,12 @@ class _ColorMazeNavScreenState extends ConsumerState<ColorMazeNavScreen> {
                       return Container(
                         margin: const EdgeInsets.all(2),
                         decoration: BoxDecoration(
-                          color: tileColor.withOpacity(0.2),
+                          color: tileColor.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                           border: Border.all(
                             color: isPlayer
                                 ? DesignSystem.primary
-                                : (isTarget ? Colors.purple : tileColor.withOpacity(0.4)),
+                                : (isTarget ? Colors.purple : tileColor.withValues(alpha: 0.4)),
                             width: isPlayer || isTarget ? 3.0 : 1.0,
                           ),
                         ),

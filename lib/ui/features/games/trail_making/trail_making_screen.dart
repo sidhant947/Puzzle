@@ -55,7 +55,6 @@ class _TrailMakingScreenState extends ConsumerState<TrailMakingScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     final colorScheme = Theme.of(context).colorScheme;
     final state = ref.watch(trailMakingNotifierProvider);
     final notifier = ref.read(trailMakingNotifierProvider.notifier);

@@ -222,7 +222,7 @@ class _SequenceStackScreenState extends ConsumerState<SequenceStackScreen> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 decoration: BoxDecoration(
-                  color: DesignSystem.primary.withOpacity(0.15),
+                  color: DesignSystem.primary.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                 ),
                 child: Text(
@@ -271,7 +271,7 @@ class _SequenceStackScreenState extends ConsumerState<SequenceStackScreen> {
                               width: 110,
                               height: 220,
                               decoration: BoxDecoration(
-                                color: isDark ? Colors.white10 : Colors.black12.withOpacity(0.04),
+                                color: isDark ? Colors.white10 : Colors.black12.withValues(alpha: 0.04),
                                 borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
                                 border: Border.all(color: isDark ? Colors.white24 : Colors.black26),
                               ),

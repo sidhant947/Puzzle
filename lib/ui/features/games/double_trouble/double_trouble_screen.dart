@@ -189,7 +189,7 @@ class _DoubleTroubleScreenState extends ConsumerState<DoubleTroubleScreen> {
             padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
             margin: const EdgeInsets.only(top: 10),
             decoration: BoxDecoration(
-              color: DesignSystem.primary.withOpacity(0.15),
+              color: DesignSystem.primary.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
             ),
             child: Text(
@@ -230,7 +230,7 @@ class _DoubleTroubleScreenState extends ConsumerState<DoubleTroubleScreen> {
                                   width: 44,
                                   height: 44,
                                   decoration: BoxDecoration(
-                                    color: _leftAppleColor.withOpacity(0.2),
+                                    color: _leftAppleColor.withValues(alpha: 0.2),
                                     shape: BoxShape.circle,
                                     border: Border.all(color: _leftAppleColor, width: 3),
                                   ),
@@ -263,12 +263,12 @@ class _DoubleTroubleScreenState extends ConsumerState<DoubleTroubleScreen> {
                                     width: 50,
                                     height: 50,
                                     decoration: BoxDecoration(
-                                      color: Colors.blue.withOpacity(0.25),
+                                      color: Colors.blue.withValues(alpha: 0.25),
                                       shape: BoxShape.circle,
                                       border: Border.all(color: Colors.blue, width: 3.5),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: Colors.blue.withOpacity(0.3),
+                                          color: Colors.blue.withValues(alpha: 0.3),
                                           blurRadius: 8,
                                         )
                                       ],

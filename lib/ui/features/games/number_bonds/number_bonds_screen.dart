@@ -163,7 +163,7 @@ class _NumberBondsScreenState extends ConsumerState<NumberBondsScreen> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.15),
+                    color: DesignSystem.primary.withValues(alpha: 0.15),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -263,7 +263,7 @@ class _NumberBondsScreenState extends ConsumerState<NumberBondsScreen> {
         height: 52,
         decoration: BoxDecoration(
           color: isHidden
-              ? DesignSystem.gameOrange.withOpacity(0.2)
+              ? DesignSystem.gameOrange.withValues(alpha: 0.2)
               : (isDark ? Colors.grey[850] : Colors.grey[100]),
           shape: BoxShape.circle,
           border: Border.all(

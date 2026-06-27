@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -136,7 +135,7 @@ class _ChalkAndTalkScreenState extends ConsumerState<ChalkAndTalkScreen> {
               Container(
                 padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                 decoration: BoxDecoration(
-                  color: DesignSystem.primary.withOpacity(0.15),
+                  color: DesignSystem.primary.withValues(alpha: 0.15),
                   borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                 ),
                 child: Text(
@@ -184,7 +183,7 @@ class _ChalkAndTalkScreenState extends ConsumerState<ChalkAndTalkScreen> {
                   border: Border.all(color: const Color(0xFF8B5A2B), width: 8), // Wood border
                   boxShadow: [
                     BoxShadow(
-                      color: Colors.black.withOpacity(0.3),
+                      color: Colors.black.withValues(alpha: 0.3),
                       blurRadius: 12,
                       offset: const Offset(0, 6),
                     ),

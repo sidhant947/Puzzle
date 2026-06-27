@@ -60,7 +60,6 @@ void main() {
 
       test('targetSum does not exceed possible maximum for path of 5', () {
         final level = engine.generateLevel();
-        final grid = level['grid'] as List<List<int>>;
         final maxSum = 9 * 5;
         expect(level['targetSum'], lessThanOrEqualTo(maxSum));
       });

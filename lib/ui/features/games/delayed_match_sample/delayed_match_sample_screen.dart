@@ -20,8 +20,6 @@ class _DelayedMatchSampleScreenState extends ConsumerState<DelayedMatchSampleScr
   final Random _random = Random();
   int _score = 0;
   final int _targetScore = 3;
-  bool _isGameOver = false;
-
   // Game Phases:
   // 1. Study the target shape
   // 2. Math distraction phase (solve 2 basic math questions)
@@ -169,7 +167,6 @@ class _DelayedMatchSampleScreenState extends ConsumerState<DelayedMatchSampleScr
       _score++;
       HapticFeedbackUtil.success();
       if (_score >= _targetScore) {
-        _isGameOver = true;
         _onGameComplete();
       } else {
         final l10n = AppLocalizations.of(context)!;
@@ -218,7 +215,6 @@ class _DelayedMatchSampleScreenState extends ConsumerState<DelayedMatchSampleScr
           Navigator.of(context).pop();
           setState(() {
             _score = 0;
-            _isGameOver = false;
             _generatePuzzle();
           });
         },
@@ -244,7 +240,6 @@ class _DelayedMatchSampleScreenState extends ConsumerState<DelayedMatchSampleScr
             HapticFeedbackUtil.lightImpact();
             setState(() {
               _score = 0;
-              _isGameOver = false;
               _generatePuzzle();
             });
           },
@@ -258,7 +253,7 @@ class _DelayedMatchSampleScreenState extends ConsumerState<DelayedMatchSampleScr
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               decoration: BoxDecoration(
-                color: DesignSystem.primary.withOpacity(0.15),
+                color: DesignSystem.primary.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
               ),
               child: Text(
@@ -349,7 +344,7 @@ class _DelayedMatchSampleScreenState extends ConsumerState<DelayedMatchSampleScr
           ),
           const SizedBox(height: 12),
           Text(
-            'Solve math problems: Progress ${_distractCount}/2',
+            'Solve math problems: Progress $_distractCount/2',
             style: const TextStyle(fontSize: 14, color: Colors.grey),
           ),
           const SizedBox(height: 30),
@@ -502,7 +497,7 @@ class _SymbolShapePainter extends CustomPainter {
 
     // Draw some outline details
     final strokePaint = Paint()
-      ..color = Colors.white.withOpacity(0.6)
+      ..color = Colors.white.withValues(alpha: 0.6)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 2;
     canvas.drawPath(path, strokePaint);

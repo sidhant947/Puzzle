@@ -328,7 +328,7 @@ class _MasyuScreenState extends ConsumerState<MasyuScreen> {
                           child: Container(
                             decoration: BoxDecoration(
                               border: Border.all(
-                                color: (isDark ? DesignSystem.darkOutline : DesignSystem.outline).withOpacity(0.4),
+                                color: (isDark ? DesignSystem.darkOutline : DesignSystem.outline).withValues(alpha: 0.4),
                                 width: 0.5,
                               ),
                             ),

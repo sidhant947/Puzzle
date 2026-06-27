@@ -21,9 +21,6 @@ void main() {
       test('options contain 4 unique cells', () {
         for (int i = 0; i < 20; i++) {
           final puzzle = engine.generatePuzzle();
-          final uniqueOptions = puzzle.options
-              .where((o) => o.shape != puzzle.answer.shape || o.color != puzzle.answer.color)
-              .toList();
           // At least 3 wrong options
           expect(puzzle.options.length, equals(4));
         }

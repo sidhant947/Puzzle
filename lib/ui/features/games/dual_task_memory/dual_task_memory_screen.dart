@@ -20,8 +20,6 @@ class _DualTaskMemoryScreenState extends ConsumerState<DualTaskMemoryScreen> {
   final Random _random = Random();
   int _score = 0;
   final int _targetScore = 3;
-  bool _isGameOver = false;
-
   // Game flow:
   // 1. Memorize 4 words (study mode)
   // 2. Distractor stage: Solve 2 quick math questions
@@ -129,7 +127,6 @@ class _DualTaskMemoryScreenState extends ConsumerState<DualTaskMemoryScreen> {
       _score++;
       HapticFeedbackUtil.success();
       if (_score >= _targetScore) {
-        _isGameOver = true;
         _onGameComplete();
       } else {
         ScaffoldMessenger.of(context).showSnackBar(
@@ -176,7 +173,6 @@ class _DualTaskMemoryScreenState extends ConsumerState<DualTaskMemoryScreen> {
           Navigator.of(context).pop();
           setState(() {
             _score = 0;
-            _isGameOver = false;
             _generatePuzzle();
           });
         },
@@ -202,7 +198,6 @@ class _DualTaskMemoryScreenState extends ConsumerState<DualTaskMemoryScreen> {
             HapticFeedbackUtil.lightImpact();
             setState(() {
               _score = 0;
-              _isGameOver = false;
               _generatePuzzle();
             });
           },
@@ -216,7 +211,7 @@ class _DualTaskMemoryScreenState extends ConsumerState<DualTaskMemoryScreen> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               decoration: BoxDecoration(
-                color: DesignSystem.primary.withOpacity(0.15),
+                color: DesignSystem.primary.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
               ),
               child: Text(
@@ -394,7 +389,7 @@ class _DualTaskMemoryScreenState extends ConsumerState<DualTaskMemoryScreen> {
                   child: Container(
                     decoration: BoxDecoration(
                       color: isSelected
-                          ? DesignSystem.primary.withOpacity(0.1)
+                          ? DesignSystem.primary.withValues(alpha: 0.1)
                           : (isDark ? DesignSystem.darkSurface : DesignSystem.surface),
                       borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
                       border: Border.all(

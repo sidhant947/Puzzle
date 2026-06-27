@@ -230,7 +230,7 @@ class _TennerGridScreenState extends ConsumerState<TennerGridScreen> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.1),
+                    color: DesignSystem.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -271,7 +271,7 @@ class _TennerGridScreenState extends ConsumerState<TennerGridScreen> {
                                 margin: const EdgeInsets.all(2),
                                 decoration: BoxDecoration(
                                   color: isSelected
-                                      ? DesignSystem.primary.withOpacity(0.2)
+                                      ? DesignSystem.primary.withValues(alpha: 0.2)
                                       : (isFixed
                                           ? (isDark ? Colors.white12 : Colors.grey[200])
                                           : Colors.transparent),

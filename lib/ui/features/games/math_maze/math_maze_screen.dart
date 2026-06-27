@@ -280,7 +280,7 @@ class _MathMazeScreenState extends ConsumerState<MathMazeScreen> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 14, vertical: 8),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.1),
+                    color: DesignSystem.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -324,8 +324,8 @@ class _MathMazeScreenState extends ConsumerState<MathMazeScreen> {
                                   margin: const EdgeInsets.all(4),
                                   decoration: BoxDecoration(
                                     color: _userPath.contains(Point(r, c))
-                                        ? DesignSystem.primary.withOpacity(0.2)
-                                        : (isDark ? Colors.white10 : Colors.black12.withOpacity(0.04)),
+                                        ? DesignSystem.primary.withValues(alpha: 0.2)
+                                        : (isDark ? Colors.white10 : Colors.black12.withValues(alpha: 0.04)),
                                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                                     border: Border.all(
                                       color: _userPath.contains(Point(r, c))

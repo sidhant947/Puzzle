@@ -46,7 +46,6 @@ void main() {
 
       test('clue values are between 1 and size', () {
         final level = engine.generateLevel(size: 4);
-        final solution = level['solution'] as List<List<int>>;
         for (final side in ['top', 'bottom', 'left', 'right']) {
           for (final clue in level[side] as List<int>) {
             expect(clue, greaterThanOrEqualTo(1));

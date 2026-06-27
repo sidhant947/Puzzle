@@ -247,8 +247,6 @@ class IsometricPainter extends CustomPainter {
   }
 
   void _drawCube(Canvas canvas, Offset center, double rx, double ry, double rz, double s) {
-    Offset p(double vx, double vy) => center + Offset(vx * s * 1.5, vy * s * 1.5);
-
     // Simplified projection for the cube faces based on current rotation
     // We use the transformed coordinates to draw the 6 faces, but only 3 are usually visible.
     // To keep it efficient and solid, we'll draw based on the normals or just standard 3D cube.
@@ -268,10 +266,6 @@ class IsometricPainter extends CustomPainter {
       // Actually, since rx, ry, rz are already the rotated CENTER of the cube,
       // and the cube is small, we can just project the 8 corners.
       
-      double cx = rx + lx;
-      double cy = ry + ly;
-      double cz = rz + lz;
-
       // Note: rx, ry, rz are ALREADY rotated. But lx, ly, lz are NOT.
       // We need to rotate lx, ly, lz by the same rotX, rotY.
       
@@ -287,7 +281,9 @@ class IsometricPainter extends CustomPainter {
 
     void drawFace(List<int> indices, Color color) {
       final path = Path()..moveTo(v[indices[0]].dx, v[indices[0]].dy);
-      for(int i=1; i<indices.length; i++) path.lineTo(v[indices[i]].dx, v[indices[i]].dy);
+      for (int i = 1; i < indices.length; i++) {
+        path.lineTo(v[indices[i]].dx, v[indices[i]].dy);
+      }
       path.close();
       canvas.drawPath(path, Paint()..color = color);
       canvas.drawPath(path, Paint()..color = Colors.black.withValues(alpha: 0.1)..style = PaintingStyle.stroke..strokeWidth = 0.5);

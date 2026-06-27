@@ -65,11 +65,11 @@ class _NorinoriScreenState extends ConsumerState<NorinoriScreen> {
   bool _isSolved = false;
 
   final List<Color> _roomColors = [
-    DesignSystem.gameBlue.withOpacity(0.15),
-    DesignSystem.gamePurple.withOpacity(0.15),
-    DesignSystem.gameTeal.withOpacity(0.15),
-    DesignSystem.gameOrange.withOpacity(0.15),
-    DesignSystem.gamePink.withOpacity(0.15),
+    DesignSystem.gameBlue.withValues(alpha: 0.15),
+    DesignSystem.gamePurple.withValues(alpha: 0.15),
+    DesignSystem.gameTeal.withValues(alpha: 0.15),
+    DesignSystem.gameOrange.withValues(alpha: 0.15),
+    DesignSystem.gamePink.withValues(alpha: 0.15),
   ];
 
   final List<Color> _borderColors = [
@@ -239,25 +239,25 @@ class _NorinoriScreenState extends ConsumerState<NorinoriScreen> {
                               border: Border(
                                 top: BorderSide(
                                   color: r > 0 && _currentPuzzle.roomIds[r][c] == _currentPuzzle.roomIds[r - 1][c]
-                                      ? Colors.grey.withOpacity(0.2)
+                                      ? Colors.grey.withValues(alpha: 0.2)
                                       : _borderColors[_currentPuzzle.roomIds[r][c] % _borderColors.length],
                                   width: r > 0 && _currentPuzzle.roomIds[r][c] == _currentPuzzle.roomIds[r - 1][c] ? 1 : 3.5,
                                 ),
                                 left: BorderSide(
                                   color: c > 0 && _currentPuzzle.roomIds[r][c] == _currentPuzzle.roomIds[r][c - 1]
-                                      ? Colors.grey.withOpacity(0.2)
+                                      ? Colors.grey.withValues(alpha: 0.2)
                                       : _borderColors[_currentPuzzle.roomIds[r][c] % _borderColors.length],
                                   width: c > 0 && _currentPuzzle.roomIds[r][c] == _currentPuzzle.roomIds[r][c - 1] ? 1 : 3.5,
                                 ),
                                 bottom: BorderSide(
                                   color: r < _size - 1 && _currentPuzzle.roomIds[r][c] == _currentPuzzle.roomIds[r + 1][c]
-                                      ? Colors.grey.withOpacity(0.2)
+                                      ? Colors.grey.withValues(alpha: 0.2)
                                       : _borderColors[_currentPuzzle.roomIds[r][c] % _borderColors.length],
                                   width: r < _size - 1 && _currentPuzzle.roomIds[r][c] == _currentPuzzle.roomIds[r + 1][c] ? 1 : 3.5,
                                 ),
                                 right: BorderSide(
                                   color: c < _size - 1 && _currentPuzzle.roomIds[r][c] == _currentPuzzle.roomIds[r][c + 1]
-                                      ? Colors.grey.withOpacity(0.2)
+                                      ? Colors.grey.withValues(alpha: 0.2)
                                       : _borderColors[_currentPuzzle.roomIds[r][c] % _borderColors.length],
                                   width: c < _size - 1 && _currentPuzzle.roomIds[r][c] == _currentPuzzle.roomIds[r][c + 1] ? 1 : 3.5,
                                 ),

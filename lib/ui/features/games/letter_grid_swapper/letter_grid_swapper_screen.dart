@@ -185,7 +185,7 @@ class _LetterGridSwapperScreenState extends ConsumerState<LetterGridSwapperScree
             Container(
               padding: const EdgeInsets.all(16),
               decoration: BoxDecoration(
-                color: DesignSystem.primary.withOpacity(0.1),
+                color: DesignSystem.primary.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
               ),
               child: Row(
@@ -211,7 +211,7 @@ class _LetterGridSwapperScreenState extends ConsumerState<LetterGridSwapperScree
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     decoration: BoxDecoration(
-                      color: DesignSystem.primary.withOpacity(0.15),
+                      color: DesignSystem.primary.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                     ),
                     child: Text(
@@ -259,7 +259,7 @@ class _LetterGridSwapperScreenState extends ConsumerState<LetterGridSwapperScree
                             duration: const Duration(milliseconds: 150),
                             decoration: BoxDecoration(
                               color: isSelected
-                                  ? DesignSystem.gameOrange.withOpacity(0.2)
+                                  ? DesignSystem.gameOrange.withValues(alpha: 0.2)
                                   : (isDark ? Colors.grey[900] : Colors.grey[100]),
                               borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
                               border: Border.all(
@@ -269,7 +269,7 @@ class _LetterGridSwapperScreenState extends ConsumerState<LetterGridSwapperScree
                                 width: isSelected ? 3.0 : 1.5,
                               ),
                               boxShadow: isSelected
-                                  ? [BoxShadow(color: DesignSystem.gameOrange.withOpacity(0.3), blurRadius: 6)]
+                                  ? [BoxShadow(color: DesignSystem.gameOrange.withValues(alpha: 0.3), blurRadius: 6)]
                                   : null,
                             ),
                             alignment: Alignment.center,

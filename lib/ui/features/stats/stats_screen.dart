@@ -130,14 +130,16 @@ class StatsScreen extends ConsumerWidget {
                         if (index == 1) return const SizedBox(height: DesignSystem.spaceXL);
                         if (index == 2) return _CognitiveProfileCard(l10n: l10n);
                         if (index == 3) return const SizedBox(height: DesignSystem.spaceXL);
-                        if (index == 4) return Text(
-                          l10n.statsAchievements,
-                          style: theme.textTheme.displaySmall?.copyWith(
-                            fontSize: DesignSystem.fontSizeLG,
-                            color: theme.colorScheme.primary,
-                            letterSpacing: 1.5,
-                          ),
-                        );
+                        if (index == 4) {
+                          return Text(
+                            l10n.statsAchievements,
+                            style: theme.textTheme.displaySmall?.copyWith(
+                              fontSize: DesignSystem.fontSizeLG,
+                              color: theme.colorScheme.primary,
+                              letterSpacing: 1.5,
+                            ),
+                          );
+                        }
                         if (index == 5) return const SizedBox(height: DesignSystem.spaceMD);
                         final achievementIndex = index - 6;
                         return Padding(

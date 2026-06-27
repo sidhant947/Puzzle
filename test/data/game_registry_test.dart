@@ -31,7 +31,7 @@ void main() {
     });
 
     for (final metadata in allGamesMetadata) {
-      group('${metadata.id}', () {
+      group(metadata.id, () {
         test('has a non-empty id', () {
           expect(metadata.id, isNotEmpty);
         });

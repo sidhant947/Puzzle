@@ -65,7 +65,7 @@ class _MirrorMazeScreenState extends ConsumerState<MirrorMazeScreen> {
 
   late MirrorMazePuzzle _currentPuzzle;
   late List<List<MirrorCell>> _board;
-  List<Point<int>> _laserPath = [];
+  final List<Point<int>> _laserPath = [];
   bool _isSolved = false;
 
   @override
@@ -240,7 +240,7 @@ class _MirrorMazeScreenState extends ConsumerState<MirrorMazeScreen> {
                           child: Container(
                             decoration: BoxDecoration(
                               border: Border.all(
-                                color: (isDark ? DesignSystem.darkOutline : DesignSystem.outline).withOpacity(0.4),
+                                color: (isDark ? DesignSystem.darkOutline : DesignSystem.outline).withValues(alpha: 0.4),
                                 width: 0.5,
                               ),
                             ),
@@ -353,7 +353,7 @@ class _LaserPathPainter extends CustomPainter {
     if (path.isEmpty) return;
 
     final paint = Paint()
-      ..color = DesignSystem.error.withOpacity(0.85)
+      ..color = DesignSystem.error.withValues(alpha: 0.85)
       ..strokeWidth = 4.0
       ..strokeCap = StrokeCap.round
       ..style = PaintingStyle.stroke;

@@ -56,7 +56,7 @@ class _FocusTunnelScreenState extends ConsumerState<FocusTunnelScreen> with Sing
     DesignSystem.gameRose,
   ];
 
-  List<TunnelSymbol> _activeSymbols = [];
+  final List<TunnelSymbol> _activeSymbols = [];
   final List<IconData> _history = []; // 2-back history tracking
   int _score = 0;
   final int _targetScore = 15;
@@ -214,7 +214,7 @@ class _FocusTunnelScreenState extends ConsumerState<FocusTunnelScreen> with Sing
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.1),
+                    color: DesignSystem.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -281,7 +281,7 @@ class _FocusTunnelScreenState extends ConsumerState<FocusTunnelScreen> with Sing
                                     opacity: min(1.0, symbol.scale),
                                     child: Container(
                                       decoration: BoxDecoration(
-                                        color: symbol.color.withOpacity(0.2),
+                                        color: symbol.color.withValues(alpha: 0.2),
                                         shape: BoxShape.circle,
                                         border: Border.all(color: symbol.color, width: 2),
                                       ),
@@ -296,7 +296,7 @@ class _FocusTunnelScreenState extends ConsumerState<FocusTunnelScreen> with Sing
                                 ),
                               ),
                             );
-                          }).toList(),
+                          }),
                           // Center focal point
                           Center(
                             child: Container(
@@ -332,7 +332,7 @@ class TunnelBackgroundPainter extends CustomPainter {
   @override
   void paint(Canvas canvas, Size size) {
     final paint = Paint()
-      ..color = isDark ? Colors.white.withOpacity(0.05) : Colors.black.withOpacity(0.04)
+      ..color = isDark ? Colors.white.withValues(alpha: 0.05) : Colors.black.withValues(alpha: 0.04)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.5;
 

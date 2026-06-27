@@ -192,7 +192,7 @@ class _MatrixMultiplierScreenState extends ConsumerState<MatrixMultiplierScreen>
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                         decoration: BoxDecoration(
-                          color: DesignSystem.primary.withOpacity(0.1),
+                          color: DesignSystem.primary.withValues(alpha: 0.1),
                           borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                         ),
                         child: Text(
@@ -235,7 +235,7 @@ class _MatrixMultiplierScreenState extends ConsumerState<MatrixMultiplierScreen>
                                 padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                                 decoration: BoxDecoration(
                                   color: isRowSelected
-                                      ? DesignSystem.primary.withOpacity(0.2)
+                                      ? DesignSystem.primary.withValues(alpha: 0.2)
                                       : Colors.transparent,
                                   borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
                                   border: Border.all(
@@ -289,7 +289,7 @@ class _MatrixMultiplierScreenState extends ConsumerState<MatrixMultiplierScreen>
                                 padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 12),
                                 decoration: BoxDecoration(
                                   color: isColSelected
-                                      ? DesignSystem.primary.withOpacity(0.2)
+                                      ? DesignSystem.primary.withValues(alpha: 0.2)
                                       : Colors.transparent,
                                   borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
                                   border: Border.all(

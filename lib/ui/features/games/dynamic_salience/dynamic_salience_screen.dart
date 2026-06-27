@@ -1,4 +1,3 @@
-import 'dart:async';
 import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
@@ -39,7 +38,7 @@ class _DynamicSalienceScreenState extends ConsumerState<DynamicSalienceScreen> w
   final Random _random = Random();
   late AnimationController _animationController;
 
-  List<SalientShape> _shapes = [];
+  final List<SalientShape> _shapes = [];
   int _score = 0;
   final int _targetScore = 10;
   bool _isGameOver = false;
@@ -186,7 +185,7 @@ class _DynamicSalienceScreenState extends ConsumerState<DynamicSalienceScreen> w
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.1),
+                    color: DesignSystem.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -235,12 +234,12 @@ class _DynamicSalienceScreenState extends ConsumerState<DynamicSalienceScreen> w
                                   onTapDown: (_) => _onTapShape(shape),
                                   child: Container(
                                     decoration: BoxDecoration(
-                                      color: shape.color.withOpacity(0.2),
+                                      color: shape.color.withValues(alpha: 0.2),
                                       shape: BoxShape.circle,
                                       border: Border.all(color: shape.color, width: 3),
                                       boxShadow: [
                                         BoxShadow(
-                                          color: shape.color.withOpacity(0.15),
+                                          color: shape.color.withValues(alpha: 0.15),
                                           blurRadius: 10,
                                         )
                                       ],

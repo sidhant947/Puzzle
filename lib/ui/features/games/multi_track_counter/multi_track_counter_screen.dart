@@ -157,9 +157,9 @@ class _MultiTrackCounterScreenState extends ConsumerState<MultiTrackCounterScree
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
               decoration: BoxDecoration(
-                color: DesignSystem.primary.withOpacity(0.1),
+                color: DesignSystem.primary.withValues(alpha: 0.1),
                 borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
-                border: Border.all(color: DesignSystem.primary.withOpacity(0.2), width: 1.5),
+                border: Border.all(color: DesignSystem.primary.withValues(alpha: 0.2), width: 1.5),
               ),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -210,14 +210,14 @@ class _MultiTrackCounterScreenState extends ConsumerState<MultiTrackCounterScree
                         borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
                         border: Border.all(
                           color: isTarget
-                              ? DesignSystem.gameOrange.withOpacity(0.8)
+                              ? DesignSystem.gameOrange.withValues(alpha: 0.8)
                               : (isDark ? DesignSystem.darkOutline : DesignSystem.outline),
                           width: isTarget ? 3.0 : 1.5,
                         ),
                         boxShadow: isTarget
                             ? [
                                 BoxShadow(
-                                  color: DesignSystem.gameOrange.withOpacity(0.2),
+                                  color: DesignSystem.gameOrange.withValues(alpha: 0.2),
                                   blurRadius: 8,
                                   spreadRadius: 2,
                                 )
@@ -237,8 +237,8 @@ class _MultiTrackCounterScreenState extends ConsumerState<MultiTrackCounterScree
                               backgroundColor: Colors.transparent,
                               valueColor: AlwaysStoppedAnimation<Color>(
                                 isTarget
-                                    ? DesignSystem.gameOrange.withOpacity(0.5)
-                                    : DesignSystem.primary.withOpacity(0.3),
+                                    ? DesignSystem.gameOrange.withValues(alpha: 0.5)
+                                    : DesignSystem.primary.withValues(alpha: 0.3),
                               ),
                             ),
                           ),
@@ -275,7 +275,7 @@ class _MultiTrackCounterScreenState extends ConsumerState<MultiTrackCounterScree
                                     boxShadow: isTarget
                                         ? [
                                             BoxShadow(
-                                              color: DesignSystem.gameOrange.withOpacity(0.4),
+                                              color: DesignSystem.gameOrange.withValues(alpha: 0.4),
                                               blurRadius: 8,
                                               spreadRadius: 2,
                                             )

@@ -197,7 +197,7 @@ class _OddEvenFlashScreenState extends ConsumerState<OddEvenFlashScreen> {
             padding: const EdgeInsets.all(16.0),
             width: double.infinity,
             decoration: BoxDecoration(
-              color: DesignSystem.primary.withOpacity(0.15),
+              color: DesignSystem.primary.withValues(alpha: 0.15),
               borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
               border: Border.all(color: DesignSystem.primary, width: 2),
             ),
@@ -232,7 +232,7 @@ class _OddEvenFlashScreenState extends ConsumerState<OddEvenFlashScreen> {
                 height: 200,
                 decoration: BoxDecoration(
                   color: _hasTappedThisFlash
-                      ? Colors.grey.withOpacity(0.3)
+                      ? Colors.grey.withValues(alpha: 0.3)
                       : (isDark ? DesignSystem.darkSurface : DesignSystem.surface),
                   borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
                   border: Border.all(
@@ -241,7 +241,7 @@ class _OddEvenFlashScreenState extends ConsumerState<OddEvenFlashScreen> {
                   ),
                   boxShadow: [
                     BoxShadow(
-                      color: _currentColor.withOpacity(0.3),
+                      color: _currentColor.withValues(alpha: 0.3),
                       blurRadius: 16,
                       offset: const Offset(0, 8),
                     )

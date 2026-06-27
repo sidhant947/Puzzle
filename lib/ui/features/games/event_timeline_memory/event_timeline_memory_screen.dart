@@ -32,8 +32,6 @@ class _EventTimelineMemoryScreenState extends ConsumerState<EventTimelineMemoryS
   final Random _random = Random();
   int _score = 0;
   final int _targetScore = 3;
-  bool _isGameOver = false;
-
   final List<HistoricalEvent> _eventsPool = [
     // Space & Science
     HistoricalEvent(title: 'Apollo 11 Moon Landing', year: 1969, description: 'First humans land on the Moon.'),
@@ -103,7 +101,6 @@ class _EventTimelineMemoryScreenState extends ConsumerState<EventTimelineMemoryS
       _score++;
       HapticFeedbackUtil.success();
       if (_score >= _targetScore) {
-        _isGameOver = true;
         _onGameComplete();
       } else {
         final l10n = AppLocalizations.of(context)!;
@@ -153,7 +150,6 @@ class _EventTimelineMemoryScreenState extends ConsumerState<EventTimelineMemoryS
           Navigator.of(context).pop();
           setState(() {
             _score = 0;
-            _isGameOver = false;
             _generatePuzzle();
           });
         },
@@ -177,7 +173,6 @@ class _EventTimelineMemoryScreenState extends ConsumerState<EventTimelineMemoryS
             HapticFeedbackUtil.lightImpact();
             setState(() {
               _score = 0;
-              _isGameOver = false;
               _generatePuzzle();
             });
           },
@@ -191,7 +186,7 @@ class _EventTimelineMemoryScreenState extends ConsumerState<EventTimelineMemoryS
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               decoration: BoxDecoration(
-                color: DesignSystem.primary.withOpacity(0.15),
+                color: DesignSystem.primary.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
               ),
               child: Text(
@@ -238,7 +233,7 @@ class _EventTimelineMemoryScreenState extends ConsumerState<EventTimelineMemoryS
                       Container(
                         padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
                         decoration: BoxDecoration(
-                          color: DesignSystem.primary.withOpacity(0.2),
+                          color: DesignSystem.primary.withValues(alpha: 0.2),
                           borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                         ),
                         child: Text(
@@ -335,7 +330,7 @@ class _EventTimelineMemoryScreenState extends ConsumerState<EventTimelineMemoryS
                   return Card(
                     elevation: 0,
                     color: candidateData.isNotEmpty
-                        ? DesignSystem.primary.withOpacity(0.1)
+                        ? DesignSystem.primary.withValues(alpha: 0.1)
                         : (placed != null
                             ? (isDark ? DesignSystem.darkSurface : DesignSystem.surface)
                             : (isDark ? Colors.grey[900] : Colors.grey[200])),

@@ -170,7 +170,7 @@ class _BlinkDetectorScreenState extends ConsumerState<BlinkDetectorScreen> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.1),
+                    color: DesignSystem.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -208,7 +208,7 @@ class _BlinkDetectorScreenState extends ConsumerState<BlinkDetectorScreen> {
                         child: Container(
                           margin: const EdgeInsets.all(4),
                           decoration: BoxDecoration(
-                            color: isDark ? Colors.white10 : Colors.black.withOpacity(0.03),
+                            color: isDark ? Colors.white10 : Colors.black.withValues(alpha: 0.03),
                             borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                           ),
                           alignment: Alignment.center,

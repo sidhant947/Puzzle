@@ -82,7 +82,6 @@ void main() {
 
     group('known words', () {
       test('KNIGHT has silent indices at 0, 3, 4', () {
-        final word = engine.getRandomWord();
         // We can't guarantee which word we get, but we can check the pool
         // by testing isCorrect against known data
         expect(engine.isCorrect([0, 3, 4], [0, 3, 4]), true);

@@ -203,7 +203,7 @@ class _ActionSequenceRecallScreenState extends ConsumerState<ActionSequenceRecal
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               decoration: BoxDecoration(
-                color: DesignSystem.primary.withOpacity(0.15),
+                color: DesignSystem.primary.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
               ),
               child: Text(
@@ -236,7 +236,7 @@ class _ActionSequenceRecallScreenState extends ConsumerState<ActionSequenceRecal
                         boxShadow: _activeVisualAction.isNotEmpty
                             ? [
                                 BoxShadow(
-                                  color: DesignSystem.primary.withOpacity(0.3),
+                                  color: DesignSystem.primary.withValues(alpha: 0.3),
                                   blurRadius: 15,
                                   spreadRadius: 2,
                                 )

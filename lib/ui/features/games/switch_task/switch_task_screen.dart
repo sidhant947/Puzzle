@@ -57,7 +57,6 @@ class _SwitchTaskScreenState extends ConsumerState<SwitchTaskScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final l10n = AppLocalizations.of(context)!;
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final state = ref.watch(switchTaskNotifierProvider);

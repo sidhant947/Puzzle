@@ -19,8 +19,6 @@ class _PerspectiveShiftViewScreenState extends ConsumerState<PerspectiveShiftVie
   final Random _random = Random();
   int _score = 0;
   final int _targetScore = 3;
-  bool _isGameOver = false;
-
   // Camera rotation angle (radians) user can control to view the 3D space
   double _cameraAngle = 0.0;
 
@@ -97,7 +95,6 @@ class _PerspectiveShiftViewScreenState extends ConsumerState<PerspectiveShiftVie
       _score++;
       HapticFeedbackUtil.success();
       if (_score >= _targetScore) {
-        _isGameOver = true;
         _onGameComplete();
       } else {
         final l10n = AppLocalizations.of(context)!;
@@ -147,7 +144,6 @@ class _PerspectiveShiftViewScreenState extends ConsumerState<PerspectiveShiftVie
           Navigator.of(context).pop();
           setState(() {
             _score = 0;
-            _isGameOver = false;
             _generatePuzzle();
           });
         },
@@ -168,9 +164,8 @@ class _PerspectiveShiftViewScreenState extends ConsumerState<PerspectiveShiftVie
           onPressed: () {
             HapticFeedbackUtil.lightImpact();
             setState(() {
-              _score = 0;
-              _isGameOver = false;
-              _generatePuzzle();
+            _score = 0;
+            _generatePuzzle();
             });
           },
         ),
@@ -183,7 +178,7 @@ class _PerspectiveShiftViewScreenState extends ConsumerState<PerspectiveShiftVie
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 8),
               decoration: BoxDecoration(
-                color: DesignSystem.primary.withOpacity(0.15),
+                color: DesignSystem.primary.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
               ),
               child: Text(
@@ -315,7 +310,7 @@ class _PerspectiveBlockPainter extends CustomPainter {
       ..style = PaintingStyle.fill;
 
     final blockOutline = Paint()
-      ..color = Colors.white.withOpacity(0.8)
+      ..color = Colors.white.withValues(alpha: 0.8)
       ..style = PaintingStyle.stroke
       ..strokeWidth = 1.5;
 

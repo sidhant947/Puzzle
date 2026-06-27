@@ -252,7 +252,7 @@ class _WordWheelScreenState extends ConsumerState<WordWheelScreen> {
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
                   decoration: BoxDecoration(
-                    color: DesignSystem.primary.withOpacity(0.1),
+                    color: DesignSystem.primary.withValues(alpha: 0.1),
                     borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                   ),
                   child: Text(
@@ -345,7 +345,7 @@ class _WordWheelScreenState extends ConsumerState<WordWheelScreen> {
               children: _foundWords.map((word) {
                 return Card(
                   margin: const EdgeInsets.symmetric(horizontal: 4, vertical: 8),
-                  color: DesignSystem.gameGreen.withOpacity(0.15),
+                  color: DesignSystem.gameGreen.withValues(alpha: 0.15),
                   elevation: 0,
                   child: Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0),

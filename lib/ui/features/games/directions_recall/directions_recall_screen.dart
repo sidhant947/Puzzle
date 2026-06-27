@@ -223,7 +223,7 @@ class _DirectionsRecallScreenState extends ConsumerState<DirectionsRecallScreen>
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                     decoration: BoxDecoration(
-                      color: DesignSystem.primary.withOpacity(0.15),
+                      color: DesignSystem.primary.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                     ),
                     child: Text(
@@ -237,7 +237,7 @@ class _DirectionsRecallScreenState extends ConsumerState<DirectionsRecallScreen>
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.15),
+                      color: Colors.grey.withValues(alpha: 0.15),
                       borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                     ),
                     child: Text(
@@ -281,9 +281,9 @@ class _DirectionsRecallScreenState extends ConsumerState<DirectionsRecallScreen>
                         child: Container(
                           decoration: BoxDecoration(
                             color: isSelected
-                                ? DesignSystem.primary.withOpacity(0.2)
+                                ? DesignSystem.primary.withValues(alpha: 0.2)
                                 : (isStart
-                                    ? Colors.green.withOpacity(0.15)
+                                    ? Colors.green.withValues(alpha: 0.15)
                                     : (isDark ? Colors.grey[900] : Colors.grey[150])),
                             borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                             border: Border.all(
@@ -351,7 +351,7 @@ class _DirectionsRecallScreenState extends ConsumerState<DirectionsRecallScreen>
                     style: ElevatedButton.styleFrom(
                       backgroundColor: Colors.green,
                       foregroundColor: Colors.white,
-                      disabledBackgroundColor: Colors.grey[400]?.withOpacity(0.2),
+                      disabledBackgroundColor: Colors.grey[400]?.withValues(alpha: 0.2),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
                       ),

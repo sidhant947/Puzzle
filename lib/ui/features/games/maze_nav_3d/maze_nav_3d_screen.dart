@@ -20,8 +20,6 @@ class _MazeNav3DScreenState extends ConsumerState<MazeNav3DScreen> {
   final Random _random = Random();
   int _score = 0;
   final int _targetScore = 3;
-  bool _isGameOver = false;
-
   // Directions
   static const int north = 0;
   static const int east = 1;
@@ -99,7 +97,6 @@ class _MazeNav3DScreenState extends ConsumerState<MazeNav3DScreen> {
           // Reached Exit!
           _score++;
           if (_score >= _targetScore) {
-            _isGameOver = true;
             _onGameComplete();
           } else {
             final l10n = AppLocalizations.of(context)!;
@@ -162,7 +159,6 @@ class _MazeNav3DScreenState extends ConsumerState<MazeNav3DScreen> {
           Navigator.of(context).pop();
           setState(() {
             _score = 0;
-            _isGameOver = false;
             _generatePuzzle();
           });
         },
@@ -184,7 +180,6 @@ class _MazeNav3DScreenState extends ConsumerState<MazeNav3DScreen> {
             HapticFeedbackUtil.lightImpact();
             setState(() {
               _score = 0;
-              _isGameOver = false;
               _generatePuzzle();
             });
           },
@@ -198,7 +193,7 @@ class _MazeNav3DScreenState extends ConsumerState<MazeNav3DScreen> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
               decoration: BoxDecoration(
-                color: DesignSystem.primary.withOpacity(0.15),
+                color: DesignSystem.primary.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
               ),
               child: Text(

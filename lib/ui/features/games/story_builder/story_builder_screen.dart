@@ -163,7 +163,7 @@ class _StoryBuilderScreenState extends ConsumerState<StoryBuilderScreen> {
             Container(
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               decoration: BoxDecoration(
-                color: DesignSystem.primary.withOpacity(0.15),
+                color: DesignSystem.primary.withValues(alpha: 0.15),
                 borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
               ),
               child: Text(
@@ -249,7 +249,7 @@ class _StoryBuilderScreenState extends ConsumerState<StoryBuilderScreen> {
         return Card(
           elevation: 0,
           color: isCorrectlyPlaced
-              ? DesignSystem.gameGreen.withOpacity(0.15)
+              ? DesignSystem.gameGreen.withValues(alpha: 0.15)
               : (isDark ? DesignSystem.darkSurface : DesignSystem.surface),
           margin: const EdgeInsets.symmetric(vertical: 8),
           shape: RoundedRectangleBorder(

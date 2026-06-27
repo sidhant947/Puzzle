@@ -8,7 +8,6 @@ import '../../../../providers/user_providers.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../../utils/haptic_feedback.dart';
 import 'corsi_blocks_provider.dart';
-import 'package:puzzle/utils/l10n_game_helpers.dart';
 
 class CorsiBlocksScreen extends ConsumerStatefulWidget {
   const CorsiBlocksScreen({super.key});

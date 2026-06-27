@@ -73,11 +73,9 @@ void main() {
       test('single-cell cages have empty op', () {
         final puzzle = engine.generatePuzzle(size: 4);
         final cageData = puzzle['cageData'] as List<Map<String, dynamic>>;
-        bool foundSingle = false;
         for (final cage in cageData) {
           final cells = cage['cells'] as List;
           if (cells.length == 1) {
-            foundSingle = true;
             expect(cage['op'], equals(''));
             expect(cage['target'], isA<int>());
           }

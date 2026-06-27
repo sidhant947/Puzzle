@@ -204,7 +204,7 @@ class _BlockStackingPhysicsScreenState extends ConsumerState<BlockStackingPhysic
                   Container(
                     padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                     decoration: BoxDecoration(
-                      color: DesignSystem.primary.withOpacity(0.1),
+                      color: DesignSystem.primary.withValues(alpha: 0.1),
                       borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                     ),
                     child: Text(
@@ -260,7 +260,7 @@ class _BlockStackingPhysicsScreenState extends ConsumerState<BlockStackingPhysic
                                   borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
                                   boxShadow: [
                                     BoxShadow(
-                                      color: Colors.black.withOpacity(0.15),
+                                      color: Colors.black.withValues(alpha: 0.15),
                                       blurRadius: 4,
                                       offset: const Offset(0, 2),
                                     )
