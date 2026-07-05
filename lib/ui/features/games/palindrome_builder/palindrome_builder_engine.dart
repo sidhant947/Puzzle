@@ -5,13 +5,13 @@ class PalindromeBuilderEngine {
     PalindromeTask(incomplete: 'RACEC__', solution: 'AR', display: 'RACEC..'),
     PalindromeTask(incomplete: 'MAD__', solution: 'AM', display: 'MAD..'),
     PalindromeTask(incomplete: 'LEV__', solution: 'EL', display: 'LEV..'),
-    PalindromeTask(incomplete: 'REFI__R', solution: 'LE', display: 'REFI..R'),
+    PalindromeTask(incomplete: 'REVI__R', solution: 'VE', display: 'REVI..R'), // REVIVER
     PalindromeTask(incomplete: 'ROT__', solution: 'OR', display: 'ROT..'),
     PalindromeTask(incomplete: 'KA__K', solution: 'YA', display: 'KA..K'),
     PalindromeTask(incomplete: 'DE__D', solution: 'IE', display: 'DE..D'),
     PalindromeTask(incomplete: 'RE__R', solution: 'FE', display: 'RE..R'),
     PalindromeTask(incomplete: 'CI__C', balance: 'VI', solution: 'VI', display: 'CI..C'), // CIVIC
-    PalindromeTask(incomplete: 'BO__B', solution: 'BO', display: 'BO..B'), // BOB
+    PalindromeTask(incomplete: 'RA__R', solution: 'DA', display: 'RA..R'), // RADAR
     PalindromeTask(incomplete: 'NO__N', solution: 'O', display: 'NO.N'), // NOON
     PalindromeTask(incomplete: 'TEN__', solution: 'ET', display: 'TEN..'), // TENET
     PalindromeTask(incomplete: 'SOL__', solution: 'OS', display: 'SOL..'), // SOLOS

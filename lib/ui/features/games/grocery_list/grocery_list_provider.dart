@@ -62,6 +62,7 @@ class GroceryListNotifier extends _$GroceryListNotifier {
   }
 
   void initGame() {
+    state = GroceryListState(list: []);
     _nextTrial(0);
   }
 

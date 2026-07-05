@@ -84,6 +84,18 @@ class _LetterCancellationScreenState extends ConsumerState<LetterCancellationScr
               ],
             ),
           ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceMD),
+            child: Text(
+              l10n.letterCancellationSubtitle(state.target),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: colorScheme.onSurface.withValues(alpha: 0.7),
+                fontWeight: FontWeight.w500,
+                fontSize: DesignSystem.fontSizeSM,
+              ),
+            ),
+          ),
           const SizedBox(height: DesignSystem.spaceMD),
           Expanded(
             child: GridView.builder(

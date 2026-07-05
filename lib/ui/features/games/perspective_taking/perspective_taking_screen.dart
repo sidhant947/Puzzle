@@ -94,6 +94,16 @@ class _PerspectiveTakingScreenState extends ConsumerState<PerspectiveTakingScree
           children: [
             const SizedBox(height: DesignSystem.spaceMD),
             Text(
+              l10n.perspectiveTakingSubtitle(targetDirName),
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: colorScheme.onSurface.withValues(alpha: 0.7),
+                fontWeight: FontWeight.w500,
+                fontSize: DesignSystem.fontSizeSM,
+              ),
+            ),
+            const SizedBox(height: DesignSystem.spaceMD),
+            Text(
               l10n.perspectiveTakingTopDownView,
               style: TextStyle(
                 fontWeight: FontWeight.w900,
