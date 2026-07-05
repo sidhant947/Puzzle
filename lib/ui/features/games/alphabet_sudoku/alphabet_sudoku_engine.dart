@@ -7,7 +7,7 @@ class AlphabetSudokuEngine {
 
   AlphabetSudokuEngine({this.size = 9}) 
       : boxSize = sqrt(size).toInt(),
-        alphabets = List.generate(size, (i) => String.fromCharCode(65 + i));
+        alphabets = List.generate(size, (i) => String.fromCharCode(82 + i));
 
   static List<List<int>> generateFullBoard(int size) {
     return AlphabetSudokuEngine(size: size).generateBoard();

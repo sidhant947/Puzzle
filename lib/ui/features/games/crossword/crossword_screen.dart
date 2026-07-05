@@ -224,25 +224,81 @@ extension CrosswordScreenControls on _CrosswordScreenState {
       }
     }
 
+    final colorScheme = Theme.of(context).colorScheme;
+
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
-      child: TangibleContainer(
-        color: Theme.of(context).colorScheme.surface,
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-        child: SizedBox(
-          width: double.infinity,
-          child: Text(
-            clue.toUpperCase(),
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-              fontWeight: FontWeight.w900,
-              color: DesignSystem.primary,
-              fontSize: 10, // Reduced from 12
-              letterSpacing: 0.5,
-              height: 1.2,
+      child: GestureDetector(
+        onTap: () {
+          if (clue.length > 60) {
+            showDialog(
+              context: context,
+              builder: (context) => Dialog(
+                child: Padding(
+                  padding: const EdgeInsets.all(DesignSystem.spaceLG),
+                  child: Column(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Text(
+                        "CLUE",
+                        style: TextStyle(
+                          fontFamily: 'Bebas Neue',
+                          fontSize: DesignSystem.fontSize2XL,
+                          fontWeight: FontWeight.w700,
+                          color: colorScheme.primary,
+                        ),
+                      ),
+                      const SizedBox(height: DesignSystem.spaceMD),
+                      Text(
+                        clue.toUpperCase(),
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontWeight: FontWeight.w900,
+                          color: colorScheme.onSurface,
+                          fontSize: 14,
+                          height: 1.4,
+                        ),
+                      ),
+                      const SizedBox(height: DesignSystem.spaceLG),
+                      TangibleButton(
+                        color: colorScheme.primary,
+                        width: double.infinity,
+                        onTap: () => Navigator.of(context).pop(),
+                        child: Center(
+                          child: Text(
+                            "OK",
+                            style: TextStyle(
+                              color: colorScheme.onPrimary,
+                              fontWeight: FontWeight.w900,
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          }
+        },
+        child: TangibleContainer(
+          color: colorScheme.surface,
+          padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+          child: SizedBox(
+            width: double.infinity,
+            child: Text(
+              clue.toUpperCase(),
+              maxLines: 3,
+              overflow: TextOverflow.ellipsis,
+              style: const TextStyle(
+                fontWeight: FontWeight.w900,
+                color: DesignSystem.primary,
+                fontSize: 11,
+                letterSpacing: 0.5,
+                height: 1.3,
+              ),
+              textAlign: TextAlign.center,
             ),
-            textAlign: TextAlign.center,
           ),
         ),
       ),

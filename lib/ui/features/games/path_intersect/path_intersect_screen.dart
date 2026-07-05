@@ -29,8 +29,8 @@ class _PathIntersectScreenState extends ConsumerState<PathIntersectScreen> {
       context: context,
       barrierDismissible: false,
       builder: (dialogCtx) => GameCompletionDialog(
-        title: isVictory ? l10n.pathIntersectTitle : AppLocalizations.of(context)!.gameOver,
-        message: isVictory ? l10n.pathIntersectCongrats : AppLocalizations.of(context)!.loseTryAgainSolution,
+        title: l10n.pathIntersectTitle,
+        message: l10n.pathIntersectCongrats,
         isVictory: isVictory,
         onHome: () {
           Navigator.of(dialogCtx).pop();
@@ -53,11 +53,6 @@ class _PathIntersectScreenState extends ConsumerState<PathIntersectScreen> {
         HapticFeedbackUtil.victory();
         Future.delayed(const Duration(milliseconds: 500), () {
           if (mounted) _showCompletionDialog(true);
-        });
-      } else if (next.isFailed && !(prev?.isFailed ?? false)) {
-        HapticFeedbackUtil.error();
-        Future.delayed(const Duration(milliseconds: 500), () {
-          if (mounted) _showCompletionDialog(false);
         });
       }
     });
@@ -118,6 +113,8 @@ class _PathIntersectScreenState extends ConsumerState<PathIntersectScreen> {
         final x = index % state.gridSize;
         final y = index ~/ state.gridSize;
         final isSelected = state.selectedPoint == Point(x, y);
+        final isIntersection = state.intersection == Point(x, y);
+        final showWrong = isSelected && !state.isVictory && state.selectedPoint != null;
 
         return GestureDetector(
           onTap: () {
@@ -127,15 +124,19 @@ class _PathIntersectScreenState extends ConsumerState<PathIntersectScreen> {
           child: Container(
             decoration: BoxDecoration(
               border: Border.all(color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.1)),
-              color: isSelected
-                  ? (state.isVictory ? Colors.green.withValues(alpha: 0.3) : Colors.red.withValues(alpha: 0.3))
-                  : null,
+              color: state.isVictory && isIntersection
+                  ? Colors.green.withValues(alpha: 0.3)
+                  : showWrong
+                      ? Colors.red.withValues(alpha: 0.3)
+                      : null,
             ),
-            child: isSelected
-                ? Center(
-                    child: Icon(state.isVictory ? Icons.check : Icons.close,
-                        size: 16, color: state.isVictory ? Colors.green : Colors.red))
-                : null,
+            child: state.isVictory && isIntersection
+                ? const Center(
+                    child: Icon(Icons.check, size: 16, color: Colors.green))
+                : showWrong
+                    ? const Center(
+                        child: Icon(Icons.close, size: 16, color: Colors.red))
+                    : null,
           ),
         );
       },

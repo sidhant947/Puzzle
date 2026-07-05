@@ -82,15 +82,15 @@ class PathIntersectNotifier extends _$PathIntersectNotifier {
     final selected = Point(x, y);
     final bool solved = selected == state.intersection;
     
-    state = state.copyWith(
-      selectedPoint: selected,
-      isSolved: solved,
-      isVictory: solved,
-      isFailed: !solved,
-    );
-
     if (solved) {
+      state = state.copyWith(
+        selectedPoint: selected,
+        isSolved: true,
+        isVictory: true,
+      );
       ref.read(gameStreakNotifierProvider.notifier).completeGame('path_intersect');
+    } else {
+      state = state.copyWith(selectedPoint: selected);
     }
   }
 }

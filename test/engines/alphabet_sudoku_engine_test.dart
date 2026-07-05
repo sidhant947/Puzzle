@@ -17,8 +17,8 @@ void main() {
 
       test('generates alphabets list', () {
         expect(engine.alphabets.length, 9);
-        expect(engine.alphabets.first, 'A');
-        expect(engine.alphabets.last, 'I');
+        expect(engine.alphabets.first, 'R');
+        expect(engine.alphabets.last, 'Z');
       });
     });
 
@@ -101,8 +101,8 @@ void main() {
 
     group('getLetter', () {
       test('returns correct letter for value', () {
-        expect(engine.getLetter(1), 'A');
-        expect(engine.getLetter(9), 'I');
+        expect(engine.getLetter(1), 'R');
+        expect(engine.getLetter(9), 'Z');
       });
 
       test('returns empty for out of range', () {
