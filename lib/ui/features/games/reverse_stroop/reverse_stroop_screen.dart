@@ -93,7 +93,7 @@ class _ReverseStroopScreenState extends ConsumerState<ReverseStroopScreen> {
                   depth: 2.0,
                   padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 8),
                   child: Text(
-                    stimulus.rule == StroopRule.text ? l10n.btnMatch.toUpperCase() : l10n.btnMatch.toUpperCase(),
+                    stimulus.rule == StroopRule.text ? l10n.btnMatchWord : l10n.btnMatchColor,
                     style: TextStyle(
                       letterSpacing: 2,
                       fontWeight: FontWeight.w900,

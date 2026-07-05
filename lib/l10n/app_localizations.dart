@@ -8997,6 +8997,18 @@ abstract class AppLocalizations {
   /// **'Match'**
   String get btnMatch;
 
+  /// No description provided for @btnMatchColor.
+  ///
+  /// In en, this message translates to:
+  /// **'MATCH COLOR'**
+  String get btnMatchColor;
+
+  /// No description provided for @btnMatchWord.
+  ///
+  /// In en, this message translates to:
+  /// **'MATCH WORD'**
+  String get btnMatchWord;
+
   /// No description provided for @btnGuess.
   ///
   /// In en, this message translates to:

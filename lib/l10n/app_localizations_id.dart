@@ -5166,6 +5166,12 @@ class AppLocalizationsId extends AppLocalizations {
   String get btnMatch => 'Match';
 
   @override
+  String get btnMatchColor => 'MATCH COLOR';
+
+  @override
+  String get btnMatchWord => 'MATCH WORD';
+
+  @override
   String get btnGuess => 'Guess';
 
   @override
