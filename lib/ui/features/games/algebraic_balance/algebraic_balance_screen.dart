@@ -21,26 +21,27 @@ class AlgebraicBalanceScreen extends ConsumerStatefulWidget {
 class _AlgebraicBalanceScreenState extends ConsumerState<AlgebraicBalanceScreen> {
   final Random _random = Random();
 
-  // Variables values (secret values)
   late int _starValue;
   late int _heartValue;
   late int _sunValue;
 
-  // Equation 1 parameters: A * Star + B * Heart = val1
+  // Equation 1: A * Star + B * Heart = val1
   late int _eq1StarCoeff;
   late int _eq1HeartCoeff;
   late int _eq1Value;
 
-  // Equation 2 parameters: C * Star + D * Sun = val2
+  // Equation 2: C * Star + D * Sun = val2
   late int _eq2StarCoeff;
   late int _eq2SunCoeff;
   late int _eq2Value;
 
-  // Target parameters: E * Heart + F * Sun = ?
-  late int _targetHeartCoeff;
-  late int _targetSunCoeff;
-  late int _correctAnswer;
+  // Equation 3: E * Heart + F * Sun = val3
+  late int _eq3HeartCoeff;
+  late int _eq3SunCoeff;
+  late int _eq3Value;
 
+  late EquationSymbol _questionSymbol;
+  late int _correctAnswer;
   late List<int> _options;
 
   int _score = 0;
@@ -54,33 +55,63 @@ class _AlgebraicBalanceScreenState extends ConsumerState<AlgebraicBalanceScreen>
   }
 
   void _generatePuzzle() {
-    // Generate secret integer values for symbols
-    _starValue = _random.nextInt(6) + 2; // 2 to 7
-    _heartValue = _random.nextInt(6) + 2; // 2 to 7
-    _sunValue = _random.nextInt(6) + 2; // 2 to 7
+    for (int attempt = 0; attempt < 500; attempt++) {
+      _starValue = _random.nextInt(6) + 2;
+      _heartValue = _random.nextInt(6) + 2;
+      _sunValue = _random.nextInt(6) + 2;
 
-    // Keep coefficients small (1 or 2)
-    _eq1StarCoeff = _random.nextInt(2) + 1; // 1 or 2
-    _eq1HeartCoeff = _random.nextInt(2) + 1;
-    _eq1Value = _eq1StarCoeff * _starValue + _eq1HeartCoeff * _heartValue;
+      _eq1StarCoeff = _random.nextInt(2) + 1;
+      _eq1HeartCoeff = _random.nextInt(2) + 1;
+      _eq1Value = _eq1StarCoeff * _starValue + _eq1HeartCoeff * _heartValue;
 
-    _eq2StarCoeff = _random.nextInt(2) + 1;
-    _eq2SunCoeff = _random.nextInt(2) + 1;
-    _eq2Value = _eq2StarCoeff * _starValue + _eq2SunCoeff * _sunValue;
+      _eq2StarCoeff = _random.nextInt(2) + 1;
+      _eq2SunCoeff = _random.nextInt(2) + 1;
+      _eq2Value = _eq2StarCoeff * _starValue + _eq2SunCoeff * _sunValue;
 
-    _targetHeartCoeff = _random.nextInt(2) + 1;
-    _targetSunCoeff = _random.nextInt(2) + 1;
-    _correctAnswer = _targetHeartCoeff * _heartValue + _targetSunCoeff * _sunValue;
+      _eq3HeartCoeff = _random.nextInt(2) + 1;
+      _eq3SunCoeff = _random.nextInt(2) + 1;
+      _eq3Value = _eq3HeartCoeff * _heartValue + _eq3SunCoeff * _sunValue;
 
-    // Generate multiple choice options
+      if (_hasUniqueSolution()) break;
+    }
+
+    final symbols = EquationSymbol.values;
+    _questionSymbol = symbols[_random.nextInt(symbols.length)];
+
+    switch (_questionSymbol) {
+      case EquationSymbol.star:
+        _correctAnswer = _starValue;
+      case EquationSymbol.heart:
+        _correctAnswer = _heartValue;
+      case EquationSymbol.sun:
+        _correctAnswer = _sunValue;
+    }
+
     final set = <int>{_correctAnswer};
-    while (set.length < 4) {
-      int distractor = _correctAnswer + (_random.nextInt(7) - 3); // offset -3 to +3
-      if (distractor > 0 && distractor != _correctAnswer) {
-        set.add(distractor);
+    final candidates = <int>[];
+    for (int d = 2; d <= 7; d++) {
+      if (d != _correctAnswer) candidates.add(d);
+    }
+    candidates.shuffle(_random);
+    set.addAll(candidates.take(3));
+    _options = set.toList()..shuffle(_random);
+  }
+
+  bool _hasUniqueSolution() {
+    int count = 0;
+    for (int s = 2; s <= 7; s++) {
+      for (int h = 2; h <= 7; h++) {
+        if (_eq1StarCoeff * s + _eq1HeartCoeff * h != _eq1Value) continue;
+        for (int u = 2; u <= 7; u++) {
+          if (_eq2StarCoeff * s + _eq2SunCoeff * u == _eq2Value &&
+              _eq3HeartCoeff * h + _eq3SunCoeff * u == _eq3Value) {
+            count++;
+            if (count > 1) return false;
+          }
+        }
       }
     }
-    _options = set.toList()..shuffle(_random);
+    return count == 1;
   }
 
   void _onAnswerSelected(int selected) {
@@ -154,39 +185,38 @@ class _AlgebraicBalanceScreenState extends ConsumerState<AlgebraicBalanceScreen>
     }
   }
 
-  Widget _buildExpressionList(int starCoeff, int heartCoeff, int sunCoeff) {
-    List<Widget> children = [];
-
-    // Add star widgets
-    for (int i = 0; i < starCoeff; i++) {
-      children.add(Icon(_getSymbolIcon(EquationSymbol.star), color: _getSymbolColor(EquationSymbol.star), size: 30));
-      if (i < starCoeff - 1) children.add(const Text(' + '));
-    }
-
-    if (starCoeff > 0 && (heartCoeff > 0 || sunCoeff > 0)) {
-      children.add(const Text(' + '));
-    }
-
-    // Add heart widgets
-    for (int i = 0; i < heartCoeff; i++) {
-      children.add(Icon(_getSymbolIcon(EquationSymbol.heart), color: _getSymbolColor(EquationSymbol.heart), size: 30));
-      if (i < heartCoeff - 1) children.add(const Text(' + '));
-    }
-
-    if (heartCoeff > 0 && sunCoeff > 0) {
-      children.add(const Text(' + '));
-    }
-
-    // Add sun widgets
-    for (int i = 0; i < sunCoeff; i++) {
-      children.add(Icon(_getSymbolIcon(EquationSymbol.sun), color: _getSymbolColor(EquationSymbol.sun), size: 30));
-      if (i < sunCoeff - 1) children.add(const Text(' + '));
-    }
-
+  Widget _buildTerm(int coeff, EquationSymbol symbol) {
     return Row(
       mainAxisSize: MainAxisSize.min,
-      children: children,
+      children: [
+        if (coeff > 1)
+          Text(
+            '$coeff',
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+              color: _getSymbolColor(symbol),
+            ),
+          ),
+        Icon(_getSymbolIcon(symbol), color: _getSymbolColor(symbol), size: 30),
+      ],
     );
+  }
+
+  Widget _buildExpression(int starCoeff, int heartCoeff, int sunCoeff) {
+    List<Widget> children = [];
+
+    if (starCoeff > 0) children.add(_buildTerm(starCoeff, EquationSymbol.star));
+    if (heartCoeff > 0) {
+      if (children.isNotEmpty) children.add(const Text(' + '));
+      children.add(_buildTerm(heartCoeff, EquationSymbol.heart));
+    }
+    if (sunCoeff > 0) {
+      if (children.isNotEmpty) children.add(const Text(' + '));
+      children.add(_buildTerm(sunCoeff, EquationSymbol.sun));
+    }
+
+    return Row(mainAxisSize: MainAxisSize.min, children: children);
   }
 
   @override
@@ -213,7 +243,6 @@ class _AlgebraicBalanceScreenState extends ConsumerState<AlgebraicBalanceScreen>
             padding: const EdgeInsets.all(DesignSystem.spaceMD),
             child: Column(
               children: [
-                // Score card
                 Container(
                   padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                   decoration: BoxDecoration(
@@ -229,7 +258,6 @@ class _AlgebraicBalanceScreenState extends ConsumerState<AlgebraicBalanceScreen>
                   ),
                 ),
                 const SizedBox(height: 30),
-                // Equation List Card
                 Card(
                   elevation: 0,
                   color: isDark ? DesignSystem.darkSurface : DesignSystem.surface,
@@ -244,43 +272,47 @@ class _AlgebraicBalanceScreenState extends ConsumerState<AlgebraicBalanceScreen>
                     padding: const EdgeInsets.all(24.0),
                     child: Column(
                       children: [
-                        // Equation 1
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            _buildExpressionList(_eq1StarCoeff, _eq1HeartCoeff, 0),
+                            _buildExpression(_eq1StarCoeff, _eq1HeartCoeff, 0),
                             Text(' = $_eq1Value', style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                           ],
                         ),
-                        const SizedBox(height: 20),
-                        // Equation 2
+                        const SizedBox(height: 16),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            _buildExpressionList(_eq2StarCoeff, 0, _eq2SunCoeff),
+                            _buildExpression(_eq2StarCoeff, 0, _eq2SunCoeff),
                             Text(' = $_eq2Value', style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+                          ],
+                        ),
+                        const SizedBox(height: 16),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            _buildExpression(0, _eq3HeartCoeff, _eq3SunCoeff),
+                            Text(' = $_eq3Value', style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
                           ],
                         ),
                       ],
                     ),
                   ),
                 ),
-                const SizedBox(height: 40),
-                // Target Equation Question
+                const SizedBox(height: 30),
                 Text(
-                  'FIND THE VALUE OF:',
+                  'WHAT IS THE VALUE OF:',
                   style: Theme.of(context).textTheme.labelMedium?.copyWith(letterSpacing: 1.0),
                 ),
                 const SizedBox(height: 12),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _buildExpressionList(0, _targetHeartCoeff, _targetSunCoeff),
+                    Icon(_getSymbolIcon(_questionSymbol), color: _getSymbolColor(_questionSymbol), size: 40),
                     const Text(' =  ?', style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold)),
                   ],
                 ),
-                const SizedBox(height: 40),
-                // Options Grid
+                const SizedBox(height: 30),
                 Wrap(
                   spacing: 16,
                   runSpacing: 16,
