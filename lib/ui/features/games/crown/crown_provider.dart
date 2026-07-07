@@ -57,15 +57,15 @@ class CrownNotifier extends _$CrownNotifier {
     bool isMarked = newMarked.contains(p);
 
     if (!hasCrown && !isMarked) {
-      // Empty -> Crown
-      newCrowns.add(p);
-    } else if (hasCrown) {
-      // Crown -> Cross
-      newCrowns.remove(p);
+      // Empty -> Cross
       newMarked.add(p);
-    } else {
-      // Cross -> Empty
+    } else if (isMarked) {
+      // Cross -> Crown
       newMarked.remove(p);
+      newCrowns.add(p);
+    } else {
+      // Crown -> Empty
+      newCrowns.remove(p);
     }
 
     bool solved = _engine.isWin(state.board!.size, state.board!.regions, newCrowns);

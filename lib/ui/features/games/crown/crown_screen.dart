@@ -143,9 +143,20 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
                             padding: const EdgeInsets.all(4.0),
                             child: FittedBox(
                               child: hasCrown
-                                  ? Icon(Icons.workspace_premium_rounded, color: DesignSystem.accentAmber, size: 28)
+                                  ? const CrownIcon(size: 32)
                                   : isMarked
-                                      ? Icon(Icons.close_rounded, color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.2), size: 24)
+                                      ? Icon(
+                                          Icons.close_rounded,
+                                          color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.85),
+                                          size: 26,
+                                          shadows: [
+                                            Shadow(
+                                              color: Colors.black.withValues(alpha: 0.25),
+                                              offset: const Offset(0, 0.5),
+                                              blurRadius: 2,
+                                            ),
+                                          ],
+                                        )
                                       : null,
                             ),
                           ),
@@ -182,4 +193,101 @@ class _CrownScreenState extends ConsumerState<CrownScreen> {
       ),
     );
   }
+}
+
+class CrownIcon extends StatelessWidget {
+  final double size;
+  const CrownIcon({super.key, this.size = 28});
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      width: size,
+      height: size,
+      child: CustomPaint(
+        painter: CrownPainter(
+          color: const Color(0xFFFBBF24), // Vibrant gold/amber
+          outlineColor: const Color(0xFF78350F), // Dark amber border for clarity
+        ),
+      ),
+    );
+  }
+}
+
+class CrownPainter extends CustomPainter {
+  final Color color;
+  final Color outlineColor;
+
+  CrownPainter({required this.color, required this.outlineColor});
+
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = color
+      ..style = PaintingStyle.fill;
+
+    // Add shadow
+    final shadowPaint = Paint()
+      ..color = Colors.black.withValues(alpha: 0.35)
+      ..maskFilter = const MaskFilter.blur(BlurStyle.normal, 2.0);
+
+    final path = Path();
+    double w = size.width;
+    double h = size.height;
+
+    // Shift down slightly for peaks space
+    double topOffset = h * 0.1;
+
+    // Draw crown path
+    path.moveTo(w * 0.15, h * 0.8 - topOffset);
+    path.lineTo(w * 0.85, h * 0.8 - topOffset); // base line
+    path.lineTo(w * 0.92, h * 0.35 - topOffset); // right side up
+    path.lineTo(w * 0.7, h * 0.58 - topOffset); // right valley
+    path.lineTo(w * 0.5, h * 0.22 - topOffset); // middle peak
+    path.lineTo(w * 0.3, h * 0.58 - topOffset); // left valley
+    path.lineTo(w * 0.08, h * 0.35 - topOffset); // left peak
+    path.close();
+
+    // Draw shadow first
+    canvas.save();
+    canvas.translate(0, 1.5);
+    canvas.drawPath(path, shadowPaint);
+    // Shadow for peaks
+    canvas.drawCircle(Offset(w * 0.08, h * 0.35 - topOffset), w * 0.06, shadowPaint);
+    canvas.drawCircle(Offset(w * 0.5, h * 0.22 - topOffset), w * 0.06, shadowPaint);
+    canvas.drawCircle(Offset(w * 0.92, h * 0.35 - topOffset), w * 0.06, shadowPaint);
+    canvas.restore();
+
+    // Draw main fill
+    canvas.drawPath(path, paint);
+
+    // Draw borders/outlines
+    final strokePaint = Paint()
+      ..color = outlineColor
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 2.0
+      ..strokeCap = StrokeCap.round
+      ..strokeJoin = StrokeJoin.round;
+
+    canvas.drawPath(path, strokePaint);
+
+    // Draw little circles on the 3 peaks
+    canvas.drawCircle(Offset(w * 0.08, h * 0.35 - topOffset), w * 0.06, paint);
+    canvas.drawCircle(Offset(w * 0.08, h * 0.35 - topOffset), w * 0.06, strokePaint);
+
+    canvas.drawCircle(Offset(w * 0.5, h * 0.22 - topOffset), w * 0.06, paint);
+    canvas.drawCircle(Offset(w * 0.5, h * 0.22 - topOffset), w * 0.06, strokePaint);
+
+    canvas.drawCircle(Offset(w * 0.92, h * 0.35 - topOffset), w * 0.06, paint);
+    canvas.drawCircle(Offset(w * 0.92, h * 0.35 - topOffset), w * 0.06, strokePaint);
+
+    // Draw jewel line at the bottom
+    final bandPath = Path();
+    bandPath.moveTo(w * 0.15, h * 0.7 - topOffset);
+    bandPath.lineTo(w * 0.85, h * 0.7 - topOffset);
+    canvas.drawPath(bandPath, strokePaint);
+  }
+
+  @override
+  bool shouldRepaint(covariant CustomPainter oldDelegate) => false;
 }
