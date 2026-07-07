@@ -15,6 +15,7 @@ class ClassicMazeState {
   final int moves;
   final bool isVictory;
   final bool isLoading;
+  final bool autoMoveEnabled;
 
   ClassicMazeState({
     required this.grid,
@@ -27,6 +28,7 @@ class ClassicMazeState {
     this.moves = 0,
     this.isVictory = false,
     this.isLoading = true,
+    this.autoMoveEnabled = false,
   });
 
   ClassicMazeState copyWith({
@@ -40,6 +42,7 @@ class ClassicMazeState {
     int? moves,
     bool? isVictory,
     bool? isLoading,
+    bool? autoMoveEnabled,
   }) {
     return ClassicMazeState(
       grid: grid ?? this.grid,
@@ -52,6 +55,7 @@ class ClassicMazeState {
       moves: moves ?? this.moves,
       isVictory: isVictory ?? this.isVictory,
       isLoading: isLoading ?? this.isLoading,
+      autoMoveEnabled: autoMoveEnabled ?? this.autoMoveEnabled,
     );
   }
 }
@@ -88,14 +92,19 @@ class ClassicMazeNotifier extends _$ClassicMazeNotifier {
       moves: 0,
       isVictory: false,
       isLoading: false,
+      autoMoveEnabled: state.autoMoveEnabled,
     );
+  }
+
+  void toggleAutoMove() {
+    state = state.copyWith(autoMoveEnabled: !state.autoMoveEnabled);
   }
 
   bool movePlayer(int dr, int dc) {
     if (state.isVictory || state.isLoading) return false;
 
-    final nr = state.playerRow + dr;
-    final nc = state.playerCol + dc;
+    int nr = state.playerRow + dr;
+    int nc = state.playerCol + dc;
 
     // Check boundaries
     if (nr < 0 || nr >= state.size || nc < 0 || nc >= state.size) return false;
@@ -103,23 +112,65 @@ class ClassicMazeNotifier extends _$ClassicMazeNotifier {
     // Check wall
     if (state.grid[nr][nc] == 1) return false;
 
-    // Handle breadcrumbs and backtracking
+    int prevR = state.playerRow;
+    int prevC = state.playerCol;
     final newPath = List<List<int>>.from(state.visitedPath);
-    if (newPath.length > 1 &&
-        newPath[newPath.length - 2][0] == nr &&
-        newPath[newPath.length - 2][1] == nc) {
-      // Player is backtracking, remove the last cell from the trail
-      newPath.removeLast();
-    } else {
-      // Add new position to trail
-      newPath.add([nr, nc]);
+
+    void step(int r, int c) {
+      if (newPath.length > 1 &&
+          newPath[newPath.length - 2][0] == r &&
+          newPath[newPath.length - 2][1] == c) {
+        // Player is backtracking, remove the last cell from the trail
+        newPath.removeLast();
+      } else {
+        // Add new position to trail
+        newPath.add([r, c]);
+      }
+    }
+
+    step(nr, nc);
+    int movesAdded = 1;
+
+    if (state.autoMoveEnabled) {
+      while (nr != state.exitRow || nc != state.exitCol) {
+        // Find path neighbors of (nr, nc) other than (prevR, prevC)
+        final neighbors = <List<int>>[];
+        final dirs = [
+          [-1, 0],
+          [1, 0],
+          [0, -1],
+          [0, 1],
+        ];
+        for (final d in dirs) {
+          final tr = nr + d[0];
+          final tc = nc + d[1];
+          if (tr >= 0 && tr < state.size && tc >= 0 && tc < state.size) {
+            if (state.grid[tr][tc] == 0 && (tr != prevR || tc != prevC)) {
+              neighbors.add([tr, tc]);
+            }
+          }
+        }
+        if (neighbors.length == 1) {
+          // Exactly one way to go, continue sliding!
+          final next = neighbors.first;
+          prevR = nr;
+          prevC = nc;
+          nr = next[0];
+          nc = next[1];
+          step(nr, nc);
+          movesAdded++;
+        } else {
+          // Intersection or dead-end, stop sliding
+          break;
+        }
+      }
     }
 
     state = state.copyWith(
       playerRow: nr,
       playerCol: nc,
       visitedPath: newPath,
-      moves: state.moves + 1,
+      moves: state.moves + movesAdded,
     );
 
     // Check victory

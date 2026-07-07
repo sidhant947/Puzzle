@@ -44,7 +44,7 @@ class _EventTimelineMemoryScreenState extends ConsumerState<EventTimelineMemoryS
     // History & Culture
     HistoricalEvent(title: 'Sinking of the Titanic', year: 1912, description: 'The passenger liner sinks on its maiden voyage.'),
     HistoricalEvent(title: 'First Modern Olympic Games', year: 1896, description: 'The international sporting event is revived in Athens, Greece.'),
-    HistoricalEvent(title: 'Fall of the Berlin Wall', year: 1889, description: 'The barrier dividing East and West Berlin is opened.'), // Wait, Berlin wall fell in 1989. Let's correct it.
+    HistoricalEvent(title: 'Fall of the Berlin Wall', year: 1989, description: 'The barrier dividing East and West Berlin is opened.'), // Wait, Berlin wall fell in 1989. Let's correct it.
     HistoricalEvent(title: 'World Wide Web Invented', year: 1989, description: 'Tim Berners-Lee invents the World Wide Web.'),
     HistoricalEvent(title: 'First Movie Screening', year: 1895, description: 'The Lumière brothers present the first public projected movie screening.'),
     HistoricalEvent(title: 'Invention of the Printing Press', year: 1440, description: 'Johannes Gutenberg invents the movable type printing press.'),

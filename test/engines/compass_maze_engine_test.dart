@@ -74,9 +74,9 @@ void main() {
         expect(move, [0, -1]);
       });
 
-      test('north with 90 rotation shifts direction', () {
+      test('north with 90 rotation goes up', () {
         final move = engine.getMove(CompassDirection.north, 90);
-        expect(move, isNot(equals([-1, 0])));
+        expect(move, equals([-1, 0]));
       });
 
       test('north with 360 rotation same as 0', () {

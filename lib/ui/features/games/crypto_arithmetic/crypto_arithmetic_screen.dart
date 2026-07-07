@@ -108,10 +108,55 @@ class _CryptoArithmeticScreenState extends ConsumerState<CryptoArithmeticScreen>
     _options = set.toList()..shuffle(_random);
   }
 
+  bool _isCorrectAnswer(int ans) {
+    final parts = _equationStr.split('=');
+    if (parts.length != 2) return false;
+    final leftParts = parts[0].split('+');
+    if (leftParts.length != 2) return false;
+
+    final w1 = leftParts[0].trim();
+    final w2 = leftParts[1].trim();
+    final wSum = parts[1].trim();
+
+    if (ans == 0) {
+      if ((w1.length > 1 && w1.startsWith(_targetLetter)) ||
+          (w2.length > 1 && w2.startsWith(_targetLetter)) ||
+          (wSum.length > 1 && wSum.startsWith(_targetLetter))) {
+        return false;
+      }
+    }
+
+    int getNumber(String word, Map<String, int> tempLegend) {
+      final buffer = StringBuffer();
+      for (int i = 0; i < word.length; i++) {
+        final char = word[i];
+        if (char == _targetLetter) {
+          buffer.write(ans);
+        } else if (tempLegend.containsKey(char)) {
+          buffer.write(tempLegend[char]);
+        } else {
+          buffer.write(char);
+        }
+      }
+      return int.tryParse(buffer.toString()) ?? 0;
+    }
+
+    final tempLegend = Map<String, int>.from(_legend);
+    if (tempLegend.values.contains(ans)) {
+      return false;
+    }
+
+    final n1 = getNumber(w1, tempLegend);
+    final n2 = getNumber(w2, tempLegend);
+    final nSum = getNumber(wSum, tempLegend);
+
+    return n1 + n2 == nSum;
+  }
+
   void _onAnswer(int ans) {
     if (_isGameOver) return;
 
-    if (ans == _correctDigit) {
+    if (_isCorrectAnswer(ans)) {
       _score++;
       HapticFeedbackUtil.success();
       if (_score >= _targetScore) {

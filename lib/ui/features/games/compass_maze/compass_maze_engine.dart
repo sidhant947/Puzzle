@@ -94,46 +94,11 @@ class CompassMazeEngine {
 
   // Translates a compass direction to a grid move based on current rotation
   List<int> getMove(CompassDirection direction, int rotation) {
-    // Basic moves (0 rotation)
-    // North: [-1, 0]
-    // East: [0, 1]
-    // South: [1, 0]
-    // West: [0, -1]
-    
-    int index = 0;
     switch (direction) {
-      case CompassDirection.north: index = 0; break;
-      case CompassDirection.east: index = 1; break;
-      case CompassDirection.south: index = 2; break;
-      case CompassDirection.west: index = 3; break;
+      case CompassDirection.north: return [-1, 0];
+      case CompassDirection.east: return [0, 1];
+      case CompassDirection.south: return [1, 0];
+      case CompassDirection.west: return [0, -1];
     }
-    
-    // Add rotation
-    // 90 deg clockwise: N->E, E->S, S->W, W->N
-    // We want the INVERSE: If screen says "North" and it's rotated 90, 
-    // it actually means move in the direction that was North before rotation?
-    // User sees North button. If rotation is 90 deg clockwise, North is now East.
-    // So North button should move the player North in the VISUAL representation.
-    // But the grid is fixed. If the VIEW is rotated 90 deg clockwise, 
-    // North button (UP) should move player in the direction that is currently "UP".
-    
-    // Let's keep it simple: The BUTTONS North/South/East/West are relative to the WORLD.
-    // But the COMPASS/MAZE might be rotated.
-    // If the Maze is rotated 90 deg clockwise, "North" on the grid is now "East" visually.
-    
-    // Actually, the prompt says "A simple maze where you move using North, South, East, West buttons."
-    // "Challenge: The maze rotates or the player's orientation changes."
-    
-    // Let's say: 
-    // 0 rotation: North = [-1, 0], East = [0, 1], South = [1, 0], West = [0, -1]
-    // 90 clockwise: North = [0, -1], East = [-1, 0], South = [0, 1], West = [1, 0]
-    // (Essentially rotating the vector counter-clockwise?)
-    
-    final baseMoves = [[-1, 0], [0, 1], [1, 0], [0, -1]];
-    int rotationOffset = (rotation ~/ 90);
-    int moveIndex = (index - rotationOffset) % 4;
-    if (moveIndex < 0) moveIndex += 4;
-    
-    return baseMoves[moveIndex];
   }
 }

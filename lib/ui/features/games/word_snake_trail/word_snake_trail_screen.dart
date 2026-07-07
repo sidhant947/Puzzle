@@ -81,14 +81,28 @@ class _WordSnakeTrailScreenState extends ConsumerState<WordSnakeTrailScreen> {
     final cellPoint = Point(c, r);
     final expectedIndex = _userTrail.length;
 
-    // Check if cell corresponds to the next letter in the secret trail
-    if (expectedIndex < _secretTrail.length && _secretTrail[expectedIndex] == cellPoint) {
+    // Check if the tapped cell is a valid next step in a word snake path spelling _secretWord
+    bool isValid = false;
+    if (expectedIndex < _secretWord.length && _grid[r][c] == _secretWord[expectedIndex]) {
+      if (expectedIndex == 0) {
+        isValid = true;
+      } else {
+        final last = _userTrail.last;
+        final isAdjacent = (cellPoint.x - last.x).abs() + (cellPoint.y - last.y).abs() == 1;
+        final isNotVisited = !_userTrail.contains(cellPoint);
+        if (isAdjacent && isNotVisited) {
+          isValid = true;
+        }
+      }
+    }
+
+    if (isValid) {
       HapticFeedbackUtil.lightImpact();
       setState(() {
         _userTrail.add(cellPoint);
 
         // Check if full word trail successfully traced
-        if (_userTrail.length == _secretTrail.length) {
+        if (_userTrail.length == _secretWord.length) {
           _score++;
           HapticFeedbackUtil.success();
           if (_score >= _targetScore) {
