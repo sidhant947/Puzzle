@@ -2599,6 +2599,22 @@
       }
     }
   },
+  "hideGame": "Hide",
+  "unhideGame": "Unhide",
+  "favoriteGame": "Favorite",
+  "unfavoriteGame": "Unfavorite",
+  "hiddenGames": "HIDDEN GAMES",
+  "showHiddenGames": "Show Hidden Games ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "noHiddenGames": "No hidden games",
+  "gameHidden": "Game hidden",
+  "undo": "Undo",
   "snackbarCorrect": "Correct!",
   "snackbarIncorrectTryNew": "Incorrect recall! Try a new grid.",
   "snackbarAllCorrect": "All associations correct!",

@@ -6,7 +6,7 @@ part of 'n_back_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$nBackNotifierHash() => r'06ba3197c072a6861b26d49965d127793e1e6ed7';
+String _$nBackNotifierHash() => r'6f4e4cfa9546830482cf893781387a3b1ca40a97';
 
 /// See also [NBackNotifier].
 @ProviderFor(NBackNotifier)

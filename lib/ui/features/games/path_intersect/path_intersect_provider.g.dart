@@ -7,7 +7,7 @@ part of 'path_intersect_provider.dart';
 // **************************************************************************
 
 String _$pathIntersectNotifierHash() =>
-    r'854cd9ee802603971a6201986ac488dca6f1c924';
+    r'b94d363bd441b9ab0f60a7a82c219a1dafd35756';
 
 /// See also [PathIntersectNotifier].
 @ProviderFor(PathIntersectNotifier)

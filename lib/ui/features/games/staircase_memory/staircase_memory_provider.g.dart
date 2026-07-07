@@ -7,7 +7,7 @@ part of 'staircase_memory_provider.dart';
 // **************************************************************************
 
 String _$staircaseMemoryNotifierHash() =>
-    r'1f4024a0db510daaeb1743a9039792e302b9a901';
+    r'5469ea4ab4ac24a0aa4d18e9bec1673186da032c';
 
 /// See also [StaircaseMemoryNotifier].
 @ProviderFor(StaircaseMemoryNotifier)

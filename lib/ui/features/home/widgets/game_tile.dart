@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/data/game_metadata.dart';
@@ -277,12 +278,59 @@ class GameTileWrapper extends ConsumerWidget {
         userDataNotifierProvider.select(
             (d) => (d.favoriteGameIds ?? []).contains(game.id)));
 
-    return GameTile(
-      game: game,
-      streak: streak,
-      isFavorite: isFavorite,
-      selectedCategory: selectedCategory,
-      searchQuery: searchQuery,
+    final l10n = AppLocalizations.of(context)!;
+
+    return Slidable(
+      key: ValueKey(game.id),
+      startActionPane: ActionPane(
+        motion: const BehindMotion(),
+        extentRatio: 0.15,
+        children: [
+          SlidableAction(
+            onPressed: (_) {
+              HapticFeedbackUtil.mediumImpact();
+              ref.read(userDataNotifierProvider.notifier).toggleHideGame(game.id);
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text(l10n.gameHidden),
+                  action: SnackBarAction(
+                    label: l10n.undo,
+                    onPressed: () {
+                      ref.read(userDataNotifierProvider.notifier).toggleHideGame(game.id);
+                    },
+                  ),
+                  duration: const Duration(seconds: 3),
+                ),
+              );
+            },
+            backgroundColor: Colors.transparent,
+            foregroundColor: DesignSystem.error,
+            icon: Icons.visibility_off_rounded,
+          ),
+        ],
+      ),
+      endActionPane: ActionPane(
+        motion: const BehindMotion(),
+        extentRatio: 0.15,
+        children: [
+          SlidableAction(
+            onPressed: (_) {
+              HapticFeedbackUtil.mediumImpact();
+              ref.read(userDataNotifierProvider.notifier).toggleFavorite(game.id);
+            },
+            backgroundColor: Colors.transparent,
+            foregroundColor: DesignSystem.gameRose,
+            icon: isFavorite ? Icons.heart_broken_rounded : Icons.favorite_rounded,
+          ),
+        ],
+      ),
+      child: GameTile(
+        game: game,
+        streak: streak,
+        isFavorite: isFavorite,
+        selectedCategory: selectedCategory,
+        searchQuery: searchQuery,
+      ),
     );
   }
 }

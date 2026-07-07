@@ -6,7 +6,7 @@ part of 'reflex_tap_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$reflexTapNotifierHash() => r'e132c40f379d51d043b882c8747cff156754c7ce';
+String _$reflexTapNotifierHash() => r'69be91a091f7372358ec598e13ebdac769cf363f';
 
 /// See also [ReflexTapNotifier].
 @ProviderFor(ReflexTapNotifier)

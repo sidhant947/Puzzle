@@ -16,6 +16,7 @@ class UserData with _$UserData {
     @HiveField(4) int? totalSolved,
     @HiveField(5) List<String>? favoriteGameIds,
     @HiveField(6) bool? isTrialModeEnabled,
+    @HiveField(7) List<String>? hiddenGameIds,
   }) = _UserData;
 
   factory UserData.initial() => const UserData(
@@ -26,6 +27,7 @@ class UserData with _$UserData {
         totalSolved: 0,
         favoriteGameIds: [],
         isTrialModeEnabled: false,
+        hiddenGameIds: [],
       );
 
   factory UserData.fromJson(Map<String, dynamic> json) =>
@@ -48,6 +50,7 @@ extension UserDataValidation on UserData {
       superStreak: (superStreak ?? 0) < 0 ? 0 : superStreak,
       totalSolved: (totalSolved ?? 0) < 0 ? 0 : totalSolved,
       favoriteGameIds: favoriteGameIds ?? [],
+      hiddenGameIds: hiddenGameIds ?? [],
     );
   }
 }

@@ -7,7 +7,7 @@ part of 'grocery_list_provider.dart';
 // **************************************************************************
 
 String _$groceryListNotifierHash() =>
-    r'c797819e507a4b6962dbd5eb9cc32800d6fdefb6';
+    r'c0c2c1a0602791dc83f0693a8f9c21875c4d227c';
 
 /// See also [GroceryListNotifier].
 @ProviderFor(GroceryListNotifier)

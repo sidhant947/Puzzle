@@ -7,7 +7,7 @@ part of 'calculation_sprint_provider.dart';
 // **************************************************************************
 
 String _$calculationSprintNotifierHash() =>
-    r'afa42732958fa11cb9d51af97a1e9f5f6b959ea5';
+    r'b3d1464eb525ec65c4dc0beb41048224907f0d63';
 
 /// See also [CalculationSprintNotifier].
 @ProviderFor(CalculationSprintNotifier)

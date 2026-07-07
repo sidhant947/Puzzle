@@ -7,7 +7,7 @@ part of 'counting_sheep_provider.dart';
 // **************************************************************************
 
 String _$countingSheepNotifierHash() =>
-    r'a594efd9d2063085278208e62c8d5b285e3bec17';
+    r'55b8115c3f43e50354c8b43a12aac87106118572';
 
 /// See also [CountingSheepNotifier].
 @ProviderFor(CountingSheepNotifier)

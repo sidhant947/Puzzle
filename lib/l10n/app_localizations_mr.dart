@@ -4919,6 +4919,35 @@ class AppLocalizationsMr extends AppLocalizations {
   }
 
   @override
+  String get hideGame => 'Hide';
+
+  @override
+  String get unhideGame => 'Unhide';
+
+  @override
+  String get favoriteGame => 'Favorite';
+
+  @override
+  String get unfavoriteGame => 'Unfavorite';
+
+  @override
+  String get hiddenGames => 'HIDDEN GAMES';
+
+  @override
+  String showHiddenGames(int count) {
+    return 'Show Hidden Games ($count)';
+  }
+
+  @override
+  String get noHiddenGames => 'No hidden games';
+
+  @override
+  String get gameHidden => 'Game hidden';
+
+  @override
+  String get undo => 'Undo';
+
+  @override
   String get snackbarCorrect => 'Correct!';
 
   @override

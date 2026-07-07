@@ -8678,6 +8678,60 @@ abstract class AppLocalizations {
   /// **'Incorrect! The correct answer was {answer}'**
   String snackbarIncorrectCorrectAnswer(String answer);
 
+  /// No description provided for @hideGame.
+  ///
+  /// In en, this message translates to:
+  /// **'Hide'**
+  String get hideGame;
+
+  /// No description provided for @unhideGame.
+  ///
+  /// In en, this message translates to:
+  /// **'Unhide'**
+  String get unhideGame;
+
+  /// No description provided for @favoriteGame.
+  ///
+  /// In en, this message translates to:
+  /// **'Favorite'**
+  String get favoriteGame;
+
+  /// No description provided for @unfavoriteGame.
+  ///
+  /// In en, this message translates to:
+  /// **'Unfavorite'**
+  String get unfavoriteGame;
+
+  /// No description provided for @hiddenGames.
+  ///
+  /// In en, this message translates to:
+  /// **'HIDDEN GAMES'**
+  String get hiddenGames;
+
+  /// No description provided for @showHiddenGames.
+  ///
+  /// In en, this message translates to:
+  /// **'Show Hidden Games ({count})'**
+  String showHiddenGames(int count);
+
+  /// No description provided for @noHiddenGames.
+  ///
+  /// In en, this message translates to:
+  /// **'No hidden games'**
+  String get noHiddenGames;
+
+  /// No description provided for @gameHidden.
+  ///
+  /// In en, this message translates to:
+  /// **'Game hidden'**
+  String get gameHidden;
+
+  /// No description provided for @undo.
+  ///
+  /// In en, this message translates to:
+  /// **'Undo'**
+  String get undo;
+
   /// No description provided for @snackbarCorrect.
   ///
   /// In en, this message translates to:

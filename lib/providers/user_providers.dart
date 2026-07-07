@@ -105,6 +105,18 @@ class UserDataNotifier extends _$UserDataNotifier {
     unawaited(ref.read(userRepositoryProvider).saveUserData(newState));
   }
 
+  Future<void> toggleHideGame(String gameId) async {
+    final hidden = List<String>.from(state.hiddenGameIds ?? []);
+    if (hidden.contains(gameId)) {
+      hidden.remove(gameId);
+    } else {
+      hidden.add(gameId);
+    }
+    final newState = state.copyWith(hiddenGameIds: hidden);
+    state = newState;
+    unawaited(ref.read(userRepositoryProvider).saveUserData(newState));
+  }
+
   Future<void> setTrialMode(bool enabled) async {
     final newState = state.copyWith(isTrialModeEnabled: enabled);
     state = newState;

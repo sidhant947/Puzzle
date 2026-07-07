@@ -6,7 +6,7 @@ part of 'sdmt_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$sdmtNotifierHash() => r'425e4a290cab0cf71810bd7de0176db492e4fdb6';
+String _$sdmtNotifierHash() => r'74a2dc8105075c59d5937be6621e307b2222b029';
 
 /// See also [SdmtNotifier].
 @ProviderFor(SdmtNotifier)

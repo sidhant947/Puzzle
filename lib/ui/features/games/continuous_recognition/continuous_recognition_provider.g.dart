@@ -7,7 +7,7 @@ part of 'continuous_recognition_provider.dart';
 // **************************************************************************
 
 String _$continuousRecognitionNotifierHash() =>
-    r'1ffe2ab5d0ee044c9cf8534e8313f7be98588aa8';
+    r'2fc1da89909e23463e11b9dfb76b93b69ee97c65';
 
 /// See also [ContinuousRecognitionNotifier].
 @ProviderFor(ContinuousRecognitionNotifier)

@@ -7,7 +7,7 @@ part of 'stroop_test_provider.dart';
 // **************************************************************************
 
 String _$stroopTestNotifierHash() =>
-    r'7633a3524b99b8118678aca4326d61ad44e6ba9c';
+    r'849ca3d0a54b4cd674f5657661b2cc470531c6cf';
 
 /// See also [StroopTestNotifier].
 @ProviderFor(StroopTestNotifier)

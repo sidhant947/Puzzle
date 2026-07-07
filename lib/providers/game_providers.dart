@@ -9,9 +9,11 @@ part 'game_providers.g.dart';
 List<GameMetadata> filteredGames(FilteredGamesRef ref, {required String searchQuery, required String selectedCategory, required Map<String, String> localizedTitles}) {
   final allGames = allGamesMetadata;
   final favoriteIds = ref.watch(userDataNotifierProvider.select((d) => d.favoriteGameIds ?? []));
+  final hiddenIds = ref.watch(userDataNotifierProvider.select((d) => d.hiddenGameIds ?? []));
   final query = searchQuery.toLowerCase();
 
   final filtered = allGames.where((game) {
+    if (hiddenIds.contains(game.id)) return false;
     final title = localizedTitles[game.id]?.toLowerCase() ?? '';
     final matchesSearch = game.id.toLowerCase().contains(query) ||
         title.contains(query) ||

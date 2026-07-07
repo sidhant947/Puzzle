@@ -7,7 +7,7 @@ part of 'schulte_table_provider.dart';
 // **************************************************************************
 
 String _$schulteTableNotifierHash() =>
-    r'382f8919e263985d287f4bd2f39730bf0255901d';
+    r'f3013db8d30b7fa11be48e78dadfd9c81f546548';
 
 /// See also [SchulteTableNotifier].
 @ProviderFor(SchulteTableNotifier)

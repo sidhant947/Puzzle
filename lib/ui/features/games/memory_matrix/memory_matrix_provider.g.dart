@@ -7,7 +7,7 @@ part of 'memory_matrix_provider.dart';
 // **************************************************************************
 
 String _$memoryMatrixNotifierHash() =>
-    r'17c098fc3c6b480fbe41ad3547b7b85f48171690';
+    r'01ae525b81741d4b9b1d9d59332fdc0bea5216a7';
 
 /// See also [MemoryMatrixNotifier].
 @ProviderFor(MemoryMatrixNotifier)
