@@ -54,8 +54,7 @@ void main() async {
   final userRepository = UserRepository();
   await userRepository.init();
 
-  // Pre-cache heavy assets (non-blocking)
-  _preCacheAssets();
+
 
   // Log app startup time
   stopwatch.stop();
@@ -128,14 +127,4 @@ class MyApp extends ConsumerWidget {
   }
 }
 
-Future<void> _preCacheAssets() async {
-  try {
-    await Future.wait([
-      rootBundle.loadString('assets/find_word_words.txt'),
-      rootBundle.loadString('assets/chain_words.txt'),
-      rootBundle.loadString('assets/crossword_data.json'),
-    ]);
-  } catch (e) {
-    debugPrint('Error pre-caching assets: $e');
-  }
-}
+

@@ -106,7 +106,7 @@ class SettingsScreen extends ConsumerWidget {
                           case 15: return const SizedBox(height: DesignSystem.spaceMD);
                           case 16: return _buildSettingsItem(context, l10n.starOnGithub, Icons.star_rounded, () => _launchUrl('https://github.com/sidhant947/Puzzle'), iconColor: Colors.amber);
                           case 17: return const SizedBox(height: DesignSystem.spaceSM);
-                          case 18: return _buildSettingsItem(context, l10n.sponsorOnGithub, Icons.favorite_rounded, () => _launchUrl('https://github.com/sponsors/sidhant947'), iconColor: Colors.pink);
+                          case 18: return _buildSettingsItem(context, l10n.supportUs, Icons.favorite_rounded, () => _launchUrl('https://buymeacoffee.com/sidhant947'), iconColor: Colors.pink);
                           case 19: return const SizedBox(height: DesignSystem.spaceSM);
                           case 20: return _buildSettingsItem(context, l10n.leaveReview, Icons.rate_review_rounded, () => _launchUrl('https://play.google.com/store/apps/details?id=com.sidhant.puzzle'), iconColor: Colors.teal);
                           case 21: return const SizedBox(height: DesignSystem.spaceSM);
@@ -402,7 +402,7 @@ class SettingsScreen extends ConsumerWidget {
     final colorScheme = theme.colorScheme;
     return TangibleButton(
       color: colorScheme.secondary,
-      onTap: () => _launchUrl('https://github.com/sponsors/sidhant947'),
+      onTap: () => _launchUrl('https://buymeacoffee.com/sidhant947'),
       child: Row(
         children: [
           const Icon(

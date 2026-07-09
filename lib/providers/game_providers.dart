@@ -10,10 +10,12 @@ List<GameMetadata> filteredGames(FilteredGamesRef ref, {required String searchQu
   final allGames = allGamesMetadata;
   final favoriteIds = ref.watch(userDataNotifierProvider.select((d) => d.favoriteGameIds ?? []));
   final hiddenIds = ref.watch(userDataNotifierProvider.select((d) => d.hiddenGameIds ?? []));
+  final favoriteSet = favoriteIds.toSet();
+  final hiddenSet = hiddenIds.toSet();
   final query = searchQuery.toLowerCase();
 
   final filtered = allGames.where((game) {
-    if (hiddenIds.contains(game.id)) return false;
+    if (hiddenSet.contains(game.id)) return false;
     final title = localizedTitles[game.id]?.toLowerCase() ?? '';
     final matchesSearch = game.id.toLowerCase().contains(query) ||
         title.contains(query) ||
@@ -24,7 +26,7 @@ List<GameMetadata> filteredGames(FilteredGamesRef ref, {required String searchQu
   }).toList();
 
   int getPriority(GameMetadata game) {
-    if (favoriteIds.contains(game.id)) return -1;
+    if (favoriteSet.contains(game.id)) return -1;
     if (game.popularity == Popularity.high) return 0;
     if (game.popularity == Popularity.low) return 2;
     return 1;

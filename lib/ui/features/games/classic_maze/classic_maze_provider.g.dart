@@ -7,7 +7,7 @@ part of 'classic_maze_provider.dart';
 // **************************************************************************
 
 String _$classicMazeNotifierHash() =>
-    r'4116d2cb6e1c01179be83f540347a8cc3a495cc6';
+    r'ca2ea36f98d59813c608cb02d5b5ea706ff7f96a';
 
 /// See also [ClassicMazeNotifier].
 @ProviderFor(ClassicMazeNotifier)

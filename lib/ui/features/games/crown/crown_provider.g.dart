@@ -6,7 +6,7 @@ part of 'crown_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$crownNotifierHash() => r'9178f0ecda6e4d7615bd2ad5a2d5aa1e7251e8d5';
+String _$crownNotifierHash() => r'310e4b58c07950ad94b112a831748d5802a2295d';
 
 /// See also [CrownNotifier].
 @ProviderFor(CrownNotifier)
