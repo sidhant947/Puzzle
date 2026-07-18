@@ -37,31 +37,6 @@ class _MasyuScreenState extends ConsumerState<MasyuScreen> {
   final Random _random = Random();
   final int _size = 4; // 4x4 grid
 
-  final List<MasyuPuzzle> _puzzles = [
-    // Puzzle 1: White at (0,1), Black at (2,2)
-    MasyuPuzzle(clues: [
-      [MasyuClue.none, MasyuClue.white, MasyuClue.none, MasyuClue.none],
-      [MasyuClue.none, MasyuClue.none, MasyuClue.none, MasyuClue.none],
-      [MasyuClue.none, MasyuClue.none, MasyuClue.black, MasyuClue.none],
-      [MasyuClue.none, MasyuClue.none, MasyuClue.none, MasyuClue.none]
-    ]),
-    // Puzzle 2: White at (1,1), Black at (3,0)
-    MasyuPuzzle(clues: [
-      [MasyuClue.none, MasyuClue.none, MasyuClue.none, MasyuClue.none],
-      [MasyuClue.none, MasyuClue.white, MasyuClue.none, MasyuClue.none],
-      [MasyuClue.none, MasyuClue.none, MasyuClue.none, MasyuClue.none],
-      [MasyuClue.black, MasyuClue.none, MasyuClue.none, MasyuClue.none]
-    ]),
-    // Puzzle 3: Black at (2,0), White at (0,3)
-    MasyuPuzzle(clues: [
-      [MasyuClue.none, MasyuClue.none, MasyuClue.none, MasyuClue.white],
-      [MasyuClue.none, MasyuClue.none, MasyuClue.none, MasyuClue.none],
-      [MasyuClue.black, MasyuClue.none, MasyuClue.none, MasyuClue.none],
-      [MasyuClue.none, MasyuClue.none, MasyuClue.none, MasyuClue.none]
-    ]),
-  ];
-
-  late MasyuPuzzle _currentPuzzle;
   late List<List<MasyuCell>> _board;
   bool _isSolved = false;
 
@@ -71,14 +46,163 @@ class _MasyuScreenState extends ConsumerState<MasyuScreen> {
     _generatePuzzle();
   }
 
+  List<Point<int>>? _generateRandomLoop() {
+    final visited = List.generate(_size, (_) => List.filled(_size, false));
+    final path = <Point<int>>[];
+    
+    bool dfs(int r, int c, int startR, int startC) {
+      path.add(Point(r, c));
+      visited[r][c] = true;
+      
+      final dirs = [
+        const Point(0, 1),
+        const Point(0, -1),
+        const Point(1, 0),
+        const Point(-1, 0),
+      ]..shuffle(_random);
+      
+      for (final dir in dirs) {
+        final nr = r + dir.x;
+        final nc = c + dir.y;
+        
+        if (nr == startR && nc == startC && path.length >= 4) {
+          return true;
+        }
+        
+        if (nr >= 0 && nr < _size && nc >= 0 && nc < _size && !visited[nr][nc]) {
+          if (dfs(nr, nc, startR, startC)) return true;
+        }
+      }
+      
+      visited[r][c] = false;
+      path.removeLast();
+      return false;
+    }
+    
+    final startR = _random.nextInt(_size);
+    final startC = _random.nextInt(_size);
+    if (dfs(startR, startC, startR, startC)) {
+      return path;
+    }
+    return null;
+  }
+
   void _generatePuzzle() {
     _isSolved = false;
-    _currentPuzzle = _puzzles[_random.nextInt(_puzzles.length)];
+
+    int attempts = 0;
+    while (attempts < 100) {
+      final loop = _generateRandomLoop();
+      if (loop == null) {
+        attempts++;
+        continue;
+      }
+      
+      final tempBoard = List.generate(_size, (_) => List.generate(_size, (_) => 0));
+      for (int i = 0; i < loop.length; i++) {
+        final curr = loop[i];
+        final prev = loop[(i - 1 + loop.length) % loop.length];
+        final next = loop[(i + 1) % loop.length];
+        
+        String getDir(Point<int> from, Point<int> to) {
+          if (to.x == from.x && to.y == from.y + 1) return 'right';
+          if (to.x == from.x && to.y == from.y - 1) return 'left';
+          if (to.x == from.x + 1 && to.y == from.y) return 'bottom';
+          return 'top';
+        }
+        
+        final d1 = getDir(curr, prev);
+        final d2 = getDir(curr, next);
+        final dirs = {d1, d2};
+        
+        int trackType = 0;
+        if (dirs.contains('left') && dirs.contains('right')) {
+          trackType = 1;
+        } else if (dirs.contains('top') && dirs.contains('bottom')) {
+          trackType = 2;
+        } else if (dirs.contains('bottom') && dirs.contains('right')) {
+          trackType = 3;
+        } else if (dirs.contains('left') && dirs.contains('bottom')) {
+          trackType = 4;
+        } else if (dirs.contains('top') && dirs.contains('right')) {
+          trackType = 5;
+        } else if (dirs.contains('left') && dirs.contains('top')) {
+          trackType = 6;
+        }
+        
+        tempBoard[curr.x][curr.y] = trackType;
+      }
+      
+      final whiteCandidates = <Point<int>>[];
+      final blackCandidates = <Point<int>>[];
+      
+      for (int i = 0; i < loop.length; i++) {
+        final curr = loop[i];
+        final prev = loop[(i - 1 + loop.length) % loop.length];
+        final next = loop[(i + 1) % loop.length];
+        
+        final t = tempBoard[curr.x][curr.y];
+        final tPrev = tempBoard[prev.x][prev.y];
+        final tNext = tempBoard[next.x][next.y];
+        
+        if (t == 1 || t == 2) {
+          if (tPrev >= 3 || tNext >= 3) {
+            whiteCandidates.add(curr);
+          }
+        } else if (t >= 3) {
+          if ((tPrev == 1 || tPrev == 2) && (tNext == 1 || tNext == 2)) {
+            blackCandidates.add(curr);
+          }
+        }
+      }
+      
+      if (whiteCandidates.isNotEmpty || blackCandidates.isNotEmpty) {
+        final clues = List.generate(_size, (_) => List.generate(_size, (_) => MasyuClue.none));
+        int whiteCount = 0;
+        if (whiteCandidates.isNotEmpty) {
+          whiteCandidates.shuffle(_random);
+          final toPlace = _random.nextInt(min(whiteCandidates.length, 2)) + 1;
+          for (int i = 0; i < toPlace; i++) {
+            clues[whiteCandidates[i].x][whiteCandidates[i].y] = MasyuClue.white;
+            whiteCount++;
+          }
+        }
+        
+        int blackCount = 0;
+        if (blackCandidates.isNotEmpty) {
+          blackCandidates.shuffle(_random);
+          final toPlace = _random.nextInt(min(blackCandidates.length, 2)) + 1;
+          for (int i = 0; i < toPlace; i++) {
+            clues[blackCandidates[i].x][blackCandidates[i].y] = MasyuClue.black;
+            blackCount++;
+          }
+        }
+        
+        if (whiteCount + blackCount >= 2) {
+          _board = List.generate(
+            _size,
+            (r) => List.generate(
+              _size,
+              (c) => MasyuCell(trackType: 0, clue: clues[r][c]),
+            ),
+          );
+          return;
+        }
+      }
+      attempts++;
+    }
+    
+    // Fallback basic puzzle if procedural generation fails
     _board = List.generate(
       _size,
       (r) => List.generate(
         _size,
-        (c) => MasyuCell(trackType: 0, clue: _currentPuzzle.clues[r][c]),
+        (c) => MasyuCell(
+          trackType: 0,
+          clue: (r == 0 && c == 1)
+              ? MasyuClue.white
+              : ((r == 2 && c == 2) ? MasyuClue.black : MasyuClue.none),
+        ),
       ),
     );
   }
@@ -267,13 +391,21 @@ class _MasyuScreenState extends ConsumerState<MasyuScreen> {
       case 2: // V
         return VerticalDivider(color: trackColor, width: 5, thickness: 5);
       case 3: // TL ┌
-        return CustomPaint(painter: _CornerPainter(isTop: true, isLeft: true, color: trackColor));
+        return SizedBox.expand(
+          child: CustomPaint(painter: _CornerPainter(isTop: true, isLeft: true, color: trackColor)),
+        );
       case 4: // TR ┐
-        return CustomPaint(painter: _CornerPainter(isTop: true, isLeft: false, color: trackColor));
+        return SizedBox.expand(
+          child: CustomPaint(painter: _CornerPainter(isTop: true, isLeft: false, color: trackColor)),
+        );
       case 5: // BL └
-        return CustomPaint(painter: _CornerPainter(isTop: false, isLeft: true, color: trackColor));
+        return SizedBox.expand(
+          child: CustomPaint(painter: _CornerPainter(isTop: false, isLeft: true, color: trackColor)),
+        );
       case 6: // BR ┘
-        return CustomPaint(painter: _CornerPainter(isTop: false, isLeft: false, color: trackColor));
+        return SizedBox.expand(
+          child: CustomPaint(painter: _CornerPainter(isTop: false, isLeft: false, color: trackColor)),
+        );
       default:
         return const SizedBox();
     }
