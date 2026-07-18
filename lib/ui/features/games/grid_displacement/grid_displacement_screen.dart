@@ -23,9 +23,10 @@ class _GridDisplacementScreenState extends ConsumerState<GridDisplacementScreen>
   final int _targetScore = 5;
   bool _isGameOver = false;
 
-  // Phases: 'study' -> 'recall'
+  // Phases: 'study' -> 'blank' -> 'recall'
   String _phase = 'study';
   int _countdown = 5;
+  final int _blankDuration = 2; // seconds the grid stays hidden
   Timer? _countdownTimer;
 
   // Icons pool
@@ -96,8 +97,21 @@ class _GridDisplacementScreenState extends ConsumerState<GridDisplacementScreen>
         if (_countdown > 1) {
           _countdown--;
         } else {
-          _phase = 'recall';
+          // Transition to blank phase — hide the grid to force memory recall
+          _phase = 'blank';
+          _countdown = _blankDuration;
           _countdownTimer?.cancel();
+          _countdownTimer = Timer.periodic(const Duration(seconds: 1), (t) {
+            if (!mounted) return;
+            setState(() {
+              if (_countdown > 1) {
+                _countdown--;
+              } else {
+                _phase = 'recall';
+                t.cancel();
+              }
+            });
+          });
         }
       });
     });
@@ -190,7 +204,9 @@ class _GridDisplacementScreenState extends ConsumerState<GridDisplacementScreen>
       title: L10nGameHelpers.getGameTitle(context, 'grid_displacement'),
       subtitle: _phase == 'study'
           ? AppLocalizations.of(context)!.phaseMemorizePlacements
-          : L10nGameHelpers.getGameSubtitle(context, 'grid_displacement'),
+          : (_phase == 'blank'
+              ? '...'
+              : L10nGameHelpers.getGameSubtitle(context, 'grid_displacement')),
       actions: [
         IconButton(
           icon: const Icon(Icons.refresh_rounded),
@@ -235,68 +251,91 @@ class _GridDisplacementScreenState extends ConsumerState<GridDisplacementScreen>
                       borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
                     ),
                     child: Text(
-                      _phase == 'study' ? 'Study: $_countdown s' : 'Recall Phase',
+                      _phase == 'study'
+                          ? 'Study: $_countdown s'
+                          : (_phase == 'blank'
+                              ? 'Memorize! $_countdown s'
+                              : 'Recall Phase'),
                       style: const TextStyle(fontWeight: FontWeight.bold),
                     ),
                   ),
                 ],
               ),
-              const SizedBox(height: 40),
-              // Grid Room
-              AspectRatio(
-                aspectRatio: 1.0,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: isDark ? DesignSystem.darkSurface : DesignSystem.surface,
-                    borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
-                    border: Border.all(
-                      color: isDark ? DesignSystem.darkOutline : DesignSystem.outline,
-                      width: 2,
-                    ),
-                  ),
-                  padding: const EdgeInsets.all(16),
-                  child: GridView.builder(
-                    physics: const NeverScrollableScrollPhysics(),
-                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 3,
-                      mainAxisSpacing: 16,
-                      crossAxisSpacing: 16,
-                    ),
-                    itemCount: 9,
-                    itemBuilder: (context, index) {
-                      final item = _phase == 'study' ? _originalGrid[index] : _scrambledGrid[index];
-                      final isSelected = _selectedIndices.contains(index);
-
-                      return GestureDetector(
-                        onTap: () => _onCellTapped(index),
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: isSelected
-                                ? DesignSystem.primary.withValues(alpha: 0.2)
-                                : (isDark ? Colors.grey[900] : Colors.grey[100]),
-                            borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
-                            border: Border.all(
-                              color: isSelected
-                                  ? DesignSystem.primary
-                                  : (isDark ? DesignSystem.darkOutline : DesignSystem.outline),
-                              width: isSelected ? 2.5 : 1.5,
-                            ),
-                          ),
-                          alignment: Alignment.center,
-                          child: Icon(
-                            item,
-                            size: 40,
-                            color: isSelected
-                                ? DesignSystem.primary
-                                : (isDark ? Colors.white70 : Colors.black87),
+              const SizedBox(height: 24),
+              // Grid Room — Expanded prevents overflow, ConstrainedBox caps size
+              Expanded(
+                child: Center(
+                  child: ConstrainedBox(
+                    constraints: const BoxConstraints(maxWidth: 400, maxHeight: 400),
+                    child: AspectRatio(
+                      aspectRatio: 1.0,
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: isDark ? DesignSystem.darkSurface : DesignSystem.surface,
+                          borderRadius: BorderRadius.circular(DesignSystem.radiusLG),
+                          border: Border.all(
+                            color: isDark ? DesignSystem.darkOutline : DesignSystem.outline,
+                            width: 2,
                           ),
                         ),
-                      );
-                    },
+                        padding: const EdgeInsets.all(16),
+                        child: GridView.builder(
+                          physics: const NeverScrollableScrollPhysics(),
+                          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                            crossAxisCount: 3,
+                            mainAxisSpacing: 16,
+                            crossAxisSpacing: 16,
+                          ),
+                          itemCount: 9,
+                          itemBuilder: (context, index) {
+                            final item = _phase == 'study' ? _originalGrid[index] : _scrambledGrid[index];
+                            final isSelected = _selectedIndices.contains(index);
+                            final isBlank = _phase == 'blank';
+
+                            return GestureDetector(
+                              onTap: () => _onCellTapped(index),
+                              child: AnimatedContainer(
+                                duration: const Duration(milliseconds: 300),
+                                decoration: BoxDecoration(
+                                  color: isBlank
+                                      ? (isDark ? Colors.grey[850] : Colors.grey[300])
+                                      : (isSelected
+                                          ? DesignSystem.primary.withValues(alpha: 0.2)
+                                          : (isDark ? Colors.grey[900] : Colors.grey[100])),
+                                  borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
+                                  border: Border.all(
+                                    color: isBlank
+                                        ? (isDark ? Colors.grey[700]! : Colors.grey[400]!)
+                                        : (isSelected
+                                            ? DesignSystem.primary
+                                            : (isDark ? DesignSystem.darkOutline : DesignSystem.outline)),
+                                    width: isSelected ? 2.5 : 1.5,
+                                  ),
+                                ),
+                                alignment: Alignment.center,
+                                child: isBlank
+                                    ? Icon(
+                                        Icons.help_outline_rounded,
+                                        size: 32,
+                                        color: isDark ? Colors.grey[600] : Colors.grey[500],
+                                      )
+                                    : Icon(
+                                        item,
+                                        size: 40,
+                                        color: isSelected
+                                            ? DesignSystem.primary
+                                            : (isDark ? Colors.white70 : Colors.black87),
+                                      ),
+                              ),
+                            );
+                          },
+                        ),
+                      ),
+                    ),
                   ),
                 ),
               ),
-              const SizedBox(height: 30),
+              const SizedBox(height: 16),
             ],
           ),
         ),
