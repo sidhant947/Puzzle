@@ -118,45 +118,64 @@ class _DelayedMatchSampleScreenState extends ConsumerState<DelayedMatchSampleScr
   }
 
   void _generateMatchOptions() {
-    // We want 4 options:
-    // Option 1: The correct one (original index, angle, and color)
-    // Option 2: Same shape, different color
-    // Option 3: Same shape, rotated differently (e.g. angle + pi/2)
-    // Option 4: Different shape, same color
+    // We want 4 options with visually unique (shape, color) combinations.
+    // Previously, a rotation-only distractor (same shape, same color, different
+    // angle) could look identical for rotationally symmetric shapes like the
+    // diamond or cross, causing the bug reported in issue #120.
+    //
+    // Now each option differs by shape and/or color, guaranteeing all 4 tiles
+    // look distinct to the player.
     final correctColor = _targetColor;
-    final altColor = [
+
+    final availableColors = [
       Colors.red,
       Colors.blue,
       Colors.green,
       Colors.orange,
       Colors.purple,
-    ].firstWhere((c) => c != correctColor);
+    ];
 
-    final altShapeIdx = (_targetShapeIndex + 1) % _symbolShapes.length;
+    // Pick two distinct alternate colors (both different from correctColor)
+    final altColors = (availableColors.where((c) => c != correctColor).toList()
+      ..shuffle(_random));
+    final altColor1 = altColors[0];
+    final altColor2 = altColors[1];
+
+    // Pick two distinct alternate shape indices (both different from target)
+    final altShapeIndices = List.generate(_symbolShapes.length, (i) => i)
+        .where((i) => i != _targetShapeIndex)
+        .toList()
+      ..shuffle(_random);
+    final altShapeIdx1 = altShapeIndices[0];
+    final altShapeIdx2 = altShapeIndices[1];
 
     _matchOptions = [
+      // Option 1: Correct — target shape + target color
       {
         'shapeIdx': _targetShapeIndex,
         'angle': _targetAngle,
         'color': correctColor,
         'isCorrect': true,
       },
+      // Option 2: Same shape, different color
       {
         'shapeIdx': _targetShapeIndex,
         'angle': _targetAngle,
-        'color': altColor,
+        'color': altColor1,
         'isCorrect': false,
       },
+      // Option 3: Different shape, same color
       {
-        'shapeIdx': _targetShapeIndex,
-        'angle': _targetAngle + pi / 2,
-        'color': correctColor,
-        'isCorrect': false,
-      },
-      {
-        'shapeIdx': altShapeIdx,
+        'shapeIdx': altShapeIdx1,
         'angle': _targetAngle,
         'color': correctColor,
+        'isCorrect': false,
+      },
+      // Option 4: Different shape, different color
+      {
+        'shapeIdx': altShapeIdx2,
+        'angle': _targetAngle,
+        'color': altColor2,
         'isCorrect': false,
       },
     ]..shuffle(_random);

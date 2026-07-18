@@ -35,6 +35,7 @@ class _TangramScreenState extends ConsumerState<TangramScreen> {
   // Selection & Placement state
   int? _selectedPieceId;
   List<Point<int>?> _piecePlacements = []; // Pivot positions for pieces (index matches piece index)
+  List<int> _pieceRotations = []; // 0=0°, 1=90°, 2=180°, 3=270° for each piece
 
   bool _isSolved = false;
 
@@ -99,6 +100,21 @@ class _TangramScreenState extends ConsumerState<TangramScreen> {
     }
 
     _piecePlacements = List.filled(_pieces.length, null);
+    _pieceRotations = List.filled(_pieces.length, 0);
+  }
+
+  /// Returns the cells of a piece after applying the given number of 90° CW
+  /// rotations, normalised so the minimum row/col offset is 0.
+  List<Point<int>> _getRotatedCells(List<Point<int>> cells, int rotations) {
+    var result = cells;
+    for (int r = 0; r < (rotations % 4); r++) {
+      // 90° clockwise: (x, y) → (y, -x)
+      result = result.map((p) => Point(p.y, -p.x)).toList();
+    }
+    // Normalise so all offsets are non-negative
+    final minR = result.map((p) => p.x).reduce(min);
+    final minC = result.map((p) => p.y).reduce(min);
+    return result.map((p) => Point(p.x - minR, p.y - minC)).toList();
   }
 
   void _onCellTapped(int r, int c) {
@@ -113,7 +129,7 @@ class _TangramScreenState extends ConsumerState<TangramScreen> {
 
       // Check if placement fits entirely inside grid boundaries
       bool fits = true;
-      final cells = _pieces[pieceIdx].cells;
+      final cells = _getRotatedCells(_pieces[pieceIdx].cells, _pieceRotations[pieceIdx]);
       for (var offset in cells) {
         final nr = r + offset.x;
         final nc = c + offset.y;
@@ -144,7 +160,7 @@ class _TangramScreenState extends ConsumerState<TangramScreen> {
     final Set<Point<int>> filled = {};
     for (int i = 0; i < _pieces.length; i++) {
       final placement = _piecePlacements[i]!;
-      final cells = _pieces[i].cells;
+      final cells = _getRotatedCells(_pieces[i].cells, _pieceRotations[i]);
       for (var offset in cells) {
         final pt = Point(placement.x + offset.x, placement.y + offset.y);
         // Overlap check
@@ -230,7 +246,8 @@ class _TangramScreenState extends ConsumerState<TangramScreen> {
                     for (int i = 0; i < _pieces.length; i++) {
                       final placement = _piecePlacements[i];
                       if (placement != null) {
-                        for (var offset in _pieces[i].cells) {
+                        final rotatedCells = _getRotatedCells(_pieces[i].cells, _pieceRotations[i]);
+                        for (var offset in rotatedCells) {
                           final pt = Point(placement.x + offset.x, placement.y + offset.y);
                           coveredMap[pt] = _pieces[i].color;
                         }
@@ -281,7 +298,7 @@ class _TangramScreenState extends ConsumerState<TangramScreen> {
             child: Column(
               children: [
                 Text(
-                  'PIECES DOCK (Tap to select, then tap grid to place)',
+                  'PIECES DOCK (Tap to select, then tap grid to place, double-tap to rotate)',
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
                 const SizedBox(height: 12),
@@ -306,6 +323,15 @@ class _TangramScreenState extends ConsumerState<TangramScreen> {
                           }
                         });
                       },
+                      onDoubleTap: () {
+                        HapticFeedbackUtil.lightImpact();
+                        setState(() {
+                          // Rotate the piece 90° CW and clear its placement
+                          _pieceRotations[index] = (_pieceRotations[index] + 1) % 4;
+                          _piecePlacements[index] = null;
+                          _selectedPieceId = piece.id;
+                        });
+                      },
                       child: Container(
                         margin: const EdgeInsets.symmetric(horizontal: 12),
                         padding: const EdgeInsets.all(12),
@@ -327,11 +353,11 @@ class _TangramScreenState extends ConsumerState<TangramScreen> {
                               height: 50,
                               alignment: Alignment.center,
                               child: Stack(
-                                children: piece.cells.map((cell) {
+                                children: _getRotatedCells(piece.cells, _pieceRotations[index]).map((cell) {
                                   // Map cell relative points to offset multipliers
                                   return Positioned(
-                                    left: cell.y * 12.0 + 12,
-                                    top: cell.x * 12.0 + 12,
+                                    left: cell.y * 12.0 + 6,
+                                    top: cell.x * 12.0 + 6,
                                     width: 10,
                                     height: 10,
                                     child: Container(
@@ -345,6 +371,15 @@ class _TangramScreenState extends ConsumerState<TangramScreen> {
                               ),
                             ),
                             const SizedBox(height: 4),
+                            if (isSelected && !isPlaced)
+                              Padding(
+                                padding: const EdgeInsets.only(top: 2),
+                                child: Icon(
+                                  Icons.rotate_right_rounded,
+                                  size: 14,
+                                  color: DesignSystem.primary,
+                                ),
+                              ),
                             Text(
                               isPlaced ? 'PLACED' : (isSelected ? 'ACTIVE' : 'SELECT'),
                               style: TextStyle(
