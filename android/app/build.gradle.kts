@@ -72,6 +72,11 @@ android {
             }
         }
     }
+
+    packagingOptions {
+        dex.useLegacyPackaging = true
+        jniLibs.useLegacyPackaging = true
+    }
 }
 
 flutter {
