@@ -83,6 +83,80 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
+              Wrap(
+                alignment: WrapAlignment.center,
+                crossAxisAlignment: WrapCrossAlignment.center,
+                spacing: 4,
+                runSpacing: 4,
+                children: [
+                  InkWell(
+                    onTap: () => _launchUrl('https://play.google.com/store/apps/details?id=com.sidhant.puzzle'),
+                    borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(
+                            Icons.star_rounded,
+                            size: 14,
+                            color: DesignSystem.accentAmber,
+                          ),
+                          const SizedBox(width: 4),
+                          Flexible(
+                            child: Text(
+                              l10n.leaveReview.toUpperCase(),
+                              style: TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w800,
+                                color: colorScheme.onSurface.withValues(alpha: 0.6),
+                                letterSpacing: 0.5,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                  Container(
+                    width: 1,
+                    height: 12,
+                    color: colorScheme.outline.withValues(alpha: 0.5),
+                  ),
+                  InkWell(
+                    onTap: () => _launchUrl('https://github.com/sidhant947/Puzzle/issues'),
+                    borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          const Icon(
+                            Icons.bug_report_rounded,
+                            size: 14,
+                            color: DesignSystem.error,
+                          ),
+                          const SizedBox(width: 4),
+                          Flexible(
+                            child: Text(
+                              l10n.reportError.toUpperCase(),
+                              style: TextStyle(
+                                fontSize: 10,
+                                fontWeight: FontWeight.w800,
+                                color: colorScheme.onSurface.withValues(alpha: 0.6),
+                                letterSpacing: 0.5,
+                              ),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+              const SizedBox(height: DesignSystem.spaceMD),
               Text(
                 widget.title.toUpperCase(),
                 textAlign: TextAlign.center,
@@ -256,13 +330,16 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
                       color: colorScheme.surface,
                       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 12),
                       child: Center(
-                        child: Text(
-                          l10n.seeCompleted.toUpperCase(),
-                          style: theme.textTheme.labelMedium?.copyWith(
-                            color: colorScheme.onSurface.withValues(alpha: 0.6),
-                            fontWeight: FontWeight.w700,
-                            fontSize: DesignSystem.fontSizeSM,
-                            letterSpacing: 0.5,
+                        child: FittedBox(
+                          fit: BoxFit.scaleDown,
+                          child: Text(
+                            l10n.seeCompleted.toUpperCase(),
+                            style: theme.textTheme.labelMedium?.copyWith(
+                              color: colorScheme.onSurface.withValues(alpha: 0.6),
+                              fontWeight: FontWeight.w700,
+                              fontSize: DesignSystem.fontSizeSM,
+                              letterSpacing: 0.5,
+                            ),
                           ),
                         ),
                       ),
@@ -271,78 +348,33 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
                 ],
               ),
               const SizedBox(height: DesignSystem.spaceMD),
-              Wrap(
-                alignment: WrapAlignment.center,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                spacing: 4,
-                runSpacing: 4,
-                children: [
-                  InkWell(
-                    onTap: () => _launchUrl('https://play.google.com/store/apps/details?id=com.sidhant.puzzle'),
-                    borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(
-                            Icons.star_rounded,
-                            size: 14,
-                            color: DesignSystem.accentAmber,
-                          ),
-                          const SizedBox(width: 4),
-                          Flexible(
-                            child: Text(
-                              l10n.leaveReview.toUpperCase(),
-                              style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w800,
-                                color: colorScheme.onSurface.withValues(alpha: 0.6),
-                                letterSpacing: 0.5,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        ],
+              InkWell(
+                onTap: () => _launchUrl('https://github.com/sponsors/sidhant947'),
+                borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      const Icon(
+                        Icons.favorite_rounded,
+                        size: 14,
+                        color: Colors.redAccent,
                       ),
-                    ),
-                  ),
-                  Container(
-                    width: 1,
-                    height: 12,
-                    color: colorScheme.outline.withValues(alpha: 0.5),
-                  ),
-                  InkWell(
-                    onTap: () => _launchUrl('https://github.com/sidhant947/Puzzle/issues'),
-                    borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(
-                            Icons.bug_report_rounded,
-                            size: 14,
-                            color: DesignSystem.error,
-                          ),
-                          const SizedBox(width: 4),
-                          Flexible(
-                            child: Text(
-                              l10n.reportError.toUpperCase(),
-                              style: TextStyle(
-                                fontSize: 10,
-                                fontWeight: FontWeight.w800,
-                                color: colorScheme.onSurface.withValues(alpha: 0.6),
-                                letterSpacing: 0.5,
-                              ),
-                              overflow: TextOverflow.ellipsis,
-                            ),
-                          ),
-                        ],
+                      const SizedBox(width: 6),
+                      Text(
+                        'DONATE & SUPPORT',
+                        style: TextStyle(
+                          fontSize: 11,
+                          fontWeight: FontWeight.w800,
+                          color: colorScheme.onSurface.withValues(alpha: 0.7),
+                          letterSpacing: 0.8,
+                        ),
                       ),
-                    ),
+                    ],
                   ),
-                ],
+                ),
               ),
             ],
           ),

@@ -423,13 +423,15 @@ class _MathGuessScreenState extends ConsumerState<MathGuessScreen> {
                 ? Theme.of(context).colorScheme.outline.withValues(alpha: 0.3)
                 : DesignSystem.accentEmerald,
             padding: const EdgeInsets.all(12),
-            child: Text(
-              l10n.btnGuess.toUpperCase(),
-              style: TextStyle(
-                fontSize: 14,
-                fontWeight: FontWeight.w700,
-                color: Colors.white,
-                letterSpacing: 1.5,
+            child: Center(
+              child: Text(
+                l10n.btnGuess.toUpperCase(),
+                style: TextStyle(
+                  fontSize: 14,
+                  fontWeight: FontWeight.w700,
+                  color: Colors.white,
+                  letterSpacing: 1.5,
+                ),
               ),
             ),
           ),

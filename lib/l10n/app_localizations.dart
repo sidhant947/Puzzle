@@ -173,7 +173,7 @@ abstract class AppLocalizations {
   /// No description provided for @seeCompleted.
   ///
   /// In en, this message translates to:
-  /// **'Review'**
+  /// **'View Solved'**
   String get seeCompleted;
 
   /// No description provided for @finish.

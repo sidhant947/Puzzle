@@ -24,7 +24,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get playNext => 'Play Next';
 
   @override
-  String get seeCompleted => 'Review';
+  String get seeCompleted => 'View Solved';
 
   @override
   String get finish => 'Finish';
