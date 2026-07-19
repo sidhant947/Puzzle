@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Puzzle Games Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Modern Clean Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --base-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --base-background: #181818; /* Premium Charcoal Gray */
+      --text-color: #ffffff; /* White */
+      --muted-color: #a3a3a3; /* Muted gray */
+      --border-color: #2d2d2d;
+      --content-max-width: 800px;
+    }
+
+    body {
+      background-color: var(--base-background);
+      color: var(--text-color);
+      font-family: var(--base-font-family);
+      font-size: 15px;
+      line-height: 1.65;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: var(--base-background);
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2d2d2d;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #444444;
+    }
+
+    .container {
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    h1 {
+      font-size: 1.85rem;
+      font-weight: 600;
+      color: #ffffff;
+      letter-spacing: -0.02em;
+      margin-top: 0;
+      margin-bottom: 0.5rem;
+    }
+
+    p.subtitle {
+      color: var(--muted-color);
+      margin-top: 0;
+      margin-bottom: 2rem;
+      font-size: 1rem;
+    }
+
+    h2.letter-header {
+      font-size: 1.2rem;
+      font-weight: 500;
+      color: #ffffff;
+      letter-spacing: -0.01em;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 8px;
+    }
+
+    /* Flat alphabetical game list layout */
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 8px 16px;
+      margin-top: 12px;
+      margin-bottom: 24px;
+    }
+    
+    /* Clean text link formatting */
+    .card {
+      color: #ffffff !important;
+      font-size: 0.9rem;
+      text-decoration: none !important;
+      padding: 4px 0;
+      transition: color 0.1s ease;
+      display: inline-block;
+    }
+    
+    .card:hover {
+      color: var(--muted-color) !important;
+      text-decoration: underline !important;
+      text-underline-offset: 3px;
+    }
+    
+    .card h3 {
+      margin: 0;
+      font-size: 0.9rem;
+      font-weight: 400;
+      color: inherit;
+    }
+
+    /* Interactive Search Input */
+    .search-bar-container {
+      margin-bottom: 2.5rem;
+      display: flex;
+    }
+    
+    .search-bar-container input {
+      width: 100%;
+      max-width: 480px;
+      padding: 12px 18px;
+      background-color: #242424;
+      border: 1px solid #333333;
+      border-radius: 6px;
+      color: #ffffff;
+      font-family: var(--base-font-family);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.15s ease, box-shadow 0.15s ease;
+    }
+    
+    .search-bar-container input:focus {
+      border-color: #ffffff;
+      box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.1);
+    }
+    
+    .search-bar-container input::placeholder {
+      color: #737373;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Puzzle Games Guide</h1>
+    <p class="subtitle">Welcome to the ultimate guide and solving reference for the Puzzle Games.</p>
+    
+    <div class="search-bar-container">
+      <input type="text" id="search-input" placeholder="Search 274 games..." oninput="filterGames(this.value)" autofocus>
+    </div>
+
+    <div id="games-list">
+      <h2 class='letter-header'>#</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/game_2048/index.html'><h3>2048</h3></a>
+        <a class='card' href='games/block_count_3d/index.html'><h3>3D Block Count</h3></a>
+        <a class='card' href='games/maze_nav_3d/index.html'><h3>3D Maze Nav</h3></a>
+      </div>
+      <h2 class='letter-header'>A</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/action_sequence_recall/index.html'><h3>Action Recall</h3></a>
+        <a class='card' href='games/affix_factory/index.html'><h3>Affix Factory</h3></a>
+        <a class='card' href='games/akari/index.html'><h3>Akari</h3></a>
+        <a class='card' href='games/algebraic_balance/index.html'><h3>Algebraic Balance</h3></a>
+        <a class='card' href='games/alphabet_sudoku/index.html'><h3>ALPHABET SUDOKU</h3></a>
+        <a class='card' href='games/anagram_definition/index.html'><h3>Anagram Definition</h3></a>
+        <a class='card' href='games/angle_finder/index.html'><h3>Angle Finder</h3></a>
+        <a class='card' href='games/area_perimeter_match/index.html'><h3>Area & Perimeter</h3></a>
+        <a class='card' href='games/semantic_association/index.html'><h3>Association Word</h3></a>
+        <a class='card' href='games/associative_pairs/index.html'><h3>Associative Pairs</h3></a>
+        <a class='card' href='games/attentional_blink/index.html'><h3>Attentional Blink</h3></a>
+      </div>
+      <h2 class='letter-header'>B</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/balance_scale/index.html'><h3>BALANCE SCALE</h3></a>
+        <a class='card' href='games/base_conversion_run/index.html'><h3>Base Conversion</h3></a>
+        <a class='card' href='games/base_shift/index.html'><h3>BASE SHIFT BLITZ</h3></a>
+        <a class='card' href='games/binary_puzzle/index.html'><h3>BINARY PUZZLE</h3></a>
+        <a class='card' href='games/binary_scale_balance/index.html'><h3>Binary Scale Balance</h3></a>
+        <a class='card' href='games/binary_code/index.html'><h3>Binary Speed</h3></a>
+        <a class='card' href='games/binomial_match/index.html'><h3>Binomial Match</h3></a>
+        <a class='card' href='games/blink_detector/index.html'><h3>Blink Detector</h3></a>
+        <a class='card' href='games/block_escape/index.html'><h3>BLOCK ESCAPE</h3></a>
+        <a class='card' href='games/block_stacking_physics/index.html'><h3>Block Stacking</h3></a>
+        <a class='card' href='games/box_completion/index.html'><h3>Box Completion</h3></a>
+        <a class='card' href='games/bridges/index.html'><h3>BRIDGES</h3></a>
+      </div>
+      <h2 class='letter-header'>C</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/calculation_sprint/index.html'><h3>CALCULATION SPRINT</h3></a>
+        <a class='card' href='games/card_counting_memory/index.html'><h3>Card Counter</h3></a>
+        <a class='card' href='games/category_fluency/index.html'><h3>Category Fluency</h3></a>
+        <a class='card' href='games/arithmetic_chain/index.html'><h3>Chain Calc</h3></a>
+        <a class='card' href='games/chain_reaction/index.html'><h3>Chain Reaction</h3></a>
+        <a class='card' href='games/chalk_and_talk/index.html'><h3>Chalk & Talk</h3></a>
+        <a class='card' href='games/change_blindness/index.html'><h3>Change Blindness</h3></a>
+        <a class='card' href='games/chimp_test/index.html'><h3>Chimp Test</h3></a>
+        <a class='card' href='games/choice_reaction_time/index.html'><h3>Choice Reaction Time</h3></a>
+        <a class='card' href='games/classic_maze/index.html'><h3>Classic Maze</h3></a>
+        <a class='card' href='games/cognate_catch/index.html'><h3>Cognate Catch</h3></a>
+        <a class='card' href='games/collatz/index.html'><h3>Collatz Path</h3></a>
+        <a class='card' href='games/color_flood/index.html'><h3>Color Flood</h3></a>
+        <a class='card' href='games/color_match/index.html'><h3>COLOR MATCH</h3></a>
+        <a class='card' href='games/color_word_match_up/index.html'><h3>Color Match-Up</h3></a>
+        <a class='card' href='games/color_maze_nav/index.html'><h3>Color Maze Nav</h3></a>
+        <a class='card' href='games/common_denominator/index.html'><h3>Common Denominator</h3></a>
+        <a class='card' href='games/compass_maze/index.html'><h3>Compass Maze</h3></a>
+        <a class='card' href='games/compound_connect/index.html'><h3>Compound Connect</h3></a>
+        <a class='card' href='games/conjunction_search/index.html'><h3>Conjunction Search</h3></a>
+        <a class='card' href='games/consonant_reconstruct/index.html'><h3>Consonant Reconstruct</h3></a>
+        <a class='card' href='games/context_clues/index.html'><h3>Context Clues</h3></a>
+        <a class='card' href='games/continuous_recognition/index.html'><h3>Continuous Recog</h3></a>
+        <a class='card' href='games/corsi_blocks/index.html'><h3>CORSI BLOCKS</h3></a>
+        <a class='card' href='games/countdown_math/index.html'><h3>Countdown Math</h3></a>
+        <a class='card' href='games/counting_sheep/index.html'><h3>Counting Sheep</h3></a>
+        <a class='card' href='games/counting_span/index.html'><h3>Counting Span</h3></a>
+        <a class='card' href='games/cross_section_slice/index.html'><h3>Cross-Section Slice</h3></a>
+        <a class='card' href='games/crossword/index.html'><h3>Crossword</h3></a>
+        <a class='card' href='games/crown/index.html'><h3>CROWN</h3></a>
+        <a class='card' href='games/crypto_arithmetic/index.html'><h3>Crypto-Arithmetic</h3></a>
+        <a class='card' href='games/cryptogram/index.html'><h3>CRYPTOGRAM</h3></a>
+        <a class='card' href='games/cube_net_fold/index.html'><h3>Cube Net Fold</h3></a>
+      </div>
+      <h2 class='letter-header'>D</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/d2_attention/index.html'><h3>d2 Attention</h3></a>
+        <a class='card' href='games/definition_dash/index.html'><h3>Definition Dash</h3></a>
+        <a class='card' href='games/delayed_match_sample/index.html'><h3>Delayed Match</h3></a>
+        <a class='card' href='games/digit_swap_eq/index.html'><h3>Digit Swap Equations</h3></a>
+        <a class='card' href='games/directions_recall/index.html'><h3>Directions Recall</h3></a>
+        <a class='card' href='games/distractor_matrix/index.html'><h3>Distractor Matrix</h3></a>
+        <a class='card' href='games/divided_attention/index.html'><h3>Divided Attention</h3></a>
+        <a class='card' href='games/divisibility_dash/index.html'><h3>Divisibility Dash</h3></a>
+        <a class='card' href='games/dominosa/index.html'><h3>DOMINOSA</h3></a>
+        <a class='card' href='games/double_n_back/index.html'><h3>Double N-Back</h3></a>
+        <a class='card' href='games/double_trouble/index.html'><h3>Double Trouble</h3></a>
+        <a class='card' href='games/dual_coding/index.html'><h3>Dual Coding</h3></a>
+        <a class='card' href='games/dual_mirror/index.html'><h3>Dual Mirror Nav</h3></a>
+        <a class='card' href='games/dual_task_memory/index.html'><h3>Dual-Task Memory</h3></a>
+        <a class='card' href='games/dynamic_salience/index.html'><h3>Dynamic Salience</h3></a>
+      </div>
+      <h2 class='letter-header'>E</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/einstein_riddle/index.html'><h3>EINSTEIN RIDDLE</h3></a>
+        <a class='card' href='games/etymology_origin/index.html'><h3>Etymology Origin</h3></a>
+        <a class='card' href='games/etymon_oddball/index.html'><h3>Etymon Oddball</h3></a>
+        <a class='card' href='games/event_timeline_memory/index.html'><h3>Event Timeline</h3></a>
+      </div>
+      <h2 class='letter-header'>F</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/face_name_association/index.html'><h3>Face-Name</h3></a>
+        <a class='card' href='games/face_trait_association/index.html'><h3>Face-Trait</h3></a>
+        <a class='card' href='games/fact_binder/index.html'><h3>Fact Binder</h3></a>
+        <a class='card' href='games/factor_finder/index.html'><h3>Factor Finder</h3></a>
+        <a class='card' href='games/feature_matrix_recall/index.html'><h3>Feature Matrix</h3></a>
+        <a class='card' href='games/fibonacci_merge/index.html'><h3>Fibonacci Merge</h3></a>
+        <a class='card' href='games/fillomino/index.html'><h3>FILLOMINO</h3></a>
+        <a class='card' href='games/find_word/index.html'><h3>Find Word</h3></a>
+        <a class='card' href='games/flanker_test/index.html'><h3>FLANKER TEST</h3></a>
+        <a class='card' href='games/focus_tunnel/index.html'><h3>Focus Tunnel</h3></a>
+        <a class='card' href='games/complex_folding_nets/index.html'><h3>Folding Nets</h3></a>
+        <a class='card' href='games/fraction_match/index.html'><h3>Fraction Match</h3></a>
+        <a class='card' href='games/fraction_matcher/index.html'><h3>Fraction Matcher</h3></a>
+        <a class='card' href='games/fractional_pizza/index.html'><h3>Fractional Pizza</h3></a>
+        <a class='card' href='games/frequency_tap/index.html'><h3>Frequency Tap</h3></a>
+        <a class='card' href='games/futoshiki/index.html'><h3>Futoshiki</h3></a>
+      </div>
+      <h2 class='letter-header'>G</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/gear_rotation/index.html'><h3>Gear Rotation</h3></a>
+        <a class='card' href='games/ghost_tap/index.html'><h3>Ghost Tap</h3></a>
+        <a class='card' href='games/go_no_go/index.html'><h3>Go / No-Go</h3></a>
+        <a class='card' href='games/gokigen_naname/index.html'><h3>Gokigen Naname</h3></a>
+        <a class='card' href='games/grammar_police/index.html'><h3>Grammar Police</h3></a>
+        <a class='card' href='games/grammar_sort/index.html'><h3>Grammar Sort</h3></a>
+        <a class='card' href='games/graph_coordinate_plot/index.html'><h3>Graph Plotter</h3></a>
+        <a class='card' href='games/grid_displacement/index.html'><h3>Grid Displacement</h3></a>
+        <a class='card' href='games/grocery_list/index.html'><h3>Grocery List</h3></a>
+      </div>
+      <h2 class='letter-header'>H</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/hitori/index.html'><h3>HITORI</h3></a>
+        <a class='card' href='games/homophone_hunt/index.html'><h3>Homophone Hunt</h3></a>
+        <a class='card' href='games/hue_sort/index.html'><h3>HUE SORT</h3></a>
+      </div>
+      <h2 class='letter-header'>I</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/inequality_balance_ops/index.html'><h3>Inequality Balance</h3></a>
+        <a class='card' href='games/inequality_dash/index.html'><h3>Inequality Dash</h3></a>
+        <a class='card' href='games/interlock_puzzle/index.html'><h3>Interlock Puzzle</h3></a>
+      </div>
+      <h2 class='letter-header'>K</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/kakurasu_sums/index.html'><h3>Kakurasu Sums</h3></a>
+        <a class='card' href='games/kakuro/index.html'><h3>Kakuro</h3></a>
+        <a class='card' href='games/kenken/index.html'><h3>KenKen</h3></a>
+        <a class='card' href='games/klotski/index.html'><h3>Klotski Escape</h3></a>
+      </div>
+      <h2 class='letter-header'>L</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/laser_link/index.html'><h3>Laser Link</h3></a>
+        <a class='card' href='games/letter_bridge/index.html'><h3>Letter Bridge</h3></a>
+        <a class='card' href='games/letter_cancellation/index.html'><h3>Letter Cancel</h3></a>
+        <a class='card' href='games/letter_frequency_scan/index.html'><h3>Letter Frequency Scan</h3></a>
+        <a class='card' href='games/letter_grid_swapper/index.html'><h3>Letter Swapper</h3></a>
+        <a class='card' href='games/lighthouses/index.html'><h3>LIGHTHOUSES</h3></a>
+        <a class='card' href='games/lights_out/index.html'><h3>LIGHTS OUT</h3></a>
+        <a class='card' href='games/lock_pattern/index.html'><h3>Lock Pattern</h3></a>
+        <a class='card' href='games/logical_syllogisms/index.html'><h3>Logical Syllogisms</h3></a>
+      </div>
+      <h2 class='letter-header'>M</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/magic_squares/index.html'><h3>Magic Square</h3></a>
+        <a class='card' href='games/magnets/index.html'><h3>MAGNETS</h3></a>
+        <a class='card' href='games/mandala_recall/index.html'><h3>Mandala Recall</h3></a>
+        <a class='card' href='games/masyu/index.html'><h3>Masyu Loop</h3></a>
+        <a class='card' href='games/math_guess/index.html'><h3>Math Guess</h3></a>
+        <a class='card' href='games/math_maze/index.html'><h3>Math Maze</h3></a>
+        <a class='card' href='games/math_path/index.html'><h3>Math Path</h3></a>
+        <a class='card' href='games/matrix_multiplier_match/index.html'><h3>Matrix Matcher</h3></a>
+        <a class='card' href='games/matrix_multiplier/index.html'><h3>Matrix Multiplier</h3></a>
+        <a class='card' href='games/matrix_reasoning/index.html'><h3>Matrix Reasoning</h3></a>
+        <a class='card' href='games/memory_matrix/index.html'><h3>Memory Matrix</h3></a>
+        <a class='card' href='games/memory_palace/index.html'><h3>Memory Palace</h3></a>
+        <a class='card' href='games/mental_abacus/index.html'><h3>Mental Abacus</h3></a>
+        <a class='card' href='games/mental_calendar/index.html'><h3>Mental Calendar</h3></a>
+        <a class='card' href='games/mental_mapping/index.html'><h3>Mental Mapping</h3></a>
+        <a class='card' href='games/mental_rotation/index.html'><h3>Mental Rotation</h3></a>
+        <a class='card' href='games/minesweeper/index.html'><h3>Minesweeper</h3></a>
+        <a class='card' href='games/mirror_image/index.html'><h3>Mirror Image</h3></a>
+        <a class='card' href='games/mirror_maze/index.html'><h3>Mirror Maze</h3></a>
+        <a class='card' href='games/mirror_tracing/index.html'><h3>Mirror Tracing</h3></a>
+        <a class='card' href='games/missing_vowels/index.html'><h3>Missing Vowels</h3></a>
+        <a class='card' href='games/modulo_clock/index.html'><h3>Modulo Clock</h3></a>
+        <a class='card' href='games/modulo_path/index.html'><h3>Modulo Path</h3></a>
+        <a class='card' href='games/multi_track_counter/index.html'><h3>Multi-Track Counter</h3></a>
+      </div>
+      <h2 class='letter-header'>N</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/n_back/index.html'><h3>N-Back Test</h3></a>
+        <a class='card' href='games/narrative_recall/index.html'><h3>Narrative Recall</h3></a>
+        <a class='card' href='games/negative_space_detection/index.html'><h3>Negative Space</h3></a>
+        <a class='card' href='games/dnms/index.html'><h3>Non-Matching Memory</h3></a>
+        <a class='card' href='games/nonogram/index.html'><h3>Nonogram</h3></a>
+        <a class='card' href='games/norinori/index.html'><h3>Norinori</h3></a>
+        <a class='card' href='games/number_bonds/index.html'><h3>Number Bonds</h3></a>
+        <a class='card' href='games/numerical_estimation/index.html'><h3>Numerical Estimation</h3></a>
+        <a class='card' href='games/nurikabe/index.html'><h3>NURIKABE</h3></a>
+      </div>
+      <h2 class='letter-header'>O</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/object_displacement/index.html'><h3>Object Displacement</h3></a>
+        <a class='card' href='games/object_shuffle/index.html'><h3>Object Shuffle</h3></a>
+        <a class='card' href='games/multiple_object_tracking/index.html'><h3>Object Tracker</h3></a>
+        <a class='card' href='games/odd_one_out/index.html'><h3>Odd One Out</h3></a>
+        <a class='card' href='games/odd_rotation/index.html'><h3>Odd Rotation</h3></a>
+        <a class='card' href='games/odd_even_flash/index.html'><h3>Odd-Even Flash</h3></a>
+        <a class='card' href='games/one_letter_shift/index.html'><h3>One-Letter Shift</h3></a>
+        <a class='card' href='games/operation_span/index.html'><h3>Operation Span</h3></a>
+        <a class='card' href='games/missing_operator/index.html'><h3>Operator Mix</h3></a>
+        <a class='card' href='games/orbit_tap/index.html'><h3>Orbit Tap</h3></a>
+        <a class='card' href='games/oxymoron_hunt/index.html'><h3>Oxymoron Hunt</h3></a>
+      </div>
+      <h2 class='letter-header'>P</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/palindrome_builder/index.html'><h3>Palindrome Builder</h3></a>
+        <a class='card' href='games/pangram_sprint/index.html'><h3>Pangram Sprint</h3></a>
+        <a class='card' href='games/paper_folding/index.html'><h3>Paper Folding</h3></a>
+        <a class='card' href='games/path_finder/index.html'><h3>Path Finder</h3></a>
+        <a class='card' href='games/path_intersect/index.html'><h3>Path Intersect</h3></a>
+        <a class='card' href='games/path_recall/index.html'><h3>Path Recall</h3></a>
+        <a class='card' href='games/pattern_sequence_draw/index.html'><h3>Pattern Recall</h3></a>
+        <a class='card' href='games/percentage_peak/index.html'><h3>Percentage Peak</h3></a>
+        <a class='card' href='games/percentage_shopping/index.html'><h3>Percentage Shopping</h3></a>
+        <a class='card' href='games/peripheral_focus/index.html'><h3>Peripheral Focus</h3></a>
+        <a class='card' href='games/perspective_shift_view/index.html'><h3>Perspective Shift</h3></a>
+        <a class='card' href='games/perspective_taking/index.html'><h3>Perspective Taking</h3></a>
+        <a class='card' href='games/phonetic_guess/index.html'><h3>Phonetic Guess</h3></a>
+        <a class='card' href='games/pipes/index.html'><h3>Pipes</h3></a>
+        <a class='card' href='games/pixel_mimic/index.html'><h3>Pixel Mimic</h3></a>
+        <a class='card' href='games/portmanteau_split/index.html'><h3>Portmanteau Split</h3></a>
+        <a class='card' href='games/prime_factor_trees/index.html'><h3>Prime Factor Trees</h3></a>
+        <a class='card' href='games/prime_hunter/index.html'><h3>Prime Hunter</h3></a>
+      </div>
+      <h2 class='letter-header'>Q</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/quick_math/index.html'><h3>Quick Math</h3></a>
+      </div>
+      <h2 class='letter-header'>R</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/radical_roots/index.html'><h3>Radical Roots</h3></a>
+        <a class='card' href='games/reading_span/index.html'><h3>Reading Span</h3></a>
+        <a class='card' href='games/reflex_tap/index.html'><h3>Reflex Tap</h3></a>
+        <a class='card' href='games/relational_memory/index.html'><h3>Relational Memory</h3></a>
+        <a class='card' href='games/digit_span_reverse/index.html'><h3>Reverse Span</h3></a>
+        <a class='card' href='games/reverse_stroop/index.html'><h3>Reverse Stroop</h3></a>
+        <a class='card' href='games/rhyme_master/index.html'><h3>Rhyme Master</h3></a>
+        <a class='card' href='games/rhythm_master/index.html'><h3>Rhythm Master</h3></a>
+        <a class='card' href='games/roman_arithmetic/index.html'><h3>Roman Arithmetic</h3></a>
+        <a class='card' href='games/room_inspector/index.html'><h3>Room Inspector</h3></a>
+        <a class='card' href='games/rotating_maze/index.html'><h3>Rotating Maze</h3></a>
+        <a class='card' href='games/rule_switcher/index.html'><h3>Rule Switcher</h3></a>
+        <a class='card' href='games/running_memory_span/index.html'><h3>Running Span</h3></a>
+      </div>
+      <h2 class='letter-header'>S</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/schulte_table/index.html'><h3>Schulte Table</h3></a>
+        <a class='card' href='games/sdmt/index.html'><h3>Sdmt Test</h3></a>
+        <a class='card' href='games/sopt/index.html'><h3>Self-Ordered Pointing</h3></a>
+        <a class='card' href='games/semantic_distance/index.html'><h3>Semantic Distance</h3></a>
+        <a class='card' href='games/semantic_link/index.html'><h3>Semantic Link</h3></a>
+        <a class='card' href='games/sentence_unscramble/index.html'><h3>Sentence Unscramble</h3></a>
+        <a class='card' href='games/simon_sequence/index.html'><h3>Sequence</h3></a>
+        <a class='card' href='games/sequence_sleuth/index.html'><h3>Sequence Sleuth</h3></a>
+        <a class='card' href='games/sequence_stack/index.html'><h3>Sequence Stack</h3></a>
+        <a class='card' href='games/shadow_pivot/index.html'><h3>Shadow Pivot</h3></a>
+        <a class='card' href='games/shape_shifter/index.html'><h3>Shape Shifter</h3></a>
+        <a class='card' href='games/shell_game/index.html'><h3>Shell Game</h3></a>
+        <a class='card' href='games/shikaku/index.html'><h3>Shikaku</h3></a>
+        <a class='card' href='games/silent_letter_search/index.html'><h3>Silent Letter Search</h3></a>
+        <a class='card' href='games/silhouette_match/index.html'><h3>Silhouette Match</h3></a>
+        <a class='card' href='games/silhouette_match_ortho/index.html'><h3>Silhouette Match</h3></a>
+        <a class='card' href='games/simon_command/index.html'><h3>Simon Command</h3></a>
+        <a class='card' href='games/skyscrapers/index.html'><h3>SKYSCRAPERS</h3></a>
+        <a class='card' href='games/slide_puzzle/index.html'><h3>Slide Puzzle</h3></a>
+        <a class='card' href='games/slitherlink/index.html'><h3>Slitherlink</h3></a>
+        <a class='card' href='games/source_monitoring/index.html'><h3>Source Monitoring</h3></a>
+        <a class='card' href='games/spatial_cabinet_memory/index.html'><h3>Spatial Cabinets</h3></a>
+        <a class='card' href='games/spatial_conflict/index.html'><h3>Spatial Conflict</h3></a>
+        <a class='card' href='games/spelling_sprint/index.html'><h3>Spelling Sprint</h3></a>
+        <a class='card' href='games/spoonerism_solver/index.html'><h3>Spoonerism Solver</h3></a>
+        <a class='card' href='games/spotlight_track/index.html'><h3>Spotlight Track</h3></a>
+        <a class='card' href='games/staircase_memory/index.html'><h3>Staircase Memory</h3></a>
+        <a class='card' href='games/sternberg_task/index.html'><h3>Sternberg Task</h3></a>
+        <a class='card' href='games/stop_signal/index.html'><h3>Stop Signal</h3></a>
+        <a class='card' href='games/story_builder/index.html'><h3>Story Builder</h3></a>
+        <a class='card' href='games/stroop_test/index.html'><h3>Stroop Test</h3></a>
+        <a class='card' href='games/sudoku/index.html'><h3>Sudoku</h3></a>
+        <a class='card' href='games/sum_pyramid/index.html'><h3>Sum Pyramid</h3></a>
+        <a class='card' href='games/sum_snake/index.html'><h3>Sum Snake</h3></a>
+        <a class='card' href='games/switch_task/index.html'><h3>Switch Task</h3></a>
+        <a class='card' href='games/syllable_stack/index.html'><h3>Syllable Stack</h3></a>
+        <a class='card' href='games/symbol_logic/index.html'><h3>Symbol Logic</h3></a>
+        <a class='card' href='games/symbol_digit_assoc/index.html'><h3>Symbol-Digit Assoc</h3></a>
+        <a class='card' href='games/symbolic_flanker/index.html'><h3>Symbolic Flanker</h3></a>
+        <a class='card' href='games/symmetry/index.html'><h3>Symmetry</h3></a>
+        <a class='card' href='games/symmetry_span/index.html'><h3>Symmetry Span</h3></a>
+      </div>
+      <h2 class='letter-header'>T</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/tangle_fix/index.html'><h3>Tangle Fix</h3></a>
+        <a class='card' href='games/tangram/index.html'><h3>Tangram Puzzle</h3></a>
+        <a class='card' href='games/target_10/index.html'><h3>Target 10</h3></a>
+        <a class='card' href='games/target_number/index.html'><h3>Target 24</h3></a>
+        <a class='card' href='games/temporal_order/index.html'><h3>Temporal Order</h3></a>
+        <a class='card' href='games/tenner_grid/index.html'><h3>Tenner Grid</h3></a>
+        <a class='card' href='games/tents_and_trees/index.html'><h3>Tents & Trees</h3></a>
+        <a class='card' href='games/topology/index.html'><h3>TOPOLOGY</h3></a>
+        <a class='card' href='games/tower_of_london/index.html'><h3>Tower of London</h3></a>
+        <a class='card' href='games/trace_path/index.html'><h3>Trace Path</h3></a>
+        <a class='card' href='games/trail_making/index.html'><h3>Trail Making</h3></a>
+        <a class='card' href='games/triplets_logic/index.html'><h3>Triplets Trio</h3></a>
+        <a class='card' href='games/typing_speed/index.html'><h3>Typing Speed</h3></a>
+        <a class='card' href='games/typoglycemia_decoder/index.html'><h3>Typoglycemia Decoder</h3></a>
+      </div>
+      <h2 class='letter-header'>U</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/unit_converter_pro/index.html'><h3>Unit Converter</h3></a>
+      </div>
+      <h2 class='letter-header'>V</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/vector_grid_alignment/index.html'><h3>Vector Alignment</h3></a>
+        <a class='card' href='games/vektor_vector/index.html'><h3>Vector Vector</h3></a>
+        <a class='card' href='games/venn_numbers/index.html'><h3>Venn Numbers</h3></a>
+        <a class='card' href='games/verbal_analogies/index.html'><h3>Verbal Analogies</h3></a>
+        <a class='card' href='games/vigilance_task/index.html'><h3>Vigilance Task</h3></a>
+        <a class='card' href='games/visual_search/index.html'><h3>Visual Search</h3></a>
+        <a class='card' href='games/visual_statistical_learning/index.html'><h3>Visual Stats Learning</h3></a>
+        <a class='card' href='games/vocabulary_builder/index.html'><h3>Vocabulary Builder</h3></a>
+        <a class='card' href='games/vowel_reconstruct/index.html'><h3>Vowel Reconstruct</h3></a>
+      </div>
+      <h2 class='letter-header'>W</h2>
+      <div class='grid-container'>
+        <a class='card' href='games/water_sort/index.html'><h3>Water Sort</h3></a>
+        <a class='card' href='games/wisconsin_card_sorting/index.html'><h3>Wisconsin Card Sort</h3></a>
+        <a class='card' href='games/word_association_recall/index.html'><h3>Word Association</h3></a>
+        <a class='card' href='games/word_grid_connection/index.html'><h3>Word Connections</h3></a>
+        <a class='card' href='games/word_ladder/index.html'><h3>Word Ladder</h3></a>
+        <a class='card' href='games/word_mastermind/index.html'><h3>Word Mastermind</h3></a>
+        <a class='card' href='games/word_scramble/index.html'><h3>Word Scramble</h3></a>
+        <a class='card' href='games/word_search/index.html'><h3>Word Search</h3></a>
+        <a class='card' href='games/word_snake_trail/index.html'><h3>Word Snake</h3></a>
+        <a class='card' href='games/word_surge/index.html'><h3>Word Surge</h3></a>
+        <a class='card' href='games/word_wheel/index.html'><h3>Word Wheel</h3></a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function filterGames(query) {
+      const q = query.toLowerCase().trim();
+      const cards = document.querySelectorAll('.grid-container .card');
+      
+      cards.forEach(card => {
+        const title = card.textContent.toLowerCase();
+        if (title.includes(q)) {
+          card.style.display = 'inline-block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      // Hide alphabet headers if no matching games exist under them
+      const headers = document.querySelectorAll('.letter-header');
+      headers.forEach(header => {
+        const grid = header.nextElementSibling;
+        if (grid && grid.classList.contains('grid-container')) {
+          const visibleCards = grid.querySelectorAll('.card:not([style*="display: none"])');
+          if (visibleCards.length === 0) {
+            header.style.display = 'none';
+            grid.style.display = 'none';
+          } else {
+            header.style.display = 'block';
+            grid.style.display = 'grid';
+          }
+        }
+      });
+    }
+  </script>
+</body>
+</html>

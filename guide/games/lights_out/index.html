@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Lights Out - Solving Guide</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Modern Clean Font: Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --base-font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --base-background: #181818; /* Premium Charcoal Gray */
+      --text-color: #ffffff;
+      --muted-color: #a3a3a3;
+      --border-color: #2d2d2d;
+      --content-max-width: 700px;
+    }
+
+    body {
+      background-color: var(--base-background);
+      color: var(--text-color);
+      font-family: var(--base-font-family);
+      font-size: 15px;
+      line-height: 1.7;
+      margin: 0;
+      padding: 0;
+    }
+
+    /* Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #2d2d2d;
+      border-radius: 3px;
+    }
+
+    .container {
+      max-width: var(--content-max-width);
+      margin: 0 auto;
+      padding: 60px 20px;
+    }
+
+    header {
+      margin-bottom: 2rem;
+    }
+
+    header a {
+      color: var(--muted-color);
+      text-decoration: none;
+      font-size: 0.9rem;
+      transition: color 0.15s ease;
+    }
+
+    header a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    h1 {
+      font-size: 2rem;
+      font-weight: 600;
+      margin-top: 1rem;
+      margin-bottom: 0.25rem;
+    }
+
+    .category-badge {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--muted-color);
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      display: inline-block;
+    }
+
+    h2 {
+      font-size: 1.25rem;
+      font-weight: 500;
+      margin-top: 2rem;
+      margin-bottom: 0.8rem;
+      border-bottom: 1px solid var(--border-color);
+      padding-bottom: 6px;
+    }
+
+    p {
+      margin: 0 0 1rem 0;
+    }
+
+    ul, ol {
+      margin: 0 0 1.5rem 0;
+      padding-left: 20px;
+    }
+
+    li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <a href="../../index.html">← Back to games</a>
+    </header>
+
+    <div class="category-badge">LOGIC</div>
+    <h1>Lights Out</h1>
+    <p class="subtitle" style="color: var(--muted-color); font-size: 1.05rem; margin-bottom: 2rem;">Solving guide and strategies for Lights Out.</p>
+
+    <h2>Objective & Rules</h2>
+    <p>Place lightbulbs to illuminate all empty cells. Bulbs light up their row and column until blocked by walls. Bulbs cannot shine on each other, and numbered cells indicate adjacent bulb counts.</p>
+
+    <h2>Controls & Interaction</h2>
+    <ul>
+      <li>Swipe or drag across the grid to shift elements or move tokens.</li>
+    </ul>
+
+    <h2>Step-by-Step Gameplay Walkthrough</h2>
+    <ol>
+      <li>Analyze Clues: Locate numbered wall cells (0-4) on the grid.</li>
+      <li>Place Bulbs: Tap white cells adjacent to numbered walls to place bulbs.</li>
+      <li>Avoid Overlaps: Ensure no two lightbulbs are in the same line of sight.</li>
+      <li>Mark Lit Cells: Observe the illuminated cells to trace remaining unlit areas until the whole board is bright.</li>
+    </ol>
+
+    <h2>Solving Strategies & Tips</h2>
+    <ul>
+      <li>Start with '4' clues (all sides have bulbs) and '0' clues (no bulbs on any side).</li>
+      <li>Place 'X' marks in cells that cannot contain bulbs to simplify deduction.</li>
+      <li>Check corners and narrow corridors where bulb placements are highly constrained.</li>
+    </ul>
+  </div>
+</body>
+</html>
