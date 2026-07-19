@@ -11,6 +11,7 @@ import 'package:puzzle/utils/haptic_feedback.dart';
 import 'package:puzzle/utils/navigation_utils.dart';
 import 'package:puzzle/data/models/game_streak.dart';
 import 'package:puzzle/widgets/tangible.dart';
+import 'game_guide_screen.dart';
 
 class GameTile extends ConsumerWidget {
   final GameMetadata game;
@@ -227,6 +228,25 @@ class GameTile extends ConsumerWidget {
           ),
         ),
         const SizedBox(width: 12.0),
+        IconButton(
+          icon: Icon(
+            Icons.info_outline_rounded,
+            color: theme.colorScheme.onSurface.withValues(alpha: 0.5),
+          ),
+          iconSize: isMobile ? 20 : 28,
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => GameGuideScreen(
+                  gameId: game.id,
+                  gameColor: game.color,
+                ),
+              ),
+            );
+          },
+        ),
+        const SizedBox(width: 8.0),
         Container(
           padding: const EdgeInsets.all(8),
           decoration: BoxDecoration(
