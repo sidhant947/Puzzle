@@ -11,7 +11,7 @@ class AnagramDefinitionEngine {
     AnagramTask(scrambled: 'ARC', target: 'CAR', definition: 'A road vehicle, typically with four wheels.'),
     AnagramTask(scrambled: 'BRAG', target: 'GRAB', definition: 'Seize suddenly and roughly.'),
     AnagramTask(scrambled: 'SAVE', target: 'VASE', definition: 'A decorative container, typically of glass or china.'),
-    AnagramTask(scrambled: 'LEMON', target: 'MELON', definition: 'A yellow citrus fruit.'),
+    AnagramTask(scrambled: 'MELON', target: 'LEMON', definition: 'A yellow citrus fruit.'),
   ];
 
   AnagramTask getRandomTask() {
