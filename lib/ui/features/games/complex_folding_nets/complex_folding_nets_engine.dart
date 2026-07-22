@@ -24,8 +24,8 @@ class ComplexFoldingNetsEngine {
     NetSolidPair(type: SolidType.hexagonalPyramid, name: 'Hexagonal Pyramid'),
     NetSolidPair(type: SolidType.pentagonalPrism, name: 'Pentagonal Prism'),
     NetSolidPair(type: SolidType.octahedron, name: 'Octahedron'),
-    NetSolidPair(type: SolidType.tetrahedron, name: 'Tetrahedron'),
     NetSolidPair(type: SolidType.squarePyramid, name: 'Square Pyramid'),
+    NetSolidPair(type: SolidType.squarePyramid, name: 'Tetrahedron'),
     NetSolidPair(type: SolidType.triangularPyramid, name: 'Triangular Pyramid'),
   ];
 
@@ -33,9 +33,12 @@ class ComplexFoldingNetsEngine {
     final random = Random();
     final correctPair = pairs[random.nextInt(pairs.length)];
     
+    // Remove all pairs of the same type to prevent options having multiple correct answers
+    final availablePairs = pairs.where((p) => p.type != correctPair.type).toList();
+    
     final options = <NetSolidPair>[correctPair];
     while (options.length < 4) {
-      final pair = pairs[random.nextInt(pairs.length)];
+      final pair = availablePairs[random.nextInt(availablePairs.length)];
       if (!options.contains(pair)) {
         options.add(pair);
       }
