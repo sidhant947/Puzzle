@@ -48,15 +48,15 @@ class _NorinoriScreenState extends ConsumerState<NorinoriScreen> {
       ],
       totalRooms: 3,
     ),
-    // Puzzle 3: 5 rooms
+    // Puzzle 3: 4 rooms
     NorinoriPuzzle(
       roomIds: [
-        [0, 0, 1, 2],
-        [3, 0, 1, 2],
-        [3, 4, 4, 2],
-        [3, 3, 4, 4]
+        [0, 0, 0, 1],
+        [3, 3, 1, 1],
+        [3, 3, 2, 2],
+        [3, 3, 2, 2]
       ],
-      totalRooms: 5,
+      totalRooms: 4,
     ),
   ];
 

@@ -43,6 +43,7 @@ class GameTile extends ConsumerWidget {
       padding:
           EdgeInsets.zero, // Handle padding in Stack to allow background bleed
       onTap: () {
+        ScaffoldMessenger.of(context).clearSnackBars();
         ref.read(gameSessionNotifierProvider.notifier).setSession(
               gameId: gameId,
               category: selectedCategory,
@@ -310,8 +311,10 @@ class GameTileWrapper extends ConsumerWidget {
             onPressed: (_) {
               HapticFeedbackUtil.mediumImpact();
               ref.read(userDataNotifierProvider.notifier).toggleHideGame(game.id);
+              ScaffoldMessenger.of(context).clearSnackBars();
               ScaffoldMessenger.of(context).showSnackBar(
                 SnackBar(
+                  behavior: SnackBarBehavior.floating,
                   content: Text(l10n.gameHidden),
                   action: SnackBarAction(
                     label: l10n.undo,

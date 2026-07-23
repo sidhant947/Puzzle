@@ -7,15 +7,24 @@ enum SolidType {
   octahedron,
   tetrahedron,
   squarePyramid,
-  triangularPyramid,
 }
 
 class NetSolidPair {
   final SolidType type;
   final String name;
-  // We can represent the net as a list of points/shapes or just use the type to draw it.
   
   NetSolidPair({required this.type, required this.name});
+
+  @override
+  bool operator ==(Object other) =>
+      identical(this, other) ||
+      other is NetSolidPair &&
+          runtimeType == other.runtimeType &&
+          type == other.type &&
+          name == other.name;
+
+  @override
+  int get hashCode => type.hashCode ^ name.hashCode;
 }
 
 class ComplexFoldingNetsEngine {
@@ -26,7 +35,6 @@ class ComplexFoldingNetsEngine {
     NetSolidPair(type: SolidType.octahedron, name: 'Octahedron'),
     NetSolidPair(type: SolidType.tetrahedron, name: 'Tetrahedron'),
     NetSolidPair(type: SolidType.squarePyramid, name: 'Square Pyramid'),
-    NetSolidPair(type: SolidType.triangularPyramid, name: 'Triangular Pyramid'),
   ];
 
   Map<String, dynamic> generateLevel() {

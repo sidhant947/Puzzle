@@ -211,7 +211,6 @@ class NetPainter extends CustomPainter {
         _drawOctahedron(canvas, center, s, paint, fillPaint);
         break;
       case SolidType.tetrahedron:
-      case SolidType.triangularPyramid:
         _drawTetrahedron(canvas, center, s, paint, fillPaint);
         break;
       case SolidType.squarePyramid:

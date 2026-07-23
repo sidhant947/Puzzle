@@ -1145,18 +1145,18 @@ const Map<String, GameGuide> gameGuides = {
   "double_trouble": GameGuide(
     title: "Double Trouble",
     category: "FLEXIBILITY",
-    objective: "Determine if the color of the first word matches the meaning of the second word.",
-    controls: "Tap YES or NO based on the match criteria.",
+    objective: "Manage two simultaneous mini-games by tapping targets on both sides of the screen.",
+    controls: "Tap the falling apples on the left and the growing bubbles on the right.",
     walkthrough: const [
-      "Step 1: Look at the first word and identify its font COLOR, ignoring the text.",
-      "Step 2: Look at the second word and read its TEXT meaning.",
-      "Step 3: Decide if the color of the first word matches the text of the second word.",
-      "Step 4: Tap YES if they match, NO if they do not.",
+      "Step 1: On the left side, tap falling green apples to score points before they reach the bottom.",
+      "Step 2: Avoid tapping red apples, as they deduct points.",
+      "Step 3: On the right side, tap the blue bubble before it grows too large and bursts.",
+      "Step 4: Reach the target number of taps across both sides to complete the game.",
     ],
     strategies: const [
-      "Actively force yourself to ignore the spelling of the top word.",
-      "Actively force yourself to ignore the color of the bottom word.",
-      "Take a brief pause before answering to avoid impulsive mistakes.",
+      "Keep your eyes moving between both sides to avoid missing targets.",
+      "Prioritize catching green apples quickly, as missing them also costs points.",
+      "Pop bubbles early before they get too close to bursting on their own.",
     ],
   ),
   "dual_coding": GameGuide(

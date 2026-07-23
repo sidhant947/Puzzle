@@ -10,8 +10,8 @@ void main() {
     });
 
     group('pairs', () {
-      test('has 7 solid types', () {
-        expect(engine.pairs.length, 7);
+      test('pairs has 6 solid types', () {
+        expect(engine.pairs.length, 6);
       });
 
       test('each pair has a name', () {

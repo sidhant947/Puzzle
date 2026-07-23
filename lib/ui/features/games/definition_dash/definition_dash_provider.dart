@@ -26,8 +26,8 @@ class DefinitionDashState {
     return DefinitionDashState(
       puzzle: puzzle ?? this.puzzle,
       isGameOver: isGameOver ?? this.isGameOver,
-      selectedDefinition: selectedDefinition,
-      isCorrect: isCorrect,
+      selectedDefinition: selectedDefinition ?? this.selectedDefinition,
+      isCorrect: isCorrect ?? this.isCorrect,
     );
   }
 }
