@@ -195,8 +195,8 @@ class GameTile extends ConsumerWidget {
             ],
             if (isFavorite) ...[
               const SizedBox(width: 8),
-              const Icon(Icons.favorite_rounded,
-                  color: DesignSystem.gameRose, size: 18),
+              const Icon(Icons.star_rounded,
+                  color: DesignSystem.accentAmber, size: 18),
             ],
           ],
         ),
@@ -342,8 +342,8 @@ class GameTileWrapper extends ConsumerWidget {
               ref.read(userDataNotifierProvider.notifier).toggleFavorite(game.id);
             },
             backgroundColor: Colors.transparent,
-            foregroundColor: DesignSystem.gameRose,
-            icon: isFavorite ? Icons.heart_broken_rounded : Icons.favorite_rounded,
+            foregroundColor: DesignSystem.accentAmber,
+            icon: isFavorite ? Icons.star_border_rounded : Icons.star_rounded,
           ),
         ],
       ),
