@@ -18,6 +18,8 @@ class Game2048Screen extends ConsumerStatefulWidget {
 }
 
 class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
+  bool _hapticEnabled = true;
+
   @override
   Widget build(BuildContext context) {
     final l10n = AppLocalizations.of(context)!;
@@ -27,7 +29,7 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
 
     ref.listen(game2048NotifierProvider, (previous, next) {
       if (next.isGameOver && !(previous?.isGameOver ?? false)) {
-        HapticFeedbackUtil.heavyImpact();
+        if (_hapticEnabled) HapticFeedbackUtil.heavyImpact();
         _showGameOverDialog(context, ref, next);
       }
     });
@@ -40,124 +42,121 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
           color: colorScheme.surface,
           shadowColor: colorScheme.outline,
           onTap: () {
-            HapticFeedbackUtil.mediumImpact();
+            if (_hapticEnabled) HapticFeedbackUtil.mediumImpact();
             notifier.reset();
           },
           padding: const EdgeInsets.all(12),
           child: Icon(Icons.refresh_rounded, size: 20, color: colorScheme.onSurface),
         ),
       ],
-      body: LayoutBuilder(
-        builder: (context, constraints) {
-          return Column(
-            children: [
-              SizedBox(height: DesignSystem.spaceSM),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.end,
-                  children: [
-                    _buildScoreBoard(context, l10n.score.toUpperCase(), state.score),
-                  ],
-                ),
-              ),
-              const Spacer(),
-              _buildGameBoard(context, state, notifier, constraints.maxHeight * 0.55),
-              const Spacer(flex: 2),
-              Padding(
-                padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG, vertical: DesignSystem.spaceSM),
-                child: Text(
-                  l10n.game2048Instruction,
-                  style: TextStyle(
-                    color: colorScheme.onSurface.withValues(alpha: 0.7),
-                    letterSpacing: 1.2,
-                    fontWeight: FontWeight.w800,
-                    fontSize: 10,
-                  ),
-                  textAlign: TextAlign.center,
-                ),
-              ),
-              const SizedBox(height: DesignSystem.spaceLG),
-            ],
-          );
+      body: GestureDetector(
+        behavior: HitTestBehavior.opaque,
+        onPanEnd: (details) {
+          final dx = details.velocity.pixelsPerSecond.dx;
+          final dy = details.velocity.pixelsPerSecond.dy;
+          final absDx = dx.abs();
+          final absDy = dy.abs();
+
+          if (absDx < 50 && absDy < 50) return;
+
+          if (_hapticEnabled) HapticFeedbackUtil.gameInteraction();
+
+          if (absDx > absDy) {
+            notifier.move(dx > 0 ? 1 : -1, 0);
+          } else {
+            notifier.move(0, dy > 0 ? 1 : -1);
+          }
         },
+        child: LayoutBuilder(
+          builder: (context, constraints) {
+            return Column(
+              children: [
+                SizedBox(height: DesignSystem.spaceSM),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+                      _buildScoreBoard(context, l10n.score.toUpperCase(), state.score),
+                      const SizedBox(width: DesignSystem.spaceSM),
+                      _buildHapticToggle(context),
+                    ],
+                  ),
+                ),
+                const Spacer(),
+                _buildGameBoard(context, state, notifier, constraints.maxHeight * 0.55),
+                const Spacer(flex: 2),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG, vertical: DesignSystem.spaceSM),
+                  child: Text(
+                    l10n.game2048Instruction,
+                    style: TextStyle(
+                      color: colorScheme.onSurface.withValues(alpha: 0.7),
+                      letterSpacing: 1.2,
+                      fontWeight: FontWeight.w800,
+                      fontSize: 10,
+                    ),
+                    textAlign: TextAlign.center,
+                  ),
+                ),
+                const SizedBox(height: DesignSystem.spaceLG),
+              ],
+            );
+          },
+        ),
       ),
     );
   }
 
   Widget _buildGameBoard(BuildContext context, Game2048State state, Game2048Notifier notifier, double maxHeight) {
     return Center(
-      child: GestureDetector(
-        onVerticalDragEnd: (details) {
-          if (details.primaryVelocity! < -100) {
-            HapticFeedbackUtil.gameInteraction();
-            notifier.move(0, -1);
-          }
-          if (details.primaryVelocity! > 100) {
-            HapticFeedbackUtil.gameInteraction();
-            notifier.move(0, 1);
-          }
-        },
-        onHorizontalDragEnd: (details) {
-          if (details.primaryVelocity! < -100) {
-            HapticFeedbackUtil.gameInteraction();
-            notifier.move(-1, 0);
-          }
-          if (details.primaryVelocity! > 100) {
-            HapticFeedbackUtil.gameInteraction();
-            notifier.move(1, 0);
-          }
-        },
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
-          child: ConstrainedBox(
-            constraints: BoxConstraints(maxHeight: maxHeight),
-            child: TangibleContainer(
-              color: Theme.of(context).colorScheme.onSurface,
-              shadowColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
-              radius: DesignSystem.radiusMD,
-              depth: 4.0, // Reduced depth
-              padding: const EdgeInsets.all(3.0), // Reduced padding
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Theme.of(context).scaffoldBackgroundColor,
-                  borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
-                ),
-                child: AspectRatio(
-                  aspectRatio: 1,
-                  child: Padding(
-                    padding: const EdgeInsets.all(6.0),
-                    child: LayoutBuilder(builder: (context, constraints) {
-                      final double cellSize = (constraints.maxWidth - (6 * 3)) / 4;
-                      return Stack(
-                        children: [
-                          // Empty background cells
-                          ...List.generate(16, (i) {
-                            int x = i % 4;
-                            int y = i ~/ 4;
-                            return Positioned(
-                              left: x * (cellSize + 6),
-                              top: y * (cellSize + 6),
-                              width: cellSize,
-                              height: cellSize,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5).withValues(alpha: 0.5),
-                                  borderRadius: BorderRadius.circular(8),
-                                ),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
+        child: ConstrainedBox(
+          constraints: BoxConstraints(maxHeight: maxHeight),
+          child: TangibleContainer(
+            color: Theme.of(context).colorScheme.onSurface,
+            shadowColor: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
+            radius: DesignSystem.radiusMD,
+            depth: 4.0,
+            padding: const EdgeInsets.all(3.0),
+            child: Container(
+              decoration: BoxDecoration(
+                color: Theme.of(context).scaffoldBackgroundColor,
+                borderRadius: BorderRadius.circular(DesignSystem.radiusMD - 4),
+              ),
+              child: AspectRatio(
+                aspectRatio: 1,
+                child: Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: LayoutBuilder(builder: (context, constraints) {
+                    final double cellSize = (constraints.maxWidth - (6 * 3)) / 4;
+                    return Stack(
+                      children: [
+                        ...List.generate(16, (i) {
+                          int x = i % 4;
+                          int y = i ~/ 4;
+                          return Positioned(
+                            left: x * (cellSize + 6),
+                            top: y * (cellSize + 6),
+                            width: cellSize,
+                            height: cellSize,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Theme.of(context).colorScheme.outline.withValues(alpha: 0.5).withValues(alpha: 0.5),
+                                borderRadius: BorderRadius.circular(8),
                               ),
-                            );
-                          }),
-                          // Active tiles
-                          ...state.tiles.where((t) => !t.merged).map((tile) => AnimatedTile(
-                                key: ValueKey(tile.id),
-                                tile: tile,
-                                cellSize: cellSize,
-                              )),
-                        ],
-                      );
-                    }),
-                  ),
+                            ),
+                          );
+                        }),
+                        ...state.tiles.where((t) => !t.merged).map((tile) => AnimatedTile(
+                              key: ValueKey(tile.id),
+                              tile: tile,
+                              cellSize: cellSize,
+                            )),
+                      ],
+                    );
+                  }),
                 ),
               ),
             ),
@@ -175,23 +174,46 @@ class _Game2048ScreenState extends ConsumerState<Game2048Screen> {
       child: Column(
         children: [
           Text(
-            label, 
+            label,
             style: TextStyle(
-              fontSize: 9, 
-              fontWeight: FontWeight.w900, 
-              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7), 
-              letterSpacing: 1.0
-            )
+              fontSize: 9,
+              fontWeight: FontWeight.w900,
+              color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
+              letterSpacing: 1.0,
+            ),
           ),
           Text(
-            score.toString(), 
+            score.toString(),
             style: const TextStyle(
               fontSize: 16,
-              fontWeight: FontWeight.w900, 
-              color: DesignSystem.primary
-            )
+              fontWeight: FontWeight.w900,
+              color: DesignSystem.primary,
+            ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildHapticToggle(BuildContext context) {
+    return TangibleButton(
+      color: _hapticEnabled
+          ? Theme.of(context).colorScheme.primary.withValues(alpha: 0.15)
+          : Theme.of(context).colorScheme.surface,
+      shadowColor: Theme.of(context).colorScheme.outline,
+      onTap: () {
+        setState(() {
+          _hapticEnabled = !_hapticEnabled;
+        });
+        if (_hapticEnabled) HapticFeedbackUtil.lightImpact();
+      },
+      padding: const EdgeInsets.all(12),
+      child: Icon(
+        _hapticEnabled ? Icons.vibration : Icons.phone_android,
+        size: 20,
+        color: _hapticEnabled
+            ? Theme.of(context).colorScheme.primary
+            : Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.5),
       ),
     );
   }
@@ -270,7 +292,7 @@ class _AnimatedTileState extends State<AnimatedTile> with SingleTickerProviderSt
     _top = (tile.oldY ?? tile.y) * (cellSize + 6);
 
     _controller = AnimationController(
-      duration: const Duration(milliseconds: 200),
+      duration: const Duration(milliseconds: 120),
       vsync: this,
     );
 
@@ -318,7 +340,7 @@ class _AnimatedTileState extends State<AnimatedTile> with SingleTickerProviderSt
     final cellSize = widget.cellSize;
 
     return AnimatedPositioned(
-      duration: const Duration(milliseconds: 200),
+      duration: const Duration(milliseconds: 120),
       curve: Curves.easeOutCubic,
       left: _left,
       top: _top,
@@ -354,27 +376,29 @@ class _AnimatedTileState extends State<AnimatedTile> with SingleTickerProviderSt
   }
 
   Color _getTileColor(BuildContext context, int value) {
-    // Logarithmic color mapping using DesignSystem accents
-    if (value <= 2) return Theme.of(context).colorScheme.surface;
-    if (value <= 4) return Theme.of(context).colorScheme.outline.withValues(alpha: 0.5);
-    if (value <= 8) return DesignSystem.accentAmber.withValues(alpha: 0.3);
-    if (value <= 16) return DesignSystem.accentAmber.withValues(alpha: 0.6);
-    if (value <= 32) return DesignSystem.accentBerry.withValues(alpha: 0.3);
-    if (value <= 64) return DesignSystem.accentBerry.withValues(alpha: 0.6);
-    if (value <= 128) return DesignSystem.primary.withValues(alpha: 0.4);
-    if (value <= 256) return DesignSystem.primary.withValues(alpha: 0.7);
-    if (value <= 512) return DesignSystem.primary;
-    if (value <= 1024) return DesignSystem.accentEmerald;
-    return DesignSystem.accentAmber;
+    switch (value) {
+      case 2:    return const Color(0xFFEEE4DA);
+      case 4:    return const Color(0xFFEDE0C8);
+      case 8:    return const Color(0xFFF2B179);
+      case 16:   return const Color(0xFFF59563);
+      case 32:   return const Color(0xFFF67C5F);
+      case 64:   return const Color(0xFFF65E3B);
+      case 128:  return const Color(0xFFEDCF72);
+      case 256:  return const Color(0xFFEDCC61);
+      case 512:  return const Color(0xFFEDC850);
+      case 1024: return const Color(0xFFEDC53F);
+      case 2048: return const Color(0xFFEDC22E);
+      default:   return const Color(0xFF3C3A32);
+    }
   }
 
   Color _getShadowColor(BuildContext context, int value) {
-    if (value <= 2) return Theme.of(context).colorScheme.outline;
-    return Colors.black.withValues(alpha: 0.1);
+    if (value <= 4) return const Color(0xFFD6CFC4);
+    return Colors.black.withValues(alpha: 0.15);
   }
 
   Color _getTextColor(BuildContext context, int value) {
-    if (value <= 4) return Theme.of(context).colorScheme.onSurface;
-    return Theme.of(context).colorScheme.onSurface;
+    if (value <= 4) return const Color(0xFF776E65);
+    return Colors.white;
   }
 }
