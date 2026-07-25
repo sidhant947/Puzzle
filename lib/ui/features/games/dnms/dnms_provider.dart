@@ -154,7 +154,7 @@ class DnmsNotifier extends _$DnmsNotifier {
     // After 2 seconds, transition to delay
     _phaseTimer = Timer(const Duration(seconds: 2), () {
       state = state.copyWith(phase: DnmsPhase.delay);
-      
+
       // Delay phase for 1.5 seconds, then choice phase
       _phaseTimer = Timer(const Duration(milliseconds: 1500), () {
         final options = _generateOptions(sample, state.currentDifficulty);
@@ -170,9 +170,9 @@ class DnmsNotifier extends _$DnmsNotifier {
   }
 
   List<DnmsCard> _generateOptions(DnmsCard sample, int count) {
-    final options = <DnmsCard>[sample];
-    final usedIcons = {sample.icon};
-    final usedColors = {sample.color};
+    final options = <DnmsCard>[];
+    final usedIcons = <IconData>{sample.icon};
+    final usedColors = <Color>{sample.color};
 
     Color pickDifferentColor() {
       final available = _colors.where((c) => c != sample.color).toList();
@@ -184,57 +184,39 @@ class DnmsNotifier extends _$DnmsNotifier {
       return available[_random.nextInt(available.length)];
     }
 
-    IconData pickAnyIcon() {
-      final available = _icons.where((i) => !usedIcons.contains(i)).toList();
-      if (available.isEmpty) return _icons[_random.nextInt(_icons.length)];
-      return available[_random.nextInt(available.length)];
+    for (var i = 0; i < count - 1; i++) {
+      if (i % 2 == 0) {
+        final color = pickDifferentColor();
+        options.add(DnmsCard(id: i, icon: sample.icon, color: color));
+        usedColors.add(color);
+      } else {
+        final icon = pickDifferentIcon();
+        options.add(DnmsCard(id: i, icon: icon, color: sample.color));
+        usedIcons.add(icon);
+      }
     }
 
-    Color pickAnyColor() {
-      final available = _colors.where((c) => !usedColors.contains(c)).toList();
-      if (available.isEmpty) return _colors[_random.nextInt(_colors.length)];
-      return available[_random.nextInt(available.length)];
+    IconData novelIcon = _icons.firstWhere((i) => !usedIcons.contains(i),
+        orElse: () => sample.icon);
+    Color novelColor = _colors.firstWhere((c) => !usedColors.contains(c),
+        orElse: () => sample.color);
+    if (novelIcon == sample.icon) {
+      novelIcon = pickDifferentIcon();
     }
-
-    // First novel: same icon, different color
-    if (options.length < count) {
-      final card = DnmsCard(
-        id: options.length,
-        icon: sample.icon,
-        color: pickDifferentColor(),
-      );
-      options.add(card);
-      usedColors.add(card.color);
+    if (novelColor == sample.color) {
+      novelColor = pickDifferentColor();
     }
+    options.add(DnmsCard(id: count - 1, icon: novelIcon, color: novelColor));
 
-    // Second novel: same color, different icon
-    if (options.length < count) {
-      final card = DnmsCard(
-        id: options.length,
-        icon: pickDifferentIcon(),
-        color: sample.color,
-      );
-      options.add(card);
-      usedIcons.add(card.icon);
-    }
-
-    // Third novel (difficulty 4): completely different
-    if (options.length < count) {
-      final card = DnmsCard(
-        id: options.length,
-        icon: pickAnyIcon(),
-        color: pickAnyColor(),
-      );
-      options.add(card);
-    }
-
+    options.shuffle(_random);
     return options;
   }
 
   void onSelectCard(DnmsCard card) {
     if (state.isGameOver || state.phase != DnmsPhase.choice) return;
 
-    final isCorrect = card.icon != state.sampleCard!.icon || card.color != state.sampleCard!.color;
+    final isCorrect = card.icon != state.sampleCard!.icon &&
+        card.color != state.sampleCard!.color;
 
     int newDifficulty = state.currentDifficulty;
     if (isCorrect) {

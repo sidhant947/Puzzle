@@ -6,7 +6,7 @@ part of 'dnms_provider.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$dnmsNotifierHash() => r'a99a29d8584a523e2f957389a84e5b1a7b840658';
+String _$dnmsNotifierHash() => r'9bb3fedddbaf0501ae18dff408850f8ac39307fe';
 
 /// See also [DnmsNotifier].
 @ProviderFor(DnmsNotifier)

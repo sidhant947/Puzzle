@@ -1094,18 +1094,19 @@ const Map<String, GameGuide> gameGuides = {
   "dnms": GameGuide(
     title: "Delayed Non-Match to Sample",
     category: "MEMORY",
-    objective: "Choose the novel object that was NOT shown in the previous sample.",
+    objective: "Choose the novel object that was NOT shown in the previous sample. Score 12 or more to win.",
     controls: "Observe the sample, wait, and then tap the new/different object.",
     walkthrough: const [
       "Step 1: Look at the sample object presented on screen.",
       "Step 2: Wait for the screen to clear during the delay period.",
-      "Step 3: Two objects will appear: the original sample and a new object.",
-      "Step 4: Tap the NEW object that does not match the sample.",
+      "Step 3: Multiple objects will appear. Only ONE is the novel object.",
+      "Step 4: Tap the novel object that differs in both icon and color from the sample.",
     ],
     strategies: const [
-      "Firmly lock the visual features of the sample object in your mind.",
-      "Remember that you must select the OPPOSITE of what you saw.",
-      "As the delay increases, keep rehearsing the sample's details.",
+      "Firmly lock both the icon and color of the sample object in your mind.",
+      "The correct card is the one that is completely different (different icon AND different color).",
+      "Cards that share the same icon or same color as the sample are decoys.",
+      "Difficulty increases with correct streaks: more decoys appear as you succeed.",
     ],
   ),
   "dominosa": GameGuide(
