@@ -10,17 +10,18 @@ import '../../../../utils/haptic_feedback.dart';
 import '../../../../widgets/game_completion_dialog.dart';
 import '../../../../widgets/tangible.dart';
 import '../../../core/juice/game_scaffold.dart';
+import 'klotski_engine.dart';
 
-class KlotskiBlock {
+class KlotskiBlockUI {
   final String id;
   final int width;
   final int height;
-  int x; // grid column (0..3)
-  int y; // grid row (0..4)
+  int x;
+  int y;
   final Color color;
   final String label;
 
-  KlotskiBlock({
+  KlotskiBlockUI({
     required this.id,
     required this.width,
     required this.height,
@@ -39,12 +40,26 @@ class KlotskiScreen extends ConsumerStatefulWidget {
 }
 
 class _KlotskiScreenState extends ConsumerState<KlotskiScreen> {
-  late List<KlotskiBlock> _blocks;
+  late List<KlotskiBlockUI> _blocks;
   int _moves = 0;
-  KlotskiBlock? _selectedBlock;
+  KlotskiBlockUI? _selectedBlock;
   double _panStartX = 0;
   double _panStartY = 0;
   bool _panActive = false;
+
+  static const _blockColors = {
+    'hero': DesignSystem.gameRose,
+    'v': DesignSystem.gameBlue,
+    'h': DesignSystem.gameOrange,
+    's': DesignSystem.gamePurple,
+  };
+
+  static const _blockLabels = {
+    'hero': 'HERO',
+    'v': 'GUARD',
+    'h': 'SOLDIER',
+    's': 'PAWN',
+  };
 
   @override
   void initState() {
@@ -56,120 +71,33 @@ class _KlotskiScreenState extends ConsumerState<KlotskiScreen> {
     setState(() {
       _moves = 0;
       _selectedBlock = null;
-      _blocks = [
-        // Hero (2x2)
-        KlotskiBlock(
-          id: 'hero',
-          width: 2,
-          height: 2,
-          x: 1,
-          y: 0,
-          color: DesignSystem.gameRose,
-          label: 'HERO',
-        ),
-        // Left vertical (1x2)
-        KlotskiBlock(
-          id: 'left_vert_1',
-          width: 1,
-          height: 2,
-          x: 0,
-          y: 0,
-          color: DesignSystem.gameBlue,
-          label: 'GUARD',
-        ),
-        // Right vertical (1x2)
-        KlotskiBlock(
-          id: 'right_vert_1',
-          width: 1,
-          height: 2,
-          x: 3,
-          y: 0,
-          color: DesignSystem.gameBlue,
-          label: 'GUARD',
-        ),
-        // Left middle vertical (1x2)
-        KlotskiBlock(
-          id: 'left_vert_2',
-          width: 1,
-          height: 2,
-          x: 0,
-          y: 2,
-          color: DesignSystem.gameTeal,
-          label: 'GUARD',
-        ),
-        // Right middle vertical (1x2)
-        KlotskiBlock(
-          id: 'right_vert_2',
-          width: 1,
-          height: 2,
-          x: 3,
-          y: 2,
-          color: DesignSystem.gameTeal,
-          label: 'GUARD',
-        ),
-        // Horizontal (2x1)
-        KlotskiBlock(
-          id: 'horiz_1',
-          width: 2,
-          height: 1,
-          x: 1,
-          y: 2,
-          color: DesignSystem.gameOrange,
-          label: 'SOLDIER',
-        ),
-        // Single 1 (1x1)
-        KlotskiBlock(
-          id: 'single_1',
-          width: 1,
-          height: 1,
-          x: 1,
-          y: 3,
-          color: DesignSystem.gamePurple,
-          label: 'PAWN',
-        ),
-        // Single 2 (1x1)
-        KlotskiBlock(
-          id: 'single_2',
-          width: 1,
-          height: 1,
-          x: 2,
-          y: 3,
-          color: DesignSystem.gamePurple,
-          label: 'PAWN',
-        ),
-        // Single 3 (1x1)
-        KlotskiBlock(
-          id: 'single_3',
-          width: 1,
-          height: 1,
-          x: 0,
-          y: 4,
-          color: DesignSystem.gamePurple,
-          label: 'PAWN',
-        ),
-        // Single 4 (1x1)
-        KlotskiBlock(
-          id: 'single_4',
-          width: 1,
-          height: 1,
-          x: 3,
-          y: 4,
-          color: DesignSystem.gamePurple,
-          label: 'PAWN',
-        ),
-      ];
+      _blocks = KlotskiEngine.defaultLayout.map((b) {
+        final prefix = b.id == 'hero'
+            ? 'hero'
+            : b.id.startsWith('v')
+                ? 'v'
+                : b.id.startsWith('h')
+                    ? 'h'
+                    : 's';
+        return KlotskiBlockUI(
+          id: b.id,
+          width: b.width,
+          height: b.height,
+          x: b.x,
+          y: b.y,
+          color: _blockColors[prefix]!,
+          label: _blockLabels[prefix]!,
+        );
+      }).toList();
     });
   }
 
-  bool _canMoveTo(KlotskiBlock block, int newX, int newY) {
-    // Check bounds
+  bool _canMoveTo(KlotskiBlockUI block, int newX, int newY) {
     if (newX < 0 || newX + block.width > 4) return false;
     if (newY < 0 || newY + block.height > 5) return false;
 
-    // Check collision with other blocks
     for (var other in _blocks) {
       if (other.id == block.id) continue;
-      // Overlap detection
       if (newX < other.x + other.width &&
           newX + block.width > other.x &&
           newY < other.y + other.height &&
@@ -180,7 +108,7 @@ class _KlotskiScreenState extends ConsumerState<KlotskiScreen> {
     return true;
   }
 
-  void _moveBlock(KlotskiBlock block, int dx, int dy) {
+  void _moveBlock(KlotskiBlockUI block, int dx, int dy) {
     final newX = block.x + dx;
     final newY = block.y + dy;
 
@@ -197,7 +125,6 @@ class _KlotskiScreenState extends ConsumerState<KlotskiScreen> {
 
   void _checkWin() {
     final hero = _blocks.firstWhere((b) => b.id == 'hero');
-    // Win if 2x2 Hero block reaches bottom middle: x = 1, y = 3
     if (hero.x == 1 && hero.y == 3) {
       HapticFeedbackUtil.victory();
       ref.read(gameStreakNotifierProvider.notifier).completeGame('klotski', xpAmount: 30);
@@ -231,10 +158,8 @@ class _KlotskiScreenState extends ConsumerState<KlotskiScreen> {
       onReset: _resetGame,
       body: LayoutBuilder(
         builder: (context, constraints) {
-          // Keep a strict 4:5 aspect ratio for the game board
           final boardWidth = min(constraints.maxWidth, constraints.maxHeight * 0.8) * 0.9;
           final boardHeight = boardWidth * 1.25;
-
           final cellWidth = boardWidth / 4;
           final cellHeight = boardHeight / 5;
 
@@ -242,7 +167,6 @@ class _KlotskiScreenState extends ConsumerState<KlotskiScreen> {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // Info Banner
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -265,12 +189,9 @@ class _KlotskiScreenState extends ConsumerState<KlotskiScreen> {
                   ],
                 ),
                 const SizedBox(height: DesignSystem.spaceMD),
-
-                // Main Game Board
                 Stack(
                   clipBehavior: Clip.none,
                   children: [
-                    // Outer Frame
                     TangibleContainer(
                       color: colorScheme.outline.withValues(alpha: 0.3),
                       radius: DesignSystem.radiusMD,
@@ -280,7 +201,6 @@ class _KlotskiScreenState extends ConsumerState<KlotskiScreen> {
                         height: boardHeight,
                         child: Stack(
                           children: [
-                            // Subtle background grid lines
                             Positioned.fill(
                               child: GridPaper(
                                 color: colorScheme.outline.withValues(alpha: 0.1),
@@ -289,8 +209,6 @@ class _KlotskiScreenState extends ConsumerState<KlotskiScreen> {
                                 interval: cellWidth,
                               ),
                             ),
-
-                            // Slidable blocks
                             ..._blocks.map((block) {
                               final isSelected = _selectedBlock?.id == block.id;
                               final canUp = _canMoveTo(block, block.x, block.y - 1);
@@ -321,23 +239,13 @@ class _KlotskiScreenState extends ConsumerState<KlotskiScreen> {
                                       if (dx.abs() > threshold || dy.abs() > threshold) {
                                         _panActive = false;
                                         if (dx.abs() > dy.abs()) {
-                                          if (dx > 0) {
-                                            _moveBlock(block, 1, 0);
-                                          } else {
-                                            _moveBlock(block, -1, 0);
-                                          }
+                                          _moveBlock(block, dx > 0 ? 1 : -1, 0);
                                         } else {
-                                          if (dy > 0) {
-                                            _moveBlock(block, 0, 1);
-                                          } else {
-                                            _moveBlock(block, 0, -1);
-                                          }
+                                          _moveBlock(block, 0, dy > 0 ? 1 : -1);
                                         }
                                       }
                                     },
-                                    onPanEnd: (_) {
-                                      _panActive = false;
-                                    },
+                                    onPanEnd: (_) => _panActive = false,
                                     onTap: () {
                                       HapticFeedbackUtil.lightImpact();
                                       setState(() {
@@ -354,29 +262,17 @@ class _KlotskiScreenState extends ConsumerState<KlotskiScreen> {
                                       child: Stack(
                                         alignment: Alignment.center,
                                         children: [
-                                          // Glow indicator if selected
                                           if (isSelected)
                                             Positioned.fill(
                                               child: Container(
                                                 decoration: BoxDecoration(
                                                   borderRadius: BorderRadius.circular(DesignSystem.radiusSM - 2),
-                                                  border: Border.all(
-                                                    color: Colors.white,
-                                                    width: 2.5,
-                                                  ),
+                                                  border: Border.all(color: Colors.white, width: 2.5),
                                                 ),
                                               ),
                                             ),
-
-                                          // Hero icon only
                                           if (block.id == 'hero')
-                                            const Icon(
-                                              Icons.stars_rounded,
-                                              color: Colors.white,
-                                              size: 28,
-                                            ),
-
-                                          // Overlay Navigation Arrows for Selected Block
+                                            const Icon(Icons.stars_rounded, color: Colors.white, size: 28),
                                           if (isSelected) ...[
                                             if (canUp)
                                               Positioned(
@@ -438,8 +334,6 @@ class _KlotskiScreenState extends ConsumerState<KlotskiScreen> {
                         ),
                       ),
                     ),
-
-                    // Escape Zone/Door marker at the bottom middle
                     Positioned(
                       bottom: -12,
                       left: cellWidth * 1 + DesignSystem.spaceXS,
