@@ -40,15 +40,12 @@ class SudokuEngine {
   }
 
   static bool isValid(dynamic board, int row, int col, int num) {
-    // Check row
     for (int i = 0; i < size; i++) {
       if (i != col && board[row][i] == num) return false;
     }
-    // Check column
     for (int i = 0; i < size; i++) {
       if (i != row && board[i][col] == num) return false;
     }
-    // Check box
     int boxRow = (row ~/ boxSize) * boxSize;
     int boxCol = (col ~/ boxSize) * boxSize;
     for (int i = 0; i < boxSize; i++) {
@@ -70,20 +67,59 @@ class SudokuEngine {
         List.generate(size, (r) => List.from(solvedBoard[r]));
     int totalCells = size * size;
     int toRemove = totalCells - clues;
-    
-    // Ensure we don't remove more than possible
-    toRemove = toRemove.clamp(0, totalCells - 17); // 17 is minimum for unique 9x9 Sudoku
-    
+    toRemove = toRemove.clamp(0, totalCells - 17);
+
     Random random = Random();
-    while (toRemove > 0) {
-      int r = random.nextInt(size);
-      int c = random.nextInt(size);
-      if (puzzle[r][c] != 0) {
-        puzzle[r][c] = 0;
-        toRemove--;
+    List<List<int>> candidates = [];
+    for (int r = 0; r < size; r++) {
+      for (int c = 0; c < size; c++) {
+        candidates.add([r, c]);
+      }
+    }
+    candidates.shuffle(random);
+
+    int removed = 0;
+    for (var candidate in candidates) {
+      if (removed >= toRemove) break;
+      int r = candidate[0];
+      int c = candidate[1];
+      if (puzzle[r][c] == 0) continue;
+
+      int backup = puzzle[r][c];
+      puzzle[r][c] = 0;
+
+      if (_countSolutions(puzzle) == 1) {
+        removed++;
+      } else {
+        puzzle[r][c] = backup;
       }
     }
     return puzzle;
+  }
+
+  int _countSolutions(List<List<int>> board) {
+    return _solve(board, 0);
+  }
+
+  int _solve(List<List<int>> board, int count) {
+    if (count > 1) return count;
+
+    for (int row = 0; row < size; row++) {
+      for (int col = 0; col < size; col++) {
+        if (board[row][col] == 0) {
+          for (int num = 1; num <= size; num++) {
+            if (_isValid(board, row, col, num)) {
+              board[row][col] = num;
+              count = _solve(board, count);
+              board[row][col] = 0;
+              if (count > 1) return count;
+            }
+          }
+          return count;
+        }
+      }
+    }
+    return count + 1;
   }
 
   bool isComplete(List<List<int>> board) {
@@ -96,15 +132,14 @@ class SudokuEngine {
   }
 
   bool isCorrect(List<List<int>> board, List<List<int>> solvedBoard) {
-    // A board is correct if it is completely filled and no rules are violated.
     if (!isComplete(board)) return false;
 
     for (int r = 0; r < size; r++) {
       for (int c = 0; c < size; c++) {
         int num = board[r][c];
-        board[r][c] = 0; // Temporarily remove to check validity
+        board[r][c] = 0;
         bool valid = _isValid(board, r, c, num);
-        board[r][c] = num; // Restore
+        board[r][c] = num;
         if (!valid) return false;
       }
     }

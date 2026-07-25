@@ -8,6 +8,7 @@ import '../utils/design_system.dart';
 import '../utils/haptic_feedback.dart';
 import '../utils/navigation_utils.dart';
 import '../providers/game_session_provider.dart';
+import '../ui/features/support/views/support_view.dart';
 import 'tangible.dart';
 
 class GameCompletionDialog extends ConsumerStatefulWidget {
@@ -349,7 +350,15 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
               ),
               const SizedBox(height: DesignSystem.spaceMD),
               InkWell(
-                onTap: () => _launchUrl('https://github.com/sponsors/sidhant947'),
+                onTap: () {
+                  final navigator = Navigator.of(context);
+                  navigator.pop();
+                  navigator.push(
+                    MaterialPageRoute(
+                      builder: (context) => const SupportView(),
+                    ),
+                  );
+                },
                 borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
@@ -358,13 +367,13 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
                       const Icon(
-                        Icons.favorite_rounded,
+                        Icons.local_cafe_rounded,
                         size: 14,
-                        color: Colors.redAccent,
+                        color: DesignSystem.accentAmber,
                       ),
                       const SizedBox(width: 6),
                       Text(
-                        'DONATE & SUPPORT',
+                        'BUY ME A COFFEE',
                         style: TextStyle(
                           fontSize: 11,
                           fontWeight: FontWeight.w800,

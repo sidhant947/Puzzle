@@ -7,6 +7,7 @@ import '../../../providers/locale_provider.dart';
 import '../../../providers/user_providers.dart';
 import '../../../utils/design_system.dart';
 import '../../../widgets/tangible.dart';
+import '../support/views/support_view.dart';
 
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
@@ -92,7 +93,9 @@ class SettingsScreen extends ConsumerWidget {
                           case 1: return const SizedBox(height: DesignSystem.spaceMD);
                           case 2: return _buildSettingsItem(context, l10n.starOnGithub, Icons.star_rounded, () => _launchUrl('https://github.com/sidhant947/Puzzle'), iconColor: Colors.amber);
                           case 3: return const SizedBox(height: DesignSystem.spaceSM);
-                          case 4: return _buildSettingsItem(context, l10n.supportUs, Icons.favorite_rounded, () => _launchUrl('https://buymeacoffee.com/sidhant947'), iconColor: Colors.pink);
+                          case 4: return _buildSettingsItem(context, l10n.supportUs, Icons.local_cafe_rounded, () {
+                            Navigator.push(context, MaterialPageRoute(builder: (context) => const SupportView()));
+                          }, iconColor: DesignSystem.accentAmber);
                           case 5: return const SizedBox(height: DesignSystem.spaceSM);
                           case 6: return _buildSettingsItem(context, l10n.leaveReview, Icons.rate_review_rounded, () => _launchUrl('https://play.google.com/store/apps/details?id=com.sidhant.puzzle'), iconColor: Colors.teal);
                           case 7: return const SizedBox(height: DesignSystem.spaceSM);
