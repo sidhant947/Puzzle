@@ -33,13 +33,10 @@ class BridgesEngine {
     while (attempts < 100) {
       attempts++;
       final board = _tryGenerate(size);
-      if (board != null) {
-        // Optional: Check for unique solution here if desired, 
-        // but growth algorithm usually produces good puzzles.
+      if (board != null && _hasUniqueSolution(board)) {
         return board;
       }
     }
-    // Final fallback to a very simple known level
     return _fallbackLevel();
   }
 
@@ -225,4 +222,146 @@ class BridgesEngine {
     // 2. Check connectivity
     return _isConnected(board.islands, connections);
   }
+
+  bool _hasUniqueSolution(BridgesBoard board) {
+    List<_CandidateConnection> candidates = [];
+    for (int i = 0; i < board.islands.length; i++) {
+      for (int j = i + 1; j < board.islands.length; j++) {
+        var i1 = board.islands[i];
+        var i2 = board.islands[j];
+        if (i1.x == i2.x || i1.y == i2.y) {
+          bool pathClear = true;
+          int minX = min(i1.x, i2.x), maxX = max(i1.x, i2.x);
+          int minY = min(i1.y, i2.y), maxY = max(i1.y, i2.y);
+          for (var other in board.islands) {
+            if (other.id == i1.id || other.id == i2.id) continue;
+            if (i1.y == i2.y && other.y == i1.y && other.x > minX && other.x < maxX) {
+              pathClear = false;
+              break;
+            }
+            if (i1.x == i2.x && other.x == i1.x && other.y > minY && other.y < maxY) {
+              pathClear = false;
+              break;
+            }
+          }
+          if (pathClear) {
+            List<Point<int>> path = [];
+            if (i1.y == i2.y) {
+              for (int x = minX + 1; x < maxX; x++) {
+                path.add(Point(x, i1.y));
+              }
+            } else {
+              for (int y = minY + 1; y < maxY; y++) {
+                path.add(Point(i1.x, y));
+              }
+            }
+            candidates.add(_CandidateConnection(
+              island1Id: i1.id,
+              island2Id: i2.id,
+              path: path,
+              isHorizontal: i1.y == i2.y,
+            ));
+          }
+        }
+      }
+    }
+
+    List<List<int>> crossings = List.generate(candidates.length, (_) => []);
+    for (int i = 0; i < candidates.length; i++) {
+      for (int j = i + 1; j < candidates.length; j++) {
+        var c1 = candidates[i];
+        var c2 = candidates[j];
+        if (c1.isHorizontal != c2.isHorizontal) {
+          bool cross = false;
+          for (var p1 in c1.path) {
+            for (var p2 in c2.path) {
+              if (p1.x == p2.x && p1.y == p2.y) {
+                cross = true;
+                break;
+              }
+            }
+            if (cross) break;
+          }
+          if (cross) {
+            crossings[i].add(j);
+            crossings[j].add(i);
+          }
+        }
+      }
+    }
+
+    int solutionCount = 0;
+    List<int> maxIslandIdList = board.islands.map((e) => e.id).toList();
+    int maxIslandId = maxIslandIdList.isEmpty ? 0 : maxIslandIdList.reduce(max);
+    List<int> remainingIslandCounts = List.filled(maxIslandId + 1, 0);
+    for (var island in board.islands) {
+      remainingIslandCounts[island.id] = island.count;
+    }
+
+    void solve(int index, List<int> currentCounts, List<int> remainingCounts) {
+      if (solutionCount > 1) return;
+      if (index == candidates.length) {
+        for (int c in remainingCounts) {
+          if (c != 0) return;
+        }
+        List<BridgesConnection> activeConnections = [];
+        for (int i = 0; i < candidates.length; i++) {
+          if (currentCounts[i] > 0) {
+            activeConnections.add(BridgesConnection(
+              island1Id: candidates[i].island1Id,
+              island2Id: candidates[i].island2Id,
+              count: currentCounts[i],
+            ));
+          }
+        }
+        if (_isConnected(board.islands, activeConnections)) {
+          solutionCount++;
+        }
+        return;
+      }
+
+      var cand = candidates[index];
+      int maxBridges = min(2, min(remainingCounts[cand.island1Id], remainingCounts[cand.island2Id]));
+
+      for (int b = 0; b <= maxBridges; b++) {
+        if (b > 0) {
+          bool hasCrossing = false;
+          for (int crossIdx in crossings[index]) {
+            if (crossIdx < index && currentCounts[crossIdx] > 0) {
+              hasCrossing = true;
+              break;
+            }
+          }
+          if (hasCrossing) continue;
+        }
+
+        currentCounts[index] = b;
+        remainingCounts[cand.island1Id] -= b;
+        remainingCounts[cand.island2Id] -= b;
+
+        solve(index + 1, currentCounts, remainingCounts);
+
+        currentCounts[index] = 0;
+        remainingCounts[cand.island1Id] += b;
+        remainingCounts[cand.island2Id] += b;
+      }
+    }
+
+    solve(0, List.filled(candidates.length, 0), remainingIslandCounts);
+    return solutionCount == 1;
+  }
+}
+
+class _CandidateConnection {
+  final int island1Id;
+  final int island2Id;
+  final List<Point<int>> path;
+  final bool isHorizontal;
+
+  _CandidateConnection({
+    required this.island1Id,
+    required this.island2Id,
+    required this.path,
+    required this.isHorizontal,
+  });
 }

@@ -8,6 +8,7 @@ import '../utils/design_system.dart';
 import '../utils/haptic_feedback.dart';
 import '../utils/navigation_utils.dart';
 import '../providers/game_session_provider.dart';
+import '../providers/user_providers.dart';
 import '../ui/features/support/views/support_view.dart';
 import 'tangible.dart';
 
@@ -58,15 +59,26 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
     final l10n = AppLocalizations.of(context)!;
 
     final session = ref.watch(gameSessionNotifierProvider);
+    final hiddenGameIds = ref.watch(userDataNotifierProvider.select((d) => d.hiddenGameIds ?? []));
 
     GameMetadata? nextGame;
     bool isSameGame = true;
     if (session.lastGameId != null) {
       final currentIndex = allGamesMetadata.indexWhere((g) => g.id == session.lastGameId);
       if (currentIndex != -1) {
-        final nextIndex = (currentIndex + 1) % allGamesMetadata.length;
-        nextGame = allGamesMetadata[nextIndex];
-        isSameGame = nextGame.id == session.lastGameId;
+        int nextIndex = (currentIndex + 1) % allGamesMetadata.length;
+        while (nextIndex != currentIndex) {
+          final candidate = allGamesMetadata[nextIndex];
+          if (!hiddenGameIds.contains(candidate.id)) {
+            nextGame = candidate;
+            break;
+          }
+          nextIndex = (nextIndex + 1) % allGamesMetadata.length;
+        }
+        if (nextGame == null && !hiddenGameIds.contains(session.lastGameId)) {
+          nextGame = allGamesMetadata[currentIndex];
+        }
+        isSameGame = nextGame?.id == session.lastGameId;
       }
     }
 
@@ -350,15 +362,7 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
               ),
               const SizedBox(height: DesignSystem.spaceMD),
               InkWell(
-                onTap: () {
-                  final navigator = Navigator.of(context);
-                  navigator.pop();
-                  navigator.push(
-                    MaterialPageRoute(
-                      builder: (context) => const SupportView(),
-                    ),
-                  );
-                },
+                onTap: () => _launchUrl('https://ko-fi.com/sidhant947'),
                 borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
                 child: Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
