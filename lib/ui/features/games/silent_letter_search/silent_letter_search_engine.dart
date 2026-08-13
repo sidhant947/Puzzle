@@ -6,12 +6,12 @@ class SilentLetterSearchEngine {
     SilentLetterWord(word: 'WRIST', silentIndices: [0]), // W
     SilentLetterWord(word: 'LAMB', silentIndices: [3]), // B
     SilentLetterWord(word: 'HONEST', silentIndices: [0]), // H
-    SilentLetterWord(word: 'PSALM', silentIndices: [0, 4]), // P, L
+    SilentLetterWord(word: 'PSALM', silentIndices: [0, 3]), // P, L
     SilentLetterWord(word: 'GNOME', silentIndices: [0]), // G
     SilentLetterWord(word: 'COLUMN', silentIndices: [5]), // N
     SilentLetterWord(word: 'DEBT', silentIndices: [2]), // B
     SilentLetterWord(word: 'SCENE', silentIndices: [1]), // C
-    SilentLetterWord(word: 'ISLAND', silentIndices: [2]), // S
+    SilentLetterWord(word: 'ISLAND', silentIndices: [1]), // S
     SilentLetterWord(word: 'CASTLE', silentIndices: [3]), // T
     SilentLetterWord(word: 'LISTEN', silentIndices: [3]), // T
     SilentLetterWord(word: 'ANSWER', silentIndices: [3]), // W
