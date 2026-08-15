@@ -2281,7 +2281,7 @@
   "stostoneTitle": "Stostone Gravity",
   "stostoneSubtitle": "Shade cells that drop down to fill bottom rows perfectly.",
   "tripletsLogicTitle": "Triplets Trio",
-  "tripletsLogicSubtitle": "Fill grid with three shapes avoiding three-in-a-row.",
+  "tripletsLogicSubtitle": "Fill the grid with three shapes, avoiding three-in-a-row. Every row and column must contain the same number of each shape.",
   "galaxiesSymTitle": "Galaxies Symmetry",
   "galaxiesSymSubtitle": "Divide grid into rotationally symmetric galaxy shapes.",
   "matrixMultiplierMatchTitle": "Matrix Matcher",

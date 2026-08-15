@@ -63,9 +63,7 @@ class _WordGridConnectionScreenState extends ConsumerState<WordGridConnectionScr
     _triesRemaining = 4;
     _isGameOver = false;
 
-    // Pick 4 unique random categories from the pool
     final shuffledPool = List<WordConnectionCategory>.from(_categoryPool)..shuffle(_random);
-    final selectedPool = shuffledPool.sublist(0, 4);
 
     _activeCategories = [];
     final words = <String>[];
@@ -77,19 +75,22 @@ class _WordGridConnectionScreenState extends ConsumerState<WordGridConnectionScr
       DesignSystem.gameOrange,
     ];
 
-    for (int i = 0; i < 4; i++) {
-      final poolCat = selectedPool[i];
-      // Pick 4 unique random words from this category's word list
-      final catWords = List<String>.from(poolCat.words)..shuffle(_random);
-      final activeWords = catWords.sublist(0, 4);
+    for (var poolCat in shuffledPool) {
+      if (_activeCategories.length == 4) break;
 
-      final activeCat = WordConnectionCategory(
-        title: poolCat.title,
-        words: activeWords,
-        color: colors[i],
-      );
-      _activeCategories.add(activeCat);
-      words.addAll(activeWords);
+      final catWords = List<String>.from(poolCat.words)..shuffle(_random);
+      final availableWords = catWords.where((w) => !words.contains(w)).toList();
+
+      if (availableWords.length >= 4) {
+        final activeWords = availableWords.sublist(0, 4);
+        final activeCat = WordConnectionCategory(
+          title: poolCat.title,
+          words: activeWords,
+          color: colors[_activeCategories.length],
+        );
+        _activeCategories.add(activeCat);
+        words.addAll(activeWords);
+      }
     }
 
     _scrambledWords = words..shuffle(_random);

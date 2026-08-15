@@ -50,6 +50,186 @@ class _TripletsLogicScreenState extends ConsumerState<TripletsLogicScreen> {
         [3, 1, 2, 3, 1, 2],
         [2, 3, 1, 2, 3, 1],
       ]
+    },
+    {
+      'fixed': [
+        [false, true, false, false, false, true],
+        [false, false, true, false, false, false],
+        [false, false, true, true, true, false],
+        [false, false, false, false, false, true],
+        [false, false, true, false, false, true],
+        [true, false, true, false, true, false],
+      ],
+      'solution': [
+        [3, 2, 1, 3, 1, 2],
+        [3, 2, 3, 2, 1, 1],
+        [1, 3, 3, 2, 2, 1],
+        [1, 3, 2, 1, 3, 2],
+        [2, 1, 1, 3, 2, 3],
+        [2, 1, 2, 1, 3, 3],
+      ]
+    },
+    {
+      'fixed': [
+        [false, true, true, true, false, true],
+        [false, false, true, false, true, true],
+        [false, false, true, false, false, false],
+        [false, true, false, false, false, false],
+        [false, false, false, true, false, false],
+        [false, true, false, true, false, false],
+      ],
+      'solution': [
+        [1, 1, 3, 3, 2, 2],
+        [2, 3, 2, 1, 1, 3],
+        [2, 3, 3, 1, 2, 1],
+        [3, 1, 1, 2, 3, 2],
+        [1, 2, 1, 2, 3, 3],
+        [3, 2, 2, 3, 1, 1],
+      ]
+    },
+    {
+      'fixed': [
+        [true, true, false, false, false, false],
+        [false, true, true, false, true, true],
+        [false, true, false, false, true, false],
+        [true, false, false, false, false, true],
+        [false, false, false, false, true, false],
+        [false, false, true, false, false, false],
+      ],
+      'solution': [
+        [3, 3, 1, 1, 2, 2],
+        [2, 2, 1, 3, 1, 3],
+        [1, 1, 3, 3, 2, 2],
+        [2, 1, 3, 2, 3, 1],
+        [1, 2, 2, 1, 3, 3],
+        [3, 3, 2, 2, 1, 1],
+      ]
+    },
+    {
+      'fixed': [
+        [true, true, false, true, true, false],
+        [false, true, false, false, true, false],
+        [true, false, false, false, true, false],
+        [true, false, true, false, true, false],
+        [false, false, false, false, false, true],
+        [false, false, false, false, false, false],
+      ],
+      'solution': [
+        [2, 2, 1, 1, 3, 3],
+        [3, 3, 2, 2, 1, 1],
+        [1, 2, 1, 3, 3, 2],
+        [1, 3, 3, 2, 2, 1],
+        [3, 1, 2, 3, 1, 2],
+        [2, 1, 3, 1, 2, 3],
+      ]
+    },
+    {
+      'fixed': [
+        [false, true, true, true, false, false],
+        [false, false, false, false, true, true],
+        [true, false, true, false, false, false],
+        [false, true, false, false, true, false],
+        [false, false, false, false, false, true],
+        [false, true, false, true, false, false],
+      ],
+      'solution': [
+        [1, 3, 2, 2, 3, 1],
+        [1, 3, 2, 1, 3, 2],
+        [3, 2, 3, 1, 1, 2],
+        [2, 1, 3, 3, 2, 1],
+        [3, 2, 1, 2, 1, 3],
+        [2, 1, 1, 3, 2, 3],
+      ]
+    },
+    {
+      'fixed': [
+        [false, false, false, true, false, false],
+        [true, true, false, false, false, true],
+        [false, true, false, false, false, false],
+        [false, true, false, false, true, true],
+        [false, false, true, true, true, false],
+        [false, true, false, false, false, false],
+      ],
+      'solution': [
+        [3, 2, 1, 2, 3, 1],
+        [1, 2, 3, 2, 1, 3],
+        [1, 3, 3, 1, 2, 2],
+        [3, 1, 1, 3, 2, 2],
+        [2, 3, 2, 1, 1, 3],
+        [2, 1, 2, 3, 3, 1],
+      ]
+    },
+    {
+      'fixed': [
+        [false, true, false, true, true, false],
+        [false, true, true, false, false, false],
+        [false, false, true, false, false, true],
+        [false, false, false, false, false, false],
+        [false, true, true, true, false, false],
+        [false, false, false, false, true, true],
+      ],
+      'solution': [
+        [2, 1, 1, 3, 2, 3],
+        [1, 3, 1, 2, 3, 2],
+        [2, 2, 3, 3, 1, 1],
+        [3, 1, 2, 1, 3, 2],
+        [3, 2, 3, 2, 1, 1],
+        [1, 3, 2, 1, 2, 3],
+      ]
+    },
+    {
+      'fixed': [
+        [false, true, false, true, false, false],
+        [false, true, false, false, true, true],
+        [false, false, true, true, false, false],
+        [false, false, true, false, false, false],
+        [false, false, false, false, false, false],
+        [true, true, false, false, true, true],
+      ],
+      'solution': [
+        [3, 2, 1, 1, 3, 2],
+        [1, 2, 2, 3, 1, 3],
+        [1, 3, 3, 2, 1, 2],
+        [2, 1, 3, 2, 3, 1],
+        [2, 1, 1, 3, 2, 3],
+        [3, 3, 2, 1, 2, 1],
+      ]
+    },
+    {
+      'fixed': [
+        [true, false, true, true, false, false],
+        [false, true, false, false, false, false],
+        [false, false, true, false, false, false],
+        [true, false, false, true, false, true],
+        [false, false, false, true, true, false],
+        [false, true, false, false, false, true],
+      ],
+      'solution': [
+        [1, 2, 2, 1, 3, 3],
+        [3, 1, 2, 3, 2, 1],
+        [3, 2, 3, 1, 1, 2],
+        [2, 1, 3, 3, 2, 1],
+        [1, 3, 1, 2, 3, 2],
+        [2, 3, 1, 2, 1, 3],
+      ]
+    },
+    {
+      'fixed': [
+        [false, false, true, false, true, false],
+        [true, false, false, true, false, false],
+        [true, false, false, false, false, false],
+        [false, true, false, false, true, false],
+        [true, true, false, false, false, true],
+        [false, false, false, true, false, true],
+      ],
+      'solution': [
+        [2, 3, 2, 3, 1, 1],
+        [1, 2, 1, 2, 3, 3],
+        [1, 3, 2, 2, 1, 3],
+        [2, 1, 3, 3, 2, 1],
+        [3, 1, 3, 1, 2, 2],
+        [3, 2, 1, 1, 3, 2],
+      ]
     }
   ];
 

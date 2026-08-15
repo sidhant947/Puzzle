@@ -16,6 +16,7 @@ class SternbergState {
   final bool isGameOver;
   final bool isLoading;
   final int setSize;
+  final bool lastAnswerCorrect;
 
   SternbergState({
     this.memorySet = const [],
@@ -27,6 +28,7 @@ class SternbergState {
     this.isGameOver = false,
     this.isLoading = true,
     this.setSize = 3,
+    this.lastAnswerCorrect = true,
   });
 
   SternbergState copyWith({
@@ -39,6 +41,7 @@ class SternbergState {
     bool? isGameOver,
     bool? isLoading,
     int? setSize,
+    bool? lastAnswerCorrect,
   }) {
     return SternbergState(
       memorySet: memorySet ?? this.memorySet,
@@ -50,6 +53,7 @@ class SternbergState {
       isGameOver: isGameOver ?? this.isGameOver,
       isLoading: isLoading ?? this.isLoading,
       setSize: setSize ?? this.setSize,
+      lastAnswerCorrect: lastAnswerCorrect ?? this.lastAnswerCorrect,
     );
   }
 }
@@ -106,6 +110,7 @@ class SternbergTaskNotifier extends _$SternbergTaskNotifier {
     state = state.copyWith(
       score: isCorrect ? state.score + 1 : state.score,
       phase: SternbergPhase.feedback,
+      lastAnswerCorrect: isCorrect,
       setSize: isCorrect 
           ? (state.setSize < 7 ? state.setSize + 1 : 7) 
           : (state.setSize > 3 ? state.setSize - 1 : 3),

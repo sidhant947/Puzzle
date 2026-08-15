@@ -163,6 +163,27 @@ class _RelationalMemoryScreenState extends ConsumerState<RelationalMemoryScreen>
           ),
         );
       }
+    } else {
+      showDialog(
+        context: context,
+        barrierDismissible: false,
+        builder: (context) => GameCompletionDialog(
+          title: AppLocalizations.of(context)!.gameOver,
+          message: "One or more placed icons are incorrect. Keep training to improve your relational memory!",
+          isVictory: false,
+          onHome: () {
+            Navigator.pop(context);
+            Navigator.pop(context);
+          },
+          onPlayAgain: () {
+            Navigator.pop(context);
+            setState(() {
+              _round = 1;
+            });
+            _startRound();
+          },
+        ),
+      );
     }
   }
 

@@ -133,7 +133,11 @@ class _SternbergTaskScreenState extends ConsumerState<SternbergTaskScreen> {
         style: const TextStyle(fontSize: 80, fontWeight: FontWeight.w900, color: DesignSystem.primary),
       );
     } else {
-      return const Icon(Icons.check_circle_outline, size: 80, color: DesignSystem.success);
+      return Icon(
+        state.lastAnswerCorrect ? Icons.check_circle_outline : Icons.cancel_outlined,
+        size: 80,
+        color: state.lastAnswerCorrect ? DesignSystem.success : DesignSystem.error,
+      );
     }
   }
 

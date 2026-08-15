@@ -7001,7 +7001,7 @@ abstract class AppLocalizations {
   /// No description provided for @tripletsLogicSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Fill grid with three shapes avoiding three-in-a-row.'**
+  /// **'Fill the grid with three shapes, avoiding three-in-a-row. Every row and column must contain the same number of each shape.'**
   String get tripletsLogicSubtitle;
 
   /// No description provided for @galaxiesSymTitle.

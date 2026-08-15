@@ -3992,7 +3992,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get tripletsLogicSubtitle =>
-      'Fill grid with three shapes avoiding three-in-a-row.';
+      'Fill the grid with three shapes, avoiding three-in-a-row. Every row and column must contain the same number of each shape.';
 
   @override
   String get galaxiesSymTitle => 'Galaxies Symmetry';
