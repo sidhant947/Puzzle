@@ -1109,6 +1109,9 @@ class AppLocalizationsZh extends AppLocalizations {
   String get orbitTapSubtitle => '当球与门对齐时点击';
 
   @override
+  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+
+  @override
   String get schulteTableTitle => '舒尔特表';
 
   @override

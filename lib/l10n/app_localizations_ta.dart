@@ -1179,6 +1179,9 @@ class AppLocalizationsTa extends AppLocalizations {
       'பந்துகள் நுழைவாயிலுடன் சீரமைக்கும்போது தட்டவும்';
 
   @override
+  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+
+  @override
   String get schulteTableTitle => 'ஷுல்ட் அட்டவணை';
 
   @override

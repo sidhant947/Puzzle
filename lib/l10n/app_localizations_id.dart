@@ -1163,6 +1163,9 @@ class AppLocalizationsId extends AppLocalizations {
   String get orbitTapSubtitle => 'Ketuk saat bola sejajar dengan celah';
 
   @override
+  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+
+  @override
   String get schulteTableTitle => 'Tabel Schulte';
 
   @override

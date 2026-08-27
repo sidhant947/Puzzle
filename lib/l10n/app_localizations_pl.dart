@@ -1161,6 +1161,9 @@ class AppLocalizationsPl extends AppLocalizations {
   String get orbitTapSubtitle => 'Dotknij, gdy kulki zrównają się z bramką';
 
   @override
+  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+
+  @override
   String get schulteTableTitle => 'Tabela Schultego';
 
   @override

@@ -38,25 +38,60 @@ class _WordWheelScreenState extends ConsumerState<WordWheelScreen> {
       pangram: 'PROJECT',
       centralLetter: 'R',
       letters: ['P', 'R', 'O', 'J', 'E', 'C', 'T'],
-      validWords: {'PROJECT', 'ROPE', 'PORT', 'CROP', 'PORE', 'CORE', 'TORN', 'ROTE', 'RECOPT'},
+      validWords: {
+        'PROJECT', 'ROPE', 'PORT', 'CROP', 'PORE', 'CORE', 'TORN', 'ROTE',
+        'PRO', 'ROPET', 'COPT', 'REPO', 'TROPE', 'REPRO', 'RECTO', 'CREPT',
+        'COPER', 'CORP', 'POET', 'TORE', 'TORC', 'ERECT'
+      },
     ),
     WordWheelPuzzle(
       pangram: 'FLUTTER',
       centralLetter: 'E',
       letters: ['F', 'L', 'U', 'T', 'T', 'E', 'R'],
-      validWords: {'FLUTTER', 'FLUTE', 'RULE', 'LUTE', 'FUEL', 'TURF', 'LEFT', 'TRUE', 'REFT'},
+      validWords: {
+        'FLUTTER', 'FLUTE', 'RULE', 'LUTE', 'FUEL', 'TURF', 'LEFT', 'TRUE', 'REFT',
+        'TUTEL', 'FRET', 'TUTOR', 'TRUER', 'REF', 'LET', 'ELF', 'RUE', 'UTE'
+      },
     ),
     WordWheelPuzzle(
       pangram: 'SPATIAL',
       centralLetter: 'A',
       letters: ['S', 'P', 'A', 'T', 'I', 'A', 'L'],
-      validWords: {'SPATIAL', 'SPIT', 'PATH', 'TAIL', 'SLIP', 'PAST', 'SALT', 'LAPS', 'ALAS'},
+      validWords: {
+        'SPATIAL', 'SPIT', 'PAST', 'SALT', 'LAPS', 'ALAS', 'PASTA', 'TAIL',
+        'PLAS', 'TAPS', 'SLAT', 'PATS', 'ALPS', 'APAL', 'ASAP', 'ALIT',
+        'ATLAS', 'PLAIT', 'SAT', 'TAP', 'PAT', 'LAP', 'SPA', 'PAL'
+      },
     ),
     WordWheelPuzzle(
       pangram: 'ORANGES',
       centralLetter: 'G',
       letters: ['O', 'R', 'A', 'N', 'G', 'E', 'S'],
-      validWords: {'ORANGES', 'ORANGE', 'GEAR', 'RAGE', 'SANG', 'SONG', 'GONE', 'RANG', 'SNUG'},
+      validWords: {
+        'ORANGES', 'ORANGE', 'GEAR', 'RAGE', 'SANG', 'SONG', 'GONE', 'RANG', 'SNUG',
+        'GORE', 'OGRE', 'GROAN', 'GROANS', 'RAGES', 'GEARS', 'GNAR', 'GOES', 'GORES',
+        'AGE', 'AGES', 'EGG', 'GOA', 'NAG', 'NAGS', 'RAG', 'RAGS', 'SAG', 'TAG'
+      },
+    ),
+    WordWheelPuzzle(
+      pangram: 'BLANKET',
+      centralLetter: 'A',
+      letters: ['B', 'L', 'A', 'N', 'K', 'E', 'T'],
+      validWords: {
+        'BLANKET', 'BLANK', 'BLEAT', 'LATE', 'TALE', 'LANE', 'LEAN', 'BEAK',
+        'BAKE', 'BANE', 'BEAT', 'BETA', 'BALE', 'ABLE', 'TANK', 'TALK',
+        'LEAK', 'LAKE', 'KALE', 'NEAT', 'BAT', 'TAB', 'BAN', 'NAB', 'LAB',
+        'ALE', 'ATE', 'EAT', 'TEA', 'TAN', 'ANT', 'OAK', 'ARK', 'ACT'
+      },
+    ),
+    WordWheelPuzzle(
+      pangram: 'MYSTERY',
+      centralLetter: 'E',
+      letters: ['M', 'Y', 'S', 'T', 'E', 'R', 'Y'],
+      validWords: {
+        'MYSTERY', 'REST', 'TERM', 'TREM', 'STEM', 'MEST', 'RYE', 'YES',
+        'SET', 'MET', 'TYRE', 'TREY', 'TERMS', 'STEMS', 'RYES', 'TYRES'
+      },
     ),
   ];
 
@@ -135,9 +170,7 @@ class _WordWheelScreenState extends ConsumerState<WordWheelScreen> {
       return;
     }
 
-    // Check against predefined list or general anagram
-    bool isValid = _currentPuzzle.validWords.contains(word) || 
-                  (word.length >= 3 && _isValidAnagram(word, _currentPuzzle.letters));
+    bool isValid = _currentPuzzle.validWords.contains(word);
 
     if (isValid) {
       HapticFeedbackUtil.success();
@@ -163,16 +196,6 @@ class _WordWheelScreenState extends ConsumerState<WordWheelScreen> {
         _currentInput = '';
       });
     }
-  }
-
-  bool _isValidAnagram(String input, List<String> availableLetters) {
-    final inputChars = input.split('');
-    final availCopy = List<String>.from(availableLetters);
-    for (var char in inputChars) {
-      if (!availCopy.contains(char)) return false;
-      availCopy.remove(char);
-    }
-    return true;
   }
 
   void _onGameComplete() async {

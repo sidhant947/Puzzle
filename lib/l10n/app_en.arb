@@ -613,6 +613,7 @@
   "visualStatisticalLearningTitle": "Visual Stats Learning",
   "orbitTapTitle": "Orbit Tap",
   "orbitTapSubtitle": "Tap when balls align with the gate",
+  "orbitTapTapToHit": "Tap when a ball enters the gate",
   "schulteTableTitle": "Schulte Table",
   "multipleObjectTrackingTitle": "Object Tracker",
   "multipleObjectTrackingSubtitle": "Watch the highlighted objects. Track them as they move, then select them.",

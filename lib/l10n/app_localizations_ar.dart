@@ -1138,6 +1138,9 @@ class AppLocalizationsAr extends AppLocalizations {
   String get orbitTapSubtitle => 'اضغط عندما تتماشى الكرات مع البوابة';
 
   @override
+  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+
+  @override
   String get schulteTableTitle => 'جدول شولت';
 
   @override

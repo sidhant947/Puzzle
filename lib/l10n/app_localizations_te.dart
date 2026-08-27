@@ -1161,6 +1161,9 @@ class AppLocalizationsTe extends AppLocalizations {
   String get orbitTapSubtitle => 'బంతులు గేటుతో సమలేఖనం అయినప్పుడు నొక్కండి';
 
   @override
+  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+
+  @override
   String get schulteTableTitle => 'షుల్టే టేబుల్';
 
   @override

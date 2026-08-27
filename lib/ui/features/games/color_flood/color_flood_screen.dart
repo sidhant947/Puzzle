@@ -76,10 +76,19 @@ class _ColorFloodScreenState extends ConsumerState<ColorFloodScreen> {
           ? const Center(child: CircularProgressIndicator())
           : LayoutBuilder(
               builder: (context, constraints) {
-                // Ensure the grid container is big enough but fits the screen height
-                final maxGridHeight = constraints.maxHeight * 0.6;
+                final maxGridHeight = constraints.maxHeight * 0.55;
                 return Column(
                   children: [
+                    Padding(
+                      padding: const EdgeInsets.all(DesignSystem.spaceMD),
+                      child: Center(
+                        child: _buildStat(
+                          l10n.statMoves,
+                          '${state.moves}/${state.maxMoves}',
+                          color: state.moves >= state.maxMoves - 2 ? DesignSystem.error : null,
+                        ),
+                      ),
+                    ),
                     const Spacer(),
                     // Grid Area
                     Padding(
@@ -162,6 +171,29 @@ class _ColorFloodScreenState extends ConsumerState<ColorFloodScreen> {
                 );
               },
             ),
+    );
+  }
+
+  Widget _buildStat(String label, String value, {Color? color}) {
+    return Column(
+      children: [
+        Text(
+          label,
+          style: TextStyle(
+            fontSize: 10,
+            fontWeight: FontWeight.bold,
+            color: Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.7),
+          ),
+        ),
+        Text(
+          value,
+          style: TextStyle(
+            fontSize: 20,
+            fontWeight: FontWeight.w900,
+            color: color ?? Theme.of(context).colorScheme.onSurface,
+          ),
+        ),
+      ],
     );
   }
 }

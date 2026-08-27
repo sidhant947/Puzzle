@@ -101,10 +101,12 @@ void main() {
         }
       });
 
-      test('high score uses base values <= 12', () {
-        final level = engine.generateLevel(10);
-        for (int j = 0; j < 4; j++) {
-          expect(level.correctValues[j], lessThanOrEqualTo(12));
+      test('every generated level is uniquely and logically solvable', () {
+        for (int score = 0; score <= 15; score++) {
+          for (int trial = 0; trial < 10; trial++) {
+            final level = engine.generateLevel(score);
+            expect(engine.isSolvable(level.isHidden), isTrue);
+          }
         }
       });
     });

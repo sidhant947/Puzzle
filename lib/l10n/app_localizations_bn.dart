@@ -1156,6 +1156,9 @@ class AppLocalizationsBn extends AppLocalizations {
   String get orbitTapSubtitle => 'বলগুলো গেটের সাথে সারিবদ্ধ হলে ট্যাপ করুন';
 
   @override
+  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+
+  @override
   String get schulteTableTitle => 'শুল্ট টেবিল';
 
   @override

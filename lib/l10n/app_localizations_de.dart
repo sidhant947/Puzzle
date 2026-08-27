@@ -1167,6 +1167,9 @@ class AppLocalizationsDe extends AppLocalizations {
       'Tippe, wenn die Bälle am Tor ausgerichtet sind';
 
   @override
+  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+
+  @override
   String get schulteTableTitle => 'Schulte-Tabelle';
 
   @override

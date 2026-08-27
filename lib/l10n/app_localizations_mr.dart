@@ -1155,6 +1155,9 @@ class AppLocalizationsMr extends AppLocalizations {
   String get orbitTapSubtitle => 'जेव्हा गोळे गेटशी जुळतील तेव्हा टॅप करा';
 
   @override
+  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+
+  @override
   String get schulteTableTitle => 'शुल्टे टेबल';
 
   @override

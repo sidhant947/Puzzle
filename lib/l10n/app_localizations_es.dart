@@ -1169,6 +1169,9 @@ class AppLocalizationsEs extends AppLocalizations {
       'Toca cuando las bolas se alineen con la puerta';
 
   @override
+  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+
+  @override
   String get schulteTableTitle => 'Tabla de Schulte';
 
   @override

@@ -1152,6 +1152,9 @@ class AppLocalizationsEn extends AppLocalizations {
   String get orbitTapSubtitle => 'Tap when balls align with the gate';
 
   @override
+  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+
+  @override
   String get schulteTableTitle => 'Schulte Table';
 
   @override

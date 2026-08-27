@@ -7,7 +7,7 @@ part of 'sternberg_task_provider.dart';
 // **************************************************************************
 
 String _$sternbergTaskNotifierHash() =>
-    r'7d814e2cc09ff972845dbb8115cb7f144a8efbce';
+    r'724cb942753eb11e3dc86df7e041c2e7d72f9c48';
 
 /// See also [SternbergTaskNotifier].
 @ProviderFor(SternbergTaskNotifier)

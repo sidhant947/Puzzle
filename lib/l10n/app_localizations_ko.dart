@@ -1115,6 +1115,9 @@ class AppLocalizationsKo extends AppLocalizations {
   String get orbitTapSubtitle => '공이 게이트에 맞춰질 때 탭하세요';
 
   @override
+  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+
+  @override
   String get schulteTableTitle => '슐테 테이블';
 
   @override

@@ -1153,6 +1153,9 @@ class AppLocalizationsHi extends AppLocalizations {
   String get orbitTapSubtitle => 'जब गेंदें गेट के साथ संरेखित हों तब टैप करें';
 
   @override
+  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+
+  @override
   String get schulteTableTitle => 'शल्टे टेबल';
 
   @override

@@ -1159,6 +1159,9 @@ class AppLocalizationsUr extends AppLocalizations {
       'جب گیندیں گیٹ کے ساتھ سیدھ میں ہوں تو ٹیپ کریں';
 
   @override
+  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+
+  @override
   String get schulteTableTitle => 'شولٹ ٹیبل';
 
   @override

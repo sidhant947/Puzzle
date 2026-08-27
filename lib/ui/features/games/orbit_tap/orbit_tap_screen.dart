@@ -149,7 +149,7 @@ class _OrbitTapScreenState extends ConsumerState<OrbitTapScreen> with SingleTick
               Padding(
                 padding: EdgeInsets.all(DesignSystem.spaceXL),
                 child: Text(
-                  l10n.btnStartGame.toUpperCase(),
+                  l10n.orbitTapTapToHit.toUpperCase(),
                   style: TextStyle(
                     color: colorScheme.onSurface.withValues(alpha: 0.7),
                     fontWeight: FontWeight.w900,

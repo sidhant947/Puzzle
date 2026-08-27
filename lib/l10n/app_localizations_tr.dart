@@ -1149,6 +1149,9 @@ class AppLocalizationsTr extends AppLocalizations {
   String get orbitTapSubtitle => 'Toplar kapıyla hizalandığında dokun';
 
   @override
+  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+
+  @override
   String get schulteTableTitle => 'Schulte Tablosu';
 
   @override

@@ -1163,6 +1163,9 @@ class AppLocalizationsVi extends AppLocalizations {
   String get orbitTapSubtitle => 'Nhấn khi các quả bóng thẳng hàng với cổng';
 
   @override
+  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+
+  @override
   String get schulteTableTitle => 'Bảng Schulte';
 
   @override

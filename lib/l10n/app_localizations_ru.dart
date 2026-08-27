@@ -1153,6 +1153,9 @@ class AppLocalizationsRu extends AppLocalizations {
   String get orbitTapSubtitle => 'Нажимайте, когда шары совпадают с воротами';
 
   @override
+  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+
+  @override
   String get schulteTableTitle => 'Таблица Шульте';
 
   @override

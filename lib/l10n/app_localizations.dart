@@ -2180,6 +2180,12 @@ abstract class AppLocalizations {
   /// **'Tap when balls align with the gate'**
   String get orbitTapSubtitle;
 
+  /// No description provided for @orbitTapTapToHit.
+  ///
+  /// In en, this message translates to:
+  /// **'Tap when a ball enters the gate'**
+  String get orbitTapTapToHit;
+
   /// No description provided for @schulteTableTitle.
   ///
   /// In en, this message translates to:

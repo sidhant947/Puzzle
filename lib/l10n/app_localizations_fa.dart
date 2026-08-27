@@ -1150,6 +1150,9 @@ class AppLocalizationsFa extends AppLocalizations {
   String get orbitTapSubtitle => 'وقتی توپ‌ها با دروازه تراز شدند ضربه بزنید';
 
   @override
+  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+
+  @override
   String get schulteTableTitle => 'جدول شولت';
 
   @override
