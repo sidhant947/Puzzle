@@ -280,6 +280,46 @@ import '../ui/features/games/vector_grid_alignment/vector_grid_alignment_metadat
 import '../ui/features/games/vektor_vector/vektor_vector_metadata.dart';
 import '../ui/features/games/word_snake_trail/word_snake_trail_metadata.dart';
 
+import '../ui/features/games/kurodoko/kurodoko_metadata.dart';
+import '../ui/features/games/subitizing_rush/subitizing_rush_metadata.dart';
+
+import '../ui/features/games/tapa/tapa_metadata.dart';
+import '../ui/features/games/exponent_tower/exponent_tower_metadata.dart';
+import '../ui/features/games/posner_spatial_cueing/posner_spatial_cueing_metadata.dart';
+import '../ui/features/games/gear_train_direction/gear_train_direction_metadata.dart';
+import '../ui/features/games/continuous_paired_associate/continuous_paired_associate_metadata.dart';
+
+import '../ui/features/games/heyawake/heyawake_metadata.dart';
+import '../ui/features/games/set_theory_venn/set_theory_venn_metadata.dart';
+import '../ui/features/games/navon_hierarchical/navon_hierarchical_metadata.dart';
+
+import '../ui/features/games/prime_gap_hunt/prime_gap_hunt_metadata.dart';
+
+import '../ui/features/games/yajilin/yajilin_metadata.dart';
+import '../ui/features/games/algebraic_inequality_solver/algebraic_inequality_solver_metadata.dart';
+import '../ui/features/games/attentional_blink_probe/attentional_blink_probe_metadata.dart';
+
+import '../ui/features/games/modular_clock_arithmetic/modular_clock_arithmetic_metadata.dart';
+import '../ui/features/games/temporal_order_judgment/temporal_order_judgment_metadata.dart';
+import '../ui/features/games/polyomino_tiling/polyomino_tiling_metadata.dart';
+
+import '../ui/features/games/pythagorean_triple_builder/pythagorean_triple_builder_metadata.dart';
+import '../ui/features/games/visual_search_conjunction/visual_search_conjunction_metadata.dart';
+import '../ui/features/games/wireframe_3d_rotation/wireframe_3d_rotation_metadata.dart';
+import '../ui/features/games/word_pair_associate_memory/word_pair_associate_memory_metadata.dart';
+
+import '../ui/features/games/binary_matrix_rank/binary_matrix_rank_metadata.dart';
+import '../ui/features/games/visual_crowding_acuity/visual_crowding_acuity_metadata.dart';
+import '../ui/features/games/probe_digit_span/probe_digit_span_metadata.dart';
+
+import '../ui/features/games/ab_reversal_oddball/ab_reversal_oddball_metadata.dart';
+import '../ui/features/games/conundrum_anagram/conundrum_anagram_metadata.dart';
+
+import '../ui/features/games/vector_dot_product/vector_dot_product_metadata.dart';
+import '../ui/features/games/stroop_number_size/stroop_number_size_metadata.dart';
+import '../ui/features/games/word_ladder_step/word_ladder_step_metadata.dart';
+import '../ui/features/games/corsi_backward_span/corsi_backward_span_metadata.dart';
+
 List<GameMetadata>? _cachedGames;
 
 List<GameMetadata> get allGamesMetadata => _cachedGames ??= _buildGameList();
@@ -560,5 +600,35 @@ List<GameMetadata> _buildGameList() {
     perspectiveShiftViewMetadata,
     letterGridSwapperMetadata,
     wordSnakeTrailMetadata,
+    kurodokoMetadata,
+    subitizingRushMetadata,
+    tapaMetadata,
+    exponentTowerMetadata,
+    posnerSpatialCueingMetadata,
+    gearTrainDirectionMetadata,
+    continuousPairedAssociateMetadata,
+    heyawakeMetadata,
+    setTheoryVennMetadata,
+    navonHierarchicalMetadata,
+    primeGapHuntMetadata,
+    yajilinMetadata,
+    algebraicInequalitySolverMetadata,
+    attentionalBlinkProbeMetadata,
+    modularClockArithmeticMetadata,
+    temporalOrderJudgmentMetadata,
+    polyominoTilingMetadata,
+    pythagoreanTripleBuilderMetadata,
+    visualSearchConjunctionMetadata,
+    wireframe3DRotationMetadata,
+    wordPairAssociateMemoryMetadata,
+    binaryMatrixRankMetadata,
+    visualCrowdingAcuityMetadata,
+    probeDigitSpanMetadata,
+    abReversalOddballMetadata,
+    conundrumAnagramMetadata,
+    vectorDotProductMetadata,
+    stroopNumberSizeMetadata,
+    wordLadderStepMetadata,
+    corsiBackwardSpanMetadata,
   ];
 }

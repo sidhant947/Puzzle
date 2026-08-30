@@ -9,7 +9,6 @@ import '../utils/haptic_feedback.dart';
 import '../utils/navigation_utils.dart';
 import '../providers/game_session_provider.dart';
 import '../providers/user_providers.dart';
-import '../ui/features/support/views/support_view.dart';
 import 'tangible.dart';
 
 class GameCompletionDialog extends ConsumerStatefulWidget {
@@ -96,28 +95,26 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
           child: Column(
             mainAxisSize: MainAxisSize.min,
             children: [
-              Wrap(
-                alignment: WrapAlignment.center,
-                crossAxisAlignment: WrapCrossAlignment.center,
-                spacing: 4,
-                runSpacing: 4,
-                children: [
-                  InkWell(
-                    onTap: () => _launchUrl('https://play.google.com/store/apps/details?id=com.sidhant.puzzle'),
-                    borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(
-                            Icons.star_rounded,
-                            size: 14,
-                            color: DesignSystem.accentAmber,
-                          ),
-                          const SizedBox(width: 4),
-                          Flexible(
-                            child: Text(
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    InkWell(
+                      onTap: () => _launchUrl('https://play.google.com/store/apps/details?id=com.sidhant.puzzle'),
+                      borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(
+                              Icons.star_rounded,
+                              size: 14,
+                              color: DesignSystem.accentAmber,
+                            ),
+                            const SizedBox(width: 4),
+                            Text(
                               l10n.leaveReview.toUpperCase(),
                               style: TextStyle(
                                 fontSize: 10,
@@ -125,34 +122,31 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
                                 color: colorScheme.onSurface.withValues(alpha: 0.6),
                                 letterSpacing: 0.5,
                               ),
-                              overflow: TextOverflow.ellipsis,
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                  Container(
-                    width: 1,
-                    height: 12,
-                    color: colorScheme.outline.withValues(alpha: 0.5),
-                  ),
-                  InkWell(
-                    onTap: () => _launchUrl('https://github.com/sidhant947/Puzzle/issues'),
-                    borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
-                      child: Row(
-                        mainAxisSize: MainAxisSize.min,
-                        children: [
-                          const Icon(
-                            Icons.bug_report_rounded,
-                            size: 14,
-                            color: DesignSystem.error,
-                          ),
-                          const SizedBox(width: 4),
-                          Flexible(
-                            child: Text(
+                    Container(
+                      width: 1,
+                      height: 12,
+                      color: colorScheme.outline.withValues(alpha: 0.5),
+                    ),
+                    InkWell(
+                      onTap: () => _launchUrl('https://github.com/sidhant947/Puzzle/issues'),
+                      borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            const Icon(
+                              Icons.bug_report_rounded,
+                              size: 14,
+                              color: DesignSystem.error,
+                            ),
+                            const SizedBox(width: 4),
+                            Text(
                               l10n.reportError.toUpperCase(),
                               style: TextStyle(
                                 fontSize: 10,
@@ -160,14 +154,13 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
                                 color: colorScheme.onSurface.withValues(alpha: 0.6),
                                 letterSpacing: 0.5,
                               ),
-                              overflow: TextOverflow.ellipsis,
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
               const SizedBox(height: DesignSystem.spaceMD),
               Text(

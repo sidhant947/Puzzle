@@ -215,14 +215,17 @@ class GameTile extends ConsumerWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
-              Text(
-                L10nGameHelpers.getGameTitle(context, game.id).toUpperCase(),
-                maxLines: 1,
-                overflow: TextOverflow.ellipsis,
-                style: theme.textTheme.headlineMedium?.copyWith(
-                  fontSize: isMobile ? 26.0 : 32.0,
-                  letterSpacing: 0.5,
-                  height: 1.0,
+              FittedBox(
+                fit: BoxFit.scaleDown,
+                alignment: Alignment.centerLeft,
+                child: Text(
+                  L10nGameHelpers.getGameTitle(context, game.id).toUpperCase(),
+                  maxLines: 1,
+                  style: theme.textTheme.headlineMedium?.copyWith(
+                    fontSize: isMobile ? 26.0 : 32.0,
+                    letterSpacing: 0.5,
+                    height: 1.0,
+                  ),
                 ),
               ),
             ],

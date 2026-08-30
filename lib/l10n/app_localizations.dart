@@ -6821,7 +6821,7 @@ abstract class AppLocalizations {
   /// No description provided for @yajilinTitle.
   ///
   /// In en, this message translates to:
-  /// **'Yajilin Loop'**
+  /// **'Yajilin'**
   String get yajilinTitle;
 
   /// No description provided for @yajilinSubtitle.
@@ -6833,7 +6833,7 @@ abstract class AppLocalizations {
   /// No description provided for @heyawakeTitle.
   ///
   /// In en, this message translates to:
-  /// **'Heyawake Grid'**
+  /// **'Heyawake'**
   String get heyawakeTitle;
 
   /// No description provided for @heyawakeSubtitle.
@@ -9938,6 +9938,714 @@ abstract class AppLocalizations {
   /// In en, this message translates to:
   /// **'Wrong!'**
   String get wrongExcl;
+
+  /// No description provided for @kurodokoTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Kurodoko'**
+  String get kurodokoTitle;
+
+  /// No description provided for @kurodokoSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Place black cells so numbers see the exact count of white cells.'**
+  String get kurodokoSubtitle;
+
+  /// No description provided for @kurodokoWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'WHERE IS BLACK SOLVED!'**
+  String get kurodokoWinTitle;
+
+  /// No description provided for @kurodokoWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'You mastered the visibility paths and isolated all black cells!'**
+  String get kurodokoWinMessage;
+
+  /// No description provided for @subitizingRushTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Subitize Rush'**
+  String get subitizingRushTitle;
+
+  /// No description provided for @subitizingRushSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Instantly identify the quantity of flashed dots without counting.'**
+  String get subitizingRushSubtitle;
+
+  /// No description provided for @subitizingRushWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'RAPID VISION!'**
+  String get subitizingRushWinTitle;
+
+  /// No description provided for @subitizingRushWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Your instant visual numerosity estimation is outstanding!'**
+  String get subitizingRushWinMessage;
+
+  /// No description provided for @tapaTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Tapa'**
+  String get tapaTitle;
+
+  /// No description provided for @tapaSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Shade cells to form a continuous wall without 2x2 blocks.'**
+  String get tapaSubtitle;
+
+  /// No description provided for @tapaWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'TAPA WALL COMPLETED!'**
+  String get tapaWinTitle;
+
+  /// No description provided for @tapaWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'All numbered cell constraints perfectly satisfied!'**
+  String get tapaWinMessage;
+
+  /// No description provided for @exponentTowerTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Exponent Tower'**
+  String get exponentTowerTitle;
+
+  /// No description provided for @exponentTowerSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Order dynamic power expressions from smallest to largest.'**
+  String get exponentTowerSubtitle;
+
+  /// No description provided for @exponentTowerWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'TOWER STACKED!'**
+  String get exponentTowerWinTitle;
+
+  /// No description provided for @exponentTowerWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'All power magnitudes calculated with perfect precision!'**
+  String get exponentTowerWinMessage;
+
+  /// No description provided for @posnerSpatialCueingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Spatial Cue'**
+  String get posnerSpatialCueingTitle;
+
+  /// No description provided for @posnerSpatialCueingSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'React swiftly to directional target appearances following spatial cues.'**
+  String get posnerSpatialCueingSubtitle;
+
+  /// No description provided for @posnerSpatialCueingWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'ALERT VISION!'**
+  String get posnerSpatialCueingWinTitle;
+
+  /// No description provided for @posnerSpatialCueingWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Fast visual orienting and stimulus detection recorded!'**
+  String get posnerSpatialCueingWinMessage;
+
+  /// No description provided for @gearTrainDirectionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Gear Train'**
+  String get gearTrainDirectionTitle;
+
+  /// No description provided for @gearTrainDirectionSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Deduce the rotation direction of the target gear in the mechanical train.'**
+  String get gearTrainDirectionSubtitle;
+
+  /// No description provided for @gearTrainDirectionWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MECHANISM SOLVED!'**
+  String get gearTrainDirectionWinTitle;
+
+  /// No description provided for @gearTrainDirectionWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Kinematic gear rotational transmissions accurately traced!'**
+  String get gearTrainDirectionWinMessage;
+
+  /// No description provided for @continuousPairedAssociateTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pair Associate'**
+  String get continuousPairedAssociateTitle;
+
+  /// No description provided for @continuousPairedAssociateSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize symbol pairs and recall the matching partner.'**
+  String get continuousPairedAssociateSubtitle;
+
+  /// No description provided for @continuousPairedAssociateWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'PAIRS LINKED!'**
+  String get continuousPairedAssociateWinTitle;
+
+  /// No description provided for @continuousPairedAssociateWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Strong associative memory pathways established!'**
+  String get continuousPairedAssociateWinMessage;
+
+  /// No description provided for @heyawakeWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'ROOMS BALANCED!'**
+  String get heyawakeWinTitle;
+
+  /// No description provided for @heyawakeWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'All room division rules and white path connections satisfied!'**
+  String get heyawakeWinMessage;
+
+  /// No description provided for @setTheoryVennTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Venn Sets'**
+  String get setTheoryVennTitle;
+
+  /// No description provided for @setTheoryVennSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Select the corresponding regions of the Venn diagram for the set formula.'**
+  String get setTheoryVennSubtitle;
+
+  /// No description provided for @setTheoryVennWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SET LOGIC MASTER!'**
+  String get setTheoryVennWinTitle;
+
+  /// No description provided for @setTheoryVennWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'All set operations, unions, and intersections deduced flawlessly!'**
+  String get setTheoryVennWinMessage;
+
+  /// No description provided for @navonHierarchicalTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Navon Global'**
+  String get navonHierarchicalTitle;
+
+  /// No description provided for @navonHierarchicalSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify either the large global letter or small local letters under prompt rules.'**
+  String get navonHierarchicalSubtitle;
+
+  /// No description provided for @navonHierarchicalWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'FOCUS SHARPENED!'**
+  String get navonHierarchicalWinTitle;
+
+  /// No description provided for @navonHierarchicalWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Outstanding selective attention and global-local perception!'**
+  String get navonHierarchicalWinMessage;
+
+  /// No description provided for @masyuWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'MASYU LOOP SOLVED!'**
+  String get masyuWinTitle;
+
+  /// No description provided for @masyuWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'All pearl turning and straight passage rules strictly satisfied!'**
+  String get masyuWinMessage;
+
+  /// No description provided for @primeGapHuntTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Prime Gap'**
+  String get primeGapHuntTitle;
+
+  /// No description provided for @primeGapHuntSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate the arithmetic difference between consecutive prime numbers.'**
+  String get primeGapHuntSubtitle;
+
+  /// No description provided for @primeGapHuntWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'GAP CALCULATED!'**
+  String get primeGapHuntWinTitle;
+
+  /// No description provided for @primeGapHuntWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Mastery of prime distribution and mental subtraction displayed!'**
+  String get primeGapHuntWinMessage;
+
+  /// No description provided for @yajilinWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'YAJILIN SOLVED!'**
+  String get yajilinWinTitle;
+
+  /// No description provided for @yajilinWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'All arrow clue raycasts and orthogonal black cell separations satisfied!'**
+  String get yajilinWinMessage;
+
+  /// No description provided for @algebraicInequalitySolverTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Inequality'**
+  String get algebraicInequalitySolverTitle;
+
+  /// No description provided for @algebraicInequalitySolverSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Solve linear single-variable algebraic inequalities swiftly.'**
+  String get algebraicInequalitySolverSubtitle;
+
+  /// No description provided for @algebraicInequalitySolverWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'ALGEBRA EXPERT!'**
+  String get algebraicInequalitySolverWinTitle;
+
+  /// No description provided for @algebraicInequalitySolverWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Fast inequality reduction and algebraic balance achieved!'**
+  String get algebraicInequalitySolverWinMessage;
+
+  /// No description provided for @attentionalBlinkProbeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Blink Probe'**
+  String get attentionalBlinkProbeTitle;
+
+  /// No description provided for @attentionalBlinkProbeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Detect second target stimuli presented rapidly after primary targets.'**
+  String get attentionalBlinkProbeSubtitle;
+
+  /// No description provided for @attentionalBlinkProbeWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'TEMPORAL FOCUS!'**
+  String get attentionalBlinkProbeWinTitle;
+
+  /// No description provided for @attentionalBlinkProbeWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Exceptional temporal visual processing across the blink refractory window!'**
+  String get attentionalBlinkProbeWinMessage;
+
+  /// No description provided for @modularClockArithmeticTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Clock Modulo'**
+  String get modularClockArithmeticTitle;
+
+  /// No description provided for @modularClockArithmeticSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate cyclical clock time arithmetic under modulo 12 algebra.'**
+  String get modularClockArithmeticSubtitle;
+
+  /// No description provided for @modularClockArithmeticWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'CLOCKWORK PRECISION!'**
+  String get modularClockArithmeticWinTitle;
+
+  /// No description provided for @modularClockArithmeticWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'All modular hour shifts calculated with ease!'**
+  String get modularClockArithmeticWinMessage;
+
+  /// No description provided for @temporalOrderJudgmentTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Time Order'**
+  String get temporalOrderJudgmentTitle;
+
+  /// No description provided for @temporalOrderJudgmentSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Discriminate which of two millisecond-separated stimulus circles flashed first.'**
+  String get temporalOrderJudgmentSubtitle;
+
+  /// No description provided for @temporalOrderJudgmentWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'ULTRA-FAST PERCEPTION!'**
+  String get temporalOrderJudgmentWinTitle;
+
+  /// No description provided for @temporalOrderJudgmentWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'High-resolution temporal distinction demonstrated!'**
+  String get temporalOrderJudgmentWinMessage;
+
+  /// No description provided for @polyominoTilingTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Polyomino'**
+  String get polyominoTilingTitle;
+
+  /// No description provided for @polyominoTilingSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Rotate and assemble tetromino geometric shapes to tile the grid without gaps.'**
+  String get polyominoTilingSubtitle;
+
+  /// No description provided for @polyominoTilingWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'GRID TILED!'**
+  String get polyominoTilingWinTitle;
+
+  /// No description provided for @polyominoTilingWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Seamless geometric spatial arrangement completed!'**
+  String get polyominoTilingWinMessage;
+
+  /// No description provided for @pythagoreanTripleBuilderTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Pythagoras'**
+  String get pythagoreanTripleBuilderTitle;
+
+  /// No description provided for @pythagoreanTripleBuilderSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Find the missing hypotenuse or leg value in integer Pythagorean triangles.'**
+  String get pythagoreanTripleBuilderSubtitle;
+
+  /// No description provided for @pythagoreanTripleBuilderWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'GEOMETRY MASTER!'**
+  String get pythagoreanTripleBuilderWinTitle;
+
+  /// No description provided for @pythagoreanTripleBuilderWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'All right-triangle integer triples rapidly solved!'**
+  String get pythagoreanTripleBuilderWinMessage;
+
+  /// No description provided for @visualSearchConjunctionTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Conj. Search'**
+  String get visualSearchConjunctionTitle;
+
+  /// No description provided for @visualSearchConjunctionSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Quickly locate target shapes combining multiple feature dimensions (color and form).'**
+  String get visualSearchConjunctionSubtitle;
+
+  /// No description provided for @visualSearchConjunctionWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'CONJUNCTION FOCUS!'**
+  String get visualSearchConjunctionWinTitle;
+
+  /// No description provided for @visualSearchConjunctionWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Flawless multi-feature parallel and serial visual search!'**
+  String get visualSearchConjunctionWinMessage;
+
+  /// No description provided for @wireframe3DRotationTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Wireframe 3D'**
+  String get wireframe3DRotationTitle;
+
+  /// No description provided for @wireframe3DRotationSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify the correctly rotated 3D geometric wireframe following angular transformation.'**
+  String get wireframe3DRotationSubtitle;
+
+  /// No description provided for @wireframe3DRotationWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'3D ROTATION MASTER!'**
+  String get wireframe3DRotationWinTitle;
+
+  /// No description provided for @wireframe3DRotationWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Precise 3D mental rotation and spatial orientation demonstrated!'**
+  String get wireframe3DRotationWinMessage;
+
+  /// No description provided for @wordPairAssociateMemoryTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Word Pairs'**
+  String get wordPairAssociateMemoryTitle;
+
+  /// No description provided for @wordPairAssociateMemorySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Memorize associated word connections and select the target paired with the cue.'**
+  String get wordPairAssociateMemorySubtitle;
+
+  /// No description provided for @wordPairAssociateMemoryWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'ASSOCIATION MASTER!'**
+  String get wordPairAssociateMemoryWinTitle;
+
+  /// No description provided for @wordPairAssociateMemoryWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Strong episodic associative memory retention achieved!'**
+  String get wordPairAssociateMemoryWinMessage;
+
+  /// No description provided for @binaryMatrixRankTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Matrix Rank'**
+  String get binaryMatrixRankTitle;
+
+  /// No description provided for @binaryMatrixRankSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Determine the linear algebraic rank of the 3x3 binary matrix over Galois field GF(2).'**
+  String get binaryMatrixRankSubtitle;
+
+  /// No description provided for @binaryMatrixRankWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'RANK COMPUTED!'**
+  String get binaryMatrixRankWinTitle;
+
+  /// No description provided for @binaryMatrixRankWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Exact linear independence and matrix rank determined!'**
+  String get binaryMatrixRankWinMessage;
+
+  /// No description provided for @visualCrowdingAcuityTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Visual Crowd'**
+  String get visualCrowdingAcuityTitle;
+
+  /// No description provided for @visualCrowdingAcuitySubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Identify the opening direction of the center Landolt ring amid flanking distractors.'**
+  String get visualCrowdingAcuitySubtitle;
+
+  /// No description provided for @visualCrowdingAcuityWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SHARP PERCEPTION!'**
+  String get visualCrowdingAcuityWinTitle;
+
+  /// No description provided for @visualCrowdingAcuityWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Excellent foveal spatial resolution under visual crowding conditions!'**
+  String get visualCrowdingAcuityWinMessage;
+
+  /// No description provided for @probeDigitSpanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Digit Probe'**
+  String get probeDigitSpanTitle;
+
+  /// No description provided for @probeDigitSpanSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Observe a fast serial sequence of numbers and recall the item following the probe digit.'**
+  String get probeDigitSpanSubtitle;
+
+  /// No description provided for @probeDigitSpanWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'SERIAL PROBE MASTER!'**
+  String get probeDigitSpanWinTitle;
+
+  /// No description provided for @probeDigitSpanWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Flawless short-term serial position memory retrieval!'**
+  String get probeDigitSpanWinMessage;
+
+  /// No description provided for @abReversalOddballTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'A-B Reversal'**
+  String get abReversalOddballTitle;
+
+  /// No description provided for @abReversalOddballSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Respond to target stimuli and dynamically switch response criteria upon rule reversal.'**
+  String get abReversalOddballSubtitle;
+
+  /// No description provided for @abReversalOddballWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'FLEXIBILITY MASTER!'**
+  String get abReversalOddballWinTitle;
+
+  /// No description provided for @abReversalOddballWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Exceptional cognitive switching and perceptual flexibility demonstrated!'**
+  String get abReversalOddballWinMessage;
+
+  /// No description provided for @conundrumAnagramTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Conundrum'**
+  String get conundrumAnagramTitle;
+
+  /// No description provided for @conundrumAnagramSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Unscramble all 9 letters to discover the hidden full dictionary word.'**
+  String get conundrumAnagramSubtitle;
+
+  /// No description provided for @conundrumAnagramWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'CONUNDRUM CRACKED!'**
+  String get conundrumAnagramWinTitle;
+
+  /// No description provided for @conundrumAnagramWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'All 9-letter anagram conundrums successfully unscrambled!'**
+  String get conundrumAnagramWinMessage;
+
+  /// No description provided for @vectorDotProductTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Dot Product'**
+  String get vectorDotProductTitle;
+
+  /// No description provided for @vectorDotProductSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Calculate the algebraic inner product u • v = (u_x * v_x) + (u_y * v_y).'**
+  String get vectorDotProductSubtitle;
+
+  /// No description provided for @vectorDotProductWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'INNER PRODUCT COMPUTED!'**
+  String get vectorDotProductWinTitle;
+
+  /// No description provided for @vectorDotProductWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Exact geometric and algebraic vector projections achieved!'**
+  String get vectorDotProductWinMessage;
+
+  /// No description provided for @stroopNumberSizeTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Size Stroop'**
+  String get stroopNumberSizeTitle;
+
+  /// No description provided for @stroopNumberSizeSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Compare either numerical magnitude or physical font size under Stroop interference.'**
+  String get stroopNumberSizeSubtitle;
+
+  /// No description provided for @stroopNumberSizeWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'INHIBITION EXPERT!'**
+  String get stroopNumberSizeWinTitle;
+
+  /// No description provided for @stroopNumberSizeWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Flawless perceptual conflict resolution under size-congruity Stroop!'**
+  String get stroopNumberSizeWinMessage;
+
+  /// No description provided for @wordLadderStepTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Word Ladder'**
+  String get wordLadderStepTitle;
+
+  /// No description provided for @wordLadderStepSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Complete the single-letter transformation sequence between source and destination words.'**
+  String get wordLadderStepSubtitle;
+
+  /// No description provided for @wordLadderStepWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'LADDER CLIMBED!'**
+  String get wordLadderStepWinTitle;
+
+  /// No description provided for @wordLadderStepWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'All single-letter step transformations completed!'**
+  String get wordLadderStepWinMessage;
+
+  /// No description provided for @corsiBackwardSpanTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Corsi Backward'**
+  String get corsiBackwardSpanTitle;
+
+  /// No description provided for @corsiBackwardSpanSubtitle.
+  ///
+  /// In en, this message translates to:
+  /// **'Observe a sequential spatial block tapping pattern and reproduce it in exact reverse order.'**
+  String get corsiBackwardSpanSubtitle;
+
+  /// No description provided for @corsiBackwardSpanWinTitle.
+  ///
+  /// In en, this message translates to:
+  /// **'BACKWARD SPAN PRO!'**
+  String get corsiBackwardSpanWinTitle;
+
+  /// No description provided for @corsiBackwardSpanWinMessage.
+  ///
+  /// In en, this message translates to:
+  /// **'Exceptional visuospatial working memory manipulation and reverse sequencing!'**
+  String get corsiBackwardSpanWinMessage;
 }
 
 class _AppLocalizationsDelegate

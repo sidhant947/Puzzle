@@ -1,47 +1,37 @@
-Welcome to PUZZLE, the ultimate minimalist collection of brain training games and logic puzzles designed to challenge, stimulate, and improve your mind. Built with Flutter, this premium suite features over 273 unique games across 6 critical cognitive areas—all completely offline, ad-free, and open-source.
+Welcome to PUZZLE, the ultimate minimalist collection of brain training games and logic puzzles designed to challenge, stimulate, and improve your mind. Built with Flutter, this premium suite features over 304 unique games across 6 critical cognitive areas, all completely offline, ad-free, and open-source.
 
 Whether you want to play a quick game of Minesweeper, challenge yourself with 2048, solve a classic Sudoku, or boost your memory, PUZZLE has you covered.
 
-🧠 6 COGNITIVE DOMAINS TO EXPLORE:
+6 COGNITIVE DOMAINS TO EXPLORE
 
-1. ATTENTION & FOCUS (45 Games)
+1. ATTENTION AND FOCUS (54 Games)
 Enhance your mental focus, concentration, and speed. Play Schulte Table, Stroop Test, Color Match, Flanker Test, and visual search tasks to build elite attention.
 
-2. LOGIC & REASONING (40 Games)
-Challenge your logical thinking and deduction skills. Enjoy classic and modern brainteasers:
-* Play Minesweeper, Sudoku, Akari, and Nonograms.
-* Tackle Einstein Riddle, Bridges, Nurikabe, and Slitherlink.
-* Solve Lights Out, Shikaku, Masyu Loop, and Kakuro.
+2. LOGIC AND REASONING (44 Games)
+Challenge your logical thinking and deduction skills. Enjoy classic and modern brainteasers including Minesweeper, Sudoku, Akari, Nonograms, Einstein Riddle, Bridges, Nurikabe, Slitherlink, Lights Out, Shikaku, Masyu Loop, Kurodoko, Tapa, Heyawake, and Yajilin.
 
-3. MATH & NUMBERS (55 Games)
-Sharpen your mental arithmetic and mathematical reasoning with fast-paced and challenging games:
-* 2048, KenKen, and Magic Squares.
-* Sum Snake, Calculation Sprint, Fibonacci Merge, and Operator Mix.
-* Binary conversion, algebraic balance, and fraction matcher puzzles.
+3. MATH AND NUMBERS (63 Games)
+Sharpen your mental arithmetic and mathematical reasoning with 2048, KenKen, Magic Squares, Sum Snake, Calculation Sprint, Fibonacci Merge, Exponent Tower, Dot Product, Pythagoras, Venn Sets, Matrix Rank, and more.
 
-4. MEMORY TRAINING (50 Games)
-Improve your working memory, pattern recognition, and recall capabilities:
-* Chimp Test, Corsi Blocks, and N-Back / Double N-Back tests.
-* Memory Palace, Pattern Recall, and Associative Pairs.
-* Sequence memory, face-name association, and spatial cabinets.
+4. MEMORY TRAINING (54 Games)
+Improve your working memory, pattern recognition, and recall with Chimp Test, Corsi Blocks, N-Back, Double N-Back, Memory Palace, Pattern Recall, Associative Pairs, Corsi Backward, Word Pairs, Digit Probe, and spatial cabinet tasks.
 
-5. SPATIAL AWARENESS (34 Games)
-Challenge your 3D rotation, mapping, and perspective skills:
-* 3D Block Count, Gear Rotation, and Mental Rotation.
-* Classic Maze, Hue Sort, Klotski Escape, and Tangram puzzles.
-* Perspective Shift, Shadow Pivot, and paper folding simulations.
+5. SPATIAL AWARENESS (37 Games)
+Challenge your 3D rotation, mapping, and perspective skills with 3D Block Count, Gear Rotation, Mental Rotation, Classic Maze, Hue Sort, Klotski Escape, Tangram, Wireframe 3D, Polyomino, Gear Train, and paper folding simulations.
 
-6. WORD & LANGUAGE (49 Games)
-Expand your vocabulary, spelling, and linguistic speed:
-* Cryptograms, Crosswords, Word Search, and Word Snake.
-* Typing Speed, Anagram Definitions, and Word Ladders.
-* Grammar Sort, Syllable Stack, and vocabulary builders.
+6. WORD AND LANGUAGE (51 Games)
+Expand your vocabulary, spelling, and linguistic speed with Cryptograms, Crosswords, Word Search, Word Snake, Typing Speed, Anagram Definitions, Conundrum, Word Ladders, Grammar Sort, Syllable Stack, and vocabulary builders.
 
-🚀 WHY CHOOSE PUZZLE?
-* 273 Games in One App: No need to download dozens of apps. Get Sudoku, Minesweeper, 2048, and 270 other puzzles in a single download.
-* 100% Offline: Play anywhere, anytime—during commutes, flights, or when you are completely off-grid.
-* Clean & Minimalist Design: A beautiful, modern dark-themed interface built for focus with no distracting clutter.
-* Open-Source & Privacy-Friendly: Built with Flutter under GPL v3, ensuring total transparency and no data tracking.
-* Suitable for All Ages: Curated puzzle games for adults, seniors, and kids alike.
+WHY CHOOSE PUZZLE
+
+304 games in one app. No need to download dozens of apps. Get Sudoku, Minesweeper, 2048, and 300 other puzzles in a single download.
+
+100% offline. Play anywhere, anytime during commutes, flights, or when you are completely off-grid.
+
+Clean and minimalist design. A beautiful, modern dark-themed interface built for focus with no distracting clutter.
+
+Open-source and privacy-friendly. Built with Flutter under GPL v3, ensuring total transparency and no data tracking.
+
+Suitable for all ages. Curated puzzle games for adults, seniors, and kids alike.
 
 Sharpen your brain, track your improvements, and master the ultimate collection of logic puzzles. Download PUZZLE today and start training your mind!

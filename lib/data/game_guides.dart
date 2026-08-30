@@ -19,6 +19,489 @@ class GameGuide {
 }
 
 const Map<String, GameGuide> gameGuides = {
+  "vector_dot_product": GameGuide(
+    title: "Vector Dot Product",
+    category: "MATH",
+    objective: "Calculate the algebraic inner product of two 2D vectors: u • v = (u_x * v_x) + (u_y * v_y).",
+    controls: "Tap the correct scalar dot product answer.",
+    walkthrough: const [
+      "Step 1: Multiply the corresponding X components (u_x * v_x).",
+      "Step 2: Multiply the corresponding Y components (u_y * v_y).",
+      "Step 3: Sum the two products together and select the choice.",
+    ],
+    strategies: const [
+      "Pay attention to negative signs (e.g. (-2) * 3 = -6).",
+      "Perpendicular orthogonal vectors always produce a dot product of 0.",
+    ],
+  ),
+  "stroop_number_size": GameGuide(
+    title: "Size-Congruity Stroop",
+    category: "ATTENTION",
+    objective: "Rapidly select which number is larger, focusing strictly on either its numerical value or physical font size as instructed.",
+    controls: "Tap LEFT or RIGHT.",
+    walkthrough: const [
+      "Step 1: Read the prompt instruction banner (NUMERICAL vs PHYSICAL SIZE).",
+      "Step 2: Inhibit the irrelevant dimension (e.g. ignore large font when comparing numbers).",
+      "Step 3: Tap the corresponding side button.",
+    ],
+    strategies: const [
+      "Lock your attention onto the active dimension before looking at the stimuli.",
+      "Watch out for incongruent trials (e.g. number 9 printed small vs number 2 printed huge).",
+    ],
+  ),
+  "word_ladder_step": GameGuide(
+    title: "Word Ladder",
+    category: "WORD",
+    objective: "Find the bridge word that transitions between start and end words changing only 1 letter at each step.",
+    controls: "Tap the valid transition word from the choices.",
+    walkthrough: const [
+      "Step 1: Compare start and end words to see which letters differ.",
+      "Step 2: Look for an intermediate valid word that differs by 1 letter from both.",
+      "Step 3: Tap the matching middle word.",
+    ],
+    strategies: const [
+      "Verify that the chosen middle word is a valid English dictionary word.",
+      "Check letter substitutions position by position.",
+    ],
+  ),
+  "corsi_backward_span": GameGuide(
+    title: "Corsi Backward Span",
+    category: "MEMORY",
+    objective: "Observe a sequence of spatial block flashes and tap the blocks in exact reverse (backward) order.",
+    controls: "Tap the spatial blocks on screen in reverse sequence.",
+    walkthrough: const [
+      "Step 1: Watch the illuminated blocks in sequential order.",
+      "Step 2: Mentally reverse the visuospatial trajectory.",
+      "Step 3: Tap the blocks starting from the last block illuminated back to the first.",
+    ],
+    strategies: const [
+      "Anchor the final illuminated block strongly in visual memory as your starting point.",
+      "Trace the spatial path backwards across the board.",
+    ],
+  ),
+  "ab_reversal_oddball": GameGuide(
+    title: "A-B Rule Reversal",
+    category: "ATTENTION",
+    objective: "Respond to target stimuli and switch response rules immediately when the target reverses.",
+    controls: "Tap TARGET or NON-TARGET.",
+    walkthrough: const [
+      "Step 1: Check the active target rule banner at the top.",
+      "Step 2: Observe the presented visual shape (Square vs Circle).",
+      "Step 3: Press TARGET if it matches the current rule, else NON-TARGET.",
+    ],
+    strategies: const [
+      "Stay alert for rule change notifications.",
+      "Inhibit your prior motor reflex as soon as the rule shifts.",
+    ],
+  ),
+  "conundrum_anagram": GameGuide(
+    title: "9-Letter Conundrum",
+    category: "WORD",
+    objective: "Unscramble all 9 letter tiles into a single valid English word.",
+    controls: "Tap letter tiles in order to spell the word; tap BACKSPACE to undo.",
+    walkthrough: const [
+      "Step 1: Scan the scrambled 9-letter pool.",
+      "Step 2: Look for common prefixes (DIS-, UN-) and suffixes (-ING, -TION, -FUL).",
+      "Step 3: Spell out the complete 9-letter word.",
+    ],
+    strategies: const [
+      "Group consonants with matching vowel sounds.",
+      "Try constructing the ending first to reveal the root stem.",
+    ],
+  ),
+  "binary_matrix_rank": GameGuide(
+    title: "Matrix Rank (GF2)",
+    category: "MATH",
+    objective: "Determine the linear algebraic rank (1, 2, or 3) of a 3x3 binary matrix modulo 2.",
+    controls: "Tap RANK 1, RANK 2, or RANK 3.",
+    walkthrough: const [
+      "Step 1: Inspect the row vectors of the 3x3 binary matrix.",
+      "Step 2: Check for identical rows or rows formed by the XOR sum of the other two rows.",
+      "Step 3: Tap the corresponding rank.",
+    ],
+    strategies: const [
+      "If all three rows are distinct and no row is the XOR sum of others, rank is 3.",
+      "If two rows are identical or all rows are multiples, rank is 1 or 2.",
+    ],
+  ),
+  "visual_crowding_acuity": GameGuide(
+    title: "Visual Crowding",
+    category: "ATTENTION",
+    objective: "Discriminate the gap orientation of the central Landolt ring in the presence of flanking distractor rings.",
+    controls: "Tap the directional arrow matching the center gap orientation (UP, DOWN, LEFT, RIGHT).",
+    walkthrough: const [
+      "Step 1: Focus your attention strictly on the center Landolt ring.",
+      "Step 2: Filter out the interference from the adjacent flanking rings.",
+      "Step 3: Tap the corresponding arrow direction.",
+    ],
+    strategies: const [
+      "Narrow your attentional spotlight to the central ring boundary.",
+      "Don't look at the outer flankers; identify the break in the primary ring.",
+    ],
+  ),
+  "probe_digit_span": GameGuide(
+    title: "Probe Digit Recall",
+    category: "MEMORY",
+    objective: "Observe a rapid stream of random digits and recall the number that immediately followed the probe digit.",
+    controls: "Tap the digit on the on-screen keypad.",
+    walkthrough: const [
+      "Step 1: Attend carefully to the sequential number stream.",
+      "Step 2: When the probe number is shown, search your short-term memory for its immediate successor.",
+      "Step 3: Enter the digit on the numpad.",
+    ],
+    strategies: const [
+      "Encode digits in rapid pairs (e.g. '3-8', '5-2') to quickly recall successor links.",
+      "Maintain a running audio-phonological loop in working memory.",
+    ],
+  ),
+  "pythagorean_triple_builder": GameGuide(
+    title: "Pythagorean Triples",
+    category: "MATH",
+    objective: "Calculate the missing side length in integer right triangles using a² + b² = c².",
+    controls: "Tap the correct missing integer value from the options.",
+    walkthrough: const [
+      "Step 1: Identify given legs (a, b) and hypotenuse (c).",
+      "Step 2: Apply the Pythagorean formula: c = √(a² + b²) or a = √(c² - b²).",
+      "Step 3: Select the matching integer result.",
+    ],
+    strategies: const [
+      "Memorize common primitive triples like (3, 4, 5), (5, 12, 13), (8, 15, 17).",
+      "Multiples of triples (e.g. 6, 8, 10) follow the same base ratio.",
+    ],
+  ),
+  "visual_search_conjunction": GameGuide(
+    title: "Conjunction Search",
+    category: "ATTENTION",
+    objective: "Determine whether the target shape (Red Square) is present among color/shape conjunction distractors.",
+    controls: "Tap PRESENT or ABSENT.",
+    walkthrough: const [
+      "Step 1: Keep both feature dimensions (Red + Square) in mind.",
+      "Step 2: Scan the display quickly for the unique combination.",
+      "Step 3: Press PRESENT if the Red Square is found, otherwise ABSENT.",
+    ],
+    strategies: const [
+      "Filter distractors by color first (scan only red items for square contours).",
+      "Scan in structured horizontal swaths across the display.",
+    ],
+  ),
+  "wireframe_3d_rotation": GameGuide(
+    title: "3D Wireframe Rotation",
+    category: "SPATIAL",
+    objective: "Identify the correctly rotated 3D wireframe geometric solid after a yaw angular rotation.",
+    controls: "Tap the matching rotated wireframe option.",
+    walkthrough: const [
+      "Step 1: Observe the original 3D wireframe orientation.",
+      "Step 2: Mentally rotate the model around its vertical Y-axis by the indicated degrees.",
+      "Step 3: Tap the option showing the matching perspective.",
+    ],
+    strategies: const [
+      "Track the front-most apex or prominent vertex during rotation.",
+      "Eliminate options where base edges reverse depth incorrectly.",
+    ],
+  ),
+  "word_pair_associate_memory": GameGuide(
+    title: "Word Pair Memory",
+    category: "MEMORY",
+    objective: "Study paired associations and pick the exact partner word when prompted with a cue.",
+    controls: "Tap the matching target word among choices.",
+    walkthrough: const [
+      "Step 1: Memorize pairs during the countdown (e.g. 'DOCTOR - HOSPITAL').",
+      "Step 2: When presented with 'DOCTOR', locate 'HOSPITAL'.",
+      "Step 3: Tap the correct option button.",
+    ],
+    strategies: const [
+      "Create vivid semantic connections between pair concepts.",
+      "Review the pairs sequentially during the study phase.",
+    ],
+  ),
+  "hitori": GameGuide(
+    title: "Hitori",
+    category: "LOGIC",
+    objective: "Shade duplicate numbers in the grid such that no row or column contains repeats among unshaded cells, black cells don't touch orthogonally, and unshaded cells remain connected.",
+    controls: "Tap a cell once to shade (black), tap twice to circle (safe).",
+    walkthrough: const [
+      "Step 1: Locate rows and columns with duplicate numbers.",
+      "Step 2: Shade duplicates so only one instance remains visible.",
+      "Step 3: Ensure shaded cells are never orthogonally adjacent.",
+    ],
+    strategies: const [
+      "If a cell is shaded black, all four orthogonal neighbors must be unshaded (circle them).",
+      "Between two identical numbers with one cell in between, the middle cell must be unshaded.",
+    ],
+  ),
+  "modular_clock_arithmetic": GameGuide(
+    title: "Clock Modulo 12",
+    category: "MATH",
+    objective: "Calculate cyclical time increments under modulo 12 modular arithmetic.",
+    controls: "Tap the button corresponding to the future hour.",
+    walkthrough: const [
+      "Step 1: Check the starting time on the analog clock.",
+      "Step 2: Add the given number of hours and reduce modulo 12.",
+      "Step 3: Tap the matching hour button.",
+    ],
+    strategies: const [
+      "Every 12 or 24 hours returns to the exact same position.",
+      "Subtract the largest multiple of 12 first to compute rapidly.",
+    ],
+  ),
+  "temporal_order_judgment": GameGuide(
+    title: "Temporal Order",
+    category: "ATTENTION",
+    objective: "Judge which of two brief peripheral circle flashes occurred first.",
+    controls: "Tap LEFT FIRST or RIGHT FIRST.",
+    walkthrough: const [
+      "Step 1: Focus on the center '+' crosshair.",
+      "Step 2: Observe the two rapid asynchronous circle flashes.",
+      "Step 3: Choose which side flashed first.",
+    ],
+    strategies: const [
+      "Do not track eyes side to side; keep your central gaze fixed.",
+      "Trust your immediate perceptual intuition.",
+    ],
+  ),
+  "polyomino_tiling": GameGuide(
+    title: "Polyomino Tiling",
+    category: "SPATIAL",
+    objective: "Arrange and rotate tetromino pieces to tile the 4x4 board completely without overlaps.",
+    controls: "Tap a piece to select, tap ROTATE, then tap a grid cell to place.",
+    walkthrough: const [
+      "Step 1: Select a piece from the tray.",
+      "Step 2: Rotate if necessary to fit the empty board space.",
+      "Step 3: Tap the board square to place it.",
+    ],
+    strategies: const [
+      "Place awkward pieces (like Z and L shapes) first.",
+      "Leave square-friendly holes for the O piece.",
+    ],
+  ),
+  "yajilin": GameGuide(
+    title: "Yajilin",
+    category: "LOGIC",
+    objective: "Draw a single closed loop through unshaded cells and shade cells black according to directional arrow clue counts without adjacent black cells.",
+    controls: "Tap cells to draw loop segments; double tap to toggle black shading.",
+    walkthrough: const [
+      "Step 1: Check arrow clues indicating the exact number of black cells in that direction.",
+      "Step 2: Ensure no two black cells touch orthogonally.",
+      "Step 3: Draw a continuous single loop visiting all remaining empty white cells.",
+    ],
+    strategies: const [
+      "Clue cells cannot be visited by the loop and cannot be shaded black.",
+      "If a cell is shaded black, the loop must travel around it.",
+    ],
+  ),
+  "algebraic_inequality_solver": GameGuide(
+    title: "Inequality Solver",
+    category: "MATH",
+    objective: "Rapidly isolate the variable and solve linear single-step and two-step inequalities.",
+    controls: "Tap the correct simplified inequality expression from the choices.",
+    walkthrough: const [
+      "Step 1: Inspect the algebraic expression (e.g. 3x + 5 < 17).",
+      "Step 2: Subtract constant terms and divide by the coefficient of x.",
+      "Step 3: Select the matching solution (e.g. x < 4).",
+    ],
+    strategies: const [
+      "Perform reverse order of operations (subtract/add first, then divide/multiply).",
+      "Keep track of the inequality direction (<, >, ≤, ≥).",
+    ],
+  ),
+  "attentional_blink_probe": GameGuide(
+    title: "Attentional Blink",
+    category: "ATTENTION",
+    objective: "Detect whether a second probe letter ('X') appeared during rapid serial visual presentation after the primary target.",
+    controls: "Tap YES or NO after the stream finishes.",
+    walkthrough: const [
+      "Step 1: Focus on the fast-flashing stream of alphanumeric items.",
+      "Step 2: Identify the primary target (green letter) and look for a subsequent 'X'.",
+      "Step 3: Report whether the letter 'X' appeared in the stream.",
+    ],
+    strategies: const [
+      "Avoid dwelling on the first target so your visual buffer reopens quickly.",
+      "Maintain relaxed, steady central gaze focus.",
+    ],
+  ),
+  "masyu": GameGuide(
+    title: "Masyu",
+    category: "LOGIC",
+    objective: "Draw a single non-intersecting loop passing through every circle. Pass straight through white circles and turn in adjacent cells; turn at 90° on black circles and go straight through adjacent cells.",
+    controls: "Tap and drag or tap adjacent dots to draw/erase loop segments.",
+    walkthrough: const [
+      "Step 1: Check pearl positions; white pearls require a straight pass-through, black pearls require an immediate 90° corner.",
+      "Step 2: Connect adjacent nodes by tapping to build the path.",
+      "Step 3: Close the loop without branches or dead ends.",
+    ],
+    strategies: const [
+      "Black pearls near edges must turn inward.",
+      "White pearls along a wall must travel parallel to the border.",
+    ],
+  ),
+  "prime_gap_hunt": GameGuide(
+    title: "Prime Gap Hunt",
+    category: "MATH",
+    objective: "Calculate the exact arithmetic difference between pairs of consecutive prime numbers.",
+    controls: "Tap the correct prime gap number button.",
+    walkthrough: const [
+      "Step 1: Inspect the two consecutive prime numbers displayed on the cards.",
+      "Step 2: Mentally subtract the smaller prime from the larger prime.",
+      "Step 3: Select the matching numerical difference from the grid.",
+    ],
+    strategies: const [
+      "Twin primes always have a gap of 2 (e.g. 11 & 13, 17 & 19, 41 & 43).",
+      "Cousin primes have a gap of 4, and sexy primes have a gap of 6.",
+    ],
+  ),
+  "heyawake": GameGuide(
+    title: "Heyawake",
+    category: "LOGIC",
+    objective: "Paint cells black or white in rectangular rooms according to numeric room constraints.",
+    controls: "Tap an empty cell once to paint black, tap twice to mark with a green dot.",
+    walkthrough: const [
+      "Step 1: Check rooms with numbers; each specifies the exact count of black cells inside that room.",
+      "Step 2: Ensure no two black cells touch orthogonally.",
+      "Step 3: Keep all unshaded white cells connected into a single open path.",
+    ],
+    strategies: const [
+      "A room with '0' must have all white cells.",
+      "White corridors cannot span across more than two consecutive rooms in a straight line.",
+    ],
+  ),
+  "set_theory_venn": GameGuide(
+    title: "Set Theory Venn",
+    category: "MATH",
+    objective: "Select the correct regions of the Venn diagram matching the given set theory formula.",
+    controls: "Tap regions of the Venn diagram or the outside space to select them, then tap SUBMIT.",
+    walkthrough: const [
+      "Step 1: Read the set expression (e.g., A ∩ B, A ∪ B, A \\ B, (A ∪ B)').",
+      "Step 2: Identify whether the formula targets only A, only B, the intersection, or the outer universe.",
+      "Step 3: Toggle the appropriate region cards and submit your answer.",
+    ],
+    strategies: const [
+      "Intersection (∩) means only the overlapping region.",
+      "Union (∪) combines all interior parts of both sets.",
+      "Complement (') refers to everything outside the specified set.",
+    ],
+  ),
+  "navon_hierarchical": GameGuide(
+    title: "Navon Hierarchical",
+    category: "ATTENTION",
+    objective: "Identify the requested letter level (Global large letter vs Local small constituent letters) under rapid rule changes.",
+    controls: "Tap the matching letter button from the choices.",
+    walkthrough: const [
+      "Step 1: Check the prompt rule: Global (Large shape) or Local (Small elements).",
+      "Step 2: Inspect the composite figure.",
+      "Step 3: Tap the letter corresponding to the active prompt instruction.",
+    ],
+    strategies: const [
+      "Do not look at the whole letter if local is requested; zoom into a single pixel letter.",
+      "Defocus your gaze slightly to immediately perceive the global shape.",
+    ],
+  ),
+  "tapa": GameGuide(
+    title: "Tapa",
+    category: "LOGIC",
+    objective: "Paint a continuous black wall such that all clue numbers indicate consecutive wall blocks around each cell, with no 2x2 black squares.",
+    controls: "Tap an empty cell once to mark as wall, tap twice to mark with a red dot.",
+    walkthrough: const [
+      "Step 1: Check numbered cells; each number indicates the length of consecutive shaded blocks surrounding it.",
+      "Step 2: Ensure all black wall cells form a single connected network.",
+      "Step 3: Never allow a 2x2 solid block of black wall cells.",
+    ],
+    strategies: const [
+      "Clue cells can never be shaded black.",
+      "A cell with '8' must be surrounded by 8 black cells.",
+      "Diagonal blocks separated by unshaded spaces fulfill multiple-number clues like (1, 1) or (1, 2).",
+    ],
+  ),
+  "exponent_tower": GameGuide(
+    title: "Exponent Tower",
+    category: "MATH",
+    objective: "Calculate powers and stack exponential expressions in ascending order from smallest to largest.",
+    controls: "Tap available power blocks to add them to your tower; tap placed blocks to remove them.",
+    walkthrough: const [
+      "Step 1: Calculate the numerical value of each base raised to its exponent.",
+      "Step 2: Tap the smallest power first to form the base of the tower.",
+      "Step 3: Stack subsequent powers upward in strict ascending numerical order.",
+    ],
+    strategies: const [
+      "Remember key powers of 2 (e.g. 2^5 = 32, 2^6 = 64) and 3 (3^3 = 27, 3^4 = 81).",
+      "Compare same bases by their exponents directly.",
+    ],
+  ),
+  "posner_spatial_cueing": GameGuide(
+    title: "Spatial Cueing",
+    category: "ATTENTION",
+    objective: "React as quickly and accurately as possible when a target appears on the left or right side of the screen.",
+    controls: "Tap LEFT or RIGHT button matching the target position.",
+    walkthrough: const [
+      "Step 1: Keep your focus locked on the central '+' fixation cross.",
+      "Step 2: Note the flashing box highlight cue (warning: cues may sometimes be invalid distractors).",
+      "Step 3: When the target circle appears, immediately tap the corresponding side button.",
+    ],
+    strategies: const [
+      "Do not guess before the target circle actually renders.",
+      "Maintain central gaze fixation for the fastest peripheral reaction time.",
+    ],
+  ),
+  "gear_train_direction": GameGuide(
+    title: "Gear Train",
+    category: "SPATIAL",
+    objective: "Determine whether the target '?' gear will rotate clockwise or counter-clockwise.",
+    controls: "Tap CLOCKWISE or COUNTER-CW.",
+    walkthrough: const [
+      "Step 1: Observe the driving gear rotation direction indicated by the animated arrow.",
+      "Step 2: Trace the connection to adjacent gears (meshed gears reverse direction, open belts keep direction, crossed belts reverse direction).",
+      "Step 3: Follow the transmission chain to the final gear and submit your answer.",
+    ],
+    strategies: const [
+      "Alternate directions for every meshed contact point.",
+      "Belts preserve rotation direction unless they cross over in an 'X'.",
+    ],
+  ),
+  "continuous_paired_associate": GameGuide(
+    title: "Paired Associate",
+    category: "MEMORY",
+    objective: "Learn pairs of abstract symbols and select the correct matching partner when queried.",
+    controls: "Tap the symbol button that was paired with the prompt symbol.",
+    walkthrough: const [
+      "Step 1: Study the symbol associations during the countdown study phase.",
+      "Step 2: Create a mental mnemonic connecting each cue symbol to its partner.",
+      "Step 3: When probed with a cue, tap the matching target from the tray.",
+    ],
+    strategies: const [
+      "Invent visual stories linking the two symbols (e.g., 'star fuels the rocket').",
+      "Pay attention to the matching color highlights.",
+    ],
+  ),
+  "kurodoko": GameGuide(
+    title: "Kurodoko",
+    category: "LOGIC",
+    objective: "Place black cells on the grid so each numbered white cell sees the exact count of white cells orthogonally.",
+    controls: "Tap an empty cell once to mark as white, tap twice to mark as black.",
+    walkthrough: const [
+      "Step 1: Check numbered clues; each indicates how many white cells can be seen horizontally and vertically.",
+      "Step 2: Ensure no two black cells touch orthogonally.",
+      "Step 3: Keep all white cells connected into a single group.",
+    ],
+    strategies: const [
+      "Cells with large clues must have long unbroken white corridors.",
+      "Clues cannot be shaded black.",
+      "If a cell is black, all four orthogonal neighbors must be white.",
+    ],
+  ),
+  "subitizing_rush": GameGuide(
+    title: "Subitizing Rush",
+    category: "ATTENTION",
+    objective: "Instantly identify the quantity of briefly flashed dots without sequential counting.",
+    controls: "Tap the matching number button.",
+    walkthrough: const [
+      "Step 1: Focus your gaze on the center of the canvas.",
+      "Step 2: When the dots flash, capture the pattern as a holistic visual group.",
+      "Step 3: Select the exact number of dots you observed.",
+    ],
+    strategies: const [
+      "Group dots mentally into small clusters of 2, 3, or 4.",
+      "Do not count one-by-one; rely on quick visual perception.",
+    ],
+  ),
   "action_sequence_recall": GameGuide(
     title: "Action Recall",
     category: "MEMORY",
@@ -1722,23 +2205,6 @@ const Map<String, GameGuide> gameGuides = {
       "Use mnemonic devices or associations for items that are harder to categorize.",
     ],
   ),
-  "hitori": GameGuide(
-    title: "Hitori",
-    category: "Math & Logic",
-    objective: "Shade cells so that no unshaded number appears more than once in any row or column. Shaded cells cannot share an edge, and all unshaded cells must remain connected.",
-    controls: "Tap a cell to toggle its shaded state.",
-    walkthrough: const [
-      "Step 1: Look for duplicate numbers in rows and columns.",
-      "Step 2: Tap cells to shade them, eliminating the duplicates.",
-      "Step 3: Ensure that no two shaded cells share a horizontal or vertical edge.",
-      "Step 4: Ensure that all unshaded cells form a single continuous connected group.",
-    ],
-    strategies: const [
-      "If you shade a cell, you know its neighbors must be unshaded. Unshaded cells can be mentally circled.",
-      "If a number appears three times in a row/col, at least two must be shaded. If two are adjacent, the third must be shaded.",
-      "Watch out for creating 'islands'—don'\''t shade a ring around an unshaded cell.",
-    ],
-  ),
   "homophone_hunt": GameGuide(
     title: "Homophone Hunt",
     category: "Language",
@@ -2081,22 +2547,6 @@ const Map<String, GameGuide> gameGuides = {
     strategies: const [
       "Focus on symmetry; if the left side is red, the right side might be too.",
       "Memorize the colors layer by layer, starting from the center outward.",
-    ],
-  ),
-  "masyu": GameGuide(
-    title: "Masyu",
-    category: "LOGIC",
-    objective: "Draw a single continuous loop that passes through all circles, turning on black circles and going straight on white circles.",
-    controls: "Tap or drag between dots to draw the loop lines.",
-    walkthrough: const [
-      "Step 1: Look at the white circles; the loop must go straight through them and turn in at least one of the adjacent cells.",
-      "Step 2: Look at the black circles; the loop must turn 90 degrees on them and go straight in both directions.",
-      "Step 3: Connect lines to form a single, non-intersecting loop.",
-      "Step 4: Ensure all circles are visited properly.",
-    ],
-    strategies: const [
-      "White circles on the edge of the board force the line to run parallel to the edge.",
-      "Black circles near each other force specific turns to avoid intersections.",
     ],
   ),
   "math_guess": GameGuide(
