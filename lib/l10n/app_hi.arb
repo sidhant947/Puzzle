@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "केंद्र अक्षर सहित, पहिये पर अक्षरों का उपयोग करके शब्द बनाएं।",
   "wordWheelTitle": "शब्द चक्र",
   "yajilinSubtitle": "काली कोशिकाएँ रखें और सुरागों से मेल खाने वाला एक लूप बनाएँ।",
-  "yajilinTitle": "यजीलिन लूप"
+  "yajilinTitle": "यजीलिन लूप",
+  "btnMatchColor": "रंग मिलाएं",
+  "btnMatchWord": "शब्द मिलाएं",
+  "favoriteGame": "पसंदीदा",
+  "gameHidden": "खेल छिपा दिया गया",
+  "hiddenGames": "छिपे हुए खेल",
+  "hideGame": "छिपाएं",
+  "noHiddenGames": "कोई छिपा हुआ खेल नहीं है",
+  "orbitTapTapToHit": "जब गेंद गेट में प्रवेश करे तब टैप करें",
+  "showHiddenGames": "छिपे हुए खेल दिखाएं ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "पूर्ववत करें",
+  "unfavoriteGame": "पसंदीदा से हटाएं",
+  "unhideGame": "सामने लाएं"
 }

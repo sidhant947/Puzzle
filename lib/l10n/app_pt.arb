@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "Faça palavras usando as letras da roda, incluindo a letra central.",
   "wordWheelTitle": "Roda de palavras",
   "yajilinSubtitle": "Coloque células pretas e desenhe um único loop correspondente às pistas.",
-  "yajilinTitle": "Circuito Yajilin"
+  "yajilinTitle": "Circuito Yajilin",
+  "btnMatchColor": "COMBINAR COR",
+  "btnMatchWord": "COMBINAR PALAVRA",
+  "favoriteGame": "Favorito",
+  "gameHidden": "Jogo oculto",
+  "hiddenGames": "JOGOS OCULTOS",
+  "hideGame": "Ocultar",
+  "noHiddenGames": "Nenhum jogo oculto",
+  "orbitTapTapToHit": "Toque quando uma bola entrar no portal",
+  "showHiddenGames": "Mostrar jogos ocultos ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "Desfazer",
+  "unfavoriteGame": "Desfavoritar",
+  "unhideGame": "Desocultar"
 }

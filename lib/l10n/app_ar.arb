@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "اصنع كلمات باستخدام الحروف الموجودة على العجلة، بما في ذلك الحرف المركزي.",
   "wordWheelTitle": "عجلة الكلمات",
   "yajilinSubtitle": "ضع الخلايا السوداء وارسم حلقة واحدة مطابقة للقرائن.",
-  "yajilinTitle": "حلقة ياجيلين"
+  "yajilinTitle": "حلقة ياجيلين",
+  "btnMatchColor": "طابق اللون",
+  "btnMatchWord": "طابق الكلمة",
+  "favoriteGame": "المفضلة",
+  "gameHidden": "تم إخفاء اللعبة",
+  "hiddenGames": "الألعاب المخفية",
+  "hideGame": "إخفاء",
+  "noHiddenGames": "لا توجد ألعاب مخفية",
+  "orbitTapTapToHit": "انقر عندما تدخل الكرة البوابة",
+  "showHiddenGames": "إظهار الألعاب المخفية ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "تراجع",
+  "unfavoriteGame": "إزالة من المفضلة",
+  "unhideGame": "إلغاء الإخفاء"
 }

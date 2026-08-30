@@ -1115,7 +1115,7 @@ class AppLocalizationsKo extends AppLocalizations {
   String get orbitTapSubtitle => '공이 게이트에 맞춰질 때 탭하세요';
 
   @override
-  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+  String get orbitTapTapToHit => '공이 게이트에 들어갈 때 탭하세요';
 
   @override
   String get schulteTableTitle => '슐테 테이블';
@@ -4635,33 +4635,33 @@ class AppLocalizationsKo extends AppLocalizations {
   }
 
   @override
-  String get hideGame => 'Hide';
+  String get hideGame => '숨기기';
 
   @override
-  String get unhideGame => 'Unhide';
+  String get unhideGame => '숨기기 해제';
 
   @override
-  String get favoriteGame => 'Favorite';
+  String get favoriteGame => '즐겨찾기';
 
   @override
-  String get unfavoriteGame => 'Unfavorite';
+  String get unfavoriteGame => '즐겨찾기 해제';
 
   @override
-  String get hiddenGames => 'HIDDEN GAMES';
+  String get hiddenGames => '숨겨진 게임';
 
   @override
   String showHiddenGames(int count) {
-    return 'Show Hidden Games ($count)';
+    return '숨겨진 게임 보기 ($count)';
   }
 
   @override
-  String get noHiddenGames => 'No hidden games';
+  String get noHiddenGames => '숨겨진 게임 없음';
 
   @override
-  String get gameHidden => 'Game hidden';
+  String get gameHidden => '게임 숨김 처리됨';
 
   @override
-  String get undo => 'Undo';
+  String get undo => '실행 취소';
 
   @override
   String get snackbarCorrect => 'Correct!';
@@ -4862,10 +4862,10 @@ class AppLocalizationsKo extends AppLocalizations {
   String get btnMatch => 'Match';
 
   @override
-  String get btnMatchColor => 'MATCH COLOR';
+  String get btnMatchColor => '색상 일치';
 
   @override
-  String get btnMatchWord => 'MATCH WORD';
+  String get btnMatchWord => '단어 일치';
 
   @override
   String get btnGuess => 'Guess';

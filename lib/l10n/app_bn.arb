@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "কেন্দ্রের অক্ষর সহ চাকার অক্ষর ব্যবহার করে শব্দ তৈরি করুন।",
   "wordWheelTitle": "শব্দ চাকা",
   "yajilinSubtitle": "কালো কক্ষগুলি রাখুন এবং একটি একক লুপ ম্যাচিং ক্লু আঁকুন।",
-  "yajilinTitle": "ইয়াজিলিন লুপ"
+  "yajilinTitle": "ইয়াজিলিন লুপ",
+  "btnMatchColor": "রং মেলান",
+  "btnMatchWord": "শব্দ মেলান",
+  "favoriteGame": "প্রিয়",
+  "gameHidden": "গেম লুকানো হয়েছে",
+  "hiddenGames": "লুকানো গেম",
+  "hideGame": "লুকান",
+  "noHiddenGames": "কোনো লুকানো গেম নেই",
+  "orbitTapTapToHit": "বল গেটে প্রবেশ করলে ট্যাপ করুন",
+  "showHiddenGames": "লুকানো গেম দেখান ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "পূর্বাবস্থায় ফেরান",
+  "unfavoriteGame": "প্রিয় তালিকা থেকে সরান",
+  "unhideGame": "দেখান"
 }

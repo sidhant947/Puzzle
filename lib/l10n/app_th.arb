@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "สร้างคำโดยใช้ตัวอักษรบนวงล้อรวมทั้งอักษรตรงกลางด้วย",
   "wordWheelTitle": "วงล้อคำ",
   "yajilinSubtitle": "วางเซลล์สีดำและวาดเบาะแสการจับคู่วงเดียว",
-  "yajilinTitle": "ยาจิลินลูป"
+  "yajilinTitle": "ยาจิลินลูป",
+  "btnMatchColor": "จับคู่สี",
+  "btnMatchWord": "จับคู่คำ",
+  "favoriteGame": "รายการโปรด",
+  "gameHidden": "ซ่อนเกมแล้ว",
+  "hiddenGames": "เกมที่ซ่อนอยู่",
+  "hideGame": "ซ่อน",
+  "noHiddenGames": "ไม่มีเกมที่ซ่อนอยู่",
+  "orbitTapTapToHit": "แตะเมื่อลูกบอลเข้าประตู",
+  "showHiddenGames": "แสดงเกมที่ซ่อนอยู่ ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "เลิกทำ",
+  "unfavoriteGame": "ลบออกจากรายการโปรด",
+  "unhideGame": "ยกเลิกการซ่อน"
 }

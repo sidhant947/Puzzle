@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "با استفاده از حروف روی چرخ، از جمله حرف مرکزی، کلمات بسازید.",
   "wordWheelTitle": "چرخ کلمه",
   "yajilinSubtitle": "سلول های سیاه را قرار دهید و سرنخ های منطبق با حلقه را بکشید.",
-  "yajilinTitle": "حلقه یاجیلین"
+  "yajilinTitle": "حلقه یاجیلین",
+  "btnMatchColor": "تطبیق رنگ",
+  "btnMatchWord": "تطبیق کلمه",
+  "favoriteGame": "علاقه‌مندی",
+  "gameHidden": "بازی پنهان شد",
+  "hiddenGames": "بازی‌های پنهان",
+  "hideGame": "پنهان کردن",
+  "noHiddenGames": "هیچ بازی پنهانی وجود ندارد",
+  "orbitTapTapToHit": "وقتی توپ وارد دروازه شد ضربه بزنید",
+  "showHiddenGames": "نمایش بازی‌های پنهان ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "واگرد",
+  "unfavoriteGame": "حذف از علاقه‌مندی‌ها",
+  "unhideGame": "آشکار کردن"
 }

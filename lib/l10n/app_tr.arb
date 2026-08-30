@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "Ortadaki harf de dahil olmak üzere çarktaki harfleri kullanarak kelimeler oluşturun.",
   "wordWheelTitle": "Kelime Çarkı",
   "yajilinSubtitle": "Siyah hücreleri yerleştirin ve ipuçlarıyla eşleşen tek bir döngü çizin.",
-  "yajilinTitle": "Yajilin Döngüsü"
+  "yajilinTitle": "Yajilin Döngüsü",
+  "btnMatchColor": "RENK EŞLEŞTİR",
+  "btnMatchWord": "KELİME EŞLEŞTİR",
+  "favoriteGame": "Favori",
+  "gameHidden": "Oyun gizlendi",
+  "hiddenGames": "GİZLİ OYUNLAR",
+  "hideGame": "Gizle",
+  "noHiddenGames": "Gizli oyun yok",
+  "orbitTapTapToHit": "Top kapıya girdiğinde dokun",
+  "showHiddenGames": "Gizli Oyunları Göster ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "Geri Al",
+  "unfavoriteGame": "Favorilerden Çıkar",
+  "unhideGame": "Göster"
 }

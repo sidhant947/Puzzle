@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "Créez des mots en utilisant les lettres de la roue, y compris la lettre centrale.",
   "wordWheelTitle": "Roue des mots",
   "yajilinSubtitle": "Placez des cellules noires et tracez une seule boucle correspondant aux indices.",
-  "yajilinTitle": "Boucle Yajilin"
+  "yajilinTitle": "Boucle Yajilin",
+  "btnMatchColor": "CORRESPONDANCE COULEUR",
+  "btnMatchWord": "CORRESPONDANCE MOT",
+  "favoriteGame": "Favori",
+  "gameHidden": "Jeu masqué",
+  "hiddenGames": "JEUX MASQUÉS",
+  "hideGame": "Masquer",
+  "noHiddenGames": "Aucun jeu masqué",
+  "orbitTapTapToHit": "Touchez lorsqu'une balle entre dans la porte",
+  "showHiddenGames": "Afficher les jeux masqués ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "Annuler",
+  "unfavoriteGame": "Retirer des favoris",
+  "unhideGame": "Afficher"
 }

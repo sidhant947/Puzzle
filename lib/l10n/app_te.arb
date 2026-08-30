@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "మధ్యలో అక్షరంతో సహా చక్రంలో అక్షరాలను ఉపయోగించి పదాలను రూపొందించండి.",
   "wordWheelTitle": "పద చక్రం",
   "yajilinSubtitle": "నల్ల కణాలను ఉంచండి మరియు ఒకే లూప్ మ్యాచింగ్ క్లూలను గీయండి.",
-  "yajilinTitle": "యాజిలిన్ లూప్"
+  "yajilinTitle": "యాజిలిన్ లూప్",
+  "btnMatchColor": "రంగును సరిపోల్చండి",
+  "btnMatchWord": "పదాన్ని సరిపోల్చండి",
+  "favoriteGame": "ఇష్టమైనది",
+  "gameHidden": "ఆట దాచబడింది",
+  "hiddenGames": "దాచిన ఆటలు",
+  "hideGame": "దాచు",
+  "noHiddenGames": "దాచిన ఆటలు లేవు",
+  "orbitTapTapToHit": "బంతి గేట్లోకి ప్రవేశించినప్పుడు నొక్కండి",
+  "showHiddenGames": "దాచిన ఆటలను చూపించు ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "రద్దు చేయి",
+  "unfavoriteGame": "ఇష్టమైన వాటి నుండి తీసివేయి",
+  "unhideGame": "దాచవద్దు"
 }

@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "Buatlah kata-kata dengan menggunakan huruf-huruf yang ada pada roda, termasuk huruf tengahnya.",
   "wordWheelTitle": "Roda Kata",
   "yajilinSubtitle": "Tempatkan sel hitam dan gambar satu lingkaran petunjuk yang cocok.",
-  "yajilinTitle": "Lingkaran Yajilin"
+  "yajilinTitle": "Lingkaran Yajilin",
+  "btnMatchColor": "COCOKKAN WARNA",
+  "btnMatchWord": "COCOKKAN KATA",
+  "favoriteGame": "Favorit",
+  "gameHidden": "Game disembunyikan",
+  "hiddenGames": "GAME TERSEMBUNYI",
+  "hideGame": "Sembunyikan",
+  "noHiddenGames": "Tidak ada game tersembunyi",
+  "orbitTapTapToHit": "Ketuk saat bola memasuki gerbang",
+  "showHiddenGames": "Tampilkan Game Tersembunyi ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "Urungkan",
+  "unfavoriteGame": "Hapus Favorit",
+  "unhideGame": "Tampilkan"
 }

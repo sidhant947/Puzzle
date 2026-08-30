@@ -1170,7 +1170,8 @@ class AppLocalizationsFr extends AppLocalizations {
       'Appuyez quand les balles s\'alignent avec la porte';
 
   @override
-  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+  String get orbitTapTapToHit =>
+      'Touchez lorsqu\'une balle entre dans la porte';
 
   @override
   String get schulteTableTitle => 'Table de Schulte';
@@ -5022,33 +5023,33 @@ class AppLocalizationsFr extends AppLocalizations {
   }
 
   @override
-  String get hideGame => 'Hide';
+  String get hideGame => 'Masquer';
 
   @override
-  String get unhideGame => 'Unhide';
+  String get unhideGame => 'Afficher';
 
   @override
-  String get favoriteGame => 'Favorite';
+  String get favoriteGame => 'Favori';
 
   @override
-  String get unfavoriteGame => 'Unfavorite';
+  String get unfavoriteGame => 'Retirer des favoris';
 
   @override
-  String get hiddenGames => 'HIDDEN GAMES';
+  String get hiddenGames => 'JEUX MASQUÉS';
 
   @override
   String showHiddenGames(int count) {
-    return 'Show Hidden Games ($count)';
+    return 'Afficher les jeux masqués ($count)';
   }
 
   @override
-  String get noHiddenGames => 'No hidden games';
+  String get noHiddenGames => 'Aucun jeu masqué';
 
   @override
-  String get gameHidden => 'Game hidden';
+  String get gameHidden => 'Jeu masqué';
 
   @override
-  String get undo => 'Undo';
+  String get undo => 'Annuler';
 
   @override
   String get snackbarCorrect => 'Correct!';
@@ -5249,10 +5250,10 @@ class AppLocalizationsFr extends AppLocalizations {
   String get btnMatch => 'Match';
 
   @override
-  String get btnMatchColor => 'MATCH COLOR';
+  String get btnMatchColor => 'CORRESPONDANCE COULEUR';
 
   @override
-  String get btnMatchWord => 'MATCH WORD';
+  String get btnMatchWord => 'CORRESPONDANCE MOT';
 
   @override
   String get btnGuess => 'Guess';

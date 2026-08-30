@@ -1115,7 +1115,7 @@ class AppLocalizationsJa extends AppLocalizations {
   String get orbitTapSubtitle => 'ボールがゲートに重なったときにタップ';
 
   @override
-  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+  String get orbitTapTapToHit => 'ボールがゲートに入ったらタップ';
 
   @override
   String get schulteTableTitle => 'シュルテ表';
@@ -4636,33 +4636,33 @@ class AppLocalizationsJa extends AppLocalizations {
   }
 
   @override
-  String get hideGame => 'Hide';
+  String get hideGame => '非表示';
 
   @override
-  String get unhideGame => 'Unhide';
+  String get unhideGame => '再表示';
 
   @override
-  String get favoriteGame => 'Favorite';
+  String get favoriteGame => 'お気に入り';
 
   @override
-  String get unfavoriteGame => 'Unfavorite';
+  String get unfavoriteGame => 'お気に入り解除';
 
   @override
-  String get hiddenGames => 'HIDDEN GAMES';
+  String get hiddenGames => '非表示のゲーム';
 
   @override
   String showHiddenGames(int count) {
-    return 'Show Hidden Games ($count)';
+    return '非表示のゲームを表示 ($count)';
   }
 
   @override
-  String get noHiddenGames => 'No hidden games';
+  String get noHiddenGames => '非表示のゲームはありません';
 
   @override
-  String get gameHidden => 'Game hidden';
+  String get gameHidden => 'ゲームを非表示にしました';
 
   @override
-  String get undo => 'Undo';
+  String get undo => '元に戻す';
 
   @override
   String get snackbarCorrect => 'Correct!';
@@ -4863,10 +4863,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String get btnMatch => 'Match';
 
   @override
-  String get btnMatchColor => 'MATCH COLOR';
+  String get btnMatchColor => '色を一致';
 
   @override
-  String get btnMatchWord => 'MATCH WORD';
+  String get btnMatchWord => '文字を一致';
 
   @override
   String get btnGuess => 'Guess';

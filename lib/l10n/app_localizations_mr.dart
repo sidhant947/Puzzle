@@ -1155,7 +1155,7 @@ class AppLocalizationsMr extends AppLocalizations {
   String get orbitTapSubtitle => 'जेव्हा गोळे गेटशी जुळतील तेव्हा टॅप करा';
 
   @override
-  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+  String get orbitTapTapToHit => 'चेंडू गेटमध्ये प्रवेश करतो तेव्हा टॅप करा';
 
   @override
   String get schulteTableTitle => 'शुल्टे टेबल';
@@ -4922,33 +4922,33 @@ class AppLocalizationsMr extends AppLocalizations {
   }
 
   @override
-  String get hideGame => 'Hide';
+  String get hideGame => 'लपवा';
 
   @override
-  String get unhideGame => 'Unhide';
+  String get unhideGame => 'पुन्हा दाखवा';
 
   @override
-  String get favoriteGame => 'Favorite';
+  String get favoriteGame => 'आवडते';
 
   @override
-  String get unfavoriteGame => 'Unfavorite';
+  String get unfavoriteGame => 'आवडत्यामधून काढा';
 
   @override
-  String get hiddenGames => 'HIDDEN GAMES';
+  String get hiddenGames => 'लपवलेले खेळ';
 
   @override
   String showHiddenGames(int count) {
-    return 'Show Hidden Games ($count)';
+    return 'लपवलेले खेळ दाखवा ($count)';
   }
 
   @override
-  String get noHiddenGames => 'No hidden games';
+  String get noHiddenGames => 'कोणतेही लपवलेले खेळ नाहीत';
 
   @override
-  String get gameHidden => 'Game hidden';
+  String get gameHidden => 'खेळ लपवला गेला';
 
   @override
-  String get undo => 'Undo';
+  String get undo => 'पूर्ववत करा';
 
   @override
   String get snackbarCorrect => 'Correct!';
@@ -5149,10 +5149,10 @@ class AppLocalizationsMr extends AppLocalizations {
   String get btnMatch => 'Match';
 
   @override
-  String get btnMatchColor => 'MATCH COLOR';
+  String get btnMatchColor => 'रंग जुळवा';
 
   @override
-  String get btnMatchWord => 'MATCH WORD';
+  String get btnMatchWord => 'शब्द जुळवा';
 
   @override
   String get btnGuess => 'Guess';

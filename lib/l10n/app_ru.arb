@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "Составляйте слова, используя буквы на круге, включая центральную букву.",
   "wordWheelTitle": "Слово Колесо",
   "yajilinSubtitle": "Расположите черные клетки и нарисуйте одну петлю, соответствующую подсказкам.",
-  "yajilinTitle": "Петля Яджилин"
+  "yajilinTitle": "Петля Яджилин",
+  "btnMatchColor": "СОВПАДЕНИЕ ЦВЕТА",
+  "btnMatchWord": "СОВПАДЕНИЕ СЛОВА",
+  "favoriteGame": "Избранное",
+  "gameHidden": "Игра скрыта",
+  "hiddenGames": "СКРЫТЫЕ ИГРЫ",
+  "hideGame": "Скрыть",
+  "noHiddenGames": "Нет скрытых игр",
+  "orbitTapTapToHit": "Нажмите, когда шар входит в ворота",
+  "showHiddenGames": "Показать скрытые игры ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "Отмена",
+  "unfavoriteGame": "Удалить из избранного",
+  "unhideGame": "Показать"
 }

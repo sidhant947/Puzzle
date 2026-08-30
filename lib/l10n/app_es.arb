@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "Forma palabras usando letras en la rueda, incluida la letra central.",
   "wordWheelTitle": "Rueda de palabras",
   "yajilinSubtitle": "Coloque celdas negras y dibuje un solo bucle que combine pistas.",
-  "yajilinTitle": "Bucle Yajilin"
+  "yajilinTitle": "Bucle Yajilin",
+  "btnMatchColor": "COINCIDIR COLOR",
+  "btnMatchWord": "COINCIDIR PALABRA",
+  "favoriteGame": "Favorito",
+  "gameHidden": "Juego oculto",
+  "hiddenGames": "JUEGOS OCULTOS",
+  "hideGame": "Ocultar",
+  "noHiddenGames": "Sin juegos ocultos",
+  "orbitTapTapToHit": "Toca cuando una bola entre en la puerta",
+  "showHiddenGames": "Mostrar juegos ocultos ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "Deshacer",
+  "unfavoriteGame": "Quitar favorito",
+  "unhideGame": "Mostrar"
 }

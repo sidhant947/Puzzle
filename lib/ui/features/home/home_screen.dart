@@ -1,16 +1,19 @@
 import 'dart:async';
+import 'dart:math' as math;
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/data/game_registry.dart';
 import 'package:puzzle/providers/game_providers.dart';
+import 'package:puzzle/providers/game_session_provider.dart';
 import 'package:puzzle/providers/user_providers.dart';
 import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/widgets/super_streak_action.dart';
 import 'package:puzzle/widgets/tangible.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
+import 'package:puzzle/utils/navigation_utils.dart';
 
 import 'widgets/favorites_section.dart';
 import 'widgets/category_button.dart';
@@ -70,6 +73,7 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
+      floatingActionButton: _buildRandomGameFab(context, theme),
       body: CustomScrollView(
         scrollCacheExtent: ScrollCacheExtent.pixels(300),
         physics: const BouncingScrollPhysics(),
@@ -109,6 +113,51 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
               : _buildGameGrid(filteredGames),
         ],
       ),
+    );
+  }
+
+  Widget _buildRandomGameFab(BuildContext context, ThemeData theme) {
+    return FloatingActionButton(
+      backgroundColor: DesignSystem.primary,
+      foregroundColor: Colors.white,
+      elevation: 4,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
+        side: const BorderSide(
+          color: DesignSystem.primaryShadow,
+          width: 1.5,
+        ),
+      ),
+      onPressed: _playRandomPuzzle,
+      child: const Icon(
+        Icons.shuffle_rounded,
+        size: 26,
+      ),
+    );
+  }
+
+  void _playRandomPuzzle() {
+    final hiddenGameIds = ref.read(
+        userDataNotifierProvider.select((d) => d.hiddenGameIds ?? []));
+    final hiddenSet = hiddenGameIds.toSet();
+    final availableGames = allGamesMetadata
+        .where((game) => !hiddenSet.contains(game.id))
+        .toList();
+
+    if (availableGames.isEmpty) return;
+
+    HapticFeedbackUtil.lightImpact();
+    final randomGame = (availableGames..shuffle(math.Random())).first;
+
+    ScaffoldMessenger.of(context).clearSnackBars();
+    ref.read(gameSessionNotifierProvider.notifier).setSession(
+          gameId: randomGame.id,
+          category: _selectedCategory,
+          query: _searchQuery,
+        );
+    Navigator.push(
+      context,
+      CustomPageRoute(page: randomGame.builder(context)),
     );
   }
 

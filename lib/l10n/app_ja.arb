@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "中央の文字を含むホイール上の文字を使用して単語を作成します。",
   "wordWheelTitle": "ワードホイール",
   "yajilinSubtitle": "黒いセルを配置し、手がかりに一致する単一のループを描きます。",
-  "yajilinTitle": "ヤジリン・ループ"
+  "yajilinTitle": "ヤジリン・ループ",
+  "btnMatchColor": "色を一致",
+  "btnMatchWord": "文字を一致",
+  "favoriteGame": "お気に入り",
+  "gameHidden": "ゲームを非表示にしました",
+  "hiddenGames": "非表示のゲーム",
+  "hideGame": "非表示",
+  "noHiddenGames": "非表示のゲームはありません",
+  "orbitTapTapToHit": "ボールがゲートに入ったらタップ",
+  "showHiddenGames": "非表示のゲームを表示 ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "元に戻す",
+  "unfavoriteGame": "お気に入り解除",
+  "unhideGame": "再表示"
 }

@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "가운데 글자를 포함하여 바퀴에 있는 글자를 사용하여 단어를 만드세요.",
   "wordWheelTitle": "워드휠",
   "yajilinSubtitle": "검은색 셀을 배치하고 단서와 일치하는 단일 루프를 그립니다.",
-  "yajilinTitle": "야지린 루프"
+  "yajilinTitle": "야지린 루프",
+  "btnMatchColor": "색상 일치",
+  "btnMatchWord": "단어 일치",
+  "favoriteGame": "즐겨찾기",
+  "gameHidden": "게임 숨김 처리됨",
+  "hiddenGames": "숨겨진 게임",
+  "hideGame": "숨기기",
+  "noHiddenGames": "숨겨진 게임 없음",
+  "orbitTapTapToHit": "공이 게이트에 들어갈 때 탭하세요",
+  "showHiddenGames": "숨겨진 게임 보기 ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "실행 취소",
+  "unfavoriteGame": "즐겨찾기 해제",
+  "unhideGame": "숨기기 해제"
 }

@@ -1163,7 +1163,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get orbitTapSubtitle => 'Nhấn khi các quả bóng thẳng hàng với cổng';
 
   @override
-  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+  String get orbitTapTapToHit => 'Chạm khi quả bóng đi vào cổng';
 
   @override
   String get schulteTableTitle => 'Bảng Schulte';
@@ -4944,33 +4944,33 @@ class AppLocalizationsVi extends AppLocalizations {
   }
 
   @override
-  String get hideGame => 'Hide';
+  String get hideGame => 'Ẩn';
 
   @override
-  String get unhideGame => 'Unhide';
+  String get unhideGame => 'Hiện';
 
   @override
-  String get favoriteGame => 'Favorite';
+  String get favoriteGame => 'Yêu thích';
 
   @override
-  String get unfavoriteGame => 'Unfavorite';
+  String get unfavoriteGame => 'Bỏ yêu thích';
 
   @override
-  String get hiddenGames => 'HIDDEN GAMES';
+  String get hiddenGames => 'TRÒ CHƠI ĐÃ ẨN';
 
   @override
   String showHiddenGames(int count) {
-    return 'Show Hidden Games ($count)';
+    return 'Hiển thị trò chơi đã ẩn ($count)';
   }
 
   @override
-  String get noHiddenGames => 'No hidden games';
+  String get noHiddenGames => 'Không có trò chơi nào bị ẩn';
 
   @override
-  String get gameHidden => 'Game hidden';
+  String get gameHidden => 'Đã ẩn trò chơi';
 
   @override
-  String get undo => 'Undo';
+  String get undo => 'Hoàn tác';
 
   @override
   String get snackbarCorrect => 'Correct!';
@@ -5171,10 +5171,10 @@ class AppLocalizationsVi extends AppLocalizations {
   String get btnMatch => 'Match';
 
   @override
-  String get btnMatchColor => 'MATCH COLOR';
+  String get btnMatchColor => 'KHỚP MÀU';
 
   @override
-  String get btnMatchWord => 'MATCH WORD';
+  String get btnMatchWord => 'KHỚP TỪ';
 
   @override
   String get btnGuess => 'Guess';

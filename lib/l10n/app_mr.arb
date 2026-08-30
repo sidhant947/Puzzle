@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "मध्यवर्ती अक्षरासह चाकावरील अक्षरे वापरून शब्द बनवा.",
   "wordWheelTitle": "शब्द चाक",
   "yajilinSubtitle": "काळ्या पेशी ठेवा आणि एकल लूप जुळणारे संकेत काढा.",
-  "yajilinTitle": "याजिलीं पाश"
+  "yajilinTitle": "याजिलीं पाश",
+  "btnMatchColor": "रंग जुळवा",
+  "btnMatchWord": "शब्द जुळवा",
+  "favoriteGame": "आवडते",
+  "gameHidden": "खेळ लपवला गेला",
+  "hiddenGames": "लपवलेले खेळ",
+  "hideGame": "लपवा",
+  "noHiddenGames": "कोणतेही लपवलेले खेळ नाहीत",
+  "orbitTapTapToHit": "चेंडू गेटमध्ये प्रवेश करतो तेव्हा टॅप करा",
+  "showHiddenGames": "लपवलेले खेळ दाखवा ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "पूर्ववत करा",
+  "unfavoriteGame": "आवडत्यामधून काढा",
+  "unhideGame": "पुन्हा दाखवा"
 }

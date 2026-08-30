@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "وہیل پر حروف کا استعمال کرتے ہوئے الفاظ بنائیں، بشمول مرکزی خط۔",
   "wordWheelTitle": "ورڈ وہیل",
   "yajilinSubtitle": "سیاہ خلیات رکھیں اور ایک ہی لوپ سے ملنے والے سراگ کھینچیں۔",
-  "yajilinTitle": "یاجلین لوپ"
+  "yajilinTitle": "یاجلین لوپ",
+  "btnMatchColor": "رنگ ملائیں",
+  "btnMatchWord": "لفظ ملائیں",
+  "favoriteGame": "پسندیدہ",
+  "gameHidden": "کھیل چھپا دیا گیا",
+  "hiddenGames": "پوشیدہ کھیل",
+  "hideGame": "چھپائیں",
+  "noHiddenGames": "کوئی پوشیدہ کھیل نہیں ہے",
+  "orbitTapTapToHit": "جب گیند گیٹ میں داخل ہو تو ٹیپ کریں",
+  "showHiddenGames": "پوشیدہ کھیل دکھائیں ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "پہلے جیسا کریں",
+  "unfavoriteGame": "پسندیدہ سے ہٹائیں",
+  "unhideGame": "سامنے لائیں"
 }

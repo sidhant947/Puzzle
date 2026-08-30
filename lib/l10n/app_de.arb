@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "Bilden Sie Wörter mithilfe der Buchstaben auf dem Rad, einschließlich des Buchstabens in der Mitte.",
   "wordWheelTitle": "Wortrad",
   "yajilinSubtitle": "Platzieren Sie schwarze Felder und zeichnen Sie eine einzelne Schleife mit passenden Hinweisen.",
-  "yajilinTitle": "Yajilin-Schleife"
+  "yajilinTitle": "Yajilin-Schleife",
+  "btnMatchColor": "FARBE ABGLEICHEN",
+  "btnMatchWord": "WORT ABGLEICHEN",
+  "favoriteGame": "Favorit",
+  "gameHidden": "Spiel ausgeblendet",
+  "hiddenGames": "AUSGEBLENDETE SPIELE",
+  "hideGame": "Ausblenden",
+  "noHiddenGames": "Keine ausgeblendeten Spiele",
+  "orbitTapTapToHit": "Tippe, wenn ein Ball das Tor betritt",
+  "showHiddenGames": "Ausgeblendete Spiele anzeigen ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "Rückgängig",
+  "unfavoriteGame": "Aus Favoriten entfernen",
+  "unhideGame": "Einblenden"
 }

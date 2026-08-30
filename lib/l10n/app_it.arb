@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "Crea parole usando le lettere sulla ruota, inclusa la lettera centrale.",
   "wordWheelTitle": "Ruota delle parole",
   "yajilinSubtitle": "Posiziona le celle nere e disegna un unico ciclo corrispondente agli indizi.",
-  "yajilinTitle": "Anello Yajilin"
+  "yajilinTitle": "Anello Yajilin",
+  "btnMatchColor": "ABBINA COLORE",
+  "btnMatchWord": "ABBINA PAROLA",
+  "favoriteGame": "Preferito",
+  "gameHidden": "Gioco nascosto",
+  "hiddenGames": "GIOCHI NASCOSTI",
+  "hideGame": "Nascondi",
+  "noHiddenGames": "Nessun gioco nascosto",
+  "orbitTapTapToHit": "Tocca quando una pallina entra nella porta",
+  "showHiddenGames": "Mostra giochi nascosti ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "Annulla",
+  "unfavoriteGame": "Rimuovi dai preferiti",
+  "unhideGame": "Mostra"
 }

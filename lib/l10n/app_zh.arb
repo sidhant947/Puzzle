@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "使用轮盘上的字母（包括中心字母）组成单词。",
   "wordWheelTitle": "字轮",
   "yajilinSubtitle": "放置黑色单元格并绘制匹配线索的单个循环。",
-  "yajilinTitle": "雅吉林环线"
+  "yajilinTitle": "雅吉林环线",
+  "btnMatchColor": "匹配颜色",
+  "btnMatchWord": "匹配文字",
+  "favoriteGame": "收藏",
+  "gameHidden": "游戏已隐藏",
+  "hiddenGames": "已隐藏的游戏",
+  "hideGame": "隐藏",
+  "noHiddenGames": "没有隐藏的游戏",
+  "orbitTapTapToHit": "小球进入大门时点击",
+  "showHiddenGames": "显示已隐藏游戏 ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "撤销",
+  "unfavoriteGame": "取消收藏",
+  "unhideGame": "取消隐藏"
 }

@@ -1161,7 +1161,7 @@ class AppLocalizationsTe extends AppLocalizations {
   String get orbitTapSubtitle => 'బంతులు గేటుతో సమలేఖనం అయినప్పుడు నొక్కండి';
 
   @override
-  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+  String get orbitTapTapToHit => 'బంతి గేట్లోకి ప్రవేశించినప్పుడు నొక్కండి';
 
   @override
   String get schulteTableTitle => 'షుల్టే టేబుల్';
@@ -4976,33 +4976,33 @@ class AppLocalizationsTe extends AppLocalizations {
   }
 
   @override
-  String get hideGame => 'Hide';
+  String get hideGame => 'దాచు';
 
   @override
-  String get unhideGame => 'Unhide';
+  String get unhideGame => 'దాచవద్దు';
 
   @override
-  String get favoriteGame => 'Favorite';
+  String get favoriteGame => 'ఇష్టమైనది';
 
   @override
-  String get unfavoriteGame => 'Unfavorite';
+  String get unfavoriteGame => 'ఇష్టమైన వాటి నుండి తీసివేయి';
 
   @override
-  String get hiddenGames => 'HIDDEN GAMES';
+  String get hiddenGames => 'దాచిన ఆటలు';
 
   @override
   String showHiddenGames(int count) {
-    return 'Show Hidden Games ($count)';
+    return 'దాచిన ఆటలను చూపించు ($count)';
   }
 
   @override
-  String get noHiddenGames => 'No hidden games';
+  String get noHiddenGames => 'దాచిన ఆటలు లేవు';
 
   @override
-  String get gameHidden => 'Game hidden';
+  String get gameHidden => 'ఆట దాచబడింది';
 
   @override
-  String get undo => 'Undo';
+  String get undo => 'రద్దు చేయి';
 
   @override
   String get snackbarCorrect => 'Correct!';
@@ -5203,10 +5203,10 @@ class AppLocalizationsTe extends AppLocalizations {
   String get btnMatch => 'Match';
 
   @override
-  String get btnMatchColor => 'MATCH COLOR';
+  String get btnMatchColor => 'రంగును సరిపోల్చండి';
 
   @override
-  String get btnMatchWord => 'MATCH WORD';
+  String get btnMatchWord => 'పదాన్ని సరిపోల్చండి';
 
   @override
   String get btnGuess => 'Guess';

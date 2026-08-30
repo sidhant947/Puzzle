@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "Tạo từ bằng cách sử dụng các chữ cái trên bánh xe, bao gồm cả chữ cái ở giữa.",
   "wordWheelTitle": "Bánh xe từ",
   "yajilinSubtitle": "Đặt các ô màu đen và vẽ một vòng lặp phù hợp với các manh mối.",
-  "yajilinTitle": "Vòng lặp Yajilin"
+  "yajilinTitle": "Vòng lặp Yajilin",
+  "btnMatchColor": "KHỚP MÀU",
+  "btnMatchWord": "KHỚP TỪ",
+  "favoriteGame": "Yêu thích",
+  "gameHidden": "Đã ẩn trò chơi",
+  "hiddenGames": "TRÒ CHƠI ĐÃ ẨN",
+  "hideGame": "Ẩn",
+  "noHiddenGames": "Không có trò chơi nào bị ẩn",
+  "orbitTapTapToHit": "Chạm khi quả bóng đi vào cổng",
+  "showHiddenGames": "Hiển thị trò chơi đã ẩn ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "Hoàn tác",
+  "unfavoriteGame": "Bỏ yêu thích",
+  "unhideGame": "Hiện"
 }

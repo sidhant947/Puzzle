@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "Twórz słowa, używając liter na kole, łącznie z literą środkową.",
   "wordWheelTitle": "Koło Słowa",
   "yajilinSubtitle": "Umieść czarne komórki i narysuj pojedynczą pętlę pasującą do wskazówek.",
-  "yajilinTitle": "Pętla Yajilin"
+  "yajilinTitle": "Pętla Yajilin",
+  "btnMatchColor": "DOPASUJ KOLOR",
+  "btnMatchWord": "DOPASUJ SŁOWO",
+  "favoriteGame": "Ulubione",
+  "gameHidden": "Gra ukryta",
+  "hiddenGames": "UKRYTE GRY",
+  "hideGame": "Ukryj",
+  "noHiddenGames": "Brak ukrytych gier",
+  "orbitTapTapToHit": "Dotknij, gdy kula wpadnie do bramki",
+  "showHiddenGames": "Pokaż ukryte gry ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "Cofnij",
+  "unfavoriteGame": "Usuń z ulubionych",
+  "unhideGame": "Odkryj"
 }

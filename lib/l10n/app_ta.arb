@@ -2978,5 +2978,24 @@
   "wordWheelSubtitle": "மைய எழுத்து உட்பட சக்கரத்தில் உள்ள எழுத்துக்களைப் பயன்படுத்தி வார்த்தைகளை உருவாக்கவும்.",
   "wordWheelTitle": "வார்த்தை சக்கரம்",
   "yajilinSubtitle": "கருப்பு கலங்களை வைத்து, ஒற்றை வளையத்தில் பொருந்தக்கூடிய தடயங்களை வரையவும்.",
-  "yajilinTitle": "யாஜிலின் லூப்"
+  "yajilinTitle": "யாஜிலின் லூப்",
+  "btnMatchColor": "வண்ணத்தை பொருத்து",
+  "btnMatchWord": "வார்த்தையை பொருத்து",
+  "favoriteGame": "விருப்பமானது",
+  "gameHidden": "விளையாட்டு மறைக்கப்பட்டது",
+  "hiddenGames": "மறைக்கப்பட்ட விளையாட்டுகள்",
+  "hideGame": "மறை",
+  "noHiddenGames": "மறைக்கப்பட்ட விளையாட்டுகள் இல்லை",
+  "orbitTapTapToHit": "பந்து வாயிலுக்குள் நுழையும் போது தட்டவும்",
+  "showHiddenGames": "மறைக்கப்பட்ட விளையாட்டுகளைக் காட்டு ({count})",
+  "@showHiddenGames": {
+    "placeholders": {
+      "count": {
+        "type": "int"
+      }
+    }
+  },
+  "undo": "செயல்தவிர்",
+  "unfavoriteGame": "விருப்பத்தை நீக்கு",
+  "unhideGame": "காட்டு"
 }

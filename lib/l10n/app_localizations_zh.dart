@@ -1109,7 +1109,7 @@ class AppLocalizationsZh extends AppLocalizations {
   String get orbitTapSubtitle => '当球与门对齐时点击';
 
   @override
-  String get orbitTapTapToHit => 'Tap when a ball enters the gate';
+  String get orbitTapTapToHit => '小球进入大门时点击';
 
   @override
   String get schulteTableTitle => '舒尔特表';
@@ -4613,33 +4613,33 @@ class AppLocalizationsZh extends AppLocalizations {
   }
 
   @override
-  String get hideGame => 'Hide';
+  String get hideGame => '隐藏';
 
   @override
-  String get unhideGame => 'Unhide';
+  String get unhideGame => '取消隐藏';
 
   @override
-  String get favoriteGame => 'Favorite';
+  String get favoriteGame => '收藏';
 
   @override
-  String get unfavoriteGame => 'Unfavorite';
+  String get unfavoriteGame => '取消收藏';
 
   @override
-  String get hiddenGames => 'HIDDEN GAMES';
+  String get hiddenGames => '已隐藏的游戏';
 
   @override
   String showHiddenGames(int count) {
-    return 'Show Hidden Games ($count)';
+    return '显示已隐藏游戏 ($count)';
   }
 
   @override
-  String get noHiddenGames => 'No hidden games';
+  String get noHiddenGames => '没有隐藏的游戏';
 
   @override
-  String get gameHidden => 'Game hidden';
+  String get gameHidden => '游戏已隐藏';
 
   @override
-  String get undo => 'Undo';
+  String get undo => '撤销';
 
   @override
   String get snackbarCorrect => 'Correct!';
@@ -4840,10 +4840,10 @@ class AppLocalizationsZh extends AppLocalizations {
   String get btnMatch => 'Match';
 
   @override
-  String get btnMatchColor => 'MATCH COLOR';
+  String get btnMatchColor => '匹配颜色';
 
   @override
-  String get btnMatchWord => 'MATCH WORD';
+  String get btnMatchWord => '匹配文字';
 
   @override
   String get btnGuess => 'Guess';
