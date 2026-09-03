@@ -122,6 +122,12 @@ class UserDataNotifier extends _$UserDataNotifier {
     state = newState;
     await ref.read(userRepositoryProvider).saveUserData(newState);
   }
+
+  Future<void> setKeepScreenAwake(bool enabled) async {
+    final newState = state.copyWith(isKeepScreenAwakeEnabled: enabled);
+    state = newState;
+    await ref.read(userRepositoryProvider).saveUserData(newState);
+  }
 }
 
 @Riverpod(keepAlive: true)

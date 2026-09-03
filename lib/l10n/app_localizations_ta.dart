@@ -127,6 +127,13 @@ class AppLocalizationsTa extends AppLocalizations {
       '60 வினாடி நேரத்திற்குப் பதில் 20 புதிர்களைத் தீர்த்து முடிக்கவும்';
 
   @override
+  String get keepScreenAwake => 'Keep Screen Awake';
+
+  @override
+  String get keepScreenAwakeDescription =>
+      'Prevent screen from turning off during gameplay';
+
+  @override
   String get appearance => 'தோற்றம்';
 
   @override

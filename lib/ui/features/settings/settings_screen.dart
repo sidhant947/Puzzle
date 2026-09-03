@@ -53,6 +53,8 @@ class SettingsScreen extends ConsumerWidget {
     final selectedLocale = ref.watch(localeNotifierProvider);
     final isTrialModeEnabled = ref.watch(
         userDataNotifierProvider.select((s) => s.isTrialModeEnabled ?? false));
+    final isKeepScreenAwakeEnabled = ref.watch(
+        userDataNotifierProvider.select((s) => s.isKeepScreenAwakeEnabled ?? false));
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
@@ -112,18 +114,20 @@ class SettingsScreen extends ConsumerWidget {
                           case 18: return _buildSectionTitle(context, l10n.gameplay.toUpperCase());
                           case 19: return const SizedBox(height: DesignSystem.spaceMD);
                           case 20: return _buildTrialModeToggle(context, ref, isTrialModeEnabled, l10n);
-                          case 21: return const SizedBox(height: DesignSystem.spaceXL);
-                          case 22: return _buildSectionTitle(context, l10n.systemLegal.toUpperCase());
-                          case 23: return const SizedBox(height: DesignSystem.spaceMD);
-                          case 24: return _buildSettingsItem(context, l10n.privacyPolicy, Icons.privacy_tip_rounded, () => _launchUrl('https://sites.google.com/view/puzzlebysidhant/home'));
-                          case 25: return const SizedBox(height: DesignSystem.spaceSM);
-                          case 26: return _buildSettingsItem(context, l10n.termsOfService, Icons.description_rounded, () => _launchUrl('https://sites.google.com/view/puzzlebysidhant/home'));
+                          case 21: return const SizedBox(height: DesignSystem.spaceSM);
+                          case 22: return _buildKeepScreenAwakeToggle(context, ref, isKeepScreenAwakeEnabled, l10n);
+                          case 23: return const SizedBox(height: DesignSystem.spaceXL);
+                          case 24: return _buildSectionTitle(context, l10n.systemLegal.toUpperCase());
+                          case 25: return const SizedBox(height: DesignSystem.spaceMD);
+                          case 26: return _buildSettingsItem(context, l10n.privacyPolicy, Icons.privacy_tip_rounded, () => _launchUrl('https://sites.google.com/view/puzzlebysidhant/home'));
                           case 27: return const SizedBox(height: DesignSystem.spaceSM);
-                          case 28: return _buildSettingsItem(context, l10n.licenses, Icons.code_rounded, () => showLicensePage(context: context, applicationName: l10n.appTitle.toUpperCase(), applicationVersion: 'Latest'));
+                          case 28: return _buildSettingsItem(context, l10n.termsOfService, Icons.description_rounded, () => _launchUrl('https://sites.google.com/view/puzzlebysidhant/home'));
+                          case 29: return const SizedBox(height: DesignSystem.spaceSM);
+                          case 30: return _buildSettingsItem(context, l10n.licenses, Icons.code_rounded, () => showLicensePage(context: context, applicationName: l10n.appTitle.toUpperCase(), applicationVersion: 'Latest'));
                           default: return null;
                         }
                       },
-                      childCount: 29,
+                      childCount: 31,
                     ),
                   ),
                 ),
@@ -191,6 +195,56 @@ class SettingsScreen extends ConsumerWidget {
             value: isEnabled,
             onChanged: (value) =>
                 ref.read(userDataNotifierProvider.notifier).setTrialMode(value),
+            activeThumbColor: DesignSystem.primary,
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildKeepScreenAwakeToggle(BuildContext context, WidgetRef ref,
+      bool isEnabled, AppLocalizations l10n) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    return TangibleContainer(
+      padding: const EdgeInsets.symmetric(
+          horizontal: DesignSystem.spaceMD, vertical: DesignSystem.spaceSM),
+      child: Row(
+        children: [
+          Icon(
+            Icons.screen_lock_portrait_rounded,
+            color: isEnabled
+                ? DesignSystem.primary
+                : colorScheme.onSurface.withValues(alpha: 0.7),
+          ),
+          const SizedBox(width: DesignSystem.spaceMD),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  l10n.keepScreenAwake.toUpperCase(),
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w900,
+                    fontSize: DesignSystem.fontSizeMD,
+                    letterSpacing: 0.5,
+                  ),
+                ),
+                Text(
+                  l10n.keepScreenAwakeDescription.toUpperCase(),
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    fontWeight: FontWeight.w700,
+                    color: colorScheme.onSurface.withValues(alpha: 0.5),
+                    letterSpacing: 0.2,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Switch(
+            value: isEnabled,
+            onChanged: (value) =>
+                ref.read(userDataNotifierProvider.notifier).setKeepScreenAwake(value),
             activeThumbColor: DesignSystem.primary,
           ),
         ],

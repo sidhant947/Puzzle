@@ -126,6 +126,13 @@ class AppLocalizationsKo extends AppLocalizations {
   String get trialModeDescription => '60초 타이머 대신 20개 해결 시 종료';
 
   @override
+  String get keepScreenAwake => 'Keep Screen Awake';
+
+  @override
+  String get keepScreenAwakeDescription =>
+      'Prevent screen from turning off during gameplay';
+
+  @override
   String get appearance => '외형';
 
   @override

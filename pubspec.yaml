@@ -46,6 +46,7 @@ dependencies:
   fast_immutable_collections: ^11.2.0
   window_manager: ^0.4.3
   flutter_slidable: ^3.1.1
+  wakelock_plus: ^1.2.8
 
 dev_dependencies:
   flutter_test:

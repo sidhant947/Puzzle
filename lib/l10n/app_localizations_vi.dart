@@ -127,6 +127,13 @@ class AppLocalizationsVi extends AppLocalizations {
       'Giải 20 câu để kết thúc thay vì hẹn giờ 60 giây';
 
   @override
+  String get keepScreenAwake => 'Keep Screen Awake';
+
+  @override
+  String get keepScreenAwakeDescription =>
+      'Prevent screen from turning off during gameplay';
+
+  @override
   String get appearance => 'Giao diện';
 
   @override

@@ -7,7 +7,7 @@ part of 'silhouette_match_provider.dart';
 // **************************************************************************
 
 String _$silhouetteMatchNotifierHash() =>
-    r'14ef039e0a17f734e848826bb4e95ef13c7ed57f';
+    r'd5efaf10436f941a792ae64e78cf9d4ba8cc40ae';
 
 /// See also [SilhouetteMatchNotifier].
 @ProviderFor(SilhouetteMatchNotifier)

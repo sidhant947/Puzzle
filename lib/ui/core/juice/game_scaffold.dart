@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:wakelock_plus/wakelock_plus.dart';
 import 'dart:math' as math;
 import '../../../utils/design_system.dart';
 import '../../../widgets/tangible.dart';
 import '../../../data/game_registry.dart';
+import '../../../providers/user_providers.dart';
 
-class GameScaffold extends StatelessWidget {
+class GameScaffold extends ConsumerStatefulWidget {
   final String title;
   final Widget body;
   final List<Widget>? actions;
@@ -27,7 +30,38 @@ class GameScaffold extends StatelessWidget {
   });
 
   @override
+  ConsumerState<GameScaffold> createState() => _GameScaffoldState();
+}
+
+class _GameScaffoldState extends ConsumerState<GameScaffold> {
+  bool _wakelockActive = false;
+
+  @override
+  void dispose() {
+    if (_wakelockActive) {
+      WakelockPlus.disable();
+    }
+    super.dispose();
+  }
+
+  void _syncWakelock(bool keepAwake) {
+    if (keepAwake != _wakelockActive) {
+      _wakelockActive = keepAwake;
+      if (keepAwake) {
+        WakelockPlus.enable();
+      } else {
+        WakelockPlus.disable();
+      }
+    }
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final keepAwake = ref.watch(
+      userDataNotifierProvider.select((u) => u.isKeepScreenAwakeEnabled ?? false),
+    );
+    _syncWakelock(keepAwake);
+
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
     final mediaQuery = MediaQuery.of(context);
@@ -48,23 +82,23 @@ class GameScaffold extends StatelessWidget {
             child: Column(
               children: [
                 _buildAppBar(context),
-                Expanded(child: body),
+                Expanded(child: widget.body),
               ],
             ),
           ),
         ),
       ),
-      bottomNavigationBar: bottomNavigationBar != null
+      bottomNavigationBar: widget.bottomNavigationBar != null
           ? SafeArea(
               child: Center(
                 child: ConstrainedBox(
                   constraints: BoxConstraints(maxWidth: isMobile ? double.infinity : math.max(400.0, responsiveMaxWidth)),
-                  child: bottomNavigationBar,
+                  child: widget.bottomNavigationBar,
                 ),
               ),
             )
           : null,
-      floatingActionButton: floatingActionButton,
+      floatingActionButton: widget.floatingActionButton,
     );
   }
 
@@ -100,7 +134,7 @@ class GameScaffold extends StatelessWidget {
                 fit: BoxFit.scaleDown,
                 alignment: Alignment.center,
                 child: Text(
-                  title.toUpperCase(), // Game titles uppercase
+                  widget.title.toUpperCase(), // Game titles uppercase
                   style: TextStyle(
                     fontFamily: 'Bebas Neue', // Header font family
                     fontSize: DesignSystem.fontSize2XL, // 24.0 (Gorgeous, high-readability title)
@@ -117,7 +151,7 @@ class GameScaffold extends StatelessWidget {
           TangibleButton(
             color: Colors.transparent,
             drawBorder: false,
-            onTap: onHowToPlay ?? () => _showDefaultHelpDialog(context),
+            onTap: widget.onHowToPlay ?? () => _showDefaultHelpDialog(context),
             padding: const EdgeInsets.all(12),
             child: Icon(
               Icons.info_outline_rounded,
@@ -135,14 +169,14 @@ class GameScaffold extends StatelessWidget {
     final colorScheme = theme.colorScheme;
 
     // Resolve detailed descriptive subtitle
-    String? resolvedSubtitle = subtitle;
+    String? resolvedSubtitle = widget.subtitle;
     String? gameId;
     try {
       final matchingGame = allGamesMetadata.firstWhere(
-        (g) => g.titleGetter(context).toUpperCase() == title.toUpperCase(),
+        (g) => g.titleGetter(context).toUpperCase() == widget.title.toUpperCase(),
       );
       gameId = matchingGame.id;
-      if (resolvedSubtitle == null || resolvedSubtitle.toUpperCase() == title.toUpperCase()) {
+      if (resolvedSubtitle == null || resolvedSubtitle.toUpperCase() == widget.title.toUpperCase()) {
         resolvedSubtitle = matchingGame.subtitleGetter(context);
       }
     } catch (_) {
@@ -268,7 +302,7 @@ class GameScaffold extends StatelessWidget {
                   ),
                   const SizedBox(height: DesignSystem.spaceMD),
                   Text(
-                    title.toUpperCase(),
+                    widget.title.toUpperCase(),
                     textAlign: TextAlign.center,
                     style: theme.textTheme.titleMedium?.copyWith(
                       fontWeight: FontWeight.w900,

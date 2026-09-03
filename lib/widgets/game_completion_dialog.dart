@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:url_launcher/url_launcher.dart';
 import '../data/game_metadata.dart';
 import '../data/game_registry.dart';
 import '../utils/design_system.dart';
 import '../utils/haptic_feedback.dart';
 import '../utils/navigation_utils.dart';
+import '../providers/game_providers.dart';
 import '../providers/game_session_provider.dart';
 import '../providers/user_providers.dart';
 import 'tangible.dart';
@@ -58,27 +60,49 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
     final l10n = AppLocalizations.of(context)!;
 
     final session = ref.watch(gameSessionNotifierProvider);
-    final hiddenGameIds = ref.watch(userDataNotifierProvider.select((d) => d.hiddenGameIds ?? []));
+    final localizedTitles = {
+      for (final game in allGamesMetadata)
+        game.id: L10nGameHelpers.getGameTitle(context, game.id),
+    };
+    final gameList = ref.watch(filteredGamesProvider(
+      searchQuery: session.searchQuery,
+      selectedCategory: session.selectedCategory,
+      localizedTitles: localizedTitles,
+    ));
+    final streaks = ref.watch(gameStreakNotifierProvider);
 
     GameMetadata? nextGame;
     bool isSameGame = true;
-    if (session.lastGameId != null) {
-      final currentIndex = allGamesMetadata.indexWhere((g) => g.id == session.lastGameId);
-      if (currentIndex != -1) {
-        int nextIndex = (currentIndex + 1) % allGamesMetadata.length;
-        while (nextIndex != currentIndex) {
-          final candidate = allGamesMetadata[nextIndex];
-          if (!hiddenGameIds.contains(candidate.id)) {
-            nextGame = candidate;
-            break;
-          }
-          nextIndex = (nextIndex + 1) % allGamesMetadata.length;
+
+    if (gameList.isNotEmpty) {
+      final currentIndex = session.lastGameId != null
+          ? gameList.indexWhere((g) => g.id == session.lastGameId)
+          : -1;
+
+      // 1. Search forward from currentIndex + 1 for an unsolved game (not solved today)
+      int searchStart = currentIndex != -1 ? (currentIndex + 1) % gameList.length : 0;
+      for (int i = 0; i < gameList.length; i++) {
+        final idx = (searchStart + i) % gameList.length;
+        if (idx == currentIndex) continue;
+        final candidate = gameList[idx];
+        final isSolvedToday = streaks[candidate.id]?.solvedToday ?? false;
+        if (!isSolvedToday) {
+          nextGame = candidate;
+          break;
         }
-        if (nextGame == null && !hiddenGameIds.contains(session.lastGameId)) {
-          nextGame = allGamesMetadata[currentIndex];
-        }
-        isSameGame = nextGame?.id == session.lastGameId;
       }
+
+      // 2. If all games are solved today, simply pick the next game in order
+      if (nextGame == null) {
+        if (currentIndex != -1) {
+          final nextIndex = (currentIndex + 1) % gameList.length;
+          nextGame = gameList[nextIndex];
+        } else {
+          nextGame = gameList.first;
+        }
+      }
+
+      isSameGame = nextGame.id == session.lastGameId;
     }
 
     final next = nextGame;

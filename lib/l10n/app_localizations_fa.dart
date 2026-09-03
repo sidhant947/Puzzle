@@ -127,6 +127,13 @@ class AppLocalizationsFa extends AppLocalizations {
       'حل ۲۰ مورد برای پایان به جای تایمر ۶۰ ثانیه‌ای';
 
   @override
+  String get keepScreenAwake => 'Keep Screen Awake';
+
+  @override
+  String get keepScreenAwakeDescription =>
+      'Prevent screen from turning off during gameplay';
+
+  @override
   String get appearance => 'ظاهر';
 
   @override

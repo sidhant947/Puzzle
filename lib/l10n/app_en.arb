@@ -42,6 +42,8 @@
   "moves": "Moves",
   "trialMode": "Trial Mode",
   "trialModeDescription": "Solve 20 to finish instead of 60s timer",
+  "keepScreenAwake": "Keep Screen Awake",
+  "keepScreenAwakeDescription": "Prevent screen from turning off during gameplay",
   "appearance": "Appearance",
   "language": "Language",
   "gameplay": "Gameplay",

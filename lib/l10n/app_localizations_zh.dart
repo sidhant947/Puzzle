@@ -126,6 +126,13 @@ class AppLocalizationsZh extends AppLocalizations {
   String get trialModeDescription => '解决20个即可完成，而不是60秒计时';
 
   @override
+  String get keepScreenAwake => 'Keep Screen Awake';
+
+  @override
+  String get keepScreenAwakeDescription =>
+      'Prevent screen from turning off during gameplay';
+
+  @override
   String get appearance => '外观';
 
   @override

@@ -127,6 +127,13 @@ class AppLocalizationsUr extends AppLocalizations {
       '60 سیکنڈ ٹائمر کے بجائے 20 حل کرکے ختم کریں';
 
   @override
+  String get keepScreenAwake => 'Keep Screen Awake';
+
+  @override
+  String get keepScreenAwakeDescription =>
+      'Prevent screen from turning off during gameplay';
+
+  @override
   String get appearance => 'ظاہری شکل';
 
   @override

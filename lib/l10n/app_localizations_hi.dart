@@ -126,6 +126,13 @@ class AppLocalizationsHi extends AppLocalizations {
   String get trialModeDescription => '60 सेकंड के टाइमर के बजाय 20 हल करें';
 
   @override
+  String get keepScreenAwake => 'Keep Screen Awake';
+
+  @override
+  String get keepScreenAwakeDescription =>
+      'Prevent screen from turning off during gameplay';
+
+  @override
   String get appearance => 'दिखावट';
 
   @override

@@ -374,6 +374,18 @@ abstract class AppLocalizations {
   /// **'Solve 20 to finish instead of 60s timer'**
   String get trialModeDescription;
 
+  /// No description provided for @keepScreenAwake.
+  ///
+  /// In en, this message translates to:
+  /// **'Keep Screen Awake'**
+  String get keepScreenAwake;
+
+  /// No description provided for @keepScreenAwakeDescription.
+  ///
+  /// In en, this message translates to:
+  /// **'Prevent screen from turning off during gameplay'**
+  String get keepScreenAwakeDescription;
+
   /// No description provided for @appearance.
   ///
   /// In en, this message translates to:

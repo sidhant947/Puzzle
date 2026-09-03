@@ -127,6 +127,13 @@ class AppLocalizationsTe extends AppLocalizations {
       '60 సెకన్ల టైమర్ బదులుగా 20 పరిష్కరించి ముగించండి';
 
   @override
+  String get keepScreenAwake => 'Keep Screen Awake';
+
+  @override
+  String get keepScreenAwakeDescription =>
+      'Prevent screen from turning off during gameplay';
+
+  @override
   String get appearance => 'రూపురేఖలు';
 
   @override
