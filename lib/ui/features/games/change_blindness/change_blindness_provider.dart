@@ -15,6 +15,11 @@ class ChangeBlindnessState {
   final bool isGameOver;
   final bool isLoading;
   final bool isFlickerActive;
+  final int streak;
+  final int multiplier;
+  final bool isTrialMode;
+  final int? lastTappedIndex;
+  final bool? lastTapSuccess;
 
   ChangeBlindnessState({
     this.originalItems = const [],
@@ -27,6 +32,11 @@ class ChangeBlindnessState {
     this.isGameOver = false,
     this.isLoading = true,
     this.isFlickerActive = false,
+    this.streak = 0,
+    this.multiplier = 1,
+    this.isTrialMode = false,
+    this.lastTappedIndex,
+    this.lastTapSuccess,
   });
 
   ChangeBlindnessState copyWith({
@@ -40,6 +50,11 @@ class ChangeBlindnessState {
     bool? isGameOver,
     bool? isLoading,
     bool? isFlickerActive,
+    int? streak,
+    int? multiplier,
+    bool? isTrialMode,
+    int? lastTappedIndex,
+    bool? lastTapSuccess,
   }) {
     return ChangeBlindnessState(
       originalItems: originalItems ?? this.originalItems,
@@ -52,6 +67,11 @@ class ChangeBlindnessState {
       isGameOver: isGameOver ?? this.isGameOver,
       isLoading: isLoading ?? this.isLoading,
       isFlickerActive: isFlickerActive ?? this.isFlickerActive,
+      streak: streak ?? this.streak,
+      multiplier: multiplier ?? this.multiplier,
+      isTrialMode: isTrialMode ?? this.isTrialMode,
+      lastTappedIndex: lastTappedIndex,
+      lastTapSuccess: lastTapSuccess,
     );
   }
 }
@@ -68,13 +88,19 @@ class ChangeBlindnessNotifier extends _$ChangeBlindnessNotifier {
     return ChangeBlindnessState();
   }
 
-  void initGame() {
+  void initGame({bool isTrialMode = false}) {
     _timer?.cancel();
     _flickerTimer?.cancel();
     
-    state = ChangeBlindnessState(isLoading: false);
+    state = ChangeBlindnessState(
+      isLoading: false,
+      isTrialMode: isTrialMode,
+      timeLeft: 60,
+    );
     _nextTrial();
-    _startTimer();
+    if (!isTrialMode) {
+      _startTimer();
+    }
     _scheduleFlicker(1000);
   }
 
@@ -82,7 +108,6 @@ class ChangeBlindnessNotifier extends _$ChangeBlindnessNotifier {
     _timer = Timer.periodic(const Duration(seconds: 1), (timer) {
       if (state.timeLeft <= 0) {
         timer.cancel();
-        _flickerTimer?.cancel();
         state = state.copyWith(isGameOver: true, isFlickerActive: false);
       } else {
         state = state.copyWith(timeLeft: state.timeLeft - 1);
@@ -90,27 +115,41 @@ class ChangeBlindnessNotifier extends _$ChangeBlindnessNotifier {
     });
   }
 
+  void pauseGame() {
+    _timer?.cancel();
+    _flickerTimer?.cancel();
+  }
+
+  void resumeGame() {
+    if (state.isGameOver) {
+      _scheduleFlicker(1000);
+      return;
+    }
+    if (!state.isTrialMode) {
+      _startTimer();
+    }
+    _scheduleFlicker(1000);
+  }
+
   void _scheduleFlicker(int ms) {
     _flickerTimer?.cancel();
     _flickerTimer = Timer(Duration(milliseconds: ms), () {
-      if (state.isGameOver) return;
-
       if (state.isFlickerActive) {
         state = state.copyWith(
           isFlickerActive: false,
           showOriginal: !state.showOriginal,
         );
-        _scheduleFlicker(1000); // Show image for 1s
+        _scheduleFlicker(1000);
       } else {
         state = state.copyWith(isFlickerActive: true);
-        _scheduleFlicker(150); // Show mask for 150ms
+        _scheduleFlicker(150);
       }
     });
   }
 
   void _nextTrial() {
-    final gridSize = (state.score ~/ 5) + 3; // Increase grid size every 5 points
-    final trial = _engine.generateTrial(gridSize.clamp(3, 6));
+    final gridSize = (state.score ~/ 5) + 3;
+    final trial = _engine.generateTrial(gridSize.clamp(3, 6), score: state.score);
     state = state.copyWith(
       originalItems: trial['original'],
       changedItems: trial['changed'],
@@ -118,17 +157,49 @@ class ChangeBlindnessNotifier extends _$ChangeBlindnessNotifier {
       gridSize: gridSize.clamp(3, 6),
       showOriginal: true,
       isFlickerActive: false,
+      lastTappedIndex: null,
+      lastTapSuccess: null,
     );
     _scheduleFlicker(1000);
   }
 
   void tap(int index) {
+    if (state.isGameOver) return;
     if (index == state.changeIndex) {
-      state = state.copyWith(score: state.score + 1);
-      _nextTrial();
+      final newStreak = state.streak + 1;
+      final newMultiplier = (newStreak ~/ 3) + 1;
+      final newScore = state.score + (1 * state.multiplier);
+      
+      // Bonus 2 seconds for streaks
+      final newTime = state.isTrialMode ? state.timeLeft : (state.timeLeft + (newStreak % 3 == 0 ? 2 : 0)).clamp(0, 60);
+
+      // In trial mode, finish at 20 points
+      final bool finishedTrial = state.isTrialMode && newScore >= 20;
+
+      state = state.copyWith(
+        score: newScore,
+        streak: newStreak,
+        multiplier: newMultiplier,
+        timeLeft: newTime,
+        lastTappedIndex: index,
+        lastTapSuccess: true,
+        isGameOver: finishedTrial,
+      );
+
+      if (!finishedTrial) {
+        Future.delayed(const Duration(milliseconds: 200), () {
+          _nextTrial();
+        });
+      }
     } else {
-      // Penalty: decrease time by 2 seconds
-      state = state.copyWith(timeLeft: (state.timeLeft - 2).clamp(0, 60));
+      // Penalty: reset streak, reduce remaining time by 2 seconds
+      state = state.copyWith(
+        streak: 0,
+        multiplier: 1,
+        timeLeft: (state.timeLeft - 2).clamp(0, 60),
+        lastTappedIndex: index,
+        lastTapSuccess: false,
+      );
     }
   }
 

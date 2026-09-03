@@ -260,6 +260,12 @@ class _GameScaffoldState extends ConsumerState<GameScaffold> {
         "Rule: Like magnetic poles (+ and +, or - and -) cannot touch orthogonally.",
         "Rule: Numbers on the borders indicate how many positive (+) and negative (-) poles are in each row/column.",
       ],
+      'change_blindness': [
+        "Goal: Spot the single tile that changes color or shape between alternating flickers.",
+        "Flicker Rule: The board briefly flickers every second. Watch closely to detect what changes.",
+        "Time & Score: You have 60 seconds. Each correct spot earns +1 point and advances you to the next trial.",
+        "Penalty: Tapping an incorrect tile reduces remaining time by 2 seconds.",
+      ],
     };
 
     final rulesList = gameId != null ? detailedRules[gameId] : null;
