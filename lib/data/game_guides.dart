@@ -270,7 +270,7 @@ const Map<String, GameGuide> gameGuides = {
       "Step 3: Tap the board square to place it.",
     ],
     strategies: const [
-      "Place awkward pieces (like Z and L shapes) first.",
+      "Place awkward pieces (like L and J shapes) first.",
       "Leave square-friendly holes for the O piece.",
     ],
   ),

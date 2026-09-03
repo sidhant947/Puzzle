@@ -75,14 +75,36 @@ class BinaryPuzzleScreen extends ConsumerWidget {
               final c = index % state.board.size;
               final cell = state.currentGrid[r][c];
               final isFixed = state.fixedCells[r][c];
+              final isInvalid = state.invalidCells[r][c];
+
+              final Color cellColor;
+              final Color? shadowColor;
+              if (isInvalid) {
+                cellColor = Theme.of(context).colorScheme.error.withValues(alpha: isFixed ? 0.25 : 0.15);
+                shadowColor = isFixed ? null : Theme.of(context).colorScheme.error.withValues(alpha: 0.5);
+              } else if (isFixed) {
+                cellColor = Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1);
+                shadowColor = null;
+              } else {
+                cellColor = Theme.of(context).colorScheme.surface;
+                shadowColor = null;
+              }
+
+              final Color textColor;
+              if (isInvalid) {
+                textColor = Theme.of(context).colorScheme.error;
+              } else if (isFixed) {
+                textColor = Theme.of(context).colorScheme.onSurface;
+              } else {
+                textColor = DesignSystem.primary;
+              }
 
               return TangibleContainer(
                 depth: isFixed ? 0 : 2,
                 radius: DesignSystem.radiusXS,
                 padding: const EdgeInsets.all(4.0),
-                color: isFixed 
-                    ? Theme.of(context).colorScheme.onSurface.withValues(alpha: 0.1) 
-                    : Theme.of(context).colorScheme.surface,
+                color: cellColor,
+                shadowColor: shadowColor,
                 onTap: isFixed ? null : () {
                   HapticFeedbackUtil.lightImpact();
                   ref.read(binaryPuzzleNotifierProvider.notifier).toggleCell(r, c);
@@ -95,9 +117,7 @@ class BinaryPuzzleScreen extends ConsumerWidget {
                             '$cell',
                             style: TextStyle(
                               fontSize: 24,
-                              color: isFixed 
-                                ? Theme.of(context).colorScheme.onSurface
-                                : DesignSystem.primary,
+                              color: textColor,
                               fontWeight: FontWeight.w900,
                             ),
                           ),

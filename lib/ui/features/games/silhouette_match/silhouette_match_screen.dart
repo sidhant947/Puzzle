@@ -27,15 +27,17 @@ class _SilhouetteMatchScreenState extends ConsumerState<SilhouetteMatchScreen> {
     });
   }
 
-  void _showCompletionDialog() {
+  void _showCompletionDialog(bool isVictory) {
     final l10n = AppLocalizations.of(context)!;
     showDialog(
       context: context,
       barrierDismissible: false,
       builder: (context) => GameCompletionDialog(
         title: l10n.silhouetteMatchTitle.toUpperCase(),
-        message: AppLocalizations.of(context)!.silhouetteMatchMessage,
-        isVictory: true,
+        message: isVictory
+            ? l10n.silhouetteMatchMessage
+            : l10n.loseTryAgainSolution,
+        isVictory: isVictory,
         onHome: () {
           Navigator.of(context).pop();
           Navigator.of(context).pop();
@@ -56,10 +58,19 @@ class _SilhouetteMatchScreenState extends ConsumerState<SilhouetteMatchScreen> {
     final notifier = ref.read(silhouetteMatchNotifierProvider.notifier);
 
     ref.listen(silhouetteMatchNotifierProvider, (previous, next) {
-      if (next.isVictory && !(previous?.isVictory ?? false)) {
-        HapticFeedbackUtil.victory();
-        ref.read(gameStreakNotifierProvider.notifier).completeGame('silhouette_match');
-        _showCompletionDialog();
+      if ((next.isVictory && !(previous?.isVictory ?? false)) ||
+          (next.isFailed && !(previous?.isFailed ?? false))) {
+        if (next.isVictory) {
+          HapticFeedbackUtil.victory();
+          ref.read(gameStreakNotifierProvider.notifier).completeGame('silhouette_match');
+        } else {
+          HapticFeedbackUtil.error();
+        }
+        Future.delayed(const Duration(milliseconds: 500), () {
+          if (mounted) {
+            _showCompletionDialog(next.isVictory);
+          }
+        });
       }
     });
 

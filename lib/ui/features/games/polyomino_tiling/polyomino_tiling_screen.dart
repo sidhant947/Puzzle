@@ -29,6 +29,8 @@ class _PolyominoTilingScreenState extends ConsumerState<PolyominoTilingScreen> {
     DesignSystem.accentEmerald,
     DesignSystem.gameAmber,
     DesignSystem.gameRose,
+    DesignSystem.gamePurple,
+    DesignSystem.gameCyan,
   ];
 
   @override
@@ -344,7 +346,20 @@ class _MiniPolyominoPainter extends CustomPainter {
 
   @override
   void paint(Canvas canvas, Size size) {
-    const double block = 10.0;
+    if (coords.isEmpty) return;
+    int maxR = coords.map((pt) => pt[0]).reduce((a, b) => a > b ? a : b);
+    int maxC = coords.map((pt) => pt[1]).reduce((a, b) => a > b ? a : b);
+    
+    double maxDim = ((maxR + 1) > (maxC + 1) ? (maxR + 1) : (maxC + 1)).toDouble();
+    double block = (size.width - (maxDim - 1) * 1.5) / maxDim;
+    if (block > 10.0) block = 10.0;
+    const double spacing = 1.5;
+
+    double shapeW = (maxC + 1) * block + maxC * spacing;
+    double shapeH = (maxR + 1) * block + maxR * spacing;
+    double startX = (size.width - shapeW) / 2.0;
+    double startY = (size.height - shapeH) / 2.0;
+
     final paint = Paint()
       ..color = color
       ..style = PaintingStyle.fill;
@@ -354,12 +369,19 @@ class _MiniPolyominoPainter extends CustomPainter {
       ..strokeWidth = 1.0;
 
     for (final pt in coords) {
-      final rect = Rect.fromLTWH(pt[1] * (block + 1), pt[0] * (block + 1), block, block);
+      final rect = Rect.fromLTWH(
+        startX + pt[1] * (block + spacing),
+        startY + pt[0] * (block + spacing),
+        block,
+        block,
+      );
       canvas.drawRRect(RRect.fromRectAndRadius(rect, const Radius.circular(2)), paint);
       canvas.drawRRect(RRect.fromRectAndRadius(rect, const Radius.circular(2)), border);
     }
   }
 
   @override
-  bool shouldRepaint(covariant CustomPainter oldDelegate) => true;
+  bool shouldRepaint(covariant _MiniPolyominoPainter oldDelegate) {
+    return oldDelegate.coords != coords || oldDelegate.color != color;
+  }
 }

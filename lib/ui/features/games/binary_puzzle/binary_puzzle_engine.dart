@@ -143,49 +143,159 @@ class BinaryPuzzleEngine {
     return true;
   }
 
+  List<List<bool>> getInvalidCells(List<List<int?>> grid, int size) {
+    List<List<bool>> invalid = List.generate(size, (_) => List.filled(size, false));
+
+    for (int r = 0; r < size; r++) {
+      for (int c = 0; c < size - 2; c++) {
+        final val = grid[r][c];
+        if (val != null && grid[r][c + 1] == val && grid[r][c + 2] == val) {
+          invalid[r][c] = true;
+          invalid[r][c + 1] = true;
+          invalid[r][c + 2] = true;
+        }
+      }
+    }
+
+    for (int c = 0; c < size; c++) {
+      for (int r = 0; r < size - 2; r++) {
+        final val = grid[r][c];
+        if (val != null && grid[r + 1][c] == val && grid[r + 2][c] == val) {
+          invalid[r][c] = true;
+          invalid[r + 1][c] = true;
+          invalid[r + 2][c] = true;
+        }
+      }
+    }
+
+    int half = size ~/ 2;
+    for (int r = 0; r < size; r++) {
+      int count0 = 0;
+      int count1 = 0;
+      for (int c = 0; c < size; c++) {
+        if (grid[r][c] == 0) count0++;
+        if (grid[r][c] == 1) count1++;
+      }
+      if (count0 > half) {
+        for (int c = 0; c < size; c++) {
+          if (grid[r][c] == 0) invalid[r][c] = true;
+        }
+      }
+      if (count1 > half) {
+        for (int c = 0; c < size; c++) {
+          if (grid[r][c] == 1) invalid[r][c] = true;
+        }
+      }
+    }
+
+    for (int c = 0; c < size; c++) {
+      int count0 = 0;
+      int count1 = 0;
+      for (int r = 0; r < size; r++) {
+        if (grid[r][c] == 0) count0++;
+        if (grid[r][c] == 1) count1++;
+      }
+      if (count0 > half) {
+        for (int r = 0; r < size; r++) {
+          if (grid[r][c] == 0) invalid[r][c] = true;
+        }
+      }
+      if (count1 > half) {
+        for (int r = 0; r < size; r++) {
+          if (grid[r][c] == 1) invalid[r][c] = true;
+        }
+      }
+    }
+
+    for (int i = 0; i < size; i++) {
+      bool rowIFull = true;
+      for (int k = 0; k < size; k++) {
+        if (grid[i][k] == null) {
+          rowIFull = false;
+          break;
+        }
+      }
+      if (!rowIFull) continue;
+
+      for (int j = i + 1; j < size; j++) {
+        bool rowJFull = true;
+        for (int k = 0; k < size; k++) {
+          if (grid[j][k] == null) {
+            rowJFull = false;
+            break;
+          }
+        }
+        if (!rowJFull) continue;
+
+        bool rowSame = true;
+        for (int k = 0; k < size; k++) {
+          if (grid[i][k] != grid[j][k]) {
+            rowSame = false;
+            break;
+          }
+        }
+        if (rowSame) {
+          for (int k = 0; k < size; k++) {
+            invalid[i][k] = true;
+            invalid[j][k] = true;
+          }
+        }
+      }
+    }
+
+    for (int i = 0; i < size; i++) {
+      bool colIFull = true;
+      for (int k = 0; k < size; k++) {
+        if (grid[k][i] == null) {
+          colIFull = false;
+          break;
+        }
+      }
+      if (!colIFull) continue;
+
+      for (int j = i + 1; j < size; j++) {
+        bool colJFull = true;
+        for (int k = 0; k < size; k++) {
+          if (grid[k][j] == null) {
+            colJFull = false;
+            break;
+          }
+        }
+        if (!colJFull) continue;
+
+        bool colSame = true;
+        for (int k = 0; k < size; k++) {
+          if (grid[k][i] != grid[k][j]) {
+            colSame = false;
+            break;
+          }
+        }
+        if (colSame) {
+          for (int k = 0; k < size; k++) {
+            invalid[k][i] = true;
+            invalid[k][j] = true;
+          }
+        }
+      }
+    }
+
+    return invalid;
+  }
+
   bool isCompleteAndValid(List<List<int?>> grid, int size) {
-    // 1. Check all cells are filled
     for (int r = 0; r < size; r++) {
       for (int c = 0; c < size; c++) {
         if (grid[r][c] == null) return false;
       }
     }
 
-    // Convert to List<List<int>> for internal checks
-    List<List<int>> fullGrid = grid.map((row) => row.map((e) => e!).toList()).toList();
-
-    // 2. Check no more than two same adjacent (Rule 1)
+    final invalid = getInvalidCells(grid, size);
     for (int r = 0; r < size; r++) {
       for (int c = 0; c < size; c++) {
-        int val = fullGrid[r][c];
-        // Horizontal
-        if (c < size - 2 && fullGrid[r][c + 1] == val && fullGrid[r][c + 2] == val) return false;
-        // Vertical
-        if (r < size - 2 && fullGrid[r + 1][c] == val && fullGrid[r + 2][c] == val) return false;
+        if (invalid[r][c]) return false;
       }
     }
 
-    // 3. Equal number of 0s and 1s (Rule 2)
-    int half = size ~/ 2;
-    for (int i = 0; i < size; i++) {
-      int row0 = 0, row1 = 0, col0 = 0, col1 = 0;
-      for (int j = 0; j < size; j++) {
-        if (fullGrid[i][j] == 0) {
-          row0++;
-        } else {
-          row1++;
-        }
-        if (fullGrid[j][i] == 0) {
-          col0++;
-        } else {
-          col1++;
-        }
-      }
-      if (row0 != half || row1 != half) return false;
-      if (col0 != half || col1 != half) return false;
-    }
-
-    // 4. Uniqueness of rows and columns (Rule 3)
-    return _isFinalValid(fullGrid, size);
+    return true;
   }
 }

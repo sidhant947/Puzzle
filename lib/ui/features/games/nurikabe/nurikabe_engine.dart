@@ -19,11 +19,11 @@ class NurikabeEngine {
     // Fallback
     return {
       'grid': [
-        [2, 0, -1, 3, 0],
-        [-1, -1, -1, 0, -1],
-        [1, -1, 2, -1, 2],
-        [-1, -1, 0, -1, 0],
-        [3, 0, 0, -1, -1],
+        [2, 0, 0, 0, 0],
+        [0, 0, 0, 3, 0],
+        [0, 1, 0, 0, 0],
+        [0, 0, 0, 0, 0],
+        [2, 0, 0, 0, 1],
       ],
     };
   }
@@ -179,55 +179,78 @@ class NurikabeEngine {
 
   bool _hasUniqueSolution(List<List<int>> clues, int size) {
     int solutions = 0;
-    
-    void solve(int r, int c, List<List<int>> currentGrid) {
+    final currentGrid = List.generate(size, (_) => List.filled(size, -2));
+
+    bool isPrunable(int r, int c) {
+      if (r > 0 && c > 0) {
+        if (currentGrid[r-1][c-1] == -1 && currentGrid[r-1][c] == -1 &&
+            currentGrid[r][c-1] == -1 && currentGrid[r][c] == -1) {
+          return true;
+        }
+      }
+
+      if (currentGrid[r][c] >= 0) {
+        List<List<int>> stack = [[r, c]];
+        List<List<bool>> visited = List.generate(size, (_) => List.filled(size, false));
+        visited[r][c] = true;
+        int area = 0;
+        int clueCount = 0;
+        int clueVal = -1;
+        while (stack.isNotEmpty) {
+          var curr = stack.removeLast();
+          area++;
+          int cr = curr[0], cc = curr[1];
+          if (clues[cr][cc] > 0) {
+            clueCount++;
+            clueVal = clues[cr][cc];
+          }
+          for (var n in [[cr-1, cc], [cr+1, cc], [cr, cc-1], [cr, cc+1]]) {
+            int nr = n[0], nc = n[1];
+            if (nr >= 0 && nr < size && nc >= 0 && nc < size && !visited[nr][nc] && currentGrid[nr][nc] >= 0) {
+              visited[nr][nc] = true;
+              stack.add(n);
+            }
+          }
+        }
+        if (clueCount > 1) return true;
+        if (clueVal != -1 && area > clueVal) return true;
+      }
+
+      return false;
+    }
+
+    void solve(int r, int c) {
       if (solutions > 1) return;
       if (r == size) {
         if (checkVictoryWrapper({'grid': currentGrid})) solutions++;
         return;
       }
-      
+
       int nextR = (c == size - 1) ? r + 1 : r;
       int nextC = (c == size - 1) ? 0 : c + 1;
 
       if (clues[r][c] > 0) {
         currentGrid[r][c] = clues[r][c];
-        solve(nextR, nextC, currentGrid);
+        if (!isPrunable(r, c)) {
+          solve(nextR, nextC);
+        }
+        currentGrid[r][c] = -2;
       } else {
-        // Option 1: Sea
         currentGrid[r][c] = -1;
-        if (_isPrunable(currentGrid, clues, size)) {
-          // Pruned
-        } else {
-          solve(nextR, nextC, currentGrid);
+        if (!isPrunable(r, c)) {
+          solve(nextR, nextC);
         }
 
-        // Option 2: Island (white)
         currentGrid[r][c] = 0;
-        if (_isPrunable(currentGrid, clues, size)) {
-          // Pruned
-        } else {
-          solve(nextR, nextC, currentGrid);
+        if (!isPrunable(r, c)) {
+          solve(nextR, nextC);
         }
+        currentGrid[r][c] = -2;
       }
     }
 
-    solve(0, 0, List.generate(size, (_) => List.filled(size, 0)));
+    solve(0, 0);
     return solutions == 1;
-  }
-
-  bool _isPrunable(List<List<int>> grid, List<List<int>> clues, int size) {
-    // 1. Check for 2x2 sea
-    for (int r = 0; r < size - 1; r++) {
-      for (int c = 0; c < size - 1; c++) {
-        if (grid[r][c] == -1 && grid[r+1][c] == -1 && grid[r][c+1] == -1 && grid[r+1][c+1] == -1) return true;
-      }
-    }
-    
-    // 2. Check if any island area exceeds its clue
-    // (This is hard because we don't know the final islands yet)
-    
-    return false;
   }
 
   static bool checkVictoryWrapper(Map<String, dynamic> params) {

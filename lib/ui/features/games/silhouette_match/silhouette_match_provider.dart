@@ -9,6 +9,7 @@ class SilhouetteMatchState {
   final int correctIndex;
   final int? selectedIndex;
   final bool isVictory;
+  final bool isFailed;
   final bool isLoading;
 
   SilhouetteMatchState({
@@ -17,6 +18,7 @@ class SilhouetteMatchState {
     required this.correctIndex,
     this.selectedIndex,
     this.isVictory = false,
+    this.isFailed = false,
     this.isLoading = true,
   });
 
@@ -26,6 +28,7 @@ class SilhouetteMatchState {
     int? correctIndex,
     int? selectedIndex,
     bool? isVictory,
+    bool? isFailed,
     bool? isLoading,
   }) {
     return SilhouetteMatchState(
@@ -34,6 +37,7 @@ class SilhouetteMatchState {
       correctIndex: correctIndex ?? this.correctIndex,
       selectedIndex: selectedIndex ?? this.selectedIndex,
       isVictory: isVictory ?? this.isVictory,
+      isFailed: isFailed ?? this.isFailed,
       isLoading: isLoading ?? this.isLoading,
     );
   }
@@ -63,12 +67,18 @@ class SilhouetteMatchNotifier extends _$SilhouetteMatchNotifier {
   }
 
   void selectOption(int index) {
-    if (state.isVictory) return;
-    
-    state = state.copyWith(selectedIndex: index);
+    if (state.isVictory || state.isFailed) return;
     
     if (index == state.correctIndex) {
-      state = state.copyWith(isVictory: true);
+      state = state.copyWith(
+        selectedIndex: index,
+        isVictory: true,
+      );
+    } else {
+      state = state.copyWith(
+        selectedIndex: index,
+        isFailed: true,
+      );
     }
   }
 }

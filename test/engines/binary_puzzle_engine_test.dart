@@ -88,6 +88,103 @@ void main() {
         ];
         expect(engine.isCompleteAndValid(grid, 6), isFalse);
       });
+
+      test('returns false when two columns are identical', () {
+        final grid = <List<int?>>[
+          [1, 0, 0, 1, 0, 1],
+          [1, 0, 1, 1, 0, 0],
+          [0, 1, 0, 0, 1, 1],
+          [0, 1, 0, 1, 1, 0],
+          [1, 0, 1, 0, 0, 1],
+          [0, 1, 1, 0, 1, 0],
+        ];
+        expect(engine.isCompleteAndValid(grid, 6), isFalse);
+      });
+
+      test('accepts alternative valid solution dynamically', () {
+        final grid = <List<int?>>[
+          [1, 0, 0, 1, 1, 0],
+          [1, 0, 1, 1, 0, 0],
+          [0, 1, 0, 0, 1, 1],
+          [0, 1, 0, 1, 1, 0],
+          [1, 0, 1, 0, 0, 1],
+          [0, 1, 1, 0, 0, 1],
+        ];
+        expect(engine.isCompleteAndValid(grid, 6), isTrue);
+      });
+    });
+
+    group('getInvalidCells', () {
+      test('returns all false for valid grid', () {
+        final grid = <List<int?>>[
+          [0, 1, 0, 1, 0, 1],
+          [1, 0, 1, 0, 1, 0],
+          [0, 1, 0, 1, 1, 0],
+          [1, 0, 1, 0, 0, 1],
+          [0, 1, 1, 0, 0, 1],
+          [1, 0, 0, 1, 1, 0],
+        ];
+        final invalid = engine.getInvalidCells(grid, 6);
+        for (final row in invalid) {
+          for (final cell in row) {
+            expect(cell, isFalse);
+          }
+        }
+      });
+
+      test('flags three adjacent identical numbers horizontally and vertically', () {
+        final grid = List.generate(6, (_) => List<int?>.filled(6, null));
+        grid[0][0] = 1;
+        grid[0][1] = 1;
+        grid[0][2] = 1;
+
+        grid[2][4] = 0;
+        grid[3][4] = 0;
+        grid[4][4] = 0;
+
+        final invalid = engine.getInvalidCells(grid, 6);
+        expect(invalid[0][0], isTrue);
+        expect(invalid[0][1], isTrue);
+        expect(invalid[0][2], isTrue);
+        expect(invalid[0][3], isFalse);
+
+        expect(invalid[2][4], isTrue);
+        expect(invalid[3][4], isTrue);
+        expect(invalid[4][4], isTrue);
+        expect(invalid[1][4], isFalse);
+      });
+
+      test('flags cells exceeding half count in row or column', () {
+        final grid = List.generate(6, (_) => List<int?>.filled(6, null));
+        grid[1][0] = 0;
+        grid[1][1] = 0;
+        grid[1][2] = 0;
+        grid[1][3] = 0;
+        grid[1][4] = 1;
+
+        final invalid = engine.getInvalidCells(grid, 6);
+        expect(invalid[1][0], isTrue);
+        expect(invalid[1][1], isTrue);
+        expect(invalid[1][2], isTrue);
+        expect(invalid[1][3], isTrue);
+        expect(invalid[1][4], isFalse);
+      });
+
+      test('flags identical completed columns', () {
+        final grid = <List<int?>>[
+          [1, 0, 0, 1, 0, 1],
+          [1, 0, 1, 1, 0, 0],
+          [0, 1, 0, 0, 1, 1],
+          [0, 1, 0, 1, 1, 0],
+          [1, 0, 1, 0, 0, 1],
+          [0, 1, 1, 0, 1, 0],
+        ];
+        final invalid = engine.getInvalidCells(grid, 6);
+        for (int r = 0; r < 6; r++) {
+          expect(invalid[r][1], isTrue);
+          expect(invalid[r][4], isTrue);
+        }
+      });
     });
   });
 }
