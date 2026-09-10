@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:puzzle/ui/features/games/change_blindness/change_blindness_engine.dart';
 
@@ -64,6 +65,41 @@ void main() {
         for (final item in items) {
           expect(item.containsKey('icon'), isTrue);
           expect(item.containsKey('color'), isTrue);
+        }
+      });
+
+      test('changed item always differs from original when score >= 3', () {
+        final symmetricIcons = {
+          Icons.circle,
+          Icons.square,
+          Icons.diamond,
+          Icons.hexagon,
+          Icons.sunny,
+          Icons.settings,
+          Icons.star,
+        };
+
+        for (int i = 0; i < 50; i++) {
+          final trial = engine.generateTrial(3, score: 5);
+          final original = trial['original'] as List<Map<String, dynamic>>;
+          final changed = trial['changed'] as List<Map<String, dynamic>>;
+          final idx = trial['changeIndex'] as int;
+
+          final iconDiff = original[idx]['icon'] != changed[idx]['icon'];
+          final colorDiff = original[idx]['color'] != changed[idx]['color'];
+          final rotationDiff = original[idx]['rotation'] != changed[idx]['rotation'];
+          final scaleDiff = original[idx]['scale'] != changed[idx]['scale'];
+
+          expect(changed[idx]['visible'], isTrue);
+          expect(
+            iconDiff || colorDiff || rotationDiff || scaleDiff,
+            isTrue,
+          );
+
+          if (rotationDiff) {
+            expect(symmetricIcons.contains(original[idx]['icon']), isFalse);
+            expect(symmetricIcons.contains(changed[idx]['icon']), isFalse);
+          }
         }
       });
     });

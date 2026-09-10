@@ -266,6 +266,13 @@ class _GameScaffoldState extends ConsumerState<GameScaffold> {
         "Time & Score: You have 60 seconds. Each correct spot earns +1 point and advances you to the next trial.",
         "Penalty: Tapping an incorrect tile reduces remaining time by 2 seconds.",
       ],
+      'semantic_distance': [
+        "Goal: Guess the secret hidden word before time runs out.",
+        "Input: Type any word into the input field and press send.",
+        "Distance Score: Each submitted guess shows a semantic distance score indicating conceptual distance to the secret word.",
+        "Clues: Lower distance scores mean warmer/closer (e.g. 10 is very close, 80 is unrelated).",
+        "Victory: Submit the exact secret word to get a distance of 0.0 and solve the puzzle.",
+      ],
     };
 
     final rulesList = gameId != null ? detailedRules[gameId] : null;

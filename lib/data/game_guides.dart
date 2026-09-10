@@ -3796,18 +3796,18 @@ const Map<String, GameGuide> gameGuides = {
   "semantic_distance": GameGuide(
     title: "Semantic Distance",
     category: "WORD",
-    objective: "Determine the semantic relationship between words by selecting the one furthest or closest in meaning.",
-    controls: "Tap the word from the list that fits the distance criteria.",
+    objective: "Uncover the secret target word by guessing related words and tracking their semantic distance.",
+    controls: "Type your word guess in the input box and tap send or press enter.",
     walkthrough: const [
-      "Step 1: A target word and a specific criteria (e.g., furthest meaning) are presented.",
-      "Step 2: Analyze the list of candidate words.",
-      "Step 3: Tap the word that best satisfies the semantic distance rule.",
-      "Step 4: Progress through increasingly abstract relationships.",
+      "Step 1: Type any guess word into the text field and submit.",
+      "Step 2: Review the semantic distance score returned for your guess.",
+      "Step 3: A lower score means you are conceptually closer to the secret word.",
+      "Step 4: Hone in on synonyms and related concepts until you find the secret word (distance 0.0) before time expires.",
     ],
     strategies: const [
-      "Identify the core definition and secondary meanings of the target word.",
-      "For 'furthest' meaning, look for words from entirely different categories.",
-      "Take your time on abstract words to avoid careless mistakes.",
+      "Start with broad domain words (nature, food, space, items) to identify the category.",
+      "When a guess gives a low score (< 25), test specific parts, functions, and close synonyms.",
+      "A distance score of 0.0 indicates you have successfully discovered the secret word.",
     ],
   ),
   "semantic_link": GameGuide(

@@ -69,6 +69,36 @@ void main() {
         expect(engine.calculateDistance('SPACE', 'PLANET'), 12.5);
       });
 
+      test('returns close distance for PEEL and WORM with APPLE target', () {
+        expect(engine.calculateDistance('APPLE', 'PEEL'), 14.0);
+        expect(engine.calculateDistance('APPLE', 'WORM'), 16.5);
+      });
+
+      test('handles plural forms with close distance', () {
+        expect(engine.calculateDistance('APPLE', 'APPLES'), 0.5);
+        expect(engine.calculateDistance('APPLE', 'WORMS'), closeTo(16.7, 0.01));
+      });
+
+      test('supports new target categories like FIRE and BREAD', () {
+        expect(engine.calculateDistance('FIRE', 'FLAME'), 4.0);
+        expect(engine.calculateDistance('BREAD', 'FLOUR'), 5.0);
+      });
+
+      test('supports expanded targets like RIVER, DOG, CLOCK, and MONEY', () {
+        expect(engine.calculateDistance('RIVER', 'WATER'), 4.0);
+        expect(engine.calculateDistance('DOG', 'PUPPY'), 4.0);
+        expect(engine.calculateDistance('CLOCK', 'TIME'), 4.0);
+        expect(engine.calculateDistance('MONEY', 'CASH'), 4.0);
+      });
+
+      test('returns correct cluster for target words', () {
+        expect(engine.getCluster('APPLE'), 'FOOD');
+        expect(engine.getCluster('RIVER'), 'NATURE');
+        expect(engine.getCluster('DOG'), 'ANIMALS');
+        expect(engine.getCluster('CLOCK'), 'OBJECTS');
+        expect(engine.getCluster('UNKNOWN_TARGET'), 'GENERAL');
+      });
+
       test('returns pseudo-random distance for unknown word', () {
         final distance = engine.calculateDistance('APPLE', 'XYZZY');
         expect(distance, greaterThanOrEqualTo(50.0));

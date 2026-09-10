@@ -25,7 +25,6 @@ class SlitherlinkEngine {
   }
 
   SlitherlinkLevel? _tryGenerate(int size) {
-    // 1. Generate a valid loop solution
     final cells = List.generate(size, (_) => List.filled(size, false));
     _generateConnectedCellSubset(cells, size);
 
@@ -50,7 +49,6 @@ class SlitherlinkEngine {
 
     if (!isValidSingleLoop(size, hEdges, vEdges)) return null;
 
-    // 2. Calculate clues
     final clues = List.generate(size, (r) => List<int?>.filled(size, null));
     for (int r = 0; r < size; r++) {
       for (int c = 0; c < size; c++) {
@@ -63,7 +61,6 @@ class SlitherlinkEngine {
       }
     }
 
-    // 3. Hide clues one by one, checking unique solution each time
     final positions = [
       for (int r = 0; r < size; r++)
         for (int c = 0; c < size; c++) [r, c]
@@ -81,8 +78,6 @@ class SlitherlinkEngine {
       }
     }
 
-    if (_countSolutions(size, clues) != 1) return null;
-
     return SlitherlinkLevel(
       size: size,
       clues: clues,
@@ -92,151 +87,196 @@ class SlitherlinkEngine {
   }
 
   int _countSolutions(int size, List<List<int?>> clues) {
-    final allEdges = _getAllEdges(size);
-    final hEdges = List.generate(size + 1, (_) => List.filled(size, false));
-    final vEdges = List.generate(size, (_) => List.filled(size + 1, false));
-    return _solveEdges(size, clues, allEdges, 0, hEdges, vEdges, 0);
-  }
+    final numH = (size + 1) * size;
+    final numV = size * (size + 1);
+    final totalEdges = numH + numV;
+    final hEdges = List.filled(numH, -1);
+    final vEdges = List.filled(numV, -1);
 
-  List<List<int>> _getAllEdges(int size) {
-    final edges = <List<int>>[];
-    // Horizontal edges: [0, r, c] means hEdges[r][c]
-    for (int r = 0; r <= size; r++) {
-      for (int c = 0; c < size; c++) {
-        edges.add([0, r, c]);
+    int getH(int r, int c) => hEdges[r * size + c];
+    void setH(int r, int c, int val) => hEdges[r * size + c] = val;
+    int getV(int r, int c) => vEdges[r * (size + 1) + c];
+    void setV(int r, int c, int val) => vEdges[r * (size + 1) + c] = val;
+
+    bool isVertexValid(int r, int c) {
+      int on = 0;
+      int unset = 0;
+      void tally(int val) {
+        if (val == 1) {
+          on++;
+        } else if (val == -1) {
+          unset++;
+        }
       }
-    }
-    // Vertical edges: [1, r, c] means vEdges[r][c]
-    for (int r = 0; r < size; r++) {
-      for (int c = 0; c <= size; c++) {
-        edges.add([1, r, c]);
+
+      if (r > 0) {
+        tally(getV(r - 1, c));
       }
-    }
-    return edges;
-  }
-
-  int _solveEdges(
-    int size,
-    List<List<int?>> clues,
-    List<List<int>> allEdges,
-    int edgeIdx,
-    List<List<bool>> hEdges,
-    List<List<bool>> vEdges,
-    int count,
-  ) {
-    if (count > 1) return count;
-
-    // Skip to next undetermined edge
-    while (edgeIdx < allEdges.length) {
-      final e = allEdges[edgeIdx];
-      final isSet = e[0] == 0 ? hEdges[e[1]][e[2]] : vEdges[e[1]][e[2]];
-      if (!isSet) break;
-      edgeIdx++;
-    }
-
-    if (edgeIdx >= allEdges.length) {
-      // All edges determined — check validity
-      if (isValidSingleLoop(size, hEdges, vEdges) && _matchesClues(size, clues, hEdges, vEdges)) {
-        return count + 1;
+      if (r < size) {
+        tally(getV(r, c));
       }
+      if (c > 0) {
+        tally(getH(r, c - 1));
+      }
+      if (c < size) {
+        tally(getH(r, c));
+      }
+
+      if (on > 2) {
+        return false;
+      }
+      if (on == 1 && unset == 0) {
+        return false;
+      }
+      return true;
+    }
+
+    bool isCellValid(int r, int c) {
+      final clue = clues[r][c];
+      if (clue == null) {
+        return true;
+      }
+      int on = 0;
+      int unset = 0;
+      void tally(int val) {
+        if (val == 1) {
+          on++;
+        } else if (val == -1) {
+          unset++;
+        }
+      }
+
+      tally(getH(r, c));
+      tally(getH(r + 1, c));
+      tally(getV(r, c));
+      tally(getV(r, c + 1));
+
+      if (on > clue) {
+        return false;
+      }
+      if (on + unset < clue) {
+        return false;
+      }
+      return true;
+    }
+
+    bool isSolvedLoop() {
+      int activeEdges = 0;
+      for (var val in hEdges) {
+        if (val == 1) activeEdges++;
+      }
+      for (var val in vEdges) {
+        if (val == 1) activeEdges++;
+      }
+      if (activeEdges == 0) return false;
+
+      int startR = -1;
+      int startC = -1;
+      for (int r = 0; r <= size; r++) {
+        for (int c = 0; c <= size; c++) {
+          int deg = 0;
+          if (r > 0 && getV(r - 1, c) == 1) deg++;
+          if (r < size && getV(r, c) == 1) deg++;
+          if (c > 0 && getH(r, c - 1) == 1) deg++;
+          if (c < size && getH(r, c) == 1) deg++;
+          if (deg != 0 && deg != 2) return false;
+          if (deg == 2 && startR == -1) {
+            startR = r;
+            startC = c;
+          }
+        }
+      }
+
+      if (startR == -1) return false;
+
+      int visited = 0;
+      int cr = startR;
+      int cc = startC;
+      int pr = -1;
+      int pc = -1;
+
+      do {
+        int nr = -1;
+        int nc = -1;
+        if (cr > 0 && getV(cr - 1, cc) == 1 && !(cr - 1 == pr && cc == pc)) {
+          nr = cr - 1;
+          nc = cc;
+        } else if (cr < size && getV(cr, cc) == 1 && !(cr + 1 == pr && cc == pc)) {
+          nr = cr + 1;
+          nc = cc;
+        } else if (cc > 0 && getH(cr, cc - 1) == 1 && !(cr == pr && cc - 1 == pc)) {
+          nr = cr;
+          nc = cc - 1;
+        } else if (cc < size && getH(cr, cc) == 1 && !(cr == pr && cc + 1 == pc)) {
+          nr = cr;
+          nc = cc + 1;
+        }
+
+        if (nr == -1) return false;
+        visited++;
+        pr = cr;
+        pc = cc;
+        cr = nr;
+        cc = nc;
+      } while (cr != startR || cc != startC);
+
+      return visited == activeEdges;
+    }
+
+    int solve(int edgeIndex, int count) {
+      if (count >= 2) return count;
+
+      if (edgeIndex == totalEdges) {
+        if (isSolvedLoop()) return count + 1;
+        return count;
+      }
+
+      final isH = edgeIndex < numH;
+      final idx = isH ? edgeIndex : edgeIndex - numH;
+      final r = isH ? idx ~/ size : idx ~/ (size + 1);
+      final c = isH ? idx % size : idx % (size + 1);
+
+      final vr1 = r;
+      final vc1 = c;
+      final vr2 = isH ? r : r + 1;
+      final vc2 = isH ? c + 1 : c;
+
+      for (final val in [0, 1]) {
+        if (isH) {
+          setH(r, c, val);
+        } else {
+          setV(r, c, val);
+        }
+
+        if (!isVertexValid(vr1, vc1) || !isVertexValid(vr2, vc2)) {
+          continue;
+        }
+
+        bool cellsValid = true;
+        if (isH) {
+          if (r > 0 && !isCellValid(r - 1, c)) cellsValid = false;
+          if (cellsValid && r < size && !isCellValid(r, c)) cellsValid = false;
+        } else {
+          if (c > 0 && !isCellValid(r, c - 1)) cellsValid = false;
+          if (cellsValid && c < size && !isCellValid(r, c)) cellsValid = false;
+        }
+
+        if (cellsValid) {
+          count = solve(edgeIndex + 1, count);
+          if (count >= 2) break;
+        }
+      }
+
+      if (isH) {
+        setH(r, c, -1);
+      } else {
+        setV(r, c, -1);
+      }
+
       return count;
     }
 
-    final e = allEdges[edgeIdx];
-
-    // Try edge OFF
-    count = _solveEdges(size, clues, allEdges, edgeIdx + 1, hEdges, vEdges, count);
-    if (count > 1) return count;
-
-    // Try edge ON (with pruning)
-    if (e[0] == 0) {
-      hEdges[e[1]][e[2]] = true;
-    } else {
-      vEdges[e[1]][e[2]] = true;
-    }
-
-    if (_isPartialValid(size, clues, hEdges, vEdges)) {
-      count = _solveEdges(size, clues, allEdges, edgeIdx + 1, hEdges, vEdges, count);
-    }
-
-    if (e[0] == 0) {
-      hEdges[e[1]][e[2]] = false;
-    } else {
-      vEdges[e[1]][e[2]] = false;
-    }
-
-    return count;
-  }
-
-  bool _isPartialValid(
-    int size,
-    List<List<int?>> clues,
-    List<List<bool>> hEdges,
-    List<List<bool>> vEdges,
-  ) {
-    // Check degree constraints: no vertex can have degree > 2
-    final degrees = List.generate(size + 1, (_) => List.filled(size + 1, 0));
-
-    for (int r = 0; r <= size; r++) {
-      for (int c = 0; c < size; c++) {
-        if (hEdges[r][c]) {
-          degrees[r][c]++;
-          degrees[r][c + 1]++;
-        }
-      }
-    }
-
-    for (int r = 0; r < size; r++) {
-      for (int c = 0; c <= size; c++) {
-        if (vEdges[r][c]) {
-          degrees[r][c]++;
-          degrees[r + 1][c]++;
-        }
-      }
-    }
-
-    for (int r = 0; r <= size; r++) {
-      for (int c = 0; c <= size; c++) {
-        if (degrees[r][c] > 2) return false;
-      }
-    }
-
-    // Check clue constraints
-    for (int r = 0; r < size; r++) {
-      for (int c = 0; c < size; c++) {
-        if (clues[r][c] == null) continue;
-        int count = 0;
-        int unknown = 0;
-        if (hEdges[r][c]) { count++; } else { unknown++; }
-        if (hEdges[r + 1][c]) { count++; } else { unknown++; }
-        if (vEdges[r][c]) { count++; } else { unknown++; }
-        if (vEdges[r][c + 1]) { count++; } else { unknown++; }
-        if (count > clues[r][c]!) return false;
-        if (count + unknown < clues[r][c]!) return false;
-      }
-    }
-
-    return true;
-  }
-
-  bool _matchesClues(
-    int size,
-    List<List<int?>> clues,
-    List<List<bool>> hEdges,
-    List<List<bool>> vEdges,
-  ) {
-    for (int r = 0; r < size; r++) {
-      for (int c = 0; c < size; c++) {
-        if (clues[r][c] == null) continue;
-        int count = 0;
-        if (hEdges[r][c]) count++;
-        if (hEdges[r + 1][c]) count++;
-        if (vEdges[r][c]) count++;
-        if (vEdges[r][c + 1]) count++;
-        if (count != clues[r][c]) return false;
-      }
-    }
-    return true;
+    return solve(0, 0);
   }
 
   void _generateConnectedCellSubset(List<List<bool>> cells, int size) {

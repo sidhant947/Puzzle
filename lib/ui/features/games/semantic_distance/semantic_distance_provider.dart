@@ -17,6 +17,8 @@ class SemanticDistanceState {
   final int score;
   final bool isGameOver;
   final int timeLeft;
+  final int hintsUsed;
+  final String? hintText;
 
   SemanticDistanceState({
     this.puzzle,
@@ -24,6 +26,8 @@ class SemanticDistanceState {
     this.score = 0,
     this.isGameOver = false,
     this.timeLeft = 120,
+    this.hintsUsed = 0,
+    this.hintText,
   });
 
   SemanticDistanceState copyWith({
@@ -32,6 +36,9 @@ class SemanticDistanceState {
     int? score,
     bool? isGameOver,
     int? timeLeft,
+    int? hintsUsed,
+    String? hintText,
+    bool clearHintText = false,
   }) {
     return SemanticDistanceState(
       puzzle: puzzle ?? this.puzzle,
@@ -39,6 +46,8 @@ class SemanticDistanceState {
       score: score ?? this.score,
       isGameOver: isGameOver ?? this.isGameOver,
       timeLeft: timeLeft ?? this.timeLeft,
+      hintsUsed: hintsUsed ?? this.hintsUsed,
+      hintText: clearHintText ? null : (hintText ?? this.hintText),
     );
   }
 }
@@ -62,6 +71,8 @@ class SemanticDistanceNotifier extends _$SemanticDistanceNotifier {
       score: 0,
       isGameOver: false,
       timeLeft: 120,
+      hintsUsed: 0,
+      hintText: null,
     );
     _startTimer();
   }
@@ -75,6 +86,40 @@ class SemanticDistanceNotifier extends _$SemanticDistanceNotifier {
         state = state.copyWith(isGameOver: true);
       }
     });
+  }
+
+  void giveUp() {
+    if (state.isGameOver || state.puzzle == null) return;
+    _timer?.cancel();
+    state = state.copyWith(
+      isGameOver: true,
+      score: 0,
+    );
+  }
+
+  void requestHint() {
+    if (state.isGameOver || state.puzzle == null) return;
+    final target = state.puzzle!.target;
+    final nextHintsUsed = state.hintsUsed + 1;
+    final newTimeLeft = (state.timeLeft - 15).clamp(1, 999);
+    String hint;
+    if (nextHintsUsed == 1) {
+      hint = 'Starts with "${target[0]}" and has ${target.length} letters';
+    } else if (nextHintsUsed == 2) {
+      final cluster = _engine.getCluster(target);
+      hint = 'Theme / Category: $cluster';
+    } else {
+      final relatedWord = state.puzzle!.relatedWords.keys.firstWhere(
+        (w) => !state.guesses.any((g) => g.word == w),
+        orElse: () => state.puzzle!.relatedWords.keys.first,
+      );
+      hint = 'Related clue: $relatedWord';
+    }
+    state = state.copyWith(
+      hintsUsed: nextHintsUsed,
+      hintText: hint,
+      timeLeft: newTimeLeft,
+    );
   }
 
   void submitGuess(String word) {
