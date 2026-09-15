@@ -43,7 +43,7 @@ class HeyawakeEngine {
       HeyawakeRoom(id: 0, startR: 0, startC: 0, endR: 1, endC: 2, clue: 1),
       HeyawakeRoom(id: 1, startR: 0, startC: 3, endR: 2, endC: 4, clue: 2),
       HeyawakeRoom(id: 2, startR: 2, startC: 0, endR: 4, endC: 1, clue: 1),
-      HeyawakeRoom(id: 3, startR: 2, startC: 2, endR: 3, endC: 2, clue: 0),
+      HeyawakeRoom(id: 3, startR: 2, startC: 2, endR: 4, endC: 2, clue: 0),
       HeyawakeRoom(id: 4, startR: 3, startC: 3, endR: 4, endC: 4, clue: 1),
     ];
 

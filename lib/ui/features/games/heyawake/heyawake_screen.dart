@@ -200,7 +200,7 @@ class _HeyawakeScreenState extends ConsumerState<HeyawakeScreen> {
             final c = index % size;
             final state = _puzzle.grid[r][c];
 
-            final room = _puzzle.rooms.firstWhere((rm) => rm.contains(r, c));
+            final room = _puzzle.rooms.firstWhere((rm) => rm.contains(r, c), orElse: () => _puzzle.rooms.first);
             final isRoomTopLeft = room.startR == r && room.startC == c;
 
             // Room borders

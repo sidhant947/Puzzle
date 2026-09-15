@@ -8,7 +8,7 @@ class PalindromeBuilderEngine {
     PalindromeTask(incomplete: 'REVI__R', solution: 'VE', display: 'REVI..R'), // REVIVER
     PalindromeTask(incomplete: 'ROT__', solution: 'OR', display: 'ROT..'),
     PalindromeTask(incomplete: 'KA__K', solution: 'YA', display: 'KA..K'),
-    PalindromeTask(incomplete: 'DE__D', solution: 'IE', display: 'DE..D'),
+    PalindromeTask(incomplete: 'DEIF__D', solution: 'IE', display: 'DEIF..D'),
     PalindromeTask(incomplete: 'RE__R', solution: 'FE', display: 'RE..R'),
     PalindromeTask(incomplete: 'CI__C', balance: 'VI', solution: 'VI', display: 'CI..C'), // CIVIC
     PalindromeTask(incomplete: 'RA__R', solution: 'DA', display: 'RA..R'), // RADAR

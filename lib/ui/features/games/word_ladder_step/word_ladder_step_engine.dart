@@ -19,7 +19,7 @@ class WordLadderStepEngine {
     ['COLD', 'CORD', 'WORD'],
     ['HEAD', 'HEAL', 'TEAL'],
     ['WARM', 'WORM', 'WORD'],
-    ['CAT', 'COT', 'DOG'],
+    ['COT', 'DOT', 'DOG'],
     ['FOUR', 'FOUL', 'FOOL'],
     ['BEST', 'BEAT', 'BOAT'],
     ['LEAD', 'LOAD', 'TOAD'],

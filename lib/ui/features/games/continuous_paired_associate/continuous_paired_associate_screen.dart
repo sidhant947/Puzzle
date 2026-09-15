@@ -76,7 +76,7 @@ class _ContinuousPairedAssociateScreenState extends ConsumerState<ContinuousPair
   }
 
   void _selectTarget(IconData symbol) {
-    if (_isGameOver || _isStudyPhase) return;
+    if (_isGameOver || _isStudyPhase || _queryIndex >= _currentRound.queryQueue.length) return;
 
     final currentQuery = _currentRound.queryQueue[_queryIndex];
     final isCorrect = symbol == currentQuery.target;
@@ -196,7 +196,7 @@ class _ContinuousPairedAssociateScreenState extends ConsumerState<ContinuousPair
               ),
               const SizedBox(width: 6),
               Text(
-                _isStudyPhase ? 'STUDY: $_studySecondsLeft s' : 'RECALL: ${_queryIndex + 1}/${_currentRound.queryQueue.length}',
+                _isStudyPhase ? 'STUDY: $_studySecondsLeft s' : 'RECALL: ${_queryIndex >= _currentRound.queryQueue.length ? _currentRound.queryQueue.length : _queryIndex + 1}/${_currentRound.queryQueue.length}',
                 style: const TextStyle(
                   fontFamily: 'Bebas Neue',
                   fontSize: 18,
@@ -286,7 +286,8 @@ class _ContinuousPairedAssociateScreenState extends ConsumerState<ContinuousPair
   }
 
   Widget _buildTestingView(ColorScheme colorScheme) {
-    final currentQuery = _currentRound.queryQueue[_queryIndex];
+    final queryIndex = _queryIndex >= _currentRound.queryQueue.length ? _currentRound.queryQueue.length - 1 : _queryIndex;
+    final currentQuery = _currentRound.queryQueue[queryIndex];
 
     return Column(
       children: [

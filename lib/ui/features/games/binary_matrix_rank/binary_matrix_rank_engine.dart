@@ -13,27 +13,53 @@ class BinaryMatrixRankQuestion {
 }
 
 class BinaryMatrixRankEngine {
+  static int computeRankGF2(List<List<int>> matrix) {
+    final rows = matrix.length;
+    final cols = matrix[0].length;
+    final m = List.generate(rows, (r) => List<int>.from(matrix[r]));
+    int rank = 0;
+    for (int col = 0; col < cols && rank < rows; col++) {
+      int pivot = -1;
+      for (int r = rank; r < rows; r++) {
+        if (m[r][col] == 1) {
+          pivot = r;
+          break;
+        }
+      }
+      if (pivot == -1) continue;
+      if (pivot != rank) {
+        final temp = m[rank];
+        m[rank] = m[pivot];
+        m[pivot] = temp;
+      }
+      for (int r = 0; r < rows; r++) {
+        if (r != rank && m[r][col] == 1) {
+          for (int c = col; c < cols; c++) {
+            m[r][c] ^= m[rank][c];
+          }
+        }
+      }
+      rank++;
+    }
+    return rank;
+  }
+
   static BinaryMatrixRankQuestion generateQuestion({math.Random? random}) {
     final rng = random ?? math.Random();
 
-    // 3x3 binary matrix samples with known ranks
     final samples = [
-      // Rank 1
-      {'m': [[1, 0, 1], [1, 0, 1], [1, 0, 1]], 'r': 1},
-      {'m': [[0, 1, 1], [0, 1, 1], [0, 0, 0]], 'r': 1},
-      // Rank 2
-      {'m': [[1, 0, 0], [0, 1, 0], [1, 1, 0]], 'r': 2},
-      {'m': [[1, 1, 0], [0, 1, 1], [1, 0, 1]], 'r': 2},
-      {'m': [[1, 0, 1], [0, 1, 0], [1, 0, 1]], 'r': 2},
-      // Rank 3
-      {'m': [[1, 0, 0], [0, 1, 0], [0, 0, 1]], 'r': 3},
-      {'m': [[1, 1, 0], [1, 0, 1], [0, 1, 1]], 'r': 3},
-      {'m': [[1, 0, 1], [0, 1, 1], [0, 0, 1]], 'r': 3},
+      [[1, 0, 1], [1, 0, 1], [1, 0, 1]],
+      [[0, 1, 1], [0, 1, 1], [0, 0, 0]],
+      [[1, 0, 0], [0, 1, 0], [1, 1, 0]],
+      [[1, 1, 0], [0, 1, 1], [1, 0, 1]],
+      [[1, 0, 1], [0, 1, 0], [1, 0, 1]],
+      [[1, 0, 0], [0, 1, 0], [0, 0, 1]],
+      [[1, 1, 0], [0, 1, 1], [1, 1, 1]],
+      [[1, 0, 1], [0, 1, 1], [0, 0, 1]],
     ];
 
-    final sample = samples[rng.nextInt(samples.length)];
-    final matrix = sample['m'] as List<List<int>>;
-    final rank = sample['r'] as int;
+    final matrix = samples[rng.nextInt(samples.length)];
+    final rank = computeRankGF2(matrix);
 
     return BinaryMatrixRankQuestion(
       matrix: matrix,

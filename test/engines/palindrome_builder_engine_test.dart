@@ -29,6 +29,15 @@ void main() {
         final task = engine.getRandomTask();
         expect(task.display.isNotEmpty, isTrue);
       });
+
+      test('all tasks produce valid palindromes', () {
+        for (int i = 0; i < 50; i++) {
+          final task = engine.getRandomTask();
+          final word = task.incomplete.replaceFirst('__', task.solution).replaceFirst('_', task.solution);
+          final reversed = word.split('').reversed.join('');
+          expect(word, equals(reversed), reason: '$word is not a palindrome');
+        }
+      });
     });
 
     group('checkSolution', () {
