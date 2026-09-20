@@ -77,3 +77,6 @@ app.*.map.json
 
 
 
+
+# Local Netlify folder
+.netlify
