@@ -181,7 +181,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get categoryLogic => 'LOGIC';
 
   @override
-  String get categoryMath => 'MATH';
+  String get categoryMath => 'MATHS';
 
   @override
   String get categoryWord => 'WORD';

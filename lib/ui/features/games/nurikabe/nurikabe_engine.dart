@@ -12,11 +12,11 @@ class NurikabeEngine {
 
       final clues = _generateClues(solution, size);
       if (_hasUniqueSolution(clues, size)) {
-        return {'grid': clues};
+        final fullSolution = List.generate(size, (r) => List.generate(size, (c) => clues[r][c] > 0 ? clues[r][c] : solution[r][c]));
+        return {'grid': clues, 'solution': fullSolution};
       }
     }
 
-    // Fallback
     return {
       'grid': [
         [2, 0, 0, 0, 0],
@@ -24,6 +24,13 @@ class NurikabeEngine {
         [0, 1, 0, 0, 0],
         [0, 0, 0, 0, 0],
         [2, 0, 0, 0, 1],
+      ],
+      'solution': [
+        [2, 0, -1, -1, -1],
+        [-1, -1, -1, 3, -1],
+        [-1, 1, -1, 0, -1],
+        [-1, -1, -1, 0, -1],
+        [2, 0, -1, -1, 1],
       ],
     };
   }

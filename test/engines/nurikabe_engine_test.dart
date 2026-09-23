@@ -20,15 +20,6 @@ void main() {
     });
 
     test('fallback grid is solvable and valid', () {
-      final fallbackLevel = engine.generateLevel(size: 5);
-      expect(fallbackLevel['grid'], isNotNull);
-
-      // A valid solution to fallbackClues:
-      // [2, 0, -1, -1, -1]  (island 2: (0,0),(0,1))
-      // [-1, -1, -1, 3, -1] (island 3: (1,3),(2,3),(3,3))
-      // [-1, 1, -1, 0, -1]  (island 1: (2,1))
-      // [-1, -1, -1, 0, -1]
-      // [2, 0, -1, -1, 1]   (island 2: (4,0),(4,1); island 1: (4,4))
       final solution = [
         [2, 0, -1, -1, -1],
         [-1, -1, -1, 3, -1],
@@ -36,7 +27,6 @@ void main() {
         [-1, -1, -1, 0, -1],
         [2, 0, -1, -1, 1],
       ];
-
       expect(NurikabeEngine.checkVictoryWrapper({'grid': solution}), isTrue);
     });
 

@@ -97,27 +97,54 @@ class _NurikabeScreenState extends ConsumerState<NurikabeScreen> {
       body: Center(
         child: Padding(
           padding: const EdgeInsets.all(DesignSystem.spaceLG),
-          child: AspectRatio(
-            aspectRatio: 1,
-            child: Container(
-              decoration: BoxDecoration(
-                border: Border.all(color: colorScheme.onSurface, width: 2),
-                borderRadius: BorderRadius.circular(8),
-              ),
-              child: LayoutBuilder(builder: (context, constraints) {
-                final size = state.grid.length;
-                final cellSize = constraints.maxWidth / size;
-                return Column(
-                  children: List.generate(size, (r) {
-                    return Row(
-                      children: List.generate(size, (c) {
-                        return _buildCell(state, notifier, r, c, cellSize);
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              AspectRatio(
+                aspectRatio: 1,
+                child: Container(
+                  decoration: BoxDecoration(
+                    border: Border.all(color: colorScheme.onSurface, width: 2),
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  child: LayoutBuilder(builder: (context, constraints) {
+                    final size = state.grid.length;
+                    final cellSize = constraints.maxWidth / size;
+                    return Column(
+                      children: List.generate(size, (r) {
+                        return Row(
+                          children: List.generate(size, (c) {
+                            return _buildCell(state, notifier, r, c, cellSize);
+                          }),
+                        );
                       }),
                     );
                   }),
-                );
-              }),
-            ),
+                ),
+              ),
+              const SizedBox(height: DesignSystem.spaceLG),
+              TangibleButton(
+                color: colorScheme.surface,
+                shadowColor: colorScheme.outline,
+                padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+                onTap: () => notifier.showHint(),
+                child: Row(
+                  mainAxisSize: MainAxisSize.min,
+                  children: [
+                    Icon(Icons.lightbulb_outline, color: colorScheme.onSurface),
+                    const SizedBox(width: 8),
+                    Text(
+                      l10n.btnShowHint,
+                      style: TextStyle(
+                        color: colorScheme.onSurface,
+                        fontWeight: FontWeight.bold,
+                        fontSize: 16,
+                      ),
+                    ),
+                  ],
+                ),
+              ),
+            ],
           ),
         ),
       ),
