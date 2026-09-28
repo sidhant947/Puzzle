@@ -62,8 +62,10 @@ class MirrorTracingNotifier extends _$MirrorTracingNotifier {
     );
   }
 
-  void initGame(Size size) {
-    final path = _engine.generateStarPath(size);
+  void initGame(Size size, [int? levelIndex]) {
+    final path = levelIndex != null
+        ? _engine.generatePath(size, levelIndex)
+        : _engine.generateRandomPath(size);
     state = MirrorTracingState(
       targetPath: path,
       userTrace: [],

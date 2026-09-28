@@ -618,7 +618,7 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get binaryPuzzleSubtitle =>
-      'Fill with 0 and 1. Max two of the same digit adjacent. Equal 0s and 1s in each row and column.';
+      'Fill with 0 and 1. Max two of the same digit adjacent. Equal 0s and 1s. Unique rows and columns.';
 
   @override
   String get binaryPuzzleWinTitle => 'WELL DONE';

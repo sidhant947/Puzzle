@@ -766,18 +766,19 @@ const Map<String, GameGuide> gameGuides = {
   "binary_puzzle": GameGuide(
     title: "Binary Puzzle",
     category: "LOGIC",
-    objective: "Fill the grid with 0s and 1s such that no three identical numbers are adjacent, and each row and column has an equal number of 0s and 1s.",
+    objective: "Fill the grid with 0s and 1s such that no three identical numbers are adjacent, each row and column has an equal number of 0s and 1s, and all rows and columns are unique.",
     controls: "Tap an empty or modifiable cell to toggle its value between empty, 0, and 1.",
     walkthrough: const [
       "Step 1: Examine the grid for fixed starting numbers.",
       "Step 2: Look for pairs of identical numbers (e.g., '1-1'). The cells on either side must be the opposite number (e.g., '0-1-1-0').",
       "Step 3: Look for identical numbers separated by one empty cell (e.g., '1-_-1'). The empty cell must be the opposite number ('1-0-1').",
       "Step 4: Ensure every row and column contains exactly half 0s and half 1s.",
-      "Step 5: Continue deducing cell values until the grid is filled correctly.",
+      "Step 5: Ensure no two rows are identical and no two columns are identical.",
+      "Step 6: Continue deducing cell values until the grid is filled correctly.",
     ],
     strategies: const [
       "If a row or column has reached its maximum quota of 1s, fill the remaining empty cells with 0s.",
-      "No two rows or two columns can be exactly identical in a valid binary puzzle.",
+      "Compare nearly completed rows or columns with existing ones to avoid creating duplicate rows or columns.",
       "Always apply the 'no three in a row' rule first, as it provides the most immediate deductions.",
     ],
   ),

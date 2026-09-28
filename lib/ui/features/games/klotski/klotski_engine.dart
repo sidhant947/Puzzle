@@ -1,3 +1,5 @@
+import 'dart:math';
+
 class KlotskiBlock {
   final String id;
   final int width;
@@ -44,6 +46,76 @@ class KlotskiEngine {
         KlotskiBlock(id: 's2', width: 1, height: 1, x: 1, y: 4),
         KlotskiBlock(id: 's3', width: 1, height: 1, x: 2, y: 1),
       ];
+
+  static List<List<KlotskiBlock>> get levels => [
+        defaultLayout,
+        [
+          KlotskiBlock(id: 'hero', width: 2, height: 2, x: 1, y: 2),
+          KlotskiBlock(id: 'v0', width: 1, height: 2, x: 3, y: 3),
+          KlotskiBlock(id: 'v1', width: 1, height: 2, x: 0, y: 0),
+          KlotskiBlock(id: 'v2', width: 1, height: 2, x: 3, y: 0),
+          KlotskiBlock(id: 'v3', width: 1, height: 2, x: 0, y: 3),
+          KlotskiBlock(id: 'h1', width: 2, height: 1, x: 1, y: 0),
+          KlotskiBlock(id: 's0', width: 1, height: 1, x: 3, y: 2),
+          KlotskiBlock(id: 's1', width: 1, height: 1, x: 1, y: 4),
+          KlotskiBlock(id: 's2', width: 1, height: 1, x: 2, y: 4),
+          KlotskiBlock(id: 's3', width: 1, height: 1, x: 1, y: 1),
+        ],
+        [
+          KlotskiBlock(id: 'hero', width: 2, height: 2, x: 1, y: 1),
+          KlotskiBlock(id: 'v0', width: 1, height: 2, x: 0, y: 3),
+          KlotskiBlock(id: 'v1', width: 1, height: 2, x: 3, y: 1),
+          KlotskiBlock(id: 'v2', width: 1, height: 2, x: 0, y: 0),
+          KlotskiBlock(id: 'v3', width: 1, height: 2, x: 3, y: 3),
+          KlotskiBlock(id: 'h1', width: 2, height: 1, x: 2, y: 0),
+          KlotskiBlock(id: 's0', width: 1, height: 1, x: 0, y: 2),
+          KlotskiBlock(id: 's1', width: 1, height: 1, x: 2, y: 4),
+          KlotskiBlock(id: 's2', width: 1, height: 1, x: 1, y: 4),
+          KlotskiBlock(id: 's3', width: 1, height: 1, x: 1, y: 0),
+        ],
+        [
+          KlotskiBlock(id: 'hero', width: 2, height: 2, x: 1, y: 1),
+          KlotskiBlock(id: 'v0', width: 1, height: 2, x: 3, y: 3),
+          KlotskiBlock(id: 'v1', width: 1, height: 2, x: 0, y: 1),
+          KlotskiBlock(id: 'v2', width: 1, height: 2, x: 3, y: 0),
+          KlotskiBlock(id: 'v3', width: 1, height: 2, x: 0, y: 3),
+          KlotskiBlock(id: 'h1', width: 2, height: 1, x: 0, y: 0),
+          KlotskiBlock(id: 's0', width: 1, height: 1, x: 3, y: 2),
+          KlotskiBlock(id: 's1', width: 1, height: 1, x: 1, y: 4),
+          KlotskiBlock(id: 's2', width: 1, height: 1, x: 2, y: 4),
+          KlotskiBlock(id: 's3', width: 1, height: 1, x: 2, y: 0),
+        ],
+        [
+          KlotskiBlock(id: 'hero', width: 2, height: 2, x: 2, y: 1),
+          KlotskiBlock(id: 'v0', width: 1, height: 2, x: 0, y: 3),
+          KlotskiBlock(id: 'v1', width: 1, height: 2, x: 3, y: 3),
+          KlotskiBlock(id: 'v2', width: 1, height: 2, x: 0, y: 0),
+          KlotskiBlock(id: 'v3', width: 1, height: 2, x: 2, y: 3),
+          KlotskiBlock(id: 'h1', width: 2, height: 1, x: 2, y: 0),
+          KlotskiBlock(id: 's0', width: 1, height: 1, x: 0, y: 2),
+          KlotskiBlock(id: 's1', width: 1, height: 1, x: 1, y: 3),
+          KlotskiBlock(id: 's2', width: 1, height: 1, x: 1, y: 4),
+          KlotskiBlock(id: 's3', width: 1, height: 1, x: 1, y: 0),
+        ],
+        [
+          KlotskiBlock(id: 'hero', width: 2, height: 2, x: 0, y: 1),
+          KlotskiBlock(id: 'v0', width: 1, height: 2, x: 3, y: 3),
+          KlotskiBlock(id: 'v1', width: 1, height: 2, x: 0, y: 3),
+          KlotskiBlock(id: 'v2', width: 1, height: 2, x: 3, y: 0),
+          KlotskiBlock(id: 'v3', width: 1, height: 2, x: 1, y: 3),
+          KlotskiBlock(id: 'h1', width: 2, height: 1, x: 0, y: 0),
+          KlotskiBlock(id: 's0', width: 1, height: 1, x: 3, y: 2),
+          KlotskiBlock(id: 's1', width: 1, height: 1, x: 2, y: 3),
+          KlotskiBlock(id: 's2', width: 1, height: 1, x: 2, y: 4),
+          KlotskiBlock(id: 's3', width: 1, height: 1, x: 2, y: 0),
+        ],
+      ];
+
+  static List<KlotskiBlock> getRandomLayout([Random? random]) {
+    final rng = random ?? Random();
+    final layout = levels[rng.nextInt(levels.length)];
+    return layout.map((b) => b.copy()).toList();
+  }
 
   static bool isSolved(List<KlotskiBlock> blocks) {
     final hero = blocks.firstWhere((b) => b.id == 'hero');

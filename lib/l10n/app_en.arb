@@ -256,7 +256,7 @@
   "balanceScaleBack": "BACK",
   "balanceScaleSubmit": "SUBMIT",
   "binaryPuzzleTitle": "BINARY PUZZLE",
-  "binaryPuzzleSubtitle": "Fill with 0 and 1. Max two of the same digit adjacent. Equal 0s and 1s in each row and column.",
+  "binaryPuzzleSubtitle": "Fill with 0 and 1. Max two of the same digit adjacent. Equal 0s and 1s. Unique rows and columns.",
   "binaryPuzzleWinTitle": "WELL DONE",
   "binaryPuzzleWinMessage": "You solved the binary puzzle with perfect logic!",
   "blockEscapeTitle": "BLOCK ESCAPE",

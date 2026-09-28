@@ -35,8 +35,8 @@ class _MirrorTracingScreenState extends ConsumerState<MirrorTracingScreen> {
         onPlayAgain: () {
           Navigator.of(context).pop();
           _lastTouch = null;
-          // Trigger re-init if needed or just reset
-          ref.read(mirrorTracingNotifierProvider.notifier).resetTrace();
+          final canvasSize = ref.read(mirrorTracingNotifierProvider).canvasSize;
+          ref.read(mirrorTracingNotifierProvider.notifier).initGame(canvasSize);
         },
       ),
     );
@@ -59,6 +59,10 @@ class _MirrorTracingScreenState extends ConsumerState<MirrorTracingScreen> {
     return GameScaffold(
       title: L10nGameHelpers.getGameTitle(context, 'mirror_tracing'),
       subtitle: l10n.mirrorTracingSubtitle,
+      onReset: () {
+        setState(() => _lastTouch = null);
+        notifier.initGame(state.canvasSize);
+      },
       body: LayoutBuilder(
         builder: (context, constraints) {
           if (state.canvasSize == Size.zero) {

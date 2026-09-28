@@ -71,7 +71,7 @@ class _KlotskiScreenState extends ConsumerState<KlotskiScreen> {
     setState(() {
       _moves = 0;
       _selectedBlock = null;
-      _blocks = KlotskiEngine.defaultLayout.map((b) {
+      _blocks = KlotskiEngine.getRandomLayout().map((b) {
         final prefix = b.id == 'hero'
             ? 'hero'
             : b.id.startsWith('v')

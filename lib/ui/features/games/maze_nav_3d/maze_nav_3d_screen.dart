@@ -297,7 +297,7 @@ class _MazeNav3DScreenState extends ConsumerState<MazeNav3DScreen> {
                                   child: isPlayer
                                       ? Center(
                                           child: Transform.rotate(
-                                            angle: _facing * pi / 2 - pi / 2,
+                                            angle: _facing * pi / 2,
                                             child: const Icon(Icons.navigation_rounded, size: 12, color: Colors.white),
                                           ),
                                         )

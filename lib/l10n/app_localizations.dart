@@ -485,7 +485,7 @@ abstract class AppLocalizations {
   /// No description provided for @categoryMath.
   ///
   /// In en, this message translates to:
-  /// **'MATH'**
+  /// **'MATHS'**
   String get categoryMath;
 
   /// No description provided for @categoryWord.
@@ -1265,7 +1265,7 @@ abstract class AppLocalizations {
   /// No description provided for @binaryPuzzleSubtitle.
   ///
   /// In en, this message translates to:
-  /// **'Fill with 0 and 1. Max two of the same digit adjacent. Equal 0s and 1s in each row and column.'**
+  /// **'Fill with 0 and 1. Max two of the same digit adjacent. Equal 0s and 1s. Unique rows and columns.'**
   String get binaryPuzzleSubtitle;
 
   /// No description provided for @binaryPuzzleWinTitle.
