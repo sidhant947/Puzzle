@@ -1,5 +1,6 @@
 import 'dart:math';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -12,7 +13,7 @@ import '../../../core/juice/game_scaffold.dart';
 class WordWheelPuzzle {
   final String pangram;
   final String centralLetter;
-  final List<String> letters; // Must be exactly 7 letters (including central)
+  final List<String> letters;
   final Set<String> validWords;
 
   WordWheelPuzzle({
@@ -20,11 +21,116 @@ class WordWheelPuzzle {
     required this.centralLetter,
     required this.letters,
     required this.validWords,
-  });
+  })  : assert(letters.length == 7),
+        assert(letters.toSet().length == 7),
+        assert(letters.contains(centralLetter));
 }
 
 class WordWheelScreen extends ConsumerStatefulWidget {
   const WordWheelScreen({super.key});
+
+  static Set<String>? _dictionary;
+  static Future<void>? _loadingFuture;
+
+  static Future<void> loadDictionary() async {
+    if (_dictionary != null) return;
+    _loadingFuture ??= _loadFromAsset();
+    await _loadingFuture;
+  }
+
+  static Future<void> _loadFromAsset() async {
+    try {
+      final data = await rootBundle.loadString('assets/chain_words.txt');
+      _dictionary = data
+          .split('\n')
+          .map((w) => w.trim().toUpperCase())
+          .where((w) => w.length >= 3)
+          .toSet();
+    } catch (_) {
+      _dictionary = null;
+    }
+  }
+
+  static void setDictionary(Set<String>? words) {
+    _dictionary = words;
+    _loadingFuture = null;
+  }
+
+  static final List<WordWheelPuzzle> puzzles = [
+    WordWheelPuzzle(
+      pangram: 'PROJECT',
+      centralLetter: 'R',
+      letters: ['P', 'R', 'O', 'J', 'E', 'C', 'T'],
+      validWords: {
+        'PROJECT', 'ROPE', 'PORT', 'CROP', 'PORE', 'CORE', 'ROTE',
+        'PRO', 'REPO', 'TROPE', 'REPRO', 'RECTO', 'CREPT',
+        'COPER', 'CORP', 'TORE', 'TORC', 'ERECT', 'ROOT', 'POOR',
+        'CREEP', 'RETRO', 'REPORT', 'PROTECT', 'REJECT', 'TROOP',
+        'PROP', 'PEER', 'COERCE'
+      },
+    ),
+    WordWheelPuzzle(
+      pangram: 'FLOWERS',
+      centralLetter: 'O',
+      letters: ['F', 'L', 'O', 'W', 'E', 'R', 'S'],
+      validWords: {
+        'FLOWERS', 'FLOWER', 'FLOW', 'FLOWS', 'WOLF', 'SLOW', 'ROSE',
+        'ROSES', 'ROLE', 'ROLES', 'ROLL', 'ROLLS', 'FOOL', 'FELLOW',
+        'FLOOR', 'FLOORS', 'FOR', 'LOSE', 'LOSS', 'LOW', 'LOWER',
+        'LOWS', 'SOLE', 'SOLO', 'ROOF', 'ROW', 'ROWS', 'WOOL',
+        'WORSE', 'OFFER', 'OFFERS'
+      },
+    ),
+    WordWheelPuzzle(
+      pangram: 'PAINTER',
+      centralLetter: 'A',
+      letters: ['P', 'A', 'I', 'N', 'T', 'E', 'R'],
+      validWords: {
+        'PAINTER', 'PAINT', 'PAIN', 'PAIR', 'PART', 'PARENT', 'PARTNER',
+        'PAT', 'PATE', 'PAPER', 'RAIN', 'TRAIN', 'TRAP', 'TAPE', 'TEAR',
+        'RATE', 'NEAR', 'EARN', 'AIR', 'ANT', 'ART', 'ATE', 'EAT', 'TEA',
+        'PAN', 'TAP', 'RAT', 'TAN', 'TAR', 'ARE', 'ERA', 'REPEAT', 'REPAIR'
+      },
+    ),
+    WordWheelPuzzle(
+      pangram: 'ORANGES',
+      centralLetter: 'G',
+      letters: ['O', 'R', 'A', 'N', 'G', 'E', 'S'],
+      validWords: {
+        'ORANGES', 'ORANGE', 'GEAR', 'RAGE', 'SANG', 'SONG', 'GONE',
+        'RANG', 'GORE', 'OGRE', 'GROAN', 'GROANS', 'RAGES', 'GEARS',
+        'GNAR', 'GOES', 'GORES', 'AGE', 'AGES', 'EGG', 'GOA', 'NAG',
+        'NAGS', 'RAG', 'RAGS', 'SAG', 'GANG', 'GORGE', 'GAG', 'GAGS',
+        'GRASS', 'ORGAN', 'SAGE'
+      },
+    ),
+    WordWheelPuzzle(
+      pangram: 'BLANKET',
+      centralLetter: 'A',
+      letters: ['B', 'L', 'A', 'N', 'K', 'E', 'T'],
+      validWords: {
+        'BLANKET', 'BLANK', 'BLEAT', 'LATE', 'TALE', 'LANE', 'LEAN',
+        'BEAK', 'BAKE', 'BANE', 'BEAT', 'BETA', 'BALE', 'ABLE', 'TANK',
+        'TALK', 'LEAK', 'LAKE', 'KALE', 'NEAT', 'BAT', 'TAB', 'BAN',
+        'NAB', 'LAB', 'ALE', 'ATE', 'EAT', 'TEA', 'TAN', 'ANT', 'BANK',
+        'BATE', 'TEAK'
+      },
+    ),
+    WordWheelPuzzle(
+      pangram: 'MONSTER',
+      centralLetter: 'T',
+      letters: ['M', 'O', 'N', 'S', 'T', 'E', 'R'],
+      validWords: {
+        'MONSTER', 'MONSTERS', 'METRO', 'MENTOR', 'MOMENT', 'MOMENTS',
+        'METER', 'METERS', 'NEST', 'NET', 'NOT', 'NOTE', 'NOTES',
+        'REMOTE', 'RENT', 'RESET', 'RESORT', 'REST', 'RESTORE',
+        'RETRO', 'ROOT', 'ROSTER', 'SENT', 'SET', 'SETS', 'SORT',
+        'SORTS', 'STEM', 'STEREO', 'STONE', 'STONES', 'STORE',
+        'STORES', 'STORM', 'STREET', 'STRESS', 'TENT', 'TERM',
+        'TERMS', 'TEST', 'TOE', 'TONE', 'TONES', 'TREE', 'TREES'
+      },
+    ),
+  ];
 
   @override
   ConsumerState<WordWheelScreen> createState() => _WordWheelScreenState();
@@ -33,80 +139,19 @@ class WordWheelScreen extends ConsumerStatefulWidget {
 class _WordWheelScreenState extends ConsumerState<WordWheelScreen> {
   final Random _random = Random();
 
-  final List<WordWheelPuzzle> _puzzles = [
-    WordWheelPuzzle(
-      pangram: 'PROJECT',
-      centralLetter: 'R',
-      letters: ['P', 'R', 'O', 'J', 'E', 'C', 'T'],
-      validWords: {
-        'PROJECT', 'ROPE', 'PORT', 'CROP', 'PORE', 'CORE', 'TORN', 'ROTE',
-        'PRO', 'ROPET', 'COPT', 'REPO', 'TROPE', 'REPRO', 'RECTO', 'CREPT',
-        'COPER', 'CORP', 'POET', 'TORE', 'TORC', 'ERECT'
-      },
-    ),
-    WordWheelPuzzle(
-      pangram: 'FLUTTER',
-      centralLetter: 'E',
-      letters: ['F', 'L', 'U', 'T', 'T', 'E', 'R'],
-      validWords: {
-        'FLUTTER', 'FLUTE', 'RULE', 'LUTE', 'FUEL', 'TURF', 'LEFT', 'TRUE', 'REFT',
-        'TUTEL', 'FRET', 'TUTOR', 'TRUER', 'REF', 'LET', 'ELF', 'RUE', 'UTE'
-      },
-    ),
-    WordWheelPuzzle(
-      pangram: 'SPATIAL',
-      centralLetter: 'A',
-      letters: ['S', 'P', 'A', 'T', 'I', 'A', 'L'],
-      validWords: {
-        'SPATIAL', 'SPIT', 'PAST', 'SALT', 'LAPS', 'ALAS', 'PASTA', 'TAIL',
-        'PLAS', 'TAPS', 'SLAT', 'PATS', 'ALPS', 'APAL', 'ASAP', 'ALIT',
-        'ATLAS', 'PLAIT', 'SAT', 'TAP', 'PAT', 'LAP', 'SPA', 'PAL'
-      },
-    ),
-    WordWheelPuzzle(
-      pangram: 'ORANGES',
-      centralLetter: 'G',
-      letters: ['O', 'R', 'A', 'N', 'G', 'E', 'S'],
-      validWords: {
-        'ORANGES', 'ORANGE', 'GEAR', 'RAGE', 'SANG', 'SONG', 'GONE', 'RANG', 'SNUG',
-        'GORE', 'OGRE', 'GROAN', 'GROANS', 'RAGES', 'GEARS', 'GNAR', 'GOES', 'GORES',
-        'AGE', 'AGES', 'EGG', 'GOA', 'NAG', 'NAGS', 'RAG', 'RAGS', 'SAG', 'TAG'
-      },
-    ),
-    WordWheelPuzzle(
-      pangram: 'BLANKET',
-      centralLetter: 'A',
-      letters: ['B', 'L', 'A', 'N', 'K', 'E', 'T'],
-      validWords: {
-        'BLANKET', 'BLANK', 'BLEAT', 'LATE', 'TALE', 'LANE', 'LEAN', 'BEAK',
-        'BAKE', 'BANE', 'BEAT', 'BETA', 'BALE', 'ABLE', 'TANK', 'TALK',
-        'LEAK', 'LAKE', 'KALE', 'NEAT', 'BAT', 'TAB', 'BAN', 'NAB', 'LAB',
-        'ALE', 'ATE', 'EAT', 'TEA', 'TAN', 'ANT', 'OAK', 'ARK', 'ACT'
-      },
-    ),
-    WordWheelPuzzle(
-      pangram: 'MYSTERY',
-      centralLetter: 'E',
-      letters: ['M', 'Y', 'S', 'T', 'E', 'R', 'Y'],
-      validWords: {
-        'MYSTERY', 'REST', 'TERM', 'TREM', 'STEM', 'MEST', 'RYE', 'YES',
-        'SET', 'MET', 'TYRE', 'TREY', 'TERMS', 'STEMS', 'RYES', 'TYRES'
-      },
-    ),
-  ];
-
   late WordWheelPuzzle _currentPuzzle;
   late List<String> _outerLetters;
   String _currentInput = '';
   final Set<String> _foundWords = {};
   int _score = 0;
-  final int _targetScore = 4; // User needs to find 4 words
+  final int _targetScore = 4;
   bool _isGameOver = false;
 
   @override
   void initState() {
     super.initState();
     _generatePuzzle();
+    WordWheelScreen.loadDictionary();
   }
 
   void _generatePuzzle() {
@@ -115,10 +160,10 @@ class _WordWheelScreenState extends ConsumerState<WordWheelScreen> {
     _isGameOver = false;
     _score = 0;
 
-    _currentPuzzle = _puzzles[_random.nextInt(_puzzles.length)];
-    // Outer letters are all except central
-    _outerLetters = List.from(_currentPuzzle.letters)
-      ..remove(_currentPuzzle.centralLetter);
+    _currentPuzzle = WordWheelScreen.puzzles[_random.nextInt(WordWheelScreen.puzzles.length)];
+    _outerLetters = _currentPuzzle.letters
+        .where((letter) => letter != _currentPuzzle.centralLetter)
+        .toList();
     _outerLetters.shuffle(_random);
   }
 
@@ -138,7 +183,7 @@ class _WordWheelScreenState extends ConsumerState<WordWheelScreen> {
     });
   }
 
-  void _onSubmit() {
+  void _onSubmit() async {
     if (_isGameOver || _currentInput.isEmpty) return;
 
     final word = _currentInput.toUpperCase();
@@ -170,7 +215,14 @@ class _WordWheelScreenState extends ConsumerState<WordWheelScreen> {
       return;
     }
 
-    bool isValid = _currentPuzzle.validWords.contains(word);
+    await WordWheelScreen.loadDictionary();
+    if (!mounted) return;
+
+    final allowedLetters = _currentPuzzle.letters.toSet();
+    final usesAllowedLettersOnly = word.split('').every(allowedLetters.contains);
+    final inDictionary = WordWheelScreen._dictionary?.contains(word) ?? false;
+    final isValid = _currentPuzzle.validWords.contains(word) ||
+        (usesAllowedLettersOnly && word.length >= 3 && inDictionary);
 
     if (isValid) {
       HapticFeedbackUtil.success();

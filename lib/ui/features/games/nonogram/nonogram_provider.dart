@@ -60,7 +60,7 @@ class NonogramNotifier extends _$NonogramNotifier {
     state = await AsyncValue.guard(() => _generateInitialState(state.value?.size ?? defaultSize));
   }
 
-  Future<void> toggleCell(int r, int c, bool isMarkMode) async {
+  void toggleCell(int r, int c, bool isMarkMode) {
     if (!state.hasValue || state.value!.isSolved) return;
     
     final currentState = state.value!;
@@ -78,11 +78,11 @@ class NonogramNotifier extends _$NonogramNotifier {
       newGrid[r][c] = currentValue == 1 ? 0 : 1;
     }
 
-    final solved = await compute(NonogramEngine.isCorrectWrapper, {
-      'grid': newGrid,
-      'rowClues': currentState.rowClues,
-      'colClues': currentState.colClues,
-    });
+    final solved = NonogramEngine.isCorrect(
+      newGrid,
+      currentState.rowClues,
+      currentState.colClues,
+    );
     
     state = AsyncValue.data(currentState.copyWith(grid: newGrid, isSolved: solved));
 
