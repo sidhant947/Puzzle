@@ -23,7 +23,11 @@ class WordWheelPuzzle {
     required this.validWords,
   })  : assert(letters.length == 7),
         assert(letters.toSet().length == 7),
-        assert(letters.contains(centralLetter));
+        assert(letters.contains(centralLetter)) {
+    if (letters.length != 7 || letters.toSet().length != 7 || !letters.contains(centralLetter)) {
+      throw ArgumentError('Word wheel puzzle must have exactly 7 unique letters including the central letter');
+    }
+  }
 }
 
 class WordWheelScreen extends ConsumerStatefulWidget {
@@ -31,6 +35,8 @@ class WordWheelScreen extends ConsumerStatefulWidget {
 
   static Set<String>? _dictionary;
   static Future<void>? _loadingFuture;
+
+  static Set<String>? get dictionary => _dictionary;
 
   static Future<void> loadDictionary() async {
     if (_dictionary != null) return;
@@ -41,19 +47,41 @@ class WordWheelScreen extends ConsumerStatefulWidget {
   static Future<void> _loadFromAsset() async {
     try {
       final data = await rootBundle.loadString('assets/chain_words.txt');
-      _dictionary = data
+      final words = data
           .split('\n')
           .map((w) => w.trim().toUpperCase())
           .where((w) => w.length >= 3)
           .toSet();
+      try {
+        final findData = await rootBundle.loadString('assets/find_word_words.txt');
+        words.addAll(
+          findData
+              .split('\n')
+              .map((w) => w.trim().toUpperCase())
+              .where((w) => w.length >= 3),
+        );
+      } catch (_) {}
+      _dictionary = words;
     } catch (_) {
       _dictionary = null;
+      _loadingFuture = null;
     }
   }
 
   static void setDictionary(Set<String>? words) {
     _dictionary = words;
     _loadingFuture = null;
+  }
+
+  static bool isWordValid(WordWheelPuzzle puzzle, String word, [Set<String>? dictionary]) {
+    final normalized = word.toUpperCase();
+    if (!normalized.contains(puzzle.centralLetter)) return false;
+    if (puzzle.validWords.contains(normalized)) return true;
+    final allowedLetters = puzzle.letters.toSet();
+    final usesAllowedLettersOnly = normalized.split('').every(allowedLetters.contains);
+    final dict = dictionary ?? _dictionary;
+    final inDictionary = dict?.contains(normalized) ?? false;
+    return usesAllowedLettersOnly && normalized.length >= 3 && inDictionary;
   }
 
   static final List<WordWheelPuzzle> puzzles = [
@@ -66,7 +94,7 @@ class WordWheelScreen extends ConsumerStatefulWidget {
         'PRO', 'REPO', 'TROPE', 'REPRO', 'RECTO', 'CREPT',
         'COPER', 'CORP', 'TORE', 'TORC', 'ERECT', 'ROOT', 'POOR',
         'CREEP', 'RETRO', 'REPORT', 'PROTECT', 'REJECT', 'TROOP',
-        'PROP', 'PEER', 'COERCE'
+        'PROP', 'PEER', 'COERCE', 'CORRECT', 'COPPER', 'PROJECTOR'
       },
     ),
     WordWheelPuzzle(
@@ -78,7 +106,8 @@ class WordWheelScreen extends ConsumerStatefulWidget {
         'ROSES', 'ROLE', 'ROLES', 'ROLL', 'ROLLS', 'FOOL', 'FELLOW',
         'FLOOR', 'FLOORS', 'FOR', 'LOSE', 'LOSS', 'LOW', 'LOWER',
         'LOWS', 'SOLE', 'SOLO', 'ROOF', 'ROW', 'ROWS', 'WOOL',
-        'WORSE', 'OFFER', 'OFFERS'
+        'WORSE', 'OFFER', 'OFFERS', 'FELLOWS', 'FOWL', 'FOWLS',
+        'SLOWS', 'SOWER', 'SWORE', 'LORE'
       },
     ),
     WordWheelPuzzle(
@@ -89,7 +118,8 @@ class WordWheelScreen extends ConsumerStatefulWidget {
         'PAINTER', 'PAINT', 'PAIN', 'PAIR', 'PART', 'PARENT', 'PARTNER',
         'PAT', 'PATE', 'PAPER', 'RAIN', 'TRAIN', 'TRAP', 'TAPE', 'TEAR',
         'RATE', 'NEAR', 'EARN', 'AIR', 'ANT', 'ART', 'ATE', 'EAT', 'TEA',
-        'PAN', 'TAP', 'RAT', 'TAN', 'TAR', 'ARE', 'ERA', 'REPEAT', 'REPAIR'
+        'PAN', 'TAP', 'RAT', 'TAN', 'TAR', 'ARE', 'ERA', 'REPEAT', 'REPAIR',
+        'RETAIN', 'PIRATE', 'PATENT', 'ATTIRE', 'RETINA'
       },
     ),
     WordWheelPuzzle(
@@ -101,7 +131,8 @@ class WordWheelScreen extends ConsumerStatefulWidget {
         'RANG', 'GORE', 'OGRE', 'GROAN', 'GROANS', 'RAGES', 'GEARS',
         'GNAR', 'GOES', 'GORES', 'AGE', 'AGES', 'EGG', 'GOA', 'NAG',
         'NAGS', 'RAG', 'RAGS', 'SAG', 'GANG', 'GORGE', 'GAG', 'GAGS',
-        'GRASS', 'ORGAN', 'SAGE'
+        'GRASS', 'ORGAN', 'SAGE', 'RANGE', 'RANGES', 'ANGER', 'ANGERS',
+        'GREEN', 'GREENS', 'EAGER', 'ENGAGE', 'GARAGE'
       },
     ),
     WordWheelPuzzle(
@@ -113,7 +144,7 @@ class WordWheelScreen extends ConsumerStatefulWidget {
         'BEAK', 'BAKE', 'BANE', 'BEAT', 'BETA', 'BALE', 'ABLE', 'TANK',
         'TALK', 'LEAK', 'LAKE', 'KALE', 'NEAT', 'BAT', 'TAB', 'BAN',
         'NAB', 'LAB', 'ALE', 'ATE', 'EAT', 'TEA', 'TAN', 'ANT', 'BANK',
-        'BATE', 'TEAK'
+        'BATE', 'TEAK', 'TABLE', 'ANKLE'
       },
     ),
     WordWheelPuzzle(
@@ -127,7 +158,8 @@ class WordWheelScreen extends ConsumerStatefulWidget {
         'RETRO', 'ROOT', 'ROSTER', 'SENT', 'SET', 'SETS', 'SORT',
         'SORTS', 'STEM', 'STEREO', 'STONE', 'STONES', 'STORE',
         'STORES', 'STORM', 'STREET', 'STRESS', 'TENT', 'TERM',
-        'TERMS', 'TEST', 'TOE', 'TONE', 'TONES', 'TREE', 'TREES'
+        'TERMS', 'TEST', 'TOE', 'TONE', 'TONES', 'TREE', 'TREES',
+        'METEOR', 'TENOR', 'TORSO', 'SMOTE', 'SEMESTER'
       },
     ),
   ];
@@ -162,6 +194,7 @@ class _WordWheelScreenState extends ConsumerState<WordWheelScreen> {
 
     _currentPuzzle = WordWheelScreen.puzzles[_random.nextInt(WordWheelScreen.puzzles.length)];
     _outerLetters = _currentPuzzle.letters
+        .toSet()
         .where((letter) => letter != _currentPuzzle.centralLetter)
         .toList();
     _outerLetters.shuffle(_random);
@@ -218,11 +251,7 @@ class _WordWheelScreenState extends ConsumerState<WordWheelScreen> {
     await WordWheelScreen.loadDictionary();
     if (!mounted) return;
 
-    final allowedLetters = _currentPuzzle.letters.toSet();
-    final usesAllowedLettersOnly = word.split('').every(allowedLetters.contains);
-    final inDictionary = WordWheelScreen._dictionary?.contains(word) ?? false;
-    final isValid = _currentPuzzle.validWords.contains(word) ||
-        (usesAllowedLettersOnly && word.length >= 3 && inDictionary);
+    final isValid = WordWheelScreen.isWordValid(_currentPuzzle, word);
 
     if (isValid) {
       HapticFeedbackUtil.success();

@@ -1,6 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
-import 'package:flutter/foundation.dart';
 import 'magnets_engine.dart';
 
 part 'magnets_provider.g.dart';
@@ -90,7 +89,7 @@ class MagnetsNotifier extends _$MagnetsNotifier {
     _checkVictory();
   }
 
-  Future<void> _checkVictory() async {
+  void _checkVictory() {
     final doms = state.dominoes.map((d) => d.map((p) => p.toList()).toList()).toList();
     final states = state.states.toList();
     final rowPos = state.rowPos.toList();
@@ -98,7 +97,7 @@ class MagnetsNotifier extends _$MagnetsNotifier {
     final colPos = state.colPos.toList();
     final colNeg = state.colNeg.toList();
 
-    final isVictory = await compute(MagnetsEngine.checkVictoryWrapper, {
+    final isVictory = MagnetsEngine.checkVictoryWrapper({
       'dominoes': doms,
       'states': states,
       'rowPos': rowPos,

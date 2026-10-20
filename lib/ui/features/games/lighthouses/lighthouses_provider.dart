@@ -1,6 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
-import 'package:flutter/foundation.dart';
 import 'lighthouses_engine.dart';
 
 part 'lighthouses_provider.g.dart';
@@ -67,11 +66,11 @@ class LighthousesNotifier extends _$LighthousesNotifier {
     _checkVictory();
   }
 
-  Future<void> _checkVictory() async {
+  void _checkVictory() {
     final clues = state.clues.map((r) => r.toList()).toList();
     final ships = state.ships.map((r) => r.toList()).toList();
 
-    final isVictory = await compute(LighthousesEngine.checkVictoryWrapper, {
+    final isVictory = LighthousesEngine.checkVictoryWrapper({
       'clues': clues,
       'ships': ships,
     });

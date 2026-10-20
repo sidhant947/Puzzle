@@ -1,6 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
-import 'package:flutter/foundation.dart';
 import 'hitori_engine.dart';
 
 part 'hitori_provider.g.dart';
@@ -62,19 +61,13 @@ class HitoriNotifier extends _$HitoriNotifier {
 
     final shaded = state.shaded.map((row) => row.toList()).toList();
     shaded[r][c] = !shaded[r][c];
+
+    final grid = state.grid.map((row) => row.toList()).toList();
+    final isVictory = HitoriEngine.checkVictoryWrapper({'grid': grid, 'shaded': shaded});
     
-    state = state.copyWith(shaded: shaded.map((row) => row.lock).toIList());
-    _checkVictory();
-  }
-
-  Future<void> _checkVictory() async {
-    final grid = state.grid.map((r) => r.toList()).toList();
-    final shaded = state.shaded.map((r) => r.toList()).toList();
-
-    final isVictory = await compute(HitoriEngine.checkVictoryWrapper, {'grid': grid, 'shaded': shaded});
-
-    if (isVictory) {
-      state = state.copyWith(isVictory: true);
-    }
+    state = state.copyWith(
+      shaded: shaded.map((row) => row.lock).toIList(),
+      isVictory: isVictory,
+    );
   }
 }

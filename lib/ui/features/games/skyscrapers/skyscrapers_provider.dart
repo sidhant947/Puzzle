@@ -1,6 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
-import 'package:flutter/foundation.dart';
 import 'skyscrapers_engine.dart';
 
 part 'skyscrapers_provider.g.dart';
@@ -84,14 +83,14 @@ class SkyscrapersNotifier extends _$SkyscrapersNotifier {
     _checkVictory();
   }
 
-  Future<void> _checkVictory() async {
+  void _checkVictory() {
     final grid = state.grid.map((r) => r.toList()).toList();
     final top = state.top.toList();
     final bottom = state.bottom.toList();
     final left = state.left.toList();
     final right = state.right.toList();
 
-    final isVictory = await compute(SkyscrapersEngine.checkVictoryWrapper, {
+    final isVictory = SkyscrapersEngine.checkVictoryWrapper({
       'grid': grid,
       'top': top,
       'bottom': bottom,

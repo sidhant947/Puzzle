@@ -281,10 +281,6 @@ class NonogramCell extends ConsumerWidget {
           HapticFeedbackUtil.lightImpact();
           ref.read(nonogramNotifierProvider.notifier).toggleCell(row, col, isMarkMode);
         },
-        onLongPress: () {
-          HapticFeedbackUtil.mediumImpact();
-          ref.read(nonogramNotifierProvider.notifier).toggleCell(row, col, isMarkMode);
-        },
         child: Center(
           child: value == 2
               ? FittedBox(

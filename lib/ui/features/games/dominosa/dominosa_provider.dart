@@ -1,6 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
-import 'package:flutter/foundation.dart';
 import 'dominosa_engine.dart';
 
 part 'dominosa_provider.g.dart';
@@ -120,11 +119,11 @@ class DominosaNotifier extends _$DominosaNotifier {
     state = state.copyWith(selections: newSelections);
   }
 
-  Future<void> _checkVictory() async {
+  void _checkVictory() {
     final grid = state.grid.map((r) => r.toList()).toList();
     final selections = state.selections.map((s) => s.map((p) => p.toList()).toList()).toList();
 
-    final isVictory = await compute(DominosaEngine.checkVictoryWrapper, {
+    final isVictory = DominosaEngine.checkVictoryWrapper({
       'grid': grid,
       'selections': selections,
       'maxVal': state.maxVal,

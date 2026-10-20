@@ -72,7 +72,7 @@ class SudokuNotifier extends _$SudokuNotifier {
     state = AsyncValue.data(state.value!.copyWith(selectedRow: r, selectedCol: c));
   }
 
-  Future<void> setNumber(int num) async {
+  void setNumber(int num) {
     if (!state.hasValue) return;
     final currentState = state.value!;
     if (currentState.selectedRow == null || currentState.selectedCol == null) return;
@@ -81,20 +81,18 @@ class SudokuNotifier extends _$SudokuNotifier {
     final r = currentState.selectedRow!;
     final c = currentState.selectedCol!;
 
-    // Prevent modifying fixed (initial) numbers
     if (currentState.initialBoard[r][c] != 0) return;
 
     final newBoardList = currentState.currentBoard.map((row) => row.toList()).toList();
 
     if (newBoardList[r][c] == num) {
-      newBoardList[r][c] = 0; // Erase if same number is tapped
+      newBoardList[r][c] = 0;
     } else {
       newBoardList[r][c] = num;
     }
 
     final newBoard = newBoardList.map((row) => row.lock).toIList();
 
-    // Check completion and correctness in background if board is full
     bool isComplete = true;
     for (var row in newBoardList) {
       if (row.contains(0)) {
@@ -105,7 +103,7 @@ class SudokuNotifier extends _$SudokuNotifier {
 
     bool solved = false;
     if (isComplete) {
-      solved = await compute(SudokuEngine.isCorrectWrapper, {
+      solved = SudokuEngine.isCorrectWrapper({
         'board': newBoardList,
         'solvedBoard': currentState.solvedBoard.map((row) => row.toList()).toList(),
       });

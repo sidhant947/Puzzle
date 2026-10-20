@@ -1,6 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
-import 'package:flutter/foundation.dart';
 import 'fillomino_engine.dart';
 
 part 'fillomino_provider.g.dart';
@@ -66,10 +65,10 @@ class FillominoNotifier extends _$FillominoNotifier {
     _checkVictory();
   }
 
-  Future<void> _checkVictory() async {
+  void _checkVictory() {
     final grid = state.grid.map((r) => r.toList()).toList();
 
-    final isVictory = await compute(FillominoEngine.checkVictoryWrapper, {'grid': grid});
+    final isVictory = FillominoEngine.checkVictoryWrapper({'grid': grid});
 
     if (isVictory) {
       state = state.copyWith(isVictory: true);

@@ -1,6 +1,5 @@
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
-import 'package:flutter/foundation.dart';
 import 'akari_engine.dart';
 
 part 'akari_provider.g.dart';
@@ -58,13 +57,15 @@ class AkariNotifier extends _$AkariNotifier {
     final immutableGrid = grid.map((r) => r.lock).toIList();
     final immutableBulbs = List.generate(size, (_) => List.filled(size, false).lock).toIList();
     
+    final initialBulbs = List.generate(size, (_) => List.filled(size, false));
+    final newLit = AkariEngine.calculateLit(grid, initialBulbs);
+    
     state = AkariState(
       grid: immutableGrid,
       bulbs: immutableBulbs,
-      lit: List.generate(size, (_) => List.filled(size, false).lock).toIList(),
+      lit: newLit.map((r) => r.lock).toIList(),
       isLoading: false,
     );
-    _updateLit();
   }
 
   void toggleBulb(int r, int c) {
@@ -73,29 +74,14 @@ class AkariNotifier extends _$AkariNotifier {
     final bulbs = state.bulbs.map((row) => row.toList()).toList();
     bulbs[r][c] = !bulbs[r][c];
     
-    state = state.copyWith(bulbs: bulbs.map((row) => row.lock).toIList());
-    _updateLit();
-  }
-
-  Future<void> _updateLit() async {
     final grid = state.grid.map((r) => r.toList()).toList();
-    final bulbs = state.bulbs.map((r) => r.toList()).toList();
+    final newLit = AkariEngine.calculateLit(grid, bulbs);
+    final isVictory = AkariEngine.checkVictory(grid, bulbs, newLit);
 
-    final newLit = await compute(AkariEngine.calculateLitWrapper, {'grid': grid, 'bulbs': bulbs});
-
-    state = state.copyWith(lit: newLit.map((r) => r.lock).toIList());
-    _checkVictory();
-  }
-
-  Future<void> _checkVictory() async {
-    final grid = state.grid.map((r) => r.toList()).toList();
-    final bulbs = state.bulbs.map((r) => r.toList()).toList();
-    final lit = state.lit.map((r) => r.toList()).toList();
-
-    final isVictory = await compute(AkariEngine.checkVictoryWrapper, {'grid': grid, 'bulbs': bulbs, 'lit': lit});
-
-    if (isVictory) {
-      state = state.copyWith(isVictory: true);
-    }
+    state = state.copyWith(
+      bulbs: bulbs.map((row) => row.lock).toIList(),
+      lit: newLit.map((r) => r.lock).toIList(),
+      isVictory: isVictory,
+    );
   }
 }
