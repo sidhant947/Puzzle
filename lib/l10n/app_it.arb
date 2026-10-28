@@ -42,6 +42,8 @@
   "moves": "Mosse",
   "trialMode": "Modalità Prova",
   "trialModeDescription": "Risolvi 20 per finire invece del timer da 60s",
+  "keepScreenAwake": "Mantieni schermo attivo",
+  "keepScreenAwakeDescription": "Evita che lo schermo si spenga durante il gioco",
   "appearance": "Aspetto",
   "language": "Lingua",
   "gameplay": "Gameplay",

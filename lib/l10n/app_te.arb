@@ -42,6 +42,8 @@
   "moves": "ఎత్తుగడలు",
   "trialMode": "ట్రయల్ మోడ్",
   "trialModeDescription": "60 సెకన్ల టైమర్ బదులుగా 20 పరిష్కరించి ముగించండి",
+  "keepScreenAwake": "స్క్రీన్ ఆన్‌లో ఉంచండి",
+  "keepScreenAwakeDescription": "గేమ్‌ప్లే సమయంలో స్క్రీన్ ఆఫ్ కాకుండా నిరోధించండి",
   "appearance": "రూపురేఖలు",
   "language": "భాష",
   "gameplay": "గేమ్ ప్లే",

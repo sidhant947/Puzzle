@@ -42,6 +42,8 @@
   "moves": "步数",
   "trialMode": "挑战模式",
   "trialModeDescription": "解决20个即可完成，而不是60秒计时",
+  "keepScreenAwake": "保持屏幕常亮",
+  "keepScreenAwakeDescription": "防止游戏过程中屏幕自动关闭",
   "appearance": "外观",
   "language": "语言",
   "gameplay": "游戏玩法",

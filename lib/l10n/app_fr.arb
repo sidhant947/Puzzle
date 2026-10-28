@@ -42,6 +42,8 @@
   "moves": "Mouvements",
   "trialMode": "Mode Essai",
   "trialModeDescription": "Résolvez 20 pour terminer au lieu du minuteur de 60s",
+  "keepScreenAwake": "Garder l'écran allumé",
+  "keepScreenAwakeDescription": "Empêche l'écran de s'éteindre pendant le jeu",
   "appearance": "Apparence",
   "language": "Langue",
   "gameplay": "Gameplay",

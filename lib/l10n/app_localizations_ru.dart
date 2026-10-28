@@ -126,11 +126,11 @@ class AppLocalizationsRu extends AppLocalizations {
   String get trialModeDescription => 'Решите 20 задач вместо таймера на 60 сек';
 
   @override
-  String get keepScreenAwake => 'Keep Screen Awake';
+  String get keepScreenAwake => 'Не выключать экран';
 
   @override
   String get keepScreenAwakeDescription =>
-      'Prevent screen from turning off during gameplay';
+      'Предотвращает отключение экрана во время игры';
 
   @override
   String get appearance => 'Внешний вид';

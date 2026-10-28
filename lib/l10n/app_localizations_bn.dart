@@ -127,11 +127,11 @@ class AppLocalizationsBn extends AppLocalizations {
       '৬০ সেকেন্ডের টাইমারের পরিবর্তে ২০টি সমাধান করে শেষ করুন';
 
   @override
-  String get keepScreenAwake => 'Keep Screen Awake';
+  String get keepScreenAwake => 'স্ক্রিন চালু রাখুন';
 
   @override
   String get keepScreenAwakeDescription =>
-      'Prevent screen from turning off during gameplay';
+      'খেলার সময় স্ক্রিন বন্ধ হওয়া প্রতিরোধ করুন';
 
   @override
   String get appearance => 'চেহারা';

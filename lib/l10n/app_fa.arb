@@ -42,6 +42,8 @@
   "moves": "حرکات",
   "trialMode": "حالت تمرینی",
   "trialModeDescription": "حل ۲۰ مورد برای پایان به جای تایمر ۶۰ ثانیه‌ای",
+  "keepScreenAwake": "روشن نگه داشتن صفحه",
+  "keepScreenAwakeDescription": "جلوگیری از خاموش شدن صفحه در حین بازی",
   "appearance": "ظاهر",
   "language": "زبان",
   "gameplay": "گیم‌پلی",

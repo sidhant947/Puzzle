@@ -36,6 +36,8 @@
   "moves": "Movimentos",
   "trialMode": "Modo de Tentativa",
   "trialModeDescription": "Resolva 20 para terminar em vez do cronômetro de 60s",
+  "keepScreenAwake": "Manter tela ligada",
+  "keepScreenAwakeDescription": "Evita que a tela desligue durante o jogo",
   "appearance": "Aparência",
   "language": "Idioma",
   "gameplay": "Jogabilidade",

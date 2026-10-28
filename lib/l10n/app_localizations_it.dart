@@ -127,11 +127,11 @@ class AppLocalizationsIt extends AppLocalizations {
       'Risolvi 20 per finire invece del timer da 60s';
 
   @override
-  String get keepScreenAwake => 'Keep Screen Awake';
+  String get keepScreenAwake => 'Mantieni schermo attivo';
 
   @override
   String get keepScreenAwakeDescription =>
-      'Prevent screen from turning off during gameplay';
+      'Evita che lo schermo si spenga durante il gioco';
 
   @override
   String get appearance => 'Aspetto';

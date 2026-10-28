@@ -42,6 +42,8 @@
   "moves": "Lượt đi",
   "trialMode": "Chế độ thử thách",
   "trialModeDescription": "Giải 20 câu để kết thúc thay vì hẹn giờ 60 giây",
+  "keepScreenAwake": "Giữ màn hình luôn sáng",
+  "keepScreenAwakeDescription": "Ngăn màn hình tắt trong khi chơi",
   "appearance": "Giao diện",
   "language": "Ngôn ngữ",
   "gameplay": "Cách chơi",

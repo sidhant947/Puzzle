@@ -42,6 +42,8 @@
   "moves": "Ruchy",
   "trialMode": "Tryb prób",
   "trialModeDescription": "Rozwiąż 20, aby zakończyć, zamiast timera 60s",
+  "keepScreenAwake": "Nie wygaszaj ekranu",
+  "keepScreenAwakeDescription": "Zapobiegaj wyłączaniu ekranu podczas rozgrywki",
   "appearance": "Wygląd",
   "language": "Język",
   "gameplay": "Rozgrywka",

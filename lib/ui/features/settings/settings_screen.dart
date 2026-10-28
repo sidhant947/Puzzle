@@ -8,7 +8,6 @@ import '../../../providers/user_providers.dart';
 import '../../../utils/design_system.dart';
 import '../../../widgets/tangible.dart';
 
-
 class SettingsScreen extends ConsumerWidget {
   const SettingsScreen({super.key});
 
@@ -53,8 +52,8 @@ class SettingsScreen extends ConsumerWidget {
     final selectedLocale = ref.watch(localeNotifierProvider);
     final isTrialModeEnabled = ref.watch(
         userDataNotifierProvider.select((s) => s.isTrialModeEnabled ?? false));
-    final isKeepScreenAwakeEnabled = ref.watch(
-        userDataNotifierProvider.select((s) => s.isKeepScreenAwakeEnabled ?? false));
+    final isKeepScreenAwakeEnabled = ref.watch(userDataNotifierProvider
+        .select((s) => s.isKeepScreenAwakeEnabled ?? false));
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
@@ -91,43 +90,132 @@ class SettingsScreen extends ConsumerWidget {
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
                         switch (index) {
-                          case 0: return _buildSectionTitle(context, l10n.supportUs.toUpperCase());
-                          case 1: return const SizedBox(height: DesignSystem.spaceMD);
-                          case 2: return _buildSettingsItem(context, l10n.starOnGithub, Icons.star_rounded, () => _launchUrl('https://github.com/sidhant947/Puzzle'), iconColor: Colors.amber);
-                          case 3: return const SizedBox(height: DesignSystem.spaceSM);
-                          case 4: return _buildSettingsItem(context, l10n.supportUs, Icons.local_cafe_rounded, () {
-                            launchUrl(Uri.parse('https://ko-fi.com/sidhant947'), mode: LaunchMode.externalApplication);
-                          }, iconColor: DesignSystem.accentAmber);
-                          case 5: return const SizedBox(height: DesignSystem.spaceSM);
-                          case 6: return _buildSettingsItem(context, l10n.leaveReview, Icons.rate_review_rounded, () => _launchUrl('https://play.google.com/store/apps/details?id=com.sidhant.puzzle'), iconColor: Colors.teal);
-                          case 7: return const SizedBox(height: DesignSystem.spaceSM);
-                          case 8: return _buildSettingsItem(context, l10n.reportError, Icons.bug_report_rounded, () => _launchUrl('https://github.com/sidhant947/Puzzle/issues'), iconColor: Colors.redAccent);
-                          case 9: return const SizedBox(height: DesignSystem.spaceXL);
-                          case 10: return _buildSectionTitle(context, l10n.appearance.toUpperCase());
-                          case 11: return const SizedBox(height: DesignSystem.spaceMD);
-                          case 12: return _buildThemeSelector(context, ref, themeMode, l10n);
-                          case 13: return const SizedBox(height: DesignSystem.spaceXL);
-                          case 14: return _buildSectionTitle(context, l10n.language.toUpperCase());
-                          case 15: return const SizedBox(height: DesignSystem.spaceMD);
-                          case 16: return _buildLanguageSelector(context, ref, selectedLocale);
-                          case 17: return const SizedBox(height: DesignSystem.spaceXL);
-                          case 18: return _buildSectionTitle(context, l10n.gameplay.toUpperCase());
-                          case 19: return const SizedBox(height: DesignSystem.spaceMD);
-                          case 20: return _buildTrialModeToggle(context, ref, isTrialModeEnabled, l10n);
-                          case 21: return const SizedBox(height: DesignSystem.spaceSM);
-                          case 22: return _buildKeepScreenAwakeToggle(context, ref, isKeepScreenAwakeEnabled, l10n);
-                          case 23: return const SizedBox(height: DesignSystem.spaceXL);
-                          case 24: return _buildSectionTitle(context, l10n.systemLegal.toUpperCase());
-                          case 25: return const SizedBox(height: DesignSystem.spaceMD);
-                          case 26: return _buildSettingsItem(context, l10n.privacyPolicy, Icons.privacy_tip_rounded, () => _launchUrl('https://sites.google.com/view/puzzlebysidhant/home'));
-                          case 27: return const SizedBox(height: DesignSystem.spaceSM);
-                          case 28: return _buildSettingsItem(context, l10n.termsOfService, Icons.description_rounded, () => _launchUrl('https://sites.google.com/view/puzzlebysidhant/home'));
-                          case 29: return const SizedBox(height: DesignSystem.spaceSM);
-                          case 30: return _buildSettingsItem(context, l10n.licenses, Icons.code_rounded, () => showLicensePage(context: context, applicationName: l10n.appTitle.toUpperCase(), applicationVersion: 'Latest'));
-                          default: return null;
+                          case 0:
+                            return _buildSectionTitle(
+                                context, l10n.supportUs.toUpperCase());
+                          case 1:
+                            return const SizedBox(height: DesignSystem.spaceMD);
+                          case 2:
+                            return _buildSettingsItem(
+                                context,
+                                l10n.starOnGithub,
+                                Icons.star_rounded,
+                                () => _launchUrl(
+                                    'https://github.com/sidhant947/Puzzle'),
+                                iconColor: Colors.amber);
+                          case 3:
+                            return const SizedBox(height: DesignSystem.spaceSM);
+                          case 4:
+                            return _buildSettingsItem(context, l10n.supportUs,
+                                Icons.local_cafe_rounded, () {
+                              launchUrl(
+                                  Uri.parse('https://ko-fi.com/sidhant947'),
+                                  mode: LaunchMode.externalApplication);
+                            }, iconColor: DesignSystem.accentAmber);
+                          case 5:
+                            return const SizedBox(height: DesignSystem.spaceSM);
+                          case 6:
+                            return _buildSettingsItem(
+                                context,
+                                l10n.leaveReview,
+                                Icons.rate_review_rounded,
+                                () => _launchUrl(
+                                    'https://play.google.com/store/apps/details?id=com.sidhant.puzzle'),
+                                iconColor: Colors.teal);
+                          case 7:
+                            return const SizedBox(height: DesignSystem.spaceSM);
+                          case 8:
+                            return _buildSettingsItem(
+                                context,
+                                l10n.reportError,
+                                Icons.bug_report_rounded,
+                                () => _launchUrl(
+                                    'https://github.com/sidhant947/Puzzle/issues'),
+                                iconColor: Colors.redAccent);
+                          case 9:
+                            return const SizedBox(height: DesignSystem.spaceSM);
+                          case 10:
+                            return _buildSettingsItem(
+                                context,
+                                'Contact Email',
+                                Icons.mail_rounded,
+                                () => _launchUrl('mailto:sidhant947@proton.me'),
+                                iconColor: Colors.blueAccent);
+                          case 11:
+                            return const SizedBox(height: DesignSystem.spaceXL);
+                          case 12:
+                            return _buildSectionTitle(
+                                context, l10n.appearance.toUpperCase());
+                          case 13:
+                            return const SizedBox(height: DesignSystem.spaceMD);
+                          case 14:
+                            return _buildThemeSelector(
+                                context, ref, themeMode, l10n);
+                          case 15:
+                            return const SizedBox(height: DesignSystem.spaceXL);
+                          case 16:
+                            return _buildSectionTitle(
+                                context, l10n.language.toUpperCase());
+                          case 17:
+                            return const SizedBox(height: DesignSystem.spaceMD);
+                          case 18:
+                            return _buildLanguageSelector(
+                                context, ref, selectedLocale);
+                          case 19:
+                            return const SizedBox(height: DesignSystem.spaceXL);
+                          case 20:
+                            return _buildSectionTitle(
+                                context, l10n.gameplay.toUpperCase());
+                          case 21:
+                            return const SizedBox(height: DesignSystem.spaceMD);
+                          case 22:
+                            return _buildTrialModeToggle(
+                                context, ref, isTrialModeEnabled, l10n);
+                          case 23:
+                            return const SizedBox(height: DesignSystem.spaceSM);
+                          case 24:
+                            return _buildKeepScreenAwakeToggle(
+                                context, ref, isKeepScreenAwakeEnabled, l10n);
+                          case 25:
+                            return const SizedBox(height: DesignSystem.spaceXL);
+                          case 26:
+                            return _buildSectionTitle(
+                                context, l10n.systemLegal.toUpperCase());
+                          case 27:
+                            return const SizedBox(height: DesignSystem.spaceMD);
+                          case 28:
+                            return _buildSettingsItem(
+                                context,
+                                l10n.privacyPolicy,
+                                Icons.privacy_tip_rounded,
+                                () => _launchUrl(
+                                    'https://sites.google.com/view/puzzlebysidhant/home'));
+                          case 29:
+                            return const SizedBox(height: DesignSystem.spaceSM);
+                          case 30:
+                            return _buildSettingsItem(
+                                context,
+                                l10n.termsOfService,
+                                Icons.description_rounded,
+                                () => _launchUrl(
+                                    'https://sites.google.com/view/puzzlebysidhant/home'));
+                          case 31:
+                            return const SizedBox(height: DesignSystem.spaceSM);
+                          case 32:
+                            return _buildSettingsItem(
+                                context,
+                                l10n.licenses,
+                                Icons.code_rounded,
+                                () => showLicensePage(
+                                    context: context,
+                                    applicationName:
+                                        l10n.appTitle.toUpperCase(),
+                                    applicationVersion: 'Latest'));
+                          default:
+                            return null;
                         }
                       },
-                      childCount: 31,
+                      childCount: 33,
                     ),
                   ),
                 ),
@@ -243,8 +331,9 @@ class SettingsScreen extends ConsumerWidget {
           ),
           Switch(
             value: isEnabled,
-            onChanged: (value) =>
-                ref.read(userDataNotifierProvider.notifier).setKeepScreenAwake(value),
+            onChanged: (value) => ref
+                .read(userDataNotifierProvider.notifier)
+                .setKeepScreenAwake(value),
             activeThumbColor: DesignSystem.primary,
           ),
         ],
@@ -262,13 +351,8 @@ class SettingsScreen extends ConsumerWidget {
         _buildThemeOption(context, ref, AppThemeMode.dark, l10n.themeDark,
             Icons.dark_mode_rounded, currentMode == AppThemeMode.dark),
         const SizedBox(height: DesignSystem.spaceSM),
-        _buildThemeOption(
-            context,
-            ref,
-            AppThemeMode.system,
-            l10n.themeSystem,
-            Icons.brightness_auto_rounded,
-            currentMode == AppThemeMode.system),
+        _buildThemeOption(context, ref, AppThemeMode.system, l10n.themeSystem,
+            Icons.brightness_auto_rounded, currentMode == AppThemeMode.system),
       ],
     );
   }
@@ -286,7 +370,9 @@ class SettingsScreen extends ConsumerWidget {
           Icon(
             icon,
             size: 24,
-            color: isSelected ? Colors.white : colorScheme.onSurface.withValues(alpha: 0.7),
+            color: isSelected
+                ? Colors.white
+                : colorScheme.onSurface.withValues(alpha: 0.7),
           ),
           const SizedBox(width: DesignSystem.spaceMD),
           Expanded(
@@ -301,17 +387,21 @@ class SettingsScreen extends ConsumerWidget {
             ),
           ),
           Icon(
-            isSelected ? Icons.check_circle_rounded : Icons.radio_button_off_rounded,
+            isSelected
+                ? Icons.check_circle_rounded
+                : Icons.radio_button_off_rounded,
             size: 24,
-            color: isSelected ? Colors.white : colorScheme.onSurface.withValues(alpha: 0.2),
+            color: isSelected
+                ? Colors.white
+                : colorScheme.onSurface.withValues(alpha: 0.2),
           ),
         ],
       ),
     );
   }
 
-  Widget _buildLanguageSelector(BuildContext context, WidgetRef ref,
-      Locale? currentLocale) {
+  Widget _buildLanguageSelector(
+      BuildContext context, WidgetRef ref, Locale? currentLocale) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
 
@@ -452,8 +542,6 @@ class SettingsScreen extends ConsumerWidget {
     );
   }
 
-
-
   Future<void> _launchUrl(String url) async {
     final uri = Uri.parse(url);
     if (!await launchUrl(uri)) {
@@ -461,4 +549,3 @@ class SettingsScreen extends ConsumerWidget {
     }
   }
 }
-

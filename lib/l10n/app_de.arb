@@ -42,6 +42,8 @@
   "moves": "Züge",
   "trialMode": "Versuchsmodus",
   "trialModeDescription": "Löse 20 zum Beenden statt 60s Timer",
+  "keepScreenAwake": "Bildschirm anlassen",
+  "keepScreenAwakeDescription": "Verhindert das Ausschalten des Bildschirms beim Spielen",
   "appearance": "Erscheinungsbild",
   "language": "Sprache",
   "gameplay": "Gameplay",

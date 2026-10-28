@@ -127,11 +127,10 @@ class AppLocalizationsAr extends AppLocalizations {
       'حل 20 لغزاً للإنهاء بدلاً من مؤقت الـ 60 ثانية';
 
   @override
-  String get keepScreenAwake => 'Keep Screen Awake';
+  String get keepScreenAwake => 'إبقاء الشاشة قيد التشغيل';
 
   @override
-  String get keepScreenAwakeDescription =>
-      'Prevent screen from turning off during gameplay';
+  String get keepScreenAwakeDescription => 'منع إيقاف تشغيل الشاشة أثناء اللعب';
 
   @override
   String get appearance => 'المظهر';

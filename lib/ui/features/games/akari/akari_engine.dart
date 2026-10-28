@@ -319,10 +319,18 @@ class AkariEngine {
       for (int c = 0; c < size; c++) {
         if (bulbs[r][c]) {
           lit[r][c] = true;
-          for (int i = r - 1; i >= 0 && grid[i][c] == -2; i--) lit[i][c] = true;
-          for (int i = r + 1; i < size && grid[i][c] == -2; i++) lit[i][c] = true;
-          for (int j = c - 1; j >= 0 && grid[r][j] == -2; j--) lit[r][j] = true;
-          for (int j = c + 1; j < size && grid[r][j] == -2; j++) lit[r][j] = true;
+          for (int i = r - 1; i >= 0 && grid[i][c] == -2; i--) {
+            lit[i][c] = true;
+          }
+          for (int i = r + 1; i < size && grid[i][c] == -2; i++) {
+            lit[i][c] = true;
+          }
+          for (int j = c - 1; j >= 0 && grid[r][j] == -2; j--) {
+            lit[r][j] = true;
+          }
+          for (int j = c + 1; j < size && grid[r][j] == -2; j++) {
+            lit[r][j] = true;
+          }
         }
       }
     }
@@ -372,10 +380,18 @@ class AkariEngine {
       for (int c = 0; c < size; c++) {
         if (bulbs[r][c]) {
           lit[r][c] = true;
-          for (int i = r - 1; i >= 0 && grid[i][c] == -2; i--) lit[i][c] = true;
-          for (int i = r + 1; i < size && grid[i][c] == -2; i++) lit[i][c] = true;
-          for (int j = c - 1; j >= 0 && grid[r][j] == -2; j--) lit[r][j] = true;
-          for (int j = c + 1; j < size && grid[r][j] == -2; j++) lit[r][j] = true;
+          for (int i = r - 1; i >= 0 && grid[i][c] == -2; i--) {
+            lit[i][c] = true;
+          }
+          for (int i = r + 1; i < size && grid[i][c] == -2; i++) {
+            lit[i][c] = true;
+          }
+          for (int j = c - 1; j >= 0 && grid[r][j] == -2; j--) {
+            lit[r][j] = true;
+          }
+          for (int j = c + 1; j < size && grid[r][j] == -2; j++) {
+            lit[r][j] = true;
+          }
         }
       }
     }

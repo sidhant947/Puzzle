@@ -42,6 +42,8 @@
   "moves": "چالیں",
   "trialMode": "ٹرائل موڈ",
   "trialModeDescription": "60 سیکنڈ ٹائمر کے بجائے 20 حل کرکے ختم کریں",
+  "keepScreenAwake": "اسکرین روشن رکھیں",
+  "keepScreenAwakeDescription": "گیم پلے کے دوران اسکرین بند ہونے سے روکیں",
   "appearance": "ظاہری شکل",
   "language": "زبان",
   "gameplay": "گیم پلے",

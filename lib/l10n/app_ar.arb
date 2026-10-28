@@ -42,6 +42,8 @@
   "moves": "الحركات",
   "trialMode": "وضع التجربة",
   "trialModeDescription": "حل 20 لغزاً للإنهاء بدلاً من مؤقت الـ 60 ثانية",
+  "keepScreenAwake": "إبقاء الشاشة قيد التشغيل",
+  "keepScreenAwakeDescription": "منع إيقاف تشغيل الشاشة أثناء اللعب",
   "appearance": "المظهر",
   "language": "اللغة",
   "gameplay": "أسلوب اللعب",

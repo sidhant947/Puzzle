@@ -36,6 +36,8 @@
   "moves": "चालें",
   "trialMode": "ट्रायल मोड",
   "trialModeDescription": "60 सेकंड के टाइमर के बजाय 20 हल करें",
+  "keepScreenAwake": "स्क्रीन चालू रखें",
+  "keepScreenAwakeDescription": "गेमप्ले के दौरान स्क्रीन को बंद होने से रोकें",
   "appearance": "दिखावट",
   "language": "भाषा",
   "gameplay": "गेमप्ले",

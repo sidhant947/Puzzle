@@ -36,6 +36,8 @@
   "moves": "चाली",
   "trialMode": "ट्रायल मोड",
   "trialModeDescription": "60 सेकंदांच्या वेळेऐवजी 20 सोडवून पूर्ण करा",
+  "keepScreenAwake": "स्क्रीन चालू ठेवा",
+  "keepScreenAwakeDescription": "गेमप्ले दरम्यान स्क्रीन बंद होण्यास प्रतिबंध करा",
   "appearance": "स्वरूप",
   "language": "भाषा",
   "gameplay": "गेमप्ले",

@@ -55,21 +55,24 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
 
   @override
   Widget build(BuildContext context) {
+    if (!mounted) return const SizedBox.shrink();
+    final l10n = AppLocalizations.of(context);
+    if (l10n == null) return const SizedBox.shrink();
+
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
-    final l10n = AppLocalizations.of(context)!;
 
-    final session = ref.watch(gameSessionNotifierProvider);
+    final session = ref.read(gameSessionNotifierProvider);
     final localizedTitles = {
       for (final game in allGamesMetadata)
         game.id: L10nGameHelpers.getGameTitle(context, game.id),
     };
-    final gameList = ref.watch(filteredGamesProvider(
+    final gameList = ref.read(filteredGamesProvider(
       searchQuery: session.searchQuery,
       selectedCategory: session.selectedCategory,
       localizedTitles: localizedTitles,
     ));
-    final streaks = ref.watch(gameStreakNotifierProvider);
+    final streaks = ref.read(gameStreakNotifierProvider);
 
     GameMetadata? nextGame;
     bool isSameGame = true;
@@ -232,9 +235,10 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
                             category: session.selectedCategory,
                             query: session.searchQuery,
                           );
-                          Navigator.of(context).pop();
-                          Navigator.of(context).pushReplacement(
-                            CustomPageRoute(page: next.builder(context)),
+                          final nav = Navigator.of(context);
+                          nav.pop();
+                          nav.pushReplacement(
+                            CustomPageRoute(page: next.builder(nav.context)),
                           );
                         },
                         color: DesignSystem.primary,
@@ -306,52 +310,100 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
                             barrierColor: Colors.black.withValues(alpha: 0.05),
                             transitionDuration: const Duration(milliseconds: 200),
                             pageBuilder: (reviewCtx, _, __) {
-                              return Material(
-                                color: Colors.transparent,
-                                child: Stack(
-                                  children: [
-                                    Positioned(
-                                      left: 0,
-                                      right: 0,
-                                      bottom: 0,
-                                      child: SafeArea(
-                                        child: Padding(
-                                          padding: const EdgeInsets.only(
-                                            left: DesignSystem.spaceLG,
-                                            right: DesignSystem.spaceLG,
-                                            bottom: DesignSystem.spaceXL,
-                                          ),
-                                          child: Center(
-                                            child: Container(
-                                              width: double.infinity,
-                                              constraints: const BoxConstraints(maxWidth: 320),
-                                              child: TangibleButton(
-                                                onTap: () {
-                                                  final nav = Navigator.of(reviewCtx);
-                                                  nav.pop();
-                                                  nav.pop();
-                                                },
-                                                color: DesignSystem.success,
-                                                padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 24),
-                                                child: Text(
-                                                  l10n.finish.toUpperCase(),
-                                                  textAlign: TextAlign.center,
-                                                  style: const TextStyle(
-                                                    fontFamily: 'Geist',
-                                                    color: Colors.white,
-                                                    fontWeight: FontWeight.w700,
-                                                    fontSize: 16,
-                                                    letterSpacing: 1.2,
+                              return Consumer(
+                                builder: (reviewCtx, ref, _) {
+                                  final reviewTheme = Theme.of(reviewCtx);
+                                  final reviewColorScheme = reviewTheme.colorScheme;
+                                  final reviewL10n = AppLocalizations.of(reviewCtx) ?? l10n;
+
+                                  return Material(
+                                    color: Colors.transparent,
+                                    child: Stack(
+                                      children: [
+                                        Positioned(
+                                          left: 0,
+                                          right: 0,
+                                          bottom: 0,
+                                          child: SafeArea(
+                                            child: Padding(
+                                              padding: const EdgeInsets.only(
+                                                left: DesignSystem.spaceLG,
+                                                right: DesignSystem.spaceLG,
+                                                bottom: DesignSystem.spaceXL,
+                                              ),
+                                              child: Center(
+                                                child: Container(
+                                                  width: double.infinity,
+                                                  constraints: const BoxConstraints(maxWidth: 380),
+                                                  child: Row(
+                                                    children: [
+                                                      Expanded(
+                                                        child: TangibleButton(
+                                                          onTap: () {
+                                                            final nav = Navigator.of(reviewCtx);
+                                                            nav.popUntil((route) => route.isFirst);
+                                                          },
+                                                          color: reviewColorScheme.surface,
+                                                          padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
+                                                          child: Center(
+                                                            child: Text(
+                                                              reviewL10n.home.toUpperCase(),
+                                                              style: reviewTheme.textTheme.labelMedium?.copyWith(
+                                                                color: reviewColorScheme.onSurface.withValues(alpha: 0.7),
+                                                                fontWeight: FontWeight.w700,
+                                                                fontSize: DesignSystem.fontSizeMD,
+                                                                letterSpacing: 0.5,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                      const SizedBox(width: DesignSystem.spaceMD),
+                                                      Expanded(
+                                                        child: TangibleButton(
+                                                          onTap: () {
+                                                            final nav = Navigator.of(reviewCtx);
+                                                            if (next != null) {
+                                                              ref.read(gameSessionNotifierProvider.notifier).setSession(
+                                                                gameId: next.id,
+                                                                category: session.selectedCategory,
+                                                                query: session.searchQuery,
+                                                              );
+                                                              nav.pushAndRemoveUntil(
+                                                                CustomPageRoute(page: next.builder(nav.context)),
+                                                                (route) => route.isFirst,
+                                                              );
+                                                            } else {
+                                                              nav.popUntil((route) => route.isFirst);
+                                                            }
+                                                          },
+                                                          color: DesignSystem.primary,
+                                                          padding: const EdgeInsets.symmetric(vertical: 14, horizontal: 16),
+                                                          child: Center(
+                                                            child: Text(
+                                                              (next != null && !isSameGame ? reviewL10n.playNext : reviewL10n.playAgain).toUpperCase(),
+                                                              style: const TextStyle(
+                                                                fontFamily: 'Geist',
+                                                                color: Colors.white,
+                                                                fontWeight: FontWeight.w700,
+                                                                fontSize: DesignSystem.fontSizeMD,
+                                                                letterSpacing: 0.5,
+                                                              ),
+                                                            ),
+                                                          ),
+                                                        ),
+                                                      ),
+                                                    ],
                                                   ),
                                                 ),
                                               ),
                                             ),
                                           ),
                                         ),
-                                      ),
+                                      ],
                                     ),
-                                  ],
-                                ),
+                                  );
+                                },
                               );
                             },
                           ),

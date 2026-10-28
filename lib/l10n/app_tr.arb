@@ -36,6 +36,8 @@
   "moves": "Hamleler",
   "trialMode": "Deneme Modu",
   "trialModeDescription": "60 saniyelik zamanlayıcı yerine 20 tanesini çözerek bitir",
+  "keepScreenAwake": "Ekranı Açık Tut",
+  "keepScreenAwakeDescription": "Oyun sırasında ekranın kapanmasını önleyin",
   "appearance": "Görünüm",
   "language": "Dil",
   "gameplay": "Oynanış",

@@ -42,6 +42,8 @@
   "moves": "Movimientos",
   "trialMode": "Modo de prueba",
   "trialModeDescription": "Resuelve 20 para terminar en lugar del temporizador de 60s",
+  "keepScreenAwake": "Mantener pantalla encendida",
+  "keepScreenAwakeDescription": "Evita que la pantalla se apague durante el juego",
   "appearance": "Apariencia",
   "language": "Idioma",
   "gameplay": "Jugabilidad",

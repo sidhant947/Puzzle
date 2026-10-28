@@ -42,6 +42,8 @@
   "moves": "Ходы",
   "trialMode": "Режим испытаний",
   "trialModeDescription": "Решите 20 задач вместо таймера на 60 сек",
+  "keepScreenAwake": "Не выключать экран",
+  "keepScreenAwakeDescription": "Предотвращает отключение экрана во время игры",
   "appearance": "Внешний вид",
   "language": "Язык",
   "gameplay": "Геймплей",

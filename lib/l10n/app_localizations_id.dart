@@ -127,11 +127,10 @@ class AppLocalizationsId extends AppLocalizations {
       'Selesaikan 20 teka-teki untuk selesai, bukan dengan pengatur waktu 60 detik';
 
   @override
-  String get keepScreenAwake => 'Keep Screen Awake';
+  String get keepScreenAwake => 'Biarkan Layar Menyala';
 
   @override
-  String get keepScreenAwakeDescription =>
-      'Prevent screen from turning off during gameplay';
+  String get keepScreenAwakeDescription => 'Cegah layar mati saat bermain game';
 
   @override
   String get appearance => 'Tampilan';

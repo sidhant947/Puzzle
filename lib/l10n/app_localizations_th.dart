@@ -127,11 +127,11 @@ class AppLocalizationsTh extends AppLocalizations {
       'แก้ให้ได้ 20 ข้อเพื่อจบแทนการจับเวลา 60 วินาที';
 
   @override
-  String get keepScreenAwake => 'Keep Screen Awake';
+  String get keepScreenAwake => 'เปิดหน้าจอค้างไว้';
 
   @override
   String get keepScreenAwakeDescription =>
-      'Prevent screen from turning off during gameplay';
+      'ป้องกันไม่ให้หน้าจอดับระหว่างเล่นเกม';
 
   @override
   String get appearance => 'รูปลักษณ์';

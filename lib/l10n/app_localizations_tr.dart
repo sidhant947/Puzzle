@@ -127,11 +127,11 @@ class AppLocalizationsTr extends AppLocalizations {
       '60 saniyelik zamanlayıcı yerine 20 tanesini çözerek bitir';
 
   @override
-  String get keepScreenAwake => 'Keep Screen Awake';
+  String get keepScreenAwake => 'Ekranı Açık Tut';
 
   @override
   String get keepScreenAwakeDescription =>
-      'Prevent screen from turning off during gameplay';
+      'Oyun sırasında ekranın kapanmasını önleyin';
 
   @override
   String get appearance => 'Görünüm';

@@ -42,6 +42,8 @@
   "moves": "Langkah",
   "trialMode": "Mode Percobaan",
   "trialModeDescription": "Selesaikan 20 teka-teki untuk selesai, bukan dengan pengatur waktu 60 detik",
+  "keepScreenAwake": "Biarkan Layar Menyala",
+  "keepScreenAwakeDescription": "Cegah layar mati saat bermain game",
   "appearance": "Tampilan",
   "language": "Bahasa",
   "gameplay": "Gameplay",

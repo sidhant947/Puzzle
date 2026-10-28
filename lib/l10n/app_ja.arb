@@ -42,6 +42,8 @@
   "moves": "手数",
   "trialMode": "試行モード",
   "trialModeDescription": "60秒タイマーの代わりに20個解いて終了",
+  "keepScreenAwake": "画面を常時点灯",
+  "keepScreenAwakeDescription": "プレイ中に画面が消灯するのを防ぎます",
   "appearance": "外観",
   "language": "言語",
   "gameplay": "ゲームプレイ",

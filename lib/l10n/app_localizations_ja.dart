@@ -126,11 +126,10 @@ class AppLocalizationsJa extends AppLocalizations {
   String get trialModeDescription => '60秒タイマーの代わりに20個解いて終了';
 
   @override
-  String get keepScreenAwake => 'Keep Screen Awake';
+  String get keepScreenAwake => '画面を常時点灯';
 
   @override
-  String get keepScreenAwakeDescription =>
-      'Prevent screen from turning off during gameplay';
+  String get keepScreenAwakeDescription => 'プレイ中に画面が消灯するのを防ぎます';
 
   @override
   String get appearance => '外観';

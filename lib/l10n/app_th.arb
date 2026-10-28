@@ -42,6 +42,8 @@
   "moves": "การเคลื่อนที่",
   "trialMode": "โหมดทดสอบ",
   "trialModeDescription": "แก้ให้ได้ 20 ข้อเพื่อจบแทนการจับเวลา 60 วินาที",
+  "keepScreenAwake": "เปิดหน้าจอค้างไว้",
+  "keepScreenAwakeDescription": "ป้องกันไม่ให้หน้าจอดับระหว่างเล่นเกม",
   "appearance": "รูปลักษณ์",
   "language": "ภาษา",
   "gameplay": "เกมเพลย์",
