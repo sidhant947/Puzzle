@@ -2730,7 +2730,7 @@
   "notAValidWord": "Kein gültiges Wort",
   "enterNumberRange": "GIB EINE ZAHL ZWISCHEN 1 UND 10.000 EIN!",
   "correctExclEmoji": "Richtig!",
-  "wrongExcl": "Falsch!"
+  "wrongExcl": "Falsch!",
   "abstractPatternRecallSubtitle": "Rekonstruieren Sie geschichtete bunte Formen aus dem Gedächtnisstudium.",
   "abstractPatternRecallTitle": "Musterschichtung",
   "actionSequenceRecallSubtitle": "Wiederholen Sie die Zeichengesten-Animationssequenzen der Reihe nach.",

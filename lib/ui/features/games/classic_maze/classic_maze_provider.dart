@@ -28,7 +28,7 @@ class ClassicMazeState {
     this.moves = 0,
     this.isVictory = false,
     this.isLoading = true,
-    this.autoMoveEnabled = false,
+    this.autoMoveEnabled = true,
   });
 
   ClassicMazeState copyWith({
@@ -76,6 +76,7 @@ class ClassicMazeNotifier extends _$ClassicMazeNotifier {
       exitCol: 0,
       visitedPath: [],
       isLoading: true,
+      autoMoveEnabled: true,
     );
   }
 

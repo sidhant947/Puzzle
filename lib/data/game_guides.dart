@@ -1088,7 +1088,7 @@ const Map<String, GameGuide> gameGuides = {
     controls: "Tap the word pairs that are true cognates.",
     walkthrough: [
       "Step 1: A list of word pairs is presented.",
-      "Step 2: Determine which pairs share an etymological root.",
+      "Step 2: Determine which pairs share both root and meaning.",
       "Step 3: Select the true cognates.",
       "Step 4: Avoid false friends (words that look similar but mean different things).",
     ],

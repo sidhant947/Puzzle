@@ -127,18 +127,21 @@ class _ClassicMazeScreenState extends ConsumerState<ClassicMazeScreen> {
       subtitle: l10n.classicMazeSubtitle,
       onHowToPlay: _showHowToPlay,
       actions: [
-        TangibleButton(
-          color: state.autoMoveEnabled ? DesignSystem.primary : theme.colorScheme.surface,
-          shadowColor: theme.colorScheme.outline,
-          onTap: () {
-            HapticFeedbackUtil.mediumImpact();
-            notifier.toggleAutoMove();
-          },
-          padding: const EdgeInsets.all(12),
-          child: Icon(
-            Icons.bolt_rounded,
-            color: state.autoMoveEnabled ? Colors.white : theme.colorScheme.onSurface,
-            size: 20,
+        Tooltip(
+          message: state.autoMoveEnabled ? 'Auto-move: ON' : 'Auto-move: OFF',
+          child: TangibleButton(
+            color: state.autoMoveEnabled ? DesignSystem.primary : theme.colorScheme.surface,
+            shadowColor: theme.colorScheme.outline,
+            onTap: () {
+              HapticFeedbackUtil.mediumImpact();
+              notifier.toggleAutoMove();
+            },
+            padding: const EdgeInsets.all(12),
+            child: Icon(
+              Icons.bolt_rounded,
+              color: state.autoMoveEnabled ? Colors.white : theme.colorScheme.onSurface,
+              size: 20,
+            ),
           ),
         ),
         const SizedBox(width: 8),

@@ -33,8 +33,9 @@ class _CognateCatchScreenState extends ConsumerState<CognateCatchScreen> {
       builder: (context) {
         final l10n = AppLocalizations.of(context)!;
         return GameCompletionDialog(
-          title: state.isGameWon ? l10n.btnYes : l10n.btnNo,
+          title: state.isGameWon ? l10n.wellDone.toUpperCase() : l10n.gameOver.toUpperCase(),
           message: state.description,
+          isVictory: state.isGameWon,
           onPlayAgain: () {
             ref.read(cognateCatchNotifierProvider.notifier).initGame();
             Navigator.pop(context);
@@ -80,7 +81,7 @@ class _CognateCatchScreenState extends ConsumerState<CognateCatchScreen> {
                 children: [
                   const Spacer(),
                   Text(
-                    'Do these words share an origin?',
+                    'Do these words share the same meaning?',
                     style: TextStyle(
                       fontSize: DesignSystem.fontSizeLG,
                       fontWeight: FontWeight.w600,
@@ -131,7 +132,7 @@ class _CognateCatchScreenState extends ConsumerState<CognateCatchScreen> {
                                 Icon(Icons.check_circle_outline_rounded, color: Colors.white, size: 32),
                                 SizedBox(height: 8),
                                 Text(
-                                  'COGNATES',
+                                  'TRUE COGNATES',
                                   style: TextStyle(
                                     color: Colors.white,
                                     fontWeight: FontWeight.w900,
