@@ -12,6 +12,7 @@ import '../providers/game_providers.dart';
 import '../providers/game_session_provider.dart';
 import '../providers/user_providers.dart';
 import 'tangible.dart';
+import 'confetti_overlay.dart';
 
 class GameCompletionDialog extends ConsumerStatefulWidget {
   final VoidCallback onHome;
@@ -110,7 +111,7 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
 
     final next = nextGame;
 
-    return Dialog(
+    final dialogContent = Dialog(
       backgroundColor: Colors.transparent,
       elevation: 0,
       insetPadding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
@@ -459,6 +460,19 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
           ),
         ),
       ),
+    );
+
+    if (!widget.isVictory) return dialogContent;
+
+    return Stack(
+      children: [
+        const Positioned.fill(
+          child: IgnorePointer(
+            child: ConfettiOverlay(),
+          ),
+        ),
+        dialogContent,
+      ],
     );
   }
 }

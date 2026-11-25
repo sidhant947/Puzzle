@@ -79,7 +79,7 @@ class HomeScreen extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
-      floatingActionButton: FloatingActionButton(
+      floatingActionButton: FloatingActionButton.extended(
         backgroundColor: DesignSystem.primary,
         foregroundColor: Colors.white,
         elevation: 4,
@@ -91,9 +91,17 @@ class HomeScreen extends ConsumerWidget {
           ),
         ),
         onPressed: () => _playRandomPuzzle(context, ref),
-        child: const Icon(
+        icon: const Icon(
           Icons.shuffle_rounded,
-          size: 26,
+          size: 22,
+        ),
+        label: Text(
+          'RANDOM',
+          style: TextStyle(
+            fontFamily: DesignSystem.fontDisplay,
+            fontWeight: FontWeight.w700,
+            letterSpacing: 1.0,
+          ),
         ),
       ),
       appBar: AppBar(

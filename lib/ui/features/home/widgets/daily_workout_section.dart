@@ -38,36 +38,23 @@ class DailyWorkoutSection extends ConsumerWidget {
         children: [
           Row(
             children: [
-              Container(
-                width: 32,
-                height: 32,
-                decoration: BoxDecoration(
-                  color: isAllCompleted
-                      ? DesignSystem.success.withValues(alpha: 0.15)
-                      : DesignSystem.primary.withValues(alpha: 0.15),
-                  borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
-                ),
-                child: Icon(
-                  isAllCompleted ? Icons.check_circle_rounded : Icons.bolt_rounded,
-                  color: isAllCompleted ? DesignSystem.success : DesignSystem.primary,
-                  size: 18,
-                ),
-              ),
-              const SizedBox(width: DesignSystem.spaceSM),
               Expanded(
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text(
-                      l10n.readyForWorkout.toUpperCase(),
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                      style: TextStyle(
-                        fontFamily: DesignSystem.fontDisplay,
-                        fontSize: DesignSystem.fontSizeMD,
-                        fontWeight: FontWeight.w700,
-                        letterSpacing: 1.2,
-                        color: colorScheme.onSurface,
+                    FittedBox(
+                      fit: BoxFit.scaleDown,
+                      alignment: Alignment.centerLeft,
+                      child: Text(
+                        l10n.readyForWorkout.toUpperCase(),
+                        maxLines: 1,
+                        style: TextStyle(
+                          fontFamily: DesignSystem.fontDisplay,
+                          fontSize: DesignSystem.fontSizeMD,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 1.2,
+                          color: colorScheme.onSurface,
+                        ),
                       ),
                     ),
                     Text(

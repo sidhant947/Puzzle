@@ -59,17 +59,18 @@ class DailyProgressBanner extends ConsumerWidget {
                     color: theme.brightness == Brightness.dark
                         ? const Color(0xFF94A3B8)
                         : const Color(0xFF475569),
-                    letterSpacing: 1.0,
-                    fontWeight: FontWeight.w900,
+                    letterSpacing: 0.5,
+                    fontWeight: FontWeight.w700,
                   ),
                 ),
                 const SizedBox(height: 4.0),
                 Text(
                   encouragement.toUpperCase(),
-                  style: theme.textTheme.headlineSmall?.copyWith(
-                    fontSize: 18.0,
-                    letterSpacing: 0.5,
-                    height: 1.1,
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontSize: DesignSystem.fontSizeMD,
+                    fontWeight: FontWeight.w700,
+                    letterSpacing: 0.3,
+                    height: 1.2,
                   ),
                 ),
               ],

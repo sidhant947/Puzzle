@@ -1,9 +1,9 @@
 import java.util.Properties
-import com.android.build.gradle.internal.api.ApkVariantOutputImpl
+import com.android.build.api.variant.FilterConfiguration
+import org.jetbrains.kotlin.gradle.dsl.JvmTarget
 
 plugins {
     id("com.android.application")
-    id("kotlin-android")
     // The Flutter Gradle Plugin must be applied after the Android and Kotlin Gradle plugins.
     id("dev.flutter.flutter-gradle-plugin")
 }
@@ -22,10 +22,6 @@ android {
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
         targetCompatibility = JavaVersion.VERSION_17
-    }
-
-    kotlinOptions {
-        jvmTarget = "17"
     }
 
     dependenciesInfo {
@@ -52,17 +48,6 @@ android {
         versionName = flutter.versionName
     }
 
-    val abiCodes = mapOf("armeabi-v7a" to 1, "arm64-v8a" to 2, "x86_64" to 3)
-    applicationVariants.configureEach {
-        val variant = this
-        variant.outputs.forEach { output ->
-            val abiVersionCode = abiCodes[output.filters.find { it.filterType == "ABI" }?.identifier]
-            if (abiVersionCode != null) {
-                (output as ApkVariantOutputImpl).versionCodeOverride = variant.versionCode * 10 + abiVersionCode
-            }
-        }
-    }
-
     buildTypes {
         release {
             signingConfig = if (keystorePropertiesFile.exists()) {
@@ -73,9 +58,31 @@ android {
         }
     }
 
-    packagingOptions {
+    packaging {
         dex.useLegacyPackaging = true
         jniLibs.useLegacyPackaging = true
+    }
+}
+
+kotlin {
+    compilerOptions {
+        jvmTarget = JvmTarget.fromTarget("17")
+    }
+}
+
+val abiCodes = mapOf("armeabi-v7a" to 1, "arm64-v8a" to 2, "x86_64" to 3)
+androidComponents {
+    onVariants { variant ->
+        variant.outputs.forEach { output ->
+            val abiName = output.filters.find {
+                it.filterType == FilterConfiguration.FilterType.ABI
+            }?.identifier
+            val abiVersionCode = abiCodes[abiName]
+            if (abiVersionCode != null) {
+                val baseVersionCode = output.versionCode.orNull ?: 1
+                output.versionCode.set(baseVersionCode * 10 + abiVersionCode)
+            }
+        }
     }
 }
 

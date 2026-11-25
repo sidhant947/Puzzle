@@ -105,6 +105,7 @@ class _CategoryGamesScreenState extends ConsumerState<CategoryGamesScreen> {
     final l10n = AppLocalizations.of(context)!;
     final streaks = ref.watch(gameStreakNotifierProvider);
     final isBigScreen = !DesignSystem.isMobile(context);
+    final isDesktop = DesignSystem.isDesktop(context);
     final favoriteIds = ref.watch(userDataNotifierProvider.select((d) => (d.favoriteGameIds ?? []).toSet()));
     final hiddenIds = ref.watch(userDataNotifierProvider.select((d) => (d.hiddenGameIds ?? []).toSet()));
     final categoryStyle = getCategoryStyle(widget.initialCategory);
@@ -234,10 +235,10 @@ class _CategoryGamesScreenState extends ConsumerState<CategoryGamesScreen> {
                       shrinkWrap: true,
                       physics: const NeverScrollableScrollPhysics(),
                       gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: isBigScreen ? 2 : 1,
-                        mainAxisSpacing: DesignSystem.spaceSM + 2,
-                        crossAxisSpacing: DesignSystem.spaceSM + 2,
-                        mainAxisExtent: 76,
+                        crossAxisCount: isDesktop ? 3 : (isBigScreen ? 2 : 1),
+                        mainAxisSpacing: 8,
+                        crossAxisSpacing: 8,
+                        mainAxisExtent: isBigScreen ? 146 : 140,
                       ),
                       itemCount: filteredGames.length,
                       itemBuilder: (context, index) {
@@ -564,10 +565,7 @@ class _CategoryGameCard extends ConsumerWidget {
       ),
       child: TangibleContainer(
         color: colorScheme.surface,
-        padding: const EdgeInsets.symmetric(
-          horizontal: DesignSystem.spaceMD,
-          vertical: DesignSystem.spaceSM + 2,
-        ),
+        padding: EdgeInsets.zero,
         onTap: () {
           HapticFeedbackUtil.lightImpact();
           ScaffoldMessenger.of(context).clearSnackBars();
@@ -581,132 +579,194 @@ class _CategoryGameCard extends ConsumerWidget {
             CustomPageRoute(page: game.builder(context)),
           );
         },
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Container(
-              width: 42,
-              height: 42,
-              decoration: BoxDecoration(
-                color: game.color.withValues(alpha: 0.15),
-                borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
+          child: Stack(
+            children: [
+              Positioned(
+                right: -25,
+                bottom: -25,
+                child: Container(
+                  width: 140,
+                  height: 140,
+                  decoration: BoxDecoration(
+                    shape: BoxShape.circle,
+                    gradient: RadialGradient(
+                      colors: [
+                        game.color.withValues(alpha: 0.12),
+                        game.color.withValues(alpha: 0.0),
+                      ],
+                    ),
+                  ),
+                ),
               ),
-              child: Icon(
-                game.icon,
-                color: game.color,
-                size: 22,
+              Positioned(
+                right: -15,
+                bottom: -20,
+                child: Transform.rotate(
+                  angle: -0.15,
+                  child: IgnorePointer(
+                    child: Icon(
+                      game.icon,
+                      size: 130,
+                      color: game.color.withValues(alpha: 0.06),
+                    ),
+                  ),
+                ),
               ),
-            ),
-            const SizedBox(width: DesignSystem.spaceMD),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  Row(
-                    children: [
-                      Flexible(
-                        child: Text(
-                          gameTitle,
-                          maxLines: 1,
-                          overflow: TextOverflow.ellipsis,
-                          style: theme.textTheme.titleMedium?.copyWith(
-                            fontWeight: FontWeight.w700,
-                            letterSpacing: 0.3,
+              Padding(
+                padding: const EdgeInsets.fromLTRB(14, 12, 14, 12),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Container(
+                          padding: const EdgeInsets.symmetric(horizontal: 7, vertical: 2.5),
+                          decoration: BoxDecoration(
+                            color: game.color.withValues(alpha: 0.15),
+                            borderRadius: BorderRadius.circular(5.0),
+                            border: Border.all(
+                              color: game.color.withValues(alpha: 0.25),
+                              width: 1.0,
+                            ),
+                          ),
+                          child: Text(
+                            game.category.toUpperCase(),
+                            style: TextStyle(
+                              fontSize: 9.5,
+                              fontWeight: FontWeight.w800,
+                              color: game.color,
+                              letterSpacing: 0.6,
+                            ),
                           ),
                         ),
-                      ),
-                      if (isFavorite) ...[
-                        const SizedBox(width: 4),
-                        const Icon(
-                          Icons.star_rounded,
-                          color: DesignSystem.accentAmber,
-                          size: 16,
+                        Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            if (streakCount > 0)
+                              Container(
+                                padding: const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
+                                decoration: BoxDecoration(
+                                  color: DesignSystem.accentAmber.withValues(alpha: 0.15),
+                                  borderRadius: BorderRadius.circular(5.0),
+                                ),
+                                child: Row(
+                                  mainAxisSize: MainAxisSize.min,
+                                  children: [
+                                    const Icon(
+                                      Icons.local_fire_department_rounded,
+                                      size: 12,
+                                      color: DesignSystem.accentAmber,
+                                    ),
+                                    const SizedBox(width: 2),
+                                    Text(
+                                      '$streakCount',
+                                      style: const TextStyle(
+                                        fontSize: 10.0,
+                                        fontWeight: FontWeight.w900,
+                                        color: DesignSystem.accentAmber,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            if (isFavorite) ...[
+                              if (streakCount > 0) const SizedBox(width: 6),
+                              const Icon(
+                                Icons.star_rounded,
+                                color: DesignSystem.accentAmber,
+                                size: 17,
+                              ),
+                            ],
+                          ],
                         ),
                       ],
-                      if (streakCount > 0) ...[
-                        const SizedBox(width: 6),
-                        Container(
-                          padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1.5),
-                          decoration: BoxDecoration(
-                            color: DesignSystem.accentAmber.withValues(alpha: 0.15),
-                            borderRadius: BorderRadius.circular(4),
-                          ),
-                          child: Row(
-                            mainAxisSize: MainAxisSize.min,
+                    ),
+                    const SizedBox(height: 6),
+                    Row(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Expanded(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
-                              const Icon(
-                                Icons.local_fire_department_rounded,
-                                size: 11,
-                                color: DesignSystem.accentAmber,
-                              ),
-                              const SizedBox(width: 2),
                               Text(
-                                '$streakCount',
-                                style: const TextStyle(
-                                  fontSize: 9.5,
-                                  fontWeight: FontWeight.w900,
-                                  color: DesignSystem.accentAmber,
+                                gameTitle,
+                                maxLines: 1,
+                                overflow: TextOverflow.ellipsis,
+                                style: theme.textTheme.titleMedium?.copyWith(
+                                  fontSize: 17.0,
+                                  fontWeight: FontWeight.w700,
+                                  letterSpacing: 0.2,
+                                  height: 1.15,
+                                ),
+                              ),
+                              const SizedBox(height: 4),
+                              Text(
+                                gameSubtitle,
+                                maxLines: 3,
+                                overflow: TextOverflow.ellipsis,
+                                style: theme.textTheme.bodySmall?.copyWith(
+                                  color: colorScheme.onSurface.withValues(alpha: 0.65),
+                                  fontSize: 12.0,
+                                  height: 1.3,
                                 ),
                               ),
                             ],
                           ),
                         ),
+                        const SizedBox(width: 8),
+                        Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Container(
+                              width: 34,
+                              height: 34,
+                              decoration: BoxDecoration(
+                                shape: BoxShape.circle,
+                                color: isSolvedToday
+                                    ? DesignSystem.success.withValues(alpha: 0.15)
+                                    : game.color.withValues(alpha: 0.12),
+                              ),
+                              child: Icon(
+                                isSolvedToday ? Icons.check_rounded : Icons.play_arrow_rounded,
+                                color: isSolvedToday ? DesignSystem.success : game.color,
+                                size: 18,
+                              ),
+                            ),
+                            const SizedBox(height: 4),
+                            IconButton(
+                              icon: Icon(
+                                Icons.info_outline_rounded,
+                                color: colorScheme.onSurface.withValues(alpha: 0.4),
+                                size: 18,
+                              ),
+                              padding: EdgeInsets.zero,
+                              constraints: const BoxConstraints(minWidth: 28, minHeight: 28),
+                              onPressed: () {
+                                HapticFeedbackUtil.lightImpact();
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => GameGuideScreen(
+                                      gameId: game.id,
+                                      gameColor: game.color,
+                                    ),
+                                  ),
+                                );
+                              },
+                            ),
+                          ],
+                        ),
                       ],
-                    ],
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    gameSubtitle,
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: colorScheme.onSurface.withValues(alpha: 0.6),
-                      fontSize: 11.5,
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
-            ),
-            const SizedBox(width: DesignSystem.spaceXS),
-            IconButton(
-              icon: Icon(
-                Icons.info_outline_rounded,
-                color: colorScheme.onSurface.withValues(alpha: 0.5),
-                size: 20,
-              ),
-              padding: EdgeInsets.zero,
-              constraints: const BoxConstraints(minWidth: 32, minHeight: 32),
-              onPressed: () {
-                HapticFeedbackUtil.lightImpact();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => GameGuideScreen(
-                      gameId: game.id,
-                      gameColor: game.color,
-                    ),
-                  ),
-                );
-              },
-            ),
-            const SizedBox(width: 2),
-            Container(
-              width: 30,
-              height: 30,
-              decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                color: isSolvedToday
-                    ? DesignSystem.success.withValues(alpha: 0.15)
-                    : game.color.withValues(alpha: 0.12),
-              ),
-              child: Icon(
-                isSolvedToday ? Icons.check_rounded : Icons.play_arrow_rounded,
-                color: isSolvedToday ? DesignSystem.success : game.color,
-                size: 16,
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

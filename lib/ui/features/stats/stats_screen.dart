@@ -111,8 +111,10 @@ class StatsScreen extends ConsumerWidget {
                   centerTitle: true,
                     title: Text(
                       l10n.statsTitle,
-                      style: theme.textTheme.displaySmall?.copyWith(
-                        letterSpacing: 2.0,
+                      style: theme.textTheme.titleLarge?.copyWith(
+                        fontWeight: FontWeight.w700,
+                        fontSize: 20,
+                        letterSpacing: 0.5,
                       ),
                     ),
                 ),
@@ -133,10 +135,11 @@ class StatsScreen extends ConsumerWidget {
                         if (index == 4) {
                           return Text(
                             l10n.statsAchievements,
-                            style: theme.textTheme.displaySmall?.copyWith(
-                              fontSize: DesignSystem.fontSizeLG,
+                            style: theme.textTheme.titleMedium?.copyWith(
+                              fontSize: DesignSystem.fontSizeMD,
+                              fontWeight: FontWeight.w700,
                               color: theme.colorScheme.primary,
-                              letterSpacing: 1.5,
+                              letterSpacing: 0.5,
                             ),
                           );
                         }
@@ -197,19 +200,20 @@ class _UserStatsCard extends ConsumerWidget {
                     children: [
                       Text(
                         l10n.statsLevel(level),
-                        style: theme.textTheme.displayLarge?.copyWith(
-                          fontSize: 42,
+                        style: theme.textTheme.headlineMedium?.copyWith(
+                          fontSize: DesignSystem.fontSize2XL,
+                          fontWeight: FontWeight.w700,
                           color: Colors.white,
-                          letterSpacing: 1.0,
+                          letterSpacing: 0.5,
                         ),
                       ),
                       const SizedBox(height: 4),
                       Text(
                         l10n.statsMaintainStreak,
                         style: theme.textTheme.labelMedium?.copyWith(
-                          fontWeight: FontWeight.w900,
+                          fontWeight: FontWeight.w600,
                           color: Colors.white.withValues(alpha: 0.8),
-                          letterSpacing: 0.5,
+                          letterSpacing: 0.3,
                         ),
                       ),
                     ],
@@ -258,11 +262,11 @@ class _UserStatsCard extends ConsumerWidget {
                 children: [
                   Text(
                     l10n.statsPercentToLevel((progress * 100).toInt(), level + 1),
-                    style: theme.textTheme.labelLarge?.copyWith(
+                    style: theme.textTheme.labelMedium?.copyWith(
                       fontFamily: DesignSystem.fontDisplay,
-                      fontSize: DesignSystem.fontSizeSM,
+                      fontSize: DesignSystem.fontSizeXS,
                       color: Colors.white.withValues(alpha: 0.9),
-                      letterSpacing: 1.0,
+                      letterSpacing: 0.5,
                     ),
                   ),
                 ],
@@ -324,23 +328,25 @@ class _StreakTracker extends ConsumerWidget {
             children: [
               Text(
                 l10n.statsWeeklyActivity,
-                style: theme.textTheme.displaySmall?.copyWith(
-                  fontSize: DesignSystem.fontSizeMD,
+                style: theme.textTheme.titleSmall?.copyWith(
+                  fontSize: DesignSystem.fontSizeSM,
+                  fontWeight: FontWeight.w600,
                   color: colorScheme.onSurface.withValues(alpha: 0.6),
-                  letterSpacing: 1.0,
+                  letterSpacing: 0.3,
                 ),
               ),
               Row(
                 children: [
                   const Icon(Icons.local_fire_department_rounded,
-                      color: DesignSystem.gameOrange, size: 20),
+                      color: DesignSystem.gameOrange, size: 18),
                   const SizedBox(width: 4),
                   Text(
                     l10n.statsDayStreak(superStreak),
-                    style: theme.textTheme.displaySmall?.copyWith(
-                      fontSize: DesignSystem.fontSizeMD,
+                    style: theme.textTheme.titleSmall?.copyWith(
+                      fontSize: DesignSystem.fontSizeSM,
+                      fontWeight: FontWeight.w700,
                       color: DesignSystem.gameOrange,
-                      letterSpacing: 0.5,
+                      letterSpacing: 0.3,
                     ),
                   ),
                 ],
@@ -394,12 +400,12 @@ class _StreakTracker extends ConsumerWidget {
                             : Text(
                                 dayLabel,
                                 style: TextStyle(
-                                  fontWeight: FontWeight.w900,
-                                  fontSize: 12,
+                                  fontWeight: FontWeight.w700,
+                                  fontSize: 11,
                                   color: isToday
                                       ? colorScheme.primary
                                       : colorScheme.onSurface
-                                          .withValues(alpha: 0.3),
+                                          .withValues(alpha: 0.4),
                                 ),
                               ),
                       ),
@@ -443,10 +449,11 @@ class _CognitiveProfileCard extends ConsumerWidget {
       children: [
         Text(
           l10n.statsCognitiveProfile,
-          style: theme.textTheme.displaySmall?.copyWith(
-            fontSize: DesignSystem.fontSizeLG,
+          style: theme.textTheme.titleMedium?.copyWith(
+            fontSize: DesignSystem.fontSizeMD,
+            fontWeight: FontWeight.w700,
             color: colorScheme.primary,
-            letterSpacing: 1.5,
+            letterSpacing: 0.5,
           ),
         ),
         const SizedBox(height: DesignSystem.spaceMD),
@@ -503,17 +510,18 @@ class _CategoryProgressItem extends StatelessWidget {
             Text(
               category,
               style: theme.textTheme.labelMedium?.copyWith(
-                fontWeight: FontWeight.w900,
+                fontWeight: FontWeight.w700,
                 color: colorScheme.onSurface.withValues(alpha: 0.7),
-                letterSpacing: 0.5,
+                letterSpacing: 0.3,
               ),
             ),
             Text(
               '$solved / $total',
-              style: theme.textTheme.displaySmall?.copyWith(
-                fontSize: DesignSystem.fontSizeSM,
+              style: theme.textTheme.labelMedium?.copyWith(
+                fontSize: DesignSystem.fontSizeXS,
+                fontWeight: FontWeight.w700,
                 color: color,
-                letterSpacing: 1.0,
+                letterSpacing: 0.3,
               ),
             ),
           ],
@@ -577,19 +585,24 @@ class _SmallStatCard extends StatelessWidget {
               Text(
                 label,
                 style: theme.textTheme.labelMedium?.copyWith(
-                  fontWeight: FontWeight.w900,
-                  color: colorScheme.onSurface.withValues(alpha: 0.5),
-                  letterSpacing: 0.5,
+                  fontWeight: FontWeight.w700,
+                  fontSize: DesignSystem.fontSizeXS,
+                  color: colorScheme.onSurface.withValues(alpha: 0.6),
+                  letterSpacing: 0.3,
                 ),
               ),
             ],
           ),
-          const SizedBox(height: 8),
-          Text(
-            value,
-            style: theme.textTheme.displayMedium?.copyWith(
-              fontSize: 32,
-              letterSpacing: 1.0,
+          const SizedBox(height: 6),
+          FittedBox(
+            fit: BoxFit.scaleDown,
+            child: Text(
+              value,
+              style: theme.textTheme.titleLarge?.copyWith(
+                fontSize: DesignSystem.fontSize2XL,
+                fontWeight: FontWeight.w700,
+                letterSpacing: 0.5,
+              ),
             ),
           ),
         ],
@@ -645,23 +658,25 @@ class _AchievementCard extends ConsumerWidget {
               children: [
                 Text(
                   achievement.title,
-                  style: theme.textTheme.displaySmall?.copyWith(
-                    fontSize: DesignSystem.fontSizeLG,
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontSize: DesignSystem.fontSizeMD,
+                    fontWeight: FontWeight.w700,
                     color: isUnlocked
                         ? colorScheme.onSurface
                         : colorScheme.onSurface.withValues(alpha: 0.3),
-                    letterSpacing: 1.5,
+                    letterSpacing: 0.3,
                   ),
                 ),
-                const SizedBox(height: 4),
+                const SizedBox(height: 2),
                 Text(
                   achievement.description,
-                  style: theme.textTheme.labelMedium?.copyWith(
-                    fontWeight: FontWeight.w700,
+                  style: theme.textTheme.bodySmall?.copyWith(
+                    fontSize: DesignSystem.fontSizeXS,
+                    fontWeight: FontWeight.w500,
                     color: isUnlocked
                         ? colorScheme.onSurface.withValues(alpha: 0.6)
                         : colorScheme.onSurface.withValues(alpha: 0.2),
-                    letterSpacing: 0.5,
+                    letterSpacing: 0.2,
                   ),
                 ),
               ],
@@ -683,9 +698,9 @@ class _AchievementCard extends ConsumerWidget {
               child: Text(
                 l10n.statsLocked,
                 style: TextStyle(
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w700,
                   fontSize: 9,
-                  letterSpacing: 1.5,
+                  letterSpacing: 0.8,
                   color: colorScheme.onSurface.withValues(alpha: 0.3),
                 ),
               ),
