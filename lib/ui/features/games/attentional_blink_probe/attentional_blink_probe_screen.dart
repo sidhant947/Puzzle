@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -175,8 +175,7 @@ class _AttentionalBlinkProbeScreenState extends ConsumerState<AttentionalBlinkPr
               const SizedBox(width: 6),
               Text(
                 'TRIAL $_trialCount / $totalTrials',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -195,8 +194,7 @@ class _AttentionalBlinkProbeScreenState extends ConsumerState<AttentionalBlinkPr
               const SizedBox(width: 6),
               Text(
                 'SCORE: $_score',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -227,7 +225,6 @@ class _AttentionalBlinkProbeScreenState extends ConsumerState<AttentionalBlinkPr
             _isStreaming ? 'WATCH FOR LETTER "X" AFTER THE FIRST LETTER' : 'DID YOU SEE THE LETTER "X"?',
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontFamily: 'Geist',
               fontSize: 12,
               fontWeight: FontWeight.w800,
               color: colorScheme.onSurface.withValues(alpha: 0.5),
@@ -242,7 +239,7 @@ class _AttentionalBlinkProbeScreenState extends ConsumerState<AttentionalBlinkPr
                   ? Text(
                       currentItem.text,
                       style: TextStyle(
-                        fontFamily: 'Bebas Neue',
+                        fontFamily: DesignSystem.fontDisplay,
                         fontSize: 64,
                         fontWeight: FontWeight.w900,
                         color: currentItem.isT1
@@ -266,7 +263,7 @@ class _AttentionalBlinkProbeScreenState extends ConsumerState<AttentionalBlinkPr
             color: colorScheme.surface,
             onTap: _isStreaming ? null : () => _submitAnswer(true),
             padding: const EdgeInsets.symmetric(vertical: 20),
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(Icons.check_circle_rounded, color: DesignSystem.success, size: 24),
@@ -274,7 +271,7 @@ class _AttentionalBlinkProbeScreenState extends ConsumerState<AttentionalBlinkPr
                 Text(
                   'YES ("X" SEEN)',
                   style: TextStyle(
-                    fontFamily: 'Bebas Neue',
+                    fontFamily: DesignSystem.fontDisplay,
                     fontSize: 22,
                     fontWeight: FontWeight.w700,
                     letterSpacing: 1.5,
@@ -290,7 +287,7 @@ class _AttentionalBlinkProbeScreenState extends ConsumerState<AttentionalBlinkPr
             color: colorScheme.surface,
             onTap: _isStreaming ? null : () => _submitAnswer(false),
             padding: const EdgeInsets.symmetric(vertical: 20),
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(Icons.cancel_rounded, color: DesignSystem.error, size: 24),
@@ -298,7 +295,7 @@ class _AttentionalBlinkProbeScreenState extends ConsumerState<AttentionalBlinkPr
                 Text(
                   'NO ("X" ABSENT)',
                   style: TextStyle(
-                    fontFamily: 'Bebas Neue',
+                    fontFamily: DesignSystem.fontDisplay,
                     fontSize: 22,
                     fontWeight: FontWeight.w700,
                     letterSpacing: 1.5,

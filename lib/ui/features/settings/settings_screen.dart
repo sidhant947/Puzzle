@@ -1,9 +1,10 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:url_launcher/url_launcher.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import '../../../providers/theme_provider.dart';
 import '../../../providers/locale_provider.dart';
+import '../../../providers/font_provider.dart';
 import '../../../providers/user_providers.dart';
 import '../../../utils/design_system.dart';
 import '../../../widgets/tangible.dart';
@@ -50,6 +51,7 @@ class SettingsScreen extends ConsumerWidget {
     final theme = Theme.of(context);
     final themeMode = ref.watch(themeNotifierProvider);
     final selectedLocale = ref.watch(localeNotifierProvider);
+    final useSystemFont = ref.watch(fontNotifierProvider);
     final isTrialModeEnabled = ref.watch(
         userDataNotifierProvider.select((s) => s.isTrialModeEnabled ?? false));
     final isKeepScreenAwakeEnabled = ref.watch(userDataNotifierProvider
@@ -73,9 +75,11 @@ class SettingsScreen extends ConsumerWidget {
                   scrolledUnderElevation: 0,
                   centerTitle: true,
                   title: Text(
-                    l10n.settings.toUpperCase(),
-                    style: theme.textTheme.displaySmall?.copyWith(
-                      letterSpacing: 2.0,
+                    l10n.settings,
+                    style: theme.textTheme.titleLarge?.copyWith(
+                      fontWeight: FontWeight.w700,
+                      fontSize: 22,
+                      letterSpacing: 0.5,
                     ),
                   ),
                 ),
@@ -92,7 +96,7 @@ class SettingsScreen extends ConsumerWidget {
                         switch (index) {
                           case 0:
                             return _buildSectionTitle(
-                                context, l10n.supportUs.toUpperCase());
+                                context, l10n.supportUs);
                           case 1:
                             return const SizedBox(height: DesignSystem.spaceMD);
                           case 2:
@@ -145,58 +149,54 @@ class SettingsScreen extends ConsumerWidget {
                             return const SizedBox(height: DesignSystem.spaceXL);
                           case 12:
                             return _buildSectionTitle(
-                                context, l10n.appearance.toUpperCase());
+                                context, l10n.appearance);
                           case 13:
                             return const SizedBox(height: DesignSystem.spaceMD);
                           case 14:
                             return _buildThemeSelector(
                                 context, ref, themeMode, l10n);
                           case 15:
-                            return const SizedBox(height: DesignSystem.spaceXL);
-                          case 16:
-                            return _buildSectionTitle(
-                                context, l10n.language.toUpperCase());
-                          case 17:
                             return const SizedBox(height: DesignSystem.spaceMD);
+                          case 16:
+                            return _buildSystemFontToggle(
+                                context, ref, useSystemFont);
+                          case 17:
+                            return const SizedBox(height: DesignSystem.spaceXL);
                           case 18:
+                            return _buildSectionTitle(
+                                context, l10n.language);
+                          case 19:
+                            return const SizedBox(height: DesignSystem.spaceMD);
+                          case 20:
                             return _buildLanguageSelector(
                                 context, ref, selectedLocale);
-                          case 19:
-                            return const SizedBox(height: DesignSystem.spaceXL);
-                          case 20:
-                            return _buildSectionTitle(
-                                context, l10n.gameplay.toUpperCase());
                           case 21:
-                            return const SizedBox(height: DesignSystem.spaceMD);
+                            return const SizedBox(height: DesignSystem.spaceXL);
                           case 22:
+                            return _buildSectionTitle(
+                                context, l10n.gameplay);
+                          case 23:
+                            return const SizedBox(height: DesignSystem.spaceMD);
+                          case 24:
                             return _buildTrialModeToggle(
                                 context, ref, isTrialModeEnabled, l10n);
-                          case 23:
+                          case 25:
                             return const SizedBox(height: DesignSystem.spaceSM);
-                          case 24:
+                          case 26:
                             return _buildKeepScreenAwakeToggle(
                                 context, ref, isKeepScreenAwakeEnabled, l10n);
-                          case 25:
-                            return const SizedBox(height: DesignSystem.spaceXL);
-                          case 26:
-                            return _buildSectionTitle(
-                                context, l10n.systemLegal.toUpperCase());
                           case 27:
-                            return const SizedBox(height: DesignSystem.spaceMD);
+                            return const SizedBox(height: DesignSystem.spaceXL);
                           case 28:
+                            return _buildSectionTitle(
+                                context, l10n.systemLegal);
+                          case 29:
+                            return const SizedBox(height: DesignSystem.spaceMD);
+                          case 30:
                             return _buildSettingsItem(
                                 context,
                                 l10n.privacyPolicy,
                                 Icons.privacy_tip_rounded,
-                                () => _launchUrl(
-                                    'https://sites.google.com/view/puzzlebysidhant/home'));
-                          case 29:
-                            return const SizedBox(height: DesignSystem.spaceSM);
-                          case 30:
-                            return _buildSettingsItem(
-                                context,
-                                l10n.termsOfService,
-                                Icons.description_rounded,
                                 () => _launchUrl(
                                     'https://sites.google.com/view/puzzlebysidhant/home'));
                           case 31:
@@ -204,18 +204,27 @@ class SettingsScreen extends ConsumerWidget {
                           case 32:
                             return _buildSettingsItem(
                                 context,
+                                l10n.termsOfService,
+                                Icons.description_rounded,
+                                () => _launchUrl(
+                                    'https://sites.google.com/view/puzzlebysidhant/home'));
+                          case 33:
+                            return const SizedBox(height: DesignSystem.spaceSM);
+                          case 34:
+                            return _buildSettingsItem(
+                                context,
                                 l10n.licenses,
                                 Icons.code_rounded,
                                 () => showLicensePage(
                                     context: context,
                                     applicationName:
-                                        l10n.appTitle.toUpperCase(),
+                                        l10n.appTitle,
                                     applicationVersion: 'Latest'));
                           default:
                             return null;
                         }
                       },
-                      childCount: 33,
+                      childCount: 35,
                     ),
                   ),
                 ),
@@ -232,10 +241,11 @@ class SettingsScreen extends ConsumerWidget {
     final colorScheme = theme.colorScheme;
     return Text(
       title,
-      style: theme.textTheme.displaySmall?.copyWith(
+      style: theme.textTheme.titleMedium?.copyWith(
         fontSize: DesignSystem.fontSizeLG,
+        fontWeight: FontWeight.w700,
         color: colorScheme.primary,
-        letterSpacing: 1.5,
+        letterSpacing: 0.5,
       ),
     );
   }
@@ -261,17 +271,17 @@ class SettingsScreen extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  l10n.trialMode.toUpperCase(),
+                  l10n.trialMode,
                   style: theme.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w700,
                     fontSize: DesignSystem.fontSizeMD,
-                    letterSpacing: 0.5,
+                    letterSpacing: 0.3,
                   ),
                 ),
                 Text(
-                  l10n.trialModeDescription.toUpperCase(),
+                  l10n.trialModeDescription,
                   style: theme.textTheme.labelSmall?.copyWith(
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w500,
                     color: colorScheme.onSurface.withValues(alpha: 0.5),
                     letterSpacing: 0.2,
                   ),
@@ -311,17 +321,17 @@ class SettingsScreen extends ConsumerWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  l10n.keepScreenAwake.toUpperCase(),
+                  l10n.keepScreenAwake,
                   style: theme.textTheme.titleMedium?.copyWith(
-                    fontWeight: FontWeight.w900,
+                    fontWeight: FontWeight.w700,
                     fontSize: DesignSystem.fontSizeMD,
-                    letterSpacing: 0.5,
+                    letterSpacing: 0.3,
                   ),
                 ),
                 Text(
-                  l10n.keepScreenAwakeDescription.toUpperCase(),
+                  l10n.keepScreenAwakeDescription,
                   style: theme.textTheme.labelSmall?.copyWith(
-                    fontWeight: FontWeight.w700,
+                    fontWeight: FontWeight.w500,
                     color: colorScheme.onSurface.withValues(alpha: 0.5),
                     letterSpacing: 0.2,
                   ),
@@ -357,6 +367,57 @@ class SettingsScreen extends ConsumerWidget {
     );
   }
 
+  Widget _buildSystemFontToggle(
+      BuildContext context, WidgetRef ref, bool isEnabled) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    return TangibleButton(
+      color: colorScheme.surface,
+      onTap: () => ref.read(fontNotifierProvider.notifier).toggle(),
+      child: Row(
+        children: [
+          Icon(
+            Icons.font_download_rounded,
+            size: 24,
+            color: isEnabled
+                ? DesignSystem.primary
+                : colorScheme.onSurface.withValues(alpha: 0.7),
+          ),
+          const SizedBox(width: DesignSystem.spaceMD),
+          Expanded(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'System Default Font',
+                  style: theme.textTheme.titleMedium?.copyWith(
+                    fontWeight: FontWeight.w700,
+                    fontSize: DesignSystem.fontSizeMD,
+                    letterSpacing: 0.3,
+                  ),
+                ),
+                Text(
+                  'Use system font instead of custom font',
+                  style: theme.textTheme.labelSmall?.copyWith(
+                    fontWeight: FontWeight.w500,
+                    color: colorScheme.onSurface.withValues(alpha: 0.5),
+                    letterSpacing: 0.2,
+                  ),
+                ),
+              ],
+            ),
+          ),
+          Switch(
+            value: isEnabled,
+            onChanged: (value) =>
+                ref.read(fontNotifierProvider.notifier).setUseSystemFont(value),
+            activeThumbColor: DesignSystem.primary,
+          ),
+        ],
+      ),
+    );
+  }
+
   Widget _buildThemeOption(BuildContext context, WidgetRef ref,
       AppThemeMode mode, String label, IconData icon, bool isSelected) {
     final theme = Theme.of(context);
@@ -377,12 +438,12 @@ class SettingsScreen extends ConsumerWidget {
           const SizedBox(width: DesignSystem.spaceMD),
           Expanded(
             child: Text(
-              label.toUpperCase(),
+              label,
               style: theme.textTheme.titleMedium?.copyWith(
                 color: isSelected ? Colors.white : colorScheme.onSurface,
-                fontWeight: isSelected ? FontWeight.w900 : FontWeight.w700,
+                fontWeight: isSelected ? FontWeight.w700 : FontWeight.w500,
                 fontSize: DesignSystem.fontSizeMD,
-                letterSpacing: 0.5,
+                letterSpacing: 0.3,
               ),
             ),
           ),
@@ -411,11 +472,8 @@ class SettingsScreen extends ConsumerWidget {
     final currentLabel = currentLocale == null
         ? 'System Default'
         : (_nativeNames[currentLocale.languageCode] ??
-            currentLocale.languageCode.toUpperCase());
+            currentLocale.languageCode);
 
-    // NOTE: PopupMenuButton conflates "menu dismissed" with "item with
-    // null value tapped" — both return null to onSelected, which is then
-    // routed to onCanceled. So we use a sentinel string for System Default.
     return PopupMenuButton<String>(
       tooltip: '',
       position: PopupMenuPosition.under,
@@ -437,7 +495,7 @@ class SettingsScreen extends ConsumerWidget {
             _buildLanguageMenuItem(
               context,
               value: code,
-              label: _nativeNames[code] ?? code.toUpperCase(),
+              label: _nativeNames[code] ?? code,
               selected: code == currentCode,
             ),
         ];
@@ -455,11 +513,11 @@ class SettingsScreen extends ConsumerWidget {
             const SizedBox(width: DesignSystem.spaceMD),
             Expanded(
               child: Text(
-                currentLabel.toUpperCase(),
+                currentLabel,
                 style: theme.textTheme.titleMedium?.copyWith(
-                  fontWeight: FontWeight.w900,
+                  fontWeight: FontWeight.w700,
                   fontSize: DesignSystem.fontSizeMD,
-                  letterSpacing: 0.5,
+                  letterSpacing: 0.3,
                 ),
               ),
             ),
@@ -524,11 +582,11 @@ class SettingsScreen extends ConsumerWidget {
           const SizedBox(width: DesignSystem.spaceMD),
           Expanded(
             child: Text(
-              title.toUpperCase(),
+              title,
               style: theme.textTheme.titleMedium?.copyWith(
-                fontWeight: FontWeight.w900,
+                fontWeight: FontWeight.w700,
                 fontSize: DesignSystem.fontSizeMD,
-                letterSpacing: 0.5,
+                letterSpacing: 0.3,
               ),
             ),
           ),

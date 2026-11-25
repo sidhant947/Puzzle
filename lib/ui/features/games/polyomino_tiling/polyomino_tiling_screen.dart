@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -186,7 +186,7 @@ class _PolyominoTilingScreenState extends ConsumerState<PolyominoTilingScreen> {
                       Text(
                         'ROTATE SELECTED PIECE',
                         style: TextStyle(
-                          fontFamily: 'Bebas Neue',
+                          fontFamily: DesignSystem.fontDisplay,
                           fontSize: 20,
                           fontWeight: FontWeight.w700,
                           color: _selectedPieceId != null ? Colors.white : colorScheme.onSurface.withValues(alpha: 0.3),
@@ -217,8 +217,7 @@ class _PolyominoTilingScreenState extends ConsumerState<PolyominoTilingScreen> {
               const SizedBox(width: 6),
               Text(
                 'TILING',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -232,11 +231,11 @@ class _PolyominoTilingScreenState extends ConsumerState<PolyominoTilingScreen> {
           color: colorScheme.surface,
           onTap: _startNewGame,
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-          child: const Row(
+          child: Row(
             children: [
               Icon(Icons.refresh_rounded, size: 18),
               SizedBox(width: 6),
-              Text('RESET', style: TextStyle(fontFamily: 'Bebas Neue', fontSize: 16, fontWeight: FontWeight.bold)),
+              Text('RESET', style: TextStyle(fontFamily: DesignSystem.fontDisplay, fontSize: 16, fontWeight: FontWeight.bold)),
             ],
           ),
         ),

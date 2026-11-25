@@ -1,5 +1,5 @@
 import 'dart:math' as math;
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -126,7 +126,6 @@ class _Wireframe3DRotationScreenState extends ConsumerState<Wireframe3DRotationS
               Text(
                 'SOURCE 3D WIREFRAME',
                 style: TextStyle(
-                  fontFamily: 'Geist',
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
                   color: colorScheme.onSurface.withValues(alpha: 0.6),
@@ -140,7 +139,6 @@ class _Wireframe3DRotationScreenState extends ConsumerState<Wireframe3DRotationS
                 'WHICH OPTION IS ROTATED BY ${_currentRound.rotationAngleDeg.toInt()}° AROUND Y-AXIS?',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontFamily: 'Geist',
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
                   color: DesignSystem.primary,
@@ -169,8 +167,7 @@ class _Wireframe3DRotationScreenState extends ConsumerState<Wireframe3DRotationS
               const SizedBox(width: 6),
               Text(
                 'WIREFRAME 3D',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -189,8 +186,7 @@ class _Wireframe3DRotationScreenState extends ConsumerState<Wireframe3DRotationS
               const SizedBox(width: 6),
               Text(
                 '$_score / $targetScore',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -278,7 +274,7 @@ class _Wireframe3DRotationScreenState extends ConsumerState<Wireframe3DRotationS
                   child: Text(
                     String.fromCharCode(65 + idx),
                     style: TextStyle(
-                      fontFamily: 'Bebas Neue',
+                      fontFamily: DesignSystem.fontDisplay,
                       fontSize: 16,
                       fontWeight: FontWeight.bold,
                       color: colorScheme.onSurface.withValues(alpha: 0.5),

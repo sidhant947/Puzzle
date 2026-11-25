@@ -1,6 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/user_providers.dart';
+import '../utils/design_system.dart';
 
 class SuperStreakAction extends ConsumerWidget {
   const SuperStreakAction({super.key});
@@ -35,7 +36,7 @@ class SuperStreakAction extends ConsumerWidget {
             Text(
               streak.toString(),
               style: theme.textTheme.labelMedium?.copyWith(
-                fontFamily: 'Bebas Neue',
+                fontFamily: DesignSystem.fontDisplay,
                 fontWeight: FontWeight.w700,
                 color: theme.colorScheme.primary,
                 letterSpacing: 1.0,

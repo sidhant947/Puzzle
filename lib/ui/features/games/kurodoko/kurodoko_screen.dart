@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -117,7 +117,6 @@ class _KurodokoScreenState extends ConsumerState<KurodokoScreen> {
                     Text(
                       l10n.playAgain.toUpperCase(),
                       style: TextStyle(
-                        fontFamily: 'Geist',
                         fontSize: DesignSystem.fontSizeMD,
                         fontWeight: FontWeight.w700,
                         color: colorScheme.primary,
@@ -239,7 +238,7 @@ class _KurodokoScreenState extends ConsumerState<KurodokoScreen> {
                       ? Text(
                           '${cell.clue}',
                           style: TextStyle(
-                            fontFamily: 'Bebas Neue',
+                            fontFamily: DesignSystem.fontDisplay,
                             fontSize: 26,
                             fontWeight: FontWeight.w700,
                             color: textColor,

@@ -1,3 +1,4 @@
+import 'dart:math' as math;
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import '../data/game_metadata.dart';
 import '../data/game_registry.dart';
@@ -69,3 +70,35 @@ int solvedTodayCount(SolvedTodayCountRef ref) {
     (streaks) => streaks.values.where((s) => s.solvedToday).length,
   ));
 }
+
+final dailyWorkoutGamesProvider = Provider<List<GameMetadata>>((ref) {
+  final now = DateTime.now();
+  final seed = now.year * 10000 + now.month * 100 + now.day;
+  final rand = math.Random(seed);
+  final hiddenIds = ref.watch(userDataNotifierProvider.select((d) => (d.hiddenGameIds ?? []).toSet()));
+  final available = allGamesMetadata.where((g) => !hiddenIds.contains(g.id)).toList();
+  if (available.length <= 3) return available;
+
+  final mathGames = available.where((g) => g.category == 'MATH').toList();
+  final wordGames = available.where((g) => g.category == 'WORD').toList();
+  final logicGames = available.where((g) => g.category == 'LOGIC').toList();
+
+  final g1 = mathGames.isNotEmpty ? mathGames[rand.nextInt(mathGames.length)] : available[rand.nextInt(available.length)];
+  final g2 = wordGames.isNotEmpty ? wordGames[rand.nextInt(wordGames.length)] : available[rand.nextInt(available.length)];
+  final g3 = logicGames.isNotEmpty ? logicGames[rand.nextInt(logicGames.length)] : available[rand.nextInt(available.length)];
+
+  return [g1, g2, g3];
+});
+
+final activeStreakGamesProvider = Provider<List<GameMetadata>>((ref) {
+  final streaks = ref.watch(gameStreakNotifierProvider);
+  final hiddenIds = ref.watch(userDataNotifierProvider.select((d) => (d.hiddenGameIds ?? []).toSet()));
+  final available = allGamesMetadata.where((g) => !hiddenIds.contains(g.id)).toList();
+  final activeList = available.where((g) => (streaks[g.id]?.currentStreak ?? 0) > 0).toList();
+  activeList.sort((a, b) {
+    final sA = streaks[a.id]?.currentStreak ?? 0;
+    final sB = streaks[b.id]?.currentStreak ?? 0;
+    return sB.compareTo(sA);
+  });
+  return activeList.take(6).toList();
+});

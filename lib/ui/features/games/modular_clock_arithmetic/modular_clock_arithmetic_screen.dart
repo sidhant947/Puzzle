@@ -1,5 +1,5 @@
 import 'dart:math' as math;
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -129,7 +129,6 @@ class _ModularClockArithmeticScreenState extends ConsumerState<ModularClockArith
                 'WHAT HOUR WILL IT BE IN ${_currentQuestion.addHours} HOURS?',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontFamily: 'Geist',
                   fontSize: 13,
                   fontWeight: FontWeight.w700,
                   color: colorScheme.primary,
@@ -158,8 +157,7 @@ class _ModularClockArithmeticScreenState extends ConsumerState<ModularClockArith
               const SizedBox(width: 6),
               Text(
                 'CLOCK MOD 12',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -178,8 +176,7 @@ class _ModularClockArithmeticScreenState extends ConsumerState<ModularClockArith
               const SizedBox(width: 6),
               Text(
                 '$_score / $targetScore',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -217,7 +214,7 @@ class _ModularClockArithmeticScreenState extends ConsumerState<ModularClockArith
               child: Text(
                 '$hour',
                 style: TextStyle(
-                  fontFamily: 'Bebas Neue',
+                  fontFamily: DesignSystem.fontDisplay,
                   fontSize: 16,
                   fontWeight: FontWeight.bold,
                   color: colorScheme.onSurface.withValues(alpha: 0.6),
@@ -292,7 +289,7 @@ class _ModularClockArithmeticScreenState extends ConsumerState<ModularClockArith
             child: Text(
               '$choice:00',
               style: TextStyle(
-                fontFamily: 'Bebas Neue',
+                fontFamily: DesignSystem.fontDisplay,
                 fontSize: 32,
                 fontWeight: FontWeight.w700,
                 color: textColor,

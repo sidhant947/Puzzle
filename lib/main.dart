@@ -1,6 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:cupertino_ui/cupertino_ui.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:flutter_localizations/flutter_localizations.dart'
+    hide GlobalMaterialLocalizations, GlobalCupertinoLocalizations;
 import 'package:flutter/foundation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:window_manager/window_manager.dart';
@@ -11,6 +13,7 @@ import 'data/repositories/user_repository.dart';
 import 'providers/user_providers.dart';
 import 'providers/theme_provider.dart';
 import 'providers/locale_provider.dart';
+import 'providers/font_provider.dart';
 import 'ui/features/main_shell/main_shell.dart';
 import 'utils/design_system.dart';
 import 'widgets/error_boundary.dart';
@@ -53,8 +56,6 @@ void main() async {
   final userRepository = UserRepository();
   await userRepository.init();
 
-
-
   // Log app startup time
   stopwatch.stop();
   debugPrint('App startup time (sync): ${stopwatch.elapsedMilliseconds}ms');
@@ -78,6 +79,8 @@ class MyApp extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     final appThemeMode = ref.watch(themeNotifierProvider);
     final appLocale = ref.watch(localeNotifierProvider);
+    final useSystemFont = ref.watch(fontNotifierProvider);
+    DesignSystem.useSystemFont = useSystemFont;
 
     ThemeMode themeMode;
     switch (appThemeMode) {
@@ -95,8 +98,10 @@ class MyApp extends ConsumerWidget {
     return MaterialApp(
       title: 'Puzzle Games',
       debugShowCheckedModeBanner: false,
-      theme: DesignSystem.lightTheme,
-      darkTheme: DesignSystem.darkTheme,
+      theme: DesignSystem.buildTheme(Brightness.light,
+          useSystemFont: useSystemFont),
+      darkTheme: DesignSystem.buildTheme(Brightness.dark,
+          useSystemFont: useSystemFont),
       themeMode: themeMode,
       localizationsDelegates: [
         AppLocalizations.delegate,
@@ -107,7 +112,8 @@ class MyApp extends ConsumerWidget {
       locale: appLocale,
       supportedLocales: [
         const Locale('en'),
-        ...AppLocalizations.supportedLocales.where((l) => l.languageCode != 'en'),
+        ...AppLocalizations.supportedLocales
+            .where((l) => l.languageCode != 'en'),
       ],
       localeListResolutionCallback: (locales, supportedLocales) {
         if (locales != null) {
@@ -125,5 +131,3 @@ class MyApp extends ConsumerWidget {
     );
   }
 }
-
-

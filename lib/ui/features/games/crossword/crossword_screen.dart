@@ -1,5 +1,5 @@
 // ignore_for_file: library_private_types_in_public_api
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'crossword_provider.dart';
@@ -242,7 +242,7 @@ extension CrosswordScreenControls on _CrosswordScreenState {
                       Text(
                         "CLUE",
                         style: TextStyle(
-                          fontFamily: 'Bebas Neue',
+                          fontFamily: DesignSystem.fontDisplay,
                           fontSize: DesignSystem.fontSize2XL,
                           fontWeight: FontWeight.w700,
                           color: colorScheme.primary,

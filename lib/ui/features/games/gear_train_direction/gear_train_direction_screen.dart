@@ -1,5 +1,5 @@
 import 'dart:math' as math;
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -134,7 +134,6 @@ class _GearTrainDirectionScreenState extends ConsumerState<GearTrainDirectionScr
                 'WHAT DIRECTION WILL THE GREEN "?" GEAR ROTATE?',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontFamily: 'Geist',
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
                   color: colorScheme.onSurface.withValues(alpha: 0.6),
@@ -165,8 +164,7 @@ class _GearTrainDirectionScreenState extends ConsumerState<GearTrainDirectionScr
               const SizedBox(width: 6),
               Text(
                 'GEAR TRAIN',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -185,8 +183,7 @@ class _GearTrainDirectionScreenState extends ConsumerState<GearTrainDirectionScr
               const SizedBox(width: 6),
               Text(
                 '$_score / $targetScore',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -262,10 +259,10 @@ class _GearTrainDirectionScreenState extends ConsumerState<GearTrainDirectionScr
                           ),
                           child: Center(
                             child: isTarget
-                                ? const Text(
+                                ? Text(
                                     '?',
                                     style: TextStyle(
-                                      fontFamily: 'Bebas Neue',
+                                      fontFamily: DesignSystem.fontDisplay,
                                       fontSize: 28,
                                       fontWeight: FontWeight.bold,
                                       color: DesignSystem.accentEmerald,
@@ -302,7 +299,7 @@ class _GearTrainDirectionScreenState extends ConsumerState<GearTrainDirectionScr
             color: colorScheme.surface,
             onTap: () => _submitAnswer(GearDirection.clockwise),
             padding: const EdgeInsets.symmetric(vertical: 18),
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(Icons.rotate_right_rounded, color: DesignSystem.primary, size: 24),
@@ -310,7 +307,7 @@ class _GearTrainDirectionScreenState extends ConsumerState<GearTrainDirectionScr
                 Text(
                   'CLOCKWISE',
                   style: TextStyle(
-                    fontFamily: 'Bebas Neue',
+                    fontFamily: DesignSystem.fontDisplay,
                     fontSize: 22,
                     fontWeight: FontWeight.w700,
                     letterSpacing: 1.5,
@@ -326,7 +323,7 @@ class _GearTrainDirectionScreenState extends ConsumerState<GearTrainDirectionScr
             color: colorScheme.surface,
             onTap: () => _submitAnswer(GearDirection.counterClockwise),
             padding: const EdgeInsets.symmetric(vertical: 18),
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(Icons.rotate_left_rounded, color: DesignSystem.gameRose, size: 24),
@@ -334,7 +331,7 @@ class _GearTrainDirectionScreenState extends ConsumerState<GearTrainDirectionScr
                 Text(
                   'COUNTER-CW',
                   style: TextStyle(
-                    fontFamily: 'Bebas Neue',
+                    fontFamily: DesignSystem.fontDisplay,
                     fontSize: 22,
                     fontWeight: FontWeight.w700,
                     letterSpacing: 1.5,

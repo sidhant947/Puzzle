@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'tangle_fix_engine.dart';

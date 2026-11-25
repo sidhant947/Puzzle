@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import '../utils/design_system.dart';
 
 /// A minimalistic, highly readable card container.
@@ -149,7 +149,6 @@ class _TangibleButtonState extends State<TangibleButton> {
             ),
             child: DefaultTextStyle(
               style: TextStyle(
-                fontFamily: 'Geist',
                 color: isEnabled
                     ? (resolvedColor == colorScheme.surface || resolvedColor == Colors.transparent
                         ? colorScheme.onSurface

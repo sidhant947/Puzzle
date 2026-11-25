@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -176,8 +176,7 @@ class _SubitizingRushScreenState extends ConsumerState<SubitizingRushScreen> {
               const SizedBox(width: 6),
               Text(
                 'STREAK: $_streak',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -196,8 +195,7 @@ class _SubitizingRushScreenState extends ConsumerState<SubitizingRushScreen> {
               const SizedBox(width: 6),
               Text(
                 '$_score / $targetScore',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -246,7 +244,7 @@ class _SubitizingRushScreenState extends ConsumerState<SubitizingRushScreen> {
               child: Text(
                 'HOW MANY DOTS?',
                 style: TextStyle(
-                  fontFamily: 'Bebas Neue',
+                  fontFamily: DesignSystem.fontDisplay,
                   fontSize: 26,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.5,
@@ -289,7 +287,7 @@ class _SubitizingRushScreenState extends ConsumerState<SubitizingRushScreen> {
                 child: Text(
                   '$opt',
                   style: TextStyle(
-                    fontFamily: 'Bebas Neue',
+                    fontFamily: DesignSystem.fontDisplay,
                     fontSize: 32,
                     fontWeight: FontWeight.w700,
                     color: textColor,

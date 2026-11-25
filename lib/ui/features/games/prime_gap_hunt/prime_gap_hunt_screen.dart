@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -146,8 +146,7 @@ class _PrimeGapHuntScreenState extends ConsumerState<PrimeGapHuntScreen> {
               const SizedBox(width: 6),
               Text(
                 'PRIME GAPS',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -166,8 +165,7 @@ class _PrimeGapHuntScreenState extends ConsumerState<PrimeGapHuntScreen> {
               const SizedBox(width: 6),
               Text(
                 '$_score / $targetScore',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -192,7 +190,6 @@ class _PrimeGapHuntScreenState extends ConsumerState<PrimeGapHuntScreen> {
           Text(
             'FIND THE GAP BETWEEN CONSECUTIVE PRIMES',
             style: TextStyle(
-              fontFamily: 'Geist',
               fontSize: 12,
               fontWeight: FontWeight.w700,
               color: colorScheme.onSurface.withValues(alpha: 0.5),
@@ -212,7 +209,7 @@ class _PrimeGapHuntScreenState extends ConsumerState<PrimeGapHuntScreen> {
                     Text(
                       'GAP: ?',
                       style: TextStyle(
-                        fontFamily: 'Bebas Neue',
+                        fontFamily: DesignSystem.fontDisplay,
                         fontSize: 18,
                         fontWeight: FontWeight.bold,
                         color: colorScheme.onSurface.withValues(alpha: 0.6),
@@ -241,8 +238,7 @@ class _PrimeGapHuntScreenState extends ConsumerState<PrimeGapHuntScreen> {
       child: Center(
         child: Text(
           '$val',
-          style: const TextStyle(
-            fontFamily: 'Bebas Neue',
+          style: TextStyle(fontFamily: DesignSystem.fontDisplay,
             fontSize: 36,
             fontWeight: FontWeight.w900,
             color: DesignSystem.gameIndigo,
@@ -289,7 +285,7 @@ class _PrimeGapHuntScreenState extends ConsumerState<PrimeGapHuntScreen> {
             child: Text(
               '$choice',
               style: TextStyle(
-                fontFamily: 'Bebas Neue',
+                fontFamily: DesignSystem.fontDisplay,
                 fontSize: 32,
                 fontWeight: FontWeight.w700,
                 color: textColor,

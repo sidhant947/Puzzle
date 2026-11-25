@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
@@ -158,7 +158,6 @@ class GameTile extends ConsumerWidget {
                 child: Text(
                   l10n.newGameLabel.toUpperCase(),
                   style: const TextStyle(
-                    fontFamily: 'Geist',
                     fontSize: 9.0,
                     fontWeight: FontWeight.w900,
                     color: Colors.white,
@@ -183,7 +182,6 @@ class GameTile extends ConsumerWidget {
                     Text(
                       '$streakCount',
                       style: const TextStyle(
-                        fontFamily: 'Geist',
                         fontSize: 10.0,
                         fontWeight: FontWeight.w900,
                         color: DesignSystem.accentAmber,
@@ -219,12 +217,13 @@ class GameTile extends ConsumerWidget {
                 fit: BoxFit.scaleDown,
                 alignment: Alignment.centerLeft,
                 child: Text(
-                  L10nGameHelpers.getGameTitle(context, game.id).toUpperCase(),
+                  L10nGameHelpers.getGameTitle(context, game.id),
                   maxLines: 1,
-                  style: theme.textTheme.headlineMedium?.copyWith(
-                    fontSize: isMobile ? 26.0 : 32.0,
-                    letterSpacing: 0.5,
-                    height: 1.0,
+                  style: theme.textTheme.titleLarge?.copyWith(
+                    fontWeight: FontWeight.w700,
+                    fontSize: isMobile ? 20.0 : 24.0,
+                    letterSpacing: 0.3,
+                    height: 1.1,
                   ),
                 ),
               ),

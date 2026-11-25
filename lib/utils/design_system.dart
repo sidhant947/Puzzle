@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 
 class DesignSystem {
   // --- Elegant Typographic System (Scale) ---
@@ -90,11 +90,17 @@ class DesignSystem {
   static const double minTouchTarget = 48.0;
   static const double recommendedTouchTarget = 56.0;
 
-  // --- Theme Building (cached) ---
-  static final ThemeData lightTheme = _buildTheme(Brightness.light);
-  static final ThemeData darkTheme = _buildTheme(Brightness.dark);
+  static bool useSystemFont = false;
+  static String? get fontDisplay => useSystemFont ? null : 'IBMPlexSans';
+  static String? get fontBody => useSystemFont ? null : 'IBMPlexSans';
 
-  static ThemeData _buildTheme(Brightness brightness) {
+  static ThemeData get lightTheme => _buildTheme(Brightness.light, useSystemFont: useSystemFont);
+  static ThemeData get darkTheme => _buildTheme(Brightness.dark, useSystemFont: useSystemFont);
+
+  static ThemeData buildTheme(Brightness brightness, {bool? useSystemFont}) =>
+      _buildTheme(brightness, useSystemFont: useSystemFont ?? DesignSystem.useSystemFont);
+
+  static ThemeData _buildTheme(Brightness brightness, {bool useSystemFont = false}) {
     final bool isDark = brightness == Brightness.dark;
     final Color bgColor = isDark ? darkBackground : background;
     final Color surfColor = isDark ? darkSurface : surface;
@@ -102,11 +108,13 @@ class DesignSystem {
     final Color subInk = isDark ? darkInkSlate : inkSlate;
     final Color outColor = isDark ? darkOutline : outline;
     final Color outVarColor = isDark ? darkOutlineVariant : outlineVariant;
+    final String? displayFont = useSystemFont ? null : 'IBMPlexSans';
+    final String? bodyFont = useSystemFont ? null : 'IBMPlexSans';
 
     return ThemeData(
       useMaterial3: true,
       brightness: brightness,
-      fontFamily: 'Geist',
+      fontFamily: bodyFont,
       scaffoldBackgroundColor: bgColor,
       colorScheme: isDark
           ? ColorScheme.dark(
@@ -140,7 +148,7 @@ class DesignSystem {
         centerTitle: true,
         scrolledUnderElevation: 0,
         titleTextStyle: TextStyle(
-          fontFamily: 'Bebas Neue',
+          fontFamily: displayFont,
           color: mainInk,
           fontSize: fontSizeXL,
           fontWeight: FontWeight.w700,
@@ -148,27 +156,26 @@ class DesignSystem {
         ),
       ),
       textTheme: TextTheme(
-        displayLarge: TextStyle(fontFamily: 'Bebas Neue', fontSize: fontSizeHero, fontWeight: FontWeight.w700, letterSpacing: 1.0, color: mainInk, height: 1.15),
-        displayMedium: TextStyle(fontFamily: 'Bebas Neue', fontSize: fontSize3XL, fontWeight: FontWeight.w700, letterSpacing: 0.8, color: mainInk, height: 1.15),
-        displaySmall: TextStyle(fontFamily: 'Bebas Neue', fontSize: fontSize2XL, fontWeight: FontWeight.w700, letterSpacing: 0.6, color: mainInk, height: 1.2),
-        headlineLarge: TextStyle(fontFamily: 'Bebas Neue', fontSize: fontSize3XL, fontWeight: FontWeight.w700, letterSpacing: 0.8, color: mainInk, height: 1.2),
-        headlineMedium: TextStyle(fontFamily: 'Bebas Neue', fontSize: fontSize2XL, fontWeight: FontWeight.w700, letterSpacing: 0.6, color: mainInk, height: 1.25),
-        headlineSmall: TextStyle(fontFamily: 'Bebas Neue', fontSize: fontSizeXL, fontWeight: FontWeight.w700, letterSpacing: 0.6, color: mainInk, height: 1.25),
-        titleLarge: TextStyle(fontFamily: 'Geist', fontSize: fontSizeXL, fontWeight: FontWeight.w700, letterSpacing: 0.2, color: mainInk, height: 1.25),
-        titleMedium: TextStyle(fontFamily: 'Geist', fontSize: fontSizeLG, fontWeight: FontWeight.w600, letterSpacing: 0.15, color: mainInk, height: 1.3),
-        titleSmall: TextStyle(fontFamily: 'Geist', fontSize: fontSizeMD, fontWeight: FontWeight.w600, letterSpacing: 0.15, color: mainInk, height: 1.3),
-        bodyLarge: TextStyle(fontFamily: 'Geist', fontSize: fontSizeLG, fontWeight: FontWeight.w500, color: subInk, letterSpacing: 0.15, height: 1.55),
-        bodyMedium: TextStyle(fontFamily: 'Geist', fontSize: fontSizeMD, fontWeight: FontWeight.w500, color: subInk, letterSpacing: 0.15, height: 1.6),
-        bodySmall: TextStyle(fontFamily: 'Geist', fontSize: fontSizeSM, fontWeight: FontWeight.w400, color: subInk, letterSpacing: 0.15, height: 1.6),
-        labelLarge: TextStyle(fontFamily: 'Geist', fontSize: fontSizeSM, fontWeight: FontWeight.w700, letterSpacing: 0.5, color: mainInk, height: 1.2),
-        labelMedium: TextStyle(fontFamily: 'Geist', fontSize: fontSizeXS, fontWeight: FontWeight.w700, letterSpacing: 0.3, color: mainInk, height: 1.2),
-        labelSmall: TextStyle(fontFamily: 'Geist', fontSize: fontSize2XS, fontWeight: FontWeight.w600, letterSpacing: 0.2, color: mainInk, height: 1.2),
+        displayLarge: TextStyle(fontFamily: displayFont, fontSize: fontSizeHero, fontWeight: FontWeight.w700, letterSpacing: 1.0, color: mainInk, height: 1.15),
+        displayMedium: TextStyle(fontFamily: displayFont, fontSize: fontSize3XL, fontWeight: FontWeight.w700, letterSpacing: 0.8, color: mainInk, height: 1.15),
+        displaySmall: TextStyle(fontFamily: displayFont, fontSize: fontSize2XL, fontWeight: FontWeight.w700, letterSpacing: 0.6, color: mainInk, height: 1.2),
+        headlineLarge: TextStyle(fontFamily: displayFont, fontSize: fontSize3XL, fontWeight: FontWeight.w700, letterSpacing: 0.8, color: mainInk, height: 1.2),
+        headlineMedium: TextStyle(fontFamily: displayFont, fontSize: fontSize2XL, fontWeight: FontWeight.w700, letterSpacing: 0.6, color: mainInk, height: 1.25),
+        headlineSmall: TextStyle(fontFamily: displayFont, fontSize: fontSizeXL, fontWeight: FontWeight.w700, letterSpacing: 0.6, color: mainInk, height: 1.25),
+        titleLarge: TextStyle(fontFamily: bodyFont, fontSize: fontSizeXL, fontWeight: FontWeight.w700, letterSpacing: 0.2, color: mainInk, height: 1.25),
+        titleMedium: TextStyle(fontFamily: bodyFont, fontSize: fontSizeLG, fontWeight: FontWeight.w600, letterSpacing: 0.15, color: mainInk, height: 1.3),
+        titleSmall: TextStyle(fontFamily: bodyFont, fontSize: fontSizeMD, fontWeight: FontWeight.w600, letterSpacing: 0.15, color: mainInk, height: 1.3),
+        bodyLarge: TextStyle(fontFamily: bodyFont, fontSize: fontSizeLG, fontWeight: FontWeight.w500, color: subInk, letterSpacing: 0.15, height: 1.55),
+        bodyMedium: TextStyle(fontFamily: bodyFont, fontSize: fontSizeMD, fontWeight: FontWeight.w500, color: subInk, letterSpacing: 0.15, height: 1.6),
+        bodySmall: TextStyle(fontFamily: bodyFont, fontSize: fontSizeSM, fontWeight: FontWeight.w400, color: subInk, letterSpacing: 0.15, height: 1.6),
+        labelLarge: TextStyle(fontFamily: bodyFont, fontSize: fontSizeSM, fontWeight: FontWeight.w700, letterSpacing: 0.5, color: mainInk, height: 1.2),
+        labelMedium: TextStyle(fontFamily: bodyFont, fontSize: fontSizeXS, fontWeight: FontWeight.w700, letterSpacing: 0.3, color: mainInk, height: 1.2),
+        labelSmall: TextStyle(fontFamily: bodyFont, fontSize: fontSize2XS, fontWeight: FontWeight.w600, letterSpacing: 0.2, color: mainInk, height: 1.2),
       ),
       iconTheme: IconThemeData(color: mainInk, size: 24),
     );
   }
 
-  // --- Theme Building (Compatibility) ---
   static ThemeData get theme => lightTheme;
 
   // --- Helper Methods ---

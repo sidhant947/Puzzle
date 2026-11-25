@@ -1,7 +1,7 @@
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/utils/l10n_game_helpers.dart';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
@@ -327,7 +327,7 @@ class _SemanticDistanceScreenState extends ConsumerState<SemanticDistanceScreen>
                         Text(
                           bestGuess.distance.toStringAsFixed(1),
                           style: TextStyle(
-                            fontFamily: 'Bebas Neue',
+                            fontFamily: DesignSystem.fontDisplay,
                             fontSize: 20,
                             color: _getProximityColor(bestGuess.distance, isDark),
                           ),
@@ -430,7 +430,7 @@ class _SemanticDistanceScreenState extends ConsumerState<SemanticDistanceScreen>
                                   Text(
                                     guess.distance.toStringAsFixed(1),
                                     style: TextStyle(
-                                      fontFamily: 'Bebas Neue',
+                                      fontFamily: DesignSystem.fontDisplay,
                                       fontSize: 20,
                                       color: proxColor,
                                     ),

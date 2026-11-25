@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/utils/l10n_game_helpers.dart';
@@ -247,7 +247,6 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
                           child: Text(
                             l10n.playNext.toUpperCase(),
                             style: const TextStyle(
-                              fontFamily: 'Geist',
                               color: Colors.white,
                               fontWeight: FontWeight.w700,
                               fontSize: DesignSystem.fontSizeMD,
@@ -268,7 +267,6 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
                     child: Text(
                       l10n.playAgain.toUpperCase(),
                       style: const TextStyle(
-                        fontFamily: 'Geist',
                         color: Colors.white,
                         fontWeight: FontWeight.w700,
                         fontSize: DesignSystem.fontSizeMD,
@@ -383,7 +381,6 @@ class _GameCompletionDialogState extends ConsumerState<GameCompletionDialog> {
                                                             child: Text(
                                                               (next != null && !isSameGame ? reviewL10n.playNext : reviewL10n.playAgain).toUpperCase(),
                                                               style: const TextStyle(
-                                                                fontFamily: 'Geist',
                                                                 color: Colors.white,
                                                                 fontWeight: FontWeight.w700,
                                                                 fontSize: DesignSystem.fontSizeMD,

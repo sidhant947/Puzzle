@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -134,8 +134,7 @@ class _NavonHierarchicalScreenState extends ConsumerState<NavonHierarchicalScree
               const SizedBox(width: 6),
               Text(
                 'NAVON TASK',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -154,8 +153,7 @@ class _NavonHierarchicalScreenState extends ConsumerState<NavonHierarchicalScree
               const SizedBox(width: 6),
               Text(
                 '$_score / $targetScore',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -189,7 +187,6 @@ class _NavonHierarchicalScreenState extends ConsumerState<NavonHierarchicalScree
         child: Text(
           isGlobal ? 'IDENTIFY THE LARGE (GLOBAL) LETTER' : 'IDENTIFY THE SMALL (LOCAL) LETTER',
           style: TextStyle(
-            fontFamily: 'Geist',
             fontSize: 13,
             fontWeight: FontWeight.w800,
             color: isGlobal ? DesignSystem.primary : DesignSystem.gameRose,
@@ -226,7 +223,6 @@ class _NavonHierarchicalScreenState extends ConsumerState<NavonHierarchicalScree
                         ? Text(
                             local,
                             style: TextStyle(
-                              fontFamily: 'Geist',
                               fontSize: 14,
                               fontWeight: FontWeight.w900,
                               color: colorScheme.onSurface,
@@ -311,8 +307,7 @@ class _NavonHierarchicalScreenState extends ConsumerState<NavonHierarchicalScree
           onTap: () => _selectLetter(letter),
           child: Text(
             letter,
-            style: const TextStyle(
-              fontFamily: 'Bebas Neue',
+            style: TextStyle(fontFamily: DesignSystem.fontDisplay,
               fontSize: 26,
               fontWeight: FontWeight.w700,
             ),

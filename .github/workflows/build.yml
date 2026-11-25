@@ -23,7 +23,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: '17'
+          java-version: '21'
 
       - name: Setup Flutter
         uses: subosito/flutter-action@v2
@@ -119,7 +119,7 @@ jobs:
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 'latest'
+          node-version: '24'
 
       - name: Install appdmg
         run: npm install -g appdmg
@@ -138,7 +138,7 @@ jobs:
       - name: Create Portable Zip
         run: |
           cd build/macos/Build/Products/Release
-          zip -r puzzle-games-macos-portable.zip puzzle.app
+          zip -ry puzzle-games-macos-portable.zip puzzle.app
 
       - name: Upload macOS Artifacts
         uses: actions/upload-artifact@v4

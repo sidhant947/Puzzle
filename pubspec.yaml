@@ -48,6 +48,8 @@ dependencies:
   flutter_slidable: ^3.1.1
   wakelock_plus: ^1.2.8
 
+  material_ui: any
+  cupertino_ui: any
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -91,18 +93,9 @@ flutter:
   # https://flutter.dev/to/asset-from-package
 
   fonts:
-    - family: Bebas Neue
+    - family: IBMPlexSans
       fonts:
-        - asset: assets/fonts/Bebas_Neue/BebasNeue-Regular.ttf
-    - family: Geist
-      fonts:
-        - asset: assets/fonts/Geist/static/Geist-Regular.ttf
-        - asset: assets/fonts/Geist/static/Geist-Medium.ttf
-          weight: 500
-        - asset: assets/fonts/Geist/static/Geist-SemiBold.ttf
-          weight: 600
-        - asset: assets/fonts/Geist/static/Geist-Bold.ttf
-          weight: 700
+        - asset: assets/fonts/IBMPlexSans-VariableFont_wdth,wght.ttf
 
 msix_config:
   display_name: "Puzzle Games By Sidhant"

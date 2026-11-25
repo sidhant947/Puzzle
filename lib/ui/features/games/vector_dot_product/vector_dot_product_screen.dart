@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -146,8 +146,7 @@ class _VectorDotProductScreenState extends ConsumerState<VectorDotProductScreen>
               const SizedBox(width: 6),
               Text(
                 'DOT PRODUCT',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -166,8 +165,7 @@ class _VectorDotProductScreenState extends ConsumerState<VectorDotProductScreen>
               const SizedBox(width: 6),
               Text(
                 '$_score / $targetScore',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -192,7 +190,6 @@ class _VectorDotProductScreenState extends ConsumerState<VectorDotProductScreen>
           Text(
             'u • v = (u_x * v_x) + (u_y * v_y)',
             style: TextStyle(
-              fontFamily: 'Geist',
               fontSize: 12,
               fontWeight: FontWeight.w800,
               color: colorScheme.onSurface.withValues(alpha: 0.5),
@@ -206,7 +203,7 @@ class _VectorDotProductScreenState extends ConsumerState<VectorDotProductScreen>
               Text(
                 _currentQuestion.vecAStr,
                 style: TextStyle(
-                  fontFamily: 'Bebas Neue',
+                  fontFamily: DesignSystem.fontDisplay,
                   fontSize: 40,
                   fontWeight: FontWeight.w900,
                   color: colorScheme.primary,
@@ -220,7 +217,7 @@ class _VectorDotProductScreenState extends ConsumerState<VectorDotProductScreen>
               Text(
                 _currentQuestion.vecBStr,
                 style: TextStyle(
-                  fontFamily: 'Bebas Neue',
+                  fontFamily: DesignSystem.fontDisplay,
                   fontSize: 40,
                   fontWeight: FontWeight.w900,
                   color: DesignSystem.gameIndigo,
@@ -271,7 +268,7 @@ class _VectorDotProductScreenState extends ConsumerState<VectorDotProductScreen>
             child: Text(
               '$choice',
               style: TextStyle(
-                fontFamily: 'Bebas Neue',
+                fontFamily: DesignSystem.fontDisplay,
                 fontSize: 32,
                 fontWeight: FontWeight.w700,
                 color: textColor,

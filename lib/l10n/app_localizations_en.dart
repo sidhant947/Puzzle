@@ -193,13 +193,13 @@ class AppLocalizationsEn extends AppLocalizations {
   String get categorySpatial => 'SPATIAL';
 
   @override
-  String get themeLight => 'LIGHT';
+  String get themeLight => 'Light';
 
   @override
-  String get themeDark => 'DARK';
+  String get themeDark => 'Dark';
 
   @override
-  String get themeSystem => 'SYSTEM';
+  String get themeSystem => 'System';
 
   @override
   String get starOnGithub => 'Star on GitHub';
@@ -399,7 +399,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nonogramWin => 'Image Revealed!';
 
   @override
-  String get magnetsTitle => 'MAGNETS';
+  String get magnetsTitle => 'Magnets';
 
   @override
   String get magnetsSubtitle =>
@@ -416,7 +416,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get magnetsWinMessage => 'All magnets are perfectly arranged!';
 
   @override
-  String get lighthousesTitle => 'LIGHTHOUSES';
+  String get lighthousesTitle => 'Lighthouses';
 
   @override
   String get lighthousesSubtitle => 'Place ships based on lighthouse clues.';
@@ -433,7 +433,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'All lighthouses are guiding the ships perfectly!';
 
   @override
-  String get dominosaTitle => 'DOMINOSA';
+  String get dominosaTitle => 'Dominosa';
 
   @override
   String get dominosaSubtitle => 'Find all the hidden dominoes in the grid.';
@@ -449,7 +449,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get dominosaWinMessage => 'Every domino has been found and placed!';
 
   @override
-  String get skyscrapersTitle => 'SKYSCRAPERS';
+  String get skyscrapersTitle => 'Skyscrapers';
 
   @override
   String get skyscrapersSubtitle => 'Fill the grid with building heights.';
@@ -465,7 +465,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get skyscrapersWinMessage => 'All buildings are perfectly positioned!';
 
   @override
-  String get nurikabeTitle => 'NURIKABE';
+  String get nurikabeTitle => 'Nurikabe';
 
   @override
   String get nurikabeSubtitle => 'Form a connected sea and separate islands.';
@@ -481,7 +481,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get nurikabeWinMessage => 'Islands separated, sea connected!';
 
   @override
-  String get fillominoTitle => 'FILLOMINO';
+  String get fillominoTitle => 'Fillomino';
 
   @override
   String get fillominoSubtitle =>
@@ -498,7 +498,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get fillominoWinMessage => 'Perfectly tiled with logic!';
 
   @override
-  String get hitoriTitle => 'HITORI';
+  String get hitoriTitle => 'Hitori';
 
   @override
   String get hitoriSubtitle =>
@@ -588,7 +588,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get balanceScaleTitle => 'BALANCE SCALE';
+  String get balanceScaleTitle => 'Balance Scale';
 
   @override
   String get balanceScaleSubtitle =>
@@ -614,7 +614,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get balanceScaleSubmit => 'SUBMIT';
 
   @override
-  String get binaryPuzzleTitle => 'BINARY PUZZLE';
+  String get binaryPuzzleTitle => 'Binary Puzzle';
 
   @override
   String get binaryPuzzleSubtitle =>
@@ -628,7 +628,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'You solved the binary puzzle with perfect logic!';
 
   @override
-  String get blockEscapeTitle => 'BLOCK ESCAPE';
+  String get blockEscapeTitle => 'Block Escape';
 
   @override
   String get blockEscapeSubtitle =>
@@ -656,7 +656,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get boxCompletionOptions => 'OPTIONS';
 
   @override
-  String get bridgesTitle => 'BRIDGES';
+  String get bridgesTitle => 'Bridges';
 
   @override
   String get bridgesSubtitle =>
@@ -669,7 +669,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get bridgesWinMessage => 'You successfully connected all the islands!';
 
   @override
-  String get calculationSprintTitle => 'CALCULATION SPRINT';
+  String get calculationSprintTitle => 'Calculation Sprint';
 
   @override
   String get calculationSprintSubtitle =>
@@ -794,7 +794,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get colorFloodLoseMessage => 'You ran out of moves. Try again!';
 
   @override
-  String get colorMatchTitle => 'COLOR MATCH';
+  String get colorMatchTitle => 'Color Match';
 
   @override
   String get colorMatchSubtitle =>
@@ -818,7 +818,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get corsiBlocksTitle => 'CORSI BLOCKS';
+  String get corsiBlocksTitle => 'Corsi Blocks';
 
   @override
   String get corsiBlocksSubtitle =>
@@ -848,7 +848,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get corsiBlocksSpan => 'SPAN';
 
   @override
-  String get crownTitle => 'CROWN';
+  String get crownTitle => 'Crown';
 
   @override
   String get crownSubtitle =>
@@ -862,7 +862,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'All crowns placed successfully with perfect logic.';
 
   @override
-  String get cryptogramTitle => 'CRYPTOGRAM';
+  String get cryptogramTitle => 'Cryptogram';
 
   @override
   String get cryptogramSubtitle =>
@@ -990,7 +990,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get flankerTestTitle => 'FLANKER TEST';
+  String get flankerTestTitle => 'Flanker Test';
 
   @override
   String get flankerTestSubtitle =>
@@ -1060,7 +1060,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get groceryListWhereBelong => 'WHERE DOES THIS BELONG?';
 
   @override
-  String get hueSortTitle => 'HUE SORT';
+  String get hueSortTitle => 'Hue Sort';
 
   @override
   String get hueSortSubtitle =>
@@ -1120,7 +1120,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get letterCancellationTime => 'TIME';
 
   @override
-  String get lightsOutTitle => 'LIGHTS OUT';
+  String get lightsOutTitle => 'Lights Out';
 
   @override
   String get lightsOutSubtitle =>
@@ -1540,7 +1540,7 @@ class AppLocalizationsEn extends AppLocalizations {
   String get oddOneOutSubtitle => 'Find the tile with a different color.';
 
   @override
-  String get einsteinRiddleTitle => 'EINSTEIN RIDDLE';
+  String get einsteinRiddleTitle => 'Einstein Riddle';
 
   @override
   String get einsteinRiddleSubtitle =>
@@ -1729,7 +1729,7 @@ class AppLocalizationsEn extends AppLocalizations {
       'Connect adjacent numbers to reach the target sum.';
 
   @override
-  String get baseShiftTitle => 'BASE SHIFT BLITZ';
+  String get baseShiftTitle => 'Base Shift Blitz';
 
   @override
   String get baseShiftSubtitle => 'Solve in decimal';
@@ -1800,7 +1800,7 @@ class AppLocalizationsEn extends AppLocalizations {
       '1. Drag your finger across the 3D viewport to rotate the block stack.\n\n2. Count all the blocks in the stack.\n\n3. Remember: a block in the air must have structural support blocks underneath it (hidden blocks!).\n\n4. Type your answer in the input field and tap \"SUBMIT GUESS\" to check.';
 
   @override
-  String get alphabetSudokuTitle => 'ALPHABET SUDOKU';
+  String get alphabetSudokuTitle => 'Alphabet Sudoku';
 
   @override
   String get alphabetSudokuSubtitle =>
@@ -1952,7 +1952,7 @@ class AppLocalizationsEn extends AppLocalizations {
   }
 
   @override
-  String get topologyTitle => 'TOPOLOGY';
+  String get topologyTitle => 'Topology';
 
   @override
   String get topologySubtitle =>

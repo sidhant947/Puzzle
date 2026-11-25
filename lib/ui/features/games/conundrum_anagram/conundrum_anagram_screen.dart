@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -166,8 +166,7 @@ class _ConundrumAnagramScreenState extends ConsumerState<ConundrumAnagramScreen>
               const SizedBox(width: 6),
               Text(
                 '9-LETTER CONUNDRUM',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -186,8 +185,7 @@ class _ConundrumAnagramScreenState extends ConsumerState<ConundrumAnagramScreen>
               const SizedBox(width: 6),
               Text(
                 '$_score / $targetScore',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -217,7 +215,6 @@ class _ConundrumAnagramScreenState extends ConsumerState<ConundrumAnagramScreen>
           Text(
             'UNSCRAMBLE THE 9-LETTER WORD',
             style: TextStyle(
-              fontFamily: 'Geist',
               fontSize: 12,
               fontWeight: FontWeight.w800,
               color: colorScheme.onSurface.withValues(alpha: 0.5),
@@ -248,8 +245,7 @@ class _ConundrumAnagramScreenState extends ConsumerState<ConundrumAnagramScreen>
                   child: Center(
                     child: Text(
                       letter,
-                      style: const TextStyle(
-                        fontFamily: 'Bebas Neue',
+                      style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                         fontSize: 26,
                         fontWeight: FontWeight.w900,
                         color: DesignSystem.primary,
@@ -288,8 +284,7 @@ class _ConundrumAnagramScreenState extends ConsumerState<ConundrumAnagramScreen>
                   child: Center(
                     child: Text(
                       letter,
-                      style: const TextStyle(
-                        fontFamily: 'Bebas Neue',
+                      style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                         fontSize: 30,
                         fontWeight: FontWeight.bold,
                       ),
@@ -305,7 +300,7 @@ class _ConundrumAnagramScreenState extends ConsumerState<ConundrumAnagramScreen>
           color: colorScheme.surface,
           onTap: _unselectLetter,
           padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 12),
-          child: const Row(
+          child: Row(
             mainAxisSize: MainAxisSize.min,
             children: [
               Icon(Icons.backspace_rounded, size: 20),
@@ -313,7 +308,7 @@ class _ConundrumAnagramScreenState extends ConsumerState<ConundrumAnagramScreen>
               Text(
                 'BACKSPACE',
                 style: TextStyle(
-                  fontFamily: 'Bebas Neue',
+                  fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
                   letterSpacing: 1.0,

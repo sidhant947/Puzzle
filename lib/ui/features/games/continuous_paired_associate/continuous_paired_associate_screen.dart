@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -197,8 +197,7 @@ class _ContinuousPairedAssociateScreenState extends ConsumerState<ContinuousPair
               const SizedBox(width: 6),
               Text(
                 _isStudyPhase ? 'STUDY: $_studySecondsLeft s' : 'RECALL: ${_queryIndex >= _currentRound.queryQueue.length ? _currentRound.queryQueue.length : _queryIndex + 1}/${_currentRound.queryQueue.length}',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -217,8 +216,7 @@ class _ContinuousPairedAssociateScreenState extends ConsumerState<ContinuousPair
               const SizedBox(width: 6),
               Text(
                 '$_score / $targetScore',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -244,10 +242,10 @@ class _ContinuousPairedAssociateScreenState extends ConsumerState<ContinuousPair
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
+          Text(
             'MEMORIZE THESE SYMBOL PAIRS',
             style: TextStyle(
-              fontFamily: 'Bebas Neue',
+              fontFamily: DesignSystem.fontDisplay,
               fontSize: 22,
               fontWeight: FontWeight.w700,
               letterSpacing: 1.0,
@@ -306,7 +304,6 @@ class _ContinuousPairedAssociateScreenState extends ConsumerState<ContinuousPair
                 const Text(
                   'WHAT WAS PAIRED WITH THIS SYMBOL?',
                   style: TextStyle(
-                    fontFamily: 'Geist',
                     fontSize: 13,
                     fontWeight: FontWeight.w700,
                     letterSpacing: 0.5,

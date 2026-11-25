@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -146,8 +146,7 @@ class _PythagoreanTripleBuilderScreenState extends ConsumerState<PythagoreanTrip
               const SizedBox(width: 6),
               Text(
                 'PYTHAGORAS',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -166,8 +165,7 @@ class _PythagoreanTripleBuilderScreenState extends ConsumerState<PythagoreanTrip
               const SizedBox(width: 6),
               Text(
                 '$_score / $targetScore',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -199,7 +197,6 @@ class _PythagoreanTripleBuilderScreenState extends ConsumerState<PythagoreanTrip
           Text(
             'FIND THE MISSING SIDE (a² + b² = c²)',
             style: TextStyle(
-              fontFamily: 'Geist',
               fontSize: 12,
               fontWeight: FontWeight.w800,
               color: colorScheme.onSurface.withValues(alpha: 0.5),
@@ -238,7 +235,6 @@ class _PythagoreanTripleBuilderScreenState extends ConsumerState<PythagoreanTrip
           Text(
             tag,
             style: TextStyle(
-              fontFamily: 'Geist',
               fontSize: 10,
               fontWeight: FontWeight.bold,
               color: isMissing ? DesignSystem.primary : colorScheme.onSurface.withValues(alpha: 0.6),
@@ -248,7 +244,7 @@ class _PythagoreanTripleBuilderScreenState extends ConsumerState<PythagoreanTrip
           Text(
             val,
             style: TextStyle(
-              fontFamily: 'Bebas Neue',
+              fontFamily: DesignSystem.fontDisplay,
               fontSize: 32,
               fontWeight: FontWeight.w900,
               color: isMissing ? DesignSystem.primary : colorScheme.onSurface,
@@ -296,7 +292,7 @@ class _PythagoreanTripleBuilderScreenState extends ConsumerState<PythagoreanTrip
             child: Text(
               '$choice',
               style: TextStyle(
-                fontFamily: 'Bebas Neue',
+                fontFamily: DesignSystem.fontDisplay,
                 fontSize: 32,
                 fontWeight: FontWeight.w700,
                 color: textColor,

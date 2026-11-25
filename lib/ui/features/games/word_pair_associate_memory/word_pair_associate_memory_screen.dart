@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -192,8 +192,7 @@ class _WordPairAssociateMemoryScreenState extends ConsumerState<WordPairAssociat
               const SizedBox(width: 6),
               Text(
                 _isStudyPhase ? 'STUDY: $_studySecondsLeft s' : 'RECALL ${_queryIndex + 1} / ${_currentRound.queryPairs.length}',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -212,8 +211,7 @@ class _WordPairAssociateMemoryScreenState extends ConsumerState<WordPairAssociat
               const SizedBox(width: 6),
               Text(
                 '$_score / $targetScore',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -239,10 +237,10 @@ class _WordPairAssociateMemoryScreenState extends ConsumerState<WordPairAssociat
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          const Text(
+          Text(
             'MEMORIZE ASSOCIATED PAIRS',
             style: TextStyle(
-              fontFamily: 'Bebas Neue',
+              fontFamily: DesignSystem.fontDisplay,
               fontSize: 22,
               fontWeight: FontWeight.w700,
               letterSpacing: 1.0,
@@ -264,8 +262,7 @@ class _WordPairAssociateMemoryScreenState extends ConsumerState<WordPairAssociat
                   children: [
                     Text(
                       pair.wordA,
-                      style: const TextStyle(
-                        fontFamily: 'Bebas Neue',
+                      style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                         color: DesignSystem.gameIndigo,
@@ -278,7 +275,7 @@ class _WordPairAssociateMemoryScreenState extends ConsumerState<WordPairAssociat
                     Text(
                       pair.wordB,
                       style: TextStyle(
-                        fontFamily: 'Bebas Neue',
+                        fontFamily: DesignSystem.fontDisplay,
                         fontSize: 22,
                         fontWeight: FontWeight.bold,
                         color: colorScheme.onSurface,
@@ -316,7 +313,6 @@ class _WordPairAssociateMemoryScreenState extends ConsumerState<WordPairAssociat
                 const Text(
                   'WHICH WORD WAS PAIRED WITH THIS CUE?',
                   style: TextStyle(
-                    fontFamily: 'Geist',
                     fontSize: 12,
                     fontWeight: FontWeight.w700,
                     letterSpacing: 0.5,
@@ -325,8 +321,7 @@ class _WordPairAssociateMemoryScreenState extends ConsumerState<WordPairAssociat
                 const SizedBox(height: 20),
                 Text(
                   query.wordA,
-                  style: const TextStyle(
-                    fontFamily: 'Bebas Neue',
+                  style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                     fontSize: 48,
                     fontWeight: FontWeight.w900,
                     color: DesignSystem.gameIndigo,
@@ -375,7 +370,7 @@ class _WordPairAssociateMemoryScreenState extends ConsumerState<WordPairAssociat
                   child: Text(
                     choice,
                     style: TextStyle(
-                      fontFamily: 'Bebas Neue',
+                      fontFamily: DesignSystem.fontDisplay,
                       fontSize: 24,
                       fontWeight: FontWeight.w700,
                       color: textColor,

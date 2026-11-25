@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -117,7 +117,6 @@ class _TapaScreenState extends ConsumerState<TapaScreen> {
                     Text(
                       l10n.playAgain.toUpperCase(),
                       style: TextStyle(
-                        fontFamily: 'Geist',
                         fontSize: DesignSystem.fontSizeMD,
                         fontWeight: FontWeight.w700,
                         color: colorScheme.primary,
@@ -237,7 +236,7 @@ class _TapaScreenState extends ConsumerState<TapaScreen> {
                           cell.clues!.join(','),
                           textAlign: TextAlign.center,
                           style: TextStyle(
-                            fontFamily: 'Bebas Neue',
+                            fontFamily: DesignSystem.fontDisplay,
                             fontSize: cell.clues!.length > 1 ? 18 : 24,
                             fontWeight: FontWeight.w700,
                             color: textColor,

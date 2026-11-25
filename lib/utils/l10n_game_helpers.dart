@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 
 class L10nGameHelpers {
@@ -619,7 +619,10 @@ class L10nGameHelpers {
   static String getGameTitle(BuildContext context, String gameId) {
     final l10n = AppLocalizations.of(context)!;
     final factory = _titleMap[gameId];
-    return factory != null ? factory(l10n) : gameId;
+    if (factory != null) {
+      return factory(l10n);
+    }
+    return gameId.split('_').map((w) => w.isNotEmpty ? '${w[0].toUpperCase()}${w.substring(1).toLowerCase()}' : '').join(' ');
   }
 
   static String getGameSubtitle(BuildContext context, String gameId) {

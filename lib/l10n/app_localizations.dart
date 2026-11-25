@@ -509,19 +509,19 @@ abstract class AppLocalizations {
   /// No description provided for @themeLight.
   ///
   /// In en, this message translates to:
-  /// **'LIGHT'**
+  /// **'Light'**
   String get themeLight;
 
   /// No description provided for @themeDark.
   ///
   /// In en, this message translates to:
-  /// **'DARK'**
+  /// **'Dark'**
   String get themeDark;
 
   /// No description provided for @themeSystem.
   ///
   /// In en, this message translates to:
-  /// **'SYSTEM'**
+  /// **'System'**
   String get themeSystem;
 
   /// No description provided for @starOnGithub.
@@ -869,7 +869,7 @@ abstract class AppLocalizations {
   /// No description provided for @magnetsTitle.
   ///
   /// In en, this message translates to:
-  /// **'MAGNETS'**
+  /// **'Magnets'**
   String get magnetsTitle;
 
   /// No description provided for @magnetsSubtitle.
@@ -899,7 +899,7 @@ abstract class AppLocalizations {
   /// No description provided for @lighthousesTitle.
   ///
   /// In en, this message translates to:
-  /// **'LIGHTHOUSES'**
+  /// **'Lighthouses'**
   String get lighthousesTitle;
 
   /// No description provided for @lighthousesSubtitle.
@@ -929,7 +929,7 @@ abstract class AppLocalizations {
   /// No description provided for @dominosaTitle.
   ///
   /// In en, this message translates to:
-  /// **'DOMINOSA'**
+  /// **'Dominosa'**
   String get dominosaTitle;
 
   /// No description provided for @dominosaSubtitle.
@@ -959,7 +959,7 @@ abstract class AppLocalizations {
   /// No description provided for @skyscrapersTitle.
   ///
   /// In en, this message translates to:
-  /// **'SKYSCRAPERS'**
+  /// **'Skyscrapers'**
   String get skyscrapersTitle;
 
   /// No description provided for @skyscrapersSubtitle.
@@ -989,7 +989,7 @@ abstract class AppLocalizations {
   /// No description provided for @nurikabeTitle.
   ///
   /// In en, this message translates to:
-  /// **'NURIKABE'**
+  /// **'Nurikabe'**
   String get nurikabeTitle;
 
   /// No description provided for @nurikabeSubtitle.
@@ -1019,7 +1019,7 @@ abstract class AppLocalizations {
   /// No description provided for @fillominoTitle.
   ///
   /// In en, this message translates to:
-  /// **'FILLOMINO'**
+  /// **'Fillomino'**
   String get fillominoTitle;
 
   /// No description provided for @fillominoSubtitle.
@@ -1049,7 +1049,7 @@ abstract class AppLocalizations {
   /// No description provided for @hitoriTitle.
   ///
   /// In en, this message translates to:
-  /// **'HITORI'**
+  /// **'Hitori'**
   String get hitoriTitle;
 
   /// No description provided for @hitoriSubtitle.
@@ -1211,7 +1211,7 @@ abstract class AppLocalizations {
   /// No description provided for @balanceScaleTitle.
   ///
   /// In en, this message translates to:
-  /// **'BALANCE SCALE'**
+  /// **'Balance Scale'**
   String get balanceScaleTitle;
 
   /// No description provided for @balanceScaleSubtitle.
@@ -1259,7 +1259,7 @@ abstract class AppLocalizations {
   /// No description provided for @binaryPuzzleTitle.
   ///
   /// In en, this message translates to:
-  /// **'BINARY PUZZLE'**
+  /// **'Binary Puzzle'**
   String get binaryPuzzleTitle;
 
   /// No description provided for @binaryPuzzleSubtitle.
@@ -1283,7 +1283,7 @@ abstract class AppLocalizations {
   /// No description provided for @blockEscapeTitle.
   ///
   /// In en, this message translates to:
-  /// **'BLOCK ESCAPE'**
+  /// **'Block Escape'**
   String get blockEscapeTitle;
 
   /// No description provided for @blockEscapeSubtitle.
@@ -1331,7 +1331,7 @@ abstract class AppLocalizations {
   /// No description provided for @bridgesTitle.
   ///
   /// In en, this message translates to:
-  /// **'BRIDGES'**
+  /// **'Bridges'**
   String get bridgesTitle;
 
   /// No description provided for @bridgesSubtitle.
@@ -1355,7 +1355,7 @@ abstract class AppLocalizations {
   /// No description provided for @calculationSprintTitle.
   ///
   /// In en, this message translates to:
-  /// **'CALCULATION SPRINT'**
+  /// **'Calculation Sprint'**
   String get calculationSprintTitle;
 
   /// No description provided for @calculationSprintSubtitle.
@@ -1559,7 +1559,7 @@ abstract class AppLocalizations {
   /// No description provided for @colorMatchTitle.
   ///
   /// In en, this message translates to:
-  /// **'COLOR MATCH'**
+  /// **'Color Match'**
   String get colorMatchTitle;
 
   /// No description provided for @colorMatchSubtitle.
@@ -1601,7 +1601,7 @@ abstract class AppLocalizations {
   /// No description provided for @corsiBlocksTitle.
   ///
   /// In en, this message translates to:
-  /// **'CORSI BLOCKS'**
+  /// **'Corsi Blocks'**
   String get corsiBlocksTitle;
 
   /// No description provided for @corsiBlocksSubtitle.
@@ -1655,7 +1655,7 @@ abstract class AppLocalizations {
   /// No description provided for @crownTitle.
   ///
   /// In en, this message translates to:
-  /// **'CROWN'**
+  /// **'Crown'**
   String get crownTitle;
 
   /// No description provided for @crownSubtitle.
@@ -1679,7 +1679,7 @@ abstract class AppLocalizations {
   /// No description provided for @cryptogramTitle.
   ///
   /// In en, this message translates to:
-  /// **'CRYPTOGRAM'**
+  /// **'Cryptogram'**
   String get cryptogramTitle;
 
   /// No description provided for @cryptogramSubtitle.
@@ -1895,7 +1895,7 @@ abstract class AppLocalizations {
   /// No description provided for @flankerTestTitle.
   ///
   /// In en, this message translates to:
-  /// **'FLANKER TEST'**
+  /// **'Flanker Test'**
   String get flankerTestTitle;
 
   /// No description provided for @flankerTestSubtitle.
@@ -2021,7 +2021,7 @@ abstract class AppLocalizations {
   /// No description provided for @hueSortTitle.
   ///
   /// In en, this message translates to:
-  /// **'HUE SORT'**
+  /// **'Hue Sort'**
   String get hueSortTitle;
 
   /// No description provided for @hueSortSubtitle.
@@ -2123,7 +2123,7 @@ abstract class AppLocalizations {
   /// No description provided for @lightsOutTitle.
   ///
   /// In en, this message translates to:
-  /// **'LIGHTS OUT'**
+  /// **'Lights Out'**
   String get lightsOutTitle;
 
   /// No description provided for @lightsOutSubtitle.
@@ -2885,7 +2885,7 @@ abstract class AppLocalizations {
   /// No description provided for @einsteinRiddleTitle.
   ///
   /// In en, this message translates to:
-  /// **'EINSTEIN RIDDLE'**
+  /// **'Einstein Riddle'**
   String get einsteinRiddleTitle;
 
   /// No description provided for @einsteinRiddleSubtitle.
@@ -3215,7 +3215,7 @@ abstract class AppLocalizations {
   /// No description provided for @baseShiftTitle.
   ///
   /// In en, this message translates to:
-  /// **'BASE SHIFT BLITZ'**
+  /// **'Base Shift Blitz'**
   String get baseShiftTitle;
 
   /// No description provided for @baseShiftSubtitle.
@@ -3347,7 +3347,7 @@ abstract class AppLocalizations {
   /// No description provided for @alphabetSudokuTitle.
   ///
   /// In en, this message translates to:
-  /// **'ALPHABET SUDOKU'**
+  /// **'Alphabet Sudoku'**
   String get alphabetSudokuTitle;
 
   /// No description provided for @alphabetSudokuSubtitle.
@@ -3623,7 +3623,7 @@ abstract class AppLocalizations {
   /// No description provided for @topologyTitle.
   ///
   /// In en, this message translates to:
-  /// **'TOPOLOGY'**
+  /// **'Topology'**
   String get topologyTitle;
 
   /// No description provided for @topologySubtitle.

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/game_providers.dart';
@@ -259,7 +259,7 @@ class _UserStatsCard extends ConsumerWidget {
                   Text(
                     l10n.statsPercentToLevel((progress * 100).toInt(), level + 1),
                     style: theme.textTheme.labelLarge?.copyWith(
-                      fontFamily: 'Bebas Neue',
+                      fontFamily: DesignSystem.fontDisplay,
                       fontSize: DesignSystem.fontSizeSM,
                       color: Colors.white.withValues(alpha: 0.9),
                       letterSpacing: 1.0,
@@ -394,7 +394,6 @@ class _StreakTracker extends ConsumerWidget {
                             : Text(
                                 dayLabel,
                                 style: TextStyle(
-                                  fontFamily: 'Geist',
                                   fontWeight: FontWeight.w900,
                                   fontSize: 12,
                                   color: isToday
@@ -684,7 +683,6 @@ class _AchievementCard extends ConsumerWidget {
               child: Text(
                 l10n.statsLocked,
                 style: TextStyle(
-                  fontFamily: 'Geist',
                   fontWeight: FontWeight.w900,
                   fontSize: 9,
                   letterSpacing: 1.5,

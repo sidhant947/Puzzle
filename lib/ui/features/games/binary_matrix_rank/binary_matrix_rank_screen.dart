@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -146,8 +146,7 @@ class _BinaryMatrixRankScreenState extends ConsumerState<BinaryMatrixRankScreen>
               const SizedBox(width: 6),
               Text(
                 'MATRIX RANK',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -166,8 +165,7 @@ class _BinaryMatrixRankScreenState extends ConsumerState<BinaryMatrixRankScreen>
               const SizedBox(width: 6),
               Text(
                 '$_score / $targetScore',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -197,7 +195,6 @@ class _BinaryMatrixRankScreenState extends ConsumerState<BinaryMatrixRankScreen>
           Text(
             'BINARY MATRIX (GF2)',
             style: TextStyle(
-              fontFamily: 'Geist',
               fontSize: 10,
               fontWeight: FontWeight.w800,
               color: colorScheme.onSurface.withValues(alpha: 0.5),
@@ -231,7 +228,7 @@ class _BinaryMatrixRankScreenState extends ConsumerState<BinaryMatrixRankScreen>
                   child: Text(
                     '$val',
                     style: TextStyle(
-                      fontFamily: 'Bebas Neue',
+                      fontFamily: DesignSystem.fontDisplay,
                       fontSize: 28,
                       fontWeight: FontWeight.bold,
                       color: val == 1 ? DesignSystem.gameIndigo : colorScheme.onSurface.withValues(alpha: 0.4),
@@ -276,7 +273,7 @@ class _BinaryMatrixRankScreenState extends ConsumerState<BinaryMatrixRankScreen>
               child: Text(
                 'RANK $choice',
                 style: TextStyle(
-                  fontFamily: 'Bebas Neue',
+                  fontFamily: DesignSystem.fontDisplay,
                   fontSize: 20,
                   fontWeight: FontWeight.w700,
                   color: textColor,

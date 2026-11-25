@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -153,7 +153,6 @@ class _ExponentTowerScreenState extends ConsumerState<ExponentTowerScreen> {
                 'BUILD FROM SMALLEST TO LARGEST (BOTTOM TO TOP)',
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontFamily: 'Geist',
                   fontSize: 12,
                   fontWeight: FontWeight.w700,
                   color: colorScheme.onSurface.withValues(alpha: 0.6),
@@ -184,8 +183,7 @@ class _ExponentTowerScreenState extends ConsumerState<ExponentTowerScreen> {
               const SizedBox(width: 6),
               Text(
                 'EXPONENTS',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -204,8 +202,7 @@ class _ExponentTowerScreenState extends ConsumerState<ExponentTowerScreen> {
               const SizedBox(width: 6),
               Text(
                 '$_score / $targetScore',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -238,7 +235,6 @@ class _ExponentTowerScreenState extends ConsumerState<ExponentTowerScreen> {
                   'TAP POWER BLOCKS BELOW TO STACK TOWER',
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontFamily: 'Geist',
                     fontSize: 14,
                     fontWeight: FontWeight.w600,
                     color: colorScheme.onSurface.withValues(alpha: 0.3),
@@ -313,7 +309,7 @@ class _ExponentTowerScreenState extends ConsumerState<ExponentTowerScreen> {
         Text(
           '$base',
           style: TextStyle(
-            fontFamily: 'Bebas Neue',
+            fontFamily: DesignSystem.fontDisplay,
             fontSize: fontSize,
             fontWeight: FontWeight.w700,
             color: color,
@@ -323,7 +319,7 @@ class _ExponentTowerScreenState extends ConsumerState<ExponentTowerScreen> {
         Text(
           '$exp',
           style: TextStyle(
-            fontFamily: 'Bebas Neue',
+            fontFamily: DesignSystem.fontDisplay,
             fontSize: fontSize * 0.65,
             fontWeight: FontWeight.w700,
             color: color,

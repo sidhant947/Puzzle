@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/game_providers.dart';
@@ -38,8 +38,8 @@ class DailyProgressBanner extends ConsumerWidget {
             child: Center(
               child: Text(
                 '$solvedToday',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(
+                  fontFamily: DesignSystem.fontDisplay,
                   fontSize: 24.0,
                   fontWeight: FontWeight.w700,
                   color: Colors.white,

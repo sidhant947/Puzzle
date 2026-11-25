@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -199,8 +199,7 @@ class _CorsiBackwardSpanScreenState extends ConsumerState<CorsiBackwardSpanScree
               const SizedBox(width: 6),
               Text(
                 _isDemonstrating ? 'WATCH SEQUENCE' : 'RECALL IN REVERSE',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -219,8 +218,7 @@ class _CorsiBackwardSpanScreenState extends ConsumerState<CorsiBackwardSpanScree
               const SizedBox(width: 6),
               Text(
                 '$_score / $targetScore',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -250,7 +248,6 @@ class _CorsiBackwardSpanScreenState extends ConsumerState<CorsiBackwardSpanScree
               : 'TAP BLOCKS IN REVERSE (BACKWARD) ORDER: ${_playerSequence.length} / ${_currentRound.blockSequence.length}',
           textAlign: TextAlign.center,
           style: TextStyle(
-            fontFamily: 'Geist',
             fontSize: 11,
             fontWeight: FontWeight.w800,
             color: _isDemonstrating ? colorScheme.onSurface.withValues(alpha: 0.6) : DesignSystem.primary,

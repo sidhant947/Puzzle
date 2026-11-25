@@ -1,7 +1,7 @@
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/utils/l10n_game_helpers.dart';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../../providers/user_providers.dart';
 import '../../../../utils/design_system.dart';
@@ -109,7 +109,7 @@ class _SyllableStackScreenState extends ConsumerState<SyllableStackScreen> {
                   Text(
                     'START STACKING',
                     style: TextStyle(
-                      fontFamily: 'Bebas Neue',
+                      fontFamily: DesignSystem.fontDisplay,
                       fontSize: 32,
                       color: colorScheme.onSurface.withValues(alpha: 0.2),
                     ),

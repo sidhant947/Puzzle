@@ -1,148 +1,32 @@
-import 'dart:async';
 import 'dart:math' as math;
-import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
+import 'package:puzzle/data/game_metadata.dart';
 import 'package:puzzle/data/game_registry.dart';
 import 'package:puzzle/providers/game_providers.dart';
 import 'package:puzzle/providers/game_session_provider.dart';
 import 'package:puzzle/providers/user_providers.dart';
-import 'package:puzzle/utils/l10n_game_helpers.dart';
-import 'package:puzzle/widgets/super_streak_action.dart';
-import 'package:puzzle/widgets/tangible.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/utils/haptic_feedback.dart';
+import 'package:puzzle/utils/l10n_game_helpers.dart';
 import 'package:puzzle/utils/navigation_utils.dart';
-
-import 'widgets/favorites_section.dart';
+import 'package:puzzle/widgets/super_streak_action.dart';
+import 'package:puzzle/widgets/tangible.dart';
+import 'category_games_screen.dart';
 import 'widgets/category_button.dart';
-import 'widgets/search_bar.dart' as custom;
-import 'widgets/game_tile.dart';
-import 'widgets/empty_games_state.dart';
+import 'widgets/daily_workout_section.dart';
+import 'widgets/favorites_section.dart';
 
-class HomeScreen extends ConsumerStatefulWidget {
+class HomeScreen extends ConsumerWidget {
   const HomeScreen({super.key});
 
-  @override
-  ConsumerState<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends ConsumerState<HomeScreen> {
-  String _searchQuery = "";
-  String _selectedCategory = "ALL";
-  bool _isSearchVisible = false;
-  late final TextEditingController _searchController;
-  Timer? _debounce;
-  Map<String, String>? _localizedTitlesCache;
-  Locale? _lastLocale;
-
-  @override
-  void initState() {
-    super.initState();
-    _searchController = TextEditingController();
-  }
-
-  @override
-  void dispose() {
-    _debounce?.cancel();
-    _searchController.dispose();
-    super.dispose();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-    final l10n = AppLocalizations.of(context)!;
-
-    final currentLocale = Localizations.localeOf(context);
-    if (_localizedTitlesCache == null || _lastLocale != currentLocale) {
-      _localizedTitlesCache = {
-        for (final game in allGamesMetadata)
-          game.id: L10nGameHelpers.getGameTitle(context, game.id),
-      };
-      _lastLocale = currentLocale;
-    }
-    final localizedTitles = _localizedTitlesCache!;
-
-    final filteredGames = ref.watch(filteredGamesProvider(
-        searchQuery: _searchQuery,
-        selectedCategory: _selectedCategory,
-        localizedTitles: localizedTitles));
-
-    return Scaffold(
-      backgroundColor: theme.scaffoldBackgroundColor,
-      floatingActionButton: _buildRandomGameFab(context, theme),
-      body: CustomScrollView(
-        scrollCacheExtent: ScrollCacheExtent.pixels(300),
-        physics: const BouncingScrollPhysics(),
-        slivers: [
-          _buildAppBar(theme, colorScheme, l10n),
-          SliverToBoxAdapter(
-            child: FavoritesSection(
-              selectedCategory: _selectedCategory,
-              searchQuery: _searchQuery,
-            ),
-          ),
-          SliverToBoxAdapter(
-            child: _HomeFilterSection(
-              isSearchVisible: _isSearchVisible,
-              searchController: _searchController,
-              searchQuery: _searchQuery,
-              selectedCategory: _selectedCategory,
-              onSearchChanged: (value) {
-                if (_debounce?.isActive ?? false) _debounce!.cancel();
-                _debounce = Timer(const Duration(milliseconds: 300), () {
-                  setState(() => _searchQuery = value);
-                });
-              },
-              onSearchClear: () {
-                _searchController.clear();
-                setState(() => _searchQuery = "");
-              },
-              onCategorySelected: (value) =>
-                  setState(() => _selectedCategory = value),
-            ),
-          ),
-          filteredGames.isEmpty
-              ? const SliverFillRemaining(
-                  hasScrollBody: false,
-                  child: EmptyGamesState(),
-                )
-              : _buildGameGrid(filteredGames),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildRandomGameFab(BuildContext context, ThemeData theme) {
-    return FloatingActionButton(
-      backgroundColor: DesignSystem.primary,
-      foregroundColor: Colors.white,
-      elevation: 4,
-      shape: RoundedRectangleBorder(
-        borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
-        side: const BorderSide(
-          color: DesignSystem.primaryShadow,
-          width: 1.5,
-        ),
-      ),
-      onPressed: _playRandomPuzzle,
-      child: const Icon(
-        Icons.shuffle_rounded,
-        size: 26,
-      ),
-    );
-  }
-
-  void _playRandomPuzzle() {
-    final hiddenGameIds = ref.read(
-        userDataNotifierProvider.select((d) => d.hiddenGameIds ?? []));
+  void _playRandomPuzzle(BuildContext context, WidgetRef ref) {
+    final hiddenGameIds =
+        ref.read(userDataNotifierProvider.select((d) => d.hiddenGameIds ?? []));
     final hiddenSet = hiddenGameIds.toSet();
-    final availableGames = allGamesMetadata
-        .where((game) => !hiddenSet.contains(game.id))
-        .toList();
+    final availableGames =
+        allGamesMetadata.where((game) => !hiddenSet.contains(game.id)).toList();
 
     if (availableGames.isEmpty) return;
 
@@ -152,8 +36,8 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     ScaffoldMessenger.of(context).clearSnackBars();
     ref.read(gameSessionNotifierProvider.notifier).setSession(
           gameId: randomGame.id,
-          category: _selectedCategory,
-          query: _searchQuery,
+          category: randomGame.category,
+          query: '',
         );
     Navigator.push(
       context,
@@ -161,480 +45,391 @@ class _HomeScreenState extends ConsumerState<HomeScreen> {
     );
   }
 
-  Widget _buildAppBar(
-      ThemeData theme, ColorScheme colorScheme, AppLocalizations l10n) {
-    return SliverAppBar(
-      floating: true,
-      pinned: false,
+  String _getCategoryDisplayName(AppLocalizations l10n, String category) {
+    switch (category) {
+      case 'ATTENTION':
+        return l10n.categoryAttention;
+      case 'LOGIC':
+        return l10n.categoryLogic;
+      case 'MATH':
+        return l10n.categoryMath;
+      case 'WORD':
+        return l10n.categoryWord;
+      case 'MEMORY':
+        return l10n.categoryMemory;
+      case 'SPATIAL':
+        return l10n.categorySpatial;
+      default:
+        return category;
+    }
+  }
+
+  @override
+  Widget build(BuildContext context, WidgetRef ref) {
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+    final l10n = AppLocalizations.of(context)!;
+    final activeStreakGames = ref.watch(activeStreakGamesProvider);
+    final streaks = ref.watch(gameStreakNotifierProvider);
+    final solvedStatsMap = ref.watch(solvedStatsProvider);
+    final totalStatsMap = ref.watch(categoryStatsProvider);
+    final isMobile = DesignSystem.isMobile(context);
+
+    const categories = ['LOGIC', 'MATH', 'WORD', 'MEMORY', 'SPATIAL', 'ATTENTION'];
+
+    return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
-      elevation: 0,
-      scrolledUnderElevation: 0,
-      centerTitle: true,
-      leading: const Padding(
-        padding: EdgeInsets.only(left: 12.0),
-        child: Center(child: SuperStreakAction()),
+      floatingActionButton: FloatingActionButton(
+        backgroundColor: DesignSystem.primary,
+        foregroundColor: Colors.white,
+        elevation: 4,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(DesignSystem.radiusMD),
+          side: const BorderSide(
+            color: DesignSystem.primaryShadow,
+            width: 1.5,
+          ),
+        ),
+        onPressed: () => _playRandomPuzzle(context, ref),
+        child: const Icon(
+          Icons.shuffle_rounded,
+          size: 26,
+        ),
       ),
-      leadingWidth: 72,
-      title: Text(
-        l10n.gamesTitleLabel.toUpperCase(),
-        style: theme.textTheme.displaySmall?.copyWith(letterSpacing: 2.0),
+      appBar: AppBar(
+        backgroundColor: theme.scaffoldBackgroundColor,
+        elevation: 0,
+        scrolledUnderElevation: 0,
+        centerTitle: true,
+        leading: const Padding(
+          padding: EdgeInsets.only(left: 12.0),
+          child: Center(child: SuperStreakAction()),
+        ),
+        leadingWidth: 72,
+        title: Text(
+          l10n.gamesTitleLabel.toUpperCase(),
+          style: theme.textTheme.displaySmall?.copyWith(letterSpacing: 2.0),
+        ),
+        actions: [
+          Padding(
+            padding: const EdgeInsets.only(right: 8.0),
+            child: TangibleButton(
+              color: Colors.transparent,
+              drawBorder: false,
+              padding: const EdgeInsets.all(12),
+              onTap: () {
+                Navigator.push(
+                  context,
+                  CustomPageRoute(
+                    page: const CategoryGamesScreen(
+                      initialCategory: 'ALL',
+                      autoFocusSearch: true,
+                    ),
+                  ),
+                );
+              },
+              child: Icon(
+                Icons.search_rounded,
+                color: colorScheme.onSurface,
+                size: 22,
+              ),
+            ),
+          ),
+        ],
       ),
-      actions: [
-        Padding(
-          padding: const EdgeInsets.only(right: 8.0),
-          child: TangibleButton(
-            color: Colors.transparent,
-            drawBorder: false,
-            padding: const EdgeInsets.all(12),
-            onTap: () {
-              setState(() {
-                _isSearchVisible = !_isSearchVisible;
-                if (!_isSearchVisible) {
-                  _searchQuery = "";
-                  _searchController.clear();
-                }
-              });
-            },
-            child: Icon(
-              _isSearchVisible ? Icons.close_rounded : Icons.search_rounded,
-              color: colorScheme.onSurface,
-              size: 22,
+      body: SafeArea(
+        child: SingleChildScrollView(
+          physics: const BouncingScrollPhysics(),
+          padding: const EdgeInsets.fromLTRB(
+            DesignSystem.spaceMD,
+            DesignSystem.spaceXS,
+            DesignSystem.spaceMD,
+            120,
+          ),
+          child: Center(
+            child: ConstrainedBox(
+              constraints: const BoxConstraints(maxWidth: 800),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const DailyWorkoutSection(),
+                  if (activeStreakGames.isNotEmpty) ...[
+                    const SizedBox(height: DesignSystem.spaceLG),
+                    Row(
+                      children: [
+                        const Icon(
+                          Icons.local_fire_department_rounded,
+                          color: DesignSystem.accentAmber,
+                          size: 18,
+                        ),
+                        const SizedBox(width: DesignSystem.spaceXS),
+                        Text(
+                          l10n.statsMaintainStreak.toUpperCase(),
+                          style: TextStyle(
+                            fontFamily: DesignSystem.fontDisplay,
+                            fontSize: DesignSystem.fontSizeSM,
+                            fontWeight: FontWeight.w700,
+                            letterSpacing: 1.5,
+                            color: colorScheme.primary,
+                          ),
+                        ),
+                      ],
+                    ),
+                    const SizedBox(height: DesignSystem.spaceXS + 2),
+                    SizedBox(
+                      height: 80,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        physics: const BouncingScrollPhysics(),
+                        itemCount: activeStreakGames.length,
+                        itemBuilder: (context, index) {
+                          final game = activeStreakGames[index];
+                          final streakCount = streaks[game.id]?.currentStreak ?? 0;
+                          return _ActiveStreakTile(
+                            game: game,
+                            streakCount: streakCount,
+                          );
+                        },
+                      ),
+                    ),
+                  ],
+                  const FavoritesSection(
+                    selectedCategory: 'ALL',
+                    searchQuery: '',
+                  ),
+                  const SizedBox(height: DesignSystem.spaceMD),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(
+                        l10n.categoryAll.toUpperCase(),
+                        style: TextStyle(
+                          fontFamily: DesignSystem.fontDisplay,
+                          fontSize: DesignSystem.fontSizeMD,
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 1.5,
+                          color: colorScheme.primary,
+                        ),
+                      ),
+                      TangibleButton(
+                        color: Colors.transparent,
+                        drawBorder: false,
+                        padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 4),
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            CustomPageRoute(
+                              page: const CategoryGamesScreen(initialCategory: 'ALL'),
+                            ),
+                          );
+                        },
+                        child: Row(
+                          mainAxisSize: MainAxisSize.min,
+                          children: [
+                            Text(
+                              l10n.categoryAll.toUpperCase(),
+                              style: theme.textTheme.labelSmall?.copyWith(
+                                color: colorScheme.primary,
+                                fontWeight: FontWeight.w700,
+                                letterSpacing: 0.8,
+                              ),
+                            ),
+                            const SizedBox(width: 4),
+                            Icon(
+                              Icons.arrow_forward_ios_rounded,
+                              size: 11,
+                              color: colorScheme.primary,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ],
+                  ),
+                  const SizedBox(height: DesignSystem.spaceXS + 2),
+                  GridView.builder(
+                    shrinkWrap: true,
+                    physics: const NeverScrollableScrollPhysics(),
+                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: isMobile ? 2 : 3,
+                      mainAxisSpacing: DesignSystem.spaceSM,
+                      crossAxisSpacing: DesignSystem.spaceSM,
+                      childAspectRatio: isMobile ? 1.45 : 1.75,
+                    ),
+                    itemCount: categories.length,
+                    itemBuilder: (context, index) {
+                      final category = categories[index];
+                      final categoryStyle = getCategoryStyle(category);
+                      final solved = solvedStatsMap[category] ?? 0;
+                      final total = totalStatsMap[category] ?? 1;
+                      final progress = (solved / total).clamp(0.0, 1.0);
+
+                      return TangibleContainer(
+                        color: colorScheme.surface,
+                        padding: const EdgeInsets.all(DesignSystem.spaceSM + 2),
+                        onTap: () {
+                          HapticFeedbackUtil.lightImpact();
+                          Navigator.push(
+                            context,
+                            CustomPageRoute(
+                              page: CategoryGamesScreen(initialCategory: category),
+                            ),
+                          );
+                        },
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Container(
+                                  padding: const EdgeInsets.all(6),
+                                  decoration: BoxDecoration(
+                                    color: categoryStyle.color.withValues(alpha: 0.15),
+                                    borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
+                                  ),
+                                  child: Icon(
+                                    categoryStyle.icon,
+                                    color: categoryStyle.color,
+                                    size: 18,
+                                  ),
+                                ),
+                                Text(
+                                  '$solved / $total',
+                                  style: theme.textTheme.labelSmall?.copyWith(
+                                    fontSize: 11,
+                                    fontWeight: FontWeight.w700,
+                                    color: colorScheme.onSurface.withValues(alpha: 0.6),
+                                  ),
+                                ),
+                              ],
+                            ),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisSize: MainAxisSize.min,
+                              children: [
+                                FittedBox(
+                                  fit: BoxFit.scaleDown,
+                                  alignment: Alignment.centerLeft,
+                                  child: Text(
+                                    _getCategoryDisplayName(l10n, category).toUpperCase(),
+                                    style: TextStyle(
+                                      fontFamily: DesignSystem.fontDisplay,
+                                      fontSize: DesignSystem.fontSizeMD,
+                                      fontWeight: FontWeight.w700,
+                                      letterSpacing: 0.8,
+                                      color: colorScheme.onSurface,
+                                    ),
+                                  ),
+                                ),
+                                const SizedBox(height: 4),
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(2),
+                                  child: LinearProgressIndicator(
+                                    value: progress,
+                                    minHeight: 3,
+                                    backgroundColor: colorScheme.outline.withValues(alpha: 0.12),
+                                    valueColor: AlwaysStoppedAnimation<Color>(categoryStyle.color),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                      );
+                    },
+                  ),
+                ],
+              ),
             ),
           ),
         ),
-      ],
-    );
-  }
-
-  Widget _buildGameGrid(List<dynamic> filteredGames) {
-    final hiddenGameIds = ref.watch(
-        userDataNotifierProvider.select((d) => d.hiddenGameIds ?? []));
-
-    return SliverPadding(
-      padding: const EdgeInsets.fromLTRB(
-        DesignSystem.spaceLG,
-        DesignSystem.spaceMD,
-        DesignSystem.spaceLG,
-        140,
-      ),
-      sliver: SliverLayoutBuilder(
-        builder: (context, constraints) {
-          if (constraints.crossAxisExtent > 600) {
-            return SliverGrid(
-              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 400,
-                mainAxisSpacing: DesignSystem.spaceMD,
-                crossAxisSpacing: DesignSystem.spaceMD,
-                childAspectRatio: 2.2,
-              ),
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  if (index == filteredGames.length) {
-                    return _buildHiddenGamesButton(hiddenGameIds.length);
-                  }
-                  return GameTileWrapper(
-                    key: ValueKey(filteredGames[index].id),
-                    game: filteredGames[index],
-                    selectedCategory: _selectedCategory,
-                    searchQuery: _searchQuery,
-                  );
-                },
-                childCount: filteredGames.length + (hiddenGameIds.isNotEmpty ? 1 : 0),
-                addAutomaticKeepAlives: false,
-                addRepaintBoundaries: true,
-              ),
-            );
-          } else {
-            return SliverList(
-              delegate: SliverChildBuilderDelegate(
-                (context, index) {
-                  if (index == filteredGames.length) {
-                    return _buildHiddenGamesButton(hiddenGameIds.length);
-                  }
-                  return Padding(
-                    padding: const EdgeInsets.only(bottom: DesignSystem.spaceMD),
-                    child: GameTileWrapper(
-                      key: ValueKey(filteredGames[index].id),
-                      game: filteredGames[index],
-                      selectedCategory: _selectedCategory,
-                      searchQuery: _searchQuery,
-                    ),
-                  );
-                },
-                childCount: filteredGames.length + (hiddenGameIds.isNotEmpty ? 1 : 0),
-                addAutomaticKeepAlives: false,
-                addRepaintBoundaries: true,
-              ),
-            );
-          }
-        },
-      ),
-    );
-  }
-
-  Widget _buildHiddenGamesButton(int count) {
-    if (count == 0) return const SizedBox.shrink();
-    final theme = Theme.of(context);
-    final l10n = AppLocalizations.of(context)!;
-
-    return Padding(
-      padding: const EdgeInsets.only(top: DesignSystem.spaceMD),
-      child: TangibleButton(
-        color: theme.colorScheme.surface,
-        onTap: () => _showHiddenGamesSheet(),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(
-              Icons.visibility_off_rounded,
-              size: 18,
-              color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
-            ),
-            const SizedBox(width: DesignSystem.spaceSM),
-            Text(
-              l10n.showHiddenGames(count),
-              style: theme.textTheme.bodyMedium?.copyWith(
-                color: theme.colorScheme.onSurface.withValues(alpha: 0.6),
-                fontWeight: FontWeight.w600,
-              ),
-            ),
-          ],
-        ),
-      ),
-    );
-  }
-
-  void _showHiddenGamesSheet() {
-    final l10n = AppLocalizations.of(context)!;
-    final hiddenGameIds = ref.read(
-        userDataNotifierProvider.select((d) => d.hiddenGameIds ?? []));
-    final hiddenGames = allGamesMetadata
-        .where((game) => hiddenGameIds.contains(game.id))
-        .toList();
-
-    showModalBottomSheet(
-      context: context,
-      isScrollControlled: true,
-      backgroundColor: Colors.transparent,
-      builder: (context) => _HiddenGamesBottomSheet(
-        hiddenGames: hiddenGames,
-        l10n: l10n,
-        onUnhide: (gameId) {
-          HapticFeedbackUtil.mediumImpact();
-          ref.read(userDataNotifierProvider.notifier).toggleHideGame(gameId);
-        },
       ),
     );
   }
 }
 
-class _HomeFilterSection extends ConsumerWidget {
-  final bool isSearchVisible;
-  final TextEditingController searchController;
-  final String searchQuery;
-  final String selectedCategory;
-  final ValueChanged<String> onSearchChanged;
-  final VoidCallback onSearchClear;
-  final ValueChanged<String> onCategorySelected;
+class _ActiveStreakTile extends ConsumerWidget {
+  final GameMetadata game;
+  final int streakCount;
 
-  const _HomeFilterSection({
-    required this.isSearchVisible,
-    required this.searchController,
-    required this.searchQuery,
-    required this.selectedCategory,
-    required this.onSearchChanged,
-    required this.onSearchClear,
-    required this.onCategorySelected,
+  const _ActiveStreakTile({
+    required this.game,
+    required this.streakCount,
   });
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final l10n = AppLocalizations.of(context)!;
-    final totalStatsMap = ref.watch(categoryStatsProvider);
-    final solvedStatsMap = ref.watch(solvedStatsProvider);
-
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(
-        DesignSystem.spaceLG,
-        0,
-        DesignSystem.spaceLG,
-        DesignSystem.spaceMD,
-      ),
-      child: Column(
-        children: [
-          if (isSearchVisible) ...[
-            custom.GameSearchBar(
-              controller: searchController,
-              searchQuery: searchQuery,
-              onChanged: onSearchChanged,
-              onClear: onSearchClear,
-            ),
-            const SizedBox(height: DesignSystem.spaceMD),
-          ],
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            physics: const BouncingScrollPhysics(),
-            clipBehavior: Clip.none,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Row(
-                children: [
-                  _buildCategoryBtn(l10n.categoryAll, 'ALL',
-                      solvedStatsMap['ALL'] ?? 0, totalStatsMap['ALL'] ?? 1),
-                  _buildCategoryBtn(
-                      l10n.categoryAttention,
-                      'ATTENTION',
-                      solvedStatsMap['ATTENTION'] ?? 0,
-                      totalStatsMap['ATTENTION'] ?? 1),
-                  _buildCategoryBtn(
-                      l10n.categoryLogic,
-                      'LOGIC',
-                      solvedStatsMap['LOGIC'] ?? 0,
-                      totalStatsMap['LOGIC'] ?? 1),
-                  _buildCategoryBtn(l10n.categoryMath, 'MATH',
-                      solvedStatsMap['MATH'] ?? 0, totalStatsMap['MATH'] ?? 1),
-                  _buildCategoryBtn(l10n.categoryWord, 'WORD',
-                      solvedStatsMap['WORD'] ?? 0, totalStatsMap['WORD'] ?? 1),
-                  _buildCategoryBtn(
-                      l10n.categoryMemory,
-                      'MEMORY',
-                      solvedStatsMap['MEMORY'] ?? 0,
-                      totalStatsMap['MEMORY'] ?? 1),
-                  _buildCategoryBtn(
-                      l10n.categorySpatial,
-                      'SPATIAL',
-                      solvedStatsMap['SPATIAL'] ?? 0,
-                      totalStatsMap['SPATIAL'] ?? 1),
-                ],
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildCategoryBtn(String label, String value, int solved, int total) {
-    return Padding(
-      padding: const EdgeInsets.only(right: DesignSystem.spaceMD),
-      child: CategoryButton(
-        label: label,
-        value: value,
-        isSelected: selectedCategory == value,
-        categoryStyle: getCategoryStyle(value),
-        solved: solved,
-        total: total,
-        onTap: () => onCategorySelected(value),
-      ),
-    );
-  }
-}
-
-class _HiddenGamesBottomSheet extends StatelessWidget {
-  final List<dynamic> hiddenGames;
-  final AppLocalizations l10n;
-  final ValueChanged<String> onUnhide;
-
-  const _HiddenGamesBottomSheet({
-    required this.hiddenGames,
-    required this.l10n,
-    required this.onUnhide,
-  });
-
-  @override
-  Widget build(BuildContext context) {
     final theme = Theme.of(context);
     final colorScheme = theme.colorScheme;
+    final gameTitle = L10nGameHelpers.getGameTitle(context, game.id);
 
-    return Container(
-      constraints: BoxConstraints(
-        maxHeight: MediaQuery.of(context).size.height * 0.7,
-      ),
-      decoration: BoxDecoration(
-        color: theme.scaffoldBackgroundColor,
-        borderRadius: const BorderRadius.vertical(
-          top: Radius.circular(DesignSystem.radiusLG),
-        ),
-      ),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SizedBox(height: DesignSystem.spaceSM),
-          Container(
-            width: 40,
-            height: 4,
-            decoration: BoxDecoration(
-              color: colorScheme.outline.withValues(alpha: 0.3),
-              borderRadius: BorderRadius.circular(2),
-            ),
-          ),
-          const SizedBox(height: DesignSystem.spaceMD),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: DesignSystem.spaceLG),
-            child: Row(
+    return Padding(
+      padding: const EdgeInsets.only(right: DesignSystem.spaceSM),
+      child: TangibleContainer(
+        color: colorScheme.surface,
+        width: 130,
+        padding: const EdgeInsets.all(DesignSystem.spaceSM),
+        onTap: () {
+          HapticFeedbackUtil.lightImpact();
+          ScaffoldMessenger.of(context).clearSnackBars();
+          ref.read(gameSessionNotifierProvider.notifier).setSession(
+            gameId: game.id,
+            category: game.category,
+            query: '',
+          );
+          Navigator.push(
+            context,
+            CustomPageRoute(page: game.builder(context)),
+          );
+        },
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Icon(
-                  Icons.visibility_off_rounded,
-                  size: 20,
-                  color: colorScheme.onSurface,
+                  game.icon,
+                  color: game.color,
+                  size: 18,
                 ),
-                const SizedBox(width: DesignSystem.spaceSM),
-                Text(
-                  l10n.hiddenGames.toUpperCase(),
-                  style: theme.textTheme.displaySmall?.copyWith(
-                    fontSize: 18.0,
-                    letterSpacing: 1.5,
+                Container(
+                  padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 1.5),
+                  decoration: BoxDecoration(
+                    color: DesignSystem.accentAmber.withValues(alpha: 0.15),
+                    borderRadius: BorderRadius.circular(4),
                   ),
-                ),
-                const Spacer(),
-                Text(
-                  '${hiddenGames.length}',
-                  style: theme.textTheme.bodyMedium?.copyWith(
-                    color: colorScheme.onSurface.withValues(alpha: 0.5),
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      const Icon(
+                        Icons.local_fire_department_rounded,
+                        size: 11,
+                        color: DesignSystem.accentAmber,
+                      ),
+                      const SizedBox(width: 2),
+                      Text(
+                        '$streakCount',
+                        style: const TextStyle(
+                          fontSize: 9.5,
+                          fontWeight: FontWeight.w900,
+                          color: DesignSystem.accentAmber,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
-          ),
-          const SizedBox(height: DesignSystem.spaceMD),
-          if (hiddenGames.isEmpty)
-            Padding(
-              padding: const EdgeInsets.all(DesignSystem.spaceXL),
-              child: Column(
-                children: [
-                  Icon(
-                    Icons.visibility_rounded,
-                    size: 48,
-                    color: colorScheme.onSurface.withValues(alpha: 0.2),
-                  ),
-                  const SizedBox(height: DesignSystem.spaceMD),
-                  Text(
-                    l10n.noHiddenGames,
-                    style: theme.textTheme.bodyLarge?.copyWith(
-                      color: colorScheme.onSurface.withValues(alpha: 0.4),
-                    ),
-                  ),
-                ],
-              ),
-            )
-          else
-            Flexible(
-              child: ListView.builder(
-                shrinkWrap: true,
-                physics: const BouncingScrollPhysics(),
-                padding: const EdgeInsets.symmetric(
-                  horizontal: DesignSystem.spaceLG,
-                ),
-                itemCount: hiddenGames.length,
-                itemBuilder: (context, index) {
-                  final game = hiddenGames[index];
-                  return _HiddenGameTile(
-                    game: game,
-                    l10n: l10n,
-                    onUnhide: () => onUnhide(game.id),
-                  );
-                },
-              ),
-            ),
-          const SizedBox(height: DesignSystem.spaceLG),
-        ],
-      ),
-    );
-  }
-}
-
-class _HiddenGameTile extends StatelessWidget {
-  final dynamic game;
-  final AppLocalizations l10n;
-  final VoidCallback onUnhide;
-
-  const _HiddenGameTile({
-    required this.game,
-    required this.l10n,
-    required this.onUnhide,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    final colorScheme = theme.colorScheme;
-
-    return Padding(
-      padding: const EdgeInsets.only(bottom: DesignSystem.spaceSM),
-      child: Container(
-        padding: const EdgeInsets.symmetric(
-          horizontal: DesignSystem.spaceMD,
-          vertical: DesignSystem.spaceSM,
-        ),
-        decoration: BoxDecoration(
-          color: colorScheme.surface,
-          borderRadius: BorderRadius.circular(DesignSystem.radiusSM),
-          border: Border.all(
-            color: colorScheme.outline.withValues(alpha: 0.2),
-            width: 1,
-          ),
-        ),
-        child: Row(
-          children: [
-            Container(
-              width: 40,
-              height: 40,
-              decoration: BoxDecoration(
-                color: game.color.withValues(alpha: 0.15),
-                borderRadius: BorderRadius.circular(DesignSystem.radiusXS),
-              ),
-              child: Icon(game.icon, color: game.color, size: 22),
-            ),
-            const SizedBox(width: DesignSystem.spaceMD),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    L10nGameHelpers.getGameTitle(context, game.id).toUpperCase(),
-                    style: theme.textTheme.titleMedium?.copyWith(
-                      fontSize: 14.0,
-                    ),
-                    maxLines: 1,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                  const SizedBox(height: 2),
-                  Text(
-                    game.category,
-                    style: theme.textTheme.bodySmall?.copyWith(
-                      color: colorScheme.onSurface.withValues(alpha: 0.5),
-                      fontSize: 11.0,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-            TangibleButton(
-              color: DesignSystem.gameRose.withValues(alpha: 0.1),
-              onTap: onUnhide,
-              padding: const EdgeInsets.symmetric(
-                horizontal: DesignSystem.spaceSM,
-                vertical: DesignSystem.spaceXS,
-              ),
-              child: Row(
-                mainAxisSize: MainAxisSize.min,
-                children: [
-                  const Icon(
-                    Icons.visibility_rounded,
-                    size: 14,
-                    color: DesignSystem.gameRose,
-                  ),
-                  const SizedBox(width: 4),
-                  Text(
-                    l10n.unhideGame.toUpperCase(),
-                    style: const TextStyle(
-                      fontFamily: 'Geist',
-                      fontSize: 11.0,
-                      fontWeight: FontWeight.w700,
-                      color: DesignSystem.gameRose,
-                    ),
-                  ),
-                ],
+            Text(
+              gameTitle,
+              maxLines: 1,
+              overflow: TextOverflow.ellipsis,
+              style: theme.textTheme.bodyMedium?.copyWith(
+                fontWeight: FontWeight.w700,
+                fontSize: 11.5,
               ),
             ),
           ],

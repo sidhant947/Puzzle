@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:wakelock_plus/wakelock_plus.dart';
 import 'dart:math' as math;
@@ -134,10 +134,10 @@ class _GameScaffoldState extends ConsumerState<GameScaffold> {
                 fit: BoxFit.scaleDown,
                 alignment: Alignment.center,
                 child: Text(
-                  widget.title.toUpperCase(), // Game titles uppercase
+                  widget.title.toUpperCase(),
                   style: TextStyle(
-                    fontFamily: 'Bebas Neue', // Header font family
-                    fontSize: DesignSystem.fontSize2XL, // 24.0 (Gorgeous, high-readability title)
+                    fontFamily: DesignSystem.fontDisplay,
+                    fontSize: DesignSystem.fontSize2XL,
                     letterSpacing: 1.2,
                     fontWeight: FontWeight.w700,
                     color: colorScheme.onSurface,
@@ -304,7 +304,7 @@ class _GameScaffoldState extends ConsumerState<GameScaffold> {
                       Text(
                         "HOW TO PLAY",
                         style: TextStyle(
-                          fontFamily: 'Bebas Neue',
+                          fontFamily: DesignSystem.fontDisplay,
                           fontSize: DesignSystem.fontSize2XL,
                           letterSpacing: 1.2,
                           fontWeight: FontWeight.w700,

@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -146,8 +146,7 @@ class _WordLadderStepScreenState extends ConsumerState<WordLadderStepScreen> {
               const SizedBox(width: 6),
               Text(
                 'WORD LADDER',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -166,8 +165,7 @@ class _WordLadderStepScreenState extends ConsumerState<WordLadderStepScreen> {
               const SizedBox(width: 6),
               Text(
                 '$_score / $targetScore',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -195,7 +193,6 @@ class _WordLadderStepScreenState extends ConsumerState<WordLadderStepScreen> {
           Text(
             'CHANGE 1 LETTER AT EACH STEP',
             style: TextStyle(
-              fontFamily: 'Geist',
               fontSize: 11,
               fontWeight: FontWeight.w800,
               color: colorScheme.onSurface.withValues(alpha: 0.5),
@@ -206,7 +203,7 @@ class _WordLadderStepScreenState extends ConsumerState<WordLadderStepScreen> {
           Text(
             _currentQuestion.startWord,
             style: TextStyle(
-              fontFamily: 'Bebas Neue',
+              fontFamily: DesignSystem.fontDisplay,
               fontSize: 36,
               fontWeight: FontWeight.w900,
               color: colorScheme.onSurface,
@@ -217,7 +214,7 @@ class _WordLadderStepScreenState extends ConsumerState<WordLadderStepScreen> {
           Text(
             _selectedChoice ?? '[ ? ? ? ? ]',
             style: TextStyle(
-              fontFamily: 'Bebas Neue',
+              fontFamily: DesignSystem.fontDisplay,
               fontSize: 36,
               fontWeight: FontWeight.w900,
               color: DesignSystem.primary,
@@ -228,7 +225,7 @@ class _WordLadderStepScreenState extends ConsumerState<WordLadderStepScreen> {
           Text(
             _currentQuestion.endWord,
             style: TextStyle(
-              fontFamily: 'Bebas Neue',
+              fontFamily: DesignSystem.fontDisplay,
               fontSize: 36,
               fontWeight: FontWeight.w900,
               color: colorScheme.onSurface,
@@ -277,7 +274,7 @@ class _WordLadderStepScreenState extends ConsumerState<WordLadderStepScreen> {
             child: Text(
               choice,
               style: TextStyle(
-                fontFamily: 'Bebas Neue',
+                fontFamily: DesignSystem.fontDisplay,
                 fontSize: 28,
                 fontWeight: FontWeight.w700,
                 color: textColor,

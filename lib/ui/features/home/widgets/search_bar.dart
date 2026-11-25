@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/utils/design_system.dart';
 import 'package:puzzle/widgets/tangible.dart';
@@ -8,6 +8,8 @@ class GameSearchBar extends StatelessWidget {
   final String searchQuery;
   final ValueChanged<String> onChanged;
   final VoidCallback onClear;
+  final FocusNode? focusNode;
+  final bool autofocus;
 
   const GameSearchBar({
     super.key,
@@ -15,6 +17,8 @@ class GameSearchBar extends StatelessWidget {
     required this.searchQuery,
     required this.onChanged,
     required this.onClear,
+    this.focusNode,
+    this.autofocus = false,
   });
 
   @override
@@ -27,11 +31,12 @@ class GameSearchBar extends StatelessWidget {
       padding: EdgeInsets.zero,
       child: TextField(
         controller: controller,
+        focusNode: focusNode,
+        autofocus: autofocus,
         onChanged: onChanged,
         decoration: InputDecoration(
           hintText: l10n.searchGames.toUpperCase(),
           hintStyle: TextStyle(
-            fontFamily: 'Geist',
             fontSize: DesignSystem.fontSizeSM,
             fontWeight: FontWeight.w700,
             letterSpacing: 0.5,
@@ -56,7 +61,6 @@ class GameSearchBar extends StatelessWidget {
               const EdgeInsets.symmetric(horizontal: 16, vertical: 14),
         ),
         style: TextStyle(
-          fontFamily: 'Geist',
           fontSize: DesignSystem.fontSizeMD,
           fontWeight: FontWeight.w600,
           color: colorScheme.onSurface,

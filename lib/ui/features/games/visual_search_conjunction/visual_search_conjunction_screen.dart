@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -139,8 +139,7 @@ class _VisualSearchConjunctionScreenState extends ConsumerState<VisualSearchConj
               const SizedBox(width: 6),
               Text(
                 'TRIAL $_trialCount / $totalTrials',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -159,8 +158,7 @@ class _VisualSearchConjunctionScreenState extends ConsumerState<VisualSearchConj
               const SizedBox(width: 6),
               Text(
                 'ACCURACY: $_score',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -189,7 +187,6 @@ class _VisualSearchConjunctionScreenState extends ConsumerState<VisualSearchConj
           const Text(
             'TARGET: ',
             style: TextStyle(
-              fontFamily: 'Geist',
               fontSize: 12,
               fontWeight: FontWeight.w800,
               letterSpacing: 0.8,
@@ -197,10 +194,10 @@ class _VisualSearchConjunctionScreenState extends ConsumerState<VisualSearchConj
           ),
           Icon(_currentRound.targetShape, color: _currentRound.targetColor, size: 24),
           const SizedBox(width: 6),
-          const Text(
+          Text(
             'RED SQUARE',
             style: TextStyle(
-              fontFamily: 'Bebas Neue',
+              fontFamily: DesignSystem.fontDisplay,
               fontSize: 18,
               fontWeight: FontWeight.bold,
               color: DesignSystem.gameRed,
@@ -246,7 +243,7 @@ class _VisualSearchConjunctionScreenState extends ConsumerState<VisualSearchConj
             color: colorScheme.surface,
             onTap: () => _submitAnswer(true),
             padding: const EdgeInsets.symmetric(vertical: 20),
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(Icons.check_circle_rounded, color: DesignSystem.success, size: 24),
@@ -254,7 +251,7 @@ class _VisualSearchConjunctionScreenState extends ConsumerState<VisualSearchConj
                 Text(
                   'PRESENT',
                   style: TextStyle(
-                    fontFamily: 'Bebas Neue',
+                    fontFamily: DesignSystem.fontDisplay,
                     fontSize: 22,
                     fontWeight: FontWeight.w700,
                     letterSpacing: 1.5,
@@ -270,7 +267,7 @@ class _VisualSearchConjunctionScreenState extends ConsumerState<VisualSearchConj
             color: colorScheme.surface,
             onTap: () => _submitAnswer(false),
             padding: const EdgeInsets.symmetric(vertical: 20),
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(Icons.cancel_rounded, color: DesignSystem.error, size: 24),
@@ -278,7 +275,7 @@ class _VisualSearchConjunctionScreenState extends ConsumerState<VisualSearchConj
                 Text(
                   'ABSENT',
                   style: TextStyle(
-                    fontFamily: 'Bebas Neue',
+                    fontFamily: DesignSystem.fontDisplay,
                     fontSize: 22,
                     fontWeight: FontWeight.w700,
                     letterSpacing: 1.5,

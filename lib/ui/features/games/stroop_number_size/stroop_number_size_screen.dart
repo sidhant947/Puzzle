@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -144,8 +144,7 @@ class _StroopNumberSizeScreenState extends ConsumerState<StroopNumberSizeScreen>
               const SizedBox(width: 6),
               Text(
                 'TRIAL $_trialCount / $totalTrials',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -164,8 +163,7 @@ class _StroopNumberSizeScreenState extends ConsumerState<StroopNumberSizeScreen>
               const SizedBox(width: 6),
               Text(
                 'ACCURACY: $_score',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -192,8 +190,7 @@ class _StroopNumberSizeScreenState extends ConsumerState<StroopNumberSizeScreen>
         child: Text(
           text,
           textAlign: TextAlign.center,
-          style: const TextStyle(
-            fontFamily: 'Bebas Neue',
+          style: TextStyle(fontFamily: DesignSystem.fontDisplay,
             fontSize: 20,
             fontWeight: FontWeight.bold,
             letterSpacing: 1.2,
@@ -219,7 +216,7 @@ class _StroopNumberSizeScreenState extends ConsumerState<StroopNumberSizeScreen>
           Text(
             '${_currentTrial.leftNumber}',
             style: TextStyle(
-              fontFamily: 'Bebas Neue',
+              fontFamily: DesignSystem.fontDisplay,
               fontSize: _currentTrial.leftSize,
               fontWeight: FontWeight.w900,
               color: colorScheme.onSurface,
@@ -233,7 +230,7 @@ class _StroopNumberSizeScreenState extends ConsumerState<StroopNumberSizeScreen>
           Text(
             '${_currentTrial.rightNumber}',
             style: TextStyle(
-              fontFamily: 'Bebas Neue',
+              fontFamily: DesignSystem.fontDisplay,
               fontSize: _currentTrial.rightSize,
               fontWeight: FontWeight.w900,
               color: colorScheme.onSurface,
@@ -252,11 +249,11 @@ class _StroopNumberSizeScreenState extends ConsumerState<StroopNumberSizeScreen>
             color: colorScheme.surface,
             onTap: () => _submitChoice(true),
             padding: const EdgeInsets.symmetric(vertical: 20),
-            child: const Center(
+            child: Center(
               child: Text(
                 'LEFT',
                 style: TextStyle(
-                  fontFamily: 'Bebas Neue',
+                  fontFamily: DesignSystem.fontDisplay,
                   fontSize: 26,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.5,
@@ -271,11 +268,11 @@ class _StroopNumberSizeScreenState extends ConsumerState<StroopNumberSizeScreen>
             color: colorScheme.surface,
             onTap: () => _submitChoice(false),
             padding: const EdgeInsets.symmetric(vertical: 20),
-            child: const Center(
+            child: Center(
               child: Text(
                 'RIGHT',
                 style: TextStyle(
-                  fontFamily: 'Bebas Neue',
+                  fontFamily: DesignSystem.fontDisplay,
                   fontSize: 26,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.5,

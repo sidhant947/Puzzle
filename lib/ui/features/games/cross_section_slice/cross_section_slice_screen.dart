@@ -1,5 +1,5 @@
 import 'dart:math' as math;
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -133,10 +133,10 @@ class _CrossSectionSliceScreenState extends ConsumerState<CrossSectionSliceScree
           ),
           Text(
             value,
-            style: const TextStyle(
+            style: TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.w900,
-              fontFamily: 'Bebas Neue',
+              fontFamily: DesignSystem.fontDisplay,
             ),
           ),
         ],

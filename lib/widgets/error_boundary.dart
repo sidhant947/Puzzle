@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import '../utils/design_system.dart';
 import '../utils/error_handler.dart';

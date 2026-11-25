@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -182,8 +182,7 @@ class _ProbeDigitSpanScreenState extends ConsumerState<ProbeDigitSpanScreen> {
               const SizedBox(width: 6),
               Text(
                 'TRIAL $_trialCount / $totalTrials',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -202,8 +201,7 @@ class _ProbeDigitSpanScreenState extends ConsumerState<ProbeDigitSpanScreen> {
               const SizedBox(width: 6),
               Text(
                 'SCORE: $_score',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -232,7 +230,6 @@ class _ProbeDigitSpanScreenState extends ConsumerState<ProbeDigitSpanScreen> {
             _isStreaming ? 'MEMORIZE THE STREAM OF DIGITS' : 'WHAT DIGIT FOLLOWED THIS PROBE?',
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontFamily: 'Geist',
               fontSize: 12,
               fontWeight: FontWeight.w800,
               color: colorScheme.onSurface.withValues(alpha: 0.5),
@@ -246,8 +243,7 @@ class _ProbeDigitSpanScreenState extends ConsumerState<ProbeDigitSpanScreen> {
               child: _isStreaming
                   ? Text(
                       '${_currentTrial.digits[_streamIndex]}',
-                      style: const TextStyle(
-                        fontFamily: 'Bebas Neue',
+                      style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                         fontSize: 64,
                         fontWeight: FontWeight.w900,
                         color: DesignSystem.primary,
@@ -258,8 +254,7 @@ class _ProbeDigitSpanScreenState extends ConsumerState<ProbeDigitSpanScreen> {
                       children: [
                         Text(
                           'PROBE: ${_currentTrial.probeDigit}',
-                          style: const TextStyle(
-                            fontFamily: 'Bebas Neue',
+                          style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                             fontSize: 40,
                             fontWeight: FontWeight.w900,
                             color: DesignSystem.gameIndigo,
@@ -272,7 +267,7 @@ class _ProbeDigitSpanScreenState extends ConsumerState<ProbeDigitSpanScreen> {
                         Text(
                           _selectedDigit != null ? '$_selectedDigit' : '?',
                           style: TextStyle(
-                            fontFamily: 'Bebas Neue',
+                            fontFamily: DesignSystem.fontDisplay,
                             fontSize: 44,
                             fontWeight: FontWeight.w900,
                             color: _selectedDigit != null
@@ -326,8 +321,7 @@ class _ProbeDigitSpanScreenState extends ConsumerState<ProbeDigitSpanScreen> {
         child: Center(
           child: Text(
             '$num',
-            style: const TextStyle(
-              fontFamily: 'Bebas Neue',
+            style: TextStyle(fontFamily: DesignSystem.fontDisplay,
               fontSize: 26,
               fontWeight: FontWeight.w700,
             ),

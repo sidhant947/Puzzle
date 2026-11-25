@@ -3,7 +3,7 @@ import 'package:puzzle/utils/l10n_game_helpers.dart';
 
 import 'dart:async';
 import 'dart:math' as math;
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'odd_one_out_provider.dart';
 import '../../../../providers/user_providers.dart';

@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -197,8 +197,7 @@ class _PosnerSpatialCueingScreenState extends ConsumerState<PosnerSpatialCueingS
               const SizedBox(width: 6),
               Text(
                 'TRIAL $_trialCount / $totalTrials',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -217,8 +216,7 @@ class _PosnerSpatialCueingScreenState extends ConsumerState<PosnerSpatialCueingS
               const SizedBox(width: 6),
               Text(
                 'ACCURACY: $_score',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -292,11 +290,11 @@ class _PosnerSpatialCueingScreenState extends ConsumerState<PosnerSpatialCueingS
             color: colorScheme.surface,
             onTap: () => _respond(TargetSide.left),
             padding: const EdgeInsets.symmetric(vertical: 20),
-            child: const Center(
+            child: Center(
               child: Text(
                 'LEFT',
                 style: TextStyle(
-                  fontFamily: 'Bebas Neue',
+                  fontFamily: DesignSystem.fontDisplay,
                   fontSize: 28,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 2.0,
@@ -311,11 +309,11 @@ class _PosnerSpatialCueingScreenState extends ConsumerState<PosnerSpatialCueingS
             color: colorScheme.surface,
             onTap: () => _respond(TargetSide.right),
             padding: const EdgeInsets.symmetric(vertical: 20),
-            child: const Center(
+            child: Center(
               child: Text(
                 'RIGHT',
                 style: TextStyle(
-                  fontFamily: 'Bebas Neue',
+                  fontFamily: DesignSystem.fontDisplay,
                   fontSize: 28,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 2.0,

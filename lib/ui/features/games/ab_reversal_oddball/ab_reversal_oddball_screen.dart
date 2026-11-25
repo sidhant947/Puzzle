@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -148,8 +148,7 @@ class _ABReversalOddballScreenState extends ConsumerState<ABReversalOddballScree
               const SizedBox(width: 6),
               Text(
                 'TRIAL $_trialCount / $totalTrials',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -168,8 +167,7 @@ class _ABReversalOddballScreenState extends ConsumerState<ABReversalOddballScree
               const SizedBox(width: 6),
               Text(
                 'ACCURACY: $_score',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -199,7 +197,7 @@ class _ABReversalOddballScreenState extends ConsumerState<ABReversalOddballScree
         child: Text(
           ruleText,
           style: TextStyle(
-            fontFamily: 'Bebas Neue',
+            fontFamily: DesignSystem.fontDisplay,
             fontSize: 20,
             fontWeight: FontWeight.bold,
             letterSpacing: 1.5,
@@ -239,7 +237,7 @@ class _ABReversalOddballScreenState extends ConsumerState<ABReversalOddballScree
             color: colorScheme.surface,
             onTap: () => _submitResponse(true),
             padding: const EdgeInsets.symmetric(vertical: 20),
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(Icons.check_circle_rounded, color: DesignSystem.success, size: 24),
@@ -247,7 +245,7 @@ class _ABReversalOddballScreenState extends ConsumerState<ABReversalOddballScree
                 Text(
                   'TARGET',
                   style: TextStyle(
-                    fontFamily: 'Bebas Neue',
+                    fontFamily: DesignSystem.fontDisplay,
                     fontSize: 22,
                     fontWeight: FontWeight.w700,
                     letterSpacing: 1.5,
@@ -263,7 +261,7 @@ class _ABReversalOddballScreenState extends ConsumerState<ABReversalOddballScree
             color: colorScheme.surface,
             onTap: () => _submitResponse(false),
             padding: const EdgeInsets.symmetric(vertical: 20),
-            child: const Row(
+            child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Icon(Icons.cancel_rounded, color: DesignSystem.error, size: 24),
@@ -271,7 +269,7 @@ class _ABReversalOddballScreenState extends ConsumerState<ABReversalOddballScree
                 Text(
                   'NON-TARGET',
                   style: TextStyle(
-                    fontFamily: 'Bebas Neue',
+                    fontFamily: DesignSystem.fontDisplay,
                     fontSize: 22,
                     fontWeight: FontWeight.w700,
                     letterSpacing: 1.5,

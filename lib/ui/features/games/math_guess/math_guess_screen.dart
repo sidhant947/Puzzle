@@ -1,7 +1,7 @@
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/utils/l10n_game_helpers.dart';
 
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../../../core/juice/game_scaffold.dart';
 import '../../../../utils/design_system.dart';
@@ -66,8 +66,7 @@ class _MathGuessScreenState extends ConsumerState<MathGuessScreen> {
         ),
         title: Text(
           l10n.btnStartGame.toUpperCase(),
-          style: const TextStyle(
-            fontFamily: 'Bebas Neue',
+          style: TextStyle(fontFamily: DesignSystem.fontDisplay,
             fontSize: 24,
             letterSpacing: 1.2,
           ),

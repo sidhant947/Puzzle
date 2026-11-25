@@ -1,5 +1,5 @@
 import 'dart:math' as math;
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -139,8 +139,7 @@ class _VisualCrowdingAcuityScreenState extends ConsumerState<VisualCrowdingAcuit
               const SizedBox(width: 6),
               Text(
                 'TRIAL $_trialCount / $totalTrials',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -159,8 +158,7 @@ class _VisualCrowdingAcuityScreenState extends ConsumerState<VisualCrowdingAcuit
               const SizedBox(width: 6),
               Text(
                 'ACCURACY: $_score',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -189,7 +187,6 @@ class _VisualCrowdingAcuityScreenState extends ConsumerState<VisualCrowdingAcuit
             'WHICH DIRECTION IS THE CENTER "C" OPENING FACING?',
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontFamily: 'Geist',
               fontSize: 12,
               fontWeight: FontWeight.w800,
               color: colorScheme.onSurface.withValues(alpha: 0.5),

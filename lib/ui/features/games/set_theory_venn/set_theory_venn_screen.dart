@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -158,8 +158,7 @@ class _SetTheoryVennScreenState extends ConsumerState<SetTheoryVennScreen> {
               const SizedBox(width: 6),
               Text(
                 'SET THEORY',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -178,8 +177,7 @@ class _SetTheoryVennScreenState extends ConsumerState<SetTheoryVennScreen> {
               const SizedBox(width: 6),
               Text(
                 '$_score / $targetScore',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -203,7 +201,6 @@ class _SetTheoryVennScreenState extends ConsumerState<SetTheoryVennScreen> {
           Text(
             'SHADE THE REGION FOR:',
             style: TextStyle(
-              fontFamily: 'Geist',
               fontSize: 11,
               fontWeight: FontWeight.w700,
               color: colorScheme.onSurface.withValues(alpha: 0.5),
@@ -215,7 +212,7 @@ class _SetTheoryVennScreenState extends ConsumerState<SetTheoryVennScreen> {
             _currentQuestion.formula,
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontFamily: 'Bebas Neue',
+              fontFamily: DesignSystem.fontDisplay,
               fontSize: 28,
               fontWeight: FontWeight.w700,
               color: colorScheme.primary,
@@ -259,10 +256,10 @@ class _SetTheoryVennScreenState extends ConsumerState<SetTheoryVennScreen> {
                       color: DesignSystem.gameTeal,
                     ),
                     const SizedBox(width: 4),
-                    const Text(
+                    Text(
                       'OUTSIDE (U)',
                       style: TextStyle(
-                        fontFamily: 'Bebas Neue',
+                        fontFamily: DesignSystem.fontDisplay,
                         fontSize: 14,
                         fontWeight: FontWeight.bold,
                       ),
@@ -321,7 +318,7 @@ class _SetTheoryVennScreenState extends ConsumerState<SetTheoryVennScreen> {
                 label,
                 textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontFamily: 'Bebas Neue',
+                  fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   color: isSelected ? DesignSystem.gameTeal : colorScheme.onSurface,
@@ -344,7 +341,6 @@ class _SetTheoryVennScreenState extends ConsumerState<SetTheoryVennScreen> {
         child: Text(
           'SUBMIT SELECTION',
           style: TextStyle(
-            fontFamily: 'Geist',
             fontSize: 16,
             fontWeight: FontWeight.w700,
             color: Colors.white,

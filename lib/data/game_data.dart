@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import '../ui/features/games/sudoku/sudoku_screen.dart';
 import '../ui/features/games/find_word/find_word_screen.dart';
 import '../ui/features/games/crossword/crossword_screen.dart';

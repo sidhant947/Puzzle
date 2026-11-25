@@ -1,5 +1,5 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
+import 'package:material_ui/material_ui.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:puzzle/l10n/app_localizations.dart';
 import 'package:puzzle/providers/user_providers.dart';
@@ -196,8 +196,7 @@ class _TemporalOrderJudgmentScreenState extends ConsumerState<TemporalOrderJudgm
               const SizedBox(width: 6),
               Text(
                 'TRIAL $_trialCount / $totalTrials',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -216,8 +215,7 @@ class _TemporalOrderJudgmentScreenState extends ConsumerState<TemporalOrderJudgm
               const SizedBox(width: 6),
               Text(
                 'ACCURACY: $_score',
-                style: const TextStyle(
-                  fontFamily: 'Bebas Neue',
+                style: TextStyle(fontFamily: DesignSystem.fontDisplay,
                   fontSize: 18,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.0,
@@ -246,7 +244,6 @@ class _TemporalOrderJudgmentScreenState extends ConsumerState<TemporalOrderJudgm
             'WHICH CIRCLE FLASHED FIRST?',
             textAlign: TextAlign.center,
             style: TextStyle(
-              fontFamily: 'Geist',
               fontSize: 12,
               fontWeight: FontWeight.w800,
               color: colorScheme.onSurface.withValues(alpha: 0.5),
@@ -302,11 +299,11 @@ class _TemporalOrderJudgmentScreenState extends ConsumerState<TemporalOrderJudgm
             color: colorScheme.surface,
             onTap: _isFlashing ? null : () => _submitChoice(FlashSide.left),
             padding: const EdgeInsets.symmetric(vertical: 20),
-            child: const Center(
+            child: Center(
               child: Text(
                 'LEFT FIRST',
                 style: TextStyle(
-                  fontFamily: 'Bebas Neue',
+                  fontFamily: DesignSystem.fontDisplay,
                   fontSize: 24,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.5,
@@ -321,11 +318,11 @@ class _TemporalOrderJudgmentScreenState extends ConsumerState<TemporalOrderJudgm
             color: colorScheme.surface,
             onTap: _isFlashing ? null : () => _submitChoice(FlashSide.right),
             padding: const EdgeInsets.symmetric(vertical: 20),
-            child: const Center(
+            child: Center(
               child: Text(
                 'RIGHT FIRST',
                 style: TextStyle(
-                  fontFamily: 'Bebas Neue',
+                  fontFamily: DesignSystem.fontDisplay,
                   fontSize: 24,
                   fontWeight: FontWeight.w700,
                   letterSpacing: 1.5,
